@@ -97,16 +97,39 @@ namespace Emiplus.Controller
 
                 foreach (var item in produtos)
                 {
-                    double vlrAditional = 0;
-                    if (item.imposto.ICMS.ICMS10 != null)
+                    double vlrAditional = 0, vlrAditionalIPI = 0;
+
+                    try
                     {
-                        var vlrImposto = Validation.ConvertToDouble(item.imposto.ICMS.ICMS10.vICMSST);
-                        var qtd = Validation.ConvertToDouble(item.prod.qCom);
-                        vlrAditional = vlrImposto / qtd;
+                        if (item.imposto.ICMS.ICMS10 != null)
+                        {
+                            var vlrImposto = Validation.ConvertToDouble(item.imposto.ICMS.ICMS10.vICMSST);
+                            var qtd = Validation.ConvertToDouble(item.prod.qCom);
+                            vlrAditional = Validation.Round(vlrImposto / qtd);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        vlrAditional = 0;
+                    }
+
+                    try
+                    {
+                        if (item.imposto.IPI.IPITrib.vIPI != null)
+                        {
+                            var vlrImposto = Validation.ConvertToDouble(item.imposto.IPI.IPITrib.vIPI);
+                            var qtd = Validation.ConvertToDouble(item.prod.qCom);
+                            vlrAditionalIPI = Validation.Round(vlrImposto / qtd);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        vlrAditionalIPI = 0;
                     }
 
                     var vlrItem = Validation.ConvertToDouble(item.prod.vUnCom.ToString().Replace(".", ","));
-                    var totalItem = vlrItem + vlrAditional;
+                    var totalItem = vlrItem + vlrAditional + vlrAditionalIPI;
+
                     object obj = new
                     {
                         nrItem = item.nItem,

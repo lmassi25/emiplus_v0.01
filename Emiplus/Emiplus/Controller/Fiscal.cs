@@ -619,24 +619,180 @@ namespace Emiplus.Controller
                             string pLine = "\r\n";
 
                             iRetorno = Bematech.ConfiguraModeloImpressora(7);
-                            iRetorno = Bematech.IniciaPorta(printerPort);
+                            //iRetorno = Bematech.IniciaPorta(printerPort);
+                            iRetorno = Bematech.IniciaPorta("USB");
                             iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
                             
-                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length); //------------------
-
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
                             iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitente.Fantasia) + pLine, 3, 0, 0, 0, 1);
                             iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + ", " + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + " - " + Validation.CleanStringForFiscal(_emitenteEndereco.Bairro) + pLine, 1, 0, 0, 0, 0);
                             iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + "/" + Validation.CleanStringForFiscal(_emitenteEndereco.Estado) + pLine, 1, 0, 0, 0, 0);
-                            iRetorno = Bematech.FormataTX(_emitenteContato.Telefone + pLine, 1, 0, 0, 0, 0);
+                            //iRetorno = Bematech.FormataTX(_emitenteContato.Telefone + pLine, 1, 0, 0, 0, 0);
+
+                            //iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("Extrato N." + _nota.nr_Nota + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("CUPOM FISCAL ELETRONICO - SAT" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(0), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            itens = new Model.PedidoItem().Query()
+                            .LeftJoin("item", "pedido_item.item", "item.id")
+                            .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                            .Where("pedido_item.pedido", Pedido)
+                            .Where("pedido_item.excluir", 0)
+                            .Where("pedido_item.tipo", "Produtos")
+                            .OrderBy("pedido_item.id")
+                            .Get();
+
+                            int count = 0;
+
+                            foreach (var data in itens)
+                            {
+                                count++;
+                                iRetorno = Bematech.FormataTX(AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)) + pLine, 1, 0, 0, 0, 0);
+                            }
 
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)) + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)) + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)) + pLine, 1, 0, 0, 0, 0);
+
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            string formapgto = "";
+
+                            pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                            foreach (var data in pagamentos)
+                            {
+                                switch (data.ID_FORMAPGTO)
+                                {
+                                    case 1:
+                                        formapgto = "Dinheiro";
+                                        break;
+
+                                    case 2:
+                                        formapgto = "Cheque";
+                                        break;
+
+                                    case 3:
+                                        formapgto = "Cartão de Débito";
+                                        break;
+
+                                    case 4:
+                                        formapgto = "Cartão de Crédito";
+                                        break;
+
+                                    case 5:
+                                        formapgto = "Crediário";
+                                        break;
+
+                                    case 6:
+                                        formapgto = "Boleto";
+                                        break;
+
+                                    default:
+                                        formapgto = "N/D";
+                                        break;
+                                }
+
+                                if(data.Total == null)
+                                    iRetorno = Bematech.FormataTX(AddSpaces(Validation.CleanStringForFiscal(formapgto), Validation.FormatPrice(0)) + pLine, 1, 0, 0, 0, 0);
+                                else
+                                    iRetorno = Bematech.FormataTX(AddSpaces(Validation.CleanStringForFiscal(formapgto), Validation.FormatPrice(data.Total)) + pLine, 1, 0, 0, 0, 0);
+                            }
+
+                            iRetorno = Bematech.FormataTX(AddSpaces("Troco R$", "0,00") + pLine, 1, 0, 0, 0, 0);
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(0), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("OBSERVACOES DO CONTRIBUINTE" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("*Valor aproximado dos tributos do item" + pLine, 1, 0, 0, 0, 0);
+
+                            var totais = new Model.PedidoItem().Query()
+                            .LeftJoin("item", "pedido_item.item", "item.id")
+                            .SelectRaw("SUM(pedido_item.federal) as federal, SUM(pedido_item.estadual) as estadual, SUM(pedido_item.municipal) as municipal")
+                            .Where("pedido_item.pedido", Pedido)
+                            .Where("pedido_item.excluir", 0)
+                            .Where("pedido_item.tipo", "Produtos")
+                            .Get();
+
+                            foreach (var data in totais)
+                            {
+                                iRetorno = Bematech.FormataTX(AddSpaces("Valor aproximado dos tributos deste cupom ", Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL, true)) + pLine, 1, 0, 0, 0, 0);
+                                iRetorno = Bematech.FormataTX("(conforme Lei Fed.12.741/2012)" + pLine, 1, 0, 0, 0, 0);
+                            }
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("SAT N. " + IniFile.Read("N_SERIE", "SAT") + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(_nota.Criado.ToString() + pLine, 1, 0, 0, 0, 0);
+
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                            //cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+                            iRetorno = Bematech.FormataTX(cfeid + pLine, 1, 0, 0, 0, 0);
+
+                            //iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid);
+
+                            iRetorno = Bematech.ConfiguraCodigoBarras(80, 0, 0, 0, 0);
+                            iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid.Substring(0,22));
+                            iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid.Substring(22, 22));
+
+                            string qrcode = "", total_qrcode = "";
+                            total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                            if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                            else
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+
+                            //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                            iRetorno = Bematech.ImprimeCodigoQRCODE(1, 5, 0, 10, 1, qrcode);
+
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
-                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
-                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
-                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("Consulte o QRCode pelo aplicativo De olho na" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("nota, disponível na AppStore(Apple) e PlayStore(Android)" + pLine, 1, 0, 0, 0, 0);
+
+                            /*
+                            
+                            printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
+                            printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
+
+                            //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
+
+                            string qrcode = "", total_qrcode = "";
+                            total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                            if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                            else
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+
+                            //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                            printer.QrCode(qrcode);
+
+                            printer.NewLines(3);
+
+                            printer.AlignCenter();
+                            printer.Append("Consulte o QRCode pelo aplicativo De olho na");
+                            printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");*/
+
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
                             iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
@@ -823,8 +979,7 @@ namespace Emiplus.Controller
 
                             #endregion
                         }
-
-
+                        
                         return "Impresso com sucesso!";
 
                         #endregion CFE AUTORIZADO
@@ -833,84 +988,168 @@ namespace Emiplus.Controller
                     {
                         #region CFE CANCELADO
 
-                        var printername = IniFile.Read("Printer", "SAT");
+                        var printerModel = IniFile.Read("Model", "SAT");
+                        var printerPort = IniFile.Read("Port", "SAT");
 
-                        if (printername == null)
-                            return "";
-
-                        Printer printer = new Printer(printername);
-
-                        //using (WebClient wc = new WebClient())
-                        //{
-                        //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
-                        //    MemoryStream stream = new MemoryStream(originalData);
-                        //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
-                        //    Bitmap bitmap = new Bitmap(img);
-                        //    printer.Image(bitmap);
-                        //}
-
-                        printer.AlignCenter();
-                        printer.BoldMode(_emitente.Fantasia);
-                        printer.Append(_emitente.Nome);
-                        printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
-                        printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
-                        printer.Append(_emitenteContato.Telefone);
-
-                        printer.NewLines(2);
-
-                        printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
-                        printer.Separator();
-
-                        printer.BoldMode("Extrato N°" + _nota.nr_Nota);
-                        printer.BoldMode("CUPOM FISCAL ELETRONICO - SAT");
-                        printer.BoldMode("CANCELADO");
-                        printer.Separator();
-
-                        printer.AlignLeft();
-                        printer.BoldMode("DADOS DO CUPOM FISCAL ELETRONICO CANCELADO");
-                        printer.NewLines(2);
-                        printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);
-                        printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
-                        printer.Separator();
-
-                        printer.AlignCenter();
-                        printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
-                        printer.Append(_nota.Criado.ToString());
-                        printer.NewLines(2);
-
-                        string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
-                        cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
-
-                        printer.CondensedMode(cfeid);
-
-                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
-                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
-
-                        //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
-
-                        string qrcode = "", total_qrcode = "";
-                        total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
-
-                        if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                        if (printerModel == "Bematech")
                         {
-                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                            int iRetorno = 0;
+                            string linewithdot = "------------------------------------------------------------------";
+                            string pLine = "\r\n";
+
+                            iRetorno = Bematech.ConfiguraModeloImpressora(7);
+                            //iRetorno = Bematech.IniciaPorta(printerPort);
+                            iRetorno = Bematech.IniciaPorta("USB");
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitente.Fantasia) + pLine, 3, 0, 0, 0, 1);
+                            iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + ", " + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + " - " + Validation.CleanStringForFiscal(_emitenteEndereco.Bairro) + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + "/" + Validation.CleanStringForFiscal(_emitenteEndereco.Estado) + pLine, 1, 0, 0, 0, 0);
+                            //iRetorno = Bematech.FormataTX(_emitenteContato.Telefone + pLine, 1, 0, 0, 0, 0);
+
+                            //iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("Extrato N." + _nota.nr_Nota + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("CUPOM FISCAL ELETRONICO - SAT" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("CANCELADO" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(0), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+                            
+                            iRetorno = Bematech.FormataTX(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)) + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)) + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)) + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("SAT N. " + IniFile.Read("N_SERIE", "SAT") + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(_nota.Criado.ToString() + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                            //cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+                            iRetorno = Bematech.FormataTX(cfeid + pLine, 1, 0, 0, 0, 0);
+
+                            //iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid);
+
+                            iRetorno = Bematech.ConfiguraCodigoBarras(80, 0, 0, 0, 0);
+                            iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid.Substring(0, 22));
+                            iRetorno = Bematech.ImprimeCodigoBarrasCODE128(cfeid.Substring(22, 22));
+
+                            string qrcode = "", total_qrcode = "";
+                            total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                            if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                            else
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+
+                            //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                            iRetorno = Bematech.ImprimeCodigoQRCODE(1, 5, 0, 10, 1, qrcode);
+
+                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                            iRetorno = Bematech.FormataTX("Consulte o QRCode pelo aplicativo De olho na" + pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX("nota, disponível na AppStore(Apple) e PlayStore(Android)" + pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                            iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                            iRetorno = Bematech.AcionaGuilhotina(0);
+                            iRetorno = Bematech.FechaPorta();
                         }
                         else
                         {
-                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+
+                            var printername = IniFile.Read("Printer", "SAT");
+
+                            if (printername == null)
+                                return "";
+
+                            Printer printer = new Printer(printername);
+
+                            //using (WebClient wc = new WebClient())
+                            //{
+                            //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                            //    MemoryStream stream = new MemoryStream(originalData);
+                            //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                            //    Bitmap bitmap = new Bitmap(img);
+                            //    printer.Image(bitmap);
+                            //}
+
+                            printer.AlignCenter();
+                            printer.BoldMode(_emitente.Fantasia);
+                            printer.Append(_emitente.Nome);
+                            printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                            printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                            printer.Append(_emitenteContato.Telefone);
+
+                            printer.NewLines(2);
+
+                            printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                            printer.Separator();
+
+                            printer.BoldMode("Extrato N°" + _nota.nr_Nota);
+                            printer.BoldMode("CUPOM FISCAL ELETRONICO - SAT");
+                            printer.BoldMode("CANCELADO");
+                            printer.Separator();
+
+                            printer.AlignLeft();
+                            printer.BoldMode("DADOS DO CUPOM FISCAL ELETRONICO CANCELADO");
+                            printer.NewLines(2);
+                            printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);
+                            printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
+                            printer.Separator();
+
+                            printer.AlignCenter();
+                            printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
+                            printer.Append(_nota.Criado.ToString());
+                            printer.NewLines(2);
+
+                            string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                            cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+
+                            printer.CondensedMode(cfeid);
+
+                            printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
+                            printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
+
+                            //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
+
+                            string qrcode = "", total_qrcode = "";
+                            total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                            if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                            {
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                            }
+                            else
+                            {
+                                qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+                            }
+
+                            //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                            printer.QrCode(qrcode);
+
+                            printer.NewLines(3);
+
+                            printer.AlignCenter();
+                            printer.Append("Consulte o QRCode pelo aplicativo De olho na");
+                            printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
+
+                            printer.FullPaperCut();
+                            printer.PrintDocument();
                         }
-
-                        //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
-                        printer.QrCode(qrcode);
-
-                        printer.NewLines(3);
-
-                        printer.AlignCenter();
-                        printer.Append("Consulte o QRCode pelo aplicativo De olho na");
-                        printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
-
-                        printer.FullPaperCut();
-                        printer.PrintDocument();
 
                         return "Impresso com sucesso!";
 

@@ -1022,9 +1022,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label10.Location = new System.Drawing.Point(360, 309);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 17);
+            this.label10.Size = new System.Drawing.Size(97, 17);
             this.label10.TabIndex = 103;
-            this.label10.Text = "Valor de Venda";
+            this.label10.Text = "Valor Recebido";
             // 
             // recebido
             // 
@@ -1599,6 +1599,7 @@
             this.flowLayoutPanel.Name = "flowLayoutPanel";
             this.flowLayoutPanel.Size = new System.Drawing.Size(665, 148);
             this.flowLayoutPanel.TabIndex = 563;
+            this.flowLayoutPanel.Visible = false;
             // 
             // menuTaxas
             // 

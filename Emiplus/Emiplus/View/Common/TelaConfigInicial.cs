@@ -33,6 +33,8 @@ namespace Emiplus.View.Common
             impressao.Click += (s, e) => OpenForm.Show<Impressao>(this);
             system.Click += (s, e) => OpenForm.Show<Sistema>(this);
 
+            btnBalancas.Click += (s, e) => OpenForm.Show<Balanças>(this);
+
             btnImportar.Click += (s, e) =>
             {
                 var f = new ImportarDados();

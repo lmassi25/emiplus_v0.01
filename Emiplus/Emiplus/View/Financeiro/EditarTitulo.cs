@@ -408,6 +408,11 @@ namespace Emiplus.View.Financeiro
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
+
+            btnImprimir.Click += (s, e) =>
+            {
+                new Controller.Titulo().Imprimir(IdTitulo);
+            };
         }
     }
 }

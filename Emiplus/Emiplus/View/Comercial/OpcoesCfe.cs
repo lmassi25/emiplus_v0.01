@@ -75,7 +75,7 @@ namespace Emiplus.View.Comercial
                 {
                     Emitir.Visible = false;
                     btnDetalhes.Visible = false;
-                    Imprimir.Location = new Point(330, 303);
+                    //Imprimir.Location = new Point(330, 303);
                 }
 
                 var nota = new Nota().FindById(idNota).FirstOrDefault<Nota>();

@@ -30,6 +30,14 @@ namespace Emiplus.View.Comercial
                     _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Fornecedores");
                     break;
 
+                case "Notas":
+                    _controller.GetDataTablePessoa(GridListaClientes, search.Text, "");
+                    break;
+
+                case null:
+                    _controller.GetDataTablePessoa(GridListaClientes, search.Text, "");
+                    break;
+
                 default:
                     _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
                     break;

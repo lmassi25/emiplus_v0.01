@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Common;
+using ESC_POS_USB_NET.Printer;
 using SqlKata.Execution;
 
 namespace Emiplus.Controller
@@ -444,6 +446,252 @@ namespace Emiplus.Controller
                 );
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        public void Imprimir(int idTitulo, string tipo = "Bobina 80mm", int modelo = 0)
+        {
+            if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
+            {
+                var printerModel = IniFile.Read("Model", "SAT");
+                var printerPort = IniFile.Read("Port", "SAT");
+
+                if (printerModel == "Bematech")
+                {
+                    #region EMITENTE
+
+                    var _emitente = new Model.Pessoa();
+                    var _emitenteEndereco = new PessoaEndereco();
+                    var _emitenteContato = new PessoaContato();
+
+                    _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+                    _emitente.CPF = Settings.Default.empresa_cnpj;
+
+                    _emitente.Nome = Settings.Default.empresa_razao_social;
+                    _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+                    _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+                    _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+                    _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+                    _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+                    _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+                    _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+                    _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+                    #endregion EMITENTE
+
+                    var _titulo = new Model.Titulo().FindById(idTitulo).First<Model.Titulo>();
+                    var _destinatario = new Model.Pessoa().FindById(_titulo.Id_Pessoa).FirstOrDefault<Model.Pessoa>();
+
+                    int iRetorno = 0;
+                    string linewithdot = "------------------------------------------------------------------";
+                    string pLine = "\r\n";
+
+                    iRetorno = Bematech.ConfiguraModeloImpressora(7);
+                    //iRetorno = Bematech.IniciaPorta(printerPort);
+                    iRetorno = Bematech.IniciaPorta("USB");
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitente.Fantasia) + pLine, 3, 0, 0, 0, 1);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + ", " + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + " - " + Validation.CleanStringForFiscal(_emitenteEndereco.Bairro) + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + "/" + Validation.CleanStringForFiscal(_emitenteEndereco.Estado) + pLine, 1, 0, 0, 0, 0);
+                    
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX("Extrato N." + _titulo.Id + pLine, 1, 0, 0, 0, 0);
+                    
+                    if (_destinatario != null)
+                    {
+                        if (_titulo.Tipo == "Pagar")
+                            iRetorno = Bematech.FormataTX("Fornecedor: " + _destinatario.Nome + pLine, 1, 0, 0, 0, 0);
+                        else
+                            iRetorno = Bematech.FormataTX("Cliente: " + _destinatario.Nome + pLine, 1, 0, 0, 0, 0);
+                    }
+
+                    iRetorno = Bematech.FormataTX("Vencimento: " + Validation.ConvertDateToForm(_titulo.Vencimento) + pLine, 1, 0, 0, 0, 0);
+                    
+                    string formapgto = "";
+
+                    switch (_titulo.Id_FormaPgto)
+                    {
+                        case 1:
+                            formapgto = "Dinheiro";
+                            break;
+
+                        case 2:
+                            formapgto = "Cheque";
+                            break;
+
+                        case 3:
+                            formapgto = "Cartão de Débito";
+                            break;
+
+                        case 4:
+                            formapgto = "Cartão de Crédito";
+                            break;
+
+                        case 5:
+                            formapgto = "Crediário";
+                            break;
+
+                        case 6:
+                            formapgto = "Boleto";
+                            break;
+
+                        default:
+                            formapgto = "N/D";
+                            break;
+                    }
+                    
+                    iRetorno = Bematech.FormataTX(AddSpaces("Tipo: " + Validation.CleanStringForFiscal(formapgto), "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Total)) + pLine), 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    if (_titulo.Recebido > 0)
+                    {
+                        try
+                        {
+                            iRetorno = Bematech.FormataTX(AddSpaces("Recebido: " + Validation.ConvertDateToForm(_titulo.Baixa_data), "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Recebido)) + pLine), 1, 0, 0, 0, 0);
+                        }
+                        catch (Exception)
+                        {
+                            iRetorno = Bematech.FormataTX(AddSpaces("Recebido: ", "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Recebido)) + pLine), 1, 0, 0, 0, 0);
+                        }                        
+                    }
+
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.AcionaGuilhotina(0);
+                    iRetorno = Bematech.FechaPorta();
+                }
+                else
+                {
+                    #region EMITENTE
+
+                    var _emitente = new Model.Pessoa();
+                    var _emitenteEndereco = new PessoaEndereco();
+                    var _emitenteContato = new PessoaContato();
+
+                    _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+                    _emitente.CPF = Settings.Default.empresa_cnpj;
+
+                    _emitente.Nome = Settings.Default.empresa_razao_social;
+                    _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+                    _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+                    _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+                    _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+                    _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+                    _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+                    _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+                    _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+                    #endregion EMITENTE
+
+                    var _titulo = new Model.Titulo().FindById(idTitulo).First<Model.Titulo>();
+                    var _destinatario = new Model.Pessoa().FindById(_titulo.Id_Pessoa).FirstOrDefault<Model.Pessoa>();
+                    
+                    var printername = IniFile.Read("PrinterName", "Comercial");
+
+                    if (printername == null)
+                        return;
+
+                    if (printername == "Selecione")
+                    {
+                        Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                        return;
+                    }
+
+                    var printer = new Printer(printername);
+
+                    printer.AlignCenter();
+                    printer.BoldMode(_emitente.Fantasia);
+                    printer.Append(_emitente.Nome);
+                    printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                    printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                    printer.Append(_emitenteContato.Telefone);
+
+                    printer.NewLines(2);
+                    printer.Separator();
+
+                    printer.BoldMode("Extrato N°" + _titulo.Id);
+
+                    printer.Separator();
+
+                    printer.AlignLeft();
+
+                    if (_destinatario != null)
+                    {
+                        if (_titulo.Tipo == "Pagar")
+                            printer.Append("Fornecedor: " + _destinatario.Nome);
+                        else
+                            printer.Append("Cliente: " + _destinatario.Nome);
+                    }
+
+                    printer.Append(("Vencimento: " + Validation.ConvertDateToForm(_titulo.Vencimento)));
+
+                    string formapgto = "";
+
+                    switch (_titulo.Id_FormaPgto)
+                    {
+                        case 1:
+                            formapgto = "Dinheiro";
+                            break;
+
+                        case 2:
+                            formapgto = "Cheque";
+                            break;
+
+                        case 3:
+                            formapgto = "Cartão de Débito";
+                            break;
+
+                        case 4:
+                            formapgto = "Cartão de Crédito";
+                            break;
+
+                        case 5:
+                            formapgto = "Crediário";
+                            break;
+
+                        case 6:
+                            formapgto = "Boleto";
+                            break;
+
+                        default:
+                            formapgto = "N/D";
+                            break;
+                    }
+
+                    printer.Append(AddSpaces("Tipo: " + Validation.CleanStringForFiscal(formapgto), "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Total))));
+                    printer.Separator();
+
+                    if (_titulo.Recebido > 0)
+                    {
+                        try
+                        {
+                            printer.Append(AddSpaces("Recebido: " + Validation.ConvertDateToForm(_titulo.Baixa_data), "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Recebido))));
+                        }
+                        catch (Exception)
+                        {
+                            printer.Append(AddSpaces("Recebido: ", "Total R$: " + Validation.FormatPrice(Validation.ConvertToDouble(_titulo.Recebido))));
+                        }
+                    }
+
+                    printer.NewLines(5);                
+
+                    printer.FullPaperCut();
+                    printer.PrintDocument();
+                }
+            }
+        }
+
+        public static string AddSpaces(string valueF, string valueE)
+        {
+            if ((valueF + valueE).Length <= 48)
+                return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
+            else
+                return valueF + " " + valueE;
         }
     }
 }
