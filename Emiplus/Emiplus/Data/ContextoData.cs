@@ -5,7 +5,7 @@
 
     public class ContextoData : DbContext
     {
-        private const string _path = @"C:\emiplus_v0.0\EMIPLUS.FDB";
+        private const string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
         private const string _user = "sysdba";
         private const string _pass = "masterkey";
         private const string _db = "sysdba";
