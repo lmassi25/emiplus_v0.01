@@ -173,10 +173,16 @@
     <Compile Include="View\Common\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Item\Item.cs">
+    <Compile Include="View\Faturamento\Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Item\Item.Designer.cs">
+    <Compile Include="View\Faturamento\Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produto\Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produto\Item.Designer.cs">
       <DependentUpon>Item.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Assets\Form1.resx">
@@ -197,7 +203,7 @@
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Item\Item.resx">
+    <EmbeddedResource Include="View\Produto\Item.resx">
       <DependentUpon>Item.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
