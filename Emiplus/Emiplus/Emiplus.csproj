@@ -163,6 +163,7 @@
     <Compile Include="Data\Helpers\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Class1.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
