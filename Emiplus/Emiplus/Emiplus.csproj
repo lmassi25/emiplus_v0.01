@@ -166,6 +166,12 @@
     <Compile Include="View\Faturamento\Pedido.Designer.cs">
       <DependentUpon>Pedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Faturamento\Venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Faturamento\Venda.Designer.cs">
+      <DependentUpon>Venda.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produto\Item.cs">
       <SubType>Form</SubType>
     </Compile>
