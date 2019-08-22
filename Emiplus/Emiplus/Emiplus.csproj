@@ -145,7 +145,6 @@
   <ItemGroup>
     <Compile Include="Controller\Class1.cs" />
     <Compile Include="Controller\Class2.cs" />
-    <Compile Include="Controller\Class56.cs" />
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Data\ContextoData.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
