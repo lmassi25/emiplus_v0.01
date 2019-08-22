@@ -90,7 +90,6 @@ namespace Emiplus.Model
         //SET TERM; !!
 
         #endregion
-
         public bool Salvar(Item data)
         {
             if (data.Id == 0)
@@ -107,13 +106,13 @@ namespace Emiplus.Model
             if (contexto.SaveChanges() == 1)
                 return true;
 
-            return false;
+            return returnValue;            
         }
 
         public bool Deletar(Item data)
         {
             bool returnValue = false;
-
+            
             data.Excluir = 1;
             data.DataDeletado = DateTime.Now;
 
@@ -121,7 +120,7 @@ namespace Emiplus.Model
 
             if (contexto.SaveChanges() == 1)
                 returnValue = true;
-
+            
             return returnValue;
         }
 

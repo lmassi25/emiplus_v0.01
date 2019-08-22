@@ -16,7 +16,7 @@
         {
             if (_model.ValidarDados(data))
                 return false;
-
+                
             if (_model.Salvar(data) == true)
             {
                 alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
