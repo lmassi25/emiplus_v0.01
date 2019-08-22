@@ -4,19 +4,19 @@ using System.Linq;
 
 namespace Emiplus.Model
 {
-    using Emiplus.Data;
+    using Emiplus.Data.Database;
     using Emiplus.Data.Helpers;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Valit;
 
     [Table("ITEM")]
-    public class Item
+    public class Item : Data.Core.Model
     {
+
         #region CAMPOS 
         [Column("ID")]
         public int Id { get; set; }
 
-        [Required]
         [Column("TIPO")]
         public int Tipo { get; set; } //0-PRODUTO 1-SERVICO
 
@@ -27,7 +27,6 @@ namespace Emiplus.Model
         public DateTime DataInserido { get; private set; }
 
         [Column("DATAATUALIZADO")]
-        [Required]
         public DateTime DataAtualizado { get; private set; }
 
         [Column("DATADELETADO")]
@@ -91,35 +90,21 @@ namespace Emiplus.Model
         //SET TERM; !!
 
         #endregion
-            
         public bool Salvar(Item data)
         {
-            bool returnValue = false;
-
-            try
+            if (data.Id == 0)
             {
-                using (var contexto = new ContextoData())
-                {
-                    if (data.Id == 0)
-                    {
-                        data.DataInserido = DateTime.Now;
-                        contexto.Itens.Add(data);
-                    }
-                    else
-                    {
-                        data.DataAtualizado = DateTime.Now;
-                        contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    }
-
-                    if (contexto.SaveChanges() == 1)
-                        returnValue = true;
-                }
+                data.DataInserido = DateTime.Now;
+                contexto.Itens.Add(data);
             }
-            catch (Exception ex)
+            else
             {
-                returnValue = false;
-                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
+                data.DataAtualizado = DateTime.Now;
+                contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
+
+            if (contexto.SaveChanges() == 1)
+                return true;
 
             return returnValue;            
         }
@@ -127,28 +112,15 @@ namespace Emiplus.Model
         public bool Deletar(Item data)
         {
             bool returnValue = false;
+            
+            data.Excluir = 1;
+            data.DataDeletado = DateTime.Now;
 
-            try
-            {
-                data.Excluir = 1;
-                data.DataDeletado = DateTime.Now;
+            contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-                using (var contexto = new ContextoData())
-                {
-                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-
-                    if (contexto.SaveChanges() == 1)
-                    {
-                        returnValue = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                returnValue = false;
-                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
-            }
-
+            if (contexto.SaveChanges() == 1)
+                returnValue = true;
+            
             return returnValue;
         }
 
@@ -166,25 +138,51 @@ namespace Emiplus.Model
         {
             List<Item> returnValue = null;
 
-            try
-            {
-                using (var contexto = new ContextoData())
-                {
-                    var q = contexto.Itens.Where(expressao);
-                    returnValue = new List<Item>();
+            var q = contexto.Itens.Where(expressao);
+            returnValue = new List<Item>();
 
-                    if (q.Count() > 0)
-                    {
-                        returnValue.AddRange(q);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {                
-                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
-            }
-            
+            if (q.Count() > 0)
+                returnValue.AddRange(q);
+
             return returnValue.ToArray();
+        }
+
+        /// <summary>
+        /// <para>Valida os campos do Model</para>
+        /// <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html"/> </para>
+        /// </summary>
+        /// <param name="data">Objeto com valor dos atributos do Model Item</param>
+        /// <returns>Retorna booleano e Mensagem</returns>
+        /// <example>
+        /// <code>
+        /// if (new Model().ValidarDados(data))
+        ///     return false;
+        /// </code>
+        /// </example>
+        public bool ValidarDados(Item data)
+        {
+            var result = ValitRules<Item>
+                .Create()
+                .Ensure(m => m.Nome, _ => _
+                    .Required()
+                        .WithMessage("Nome é obrigatorio.")
+                    .MinLength(50)
+                        .WithMessage("Seu nome tem q ter no minimo 50 caracateres"))
+                .For(data)
+                .Validate();
+
+            if (!result.Succeeded)
+            {
+                foreach (var message in result.ErrorMessages)
+                {
+                    log.Adicionar("Item", message, Log.LogType.error);
+                    alert.Message("Opss", message, Alert.AlertType.error);
+                    return true;
+                }
+                return true;
+            }
+
+            return false;
         }
     }
 }
