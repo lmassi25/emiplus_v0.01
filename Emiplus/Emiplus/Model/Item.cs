@@ -92,32 +92,46 @@ namespace Emiplus.Model
         #endregion
         public bool Salvar(Item data)
         {
-            if (data.Id == 0)
+            try
             {
-                data.DataInserido = DateTime.Now;
-                contexto.Itens.Add(data);
+                if (data.Id == 0)
+                {
+                    data.DataInserido = DateTime.Now;
+                    contexto.Itens.Add(data);
+                }
+                else
+                {
+                    data.DataAtualizado = DateTime.Now;
+                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+
+                if (contexto.SaveChanges() == 1)
+                    return true;
             }
-            else
+            catch (Exception ex)
             {
-                data.DataAtualizado = DateTime.Now;
-                contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
             }
-
-            if (contexto.SaveChanges() == 1)
-                return true;
-
+            
             return false;            
         }
 
         public bool Deletar(Item data)
         {
-            data.Excluir = 1;
-            data.DataDeletado = DateTime.Now;
+            try
+            {
+                data.Excluir = 1;
+                data.DataDeletado = DateTime.Now;
 
-            contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-            if (contexto.SaveChanges() == 1)
-                return true;
+                if (contexto.SaveChanges() == 1)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+            }
             
             return false;
         }
@@ -136,12 +150,19 @@ namespace Emiplus.Model
         {
             List<Item> returnValue = null;
 
-            var q = contexto.Itens.Where(expressao);
-            returnValue = new List<Item>();
+            try
+            {
+                var q = contexto.Itens.Where(expressao);
+                returnValue = new List<Item>();
 
-            if (q.Count() > 0)
-                returnValue.AddRange(q);
-
+                if (q.Count() > 0)
+                    returnValue.AddRange(q);
+            }
+            catch (Exception ex)
+            {
+                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+            }
+            
             return returnValue.ToArray();
         }
 
@@ -165,7 +186,7 @@ namespace Emiplus.Model
                     .Required()
                         .WithMessage("Nome é obrigatorio.")
                     .MinLength(50)
-                        .WithMessage("Seu nome tem q ter no minimo 50 caracateres"))
+                        .WithMessage(""))
                 .For(data)
                 .Validate();
 
