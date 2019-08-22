@@ -5,18 +5,14 @@ using System.Linq;
 namespace Emiplus.Model
 {
     using Emiplus.Data;
-    using global::Data.Database;
-    using Microsoft.EntityFrameworkCore;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Validation;
 
     [Table("ITEM")]
-    public class Item : UnitOfWork
+    public class Item
     {
         #region CAMPOS 
         [Column("ID")]
-        [Key()]
         public int Id { get; set; }
 
         [Required]
@@ -39,8 +35,6 @@ namespace Emiplus.Model
         [Column("EMPRESAID")]
         public int EmpresaId { get; private set; }
 
-        [Required]
-        [MaxLength(5, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [Column("NOME")]
         public string Nome { get; set; }
 
@@ -96,25 +90,20 @@ namespace Emiplus.Model
         //SET TERM; !!
 
         #endregion
-
-        public Item bootstrap(Item data)
-        {
-            return data;
-        }
-
-        public bool Salvar()
+            
+        public bool Salvar(Item data)
         {
             using (var contexto = new ContextoData())
             {
-                if (this.Id == 0)
+                if (data.Id == 0)
                 {
-                    this.DataInserido = DateTime.Now;
-                    contexto.Itens.Add(this);
+                    data.DataInserido = DateTime.Now;
+                    contexto.Itens.Add(data);
                 }
                 else
                 {
-                    this.DataAtualizado = DateTime.Now;
-                    contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    data.DataAtualizado = DateTime.Now;
+                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
 
                 if (contexto.SaveChanges() == 1)
