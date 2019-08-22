@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Item
-{    
+{
     public partial class Item : Form
     {
         private int _itemId;
@@ -36,8 +39,7 @@ namespace Emiplus.View.Item
             button1.Enabled = false;
 
             _item.Nome = textBox1.Text;
-
-            _controller.bSalvar(_item);
+            _controller.Salvar(_item);
 
             button1.Enabled = true;
         }
@@ -49,6 +51,22 @@ namespace Emiplus.View.Item
             GetData();
 
             button2.Enabled = true;
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            //NotifyIcon teste = new NotifyIcon();
+            //teste.Visible = true;
+            //teste.ShowBalloonTip(5000, "Notificação", "Mensagem da notificação", ToolTipIcon.Info);
+
+            notifyIcon.Icon = SystemIcons.Exclamation;
+            notifyIcon.BalloonTipTitle = "Balloon Tip Title";
+            notifyIcon.BalloonTipText = "Balloon Tip Text.";
+            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
+
+            //notifyIcon.ShowBalloonTip(5000, "Opssss", "Algo de errado!", ToolTipIcon.Error);
+            notifyIcon.Visible = true;
+
         }
     }
 }

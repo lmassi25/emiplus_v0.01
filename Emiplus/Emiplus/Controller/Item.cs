@@ -11,7 +11,7 @@ namespace Emiplus.Controller
     using System.Windows.Forms;
 
     public class Item
-    {    
+    {
         private Model.Item _model;
 
         public Item()
@@ -24,16 +24,17 @@ namespace Emiplus.Controller
             return _model.GetItem(Id);
         }
 
-        public string bSalvar(Model.Item data)
+        public bool Salvar(Model.Item data)
         {
-            string _msg = "";
-
-            if(_model.Salvar(data) == true)
+            if (_model.bootstrap(data).Salvar() == true)
             {
                 Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+                return true;
+            } else
+            {
+                Alert.Message("Opss", "Algo deu errado na hora de salvar o produto.", Alert.AlertType.error);
+                return false;
             }
-
-            return _msg;
         }
 
         public string bDeletar(Model.Item data)
