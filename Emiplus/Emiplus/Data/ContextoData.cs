@@ -2,6 +2,10 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Emiplus.Model;
+    using System.Data.Entity.Validation;
+    using System.Linq;
+    using System.Diagnostics;
+    using System;
 
     public class ContextoData : DbContext
     {
@@ -17,5 +21,6 @@
         {
             optionsBuilder.UseFirebird($"character set=NONE;initial catalog={_path};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3");
         }
+
     }
 }
