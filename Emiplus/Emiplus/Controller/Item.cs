@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Emiplus.Controller
+﻿namespace Emiplus.Controller
 {
     using Emiplus.Data.Helpers;
-    using Model;
-    using System.Windows.Forms;
 
     public class Item
     {
@@ -26,7 +18,7 @@ namespace Emiplus.Controller
 
         public bool Salvar(Model.Item data)
         {
-            if (_model.bootstrap(data).Salvar() == true)
+            if (_model.Salvar(data) == true)
             {
                 Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
                 return true;

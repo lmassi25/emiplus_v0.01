@@ -5,6 +5,7 @@ using System.Linq;
 namespace Emiplus.Model
 {
     using Emiplus.Data;
+    using Emiplus.Data.Helpers;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -93,41 +94,59 @@ namespace Emiplus.Model
             
         public bool Salvar(Item data)
         {
-            using (var contexto = new ContextoData())
-            {
-                if (data.Id == 0)
-                {
-                    data.DataInserido = DateTime.Now;
-                    contexto.Itens.Add(data);
-                }
-                else
-                {
-                    data.DataAtualizado = DateTime.Now;
-                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
+            bool returnValue = false;
 
-                if (contexto.SaveChanges() == 1)
-                    return true;
+            try
+            {
+                using (var contexto = new ContextoData())
+                {
+                    if (data.Id == 0)
+                    {
+                        data.DataInserido = DateTime.Now;
+                        contexto.Itens.Add(data);
+                    }
+                    else
+                    {
+                        data.DataAtualizado = DateTime.Now;
+                        contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
+
+                    if (contexto.SaveChanges() == 1)
+                        returnValue = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                returnValue = false;
+                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
             }
 
-            return false;
+            return returnValue;            
         }
 
         public bool Deletar(Item data)
         {
             bool returnValue = false;
 
-            data.Excluir = 1;
-            data.DataDeletado = DateTime.Now;
-
-            using (var contexto = new ContextoData())
+            try
             {
-                contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                data.Excluir = 1;
+                data.DataDeletado = DateTime.Now;
 
-                if (contexto.SaveChanges() == 1)
+                using (var contexto = new ContextoData())
                 {
-                    returnValue = true;
+                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+                    if (contexto.SaveChanges() == 1)
+                    {
+                        returnValue = true;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                returnValue = false;
+                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
             }
 
             return returnValue;
@@ -147,17 +166,24 @@ namespace Emiplus.Model
         {
             List<Item> returnValue = null;
 
-            using (var contexto = new ContextoData())
+            try
             {
-                var q = contexto.Itens.Where(expressao);
-                returnValue = new List<Item>();
-
-                if (q.Count() > 0)
+                using (var contexto = new ContextoData())
                 {
-                    returnValue.AddRange(q);
+                    var q = contexto.Itens.Where(expressao);
+                    returnValue = new List<Item>();
+
+                    if (q.Count() > 0)
+                    {
+                        returnValue.AddRange(q);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {                
+                Logs.Add("Item", ex.Message + " | " + ex.InnerException);
+            }
+            
             return returnValue.ToArray();
         }
     }
