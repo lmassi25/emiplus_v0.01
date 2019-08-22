@@ -4,22 +4,19 @@ using System.Linq;
 
 namespace Emiplus.Model
 {
-    using Emiplus.Data;
-    using global::Data.Database;
-    using Microsoft.EntityFrameworkCore;
-    using System.ComponentModel.DataAnnotations;
+    using Emiplus.Data.Database;
+    using Emiplus.Data.Helpers;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Validation;
+    using Valit;
 
     [Table("ITEM")]
-    public class Item : UnitOfWork
+    public class Item : Data.Core.Model
     {
+
         #region CAMPOS 
         [Column("ID")]
-        [Key()]
         public int Id { get; set; }
 
-        [Required]
         [Column("TIPO")]
         public int Tipo { get; set; } //0-PRODUTO 1-SERVICO
 
@@ -30,7 +27,6 @@ namespace Emiplus.Model
         public DateTime DataInserido { get; private set; }
 
         [Column("DATAATUALIZADO")]
-        [Required]
         public DateTime DataAtualizado { get; private set; }
 
         [Column("DATADELETADO")]
@@ -39,8 +35,6 @@ namespace Emiplus.Model
         [Column("EMPRESAID")]
         public int EmpresaId { get; private set; }
 
-        [Required]
-        [MaxLength(5, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [Column("NOME")]
         public string Nome { get; set; }
 
@@ -97,29 +91,21 @@ namespace Emiplus.Model
 
         #endregion
 
-        public Item bootstrap(Item data)
+        public bool Salvar(Item data)
         {
-            return data;
-        }
-
-        public bool Salvar()
-        {
-            using (var contexto = new ContextoData())
+            if (data.Id == 0)
             {
-                if (this.Id == 0)
-                {
-                    this.DataInserido = DateTime.Now;
-                    contexto.Itens.Add(this);
-                }
-                else
-                {
-                    this.DataAtualizado = DateTime.Now;
-                    contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
-
-                if (contexto.SaveChanges() == 1)
-                    return true;
+                data.DataInserido = DateTime.Now;
+                contexto.Itens.Add(data);
             }
+            else
+            {
+                data.DataAtualizado = DateTime.Now;
+                contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            }
+
+            if (contexto.SaveChanges() == 1)
+                return true;
 
             return false;
         }
@@ -131,15 +117,10 @@ namespace Emiplus.Model
             data.Excluir = 1;
             data.DataDeletado = DateTime.Now;
 
-            using (var contexto = new ContextoData())
-            {
-                contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
-                if (contexto.SaveChanges() == 1)
-                {
-                    returnValue = true;
-                }
-            }
+            if (contexto.SaveChanges() == 1)
+                returnValue = true;
 
             return returnValue;
         }
@@ -158,18 +139,51 @@ namespace Emiplus.Model
         {
             List<Item> returnValue = null;
 
-            using (var contexto = new ContextoData())
-            {
-                var q = contexto.Itens.Where(expressao);
-                returnValue = new List<Item>();
+            var q = contexto.Itens.Where(expressao);
+            returnValue = new List<Item>();
 
-                if (q.Count() > 0)
-                {
-                    returnValue.AddRange(q);
-                }
-            }
+            if (q.Count() > 0)
+                returnValue.AddRange(q);
 
             return returnValue.ToArray();
+        }
+
+        /// <summary>
+        /// <para>Valida os campos do Model</para>
+        /// <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html"/> </para>
+        /// </summary>
+        /// <param name="data">Objeto com valor dos atributos do Model Item</param>
+        /// <returns>Retorna booleano e Mensagem</returns>
+        /// <example>
+        /// <code>
+        /// if (new Model().ValidarDados(data))
+        ///     return false;
+        /// </code>
+        /// </example>
+        public bool ValidarDados(Item data)
+        {
+            var result = ValitRules<Item>
+                .Create()
+                .Ensure(m => m.Nome, _ => _
+                    .Required()
+                        .WithMessage("Nome é obrigatorio.")
+                    .MinLength(50)
+                        .WithMessage("Seu nome tem q ter no minimo 50 caracateres"))
+                .For(data)
+                .Validate();
+
+            if (!result.Succeeded)
+            {
+                foreach (var message in result.ErrorMessages)
+                {
+                    log.Adicionar("Item", message, Log.LogType.error);
+                    alert.Message("Opss", message, Alert.AlertType.error);
+                    return true;
+                }
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Security.Permissions;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Item
 {
@@ -10,15 +11,12 @@ namespace Emiplus.View.Item
     {
         private int _itemId;
                 
-        private Model.Item _item;
-        private Controller.Item _controller;
+        private Model.Item _item = new Model.Item();
+        private Controller.Item _controller = new Controller.Item();
 
         public Item(int id = 0)
         {
             InitializeComponent();
-
-            _item = new Model.Item();
-            _controller = new Controller.Item();
 
             _itemId = id;
 
@@ -53,20 +51,10 @@ namespace Emiplus.View.Item
             button2.Enabled = true;
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
-            //NotifyIcon teste = new NotifyIcon();
-            //teste.Visible = true;
-            //teste.ShowBalloonTip(5000, "Notificação", "Mensagem da notificação", ToolTipIcon.Info);
-
-            notifyIcon.Icon = SystemIcons.Exclamation;
-            notifyIcon.BalloonTipTitle = "Balloon Tip Title";
-            notifyIcon.BalloonTipText = "Balloon Tip Text.";
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
-
-            //notifyIcon.ShowBalloonTip(5000, "Opssss", "Algo de errado!", ToolTipIcon.Error);
-            notifyIcon.Visible = true;
-
+            new Alert().Message("teste", "testeee", Alert.AlertType.error);
+            //new Log().Adicionar("Item", "mensagem de log", Data.Helpers.Log.LogType.warning);
         }
     }
 }

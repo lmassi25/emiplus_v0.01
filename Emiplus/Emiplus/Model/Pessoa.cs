@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Emiplus.Controller
+namespace Emiplus.Model
 {
-    class Class4
+    class Pessoa
     {
     }
 }

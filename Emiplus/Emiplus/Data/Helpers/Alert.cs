@@ -114,9 +114,15 @@ namespace Emiplus.Data.Helpers
          ********************************************************************/
         #endregion
 
-        public Alert(string _title, string _message, AlertType type)
+        public Alert()
         {
             InitializeComponent();
+
+        }
+
+        public void Message(string _title, string _message, AlertType type)
+        {
+            //new Alert(_title, _message, type).Show();
 
             title.Text = _title;
             message.Text = _message;
@@ -140,14 +146,7 @@ namespace Emiplus.Data.Helpers
                     break;
             }
 
-            // deixa borda redonda
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));
-        }
-
-        public static void Message(string _title, string _message, AlertType type)
-        {
-            new Alert(_title, _message, type).Show();
+            this.Show();
         }
 
         public enum AlertType

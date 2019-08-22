@@ -1,4 +1,4 @@
-﻿namespace Emiplus.Data
+﻿namespace Emiplus.Data.Database
 {
     using Microsoft.EntityFrameworkCore;
     using Emiplus.Model;
