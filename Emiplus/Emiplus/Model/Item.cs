@@ -5,16 +5,21 @@ using System.Linq;
 namespace Emiplus.Model
 {
     using Emiplus.Data;
+    using global::Data.Database;
+    using Microsoft.EntityFrameworkCore;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Validation;
 
-    [Table("ITEM")]    
-    public class Item
+    [Table("ITEM")]
+    public class Item : UnitOfWork
     {
         #region CAMPOS 
-
         [Column("ID")]
+        [Key()]
         public int Id { get; set; }
 
+        [Required]
         [Column("TIPO")]
         public int Tipo { get; set; } //0-PRODUTO 1-SERVICO
 
@@ -25,6 +30,7 @@ namespace Emiplus.Model
         public DateTime DataInserido { get; private set; }
 
         [Column("DATAATUALIZADO")]
+        [Required]
         public DateTime DataAtualizado { get; private set; }
 
         [Column("DATADELETADO")]
@@ -33,6 +39,8 @@ namespace Emiplus.Model
         [Column("EMPRESAID")]
         public int EmpresaId { get; private set; }
 
+        [Required]
+        [MaxLength(5, ErrorMessage = "First name cannot be longer than 50 characters.")]
         [Column("NOME")]
         public string Nome { get; set; }
 
@@ -89,30 +97,31 @@ namespace Emiplus.Model
 
         #endregion
 
-        public bool Salvar(Item data)
+        public Item bootstrap(Item data)
         {
-            bool returnValue = false;
-            
+            return data;
+        }
+
+        public bool Salvar()
+        {
             using (var contexto = new ContextoData())
             {
-                if (data.Id == 0)
+                if (this.Id == 0)
                 {
-                    data.DataInserido = DateTime.Now;
-                    contexto.Itens.Add(data);
+                    this.DataInserido = DateTime.Now;
+                    contexto.Itens.Add(this);
                 }
                 else
                 {
-                    data.DataAtualizado = DateTime.Now;
-                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    this.DataAtualizado = DateTime.Now;
+                    contexto.Entry(this).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
 
                 if (contexto.SaveChanges() == 1)
-                {
-                    returnValue = true;
-                }
+                    return true;
             }
 
-            return returnValue;
+            return false;
         }
 
         public bool Deletar(Item data)
@@ -148,7 +157,7 @@ namespace Emiplus.Model
         public Item[] GetItems(Func<Item, bool> expressao)
         {
             List<Item> returnValue = null;
-            
+
             using (var contexto = new ContextoData())
             {
                 var q = contexto.Itens.Where(expressao);
