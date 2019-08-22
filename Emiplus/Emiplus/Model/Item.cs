@@ -106,22 +106,20 @@ namespace Emiplus.Model
             if (contexto.SaveChanges() == 1)
                 return true;
 
-            return returnValue;            
+            return false;            
         }
 
         public bool Deletar(Item data)
         {
-            bool returnValue = false;
-            
             data.Excluir = 1;
             data.DataDeletado = DateTime.Now;
 
             contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 
             if (contexto.SaveChanges() == 1)
-                returnValue = true;
+                return true;
             
-            return returnValue;
+            return false;
         }
 
         public Item GetItem(int id)
@@ -175,7 +173,6 @@ namespace Emiplus.Model
             {
                 foreach (var message in result.ErrorMessages)
                 {
-                    log.Adicionar("Item", message, Log.LogType.error);
                     alert.Message("Opss", message, Alert.AlertType.error);
                     return true;
                 }

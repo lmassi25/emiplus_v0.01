@@ -3,7 +3,7 @@
     using Serilog;
     public class Log
     {
-        public void Adicionar(string classe, string mensagem, LogType type)
+        public void Add(string classe, string mensagem, LogType type)
         {
             Serilog.Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
