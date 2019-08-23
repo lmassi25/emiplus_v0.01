@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Emiplus.Data.GenericRepository
 {
+    /// <summary>
+    /// http://www.linhadecodigo.com.br/artigo/3370/entity-framework-4-repositorio-generico.aspx
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BaseService<T> : IBaseService<T> where T : class
     {
         IUnitOfWork unitOfWork = new ContextoData();

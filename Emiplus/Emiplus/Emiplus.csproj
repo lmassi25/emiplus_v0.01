@@ -160,7 +160,7 @@
     <Compile Include="Data\Core\Model.cs" />
     <Compile Include="Data\Database\ContextoData.cs" />
     <Compile Include="Data\Database\GenericRepository\BaseRepository.cs" />
-    <Compile Include="Data\Database\GenericRepository\BaseService.cs" />
+    <Compile Include="Data\Database\BaseService.cs" />
     <Compile Include="Data\Database\GenericRepository\IBaseRepository.cs" />
     <Compile Include="Data\Database\GenericRepository\IBaseService.cs" />
     <Compile Include="Data\Database\GenericRepository\IUnitOfWork.cs" />
