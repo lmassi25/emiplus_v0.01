@@ -4,8 +4,12 @@
 
     public class Item : Data.Core.Controller
     {
-        private Model.Item _model = new Model.Item();
-        public Item() : base() { }
+        private Model.Item _model;
+
+        public Item()
+        {
+            _model = new Model.Item();
+        }
 
         public Model.Item GetItem(int Id)
         {
@@ -14,8 +18,7 @@
 
         public bool Salvar(Model.Item data)
         {
-            if (_model.ValidarDados(data))
-                return false;
+            if (_model.ValidarDados(data)) return false;
                 
             if (_model.Salvar(data) == true)
             {
