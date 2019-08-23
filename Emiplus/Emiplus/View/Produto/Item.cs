@@ -11,8 +11,6 @@ namespace Emiplus.View.Item
 {
     public partial class Item : Form
     {
-        private int _itemId;
-
         private Model.Item _item;
         private Controller.Item _controller;
         private BaseService<Model.Item> _camadaservico;
@@ -25,11 +23,10 @@ namespace Emiplus.View.Item
             _controller = new Controller.Item();
             _camadaservico = new BaseService<Model.Item>();
 
-            _itemId = id;
-
-            if (_itemId > 0)
+            if (id > 0)
             {
-                _item = _controller.GetItem(_itemId);
+                _item = _controller.GetItem(id);
+                GetData();
             }
         }
 
