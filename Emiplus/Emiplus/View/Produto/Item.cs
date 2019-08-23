@@ -1,16 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Security.Permissions;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Item
 {
     public partial class Item : Form
     {
         private int _itemId;
-                
+
         private Model.Item _item = new Model.Item();
         private Controller.Item _controller = new Controller.Item();
 

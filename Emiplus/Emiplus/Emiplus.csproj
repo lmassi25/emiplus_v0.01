@@ -166,6 +166,8 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Helpers\Log.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Pessoa.cs" />

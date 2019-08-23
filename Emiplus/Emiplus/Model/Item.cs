@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace Emiplus.Model
 {
-    using Emiplus.Data.Database;
     using Emiplus.Data.Helpers;
     using System.ComponentModel.DataAnnotations.Schema;
     using Valit;
@@ -12,9 +11,12 @@ namespace Emiplus.Model
     [Table("ITEM")]
     public class Item : Data.Core.Model
     {
-        public Item() : base() { }
+        public Item() : base()
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
+
         [Column("ID")]
         public int Id { get; set; }
 
@@ -51,7 +53,7 @@ namespace Emiplus.Model
         [Column("ESTOQUEATUAL")]
         public double EstoqueAtual { get; private set; }
 
-        #endregion
+        #endregion CAMPOS
 
         #region SQL
 
@@ -90,7 +92,8 @@ namespace Emiplus.Model
         //      END!!
         //SET TERM; !!
 
-        #endregion
+        #endregion SQL
+
         public bool Salvar(Item data)
         {
             try
@@ -113,8 +116,8 @@ namespace Emiplus.Model
             {
                 log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
             }
-            
-            return false;            
+
+            return false;
         }
 
         public bool Deletar(Item data)
@@ -133,7 +136,7 @@ namespace Emiplus.Model
             {
                 log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
             }
-            
+
             return false;
         }
 
@@ -163,7 +166,7 @@ namespace Emiplus.Model
             {
                 log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
             }
-            
+
             return returnValue.ToArray();
         }
 
