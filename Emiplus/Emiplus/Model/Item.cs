@@ -12,8 +12,6 @@ namespace Emiplus.Model
     [Table("ITEM")]
     public class Item : Data.Core.Model
     {
-        public Item() : base() { }
-
         #region CAMPOS 
         [Column("ID")]
         public int Id { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
+using System.Data.Entity;
 
 namespace Emiplus.Data.Core
 {

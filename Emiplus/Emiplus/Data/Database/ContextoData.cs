@@ -2,12 +2,9 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Emiplus.Model;
-    using System.Data.Entity.Validation;
-    using System.Linq;
-    using System.Diagnostics;
-    using System;
+    using Emiplus.Data.GenericRepository;
 
-    public class ContextoData : DbContext
+    public class ContextoData : DbContext, IUnitOfWork
     {
         private const string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
         private const string _user = "sysdba";
@@ -22,5 +19,9 @@
             optionsBuilder.UseFirebird($"character set=NONE;initial catalog={_path};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3");
         }
 
+        public void Save()
+        {
+            base.SaveChanges();                
+        }
     }
 }
