@@ -1,6 +1,7 @@
 ﻿namespace Emiplus.Data.Helpers
 {
     using Serilog;
+
     public class Log
     {
         public void Add(string classe, string mensagem, LogType type)
@@ -18,12 +19,15 @@
                 case LogType.info:
                     Serilog.Log.Information(mensagem);
                     break;
+
                 case LogType.warning:
                     Serilog.Log.Warning(mensagem);
                     break;
+
                 case LogType.error:
                     Serilog.Log.Error(mensagem);
                     break;
+
                 case LogType.fatal:
                     Serilog.Log.Fatal(mensagem);
                     break;
