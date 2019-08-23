@@ -8,20 +8,17 @@ using System.Threading.Tasks;
 
 namespace Emiplus.Data.GenericRepository
 {
-    public class BaseRepository<T>
-        : IDisposable, IBaseRepository<T> where T : class
+    public class BaseRepositoryFirebird<T> : IDisposable, IBaseRepository<T> where T : class
     {
-        private ContextoData _context;
+        private DataFirebird _context;
 
-        #region Ctor
-        public BaseRepository(IUnitOfWork unitOfWork)
+        public BaseRepositoryFirebird(IUnitOfWork unitOfWork)
         {
             if (unitOfWork == null)
                 throw new ArgumentNullException("unitOfWork");
 
-            _context = unitOfWork as ContextoData;
+            _context = unitOfWork as DataFirebird;
         }
-        #endregion
 
         public T Find(int id)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Emiplus.Data.GenericRepository
 {
-    public interface IBaseService<T> where T : class
+    public interface IDataConnFirebird<T> where T : class
     {
         T Find(int id);
         IQueryable<T> List();

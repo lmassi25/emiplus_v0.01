@@ -90,11 +90,11 @@ namespace Emiplus.Model
 
         #endregion
 
-        private BaseService<Item> _gr;
+        private DataConnFirebird<Item> _dataconn;
 
         public Item()
         {
-            _gr = new BaseService<Item>();
+            _dataconn = new DataConnFirebird<Item>();
         }
 
         public bool Salvar(Item data)
@@ -104,12 +104,12 @@ namespace Emiplus.Model
                 if (data.Id == 0)
                 {
                     data.DataInserido = DateTime.Now;
-                    _gr.Add(data);
+                    _dataconn.Add(data);
                 }
                 else
                 {
                     data.DataAtualizado = DateTime.Now;
-                    _gr.Edit(data);
+                    _dataconn.Edit(data);
                 }                
                 return true;
             }
@@ -127,7 +127,7 @@ namespace Emiplus.Model
             {
                 data.Excluir = 1;
                 data.DataDeletado = DateTime.Now;
-                _gr.Edit(data);
+                _dataconn.Edit(data);
                 return true;
             }
             catch (Exception ex)
@@ -154,7 +154,7 @@ namespace Emiplus.Model
 
             try
             {
-                var q = _gr.List();
+                var q = _dataconn.List();
                 returnValue = new List<Item>();
 
                 if (q.Count() > 0)

@@ -4,7 +4,7 @@
     using Emiplus.Model;
     using Emiplus.Data.GenericRepository;
 
-    public class ContextoData : DbContext, IUnitOfWork
+    public class DataFirebird : DbContext, IUnitOfWork
     {
         private const string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
         private const string _user = "sysdba";

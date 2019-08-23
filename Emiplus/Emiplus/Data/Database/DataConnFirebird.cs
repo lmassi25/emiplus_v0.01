@@ -11,14 +11,14 @@ namespace Emiplus.Data.GenericRepository
     /// http://www.linhadecodigo.com.br/artigo/3370/entity-framework-4-repositorio-generico.aspx
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class BaseService<T> : IBaseService<T> where T : class
+    public class DataConnFirebird<T> : IDataConnFirebird<T> where T : class
     {
-        IUnitOfWork unitOfWork = new ContextoData();
+        IUnitOfWork unitOfWork = new DataFirebird();
         IBaseRepository<T> _repository;
 
-        public BaseService()
+        public DataConnFirebird()
         {
-            _repository = new BaseRepository<T>(unitOfWork);
+            _repository = new BaseRepositoryFirebird<T>(unitOfWork);
         }
 
         public T Find(int id)

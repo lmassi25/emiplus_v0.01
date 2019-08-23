@@ -13,7 +13,7 @@ namespace Emiplus.View.Item
     {
         private Model.Item _item;
         private Controller.Item _controller;
-        private BaseService<Model.Item> _camadaservico;
+        private DataConnFirebird<Model.Item> _camadaservico;
         
         public Item(int id = 0)
         {
@@ -21,7 +21,7 @@ namespace Emiplus.View.Item
 
             _item = new Model.Item();
             _controller = new Controller.Item();
-            _camadaservico = new BaseService<Model.Item>();
+            _camadaservico = new DataConnFirebird<Model.Item>();
 
             if (id > 0)
             {
