@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Emiplus.Model
 {
-    using Emiplus.Data.Database;
+    using Emiplus.Data.GenericRepository;
     using Emiplus.Data.Helpers;
     using System.ComponentModel.DataAnnotations.Schema;
     using Valit;
@@ -12,8 +12,6 @@ namespace Emiplus.Model
     [Table("ITEM")]
     public class Item : Data.Core.Model
     {
-        public Item() : base() { }
-
         #region CAMPOS 
         [Column("ID")]
         public int Id { get; set; }
@@ -91,6 +89,14 @@ namespace Emiplus.Model
         //SET TERM; !!
 
         #endregion
+
+        private DataConnFirebird<Item> _dataconn;
+
+        public Item()
+        {
+            _dataconn = new DataConnFirebird<Item>();
+        }
+
         public bool Salvar(Item data)
         {
             try
@@ -98,16 +104,14 @@ namespace Emiplus.Model
                 if (data.Id == 0)
                 {
                     data.DataInserido = DateTime.Now;
-                    contexto.Itens.Add(data);
+                    _dataconn.Add(data);
                 }
                 else
                 {
                     data.DataAtualizado = DateTime.Now;
-                    contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
-
-                if (contexto.SaveChanges() == 1)
-                    return true;
+                    _dataconn.Edit(data);
+                }                
+                return true;
             }
             catch (Exception ex)
             {
@@ -123,11 +127,8 @@ namespace Emiplus.Model
             {
                 data.Excluir = 1;
                 data.DataDeletado = DateTime.Now;
-
-                contexto.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-
-                if (contexto.SaveChanges() == 1)
-                    return true;
+                _dataconn.Edit(data);
+                return true;
             }
             catch (Exception ex)
             {
@@ -153,11 +154,13 @@ namespace Emiplus.Model
 
             try
             {
-                var q = contexto.Itens.Where(expressao);
+                var q = _dataconn.List();
                 returnValue = new List<Item>();
 
                 if (q.Count() > 0)
+                {
                     returnValue.AddRange(q);
+                }                    
             }
             catch (Exception ex)
             {
@@ -186,7 +189,7 @@ namespace Emiplus.Model
                 .Ensure(m => m.Nome, _ => _
                     .Required()
                         .WithMessage("Nome é obrigatorio.")
-                    .MinLength(50)
+                    .MinLength(2)
                         .WithMessage(""))
                 .For(data)
                 .Validate();

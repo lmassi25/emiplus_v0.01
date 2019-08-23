@@ -158,7 +158,12 @@
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Core\Model.cs" />
-    <Compile Include="Data\Database\ContextoData.cs" />
+    <Compile Include="Data\Database\DataFirebird.cs" />
+    <Compile Include="Data\Database\GenericRepository\BaseRepositoryFirebird.cs" />
+    <Compile Include="Data\Database\DataConnFirebird.cs" />
+    <Compile Include="Data\Database\GenericRepository\IBaseRepository.cs" />
+    <Compile Include="Data\Database\GenericRepository\IBaseService.cs" />
+    <Compile Include="Data\Database\GenericRepository\IUnitOfWork.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +171,8 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Helpers\Log.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Pessoa.cs" />
