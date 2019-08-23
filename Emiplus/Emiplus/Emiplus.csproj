@@ -159,12 +159,11 @@
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Core\Model.cs" />
     <Compile Include="Data\Database\ContextoData.cs" />
-    <Compile Include="Data\Core\ModelEntityWithID.cs" />
-    <Compile Include="Data\GenericRepository\BaseRepository.cs" />
-    <Compile Include="Data\GenericRepository\BaseService.cs" />
-    <Compile Include="Data\GenericRepository\IBaseRepository.cs" />
-    <Compile Include="Data\GenericRepository\IBaseService.cs" />
-    <Compile Include="Data\GenericRepository\IUnitOfWork.cs" />
+    <Compile Include="Data\Database\GenericRepository\BaseRepository.cs" />
+    <Compile Include="Data\Database\GenericRepository\BaseService.cs" />
+    <Compile Include="Data\Database\GenericRepository\IBaseRepository.cs" />
+    <Compile Include="Data\Database\GenericRepository\IBaseService.cs" />
+    <Compile Include="Data\Database\GenericRepository\IUnitOfWork.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
     </Compile>

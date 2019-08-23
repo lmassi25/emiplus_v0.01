@@ -16,8 +16,7 @@ namespace Emiplus.View.Item
         private Model.Item _item;
         private Controller.Item _controller;
         private BaseService<Model.Item> _camadaservico;
-
-
+        
         public Item(int id = 0)
         {
             InitializeComponent();
