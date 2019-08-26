@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using Emiplus.View.Produtos;
 
 namespace Emiplus
 {
-    using Emiplus.View.Item;
+    using View.Common;
     
     static class Program
     {
@@ -15,7 +16,7 @@ namespace Emiplus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Item());
+            Application.Run(new Home());
         }
     }
 }

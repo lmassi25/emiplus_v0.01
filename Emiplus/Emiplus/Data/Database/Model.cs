@@ -1,0 +1,135 @@
+﻿using System;
+using SqlKata.Execution;
+using System.Collections.Generic;
+using Valit;
+
+namespace Emiplus.Data.Database
+{
+    using Helpers;
+
+    internal abstract class Model
+    {
+        protected Log Log;
+        protected Alert Alert;
+
+        protected QueryFactory db = new Connect().Open();
+        protected static string Entity { get; set; }
+        protected object Objetos;
+
+        protected Model(string entity)
+        {
+            Entity = entity;
+
+            Log = new Log();
+            Alert = new Alert();
+        }
+
+        /// <summary>
+        /// Alimenta a query Create e Update com os objetos
+        /// </summary>
+        /// <param name="obj">Objeto com os dados(data)</param>
+        /// <returns></returns>
+        public Model Data(object obj)
+        {
+            this.Objetos = obj;
+            return this;
+        }
+
+        /// <summary>
+        /// Busca todos os registros
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<dynamic> FindAll()
+        {
+            var data = db.Query(Entity).Get();
+            return data;
+        }
+
+        /// <summary>
+        /// Monte sua query com esse método
+        /// </summary>
+        /// <returns></returns>
+        /// <example>
+        /// <code>
+        /// Query().Select().Where().OrderBy() etc...
+        /// Exemplos:
+        /// Query().Get() - retorna todos registros
+        /// Query().OrderBy().Get() - ordena os registros
+        /// Query().WhereNull("ColunaNull").AsUpdate(Object) - Update
+        /// Documentação https://sqlkata.com/docs/
+        /// </code>
+        /// </example>
+        public SqlKata.Query Query()
+        {
+            var data = db.Query(Entity);
+            return data;
+        }
+
+        /// <summary>
+        /// Buscar registro por ID
+        /// </summary>
+        /// <param name="id">ID do registro</param>
+        /// <returns>Retorna objeto</returns>
+        public dynamic FindById(int id)
+        {
+            var data = db.Query(Entity).Where("ID", id).First();
+            return data;
+        }
+
+        /// <summary>
+        /// Executa o Insert();
+        /// </summary>
+        /// <returns>Retorna 1 para criado e 0 para não criado.</returns>
+        public int Create()
+        {
+            try
+            {
+                var data = db.Query(Entity).Insert(Objetos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Executa o Update();
+        /// </summary>
+        /// <param name="id">Passar ID (Key)</param>
+        /// <returns>Retorna int 1 para atualizado e 0 para não atualizado.</returns>
+        public int Update(string key, int value)
+        {
+            try
+            {
+                var data = db.Query(Entity).Where(key, value).Update(Objetos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Executa o Delete();
+        /// </summary>
+        /// <param name="id">Passar ID (key) para deletar o registro</param>
+        /// <returns>Retorna int 1 para deletado e 0 para não deletado.</returns>
+        public int Delete(string key, int value)
+        {
+            try
+            {
+                int data = db.Query(Entity).Where(key, value).Delete();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                return 0;
+            }
+        }
+    }
+}
