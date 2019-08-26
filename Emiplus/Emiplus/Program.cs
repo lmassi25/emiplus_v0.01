@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Drawing.Text;
+using System.IO;
 using System.Windows.Forms;
+using Emiplus.View.Produtos;
 
 namespace Emiplus
 {
-    using Emiplus.View.Item;
+    using View.Common;
+    using Data.Helpers;
     
     static class Program
     {
@@ -13,9 +17,11 @@ namespace Emiplus
         [STAThread]
         static void Main()
         {
+            new Support().AddFont();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Item());
+            Application.Run(new Home());
         }
     }
 }
