@@ -202,6 +202,7 @@
     </Compile>
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
+    <Compile Include="Data\Helpers\Support.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Item.cs" />

@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Common
 {
-    using Financeiro;
     public partial class Home : Form
     {
         #region Shadow box
@@ -118,107 +116,76 @@ namespace Emiplus.View.Common
             InitializeComponent();
         }
 
-        #region Barra de tarefa
-        private void BtnFechar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnMinimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        int lx, ly;
-        int sw, sh;
-
-        private void BtnMaximizar_Click(object sender, EventArgs e)
-        {
-            lx = this.Location.X;
-            ly = this.Location.Y;
-            sw = this.Size.Width;
-            sh = this.Size.Height;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            btnMaximizar.Visible = false;
-            btnRestaurar.Visible = true;
-        }
-
-        private void BtnRestaurar_Click(object sender, EventArgs e)
-        {
-            this.Size = new Size(sw, sh);
-            this.Location = new Point(lx, ly);
-            btnRestaurar.Visible = false;
-            btnMaximizar.Visible = true;
-        }
-
-        // *BarraTitulo_MouseDown - DLL que possibilita mover a janela pela barra de título: BarraTitulo_MouseDown
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-        private void BarraTituloHome_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-        #endregion
-
         private void homeMenuProducts_Click(object sender, EventArgs e)
         {
             homeMenuProducts.BackColor = Color.WhiteSmoke;
-            OpenForm.Show<TelaProdutosInicial>(this);
+            OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
 
-            homeMenuComercial.BackColor = Color.White;
-            homeMenuFinanceiro.BackColor = Color.White;
-            homeMenuFiscal.BackColor = Color.White;
-            homeMenuSettings.BackColor = Color.White;
+            homeMenuInicio.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
 
         private void homeMenuComercial_Click(object sender, EventArgs e)
         {
             homeMenuComercial.BackColor = Color.WhiteSmoke;
-            OpenForm.Show<TelaComercialInicial>(this);
+            OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
 
-            homeMenuProducts.BackColor = Color.White;
-            homeMenuFinanceiro.BackColor = Color.White;
-            homeMenuFiscal.BackColor = Color.White;
-            homeMenuSettings.BackColor = Color.White;
+            homeMenuInicio.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
 
         private void homeMenuFinanceiro_Click(object sender, EventArgs e)
         {
             homeMenuFinanceiro.BackColor = Color.WhiteSmoke;
-            OpenForm.Show<TelaFinanceiroInicial>(this);
+            OpenForm.ShowInPanel<TelaFinanceiroInicial>(panelFormularios);
 
-            homeMenuProducts.BackColor = Color.White;
-            homeMenuComercial.BackColor = Color.White;
-            homeMenuFiscal.BackColor = Color.White;
-            homeMenuSettings.BackColor = Color.White;
+            homeMenuInicio.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
 
         private void homeMenuFiscal_Click(object sender, EventArgs e)
         {
             homeMenuFiscal.BackColor = Color.WhiteSmoke;
-            OpenForm.Show<TelaFiscalInicial>(this);
+            OpenForm.ShowInPanel<TelaFiscalInicial>(panelFormularios);
 
-            homeMenuProducts.BackColor = Color.White;
-            homeMenuComercial.BackColor = Color.White;
-            homeMenuFinanceiro.BackColor = Color.White;
-            homeMenuSettings.BackColor = Color.White;
+            homeMenuInicio.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
 
         private void HomeMenuSettings_Click(object sender, EventArgs e)
         {
+            OpenForm.ShowInPanel<TelaConfigInicial>(panelFormularios);
             homeMenuSettings.BackColor = Color.WhiteSmoke;
-            OpenForm.Show<TelaConfigInicial>(this);
 
-            homeMenuFiscal.BackColor = Color.White;
-            homeMenuProducts.BackColor = Color.White;
-            homeMenuComercial.BackColor = Color.White;
-            homeMenuFinanceiro.BackColor = Color.White;
+            homeMenuInicio.BackColor = Color.Transparent;
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+        }
+
+        private void HomeMenuInicio_Click(object sender, EventArgs e)
+        {
+            OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
+            homeMenuInicio.BackColor = Color.WhiteSmoke;
+
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
     }
 }
