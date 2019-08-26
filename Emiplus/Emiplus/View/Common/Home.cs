@@ -166,30 +166,6 @@ namespace Emiplus.View.Common
         }
         #endregion
 
-        public void AbrirForm<MeuForm>() where MeuForm : Form, new()
-        {
-            Form formulario;
-            formulario = Controls.OfType<MeuForm>().FirstOrDefault();
-
-            if (formulario == null)
-            {
-                formulario = new MeuForm();
-                formulario.TopLevel = false;
-                formulario.FormBorderStyle = FormBorderStyle.None;
-                formulario.Dock = DockStyle.Fill;
-                formulario.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
-                formulario.Size = new Size(Width, Height);
-                Controls.Add(formulario);
-                Tag = formulario;
-                formulario.Show();
-                formulario.BringToFront();
-            }
-            else
-            {
-                formulario.BringToFront();
-            }
-        }
-
         private void homeMenuProducts_Click(object sender, EventArgs e)
         {
             homeMenuProducts.BackColor = Color.WhiteSmoke;
@@ -215,7 +191,7 @@ namespace Emiplus.View.Common
         private void homeMenuFinanceiro_Click(object sender, EventArgs e)
         {
             homeMenuFinanceiro.BackColor = Color.WhiteSmoke;
-            //new OpenForm().Show<TelaFinanceiroInicial>();
+            OpenForm.Show<TelaFinanceiroInicial>(this);
 
             homeMenuProducts.BackColor = Color.White;
             homeMenuComercial.BackColor = Color.White;
@@ -223,17 +199,10 @@ namespace Emiplus.View.Common
             homeMenuSettings.BackColor = Color.White;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            Produtos.Produtos p = new Produtos.Produtos();
-            p.MdiParent = this;
-            p.Show();
-        }
-
         private void homeMenuFiscal_Click(object sender, EventArgs e)
         {
             homeMenuFiscal.BackColor = Color.WhiteSmoke;
-            //new OpenForm().Show<TelaFiscalInicial>();
+            OpenForm.Show<TelaFiscalInicial>(this);
 
             homeMenuProducts.BackColor = Color.White;
             homeMenuComercial.BackColor = Color.White;
@@ -244,7 +213,7 @@ namespace Emiplus.View.Common
         private void HomeMenuSettings_Click(object sender, EventArgs e)
         {
             homeMenuSettings.BackColor = Color.WhiteSmoke;
-            //new OpenForm().Show<TelaConfigInicial>();
+            OpenForm.Show<TelaConfigInicial>(this);
 
             homeMenuFiscal.BackColor = Color.White;
             homeMenuProducts.BackColor = Color.White;

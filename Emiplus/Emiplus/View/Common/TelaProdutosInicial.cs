@@ -53,7 +53,8 @@ namespace Emiplus.View.Common
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            OpenForm.Show<Produtos.Produtos>(this);
+            AbrirForm<Produtos.Produtos>();
+            //OpenForm.Show<Produtos.Produtos>(this);
         }
     }
 }

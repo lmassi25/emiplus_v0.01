@@ -12,10 +12,10 @@ namespace Emiplus.Data.Helpers
     public static class OpenForm
     {
         /// <summary>
-        /// Chama o form
+        /// Adiciona um Form dentro de outro Form
         /// </summary>
-        /// <typeparam name="MeuForm"></typeparam>
-        /// <param name="Principal"></param>
+        /// <typeparam name="MeuForm">Form externo</typeparam>
+        /// <param name="Principal">Form atual</param>
         public static void Show<MeuForm>(Form Principal) where MeuForm : Form, new()
         {
             Form formulario;

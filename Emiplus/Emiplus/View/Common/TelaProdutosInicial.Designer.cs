@@ -38,14 +38,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelProdutos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelProdutos
             // 
-            this.panelProdutos.Controls.Add(this.label1);
             this.panelProdutos.Controls.Add(this.pictureBox1);
             this.panelProdutos.Controls.Add(this.button1);
             this.panelProdutos.Controls.Add(this.label2);
@@ -216,16 +214,6 @@
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(940, 597);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 14);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "label1";
-            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -254,6 +242,5 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label1;
     }
 }
