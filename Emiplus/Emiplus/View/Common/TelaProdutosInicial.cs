@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Common
 {
@@ -18,9 +11,14 @@ namespace Emiplus.View.Common
             InitializeComponent();
         }
 
-        private void Button3_Click_1(object sender, EventArgs e)
+        private void Produtos_Click(object sender, EventArgs e)
         {
             OpenForm.Show<Produtos.Produtos>(this);
+        }
+
+        private void Categorias_Click(object sender, EventArgs e)
+        {
+            OpenForm.Show<Produtos.Categorias>(this);
         }
     }
 }

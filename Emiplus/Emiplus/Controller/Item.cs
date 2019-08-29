@@ -1,44 +1,56 @@
-﻿namespace Emiplus.Controller
-{
-    using Emiplus.Data.Helpers;
+﻿using SqlKata.Execution;
+using System.Windows.Forms;
 
+namespace Emiplus.Controller
+{
     public class Item : Data.Core.Controller
     {
-        private Model.Item _model;
-
-        public Item()
+        public void GetDataTable(DataGridView Table, string SearchText)
         {
-            _model = new Model.Item();
-        }
+            Table.ColumnCount = 6;
 
-        public Model.Item GetItem(int Id)
-        {
-            return _model.GetItem(Id);
-        }
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
 
-        public bool Salvar(Model.Item data)
-        {
-            if (_model.ValidarDados(data)) return false;
-                
-            if (_model.Salvar(data) == true)
+            Table.Columns[1].Name = "Código";
+            Table.Columns[1].Width = 100;
+
+            Table.Columns[2].Name = "Categoria";
+            Table.Columns[2].Width = 150;
+
+            Table.Columns[3].Name = "Descrição";
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            Table.Columns[4].Name = "Custo";
+            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "Venda";
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[5].Width = 100;
+
+            Table.Rows.Clear();
+
+            var produtos = new Model.Item();
+
+            var search = "%" + SearchText + "%";
+            var lista2 = produtos.Query()
+                .Where("EXCLUIR", 0)
+                .Where(q => q.Where("nome", "like", search).OrWhere("referencia", "like", search))
+                .OrderByDesc("datainserido")
+                .Get();
+
+            foreach (var item in lista2)
             {
-                alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
-                return true;
+                Table.Rows.Add(
+                    item.ID,
+                    item.referencia,
+                    "CATEGORIA",
+                    item.NOME,
+                    "0,00",
+                    "0,00"
+                );
             }
-            else
-            {
-                alert.Message("Opss", "Algo deu errado na hora de salvar o produto.", Alert.AlertType.error);
-                return false;
-            }
-        }
-
-        public string Deletar(Model.Item data)
-        {
-            string _msg = "";
-
-            _model.Deletar(data);
-
-            return _msg;
         }
     }
 }

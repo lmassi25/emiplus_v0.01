@@ -84,7 +84,7 @@ namespace Emiplus.View.Common
                     if (m_aeroEnabled)
                     {
                         var v = 2;
-                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
+                        DwmSetWindowAttribute(Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
                             bottomHeight = 1,
@@ -92,7 +92,7 @@ namespace Emiplus.View.Common
                             rightWidth = 1,
                             topHeight = 1
                         };
-                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+                        DwmExtendFrameIntoClientArea(Handle, ref margins);
                     }
                     break;
 
@@ -186,6 +186,11 @@ namespace Emiplus.View.Common
             homeMenuComercial.BackColor = Color.Transparent;
             homeMenuFinanceiro.BackColor = Color.Transparent;
             homeMenuSettings.BackColor = Color.Transparent;
+        }
+
+        private void LinkSuporteWeb_Click(object sender, EventArgs e)
+        {
+            Support.OpenLinkBrowser("https://www.google.com");
         }
     }
 }

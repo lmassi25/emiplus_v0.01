@@ -50,11 +50,13 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.linkSuporteWeb = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.linkMinhaContaWeb = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -66,9 +68,10 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.barraTituloHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -340,13 +343,66 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.White;
+            this.barraTituloHome.Controls.Add(this.pictureBox10);
+            this.barraTituloHome.Controls.Add(this.linkSuporteWeb);
             this.barraTituloHome.Controls.Add(this.pictureBox9);
-            this.barraTituloHome.Controls.Add(this.label2);
+            this.barraTituloHome.Controls.Add(this.linkMinhaContaWeb);
             this.barraTituloHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.barraTituloHome.Location = new System.Drawing.Point(275, 0);
             this.barraTituloHome.Name = "barraTituloHome";
             this.barraTituloHome.Size = new System.Drawing.Size(990, 35);
             this.barraTituloHome.TabIndex = 2;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(717, 9);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 3;
+            this.pictureBox10.TabStop = false;
+            // 
+            // linkSuporteWeb
+            // 
+            this.linkSuporteWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkSuporteWeb.AutoSize = true;
+            this.linkSuporteWeb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkSuporteWeb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.linkSuporteWeb.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkSuporteWeb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkSuporteWeb.Location = new System.Drawing.Point(744, 9);
+            this.linkSuporteWeb.Name = "linkSuporteWeb";
+            this.linkSuporteWeb.Size = new System.Drawing.Size(110, 18);
+            this.linkSuporteWeb.TabIndex = 2;
+            this.linkSuporteWeb.Text = "Precisa de ajuda?";
+            this.linkSuporteWeb.Click += new System.EventHandler(this.LinkSuporteWeb_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(863, 9);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 1;
+            this.pictureBox9.TabStop = false;
+            // 
+            // linkMinhaContaWeb
+            // 
+            this.linkMinhaContaWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkMinhaContaWeb.AutoSize = true;
+            this.linkMinhaContaWeb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkMinhaContaWeb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.linkMinhaContaWeb.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkMinhaContaWeb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkMinhaContaWeb.Location = new System.Drawing.Point(889, 9);
+            this.linkMinhaContaWeb.Name = "linkMinhaContaWeb";
+            this.linkMinhaContaWeb.Size = new System.Drawing.Size(85, 18);
+            this.linkMinhaContaWeb.TabIndex = 0;
+            this.linkMinhaContaWeb.Text = "Minha Conta";
             // 
             // panel2
             // 
@@ -369,6 +425,9 @@ namespace Emiplus.View.Common
             // 
             // pictureBox8
             // 
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(194, 159);
             this.pictureBox8.Name = "pictureBox8";
@@ -376,31 +435,6 @@ namespace Emiplus.View.Common
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(889, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Minha Conta";
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(863, 9);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(24, 20);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 1;
-            this.pictureBox9.TabStop = false;
             // 
             // Home
             // 
@@ -417,6 +451,7 @@ namespace Emiplus.View.Common
             this.Name = "Home";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -431,9 +466,10 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.barraTituloHome.ResumeLayout(false);
             this.barraTituloHome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,10 +494,12 @@ namespace Emiplus.View.Common
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button homeMenuInicio;
         private Panel panelFormularios;
         private PictureBox pictureBox8;
         private PictureBox pictureBox9;
-        private Label label2;
+        private Label linkMinhaContaWeb;
+        private Label linkSuporteWeb;
+        private PictureBox pictureBox10;
+        public Button homeMenuInicio;
     }
 }
