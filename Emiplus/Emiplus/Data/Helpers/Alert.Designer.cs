@@ -92,7 +92,7 @@
             // timeout
             // 
             this.timeout.Enabled = true;
-            this.timeout.Interval = 15000;
+            this.timeout.Interval = 10000;
             this.timeout.Tick += new System.EventHandler(this.timeout_Tick);
             // 
             // Show
