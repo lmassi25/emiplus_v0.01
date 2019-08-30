@@ -31,7 +31,6 @@ namespace Emiplus.Model
         public double ValorVenda { get; set; }
         public double EstoqueAtual { get; private set; }
         public int Categoriaid { get; set; }
-        
 
         #region SQL CREATE
 

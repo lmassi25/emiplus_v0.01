@@ -58,6 +58,7 @@ namespace Emiplus.View.Produtos
             _modelItem.Id = idPdtSelecionado;
             _modelItem.Nome = nome.Text;
             _modelItem.Referencia = referencia.Text;
+            //_modelItem.Categoriaid = (int)Categorias.SelectedValue;
 
             _modelItem.Save(_modelItem);
         }
@@ -67,6 +68,14 @@ namespace Emiplus.View.Produtos
             var data = _modelItem.Remove(idPdtSelecionado);
             if (data)
                 Close();
+        }
+
+        private void AddProduct_Load(object sender, EventArgs e)
+        {
+            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            //Categorias.DataSource = cat;
+            //Categorias.DisplayMember = "NOME";
+            //Categorias.ValueMember = "ID";
         }
     }
 }

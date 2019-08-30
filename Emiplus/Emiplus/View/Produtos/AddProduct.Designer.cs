@@ -58,7 +58,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Categorias = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -333,7 +333,7 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.Categorias);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.nome);
             this.groupBox1.Controls.Add(this.label2);
@@ -467,13 +467,14 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Medida";
             // 
-            // comboBox1
+            // Categorias
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(24, 106);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(426, 25);
-            this.comboBox1.TabIndex = 4;
+            this.Categorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Categorias.FormattingEnabled = true;
+            this.Categorias.Location = new System.Drawing.Point(24, 106);
+            this.Categorias.Name = "Categorias";
+            this.Categorias.Size = new System.Drawing.Size(426, 25);
+            this.Categorias.TabIndex = 4;
             // 
             // label8
             // 
@@ -661,6 +662,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddProduct";
             this.Text = "AddProduct";
+            this.Load += new System.EventHandler(this.AddProduct_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -709,7 +711,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Categorias;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

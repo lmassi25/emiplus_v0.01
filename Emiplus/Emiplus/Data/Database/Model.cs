@@ -12,7 +12,7 @@ namespace Emiplus.Data.Database
         protected Alert Alert;
 
         protected QueryFactory db = new Connect().Open();
-        protected static string Entity { get; set; }
+        protected string Entity;
         protected object Objetos;
 
         protected Model(string entity)
