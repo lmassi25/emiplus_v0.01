@@ -1,54 +1,50 @@
 ﻿namespace Emiplus.Model
 {
-    using Data.Helpers;
+    using Emiplus.Data.Helpers;
     using SqlKata;
     using SqlKata.Execution;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Data.Database;
     using Valit;
 
-    class Pessoa : Model
+    class PessoaContato : Model
     {
-        public Pessoa()  : base("PESSOA"){}
+        public PessoaContato() : base("PESSOA_CONTATO") {}
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-        public int Tipo { get; set; }
+        public int Id_pessoa { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public int EmpresaId { get; private set; }
-        public string Pessoasinc { get; set; }
-        public int Padrao { get; set; }
-        public string Nome { get; set; }
-        public string Fantasia { get; set; }
-        public string RG { get; set; }
-        public string CPF  { get; set; }
-        public DateTime Aniversario { get; set; }
+        public string EmpresaId { get; private set; }
+        public string Contato { get; set; }
+        public string Telefone { get; set; }
+        public string Celular { get; set; }
+        public string Email { get; set; }
 
         #region SQL Create
-        //CREATE TABLE PESSOA
+        //CREATE TABLE PESSOA_CONTATO
         //(
         //id integer not null primary key,
-        //tipo integer not null,
+        //id_pessoa integer not null,
         //excluir integer,
         //criado timestamp,
         //atualizado timestamp,
         //deletado timestamp,
         //empresaid varchar(255),
-        //pessoasinc varchar(50),
-        //padrao integer,
-        //nome varchar(255),
-        //fantasia varchar(255),
-        //rg varchar(50),
-        //cpf varchar(50),
-        //aniversario date
+        //contato varchar(255),
+        //telefone varchar(255),
+        //celular varchar(255),
+        //email varchar(255),
         //);
         #endregion
 
-        public bool Save(Pessoa data)
+        public bool Save(PessoaContato data)
         {
             if (ValidarDados(data))
                 return false;
@@ -58,7 +54,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Contato salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -71,7 +67,7 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Contato atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -88,11 +84,11 @@
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                Alert.Message("Pronto!", "Contato removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o contato.", Alert.AlertType.error);
             return false;
         }
 
@@ -102,15 +98,15 @@
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
-        public bool ValidarDados(Pessoa data)
+        public bool ValidarDados(PessoaContato data)
         {
-            var result = ValitRules<Pessoa>
+            var result = ValitRules<PessoaContato>
                 .Create()
-                .Ensure(m => m.Nome, _ => _
+                .Ensure(m => m.Contato, _ => _
                     .Required()
-                    .WithMessage("Nome é obrigatorio.")
+                    .WithMessage("Título do contato é obrigatorio.")
                     .MinLength(2)
-                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
+                    .WithMessage("O Título do contato é muito pequeno."))
                 .For(data)
                 .Validate();
 

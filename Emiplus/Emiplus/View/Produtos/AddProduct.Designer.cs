@@ -193,9 +193,9 @@
             this.barraTitulo.Controls.Add(this.btnEtiqueta);
             this.barraTitulo.Controls.Add(this.btnDuplicar);
             this.barraTitulo.Controls.Add(this.btnRemover);
-            this.barraTitulo.Location = new System.Drawing.Point(0, 527);
+            this.barraTitulo.Location = new System.Drawing.Point(0, 552);
             this.barraTitulo.Name = "barraTitulo";
-            this.barraTitulo.Size = new System.Drawing.Size(980, 97);
+            this.barraTitulo.Size = new System.Drawing.Size(731, 97);
             this.barraTitulo.TabIndex = 9;
             // 
             // panel2
@@ -220,7 +220,7 @@
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalvar.Location = new System.Drawing.Point(864, 4);
+            this.btnSalvar.Location = new System.Drawing.Point(615, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(85, 90);
             this.btnSalvar.TabIndex = 4;
@@ -307,7 +307,7 @@
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(864, 3);
+            this.btnHelp.Location = new System.Drawing.Point(615, 3);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 13;
@@ -339,7 +339,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(28, 154);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(927, 150);
+            this.groupBox1.Size = new System.Drawing.Size(678, 150);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
@@ -347,7 +347,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(796, 86);
+            this.pictureBox10.Location = new System.Drawing.Point(575, 86);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -357,7 +357,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(641, 31);
+            this.pictureBox9.Location = new System.Drawing.Point(461, 31);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -367,7 +367,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(560, 87);
+            this.pictureBox8.Location = new System.Drawing.Point(380, 87);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -377,7 +377,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(513, 32);
+            this.pictureBox7.Location = new System.Drawing.Point(333, 32);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(15, 15);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -396,9 +396,9 @@
             // 
             // valorvenda
             // 
-            this.valorvenda.Location = new System.Drawing.Point(468, 106);
+            this.valorvenda.Location = new System.Drawing.Point(288, 106);
             this.valorvenda.Name = "valorvenda";
-            this.valorvenda.Size = new System.Drawing.Size(218, 24);
+            this.valorvenda.Size = new System.Drawing.Size(174, 24);
             this.valorvenda.TabIndex = 12;
             // 
             // label7
@@ -406,7 +406,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(465, 86);
+            this.label7.Location = new System.Drawing.Point(285, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 17);
             this.label7.TabIndex = 11;
@@ -414,9 +414,9 @@
             // 
             // valorcompra
             // 
-            this.valorcompra.Location = new System.Drawing.Point(692, 106);
+            this.valorcompra.Location = new System.Drawing.Point(468, 106);
             this.valorcompra.Name = "valorcompra";
-            this.valorcompra.Size = new System.Drawing.Size(210, 24);
+            this.valorcompra.Size = new System.Drawing.Size(186, 24);
             this.valorcompra.TabIndex = 10;
             // 
             // label3
@@ -424,7 +424,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(689, 86);
+            this.label3.Location = new System.Drawing.Point(468, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 17);
             this.label3.TabIndex = 9;
@@ -432,7 +432,7 @@
             // 
             // referencia
             // 
-            this.referencia.Location = new System.Drawing.Point(468, 51);
+            this.referencia.Location = new System.Drawing.Point(288, 51);
             this.referencia.Name = "referencia";
             this.referencia.Size = new System.Drawing.Size(121, 24);
             this.referencia.TabIndex = 8;
@@ -442,7 +442,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(465, 31);
+            this.label10.Location = new System.Drawing.Point(285, 31);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 17);
             this.label10.TabIndex = 7;
@@ -451,9 +451,9 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(595, 51);
+            this.comboBox2.Location = new System.Drawing.Point(415, 51);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(305, 25);
+            this.comboBox2.Size = new System.Drawing.Size(239, 25);
             this.comboBox2.TabIndex = 6;
             // 
             // label9
@@ -461,7 +461,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(592, 31);
+            this.label9.Location = new System.Drawing.Point(412, 31);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 17);
             this.label9.TabIndex = 5;
@@ -473,7 +473,7 @@
             this.Categorias.FormattingEnabled = true;
             this.Categorias.Location = new System.Drawing.Point(24, 106);
             this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(426, 25);
+            this.Categorias.Size = new System.Drawing.Size(254, 25);
             this.Categorias.TabIndex = 4;
             // 
             // label8
@@ -491,7 +491,7 @@
             // 
             this.nome.Location = new System.Drawing.Point(24, 51);
             this.nome.Name = "nome";
-            this.nome.Size = new System.Drawing.Size(426, 24);
+            this.nome.Size = new System.Drawing.Size(254, 24);
             this.nome.TabIndex = 1;
             // 
             // label2
@@ -513,7 +513,7 @@
             this.groupBox2.Controls.Add(this.tabControl1);
             this.groupBox2.Location = new System.Drawing.Point(28, 317);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(927, 188);
+            this.groupBox2.Size = new System.Drawing.Size(678, 213);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Outros";
@@ -528,7 +528,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 23);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(915, 159);
+            this.tabControl1.Size = new System.Drawing.Size(666, 184);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -543,7 +543,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(907, 129);
+            this.tabPage1.Size = new System.Drawing.Size(658, 154);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Estoque";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -608,7 +608,7 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(907, 129);
+            this.tabPage2.Size = new System.Drawing.Size(658, 154);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impostos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -622,7 +622,7 @@
             this.panel5.Controls.Add(this.btnHelp);
             this.panel5.Location = new System.Drawing.Point(0, 42);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(980, 97);
+            this.panel5.Size = new System.Drawing.Size(731, 97);
             this.panel5.TabIndex = 12;
             // 
             // btnExit
@@ -651,7 +651,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(982, 624);
+            this.ClientSize = new System.Drawing.Size(733, 649);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

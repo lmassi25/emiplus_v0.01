@@ -106,7 +106,7 @@ namespace Emiplus.View.Common
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 700);
+            this.panel3.Size = new System.Drawing.Size(275, 729);
             this.panel3.TabIndex = 20;
             // 
             // pictureBox2
@@ -177,7 +177,7 @@ namespace Emiplus.View.Common
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 676);
+            this.label3.Location = new System.Drawing.Point(100, 705);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 23;
@@ -350,14 +350,14 @@ namespace Emiplus.View.Common
             this.barraTituloHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.barraTituloHome.Location = new System.Drawing.Point(275, 0);
             this.barraTituloHome.Name = "barraTituloHome";
-            this.barraTituloHome.Size = new System.Drawing.Size(990, 35);
+            this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
             // 
             // pictureBox10
             // 
             this.pictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(717, 9);
+            this.pictureBox10.Location = new System.Drawing.Point(460, 9);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(24, 20);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -372,7 +372,7 @@ namespace Emiplus.View.Common
             this.linkSuporteWeb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.linkSuporteWeb.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkSuporteWeb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.linkSuporteWeb.Location = new System.Drawing.Point(744, 9);
+            this.linkSuporteWeb.Location = new System.Drawing.Point(487, 9);
             this.linkSuporteWeb.Name = "linkSuporteWeb";
             this.linkSuporteWeb.Size = new System.Drawing.Size(110, 18);
             this.linkSuporteWeb.TabIndex = 2;
@@ -383,7 +383,7 @@ namespace Emiplus.View.Common
             // 
             this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(863, 9);
+            this.pictureBox9.Location = new System.Drawing.Point(606, 9);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(24, 20);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -398,7 +398,7 @@ namespace Emiplus.View.Common
             this.linkMinhaContaWeb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.linkMinhaContaWeb.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkMinhaContaWeb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.linkMinhaContaWeb.Location = new System.Drawing.Point(889, 9);
+            this.linkMinhaContaWeb.Location = new System.Drawing.Point(632, 9);
             this.linkMinhaContaWeb.Name = "linkMinhaContaWeb";
             this.linkMinhaContaWeb.Size = new System.Drawing.Size(85, 18);
             this.linkMinhaContaWeb.TabIndex = 0;
@@ -411,7 +411,7 @@ namespace Emiplus.View.Common
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(275, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(990, 45);
+            this.panel2.Size = new System.Drawing.Size(733, 45);
             this.panel2.TabIndex = 21;
             // 
             // panelFormularios
@@ -420,7 +420,7 @@ namespace Emiplus.View.Common
             this.panelFormularios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormularios.Location = new System.Drawing.Point(275, 80);
             this.panelFormularios.Name = "panelFormularios";
-            this.panelFormularios.Size = new System.Drawing.Size(990, 620);
+            this.panelFormularios.Size = new System.Drawing.Size(733, 649);
             this.panelFormularios.TabIndex = 22;
             // 
             // pictureBox8
@@ -431,7 +431,7 @@ namespace Emiplus.View.Common
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(194, 159);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(612, 255);
+            this.pictureBox8.Size = new System.Drawing.Size(355, 284);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
@@ -441,13 +441,13 @@ namespace Emiplus.View.Common
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1265, 700);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panelFormularios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.barraTituloHome);
             this.Controls.Add(this.panel3);
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MinimumSize = new System.Drawing.Size(1265, 700);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Home";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

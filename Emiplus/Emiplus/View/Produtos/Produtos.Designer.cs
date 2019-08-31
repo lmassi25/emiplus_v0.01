@@ -75,7 +75,7 @@
             this.barraTitulo.Controls.Add(this.btnEditar);
             this.barraTitulo.Location = new System.Drawing.Point(0, 41);
             this.barraTitulo.Name = "barraTitulo";
-            this.barraTitulo.Size = new System.Drawing.Size(980, 97);
+            this.barraTitulo.Size = new System.Drawing.Size(733, 97);
             this.barraTitulo.TabIndex = 2;
             // 
             // btnExit
@@ -108,14 +108,14 @@
             this.panel1.Controls.Add(this.search);
             this.panel1.Location = new System.Drawing.Point(118, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(634, 43);
+            this.panel1.Size = new System.Drawing.Size(387, 43);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(601, 9);
+            this.pictureBox2.Location = new System.Drawing.Point(354, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -131,7 +131,7 @@
             this.search.Location = new System.Drawing.Point(15, 9);
             this.search.Margin = new System.Windows.Forms.Padding(17, 16, 17, 16);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(582, 26);
+            this.search.Size = new System.Drawing.Size(335, 26);
             this.search.TabIndex = 6;
             this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
             // 
@@ -159,7 +159,7 @@
             this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(878, 3);
+            this.btnAdicionar.Location = new System.Drawing.Point(631, 3);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
             this.btnAdicionar.TabIndex = 4;
@@ -181,7 +181,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(799, 3);
+            this.btnEditar.Location = new System.Drawing.Point(552, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(59, 90);
             this.btnEditar.TabIndex = 3;
@@ -277,7 +277,7 @@
             this.GridListaProdutos.ReadOnly = true;
             this.GridListaProdutos.RowTemplate.Height = 30;
             this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaProdutos.Size = new System.Drawing.Size(906, 245);
+            this.GridListaProdutos.Size = new System.Drawing.Size(659, 280);
             this.GridListaProdutos.TabIndex = 5;
             this.GridListaProdutos.DoubleClick += new System.EventHandler(this.GridListaProdutos_DoubleClick);
             // 
@@ -290,7 +290,7 @@
             this.panel2.Controls.Add(this.GridListaProdutos);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(906, 245);
+            this.panel2.Size = new System.Drawing.Size(659, 280);
             this.panel2.TabIndex = 6;
             // 
             // panel4
@@ -368,9 +368,9 @@
             this.panel5.Controls.Add(this.panel3);
             this.panel5.Controls.Add(this.btnEstoque);
             this.panel5.Controls.Add(this.btnRelatorios);
-            this.panel5.Location = new System.Drawing.Point(0, 517);
+            this.panel5.Location = new System.Drawing.Point(0, 552);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(980, 97);
+            this.panel5.Size = new System.Drawing.Size(733, 97);
             this.panel5.TabIndex = 8;
             // 
             // btnHelp
@@ -386,7 +386,7 @@
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(878, 4);
+            this.btnHelp.Location = new System.Drawing.Point(631, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 10;
@@ -400,7 +400,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(980, 614);
+            this.ClientSize = new System.Drawing.Size(733, 649);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label2);

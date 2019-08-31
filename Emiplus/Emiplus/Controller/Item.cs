@@ -1,5 +1,5 @@
-﻿using SqlKata.Execution;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using SqlKata.Execution;
 
 namespace Emiplus.Controller
 {
@@ -37,15 +37,15 @@ namespace Emiplus.Controller
             var lista2 = produtos.Query()
                 .Where("EXCLUIR", 0)
                 .Where(q => q.Where("nome", "like", search).OrWhere("referencia", "like", search))
-                .OrderByDesc("datainserido")
+                .OrderByDesc("criado")
                 .Get();
 
             foreach (var item in lista2)
             {
                 Table.Rows.Add(
                     item.ID,
-                    item.referencia,
-                    "CATEGORIA",
+                    item.REFERENCIA,
+                    "Categoria",
                     item.NOME,
                     "0,00",
                     "0,00"

@@ -1,54 +1,60 @@
 ﻿namespace Emiplus.Model
 {
-    using Data.Helpers;
+    using Emiplus.Data.Helpers;
     using SqlKata;
     using SqlKata.Execution;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Data.Database;
     using Valit;
 
-    class Pessoa : Model
+    class PessoaEndereco : Model
     {
-        public Pessoa()  : base("PESSOA"){}
+        public PessoaEndereco() : base("PESSOA_ENDERECO") {}
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-        public int Tipo { get; set; }
+        public int Id_pessoa { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public int EmpresaId { get; private set; }
-        public string Pessoasinc { get; set; }
-        public int Padrao { get; set; }
-        public string Nome { get; set; }
-        public string Fantasia { get; set; }
-        public string RG { get; set; }
-        public string CPF  { get; set; }
-        public DateTime Aniversario { get; set; }
+        public string EmpresaId { get; private set; }
+        public string Titulo { get; set; }
+        public string Cep { get; set; }
+        public string Estado { get; set; }
+        public string Cidade { get; set; }
+        public string Rua { get; set; }
+        public string Nr { get; set; }
+        public string Bairro { get; set; }
+        public string Complemento { get; set; }
+        public string Pais { get; set; }
 
-        #region SQL Create
-        //CREATE TABLE PESSOA
+        #region SQL CREATE
+        //CREATE TABLE PESSOA_ENDERECO
         //(
         //id integer not null primary key,
-        //tipo integer not null,
+        //id_pessoa integer not null,
         //excluir integer,
         //criado timestamp,
         //atualizado timestamp,
         //deletado timestamp,
         //empresaid varchar(255),
-        //pessoasinc varchar(50),
-        //padrao integer,
-        //nome varchar(255),
-        //fantasia varchar(255),
-        //rg varchar(50),
-        //cpf varchar(50),
-        //aniversario date
+        //titulo varchar(255),
+        //cep varchar(255),
+        //estado varchar(255),
+        //cidade varchar(255),
+        //rua varchar(255),
+        //nr varchar(255),
+        //bairro varchar(255),
+        //complemento varchar(255),
+        //pais varchar(255)
         //);
         #endregion
 
-        public bool Save(Pessoa data)
+        public bool Save(PessoaEndereco data)
         {
             if (ValidarDados(data))
                 return false;
@@ -58,7 +64,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -71,7 +77,7 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -92,7 +98,7 @@
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o produto.", Alert.AlertType.error);
             return false;
         }
 
@@ -102,15 +108,13 @@
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
-        public bool ValidarDados(Pessoa data)
+        public bool ValidarDados(PessoaEndereco data)
         {
-            var result = ValitRules<Pessoa>
+            var result = ValitRules<PessoaEndereco>
                 .Create()
-                .Ensure(m => m.Nome, _ => _
+                .Ensure(m => m.Cep, _ => _
                     .Required()
-                    .WithMessage("Nome é obrigatorio.")
-                    .MinLength(2)
-                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
+                    .WithMessage("CEP é obrigatorio."))
                 .For(data)
                 .Validate();
 

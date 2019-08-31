@@ -1,6 +1,6 @@
-﻿namespace Emiplus.View.Produtos
+﻿namespace Emiplus.View.Comercial
 {
-    partial class Categorias
+    partial class Clientes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Categorias));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
             this.btnHelp = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -36,14 +36,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.GridListaCategorias = new System.Windows.Forms.DataGridView();
+            this.GridListaClientes = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Editar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.Adicionar = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.search = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaCategorias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaClientes)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -98,16 +98,16 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(266, 12);
+            this.label6.Location = new System.Drawing.Point(212, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 17);
+            this.label6.Size = new System.Drawing.Size(55, 17);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Categorias";
+            this.label6.Text = "Clientes";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(245, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(191, 11);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -121,9 +121,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(127, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 17);
+            this.label5.Size = new System.Drawing.Size(65, 17);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Produtos e Serviços";
+            this.label5.Text = "Comercial";
             this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // pictureBox1
@@ -145,28 +145,27 @@
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(980, 40);
+            this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 13;
             // 
-            // GridListaCategorias
+            // GridListaClientes
             // 
-            this.GridListaCategorias.AllowUserToAddRows = false;
-            this.GridListaCategorias.AllowUserToDeleteRows = false;
-            this.GridListaCategorias.BackgroundColor = System.Drawing.Color.White;
-            this.GridListaCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListaCategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridListaCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridListaCategorias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridListaCategorias.Location = new System.Drawing.Point(0, 0);
-            this.GridListaCategorias.MultiSelect = false;
-            this.GridListaCategorias.Name = "GridListaCategorias";
-            this.GridListaCategorias.ReadOnly = true;
-            this.GridListaCategorias.RowTemplate.Height = 30;
-            this.GridListaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaCategorias.Size = new System.Drawing.Size(659, 280);
-            this.GridListaCategorias.TabIndex = 5;
-            this.GridListaCategorias.DoubleClick += new System.EventHandler(this.GridListaCategorias_DoubleClick);
+            this.GridListaClientes.AllowUserToAddRows = false;
+            this.GridListaClientes.AllowUserToDeleteRows = false;
+            this.GridListaClientes.BackgroundColor = System.Drawing.Color.White;
+            this.GridListaClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridListaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridListaClientes.Location = new System.Drawing.Point(0, 0);
+            this.GridListaClientes.MultiSelect = false;
+            this.GridListaClientes.Name = "GridListaClientes";
+            this.GridListaClientes.ReadOnly = true;
+            this.GridListaClientes.RowTemplate.Height = 30;
+            this.GridListaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridListaClientes.Size = new System.Drawing.Size(659, 280);
+            this.GridListaClientes.TabIndex = 5;
             // 
             // panel5
             // 
@@ -186,9 +185,10 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(38, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(338, 17);
+            this.label2.Size = new System.Drawing.Size(454, 17);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Se organize melhor criando categorias para seus produtos.";
+            this.label2.Text = "Gerencie os clientes da sua empresa aqui! Adicione, edite ou delete um clientes.\r" +
+    "\n";
             // 
             // label1
             // 
@@ -197,31 +197,31 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(30, 157);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 39);
+            this.label1.Size = new System.Drawing.Size(131, 39);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Categorias";
+            this.label1.Text = "Clientes:";
             // 
-            // Editar
+            // btnEditar
             // 
-            this.Editar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Editar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Editar.FlatAppearance.BorderSize = 0;
-            this.Editar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Editar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
-            this.Editar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Editar.Location = new System.Drawing.Point(552, 3);
-            this.Editar.Name = "Editar";
-            this.Editar.Size = new System.Drawing.Size(59, 90);
-            this.Editar.TabIndex = 3;
-            this.Editar.Text = "Editar";
-            this.Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Editar.UseVisualStyleBackColor = true;
-            this.Editar.Click += new System.EventHandler(this.Editar_Click);
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditar.Location = new System.Drawing.Point(552, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(59, 90);
+            this.btnEditar.TabIndex = 3;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // panel2
             // 
@@ -229,7 +229,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.GridListaCategorias);
+            this.panel2.Controls.Add(this.GridListaClientes);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(659, 280);
@@ -242,31 +242,31 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(118, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(168, 18);
+            this.label3.Size = new System.Drawing.Size(63, 18);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Busque por uma categoria:";
+            this.label3.Text = "Procurar:";
             // 
-            // Adicionar
+            // btnAdicionar
             // 
-            this.Adicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Adicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Adicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Adicionar.FlatAppearance.BorderSize = 0;
-            this.Adicionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Adicionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.Adicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Adicionar.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Adicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Adicionar.Image = ((System.Drawing.Image)(resources.GetObject("Adicionar.Image")));
-            this.Adicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Adicionar.Location = new System.Drawing.Point(631, 3);
-            this.Adicionar.Name = "Adicionar";
-            this.Adicionar.Size = new System.Drawing.Size(85, 90);
-            this.Adicionar.TabIndex = 4;
-            this.Adicionar.Text = "Adicionar";
-            this.Adicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Adicionar.UseVisualStyleBackColor = true;
-            this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
+            this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionar.FlatAppearance.BorderSize = 0;
+            this.btnAdicionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
+            this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdicionar.Location = new System.Drawing.Point(631, 3);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
+            this.btnAdicionar.TabIndex = 4;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
             // 
             // pictureBox2
             // 
@@ -290,7 +290,6 @@
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(335, 26);
             this.search.TabIndex = 6;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
             // 
             // btnExit
             // 
@@ -333,14 +332,14 @@
             this.barraTitulo.Controls.Add(this.btnExit);
             this.barraTitulo.Controls.Add(this.panel1);
             this.barraTitulo.Controls.Add(this.label3);
-            this.barraTitulo.Controls.Add(this.Adicionar);
-            this.barraTitulo.Controls.Add(this.Editar);
+            this.barraTitulo.Controls.Add(this.btnAdicionar);
+            this.barraTitulo.Controls.Add(this.btnEditar);
             this.barraTitulo.Location = new System.Drawing.Point(0, 41);
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(733, 97);
             this.barraTitulo.TabIndex = 9;
             // 
-            // Categorias
+            // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -355,15 +354,13 @@
             this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Categorias";
-            this.Text = "Categorias";
-            this.Activated += new System.EventHandler(this.Categorias_Activated);
-            this.Load += new System.EventHandler(this.Categorias_Load);
+            this.Name = "Clientes";
+            this.Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaCategorias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaClientes)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -385,14 +382,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DataGridView GridListaCategorias;
+        private System.Windows.Forms.DataGridView GridListaClientes;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Editar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Adicionar;
+        private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Button btnExit;

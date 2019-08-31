@@ -12,46 +12,23 @@ namespace Emiplus.Model
 
     internal class Item : Model
     {
-        public Item() : base("ITEM")
-        {
-        }
+        public Item() : base("ITEM") {}
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
         public int Tipo { get; set; }
         public int Excluir { get; set; }
-        public DateTime DataInserido { get; private set; }
-        public DateTime DataAtualizado { get; private set; }
-        public DateTime DataDeletado { get; private set; }
-        public int EmpresaId { get; private set; }
+        public DateTime Criado { get; private set; }
+        public DateTime Atualizado { get; private set; }
+        public DateTime Deletado { get; private set; }
+        public string EmpresaId { get; private set; }
         public string Nome { get; set; }
         public string Referencia { get; set; }
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
         public double EstoqueAtual { get; private set; }
         public int Categoriaid { get; set; }
-
-        #region SQL CREATE
-
-        //CREATE TABLE categoria
-        //(
-        //id integer not null primary key,
-        //tipo integer not null,
-        //excluir integer not null,
-        //datainserido date,
-        //dataatualizado date,
-        //datadeletado date,
-        //empresaid integer,
-        //nome varchar(200)
-        //);
-
-        #endregion SQL CREATE
-
-        public IEnumerable<dynamic> findByEmail(string email)
-        {
-            return Query().Where("EMAIL", email).First();
-        }
 
         public bool Save(Item data)
         {
@@ -60,7 +37,7 @@ namespace Emiplus.Model
 
             if (data.Id == 0)
             {
-                data.DataInserido = DateTime.Now;
+                data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
                     Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
@@ -73,7 +50,7 @@ namespace Emiplus.Model
             }
             else
             {
-                data.DataAtualizado = DateTime.Now;
+                data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
                     Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
@@ -90,7 +67,7 @@ namespace Emiplus.Model
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, DataDeletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);

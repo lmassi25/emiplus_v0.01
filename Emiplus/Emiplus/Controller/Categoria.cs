@@ -23,7 +23,7 @@ namespace Emiplus.Controller
             var lista2 = categorias.Query()
                 .Where("EXCLUIR", 0)
                 .Where(q => q.Where("nome", "like", search))
-                .OrderByDesc("datainserido")
+                .OrderByDesc("criado")
                 .Get();
 
             foreach (var data in lista2)

@@ -49,9 +49,10 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 21);
+            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
@@ -59,11 +60,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Open Sans Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(55, 35);
+            this.label2.Location = new System.Drawing.Point(53, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 26);
+            this.label2.Size = new System.Drawing.Size(197, 28);
             this.label2.TabIndex = 46;
             this.label2.Text = "Produtos e Serviços";
             // 
@@ -81,9 +82,10 @@
             this.Produtos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Produtos.Image = ((System.Drawing.Image)(resources.GetObject("Produtos.Image")));
             this.Produtos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Produtos.Location = new System.Drawing.Point(27, 165);
+            this.Produtos.Location = new System.Drawing.Point(25, 185);
+            this.Produtos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Produtos.Name = "Produtos";
-            this.Produtos.Size = new System.Drawing.Size(96, 97);
+            this.Produtos.Size = new System.Drawing.Size(123, 145);
             this.Produtos.TabIndex = 40;
             this.Produtos.Text = "Produtos";
             this.Produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -104,9 +106,10 @@
             this.Categorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
             this.Categorias.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Categorias.Location = new System.Drawing.Point(138, 165);
+            this.Categorias.Location = new System.Drawing.Point(157, 185);
+            this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(104, 96);
+            this.Categorias.Size = new System.Drawing.Size(123, 145);
             this.Categorias.TabIndex = 42;
             this.Categorias.Text = "Categorias";
             this.Categorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -119,8 +122,9 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(992, 40);
+            this.panel4.Size = new System.Drawing.Size(960, 40);
             this.panel4.TabIndex = 48;
             // 
             // label4
@@ -141,16 +145,17 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(127, 13);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 14);
+            this.label5.Size = new System.Drawing.Size(118, 17);
             this.label5.TabIndex = 3;
             this.label5.Text = "Produtos e Serviços";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(102, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(102, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.Size = new System.Drawing.Size(20, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -163,22 +168,24 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, 41);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(992, 97);
+            this.panel1.Size = new System.Drawing.Size(735, 97);
             this.panel1.TabIndex = 49;
             // 
             // TelaProdutosInicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(990, 620);
+            this.ClientSize = new System.Drawing.Size(733, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.Produtos);
             this.Controls.Add(this.Categorias);
-            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TelaProdutosInicial";
             this.Text = "TelaProdutosInicial";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

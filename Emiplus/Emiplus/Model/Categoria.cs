@@ -17,10 +17,10 @@
         public int Id { get; set; }
         public int Tipo { get; set; }
         public int Excluir { get; set; }
-        public DateTime DataInserido { get; private set; }
-        public DateTime DataAtualizado { get; private set; }
-        public DateTime DataDeletado { get; private set; }
-        public int EmpresaId { get; private set; }
+        public DateTime Criado { get; private set; }
+        public DateTime Atualizado { get; private set; }
+        public DateTime Deletado { get; private set; }
+        public string EmpresaId { get; private set; }
         public string Nome { get; set; }
 
         public bool Save(Categoria data)
@@ -30,7 +30,7 @@
 
             if (data.Id == 0)
             {
-                data.DataInserido = DateTime.Now;
+                data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
                     Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);
@@ -43,7 +43,7 @@
             }
             else
             {
-                data.DataAtualizado = DateTime.Now;
+                data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
                     Alert.Message("Tudo certo!", "Categoria atualizada com sucesso.", Alert.AlertType.success);
@@ -60,7 +60,7 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, DataDeletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Categoria removida com sucesso.", Alert.AlertType.info);
