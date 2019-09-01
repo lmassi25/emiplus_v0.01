@@ -36,7 +36,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.GridListaClientes = new System.Windows.Forms.DataGridView();
+            this.GridLista = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -148,24 +148,24 @@
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 13;
             // 
-            // GridListaClientes
+            // GridLista
             // 
-            this.GridListaClientes.AllowUserToAddRows = false;
-            this.GridListaClientes.AllowUserToDeleteRows = false;
-            this.GridListaClientes.BackgroundColor = System.Drawing.Color.White;
-            this.GridListaClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridListaClientes.Location = new System.Drawing.Point(0, 0);
-            this.GridListaClientes.MultiSelect = false;
-            this.GridListaClientes.Name = "GridListaClientes";
-            this.GridListaClientes.ReadOnly = true;
-            this.GridListaClientes.RowTemplate.Height = 30;
-            this.GridListaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaClientes.Size = new System.Drawing.Size(659, 280);
-            this.GridListaClientes.TabIndex = 5;
+            this.GridLista.AllowUserToAddRows = false;
+            this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.BackgroundColor = System.Drawing.Color.White;
+            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridLista.Location = new System.Drawing.Point(0, 0);
+            this.GridLista.MultiSelect = false;
+            this.GridLista.Name = "GridLista";
+            this.GridLista.ReadOnly = true;
+            this.GridLista.RowTemplate.Height = 30;
+            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridLista.Size = new System.Drawing.Size(659, 280);
+            this.GridLista.TabIndex = 5;
             // 
             // panel5
             // 
@@ -229,7 +229,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.GridListaClientes);
+            this.panel2.Controls.Add(this.GridLista);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(659, 280);
@@ -290,6 +290,7 @@
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(335, 26);
             this.search.TabIndex = 6;
+            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
             // 
             // btnExit
             // 
@@ -356,11 +357,13 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Clientes";
             this.Text = "Clientes";
+            this.Activated += new System.EventHandler(this.Clientes_Activated);
+            this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -382,7 +385,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DataGridView GridListaClientes;
+        private System.Windows.Forms.DataGridView GridLista;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

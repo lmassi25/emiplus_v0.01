@@ -95,6 +95,24 @@ namespace Emiplus.Data.Database
         }
 
         /// <summary>
+        /// Executa o Insert();
+        /// </summary>
+        /// <returns>Retorna o ID do insert.</returns>
+        public int CreateGetId()
+        {
+            try
+            {
+                var data = db.Query(Entity).InsertGetId<int>(Objetos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// Executa o Update();
         /// </summary>
         /// <param name="id">Passar ID (Key)</param>

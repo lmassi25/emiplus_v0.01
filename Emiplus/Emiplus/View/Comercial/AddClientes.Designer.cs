@@ -35,7 +35,6 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nascimento = new System.Windows.Forms.MaskedTextBox();
-            this.rgIE = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cpfCnpj = new System.Windows.Forms.MaskedTextBox();
@@ -71,11 +70,23 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelContatos = new System.Windows.Forms.Panel();
             this.ListaContatos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.btnAdicionarContato = new System.Windows.Forms.Button();
             this.btnEditarContato = new System.Windows.Forms.Button();
+            this.rgIE = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.modeloNegocio = new MetroFramework.Controls.MetroComboBox();
+            this.tabTransporte = new System.Windows.Forms.TabPage();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.placa = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.uf = new System.Windows.Forms.TextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.rntc = new System.Windows.Forms.TextBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,6 +107,10 @@
             this.panelContatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListaContatos)).BeginInit();
             this.panel3.SuspendLayout();
+            this.tabTransporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // barraTitulo
@@ -130,6 +145,7 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // btnRemover
             // 
@@ -151,6 +167,8 @@
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Visible = false;
+            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // pictureBox6
             // 
@@ -166,8 +184,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.nascimento);
+            this.groupBox1.Controls.Add(this.modeloNegocio);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.rgIE);
+            this.groupBox1.Controls.Add(this.nascimento);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cpfCnpj);
@@ -198,15 +218,6 @@
             this.nascimento.TabIndex = 26;
             this.nascimento.ValidatingType = typeof(System.DateTime);
             // 
-            // rgIE
-            // 
-            this.rgIE.Location = new System.Drawing.Point(515, 107);
-            this.rgIE.Mask = "00/00/0000";
-            this.rgIE.Name = "rgIE";
-            this.rgIE.Size = new System.Drawing.Size(144, 24);
-            this.rgIE.TabIndex = 28;
-            this.rgIE.ValidatingType = typeof(System.DateTime);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -223,7 +234,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(512, 87);
+            this.label10.Location = new System.Drawing.Point(276, 87);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 17);
             this.label10.TabIndex = 27;
@@ -231,10 +242,10 @@
             // 
             // cpfCnpj
             // 
-            this.cpfCnpj.Location = new System.Drawing.Point(279, 107);
+            this.cpfCnpj.Location = new System.Drawing.Point(151, 107);
             this.cpfCnpj.Mask = "999.999.999-99";
             this.cpfCnpj.Name = "cpfCnpj";
-            this.cpfCnpj.Size = new System.Drawing.Size(231, 24);
+            this.cpfCnpj.Size = new System.Drawing.Size(121, 24);
             this.cpfCnpj.TabIndex = 27;
             // 
             // pictureBox4
@@ -257,7 +268,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(343, 87);
+            this.pictureBox7.Location = new System.Drawing.Point(215, 87);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(15, 15);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -280,7 +291,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(276, 85);
+            this.label9.Location = new System.Drawing.Point(148, 85);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 17);
             this.label9.TabIndex = 27;
@@ -295,7 +306,7 @@
             "Jurídica"});
             this.pessoaJF.Location = new System.Drawing.Point(23, 106);
             this.pessoaJF.Name = "pessoaJF";
-            this.pessoaJF.Size = new System.Drawing.Size(249, 25);
+            this.pessoaJF.Size = new System.Drawing.Size(121, 25);
             this.pessoaJF.TabIndex = 30;
             // 
             // pictureBox5
@@ -310,8 +321,6 @@
             // 
             // nomeRS
             // 
-            this.nomeRS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.nomeRS.Location = new System.Drawing.Point(23, 47);
             this.nomeRS.Name = "nomeRS";
             this.nomeRS.Size = new System.Drawing.Size(249, 24);
@@ -344,16 +353,16 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(290, 12);
+            this.label1.Location = new System.Drawing.Point(288, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 17);
+            this.label1.Size = new System.Drawing.Size(106, 17);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Novo Cliente";
+            this.label1.Text = "Adicionar Cliente";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(267, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(265, 11);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -416,7 +425,7 @@
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Location = new System.Drawing.Point(1, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(980, 40);
+            this.panel4.Size = new System.Drawing.Size(730, 40);
             this.panel4.TabIndex = 18;
             // 
             // pictureBox1
@@ -470,6 +479,7 @@
             this.btnHelp.Text = "Ajuda!";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // panel5
             // 
@@ -490,11 +500,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabTransporte);
             this.tabControl1.Location = new System.Drawing.Point(29, 308);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(678, 229);
             this.tabControl1.TabIndex = 22;
+            this.tabControl1.Visible = false;
             // 
             // tabPage2
             // 
@@ -633,18 +645,11 @@
             this.ListaContatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaContatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.ListaContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaContatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
             this.ListaContatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaContatos.Location = new System.Drawing.Point(0, 70);
             this.ListaContatos.Name = "ListaContatos";
             this.ListaContatos.Size = new System.Drawing.Size(669, 130);
             this.ListaContatos.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // panel3
             // 
@@ -712,6 +717,142 @@
             this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarContato.UseVisualStyleBackColor = true;
             // 
+            // rgIE
+            // 
+            this.rgIE.Location = new System.Drawing.Point(280, 107);
+            this.rgIE.Name = "rgIE";
+            this.rgIE.Size = new System.Drawing.Size(143, 24);
+            this.rgIE.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(426, 87);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 17);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Modelo de negócio";
+            // 
+            // modeloNegocio
+            // 
+            this.modeloNegocio.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.modeloNegocio.FormattingEnabled = true;
+            this.modeloNegocio.ItemHeight = 19;
+            this.modeloNegocio.Items.AddRange(new object[] {
+            "1 - Contribuinte ICMS (Necessário I.E.)",
+            "2 - Contribuinte isento de Inscrição Estadual",
+            "9 - Não contribuinte"});
+            this.modeloNegocio.Location = new System.Drawing.Point(429, 106);
+            this.modeloNegocio.Name = "modeloNegocio";
+            this.modeloNegocio.Size = new System.Drawing.Size(230, 25);
+            this.modeloNegocio.TabIndex = 34;
+            this.modeloNegocio.UseSelectable = true;
+            // 
+            // tabTransporte
+            // 
+            this.tabTransporte.Controls.Add(this.pictureBox10);
+            this.tabTransporte.Controls.Add(this.label16);
+            this.tabTransporte.Controls.Add(this.rntc);
+            this.tabTransporte.Controls.Add(this.pictureBox9);
+            this.tabTransporte.Controls.Add(this.label15);
+            this.tabTransporte.Controls.Add(this.uf);
+            this.tabTransporte.Controls.Add(this.pictureBox8);
+            this.tabTransporte.Controls.Add(this.label14);
+            this.tabTransporte.Controls.Add(this.placa);
+            this.tabTransporte.Location = new System.Drawing.Point(4, 26);
+            this.tabTransporte.Name = "tabTransporte";
+            this.tabTransporte.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTransporte.Size = new System.Drawing.Size(670, 199);
+            this.tabTransporte.TabIndex = 3;
+            this.tabTransporte.Text = "Transporte";
+            this.tabTransporte.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(56, 24);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 37;
+            this.pictureBox8.TabStop = false;
+            // 
+            // placa
+            // 
+            this.placa.Location = new System.Drawing.Point(19, 42);
+            this.placa.Name = "placa";
+            this.placa.Size = new System.Drawing.Size(249, 24);
+            this.placa.TabIndex = 36;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(16, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 17);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Placa";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(41, 81);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 40;
+            this.pictureBox9.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(16, 79);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 17);
+            this.label15.TabIndex = 38;
+            this.label15.Text = "UF";
+            // 
+            // uf
+            // 
+            this.uf.Location = new System.Drawing.Point(19, 99);
+            this.uf.Name = "uf";
+            this.uf.Size = new System.Drawing.Size(249, 24);
+            this.uf.TabIndex = 39;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(56, 139);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 43;
+            this.pictureBox10.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(16, 137);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 17);
+            this.label16.TabIndex = 41;
+            this.label16.Text = "RNTC";
+            // 
+            // rntc
+            // 
+            this.rntc.Location = new System.Drawing.Point(19, 157);
+            this.rntc.Name = "rntc";
+            this.rntc.Size = new System.Drawing.Size(249, 24);
+            this.rntc.TabIndex = 42;
+            // 
             // AddClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -754,6 +895,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ListaContatos)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabTransporte.ResumeLayout(false);
+            this.tabTransporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -784,7 +930,6 @@
         private System.Windows.Forms.TextBox nomeFantasia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.MaskedTextBox rgIE;
         private System.Windows.Forms.MaskedTextBox cpfCnpj;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox7;
@@ -802,10 +947,22 @@
         private System.Windows.Forms.Panel panelEnderecos;
         private System.Windows.Forms.Panel panelContatos;
         private System.Windows.Forms.DataGridView ListaContatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAdicionarContato;
         private System.Windows.Forms.Button btnEditarContato;
+        private System.Windows.Forms.TextBox rgIE;
+        private System.Windows.Forms.Label label13;
+        private MetroFramework.Controls.MetroComboBox modeloNegocio;
+        private System.Windows.Forms.TabPage tabTransporte;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox rntc;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox uf;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox placa;
     }
 }

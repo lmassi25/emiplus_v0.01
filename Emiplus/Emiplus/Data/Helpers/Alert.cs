@@ -137,7 +137,7 @@ namespace Emiplus.Data.Helpers
                     break;
             }
 
-            this.Show();
+            Show();
         }
 
         public enum AlertType

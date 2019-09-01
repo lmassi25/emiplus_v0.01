@@ -97,6 +97,7 @@
             this.btnAddrSalvar.Text = "Salvar";
             this.btnAddrSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAddrSalvar.UseVisualStyleBackColor = true;
+            this.btnAddrSalvar.Click += new System.EventHandler(this.BtnAddrSalvar_Click);
             // 
             // btnAddrCancelar
             // 

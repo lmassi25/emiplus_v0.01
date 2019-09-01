@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using SqlKata.Execution;
 
 namespace Emiplus.Controller
@@ -32,12 +33,15 @@ namespace Emiplus.Controller
             Table.Rows.Clear();
 
             var produtos = new Model.Item();
+            var categoria = new Model.Categoria();
 
             var search = "%" + SearchText + "%";
             var lista2 = produtos.Query()
-                .Where("EXCLUIR", 0)
-                .Where(q => q.Where("nome", "like", search).OrWhere("referencia", "like", search))
-                .OrderByDesc("criado")
+                .LeftJoin("categoria", "categoria.id", "item.categoriaid")
+                .Select("item.*", "categoria.nome as nomecat")
+                .Where("item.excluir", 0)
+                .Where(q => q.Where("item.nome", "like", search).OrWhere("item.referencia", "like", search))
+                .OrderByDesc("item.criado")
                 .Get();
 
             foreach (var item in lista2)
@@ -45,7 +49,7 @@ namespace Emiplus.Controller
                 Table.Rows.Add(
                     item.ID,
                     item.REFERENCIA,
-                    "Categoria",
+                    item.NOMECAT,
                     item.NOME,
                     "0,00",
                     "0,00"

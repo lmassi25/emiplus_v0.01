@@ -7,7 +7,6 @@ namespace Emiplus.View.Produtos
     public partial class Produtos : Form
     {
         public static int idPdtSelecionado { get; set; }
-
         private Controller.Item _controller = new Controller.Item();
 
         public Produtos()

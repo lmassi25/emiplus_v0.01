@@ -14,19 +14,18 @@
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-        public int Tipo { get; set; }
+        public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public int EmpresaId { get; private set; }
-        public string Pessoasinc { get; set; }
         public int Padrao { get; set; }
         public string Nome { get; set; }
         public string Fantasia { get; set; }
         public string RG { get; set; }
         public string CPF  { get; set; }
-        public DateTime Aniversario { get; set; }
+        public string Aniversario { get; set; }
 
         #region SQL Create
         //CREATE TABLE PESSOA
@@ -56,8 +55,10 @@
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
-                if (Data(data).Create() == 1)
+                var d = Data(data).CreateGetId();
+                if (d != 0)
                 {
+                    Console.WriteLine(d);
                     Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
