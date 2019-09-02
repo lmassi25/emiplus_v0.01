@@ -55,10 +55,8 @@
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
-                var d = Data(data).CreateGetId();
-                if (d != 0)
+                if (Data(data).Create() == 1)
                 {
-                    Console.WriteLine(d);
                     Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
                 }
                 else

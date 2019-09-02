@@ -20,5 +20,10 @@ namespace Emiplus.View.Common
         {
             OpenForm.Show<Produtos.Categorias>(this);
         }
+
+        private void TelaProdutosInicial_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

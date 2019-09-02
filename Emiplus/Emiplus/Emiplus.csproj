@@ -321,6 +321,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\Comercial\AddClienteContato.resx">
       <DependentUpon>AddClienteContato.cs</DependentUpon>
@@ -373,6 +374,9 @@
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Assets\Fonts\OpenSans-Bold.ttf" />
+    <None Include="Assets\Fonts\OpenSans-Regular.ttf" />
+    <None Include="Assets\Fonts\OpenSans-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

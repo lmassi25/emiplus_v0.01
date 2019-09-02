@@ -78,5 +78,11 @@ namespace Emiplus.View.Produtos
             Categorias.ValueMember = "ID";
             Categorias.SelectedValue = _modelItem.Categoriaid;
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            AddCategorias f = new AddCategorias();
+            f.ShowDialog();
+        }
     }
 }
