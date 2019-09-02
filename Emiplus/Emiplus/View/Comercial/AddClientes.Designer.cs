@@ -34,6 +34,9 @@
             this.btnRemover = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.modeloNegocio = new MetroFramework.Controls.MetroComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.rgIE = new System.Windows.Forms.TextBox();
             this.nascimento = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -74,19 +77,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnAdicionarContato = new System.Windows.Forms.Button();
             this.btnEditarContato = new System.Windows.Forms.Button();
-            this.rgIE = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.modeloNegocio = new MetroFramework.Controls.MetroComboBox();
             this.tabTransporte = new System.Windows.Forms.TabPage();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.placa = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.uf = new System.Windows.Forms.TextBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.rntc = new System.Windows.Forms.TextBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.uf = new System.Windows.Forms.TextBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.placa = new System.Windows.Forms.TextBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,9 +108,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ListaContatos)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabTransporte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // barraTitulo
@@ -208,6 +208,39 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
+            // 
+            // modeloNegocio
+            // 
+            this.modeloNegocio.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.modeloNegocio.FormattingEnabled = true;
+            this.modeloNegocio.ItemHeight = 19;
+            this.modeloNegocio.Items.AddRange(new object[] {
+            "1 - Contribuinte ICMS (Necessário I.E.)",
+            "2 - Contribuinte isento de Inscrição Estadual",
+            "9 - Não contribuinte"});
+            this.modeloNegocio.Location = new System.Drawing.Point(429, 106);
+            this.modeloNegocio.Name = "modeloNegocio";
+            this.modeloNegocio.Size = new System.Drawing.Size(230, 25);
+            this.modeloNegocio.TabIndex = 34;
+            this.modeloNegocio.UseSelectable = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(426, 87);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 17);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Modelo de negócio";
+            // 
+            // rgIE
+            // 
+            this.rgIE.Location = new System.Drawing.Point(280, 107);
+            this.rgIE.Name = "rgIE";
+            this.rgIE.Size = new System.Drawing.Size(143, 24);
+            this.rgIE.TabIndex = 31;
             // 
             // nascimento
             // 
@@ -612,6 +645,7 @@
             this.btnEditarEndereco.Text = "Editar";
             this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarEndereco.UseVisualStyleBackColor = true;
+            this.btnEditarEndereco.Click += new System.EventHandler(this.BtnEditarEndereco_Click);
             // 
             // tabPage3
             // 
@@ -716,39 +750,7 @@
             this.btnEditarContato.Text = "Editar";
             this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarContato.UseVisualStyleBackColor = true;
-            // 
-            // rgIE
-            // 
-            this.rgIE.Location = new System.Drawing.Point(280, 107);
-            this.rgIE.Name = "rgIE";
-            this.rgIE.Size = new System.Drawing.Size(143, 24);
-            this.rgIE.TabIndex = 31;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(426, 87);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(115, 17);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "Modelo de negócio";
-            // 
-            // modeloNegocio
-            // 
-            this.modeloNegocio.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.modeloNegocio.FormattingEnabled = true;
-            this.modeloNegocio.ItemHeight = 19;
-            this.modeloNegocio.Items.AddRange(new object[] {
-            "1 - Contribuinte ICMS (Necessário I.E.)",
-            "2 - Contribuinte isento de Inscrição Estadual",
-            "9 - Não contribuinte"});
-            this.modeloNegocio.Location = new System.Drawing.Point(429, 106);
-            this.modeloNegocio.Name = "modeloNegocio";
-            this.modeloNegocio.Size = new System.Drawing.Size(230, 25);
-            this.modeloNegocio.TabIndex = 34;
-            this.modeloNegocio.UseSelectable = true;
+            this.btnEditarContato.Click += new System.EventHandler(this.BtnEditarContato_Click);
             // 
             // tabTransporte
             // 
@@ -769,33 +771,33 @@
             this.tabTransporte.Text = "Transporte";
             this.tabTransporte.UseVisualStyleBackColor = true;
             // 
-            // pictureBox8
+            // pictureBox10
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(56, 24);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 37;
-            this.pictureBox8.TabStop = false;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(56, 139);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 43;
+            this.pictureBox10.TabStop = false;
             // 
-            // placa
+            // label16
             // 
-            this.placa.Location = new System.Drawing.Point(19, 42);
-            this.placa.Name = "placa";
-            this.placa.Size = new System.Drawing.Size(249, 24);
-            this.placa.TabIndex = 36;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(16, 137);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 17);
+            this.label16.TabIndex = 41;
+            this.label16.Text = "RNTC";
             // 
-            // label14
+            // rntc
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(16, 22);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 17);
-            this.label14.TabIndex = 35;
-            this.label14.Text = "Placa";
+            this.rntc.Location = new System.Drawing.Point(19, 157);
+            this.rntc.Name = "rntc";
+            this.rntc.Size = new System.Drawing.Size(249, 24);
+            this.rntc.TabIndex = 42;
             // 
             // pictureBox9
             // 
@@ -825,33 +827,33 @@
             this.uf.Size = new System.Drawing.Size(249, 24);
             this.uf.TabIndex = 39;
             // 
-            // pictureBox10
+            // pictureBox8
             // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(56, 139);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 43;
-            this.pictureBox10.TabStop = false;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(56, 24);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 37;
+            this.pictureBox8.TabStop = false;
             // 
-            // label16
+            // label14
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(16, 137);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 17);
-            this.label16.TabIndex = 41;
-            this.label16.Text = "RNTC";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Open Sans SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(16, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 17);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Placa";
             // 
-            // rntc
+            // placa
             // 
-            this.rntc.Location = new System.Drawing.Point(19, 157);
-            this.rntc.Name = "rntc";
-            this.rntc.Size = new System.Drawing.Size(249, 24);
-            this.rntc.TabIndex = 42;
+            this.placa.Location = new System.Drawing.Point(19, 42);
+            this.placa.Name = "placa";
+            this.placa.Size = new System.Drawing.Size(249, 24);
+            this.placa.TabIndex = 36;
             // 
             // AddClientes
             // 
@@ -897,9 +899,9 @@
             this.panel3.PerformLayout();
             this.tabTransporte.ResumeLayout(false);
             this.tabTransporte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }

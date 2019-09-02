@@ -21,5 +21,10 @@ namespace Emiplus.View.Comercial
         {
             Close();
         }
+
+        private void BtnContatoSalvar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

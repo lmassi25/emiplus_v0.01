@@ -115,5 +115,15 @@ namespace Emiplus.View.Comercial
             if (_modelPessoa.Save(_modelPessoa))
                 tabControl1.Visible = true;
         }
+
+        private void BtnEditarContato_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEditarEndereco_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

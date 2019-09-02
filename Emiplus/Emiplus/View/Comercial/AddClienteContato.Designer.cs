@@ -118,6 +118,7 @@
             this.btnContatoSalvar.Text = "Salvar";
             this.btnContatoSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnContatoSalvar.UseVisualStyleBackColor = true;
+            this.btnContatoSalvar.Click += new System.EventHandler(this.BtnContatoSalvar_Click);
             // 
             // btnContatoCancelar
             // 
