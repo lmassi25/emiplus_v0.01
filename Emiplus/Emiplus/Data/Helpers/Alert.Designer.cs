@@ -45,22 +45,22 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.White;
             this.title.Location = new System.Drawing.Point(103, 32);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(94, 20);
+            this.title.Size = new System.Drawing.Size(94, 18);
             this.title.TabIndex = 0;
             this.title.Text = "Tudo certo!";
             // 
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.message.ForeColor = System.Drawing.Color.White;
             this.message.Location = new System.Drawing.Point(104, 55);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(139, 17);
+            this.message.Size = new System.Drawing.Size(138, 15);
             this.message.TabIndex = 1;
             this.message.Text = "Mensagem de sucesso!";
             // 
@@ -114,7 +114,7 @@
             // 
             // Alert
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(126)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(479, 123);
@@ -122,7 +122,7 @@
             this.Controls.Add(this.icon);
             this.Controls.Add(this.message);
             this.Controls.Add(this.title);
-            this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -130,6 +130,7 @@
             this.MaximumSize = new System.Drawing.Size(479, 123);
             this.MinimumSize = new System.Drawing.Size(479, 123);
             this.Name = "Alert";
+            this.ShowInTaskbar = false;
             this.Text = "Alert";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Alert_Load);

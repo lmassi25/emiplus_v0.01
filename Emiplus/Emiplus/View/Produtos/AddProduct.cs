@@ -19,9 +19,20 @@ namespace Emiplus.View.Produtos
             
             if (idPdtSelecionado > 0)
                 LoadData();
+        }
 
-            // ToolTips
+        private void Start()
+        {
+            ActiveControl = nome;
+
             ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+
+            Categorias.DataSource = cat;
+            Categorias.DisplayMember = "NOME";
+            Categorias.ValueMember = "ID";
+            Categorias.SelectedValue = _modelItem.Categoriaid;
         }
 
         private void LoadData()
@@ -72,11 +83,7 @@ namespace Emiplus.View.Produtos
 
         private void AddProduct_Load(object sender, EventArgs e)
         {
-            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            Categorias.DataSource = cat;
-            Categorias.DisplayMember = "NOME";
-            Categorias.ValueMember = "ID";
-            Categorias.SelectedValue = _modelItem.Categoriaid;
+            Start();
         }
 
         private void BtnEstoque_Click(object sender, EventArgs e)

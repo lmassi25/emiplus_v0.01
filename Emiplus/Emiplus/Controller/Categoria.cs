@@ -20,13 +20,17 @@ namespace Emiplus.Controller
             var categorias = new Model.Categoria();
 
             var search = "%" + SearchText + "%";
-            var lista2 = categorias.Query()
+
+            var lista = categorias.Query()
                 .Where("EXCLUIR", 0)
-                .Where(q => q.Where("nome", "like", search))
+                .Where
+                (   
+                    q => q.WhereLike("nome", search, false)
+                )
                 .OrderByDesc("criado")
                 .Get();
 
-            foreach (var data in lista2)
+            foreach (var data in lista)
             {
                 Table.Rows.Add(
                     data.ID,

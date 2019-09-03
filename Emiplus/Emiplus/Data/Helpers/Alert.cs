@@ -117,6 +117,7 @@ namespace Emiplus.Data.Helpers
         {
             title.Text = _title;
             message.Text = _message;
+
             switch (type)
             {
                 case AlertType.success:
@@ -179,13 +180,14 @@ namespace Emiplus.Data.Helpers
 
         private void Close_Tick(object sender, EventArgs e)
         {
-            if (this.Opacity > 0)
+            if (Opacity > 0)
             {
-                this.Opacity -= 0.1;
+                Opacity -= 0.1;
             }
             else
             {
-                this.Close();
+                //Close();
+                Dispose();
             }
         }
     }

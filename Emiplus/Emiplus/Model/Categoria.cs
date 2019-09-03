@@ -12,6 +12,8 @@
         {
         }
 
+        #region CAMPOS 
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -23,10 +25,14 @@
         public string EmpresaId { get; private set; }
         public string Nome { get; set; }
 
+        #endregion 
+
         public bool Save(Categoria data)
         {
             if (ValidarDados(data))
+            {
                 return false;
+            }                
 
             if (data.Id == 0)
             {

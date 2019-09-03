@@ -12,10 +12,15 @@ namespace Emiplus.View.Produtos
 
         public Categorias()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
-        public void DataTable()
+        private void Start()
+        {
+            ActiveControl = this.search;
+        }
+
+        private void DataTable()
         {
             _controller.GetDataTable(GridListaCategorias, search.Text);
         }
@@ -33,7 +38,8 @@ namespace Emiplus.View.Produtos
 
         private void Categorias_Load(object sender, EventArgs e)
         {
-            DataTable();
+            Start();
+            DataTable();            
         }
 
         private void Search_TextChanged(object sender, EventArgs e)
@@ -53,11 +59,6 @@ namespace Emiplus.View.Produtos
             OpenForm.Show<AddCategorias>(this);
         }
 
-        private void Categorias_Activated(object sender, EventArgs e)
-        {
-            DataTable();
-        }
-
         private void BtnHelp_Click(object sender, EventArgs e)
         {
             Support.OpenLinkBrowser("http://google.com");
@@ -66,6 +67,11 @@ namespace Emiplus.View.Produtos
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            DataTable();
         }
     }
 }

@@ -44,10 +44,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.Adicionar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.search = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.barraTitulo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,8 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridListaCategorias)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel1.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,12 +177,11 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(38, 203);
+            this.label2.Location = new System.Drawing.Point(30, 190);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(330, 15);
+            this.label2.Size = new System.Drawing.Size(353, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Se organize melhor criando categorias para seus produtos.";
             // 
@@ -268,29 +263,19 @@
             this.Adicionar.UseVisualStyleBackColor = true;
             this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(352, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
             // search
             // 
             this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(15, 9);
+            this.search.Location = new System.Drawing.Point(121, 37);
             this.search.Margin = new System.Windows.Forms.Padding(17, 16, 17, 16);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(333, 22);
-            this.search.TabIndex = 6;
+            this.search.Size = new System.Drawing.Size(335, 29);
+            this.search.TabIndex = 1;
             this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // btnExit
             // 
@@ -313,26 +298,13 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.search);
-            this.panel1.Location = new System.Drawing.Point(118, 37);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 43);
-            this.panel1.TabIndex = 5;
-            // 
             // barraTitulo
             // 
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.barraTitulo.Controls.Add(this.btnExit);
-            this.barraTitulo.Controls.Add(this.panel1);
+            this.barraTitulo.Controls.Add(this.search);
             this.barraTitulo.Controls.Add(this.label3);
             this.barraTitulo.Controls.Add(this.Adicionar);
             this.barraTitulo.Controls.Add(this.Editar);
@@ -358,7 +330,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Categorias";
             this.Text = "Categorias";
-            this.Activated += new System.EventHandler(this.Categorias_Activated);
             this.Load += new System.EventHandler(this.Categorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -367,9 +338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridListaCategorias)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
             this.ResumeLayout(false);
@@ -394,10 +362,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Adicionar;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel barraTitulo;
     }
 }
