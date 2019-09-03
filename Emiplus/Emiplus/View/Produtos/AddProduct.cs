@@ -79,9 +79,9 @@ namespace Emiplus.View.Produtos
             Categorias.SelectedValue = _modelItem.Categoriaid;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtnEstoque_Click(object sender, EventArgs e)
         {
-            AddCategorias f = new AddCategorias();
+            AddEstoque f = new AddEstoque();
             f.ShowDialog();
         }
     }

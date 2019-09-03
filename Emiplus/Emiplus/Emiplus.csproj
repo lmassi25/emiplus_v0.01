@@ -292,6 +292,12 @@
     <Compile Include="View\Produtos\AddCategorias.Designer.cs">
       <DependentUpon>AddCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddEstoque.Designer.cs">
+      <DependentUpon>AddEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
       <DependentUpon>AddCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddEstoque.resx">
+      <DependentUpon>AddEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
