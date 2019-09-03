@@ -232,6 +232,12 @@
     <Compile Include="View\Comercial\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Pedidos.Designer.cs">
+      <DependentUpon>Pedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Pedidos.resx">
+      <DependentUpon>Pedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
