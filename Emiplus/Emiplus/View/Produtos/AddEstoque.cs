@@ -19,7 +19,11 @@ namespace Emiplus.View.Produtos
 
         private void AddEstoque_Load(object sender, EventArgs e)
         {
+        }
 
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
