@@ -30,7 +30,9 @@
         public bool Save(Categoria data)
         {
             if (ValidarDados(data))
+            {
                 return false;
+            }                
 
             if (data.Id == 0)
             {

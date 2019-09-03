@@ -177,12 +177,11 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(38, 203);
+            this.label2.Location = new System.Drawing.Point(30, 190);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(330, 15);
+            this.label2.Size = new System.Drawing.Size(353, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Se organize melhor criando categorias para seus produtos.";
             // 
@@ -276,6 +275,7 @@
             this.search.Size = new System.Drawing.Size(335, 29);
             this.search.TabIndex = 1;
             this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // btnExit
             // 
@@ -330,7 +330,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Categorias";
             this.Text = "Categorias";
-            this.Activated += new System.EventHandler(this.Categorias_Activated);
             this.Load += new System.EventHandler(this.Categorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
