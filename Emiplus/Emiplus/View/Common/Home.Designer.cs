@@ -53,8 +53,9 @@ namespace Emiplus.View.Common
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -68,23 +69,23 @@ namespace Emiplus.View.Common
             this.barraTituloHome.SuspendLayout();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(62, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 22);
+            this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Olá, William Alvares";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.homeMenuInicio);
             this.panel3.Controls.Add(this.panel5);
@@ -103,7 +104,7 @@ namespace Emiplus.View.Common
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 700);
+            this.panel3.Size = new System.Drawing.Size(275, 729);
             this.panel3.TabIndex = 20;
             // 
             // pictureBox2
@@ -124,11 +125,11 @@ namespace Emiplus.View.Common
             this.homeMenuInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuInicio.FlatAppearance.BorderSize = 0;
-            this.homeMenuInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuInicio.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuInicio.Location = new System.Drawing.Point(0, 86);
             this.homeMenuInicio.Name = "homeMenuInicio";
@@ -173,10 +174,11 @@ namespace Emiplus.View.Common
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 676);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label3.Location = new System.Drawing.Point(100, 705);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Versão 1.0.0";
             // 
@@ -197,11 +199,11 @@ namespace Emiplus.View.Common
             this.homeMenuSettings.BackColor = System.Drawing.Color.Transparent;
             this.homeMenuSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuSettings.FlatAppearance.BorderSize = 0;
-            this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuSettings.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuSettings.Location = new System.Drawing.Point(0, 366);
             this.homeMenuSettings.Name = "homeMenuSettings";
             this.homeMenuSettings.Size = new System.Drawing.Size(275, 50);
@@ -264,11 +266,11 @@ namespace Emiplus.View.Common
             this.homeMenuFiscal.BackColor = System.Drawing.Color.Transparent;
             this.homeMenuFiscal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFiscal.FlatAppearance.BorderSize = 0;
-            this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuFiscal.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuFiscal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuFiscal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuFiscal.Location = new System.Drawing.Point(0, 310);
             this.homeMenuFiscal.Name = "homeMenuFiscal";
             this.homeMenuFiscal.Size = new System.Drawing.Size(275, 50);
@@ -283,11 +285,11 @@ namespace Emiplus.View.Common
             this.homeMenuFinanceiro.BackColor = System.Drawing.Color.Transparent;
             this.homeMenuFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFinanceiro.FlatAppearance.BorderSize = 0;
-            this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuFinanceiro.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuFinanceiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuFinanceiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuFinanceiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuFinanceiro.Location = new System.Drawing.Point(0, 254);
             this.homeMenuFinanceiro.Name = "homeMenuFinanceiro";
             this.homeMenuFinanceiro.Size = new System.Drawing.Size(275, 50);
@@ -302,11 +304,11 @@ namespace Emiplus.View.Common
             this.homeMenuComercial.BackColor = System.Drawing.Color.Transparent;
             this.homeMenuComercial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuComercial.FlatAppearance.BorderSize = 0;
-            this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuComercial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuComercial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuComercial.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuComercial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuComercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuComercial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuComercial.Location = new System.Drawing.Point(0, 198);
             this.homeMenuComercial.Name = "homeMenuComercial";
             this.homeMenuComercial.Size = new System.Drawing.Size(275, 50);
@@ -322,17 +324,17 @@ namespace Emiplus.View.Common
             this.homeMenuProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuProducts.FlatAppearance.BorderSize = 0;
-            this.homeMenuProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.homeMenuProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.homeMenuProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
             this.homeMenuProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeMenuProducts.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeMenuProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.homeMenuProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuProducts.Location = new System.Drawing.Point(0, 142);
             this.homeMenuProducts.Name = "homeMenuProducts";
             this.homeMenuProducts.Size = new System.Drawing.Size(275, 50);
             this.homeMenuProducts.TabIndex = 1;
-            this.homeMenuProducts.Text = "            Produtos e Serviços";
+            this.homeMenuProducts.Text = "            Produtos";
             this.homeMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuProducts.UseVisualStyleBackColor = false;
             this.homeMenuProducts.Click += new System.EventHandler(this.homeMenuProducts_Click);
@@ -340,12 +342,12 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.White;
-            this.barraTituloHome.Controls.Add(this.pictureBox9);
-            this.barraTituloHome.Controls.Add(this.label2);
+            this.barraTituloHome.Controls.Add(this.button3);
+            this.barraTituloHome.Controls.Add(this.button2);
             this.barraTituloHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.barraTituloHome.Location = new System.Drawing.Point(275, 0);
             this.barraTituloHome.Name = "barraTituloHome";
-            this.barraTituloHome.Size = new System.Drawing.Size(990, 35);
+            this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
             // 
             // panel2
@@ -355,7 +357,7 @@ namespace Emiplus.View.Common
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(275, 35);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(990, 45);
+            this.panel2.Size = new System.Drawing.Size(733, 45);
             this.panel2.TabIndex = 21;
             // 
             // panelFormularios
@@ -364,59 +366,93 @@ namespace Emiplus.View.Common
             this.panelFormularios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormularios.Location = new System.Drawing.Point(275, 80);
             this.panelFormularios.Name = "panelFormularios";
-            this.panelFormularios.Size = new System.Drawing.Size(990, 620);
+            this.panelFormularios.Size = new System.Drawing.Size(733, 649);
             this.panelFormularios.TabIndex = 22;
             // 
             // pictureBox8
             // 
+            this.pictureBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(194, 159);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(612, 255);
+            this.pictureBox8.Size = new System.Drawing.Size(355, 284);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // label2
+            // button1
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(889, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Minha Conta";
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(45, 669);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(184, 30);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Atualização disponível";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // pictureBox9
+            // button2
             // 
-            this.pictureBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(863, 9);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(24, 20);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 1;
-            this.pictureBox9.TabStop = false;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(450, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 23);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Precisa de ajuda?";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(604, 7);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 23);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "Minha Conta";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1265, 700);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panelFormularios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.barraTituloHome);
             this.Controls.Add(this.panel3);
             this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MinimumSize = new System.Drawing.Size(1265, 700);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Home";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -430,10 +466,8 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.barraTituloHome.ResumeLayout(false);
-            this.barraTituloHome.PerformLayout();
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,10 +492,11 @@ namespace Emiplus.View.Common
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button homeMenuInicio;
         private Panel panelFormularios;
         private PictureBox pictureBox8;
-        private PictureBox pictureBox9;
-        private Label label2;
+        public Button homeMenuInicio;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

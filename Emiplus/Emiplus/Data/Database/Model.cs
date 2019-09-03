@@ -1,7 +1,6 @@
-﻿using System;
-using SqlKata.Execution;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
-using Valit;
 
 namespace Emiplus.Data.Database
 {
@@ -13,7 +12,7 @@ namespace Emiplus.Data.Database
         protected Alert Alert;
 
         protected QueryFactory db = new Connect().Open();
-        protected static string Entity { get; set; }
+        protected string Entity;
         protected object Objetos;
 
         protected Model(string entity)
@@ -31,7 +30,7 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public Model Data(object obj)
         {
-            this.Objetos = obj;
+            Objetos = obj;
             return this;
         }
 
@@ -39,9 +38,10 @@ namespace Emiplus.Data.Database
         /// Busca todos os registros
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<dynamic> FindAll()
+        public SqlKata.Query FindAll(string[] columns = null)
         {
-            var data = db.Query(Entity).Get();
+            columns = columns ?? new[] { "*" };
+            var data = db.Query(Entity).Select(columns);
             return data;
         }
 
@@ -70,9 +70,9 @@ namespace Emiplus.Data.Database
         /// </summary>
         /// <param name="id">ID do registro</param>
         /// <returns>Retorna objeto</returns>
-        public dynamic FindById(int id)
+        public SqlKata.Query FindById(int id)
         {
-            var data = db.Query(Entity).Where("ID", id).First();
+            var data = db.Query(Entity).Where("ID", id);
             return data;
         }
 
@@ -85,6 +85,24 @@ namespace Emiplus.Data.Database
             try
             {
                 var data = db.Query(Entity).Insert(Objetos);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Executa o Insert();
+        /// </summary>
+        /// <returns>Retorna o ID do insert.</returns>
+        public int CreateGetId()
+        {
+            try
+            {
+                var data = db.Query(Entity).InsertGetId<int>(Objetos);
                 return data;
             }
             catch (Exception ex)

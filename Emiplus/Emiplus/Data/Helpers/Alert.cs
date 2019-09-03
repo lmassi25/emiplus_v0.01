@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
@@ -117,36 +111,33 @@ namespace Emiplus.Data.Helpers
         public Alert()
         {
             InitializeComponent();
-
         }
 
         public void Message(string _title, string _message, AlertType type)
         {
-            //new Alert(_title, _message, type).Show();
-
             title.Text = _title;
             message.Text = _message;
             switch (type)
             {
                 case AlertType.success:
                     this.BackColor = Color.SeaGreen;
-                    icon.Image = imageList1.Images[0];
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/checkedBranco.png");
                     break;
                 case AlertType.info:
                     this.BackColor = Color.Gray;
-                    icon.Image = imageList1.Images[1];
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/infoBranco.png");
                     break;
                 case AlertType.warning:
                     this.BackColor = Color.FromArgb(255, 128, 0);
-                    icon.Image = imageList1.Images[2];
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/dangerBranco.png");
                     break;
                 case AlertType.error:
                     this.BackColor = Color.Crimson;
-                    icon.Image = imageList1.Images[3];
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/errorBranco.png");
                     break;
             }
 
-            this.Show();
+            Show();
         }
 
         public enum AlertType
@@ -164,19 +155,15 @@ namespace Emiplus.Data.Helpers
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //Close();
             CloseAlert.Start();
         }
 
         private void timeout_Tick(object sender, EventArgs e)
         {
-            //Close();
             CloseAlert.Start();
         }
 
-
         int interval = 0;
-        // show transition
         private void Show_Tick(object sender, EventArgs e)
         {
             if (this.Top < 60)

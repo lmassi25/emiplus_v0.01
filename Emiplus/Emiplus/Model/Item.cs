@@ -1,173 +1,81 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using SqlKata;
+using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Emiplus.Model
 {
-    using Emiplus.Data.GenericRepository;
-    using Emiplus.Data.Helpers;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using Data.Database;
     using Valit;
 
-    [Table("ITEM")]
-    public class Item : Data.Core.Model
+    internal class Item : Model
     {
-        #region CAMPOS 
-        [Column("ID")]
+        public Item() : base("ITEM") {}
+
+        [Ignore]
+        [Key("ID")]
         public int Id { get; set; }
-
-        [Column("TIPO")]
-        public int Tipo { get; set; } //0-PRODUTO 1-SERVICO
-
-        [Column("EXCLUIR")]
+        public int Tipo { get; set; }
         public int Excluir { get; set; }
-
-        [Column("DATAINSERIDO")]
-        public DateTime DataInserido { get; private set; }
-
-        [Column("DATAATUALIZADO")]
-        public DateTime DataAtualizado { get; private set; }
-
-        [Column("DATADELETADO")]
-        public DateTime DataDeletado { get; private set; }
-
-        [Column("EMPRESAID")]
-        public int EmpresaId { get; private set; }
-
-        [Column("NOME")]
+        public DateTime Criado { get; private set; }
+        public DateTime Atualizado { get; private set; }
+        public DateTime Deletado { get; private set; }
+        public string EmpresaId { get; private set; }
         public string Nome { get; set; }
-
-        [Column("REFERENCIA")]
         public string Referencia { get; set; }
-
-        [Column("VALORCOMPRA")]
         public double ValorCompra { get; set; }
-
-        [Column("VALORVENDA")]
         public double ValorVenda { get; set; }
-
-        [Column("ESTOQUEATUAL")]
         public double EstoqueAtual { get; private set; }
+        public int Categoriaid { get; set; }
 
-        #endregion
-
-        #region SQL
-
-        //CREATE TABLE ITEM
-        //(
-        //    id integer not null primary key,
-        //    tipo integer not null,
-        //    excluir integer not null,
-        //    datainserido date,
-        //    dataatualizado date,
-        //    datadeletado date,
-        //    empresaid integer,
-        //    nome varchar(200),
-        //    referencia varchar(50),
-        //    valorcompra numeric(18,4),
-        //    valorvenda numeric(18,4),
-        //    estoqueatual numeric(18,4)
-        //);
-
-        //CREATE GENERATOR GEN_ITEM_ID;
-
-        //SET TERM !! ;
-        //        CREATE TRIGGER ITEM_BI FOR ITEM
-        //        ACTIVE BEFORE INSERT POSITION 0
-        //AS
-        //DECLARE VARIABLE tmp DECIMAL(18,0);
-        //        BEGIN
-        //          IF(NEW.ID IS NULL) THEN
-        //           NEW.ID = GEN_ID(GEN_ITEM_ID, 1);
-        //        ELSE
-        //        BEGIN
-        //    tmp = GEN_ID(GEN_ITEM_ID, 0);
-        //    if (tmp< new.ID) then
-        //     tmp = GEN_ID(GEN_ITEM_ID, new.ID - tmp);
-        //        END
-        //      END!!
-        //SET TERM; !!
-
-        #endregion
-
-        private DataConnFirebird<Item> _dataconn;
-
-        public Item()
+        public bool Save(Item data)
         {
-            _dataconn = new DataConnFirebird<Item>();
-        }
+            if (ValidarDados(data))
+                return false;
 
-        public bool Salvar(Item data)
-        {
-            try
+            if (data.Id == 0)
             {
-                if (data.Id == 0)
+                data.Criado = DateTime.Now;
+                if (Data(data).Create() == 1)
                 {
-                    data.DataInserido = DateTime.Now;
-                    _dataconn.Add(data);
+                    Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    data.DataAtualizado = DateTime.Now;
-                    _dataconn.Edit(data);
-                }                
-                return true;
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    return false;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
-            }
-            
-            return false;            
-        }
-
-        public bool Deletar(Item data)
-        {
-            try
-            {
-                data.Excluir = 1;
-                data.DataDeletado = DateTime.Now;
-                _dataconn.Edit(data);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
-            }
-            
-            return false;
-        }
-
-        public Item GetItem(int id)
-        {
-            return GetItems(c => c.Id == id).FirstOrDefault();
-        }
-
-        public Item[] GetItems()
-        {
-            return GetItems(c => c.Id > 0);
-        }
-
-        public Item[] GetItems(Func<Item, bool> expressao)
-        {
-            List<Item> returnValue = null;
-
-            try
-            {
-                var q = _dataconn.List();
-                returnValue = new List<Item>();
-
-                if (q.Count() > 0)
+                data.Atualizado = DateTime.Now;
+                if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    returnValue.AddRange(q);
-                }                    
+                    Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                }
+                else
+                {
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    return false;
+                }
             }
-            catch (Exception ex)
+
+            return true;
+        }
+
+        public bool Remove(int id)
+        {
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            if (Data(data).Update("ID", id) == 1)
             {
-                log.Add("Item", ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
+                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                return true;
             }
-            
-            return returnValue.ToArray();
+
+            Alert.Message("Opss!", "Não foi possível remover o produto.", Alert.AlertType.error);
+            return false;
         }
 
         /// <summary>
@@ -176,21 +84,15 @@ namespace Emiplus.Model
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
-        /// <example>
-        /// <code>
-        /// if (new Model().ValidarDados(data))
-        ///     return false;
-        /// </code>
-        /// </example>
         public bool ValidarDados(Item data)
         {
             var result = ValitRules<Item>
                 .Create()
                 .Ensure(m => m.Nome, _ => _
                     .Required()
-                        .WithMessage("Nome é obrigatorio.")
+                    .WithMessage("Nome é obrigatorio.")
                     .MinLength(2)
-                        .WithMessage(""))
+                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
                 .For(data)
                 .Validate();
 
@@ -198,7 +100,7 @@ namespace Emiplus.Model
             {
                 foreach (var message in result.ErrorMessages)
                 {
-                    alert.Message("Opss", message, Alert.AlertType.error);
+                    Alert.Message("Opss!", message, Alert.AlertType.error);
                     return true;
                 }
                 return true;

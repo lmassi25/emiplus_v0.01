@@ -182,17 +182,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Item.cs" />
-    <Compile Include="Controller\Produto.cs" />
+    <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Data\Core\Controller.cs" />
-    <Compile Include="Data\Core\Model.cs" />
     <Compile Include="Data\Database\Connect.cs" />
-    <Compile Include="Data\Database\DataFirebird.cs" />
-    <Compile Include="Data\Database\GenericRepository\BaseRepositoryFirebird.cs" />
-    <Compile Include="Data\Database\DataConnFirebird.cs" />
-    <Compile Include="Data\Database\GenericRepository\IBaseRepository.cs" />
-    <Compile Include="Data\Database\GenericRepository\IBaseService.cs" />
-    <Compile Include="Data\Database\GenericRepository\IUnitOfWork.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
@@ -203,15 +197,41 @@
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
+    <Compile Include="Data\Helpers\ToolHelp.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
-    <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Pessoa.cs" />
-    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\PessoaContato.cs" />
+    <Compile Include="Model\PessoaEndereco.cs" />
     <Compile Include="Model\Titulo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Comercial\AddClienteContato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddClienteContato.Designer.cs">
+      <DependentUpon>AddClienteContato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\AddClienteEndereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddClienteEndereco.Designer.cs">
+      <DependentUpon>AddClienteEndereco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\AddClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddClientes.Designer.cs">
+      <DependentUpon>AddClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,11 +286,29 @@
     <Compile Include="View\Financeiro\FinanceiroHome.Designer.cs">
       <DependentUpon>FinanceiroHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddCategorias.Designer.cs">
+      <DependentUpon>AddCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\AddEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddEstoque.Designer.cs">
+      <DependentUpon>AddEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Produtos\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Categorias.Designer.cs">
+      <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\Produtos.cs">
       <SubType>Form</SubType>
@@ -289,7 +327,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Comercial\AddClienteContato.resx">
+      <DependentUpon>AddClienteContato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddClienteEndereco.resx">
+      <DependentUpon>AddClienteEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddClientes.resx">
+      <DependentUpon>AddClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,12 +368,24 @@
     <EmbeddedResource Include="View\Financeiro\FinanceiroHome.resx">
       <DependentUpon>FinanceiroHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
+      <DependentUpon>AddCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddEstoque.resx">
+      <DependentUpon>AddEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Categorias.resx">
+      <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Assets\Fonts\OpenSans-Bold.ttf" />
+    <None Include="Assets\Fonts\OpenSans-Regular.ttf" />
+    <None Include="Assets\Fonts\OpenSans-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

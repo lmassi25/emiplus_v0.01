@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Drawing.Text;
-using System.IO;
 using System.Windows.Forms;
-using Emiplus.View.Produtos;
 
 namespace Emiplus
 {
-    using View.Common;
     using Data.Helpers;
-    
+    using View.Common;
+
     static class Program
     {
         /// <summary>

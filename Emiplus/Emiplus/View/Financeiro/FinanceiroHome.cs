@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using SqlKata.Execution;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emiplus.Data.Database;
-using Emiplus.Model;
-using SqlKata.Execution;
 
 namespace Emiplus.View.Financeiro
 {
@@ -27,9 +18,9 @@ namespace Emiplus.View.Financeiro
             //var cl = p.lista().Where("NOME", "William");
 
             // model Produto
-            Model.Produto m = new Model.Produto();
+            Model.Item m = new Model.Item();
 
-            var todosRegistros = m.FindAll();
+            //var todosRegistros = m.FindAll();
 
             var ordenados = m.Query().OrderByDesc("NOME").Get();
             //foreach (var data in ordenados)
@@ -54,10 +45,10 @@ namespace Emiplus.View.Financeiro
 
             //Console.WriteLine(buscar.NOME);
 
-            foreach (var data in todosRegistros)
-            {
-                Console.WriteLine($"Nome: {data.NOME}");
-            }
+            //foreach (var data in todosRegistros)
+            //{
+            //    Console.WriteLine($"Nome: {data.NOME}");
+            //}
         }
     }
 }

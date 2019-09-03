@@ -45,41 +45,45 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(88, 19);
+            this.title.Location = new System.Drawing.Point(103, 32);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(92, 18);
+            this.title.Size = new System.Drawing.Size(94, 20);
             this.title.TabIndex = 0;
             this.title.Text = "Tudo certo!";
             // 
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.message.ForeColor = System.Drawing.Color.White;
-            this.message.Location = new System.Drawing.Point(89, 41);
+            this.message.Location = new System.Drawing.Point(104, 55);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(133, 14);
+            this.message.Size = new System.Drawing.Size(139, 17);
             this.message.TabIndex = 1;
             this.message.Text = "Mensagem de sucesso!";
             // 
             // icon
             // 
             this.icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.icon.Location = new System.Drawing.Point(23, 27);
+            this.icon.Location = new System.Drawing.Point(27, 35);
+            this.icon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(42, 39);
+            this.icon.Size = new System.Drawing.Size(49, 49);
             this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.icon.TabIndex = 2;
             this.icon.TabStop = false;
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(385, 6);
+            this.btnClose.Location = new System.Drawing.Point(449, 8);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 20);
+            this.btnClose.Size = new System.Drawing.Size(23, 23);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnClose.TabIndex = 3;
             this.btnClose.TabStop = false;
@@ -88,7 +92,7 @@
             // timeout
             // 
             this.timeout.Enabled = true;
-            this.timeout.Interval = 5000;
+            this.timeout.Interval = 10000;
             this.timeout.Tick += new System.EventHandler(this.timeout_Tick);
             // 
             // Show
@@ -110,18 +114,24 @@
             // 
             // Alert
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(126)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(411, 94);
+            this.ClientSize = new System.Drawing.Size(479, 123);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.icon);
             this.Controls.Add(this.message);
             this.Controls.Add(this.title);
+            this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(479, 123);
+            this.MinimumSize = new System.Drawing.Size(479, 123);
             this.Name = "Alert";
             this.Text = "Alert";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Alert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
