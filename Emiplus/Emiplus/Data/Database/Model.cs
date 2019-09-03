@@ -30,7 +30,7 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public Model Data(object obj)
         {
-            Objetos = obj;
+            Objetos = obj;                        
             return this;
         }
 

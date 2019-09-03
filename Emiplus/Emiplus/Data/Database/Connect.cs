@@ -20,6 +20,12 @@ namespace Emiplus.Data.Database
 
             var compiler = new FirebirdCompiler();
             var db = new QueryFactory(connection, compiler);
+
+            db.Logger = compiled => 
+            {
+                System.Console.WriteLine(compiled.ToString());
+            };
+
             return db;
         }
     }

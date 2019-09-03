@@ -12,6 +12,8 @@
         {
         }
 
+        #region CAMPOS 
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -22,6 +24,8 @@
         public DateTime Deletado { get; private set; }
         public string EmpresaId { get; private set; }
         public string Nome { get; set; }
+
+        #endregion 
 
         public bool Save(Categoria data)
         {

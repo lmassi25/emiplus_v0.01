@@ -12,10 +12,15 @@ namespace Emiplus.View.Produtos
 
         public Categorias()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
-        public void DataTable()
+        private void StartForm()
+        {
+            ActiveControl = search;
+        }
+
+        private void DataTable()
         {
             _controller.GetDataTable(GridListaCategorias, search.Text);
         }
@@ -33,7 +38,8 @@ namespace Emiplus.View.Produtos
 
         private void Categorias_Load(object sender, EventArgs e)
         {
-            DataTable();
+            StartForm();
+            DataTable();            
         }
 
         private void Search_TextChanged(object sender, EventArgs e)

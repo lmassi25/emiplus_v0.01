@@ -13,7 +13,8 @@ CREATE TABLE ITEM
     referencia varchar(50),
     valorcompra numeric(18,4),
     valorvenda numeric(18,4),
-    estoqueatual numeric(18,4)
+    estoqueatual numeric(18,4),
+    categoriaid integer not null
 );
 
 CREATE GENERATOR GEN_ITEM_ID;
