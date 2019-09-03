@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,65 @@ namespace Emiplus.View.Comercial
         }
 
         private void Pedidos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cliente_Click(object sender, EventArgs e)
+        {
+            var BackColor = Color.FromArgb(249, 249, 249);
+            panelOne.BackColor = BackColor;
+            label1.BackColor = BackColor;
+            pictureBox2.BackColor = BackColor;
+        }
+
+        private void Cliente_Leave(object sender, EventArgs e)
+        {
+            var BackColor = Color.White;
+            panelOne.BackColor = Color.White;
+            label1.BackColor = BackColor;
+            pictureBox2.BackColor = BackColor;
+        }
+
+        private void Produto_Click(object sender, EventArgs e)
+        {
+            var BackColor = Color.FromArgb(249, 249, 249);
+            panelTwo.BackColor = BackColor;
+            pictureBox1.BackColor = BackColor;
+            label4.BackColor = BackColor;
+            label5.BackColor = BackColor;
+            label6.BackColor = BackColor;
+            label7.BackColor = BackColor;
+            label8.BackColor = BackColor;
+            label9.BackColor = BackColor;
+            addProduto.BackColor = BackColor;
+        }
+
+        private void Produto_Leave(object sender, EventArgs e)
+        {
+            var BackColor = Color.White;
+            panelTwo.BackColor = Color.White;
+            pictureBox1.BackColor = BackColor;
+            label4.BackColor = BackColor;
+            label5.BackColor = BackColor;
+            label6.BackColor = BackColor;
+            label7.BackColor = BackColor;
+            label8.BackColor = BackColor;
+            label9.BackColor = BackColor;
+            addProduto.BackColor = BackColor;
+        }
+
+        private void BtnConcluir_Click(object sender, EventArgs e)
+        {
+            OpenForm.Show<PedidoPagamentos>(this);
+        }
+
+        private void GridListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
