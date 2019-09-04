@@ -20,7 +20,7 @@ namespace Emiplus.Data.Database
             Entity = entity;
 
             Log = new Log();
-            Alert = new Alert();
+            //Alert = new Alert();
         }
 
         /// <summary>

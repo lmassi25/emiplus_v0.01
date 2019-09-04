@@ -141,7 +141,7 @@ namespace Emiplus.View.Comercial
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalvar.Location = new System.Drawing.Point(615, 4);
+            this.btnSalvar.Location = new System.Drawing.Point(607, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(85, 90);
             this.btnSalvar.TabIndex = 4;
@@ -163,9 +163,9 @@ namespace Emiplus.View.Comercial
             this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRemover.Location = new System.Drawing.Point(32, 4);
+            this.btnRemover.Location = new System.Drawing.Point(40, 4);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(59, 90);
+            this.btnRemover.Size = new System.Drawing.Size(85, 90);
             this.btnRemover.TabIndex = 3;
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -205,9 +205,9 @@ namespace Emiplus.View.Comercial
             this.groupBox1.Controls.Add(this.nomeRS);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(29, 151);
+            this.groupBox1.Location = new System.Drawing.Point(40, 144);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(678, 146);
+            this.groupBox1.Size = new System.Drawing.Size(652, 150);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
@@ -223,7 +223,7 @@ namespace Emiplus.View.Comercial
             "9 - Não contribuinte"});
             this.modeloNegocio.Location = new System.Drawing.Point(429, 106);
             this.modeloNegocio.Name = "modeloNegocio";
-            this.modeloNegocio.Size = new System.Drawing.Size(230, 25);
+            this.modeloNegocio.Size = new System.Drawing.Size(217, 25);
             this.modeloNegocio.TabIndex = 34;
             this.modeloNegocio.UseSelectable = true;
             // 
@@ -250,7 +250,7 @@ namespace Emiplus.View.Comercial
             this.nascimento.Location = new System.Drawing.Point(515, 47);
             this.nascimento.Mask = "00/00/0000";
             this.nascimento.Name = "nascimento";
-            this.nascimento.Size = new System.Drawing.Size(144, 21);
+            this.nascimento.Size = new System.Drawing.Size(131, 21);
             this.nascimento.TabIndex = 26;
             this.nascimento.ValidatingType = typeof(System.DateTime);
             // 
@@ -261,9 +261,9 @@ namespace Emiplus.View.Comercial
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(512, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(135, 15);
+            this.label7.Size = new System.Drawing.Size(78, 15);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Data de nascimento";
+            this.label7.Text = "Aniversário";
             // 
             // label10
             // 
@@ -459,7 +459,7 @@ namespace Emiplus.View.Comercial
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Location = new System.Drawing.Point(1, 1);
+            this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(730, 40);
             this.panel4.TabIndex = 18;
@@ -486,9 +486,9 @@ namespace Emiplus.View.Comercial
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(32, 3);
+            this.btnExit.Location = new System.Drawing.Point(40, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(59, 90);
+            this.btnExit.Size = new System.Drawing.Size(85, 90);
             this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -508,11 +508,11 @@ namespace Emiplus.View.Comercial
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(615, 3);
+            this.btnHelp.Location = new System.Drawing.Point(607, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 13;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -524,7 +524,7 @@ namespace Emiplus.View.Comercial
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel5.Controls.Add(this.btnExit);
             this.panel5.Controls.Add(this.btnHelp);
-            this.panel5.Location = new System.Drawing.Point(0, 42);
+            this.panel5.Location = new System.Drawing.Point(0, 41);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(731, 97);
             this.panel5.TabIndex = 21;
@@ -538,10 +538,10 @@ namespace Emiplus.View.Comercial
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabTransporte);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(29, 308);
+            this.tabControl1.Location = new System.Drawing.Point(40, 308);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(678, 229);
+            this.tabControl1.Size = new System.Drawing.Size(652, 229);
             this.tabControl1.TabIndex = 22;
             this.tabControl1.Visible = false;
             // 
@@ -552,7 +552,7 @@ namespace Emiplus.View.Comercial
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(670, 200);
+            this.tabPage2.Size = new System.Drawing.Size(644, 200);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereços";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -565,7 +565,7 @@ namespace Emiplus.View.Comercial
             this.panelEnderecos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEnderecos.Location = new System.Drawing.Point(3, 3);
             this.panelEnderecos.Name = "panelEnderecos";
-            this.panelEnderecos.Size = new System.Drawing.Size(664, 194);
+            this.panelEnderecos.Size = new System.Drawing.Size(638, 194);
             this.panelEnderecos.TabIndex = 5;
             // 
             // ListaEnderecos
@@ -582,7 +582,7 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaEnderecos.Location = new System.Drawing.Point(0, 70);
             this.ListaEnderecos.Name = "ListaEnderecos";
-            this.ListaEnderecos.Size = new System.Drawing.Size(663, 125);
+            this.ListaEnderecos.Size = new System.Drawing.Size(637, 125);
             this.ListaEnderecos.TabIndex = 4;
             // 
             // panel1
@@ -596,7 +596,7 @@ namespace Emiplus.View.Comercial
             this.panel1.Controls.Add(this.btnEditarEndereco);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(670, 68);
+            this.panel1.Size = new System.Drawing.Size(644, 68);
             this.panel1.TabIndex = 3;
             // 
             // label17
@@ -632,7 +632,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarEndereco.Image")));
             this.btnAdicionarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarEndereco.Location = new System.Drawing.Point(585, 5);
+            this.btnAdicionarEndereco.Location = new System.Drawing.Point(559, 5);
             this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
             this.btnAdicionarEndereco.Size = new System.Drawing.Size(80, 60);
             this.btnAdicionarEndereco.TabIndex = 4;
@@ -654,7 +654,7 @@ namespace Emiplus.View.Comercial
             this.btnEditarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEndereco.Image")));
             this.btnEditarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarEndereco.Location = new System.Drawing.Point(521, 5);
+            this.btnEditarEndereco.Location = new System.Drawing.Point(495, 5);
             this.btnEditarEndereco.Name = "btnEditarEndereco";
             this.btnEditarEndereco.Size = new System.Drawing.Size(60, 60);
             this.btnEditarEndereco.TabIndex = 3;

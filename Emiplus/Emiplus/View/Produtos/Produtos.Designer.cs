@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Produtos));
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.search = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -53,8 +51,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.barraTitulo.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -69,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.barraTitulo.Controls.Add(this.btnExit);
-            this.barraTitulo.Controls.Add(this.panel1);
+            this.barraTitulo.Controls.Add(this.search);
             this.barraTitulo.Controls.Add(this.label3);
             this.barraTitulo.Controls.Add(this.btnAdicionar);
             this.barraTitulo.Controls.Add(this.btnEditar);
@@ -90,58 +86,35 @@
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(28, 4);
+            this.btnExit.Location = new System.Drawing.Point(40, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(59, 90);
+            this.btnExit.Size = new System.Drawing.Size(85, 90);
             this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.search);
-            this.panel1.Location = new System.Drawing.Point(118, 37);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 43);
-            this.panel1.TabIndex = 5;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(352, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
             // search
             // 
             this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(15, 9);
+            this.search.Location = new System.Drawing.Point(134, 35);
             this.search.Margin = new System.Windows.Forms.Padding(17, 16, 17, 16);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(333, 22);
-            this.search.TabIndex = 6;
+            this.search.Size = new System.Drawing.Size(362, 29);
+            this.search.TabIndex = 0;
             this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(118, 16);
+            this.label3.Location = new System.Drawing.Point(131, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(150, 16);
             this.label3.TabIndex = 7;
@@ -160,7 +133,7 @@
             this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(631, 3);
+            this.btnAdicionar.Location = new System.Drawing.Point(607, 4);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
             this.btnAdicionar.TabIndex = 4;
@@ -182,9 +155,9 @@
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(552, 3);
+            this.btnEditar.Location = new System.Drawing.Point(516, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(59, 90);
+            this.btnEditar.Size = new System.Drawing.Size(85, 90);
             this.btnEditar.TabIndex = 3;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -194,10 +167,11 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel3.Location = new System.Drawing.Point(210, 28);
+            this.panel3.Location = new System.Drawing.Point(313, 25);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 48);
             this.panel3.TabIndex = 10;
+            this.panel3.Visible = false;
             // 
             // btnRelatorios
             // 
@@ -211,9 +185,9 @@
             this.btnRelatorios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
             this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRelatorios.Location = new System.Drawing.Point(28, 4);
+            this.btnRelatorios.Location = new System.Drawing.Point(40, 4);
             this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(90, 90);
+            this.btnRelatorios.Size = new System.Drawing.Size(85, 90);
             this.btnRelatorios.TabIndex = 9;
             this.btnRelatorios.Text = "Relatórios";
             this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -231,7 +205,7 @@
             this.btnEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEstoque.Image = ((System.Drawing.Image)(resources.GetObject("btnEstoque.Image")));
             this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEstoque.Location = new System.Drawing.Point(119, 4);
+            this.btnEstoque.Location = new System.Drawing.Point(131, 4);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(85, 90);
             this.btnEstoque.TabIndex = 8;
@@ -246,9 +220,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(30, 157);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 33);
+            this.label1.Size = new System.Drawing.Size(131, 33);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Produtos:";
+            this.label1.Text = "Produtos";
             // 
             // label2
             // 
@@ -391,7 +365,7 @@
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 10;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -413,13 +387,9 @@
             this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Products";
-            this.Activated += new System.EventHandler(this.Produtos_Activated);
             this.Load += new System.EventHandler(this.Produtos_Load);
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -441,7 +411,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView GridListaProdutos;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnRelatorios;
@@ -455,7 +424,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnHelp;
     }
 }

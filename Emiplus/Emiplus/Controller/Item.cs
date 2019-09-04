@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 
 namespace Emiplus.Controller
@@ -12,12 +13,12 @@ namespace Emiplus.Controller
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
-
-            Table.Columns[1].Name = "Código";
-            Table.Columns[1].Width = 100;
-
-            Table.Columns[2].Name = "Categoria";
-            Table.Columns[2].Width = 150;
+            
+            Table.Columns[1].Name = "Categoria";
+            Table.Columns[1].Width = 150;
+            
+            Table.Columns[2].Name = "Cód. Personalizado";
+            Table.Columns[2].Width = 200;
 
             Table.Columns[3].Name = "Descrição";
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -36,23 +37,28 @@ namespace Emiplus.Controller
             var categoria = new Model.Categoria();
 
             var search = "%" + SearchText + "%";
-            var lista2 = produtos.Query()
+
+            var lista = produtos.Query()
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
-                .Select("item.*", "categoria.nome as nomecat")
-                .Where("item.excluir", 0)
-                .Where(q => q.Where("item.nome", "like", search).OrWhere("item.referencia", "like", search))
+                .Select("item.*", "categoria.nome as categoria")
+                .Where("item.EXCLUIR", 0)
+                .Where
+                (
+                    //q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", search, false).OrWhere("categoria.nome", search, false)
+                    q => q.WhereLike("item.nome", search, false)
+                )
                 .OrderByDesc("item.criado")
                 .Get();
 
-            foreach (var item in lista2)
+            foreach (var item in lista)
             {
                 Table.Rows.Add(
-                    item.ID,
+                    item.ID,                    
+                    item.CATEGORIA,
                     item.REFERENCIA,
-                    item.NOMECAT,
                     item.NOME,
-                    "0,00",
-                    "0,00"
+                    Validation.Price(Validation.ConvertToDouble(item.VALORCOMPRA)),
+                    Validation.Price(Validation.ConvertToDouble(item.VALORVENDA))
                 );
             }
         }
