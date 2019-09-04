@@ -30,7 +30,7 @@ namespace Emiplus.View.Comercial
 
         private void Cliente_Click(object sender, EventArgs e)
         {
-            var BackColor = Color.FromArgb(249, 249, 249);
+            var BackColor = Color.FromArgb(249, 249, 249); 
             panelOne.BackColor = BackColor;
             label1.BackColor = BackColor;
             pictureBox2.BackColor = BackColor;
@@ -56,6 +56,9 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
+            button3.BackColor = BackColor;
+            panel3.BackColor = Color.White;
+            panel2.BackColor = Color.White;
         }
 
         private void Produto_Leave(object sender, EventArgs e)
@@ -70,6 +73,9 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
+            button3.BackColor = BackColor;
+            panel3.BackColor = Color.FromArgb(249, 249, 249);
+            panel2.BackColor = Color.FromArgb(249, 249, 249);
         }
 
         private void BtnConcluir_Click(object sender, EventArgs e)

@@ -17,12 +17,17 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void PedidoPagamentos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void PedidoPagamentos_Load(object sender, EventArgs e)
+        private void Panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
