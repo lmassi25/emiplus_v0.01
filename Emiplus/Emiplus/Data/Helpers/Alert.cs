@@ -108,13 +108,10 @@ namespace Emiplus.Data.Helpers
          ********************************************************************/
         #endregion
 
-        public Alert()
+        public Alert(string _title, string _message, AlertType type)
         {
             InitializeComponent();
-        }
 
-        public void Message(string _title, string _message, AlertType type)
-        {
             title.Text = _title;
             message.Text = _message;
 
@@ -137,8 +134,11 @@ namespace Emiplus.Data.Helpers
                     icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/errorBranco.png");
                     break;
             }
+        }
 
-            Show();
+        public static void Message(string _title, string _message, AlertType type)
+        {
+            new Alert(_title, _message, type).Show();
         }
 
         public enum AlertType
