@@ -38,8 +38,6 @@ namespace Emiplus.Model
 
         public bool Save(Item data)
         {
-            var Alert = new Alert();
-
             if (ValidarDados(data))
                 return false;
 
@@ -75,8 +73,6 @@ namespace Emiplus.Model
 
         public bool Remove(int id)
         {
-            var Alert = new Alert();
-
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {

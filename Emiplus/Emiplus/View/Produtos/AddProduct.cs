@@ -58,7 +58,7 @@ namespace Emiplus.View.Produtos
         private void Button4_Click(object sender, EventArgs e)
         {
             Console.WriteLine(Support.BasePath());
-            new Alert().Message("Title", "Mesasge", Alert.AlertType.error);
+            Alert.Message("Title", "Mesasge", Alert.AlertType.error);
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)

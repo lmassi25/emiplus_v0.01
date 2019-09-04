@@ -9,7 +9,6 @@ namespace Emiplus.Data.Database
     internal abstract class Model
     {
         protected Log Log;
-        protected Alert Alert;
 
         protected QueryFactory db = new Connect().Open();
         protected string Entity;
@@ -20,7 +19,6 @@ namespace Emiplus.Data.Database
             Entity = entity;
 
             Log = new Log();
-            //Alert = new Alert();
         }
 
         /// <summary>
