@@ -69,11 +69,11 @@
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(631, 4);
+            this.btnHelp.Location = new System.Drawing.Point(607, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 10;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -179,7 +179,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(30, 190);
+            this.label2.Location = new System.Drawing.Point(38, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(353, 20);
             this.label2.TabIndex = 11;
@@ -209,9 +209,9 @@
             this.Editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Editar.Image = ((System.Drawing.Image)(resources.GetObject("Editar.Image")));
             this.Editar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Editar.Location = new System.Drawing.Point(552, 3);
+            this.Editar.Location = new System.Drawing.Point(516, 4);
             this.Editar.Name = "Editar";
-            this.Editar.Size = new System.Drawing.Size(59, 90);
+            this.Editar.Size = new System.Drawing.Size(85, 90);
             this.Editar.TabIndex = 3;
             this.Editar.Text = "Editar";
             this.Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -235,7 +235,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(118, 16);
+            this.label3.Location = new System.Drawing.Point(131, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 16);
             this.label3.TabIndex = 7;
@@ -254,7 +254,7 @@
             this.Adicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Adicionar.Image = ((System.Drawing.Image)(resources.GetObject("Adicionar.Image")));
             this.Adicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Adicionar.Location = new System.Drawing.Point(631, 3);
+            this.Adicionar.Location = new System.Drawing.Point(607, 4);
             this.Adicionar.Name = "Adicionar";
             this.Adicionar.Size = new System.Drawing.Size(85, 90);
             this.Adicionar.TabIndex = 4;
@@ -269,7 +269,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(121, 37);
+            this.search.Location = new System.Drawing.Point(134, 35);
             this.search.Margin = new System.Windows.Forms.Padding(17, 16, 17, 16);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(335, 29);
@@ -289,9 +289,9 @@
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(32, 3);
+            this.btnExit.Location = new System.Drawing.Point(40, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(59, 90);
+            this.btnExit.Size = new System.Drawing.Size(85, 90);
             this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

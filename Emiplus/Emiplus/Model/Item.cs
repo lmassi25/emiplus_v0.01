@@ -14,6 +14,8 @@ namespace Emiplus.Model
     {
         public Item() : base("ITEM") {}
 
+        #region CAMPOS 
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -27,11 +29,17 @@ namespace Emiplus.Model
         public string Referencia { get; set; }
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
+        public double EstoqueMinimo { get; set; }
         public double EstoqueAtual { get; private set; }
         public int Categoriaid { get; set; }
+        public string Medida { get; set; }
+
+        #endregion
 
         public bool Save(Item data)
         {
+            var Alert = new Alert();
+
             if (ValidarDados(data))
                 return false;
 
@@ -67,6 +75,8 @@ namespace Emiplus.Model
 
         public bool Remove(int id)
         {
+            var Alert = new Alert();
+
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {

@@ -3,18 +3,20 @@
 CREATE TABLE ITEM
 (
     id integer not null primary key,
-    tipo varchar(20),
+    tipo varchar(50),
     excluir integer not null,
-    datainserido date,
-    dataatualizado date,
-    datadeletado date,
+    criado timestamp,
+    atualizado date,
+    deletado date,
     empresaid integer,
     nome varchar(200),
     referencia varchar(50),
     valorcompra numeric(18,4),
     valorvenda numeric(18,4),
+    estoqueminimo numeric(18,4),
     estoqueatual numeric(18,4),
     categoriaid integer not null
+    medida varchar(200)
 );
 
 CREATE GENERATOR GEN_ITEM_ID;
@@ -41,11 +43,11 @@ SET TERM; !!
 CREATE TABLE CATEGORIA
 (
     id integer not null primary key,
-    tipo varchar(20),
+    tipo varchar(50),
     excluir integer not null,
-    datainserido date,
-    dataatualizado date,
-    datadeletado date,
+    criado timestamp,
+    atualizado date,
+    deletado date,
     empresaid integer,
     nome varchar(200)
 );
@@ -74,11 +76,11 @@ SET TERM ; !!
 CREATE TABLE PESSOA
 (
     id integer not null primary key,
-    tipo varchar(20),
+    tipo varchar(50),
     excluir integer not null,
-    datainserido date,
-    dataatualizado date,
-    datadeletado date,
+    criado timestamp,
+    atualizado date,
+    deletado date,
     empresaid integer,
     nome varchar(200)
 );
@@ -107,11 +109,11 @@ SET TERM ; !!
 CREATE TABLE PESSOA_CONTATO
 (
     id integer not null primary key,
-    tipo varchar(20),
+    tipo varchar(50),
     excluir integer not null,
-    datainserido date,
-    dataatualizado date,
-    datadeletado date,
+    criado timestamp,
+    atualizado date,
+    deletado date,
     empresaid integer,
     contato varchar(200),
     email varchar(200),
@@ -143,11 +145,11 @@ SET TERM ; !!
 CREATE TABLE PESSOA_ENDERECO
 (
     id integer not null primary key,
-    tipo varchar(20),
+    tipo varchar(50),
     excluir integer not null,
-    datainserido date,
-    dataatualizado date,
-    datadeletado date,
+    criado timestamp,
+    atualizado date,
+    deletado date,
     empresaid integer,
     cep varchar(50),
     estado varchar(50),

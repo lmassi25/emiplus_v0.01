@@ -10,7 +10,7 @@ namespace Emiplus.Data.Core
         public Controller()
         {
             Log = new Log();
-            Alert = new Alert();
+            //Alert = new Alert();
         }
     }
 }

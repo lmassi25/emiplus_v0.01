@@ -33,6 +33,9 @@ namespace Emiplus.View.Produtos
             Categorias.DisplayMember = "NOME";
             Categorias.ValueMember = "ID";
             Categorias.SelectedValue = _modelItem.Categoriaid;
+            
+            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT"};
+            if (_modelItem.Medida != null) Medidas.SelectedValue = _modelItem.Medida;
         }
 
         private void LoadData()
@@ -41,6 +44,10 @@ namespace Emiplus.View.Produtos
 
             nome.Text = _modelItem.Nome;
             referencia.Text = _modelItem.Referencia;
+            valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
+            valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+            estoqueminimo.Text = Validation.Price(_modelItem.EstoqueMinimo);
+            estoqueatual.Text = Validation.Price(_modelItem.EstoqueAtual);
         }
 
         private void Label6_Click(object sender, EventArgs e)
@@ -69,9 +76,17 @@ namespace Emiplus.View.Produtos
             _modelItem.Id = idPdtSelecionado;
             _modelItem.Nome = nome.Text;
             _modelItem.Referencia = referencia.Text;
-            _modelItem.Categoriaid = (int)Categorias.SelectedValue;
+            _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
+            _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
+            _modelItem.EstoqueMinimo = Validation.ConvertToDouble(estoqueminimo.Text);
+            _modelItem.Medida = Medidas.Text;
 
-            _modelItem.Save(_modelItem);
+            if (Categorias.SelectedValue != null) _modelItem.Categoriaid = (int)Categorias.SelectedValue;
+
+            if (_modelItem.Save(_modelItem))
+            {
+                Close();
+            }
         }
 
         private void BtnRemover_Click(object sender, EventArgs e)
