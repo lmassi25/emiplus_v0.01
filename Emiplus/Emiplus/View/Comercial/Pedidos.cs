@@ -87,5 +87,11 @@ namespace Emiplus.View.Comercial
         {
 
         }
+
+        private void PedidoSimples_Click(object sender, EventArgs e)
+        {
+            panelOne.Visible = false;
+
+        }
     }
 }
