@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,11 @@ namespace Emiplus.View.Comercial
         public PedidoPagamentos()
         {
             InitializeComponent();
+
         }
 
         private void PedidoPagamentos_Load(object sender, EventArgs e)
         {
-
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -30,6 +31,28 @@ namespace Emiplus.View.Comercial
         private void Panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void PedidoPagamentos_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void Debito_Click(object sender, EventArgs e)
+        {
+            PedidoPayCartao Cartao = new PedidoPayCartao();
+            Cartao.ShowDialog();
+        }
+
+        private void Credito_Click(object sender, EventArgs e)
+        {
+            PedidoPayParcelado Crediario = new PedidoPayParcelado();
+            Crediario.ShowDialog();
+        }
+
+        private void Dinheiro_Click(object sender, EventArgs e)
+        {
+            PedidoPayDinheiro Dinheiro = new PedidoPayDinheiro();
+            Dinheiro.ShowDialog();
         }
     }
 }
