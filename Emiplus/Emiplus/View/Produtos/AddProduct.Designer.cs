@@ -38,6 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEtiqueta = new System.Windows.Forms.Button();
             this.btnDuplicar = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.referencia = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Medidas = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Categorias = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -74,14 +75,13 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEstoque = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.estoqueatual = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.estoqueminimo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -206,6 +206,15 @@
             this.barraTitulo.Size = new System.Drawing.Size(731, 97);
             this.barraTitulo.TabIndex = 9;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel2.Location = new System.Drawing.Point(222, 25);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 48);
+            this.panel2.TabIndex = 14;
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -310,7 +319,7 @@
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 13;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -330,18 +339,18 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.referencia);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.Medidas);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.Categorias);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.nome);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(40, 154);
+            this.groupBox1.Location = new System.Drawing.Point(40, 144);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(652, 150);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Obrigatórias";
+            this.groupBox1.Text = "Informações";
             // 
             // pictureBox10
             // 
@@ -398,7 +407,8 @@
             this.valorvenda.Location = new System.Drawing.Point(496, 107);
             this.valorvenda.Name = "valorvenda";
             this.valorvenda.Size = new System.Drawing.Size(150, 21);
-            this.valorvenda.TabIndex = 12;
+            this.valorvenda.TabIndex = 6;
+            this.valorvenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
             // 
@@ -416,7 +426,8 @@
             this.valorcompra.Location = new System.Drawing.Point(340, 107);
             this.valorcompra.Name = "valorcompra";
             this.valorcompra.Size = new System.Drawing.Size(150, 21);
-            this.valorcompra.TabIndex = 10;
+            this.valorcompra.TabIndex = 5;
+            this.valorcompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -434,7 +445,7 @@
             this.referencia.Location = new System.Drawing.Point(356, 50);
             this.referencia.Name = "referencia";
             this.referencia.Size = new System.Drawing.Size(174, 21);
-            this.referencia.TabIndex = 8;
+            this.referencia.TabIndex = 2;
             // 
             // label10
             // 
@@ -447,14 +458,14 @@
             this.label10.TabIndex = 7;
             this.label10.Text = "Código Personalizado";
             // 
-            // comboBox2
+            // Medidas
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(536, 49);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(110, 23);
-            this.comboBox2.TabIndex = 6;
+            this.Medidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Medidas.FormattingEnabled = true;
+            this.Medidas.Location = new System.Drawing.Point(536, 49);
+            this.Medidas.Name = "Medidas";
+            this.Medidas.Size = new System.Drawing.Size(110, 23);
+            this.Medidas.TabIndex = 3;
             // 
             // label9
             // 
@@ -511,10 +522,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.tabControl1);
-            this.groupBox2.Location = new System.Drawing.Point(40, 311);
+            this.groupBox2.Location = new System.Drawing.Point(40, 300);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(652, 229);
-            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adicionais";
             // 
@@ -537,9 +548,9 @@
             this.tabPage1.AutoScroll = true;
             this.tabPage1.Controls.Add(this.panelEstoque);
             this.tabPage1.Controls.Add(this.btnEstoque);
-            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.estoqueatual);
             this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.estoqueminimo);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
@@ -642,7 +653,7 @@
             this.btnEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEstoque.Image = ((System.Drawing.Image)(resources.GetObject("btnEstoque.Image")));
             this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEstoque.Location = new System.Drawing.Point(430, 21);
+            this.btnEstoque.Location = new System.Drawing.Point(301, 22);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(170, 39);
             this.btnEstoque.TabIndex = 19;
@@ -651,32 +662,34 @@
             this.btnEstoque.UseVisualStyleBackColor = false;
             this.btnEstoque.Click += new System.EventHandler(this.BtnEstoque_Click);
             // 
-            // textBox6
+            // estoqueatual
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(185, 30);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(239, 22);
-            this.textBox6.TabIndex = 16;
+            this.estoqueatual.Enabled = false;
+            this.estoqueatual.Location = new System.Drawing.Point(155, 30);
+            this.estoqueatual.Name = "estoqueatual";
+            this.estoqueatual.ReadOnly = true;
+            this.estoqueatual.Size = new System.Drawing.Size(140, 22);
+            this.estoqueatual.TabIndex = 16;
+            this.estoqueatual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(182, 12);
+            this.label12.Location = new System.Drawing.Point(152, 12);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(95, 15);
             this.label12.TabIndex = 15;
             this.label12.Text = "Estoque Atual";
             // 
-            // textBox5
+            // estoqueminimo
             // 
-            this.textBox5.Location = new System.Drawing.Point(9, 30);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(170, 22);
-            this.textBox5.TabIndex = 14;
+            this.estoqueminimo.Location = new System.Drawing.Point(9, 30);
+            this.estoqueminimo.Name = "estoqueminimo";
+            this.estoqueminimo.Size = new System.Drawing.Size(140, 22);
+            this.estoqueminimo.TabIndex = 14;
+            this.estoqueminimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
@@ -730,15 +743,6 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel2.Location = new System.Drawing.Point(222, 25);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 48);
-            this.panel2.TabIndex = 14;
             // 
             // AddProduct
             // 
@@ -803,7 +807,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox referencia;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Medidas;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox Categorias;
         private System.Windows.Forms.Label label8;
@@ -814,9 +818,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox valorcompra;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox estoqueatual;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox estoqueminimo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox9;
