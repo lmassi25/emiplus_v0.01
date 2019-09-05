@@ -176,7 +176,7 @@ namespace Emiplus.View.Comercial
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(163, 29);
+            this.pictureBox6.Location = new System.Drawing.Point(138, 29);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(15, 15);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -230,11 +230,11 @@ namespace Emiplus.View.Comercial
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(426, 87);
+            this.label13.Location = new System.Drawing.Point(426, 89);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(130, 15);
+            this.label13.Size = new System.Drawing.Size(111, 14);
             this.label13.TabIndex = 32;
             this.label13.Text = "Modelo de negócio";
             // 
@@ -257,22 +257,22 @@ namespace Emiplus.View.Comercial
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(512, 27);
+            this.label7.Location = new System.Drawing.Point(512, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 15);
+            this.label7.Size = new System.Drawing.Size(65, 14);
             this.label7.TabIndex = 24;
             this.label7.Text = "Aniversário";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(276, 87);
+            this.label10.Location = new System.Drawing.Point(278, 90);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.Size = new System.Drawing.Size(46, 14);
             this.label10.TabIndex = 27;
             this.label10.Text = "RG / IE";
             // 
@@ -287,7 +287,7 @@ namespace Emiplus.View.Comercial
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(391, 29);
+            this.pictureBox4.Location = new System.Drawing.Point(363, 29);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(15, 15);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -304,7 +304,7 @@ namespace Emiplus.View.Comercial
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(215, 87);
+            this.pictureBox7.Location = new System.Drawing.Point(220, 90);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(15, 15);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -314,22 +314,22 @@ namespace Emiplus.View.Comercial
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(276, 28);
+            this.label3.Location = new System.Drawing.Point(276, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.Size = new System.Drawing.Size(86, 14);
             this.label3.TabIndex = 21;
             this.label3.Text = "Nome Fantasia";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(148, 85);
+            this.label9.Location = new System.Drawing.Point(150, 90);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 15);
+            this.label9.Size = new System.Drawing.Size(67, 14);
             this.label9.TabIndex = 27;
             this.label9.Text = "CPF / CNPJ";
             // 
@@ -348,7 +348,7 @@ namespace Emiplus.View.Comercial
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(68, 86);
+            this.pictureBox5.Location = new System.Drawing.Point(65, 88);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(15, 15);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -365,22 +365,22 @@ namespace Emiplus.View.Comercial
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(20, 27);
+            this.label2.Location = new System.Drawing.Point(20, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 15);
+            this.label2.Size = new System.Drawing.Size(117, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "Razão Social / Nome";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(20, 84);
+            this.label8.Location = new System.Drawing.Point(20, 88);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 15);
+            this.label8.Size = new System.Drawing.Size(44, 14);
             this.label8.TabIndex = 27;
             this.label8.Text = "Pessoa";
             // 
@@ -389,7 +389,7 @@ namespace Emiplus.View.Comercial
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(288, 12);
+            this.label1.Location = new System.Drawing.Point(307, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 15);
             this.label1.TabIndex = 9;
@@ -398,7 +398,7 @@ namespace Emiplus.View.Comercial
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(265, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(284, 11);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -422,7 +422,7 @@ namespace Emiplus.View.Comercial
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(212, 12);
+            this.label6.Location = new System.Drawing.Point(227, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 15);
             this.label6.TabIndex = 5;
@@ -432,7 +432,7 @@ namespace Emiplus.View.Comercial
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(191, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(205, 11);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -444,7 +444,7 @@ namespace Emiplus.View.Comercial
             this.label5.AutoSize = true;
             this.label5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(127, 12);
+            this.label5.Location = new System.Drawing.Point(137, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 3;
@@ -460,6 +460,7 @@ namespace Emiplus.View.Comercial
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(730, 40);
             this.panel4.TabIndex = 18;
@@ -467,7 +468,7 @@ namespace Emiplus.View.Comercial
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(102, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(112, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -602,20 +603,20 @@ namespace Emiplus.View.Comercial
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(14, 42);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(220, 15);
+            this.label17.Size = new System.Drawing.Size(220, 14);
             this.label17.TabIndex = 6;
             this.label17.Text = "Gerencie os endereços do cliente aqui!";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(14, 14);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(108, 24);
+            this.label11.Size = new System.Drawing.Size(104, 23);
             this.label11.TabIndex = 5;
             this.label11.Text = "Endereços:";
             // 
@@ -668,7 +669,7 @@ namespace Emiplus.View.Comercial
             this.tabPage3.Controls.Add(this.panelContatos);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(670, 200);
+            this.tabPage3.Size = new System.Drawing.Size(644, 200);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Contatos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -681,7 +682,7 @@ namespace Emiplus.View.Comercial
             this.panelContatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContatos.Location = new System.Drawing.Point(0, 0);
             this.panelContatos.Name = "panelContatos";
-            this.panelContatos.Size = new System.Drawing.Size(670, 200);
+            this.panelContatos.Size = new System.Drawing.Size(644, 200);
             this.panelContatos.TabIndex = 6;
             // 
             // ListaContatos
@@ -698,7 +699,7 @@ namespace Emiplus.View.Comercial
             this.ListaContatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaContatos.Location = new System.Drawing.Point(0, 70);
             this.ListaContatos.Name = "ListaContatos";
-            this.ListaContatos.Size = new System.Drawing.Size(669, 131);
+            this.ListaContatos.Size = new System.Drawing.Size(643, 131);
             this.ListaContatos.TabIndex = 4;
             // 
             // panel3
@@ -711,16 +712,16 @@ namespace Emiplus.View.Comercial
             this.panel3.Controls.Add(this.btnEditarContato);
             this.panel3.Location = new System.Drawing.Point(0, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(669, 68);
+            this.panel3.Size = new System.Drawing.Size(643, 68);
             this.panel3.TabIndex = 3;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(10, 20);
+            this.label12.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(11, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 24);
+            this.label12.Size = new System.Drawing.Size(89, 23);
             this.label12.TabIndex = 5;
             this.label12.Text = "Contatos:";
             // 
@@ -737,7 +738,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarContato.Image")));
             this.btnAdicionarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarContato.Location = new System.Drawing.Point(584, 5);
+            this.btnAdicionarContato.Location = new System.Drawing.Point(558, 5);
             this.btnAdicionarContato.Name = "btnAdicionarContato";
             this.btnAdicionarContato.Size = new System.Drawing.Size(80, 60);
             this.btnAdicionarContato.TabIndex = 4;
@@ -759,7 +760,7 @@ namespace Emiplus.View.Comercial
             this.btnEditarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarContato.Image")));
             this.btnEditarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarContato.Location = new System.Drawing.Point(520, 5);
+            this.btnEditarContato.Location = new System.Drawing.Point(494, 5);
             this.btnEditarContato.Name = "btnEditarContato";
             this.btnEditarContato.Size = new System.Drawing.Size(60, 60);
             this.btnEditarContato.TabIndex = 3;
@@ -782,7 +783,7 @@ namespace Emiplus.View.Comercial
             this.tabTransporte.Location = new System.Drawing.Point(4, 25);
             this.tabTransporte.Name = "tabTransporte";
             this.tabTransporte.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTransporte.Size = new System.Drawing.Size(670, 200);
+            this.tabTransporte.Size = new System.Drawing.Size(644, 200);
             this.tabTransporte.TabIndex = 3;
             this.tabTransporte.Text = "Transporte";
             this.tabTransporte.UseVisualStyleBackColor = true;
@@ -790,7 +791,7 @@ namespace Emiplus.View.Comercial
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(56, 139);
+            this.pictureBox10.Location = new System.Drawing.Point(56, 141);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -800,11 +801,11 @@ namespace Emiplus.View.Comercial
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(16, 137);
+            this.label16.Location = new System.Drawing.Point(18, 141);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 15);
+            this.label16.Size = new System.Drawing.Size(37, 14);
             this.label16.TabIndex = 41;
             this.label16.Text = "RNTC";
             // 
@@ -818,7 +819,7 @@ namespace Emiplus.View.Comercial
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(41, 81);
+            this.pictureBox9.Location = new System.Drawing.Point(42, 82);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -828,11 +829,11 @@ namespace Emiplus.View.Comercial
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(16, 79);
+            this.label15.Location = new System.Drawing.Point(18, 83);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(25, 15);
+            this.label15.Size = new System.Drawing.Size(21, 14);
             this.label15.TabIndex = 38;
             this.label15.Text = "UF";
             // 
@@ -846,7 +847,7 @@ namespace Emiplus.View.Comercial
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(56, 24);
+            this.pictureBox8.Location = new System.Drawing.Point(55, 26);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -856,11 +857,11 @@ namespace Emiplus.View.Comercial
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(16, 22);
+            this.label14.Location = new System.Drawing.Point(18, 26);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 15);
+            this.label14.Size = new System.Drawing.Size(34, 14);
             this.label14.TabIndex = 35;
             this.label14.Text = "Placa";
             // 

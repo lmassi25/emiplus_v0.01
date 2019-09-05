@@ -35,7 +35,7 @@ namespace Emiplus.View.Comercial
             if(_mPedido.Cliente > 0)
             {
                 _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
-                label14.Text = _mCliente.Nome;
+                nomeCliente.Text = _mCliente.Nome;
             }
         }
 
@@ -44,7 +44,7 @@ namespace Emiplus.View.Comercial
             if (_mPedido.Colaborador > 0)
             {
                 _mColaborador.FindById(_mPedido.Colaborador).First<Model.Pessoa>();
-                label16.Text = _mColaborador.Nome;
+                nomeVendedor.Text = _mColaborador.Nome;
             }
         }
 
