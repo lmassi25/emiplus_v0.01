@@ -34,8 +34,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnContatoSalvar = new System.Windows.Forms.Button();
-            this.btnContatoCancelar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,55 +84,55 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel1.Controls.Add(this.btnContatoSalvar);
-            this.panel1.Controls.Add(this.btnContatoCancelar);
+            this.panel1.Controls.Add(this.btnSalvar);
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 158);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 63);
             this.panel1.TabIndex = 33;
             // 
-            // btnContatoSalvar
+            // btnSalvar
             // 
-            this.btnContatoSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContatoSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnContatoSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContatoSalvar.FlatAppearance.BorderSize = 0;
-            this.btnContatoSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContatoSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContatoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoSalvar.Image")));
-            this.btnContatoSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoSalvar.Location = new System.Drawing.Point(127, 2);
-            this.btnContatoSalvar.Name = "btnContatoSalvar";
-            this.btnContatoSalvar.Size = new System.Drawing.Size(74, 60);
-            this.btnContatoSalvar.TabIndex = 4;
-            this.btnContatoSalvar.Text = "Continuar";
-            this.btnContatoSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContatoSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.FlatAppearance.BorderSize = 0;
+            this.btnSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSalvar.Location = new System.Drawing.Point(127, 2);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(74, 60);
+            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.Text = "Continuar";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // btnContatoCancelar
+            // btnCancelar
             // 
-            this.btnContatoCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContatoCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnContatoCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContatoCancelar.FlatAppearance.BorderSize = 0;
-            this.btnContatoCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContatoCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContatoCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoCancelar.Image")));
-            this.btnContatoCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoCancelar.Location = new System.Drawing.Point(202, 2);
-            this.btnContatoCancelar.Name = "btnContatoCancelar";
-            this.btnContatoCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnContatoCancelar.TabIndex = 3;
-            this.btnContatoCancelar.Text = "Cancelar";
-            this.btnContatoCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContatoCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(202, 2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(69, 60);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // PedidoPayDinheiro
             // 
@@ -169,7 +169,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnContatoSalvar;
-        private System.Windows.Forms.Button btnContatoCancelar;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

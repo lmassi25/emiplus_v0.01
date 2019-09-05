@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using Emiplus.Data.Helpers;
+using Emiplus.View.Comercial;
 
 namespace Emiplus.View.Common
 {
@@ -27,6 +28,12 @@ namespace Emiplus.View.Common
         {
             page = "Fornecedores";
             OpenForm.Show<Comercial.Clientes>(this);
+        }
+
+        private void NovoPedido_Click(object sender, System.EventArgs e)
+        {
+            Pedidos Pedidos = new Pedidos();
+            Pedidos.ShowDialog();
         }
     }
 }

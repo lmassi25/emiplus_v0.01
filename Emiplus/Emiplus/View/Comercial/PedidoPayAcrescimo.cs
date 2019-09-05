@@ -16,5 +16,10 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
         }
+
+        private void PedidoPayAcrescimo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,11 @@ namespace Emiplus.View.Comercial
 {
     public partial class Pedidos : Form
     {
+        private int ModoRapAva { get; set; }
+        //private int Id = Pedidos.Id;
+
+        private Pedido _modelPedido = new Pedido();
+
         public Pedidos()
         {
             InitializeComponent();
@@ -20,6 +26,7 @@ namespace Emiplus.View.Comercial
 
         private void Pedidos_Load(object sender, EventArgs e)
         {
+
         }
 
         private void Label11_Click(object sender, EventArgs e)
@@ -67,6 +74,22 @@ namespace Emiplus.View.Comercial
         private void GridListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+                
+        private void ModoRapido_Click(object sender, EventArgs e)
+        {
+            if (ModoRapAva == 1)
+            {
+                ModoRapAva = 0;
+                panelAvancado.Visible = true;
+                ModoRapido.Text = "Modo Rápido (F5) ?";
+            }
+            else
+            {
+                ModoRapAva = 1;
+                panelAvancado.Visible = false;
+                ModoRapido.Text = "Modo Avançado (F5) ?";
+            }
         }
     }
 }

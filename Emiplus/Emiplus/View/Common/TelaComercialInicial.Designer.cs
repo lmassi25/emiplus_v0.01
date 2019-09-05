@@ -50,6 +50,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.NovoPedido = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -385,12 +386,37 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button7.UseVisualStyleBackColor = false;
             // 
+            // NovoPedido
+            // 
+            this.NovoPedido.BackColor = System.Drawing.Color.Transparent;
+            this.NovoPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NovoPedido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NovoPedido.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.NovoPedido.FlatAppearance.BorderSize = 0;
+            this.NovoPedido.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.NovoPedido.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.NovoPedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NovoPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NovoPedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.NovoPedido.Image = ((System.Drawing.Image)(resources.GetObject("NovoPedido.Image")));
+            this.NovoPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NovoPedido.Location = new System.Drawing.Point(458, 188);
+            this.NovoPedido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NovoPedido.Name = "NovoPedido";
+            this.NovoPedido.Size = new System.Drawing.Size(126, 115);
+            this.NovoPedido.TabIndex = 75;
+            this.NovoPedido.Text = "Novo Pedido";
+            this.NovoPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.NovoPedido.UseVisualStyleBackColor = false;
+            this.NovoPedido.Click += new System.EventHandler(this.NovoPedido_Click);
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.NovoPedido);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -446,5 +472,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button NovoPedido;
     }
 }

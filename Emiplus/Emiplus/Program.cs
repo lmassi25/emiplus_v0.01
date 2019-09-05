@@ -4,6 +4,7 @@ using System.Windows.Forms;
 namespace Emiplus
 {
     using Data.Helpers;
+    using Emiplus.View.Comercial;
     using View.Common;
 
     static class Program
