@@ -234,6 +234,12 @@
     <Compile Include="View\Comercial\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\PedidoPagamentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,11 +276,11 @@
     <Compile Include="View\Comercial\PedidoPayParcelado.Designer.cs">
       <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Comercial\Pedidos.cs">
+    <Compile Include="View\Comercial\AddPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Comercial\Pedidos.Designer.cs">
-      <DependentUpon>Pedidos.cs</DependentUpon>
+    <Compile Include="View\Comercial\AddPedidos.Designer.cs">
+      <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -385,6 +391,9 @@
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Pedido.resx">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoPagamentos.resx">
       <DependentUpon>PedidoPagamentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,8 +412,8 @@
     <EmbeddedResource Include="View\Comercial\PedidoPayParcelado.resx">
       <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\Pedidos.resx">
-      <DependentUpon>Pedidos.cs</DependentUpon>
+    <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
+      <DependentUpon>AddPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

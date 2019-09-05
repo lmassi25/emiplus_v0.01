@@ -32,8 +32,14 @@ namespace Emiplus.View.Common
 
         private void NovoPedido_Click(object sender, System.EventArgs e)
         {
-            Pedidos Pedidos = new Pedidos();
-            Pedidos.ShowDialog();
+            AddPedidos NovoPedido = new AddPedidos();
+            NovoPedido.ShowDialog();
+        }
+
+        private void Pedidos_Click(object sender, System.EventArgs e)
+        {
+            Pedido Pedido = new Pedido();
+            Pedido.ShowDialog();
         }
     }
 }

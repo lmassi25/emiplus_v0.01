@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
-    public partial class Pedidos : Form
+    public partial class AddPedidos : Form
     {
         private int ModoRapAva { get; set; }
-        //private int Id = Pedidos.Id;
+        public int Id = Pedido.Id;
 
         private Pedido _modelPedido = new Pedido();
 
-        public Pedidos()
+        public AddPedidos()
         {
             InitializeComponent();
         }

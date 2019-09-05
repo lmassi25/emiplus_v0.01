@@ -1,6 +1,6 @@
 ﻿namespace Emiplus.View.Comercial
 {
-    partial class Pedidos
+    partial class AddPedidos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedidos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pedidoAvancado = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();

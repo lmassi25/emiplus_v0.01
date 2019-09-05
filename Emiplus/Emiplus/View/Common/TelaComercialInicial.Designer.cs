@@ -45,7 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Pedidos = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -102,7 +102,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(960, 40);
+            this.panel4.Size = new System.Drawing.Size(735, 40);
             this.panel4.TabIndex = 52;
             // 
             // label4
@@ -271,28 +271,29 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // Pedidos
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(326, 359);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 115);
-            this.button3.TabIndex = 69;
-            this.button3.Text = "Pedidos";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = false;
+            this.Pedidos.BackColor = System.Drawing.Color.Transparent;
+            this.Pedidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Pedidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Pedidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Pedidos.FlatAppearance.BorderSize = 0;
+            this.Pedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Pedidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Pedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Pedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Pedidos.Image = ((System.Drawing.Image)(resources.GetObject("Pedidos.Image")));
+            this.Pedidos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Pedidos.Location = new System.Drawing.Point(326, 359);
+            this.Pedidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pedidos.Name = "Pedidos";
+            this.Pedidos.Size = new System.Drawing.Size(126, 115);
+            this.Pedidos.TabIndex = 69;
+            this.Pedidos.Text = "Pedidos";
+            this.Pedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Pedidos.UseVisualStyleBackColor = false;
+            this.Pedidos.Click += new System.EventHandler(this.Pedidos_Click);
             // 
             // button4
             // 
@@ -422,7 +423,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Pedidos);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
@@ -467,7 +468,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Pedidos;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
