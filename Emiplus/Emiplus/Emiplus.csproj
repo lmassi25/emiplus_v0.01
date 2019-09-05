@@ -241,6 +241,12 @@
     <Compile Include="View\Comercial\Pedido.Designer.cs">
       <DependentUpon>Pedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\PedidoModalClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalClientes.Designer.cs">
+      <DependentUpon>PedidoModalClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\PedidoPagamentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalClientes.resx">
+      <DependentUpon>PedidoModalClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoPagamentos.resx">
       <DependentUpon>PedidoPagamentos.cs</DependentUpon>

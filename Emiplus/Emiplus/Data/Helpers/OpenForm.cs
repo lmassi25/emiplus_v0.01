@@ -5,6 +5,11 @@ namespace Emiplus.Data.Helpers
 {
     public static class OpenForm
     {
+        public static void Forms(Form Principal)
+        {
+            Principal.ShowDialog();
+        }
+
         /// <summary>
         /// Adiciona um Form dentro de outro Form
         /// </summary>

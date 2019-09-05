@@ -57,8 +57,8 @@ namespace Emiplus.Controller
                     item.CATEGORIA,
                     item.REFERENCIA,
                     item.NOME,
-                    Validation.Price(Validation.ConvertToDouble(item.VALORCOMPRA)),
-                    Validation.Price(Validation.ConvertToDouble(item.VALORVENDA))
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA)),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA))
                 );
             }
         }

@@ -13,8 +13,6 @@ namespace Emiplus.Data.Helpers
         /// <returns>1.234,95</returns>
         public static string FormatPrice(double obj, bool cifrao = false)
         {
-            // return string.Format("{0:N2}", obj);
-
             string res;
 
             if (cifrao) {
@@ -28,6 +26,11 @@ namespace Emiplus.Data.Helpers
             }
 
             return res;
+        }
+
+        public static string Price(double price)
+        {
+            return string.Format("{0:N2}", price);
         }
 
         public static double ConvertToDouble(object obj)

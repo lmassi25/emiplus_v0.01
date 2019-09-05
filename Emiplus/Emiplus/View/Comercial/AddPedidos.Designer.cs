@@ -208,6 +208,7 @@
             this.SelecionarCliente.TabIndex = 103;
             this.SelecionarCliente.Text = "Selecionar (F7)";
             this.SelecionarCliente.UseVisualStyleBackColor = false;
+            this.SelecionarCliente.Click += new System.EventHandler(this.SelecionarCliente_Click);
             // 
             // pictureBox10
             // 
