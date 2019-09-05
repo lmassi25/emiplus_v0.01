@@ -74,6 +74,29 @@ namespace Emiplus.Data.Database
             return data;
         }
 
+        public int GetLastId()
+        {
+            int id_num = 0;
+            foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
+            {
+                id_num = Validation.ConvertToInt32(item.NUM);                
+            }
+
+            return id_num;
+        }
+
+        public int GetNextId()
+        {
+            int id_num = 0;
+
+            foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
+            {
+                id_num = Validation.ConvertToInt32(item.NUM);
+            }
+
+            return id_num + 1;
+        }
+
         /// <summary>
         /// Executa o Insert();
         /// </summary>

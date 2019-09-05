@@ -71,5 +71,80 @@
         public double CofinsVlr { get; set; }  // SOMASSE AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM    
 
         #endregion
+
+        #region SQL CREATE
+        //        CREATE TABLE PEDIDO_ITEM
+        //        (
+        //        id integer not null primary key,
+        //        tipo integer not null,
+        //        excluir integer,
+        //        criado timestamp,
+        //        atualizado timestamp,
+        //        deletado timestamp,
+        //        empresaid varchar(255),
+        //        pedido integer,
+        //        item integer,
+        //        cprod varchar(255),
+        //        cean varchar(255),
+        //        xprod varchar(255),
+        //        ncm varchar(255),
+        //        cfop varchar(255),
+        //        origem varchar(255),
+        //        valorcompra numeric(18,4),
+        //        valorvenda numeric(18,4),
+        //        quantidade numeric(18,4),
+        //        total numeric(18,4),
+        //        desconto numeric(18,4),
+        //        descontoitem numeric(18,4),
+        //        descontopedido numeric(18,4),
+        //        frete numeric(18,4),
+        //        produtos numeric(18,4),
+        //        icms numeric(18,4),
+        //        icmsbase numeric(18,4),
+        //        icmsreducaoaliq numeric(18,4),
+        //        icmsbasecomreducao numeric(18,4),
+        //        icmsaliq numeric(18,4),
+        //        icmsvlr numeric(18,4),
+        //        icmsstbase numeric(18,4),
+        //        icmsstreducaoaliq numeric(18,4),
+        //        icmsstbasecomreducao numeric(18,4),
+        //        icmsstaliq numeric(18,4),
+        //        icmsst numeric(18,4),
+        //        ipi numeric(18,4),
+        //        ipialiq numeric(18,4),
+        //        ipivlr numeric(18,4),
+        //        pis numeric(18,4),
+        //        pisaliq numeric(18,4),
+        //        pisvlr numeric(18,4),
+        //        cofins numeric(18,4),
+        //        cofinsaliq numeric(18,4),
+        //        cofinsvlr numeric(18,4)
+        //);
+
+        #endregion
+
+        #region Generator
+//                CREATE GENERATOR GEN_PEDIDO_ITEM_ID;
+
+//        SET TERM !! ;
+//        CREATE TRIGGER PEDIDO_ITEM_BI FOR PEDIDO_ITEM
+//        ACTIVE BEFORE INSERT POSITION 0
+//AS
+//DECLARE VARIABLE tmp DECIMAL(18,0);
+//        BEGIN
+//          IF(NEW.ID IS NULL) THEN
+//           NEW.ID = GEN_ID(GEN_PEDIDO_ITEM_ID, 1);
+//        ELSE
+//        BEGIN
+//    tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, 0);
+//    if (tmp< new.ID) then
+//     tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, new.ID - tmp);
+//        END
+//      END!!
+//SET TERM; !!
+
+
+        #endregion
+
     }
 }

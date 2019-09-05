@@ -64,7 +64,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Quantidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -75,14 +75,15 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panelTwo = new System.Windows.Forms.Panel();
+            this.panelAvancado = new System.Windows.Forms.Panel();
             this.addProduto = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.ModoRapido = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnAlterarQtd = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.ModoRapido = new System.Windows.Forms.Label();
-            this.panelAvancado = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -93,11 +94,11 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panelTwo.SuspendLayout();
+            this.panelAvancado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panelAvancado.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -335,9 +336,9 @@
             this.label2.ForeColor = System.Drawing.Color.DimGray;
             this.label2.Location = new System.Drawing.Point(71, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 25);
+            this.label2.Size = new System.Drawing.Size(204, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Dados do Pedido";
+            this.label2.Text = "Dados do Pedido: N";
             // 
             // panel2
             // 
@@ -450,6 +451,8 @@
             // 
             // GridListaProdutos
             // 
+            this.GridListaProdutos.AllowUserToAddRows = false;
+            this.GridListaProdutos.AllowUserToDeleteRows = false;
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -510,13 +513,13 @@
             this.Column7.HeaderText = "Total";
             this.Column7.Name = "Column7";
             // 
-            // textBox3
+            // Quantidade
             // 
-            this.textBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(406, 53);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(93, 23);
-            this.textBox3.TabIndex = 2;
+            this.Quantidade.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quantidade.Location = new System.Drawing.Point(406, 53);
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.Size = new System.Drawing.Size(93, 23);
+            this.Quantidade.TabIndex = 2;
             // 
             // label5
             // 
@@ -622,14 +625,32 @@
             this.panelTwo.Controls.Add(this.pictureBox2);
             this.panelTwo.Controls.Add(this.button3);
             this.panelTwo.Controls.Add(this.label6);
-            this.panelTwo.Controls.Add(this.textBox3);
+            this.panelTwo.Controls.Add(this.Quantidade);
             this.panelTwo.Controls.Add(this.produto);
             this.panelTwo.Controls.Add(this.label4);
+            this.panelTwo.Controls.Add(this.btnAlterarQtd);
             this.panelTwo.Controls.Add(this.pictureBox3);
             this.panelTwo.Location = new System.Drawing.Point(0, 80);
             this.panelTwo.Name = "panelTwo";
             this.panelTwo.Size = new System.Drawing.Size(1008, 577);
             this.panelTwo.TabIndex = 104;
+            // 
+            // panelAvancado
+            // 
+            this.panelAvancado.Controls.Add(this.label7);
+            this.panelAvancado.Controls.Add(this.label5);
+            this.panelAvancado.Controls.Add(this.addProduto);
+            this.panelAvancado.Controls.Add(this.label9);
+            this.panelAvancado.Controls.Add(this.pictureBox4);
+            this.panelAvancado.Controls.Add(this.textBox6);
+            this.panelAvancado.Controls.Add(this.textBox4);
+            this.panelAvancado.Controls.Add(this.textBox7);
+            this.panelAvancado.Controls.Add(this.label8);
+            this.panelAvancado.Controls.Add(this.textBox5);
+            this.panelAvancado.Location = new System.Drawing.Point(499, 29);
+            this.panelAvancado.Name = "panelAvancado";
+            this.panelAvancado.Size = new System.Drawing.Size(475, 65);
+            this.panelAvancado.TabIndex = 96;
             // 
             // addProduto
             // 
@@ -646,6 +667,28 @@
             this.addProduto.Size = new System.Drawing.Size(42, 41);
             this.addProduto.TabIndex = 7;
             this.addProduto.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(160, 6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 73;
+            this.pictureBox4.TabStop = false;
+            // 
+            // ModoRapido
+            // 
+            this.ModoRapido.AutoSize = true;
+            this.ModoRapido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ModoRapido.ForeColor = System.Drawing.Color.Gray;
+            this.ModoRapido.Location = new System.Drawing.Point(112, 9);
+            this.ModoRapido.Name = "ModoRapido";
+            this.ModoRapido.Size = new System.Drawing.Size(100, 13);
+            this.ModoRapido.TabIndex = 95;
+            this.ModoRapido.Text = "Modo Rápido (F5) ?";
+            this.ModoRapido.Click += new System.EventHandler(this.ModoRapido_Click);
             // 
             // panel3
             // 
@@ -685,15 +728,24 @@
             this.button3.TabIndex = 86;
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // pictureBox4
+            // btnAlterarQtd
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(160, 6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 73;
-            this.pictureBox4.TabStop = false;
+            this.btnAlterarQtd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAlterarQtd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAlterarQtd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAlterarQtd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAlterarQtd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAlterarQtd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAlterarQtd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlterarQtd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAlterarQtd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAlterarQtd.Location = new System.Drawing.Point(505, 4);
+            this.btnAlterarQtd.Name = "btnAlterarQtd";
+            this.btnAlterarQtd.Size = new System.Drawing.Size(138, 23);
+            this.btnAlterarQtd.TabIndex = 105;
+            this.btnAlterarQtd.Text = "Alterar Quantidade (F5)";
+            this.btnAlterarQtd.UseVisualStyleBackColor = false;
+            this.btnAlterarQtd.Visible = false;
             // 
             // pictureBox3
             // 
@@ -705,36 +757,7 @@
             this.pictureBox3.TabIndex = 67;
             this.pictureBox3.TabStop = false;
             // 
-            // ModoRapido
-            // 
-            this.ModoRapido.AutoSize = true;
-            this.ModoRapido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ModoRapido.ForeColor = System.Drawing.Color.Gray;
-            this.ModoRapido.Location = new System.Drawing.Point(112, 9);
-            this.ModoRapido.Name = "ModoRapido";
-            this.ModoRapido.Size = new System.Drawing.Size(100, 13);
-            this.ModoRapido.TabIndex = 95;
-            this.ModoRapido.Text = "Modo Rápido (F5) ?";
-            this.ModoRapido.Click += new System.EventHandler(this.ModoRapido_Click);
-            // 
-            // panelAvancado
-            // 
-            this.panelAvancado.Controls.Add(this.label7);
-            this.panelAvancado.Controls.Add(this.label5);
-            this.panelAvancado.Controls.Add(this.addProduto);
-            this.panelAvancado.Controls.Add(this.label9);
-            this.panelAvancado.Controls.Add(this.pictureBox4);
-            this.panelAvancado.Controls.Add(this.textBox6);
-            this.panelAvancado.Controls.Add(this.textBox4);
-            this.panelAvancado.Controls.Add(this.textBox7);
-            this.panelAvancado.Controls.Add(this.label8);
-            this.panelAvancado.Controls.Add(this.textBox5);
-            this.panelAvancado.Location = new System.Drawing.Point(499, 29);
-            this.panelAvancado.Name = "panelAvancado";
-            this.panelAvancado.Size = new System.Drawing.Size(475, 65);
-            this.panelAvancado.TabIndex = 96;
-            // 
-            // Pedidos
+            // AddPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -747,7 +770,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
-            this.Name = "Pedidos";
+            this.Name = "AddPedidos";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Pedidos_Load);
@@ -763,13 +786,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();
             this.panelTwo.ResumeLayout(false);
             this.panelTwo.PerformLayout();
+            this.panelAvancado.ResumeLayout(false);
+            this.panelAvancado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panelAvancado.ResumeLayout(false);
-            this.panelAvancado.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -792,7 +815,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Quantidade;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label6;
@@ -830,5 +853,6 @@
         private System.Windows.Forms.Button addProduto;
         private System.Windows.Forms.Label ModoRapido;
         private System.Windows.Forms.Panel panelAvancado;
+        private System.Windows.Forms.Button btnAlterarQtd;
     }
 }

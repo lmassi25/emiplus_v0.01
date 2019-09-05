@@ -184,6 +184,7 @@
   <ItemGroup>
     <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Item.cs" />
+    <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
