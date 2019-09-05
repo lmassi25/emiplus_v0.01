@@ -1,4 +1,5 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using Emiplus.Data.Helpers;
+using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 
@@ -23,6 +24,9 @@ namespace Emiplus.Data.Database
 
             db.Logger = compiled => 
             {
+                Log Log = new Log();
+                Log.Add("LOGGER", "Query: " + compiled.ToString(), Log.LogType.fatal);
+
                 System.Console.WriteLine(compiled.ToString());
             };
 

@@ -184,6 +184,7 @@
   <ItemGroup>
     <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Item.cs" />
+    <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Pedido.cs" />
+    <Compile Include="Model\PedidoItem.cs" />
     <Compile Include="Model\Pessoa.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\PessoaContato.cs" />
@@ -233,17 +235,53 @@
     <Compile Include="View\Comercial\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\PedidoPagamentos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Comercial\PedidoPagamentos.Designer.cs">
       <DependentUpon>PedidoPagamentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Comercial\Pedidos.cs">
+    <Compile Include="View\Comercial\PedidoPayAcrescimo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Comercial\Pedidos.Designer.cs">
-      <DependentUpon>Pedidos.cs</DependentUpon>
+    <Compile Include="View\Comercial\PedidoPayAcrescimo.Designer.cs">
+      <DependentUpon>PedidoPayAcrescimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayCartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayCartao.Designer.cs">
+      <DependentUpon>PedidoPayCartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayDesconto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayDesconto.Designer.cs">
+      <DependentUpon>PedidoPayDesconto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayDinheiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayDinheiro.Designer.cs">
+      <DependentUpon>PedidoPayDinheiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayParcelado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayParcelado.Designer.cs">
+      <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\AddPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddPedidos.Designer.cs">
+      <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -354,11 +392,29 @@
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Pedido.resx">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoPagamentos.resx">
       <DependentUpon>PedidoPagamentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\Pedidos.resx">
-      <DependentUpon>Pedidos.cs</DependentUpon>
+    <EmbeddedResource Include="View\Comercial\PedidoPayAcrescimo.resx">
+      <DependentUpon>PedidoPayAcrescimo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoPayCartao.resx">
+      <DependentUpon>PedidoPayCartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoPayDesconto.resx">
+      <DependentUpon>PedidoPayDesconto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoPayDinheiro.resx">
+      <DependentUpon>PedidoPayDinheiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoPayParcelado.resx">
+      <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
+      <DependentUpon>AddPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -420,11 +476,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Images\" />
     <Folder Include="View\Config\" />
     <Folder Include="View\Fiscal\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
     <Content Include="iconEmiPlus.ico" />
   </ItemGroup>
   <ItemGroup>

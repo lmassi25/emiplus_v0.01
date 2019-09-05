@@ -4,6 +4,7 @@ using System.Windows.Forms;
 namespace Emiplus
 {
     using Data.Helpers;
+    using Emiplus.View.Comercial;
     using View.Common;
 
     static class Program
@@ -18,7 +19,7 @@ namespace Emiplus
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Comercial.Pedidos());
+            Application.Run(new Home());
         }
     }
 }
