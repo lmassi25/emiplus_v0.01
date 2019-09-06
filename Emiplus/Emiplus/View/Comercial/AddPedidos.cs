@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
 using SqlKata.Execution;
 using System;
 using System.Drawing;
@@ -15,6 +16,12 @@ namespace Emiplus.View.Comercial
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Pessoa _mColaborador = new Model.Pessoa();
 
+        private Controller.Pedido _controllerPedido = new Controller.Pedido();
+
+        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+
+        public static string searchItemTexto { get; set; }
+
         public AddPedidos()
         {
             InitializeComponent();
@@ -27,7 +34,7 @@ namespace Emiplus.View.Comercial
             LoadCliente();
             LoadColaboradorCaixa();
             LoadTabelaPreco();
-            LoadItens();
+            //LoadItens();
         }
 
         private void LoadCliente()
@@ -53,13 +60,37 @@ namespace Emiplus.View.Comercial
 
         }
 
+        private void AutoCompleteItens()
+        {
+            var item = new Model.Item().Query().Select("id", "nome")
+                .Where("excluir", 0)
+                .Where("tipo", 0)
+                .Get();
+
+            foreach (var itens in item)
+            {
+                collection.Add(itens.NOME, itens.ID);
+            }
+
+            BuscarProduto.AutoCompleteCustomSource = collection;
+        }
+
         private void LoadItens()
         {
+            _controllerPedido.GetDataTableItens(GridListaProdutos, collection.Lookup(BuscarProduto.Text));
 
+            if (collection.Lookup(BuscarProduto.Text) == 0)
+            {
+                searchItemTexto = BuscarProduto.Text;
+                PedidoModalItens form = new PedidoModalItens();
+                form.ShowDialog();
+            }
         }
 
         private void Pedidos_Load(object sender, EventArgs e)
-        {            
+        {
+            AutoCompleteItens();
+
             if(Id > 0)
             {
                 LoadData();
@@ -96,7 +127,7 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
-            button3.BackColor = BackColor;
+            searchItem.BackColor = BackColor;
             panel3.BackColor = Color.White;
             panel2.BackColor = Color.White;
         }
@@ -112,7 +143,7 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
-            button3.BackColor = BackColor;
+            searchItem.BackColor = BackColor;
             panel3.BackColor = Color.FromArgb(249, 249, 249);
             panel2.BackColor = Color.FromArgb(249, 249, 249);
         }
@@ -155,6 +186,41 @@ namespace Emiplus.View.Comercial
         private void SelecionarCliente_Click(object sender, EventArgs e)
         {
             PedidoModalClientes form = new PedidoModalClientes();
+            form.ShowDialog();
+        }
+
+        private void SelecionarColaborador_Click(object sender, EventArgs e)
+        {
+            PedidoModalVendedor form = new PedidoModalVendedor();
+            form.ShowDialog();
+        }
+
+        private void BuscarProduto_Enter(object sender, EventArgs e)
+        {
+
+            LoadItens();
+        }
+
+        private void BuscarProduto_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void BuscarProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void BuscarProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadItens();
+            }
+        }
+
+        private void searchItem_Click(object sender, EventArgs e)
+        {
+            PedidoModalItens form = new PedidoModalItens();
             form.ShowDialog();
         }
     }

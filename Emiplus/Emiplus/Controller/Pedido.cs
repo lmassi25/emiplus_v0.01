@@ -17,10 +17,10 @@ namespace Emiplus.Controller
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
-            
+
             Table.Columns[1].Name = "Nome";
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            
+
             Table.Columns[2].Name = "CNPJ/CPF";
             Table.Columns[2].Width = 100;
 
@@ -53,7 +53,7 @@ namespace Emiplus.Controller
             foreach (var cliente in data)
             {
                 Table.Rows.Add(
-                    cliente.ID,                    
+                    cliente.ID,
                     cliente.NOME,
                     cliente.CPF,
                     cliente.RG,
@@ -62,51 +62,56 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTableItens(DataGridView Table, string SearchText)
+        public void GetDataTableItens(DataGridView Table, int id)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 8;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Nome / Razão social";
-            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[1].Name = "Código";
+            Table.Columns[1].Width = 50;
 
-            Table.Columns[2].Name = "Nome Fantasia";
-            Table.Columns[2].Width = 150;
+            Table.Columns[2].Name = "Nome do Produto";
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            Table.Columns[3].Name = "CPF / CNPJ";
-            Table.Columns[3].Width = 150;
+            Table.Columns[3].Name = "Unidade";
+            Table.Columns[3].Width = 100;
 
-            Table.Columns[4].Name = "RG / IE";
-            Table.Columns[4].Width = 150;
+            Table.Columns[4].Name = "Quantidade";
+            Table.Columns[4].Width = 100;
 
-            Table.Rows.Clear();
+            Table.Columns[5].Name = "Descontos";
+            Table.Columns[5].Width = 100;
 
-            var address = new Model.Pessoa();
+            Table.Columns[6].Name = "Unitários";
+            Table.Columns[6].Width = 100;
 
-            var search = "%" + SearchText + "%";
-            var data = address.Query()
-                .Where("EXCLUIR", 0)
-                .Where("TIPO", "Clientes")
-                .Where(q =>
-                    q.Where("nome", "like", search)
-                        .OrWhere("fantasia", "like", search)
-                        .OrWhere("rg", "like", search)
-                        .OrWhere("cpf", "like", search))
-                .OrderByDesc("criado")
+            Table.Columns[7].Name = "Total";
+            Table.Columns[7].Width = 100;
+
+            var item = new Model.Item();
+
+            var itens = item.Query()
+                .Where("id", id)
+                .Where("excluir", 0)
+                .Where("tipo", 0)
                 .Get();
 
-            foreach (var item in data)
+            foreach (var data in itens)
             {
                 Table.Rows.Add(
-                    item.ID,
-                    item.NOME,
-                    item.FANTASIA,
-                    item.CPF,
-                    item.RG
+                    data.ID,
+                    data.REFERENCIA,
+                    data.NOME,
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
                 );
             }
+
         }
 
     }

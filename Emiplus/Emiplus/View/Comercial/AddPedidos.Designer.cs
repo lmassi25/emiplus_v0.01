@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SelecionarColaborador = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -53,17 +56,10 @@
             this.btnConcluir = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.produto = new System.Windows.Forms.TextBox();
+            this.BuscarProduto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -81,7 +77,7 @@
             this.ModoRapido = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.searchItem = new System.Windows.Forms.Button();
             this.btnAlterarQtd = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -145,6 +141,7 @@
             this.SelecionarColaborador.TabIndex = 104;
             this.SelecionarColaborador.Text = "Selecionar (F8)";
             this.SelecionarColaborador.UseVisualStyleBackColor = false;
+            this.SelecionarColaborador.Click += new System.EventHandler(this.SelecionarColaborador_Click);
             // 
             // pictureBox9
             // 
@@ -416,16 +413,20 @@
             this.label20.TabIndex = 98;
             this.label20.Text = "SubTotal:";
             // 
-            // produto
+            // BuscarProduto
             // 
-            this.produto.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.produto.ForeColor = System.Drawing.Color.Gray;
-            this.produto.Location = new System.Drawing.Point(113, 52);
-            this.produto.Name = "produto";
-            this.produto.Size = new System.Drawing.Size(253, 23);
-            this.produto.TabIndex = 1;
-            this.produto.Click += new System.EventHandler(this.Produto_Click);
-            this.produto.Leave += new System.EventHandler(this.Produto_Leave);
+            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.BuscarProduto.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarProduto.ForeColor = System.Drawing.Color.Gray;
+            this.BuscarProduto.Location = new System.Drawing.Point(113, 52);
+            this.BuscarProduto.Name = "BuscarProduto";
+            this.BuscarProduto.Size = new System.Drawing.Size(253, 23);
+            this.BuscarProduto.TabIndex = 1;
+            this.BuscarProduto.Click += new System.EventHandler(this.Produto_Click);
+            this.BuscarProduto.TextChanged += new System.EventHandler(this.BuscarProduto_TextChanged);
+            this.BuscarProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BuscarProduto_KeyDown);
+            this.BuscarProduto.Leave += new System.EventHandler(this.Produto_Leave);
             // 
             // label4
             // 
@@ -456,63 +457,43 @@
             this.GridListaProdutos.AllowUserToDeleteRows = false;
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
             this.GridListaProdutos.MultiSelect = false;
             this.GridListaProdutos.Name = "GridListaProdutos";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridListaProdutos.RowTemplate.Height = 30;
             this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaProdutos.Size = new System.Drawing.Size(870, 366);
             this.GridListaProdutos.TabIndex = 8;
             this.GridListaProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridListaProdutos_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Código";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Nome do Produto";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Unidade";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Quantidade";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Descontos";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Unitários";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Total";
-            this.Column7.Name = "Column7";
             // 
             // Quantidade
             // 
@@ -520,7 +501,7 @@
             this.Quantidade.Location = new System.Drawing.Point(406, 53);
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.Size = new System.Drawing.Size(93, 23);
-            this.Quantidade.TabIndex = 2;
+            this.Quantidade.TabIndex = 3;
             // 
             // label5
             // 
@@ -624,10 +605,10 @@
             this.panelTwo.Controls.Add(this.panel3);
             this.panelTwo.Controls.Add(this.panel4);
             this.panelTwo.Controls.Add(this.pictureBox2);
-            this.panelTwo.Controls.Add(this.button3);
+            this.panelTwo.Controls.Add(this.searchItem);
             this.panelTwo.Controls.Add(this.label6);
             this.panelTwo.Controls.Add(this.Quantidade);
-            this.panelTwo.Controls.Add(this.produto);
+            this.panelTwo.Controls.Add(this.BuscarProduto);
             this.panelTwo.Controls.Add(this.label4);
             this.panelTwo.Controls.Add(this.btnAlterarQtd);
             this.panelTwo.Controls.Add(this.pictureBox3);
@@ -714,20 +695,21 @@
             this.pictureBox2.TabIndex = 92;
             this.pictureBox2.TabStop = false;
             // 
-            // button3
+            // searchItem
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.Location = new System.Drawing.Point(367, 53);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(33, 23);
-            this.button3.TabIndex = 86;
-            this.button3.UseVisualStyleBackColor = false;
+            this.searchItem.BackColor = System.Drawing.Color.Transparent;
+            this.searchItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("searchItem.BackgroundImage")));
+            this.searchItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.searchItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchItem.FlatAppearance.BorderSize = 0;
+            this.searchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchItem.Location = new System.Drawing.Point(367, 53);
+            this.searchItem.Name = "searchItem";
+            this.searchItem.Size = new System.Drawing.Size(33, 23);
+            this.searchItem.TabIndex = 2;
+            this.searchItem.UseVisualStyleBackColor = false;
+            this.searchItem.Click += new System.EventHandler(this.searchItem_Click);
             // 
             // btnAlterarQtd
             // 
@@ -773,6 +755,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "AddPedidos";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Pedidos_Load);
             this.panel1.ResumeLayout(false);
@@ -804,18 +787,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox produto;
+        private System.Windows.Forms.TextBox BuscarProduto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView GridListaProdutos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.TextBox Quantidade;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -823,7 +799,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button searchItem;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel6;

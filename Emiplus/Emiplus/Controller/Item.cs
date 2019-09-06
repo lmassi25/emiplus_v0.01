@@ -41,11 +41,11 @@ namespace Emiplus.Controller
             var lista = produtos.Query()
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
                 .Select("item.*", "categoria.nome as categoria")
-                .Where("item.EXCLUIR", 0)
+                .Where("item.excluir", 0)
+                .Where("item.tipo", 0)
                 .Where
                 (
-                    //q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", search, false).OrWhere("categoria.nome", search, false)
-                    q => q.WhereLike("item.nome", search, false)
+                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
                 )
                 .OrderByDesc("item.criado")
                 .Get();
