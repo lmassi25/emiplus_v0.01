@@ -3,6 +3,7 @@ using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
 using Emiplus.View.Common;
+using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace Emiplus.View.Comercial
 {
@@ -15,13 +16,23 @@ namespace Emiplus.View.Comercial
         private string page = TelaComercialInicial.page;
         private int Id = Clientes.Id;
 
+        private int IdClientePedido = PedidoModalClientes.Id;
+        private string pageClientePedido = PedidoModalClientes.page;
+
         public AddClientes()
         {
             InitializeComponent();
+
+            if (String.IsNullOrEmpty(page) && Validation.IsNumber(Id))
+            {
+                Id = 0;
+                page = "Clientes";
+            }
+
             label6.Text = page;
             label1.Text = "Adicionar " + page;
-            label1.Left = 288;
-            pictureBox2.Left = 265;
+            label1.Left = 307;
+            pictureBox2.Left = 284;
 
             if (page == "Fornecedores")
             {

@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pedidoAvancado = new System.Windows.Forms.Button();
+            this.SelecionarColaborador = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pedidoSimples = new System.Windows.Forms.Button();
+            this.nomeCliente = new System.Windows.Forms.Label();
+            this.SelecionarCliente = new System.Windows.Forms.Button();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.nomeVendedor = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -104,17 +104,17 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel1.Controls.Add(this.pedidoAvancado);
+            this.panel1.Controls.Add(this.SelecionarColaborador);
             this.panel1.Controls.Add(this.pictureBox9);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.pictureBox12);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.pedidoSimples);
+            this.panel1.Controls.Add(this.nomeCliente);
+            this.panel1.Controls.Add(this.SelecionarCliente);
             this.panel1.Controls.Add(this.pictureBox10);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.pictureBox11);
-            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.nomeVendedor);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.pictureBox8);
@@ -128,23 +128,23 @@
             this.panel1.Size = new System.Drawing.Size(1008, 80);
             this.panel1.TabIndex = 1;
             // 
-            // pedidoAvancado
+            // SelecionarColaborador
             // 
-            this.pedidoAvancado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pedidoAvancado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pedidoAvancado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pedidoAvancado.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoAvancado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoAvancado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoAvancado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pedidoAvancado.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pedidoAvancado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pedidoAvancado.Location = new System.Drawing.Point(797, 49);
-            this.pedidoAvancado.Name = "pedidoAvancado";
-            this.pedidoAvancado.Size = new System.Drawing.Size(103, 23);
-            this.pedidoAvancado.TabIndex = 104;
-            this.pedidoAvancado.Text = "Selecionar (F8)";
-            this.pedidoAvancado.UseVisualStyleBackColor = false;
+            this.SelecionarColaborador.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarColaborador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.SelecionarColaborador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarColaborador.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarColaborador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarColaborador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarColaborador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelecionarColaborador.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelecionarColaborador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SelecionarColaborador.Location = new System.Drawing.Point(797, 49);
+            this.SelecionarColaborador.Name = "SelecionarColaborador";
+            this.SelecionarColaborador.Size = new System.Drawing.Size(103, 23);
+            this.SelecionarColaborador.TabIndex = 104;
+            this.SelecionarColaborador.Text = "Selecionar (F8)";
+            this.SelecionarColaborador.UseVisualStyleBackColor = false;
             // 
             // pictureBox9
             // 
@@ -180,34 +180,35 @@
             this.pictureBox12.TabIndex = 49;
             this.pictureBox12.TabStop = false;
             // 
-            // label14
+            // nomeCliente
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(606, 34);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 13);
-            this.label14.TabIndex = 42;
-            this.label14.Text = "Não informado";
+            this.nomeCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nomeCliente.AutoSize = true;
+            this.nomeCliente.ForeColor = System.Drawing.Color.Gray;
+            this.nomeCliente.Location = new System.Drawing.Point(606, 34);
+            this.nomeCliente.Name = "nomeCliente";
+            this.nomeCliente.Size = new System.Drawing.Size(77, 13);
+            this.nomeCliente.TabIndex = 42;
+            this.nomeCliente.Text = "Não informado";
             // 
-            // pedidoSimples
+            // SelecionarCliente
             // 
-            this.pedidoSimples.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pedidoSimples.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pedidoSimples.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pedidoSimples.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoSimples.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoSimples.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedidoSimples.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pedidoSimples.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pedidoSimples.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pedidoSimples.Location = new System.Drawing.Point(608, 49);
-            this.pedidoSimples.Name = "pedidoSimples";
-            this.pedidoSimples.Size = new System.Drawing.Size(103, 23);
-            this.pedidoSimples.TabIndex = 103;
-            this.pedidoSimples.Text = "Selecionar (F7)";
-            this.pedidoSimples.UseVisualStyleBackColor = false;
+            this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.SelecionarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelecionarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SelecionarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SelecionarCliente.Location = new System.Drawing.Point(608, 49);
+            this.SelecionarCliente.Name = "SelecionarCliente";
+            this.SelecionarCliente.Size = new System.Drawing.Size(103, 23);
+            this.SelecionarCliente.TabIndex = 103;
+            this.SelecionarCliente.Text = "Selecionar (F7)";
+            this.SelecionarCliente.UseVisualStyleBackColor = false;
+            this.SelecionarCliente.Click += new System.EventHandler(this.SelecionarCliente_Click);
             // 
             // pictureBox10
             // 
@@ -253,16 +254,16 @@
             this.pictureBox11.TabIndex = 47;
             this.pictureBox11.TabStop = false;
             // 
-            // label16
+            // nomeVendedor
             // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(796, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 13);
-            this.label16.TabIndex = 45;
-            this.label16.Text = "Não informado";
+            this.nomeVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nomeVendedor.AutoSize = true;
+            this.nomeVendedor.ForeColor = System.Drawing.Color.Gray;
+            this.nomeVendedor.Location = new System.Drawing.Point(796, 33);
+            this.nomeVendedor.Name = "nomeVendedor";
+            this.nomeVendedor.Size = new System.Drawing.Size(77, 13);
+            this.nomeVendedor.TabIndex = 45;
+            this.nomeVendedor.Text = "Não informado";
             // 
             // label19
             // 
@@ -830,17 +831,17 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label nomeVendedor;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label nomeCliente;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button pedidoSimples;
-        private System.Windows.Forms.Button pedidoAvancado;
+        private System.Windows.Forms.Button SelecionarCliente;
+        private System.Windows.Forms.Button SelecionarColaborador;
         private System.Windows.Forms.Button btnConcluir;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox6;
