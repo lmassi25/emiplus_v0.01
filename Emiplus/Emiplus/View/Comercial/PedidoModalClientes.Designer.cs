@@ -36,16 +36,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.GridListaClientes = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NovoCliente = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -105,6 +100,7 @@
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // panel2
             // 
@@ -148,14 +144,16 @@
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // search
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox1.Location = new System.Drawing.Point(92, 109);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(379, 26);
-            this.textBox1.TabIndex = 43;
+            this.search.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.search.Location = new System.Drawing.Point(92, 109);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(379, 26);
+            this.search.TabIndex = 1;
+            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // label1
             // 
@@ -185,11 +183,6 @@
             this.GridListaClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridListaClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.GridListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
             this.GridListaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaClientes.Location = new System.Drawing.Point(0, 0);
@@ -198,49 +191,20 @@
             this.GridListaClientes.RowTemplate.Height = 30;
             this.GridListaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaClientes.Size = new System.Drawing.Size(443, 218);
-            this.GridListaClientes.TabIndex = 9;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nome";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "CNPJ";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "CPF";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Razão Social";
-            this.Column4.Name = "Column4";
+            this.GridListaClientes.TabIndex = 2;
             // 
             // NovoCliente
             // 
             this.NovoCliente.AutoSize = true;
+            this.NovoCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.NovoCliente.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NovoCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.NovoCliente.Location = new System.Drawing.Point(92, 144);
             this.NovoCliente.Name = "NovoCliente";
             this.NovoCliente.Size = new System.Drawing.Size(117, 13);
-            this.NovoCliente.TabIndex = 53;
+            this.NovoCliente.TabIndex = 3;
             this.NovoCliente.Text = "Cliente Novo ? (F9)";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(309, 144);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 13);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "Mostrar todos Clientes (F8)";
+            this.NovoCliente.Click += new System.EventHandler(this.NovoCliente_Click);
             // 
             // PedidoModalClientes
             // 
@@ -248,7 +212,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(490, 502);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.NovoCliente);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
@@ -256,7 +219,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.search);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(506, 541);
@@ -266,6 +229,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.PedidoModalClientes_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -286,15 +250,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView GridListaClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Label NovoCliente;
-        private System.Windows.Forms.Label label3;
     }
 }

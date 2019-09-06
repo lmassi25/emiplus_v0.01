@@ -886,8 +886,11 @@ namespace Emiplus.View.Comercial
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddClientes";
-            this.Text = "AddClientes";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.AddClientes_Activated);
             this.Load += new System.EventHandler(this.AddClientes_Load);
             this.barraTitulo.ResumeLayout(false);

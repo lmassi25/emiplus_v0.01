@@ -154,7 +154,8 @@ namespace Emiplus.View.Comercial
 
         private void SelecionarCliente_Click(object sender, EventArgs e)
         {
-           // OpenForm.Forms(PedidoModalClientes);
+            PedidoModalClientes form = new PedidoModalClientes();
+            form.ShowDialog();
         }
     }
 }
