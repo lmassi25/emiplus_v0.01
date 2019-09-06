@@ -195,11 +195,13 @@
     <Compile Include="Data\Helpers\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Helpers\Eventos.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
     <Compile Include="Data\Helpers\ToolHelp.cs" />
     <Compile Include="Data\Helpers\Validation.cs" />
+    <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -246,6 +248,18 @@
     </Compile>
     <Compile Include="View\Comercial\PedidoModalClientes.Designer.cs">
       <DependentUpon>PedidoModalClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalItens.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalItens.Designer.cs">
+      <DependentUpon>PedidoModalItens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalVendedor.Designer.cs">
+      <DependentUpon>PedidoModalVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\PedidoPagamentos.cs">
       <SubType>Form</SubType>
@@ -403,6 +417,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalClientes.resx">
       <DependentUpon>PedidoModalClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalItens.resx">
+      <DependentUpon>PedidoModalItens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalVendedor.resx">
+      <DependentUpon>PedidoModalVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoPagamentos.resx">
       <DependentUpon>PedidoPagamentos.cs</DependentUpon>
