@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,16 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
 
             buscarProduto.Text = searchItemTexto;
+
+            Selecionar.Click += delegate
+            {
+                MessageBox.Show("Selecionar Item");
+            };
+
+            KeyDown += KeyDowns; // this form
+            buscarProduto.KeyDown += KeyDowns;
+            Selecionar.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
         }
 
         private void DataTable()
@@ -32,33 +43,44 @@ namespace Emiplus.View.Comercial
             DataTable();
         }
 
-        private void SearchItem_Click(object sender, EventArgs e)
+        private void KeyDowns(object sender, KeyEventArgs e)
         {
-            DataTable();
-        }
-
-        private void GridListaProdutos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            switch (e.KeyCode)
             {
-                MessageBox.Show(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.F1:
+                    buscarProduto.Focus();
+                    break;
+                case Keys.F10:
+                    MessageBox.Show("selecionar o item");
+                    break;
+                case Keys.Enter:
+
+                    if (Validation.Event(sender, GridListaProdutos))
+                    {
+                        MessageBox.Show(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                    }
+
+                    if (Validation.Event(sender, buscarProduto))
+                    {
+                        if (string.IsNullOrEmpty(buscarProduto.Text))
+                        {
+                            Alert.Message("Opss", "O campo de busca está vazio.", Alert.AlertType.info);
+                            return;
+                        }
+
+                        GridListaProdutos.Focus();
+                    }
+
+                    break;
             }
         }
 
-        private void BuscarProduto_KeyDown(object sender, KeyEventArgs e)
+        private void Actions(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                GridListaProdutos.Focus();
-            }
-        }
 
-        private void PedidoModalItens_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                MessageBox.Show("ola");
-            }
         }
-    }
+    }       
 }

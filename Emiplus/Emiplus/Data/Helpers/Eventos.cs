@@ -1,16 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
-    class Eventos
+    class Eventos : Form
     {
-        public static void KeyESC()
+        public static void KeyClose(Form form, object sender, KeyEventArgs e)
+        {            
+            if (e.KeyValue.Equals(27))
+            {
+                form.Close();
+            }
+        }
+
+        public static void Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("ola");
         }
     }
 }

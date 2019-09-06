@@ -55,6 +55,16 @@ namespace Emiplus.Data.Helpers
             return Convert.ToInt32(obj);
         }
 
+        public static bool Event(object sender, dynamic control)
+        {
+            if (sender.GetType().Equals(control.GetType()) && ((dynamic)sender).Name == control.Name)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Determines if a specific value is a number.
         /// </summary>
