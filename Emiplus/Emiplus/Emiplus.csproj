@@ -202,6 +202,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
+    <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\PedidoItem.cs" />
     <Compile Include="Model\Pessoa.cs" />
