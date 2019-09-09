@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 namespace Emiplus.View.Comercial
 {
     using Model;
+    using System.Collections.Generic;
 
     public partial class AddClientes : Form
     {
@@ -15,6 +16,7 @@ namespace Emiplus.View.Comercial
         private Pessoa _modelPessoa = new Pessoa();
         private string page = TelaComercialInicial.page;
         private int Id = Clientes.Id;
+        private int Backspace = 0;
 
         private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
         private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
@@ -70,6 +72,7 @@ namespace Emiplus.View.Comercial
             nascimento.Text = _modelPessoa.Aniversario;
             cpfCnpj.Text = _modelPessoa.CPF;
             rgIE.Text = _modelPessoa.RG;
+
         }
 
         private void BtnAdicionarEndereco_Click(object sender, EventArgs e)
@@ -95,6 +98,9 @@ namespace Emiplus.View.Comercial
         private void AddClientes_Load(object sender, EventArgs e)
         {
             DataTableAddress();
+
+            pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
+            pessoaJF.SelectedItem = "Física";
         }
 
         private void AddClientes_Activated(object sender, EventArgs e)
@@ -122,9 +128,13 @@ namespace Emiplus.View.Comercial
             _modelPessoa.Aniversario = nascimento.Text;
             _modelPessoa.CPF = cpfCnpj.Text;
             _modelPessoa.RG = rgIE.Text;
+            _modelPessoa.Pessoatipo = pessoaJF.Text;
 
             if (_modelPessoa.Save(_modelPessoa))
+            {
                 tabControl1.Visible = true;
+                Id = _modelPessoa.GetLastId();
+            }       
         }
 
         private void BtnEditarContato_Click(object sender, EventArgs e)
@@ -135,6 +145,84 @@ namespace Emiplus.View.Comercial
         private void BtnEditarEndereco_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void VisualGroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void CpfCnpj_TextChanged(object sender, EventArgs e)
+        {
+            ChangeMask();
+        }
+
+        private void CpfCnpj_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Back)
+            {
+                Backspace = 1;
+            }
+            else
+            {
+                Backspace = 0;
+            }
+        }
+
+        private void ChangeMask()
+        {
+            if (cpfCnpj.Text != "")
+            {
+                if(Backspace == 0)
+                {
+                    string aux = "", aux1 = "";
+                    bool altera = false;
+
+                    aux = cpfCnpj.Text;
+                    aux = aux.Replace(".", "");
+                    aux = aux.Replace("-", "");
+
+                    //09.461.157.0001-99
+                    //389.138.668-03
+
+                    if(pessoaJF.Text == "Física")
+                    {
+                        if (aux.Length == 3)
+                        {
+                            altera = true;
+                            aux1 = aux + ".";
+                        }
+                        else if (aux.Length == 6)
+                        {
+                            altera = true;
+                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + ".";
+                        }
+                        else if (aux.Length == 9)
+                        {
+                            altera = true;
+                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-";
+                        }
+                        else if (aux.Length == 11)
+                        {
+                            altera = true;
+                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-" + aux.Substring(9, 2);
+                        }
+                        else
+                        {
+                            aux1 = aux;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                    cpfCnpj.Text = aux1;
+                    cpfCnpj.Select(cpfCnpj.Text.Length, 0);
+                }                
+            }
         }
     }
 }
