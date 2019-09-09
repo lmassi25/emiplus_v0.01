@@ -5,6 +5,7 @@ namespace Emiplus
 {
     using Data.Helpers;
     using Emiplus.View.Comercial;
+    using Emiplus.View.Testes;
     using View.Common;
 
     static class Program
@@ -19,7 +20,7 @@ namespace Emiplus
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddClientes());
+            Application.Run(new Form1());
         }
     }
 }

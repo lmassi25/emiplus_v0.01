@@ -177,50 +177,8 @@ namespace Emiplus.View.Comercial
             {
                 if(Backspace == 0)
                 {
-                    string aux = "", aux1 = "";
-                    bool altera = false;
-
-                    aux = cpfCnpj.Text;
-                    aux = aux.Replace(".", "");
-                    aux = aux.Replace("-", "");
-
-                    //09.461.157.0001-99
-                    //389.138.668-03
-
-                    if(pessoaJF.Text == "Física")
-                    {
-                        if (aux.Length == 3)
-                        {
-                            altera = true;
-                            aux1 = aux + ".";
-                        }
-                        else if (aux.Length == 6)
-                        {
-                            altera = true;
-                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + ".";
-                        }
-                        else if (aux.Length == 9)
-                        {
-                            altera = true;
-                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-";
-                        }
-                        else if (aux.Length == 11)
-                        {
-                            altera = true;
-                            aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-" + aux.Substring(9, 2);
-                        }
-                        else
-                        {
-                            aux1 = aux;
-                        }
-                    }
-                    else
-                    {
-
-                    }
-
-                    cpfCnpj.Text = aux1;
-                    cpfCnpj.Select(cpfCnpj.Text.Length, 0);
+                    //cpfCnpj.Text = aux1;
+                    //cpfCnpj.Select(cpfCnpj.Text.Length, 0);
                 }                
             }
         }

@@ -6,7 +6,76 @@ using System.Windows.Forms;
 namespace Emiplus.Data.Helpers
 {
     public static class Validation
-    {
+    {   
+        public static string ChangeMaskCPFCNPJ(string aux, string pessoa)
+        {
+            string aux1 = "";
+
+            aux = aux.Replace(".", "");
+            aux = aux.Replace("-", "");
+            aux = aux.Replace("/", "");
+
+            //09.461.157.0001-99
+            //389.138.668-03
+
+            if (pessoa == "Física")
+            {
+                if (aux.Length == 3)
+                {
+                    aux1 = aux + ".";
+                }
+                else if (aux.Length == 6)
+                {
+                    aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + ".";
+                }
+                else if (aux.Length == 9)
+                {
+                    aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-";
+                }
+                else if (aux.Length == 11)
+                {
+                    aux1 = aux.Substring(0, 3) + "." + aux.Substring(3, 3) + "." + aux.Substring(6, 3) + "-" + aux.Substring(9, 2);
+                }
+                else
+                {
+                    aux1 = aux;
+                }
+            }
+            else if (pessoa == "Jurídica")
+            {
+                if (aux.Length == 2)
+                {
+                    aux1 = aux + ".";
+                }
+                else if (aux.Length == 5)
+                {
+                    aux1 = aux.Substring(0, 2) + "." + aux.Substring(2, 3) + ".";
+                }
+                else if (aux.Length == 8)
+                {
+                    aux1 = aux.Substring(0, 2) + "." + aux.Substring(2, 3) + "." + aux.Substring(5, 3) + "/";
+                }
+                else if (aux.Length == 12)
+                {
+                    aux1 = aux.Substring(0, 2) + "." + aux.Substring(2, 3) + "." + aux.Substring(5, 3) + "/" + aux.Substring(8, 4) + "-";
+                }
+                else if (aux.Length == 14)
+                {
+                    aux1 = aux.Substring(0, 2) + "." + aux.Substring(2, 3) + "." + aux.Substring(5, 3) + "/" + aux.Substring(8, 4) + "-" + aux.Substring(12, 2);
+                }
+                else
+                {
+                    aux1 = aux;
+                }
+            }
+            else
+            {
+                aux1 = aux;
+            }
+
+            return aux1;
+        }
+
         /// <summary>
         /// Converte valor double pra ordem de dinheiro REAL
         /// </summary>
