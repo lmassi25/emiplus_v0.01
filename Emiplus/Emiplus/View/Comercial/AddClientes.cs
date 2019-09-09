@@ -15,7 +15,9 @@ namespace Emiplus.View.Comercial
         private Controller.Pessoa _controller = new Controller.Pessoa();
         private Pessoa _modelPessoa = new Pessoa();
         private string page = TelaComercialInicial.page;
-        private int Id = Clientes.Id;
+        public static int Id { get; set; }
+        public static int IdAddress { get; set; }
+
         private int Backspace = 0;
 
         private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
@@ -24,6 +26,7 @@ namespace Emiplus.View.Comercial
         public AddClientes()
         {
             InitializeComponent();
+            Id = Clientes.Id;
 
             if (String.IsNullOrEmpty(page) && Validation.IsNumber(Id))
             {
@@ -60,7 +63,7 @@ namespace Emiplus.View.Comercial
 
         private void DataTableAddress()
         {
-            _controller.GetDataTableEnderecos(ListaEnderecos);
+            _controller.GetDataTableEnderecos(ListaEnderecos, Id);
         }
 
         private void LoadData()
@@ -72,11 +75,18 @@ namespace Emiplus.View.Comercial
             nascimento.Text = _modelPessoa.Aniversario;
             cpfCnpj.Text = _modelPessoa.CPF;
             rgIE.Text = _modelPessoa.RG;
-
+            pessoaJF.SelectedItem = _modelPessoa.Pessoatipo;
+            Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
         }
 
         private void BtnAdicionarEndereco_Click(object sender, EventArgs e)
         {
+            IdAddress = 0;
+            OpenForm.ShowInPanel<AddClienteEndereco>(panelEnderecos);
+        }
+        private void BtnEditarEndereco_Click(object sender, EventArgs e)
+        {
+            IdAddress = Convert.ToInt32(ListaEnderecos.SelectedRows[0].Cells["ID"].Value);
             OpenForm.ShowInPanel<AddClienteEndereco>(panelEnderecos);
         }
 
@@ -98,6 +108,7 @@ namespace Emiplus.View.Comercial
         private void AddClientes_Load(object sender, EventArgs e)
         {
             DataTableAddress();
+            nomeRS.Focus();
 
             pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
             pessoaJF.SelectedItem = "Física";
@@ -129,6 +140,7 @@ namespace Emiplus.View.Comercial
             _modelPessoa.CPF = cpfCnpj.Text;
             _modelPessoa.RG = rgIE.Text;
             _modelPessoa.Pessoatipo = pessoaJF.Text;
+            _modelPessoa.Isento = Isento.Checked ? 1 : 0;
 
             if (_modelPessoa.Save(_modelPessoa))
             {
@@ -142,21 +154,14 @@ namespace Emiplus.View.Comercial
 
         }
 
-        private void BtnEditarEndereco_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void VisualGroupBox1_Enter(object sender, EventArgs e)
         {
 
         }
 
-        
-
         private void CpfCnpj_TextChanged(object sender, EventArgs e)
         {
-            ChangeMask();
+            //ChangeMask();
         }
 
         private void CpfCnpj_KeyDown(object sender, KeyEventArgs e)
@@ -181,6 +186,11 @@ namespace Emiplus.View.Comercial
                     //cpfCnpj.Select(cpfCnpj.Text.Length, 0);
                 }                
             }
+        }
+
+        private void NomeRS_Enter(object sender, EventArgs e)
+        {
+            DataTableAddress();
         }
     }
 }
