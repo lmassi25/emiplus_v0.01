@@ -127,8 +127,6 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
-            searchItem.BackColor = BackColor;
-            panel3.BackColor = Color.White;
             panel2.BackColor = Color.White;
         }
 
@@ -143,8 +141,6 @@ namespace Emiplus.View.Comercial
             label8.BackColor = BackColor;
             label9.BackColor = BackColor;
             addProduto.BackColor = BackColor;
-            searchItem.BackColor = BackColor;
-            panel3.BackColor = Color.FromArgb(249, 249, 249);
             panel2.BackColor = Color.FromArgb(249, 249, 249);
         }
 
@@ -164,14 +160,14 @@ namespace Emiplus.View.Comercial
             {
                 ModoRapAva = 0;
                 panelAvancado.Visible = true;
-                ModoRapido.Text = "Modo Rápido (F5) ?";
+                ModoRapido.Text = "Modo Rápido (F1) ?";
                 Quantidade.Enabled = true;
             }
             else
             {
                 ModoRapAva = 1;
                 panelAvancado.Visible = false;
-                ModoRapido.Text = "Modo Avançado (F5) ?";
+                ModoRapido.Text = "Modo Avançado (F1) ?";
                 btnAlterarQtd.Visible = true;
                 btnAlterarQtd.Top = 53;
                 Quantidade.Enabled = false;

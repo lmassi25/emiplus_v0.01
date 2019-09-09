@@ -20,14 +20,14 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
 
-            buscarProduto.Text = searchItemTexto;
-
             Selecionar.Click += delegate
             {
                 MessageBox.Show("Selecionar Item");
             };
 
             KeyDown += KeyDowns; // this form
+
+            buscarProduto.Text = searchItemTexto;
             buscarProduto.KeyDown += KeyDowns;
             Selecionar.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
@@ -76,11 +76,6 @@ namespace Emiplus.View.Comercial
 
                     break;
             }
-        }
-
-        private void Actions(object sender, EventArgs e)
-        {
-
         }
     }       
 }

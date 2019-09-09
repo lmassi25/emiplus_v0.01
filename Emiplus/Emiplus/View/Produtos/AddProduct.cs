@@ -25,7 +25,7 @@ namespace Emiplus.View.Produtos
         {
             ActiveControl = nome;
 
-            ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
 

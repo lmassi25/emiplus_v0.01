@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
@@ -57,7 +58,7 @@ namespace Emiplus.Data.Helpers
 
         public static bool Event(object sender, dynamic control)
         {
-            if (sender.GetType().Equals(control.GetType()) && ((dynamic)sender).Name == control.Name)
+            if (((Control)sender).Name == control.Name)
             {
                 return true;
             }

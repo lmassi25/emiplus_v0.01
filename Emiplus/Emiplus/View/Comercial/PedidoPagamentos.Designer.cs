@@ -98,11 +98,11 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(479, 11);
+            this.label26.Location = new System.Drawing.Point(480, 10);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(92, 19);
+            this.label26.Size = new System.Drawing.Size(88, 21);
             this.label26.TabIndex = 2;
             this.label26.Text = "R$ 1000.00";
             // 
@@ -110,11 +110,11 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
             this.label10.Location = new System.Drawing.Point(114, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(164, 16);
+            this.label10.Size = new System.Drawing.Size(141, 17);
             this.label10.TabIndex = 109;
             this.label10.Text = "Forma do Pagamento";
             // 
@@ -204,7 +204,7 @@
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -222,7 +222,7 @@
             this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button11.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -240,7 +240,7 @@
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
             this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -258,7 +258,7 @@
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -280,7 +280,7 @@
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -303,7 +303,7 @@
             this.btnConcluir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
             this.btnConcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
             this.btnConcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConcluir.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConcluir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConcluir.ForeColor = System.Drawing.Color.White;
             this.btnConcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnConcluir.Image")));
             this.btnConcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -327,11 +327,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(78, 13);
+            this.label4.Location = new System.Drawing.Point(81, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 18);
+            this.label4.Size = new System.Drawing.Size(54, 20);
             this.label4.TabIndex = 128;
             this.label4.Text = "TOTAL";
             // 
@@ -391,11 +391,11 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
             this.label1.Location = new System.Drawing.Point(114, 316);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 16);
+            this.label1.Size = new System.Drawing.Size(141, 17);
             this.label1.TabIndex = 121;
             this.label1.Text = "Pagamentos lançados";
             // 
@@ -403,11 +403,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(115, 150);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 122;
             this.label2.Text = "Opções";
             // 
@@ -425,11 +425,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 13);
+            this.label3.Location = new System.Drawing.Point(12, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.Size = new System.Drawing.Size(69, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "A pagar:";
             // 
@@ -447,11 +447,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(46, 13);
+            this.label8.Location = new System.Drawing.Point(53, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(125, 18);
+            this.label8.Size = new System.Drawing.Size(111, 20);
             this.label8.TabIndex = 130;
             this.label8.Text = "PAGAMENTOS";
             // 
@@ -468,11 +468,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(48, 12);
+            this.label9.Location = new System.Drawing.Point(52, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(115, 18);
+            this.label9.Size = new System.Drawing.Size(116, 25);
             this.label9.TabIndex = 131;
             this.label9.Text = "R$ 1.000.00";
             // 
@@ -490,11 +490,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(75, 13);
+            this.label11.Location = new System.Drawing.Point(78, 12);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 18);
+            this.label11.Size = new System.Drawing.Size(59, 20);
             this.label11.TabIndex = 130;
             this.label11.Text = "TROCO";
             // 
@@ -511,11 +511,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(48, 12);
+            this.label12.Location = new System.Drawing.Point(52, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(115, 18);
+            this.label12.Size = new System.Drawing.Size(116, 25);
             this.label12.TabIndex = 131;
             this.label12.Text = "R$ 1.000.00";
             // 
@@ -543,11 +543,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(48, 12);
+            this.label7.Location = new System.Drawing.Point(52, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 18);
+            this.label7.Size = new System.Drawing.Size(116, 25);
             this.label7.TabIndex = 131;
             this.label7.Text = "R$ 1.000.00";
             // 
@@ -661,7 +661,7 @@
             this.Acrescimo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Acrescimo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Acrescimo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Acrescimo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Acrescimo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Acrescimo.Image = ((System.Drawing.Image)(resources.GetObject("Acrescimo.Image")));
             this.Acrescimo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Acrescimo.Location = new System.Drawing.Point(203, 172);
@@ -682,7 +682,7 @@
             this.Desconto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Desconto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Desconto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Desconto.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Desconto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Desconto.Image = ((System.Drawing.Image)(resources.GetObject("Desconto.Image")));
             this.Desconto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Desconto.Location = new System.Drawing.Point(117, 172);
@@ -703,7 +703,7 @@
             this.Cheque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Cheque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Cheque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Cheque.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cheque.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cheque.Image = ((System.Drawing.Image)(resources.GetObject("Cheque.Image")));
             this.Cheque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Cheque.Location = new System.Drawing.Point(201, 63);
@@ -723,7 +723,7 @@
             this.Dinheiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Dinheiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Dinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Dinheiro.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dinheiro.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dinheiro.Image = ((System.Drawing.Image)(resources.GetObject("Dinheiro.Image")));
             this.Dinheiro.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Dinheiro.Location = new System.Drawing.Point(120, 63);
@@ -744,7 +744,7 @@
             this.Credito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Credito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Credito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Credito.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Credito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Credito.Image = ((System.Drawing.Image)(resources.GetObject("Credito.Image")));
             this.Credito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Credito.Location = new System.Drawing.Point(367, 63);
@@ -765,7 +765,7 @@
             this.Debito.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Debito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Debito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Debito.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Debito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Debito.Image = ((System.Drawing.Image)(resources.GetObject("Debito.Image")));
             this.Debito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Debito.Location = new System.Drawing.Point(284, 63);
@@ -786,7 +786,7 @@
             this.Crediario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Crediario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Crediario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Crediario.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Crediario.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Crediario.Image = ((System.Drawing.Image)(resources.GetObject("Crediario.Image")));
             this.Crediario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Crediario.Location = new System.Drawing.Point(450, 63);
@@ -807,7 +807,7 @@
             this.Boleto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Boleto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.Boleto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Boleto.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Boleto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Boleto.Image = ((System.Drawing.Image)(resources.GetObject("Boleto.Image")));
             this.Boleto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Boleto.Location = new System.Drawing.Point(533, 63);
@@ -862,6 +862,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.panel2);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1024, 645);
             this.Name = "PedidoPagamentos";
             this.ShowIcon = false;
