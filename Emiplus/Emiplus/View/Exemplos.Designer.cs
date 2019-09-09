@@ -56,6 +56,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -631,12 +632,41 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // nascimento
+            // 
+            this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowSize = new System.Drawing.Size(10, 5);
+            this.nascimento.BackColor = System.Drawing.Color.White;
+            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
+            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverVisible = true;
+            this.nascimento.Border.Rounding = 6;
+            this.nascimento.Border.Thickness = 1;
+            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.nascimento.Border.Visible = true;
+            this.nascimento.DropDownImage = null;
+            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.nascimento.Image = null;
+            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
+            this.nascimento.Location = new System.Drawing.Point(17, 451);
+            this.nascimento.MinimumSize = new System.Drawing.Size(0, 23);
+            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.nascimento.Name = "nascimento";
+            this.nascimento.Size = new System.Drawing.Size(120, 23);
+            this.nascimento.TabIndex = 162;
+            this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            // 
             // Exemplos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(821, 585);
+            this.Controls.Add(this.nascimento);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnRemover);
@@ -698,5 +728,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnExit;
+        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker nascimento;
     }
 }

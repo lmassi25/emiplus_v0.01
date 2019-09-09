@@ -16,8 +16,8 @@ namespace Emiplus.View.Comercial
         private string page = TelaComercialInicial.page;
         private int Id = Clientes.Id;
 
-        private int IdClientePedido = PedidoModalClientes.Id;
-        private string pageClientePedido = PedidoModalClientes.page;
+        private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
+        private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
 
         public AddClientes()
         {

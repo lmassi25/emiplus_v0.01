@@ -181,8 +181,8 @@
     <Reference Include="Valit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Valit.2.0.0\lib\netstandard2.0\Valit.dll</HintPath>
     </Reference>
-    <Reference Include="VisualPlus">
-      <HintPath>Data\Components\VisualPlus.dll</HintPath>
+    <Reference Include="VisualPlus, Version=0.4.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VisualPlus.0.4.1.6-beta\lib\NET4\VisualPlus.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -199,7 +199,6 @@
     <Compile Include="Data\Helpers\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Helpers\Eventos.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />

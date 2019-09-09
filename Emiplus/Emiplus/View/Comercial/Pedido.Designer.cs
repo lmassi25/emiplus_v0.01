@@ -41,13 +41,11 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.visualButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -62,8 +60,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.visualButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.visualDateTimePicker1 = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
@@ -238,15 +236,13 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.visualDateTimePicker1);
+            this.barraTitulo.Controls.Add(this.nascimento);
             this.barraTitulo.Controls.Add(this.visualButton1);
             this.barraTitulo.Controls.Add(this.search);
             this.barraTitulo.Controls.Add(this.label11);
-            this.barraTitulo.Controls.Add(this.dateTimePicker3);
             this.barraTitulo.Controls.Add(this.label10);
-            this.barraTitulo.Controls.Add(this.dateTimePicker4);
-            this.barraTitulo.Controls.Add(this.dateTimePicker2);
             this.barraTitulo.Controls.Add(this.label9);
-            this.barraTitulo.Controls.Add(this.dateTimePicker1);
             this.barraTitulo.Controls.Add(this.label8);
             this.barraTitulo.Controls.Add(this.radioButton5);
             this.barraTitulo.Controls.Add(this.radioButton4);
@@ -261,6 +257,97 @@
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 15;
             // 
+            // visualButton1
+            // 
+            this.visualButton1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualButton1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.visualButton1.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.visualButton1.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.visualButton1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.visualButton1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.visualButton1.Border.HoverVisible = true;
+            this.visualButton1.Border.Rounding = 6;
+            this.visualButton1.Border.Thickness = 1;
+            this.visualButton1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualButton1.Border.Visible = true;
+            this.visualButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.visualButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.visualButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualButton1.ForeColor = System.Drawing.Color.White;
+            this.visualButton1.Image = null;
+            this.visualButton1.Location = new System.Drawing.Point(48, 486);
+            this.visualButton1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualButton1.Name = "visualButton1";
+            this.visualButton1.Size = new System.Drawing.Size(140, 45);
+            this.visualButton1.TabIndex = 29;
+            this.visualButton1.Text = "Pesquisar";
+            this.visualButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.visualButton1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualButton1.TextStyle.Enabled = System.Drawing.Color.White;
+            this.visualButton1.TextStyle.Hover = System.Drawing.Color.White;
+            this.visualButton1.TextStyle.Pressed = System.Drawing.Color.White;
+            this.visualButton1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualButton1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualButton1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // search
+            // 
+            this.search.AlphaNumeric = false;
+            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.search.BackColorState.Enabled = System.Drawing.Color.White;
+            this.search.Border.Color = System.Drawing.Color.Gainsboro;
+            this.search.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.search.Border.HoverVisible = true;
+            this.search.Border.Rounding = 8;
+            this.search.Border.Thickness = 1;
+            this.search.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.search.Border.Visible = true;
+            this.search.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.search.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.search.ButtonBorder.HoverVisible = true;
+            this.search.ButtonBorder.Rounding = 6;
+            this.search.ButtonBorder.Thickness = 1;
+            this.search.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.search.ButtonBorder.Visible = true;
+            this.search.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.search.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.search.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.search.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.search.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.ButtonIndent = 3;
+            this.search.ButtonText = "visualButton";
+            this.search.ButtonVisible = false;
+            this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
+            this.search.ImageSize = new System.Drawing.Size(16, 16);
+            this.search.ImageVisible = true;
+            this.search.ImageWidth = 35;
+            this.search.Location = new System.Drawing.Point(21, 427);
+            this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.search.Name = "search";
+            this.search.PasswordChar = '\0';
+            this.search.ReadOnly = false;
+            this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.search.Size = new System.Drawing.Size(200, 34);
+            this.search.TabIndex = 28;
+            this.search.TextBoxWidth = 150;
+            this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.search.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.search.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.search.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.search.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.search.Watermark.Text = "Watermark text";
+            this.search.Watermark.Visible = false;
+            this.search.WordWrap = true;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -271,15 +358,6 @@
             this.label11.Size = new System.Drawing.Size(60, 17);
             this.label11.TabIndex = 26;
             this.label11.Text = "Procurar";
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.Location = new System.Drawing.Point(150, 365);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(71, 22);
-            this.dateTimePicker3.TabIndex = 25;
             // 
             // label10
             // 
@@ -292,24 +370,6 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "à:";
             // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(52, 365);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(91, 22);
-            this.dateTimePicker4.TabIndex = 23;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(150, 336);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(71, 22);
-            this.dateTimePicker2.TabIndex = 22;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -320,15 +380,6 @@
             this.label9.Size = new System.Drawing.Size(27, 17);
             this.label9.TabIndex = 21;
             this.label9.Text = "De:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(52, 336);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 22);
-            this.dateTimePicker1.TabIndex = 20;
             // 
             // label8
             // 
@@ -371,7 +422,7 @@
             this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton3.Location = new System.Drawing.Point(21, 217);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(118, 19);
+            this.radioButton3.Size = new System.Drawing.Size(117, 19);
             this.radioButton3.TabIndex = 16;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Finalizado /Todos";
@@ -395,7 +446,7 @@
             this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton1.Location = new System.Drawing.Point(21, 167);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(57, 19);
+            this.radioButton1.Size = new System.Drawing.Size(56, 19);
             this.radioButton1.TabIndex = 14;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Todos";
@@ -487,96 +538,61 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // search
+            // nascimento
             // 
-            this.search.AlphaNumeric = false;
-            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.BackColorState.Enabled = System.Drawing.Color.White;
-            this.search.Border.Color = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverVisible = true;
-            this.search.Border.Rounding = 8;
-            this.search.Border.Thickness = 1;
-            this.search.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.Border.Visible = true;
-            this.search.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.search.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.search.ButtonBorder.HoverVisible = true;
-            this.search.ButtonBorder.Rounding = 6;
-            this.search.ButtonBorder.Thickness = 1;
-            this.search.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.ButtonBorder.Visible = true;
-            this.search.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.search.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ButtonIndent = 3;
-            this.search.ButtonText = "visualButton";
-            this.search.ButtonVisible = false;
-            this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
-            this.search.ImageSize = new System.Drawing.Size(16, 16);
-            this.search.ImageVisible = true;
-            this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(21, 427);
-            this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.search.Name = "search";
-            this.search.PasswordChar = '\0';
-            this.search.ReadOnly = false;
-            this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.search.Size = new System.Drawing.Size(200, 34);
-            this.search.TabIndex = 28;
-            this.search.TextBoxWidth = 165;
-            this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.search.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.search.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.search.Watermark.Text = "Watermark text";
-            this.search.Watermark.Visible = false;
-            this.search.WordWrap = true;
+            this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowSize = new System.Drawing.Size(10, 5);
+            this.nascimento.BackColor = System.Drawing.Color.White;
+            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
+            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverVisible = true;
+            this.nascimento.Border.Rounding = 6;
+            this.nascimento.Border.Thickness = 1;
+            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.nascimento.Border.Visible = true;
+            this.nascimento.DropDownImage = null;
+            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.nascimento.Image = null;
+            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
+            this.nascimento.Location = new System.Drawing.Point(48, 334);
+            this.nascimento.MinimumSize = new System.Drawing.Size(0, 25);
+            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.nascimento.Name = "nascimento";
+            this.nascimento.Size = new System.Drawing.Size(173, 25);
+            this.nascimento.TabIndex = 40;
+            this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
-            // visualButton1
+            // visualDateTimePicker1
             // 
-            this.visualButton1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualButton1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.visualButton1.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.visualButton1.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.visualButton1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.visualButton1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.visualButton1.Border.HoverVisible = true;
-            this.visualButton1.Border.Rounding = 6;
-            this.visualButton1.Border.Thickness = 1;
-            this.visualButton1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualButton1.Border.Visible = true;
-            this.visualButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.visualButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualButton1.ForeColor = System.Drawing.Color.White;
-            this.visualButton1.Image = null;
-            this.visualButton1.Location = new System.Drawing.Point(48, 486);
-            this.visualButton1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualButton1.Name = "visualButton1";
-            this.visualButton1.Size = new System.Drawing.Size(140, 45);
-            this.visualButton1.TabIndex = 29;
-            this.visualButton1.Text = "Pesquisar";
-            this.visualButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            this.visualButton1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualButton1.TextStyle.Enabled = System.Drawing.Color.White;
-            this.visualButton1.TextStyle.Hover = System.Drawing.Color.White;
-            this.visualButton1.TextStyle.Pressed = System.Drawing.Color.White;
-            this.visualButton1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualDateTimePicker1.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.visualDateTimePicker1.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.visualDateTimePicker1.ArrowSize = new System.Drawing.Size(10, 5);
+            this.visualDateTimePicker1.BackColor = System.Drawing.Color.White;
+            this.visualDateTimePicker1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualDateTimePicker1.BackColorState.Enabled = System.Drawing.Color.White;
+            this.visualDateTimePicker1.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualDateTimePicker1.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualDateTimePicker1.Border.HoverVisible = true;
+            this.visualDateTimePicker1.Border.Rounding = 6;
+            this.visualDateTimePicker1.Border.Thickness = 1;
+            this.visualDateTimePicker1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualDateTimePicker1.Border.Visible = true;
+            this.visualDateTimePicker1.DropDownImage = null;
+            this.visualDateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.visualDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.visualDateTimePicker1.Image = null;
+            this.visualDateTimePicker1.ImageSize = new System.Drawing.Size(16, 16);
+            this.visualDateTimePicker1.Location = new System.Drawing.Point(48, 364);
+            this.visualDateTimePicker1.MinimumSize = new System.Drawing.Size(0, 25);
+            this.visualDateTimePicker1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualDateTimePicker1.Name = "visualDateTimePicker1";
+            this.visualDateTimePicker1.Size = new System.Drawing.Size(173, 25);
+            this.visualDateTimePicker1.TabIndex = 41;
+            this.visualDateTimePicker1.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // Pedido
             // 
@@ -630,12 +646,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnEditar;
@@ -647,5 +659,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton visualButton1;
+        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker visualDateTimePicker1;
+        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker nascimento;
     }
 }

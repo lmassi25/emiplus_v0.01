@@ -335,7 +335,6 @@
             this.visualRadioButton1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.visualRadioButton1.CheckStyle.ShapeRounding = 6;
             this.visualRadioButton1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton1.CheckStyle.Style = VisualPlus.Models.CheckStyle.CheckType.Shape;
             this.visualRadioButton1.CheckStyle.Thickness = 2F;
             this.visualRadioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.visualRadioButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -379,7 +378,6 @@
             this.visualRadioButton2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.visualRadioButton2.CheckStyle.ShapeRounding = 6;
             this.visualRadioButton2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton2.CheckStyle.Style = VisualPlus.Models.CheckStyle.CheckType.Shape;
             this.visualRadioButton2.CheckStyle.Thickness = 2F;
             this.visualRadioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.visualRadioButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

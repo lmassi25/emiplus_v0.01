@@ -169,7 +169,7 @@ namespace Emiplus.View.Comercial
                 panelAvancado.Visible = false;
                 ModoRapido.Text = "Modo Avançado (F1) ?";
                 btnAlterarQtd.Visible = true;
-                btnAlterarQtd.Top = 53;
+                btnAlterarQtd.Top = 52;
                 Quantidade.Enabled = false;
             }
         }
