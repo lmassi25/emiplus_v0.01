@@ -22,7 +22,6 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
             label1.Text = page + ":";
             label6.Text = page;
-            Console.WriteLine(page);
         }
 
         private void LoadData()
@@ -39,6 +38,15 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void LoadId()
+        {
+            if(GridLista.SelectedRows.Count > 0)
+            {
+                Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                OpenForm.Show<AddClientes>(this);
+            }            
+        }
+        
         private void Label5_Click(object sender, EventArgs e)
         {
             Close();
@@ -51,7 +59,7 @@ namespace Emiplus.View.Comercial
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            Support.OpenLinkBrowser("http://google.com");
+            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
@@ -62,12 +70,12 @@ namespace Emiplus.View.Comercial
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddClientes>(this);
+            LoadId();
         }
 
         private void Clientes_Load(object sender, EventArgs e)
         {
+            search.Select();
             LoadData();
         }
 
@@ -79,6 +87,35 @@ namespace Emiplus.View.Comercial
         private void Clientes_Activated(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void GridLista_DoubleClick(object sender, EventArgs e)
+        {
+            LoadId();
+        }
+
+        private void Search_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 38)
+            {
+                Support.UpDownDataGrid(false, GridLista);
+                e.Handled = true;
+            }
+            else if (e.KeyValue == 40)
+            {
+                Support.UpDownDataGrid(true, GridLista);
+                e.Handled = true;
+            }
+        }
+
+        private void Label8_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

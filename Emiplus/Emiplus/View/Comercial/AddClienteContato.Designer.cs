@@ -42,7 +42,9 @@
             this.celular = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.email = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label11
@@ -64,11 +66,11 @@
             this.btnContatoSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnContatoSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnContatoSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContatoSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContatoSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnContatoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoSalvar.Image")));
             this.btnContatoSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoSalvar.Location = new System.Drawing.Point(516, 5);
+            this.btnContatoSalvar.Location = new System.Drawing.Point(590, 3);
             this.btnContatoSalvar.Name = "btnContatoSalvar";
             this.btnContatoSalvar.Size = new System.Drawing.Size(65, 60);
             this.btnContatoSalvar.TabIndex = 4;
@@ -90,11 +92,11 @@
             this.btnContatoCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnContatoCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoCancelar.Image")));
             this.btnContatoCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoCancelar.Location = new System.Drawing.Point(582, 5);
+            this.btnContatoCancelar.Location = new System.Drawing.Point(16, 5);
             this.btnContatoCancelar.Name = "btnContatoCancelar";
             this.btnContatoCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnContatoCancelar.TabIndex = 3;
-            this.btnContatoCancelar.Text = "Cancelar";
+            this.btnContatoCancelar.TabIndex = 5;
+            this.btnContatoCancelar.Text = "Excluir";
             this.btnContatoCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnContatoCancelar.UseVisualStyleBackColor = true;
             this.btnContatoCancelar.Click += new System.EventHandler(this.BtnContatoCancelar_Click);
@@ -105,8 +107,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.btnContatoSalvar);
-            this.panel1.Controls.Add(this.btnContatoCancelar);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 68);
@@ -165,7 +165,7 @@
             this.contato.ReadOnly = false;
             this.contato.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.contato.Size = new System.Drawing.Size(236, 28);
-            this.contato.TabIndex = 31;
+            this.contato.TabIndex = 0;
             this.contato.TextBoxWidth = 224;
             this.contato.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.contato.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -234,7 +234,7 @@
             this.telefone.ReadOnly = false;
             this.telefone.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.telefone.Size = new System.Drawing.Size(197, 28);
-            this.telefone.TabIndex = 33;
+            this.telefone.TabIndex = 1;
             this.telefone.TextBoxWidth = 185;
             this.telefone.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.telefone.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -303,7 +303,7 @@
             this.celular.ReadOnly = false;
             this.celular.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.celular.Size = new System.Drawing.Size(191, 28);
-            this.celular.TabIndex = 35;
+            this.celular.TabIndex = 2;
             this.celular.TextBoxWidth = 179;
             this.celular.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.celular.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -372,7 +372,7 @@
             this.email.ReadOnly = false;
             this.email.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.email.Size = new System.Drawing.Size(234, 28);
-            this.email.TabIndex = 37;
+            this.email.TabIndex = 3;
             this.email.TextBoxWidth = 222;
             this.email.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.email.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -388,12 +388,26 @@
             this.email.Watermark.Visible = false;
             this.email.WordWrap = true;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.btnContatoSalvar);
+            this.panel2.Controls.Add(this.btnContatoCancelar);
+            this.panel2.Location = new System.Drawing.Point(0, 199);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(670, 68);
+            this.panel2.TabIndex = 4;
+            this.panel2.TabStop = true;
+            // 
             // AddClienteContato
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 200);
+            this.ClientSize = new System.Drawing.Size(670, 266);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.email);
             this.Controls.Add(this.label6);
@@ -403,13 +417,21 @@
             this.Controls.Add(this.label23);
             this.Controls.Add(this.contato);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(686, 305);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(686, 305);
             this.Name = "AddClienteContato";
-            this.Text = "AddClienteContato";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddClienteContato_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,5 +450,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox celular;
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox email;
+        private System.Windows.Forms.Panel panel2;
     }
 }

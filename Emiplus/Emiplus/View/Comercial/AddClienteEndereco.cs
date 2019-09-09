@@ -18,6 +18,7 @@ namespace Emiplus.View.Comercial
         private int IdAddress = AddClientes.IdAddress;
         private int IdPessoa = AddClientes.Id;
         private PessoaEndereco _modelAddress = new PessoaEndereco();
+        private int Backspace;
 
         public AddClienteEndereco()
         {
@@ -37,9 +38,9 @@ namespace Emiplus.View.Comercial
 
         private void LoadData()
         {
+
             _modelAddress = _modelAddress.FindById(IdAddress).First<PessoaEndereco>();
 
-            titulo.Text = _modelAddress.Titulo;
             cep.Text = _modelAddress.Cep;
             rua.Text = _modelAddress.Rua;
             bairro.Text = _modelAddress.Bairro;
@@ -52,14 +53,21 @@ namespace Emiplus.View.Comercial
 
         private void BtnAddrCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            var result = MessageBox.Show("Deseja realmente excluir o endereço?", "Atenção!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (_modelAddress.Remove(IdAddress))
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
 
         private void BtnAddrSalvar_Click(object sender, EventArgs e)
         {
             _modelAddress.Id = IdAddress;
             _modelAddress.Id_pessoa = IdPessoa;
-            _modelAddress.Titulo = titulo.Text;
             _modelAddress.Cep = cep.Text;
             _modelAddress.Rua = rua.Text;
             _modelAddress.Bairro = bairro.Text;
@@ -71,8 +79,43 @@ namespace Emiplus.View.Comercial
 
             if (_modelAddress.Save(_modelAddress))
             {
+                DialogResult = DialogResult.OK;
                 Close();
             }
+        }
+
+        private void cep_TextChanged(object sender, EventArgs e)
+        {
+            ChangeMask();
+        }
+
+        private void cep_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back)
+            {
+                Backspace = 1;
+            }
+            else
+            {
+                Backspace = 0;
+            }
+        }
+
+        private void ChangeMask()
+        {
+            if (cep.Text != "")
+            {
+                if (Backspace == 0)
+                {
+                    cep.Text = Validation.ChangeMaskCep(cep.Text);
+                    cep.Select(cep.Text.Length, 0);
+                }
+            }
+        }
+
+        private void AddClienteEndereco_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

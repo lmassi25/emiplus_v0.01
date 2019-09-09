@@ -76,6 +76,32 @@ namespace Emiplus.Data.Helpers
             return aux1;
         }
 
+        public static string ChangeMaskCep(string aux)
+        {
+            string aux1 = "";
+
+            aux = aux.Replace(".", "");
+            aux = aux.Replace("-", "");
+            aux = aux.Replace("/", "");
+
+            //15150-000
+
+            if (aux.Length == 5)
+            {
+                aux1 = aux + "-";
+            }
+            else if (aux.Length > 5)
+            {
+                aux1 = aux.Substring(0, 5) + "-" + aux.Substring(5, aux.Length - 5);
+            }
+            else
+            {
+                aux1 = aux;
+            }
+
+            return aux1;
+        }
+
         /// <summary>
         /// Converte valor double pra ordem de dinheiro REAL
         /// </summary>
