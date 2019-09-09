@@ -5,6 +5,7 @@ namespace Emiplus
 {
     using Data.Helpers;
     using Emiplus.View.Comercial;
+    using Emiplus.View.Testes;
     using View.Common;
 
     static class Program
