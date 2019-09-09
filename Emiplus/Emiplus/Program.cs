@@ -19,7 +19,7 @@ namespace Emiplus
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddClientes());
+            Application.Run(new Home());
         }
     }
 }

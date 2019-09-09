@@ -52,7 +52,7 @@
             }
         }
 
-        public void GetDataTableEnderecos(DataGridView Table)
+        public void GetDataTableEnderecos(DataGridView Table, int Id)
         {
             Table.ColumnCount = 4;
 
@@ -74,6 +74,7 @@
 
             var data = address.Query()
                 .Where("EXCLUIR", 0)
+                .Where("ID_PESSOA", Id)
                 .OrderByDesc("criado")
                 .Get();
 
@@ -83,7 +84,7 @@
                     item.ID,
                     item.TITULO,
                     item.CEP,
-                    $"Rua: {item.RUA} - {item.NR} - {item.COMPLEMENTO} - {item.BAIRRO} | {item.CIDADE}/{item.ESTADO} - {item.PAIS}"
+                    $"{item.RUA} - {item.NR} - {item.COMPLEMENTO} - {item.BAIRRO} | {item.CIDADE}/{item.ESTADO} - {item.PAIS}"
                 );
             }
         }

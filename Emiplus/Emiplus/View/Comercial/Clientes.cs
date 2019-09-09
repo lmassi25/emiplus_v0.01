@@ -62,6 +62,7 @@ namespace Emiplus.View.Comercial
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
+            Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
             OpenForm.Show<AddClientes>(this);
         }
 
