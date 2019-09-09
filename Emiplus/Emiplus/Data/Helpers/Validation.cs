@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
@@ -53,6 +54,16 @@ namespace Emiplus.Data.Helpers
                 return 0;
 
             return Convert.ToInt32(obj);
+        }
+
+        public static bool Event(object sender, dynamic control)
+        {
+            if (((Control)sender).Name == control.Name)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

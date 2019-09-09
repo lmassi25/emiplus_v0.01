@@ -151,6 +151,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -180,6 +181,9 @@
     <Reference Include="Valit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Valit.2.0.0\lib\netstandard2.0\Valit.dll</HintPath>
     </Reference>
+    <Reference Include="VisualPlus, Version=0.4.1.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VisualPlus.0.4.1.6-beta\lib\NET4\VisualPlus.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Categoria.cs" />
@@ -195,7 +199,6 @@
     <Compile Include="Data\Helpers\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Helpers\Eventos.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
@@ -352,6 +355,12 @@
     <Compile Include="View\Common\TelaProdutosInicial.Designer.cs">
       <DependentUpon>TelaProdutosInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Exemplos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Exemplos.Designer.cs">
+      <DependentUpon>Exemplos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Financeiro\FinanceiroHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaProdutosInicial.resx">
       <DependentUpon>TelaProdutosInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Exemplos.resx">
+      <DependentUpon>Exemplos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\FinanceiroHome.resx">
       <DependentUpon>FinanceiroHome.cs</DependentUpon>
