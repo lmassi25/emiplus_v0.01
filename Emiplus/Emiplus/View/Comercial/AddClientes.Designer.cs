@@ -71,8 +71,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.modeloNegocio = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -90,6 +88,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.visualCheckBox1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -807,10 +806,9 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
-            this.visualGroupBox1.Controls.Add(this.label24);
-            this.visualGroupBox1.Controls.Add(this.modeloNegocio);
-            this.visualGroupBox1.Controls.Add(this.nascimento);
             this.visualGroupBox1.Controls.Add(this.pictureBox13);
+            this.visualGroupBox1.Controls.Add(this.visualCheckBox1);
+            this.visualGroupBox1.Controls.Add(this.nascimento);
             this.visualGroupBox1.Controls.Add(this.pictureBox12);
             this.visualGroupBox1.Controls.Add(this.pictureBox11);
             this.visualGroupBox1.Controls.Add(this.pictureBox14);
@@ -849,77 +847,7 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualGroupBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.visualGroupBox1.TitleBoxHeight = 25;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.White;
-            this.label24.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label24.Location = new System.Drawing.Point(441, 85);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(125, 17);
-            this.label24.TabIndex = 41;
-            this.label24.Text = "Modelo de negócio";
-            // 
-            // modeloNegocio
-            // 
-            this.modeloNegocio.BackColor = System.Drawing.Color.White;
-            this.modeloNegocio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.modeloNegocio.BackColorState.Enabled = System.Drawing.Color.White;
-            this.modeloNegocio.Border.Color = System.Drawing.Color.Gainsboro;
-            this.modeloNegocio.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.modeloNegocio.Border.HoverVisible = true;
-            this.modeloNegocio.Border.Rounding = 6;
-            this.modeloNegocio.Border.Thickness = 1;
-            this.modeloNegocio.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.modeloNegocio.Border.Visible = true;
-            this.modeloNegocio.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.modeloNegocio.ButtonImage = null;
-            this.modeloNegocio.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.modeloNegocio.ButtonWidth = 30;
-            this.modeloNegocio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.modeloNegocio.DropDownHeight = 100;
-            this.modeloNegocio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.modeloNegocio.DropDownWidth = 284;
-            this.modeloNegocio.FormattingEnabled = true;
-            this.modeloNegocio.ImageList = null;
-            this.modeloNegocio.ImageVisible = false;
-            this.modeloNegocio.Index = 0;
-            this.modeloNegocio.IntegralHeight = false;
-            this.modeloNegocio.ItemHeight = 23;
-            this.modeloNegocio.ItemImageVisible = true;
-            this.modeloNegocio.Items.AddRange(new object[] {
-            "1 - Contribuinte ICMS (Necessário I.E.)",
-            "2 - Contribuinte isento de Inscrição Estadual",
-            "9 - Não contribuinte"});
-            this.modeloNegocio.Location = new System.Drawing.Point(441, 104);
-            this.modeloNegocio.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.modeloNegocio.MenuItemNormal = System.Drawing.Color.White;
-            this.modeloNegocio.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.modeloNegocio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.modeloNegocio.Name = "modeloNegocio";
-            this.modeloNegocio.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.modeloNegocio.Size = new System.Drawing.Size(198, 29);
-            this.modeloNegocio.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.modeloNegocio.TabIndex = 40;
-            this.modeloNegocio.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.modeloNegocio.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.modeloNegocio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.modeloNegocio.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.modeloNegocio.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.modeloNegocio.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.modeloNegocio.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.modeloNegocio.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.modeloNegocio.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.modeloNegocio.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.modeloNegocio.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.modeloNegocio.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.modeloNegocio.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.modeloNegocio.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modeloNegocio.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.modeloNegocio.Watermark.Text = "Watermark text";
-            this.modeloNegocio.Watermark.Visible = false;
+            this.visualGroupBox1.Enter += new System.EventHandler(this.VisualGroupBox1_Enter);
             // 
             // nascimento
             // 
@@ -953,7 +881,7 @@ namespace Emiplus.View.Comercial
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.White;
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(570, 86);
+            this.pictureBox13.Location = new System.Drawing.Point(513, 111);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(15, 15);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1208,6 +1136,8 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.Watermark.Text = "Watermark text";
             this.cpfCnpj.Watermark.Visible = false;
             this.cpfCnpj.WordWrap = true;
+            this.cpfCnpj.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CpfCnpj_KeyDown);
+            this.cpfCnpj.TextChanged += new System.EventHandler(this.CpfCnpj_TextChanged);
             // 
             // label21
             // 
@@ -1359,6 +1289,50 @@ namespace Emiplus.View.Comercial
             this.nomeRS.Watermark.Visible = false;
             this.nomeRS.WordWrap = true;
             // 
+            // visualCheckBox1
+            // 
+            this.visualCheckBox1.BackColor = System.Drawing.Color.White;
+            this.visualCheckBox1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.visualCheckBox1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.visualCheckBox1.Border.HoverVisible = true;
+            this.visualCheckBox1.Border.Rounding = 3;
+            this.visualCheckBox1.Border.Thickness = 1;
+            this.visualCheckBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualCheckBox1.Border.Visible = true;
+            this.visualCheckBox1.Box = new System.Drawing.Size(14, 14);
+            this.visualCheckBox1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualCheckBox1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualCheckBox1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualCheckBox1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.visualCheckBox1.BoxSpacing = 2;
+            this.visualCheckBox1.CheckStyle.AutoSize = true;
+            this.visualCheckBox1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.visualCheckBox1.CheckStyle.Character = '✔';
+            this.visualCheckBox1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.visualCheckBox1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualCheckBox1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.visualCheckBox1.CheckStyle.ShapeRounding = 3;
+            this.visualCheckBox1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualCheckBox1.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.visualCheckBox1.CheckStyle.Thickness = 2F;
+            this.visualCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.visualCheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualCheckBox1.IsBoxLarger = false;
+            this.visualCheckBox1.Location = new System.Drawing.Point(452, 106);
+            this.visualCheckBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualCheckBox1.Name = "visualCheckBox1";
+            this.visualCheckBox1.Size = new System.Drawing.Size(67, 23);
+            this.visualCheckBox1.TabIndex = 42;
+            this.visualCheckBox1.Text = "Isento";
+            this.visualCheckBox1.TextSize = new System.Drawing.Size(41, 19);
+            this.visualCheckBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualCheckBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualCheckBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualCheckBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualCheckBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualCheckBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualCheckBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // AddClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1464,13 +1438,12 @@ namespace Emiplus.View.Comercial
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nomeRS;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker nascimento;
-        private System.Windows.Forms.Label label24;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox modeloNegocio;
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rntc;
         private System.Windows.Forms.Label label3;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox uf;
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox placa;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox visualCheckBox1;
     }
 }

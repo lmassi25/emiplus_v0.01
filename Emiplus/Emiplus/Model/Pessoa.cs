@@ -20,12 +20,14 @@
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public int EmpresaId { get; private set; }
-        public int Padrao { get; set; }
         public string Nome { get; set; }
         public string Fantasia { get; set; }
         public string RG { get; set; }
         public string CPF  { get; set; }
         public string Aniversario { get; set; }
+        public string Pessoatipo { get; set; }
+        public int Isento { get; set; }
+
 
         #region SQL Create
         //CREATE TABLE PESSOA
