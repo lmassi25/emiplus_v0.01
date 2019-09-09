@@ -37,7 +37,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.titulo = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.visualTextBox1 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.cep = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.rua = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -203,62 +203,62 @@
             this.label10.TabIndex = 28;
             this.label10.Text = "CEP";
             // 
-            // visualTextBox1
+            // cep
             // 
-            this.visualTextBox1.AlphaNumeric = false;
-            this.visualTextBox1.BackColor = System.Drawing.Color.White;
-            this.visualTextBox1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox1.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox1.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox1.Border.HoverVisible = true;
-            this.visualTextBox1.Border.Rounding = 8;
-            this.visualTextBox1.Border.Thickness = 1;
-            this.visualTextBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox1.Border.Visible = true;
-            this.visualTextBox1.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox1.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox1.ButtonBorder.HoverVisible = true;
-            this.visualTextBox1.ButtonBorder.Rounding = 6;
-            this.visualTextBox1.ButtonBorder.Thickness = 1;
-            this.visualTextBox1.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox1.ButtonBorder.Visible = true;
-            this.visualTextBox1.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox1.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox1.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox1.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox1.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.ButtonIndent = 3;
-            this.visualTextBox1.ButtonText = "visualButton";
-            this.visualTextBox1.ButtonVisible = false;
-            this.visualTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.Image = null;
-            this.visualTextBox1.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox1.ImageVisible = false;
-            this.visualTextBox1.ImageWidth = 35;
-            this.visualTextBox1.Location = new System.Drawing.Point(91, 98);
-            this.visualTextBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox1.Name = "visualTextBox1";
-            this.visualTextBox1.PasswordChar = '\0';
-            this.visualTextBox1.ReadOnly = false;
-            this.visualTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox1.Size = new System.Drawing.Size(135, 28);
-            this.visualTextBox1.TabIndex = 27;
-            this.visualTextBox1.TextBoxWidth = 123;
-            this.visualTextBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox1.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox1.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox1.Watermark.Text = "Watermark text";
-            this.visualTextBox1.Watermark.Visible = false;
-            this.visualTextBox1.WordWrap = true;
+            this.cep.AlphaNumeric = false;
+            this.cep.BackColor = System.Drawing.Color.White;
+            this.cep.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.cep.BackColorState.Enabled = System.Drawing.Color.White;
+            this.cep.Border.Color = System.Drawing.Color.Gainsboro;
+            this.cep.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.cep.Border.HoverVisible = true;
+            this.cep.Border.Rounding = 8;
+            this.cep.Border.Thickness = 1;
+            this.cep.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.cep.Border.Visible = true;
+            this.cep.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.cep.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.cep.ButtonBorder.HoverVisible = true;
+            this.cep.ButtonBorder.Rounding = 6;
+            this.cep.ButtonBorder.Thickness = 1;
+            this.cep.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.cep.ButtonBorder.Visible = true;
+            this.cep.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cep.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.cep.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cep.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cep.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.ButtonIndent = 3;
+            this.cep.ButtonText = "visualButton";
+            this.cep.ButtonVisible = false;
+            this.cep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.Image = null;
+            this.cep.ImageSize = new System.Drawing.Size(16, 16);
+            this.cep.ImageVisible = false;
+            this.cep.ImageWidth = 35;
+            this.cep.Location = new System.Drawing.Point(91, 98);
+            this.cep.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.cep.Name = "cep";
+            this.cep.PasswordChar = '\0';
+            this.cep.ReadOnly = false;
+            this.cep.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.cep.Size = new System.Drawing.Size(135, 28);
+            this.cep.TabIndex = 27;
+            this.cep.TextBoxWidth = 123;
+            this.cep.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.cep.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.cep.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.cep.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.cep.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.cep.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.cep.Watermark.Text = "Watermark text";
+            this.cep.Watermark.Visible = false;
+            this.cep.WordWrap = true;
             // 
             // label12
             // 
@@ -745,7 +745,7 @@
             // 
             // AddClienteEndereco
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(670, 200);
@@ -764,11 +764,11 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.rua);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.visualTextBox1);
+            this.Controls.Add(this.cep);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.titulo);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddClienteEndereco";
@@ -789,7 +789,7 @@
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox titulo;
         private System.Windows.Forms.Label label10;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox1;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox cep;
         private System.Windows.Forms.Label label12;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rua;
         private System.Windows.Forms.Label label13;

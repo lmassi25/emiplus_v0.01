@@ -31,6 +31,7 @@
         public string Bairro { get; set; }
         public string Complemento { get; set; }
         public string Pais { get; set; }
+        public string IBGE { get; set; }
 
         #region SQL CREATE
         //CREATE TABLE PESSOA_ENDERECO
@@ -64,7 +65,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Endereço salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -77,7 +78,7 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Endereço atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {

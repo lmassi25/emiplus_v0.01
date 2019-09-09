@@ -32,6 +32,8 @@ namespace Emiplus.View.Comercial
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -71,8 +73,9 @@ namespace Emiplus.View.Comercial
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
+            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -88,7 +91,6 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.visualCheckBox1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -296,10 +298,28 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.BackgroundColor = System.Drawing.Color.White;
             this.ListaEnderecos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaEnderecos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaEnderecos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ListaEnderecos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaEnderecos.DefaultCellStyle = dataGridViewCellStyle2;
             this.ListaEnderecos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaEnderecos.Location = new System.Drawing.Point(0, 70);
             this.ListaEnderecos.Name = "ListaEnderecos";
+            this.ListaEnderecos.ReadOnly = true;
+            this.ListaEnderecos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListaEnderecos.Size = new System.Drawing.Size(637, 124);
             this.ListaEnderecos.TabIndex = 4;
             // 
@@ -807,7 +827,7 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
             this.visualGroupBox1.Controls.Add(this.pictureBox13);
-            this.visualGroupBox1.Controls.Add(this.visualCheckBox1);
+            this.visualGroupBox1.Controls.Add(this.Isento);
             this.visualGroupBox1.Controls.Add(this.nascimento);
             this.visualGroupBox1.Controls.Add(this.pictureBox12);
             this.visualGroupBox1.Controls.Add(this.pictureBox11);
@@ -849,6 +869,61 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.TitleBoxHeight = 25;
             this.visualGroupBox1.Enter += new System.EventHandler(this.VisualGroupBox1_Enter);
             // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.White;
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(513, 111);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 38;
+            this.pictureBox13.TabStop = false;
+            // 
+            // Isento
+            // 
+            this.Isento.BackColor = System.Drawing.Color.White;
+            this.Isento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Isento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Isento.Border.HoverVisible = true;
+            this.Isento.Border.Rounding = 3;
+            this.Isento.Border.Thickness = 1;
+            this.Isento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Isento.Border.Visible = true;
+            this.Isento.Box = new System.Drawing.Size(14, 14);
+            this.Isento.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Isento.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Isento.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Isento.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Isento.BoxSpacing = 2;
+            this.Isento.CheckStyle.AutoSize = true;
+            this.Isento.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.Isento.CheckStyle.Character = '✔';
+            this.Isento.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Isento.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Isento.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.Isento.CheckStyle.ShapeRounding = 3;
+            this.Isento.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Isento.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.Isento.CheckStyle.Thickness = 2F;
+            this.Isento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Isento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.IsBoxLarger = false;
+            this.Isento.Location = new System.Drawing.Point(452, 106);
+            this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Isento.Name = "Isento";
+            this.Isento.Size = new System.Drawing.Size(67, 23);
+            this.Isento.TabIndex = 42;
+            this.Isento.Text = "Isento";
+            this.Isento.TextSize = new System.Drawing.Size(41, 19);
+            this.Isento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Isento.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Isento.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Isento.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // nascimento
             // 
             this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
@@ -876,17 +951,6 @@ namespace Emiplus.View.Comercial
             this.nascimento.Size = new System.Drawing.Size(120, 27);
             this.nascimento.TabIndex = 39;
             this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.BackColor = System.Drawing.Color.White;
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(513, 111);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 38;
-            this.pictureBox13.TabStop = false;
             // 
             // pictureBox12
             // 
@@ -1288,50 +1352,7 @@ namespace Emiplus.View.Comercial
             this.nomeRS.Watermark.Text = "Watermark text";
             this.nomeRS.Watermark.Visible = false;
             this.nomeRS.WordWrap = true;
-            // 
-            // visualCheckBox1
-            // 
-            this.visualCheckBox1.BackColor = System.Drawing.Color.White;
-            this.visualCheckBox1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualCheckBox1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualCheckBox1.Border.HoverVisible = true;
-            this.visualCheckBox1.Border.Rounding = 3;
-            this.visualCheckBox1.Border.Thickness = 1;
-            this.visualCheckBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualCheckBox1.Border.Visible = true;
-            this.visualCheckBox1.Box = new System.Drawing.Size(14, 14);
-            this.visualCheckBox1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualCheckBox1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualCheckBox1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualCheckBox1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualCheckBox1.BoxSpacing = 2;
-            this.visualCheckBox1.CheckStyle.AutoSize = true;
-            this.visualCheckBox1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.visualCheckBox1.CheckStyle.Character = '✔';
-            this.visualCheckBox1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.visualCheckBox1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualCheckBox1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.visualCheckBox1.CheckStyle.ShapeRounding = 3;
-            this.visualCheckBox1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualCheckBox1.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.visualCheckBox1.CheckStyle.Thickness = 2F;
-            this.visualCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualCheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.IsBoxLarger = false;
-            this.visualCheckBox1.Location = new System.Drawing.Point(452, 106);
-            this.visualCheckBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualCheckBox1.Name = "visualCheckBox1";
-            this.visualCheckBox1.Size = new System.Drawing.Size(67, 23);
-            this.visualCheckBox1.TabIndex = 42;
-            this.visualCheckBox1.Text = "Isento";
-            this.visualCheckBox1.TextSize = new System.Drawing.Size(41, 19);
-            this.visualCheckBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualCheckBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualCheckBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualCheckBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.nomeRS.Enter += new System.EventHandler(this.NomeRS_Enter);
             // 
             // AddClientes
             // 
@@ -1444,6 +1465,6 @@ namespace Emiplus.View.Comercial
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox uf;
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox placa;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox visualCheckBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox Isento;
     }
 }
