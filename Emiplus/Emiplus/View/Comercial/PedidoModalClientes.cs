@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Comercial
 {

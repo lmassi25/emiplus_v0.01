@@ -1,8 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
-using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos
 {
@@ -16,7 +16,7 @@ namespace Emiplus.View.Produtos
             InitializeComponent();
 
             if (idCatSelected > 0)
-                LoadData();            
+                LoadData();
         }
 
         private void LoadData()
@@ -53,10 +53,10 @@ namespace Emiplus.View.Produtos
             _modelCategoria.Id = idCatSelected;
             _modelCategoria.Nome = nome.Text;
 
-            if(_modelCategoria.Save(_modelCategoria))
+            if (_modelCategoria.Save(_modelCategoria))
             {
                 Close();
-            }            
+            }
         }
 
         private void BtnRemover_Click(object sender, EventArgs e)

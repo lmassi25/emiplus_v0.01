@@ -10,8 +10,8 @@ namespace Emiplus.Data.Helpers
 
             var ws = new WSCorreios.AtendeClienteClient();
             var resposta = ws.consultaCEP(cep);
-            
-            return new List<string> { resposta.end, resposta.complemento2, resposta.bairro, resposta.cidade, resposta.uf};
+
+            return new List<string> { resposta.end, resposta.complemento2, resposta.bairro, resposta.cidade, resposta.uf };
         }
 
         public static string GetIBGE(string cep)

@@ -1,15 +1,9 @@
-﻿using Emiplus.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using SqlKata.Execution;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {

@@ -1,22 +1,23 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Windows.Forms;
-using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
-        private int idPdtSelecionado = Produtos.idPdtSelecionado;
+        public static int idPdtSelecionado { get; set; }
         private Item _modelItem = new Item();
+        private Controller.Item _controllerItem = new Controller.Item();
 
         public AddProduct()
         {
             InitializeComponent();
-            
+
+            idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
             if (idPdtSelecionado > 0)
                 LoadData();
         }
@@ -33,9 +34,12 @@ namespace Emiplus.View.Produtos
             Categorias.DisplayMember = "NOME";
             Categorias.ValueMember = "ID";
             Categorias.SelectedValue = _modelItem.Categoriaid;
-            
-            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT"};
-            if (_modelItem.Medida != null) Medidas.SelectedValue = _modelItem.Medida;
+
+            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+            if (_modelItem.Medida != null)
+                Medidas.SelectedItem = _modelItem.Medida;
+
+            DataTableEstoque();
         }
 
         private void LoadData()
@@ -81,7 +85,8 @@ namespace Emiplus.View.Produtos
             _modelItem.EstoqueMinimo = Validation.ConvertToDouble(estoqueminimo.Text);
             _modelItem.Medida = Medidas.Text;
 
-            if (Categorias.SelectedValue != null) _modelItem.Categoriaid = (int)Categorias.SelectedValue;
+            if (Categorias.SelectedValue != null)
+                _modelItem.Categoriaid = (int)Categorias.SelectedValue;
 
             if (_modelItem.Save(_modelItem))
             {
@@ -104,7 +109,22 @@ namespace Emiplus.View.Produtos
         private void BtnEstoque_Click(object sender, EventArgs e)
         {
             AddEstoque f = new AddEstoque();
-            f.ShowDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+                SetFocus();
+            }
+        }
+
+        private void SetFocus()
+        {
+            estoqueminimo.Focus();
+            DataTableEstoque();
+        }
+
+        private void DataTableEstoque()
+        {
+            _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
         }
     }
 }

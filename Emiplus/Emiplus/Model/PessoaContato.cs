@@ -1,17 +1,14 @@
 ﻿namespace Emiplus.Model
 {
+    using Data.Database;
     using Emiplus.Data.Helpers;
     using SqlKata;
-    using SqlKata.Execution;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Data.Database;
     using Valit;
 
     class PessoaContato : Model
     {
-        public PessoaContato() : base("PESSOA_CONTATO") {}
+        public PessoaContato() : base("PESSOA_CONTATO") { }
 
         [Ignore]
         [Key("ID")]

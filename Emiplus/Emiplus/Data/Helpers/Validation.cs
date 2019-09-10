@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
     public static class Validation
-    {   
+    {
         public static string ChangeMaskCPFCNPJ(string aux, string pessoa)
         {
             string aux1 = "";
@@ -111,7 +110,8 @@ namespace Emiplus.Data.Helpers
         {
             string res;
 
-            if (cifrao) {
+            if (cifrao)
+            {
                 res = obj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-br"));
             }
             else

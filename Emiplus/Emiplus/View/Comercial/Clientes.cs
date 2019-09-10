@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using System;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
@@ -40,13 +33,13 @@ namespace Emiplus.View.Comercial
 
         private void LoadId()
         {
-            if(GridLista.SelectedRows.Count > 0)
+            if (GridLista.SelectedRows.Count > 0)
             {
                 Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 OpenForm.Show<AddClientes>(this);
-            }            
+            }
         }
-        
+
         private void Label5_Click(object sender, EventArgs e)
         {
             Close();

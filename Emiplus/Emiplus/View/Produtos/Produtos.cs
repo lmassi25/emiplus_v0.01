@@ -43,7 +43,7 @@ namespace Emiplus.View.Produtos
         private void Produtos_Load(object sender, EventArgs e)
         {
             Start();
-            DataTable();            
+            DataTable();
         }
 
         private void Search_TextChanged(object sender, EventArgs e)
