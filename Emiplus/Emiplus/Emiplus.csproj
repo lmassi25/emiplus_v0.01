@@ -413,6 +413,30 @@
     <Compile Include="View\Produtos\Impostos.Designer.cs">
       <DependentUpon>Impostos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_0.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_0.Designer.cs">
+      <DependentUpon>ICMS_0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_1.Designer.cs">
+      <DependentUpon>ICMS_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_2.Designer.cs">
+      <DependentUpon>ICMS_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_3.Designer.cs">
+      <DependentUpon>ICMS_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Produtos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -530,6 +554,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Impostos.resx">
       <DependentUpon>Impostos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_0.resx">
+      <DependentUpon>ICMS_0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_1.resx">
+      <DependentUpon>ICMS_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_2.resx">
+      <DependentUpon>ICMS_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_3.resx">
+      <DependentUpon>ICMS_3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
