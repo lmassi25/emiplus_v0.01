@@ -131,11 +131,11 @@
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Categoria removida com sucesso.", Alert.AlertType.info);
+                Alert.Message("Pronto!", "Imposto removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover a categoria.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o imposto.", Alert.AlertType.error);
             return false;
         }
 

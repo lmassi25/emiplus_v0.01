@@ -1,24 +1,40 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Produtos.Imposto.CFOP;
+using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddImpostos : Form
     {
+        private int idImpSelected = Impostos.idImpSelected;
+        private Model.Imposto _modelImposto = new Model.Imposto();
+
         public AddImpostos()
         {
             InitializeComponent();
+
+            if (idImpSelected > 0)
+                LoadData();
         }
 
+        private void LoadData()
+        {
+            _modelImposto = _modelImposto.FindById(idImpSelected).First<Model.Imposto>();
+
+            nome.Text = _modelImposto.Nome;
+        }
+        
         private void AddImpostos_Load(object sender, EventArgs e)
         {
+            nome.Select();
+
+            ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
             Icms.DataSource = new List<string> {
                 "00 - Tributação integralmente",
                 "10 - Tributação com cobrança do ICMS por substituição tributária",
@@ -179,7 +195,75 @@ namespace Emiplus.View.Produtos
             icms_2.Size = new Size(319, 158);
             icms_3.Size = new Size(214, 117);
         }
+        
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void Label6_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnHelp_Click(object sender, EventArgs e)
+        {
+            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+        }
+
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {              
+            _modelImposto.Id = idImpSelected;
+            _modelImposto.Nome = nome.Text;
+
+            _modelImposto.Icms = Icms.Text;
+
+            if (Icms.Text.Contains("101"))
+            {
+                //icms_1.Visible = true;
+                //_modelImposto.IcmsAliq = Validation.ConvertToDouble(Aliq_1.Text);
+            }
+            else if (Icms.Text.Contains("201"))
+            {
+                //icms_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("202"))
+            {
+                //icms_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("203"))
+            {
+                //icms_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("500"))
+            {
+                //icms_3.Visible = true;
+            }
+            else if (Icms.Text.Contains("900"))
+            {
+                //icms_2.Visible = true;
+            }
+
+            _modelImposto.Ipi = Ipi.Text;
+            _modelImposto.IpiAliq = Validation.ConvertToDouble(Aliq_IPI.Text);
+
+            _modelImposto.Pis = Pis.Text;
+            _modelImposto.PisAliq = Validation.ConvertToDouble(Aliq_Pis.Text);
+
+            _modelImposto.Cofins = Cofins.Text;
+            _modelImposto.CofinsAliq = Validation.ConvertToDouble(Aliq_Cofins.Text);
+
+            if (_modelImposto.Save(_modelImposto))
+            {
+                Close();
+            }
+        }
+
+        private void BtnRemover_Click(object sender, EventArgs e)
+        {
+            var data = _modelImposto.Remove(idImpSelected);
+            if (data) Close();
+        }
 
         private void SetIcms()
         {
@@ -216,6 +300,18 @@ namespace Emiplus.View.Produtos
         private void Icms_SelectedValueChanged(object sender, EventArgs e)
         {
             SetIcms();
+        }
+
+        private void AddCfop_Click(object sender, EventArgs e)
+        {
+            Cfops form = new Cfops();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+            //    _mPedido.Id = Id;
+            //    _mPedido.Colaborador = PedidoModalClientes.Id;
+            //    _mPedido.Save(_mPedido);
+            //    LoadData();
+            }
         }
     }
 }
