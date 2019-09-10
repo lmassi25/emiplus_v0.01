@@ -54,6 +54,7 @@
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.Impostos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -497,12 +498,37 @@
             this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // Impostos
+            // 
+            this.Impostos.BackColor = System.Drawing.Color.Transparent;
+            this.Impostos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Impostos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Impostos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Impostos.FlatAppearance.BorderSize = 0;
+            this.Impostos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Impostos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Impostos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Impostos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Impostos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Impostos.Image = ((System.Drawing.Image)(resources.GetObject("Impostos.Image")));
+            this.Impostos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Impostos.Location = new System.Drawing.Point(452, 362);
+            this.Impostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Impostos.Name = "Impostos";
+            this.Impostos.Size = new System.Drawing.Size(126, 115);
+            this.Impostos.TabIndex = 81;
+            this.Impostos.Text = "Impostos";
+            this.Impostos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Impostos.UseVisualStyleBackColor = false;
+            this.Impostos.Click += new System.EventHandler(this.Impostos_Click);
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.Impostos);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.visualSeparator2);
@@ -565,5 +591,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
+        private System.Windows.Forms.Button Impostos;
     }
 }

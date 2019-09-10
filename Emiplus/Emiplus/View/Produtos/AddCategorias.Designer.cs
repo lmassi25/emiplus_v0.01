@@ -67,7 +67,7 @@
             this.panel5.Controls.Add(this.btnHelp);
             this.panel5.Location = new System.Drawing.Point(0, 41);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(731, 97);
+            this.panel5.Size = new System.Drawing.Size(733, 97);
             this.panel5.TabIndex = 17;
             // 
             // btnExit
@@ -104,11 +104,11 @@
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(631, 3);
+            this.btnHelp.Location = new System.Drawing.Point(633, 3);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
             this.btnHelp.TabIndex = 13;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -147,7 +147,7 @@
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalvar.Location = new System.Drawing.Point(630, 4);
+            this.btnSalvar.Location = new System.Drawing.Point(632, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(85, 90);
             this.btnSalvar.TabIndex = 4;
@@ -196,9 +196,9 @@
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.barraTitulo.Controls.Add(this.btnSalvar);
             this.barraTitulo.Controls.Add(this.btnRemover);
-            this.barraTitulo.Location = new System.Drawing.Point(1, 287);
+            this.barraTitulo.Location = new System.Drawing.Point(0, 287);
             this.barraTitulo.Name = "barraTitulo";
-            this.barraTitulo.Size = new System.Drawing.Size(731, 97);
+            this.barraTitulo.Size = new System.Drawing.Size(733, 97);
             this.barraTitulo.TabIndex = 14;
             // 
             // panel4
