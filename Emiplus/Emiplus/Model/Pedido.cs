@@ -1,10 +1,8 @@
 ﻿namespace Emiplus.Model
 {
-    using System;
-    using SqlKata;
-    using Valit;
     using Data.Database;
-    using Data.Helpers;
+    using SqlKata;
+    using System;
 
     class Pedido : Model
     {

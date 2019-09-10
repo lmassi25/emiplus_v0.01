@@ -1,9 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
-using Emiplus.View.Common;
-using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
 
 namespace Emiplus.View.Comercial
 {
@@ -57,16 +56,19 @@ namespace Emiplus.View.Comercial
                 tabControl1.TabPages.Add(tabTransporte);
             }
 
-            //if(Id == 0)
-            //{
-            //    data.Criado = DateTime.Now;
-            //    if (Data(data).Create() == 1)
-            //}
+            if (Id == 0)
+            {
+                _modelPessoa.Id = Id;
+                _modelPessoa.Tipo = page;
+                _modelPessoa.Nome = "Novo registro";
+                if (_modelPessoa.Save(_modelPessoa))
+                {
+                    Id = _modelPessoa.GetLastId();
+                }
+            }
 
             if (Id > 0)
             {
-                tabControl1.Visible = true;
-                btnRemover.Visible = true;
                 LoadData();
             }
         }
@@ -114,11 +116,11 @@ namespace Emiplus.View.Comercial
             _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
 
             nomeRS.Text = _modelPessoa.Nome;
-            nomeFantasia.Text = _modelPessoa.Fantasia;
-            nascimento.Text = _modelPessoa.Aniversario;
-            cpfCnpj.Text = _modelPessoa.CPF;
-            rgIE.Text = _modelPessoa.RG;
-            pessoaJF.SelectedItem = _modelPessoa.Pessoatipo;
+            nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
+            nascimento.Text = _modelPessoa.Aniversario == null ? "" : _modelPessoa.Aniversario;
+            cpfCnpj.Text = _modelPessoa.CPF == null ? "" : _modelPessoa.CPF;
+            rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
+            pessoaJF.SelectedItem = _modelPessoa.Pessoatipo == null ? "" : _modelPessoa.Pessoatipo;
             Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
         }
 
@@ -150,7 +152,7 @@ namespace Emiplus.View.Comercial
             IdContact = 0;
             AddClienteContato form = new AddClienteContato();
             if (form.ShowDialog() == DialogResult.OK)
-                Focus();
+                SetFocus();
         }
 
         private void AddClientes_Load(object sender, EventArgs e)
@@ -199,7 +201,6 @@ namespace Emiplus.View.Comercial
 
             if (_modelPessoa.Save(_modelPessoa))
             {
-                tabControl1.Visible = true;
                 Id = _modelPessoa.GetLastId();
                 Close();
             }
@@ -208,11 +209,6 @@ namespace Emiplus.View.Comercial
         private void BtnEditarContato_Click(object sender, EventArgs e)
         {
             GetContato();
-        }
-
-        private void VisualGroupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void CpfCnpj_TextChanged(object sender, EventArgs e)
@@ -249,9 +245,9 @@ namespace Emiplus.View.Comercial
             DataTableAddress();
             DataTableContatos();
         }
-        
+
         private void PessoaJF_SelectionChangeCommitted(object sender, EventArgs e)
-        {            
+        {
             if (pessoaJF.Text == "Física")
             {
                 Isento.Checked = true;
@@ -260,11 +256,6 @@ namespace Emiplus.View.Comercial
             {
                 Isento.Checked = false;
             }
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void Label6_Click_1(object sender, EventArgs e)

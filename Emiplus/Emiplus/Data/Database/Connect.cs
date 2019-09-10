@@ -22,7 +22,7 @@ namespace Emiplus.Data.Database
             var compiler = new FirebirdCompiler();
             var db = new QueryFactory(connection, compiler);
 
-            db.Logger = compiled => 
+            db.Logger = compiled =>
             {
                 Log Log = new Log();
                 Log.Add("LOGGER", "Query: " + compiled.ToString(), Log.LogType.fatal);

@@ -1,10 +1,8 @@
 ﻿namespace Emiplus.Model
 {
-    using System;
-    using SqlKata;
     using Data.Database;
-    using Emiplus.Data.Helpers;
-    using Valit;
+    using SqlKata;
+    using System;
 
     class Imposto : Model
     {

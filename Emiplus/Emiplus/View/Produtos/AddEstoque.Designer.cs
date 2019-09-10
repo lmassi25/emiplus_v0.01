@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEstoque));
-            this.label2 = new System.Windows.Forms.Label();
+            this.tituloProduto = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -41,15 +41,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.nome = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.visualTextBox1 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.visualRadioButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
-            this.visualRadioButton2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.quantidade = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.btnRadioRemoveItem = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.btnRadioAddItem = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.estoqueAtual = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.custoAtual = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -58,15 +58,15 @@
             this.visualPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // tituloProduto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Meu produto de teste 1234";
+            this.tituloProduto.AutoSize = true;
+            this.tituloProduto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tituloProduto.Location = new System.Drawing.Point(67, 27);
+            this.tituloProduto.Name = "tituloProduto";
+            this.tituloProduto.Size = new System.Drawing.Size(189, 20);
+            this.tituloProduto.TabIndex = 1;
+            this.tituloProduto.Text = "Meu produto de teste 1234";
             // 
             // label8
             // 
@@ -165,12 +165,13 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.tituloProduto);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -197,206 +198,209 @@
             this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 21;
             // 
-            // nome
+            // quantidade
             // 
-            this.nome.AlphaNumeric = false;
-            this.nome.BackColor = System.Drawing.Color.White;
-            this.nome.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.nome.BackColorState.Enabled = System.Drawing.Color.White;
-            this.nome.Border.Color = System.Drawing.Color.Gainsboro;
-            this.nome.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.nome.Border.HoverVisible = true;
-            this.nome.Border.Rounding = 8;
-            this.nome.Border.Thickness = 1;
-            this.nome.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.nome.Border.Visible = true;
-            this.nome.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.nome.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.nome.ButtonBorder.HoverVisible = true;
-            this.nome.ButtonBorder.Rounding = 6;
-            this.nome.ButtonBorder.Thickness = 1;
-            this.nome.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.nome.ButtonBorder.Visible = true;
-            this.nome.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.nome.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.nome.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.nome.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.nome.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.ButtonIndent = 3;
-            this.nome.ButtonText = "visualButton";
-            this.nome.ButtonVisible = false;
-            this.nome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.nome.Image = null;
-            this.nome.ImageSize = new System.Drawing.Size(16, 16);
-            this.nome.ImageVisible = false;
-            this.nome.ImageWidth = 35;
-            this.nome.Location = new System.Drawing.Point(39, 184);
-            this.nome.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.nome.Name = "nome";
-            this.nome.PasswordChar = '\0';
-            this.nome.ReadOnly = false;
-            this.nome.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nome.Size = new System.Drawing.Size(223, 28);
-            this.nome.TabIndex = 22;
-            this.nome.TextBoxWidth = 211;
-            this.nome.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.nome.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.nome.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.nome.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.nome.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.nome.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.nome.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.nome.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.nome.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.nome.Watermark.Text = "Watermark text";
-            this.nome.Watermark.Visible = false;
-            this.nome.WordWrap = true;
+            this.quantidade.AlphaNumeric = false;
+            this.quantidade.BackColor = System.Drawing.Color.White;
+            this.quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.quantidade.BackColorState.Enabled = System.Drawing.Color.White;
+            this.quantidade.Border.Color = System.Drawing.Color.Gainsboro;
+            this.quantidade.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.quantidade.Border.HoverVisible = true;
+            this.quantidade.Border.Rounding = 8;
+            this.quantidade.Border.Thickness = 1;
+            this.quantidade.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.quantidade.Border.Visible = true;
+            this.quantidade.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.quantidade.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.quantidade.ButtonBorder.HoverVisible = true;
+            this.quantidade.ButtonBorder.Rounding = 6;
+            this.quantidade.ButtonBorder.Thickness = 1;
+            this.quantidade.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.quantidade.ButtonBorder.Visible = true;
+            this.quantidade.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.quantidade.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.quantidade.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.quantidade.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.quantidade.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidade.ButtonIndent = 3;
+            this.quantidade.ButtonText = "visualButton";
+            this.quantidade.ButtonVisible = false;
+            this.quantidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.quantidade.Image = null;
+            this.quantidade.ImageSize = new System.Drawing.Size(16, 16);
+            this.quantidade.ImageVisible = false;
+            this.quantidade.ImageWidth = 35;
+            this.quantidade.Location = new System.Drawing.Point(39, 184);
+            this.quantidade.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.quantidade.Name = "quantidade";
+            this.quantidade.PasswordChar = '\0';
+            this.quantidade.ReadOnly = false;
+            this.quantidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.quantidade.Size = new System.Drawing.Size(223, 28);
+            this.quantidade.TabIndex = 22;
+            this.quantidade.TextBoxWidth = 211;
+            this.quantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.quantidade.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.quantidade.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.quantidade.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.quantidade.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.quantidade.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.quantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.quantidade.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.quantidade.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidade.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.quantidade.Watermark.Text = "Watermark text";
+            this.quantidade.Watermark.Visible = false;
+            this.quantidade.WordWrap = true;
             // 
-            // visualTextBox1
+            // obs
             // 
-            this.visualTextBox1.AlphaNumeric = false;
-            this.visualTextBox1.BackColor = System.Drawing.Color.White;
-            this.visualTextBox1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox1.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox1.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox1.Border.HoverVisible = true;
-            this.visualTextBox1.Border.Rounding = 8;
-            this.visualTextBox1.Border.Thickness = 1;
-            this.visualTextBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox1.Border.Visible = true;
-            this.visualTextBox1.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox1.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox1.ButtonBorder.HoverVisible = true;
-            this.visualTextBox1.ButtonBorder.Rounding = 6;
-            this.visualTextBox1.ButtonBorder.Thickness = 1;
-            this.visualTextBox1.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox1.ButtonBorder.Visible = true;
-            this.visualTextBox1.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox1.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox1.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox1.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox1.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.ButtonIndent = 3;
-            this.visualTextBox1.ButtonText = "visualButton";
-            this.visualTextBox1.ButtonVisible = false;
-            this.visualTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.Image = null;
-            this.visualTextBox1.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox1.ImageVisible = false;
-            this.visualTextBox1.ImageWidth = 35;
-            this.visualTextBox1.Location = new System.Drawing.Point(40, 235);
-            this.visualTextBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox1.MultiLine = true;
-            this.visualTextBox1.Name = "visualTextBox1";
-            this.visualTextBox1.PasswordChar = '\0';
-            this.visualTextBox1.ReadOnly = false;
-            this.visualTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox1.Size = new System.Drawing.Size(400, 69);
-            this.visualTextBox1.TabIndex = 23;
-            this.visualTextBox1.TextBoxWidth = 388;
-            this.visualTextBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox1.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox1.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox1.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox1.Watermark.Text = "Watermark text";
-            this.visualTextBox1.Watermark.Visible = false;
-            this.visualTextBox1.WordWrap = true;
+            this.obs.AlphaNumeric = false;
+            this.obs.BackColor = System.Drawing.Color.White;
+            this.obs.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.obs.BackColorState.Enabled = System.Drawing.Color.White;
+            this.obs.Border.Color = System.Drawing.Color.Gainsboro;
+            this.obs.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.obs.Border.HoverVisible = true;
+            this.obs.Border.Rounding = 8;
+            this.obs.Border.Thickness = 1;
+            this.obs.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.obs.Border.Visible = true;
+            this.obs.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.obs.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.obs.ButtonBorder.HoverVisible = true;
+            this.obs.ButtonBorder.Rounding = 6;
+            this.obs.ButtonBorder.Thickness = 1;
+            this.obs.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.obs.ButtonBorder.Visible = true;
+            this.obs.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.obs.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.obs.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.obs.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.obs.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.ButtonIndent = 3;
+            this.obs.ButtonText = "visualButton";
+            this.obs.ButtonVisible = false;
+            this.obs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.Image = null;
+            this.obs.ImageSize = new System.Drawing.Size(16, 16);
+            this.obs.ImageVisible = false;
+            this.obs.ImageWidth = 35;
+            this.obs.Location = new System.Drawing.Point(40, 235);
+            this.obs.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.obs.MultiLine = true;
+            this.obs.Name = "obs";
+            this.obs.PasswordChar = '\0';
+            this.obs.ReadOnly = false;
+            this.obs.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.obs.Size = new System.Drawing.Size(400, 69);
+            this.obs.TabIndex = 23;
+            this.obs.TextBoxWidth = 388;
+            this.obs.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.obs.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.obs.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.obs.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.obs.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.obs.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.obs.Watermark.Text = "Watermark text";
+            this.obs.Watermark.Visible = false;
+            this.obs.WordWrap = true;
             // 
-            // visualRadioButton1
+            // btnRadioRemoveItem
             // 
-            this.visualRadioButton1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualRadioButton1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualRadioButton1.Border.HoverVisible = true;
-            this.visualRadioButton1.Border.Rounding = 12;
-            this.visualRadioButton1.Border.Thickness = 1;
-            this.visualRadioButton1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton1.Border.Visible = true;
-            this.visualRadioButton1.Box = new System.Drawing.Size(14, 14);
-            this.visualRadioButton1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualRadioButton1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualRadioButton1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualRadioButton1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualRadioButton1.BoxSpacing = 2;
-            this.visualRadioButton1.CheckStyle.AutoSize = true;
-            this.visualRadioButton1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.visualRadioButton1.CheckStyle.Character = '✔';
-            this.visualRadioButton1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.visualRadioButton1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualRadioButton1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.visualRadioButton1.CheckStyle.ShapeRounding = 6;
-            this.visualRadioButton1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton1.CheckStyle.Thickness = 2F;
-            this.visualRadioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualRadioButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualRadioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualRadioButton1.IsBoxLarger = false;
-            this.visualRadioButton1.Location = new System.Drawing.Point(244, 136);
-            this.visualRadioButton1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualRadioButton1.Name = "visualRadioButton1";
-            this.visualRadioButton1.Size = new System.Drawing.Size(109, 23);
-            this.visualRadioButton1.TabIndex = 24;
-            this.visualRadioButton1.Text = "Remover Itens";
-            this.visualRadioButton1.TextSize = new System.Drawing.Size(89, 19);
-            this.visualRadioButton1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualRadioButton1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualRadioButton1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualRadioButton1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnRadioRemoveItem.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.btnRadioRemoveItem.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.btnRadioRemoveItem.Border.HoverVisible = true;
+            this.btnRadioRemoveItem.Border.Rounding = 12;
+            this.btnRadioRemoveItem.Border.Thickness = 1;
+            this.btnRadioRemoveItem.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRadioRemoveItem.Border.Visible = true;
+            this.btnRadioRemoveItem.Box = new System.Drawing.Size(14, 14);
+            this.btnRadioRemoveItem.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRadioRemoveItem.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnRadioRemoveItem.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRadioRemoveItem.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRadioRemoveItem.BoxSpacing = 2;
+            this.btnRadioRemoveItem.CheckStyle.AutoSize = true;
+            this.btnRadioRemoveItem.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.btnRadioRemoveItem.CheckStyle.Character = '✔';
+            this.btnRadioRemoveItem.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.btnRadioRemoveItem.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRadioRemoveItem.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnRadioRemoveItem.CheckStyle.ShapeRounding = 6;
+            this.btnRadioRemoveItem.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRadioRemoveItem.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.btnRadioRemoveItem.CheckStyle.Thickness = 2F;
+            this.btnRadioRemoveItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRadioRemoveItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRadioRemoveItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRadioRemoveItem.IsBoxLarger = false;
+            this.btnRadioRemoveItem.Location = new System.Drawing.Point(244, 136);
+            this.btnRadioRemoveItem.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRadioRemoveItem.Name = "btnRadioRemoveItem";
+            this.btnRadioRemoveItem.Size = new System.Drawing.Size(109, 23);
+            this.btnRadioRemoveItem.TabIndex = 24;
+            this.btnRadioRemoveItem.Text = "Remover Itens";
+            this.btnRadioRemoveItem.TextSize = new System.Drawing.Size(89, 19);
+            this.btnRadioRemoveItem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRadioRemoveItem.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioRemoveItem.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioRemoveItem.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioRemoveItem.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRadioRemoveItem.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRadioRemoveItem.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // visualRadioButton2
+            // btnRadioAddItem
             // 
-            this.visualRadioButton2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualRadioButton2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualRadioButton2.Border.HoverVisible = true;
-            this.visualRadioButton2.Border.Rounding = 12;
-            this.visualRadioButton2.Border.Thickness = 1;
-            this.visualRadioButton2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton2.Border.Visible = true;
-            this.visualRadioButton2.Box = new System.Drawing.Size(14, 14);
-            this.visualRadioButton2.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualRadioButton2.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualRadioButton2.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualRadioButton2.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualRadioButton2.BoxSpacing = 2;
-            this.visualRadioButton2.CheckStyle.AutoSize = true;
-            this.visualRadioButton2.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.visualRadioButton2.CheckStyle.Character = '✔';
-            this.visualRadioButton2.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.visualRadioButton2.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualRadioButton2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.visualRadioButton2.CheckStyle.ShapeRounding = 6;
-            this.visualRadioButton2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualRadioButton2.CheckStyle.Thickness = 2F;
-            this.visualRadioButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualRadioButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualRadioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualRadioButton2.IsBoxLarger = false;
-            this.visualRadioButton2.Location = new System.Drawing.Point(128, 136);
-            this.visualRadioButton2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualRadioButton2.Name = "visualRadioButton2";
-            this.visualRadioButton2.Size = new System.Drawing.Size(109, 23);
-            this.visualRadioButton2.TabIndex = 25;
-            this.visualRadioButton2.Text = "Adicionar Itens";
-            this.visualRadioButton2.TextSize = new System.Drawing.Size(92, 19);
-            this.visualRadioButton2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualRadioButton2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualRadioButton2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualRadioButton2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualRadioButton2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnRadioAddItem.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.btnRadioAddItem.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.btnRadioAddItem.Border.HoverVisible = true;
+            this.btnRadioAddItem.Border.Rounding = 12;
+            this.btnRadioAddItem.Border.Thickness = 1;
+            this.btnRadioAddItem.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRadioAddItem.Border.Visible = true;
+            this.btnRadioAddItem.Box = new System.Drawing.Size(14, 14);
+            this.btnRadioAddItem.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRadioAddItem.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnRadioAddItem.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRadioAddItem.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRadioAddItem.BoxSpacing = 2;
+            this.btnRadioAddItem.Checked = true;
+            this.btnRadioAddItem.CheckStyle.AutoSize = true;
+            this.btnRadioAddItem.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.btnRadioAddItem.CheckStyle.Character = '✔';
+            this.btnRadioAddItem.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.btnRadioAddItem.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRadioAddItem.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btnRadioAddItem.CheckStyle.ShapeRounding = 6;
+            this.btnRadioAddItem.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRadioAddItem.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.btnRadioAddItem.CheckStyle.Thickness = 2F;
+            this.btnRadioAddItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRadioAddItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRadioAddItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRadioAddItem.IsBoxLarger = false;
+            this.btnRadioAddItem.Location = new System.Drawing.Point(128, 136);
+            this.btnRadioAddItem.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRadioAddItem.Name = "btnRadioAddItem";
+            this.btnRadioAddItem.Size = new System.Drawing.Size(109, 23);
+            this.btnRadioAddItem.TabIndex = 25;
+            this.btnRadioAddItem.Text = "Adicionar Itens";
+            this.btnRadioAddItem.TextSize = new System.Drawing.Size(92, 19);
+            this.btnRadioAddItem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRadioAddItem.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioAddItem.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioAddItem.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRadioAddItem.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRadioAddItem.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRadioAddItem.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualPanel1
             // 
@@ -410,7 +414,7 @@
             this.visualPanel1.Border.Thickness = 1;
             this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualPanel1.Border.Visible = true;
-            this.visualPanel1.Controls.Add(this.label7);
+            this.visualPanel1.Controls.Add(this.estoqueAtual);
             this.visualPanel1.Controls.Add(this.label9);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualPanel1.Location = new System.Drawing.Point(38, 80);
@@ -428,17 +432,17 @@
             this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label7
+            // estoqueAtual
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(145, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "0000";
+            this.estoqueAtual.AutoSize = true;
+            this.estoqueAtual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.estoqueAtual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueAtual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.estoqueAtual.Location = new System.Drawing.Point(145, 9);
+            this.estoqueAtual.Name = "estoqueAtual";
+            this.estoqueAtual.Size = new System.Drawing.Size(41, 20);
+            this.estoqueAtual.TabIndex = 3;
+            this.estoqueAtual.Text = "0000";
             // 
             // label9
             // 
@@ -464,7 +468,7 @@
             this.visualPanel2.Border.Thickness = 1;
             this.visualPanel2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualPanel2.Border.Visible = true;
-            this.visualPanel2.Controls.Add(this.label3);
+            this.visualPanel2.Controls.Add(this.custoAtual);
             this.visualPanel2.Controls.Add(this.label4);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualPanel2.Location = new System.Drawing.Point(241, 80);
@@ -482,17 +486,17 @@
             this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label3
+            // custoAtual
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(144, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "0000";
+            this.custoAtual.AutoSize = true;
+            this.custoAtual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.custoAtual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custoAtual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.custoAtual.Location = new System.Drawing.Point(144, 10);
+            this.custoAtual.Name = "custoAtual";
+            this.custoAtual.Size = new System.Drawing.Size(41, 20);
+            this.custoAtual.TabIndex = 5;
+            this.custoAtual.Text = "0000";
             // 
             // label4
             // 
@@ -514,10 +518,10 @@
             this.ClientSize = new System.Drawing.Size(470, 389);
             this.Controls.Add(this.visualPanel2);
             this.Controls.Add(this.visualPanel1);
-            this.Controls.Add(this.visualRadioButton2);
-            this.Controls.Add(this.visualRadioButton1);
-            this.Controls.Add(this.visualTextBox1);
-            this.Controls.Add(this.nome);
+            this.Controls.Add(this.btnRadioAddItem);
+            this.Controls.Add(this.btnRadioRemoveItem);
+            this.Controls.Add(this.obs);
+            this.Controls.Add(this.quantidade);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -535,8 +539,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lançar no Estoque";
-            this.Load += new System.EventHandler(this.AddEstoque_Load);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -551,7 +553,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label tituloProduto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -562,15 +564,15 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nome;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton visualRadioButton1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton visualRadioButton2;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox quantidade;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox obs;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton btnRadioRemoveItem;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton btnRadioAddItem;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label estoqueAtual;
         private System.Windows.Forms.Label label9;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label custoAtual;
         private System.Windows.Forms.Label label4;
     }
 }

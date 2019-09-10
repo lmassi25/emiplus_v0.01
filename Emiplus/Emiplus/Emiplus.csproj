@@ -217,6 +217,7 @@
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
+    <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\PedidoItem.cs" />
     <Compile Include="Model\Pessoa.cs" />

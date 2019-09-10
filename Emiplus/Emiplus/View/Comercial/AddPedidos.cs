@@ -39,7 +39,7 @@ namespace Emiplus.View.Comercial
 
         private void LoadCliente()
         {
-            if(_mPedido.Cliente > 0)
+            if (_mPedido.Cliente > 0)
             {
                 _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
                 nomeCliente.Text = _mCliente.Nome;
@@ -91,7 +91,7 @@ namespace Emiplus.View.Comercial
         {
             AutoCompleteItens();
 
-            if(Id > 0)
+            if (Id > 0)
             {
                 LoadData();
             }
@@ -170,7 +170,9 @@ namespace Emiplus.View.Comercial
                 ModoRapido.Text = "Modo Avançado (F1) ?";
                 btnAlterarQtd.Visible = true;
                 btnAlterarQtd.Top = 52;
+                btnAlterarQtd.TabIndex = 2;
                 Quantidade.Enabled = false;
+                Quantidade.TabStop = true;
             }
         }
 
@@ -218,6 +220,35 @@ namespace Emiplus.View.Comercial
         {
             PedidoModalItens form = new PedidoModalItens();
             form.ShowDialog();
+        }
+
+        private void BtnAlterarQtd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ola");
+        }
+
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.F1:
+                    MessageBox.Show("selecionar o item");
+                    break;
+                case Keys.F10:
+                    MessageBox.Show("selecionar o item");
+                    break;
+                case Keys.Enter:
+
+                    if (Validation.Event(sender, GridListaProdutos))
+                    {
+                        MessageBox.Show(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                    }
+
+                    break;
+            }
         }
     }
 }

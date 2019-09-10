@@ -1,10 +1,10 @@
 ﻿namespace Emiplus.Model
 {
-    using System;
-    using SqlKata;
-    using Valit;
     using Data.Database;
     using Data.Helpers;
+    using SqlKata;
+    using System;
+    using Valit;
 
     internal class Categoria : Model
     {
@@ -33,7 +33,7 @@
             if (ValidarDados(data))
             {
                 return false;
-            }                
+            }
 
             if (data.Id == 0)
             {

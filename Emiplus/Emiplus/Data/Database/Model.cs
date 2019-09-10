@@ -1,6 +1,5 @@
 ﻿using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
 
 namespace Emiplus.Data.Database
 {
@@ -28,7 +27,7 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public Model Data(object obj)
         {
-            Objetos = obj;                        
+            Objetos = obj;
             return this;
         }
 
@@ -79,7 +78,7 @@ namespace Emiplus.Data.Database
             int id_num = 0;
             foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
             {
-                id_num = Validation.ConvertToInt32(item.NUM);                
+                id_num = Validation.ConvertToInt32(item.NUM);
             }
 
             return id_num;

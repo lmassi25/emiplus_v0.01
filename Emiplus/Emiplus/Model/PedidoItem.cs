@@ -1,12 +1,12 @@
 ﻿namespace Emiplus.Model
 {
-    using System;
-    using SqlKata;
     using Data.Database;
+    using SqlKata;
+    using System;
 
     class PedidoItem : Model
     {
-        public PedidoItem() : base("PEDIDO_ITEM") {}
+        public PedidoItem() : base("PEDIDO_ITEM") { }
 
         #region CAMPOS 
 
@@ -33,7 +33,7 @@
 
         public string CProd { get; set; }
         public string CEan { get; set; }
-        public string xProd { get; set; }               
+        public string xProd { get; set; }
         public string Ncm { get; set; } // 8 digitos 
         public string Cfop { get; set; } // 4 digitos
         public string Origem { get; set; } // 1 digitos
@@ -124,24 +124,24 @@
         #endregion
 
         #region Generator
-//                CREATE GENERATOR GEN_PEDIDO_ITEM_ID;
+        //                CREATE GENERATOR GEN_PEDIDO_ITEM_ID;
 
-//        SET TERM !! ;
-//        CREATE TRIGGER PEDIDO_ITEM_BI FOR PEDIDO_ITEM
-//        ACTIVE BEFORE INSERT POSITION 0
-//AS
-//DECLARE VARIABLE tmp DECIMAL(18,0);
-//        BEGIN
-//          IF(NEW.ID IS NULL) THEN
-//           NEW.ID = GEN_ID(GEN_PEDIDO_ITEM_ID, 1);
-//        ELSE
-//        BEGIN
-//    tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, 0);
-//    if (tmp< new.ID) then
-//     tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, new.ID - tmp);
-//        END
-//      END!!
-//SET TERM; !!
+        //        SET TERM !! ;
+        //        CREATE TRIGGER PEDIDO_ITEM_BI FOR PEDIDO_ITEM
+        //        ACTIVE BEFORE INSERT POSITION 0
+        //AS
+        //DECLARE VARIABLE tmp DECIMAL(18,0);
+        //        BEGIN
+        //          IF(NEW.ID IS NULL) THEN
+        //           NEW.ID = GEN_ID(GEN_PEDIDO_ITEM_ID, 1);
+        //        ELSE
+        //        BEGIN
+        //    tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, 0);
+        //    if (tmp< new.ID) then
+        //     tmp = GEN_ID(GEN_PEDIDO_ITEM_ID, new.ID - tmp);
+        //        END
+        //      END!!
+        //SET TERM; !!
 
 
         #endregion
