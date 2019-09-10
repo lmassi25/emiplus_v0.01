@@ -44,7 +44,166 @@ namespace Emiplus.View.Produtos
                 "900 - Outros"
             };
 
-            //IPI.data
+            Ipi.DataSource = new List<string> {
+                
+                //IPITrib
+
+                "00 - Tributado: Entrada com recuperação de crédito",
+                "49 - Tributado: Outras entradas",
+                "50 - Tributado: Saída tributada",
+                "99 - Tributado: Outras saídas",
+
+                //IPINT
+
+                "01 - Não Tributado: Entrada tributada com alíquota zero",
+                "02 - Não Tributado: Entrada isenta",
+                "03 - Não Tributado: Entrada não-tributada",
+                "04 - Não Tributado: Entrada imune",
+                "05 - Não Tributado: Entrada com suspensão",
+                "51 - Não Tributado: Saída tributada com alíquota zero",
+                "52 - Não Tributado: Saída isenta",
+                "53 - Não Tributado: Saída não-tributada",
+                "54 - Não Tributado: Saída imune",
+                "55 - Não Tributado: Saída com suspensão"
+            };
+
+            Pis.DataSource = new List<string> {
+                
+                //PISAliq
+
+                "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))",
+                "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))",
+
+                //PISQtde
+
+                "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)",
+
+                //PISNT
+
+                "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))",
+                "05 - Não Tributado: Operação Tributável (Substituição Tributária)",
+                "06 - Não Tributado: Operação Tributável (alíquota zero)",
+                "07 - Não Tributado: Operação Isenta da Contribuição",
+                "08 - Não Tributado: Operação Sem Incidência da Contribuição",
+                "09 - Não Tributado: Operação com Suspensão da Contribuição",
+                
+                //PISOutr
+
+                "49 - Outras Operações: Outras Operações de Saída",
+                "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+                "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno",
+                "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação",
+                "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+                "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+                "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação",
+                "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação",
+                "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+                "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno",
+                "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação",
+                "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+                "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+                "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação",
+                "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação",
+                "67 - Outras Operações: Crédito Presumido - Outras Operações",
+                "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito",
+                "71 - Outras Operações: Operação de Aquisição com Isenção",
+                "72 - Outras Operações: Operação de Aquisição com Suspensão",
+                "73 - Outras Operações: Operação de Aquisição a Alíquota Zero",
+                "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição",
+                "75 - Outras Operações: Operação de Aquisição por Substituição Tributária",
+                "98 - Outras Operações: Outras Operações de Entrada",
+                "99 - Outras Operações: Outras Operações",
+            };
+
+            //PisSt.DataSource = new List<string>{ }
+
+            Cofins.DataSource = new List<string> {
+                
+                //COFINSAliq
+
+                "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))",
+                "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))",
+
+                //COFINSQtde
+
+                "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)",
+
+                //COFINSNT
+
+                "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))",
+                "05 - Não Tributado: Operação Tributável (Substituição Tributária)",
+                "06 - Não Tributado: Operação Tributável (alíquota zero)",
+                "07 - Não Tributado: Operação Isenta da Contribuição",
+                "08 - Não Tributado: Operação Sem Incidência da Contribuição",
+                "09 - Não Tributado: Operação com Suspensão da Contribuição",
+                
+                //COFINSOutr
+
+                "49 - Outras Operações: Outras Operações de Saída",
+                "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+                "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno",
+                "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação",
+                "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+                "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+                "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação",
+                "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação",
+                "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno",
+                "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno",
+                "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação",
+                "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno",
+                "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação",
+                "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação",
+                "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação",
+                "67 - Outras Operações: Crédito Presumido - Outras Operações",
+                "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito",
+                "71 - Outras Operações: Operação de Aquisição com Isenção",
+                "72 - Outras Operações: Operação de Aquisição com Suspensão",
+                "73 - Outras Operações: Operação de Aquisição a Alíquota Zero",
+                "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição",
+                "75 - Outras Operações: Operação de Aquisição por Substituição Tributária",
+                "98 - Outras Operações: Outras Operações de Entrada",
+                "99 - Outras Operações: Outras Operações",
+            };
+
+            //CofinsSt.DataSource = new List<string>{ }
+        }
+
+
+        private void SetIcms()
+        {
+           // pICMS_1.Visible = false;
+            //pICMS_2.Visible = false;
+           // pICMS_3.Visible = false;
+
+            if (Icms.Text.Contains("101"))
+            {
+                //pICMS_1.Visible = true;
+            }
+            else if (Icms.Text.Contains("201"))
+            {
+               // pICMS_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("202"))
+            {
+                //pICMS_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("203"))
+            {
+               // pICMS_2.Visible = true;
+            }
+            else if (Icms.Text.Contains("500"))
+            {
+                ///pICMS_3.Visible = true;
+            }
+            else if (Icms.Text.Contains("900"))
+            {
+                //pICMS_2.Visible = true;
+            }
+        }
+
+        private void Icms_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SetIcms();
         }
     }
 }

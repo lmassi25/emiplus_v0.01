@@ -49,26 +49,27 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.visualTextBox1 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.DescontoReais = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Icms = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.Ipi = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.Pis = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.Cofins = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.icmS_01 = new Emiplus.View.Produtos.Imposto.ICMS.ICMS_0();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -78,9 +79,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.visualGroupBox2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -446,90 +447,6 @@
             this.visualGroupBox2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.visualGroupBox2.TitleBoxHeight = 25;
             // 
-            // estoqueatual
-            // 
-            this.estoqueatual.AlphaNumeric = false;
-            this.estoqueatual.BackColor = System.Drawing.Color.Transparent;
-            this.estoqueatual.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.estoqueatual.BackColorState.Enabled = System.Drawing.Color.White;
-            this.estoqueatual.Border.Color = System.Drawing.Color.Gainsboro;
-            this.estoqueatual.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.estoqueatual.Border.HoverVisible = true;
-            this.estoqueatual.Border.Rounding = 8;
-            this.estoqueatual.Border.Thickness = 1;
-            this.estoqueatual.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.estoqueatual.Border.Visible = true;
-            this.estoqueatual.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.estoqueatual.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.estoqueatual.ButtonBorder.HoverVisible = true;
-            this.estoqueatual.ButtonBorder.Rounding = 6;
-            this.estoqueatual.ButtonBorder.Thickness = 1;
-            this.estoqueatual.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.estoqueatual.ButtonBorder.Visible = true;
-            this.estoqueatual.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.estoqueatual.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.estoqueatual.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.estoqueatual.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.estoqueatual.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueatual.ButtonIndent = 3;
-            this.estoqueatual.ButtonText = "visualButton";
-            this.estoqueatual.ButtonVisible = false;
-            this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueatual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.estoqueatual.Image = null;
-            this.estoqueatual.ImageSize = new System.Drawing.Size(16, 16);
-            this.estoqueatual.ImageVisible = false;
-            this.estoqueatual.ImageWidth = 35;
-            this.estoqueatual.Location = new System.Drawing.Point(163, 30);
-            this.estoqueatual.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.estoqueatual.Name = "estoqueatual";
-            this.estoqueatual.PasswordChar = '\0';
-            this.estoqueatual.ReadOnly = false;
-            this.estoqueatual.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.estoqueatual.Size = new System.Drawing.Size(139, 28);
-            this.estoqueatual.TabIndex = 25;
-            this.estoqueatual.TextBoxWidth = 127;
-            this.estoqueatual.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.estoqueatual.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.estoqueatual.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.estoqueatual.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.estoqueatual.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.estoqueatual.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.estoqueatual.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.estoqueatual.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.estoqueatual.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueatual.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.estoqueatual.Watermark.Text = "Watermark text";
-            this.estoqueatual.Watermark.Visible = false;
-            this.estoqueatual.WordWrap = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.Icms);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(635, 238);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "ICMS";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.visualTextBox1);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.DescontoReais);
-            this.tabPage1.Controls.Add(this.addProduto);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(635, 238);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "CFOP";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -546,38 +463,20 @@
             this.tabControl1.Size = new System.Drawing.Size(643, 268);
             this.tabControl1.TabIndex = 29;
             // 
-            // tabPage3
+            // tabPage1
             // 
-            this.tabPage3.Controls.Add(this.Ipi);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(635, 238);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "IPI";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.Pis);
-            this.tabPage4.Controls.Add(this.label7);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(635, 238);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "PIS";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.Cofins);
-            this.tabPage5.Controls.Add(this.label8);
-            this.tabPage5.Location = new System.Drawing.Point(4, 26);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(635, 238);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "COFINS";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.visualTextBox1);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.DescontoReais);
+            this.tabPage1.Controls.Add(this.addProduto);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(635, 238);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "CFOP";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // visualTextBox1
             // 
@@ -733,6 +632,19 @@
             this.label9.TabIndex = 164;
             this.label9.Text = "CFOP";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.icmS_01);
+            this.tabPage2.Controls.Add(this.Icms);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(635, 238);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "ICMS";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Icms
             // 
             this.Icms.BackColor = System.Drawing.Color.White;
@@ -753,6 +665,7 @@
             this.Icms.DropDownHeight = 150;
             this.Icms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Icms.DropDownWidth = 120;
+            this.Icms.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icms.FormattingEnabled = true;
             this.Icms.ImageList = null;
             this.Icms.ImageVisible = false;
@@ -789,6 +702,7 @@
             this.Icms.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.Icms.Watermark.Text = "Watermark text";
             this.Icms.Watermark.Visible = false;
+            this.Icms.SelectedValueChanged += new System.EventHandler(this.Icms_SelectedValueChanged);
             // 
             // label15
             // 
@@ -801,6 +715,17 @@
             this.label15.Size = new System.Drawing.Size(85, 17);
             this.label15.TabIndex = 40;
             this.label15.Text = "CST / CSOSN";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.Ipi);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(635, 238);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "IPI";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Ipi
             // 
@@ -822,6 +747,7 @@
             this.Ipi.DropDownHeight = 150;
             this.Ipi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Ipi.DropDownWidth = 120;
+            this.Ipi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ipi.FormattingEnabled = true;
             this.Ipi.ImageList = null;
             this.Ipi.ImageVisible = false;
@@ -871,6 +797,17 @@
             this.label3.TabIndex = 42;
             this.label3.Text = "CST";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.Pis);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(635, 238);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "PIS";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Pis
             // 
             this.Pis.BackColor = System.Drawing.Color.White;
@@ -891,6 +828,7 @@
             this.Pis.DropDownHeight = 150;
             this.Pis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Pis.DropDownWidth = 120;
+            this.Pis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pis.FormattingEnabled = true;
             this.Pis.ImageList = null;
             this.Pis.ImageVisible = false;
@@ -940,6 +878,17 @@
             this.label7.TabIndex = 44;
             this.label7.Text = "CST";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.Cofins);
+            this.tabPage5.Controls.Add(this.label8);
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(635, 238);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "COFINS";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // Cofins
             // 
             this.Cofins.BackColor = System.Drawing.Color.White;
@@ -960,6 +909,7 @@
             this.Cofins.DropDownHeight = 150;
             this.Cofins.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cofins.DropDownWidth = 120;
+            this.Cofins.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cofins.FormattingEnabled = true;
             this.Cofins.ImageList = null;
             this.Cofins.ImageVisible = false;
@@ -975,6 +925,7 @@
             this.Cofins.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Cofins.Name = "Cofins";
             this.Cofins.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Cofins.SeparatorVisible = false;
             this.Cofins.Size = new System.Drawing.Size(601, 29);
             this.Cofins.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.Cofins.TabIndex = 45;
@@ -1008,6 +959,72 @@
             this.label8.TabIndex = 44;
             this.label8.Text = "CST";
             // 
+            // estoqueatual
+            // 
+            this.estoqueatual.AlphaNumeric = false;
+            this.estoqueatual.BackColor = System.Drawing.Color.Transparent;
+            this.estoqueatual.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.estoqueatual.BackColorState.Enabled = System.Drawing.Color.White;
+            this.estoqueatual.Border.Color = System.Drawing.Color.Gainsboro;
+            this.estoqueatual.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.estoqueatual.Border.HoverVisible = true;
+            this.estoqueatual.Border.Rounding = 8;
+            this.estoqueatual.Border.Thickness = 1;
+            this.estoqueatual.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.estoqueatual.Border.Visible = true;
+            this.estoqueatual.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.estoqueatual.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.estoqueatual.ButtonBorder.HoverVisible = true;
+            this.estoqueatual.ButtonBorder.Rounding = 6;
+            this.estoqueatual.ButtonBorder.Thickness = 1;
+            this.estoqueatual.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.estoqueatual.ButtonBorder.Visible = true;
+            this.estoqueatual.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.estoqueatual.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.estoqueatual.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.estoqueatual.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.estoqueatual.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueatual.ButtonIndent = 3;
+            this.estoqueatual.ButtonText = "visualButton";
+            this.estoqueatual.ButtonVisible = false;
+            this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueatual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueatual.Image = null;
+            this.estoqueatual.ImageSize = new System.Drawing.Size(16, 16);
+            this.estoqueatual.ImageVisible = false;
+            this.estoqueatual.ImageWidth = 35;
+            this.estoqueatual.Location = new System.Drawing.Point(163, 30);
+            this.estoqueatual.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.estoqueatual.Name = "estoqueatual";
+            this.estoqueatual.PasswordChar = '\0';
+            this.estoqueatual.ReadOnly = false;
+            this.estoqueatual.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.estoqueatual.Size = new System.Drawing.Size(139, 28);
+            this.estoqueatual.TabIndex = 25;
+            this.estoqueatual.TextBoxWidth = 127;
+            this.estoqueatual.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.estoqueatual.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueatual.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueatual.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueatual.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.estoqueatual.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.estoqueatual.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.estoqueatual.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.estoqueatual.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueatual.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.estoqueatual.Watermark.Text = "Watermark text";
+            this.estoqueatual.Watermark.Visible = false;
+            this.estoqueatual.WordWrap = true;
+            // 
+            // icmS_01
+            // 
+            this.icmS_01.BackColor = System.Drawing.Color.White;
+            this.icmS_01.Location = new System.Drawing.Point(20, 80);
+            this.icmS_01.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.icmS_01.Name = "icmS_01";
+            this.icmS_01.Size = new System.Drawing.Size(170, 60);
+            this.icmS_01.TabIndex = 42;
+            // 
             // AddImpostos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1035,11 +1052,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.visualGroupBox2.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -1091,5 +1108,6 @@
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Cofins;
         private System.Windows.Forms.Label label8;
+        private Imposto.ICMS.ICMS_0 icmS_01;
     }
 }
