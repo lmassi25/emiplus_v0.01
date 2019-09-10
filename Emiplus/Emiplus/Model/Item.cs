@@ -1,9 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata;
-using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Emiplus.Model
 {
@@ -12,7 +9,7 @@ namespace Emiplus.Model
 
     internal class Item : Model
     {
-        public Item() : base("ITEM") {}
+        public Item() : base("ITEM") { }
 
         #region CAMPOS 
 
@@ -30,7 +27,7 @@ namespace Emiplus.Model
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
         public double EstoqueMinimo { get; set; }
-        public double EstoqueAtual { get; private set; }
+        public double EstoqueAtual { get; set; }
         public int Categoriaid { get; set; }
         public string Medida { get; set; }
 
@@ -50,7 +47,7 @@ namespace Emiplus.Model
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    Alert.Message("Opss", "Erro ao criar produto, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
@@ -63,7 +60,7 @@ namespace Emiplus.Model
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }

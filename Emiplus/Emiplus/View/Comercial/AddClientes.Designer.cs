@@ -32,10 +32,10 @@ namespace Emiplus.View.Comercial
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -57,6 +57,7 @@ namespace Emiplus.View.Comercial
             this.panelContatos = new System.Windows.Forms.Panel();
             this.ListaContatos = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnAdicionarContato = new System.Windows.Forms.Button();
             this.btnEditarContato = new System.Windows.Forms.Button();
@@ -76,7 +77,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -93,7 +93,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -173,7 +173,6 @@ namespace Emiplus.View.Comercial
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Visible = false;
             this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // label1
@@ -266,7 +265,6 @@ namespace Emiplus.View.Comercial
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(652, 229);
             this.tabControl1.TabIndex = 22;
-            this.tabControl1.Visible = false;
             // 
             // tabPage2
             // 
@@ -302,23 +300,23 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.BackgroundColor = System.Drawing.Color.White;
             this.ListaEnderecos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaEnderecos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListaEnderecos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaEnderecos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.ListaEnderecos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListaEnderecos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaEnderecos.DefaultCellStyle = dataGridViewCellStyle6;
             this.ListaEnderecos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaEnderecos.Location = new System.Drawing.Point(0, 70);
             this.ListaEnderecos.Name = "ListaEnderecos";
@@ -440,23 +438,23 @@ namespace Emiplus.View.Comercial
             this.ListaContatos.BackgroundColor = System.Drawing.Color.White;
             this.ListaContatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaContatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListaContatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaContatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ListaContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListaContatos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaContatos.DefaultCellStyle = dataGridViewCellStyle8;
             this.ListaContatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaContatos.Location = new System.Drawing.Point(0, 70);
             this.ListaContatos.Name = "ListaContatos";
@@ -480,6 +478,17 @@ namespace Emiplus.View.Comercial
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(643, 68);
             this.panel3.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(18, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(201, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Gerencie os contatos do cliente aqui!";
             // 
             // label12
             // 
@@ -818,7 +827,6 @@ namespace Emiplus.View.Comercial
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Comercial";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // pictureBox1
             // 
@@ -896,7 +904,6 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualGroupBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.visualGroupBox1.TitleBoxHeight = 25;
-            this.visualGroupBox1.Enter += new System.EventHandler(this.VisualGroupBox1_Enter);
             // 
             // pictureBox13
             // 
@@ -908,50 +915,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox13.TabIndex = 38;
             this.pictureBox13.TabStop = false;
-            // 
-            // Isento
-            // 
-            this.Isento.BackColor = System.Drawing.Color.White;
-            this.Isento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Isento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Isento.Border.HoverVisible = true;
-            this.Isento.Border.Rounding = 3;
-            this.Isento.Border.Thickness = 1;
-            this.Isento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Isento.Border.Visible = true;
-            this.Isento.Box = new System.Drawing.Size(14, 14);
-            this.Isento.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Isento.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Isento.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Isento.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Isento.BoxSpacing = 2;
-            this.Isento.CheckStyle.AutoSize = true;
-            this.Isento.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.Isento.CheckStyle.Character = '✔';
-            this.Isento.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Isento.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Isento.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.Isento.CheckStyle.ShapeRounding = 3;
-            this.Isento.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Isento.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.Isento.CheckStyle.Thickness = 2F;
-            this.Isento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Isento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Isento.IsBoxLarger = false;
-            this.Isento.Location = new System.Drawing.Point(452, 106);
-            this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Isento.Name = "Isento";
-            this.Isento.Size = new System.Drawing.Size(56, 23);
-            this.Isento.TabIndex = 7;
-            this.Isento.Text = "Isento";
-            this.Isento.TextSize = new System.Drawing.Size(41, 19);
-            this.Isento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Isento.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Isento.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Isento.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Isento.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Isento.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Isento.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // nascimento
             // 
@@ -1384,16 +1347,49 @@ namespace Emiplus.View.Comercial
             this.nomeRS.WordWrap = true;
             this.nomeRS.Enter += new System.EventHandler(this.NomeRS_Enter);
             // 
-            // label8
+            // Isento
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(18, 44);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(201, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Gerencie os contatos do cliente aqui!";
+            this.Isento.BackColor = System.Drawing.Color.White;
+            this.Isento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Isento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Isento.Border.HoverVisible = true;
+            this.Isento.Border.Rounding = 3;
+            this.Isento.Border.Thickness = 1;
+            this.Isento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Isento.Border.Visible = true;
+            this.Isento.Box = new System.Drawing.Size(14, 14);
+            this.Isento.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Isento.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Isento.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Isento.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Isento.BoxSpacing = 2;
+            this.Isento.CheckStyle.AutoSize = true;
+            this.Isento.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.Isento.CheckStyle.Character = '✔';
+            this.Isento.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Isento.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Isento.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.Isento.CheckStyle.ShapeRounding = 3;
+            this.Isento.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Isento.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.Isento.CheckStyle.Thickness = 2F;
+            this.Isento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Isento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.IsBoxLarger = false;
+            this.Isento.Location = new System.Drawing.Point(452, 106);
+            this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Isento.Name = "Isento";
+            this.Isento.Size = new System.Drawing.Size(56, 23);
+            this.Isento.TabIndex = 7;
+            this.Isento.Text = "Isento";
+            this.Isento.TextSize = new System.Drawing.Size(41, 19);
+            this.Isento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Isento.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Isento.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Isento.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Isento.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // AddClientes
             // 

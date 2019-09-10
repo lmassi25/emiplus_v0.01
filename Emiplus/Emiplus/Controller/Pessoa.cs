@@ -1,7 +1,7 @@
 ﻿namespace Emiplus.Controller
 {
-    using System.Windows.Forms;
     using SqlKata.Execution;
+    using System.Windows.Forms;
 
     class Pessoa : Data.Core.Controller
     {
@@ -32,12 +32,13 @@
             var data = address.Query()
                 .Where("EXCLUIR", 0)
                 .Where("TIPO", "Clientes")
-                .Where(q => 
+                .Where(q =>
                     q.Where("nome", "like", search)
                         .OrWhere("fantasia", "like", search)
                         .OrWhere("rg", "like", search)
                         .OrWhere("cpf", "like", search))
                 .OrderByDesc("criado")
+                .Limit(50)
                 .Get();
 
             foreach (var item in data)

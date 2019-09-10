@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Produtos
 {
@@ -36,7 +36,7 @@ namespace Emiplus.View.Produtos
             idCatSelected = 0;
             OpenForm.Show<AddCategorias>(this);
         }
-        
+
         private void Search_TextChanged(object sender, EventArgs e)
         {
             DataTable();

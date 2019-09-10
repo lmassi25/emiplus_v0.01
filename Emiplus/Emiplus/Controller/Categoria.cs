@@ -24,7 +24,7 @@ namespace Emiplus.Controller
             var lista = categorias.Query()
                 .Where("EXCLUIR", 0)
                 .Where
-                (   
+                (
                     q => q.WhereLike("nome", search, false)
                 )
                 .OrderByDesc("criado")

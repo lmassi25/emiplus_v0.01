@@ -35,7 +35,7 @@ namespace Emiplus.Data.Helpers
 
         public static void UpDownDataGrid(bool abaixo, DataGridView data)
         {
-            if(data.CurrentRow == null)
+            if (data.CurrentRow == null)
             {
                 return;
             }

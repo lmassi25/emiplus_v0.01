@@ -70,14 +70,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listaEstoque = new System.Windows.Forms.DataGridView();
             this.estoqueminimo = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -99,7 +92,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -644,6 +637,7 @@
             this.valorvenda.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.valorvenda.Size = new System.Drawing.Size(150, 28);
             this.valorvenda.TabIndex = 31;
+            this.valorvenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.valorvenda.TextBoxWidth = 138;
             this.valorvenda.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.valorvenda.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -713,6 +707,7 @@
             this.valorcompra.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.valorcompra.Size = new System.Drawing.Size(150, 28);
             this.valorcompra.TabIndex = 29;
+            this.valorcompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.valorcompra.TextBoxWidth = 138;
             this.valorcompra.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.valorcompra.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -966,80 +961,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.listaEstoque);
             this.panel1.Location = new System.Drawing.Point(6, 70);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(626, 86);
             this.panel1.TabIndex = 28;
             // 
-            // dataGridView1
+            // listaEstoque
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(626, 86);
-            this.dataGridView1.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Qtd";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Vl. Compra";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Data/Hora";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Usuário";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Obs.";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tela";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.listaEstoque.AllowUserToAddRows = false;
+            this.listaEstoque.AllowUserToDeleteRows = false;
+            this.listaEstoque.BackgroundColor = System.Drawing.Color.White;
+            this.listaEstoque.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listaEstoque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.listaEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaEstoque.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listaEstoque.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listaEstoque.Location = new System.Drawing.Point(0, 0);
+            this.listaEstoque.MultiSelect = false;
+            this.listaEstoque.Name = "listaEstoque";
+            this.listaEstoque.ReadOnly = true;
+            this.listaEstoque.RowTemplate.Height = 30;
+            this.listaEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaEstoque.Size = new System.Drawing.Size(626, 86);
+            this.listaEstoque.TabIndex = 6;
             // 
             // estoqueminimo
             // 
@@ -1070,7 +1015,7 @@
             this.estoqueminimo.ButtonText = "visualButton";
             this.estoqueminimo.ButtonVisible = false;
             this.estoqueminimo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueminimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueminimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.estoqueminimo.Image = null;
             this.estoqueminimo.ImageSize = new System.Drawing.Size(16, 16);
             this.estoqueminimo.ImageVisible = false;
@@ -1083,6 +1028,7 @@
             this.estoqueminimo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.estoqueminimo.Size = new System.Drawing.Size(139, 28);
             this.estoqueminimo.TabIndex = 10;
+            this.estoqueminimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.estoqueminimo.TextBoxWidth = 127;
             this.estoqueminimo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.estoqueminimo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1161,8 +1107,9 @@
             this.estoqueatual.ButtonIndent = 3;
             this.estoqueatual.ButtonText = "visualButton";
             this.estoqueatual.ButtonVisible = false;
+            this.estoqueatual.Enabled = false;
             this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueatual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.estoqueatual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.estoqueatual.Image = null;
             this.estoqueatual.ImageSize = new System.Drawing.Size(16, 16);
             this.estoqueatual.ImageVisible = false;
@@ -1175,6 +1122,7 @@
             this.estoqueatual.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.estoqueatual.Size = new System.Drawing.Size(139, 28);
             this.estoqueatual.TabIndex = 25;
+            this.estoqueatual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.estoqueatual.TextBoxWidth = 127;
             this.estoqueatual.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.estoqueatual.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1248,7 +1196,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1291,14 +1239,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Medidas;
         private VisualPlus.Toolkit.Controls.Layout.VisualGroupBox visualGroupBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridView listaEstoque;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEstoque;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
