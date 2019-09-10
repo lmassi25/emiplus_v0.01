@@ -25,5 +25,10 @@ namespace Emiplus.View.Common
         {
 
         }
+
+        private void Impostos_Click(object sender, EventArgs e)
+        {
+            OpenForm.Show<Produtos.Impostos>(this);
+        }
     }
 }

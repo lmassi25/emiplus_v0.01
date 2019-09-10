@@ -194,6 +194,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controller\Categoria.cs" />
+    <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\Pessoa.cs" />
@@ -388,6 +389,12 @@
     <Compile Include="View\Produtos\AddEstoque.Designer.cs">
       <DependentUpon>AddEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddImpostos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddImpostos.Designer.cs">
+      <DependentUpon>AddImpostos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -399,6 +406,12 @@
     </Compile>
     <Compile Include="View\Produtos\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Impostos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Impostos.Designer.cs">
+      <DependentUpon>Impostos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\Produtos.cs">
       <SubType>Form</SubType>
@@ -506,11 +519,17 @@
     <EmbeddedResource Include="View\Produtos\AddEstoque.resx">
       <DependentUpon>AddEstoque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddImpostos.resx">
+      <DependentUpon>AddImpostos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Impostos.resx">
+      <DependentUpon>Impostos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>

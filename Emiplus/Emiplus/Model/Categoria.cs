@@ -10,6 +10,7 @@
     {
         public Categoria() : base("CATEGORIA")
         {
+
         }
 
         #region CAMPOS 
