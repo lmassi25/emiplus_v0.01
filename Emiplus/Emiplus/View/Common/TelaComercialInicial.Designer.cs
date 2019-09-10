@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Colaboradores = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -163,28 +163,29 @@
             this.label1.TabIndex = 66;
             this.label1.Text = "Relatórios";
             // 
-            // button1
+            // Colaboradores
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(194, 188);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 115);
-            this.button1.TabIndex = 68;
-            this.button1.Text = "Colaboradores";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
+            this.Colaboradores.BackColor = System.Drawing.Color.Transparent;
+            this.Colaboradores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Colaboradores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Colaboradores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Colaboradores.FlatAppearance.BorderSize = 0;
+            this.Colaboradores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Colaboradores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Colaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Colaboradores.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Colaboradores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Colaboradores.Image = ((System.Drawing.Image)(resources.GetObject("Colaboradores.Image")));
+            this.Colaboradores.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Colaboradores.Location = new System.Drawing.Point(194, 188);
+            this.Colaboradores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Colaboradores.Name = "Colaboradores";
+            this.Colaboradores.Size = new System.Drawing.Size(126, 115);
+            this.Colaboradores.TabIndex = 68;
+            this.Colaboradores.Text = "Colaboradores";
+            this.Colaboradores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Colaboradores.UseVisualStyleBackColor = false;
+            this.Colaboradores.Click += new System.EventHandler(this.Colaboradores_Click);
             // 
             // button2
             // 
@@ -468,7 +469,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.Pedidos);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Colaboradores);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
@@ -500,7 +501,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Colaboradores;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Pedidos;
         private System.Windows.Forms.Button button4;

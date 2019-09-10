@@ -16,10 +16,6 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
         }
 
-        private void PedidoModalClientes_Load(object sender, EventArgs e)
-        {
-        }
-
         private void DataTable()
         {
             _controller.GetDataTableClients(GridListaClientes, search.Text);
@@ -40,14 +36,32 @@ namespace Emiplus.View.Comercial
             Id = 0;
             page = "Clientes";
             AddClientes f = new AddClientes();
+            f.btnSalvarText = "Salvar e Inserir";
+            f.btnSalvarWidth = 150;
+            f.btnSalvarLocation = 590;
             f.FormBorderStyle = FormBorderStyle.FixedSingle;
             f.StartPosition = FormStartPosition.CenterParent;
-            f.ShowDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                DialogResult = DialogResult.OK;
+                Id = AddClientes.Id; // Retorna ID do registro de cliente
+                Close();
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void BtnSelecionar_Click(object sender, EventArgs e)
+        {
+            if (GridListaClientes.SelectedRows.Count > 0)
+            {
+                DialogResult = DialogResult.OK;
+                Id = Convert.ToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
+                Close();
+            }
         }
     }
 }
