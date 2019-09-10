@@ -57,6 +57,7 @@ namespace Emiplus.View.Comercial
                 tabControl1.TabPages.Add(tabTransporte);
             }
 
+            ////////////////////////////////////////////////////////////////////////////////////////////////FALTA AJUSTAR ESSA PARTE 
             //if(Id == 0)
             //{
             //    data.Criado = DateTime.Now;
