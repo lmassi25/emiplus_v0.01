@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pICMS_2 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.AliqST2 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -40,25 +39,7 @@
             this.RedBase2 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Aliq2 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pICMS_2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pICMS_2
-            // 
-            this.pICMS_2.Controls.Add(this.label16);
-            this.pICMS_2.Controls.Add(this.AliqST2);
-            this.pICMS_2.Controls.Add(this.label17);
-            this.pICMS_2.Controls.Add(this.RedBaseST2);
-            this.pICMS_2.Controls.Add(this.label14);
-            this.pICMS_2.Controls.Add(this.AliqICMS2);
-            this.pICMS_2.Controls.Add(this.label12);
-            this.pICMS_2.Controls.Add(this.RedBase2);
-            this.pICMS_2.Controls.Add(this.label11);
-            this.pICMS_2.Controls.Add(this.Aliq2);
-            this.pICMS_2.Location = new System.Drawing.Point(0, 0);
-            this.pICMS_2.Name = "pICMS_2";
-            this.pICMS_2.Size = new System.Drawing.Size(320, 170);
-            this.pICMS_2.TabIndex = 44;
             // 
             // label16
             // 
@@ -66,7 +47,7 @@
             this.label16.BackColor = System.Drawing.Color.White;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(151, 100);
+            this.label16.Location = new System.Drawing.Point(158, 104);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(135, 17);
             this.label16.TabIndex = 38;
@@ -75,8 +56,6 @@
             // AliqST2
             // 
             this.AliqST2.AlphaNumeric = false;
-            this.AliqST2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AliqST2.BackColor = System.Drawing.Color.White;
             this.AliqST2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.AliqST2.BackColorState.Enabled = System.Drawing.Color.White;
@@ -108,7 +87,7 @@
             this.AliqST2.ImageSize = new System.Drawing.Size(16, 16);
             this.AliqST2.ImageVisible = false;
             this.AliqST2.ImageWidth = 35;
-            this.AliqST2.Location = new System.Drawing.Point(152, 119);
+            this.AliqST2.Location = new System.Drawing.Point(159, 123);
             this.AliqST2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.AliqST2.Name = "AliqST2";
             this.AliqST2.PasswordChar = '\0';
@@ -137,7 +116,7 @@
             this.label17.BackColor = System.Drawing.Color.White;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(151, 50);
+            this.label17.Location = new System.Drawing.Point(156, 53);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(142, 17);
             this.label17.TabIndex = 36;
@@ -146,8 +125,6 @@
             // RedBaseST2
             // 
             this.RedBaseST2.AlphaNumeric = false;
-            this.RedBaseST2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.RedBaseST2.BackColor = System.Drawing.Color.White;
             this.RedBaseST2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.RedBaseST2.BackColorState.Enabled = System.Drawing.Color.White;
@@ -179,7 +156,7 @@
             this.RedBaseST2.ImageSize = new System.Drawing.Size(16, 16);
             this.RedBaseST2.ImageVisible = false;
             this.RedBaseST2.ImageWidth = 35;
-            this.RedBaseST2.Location = new System.Drawing.Point(152, 69);
+            this.RedBaseST2.Location = new System.Drawing.Point(159, 73);
             this.RedBaseST2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.RedBaseST2.Name = "RedBaseST2";
             this.RedBaseST2.PasswordChar = '\0';
@@ -208,7 +185,7 @@
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(4, 100);
+            this.label14.Location = new System.Drawing.Point(3, 104);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 17);
             this.label14.TabIndex = 32;
@@ -217,8 +194,6 @@
             // AliqICMS2
             // 
             this.AliqICMS2.AlphaNumeric = false;
-            this.AliqICMS2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AliqICMS2.BackColor = System.Drawing.Color.White;
             this.AliqICMS2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.AliqICMS2.BackColorState.Enabled = System.Drawing.Color.White;
@@ -250,15 +225,15 @@
             this.AliqICMS2.ImageSize = new System.Drawing.Size(16, 16);
             this.AliqICMS2.ImageVisible = false;
             this.AliqICMS2.ImageWidth = 35;
-            this.AliqICMS2.Location = new System.Drawing.Point(5, 119);
+            this.AliqICMS2.Location = new System.Drawing.Point(6, 123);
             this.AliqICMS2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.AliqICMS2.Name = "AliqICMS2";
             this.AliqICMS2.PasswordChar = '\0';
             this.AliqICMS2.ReadOnly = false;
             this.AliqICMS2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.AliqICMS2.Size = new System.Drawing.Size(147, 28);
+            this.AliqICMS2.Size = new System.Drawing.Size(142, 28);
             this.AliqICMS2.TabIndex = 2;
-            this.AliqICMS2.TextBoxWidth = 135;
+            this.AliqICMS2.TextBoxWidth = 130;
             this.AliqICMS2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.AliqICMS2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.AliqICMS2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -279,7 +254,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(4, 50);
+            this.label12.Location = new System.Drawing.Point(3, 54);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 17);
             this.label12.TabIndex = 30;
@@ -288,8 +263,6 @@
             // RedBase2
             // 
             this.RedBase2.AlphaNumeric = false;
-            this.RedBase2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.RedBase2.BackColor = System.Drawing.Color.White;
             this.RedBase2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.RedBase2.BackColorState.Enabled = System.Drawing.Color.White;
@@ -321,15 +294,15 @@
             this.RedBase2.ImageSize = new System.Drawing.Size(16, 16);
             this.RedBase2.ImageVisible = false;
             this.RedBase2.ImageWidth = 35;
-            this.RedBase2.Location = new System.Drawing.Point(5, 69);
+            this.RedBase2.Location = new System.Drawing.Point(6, 73);
             this.RedBase2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.RedBase2.Name = "RedBase2";
             this.RedBase2.PasswordChar = '\0';
             this.RedBase2.ReadOnly = false;
             this.RedBase2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.RedBase2.Size = new System.Drawing.Size(147, 28);
+            this.RedBase2.Size = new System.Drawing.Size(142, 28);
             this.RedBase2.TabIndex = 1;
-            this.RedBase2.TextBoxWidth = 135;
+            this.RedBase2.TextBoxWidth = 130;
             this.RedBase2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.RedBase2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.RedBase2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -350,7 +323,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(4, 0);
+            this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(132, 17);
             this.label11.TabIndex = 28;
@@ -359,8 +332,6 @@
             // Aliq2
             // 
             this.Aliq2.AlphaNumeric = false;
-            this.Aliq2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Aliq2.BackColor = System.Drawing.Color.White;
             this.Aliq2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Aliq2.BackColorState.Enabled = System.Drawing.Color.White;
@@ -392,15 +363,15 @@
             this.Aliq2.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq2.ImageVisible = false;
             this.Aliq2.ImageWidth = 35;
-            this.Aliq2.Location = new System.Drawing.Point(5, 19);
+            this.Aliq2.Location = new System.Drawing.Point(6, 23);
             this.Aliq2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq2.Name = "Aliq2";
             this.Aliq2.PasswordChar = '\0';
             this.Aliq2.ReadOnly = false;
             this.Aliq2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Aliq2.Size = new System.Drawing.Size(294, 28);
+            this.Aliq2.Size = new System.Drawing.Size(142, 28);
             this.Aliq2.TabIndex = 0;
-            this.Aliq2.TextBoxWidth = 282;
+            this.Aliq2.TextBoxWidth = 130;
             this.Aliq2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Aliq2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Aliq2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -420,18 +391,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pICMS_2);
+            this.Controls.Add(this.RedBaseST2);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.AliqST2);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.Aliq2);
+            this.Controls.Add(this.RedBase2);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.AliqICMS2);
             this.Name = "ICMS_2";
-            this.Size = new System.Drawing.Size(320, 170);
-            this.pICMS_2.ResumeLayout(false);
-            this.pICMS_2.PerformLayout();
+            this.Size = new System.Drawing.Size(319, 158);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pICMS_2;
         private System.Windows.Forms.Label label16;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox AliqST2;
         private System.Windows.Forms.Label label17;

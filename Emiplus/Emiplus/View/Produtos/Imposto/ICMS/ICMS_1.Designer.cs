@@ -29,22 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pICMS_1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.Aliq_1 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pICMS_1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pICMS_1
-            // 
-            this.pICMS_1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pICMS_1.Controls.Add(this.label10);
-            this.pICMS_1.Controls.Add(this.Aliq_1);
-            this.pICMS_1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pICMS_1.Location = new System.Drawing.Point(0, 0);
-            this.pICMS_1.Name = "pICMS_1";
-            this.pICMS_1.Size = new System.Drawing.Size(170, 60);
-            this.pICMS_1.TabIndex = 43;
             // 
             // label10
             // 
@@ -52,7 +39,7 @@
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(4, 0);
+            this.label10.Location = new System.Drawing.Point(3, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 17);
             this.label10.TabIndex = 26;
@@ -61,8 +48,6 @@
             // Aliq_1
             // 
             this.Aliq_1.AlphaNumeric = false;
-            this.Aliq_1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Aliq_1.BackColor = System.Drawing.Color.White;
             this.Aliq_1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Aliq_1.BackColorState.Enabled = System.Drawing.Color.White;
@@ -94,7 +79,7 @@
             this.Aliq_1.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq_1.ImageVisible = false;
             this.Aliq_1.ImageWidth = 35;
-            this.Aliq_1.Location = new System.Drawing.Point(5, 19);
+            this.Aliq_1.Location = new System.Drawing.Point(6, 23);
             this.Aliq_1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq_1.Name = "Aliq_1";
             this.Aliq_1.PasswordChar = '\0';
@@ -122,18 +107,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pICMS_1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.Aliq_1);
             this.Name = "ICMS_1";
             this.Size = new System.Drawing.Size(170, 60);
-            this.pICMS_1.ResumeLayout(false);
-            this.pICMS_1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pICMS_1;
         private System.Windows.Forms.Label label10;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox Aliq_1;
     }

@@ -29,25 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pICMS_3 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.visualTextBox9 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.visualTextBox10 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pICMS_3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pICMS_3
-            // 
-            this.pICMS_3.Controls.Add(this.label20);
-            this.pICMS_3.Controls.Add(this.visualTextBox9);
-            this.pICMS_3.Controls.Add(this.label21);
-            this.pICMS_3.Controls.Add(this.visualTextBox10);
-            this.pICMS_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pICMS_3.Location = new System.Drawing.Point(0, 0);
-            this.pICMS_3.Name = "pICMS_3";
-            this.pICMS_3.Size = new System.Drawing.Size(714, 110);
-            this.pICMS_3.TabIndex = 45;
             // 
             // label20
             // 
@@ -55,7 +41,7 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(4, 50);
+            this.label20.Location = new System.Drawing.Point(3, 54);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(178, 17);
             this.label20.TabIndex = 32;
@@ -64,8 +50,6 @@
             // visualTextBox9
             // 
             this.visualTextBox9.AlphaNumeric = false;
-            this.visualTextBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.visualTextBox9.BackColor = System.Drawing.Color.White;
             this.visualTextBox9.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualTextBox9.BackColorState.Enabled = System.Drawing.Color.White;
@@ -97,15 +81,15 @@
             this.visualTextBox9.ImageSize = new System.Drawing.Size(16, 16);
             this.visualTextBox9.ImageVisible = false;
             this.visualTextBox9.ImageWidth = 35;
-            this.visualTextBox9.Location = new System.Drawing.Point(5, 69);
+            this.visualTextBox9.Location = new System.Drawing.Point(6, 74);
             this.visualTextBox9.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualTextBox9.Name = "visualTextBox9";
             this.visualTextBox9.PasswordChar = '\0';
             this.visualTextBox9.ReadOnly = false;
             this.visualTextBox9.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox9.Size = new System.Drawing.Size(696, 28);
+            this.visualTextBox9.Size = new System.Drawing.Size(185, 28);
             this.visualTextBox9.TabIndex = 1;
-            this.visualTextBox9.TextBoxWidth = 684;
+            this.visualTextBox9.TextBoxWidth = 173;
             this.visualTextBox9.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.visualTextBox9.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualTextBox9.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -126,7 +110,7 @@
             this.label21.BackColor = System.Drawing.Color.White;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label21.Location = new System.Drawing.Point(4, 0);
+            this.label21.Location = new System.Drawing.Point(3, 3);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(155, 17);
             this.label21.TabIndex = 30;
@@ -135,8 +119,6 @@
             // visualTextBox10
             // 
             this.visualTextBox10.AlphaNumeric = false;
-            this.visualTextBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.visualTextBox10.BackColor = System.Drawing.Color.White;
             this.visualTextBox10.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualTextBox10.BackColorState.Enabled = System.Drawing.Color.White;
@@ -168,15 +150,15 @@
             this.visualTextBox10.ImageSize = new System.Drawing.Size(16, 16);
             this.visualTextBox10.ImageVisible = false;
             this.visualTextBox10.ImageWidth = 35;
-            this.visualTextBox10.Location = new System.Drawing.Point(5, 19);
+            this.visualTextBox10.Location = new System.Drawing.Point(6, 23);
             this.visualTextBox10.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualTextBox10.Name = "visualTextBox10";
             this.visualTextBox10.PasswordChar = '\0';
             this.visualTextBox10.ReadOnly = false;
             this.visualTextBox10.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox10.Size = new System.Drawing.Size(696, 28);
+            this.visualTextBox10.Size = new System.Drawing.Size(185, 28);
             this.visualTextBox10.TabIndex = 0;
-            this.visualTextBox10.TextBoxWidth = 684;
+            this.visualTextBox10.TextBoxWidth = 173;
             this.visualTextBox10.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.visualTextBox10.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualTextBox10.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -196,18 +178,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pICMS_3);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.visualTextBox9);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.visualTextBox10);
             this.Name = "ICMS_3";
-            this.Size = new System.Drawing.Size(714, 110);
-            this.pICMS_3.ResumeLayout(false);
-            this.pICMS_3.PerformLayout();
+            this.Size = new System.Drawing.Size(214, 117);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pICMS_3;
         private System.Windows.Forms.Label label20;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox9;
         private System.Windows.Forms.Label label21;

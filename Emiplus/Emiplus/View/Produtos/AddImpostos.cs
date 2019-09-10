@@ -166,38 +166,50 @@ namespace Emiplus.View.Produtos
             };
 
             //CofinsSt.DataSource = new List<string>{ }
+
+            icms_1.Visible = false;
+            icms_2.Visible = false;
+            icms_3.Visible = false;
+
+            icms_1.Location = new Point(9, 62);
+            icms_2.Location = new Point(9, 62);
+            icms_3.Location = new Point(9, 62);
+
+            icms_1.Size = new Size(196, 67);
+            icms_2.Size = new Size(319, 158);
+            icms_3.Size = new Size(214, 117);
         }
 
 
         private void SetIcms()
         {
-           // pICMS_1.Visible = false;
-            //pICMS_2.Visible = false;
-           // pICMS_3.Visible = false;
+            icms_1.Visible = false;
+            icms_2.Visible = false;
+            icms_3.Visible = false;
 
             if (Icms.Text.Contains("101"))
             {
-                //pICMS_1.Visible = true;
+                icms_1.Visible = true;
             }
             else if (Icms.Text.Contains("201"))
             {
-               // pICMS_2.Visible = true;
+                icms_2.Visible = true;
             }
             else if (Icms.Text.Contains("202"))
             {
-                //pICMS_2.Visible = true;
+                icms_2.Visible = true;
             }
             else if (Icms.Text.Contains("203"))
             {
-               // pICMS_2.Visible = true;
+                icms_2.Visible = true;
             }
             else if (Icms.Text.Contains("500"))
             {
-                ///pICMS_3.Visible = true;
+                icms_3.Visible = true;
             }
             else if (Icms.Text.Contains("900"))
             {
-                //pICMS_2.Visible = true;
+                icms_2.Visible = true;
             }
         }
 
