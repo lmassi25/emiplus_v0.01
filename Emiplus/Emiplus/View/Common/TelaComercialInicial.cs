@@ -41,5 +41,11 @@ namespace Emiplus.View.Common
             Pedido Pedido = new Pedido();
             Pedido.ShowDialog();
         }
+
+        private void Colaboradores_Click(object sender, System.EventArgs e)
+        {
+            page = "Colaboradores";
+            OpenForm.Show<Comercial.AddClientes>(this);
+        }
     }
 }

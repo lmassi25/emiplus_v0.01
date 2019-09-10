@@ -58,7 +58,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
+                    return true;
                 }
                 else
                 {

@@ -41,8 +41,8 @@ namespace Emiplus.View.Comercial
         {
             if (_mPedido.Cliente > 0)
             {
-                _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
-                nomeCliente.Text = _mCliente.Nome;
+                var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
+                nomeCliente.Text = data.Nome;
             }
         }
 
@@ -50,8 +50,8 @@ namespace Emiplus.View.Comercial
         {
             if (_mPedido.Colaborador > 0)
             {
-                _mColaborador.FindById(_mPedido.Colaborador).First<Model.Pessoa>();
-                nomeVendedor.Text = _mColaborador.Nome;
+                var data = _mColaborador.FindById(_mPedido.Colaborador).First<Model.Pessoa>();
+                nomeVendedor.Text = data.Nome;
             }
         }
 
@@ -87,7 +87,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Pedidos_Load(object sender, EventArgs e)
+        private void AddPedidos_Load(object sender, EventArgs e)
         {
             AutoCompleteItens();
 
@@ -184,13 +184,25 @@ namespace Emiplus.View.Comercial
         private void SelecionarCliente_Click(object sender, EventArgs e)
         {
             PedidoModalClientes form = new PedidoModalClientes();
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _mPedido.Id = Id;
+                _mPedido.Cliente = PedidoModalClientes.Id;
+                _mPedido.Save(_mPedido);
+                LoadData();
+            }
         }
 
         private void SelecionarColaborador_Click(object sender, EventArgs e)
         {
             PedidoModalVendedor form = new PedidoModalVendedor();
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _mPedido.Id = Id;
+                _mPedido.Colaborador = PedidoModalClientes.Id;
+                _mPedido.Save(_mPedido);
+                LoadData();
+            }
         }
 
         private void BuscarProduto_Enter(object sender, EventArgs e)

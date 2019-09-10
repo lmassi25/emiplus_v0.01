@@ -122,14 +122,14 @@
             this.Categorias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Categorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
-            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Categorias.Location = new System.Drawing.Point(194, 188);
+            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Categorias.Location = new System.Drawing.Point(193, 187);
             this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(126, 115);
+            this.Categorias.Size = new System.Drawing.Size(123, 27);
             this.Categorias.TabIndex = 42;
             this.Categorias.Text = "Categorias";
-            this.Categorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Categorias.UseVisualStyleBackColor = false;
             this.Categorias.Click += new System.EventHandler(this.Categorias_Click);
             // 
@@ -206,7 +206,7 @@
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(458, 188);
+            this.button3.Location = new System.Drawing.Point(323, 188);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 115);
@@ -252,7 +252,7 @@
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(587, 188);
+            this.button5.Location = new System.Drawing.Point(452, 188);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(128, 115);
@@ -320,14 +320,14 @@
             this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.Location = new System.Drawing.Point(326, 188);
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(192, 220);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(126, 115);
+            this.button8.Size = new System.Drawing.Size(123, 27);
             this.button8.TabIndex = 57;
             this.button8.Text = "Etiquetas";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button8.UseVisualStyleBackColor = false;
             // 
             // label1
@@ -511,14 +511,14 @@
             this.Impostos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Impostos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Impostos.Image = ((System.Drawing.Image)(resources.GetObject("Impostos.Image")));
-            this.Impostos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Impostos.Location = new System.Drawing.Point(452, 362);
+            this.Impostos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Impostos.Location = new System.Drawing.Point(192, 253);
             this.Impostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Impostos.Name = "Impostos";
-            this.Impostos.Size = new System.Drawing.Size(126, 115);
+            this.Impostos.Size = new System.Drawing.Size(123, 27);
             this.Impostos.TabIndex = 81;
             this.Impostos.Text = "Impostos";
-            this.Impostos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Impostos.UseVisualStyleBackColor = false;
             this.Impostos.Click += new System.EventHandler(this.Impostos_Click);
             // 

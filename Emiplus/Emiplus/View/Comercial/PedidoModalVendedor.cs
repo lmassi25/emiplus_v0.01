@@ -8,5 +8,15 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
         }
+
+        private void BtnCancelar_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void BtnSelecionar_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

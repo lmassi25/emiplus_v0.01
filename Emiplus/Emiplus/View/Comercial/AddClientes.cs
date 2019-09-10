@@ -26,6 +26,40 @@ namespace Emiplus.View.Comercial
         private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
         private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
 
+        public string btnSalvarText
+        {
+            get
+            {
+                return btnSalvar.Text;
+            }
+            set
+            {
+                btnSalvar.Text = value;
+            }
+        }
+        public int btnSalvarWidth
+        {
+            get
+            {
+                return btnSalvar.Width;
+            }
+            set
+            {
+                btnSalvar.Width = value;
+            }
+        }
+        public int btnSalvarLocation
+        {
+            get
+            {
+                return btnSalvar.Left;
+            }
+            set
+            {
+                btnSalvar.Left = value;
+            }
+        }
+
         public AddClientes()
         {
             InitializeComponent();
@@ -54,6 +88,12 @@ namespace Emiplus.View.Comercial
                 label1.Left = 338;
                 pictureBox2.Left = 315;
                 tabControl1.TabPages.Add(tabTransporte);
+            }
+
+            if (page == "Colaboradores")
+            {
+                label1.Left = 346;
+                pictureBox2.Left = 323;
             }
 
             if (Id == 0)
@@ -202,6 +242,7 @@ namespace Emiplus.View.Comercial
             if (_modelPessoa.Save(_modelPessoa))
             {
                 Id = _modelPessoa.GetLastId();
+                DialogResult = DialogResult.OK;
                 Close();
             }
         }
