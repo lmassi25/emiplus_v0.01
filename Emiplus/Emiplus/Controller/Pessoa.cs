@@ -54,19 +54,34 @@
 
         public void GetDataTableEnderecos(DataGridView Table, int Id)
         {
-            Table.ColumnCount = 4;
+            Table.ColumnCount = 9;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Título";
-            Table.Columns[1].Width = 100;
+            Table.Columns[1].Visible = false;
 
             Table.Columns[2].Name = "CEP";
             Table.Columns[2].Width = 150;
 
             Table.Columns[3].Name = "Rua";
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            Table.Columns[4].Name = "N°";
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            Table.Columns[5].Name = "Bairro";
+            Table.Columns[5].Width = 300;
+
+            Table.Columns[6].Name = "Cidade";
+            Table.Columns[6].Width = 200;
+
+            Table.Columns[7].Name = "Estado";
+            Table.Columns[7].Width = 100;
+
+            Table.Columns[8].Name = "País";
+            Table.Columns[8].Width = 100;
 
             Table.Rows.Clear();
 
@@ -84,9 +99,57 @@
                     item.ID,
                     item.TITULO,
                     item.CEP,
-                    $"{item.RUA} - {item.NR} - {item.COMPLEMENTO} - {item.BAIRRO} | {item.CIDADE}/{item.ESTADO} - {item.PAIS}"
+                    //$"{item.RUA} - {item.NR} - {item.COMPLEMENTO} - {item.BAIRRO} | {item.CIDADE}/{item.ESTADO} - {item.PAIS}"
+                    item.RUA,
+                    item.NR,
+                    item.BAIRRO,
+                    item.CIDADE,
+                    item.ESTADO,
+                    item.PAIS
                 );
             }
         }
+
+        public void GetDataTableContato(DataGridView Table, int Id)
+        {
+            Table.ColumnCount = 5;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Contato";
+            Table.Columns[1].Width = 150;
+
+            Table.Columns[2].Name = "Telefone";
+            Table.Columns[2].Width = 100;
+
+            Table.Columns[3].Name = "Celular";
+            Table.Columns[3].Width = 150;
+
+            Table.Columns[4].Name = "E-mail";
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            Table.Rows.Clear();
+
+            var address = new Model.PessoaContato();
+
+            var data = address.Query()
+                .Where("EXCLUIR", 0)
+                .Where("ID_PESSOA", Id)
+                .OrderByDesc("criado")
+                .Get();
+
+            foreach (var item in data)
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    item.CONTATO,
+                    item.TELEFONE,
+                    item.CELULAR,
+                    item.EMAIL
+                );
+            }
+        }
+
     }
 }

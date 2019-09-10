@@ -343,7 +343,7 @@
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.search.Size = new System.Drawing.Size(376, 34);
-            this.search.TabIndex = 12;
+            this.search.TabIndex = 1;
             this.search.TextBoxWidth = 354;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

@@ -34,6 +34,8 @@ namespace Emiplus.View.Comercial
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -91,6 +93,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -268,7 +271,7 @@ namespace Emiplus.View.Comercial
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelEnderecos);
-            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -283,6 +286,7 @@ namespace Emiplus.View.Comercial
             this.panelEnderecos.Controls.Add(this.ListaEnderecos);
             this.panelEnderecos.Controls.Add(this.panel1);
             this.panelEnderecos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEnderecos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelEnderecos.Location = new System.Drawing.Point(3, 3);
             this.panelEnderecos.Name = "panelEnderecos";
             this.panelEnderecos.Size = new System.Drawing.Size(638, 193);
@@ -322,6 +326,8 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListaEnderecos.Size = new System.Drawing.Size(637, 124);
             this.ListaEnderecos.TabIndex = 4;
+            this.ListaEnderecos.TabStop = false;
+            this.ListaEnderecos.DoubleClick += new System.EventHandler(this.ListaEnderecos_DoubleClick);
             // 
             // panel1
             // 
@@ -372,7 +378,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarEndereco.Image")));
             this.btnAdicionarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarEndereco.Location = new System.Drawing.Point(559, 4);
+            this.btnAdicionarEndereco.Location = new System.Drawing.Point(557, 4);
             this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
             this.btnAdicionarEndereco.Size = new System.Drawing.Size(80, 60);
             this.btnAdicionarEndereco.TabIndex = 4;
@@ -394,9 +400,9 @@ namespace Emiplus.View.Comercial
             this.btnEditarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEndereco.Image")));
             this.btnEditarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarEndereco.Location = new System.Drawing.Point(495, 4);
+            this.btnEditarEndereco.Location = new System.Drawing.Point(471, 4);
             this.btnEditarEndereco.Name = "btnEditarEndereco";
-            this.btnEditarEndereco.Size = new System.Drawing.Size(60, 60);
+            this.btnEditarEndereco.Size = new System.Drawing.Size(80, 60);
             this.btnEditarEndereco.TabIndex = 3;
             this.btnEditarEndereco.Text = "Editar";
             this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -434,18 +440,39 @@ namespace Emiplus.View.Comercial
             this.ListaContatos.BackgroundColor = System.Drawing.Color.White;
             this.ListaContatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaContatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaContatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ListaContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaContatos.DefaultCellStyle = dataGridViewCellStyle4;
             this.ListaContatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaContatos.Location = new System.Drawing.Point(0, 70);
             this.ListaContatos.Name = "ListaContatos";
+            this.ListaContatos.ReadOnly = true;
+            this.ListaContatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListaContatos.Size = new System.Drawing.Size(643, 130);
             this.ListaContatos.TabIndex = 4;
+            this.ListaContatos.TabStop = false;
+            this.ListaContatos.DoubleClick += new System.EventHandler(this.ListaContatos_DoubleClick);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.btnAdicionarContato);
             this.panel3.Controls.Add(this.btnEditarContato);
@@ -459,7 +486,7 @@ namespace Emiplus.View.Comercial
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(14, 17);
+            this.label12.Location = new System.Drawing.Point(16, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(94, 25);
             this.label12.TabIndex = 5;
@@ -478,7 +505,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarContato.Image")));
             this.btnAdicionarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarContato.Location = new System.Drawing.Point(558, 5);
+            this.btnAdicionarContato.Location = new System.Drawing.Point(559, 5);
             this.btnAdicionarContato.Name = "btnAdicionarContato";
             this.btnAdicionarContato.Size = new System.Drawing.Size(80, 60);
             this.btnAdicionarContato.TabIndex = 4;
@@ -500,9 +527,9 @@ namespace Emiplus.View.Comercial
             this.btnEditarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarContato.Image")));
             this.btnEditarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarContato.Location = new System.Drawing.Point(494, 5);
+            this.btnEditarContato.Location = new System.Drawing.Point(473, 5);
             this.btnEditarContato.Name = "btnEditarContato";
-            this.btnEditarContato.Size = new System.Drawing.Size(60, 60);
+            this.btnEditarContato.Size = new System.Drawing.Size(80, 60);
             this.btnEditarContato.TabIndex = 3;
             this.btnEditarContato.Text = "Editar";
             this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -778,6 +805,7 @@ namespace Emiplus.View.Comercial
             this.label6.Size = new System.Drawing.Size(53, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Clientes";
+            this.label6.Click += new System.EventHandler(this.Label6_Click_1);
             // 
             // label4
             // 
@@ -790,6 +818,7 @@ namespace Emiplus.View.Comercial
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Comercial";
+            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // pictureBox1
             // 
@@ -827,7 +856,6 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
             this.visualGroupBox1.Controls.Add(this.pictureBox13);
-            this.visualGroupBox1.Controls.Add(this.Isento);
             this.visualGroupBox1.Controls.Add(this.nascimento);
             this.visualGroupBox1.Controls.Add(this.pictureBox12);
             this.visualGroupBox1.Controls.Add(this.pictureBox11);
@@ -844,6 +872,7 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.Controls.Add(this.nomeFantasia);
             this.visualGroupBox1.Controls.Add(this.label23);
             this.visualGroupBox1.Controls.Add(this.nomeRS);
+            this.visualGroupBox1.Controls.Add(this.Isento);
             this.visualGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visualGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.visualGroupBox1.Image = null;
@@ -912,8 +941,8 @@ namespace Emiplus.View.Comercial
             this.Isento.Location = new System.Drawing.Point(452, 106);
             this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Isento.Name = "Isento";
-            this.Isento.Size = new System.Drawing.Size(67, 23);
-            this.Isento.TabIndex = 42;
+            this.Isento.Size = new System.Drawing.Size(56, 23);
+            this.Isento.TabIndex = 7;
             this.Isento.Text = "Isento";
             this.Isento.TextSize = new System.Drawing.Size(41, 19);
             this.Isento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -949,7 +978,7 @@ namespace Emiplus.View.Comercial
             this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nascimento.Name = "nascimento";
             this.nascimento.Size = new System.Drawing.Size(120, 27);
-            this.nascimento.TabIndex = 39;
+            this.nascimento.TabIndex = 3;
             this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // pictureBox12
@@ -1044,7 +1073,7 @@ namespace Emiplus.View.Comercial
             this.pessoaJF.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pessoaJF.Size = new System.Drawing.Size(132, 29);
             this.pessoaJF.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.pessoaJF.TabIndex = 33;
+            this.pessoaJF.TabIndex = 4;
             this.pessoaJF.TextAlignment = System.Drawing.StringAlignment.Center;
             this.pessoaJF.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.pessoaJF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1062,6 +1091,7 @@ namespace Emiplus.View.Comercial
             this.pessoaJF.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.pessoaJF.Watermark.Text = "Watermark text";
             this.pessoaJF.Watermark.Visible = false;
+            this.pessoaJF.SelectionChangeCommitted += new System.EventHandler(this.PessoaJF_SelectionChangeCommitted);
             // 
             // label19
             // 
@@ -1116,7 +1146,7 @@ namespace Emiplus.View.Comercial
             this.rgIE.ReadOnly = false;
             this.rgIE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.rgIE.Size = new System.Drawing.Size(150, 28);
-            this.rgIE.TabIndex = 31;
+            this.rgIE.TabIndex = 6;
             this.rgIE.TextBoxWidth = 138;
             this.rgIE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.rgIE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1185,7 +1215,7 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.ReadOnly = false;
             this.cpfCnpj.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cpfCnpj.Size = new System.Drawing.Size(119, 28);
-            this.cpfCnpj.TabIndex = 29;
+            this.cpfCnpj.TabIndex = 5;
             this.cpfCnpj.TextBoxWidth = 107;
             this.cpfCnpj.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.cpfCnpj.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1268,7 +1298,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia.ReadOnly = false;
             this.nomeFantasia.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nomeFantasia.Size = new System.Drawing.Size(229, 28);
-            this.nomeFantasia.TabIndex = 25;
+            this.nomeFantasia.TabIndex = 2;
             this.nomeFantasia.TextBoxWidth = 217;
             this.nomeFantasia.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nomeFantasia.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1337,7 +1367,7 @@ namespace Emiplus.View.Comercial
             this.nomeRS.ReadOnly = false;
             this.nomeRS.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nomeRS.Size = new System.Drawing.Size(259, 28);
-            this.nomeRS.TabIndex = 10;
+            this.nomeRS.TabIndex = 1;
             this.nomeRS.TextBoxWidth = 247;
             this.nomeRS.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nomeRS.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1353,6 +1383,17 @@ namespace Emiplus.View.Comercial
             this.nomeRS.Watermark.Visible = false;
             this.nomeRS.WordWrap = true;
             this.nomeRS.Enter += new System.EventHandler(this.NomeRS_Enter);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(18, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(201, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Gerencie os contatos do cliente aqui!";
             // 
             // AddClientes
             // 
@@ -1466,5 +1507,6 @@ namespace Emiplus.View.Comercial
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox placa;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox Isento;
+        private System.Windows.Forms.Label label8;
     }
 }

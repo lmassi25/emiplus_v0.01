@@ -22,7 +22,6 @@
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public string EmpresaId { get; private set; }
-        public string Titulo { get; set; }
         public string Cep { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
@@ -95,11 +94,11 @@
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                Alert.Message("Pronto!", "Endereço removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover o produto.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o endereço.", Alert.AlertType.error);
             return false;
         }
 

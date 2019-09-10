@@ -73,8 +73,8 @@
             this.btnHelp.Location = new System.Drawing.Point(631, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
-            this.btnHelp.TabIndex = 10;
-            this.btnHelp.Text = "Ajuda!";
+            this.btnHelp.TabIndex = 4;
+            this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
@@ -118,6 +118,8 @@
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridLista.Size = new System.Drawing.Size(659, 280);
             this.GridLista.TabIndex = 5;
+            this.GridLista.TabStop = false;
+            this.GridLista.DoubleClick += new System.EventHandler(this.GridLista_DoubleClick);
             // 
             // panel5
             // 
@@ -169,7 +171,7 @@
             this.btnEditar.Location = new System.Drawing.Point(540, 4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(85, 90);
-            this.btnEditar.TabIndex = 3;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -214,7 +216,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(631, 3);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
-            this.btnAdicionar.TabIndex = 4;
+            this.btnAdicionar.TabIndex = 3;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
@@ -298,8 +300,8 @@
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.search.Size = new System.Drawing.Size(376, 34);
-            this.search.TabIndex = 12;
-            this.search.TextBoxWidth = 354;
+            this.search.TabIndex = 1;
+            this.search.TextBoxWidth = 330;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -313,7 +315,9 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
+            this.search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Search_KeyDown);
             this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // panel4
             // 
@@ -349,6 +353,7 @@
             this.label8.Size = new System.Drawing.Size(66, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Comercial";
+            this.label8.Click += new System.EventHandler(this.Label8_Click);
             // 
             // pictureBox2
             // 

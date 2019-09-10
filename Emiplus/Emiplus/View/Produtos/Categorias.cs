@@ -12,12 +12,18 @@ namespace Emiplus.View.Produtos
 
         public Categorias()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private void DataTable()
         {
             _controller.GetDataTable(GridListaCategorias, search.Text);
+        }
+
+        private void Categorias_Load(object sender, EventArgs e)
+        {
+            search.Select();
+            DataTable();
         }
 
         private void Label5_Click(object sender, EventArgs e)
@@ -30,13 +36,7 @@ namespace Emiplus.View.Produtos
             idCatSelected = 0;
             OpenForm.Show<AddCategorias>(this);
         }
-
-        private void Categorias_Load(object sender, EventArgs e)
-        {
-            search.Focus();
-            DataTable();
-        }
-
+        
         private void Search_TextChanged(object sender, EventArgs e)
         {
             DataTable();

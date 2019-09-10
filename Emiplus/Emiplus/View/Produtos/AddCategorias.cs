@@ -19,18 +19,18 @@ namespace Emiplus.View.Produtos
                 LoadData();            
         }
 
-        private void Start()
-        {
-            ActiveControl = nome;
-
-            ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-        }
-
         private void LoadData()
         {
             _modelCategoria = _modelCategoria.FindById(idCatSelected).First<Categoria>();
 
             nome.Text = _modelCategoria.Nome;
+        }
+
+        private void AddCategorias_Load(object sender, EventArgs e)
+        {
+            nome.Select();
+
+            ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -63,11 +63,6 @@ namespace Emiplus.View.Produtos
         {
             var data = _modelCategoria.Remove(idCatSelected);
             if (data) Close();
-        }
-
-        private void AddCategorias_Load(object sender, EventArgs e)
-        {
-            Start();
         }
     }
 }

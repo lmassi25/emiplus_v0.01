@@ -25,6 +25,7 @@ namespace Emiplus.Data.Helpers
                 //formulario.Size = new Size(Principal.Width, Principal.Height);
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
+                formulario.Focus();
                 formulario.Show();
                 formulario.BringToFront();
             }
@@ -49,6 +50,7 @@ namespace Emiplus.Data.Helpers
                 //formulario.Size = new Size(Principal.Width, Principal.Height);
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
+                Principal.Focus();
                 formulario.Show();
                 formulario.BringToFront();
             }

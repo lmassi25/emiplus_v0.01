@@ -14,9 +14,13 @@ namespace Emiplus.View.Comercial
     {
         private Controller.Pessoa _controller = new Controller.Pessoa();
         private Pessoa _modelPessoa = new Pessoa();
+        private PessoaEndereco _modelAddress = new PessoaEndereco();
+        private PessoaContato _modelContact = new PessoaContato();
+
         private string page = TelaComercialInicial.page;
         public static int Id { get; set; }
         public static int IdAddress { get; set; }
+        public static int IdContact { get; set; }
 
         private int Backspace = 0;
 
@@ -53,6 +57,12 @@ namespace Emiplus.View.Comercial
                 tabControl1.TabPages.Add(tabTransporte);
             }
 
+            //if(Id == 0)
+            //{
+            //    data.Criado = DateTime.Now;
+            //    if (Data(data).Create() == 1)
+            //}
+
             if (Id > 0)
             {
                 tabControl1.Visible = true;
@@ -64,6 +74,39 @@ namespace Emiplus.View.Comercial
         private void DataTableAddress()
         {
             _controller.GetDataTableEnderecos(ListaEnderecos, Id);
+        }
+
+        private void DataTableContatos()
+        {
+            _controller.GetDataTableContato(ListaContatos, Id);
+        }
+
+        private void GetContato()
+        {
+            if (ListaContatos.SelectedCells.Count == 0)
+            {
+                Alert.Message("Opss", "Selecione um contato para editar!", Alert.AlertType.info);
+                return;
+            }
+
+            IdContact = Convert.ToInt32(ListaContatos.SelectedRows[0].Cells["ID"].Value);
+            AddClienteContato form = new AddClienteContato();
+            if (form.ShowDialog() == DialogResult.OK)
+                SetFocus();
+        }
+
+        private void GetEndereco()
+        {
+            if (ListaEnderecos.SelectedCells.Count == 0)
+            {
+                Alert.Message("Opss", "Selecione um endereço para editar!", Alert.AlertType.info);
+                return;
+            }
+
+            IdAddress = Convert.ToInt32(ListaEnderecos.SelectedRows[0].Cells["ID"].Value);
+            AddClienteEndereco form = new AddClienteEndereco();
+            if (form.ShowDialog() == DialogResult.OK)
+                SetFocus();
         }
 
         private void LoadData()
@@ -82,12 +125,14 @@ namespace Emiplus.View.Comercial
         private void BtnAdicionarEndereco_Click(object sender, EventArgs e)
         {
             IdAddress = 0;
-            OpenForm.ShowInPanel<AddClienteEndereco>(panelEnderecos);
+            AddClienteEndereco form = new AddClienteEndereco();
+            if (form.ShowDialog() == DialogResult.OK)
+                SetFocus();
         }
+
         private void BtnEditarEndereco_Click(object sender, EventArgs e)
         {
-            IdAddress = Convert.ToInt32(ListaEnderecos.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.ShowInPanel<AddClienteEndereco>(panelEnderecos);
+            GetEndereco();
         }
 
         private void Label6_Click(object sender, EventArgs e)
@@ -102,32 +147,42 @@ namespace Emiplus.View.Comercial
 
         private void BtnAdicionarContato_Click(object sender, EventArgs e)
         {
-            OpenForm.ShowInPanel<AddClienteContato>(panelContatos);
+            IdContact = 0;
+            AddClienteContato form = new AddClienteContato();
+            if (form.ShowDialog() == DialogResult.OK)
+                Focus();
         }
 
         private void AddClientes_Load(object sender, EventArgs e)
         {
             DataTableAddress();
-            nomeRS.Focus();
+            DataTableContatos();
 
             pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
             pessoaJF.SelectedItem = "Física";
+
+            SetFocus();
         }
 
         private void AddClientes_Activated(object sender, EventArgs e)
         {
             DataTableAddress();
+            DataTableContatos();
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            Support.OpenLinkBrowser("https://www.google.com.br");
+            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
 
         private void BtnRemover_Click(object sender, EventArgs e)
         {
-            if (_modelPessoa.Remove(Id))
-                Close();
+            var result = MessageBox.Show("Deseja realmente excluir o cliente?", "Atenção!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (_modelPessoa.Remove(Id))
+                    Close();
+            }
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -146,12 +201,13 @@ namespace Emiplus.View.Comercial
             {
                 tabControl1.Visible = true;
                 Id = _modelPessoa.GetLastId();
-            }       
+                Close();
+            }
         }
 
         private void BtnEditarContato_Click(object sender, EventArgs e)
         {
-
+            GetContato();
         }
 
         private void VisualGroupBox1_Enter(object sender, EventArgs e)
@@ -161,12 +217,12 @@ namespace Emiplus.View.Comercial
 
         private void CpfCnpj_TextChanged(object sender, EventArgs e)
         {
-            //ChangeMask();
+            ChangeMask();
         }
 
         private void CpfCnpj_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Back)
             {
                 Backspace = 1;
             }
@@ -180,17 +236,55 @@ namespace Emiplus.View.Comercial
         {
             if (cpfCnpj.Text != "")
             {
-                if(Backspace == 0)
+                if (Backspace == 0)
                 {
-                    //cpfCnpj.Text = aux1;
-                    //cpfCnpj.Select(cpfCnpj.Text.Length, 0);
-                }                
+                    cpfCnpj.Text = Validation.ChangeMaskCPFCNPJ(cpfCnpj.Text, pessoaJF.Text);
+                    cpfCnpj.Select(cpfCnpj.Text.Length, 0);
+                }
             }
         }
 
         private void NomeRS_Enter(object sender, EventArgs e)
         {
             DataTableAddress();
+            DataTableContatos();
+        }
+        
+        private void PessoaJF_SelectionChangeCommitted(object sender, EventArgs e)
+        {            
+            if (pessoaJF.Text == "Física")
+            {
+                Isento.Checked = true;
+            }
+            else
+            {
+                Isento.Checked = false;
+            }
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Label6_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void SetFocus()
+        {
+            nomeRS.Focus();
+        }
+
+        private void ListaEnderecos_DoubleClick(object sender, EventArgs e)
+        {
+            GetEndereco();
+        }
+
+        private void ListaContatos_DoubleClick(object sender, EventArgs e)
+        {
+            GetContato();
         }
     }
 }
