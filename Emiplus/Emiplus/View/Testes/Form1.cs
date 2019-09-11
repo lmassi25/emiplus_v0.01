@@ -12,8 +12,21 @@ namespace Emiplus.View.Testes
         {
             InitializeComponent();
 
+            double valor = 178.00;
+            double percentual = 15.0;
+            double qtd = 3;
+            double valor_final = (percentual / 100.0 * (valor * qtd));
+
+            Console.WriteLine(valor_final);
+
             pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
             pessoaJF.SelectedItem = "Física";
+        }
+
+        public double inteiro(double valor)
+        {
+            double id = valor == null ? 1 : valor;
+            return id;
         }
 
         private void CpfCnpj_TextChanged(object sender, EventArgs e)
@@ -39,7 +52,7 @@ namespace Emiplus.View.Testes
             {
                 if (Backspace == 0)
                 {
-                    cpfCnpj.Text = Validation.ChangeMaskCPFCNPJ(cpfCnpj.Text, pessoaJF.Text);
+                    //cpfCnpj.Text = Validation.ChangeMaskCPFCNPJ(cpfCnpj.Text, pessoaJF.Text);
                     cpfCnpj.Select(cpfCnpj.Text.Length, 0);
                 }
             }

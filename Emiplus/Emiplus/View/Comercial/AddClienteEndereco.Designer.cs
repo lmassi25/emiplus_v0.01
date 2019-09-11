@@ -703,8 +703,7 @@
             this.cep.Watermark.Text = "Watermark text";
             this.cep.Watermark.Visible = false;
             this.cep.WordWrap = true;
-            this.cep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cep_KeyDown);
-            this.cep.TextChanged += new System.EventHandler(this.cep_TextChanged);
+            this.cep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cep_KeyPress);
             // 
             // AddClienteEndereco
             // 

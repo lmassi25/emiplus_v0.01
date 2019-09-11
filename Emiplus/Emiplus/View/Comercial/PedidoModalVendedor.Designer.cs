@@ -75,7 +75,7 @@
             this.btnSelecionar.Location = new System.Drawing.Point(239, 2);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(119, 60);
-            this.btnSelecionar.TabIndex = 4;
+            this.btnSelecionar.TabIndex = 3;
             this.btnSelecionar.Text = "Selecionar (F10)";
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelecionar.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(360, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(118, 60);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -167,11 +167,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(91, 92);
+            this.label2.Location = new System.Drawing.Point(90, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 17);
+            this.label2.Size = new System.Drawing.Size(137, 17);
             this.label2.TabIndex = 58;
-            this.label2.Text = "Buscar vendedor:";
+            this.label2.Text = "Buscar vendedor (F1):";
             // 
             // pictureBox1
             // 
@@ -218,15 +218,15 @@
             this.search.ImageSize = new System.Drawing.Size(16, 16);
             this.search.ImageVisible = true;
             this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(92, 112);
+            this.search.Location = new System.Drawing.Point(94, 111);
             this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.search.Name = "search";
             this.search.PasswordChar = '\0';
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.search.Size = new System.Drawing.Size(376, 34);
-            this.search.TabIndex = 61;
-            this.search.TextBoxWidth = 225;
+            this.search.TabIndex = 1;
+            this.search.TextBoxWidth = 330;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -240,6 +240,8 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
+            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // PedidoModalVendedor
             // 
@@ -260,6 +262,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.PedidoModalVendedor_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

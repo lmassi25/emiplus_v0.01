@@ -126,5 +126,17 @@ namespace Emiplus.View.Produtos
         {
             _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
         }
+
+        private void Valorcompra_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            Eventos.MaskPrice(ref txt);
+        }
+
+        private void Valorvenda_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            Eventos.MaskPrice(ref txt);
+        }
     }
 }

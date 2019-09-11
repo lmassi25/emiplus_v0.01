@@ -77,7 +77,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -94,6 +93,7 @@ namespace Emiplus.View.Comercial
             this.label23 = new System.Windows.Forms.Label();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
+            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -864,7 +864,6 @@ namespace Emiplus.View.Comercial
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
             this.visualGroupBox1.Controls.Add(this.pictureBox13);
-            this.visualGroupBox1.Controls.Add(this.nascimento);
             this.visualGroupBox1.Controls.Add(this.pictureBox12);
             this.visualGroupBox1.Controls.Add(this.pictureBox11);
             this.visualGroupBox1.Controls.Add(this.pictureBox14);
@@ -915,34 +914,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox13.TabIndex = 38;
             this.pictureBox13.TabStop = false;
-            // 
-            // nascimento
-            // 
-            this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.nascimento.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.nascimento.ArrowSize = new System.Drawing.Size(10, 5);
-            this.nascimento.BackColor = System.Drawing.Color.White;
-            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
-            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
-            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.nascimento.Border.HoverVisible = true;
-            this.nascimento.Border.Rounding = 6;
-            this.nascimento.Border.Thickness = 1;
-            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.nascimento.Border.Visible = true;
-            this.nascimento.DropDownImage = null;
-            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.nascimento.Image = null;
-            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
-            this.nascimento.Location = new System.Drawing.Point(519, 51);
-            this.nascimento.MinimumSize = new System.Drawing.Size(0, 27);
-            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.nascimento.Name = "nascimento";
-            this.nascimento.Size = new System.Drawing.Size(120, 27);
-            this.nascimento.TabIndex = 3;
-            this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // pictureBox12
             // 
@@ -1193,8 +1164,7 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.Watermark.Text = "Watermark text";
             this.cpfCnpj.Watermark.Visible = false;
             this.cpfCnpj.WordWrap = true;
-            this.cpfCnpj.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CpfCnpj_KeyDown);
-            this.cpfCnpj.TextChanged += new System.EventHandler(this.CpfCnpj_TextChanged);
+            this.cpfCnpj.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CpfCnpj_KeyPress);
             // 
             // label21
             // 
@@ -1391,12 +1361,71 @@ namespace Emiplus.View.Comercial
             this.Isento.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Isento.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // nascimento
+            // 
+            this.nascimento.AlphaNumeric = false;
+            this.nascimento.BackColor = System.Drawing.Color.Transparent;
+            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
+            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverVisible = true;
+            this.nascimento.Border.Rounding = 8;
+            this.nascimento.Border.Thickness = 1;
+            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.nascimento.Border.Visible = true;
+            this.nascimento.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.nascimento.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.nascimento.ButtonBorder.HoverVisible = true;
+            this.nascimento.ButtonBorder.Rounding = 6;
+            this.nascimento.ButtonBorder.Thickness = 1;
+            this.nascimento.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.nascimento.ButtonBorder.Visible = true;
+            this.nascimento.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nascimento.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.nascimento.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nascimento.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.nascimento.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nascimento.ButtonIndent = 3;
+            this.nascimento.ButtonText = "visualButton";
+            this.nascimento.ButtonVisible = false;
+            this.nascimento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nascimento.Image = null;
+            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
+            this.nascimento.ImageVisible = false;
+            this.nascimento.ImageWidth = 35;
+            this.nascimento.Location = new System.Drawing.Point(559, 196);
+            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.nascimento.Name = "nascimento";
+            this.nascimento.PasswordChar = '\0';
+            this.nascimento.ReadOnly = false;
+            this.nascimento.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.nascimento.Size = new System.Drawing.Size(112, 28);
+            this.nascimento.TabIndex = 39;
+            this.nascimento.TextBoxWidth = 100;
+            this.nascimento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.nascimento.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nascimento.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nascimento.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nascimento.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.nascimento.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.nascimento.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.nascimento.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.nascimento.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nascimento.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.nascimento.Watermark.Text = "Watermark text";
+            this.nascimento.Watermark.Visible = false;
+            this.nascimento.WordWrap = true;
+            this.nascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nascimento_KeyPress);
+            // 
             // AddClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.nascimento);
             this.Controls.Add(this.visualGroupBox1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.tabControl1);
@@ -1441,6 +1470,7 @@ namespace Emiplus.View.Comercial
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1495,7 +1525,6 @@ namespace Emiplus.View.Comercial
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nomeFantasia;
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nomeRS;
-        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker nascimento;
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rntc;
         private System.Windows.Forms.Label label3;
@@ -1504,5 +1533,6 @@ namespace Emiplus.View.Comercial
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox placa;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox Isento;
         private System.Windows.Forms.Label label8;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nascimento;
     }
 }

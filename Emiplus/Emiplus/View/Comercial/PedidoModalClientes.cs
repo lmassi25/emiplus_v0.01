@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -14,11 +15,15 @@ namespace Emiplus.View.Comercial
         public PedidoModalClientes()
         {
             InitializeComponent();
+
+            KeyDown += KeyDowns;
+            search.KeyDown += KeyDowns;
+            GridListaClientes.KeyDown += KeyDowns;
         }
 
         private void DataTable()
         {
-            _controller.GetDataTableClients(GridListaClientes, search.Text);
+            _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
         }
 
         private void Search_TextChanged(object sender, EventArgs e)
@@ -31,7 +36,17 @@ namespace Emiplus.View.Comercial
             DataTable();
         }
 
-        private void NovoCliente_Click(object sender, EventArgs e)
+        private void SelectItemGrid()
+        {
+            if (GridListaClientes.SelectedRows.Count > 0)
+            {
+                DialogResult = DialogResult.OK;
+                Id = Convert.ToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
+                Close();
+            }
+        }
+
+        private void FormNovoCliente()
         {
             Id = 0;
             page = "Clientes";
@@ -49,6 +64,11 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void NovoCliente_Click(object sender, EventArgs e)
+        {
+            FormNovoCliente();
+        }
+
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -56,11 +76,44 @@ namespace Emiplus.View.Comercial
 
         private void BtnSelecionar_Click(object sender, EventArgs e)
         {
-            if (GridListaClientes.SelectedRows.Count > 0)
+            SelectItemGrid();
+        }
+
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
             {
-                DialogResult = DialogResult.OK;
-                Id = Convert.ToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
-                Close();
+                case Keys.Up:
+                    GridListaClientes.Focus();
+                    Support.UpDownDataGrid(false, GridListaClientes);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    GridListaClientes.Focus();
+                    Support.UpDownDataGrid(true, GridListaClientes);
+                    e.Handled = true;
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.F1:
+                    search.Focus();
+                    break;
+                case Keys.F9:
+                    FormNovoCliente();
+                    break;
+                case Keys.F10:
+                    SelectItemGrid();
+                    break;
+                case Keys.Enter:
+
+                    // Pressione 'Enter', se estiver na Grid, seleciona cliente
+                    if (Validation.Event(sender, GridListaClientes))
+                    {
+                        SelectItemGrid();
+                    }
+
+                    break;
             }
         }
     }
