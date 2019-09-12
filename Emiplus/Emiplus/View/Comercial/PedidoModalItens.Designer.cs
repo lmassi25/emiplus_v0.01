@@ -79,6 +79,7 @@
             this.Selecionar.Text = "Selecionar (F10)";
             this.Selecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Selecionar.UseVisualStyleBackColor = true;
+            this.Selecionar.Click += new System.EventHandler(this.Selecionar_Click);
             // 
             // btnCancelar
             // 
@@ -100,6 +101,7 @@
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // panel2
             // 

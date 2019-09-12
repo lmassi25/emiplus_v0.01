@@ -15,6 +15,7 @@ namespace Emiplus.View.Comercial
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
+        private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Pessoa _mColaborador = new Model.Pessoa();
 
@@ -27,6 +28,17 @@ namespace Emiplus.View.Comercial
         public AddPedidos()
         {
             InitializeComponent();
+
+            BuscarProduto.Select();
+
+            this.KeyDown += KeyDowns;
+            ModoRapido.KeyDown += KeyDowns;
+            BuscarProduto.KeyDown += KeyDowns;
+            SelecionarCliente.KeyDown += KeyDowns;
+            SelecionarColaborador.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
+            btnConcluir.KeyDown += KeyDowns;
+            Quantidade.KeyDown += KeyDowns;
         }
 
         private void LoadData()
@@ -77,29 +89,39 @@ namespace Emiplus.View.Comercial
         // collection.Lookup recupera o ID
         private void LoadItens()
         {
-            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", 0).First<Model.Item>();
-
-            var pedidoItem = new Model.PedidoItem();
-
-            pedidoItem.SetId(0)
-            .SetPedidoId(Id)
-            .SetItem(item)
-            .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
-            .SetValorVenda(Validation.ConvertToDouble(Preco.Text))
-            .SetMedida(Medidas.Text)
-            .SomarProdutosTotal()
-            .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text))
-            .SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text))
-            .SomarTotal()
-            .Save(pedidoItem);
-
-            _controllerPedido.GetDataTableItens(GridListaProdutos, item.Id, pedidoItem);
-
             if (collection.Lookup(BuscarProduto.Text) == 0)
             {
                 searchItemTexto = BuscarProduto.Text;
                 PedidoModalItens form = new PedidoModalItens();
-                form.ShowDialog();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    //if (!String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+                    //{
+                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+                    //}
+                }
+            }
+
+            if (collection.Lookup(BuscarProduto.Text) > 0)
+            {
+                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", 0).First<Model.Item>();
+
+                var pedidoItem = new Model.PedidoItem();
+
+                pedidoItem.SetId(0)
+                .SetPedidoId(Id)
+                .SetItem(item)
+                .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
+                .SetValorVenda(Validation.ConvertToDouble(Preco.Text))
+                .SetMedida(Medidas.Text)
+                .SomarProdutosTotal()
+                .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text))
+                .SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text))
+                .SomarTotal()
+                .Save(pedidoItem);
+
+                _controllerPedido.GetDataTableItens(GridListaProdutos, item.Id, pedidoItem);
+                ClearForms();
             }
         }
 
@@ -127,11 +149,6 @@ namespace Emiplus.View.Comercial
             }
 
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-        }
-
-        private void Label11_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Produto_Click(object sender, EventArgs e)
@@ -162,14 +179,17 @@ namespace Emiplus.View.Comercial
             panel2.BackColor = Color.FromArgb(249, 249, 249);
         }
 
-        private void BtnConcluir_Click(object sender, EventArgs e)
+        private void TelaPagamentos()
         {
-            OpenForm.Show<PedidoPagamentos>(this);
+            if (btnConcluir.Enabled == true)
+            {
+                OpenForm.Show<PedidoPagamentos>(this);
+            }
         }
 
-        private void GridListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BtnConcluir_Click(object sender, EventArgs e)
         {
-
+            TelaPagamentos();
         }
 
         private void AlterarModo()
@@ -196,7 +216,7 @@ namespace Emiplus.View.Comercial
             AlterarModo();
         }
 
-        private void SelecionarCliente_Click(object sender, EventArgs e)
+        private void ModalClientes()
         {
             PedidoModalClientes form = new PedidoModalClientes();
             if (form.ShowDialog() == DialogResult.OK)
@@ -208,7 +228,12 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void SelecionarColaborador_Click(object sender, EventArgs e)
+        private void SelecionarCliente_Click(object sender, EventArgs e)
+        {
+            ModalClientes();
+        }
+
+        private void ModalColaborador()
         {
             PedidoModalVendedor form = new PedidoModalVendedor();
             if (form.ShowDialog() == DialogResult.OK)
@@ -220,9 +245,13 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void SelecionarColaborador_Click(object sender, EventArgs e)
+        {
+            ModalColaborador();
+        }
+
         private void BuscarProduto_Enter(object sender, EventArgs e)
         {
-
             LoadItens();
         }
 
@@ -230,48 +259,55 @@ namespace Emiplus.View.Comercial
         {
         }
 
-        private void BuscarProduto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void BuscarProduto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 LoadItens();
+                BuscarProduto.Clear();
             }
         }
 
-        private void searchItem_Click(object sender, EventArgs e)
+        private void ClearForms()
         {
-            PedidoModalItens form = new PedidoModalItens();
-            form.ShowDialog();
-        }
-
-        private void BtnAlterarQtd_Click(object sender, EventArgs e)
-        {
-            if (Validation.IsNumber(Validation.ConvertToInt32(BuscarProduto.Text)))
-            {
-                if (Validation.ConvertToInt32(BuscarProduto.Text) != 0)
-                {
-                    Quantidade.Text = BuscarProduto.Text;
-                }
-            }
+            BuscarProduto.Clear();
+            Quantidade.Clear();
+            Preco.Clear();
+            DescontoPorcentagem.Clear();
+            DescontoReais.Clear();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
+                case Keys.Up:
+                    GridListaProdutos.Focus();
+                    Support.UpDownDataGrid(false, GridListaProdutos);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    GridListaProdutos.Focus();
+                    Support.UpDownDataGrid(true, GridListaProdutos);
+                    e.Handled = true;
+                    break;
                 case Keys.Escape:
                     Close();
                     break;
                 case Keys.F1:
-                    MessageBox.Show("selecionar o item");
+                    AlterarModo();
+                    break;
+                case Keys.F2:
+                    BuscarProduto.Focus();
+                    break;
+                case Keys.F7:
+                    ModalClientes();
+                    break;
+                case Keys.F8:
+                    ModalColaborador();
                     break;
                 case Keys.F10:
-                    MessageBox.Show("selecionar o item");
+                    TelaPagamentos();
                     break;
                 case Keys.Enter:
 
@@ -288,6 +324,16 @@ namespace Emiplus.View.Comercial
         {
             TextBox txt = (TextBox)sender;
             Eventos.MaskPrice(ref txt);
+        }
+
+        private void Quantidade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (String.IsNullOrEmpty(BuscarProduto.Text)) BuscarProduto.Focus();
+                else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
+                else { LoadItens(); ClearForms(); }
+            }
         }
     }
 }
