@@ -43,17 +43,28 @@ namespace Emiplus.View.Testes
             IList<JToken> results = googleSearch["municipios"].Children().ToList();
 
             IList<SponsorInfo> searchResults = new List<SponsorInfo>();
+
+            var d = new CEP();
+            d.SetCep("15086160");
+            var resposta = d.GetRetornoCorreios();
+
             foreach (JToken result in results)
             {
                 SponsorInfo searchResult = result.ToObject<SponsorInfo>();
                 searchResults.Add(searchResult);
 
-                Console.WriteLine(searchResult.nome);
+                if (searchResult.nome == resposta.cidade.ToLower())
+                {
+                    Console.WriteLine(searchResult.nome);
+
+                    var ibge = searchResult.id;
+                }
+
             }
 
-            SponsorInfo teste = new SponsorInfo();
+            //SponsorInfo teste = new SponsorInfo();
 
-            Console.WriteLine(teste.nome);
+            //Console.WriteLine(teste.nome);
         }
 
 
@@ -157,13 +168,17 @@ namespace Emiplus.View.Testes
 
             //stream.Close();
 
-            //Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+            Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 
             //var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 
             //Municipio m = JsonConvert.DeserializeObject<Municipio>();
 
             //Console.WriteLine(m.nome);
+
+           // var resposta = CEP.GetEnderecoCompleto("15086160");
+
+            //Console.WriteLine(resposta.end);
         }
     }
 }
