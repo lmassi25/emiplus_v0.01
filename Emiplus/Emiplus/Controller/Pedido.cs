@@ -68,32 +68,32 @@ namespace Emiplus.Controller
 
         public void GetDataTableItens(DataGridView Table, int id, Model.PedidoItem pedidoItem)
         {
-            Table.ColumnCount = 8;
+            Table.ColumnCount = 7;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Código";
-            Table.Columns[1].Width = 50;
+            Table.Columns[1].Width = 100;
 
             Table.Columns[2].Name = "Nome do Produto";
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            Table.Columns[3].Name = "Medida";
+            Table.Columns[3].Name = "Quantidade";
             Table.Columns[3].Width = 100;
+            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            Table.Columns[4].Name = "Quantidade";
+            Table.Columns[4].Name = "Unitário";
             Table.Columns[4].Width = 100;
+            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            Table.Columns[5].Name = "Descontos";
+            Table.Columns[5].Name = "Desconto";
             Table.Columns[5].Width = 100;
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            Table.Columns[6].Name = "Unitários";
+            Table.Columns[6].Name = "Total";
             Table.Columns[6].Width = 100;
-
-            Table.Columns[7].Name = "Total";
-            Table.Columns[7].Width = 100;
-
+            Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var item = new Model.Item();
 
@@ -110,10 +110,10 @@ namespace Emiplus.Controller
                     data.ID,
                     data.REFERENCIA,
                     data.NOME,
-                    pedidoItem.Medida,
-                    pedidoItem.Quantidade,
-                    Validation.FormatPrice(pedidoItem.DescontoItem, true),
+                    //pedidoItem.Medida,
+                    pedidoItem.Quantidade + " " + pedidoItem.Medida,
                     Validation.FormatPrice(pedidoItem.ValorVenda, true),
+                    Validation.FormatPrice(pedidoItem.Desconto, true),                    
                     Validation.FormatPrice(pedidoItem.Total, true)
                 );
                 
