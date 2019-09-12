@@ -415,11 +415,11 @@
     <Compile Include="View\Produtos\Impostos.Designer.cs">
       <DependentUpon>Impostos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_0.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\Produtos\Imposto\CFOP\Cfops.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Produtos\Imposto\ICMS\ICMS_0.Designer.cs">
-      <DependentUpon>ICMS_0.cs</DependentUpon>
+    <Compile Include="View\Produtos\Imposto\CFOP\Cfops.Designer.cs">
+      <DependentUpon>Cfops.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\Imposto\ICMS\ICMS_1.cs">
       <SubType>UserControl</SubType>
@@ -557,8 +557,8 @@
     <EmbeddedResource Include="View\Produtos\Impostos.resx">
       <DependentUpon>Impostos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_0.resx">
-      <DependentUpon>ICMS_0.cs</DependentUpon>
+    <EmbeddedResource Include="View\Produtos\Imposto\CFOP\Cfops.resx">
+      <DependentUpon>Cfops.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_1.resx">
       <DependentUpon>ICMS_1.cs</DependentUpon>

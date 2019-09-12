@@ -12,7 +12,7 @@
         {
 
         }
-
+                
         #region CAMPOS 
 
         //campos obrigatorios para todas as tabelas
@@ -29,10 +29,15 @@
 
         public string Nome { get; set; }
 
+        public string Cfop { get; set; }
+
         public string Icms { get; set; } // CST CSOSN   
         public double IcmsReducaoAliq { get; set; }
+
+        public double IcmsIva { get; set; }
+
         public double IcmsAliq { get; set; }
-        public double IcmsStIva { get; set; }
+        
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStAliq { get; set; }
         public string Ipi { get; set; } // CST
@@ -131,11 +136,11 @@
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Categoria removida com sucesso.", Alert.AlertType.info);
+                Alert.Message("Pronto!", "Imposto removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover a categoria.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o imposto.", Alert.AlertType.error);
             return false;
         }
 
