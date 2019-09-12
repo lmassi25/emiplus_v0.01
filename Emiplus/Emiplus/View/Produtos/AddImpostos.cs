@@ -17,10 +17,7 @@ namespace Emiplus.View.Produtos
 
         public AddImpostos()
         {
-            InitializeComponent();
-
-            if (idImpSelected > 0)
-                LoadData();
+            InitializeComponent();           
         }
 
         private void LoadData()
@@ -31,7 +28,6 @@ namespace Emiplus.View.Produtos
             cfop.Text = _modelImposto.Cfop;
 
             GetImpostos(1);
-
         }
 
         private class ImpostoTipo
@@ -51,6 +47,8 @@ namespace Emiplus.View.Produtos
             nome.Select();
 
             ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+            #region COMBOBOX
 
             var icms = new ArrayList();
 
@@ -220,6 +218,11 @@ namespace Emiplus.View.Produtos
             icms_1.Size = new Size(196, 67);
             icms_2.Size = new Size(474, 162);
             icms_3.Size = new Size(214, 117);
+
+            #endregion
+
+            if (idImpSelected > 0)
+                LoadData();
         }
         
         private void BtnExit_Click(object sender, EventArgs e)
@@ -293,7 +296,7 @@ namespace Emiplus.View.Produtos
             }
             else
             {
-                Icms.SelectedValue = Validation.ConvertToInt32(_modelImposto.Icms);
+                Icms.SelectedValue = _modelImposto.Icms;
             }
 
             if (Icms.Text.Contains("101"))
@@ -340,13 +343,13 @@ namespace Emiplus.View.Produtos
             }
             else
             {
-                Ipi.SelectedValue = Validation.ConvertToInt32(_modelImposto.Ipi);
+                Ipi.SelectedValue = _modelImposto.Ipi;
                 Aliq_IPI.Text = Validation.Price(_modelImposto.IpiAliq);
 
-                Pis.SelectedValue = Validation.ConvertToInt32(_modelImposto.Pis);
+                Pis.SelectedValue = _modelImposto.Pis;
                 Aliq_Pis.Text = Validation.Price(_modelImposto.PisAliq);
 
-                Cofins.SelectedValue = Validation.ConvertToInt32(_modelImposto.Cofins);
+                Cofins.SelectedValue = _modelImposto.Cofins;
                 Aliq_Cofins.Text = Validation.Price(_modelImposto.CofinsAliq);
             }            
         }

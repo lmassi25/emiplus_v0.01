@@ -48,15 +48,15 @@
         #endregion
 
         #region SQL CREATE
-        //        CREATE TABLE PEDIDO
-        //        (
-        //        id integer not null primary key,
-        //        tipo integer not null,
-        //        excluir integer,
-        //        criado timestamp,
-        //        atualizado timestamp,
-        //        deletado timestamp,
-        //        empresaid varchar(255),
+        //CREATE TABLE PEDIDO
+        //(
+        //id integer not null primary key,
+        //tipo integer not null,
+        //excluir integer,
+        //criado timestamp,
+        //atualizado timestamp,
+        //deletado timestamp,
+        //empresaid varchar(255),
         //        cliente integer,
         //        colaborador integer,
         //        total numeric(18, 4),
@@ -74,24 +74,24 @@
         #endregion
 
         #region Generator
-        //        CREATE GENERATOR GEN_PEDIDO_ID;
+      //  CREATE GENERATOR GEN_PEDIDO_ID;
 
-        //SET TERM !! ;
-        //        CREATE TRIGGER PEDIDO_BI FOR PEDIDO
-        //        ACTIVE BEFORE INSERT POSITION 0
-        //AS
-        //DECLARE VARIABLE tmp DECIMAL(18,0);
-        //        BEGIN
-        //          IF(NEW.ID IS NULL) THEN
-        //           NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
-        //        ELSE
-        //        BEGIN
-        //    tmp = GEN_ID(GEN_PEDIDO_ID, 0);
-        //    if (tmp< new.ID) then
-        //     tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
-        //        END
-        //      END!!
-        //SET TERM; !!
+      //  SET TERM !! ;
+      //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
+      //  ACTIVE BEFORE INSERT POSITION 0
+      //  AS
+      //  DECLARE VARIABLE tmp DECIMAL(18,0);
+      //  BEGIN
+      //    IF(NEW.ID IS NULL) THEN
+      //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
+      //  ELSE
+      //  BEGIN
+      //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
+      //      if (tmp< new.ID) then
+      //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
+      //  END
+      //END!!
+      //  SET TERM; !!
 
         #endregion
 

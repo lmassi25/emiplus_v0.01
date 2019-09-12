@@ -1,6 +1,12 @@
 ﻿using Emiplus.Data.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Testes
@@ -56,6 +62,80 @@ namespace Emiplus.View.Testes
                     cpfCnpj.Select(cpfCnpj.Text.Length, 0);
                 }
             }
+        }
+
+        private class Municipio
+        {
+            public string id { get; set; }
+            public string ufid { get; set; }
+            public string nome { get; set; }
+
+            public Municipio (string id, string ufid, string nome)
+            {
+                this.id = id;
+                this.ufid = ufid;
+                this.nome = nome;
+            }
+        }
+
+        public static string GetJSONString(string url)
+        {
+            HttpWebRequest request =
+                (HttpWebRequest)WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+
+            using (Stream stream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(
+                    stream, Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+        }
+
+        public static T GetObjectFromJSONString<T>(
+            string json) where T : new()
+        {
+            using (MemoryStream stream = new MemoryStream(
+                Encoding.UTF8.GetBytes(json)))
+            {
+                DataContractJsonSerializer serializer =
+                    new DataContractJsonSerializer(typeof(T));
+                return (T)serializer.ReadObject(stream);
+            }
+        }
+
+        public static T[] GetArrayFromJSONString<T>(
+            string json) where T : new()
+        {
+            using (MemoryStream stream = new MemoryStream(
+                Encoding.UTF8.GetBytes(json)))
+            {
+                DataContractJsonSerializer serializer =
+                    new DataContractJsonSerializer(typeof(T[]));
+                return (T[])serializer.ReadObject(stream);
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            //WebClient client = new WebClient();
+            //Stream stream = client.OpenRead("https://www.emiplus.com.br/app/json/municipio");
+            //StreamReader reader = new StreamReader(stream);
+
+            //Newtonsoft.Json.Linq.JObject jObject = Newtonsoft.Json.Linq.JObject.Parse(reader.ReadLine());
+
+            //// Instead of WriteLine, 2 or 3 lines of code here using WebClient to download the file
+            //Console.WriteLine((string)jObject["nome"]);
+
+            //stream.Close();
+
+            Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+
+            var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+
+            Municipio m = JsonConvert.DeserializeObject<Municipio>();
+
+            Console.WriteLine(m.nome);
         }
     }
 }

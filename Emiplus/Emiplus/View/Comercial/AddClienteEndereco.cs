@@ -87,5 +87,10 @@ namespace Emiplus.View.Comercial
         {
             Eventos.MaskCEP(sender, e);
         }
+
+        private void BuscarEndereco_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
