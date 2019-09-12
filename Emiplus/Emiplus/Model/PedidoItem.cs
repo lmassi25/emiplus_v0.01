@@ -1,6 +1,7 @@
 ﻿namespace Emiplus.Model
 {
     using Data.Database;
+    using Emiplus.Data.Helpers;
     using SqlKata;
     using System;
 
@@ -24,10 +25,12 @@
 
         // referencia com a tabela Pedido
 
-        public Pedido Pedido { get; set; }
+        public int Pedido { get; set; } // pedido id
 
         // referencia com a tabela Item 
-        public Item Item { get; set; }
+        public int Item { get; set; } // item id
+        [Ignore]
+        public Item ItemObj { get; set; }
 
         // informações alteraveis na parte fiscal
 
@@ -43,10 +46,11 @@
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
+        public string Medida { get; set; }
         public double Total { get; set; } // SOMASSE AO RESPECTIVO TOTAL
-        public double Desconto { get; set; } // SOMASSE AO RESPECTIVO TOTAL
-        public double DescontoItem { get; set; }
-        public double DescontoPedido { get; set; }
+        public double Desconto { get; set; } // É o resultado de DescontoItem + DescontoPedido
+        public double DescontoItem { get; set; } // valor informado no item
+        public double DescontoPedido { get; set; } //  desconto total lançado pelo usuário dividido pelo quantidade de itens lançados
         public double Frete { get; set; } // SOMASSE AO RESPECTIVO TOTAL
         public double Produtos { get; set; } // SOMASSE AO RESPECTIVO TOTAL
         public string Icms { get; set; } // CST CSOSN                
@@ -146,5 +150,164 @@
 
         #endregion
 
+        public PedidoItem SetId(int id)
+        {
+            Id = id;
+            return this;
+        }
+
+        public PedidoItem SetPedidoId(int idPedido)
+        {
+            Pedido = idPedido;
+            return this;
+        }
+
+        public PedidoItem SetItem(Item item)
+        {
+            ItemObj = item;
+            Item = item.Id;
+
+            ValorCompra = item.ValorCompra;
+
+            Medida = item.Medida;
+
+            return this;
+        }
+
+        public PedidoItem SetQuantidade(double quantidade)
+        {
+            if (Validation.IsNumber(quantidade))
+            {
+                Quantidade = quantidade == 0 ? 1 : quantidade;
+            }
+
+            return this;
+        }
+
+        public PedidoItem SetValorVenda(double valorVenda)
+        {
+            if (Validation.IsNumber(valorVenda))
+            {
+                ValorVenda = valorVenda == 0 ? ItemObj.ValorVenda : valorVenda;
+            }
+
+            return this;
+        }
+
+        public PedidoItem SetMedida(string medida)
+        {
+            Medida = String.IsNullOrEmpty(medida) ? ItemObj.Medida : medida;
+
+            return this;
+        }
+
+        public PedidoItem SetProdutosTotal(double valor)
+        {
+            if (Validation.IsNumber(valor))
+            {
+                Produtos = valor;
+            }
+
+            return this;
+        }
+
+        public PedidoItem SetDescontoReal(double valor)
+        {
+            if (Validation.IsNumber(valor))
+            {
+                if (valor == 0)
+                {
+                    return this;
+                }
+
+                DescontoItem = valor;
+            }
+
+            return this;
+        }
+
+        public PedidoItem SetDescontoPorcentagens(double valor)
+        {
+            if (Validation.IsNumber(valor))
+            {
+                if (valor == 0)
+                {
+                    return this;
+                }
+
+                DescontoItem = (valor / 100 * (Produtos));
+            }
+
+            return this;
+        }
+
+        public PedidoItem SomarDescontoTotal()
+        {
+            Desconto = DescontoItem + DescontoPedido;
+
+            return this;
+        }
+
+        public PedidoItem SomarProdutosTotal()
+        {
+            Produtos = Quantidade * ValorVenda;
+
+            return this;
+        }
+
+        public PedidoItem SomarTotal()
+        {
+            SomarDescontoTotal();
+            SomarProdutosTotal();
+
+            Total = Produtos - Desconto;
+
+            return this;
+        }
+
+        public bool Save(PedidoItem data)
+        {
+            if (data.Id == 0)
+            {
+                data.Criado = DateTime.Now;
+                if (Data(data).Create() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    return false;
+                }
+            }
+            else
+            {
+                data.Atualizado = DateTime.Now;
+                if (Data(data).Update("ID", data.Id) == 1)
+                {
+                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+                }
+                else
+                {
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool Remove(int id)
+        {
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            if (Data(data).Update("ID", id) == 1)
+            {
+                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                return true;
+            }
+
+            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+            return false;
+        }
     }
 }

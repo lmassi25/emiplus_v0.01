@@ -2,6 +2,7 @@
 using Emiplus.Data.SobreEscrever;
 using SqlKata.Execution;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace Emiplus.View.Comercial
         private int ModoRapAva { get; set; }
         public int Id = Pedido.Id;
 
+        private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Pessoa _mColaborador = new Model.Pessoa();
@@ -62,10 +64,7 @@ namespace Emiplus.View.Comercial
 
         private void AutoCompleteItens()
         {
-            var item = new Model.Item().Query().Select("id", "nome")
-                .Where("excluir", 0)
-                .Where("tipo", 0)
-                .Get();
+            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", 0).Get();
 
             foreach (var itens in item)
             {
@@ -75,9 +74,26 @@ namespace Emiplus.View.Comercial
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
+        // collection.Lookup recupera o ID
         private void LoadItens()
         {
-            _controllerPedido.GetDataTableItens(GridListaProdutos, collection.Lookup(BuscarProduto.Text));
+            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", 0).First<Model.Item>();
+
+            var pedidoItem = new Model.PedidoItem();
+
+            pedidoItem.SetId(0)
+            .SetPedidoId(Id)
+            .SetItem(item)
+            .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
+            .SetValorVenda(Validation.ConvertToDouble(Preco.Text))
+            .SetMedida(Medidas.Text)
+            .SomarProdutosTotal()
+            .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text))
+            .SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text))
+            .SomarTotal()
+            .Save(pedidoItem);
+
+            _controllerPedido.GetDataTableItens(GridListaProdutos, item.Id, pedidoItem);
 
             if (collection.Lookup(BuscarProduto.Text) == 0)
             {
@@ -109,6 +125,8 @@ namespace Emiplus.View.Comercial
                     Close();
                 }
             }
+
+            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
         }
 
         private void Label11_Click(object sender, EventArgs e)
@@ -159,20 +177,17 @@ namespace Emiplus.View.Comercial
             if (ModoRapAva == 1)
             {
                 ModoRapAva = 0;
-                panelAvancado.Visible = true;
-                ModoRapido.Text = "Modo Rápido (F1) ?";
-                Quantidade.Enabled = true;
+                panelAvancado.Visible = false;
+                ModoRapido.Text = "Modo Avançado (F1) ?";
+                Quantidade.Enabled = false;
+                Quantidade.TabStop = true;
             }
             else
             {
                 ModoRapAva = 1;
-                panelAvancado.Visible = false;
-                ModoRapido.Text = "Modo Avançado (F1) ?";
-                btnAlterarQtd.Visible = true;
-                btnAlterarQtd.Top = 52;
-                btnAlterarQtd.TabIndex = 2;
-                Quantidade.Enabled = false;
-                Quantidade.TabStop = true;
+                panelAvancado.Visible = true;
+                ModoRapido.Text = "Modo Rápido (F1) ?";
+                Quantidade.Enabled = true;
             }
         }
 
@@ -199,7 +214,7 @@ namespace Emiplus.View.Comercial
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _mPedido.Id = Id;
-                _mPedido.Colaborador = PedidoModalClientes.Id;
+                _mPedido.Colaborador = PedidoModalVendedor.Id;
                 _mPedido.Save(_mPedido);
                 LoadData();
             }
@@ -236,7 +251,13 @@ namespace Emiplus.View.Comercial
 
         private void BtnAlterarQtd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ola");
+            if (Validation.IsNumber(Validation.ConvertToInt32(BuscarProduto.Text)))
+            {
+                if (Validation.ConvertToInt32(BuscarProduto.Text) != 0)
+                {
+                    Quantidade.Text = BuscarProduto.Text;
+                }
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -261,6 +282,12 @@ namespace Emiplus.View.Comercial
 
                     break;
             }
+        }
+
+        private void Preco_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            Eventos.MaskPrice(ref txt);
         }
     }
 }

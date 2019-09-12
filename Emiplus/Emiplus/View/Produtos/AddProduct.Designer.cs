@@ -465,7 +465,7 @@
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.White;
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(602, 89);
+            this.pictureBox13.Location = new System.Drawing.Point(593, 89);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(15, 15);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -591,9 +591,9 @@
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label17.Location = new System.Drawing.Point(490, 87);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 17);
+            this.label17.Size = new System.Drawing.Size(102, 17);
             this.label17.TabIndex = 32;
-            this.label17.Text = "Preço de Compra";
+            this.label17.Text = "Preço de Venda";
             // 
             // valorvenda
             // 
@@ -652,6 +652,7 @@
             this.valorvenda.Watermark.Text = "Watermark text";
             this.valorvenda.Watermark.Visible = false;
             this.valorvenda.WordWrap = true;
+            this.valorvenda.TextChanged += new System.EventHandler(this.Valorvenda_TextChanged);
             // 
             // label16
             // 
@@ -722,6 +723,7 @@
             this.valorcompra.Watermark.Text = "Watermark text";
             this.valorcompra.Watermark.Visible = false;
             this.valorcompra.WordWrap = true;
+            this.valorcompra.TextChanged += new System.EventHandler(this.Valorcompra_TextChanged);
             // 
             // label15
             // 

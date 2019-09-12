@@ -197,6 +197,7 @@
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Controller\Pedido.cs" />
+    <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
@@ -208,6 +209,7 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Helpers\CEP.cs" />
+    <Compile Include="Data\Helpers\Eventos.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />

@@ -252,35 +252,6 @@ namespace Emiplus.View.Comercial
             GetContato();
         }
 
-        private void CpfCnpj_TextChanged(object sender, EventArgs e)
-        {
-            ChangeMask();
-        }
-
-        private void CpfCnpj_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Back)
-            {
-                Backspace = 1;
-            }
-            else
-            {
-                Backspace = 0;
-            }
-        }
-
-        private void ChangeMask()
-        {
-            if (cpfCnpj.Text != "")
-            {
-                if (Backspace == 0)
-                {
-                    cpfCnpj.Text = Validation.ChangeMaskCPFCNPJ(cpfCnpj.Text, pessoaJF.Text);
-                    cpfCnpj.Select(cpfCnpj.Text.Length, 0);
-                }
-            }
-        }
-
         private void NomeRS_Enter(object sender, EventArgs e)
         {
             DataTableAddress();
@@ -317,6 +288,24 @@ namespace Emiplus.View.Comercial
         private void ListaContatos_DoubleClick(object sender, EventArgs e)
         {
             GetContato();
+        }
+
+        private void CpfCnpj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (pessoaJF.Text == "Física")
+            {
+                Eventos.MaskCPF(sender, e);
+            }
+
+            if (pessoaJF.Text == "Jurídica")
+            {
+                Eventos.MaskCNPJ(sender, e);
+            }
+        }
+
+        private void Nascimento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Eventos.MaskBirthday(sender, e);
         }
     }
 }

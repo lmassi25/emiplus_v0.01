@@ -78,38 +78,14 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void cep_TextChanged(object sender, EventArgs e)
-        {
-            ChangeMask();
-        }
-
-        private void cep_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Back)
-            {
-                Backspace = 1;
-            }
-            else
-            {
-                Backspace = 0;
-            }
-        }
-
-        private void ChangeMask()
-        {
-            if (cep.Text != "")
-            {
-                if (Backspace == 0)
-                {
-                    cep.Text = Validation.ChangeMaskCep(cep.Text);
-                    cep.Select(cep.Text.Length, 0);
-                }
-            }
-        }
-
         private void AddClienteEndereco_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void Cep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Eventos.MaskCEP(sender, e);
         }
     }
 }

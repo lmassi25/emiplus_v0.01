@@ -4,13 +4,13 @@
     using Data.Helpers;
     using SqlKata;
     using System;
+    using System.Reflection;
     using Valit;
 
     internal class Categoria : Model
     {
         public Categoria() : base("CATEGORIA")
         {
-
         }
 
         #region CAMPOS 
@@ -30,10 +30,10 @@
 
         public bool Save(Categoria data)
         {
+            //Nome = Validation.CleanString(Nome);
+
             if (ValidarDados(data))
-            {
                 return false;
-            }
 
             if (data.Id == 0)
             {

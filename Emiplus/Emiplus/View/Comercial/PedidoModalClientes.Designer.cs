@@ -132,9 +132,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(90, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.Size = new System.Drawing.Size(118, 17);
             this.label2.TabIndex = 50;
-            this.label2.Text = "Buscar cliente:";
+            this.label2.Text = "Buscar cliente (F1):";
             // 
             // pictureBox1
             // 
