@@ -3,7 +3,9 @@
     using Data.Database;
     using Emiplus.Data.Helpers;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
+    using System.Collections.Generic;
 
     class PedidoItem : Model
     {
@@ -149,6 +151,12 @@
 
 
         #endregion
+
+        public object FindByPedido(int id)
+        {
+            var data = Query().Where("pedido", id).Get();
+            return data;
+        }
 
         public PedidoItem SetId(int id)
         {

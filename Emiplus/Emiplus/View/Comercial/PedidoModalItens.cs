@@ -6,17 +6,14 @@ namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalItens : Form
     {
+        public static string NomeProduto { get; set; }
+
         private string searchItemTexto = AddPedidos.searchItemTexto;
         private Controller.Item _controllerItem = new Controller.Item();
 
         public PedidoModalItens()
         {
             InitializeComponent();
-
-            Selecionar.Click += delegate
-            {
-                MessageBox.Show("Selecionar Item");
-            };
 
             KeyDown += KeyDowns; // this form
 
@@ -36,10 +33,30 @@ namespace Emiplus.View.Comercial
             DataTable();
         }
 
+        private void SelectItemGrid()
+        {
+            if (GridListaProdutos.SelectedRows.Count > 0)
+            {
+                DialogResult = DialogResult.OK;
+                NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
+                Close();
+            }
+        }
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
+                case Keys.Up:
+                    GridListaProdutos.Focus();
+                    Support.UpDownDataGrid(false, GridListaProdutos);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    GridListaProdutos.Focus();
+                    Support.UpDownDataGrid(true, GridListaProdutos);
+                    e.Handled = true;
+                    break;
                 case Keys.Escape:
                     Close();
                     break;
@@ -47,7 +64,7 @@ namespace Emiplus.View.Comercial
                     buscarProduto.Focus();
                     break;
                 case Keys.F10:
-                    MessageBox.Show("selecionar o item");
+                    SelectItemGrid();
                     break;
                 case Keys.Enter:
 
@@ -58,17 +75,21 @@ namespace Emiplus.View.Comercial
 
                     if (Validation.Event(sender, buscarProduto))
                     {
-                        if (string.IsNullOrEmpty(buscarProduto.Text))
-                        {
-                            Alert.Message("Opss", "O campo de busca está vazio.", Alert.AlertType.info);
-                            return;
-                        }
-
                         GridListaProdutos.Focus();
                     }
 
                     break;
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Selecionar_Click(object sender, EventArgs e)
+        {
+            SelectItemGrid();
         }
     }
 }
