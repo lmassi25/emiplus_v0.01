@@ -24,7 +24,7 @@ namespace Emiplus.View.Produtos.Imposto.CFOP
 
         private void DataTable()
         {
-            _controller.GetDataTableClients(GridListaCfops, search.Text);
+            //_controller.GetDataTableClients(GridListaCfops, search.Text);
         }
 
         private void Search_TextChanged(object sender, EventArgs e)

@@ -634,6 +634,7 @@
             this.buscarEndereco.TabIndex = 1;
             this.buscarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buscarEndereco.UseVisualStyleBackColor = true;
+            this.buscarEndereco.Click += new System.EventHandler(this.BuscarEndereco_Click);
             // 
             // panel2
             // 

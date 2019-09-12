@@ -213,6 +213,7 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnHelp
             // 
@@ -886,6 +887,7 @@
             this.Ipi.ImageList = null;
             this.Ipi.ImageVisible = false;
             this.Ipi.Index = 0;
+            this.Ipi.IntegralHeight = false;
             this.Ipi.ItemHeight = 23;
             this.Ipi.ItemImageVisible = true;
             this.Ipi.Location = new System.Drawing.Point(9, 26);
