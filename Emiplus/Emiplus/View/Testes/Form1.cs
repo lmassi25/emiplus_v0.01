@@ -157,7 +157,7 @@ namespace Emiplus.View.Testes
 
             //stream.Close();
 
-            Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+            //Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 
             //var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 

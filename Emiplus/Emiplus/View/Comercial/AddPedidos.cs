@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using SqlKata;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,33 @@ namespace Emiplus.View.Comercial
             btnConcluir.KeyDown += KeyDowns;
             Quantidade.KeyDown += KeyDowns;
         }
+        
+        private void AddPedidos_Load(object sender, EventArgs e)
+        {
+            AutoCompleteItens();
 
+            if (Id > 0)
+            {
+                LoadData();
+            }
+            else
+            {
+                _mPedido.Id = Id;
+                if (_mPedido.Save(_mPedido))
+                {
+                    Id = _mPedido.GetLastId();
+                    LoadData();
+                }
+                else
+                {
+                    Alert.Message("Opss", "Erro ao criar Pedido.", Alert.AlertType.error);
+                    Close();
+                }
+            }
+
+            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+        }
+        
         private void LoadData()
         {
             label2.Text = "Dados do Pedido: " + Id;
@@ -72,18 +99,6 @@ namespace Emiplus.View.Comercial
         private void LoadTabelaPreco()
         {
 
-        }
-
-        private void AutoCompleteItens()
-        {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", 0).Get();
-
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
-            }
-
-            BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
         // collection.Lookup recupera o ID
@@ -121,36 +136,34 @@ namespace Emiplus.View.Comercial
                 .Save(pedidoItem);
 
                 _controllerPedido.GetDataTableItens(GridListaProdutos, item.Id, pedidoItem);
+                itens.Text = "Itens: " + GridListaProdutos.RowCount.ToString();
+
                 ClearForms();
             }
+            
+            BuscarProduto.Select();
         }
 
-        private void AddPedidos_Load(object sender, EventArgs e)
+        private void LoadTotais()
         {
-            AutoCompleteItens();
-
-            if (Id > 0)
-            {
-                LoadData();
-            }
-            else
-            {
-                _mPedido.Id = Id;
-                if (_mPedido.Save(_mPedido))
-                {
-                    Id = _mPedido.GetLastId();
-                    LoadData();
-                }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao criar Pedido.", Alert.AlertType.error);
-                    Close();
-                }
-            }
-
-            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+            var query = new Query("PEDIDO_ITEM")
+                 .Select("GroupId")
+                 .SelectRaw("SUM(`Age`)")
+                 .GroupBy("GroupId");
         }
+        
+        private void AutoCompleteItens()
+        {
+            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", 0).Get();
 
+            foreach (var itens in item)
+            {
+                collection.Add(itens.NOME, itens.ID);
+            }
+
+            BuscarProduto.AutoCompleteCustomSource = collection;
+        }
+        
         private void Produto_Click(object sender, EventArgs e)
         {
             var BackColor = Color.FromArgb(249, 249, 249);
