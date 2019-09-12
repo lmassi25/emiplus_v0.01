@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -14,6 +15,14 @@ namespace Emiplus.View.Testes
     public partial class Form1 : Form
     {
         private int Backspace = 0;
+
+        public class SponsorInfo
+        {
+            public int id { get; set; }
+            public string ufid { get; set; }
+            public string nome { get; set; }
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -23,11 +32,30 @@ namespace Emiplus.View.Testes
             double qtd = 3;
             double valor_final = (percentual / 100.0 * (valor * qtd));
 
-            Console.WriteLine(valor_final);
+            //Console.WriteLine(valor_final);
 
             pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
             pessoaJF.SelectedItem = "Física";
+
+            var json = new WebClient().DownloadString("https://www.emiplus.com.br/app/json/municipio");
+            JObject googleSearch = JObject.Parse(json);
+
+            IList<JToken> results = googleSearch["municipios"].Children().ToList();
+
+            IList<SponsorInfo> searchResults = new List<SponsorInfo>();
+            foreach (JToken result in results)
+            {
+                SponsorInfo searchResult = result.ToObject<SponsorInfo>();
+                searchResults.Add(searchResult);
+
+                Console.WriteLine(searchResult.nome);
+            }
+
+            SponsorInfo teste = new SponsorInfo();
+
+            Console.WriteLine(teste.nome);
         }
+
 
         public double inteiro(double valor)
         {
@@ -131,11 +159,11 @@ namespace Emiplus.View.Testes
 
             Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 
-            var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+            //var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
 
-            Municipio m = JsonConvert.DeserializeObject<Municipio>();
+            //Municipio m = JsonConvert.DeserializeObject<Municipio>();
 
-            Console.WriteLine(m.nome);
+            //Console.WriteLine(m.nome);
         }
     }
 }
