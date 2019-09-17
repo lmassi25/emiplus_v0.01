@@ -106,7 +106,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Imposto salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -119,7 +119,7 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Categoria atualizada com sucesso.", Alert.AlertType.success);
+                    Alert.Message("Tudo certo!", "Imposto atualizada com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
@@ -140,7 +140,7 @@
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover o imposto.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover o Imposto.", Alert.AlertType.error);
             return false;
         }
 
@@ -156,9 +156,9 @@
                 .Create()
                 .Ensure(m => m.Nome, _ => _
                     .Required()
-                    .WithMessage("Preencha o título do imposto.")
+                    .WithMessage("Preencha o título do Imposto.")
                     .MinLength(2)
-                    .WithMessage("Título do imposto é muito curto."))
+                    .WithMessage("Título do Imposto é muito curto."))
                 .For(data)
                 .Validate();
 

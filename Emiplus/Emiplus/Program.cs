@@ -4,6 +4,7 @@ using System.Windows.Forms;
 namespace Emiplus
 {
     using Data.Helpers;
+    using Emiplus.View.Produtos;
     using Emiplus.View.Testes;
     using View.Common;
 
@@ -17,7 +18,7 @@ namespace Emiplus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            Application.Run(new Impostos());
         }
     }
 }

@@ -52,6 +52,7 @@ namespace Emiplus.View.Produtos
 
             var icms = new ArrayList();
 
+            icms.Add(new ImpostoTipo("0", ""));
             icms.Add(new ImpostoTipo("00", "00 - Tributação integralmente"));
             icms.Add(new ImpostoTipo("10", "10 - Tributação com cobrança do ICMS por S.T."));
             icms.Add(new ImpostoTipo("20", "20 - Tributação com redução de base de cálculo"));
@@ -83,6 +84,7 @@ namespace Emiplus.View.Produtos
 
             //IPITrib
 
+            ipi.Add(new ImpostoTipo("0", ""));
             ipi.Add(new ImpostoTipo("00", "00 - Tributado: Entrada com recuperação de crédito"));
             ipi.Add(new ImpostoTipo("49", "49 - Tributado: Outras entradas"));
             ipi.Add(new ImpostoTipo("50", "50 - Tributado: Saída tributada"));
@@ -109,6 +111,7 @@ namespace Emiplus.View.Produtos
 
             //PISAliq
 
+            pis.Add(new ImpostoTipo("0", ""));
             pis.Add(new ImpostoTipo("01", "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))"));
             pis.Add(new ImpostoTipo("02", "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))"));
 
@@ -160,6 +163,7 @@ namespace Emiplus.View.Produtos
 
             //COFINSAliq
 
+            cofins.Add(new ImpostoTipo("0", ""));
             cofins.Add(new ImpostoTipo("01", "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))"));
             cofins.Add(new ImpostoTipo("02", "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))"));
 
