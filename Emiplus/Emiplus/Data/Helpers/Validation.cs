@@ -10,17 +10,28 @@ namespace Emiplus.Data.Helpers
     {
         public static string CleanString(string dirtyString)
         {
-            //HashSet<char> removeChars = new HashSet<char>(" ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr!@#$%&*()¨_-+={[}]/?;:.,\"\\\'<>°ºª€^");
-            //HashSet<char> removeChars = new HashSet<char>(" ÄÅÆËÏÐÑÖØÜüÞßäåæëïðöøþÿ!@#$%&*()¨_-+={[}]/?;:.,\"\\\'<>°ºª€^");
-            //StringBuilder result = new StringBuilder(dirtyString.Length);
-            //foreach (char c in dirtyString)
-            //    if (!removeChars.Contains(c)) // prevent dirty chars
-            //        result.Append(c);
-            //return result.ToString();
+            StringBuilder str = new StringBuilder(dirtyString);
 
-            return dirtyString;
+            str.Replace('Ä', 'A').Replace('Å', 'A').Replace('Æ', 'A')
+                .Replace('Ë', 'E').Replace('Ï', 'I').Replace('Ð', 'D').Replace('Ö', 'O')
+                .Replace('Ø', 'O').Replace('Ü', 'U').Replace('ü', 'u').Replace('Ý', 'Y')
+                .Replace('þ', 'b').Replace('ß', 'B').Replace('ä', 'a').Replace('å', 'a')
+                .Replace('æ', 'a').Replace('ë', 'e').Replace('ï', 'i').Replace('ð', 'o')
+                .Replace('ö', 'o').Replace('ø', 'o').Replace('ý', 'y').Replace('ÿ', 'y')
+                .Replace('€', 'E').Replace('§', 'S').Replace("°", "").Replace("º", "")
+                .Replace("ª", "").Replace("^", "").Replace("+", "").Replace("@", "")
+                .Replace("#", "").Replace("$", "").Replace("%", "").Replace("¨", "")
+                .Replace("\"", "").Replace("'", "").Replace("_", "").Replace("{", "")
+                .Replace("}", "").Replace("[", "").Replace("]", "").Replace(";", "")
+                .Replace(":", "").Replace("=", "").Replace("?", "").Replace(",", ".")
+                .Replace("<", "").Replace(">", "").Replace("!", "").Replace("&", "")
+                .Replace("*", "").Replace("(", "").Replace(")", "").Replace("/", "")
+                .Replace("|", "").Replace("Þ", "p").Replace("-", " ").Replace("  ", "")
+                .Replace("\\", "").Replace("~", "");
+
+            return str.ToString().Trim();
         }
-        
+
         /// <summary>
         /// Converte valor double pra ordem de dinheiro REAL
         /// </summary>

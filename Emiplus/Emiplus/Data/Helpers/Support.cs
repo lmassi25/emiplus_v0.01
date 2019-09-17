@@ -9,19 +9,18 @@ namespace Emiplus.Data.Helpers
     {
         public static string BasePath()
         {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-            return projectDirectory;
-        }
-
-        public void AddFont()
-        {
-            DirectoryInfo diretorio = new DirectoryInfo(BasePath() + "/Assets/Fonts");
-            FileInfo[] Arquivos = diretorio.GetFiles("*.ttf*");
-            foreach (FileInfo fileinfo in Arquivos)
+            if (File.Exists("C:\\emiplus_v0.01\\EMIPLUS.FDB"))
             {
-                PrivateFontCollection pfc = new PrivateFontCollection();
-                pfc.AddFontFile(fileinfo.Directory + @"\" + fileinfo.Name);
+                return Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             }
+
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\EMIPLUS.FDB"))
+            {
+                return Directory.GetCurrentDirectory();
+            }
+
+            string projectDirectory = Directory.GetCurrentDirectory();
+            return projectDirectory;
         }
 
         /// <summary>

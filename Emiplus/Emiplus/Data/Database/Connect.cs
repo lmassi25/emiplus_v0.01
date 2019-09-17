@@ -2,6 +2,7 @@
 using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Compilers;
 using SqlKata.Execution;
+using System.IO;
 
 namespace Emiplus.Data.Database
 {
@@ -13,10 +14,25 @@ namespace Emiplus.Data.Database
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
+        private string GetDatabase()
+        {
+            if(File.Exists(_path))
+            {
+                return _path;
+            }
+
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\EMIPLUS.FDB"))
+            {
+                return Directory.GetCurrentDirectory() + "\\EMIPLUS.FDB";
+            }
+
+            return _path;
+        }
+
         public QueryFactory Open()
         {
             var connection = new FbConnection(
-                $"character set=NONE;initial catalog={_path};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+                $"character set=NONE;initial catalog={GetDatabase()};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
             );
 
             var compiler = new FirebirdCompiler();

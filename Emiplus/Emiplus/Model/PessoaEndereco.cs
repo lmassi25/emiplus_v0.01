@@ -53,6 +53,12 @@
 
         public PessoaEndereco GetAddr(string cep)
         {
+            if (cep.Length != 8)
+            {
+                Alert.Message("Opss", "CEP inválido.", Alert.AlertType.error);
+                return this;
+            }
+
             var d = new CEP();
             d.SetCep(cep);
 
@@ -138,6 +144,8 @@
                     .Required()
                     .WithMessage("CEP é obrigatorio.")
                     .MinLength(8)
+                    .WithMessage("O CEP não tem um formato válido.")
+                    .MaxLength(9)
                     .WithMessage("O CEP não tem um formato válido."))
                 .For(data)
                 .Validate();

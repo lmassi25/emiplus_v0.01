@@ -1,184 +1,198 @@
-﻿using Emiplus.Data.Helpers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using FirebirdSql.Data.FirebirdClient;
+using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Testes
 {
     public partial class Form1 : Form
     {
-        private int Backspace = 0;
-
-        public class SponsorInfo
-        {
-            public int id { get; set; }
-            public string ufid { get; set; }
-            public string nome { get; set; }
-        }
+        private const string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
+        private const string _user = "sysdba";
+        private const string _pass = "masterkey";
+        private const string _db = "sysdba";
+        private const string _host = "localhost";
 
         public Form1()
         {
             InitializeComponent();
+        }
 
-            double valor = 178.00;
-            double percentual = 15.0;
-            double qtd = 3;
-            double valor_final = (percentual / 100.0 * (valor * qtd));
+        private void T1()
+        {
+            //dataGridView1.ColumnCount = 2;
 
-            //Console.WriteLine(valor_final);
+            //dataGridView1.Columns[0].Name = "ID";
+            //dataGridView1.Columns[0].Visible = false;
 
-            pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
-            pessoaJF.SelectedItem = "Física";
+            //dataGridView1.Columns[1].Name = "Nome / Razão social";
+            //dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dataGridView1.Rows.Clear();
 
-            var json = new WebClient().DownloadString("https://www.emiplus.com.br/app/json/municipio");
-            JObject googleSearch = JObject.Parse(json);
+            //int count = 0;
 
-            IList<JToken> results = googleSearch["municipios"].Children().ToList();
+            //while (count <= 20000)
+            //{
+            //    dataGridView1.Rows.Add("B's Beverages " + count, "Victoria Ashworth " + count);
+            //    count++;
+            //}
+        }
 
-            IList<SponsorInfo> searchResults = new List<SponsorInfo>();
+        private void T2()
+        {
+            
+            var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var d = new CEP();
-            d.SetCep("15086160");
-            var resposta = d.GetRetornoCorreios();
+            var p = new Model.Pessoa();
+            var select = p.FindAll().Get();
 
-            foreach (JToken result in results)
+            foreach (var data in select)
             {
-                SponsorInfo searchResult = result.ToObject<SponsorInfo>();
-                searchResults.Add(searchResult);
+                var firstName = data.NOME;
+                //Console.WriteLine(firstName);
+            }
 
-                if (searchResult.nome == resposta.cidade.ToLower())
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+
+            Console.WriteLine("KATA: " + elapsedMs);
+        }
+
+        private void T3()
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            FbConnection SQLCon = new FbConnection(
+                $"character set=NONE;initial catalog={_path};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+            );
+
+            FbCommand cmd;
+            FbDataReader res;
+
+            cmd = new FbCommand("SELECT * FROM pessoa", SQLCon);
+            
+            SQLCon.Open();
+            using (var oReader = cmd.ExecuteReader())
+            {
+                while (oReader.Read())
                 {
-                    Console.WriteLine(searchResult.nome);
-
-                    var ibge = searchResult.id;
+                    var firstName = oReader["nome"].ToString();
+                    //Console.WriteLine(firstName);
                 }
 
+
+                //foreach (IDataRecord record in GetFromReader(oReader))
+                // {
+                //     var firstName = record["nome"].ToString();
+                //     Console.WriteLine(firstName);
+                // }
+
+                SQLCon.Close();
             }
 
-            //SponsorInfo teste = new SponsorInfo();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
 
-            //Console.WriteLine(teste.nome);
+            Console.WriteLine("sql_1: " + elapsedMs);
         }
 
-
-        public double inteiro(double valor)
+        private void T4()
         {
-            double id = valor == null ? 1 : valor;
-            return id;
-        }
+            var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        private void CpfCnpj_TextChanged(object sender, EventArgs e)
-        {
-            ChangeMask();
-        }
+            FbConnection SQLCon = new FbConnection(
+                $"character set=NONE;initial catalog={_path};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+            );
 
-        private void CpfCnpj_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Back)
+            FbCommand cmd;
+            FbDataReader res;
+
+            cmd = new FbCommand("SELECT * FROM pessoa", SQLCon);
+
+            SQLCon.Open();
+            using (var oReader = cmd.ExecuteReader())
             {
-                Backspace = 1;
-            }
-            else
-            {
-                Backspace = 0;
-            }
-        }
+                //while (oReader.Read())
+                //{
+                //    var firstName = oReader["nome"].ToString();
+                //    Console.WriteLine(firstName);
+                //}
 
-        private void ChangeMask()
-        {
-            if (cpfCnpj.Text != "")
-            {
-                if (Backspace == 0)
+
+                foreach (IDataRecord record in GetFromReader(oReader))
                 {
-                    //cpfCnpj.Text = Validation.ChangeMaskCPFCNPJ(cpfCnpj.Text, pessoaJF.Text);
-                    cpfCnpj.Select(cpfCnpj.Text.Length, 0);
+                    var firstName = record["nome"].ToString();
+                    //Console.WriteLine(firstName);
                 }
+
+                SQLCon.Close();
             }
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+
+            Console.WriteLine("sql_2: " + elapsedMs);
         }
 
-        private class Municipio
+        IEnumerable<IDataRecord> GetFromReader(IDataReader reader)
         {
-            public string id { get; set; }
-            public string ufid { get; set; }
-            public string nome { get; set; }
-
-            public Municipio (string id, string ufid, string nome)
-            {
-                this.id = id;
-                this.ufid = ufid;
-                this.nome = nome;
-            }
+            while (reader.Read()) yield return reader;
         }
 
-        public static string GetJSONString(string url)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            HttpWebRequest request =
-                (HttpWebRequest)WebRequest.Create(url);
-            WebResponse response = request.GetResponse();
-
-            using (Stream stream = response.GetResponseStream())
-            {
-                StreamReader reader = new StreamReader(
-                    stream, Encoding.UTF8);
-                return reader.ReadToEnd();
-            }
-        }
-
-        public static T GetObjectFromJSONString<T>(
-            string json) where T : new()
-        {
-            using (MemoryStream stream = new MemoryStream(
-                Encoding.UTF8.GetBytes(json)))
-            {
-                DataContractJsonSerializer serializer =
-                    new DataContractJsonSerializer(typeof(T));
-                return (T)serializer.ReadObject(stream);
-            }
-        }
-
-        public static T[] GetArrayFromJSONString<T>(
-            string json) where T : new()
-        {
-            using (MemoryStream stream = new MemoryStream(
-                Encoding.UTF8.GetBytes(json)))
-            {
-                DataContractJsonSerializer serializer =
-                    new DataContractJsonSerializer(typeof(T[]));
-                return (T[])serializer.ReadObject(stream);
-            }
+            //T3();
+            //T4();
+            //T2();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //WebClient client = new WebClient();
-            //Stream stream = client.OpenRead("https://www.emiplus.com.br/app/json/municipio");
-            //StreamReader reader = new StreamReader(stream);
+            T2();
+        }
 
-            //Newtonsoft.Json.Linq.JObject jObject = Newtonsoft.Json.Linq.JObject.Parse(reader.ReadLine());
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            T3();
+        }
 
-            //// Instead of WriteLine, 2 or 3 lines of code here using WebClient to download the file
-            //Console.WriteLine((string)jObject["nome"]);
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            T4();
+        }
 
-            //stream.Close();
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            T2();
+        }
 
-            Console.WriteLine(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
 
-            //var obj = GetObjectFromJSONString<Municipio>(GetJSONString("https://www.emiplus.com.br/app/json/municipio"));
+        }
 
-            //Municipio m = JsonConvert.DeserializeObject<Municipio>();
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+        }
 
-            //Console.WriteLine(m.nome);
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            backgroundWorker2.RunWorkerAsync();
+        }
 
-           // var resposta = CEP.GetEnderecoCompleto("15086160");
-
-            //Console.WriteLine(resposta.end);
+        private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            T3();
         }
     }
 }
