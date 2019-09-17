@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using Emiplus.View.Common;
 using SqlKata;
 using SqlKata.Execution;
 using System;
@@ -53,6 +54,7 @@ namespace Emiplus.View.Comercial
             else
             {
                 _mPedido.Id = Id;
+                _mPedido.Tipo = Home.pedidoPage;
                 if (_mPedido.Save(_mPedido))
                 {
                     Id = _mPedido.GetLastId();
@@ -212,15 +214,12 @@ namespace Emiplus.View.Comercial
                 ModoRapAva = 0;
                 panelAvancado.Visible = false;
                 ModoRapido.Text = "Modo Avançado (F1) ?";
-                Quantidade.Enabled = false;
-                Quantidade.TabStop = true;
             }
             else
             {
                 ModoRapAva = 1;
                 panelAvancado.Visible = true;
                 ModoRapido.Text = "Modo Rápido (F1) ?";
-                Quantidade.Enabled = true;
             }
         }
 

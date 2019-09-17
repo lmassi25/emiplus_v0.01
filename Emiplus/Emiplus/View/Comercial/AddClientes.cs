@@ -85,8 +85,9 @@ namespace Emiplus.View.Comercial
                 label1.Left = 359;
                 pictureBox2.Left = 335;
                 credencial.TabPages.Add(tabTransporte);
+                uf.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
             }
-            
+
             if (Id == 0)
             {
                 _modelPessoa.Id = Id;
@@ -153,6 +154,13 @@ namespace Emiplus.View.Comercial
             rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
             pessoaJF.SelectedItem = _modelPessoa.Pessoatipo == null ? "" : _modelPessoa.Pessoatipo;
             Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
+
+            if (Home.pessoaPage == "Transportadoras")
+            {
+                placa.Text = _modelPessoa.Transporte_placa == null ? "" : _modelPessoa.Transporte_placa;
+                uf.Text = _modelPessoa.Transporte_uf == null ? "" : _modelPessoa.Transporte_placa;
+                rntc.Text = _modelPessoa.Transporte_rntc == null ? "" : _modelPessoa.Transporte_placa;
+            }
         }
 
         private void BtnAdicionarEndereco_Click(object sender, EventArgs e)
@@ -229,6 +237,13 @@ namespace Emiplus.View.Comercial
             _modelPessoa.RG = rgIE.Text;
             _modelPessoa.Pessoatipo = pessoaJF.Text;
             _modelPessoa.Isento = Isento.Checked ? 1 : 0;
+
+            if (Home.pessoaPage == "Transportadoras")
+            {
+                _modelPessoa.Transporte_placa = placa.Text;
+                _modelPessoa.Transporte_uf = uf.Text;
+                _modelPessoa.Transporte_rntc = rntc.Text;
+            }
 
             if (_modelPessoa.Save(_modelPessoa))
             {
