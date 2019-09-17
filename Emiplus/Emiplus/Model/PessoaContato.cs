@@ -18,7 +18,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string EmpresaId { get; private set; }
+        public string id_empresa { get; private set; }
         public string Contato { get; set; }
         public string Telefone { get; set; }
         public string Celular { get; set; }
@@ -37,7 +37,7 @@
         //contato varchar(255),
         //telefone varchar(255),
         //celular varchar(255),
-        //email varchar(255),
+        //email varchar(255)
         //);
         #endregion
 

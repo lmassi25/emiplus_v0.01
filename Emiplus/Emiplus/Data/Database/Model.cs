@@ -42,6 +42,17 @@ namespace Emiplus.Data.Database
             return data;
         }
 
+        public int Count()
+        {
+            int count = 0;
+            foreach (var data in db.Select("SELECT COUNT(ID) AS \"COUNT\" FROM " + Entity + " WHERE EXCLUIR = 0"))
+            {
+                count = Validation.ConvertToInt32(data.COUNT);
+            }
+
+            return count;
+        }
+
         /// <summary>
         /// Monte sua query com esse método
         /// </summary>

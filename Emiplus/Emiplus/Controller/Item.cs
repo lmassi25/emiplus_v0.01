@@ -42,7 +42,7 @@ namespace Emiplus.Controller
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
                 .Select("item.*", "categoria.nome as categoria")
                 .Where("item.excluir", 0)
-                .Where("item.tipo", 0)
+                .Where("item.tipo", "0")
                 .Where
                 (
                     q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)

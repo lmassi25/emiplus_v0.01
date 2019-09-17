@@ -16,12 +16,12 @@ namespace Emiplus.Model
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-        public int Tipo { get; set; }
+        public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string EmpresaId { get; private set; }
+        public string id_empresa { get; private set; }
         public string Nome { get; set; }
         public string Referencia { get; set; }
         public double ValorCompra { get; set; }
