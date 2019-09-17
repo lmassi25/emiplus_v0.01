@@ -31,7 +31,10 @@ CREATE TABLE PESSOA
 	cpf varchar(50),
 	aniversario date,
 	pessoatipo varchar(255),
-	isento integer
+	isento integer,
+	transporte_placa varchar(255),
+	transporte_uf varchar(10),
+	transporte_rntc varchar(255)
 );
 
 CREATE TABLE PESSOA_CONTATO
@@ -88,7 +91,7 @@ CREATE TABLE PEDIDO
 	icmsst numeric(18, 4),
 	ipi numeric(18, 4),
 	icmsbase numeric(18, 4),
-	icmstbase numeric(18, 4),
+	icmsstbase numeric(18, 4),
 	pis numeric(18, 4),
 	cofins numeric(18, 4)
 );

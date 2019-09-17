@@ -18,7 +18,7 @@ namespace Emiplus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Produtos());
+            Application.Run(new Home());
         }
     }
 }

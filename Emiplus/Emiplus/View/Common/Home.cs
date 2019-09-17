@@ -112,6 +112,7 @@ namespace Emiplus.View.Common
         #endregion Shadow box
 
         public static string pessoaPage { get; set; }
+        public static string pedidoPage { get; set; }
 
         public Home()
         {

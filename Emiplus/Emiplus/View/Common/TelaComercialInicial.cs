@@ -19,6 +19,7 @@ namespace Emiplus.View.Common
 
         private void NovoPedido_Click(object sender, System.EventArgs e)
         {
+            Home.pedidoPage = "Vendas";
             AddPedidos NovoPedido = new AddPedidos();
             NovoPedido.ShowDialog();
         }

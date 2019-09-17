@@ -26,7 +26,10 @@
         public string Aniversario { get; set; }
         public string Pessoatipo { get; set; }
         public int Isento { get; set; }
-        
+        public string Transporte_placa { get; set; }
+        public string Transporte_uf { get; set; }
+        public string Transporte_rntc { get; set; }
+
         #region SQL Create
         //CREATE TABLE PESSOA
         //(
