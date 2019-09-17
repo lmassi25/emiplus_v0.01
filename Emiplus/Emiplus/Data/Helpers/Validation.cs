@@ -82,6 +82,22 @@ namespace Emiplus.Data.Helpers
             return Convert.ToInt32(obj);
         }
 
+        public static string ConvertDateToForm(object date)
+        {
+            if (String.IsNullOrEmpty(date.ToString()))
+                return "";
+
+            return Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year);
+        }
+
+        public static string ConvertDateToSQL(object date)
+        {
+            if (String.IsNullOrEmpty(date.ToString()))
+                return "";
+
+            return Convert.ToDateTime(date).Year + "-" + (Convert.ToDateTime(date).Month).ToString("00") + "-" + (Convert.ToDateTime(date).Day).ToString("00");
+        }
+
         public static bool Event(object sender, dynamic control)
         {
             if (((Control)sender).Name == control.Name)

@@ -26,8 +26,7 @@
         public string Aniversario { get; set; }
         public string Pessoatipo { get; set; }
         public int Isento { get; set; }
-
-
+        
         #region SQL Create
         //CREATE TABLE PESSOA
         //(
@@ -52,6 +51,11 @@
         {
             if (ValidarDados(data))
                 return false;
+
+            if(String.IsNullOrEmpty(data.Aniversario))
+            {
+                data.Aniversario = null;
+            }
 
             if (data.Id == 0)
             {

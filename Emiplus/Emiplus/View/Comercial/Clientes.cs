@@ -8,27 +8,28 @@ namespace Emiplus.View.Comercial
     public partial class Clientes : Form
     {
         public static int Id { get; set; }
-        private string page = TelaComercialInicial.page;
+
         private Controller.Pessoa _controller = new Controller.Pessoa();
         public Clientes()
         {
             InitializeComponent();
-            label1.Text = page + ":";
-            label6.Text = page;
+            label1.Text = Home.pessoaPage + ":";
+            label6.Text = Home.pessoaPage;
+
+            if (Home.pessoaPage == "Fornecedores")
+            {
+                label2.Text = "Gerencie os Fornecedores da sua empresa aqui! Adicione, edite ou delete um Fornecedor.";
+            }
+            else if (Home.pessoaPage == "Transportadoras")
+            {
+                label2.Text = "Gerencie as Transportadoras da sua empresa aqui! Adicione, edite ou delete uma Transportadora.";
+            }
+
         }
 
         private void LoadData()
         {
-            switch (page)
-            {
-                case "Clientes":
-                    _controller.GetDataTableClientes(GridLista, search.Text);
-                    break;
-                case "Transportadores":
-                    break;
-                case "Fornecedores":
-                    break;
-            }
+            _controller.GetDataTableClientes(GridLista, search.Text);
         }
 
         private void LoadId()

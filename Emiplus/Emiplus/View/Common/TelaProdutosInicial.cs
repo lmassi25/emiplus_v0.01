@@ -21,14 +21,21 @@ namespace Emiplus.View.Common
             OpenForm.Show<Produtos.Categorias>(this);
         }
 
-        private void TelaProdutosInicial_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Impostos_Click(object sender, EventArgs e)
         {
             OpenForm.Show<Produtos.Impostos>(this);
+        }
+
+        private void Fornecedores_Click(object sender, EventArgs e)
+        {
+            Home.pessoaPage = "Fornecedores";
+            OpenForm.Show<Comercial.Clientes>(this);
+        }
+
+        private void Transportadoras_Click(object sender, EventArgs e)
+        {
+            Home.pessoaPage = "Transportadoras";
+            OpenForm.Show<Comercial.Clientes>(this);
         }
     }
 }

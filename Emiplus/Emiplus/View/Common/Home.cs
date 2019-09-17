@@ -111,6 +111,8 @@ namespace Emiplus.View.Common
 
         #endregion Shadow box
 
+        public static string pessoaPage { get; set; }
+
         public Home()
         {
             InitializeComponent();

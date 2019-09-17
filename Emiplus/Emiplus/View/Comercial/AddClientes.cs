@@ -16,12 +16,9 @@ namespace Emiplus.View.Comercial
         private PessoaEndereco _modelAddress = new PessoaEndereco();
         private PessoaContato _modelContact = new PessoaContato();
 
-        private string page = TelaComercialInicial.page;
         public static int Id { get; set; }
         public static int IdAddress { get; set; }
         public static int IdContact { get; set; }
-
-        private int Backspace = 0;
 
         private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
         private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
@@ -65,41 +62,35 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
             Id = Clientes.Id;
 
-            if (String.IsNullOrEmpty(page) && Validation.IsNumber(Id))
+            if (String.IsNullOrEmpty(Home.pessoaPage) && Validation.IsNumber(Id))
             {
                 Id = 0;
-                page = "Clientes";
+                Home.pessoaPage = "Clientes";
             }
 
-            label6.Text = page;
-            label1.Text = "Adicionar " + page;
+            label6.Text = Home.pessoaPage;
+            label1.Text = "Adicionar " + Home.pessoaPage;
             label1.Left = 307;
             pictureBox2.Left = 284;
 
-            if (page == "Fornecedores")
+            if (Home.pessoaPage == "Fornecedores")
             {
-                label1.Left = 322;
-                pictureBox2.Left = 299;
+                label1.Left = 343;
+                pictureBox2.Left = 319;
             }
 
-            tabControl1.TabPages.Remove(tabTransporte); // Tab 'Transporte'
-            if (page == "Transportadoras")
+            credencial.TabPages.Remove(tabTransporte); // Tab 'Transporte'
+            if (Home.pessoaPage == "Transportadoras")
             {
-                label1.Left = 338;
-                pictureBox2.Left = 315;
-                tabControl1.TabPages.Add(tabTransporte);
+                label1.Left = 359;
+                pictureBox2.Left = 335;
+                credencial.TabPages.Add(tabTransporte);
             }
-
-            if (page == "Colaboradores")
-            {
-                label1.Left = 346;
-                pictureBox2.Left = 323;
-            }
-
+            
             if (Id == 0)
             {
                 _modelPessoa.Id = Id;
-                _modelPessoa.Tipo = page;
+                _modelPessoa.Tipo = Home.pessoaPage;
                 _modelPessoa.Nome = "Novo registro";
                 if (_modelPessoa.Save(_modelPessoa))
                 {
@@ -157,7 +148,7 @@ namespace Emiplus.View.Comercial
 
             nomeRS.Text = _modelPessoa.Nome;
             nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
-            nascimento.Text = _modelPessoa.Aniversario == null ? "" : _modelPessoa.Aniversario;
+            nascimento.Text = _modelPessoa.Aniversario == null ? "" : Validation.ConvertDateToForm(_modelPessoa.Aniversario);
             cpfCnpj.Text = _modelPessoa.CPF == null ? "" : _modelPessoa.CPF;
             rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
             pessoaJF.SelectedItem = _modelPessoa.Pessoatipo == null ? "" : _modelPessoa.Pessoatipo;
@@ -219,7 +210,7 @@ namespace Emiplus.View.Comercial
 
         private void BtnRemover_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Deseja realmente excluir o cliente?", "Atenção!", MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Deseja realmente excluir?", "Atenção!", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 if (_modelPessoa.Remove(Id))
@@ -230,10 +221,10 @@ namespace Emiplus.View.Comercial
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             _modelPessoa.Id = Id;
-            _modelPessoa.Tipo = page;
+            _modelPessoa.Tipo = Home.pessoaPage;
             _modelPessoa.Nome = nomeRS.Text;
             _modelPessoa.Fantasia = nomeFantasia.Text;
-            _modelPessoa.Aniversario = nascimento.Text;
+            _modelPessoa.Aniversario = Validation.ConvertDateToSQL(nascimento.Text);
             _modelPessoa.CPF = cpfCnpj.Text;
             _modelPessoa.RG = rgIE.Text;
             _modelPessoa.Pessoatipo = pessoaJF.Text;

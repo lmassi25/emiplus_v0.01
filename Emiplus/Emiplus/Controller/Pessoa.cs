@@ -1,5 +1,6 @@
 ﻿namespace Emiplus.Controller
 {
+    using Emiplus.View.Common;
     using SqlKata.Execution;
     using System.Windows.Forms;
 
@@ -31,7 +32,7 @@
             var search = "%" + SearchText + "%";
             var data = address.Query()
                 .Where("EXCLUIR", 0)
-                .Where("TIPO", "Clientes")
+                .Where("TIPO", Home.pessoaPage)
                 .Where(q =>
                     q.Where("nome", "like", search)
                         .OrWhere("fantasia", "like", search)
