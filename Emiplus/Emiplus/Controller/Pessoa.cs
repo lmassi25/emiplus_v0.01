@@ -7,7 +7,6 @@
     {
         public void GetDataTableClientes(DataGridView Table, string SearchText)
         {
-            Table.VirtualMode = true;
             Table.ColumnCount = 5;
 
             Table.Columns[0].Name = "ID";
@@ -101,7 +100,6 @@
                     item.ID,
                     item.TITULO,
                     item.CEP,
-                    //$"{item.RUA} - {item.NR} - {item.COMPLEMENTO} - {item.BAIRRO} | {item.CIDADE}/{item.ESTADO} - {item.PAIS}"
                     item.RUA,
                     item.NR,
                     item.BAIRRO,

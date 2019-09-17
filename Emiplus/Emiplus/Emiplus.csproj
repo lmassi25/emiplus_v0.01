@@ -758,6 +758,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Data\Database\DB.sql" />
     <Content Include="iconEmiPlus.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -27,13 +27,14 @@ namespace Emiplus.View.Produtos
             ActiveControl = nome;
 
             ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-
-            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-
-            Categorias.DataSource = cat;
-            Categorias.DisplayMember = "NOME";
-            Categorias.ValueMember = "ID";
-            Categorias.SelectedValue = _modelItem.Categoriaid;
+            
+            if (new Categoria().Count() > 0)
+            {
+                Categorias.DataSource = new Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                Categorias.DisplayMember = "NOME";
+                Categorias.ValueMember = "ID";
+                Categorias.SelectedValue = _modelItem.Categoriaid;
+            }
 
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
             if (_modelItem.Medida != null)

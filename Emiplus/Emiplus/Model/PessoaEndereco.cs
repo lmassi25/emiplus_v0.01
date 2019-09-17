@@ -18,7 +18,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string EmpresaId { get; private set; }
+        public string id_empresa { get; private set; }
         public string Cep { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
