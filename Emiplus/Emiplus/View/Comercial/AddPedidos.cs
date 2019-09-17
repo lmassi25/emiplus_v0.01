@@ -6,6 +6,7 @@ using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -13,6 +14,8 @@ namespace Emiplus.View.Comercial
     public partial class AddPedidos : Form
     {
         private int ModoRapAva { get; set; }
+        private int ModoRapAvaConfig { get; set; }
+
         public int Id = Pedido.Id;
 
         private Model.Item _mItem = new Model.Item();
@@ -112,51 +115,90 @@ namespace Emiplus.View.Comercial
                 PedidoModalItens form = new PedidoModalItens();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    //if (!String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
-                    //{
-                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
-                    //}
+                    BuscarProduto.Text = PedidoModalItens.NomeProduto;
+
+                    if (PedidoModalItens.ValorVendaProduto == 0)
+                    {
+                        if (ModoRapAva == 0)
+                        {
+                            AlterarModo();
+                            ModoRapAvaConfig = 1;
+                        }
+                    }
                 }
             }
 
-            if (collection.Lookup(BuscarProduto.Text) > 0)
+            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
             {
-                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", 0).First<Model.Item>();
+                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
 
                 var pedidoItem = new Model.PedidoItem();
 
-                pedidoItem.SetId(0)
+                pedidoItem.SetId(0).SetTipo("Produtos")
                 .SetPedidoId(Id)
                 .SetItem(item)
                 .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
-                .SetValorVenda(Validation.ConvertToDouble(Preco.Text))
                 .SetMedida(Medidas.Text)
-                .SomarProdutosTotal()
                 .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text))
-                .SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text))
-                .SomarTotal()
-                .Save(pedidoItem);
+                .SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text));
+
+                pedidoItem.SomarProdutosTotal();
+
+                var valorVenda = pedidoItem.SetValorVenda(Validation.ConvertToDouble(Preco.Text));
+
+                if (!valorVenda)
+                {
+                    Alert.Message("Oppss", "O valor de venda não pode ser negativo.", Alert.AlertType.info);
+                    BuscarProduto.Select();
+                    return;
+                }
+
+                pedidoItem.SomarTotal();
+
+                pedidoItem.Save(pedidoItem);
 
                 _controllerPedido.GetDataTableItens(GridListaProdutos, item.Id, pedidoItem);
                 itens.Text = "Itens: " + GridListaProdutos.RowCount.ToString();
 
                 ClearForms();
+
+                if (ModoRapAva == 1 && ModoRapAvaConfig == 1)
+                {
+                    AlterarModo();
+                    ModoRapAvaConfig = 0;
+                }
             }
-            
+
+            LoadTotais();
+
+
+            PedidoModalItens.NomeProduto = "";
             BuscarProduto.Select();
         }
 
         private void LoadTotais()
         {
-            var query = new Query("PEDIDO_ITEM")
-                 .Select("GroupId")
-                 .SelectRaw("SUM(`Age`)")
-                 .GroupBy("GroupId");
+            // SELECT SUM(total), SUM(desconto), SUM(totalvenda), SUM(frete), SUM(icmsbase), SUM(icmsvlr), SUM(icmsstbase), SUM(icmsstvlr), SUM(ipivlr), SUM(pisvlr), SUM(cofinsvlr)
+            // total = (totalvenda, frete, icmsbase, icmsvlr, icmsstbase, icmsstvlr, ipivlr, pisvlr, cofinsvlr) - desconto
+            //Math.Round(value, 2);
+
+            //var query = _mItem.Query().Select("SELECT SUM(total), SUM(desconto), SUM(totalvenda), SUM(frete), SUM(icmsbase), SUM(icmsvlr), SUM(icmsstbase), SUM(icmsstvlr), SUM(ipivlr), SUM(pisvlr), SUM(cofinsvlr)");
+            //var query = _mPedidoItens.Query().SelectRaw("SUM(TOTAL), SUM(desconto), SUM(totalvenda), SUM(frete), SUM(icmsbase), SUM(icmsvlr), SUM(icmsstbase), SUM(icmsstvlr), SUM(ipivlr), SUM(pisvlr), SUM(cofinsvlr)")
+                //.Where("pedido", Id).Where("excluir", 0).Get();
+
+            var query = _mPedidoItens.Query().SelectRaw("SUM(TOTAL) AS TOTAL, SUM(desconto) AS DESCONTO")
+                .Where("pedido", Id).Where("excluir", 0).Get();
+
+            for (int i = 0; i < query.Count(); i++)
+            {
+                var data = query.ElementAt(i);
+                Console.WriteLine(data.ID);
+            }
         }
-        
+
         private void AutoCompleteItens()
         {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", 0).Get();
+            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
 
             foreach (var itens in item)
             {
@@ -267,16 +309,11 @@ namespace Emiplus.View.Comercial
             LoadItens();
         }
 
-        private void BuscarProduto_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void BuscarProduto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 LoadItens();
-                BuscarProduto.Clear();
             }
         }
 
@@ -346,6 +383,35 @@ namespace Emiplus.View.Comercial
                 else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
                 else { LoadItens(); ClearForms(); }
             }
+        }
+
+        private void Preco_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadItens();
+            }
+        }
+
+        private void DescontoPorcentagem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadItens();
+            }
+        }
+
+        private void DescontoReais_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadItens();
+            }
+        }
+
+        private void AddProduto_Click(object sender, EventArgs e)
+        {
+            LoadItens();
         }
     }
 }

@@ -100,7 +100,7 @@ namespace Emiplus.Controller
             var itens = item.Query()
                 .Where("id", id)
                 .Where("excluir", 0)
-                .Where("tipo", "0")
+                .Where("tipo", "Produtos")
                 .Limit(1)
                 .Get();
 

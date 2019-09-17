@@ -72,10 +72,7 @@ namespace Emiplus.Data.Helpers
         {
             string n = string.Empty;
             double v = 0;
-
-            if (Validation.IsNumber(txt))
-                return;
-
+            
             n = txt.Text.Replace(",", "").Replace(".", "");
             if (n.Equals(""))
             {

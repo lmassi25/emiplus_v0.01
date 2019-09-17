@@ -47,9 +47,10 @@ namespace Emiplus.Data.Helpers
             }
             else
             {
-                var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
-                double d = obj;
-                res = d.ToString("#,##.##", nfi);
+                //var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
+                //double d = obj;
+                //res = d.ToString("#,##.##", nfi);
+                res = string.Format("{0:N2}", obj);
             }
 
             return res;
@@ -61,14 +62,14 @@ namespace Emiplus.Data.Helpers
         }
 
         public static double ConvertToDouble(object obj)
-        {
+        {                        
             if (obj == null)
                 return 0;
 
             if (obj.ToString() == "")
-                return 0;
+                return 0;            
 
-            return Convert.ToDouble(obj);
+            return Convert.ToDouble(obj.ToString().Replace("R$", "").Trim());
         }
 
         public static int ConvertToInt32(object obj)
