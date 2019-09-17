@@ -18,7 +18,7 @@ namespace Emiplus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Impostos());
+            Application.Run(new Home());
         }
     }
 }

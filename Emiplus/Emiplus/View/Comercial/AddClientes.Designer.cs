@@ -32,10 +32,10 @@ namespace Emiplus.View.Comercial
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -65,7 +65,6 @@ namespace Emiplus.View.Comercial
             this.label7 = new System.Windows.Forms.Label();
             this.rntc = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.uf = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.placa = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -94,6 +93,7 @@ namespace Emiplus.View.Comercial
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.uf = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -300,23 +300,23 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.BackgroundColor = System.Drawing.Color.White;
             this.ListaEnderecos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaEnderecos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListaEnderecos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaEnderecos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ListaEnderecos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListaEnderecos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaEnderecos.DefaultCellStyle = dataGridViewCellStyle2;
             this.ListaEnderecos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaEnderecos.Location = new System.Drawing.Point(0, 70);
             this.ListaEnderecos.Name = "ListaEnderecos";
@@ -439,23 +439,23 @@ namespace Emiplus.View.Comercial
             this.ListaContatos.BackgroundColor = System.Drawing.Color.White;
             this.ListaContatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListaContatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListaContatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListaContatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ListaContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ListaContatos.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaContatos.DefaultCellStyle = dataGridViewCellStyle4;
             this.ListaContatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ListaContatos.Location = new System.Drawing.Point(0, 70);
             this.ListaContatos.Name = "ListaContatos";
@@ -549,10 +549,10 @@ namespace Emiplus.View.Comercial
             // 
             // tabTransporte
             // 
+            this.tabTransporte.Controls.Add(this.uf);
             this.tabTransporte.Controls.Add(this.label7);
             this.tabTransporte.Controls.Add(this.rntc);
             this.tabTransporte.Controls.Add(this.label3);
-            this.tabTransporte.Controls.Add(this.uf);
             this.tabTransporte.Controls.Add(this.label2);
             this.tabTransporte.Controls.Add(this.pictureBox10);
             this.tabTransporte.Controls.Add(this.placa);
@@ -644,63 +644,6 @@ namespace Emiplus.View.Comercial
             this.label3.Size = new System.Drawing.Size(24, 17);
             this.label3.TabIndex = 45;
             this.label3.Text = "UF";
-            // 
-            // uf
-            // 
-            this.uf.AlphaNumeric = false;
-            this.uf.BackColor = System.Drawing.Color.Transparent;
-            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.uf.BackColorState.Enabled = System.Drawing.Color.White;
-            this.uf.Border.Color = System.Drawing.Color.Gainsboro;
-            this.uf.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.uf.Border.HoverVisible = true;
-            this.uf.Border.Rounding = 8;
-            this.uf.Border.Thickness = 1;
-            this.uf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.uf.Border.Visible = true;
-            this.uf.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.uf.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.uf.ButtonBorder.HoverVisible = true;
-            this.uf.ButtonBorder.Rounding = 6;
-            this.uf.ButtonBorder.Thickness = 1;
-            this.uf.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.uf.ButtonBorder.Visible = true;
-            this.uf.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.uf.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.uf.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.uf.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.uf.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.ButtonIndent = 3;
-            this.uf.ButtonText = "visualButton";
-            this.uf.ButtonVisible = false;
-            this.uf.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uf.Image = null;
-            this.uf.ImageSize = new System.Drawing.Size(16, 16);
-            this.uf.ImageVisible = false;
-            this.uf.ImageWidth = 35;
-            this.uf.Location = new System.Drawing.Point(17, 94);
-            this.uf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.uf.Name = "uf";
-            this.uf.PasswordChar = '\0';
-            this.uf.ReadOnly = false;
-            this.uf.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.uf.Size = new System.Drawing.Size(259, 28);
-            this.uf.TabIndex = 44;
-            this.uf.TextBoxWidth = 247;
-            this.uf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.uf.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uf.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uf.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.uf.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.uf.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.uf.Watermark.Text = "Watermark text";
-            this.uf.Watermark.Visible = false;
-            this.uf.WordWrap = true;
             // 
             // label2
             // 
@@ -1421,6 +1364,64 @@ namespace Emiplus.View.Comercial
             this.nascimento.WordWrap = true;
             this.nascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nascimento_KeyPress);
             // 
+            // uf
+            // 
+            this.uf.BackColor = System.Drawing.Color.White;
+            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.uf.BackColorState.Enabled = System.Drawing.Color.White;
+            this.uf.Border.Color = System.Drawing.Color.Gainsboro;
+            this.uf.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.uf.Border.HoverVisible = true;
+            this.uf.Border.Rounding = 6;
+            this.uf.Border.Thickness = 1;
+            this.uf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.uf.Border.Visible = true;
+            this.uf.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.uf.ButtonImage = null;
+            this.uf.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.uf.ButtonWidth = 30;
+            this.uf.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.uf.DropDownHeight = 150;
+            this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uf.DropDownWidth = 500;
+            this.uf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.FormattingEnabled = true;
+            this.uf.ImageList = null;
+            this.uf.ImageVisible = false;
+            this.uf.Index = 0;
+            this.uf.IntegralHeight = false;
+            this.uf.ItemHeight = 22;
+            this.uf.ItemImageVisible = true;
+            this.uf.Location = new System.Drawing.Point(20, 94);
+            this.uf.MaxDropDownItems = 100;
+            this.uf.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.uf.MenuItemNormal = System.Drawing.Color.White;
+            this.uf.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.uf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.uf.Name = "uf";
+            this.uf.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.uf.SeparatorVisible = false;
+            this.uf.Size = new System.Drawing.Size(124, 28);
+            this.uf.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.uf.TabIndex = 48;
+            this.uf.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.uf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.uf.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.uf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.uf.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.uf.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.uf.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.uf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.uf.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.uf.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.uf.Watermark.Text = "Watermark text";
+            this.uf.Watermark.Visible = false;
+            // 
             // AddClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1530,11 +1531,11 @@ namespace Emiplus.View.Comercial
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rntc;
         private System.Windows.Forms.Label label3;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox uf;
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox placa;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox Isento;
         private System.Windows.Forms.Label label8;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nascimento;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox uf;
     }
 }
