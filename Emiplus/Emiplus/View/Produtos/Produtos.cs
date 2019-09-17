@@ -25,6 +25,15 @@ namespace Emiplus.View.Produtos
             _controller.GetDataTable(GridListaProdutos, search.Text);
         }
 
+        private void LoadId()
+        {
+            if (GridListaProdutos.SelectedRows.Count > 0)
+            {
+                idPdtSelecionado = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                OpenForm.Show<AddProduct>(this);
+            }
+        }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             idPdtSelecionado = 0;
@@ -54,8 +63,7 @@ namespace Emiplus.View.Produtos
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            idPdtSelecionado = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddProduct>(this);
+            LoadId();
         }
 
         /// <summary>
@@ -63,13 +71,12 @@ namespace Emiplus.View.Produtos
         /// </summary>
         private void GridListaProdutos_DoubleClick(object sender, EventArgs e)
         {
-            idPdtSelecionado = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddProduct>(this);
+            LoadId();
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            Support.OpenLinkBrowser("http://google.com");
+            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
 
         private void Search_Enter(object sender, EventArgs e)
