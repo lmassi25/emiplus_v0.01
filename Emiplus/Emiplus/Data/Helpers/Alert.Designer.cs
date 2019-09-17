@@ -132,7 +132,6 @@
             this.Name = "Alert";
             this.ShowInTaskbar = false;
             this.Text = "Alert";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Alert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();

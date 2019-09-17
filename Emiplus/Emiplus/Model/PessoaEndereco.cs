@@ -51,6 +51,37 @@
         //);
         #endregion
 
+        public PessoaEndereco GetAddr(string cep)
+        {
+            if (cep.Length != 8)
+            {
+                Alert.Message("Opss", "CEP inválido.", Alert.AlertType.error);
+                return this;
+            }
+
+            var d = new CEP();
+            d.SetCep(cep);
+
+            if (d.ValidationCep())
+            {
+                Estado = d.GetRetornoCorreios().uf;
+                Cidade = d.GetRetornoCorreios().cidade;
+                Rua = d.GetRetornoCorreios().end;
+                Bairro = d.GetRetornoCorreios().bairro;
+                IBGE = d.GetIBGE();
+            }
+            else
+            {
+                Estado = "";
+                Cidade = "";
+                Rua = "";
+                Bairro = "";
+                IBGE = "";
+            }
+
+            return this;
+        }
+
         public bool Save(PessoaEndereco data)
         {
             if (ValidarDados(data))
@@ -111,7 +142,11 @@
                 .Create()
                 .Ensure(m => m.Cep, _ => _
                     .Required()
-                    .WithMessage("CEP é obrigatorio."))
+                    .WithMessage("CEP é obrigatorio.")
+                    .MinLength(8)
+                    .WithMessage("O CEP não tem um formato válido.")
+                    .MaxLength(9)
+                    .WithMessage("O CEP não tem um formato válido."))
                 .For(data)
                 .Validate();
 

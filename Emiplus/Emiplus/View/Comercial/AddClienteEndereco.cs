@@ -2,6 +2,7 @@
 using Emiplus.Model;
 using SqlKata.Execution;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,7 +13,9 @@ namespace Emiplus.View.Comercial
         private int IdAddress = AddClientes.IdAddress;
         private int IdPessoa = AddClientes.Id;
         private PessoaEndereco _modelAddress = new PessoaEndereco();
+        private PessoaEndereco retorno = new PessoaEndereco();
         private int Backspace;
+        private string cep_aux;
 
         public AddClienteEndereco()
         {
@@ -24,6 +27,9 @@ namespace Emiplus.View.Comercial
                 Close();
             }
 
+            pais.DataSource = new List<String> { "Brasil" };
+            estado.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR","SC", "SP", "SE", "TO"};
+
             if (IdAddress > 0)
             {
                 LoadData();
@@ -32,7 +38,6 @@ namespace Emiplus.View.Comercial
 
         private void LoadData()
         {
-
             _modelAddress = _modelAddress.FindById(IdAddress).First<PessoaEndereco>();
 
             cep.Text = _modelAddress.Cep;
@@ -90,7 +95,72 @@ namespace Emiplus.View.Comercial
 
         private void BuscarEndereco_Click(object sender, EventArgs e)
         {
+            buscarEndereco.Enabled = false;
 
+            rua.Text = "...";
+            bairro.Text = "...";
+            nr.Text = "...";
+            complemento.Text = "...";
+            ibge.Text = "...";
+
+            rua.Enabled = false;
+            bairro.Enabled = false;
+            nr.Enabled = false;
+            complemento.Enabled = false;
+            cidade.Enabled = false;
+            estado.Enabled = false;
+            pais.Enabled = false;
+            ibge.Enabled = false;
+
+            if (String.IsNullOrEmpty(cep.Text))
+            {
+                return;
+            }
+
+            if (cep.Text.Replace("-", "").Length != 8)
+            {
+                return;
+            }
+
+            cep_aux = cep.Text.Replace("-", "");
+
+            backgroundWorker1.RunWorkerAsync();           
+        }
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            retorno = _modelAddress.GetAddr(cep_aux);
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (retorno != null)
+            {
+                rua.Text = "";
+                bairro.Text = "";
+                nr.Text = "";
+                complemento.Text = "";
+                ibge.Text = "";
+
+                rua.Text = retorno.Rua;
+                bairro.Text = retorno.Bairro;
+                cidade.Text = retorno.Cidade;
+                estado.SelectedItem = retorno.Estado;
+                ibge.Text = retorno.IBGE;
+            }
+
+            rua.Enabled = true;
+            bairro.Enabled = true;
+            nr.Enabled = true;
+            complemento.Enabled = true;
+            cidade.Enabled = true;
+            estado.Enabled = true;
+            pais.Enabled = true;
+            ibge.Enabled = true;
+
+            rua.Select();
+
+            buscarEndereco.Enabled = true;
         }
     }
 }

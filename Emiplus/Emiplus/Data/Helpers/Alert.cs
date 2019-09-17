@@ -8,6 +8,14 @@ namespace Emiplus.Data.Helpers
 
     public partial class Alert : Form
     {
+        protected override bool ShowWithoutActivation
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         #region DLL SHADOW
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
@@ -36,6 +44,7 @@ namespace Emiplus.Data.Helpers
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
+        private const int WS_EX_TOPMOST = 0x00000008;
 
         public struct MARGINS                           // struct for box shadow
         {
@@ -58,6 +67,8 @@ namespace Emiplus.Data.Helpers
                 CreateParams cp = base.CreateParams;
                 if (!m_aeroEnabled)
                     cp.ClassStyle |= CS_DROPSHADOW;
+
+                cp.ExStyle |= WS_EX_TOPMOST;
 
                 return cp;
             }
@@ -107,6 +118,7 @@ namespace Emiplus.Data.Helpers
          * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\ 
          ********************************************************************/
         #endregion
+
 
         public Alert(string _title, string _message, AlertType type)
         {

@@ -114,6 +114,7 @@
             this.GridLista.MultiSelect = false;
             this.GridLista.Name = "GridLista";
             this.GridLista.ReadOnly = true;
+            this.GridLista.RowHeadersVisible = false;
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridLista.Size = new System.Drawing.Size(659, 280);
