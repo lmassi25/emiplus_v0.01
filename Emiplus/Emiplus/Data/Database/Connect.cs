@@ -8,7 +8,7 @@ namespace Emiplus.Data.Database
 {
     class Connect
     {
-        private const string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
+        private string _path = @"C:\emiplus_v0.01\EMIPLUS.FDB";
         private const string _user = "sysdba";
         private const string _pass = "masterkey";
         private const string _db = "sysdba";
@@ -16,7 +16,12 @@ namespace Emiplus.Data.Database
 
         private string GetDatabase()
         {
-            if(File.Exists(_path))
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\DATABASE.txt"))
+            {
+                _path = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + "\\DATABASE.txt");
+            }
+
+            if (File.Exists(_path))
             {
                 return _path;
             }

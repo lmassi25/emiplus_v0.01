@@ -20,6 +20,15 @@ namespace Emiplus.View.Produtos
             _controller.GetDataTable(GridListaImpostos, search.Text);
         }
 
+        private void LoadId()
+        {
+            if (GridListaImpostos.SelectedRows.Count > 0)
+            {
+                idImpSelected = Convert.ToInt32(GridListaImpostos.SelectedRows[0].Cells["ID"].Value);
+                OpenForm.Show<AddImpostos>(this);
+            }
+        }
+
         private void Impostos_Load(object sender, EventArgs e)
         {
             search.Select();
@@ -44,14 +53,12 @@ namespace Emiplus.View.Produtos
 
         private void Editar_Click(object sender, EventArgs e)
         {
-            idImpSelected = Convert.ToInt32(GridListaImpostos.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddImpostos>(this);
+            LoadId();
         }
 
         private void GridListaImpostos_DoubleClick(object sender, EventArgs e)
         {
-            idImpSelected = Convert.ToInt32(GridListaImpostos.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddImpostos>(this);
+            LoadId();
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)

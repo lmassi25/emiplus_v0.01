@@ -554,6 +554,7 @@
             this.cfop_descricao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.cfop_descricao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.cfop_descricao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.cfop_descricao.Visible = false;
             this.cfop_descricao.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.cfop_descricao.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cfop_descricao.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -572,6 +573,7 @@
             this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 166;
             this.label2.Text = "Descrição";
+            this.label2.Visible = false;
             // 
             // cfop
             // 
@@ -645,6 +647,7 @@
             this.addCfop.Size = new System.Drawing.Size(42, 41);
             this.addCfop.TabIndex = 1;
             this.addCfop.UseVisualStyleBackColor = false;
+            this.addCfop.Visible = false;
             this.addCfop.Click += new System.EventHandler(this.AddCfop_Click);
             // 
             // label9
