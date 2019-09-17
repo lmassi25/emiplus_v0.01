@@ -15,10 +15,10 @@ namespace Emiplus.Controller
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Categoria";
-            Table.Columns[1].Width = 150;
+            Table.Columns[1].Width = 100;
 
             Table.Columns[2].Name = "Cód. Personalizado";
-            Table.Columns[2].Width = 200;
+            Table.Columns[2].Width = 100;
 
             Table.Columns[3].Name = "Descrição";
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -42,7 +42,7 @@ namespace Emiplus.Controller
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
                 .Select("item.*", "categoria.nome as categoria")
                 .Where("item.excluir", 0)
-                .Where("item.tipo", "0")
+                .Where("item.tipo", "Produtos")
                 .Where
                 (
                     q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)

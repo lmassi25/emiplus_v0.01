@@ -38,6 +38,8 @@ namespace Emiplus.Model
             if (ValidarDados(data))
                 return false;
 
+            data.Tipo = "Produtos";
+
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
