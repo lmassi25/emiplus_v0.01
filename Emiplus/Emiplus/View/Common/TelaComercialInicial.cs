@@ -6,7 +6,6 @@ namespace Emiplus.View.Common
 {
     public partial class TelaComercialInicial : Form
     {
-        public static string page { get; set; }
         public TelaComercialInicial()
         {
             InitializeComponent();
@@ -14,19 +13,7 @@ namespace Emiplus.View.Common
 
         private void Clientes_Click(object sender, System.EventArgs e)
         {
-            page = "Clientes";
-            OpenForm.Show<Comercial.Clientes>(this);
-        }
-
-        private void Transportadoras_Click(object sender, System.EventArgs e)
-        {
-            page = "Transportadoras";
-            OpenForm.Show<Comercial.Clientes>(this);
-        }
-
-        private void Fornecedores_Click(object sender, System.EventArgs e)
-        {
-            page = "Fornecedores";
+            Home.pessoaPage = "Clientes";
             OpenForm.Show<Comercial.Clientes>(this);
         }
 
@@ -40,12 +27,6 @@ namespace Emiplus.View.Common
         {
             Pedido Pedido = new Pedido();
             Pedido.ShowDialog();
-        }
-
-        private void Colaboradores_Click(object sender, System.EventArgs e)
-        {
-            page = "Colaboradores";
-            OpenForm.Show<Comercial.AddClientes>(this);
         }
     }
 }
