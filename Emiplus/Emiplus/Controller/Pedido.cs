@@ -1,6 +1,4 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.Model;
-using SqlKata.Execution;
+﻿using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -66,60 +64,6 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTableItens(DataGridView Table, int id, Model.PedidoItem pedidoItem)
-        {
-            Table.ColumnCount = 7;
-
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
-
-            Table.Columns[1].Name = "Código";
-            Table.Columns[1].Width = 100;
-
-            Table.Columns[2].Name = "Nome do Produto";
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            Table.Columns[3].Name = "Quantidade";
-            Table.Columns[3].Width = 100;
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            Table.Columns[4].Name = "Unitário";
-            Table.Columns[4].Width = 100;
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            Table.Columns[5].Name = "Desconto";
-            Table.Columns[5].Width = 100;
-            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            Table.Columns[6].Name = "Total";
-            Table.Columns[6].Width = 100;
-            Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            var item = new Model.Item();
-
-            var itens = item.Query()
-                .Where("id", id)
-                .Where("excluir", 0)
-                .Where("tipo", "Produtos")
-                .Limit(1)
-                .Get();
-
-            foreach (var data in itens)
-            {
-                Table.Rows.Add(
-                    data.ID,
-                    data.REFERENCIA,
-                    data.NOME,
-                    //pedidoItem.Medida,
-                    pedidoItem.Quantidade + " " + pedidoItem.Medida,
-                    Validation.FormatPrice(pedidoItem.ValorVenda, true),
-                    Validation.FormatPrice(pedidoItem.Desconto, true),                    
-                    Validation.FormatPrice(pedidoItem.Total, true)
-                );
-                
-            }
-
-        }
 
     }
 }

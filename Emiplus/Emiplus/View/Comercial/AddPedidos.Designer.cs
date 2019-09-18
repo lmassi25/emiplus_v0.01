@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -51,6 +51,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelarProduto = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,6 +64,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelTwo = new System.Windows.Forms.Panel();
+            this.totaisDescontos = new System.Windows.Forms.Label();
             this.itens = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.subTotal = new System.Windows.Forms.Label();
@@ -376,12 +379,53 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnCancelarProduto);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.btnConcluir);
             this.panel2.Location = new System.Drawing.Point(0, 656);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(134, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 152;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelarProduto
+            // 
+            this.btnCancelarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnCancelarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
+            this.btnCancelarProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelarProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarProduto.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarProduto.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarProduto.Image")));
+            this.btnCancelarProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelarProduto.Location = new System.Drawing.Point(17, 4);
+            this.btnCancelarProduto.Name = "btnCancelarProduto";
+            this.btnCancelarProduto.Size = new System.Drawing.Size(148, 65);
+            this.btnCancelarProduto.TabIndex = 151;
+            this.btnCancelarProduto.Text = "Cancelar Produto";
+            this.btnCancelarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelarProduto.UseVisualStyleBackColor = false;
+            this.btnCancelarProduto.Click += new System.EventHandler(this.BtnCancelarProduto_Click);
             // 
             // button21
             // 
@@ -453,14 +497,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -541,6 +585,7 @@
             this.panelTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTwo.Controls.Add(this.totaisDescontos);
             this.panelTwo.Controls.Add(this.itens);
             this.panelTwo.Controls.Add(this.visualPanel1);
             this.panelTwo.Controls.Add(this.Quantidade);
@@ -557,6 +602,19 @@
             this.panelTwo.Size = new System.Drawing.Size(1008, 577);
             this.panelTwo.TabIndex = 104;
             // 
+            // totaisDescontos
+            // 
+            this.totaisDescontos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.totaisDescontos.BackColor = System.Drawing.Color.Transparent;
+            this.totaisDescontos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totaisDescontos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.totaisDescontos.Location = new System.Drawing.Point(641, 544);
+            this.totaisDescontos.Name = "totaisDescontos";
+            this.totaisDescontos.Size = new System.Drawing.Size(336, 17);
+            this.totaisDescontos.TabIndex = 155;
+            this.totaisDescontos.Text = "Total Descontos: R$ 0,00";
+            this.totaisDescontos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // itens
             // 
             this.itens.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -564,7 +622,7 @@
             this.itens.BackColor = System.Drawing.Color.Transparent;
             this.itens.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itens.Location = new System.Drawing.Point(931, 471);
+            this.itens.Location = new System.Drawing.Point(132, 544);
             this.itens.Name = "itens";
             this.itens.Size = new System.Drawing.Size(52, 17);
             this.itens.TabIndex = 67;
@@ -605,15 +663,15 @@
             // subTotal
             // 
             this.subTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.subTotal.AutoSize = true;
             this.subTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.subTotal.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subTotal.ForeColor = System.Drawing.Color.Gray;
-            this.subTotal.Location = new System.Drawing.Point(697, 5);
+            this.subTotal.Location = new System.Drawing.Point(544, 5);
             this.subTotal.Name = "subTotal";
-            this.subTotal.Size = new System.Drawing.Size(166, 40);
+            this.subTotal.Size = new System.Drawing.Size(324, 40);
             this.subTotal.TabIndex = 101;
             this.subTotal.Text = "R$ 5,000,00";
+            this.subTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label20
             // 
@@ -634,7 +692,7 @@
             this.Quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Quantidade.BackColorState.Enabled = System.Drawing.Color.White;
             this.Quantidade.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Quantidade.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Quantidade.Border.HoverColor = System.Drawing.Color.Gray;
             this.Quantidade.Border.HoverVisible = true;
             this.Quantidade.Border.Rounding = 8;
             this.Quantidade.Border.Thickness = 1;
@@ -694,7 +752,7 @@
             this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;
             this.BuscarProduto.Border.Color = System.Drawing.Color.Gainsboro;
-            this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gray;
             this.BuscarProduto.Border.HoverVisible = true;
             this.BuscarProduto.Border.Rounding = 8;
             this.BuscarProduto.Border.Thickness = 1;
@@ -804,7 +862,7 @@
             this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Medidas.BackColorState.Enabled = System.Drawing.Color.White;
             this.Medidas.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Medidas.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Medidas.Border.HoverColor = System.Drawing.Color.Gray;
             this.Medidas.Border.HoverVisible = true;
             this.Medidas.Border.Rounding = 6;
             this.Medidas.Border.Thickness = 1;
@@ -861,7 +919,7 @@
             this.DescontoReais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.DescontoReais.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoReais.Border.Color = System.Drawing.Color.Gainsboro;
-            this.DescontoReais.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DescontoReais.Border.HoverColor = System.Drawing.Color.Gray;
             this.DescontoReais.Border.HoverVisible = true;
             this.DescontoReais.Border.Rounding = 8;
             this.DescontoReais.Border.Thickness = 1;
@@ -920,7 +978,7 @@
             this.DescontoPorcentagem.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.DescontoPorcentagem.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoPorcentagem.Border.Color = System.Drawing.Color.Gainsboro;
-            this.DescontoPorcentagem.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DescontoPorcentagem.Border.HoverColor = System.Drawing.Color.Gray;
             this.DescontoPorcentagem.Border.HoverVisible = true;
             this.DescontoPorcentagem.Border.Rounding = 8;
             this.DescontoPorcentagem.Border.Thickness = 1;
@@ -979,7 +1037,7 @@
             this.Preco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Preco.BackColorState.Enabled = System.Drawing.Color.White;
             this.Preco.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Preco.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Preco.Border.HoverColor = System.Drawing.Color.Gray;
             this.Preco.Border.HoverVisible = true;
             this.Preco.Border.Rounding = 8;
             this.Preco.Border.Thickness = 1;
@@ -1149,5 +1207,8 @@
         private System.Windows.Forms.Label label20;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Medidas;
         private System.Windows.Forms.Label itens;
+        private System.Windows.Forms.Label totaisDescontos;
+        private System.Windows.Forms.Button btnCancelarProduto;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -66,7 +66,8 @@
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsStAliq { get; set; }
-        public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM  
+        public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
+        public double Icmsstvlr { get; set; }
         public string Ipi { get; set; } // CST
         public double IpiAliq { get; set; }
         public double IpiVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM         

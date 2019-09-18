@@ -223,7 +223,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="Model\Categoria.cs" />
-    <Compile Include="Model\FormaDePagamento.cs" />
+    <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -264,6 +264,12 @@
     </Compile>
     <Compile Include="View\Comercial\Pedido.Designer.cs">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalCancelItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalCancelItem.Designer.cs">
+      <DependentUpon>PedidoModalCancelItem.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\PedidoModalClientes.cs">
       <SubType>Form</SubType>
@@ -463,6 +469,12 @@
     <Compile Include="View\Testes\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Data\Helpers\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
@@ -490,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalCancelItem.resx">
+      <DependentUpon>PedidoModalCancelItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalClientes.resx">
       <DependentUpon>PedidoModalClientes.cs</DependentUpon>

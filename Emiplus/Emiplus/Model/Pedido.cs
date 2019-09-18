@@ -33,17 +33,17 @@
 
         // totais 
 
-        public double Total { get; private set; }
-        public double Desconto { get; private set; }
-        public double Frete { get; private set; }
-        public double Produtos { get; private set; }
-        public double ICMS { get; private set; }
-        public double ICMSST { get; private set; }
-        public double IPI { get; private set; }
-        public double ICMSBASE { get; private set; }
-        public double ICMSSTBASE { get; private set; }
-        public double PIS { get; private set; }
-        public double COFINS { get; private set; }
+        public double Total { get; set; }
+        public double Desconto { get; set; }
+        public double Frete { get; set; }
+        public double Produtos { get; set; }
+        public double ICMS { get; set; }
+        public double ICMSST { get; set; }
+        public double IPI { get; set; }
+        public double ICMSBASE { get; set; }
+        public double ICMSSTBASE { get; set; }
+        public double PIS { get; set; }
+        public double COFINS { get; set; }
 
         #endregion
 
