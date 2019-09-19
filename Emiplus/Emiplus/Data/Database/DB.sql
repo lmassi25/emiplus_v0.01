@@ -247,6 +247,7 @@ CREATE TABLE TITULO
 	id_caixa integer,
 	id_formapgto integer,
 	id_pedido integer,
+	id_pessoa integer,
 	vencimento date,
 	total numeric(18,4),
 	baixa_data date,

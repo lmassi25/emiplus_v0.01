@@ -3,17 +3,21 @@ using System;
 using System.Windows.Forms;
 using SqlKata;
 using SqlKata.Execution;
+using System.Threading;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoPagamentos : Form
     {
+        public static int atualiza { get; set; }
         public static int IdPedido = AddPedidos.Id;
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
+
+        private Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
         // Dinheiro = 1
         // Cheque = 2
@@ -28,6 +32,8 @@ namespace Emiplus.View.Comercial
 
             Dinheiro.Focus();
             Dinheiro.Select();
+            
+            KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
             Cheque.KeyDown += KeyDowns;
             Debito.KeyDown += KeyDowns;
@@ -42,6 +48,18 @@ namespace Emiplus.View.Comercial
             btnNfe.KeyDown += KeyDowns;
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
+
+            panelTelaDinheiro.btnFaltando.Text = $"[Enter] {Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido))} (Faltando)";
+            panelTelaDinheiro.btnFaltando.Click += (s, e) =>
+            {
+                panelTelaDinheiro.valor.Text = _controllerTitulo.GetRestante(IdPedido).ToString();
+                panelTelaDinheiro.btnFaltando.Text = "[Enter] 00,00 (Faltando)";
+            };
+
+            panelTelaDinheiro.btnSalvar.Click += (s, e) => {
+                panelTelaDinheiro.AddPagamento();
+                AtualizarDados();
+            };
         }
 
         private void PedidoPagamentos_Load(object sender, EventArgs e)
@@ -49,7 +67,7 @@ namespace Emiplus.View.Comercial
             Dinheiro.Select();
             Dinheiro.Focus();
 
-            LoadTotais();
+            AtualizarDados();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -57,15 +75,12 @@ namespace Emiplus.View.Comercial
             Close();
         }
 
-        private void LoadTotais()
+        public void AtualizarDados()
         {
-            pagar.Text = Validation.FormatPrice(1000, true);
+            _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
-            pagamentos.Text = Validation.FormatPrice(1000, true);
-            troco.Text = Validation.FormatPrice(1000, true);
-            
-            var dataPedido = _mPedido.FindById(IdPedido).First();
-            total.Text = Validation.FormatPrice(Validation.ConvertToDouble(dataPedido.TOTAL), true);
+            pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
+            total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
         }
 
         private void Debito_Click(object sender, EventArgs e)
@@ -82,10 +97,9 @@ namespace Emiplus.View.Comercial
 
         private void Dinheiro_Click(object sender, EventArgs e)
         {
-            PedidoPayDinheiro Dinheiro = new PedidoPayDinheiro();
-            Dinheiro.ShowDialog();
+            panelTelaDinheiro.Visible = true;
         }
-
+        
         private void Desconto_Click(object sender, EventArgs e)
         {
             PedidoPayDesconto Desconto = new PedidoPayDesconto();
@@ -107,13 +121,40 @@ namespace Emiplus.View.Comercial
         private void Crediario_Click(object sender, EventArgs e)
         {
             PedidoPayParcelado Crediario = new PedidoPayParcelado();
-            Crediario.ShowDialog();
+            if (Crediario.ShowDialog() == DialogResult.OK)
+            {
+                //GetTitulos();
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
+                case Keys.A:
+                    panelTelaDinheiro.valor.Text = "2,00";
+                    break;
+                case Keys.B:
+                    panelTelaDinheiro.valor.Text = "5,00";
+                    break;
+                case Keys.C:
+                    panelTelaDinheiro.valor.Text = "10,00";
+                    break;
+                case Keys.D:
+                    panelTelaDinheiro.valor.Text = "20,00";
+                    break;
+                case Keys.E:
+                    panelTelaDinheiro.valor.Text = "50,00";
+                    break;
+                case Keys.F:
+                    panelTelaDinheiro.valor.Text = "100,00";
+                    break;
+                case Keys.G:
+                    panelTelaDinheiro.valor.Clear();
+                    break;
+                case Keys.Enter:
+                    panelTelaDinheiro.AddPagamento();
+                    break;
                 case Keys.F1:
                     Dinheiro_Click(sender, e);
                     break;
@@ -155,5 +196,19 @@ namespace Emiplus.View.Comercial
                     break;
             }
         }
+
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            while(atualiza == 0)
+            {
+                Thread.Sleep(10);
+            }
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            AtualizarDados();
+        }
+
     }
 }

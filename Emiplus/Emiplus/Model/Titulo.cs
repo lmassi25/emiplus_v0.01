@@ -3,6 +3,7 @@
     using Data.Database;
     using Data.Helpers;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
     using System.Reflection;
     using Valit;
@@ -37,6 +38,8 @@
         public int Id_Caixa { get; set; }
         public int Id_FormaPgto { get; set; }
         public int Id_Pedido { get; set; }
+
+        public int Id_Pessoa { get; set; }
         public DateTime Vencimento { get; set; }
         public double Total { get; set; }
         public DateTime Baixa_data { get; set; }
@@ -79,6 +82,12 @@
         {
             Emissao = dataEmissao;
             return this;
+        }
+
+        public SqlKata.Query FindByPedido(int id)
+        {
+            var data = Query().Where("id_pedido", id);
+            return data;
         }
 
         public bool Save(Titulo data)

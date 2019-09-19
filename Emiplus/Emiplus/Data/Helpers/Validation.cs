@@ -99,6 +99,12 @@ namespace Emiplus.Data.Helpers
             return Convert.ToDateTime(date).Year + "-" + (Convert.ToDateTime(date).Month).ToString("00") + "-" + (Convert.ToDateTime(date).Day).ToString("00");
         }
 
+        public static string DateNowToSql()
+        {
+            //return DateTime.Now.Year + "-" + (DateTime.Now.Month).ToString("00") + "-" + (DateTime.Now.Day).ToString("00");
+            return DateTime.Now.ToString("yyyy-mm-dd");
+        }
+
         public static bool Event(object sender, dynamic control)
         {
             if (((Control)sender).Name == control.Name)
