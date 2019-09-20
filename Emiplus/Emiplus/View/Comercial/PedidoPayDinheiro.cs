@@ -51,7 +51,7 @@ namespace Emiplus.View.Comercial
 
             //btnFaltando.Text = $"[Enter] {Validation.FormatPrice(_cPagamento.GetRestante(IdPedido))} (Faltando)";
 
-            PedidoPagamentos.atualiza = 1;
+           // PedidoPagamentos.atualiza = 1;
 
             Close();
         }

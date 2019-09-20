@@ -333,11 +333,11 @@
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Comercial\TelasRecebimentos\TelaDinheiro.cs">
+    <Compile Include="View\Comercial\TelaRecebimentos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Comercial\TelasRecebimentos\TelaDinheiro.Designer.cs">
-      <DependentUpon>TelaDinheiro.cs</DependentUpon>
+    <Compile Include="View\Comercial\TelaRecebimentos.Designer.cs">
+      <DependentUpon>TelaRecebimentos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -544,8 +544,8 @@
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\TelasRecebimentos\TelaDinheiro.resx">
-      <DependentUpon>TelaDinheiro.cs</DependentUpon>
+    <EmbeddedResource Include="View\Comercial\TelaRecebimentos.resx">
+      <DependentUpon>TelaRecebimentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

@@ -1,16 +1,13 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
 using System.Windows.Forms;
-using SqlKata;
-using SqlKata.Execution;
-using System.Threading;
+using Emiplus.View.Common;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoPagamentos : Form
     {
-        public static int atualiza { get; set; }
-        public static int IdPedido = AddPedidos.Id;
+        private int IdPedido = AddPedidos.Id;
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
@@ -18,21 +15,11 @@ namespace Emiplus.View.Comercial
         private Model.Pessoa _mCliente = new Model.Pessoa();
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
-
-        // Dinheiro = 1
-        // Cheque = 2
-        // Cartão de débito = 3
-        // Cartão de crédito = 4
-        // Crédario = 5
-        // Boleto = 6
-
+        
         public PedidoPagamentos()
         {
             InitializeComponent();
 
-            Dinheiro.Focus();
-            Dinheiro.Select();
-            
             KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
             Cheque.KeyDown += KeyDowns;
@@ -49,32 +36,16 @@ namespace Emiplus.View.Comercial
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
 
-            panelTelaDinheiro.btnFaltando.Text = $"[Enter] {Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido))} (Faltando)";
-            panelTelaDinheiro.btnFaltando.Click += (s, e) =>
-            {
-                panelTelaDinheiro.valor.Text = _controllerTitulo.GetRestante(IdPedido).ToString();
-                panelTelaDinheiro.btnFaltando.Text = "[Enter] 00,00 (Faltando)";
-            };
+            Events();
 
-            panelTelaDinheiro.btnSalvar.Click += (s, e) => {
-                panelTelaDinheiro.AddPagamento();
-                AtualizarDados();
-            };
+            TelaReceber.Visible = false;
         }
 
         private void PedidoPagamentos_Load(object sender, EventArgs e)
         {
-            Dinheiro.Select();
-            Dinheiro.Focus();
-
             AtualizarDados();
         }
-
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        
         public void AtualizarDados()
         {
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
@@ -83,101 +54,217 @@ namespace Emiplus.View.Comercial
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
         }
 
-        private void Debito_Click(object sender, EventArgs e)
+        private void bCancelar()
         {
-            PedidoPayCartao Cartao = new PedidoPayCartao();
-            Cartao.ShowDialog();
+            TelaReceber.Visible = false;
         }
 
-        private void Credito_Click(object sender, EventArgs e)
-        {
-            PedidoPayCartao Cartao = new PedidoPayCartao();
-            Cartao.ShowDialog();
-        }
-
-        private void Dinheiro_Click(object sender, EventArgs e)
-        {
-            panelTelaDinheiro.Visible = true;
-        }
-        
-        private void Desconto_Click(object sender, EventArgs e)
-        {
-            PedidoPayDesconto Desconto = new PedidoPayDesconto();
-            Desconto.ShowDialog();
-        }
-
-        private void Acrescimo_Click(object sender, EventArgs e)
-        {
-            PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
-            Acrescimo.ShowDialog();
-        }
-
-        private void Boleto_Click(object sender, EventArgs e)
-        {
-            PedidoPayParcelado Crediario = new PedidoPayParcelado();
-            Crediario.ShowDialog();
-        }
-
-        private void Crediario_Click(object sender, EventArgs e)
-        {
-            PedidoPayParcelado Crediario = new PedidoPayParcelado();
-            if (Crediario.ShowDialog() == DialogResult.OK)
+        private void bSalvar()
+        {            
+            switch (lTipo.Text)
             {
-                //GetTitulos();
+                case "Dinheiro":
+                    _controllerTitulo.AddPagamento(IdPedido, 1, valor.Text, iniciar.Text);
+                    break;
+                case "Cheque":
+                    _controllerTitulo.AddPagamento(IdPedido, 2, valor.Text, iniciar.Text, parcelas.Text);
+                    break;
+                case "Cartão de Débito":
+                    _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text);
+                    break;
+                case "Cartão de Crédito":
+                    _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text);
+                    break;
+                case "Crediário":
+                    _controllerTitulo.AddPagamento(IdPedido, 5, valor.Text, iniciar.Text, parcelas.Text);
+                    break;
+                case "Boleto":
+                    _controllerTitulo.AddPagamento(IdPedido, 6, valor.Text, iniciar.Text, parcelas.Text);
+                    break;
             }
+
+            TelaReceber.Visible = false;
+            AtualizarDados();
+        }
+
+        private void Campos(int tipo = 0)
+        {
+            valor.Text = "";
+            parcelas.Text = "";
+            iniciar.Text = "";
+
+            if (tipo == 1)
+            {
+                label9.Visible = false;
+                pictureBox15.Visible = false;
+                parcelas.Visible = false;
+
+                label8.Visible = false;
+                pictureBox2.Visible = false;
+                iniciar.Visible = false;
+            }
+            else
+            {
+                label9.Visible = true;
+                pictureBox15.Visible = true;
+                parcelas.Visible = true;
+
+                label8.Visible = true;
+                pictureBox2.Visible = true;
+                iniciar.Visible = true;
+            }
+
+            valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
+        }
+
+        /// <summary>
+        /// Eventos Click
+        /// </summary>
+        public void Events()
+        {
+            Debito.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Cartão de Débito";
+                Campos(1);
+                valor.Select();
+            };
+
+            Credito.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Cartão de Crédito";
+                Campos(0);
+                valor.Select();
+            };
+
+            Dinheiro.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Dinheiro";
+                Campos(1);
+                valor.Select();
+            };
+
+            Desconto.Click += (s, e) =>
+            {
+                PedidoPayDesconto Desconto = new PedidoPayDesconto();
+                Desconto.ShowDialog();
+            };
+
+            Acrescimo.Click += (s, e) =>
+            {
+                PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
+                Acrescimo.ShowDialog();
+            };
+
+            Boleto.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Boleto";
+                Campos(0);
+                valor.Select();
+            };
+
+            Crediario.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Crediário";
+                Campos(0);
+                valor.Select();
+            };
+
+            Cheque.Click += (s, e) =>
+            {
+                TelaReceber.Visible = true;
+                lTipo.Text = "Cheque";
+                Campos(0);
+                valor.Select();
+            };
+
+            btnCancelar.Click += (s, e) =>
+            {
+                bCancelar();
+            };
+
+            btnSalvar.Click += (s, e) =>
+            {
+                bSalvar();
+            };
+
+            btnClose.Click += (s, e) =>
+            {
+                Close();
+            };
+
+            iniciar.KeyPress += (s, e) =>
+            {
+                Eventos.MaskBirthday(s, e);
+            };
+
+            iniciar.KeyPress += (s, e) =>
+            {
+                Eventos.MaskBirthday(s, e);
+            };
+
+            valor.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Eventos.MaskPrice(ref txt);
+            };
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-                case Keys.A:
-                    panelTelaDinheiro.valor.Text = "2,00";
-                    break;
-                case Keys.B:
-                    panelTelaDinheiro.valor.Text = "5,00";
-                    break;
-                case Keys.C:
-                    panelTelaDinheiro.valor.Text = "10,00";
-                    break;
-                case Keys.D:
-                    panelTelaDinheiro.valor.Text = "20,00";
-                    break;
-                case Keys.E:
-                    panelTelaDinheiro.valor.Text = "50,00";
-                    break;
-                case Keys.F:
-                    panelTelaDinheiro.valor.Text = "100,00";
-                    break;
-                case Keys.G:
-                    panelTelaDinheiro.valor.Clear();
-                    break;
+                //case Keys.A:
+                //    panelTelaDinheiro.valor.Text = "2,00";
+                //    break;
+                //case Keys.B:
+                //    panelTelaDinheiro.valor.Text = "5,00";
+                //    break;
+                //case Keys.C:
+                //    panelTelaDinheiro.valor.Text = "10,00";
+                //    break;
+                //case Keys.D:
+                //    panelTelaDinheiro.valor.Text = "20,00";
+                //    break;
+                //case Keys.E:
+                //    panelTelaDinheiro.valor.Text = "50,00";
+                //    break;
+                //case Keys.F:
+                //    panelTelaDinheiro.valor.Text = "100,00";
+                //    break;
+                //case Keys.G:
+                //    panelTelaDinheiro.valor.Clear();
+                //    break;
                 case Keys.Enter:
-                    panelTelaDinheiro.AddPagamento();
+                    bSalvar();
                     break;
                 case Keys.F1:
-                    Dinheiro_Click(sender, e);
+                    //Dinheiro_Click(sender, e);
                     break;
                 case Keys.F2:
                     //BuscarProduto.Focus();
                     break;
                 case Keys.F3:
-                    Debito_Click(sender, e);
+                    //Debito_Click(sender, e);
                     break;
                 case Keys.F4:
-                    Credito_Click(sender, e);
+                    //Credito_Click(sender, e);
                     break;
                 case Keys.F5:
-                    Crediario_Click(sender, e);
+                    //Crediario_Click(sender, e);
                     break;
                 case Keys.F6:
-                    Boleto_Click(sender, e);
+                    //Boleto_Click(sender, e);
                     break;
                 case Keys.F7:
-                    Desconto_Click(sender, e);
+                    //Desconto_Click(sender, e);
                     break;
                 case Keys.F8:
-                    Acrescimo_Click(sender, e);
+                    //Acrescimo_Click(sender, e);
                     break;
                 case Keys.F9:
                     //TelaPagamentos();
@@ -195,19 +282,6 @@ namespace Emiplus.View.Comercial
                     Close();
                     break;
             }
-        }
-
-        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            while(atualiza == 0)
-            {
-                Thread.Sleep(10);
-            }
-        }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            AtualizarDados();
         }
 
     }

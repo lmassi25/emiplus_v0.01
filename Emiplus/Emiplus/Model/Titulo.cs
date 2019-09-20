@@ -33,16 +33,16 @@
         public string id_empresa { get; private set; }
 
         public string Nome { get; set; }
-        public DateTime Emissao { get; set; }
+        public string Emissao { get; set; }
         public int Id_Categoria { get; set; }
         public int Id_Caixa { get; set; }
         public int Id_FormaPgto { get; set; }
         public int Id_Pedido { get; set; }
 
         public int Id_Pessoa { get; set; }
-        public DateTime Vencimento { get; set; }
+        public string Vencimento { get; set; }
         public double Total { get; set; }
-        public DateTime Baixa_data { get; set; }
+        public string Baixa_data { get; set; }
         public double Baixa_total { get; set; }
         public double Baixa_id_formapgto { get; set; }
 
@@ -78,7 +78,7 @@
             return this;
         }
 
-        public Titulo SetEmissao(DateTime dataEmissao)
+        public Titulo SetEmissao(string dataEmissao)
         {
             Emissao = dataEmissao;
             return this;
@@ -95,6 +95,7 @@
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
+
                 if (Data(data).Create() == 1)
                 {
                     Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);

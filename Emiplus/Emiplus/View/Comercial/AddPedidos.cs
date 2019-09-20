@@ -17,7 +17,7 @@ namespace Emiplus.View.Comercial
         private int ModoRapAvaConfig { get; set; }
         public static int IdItem { get; set; } // Id item datagrid
 
-        public static int Id = Pedido.Id;
+        public static int Id;
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
@@ -246,8 +246,7 @@ namespace Emiplus.View.Comercial
 
             totaisDescontos.Text = "Totais descontos: " + Validation.FormatPrice(Desconto, true);
         }
-
-
+        
         private void AutoCompleteItens()
         {
             var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();

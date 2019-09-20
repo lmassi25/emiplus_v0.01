@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -12,7 +13,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id", idPedido).First();
+            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).First();
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
@@ -21,7 +22,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id", idPedido).First();
+            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).First();
             var lancado = Validation.ConvertToDouble(data.TOTAL);
 
             double restante = 0;
@@ -42,47 +43,78 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
-        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string parcela = "1")
+        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")
         {
             var data = new Model.Titulo();
-
             double valor = Validation.ConvertToDouble(valorS);
+            DateTime vencimento = DateTime.Now;
 
             if (idPedido > 0)
             {
                 data.Id_Pedido = idPedido;
                 data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").First().CLIENTE;
             }
-            
-            switch (formaPgto)
+
+            if (valor < 0)
             {
-                case 1:
-                    data.Vencimento = DateTime.Now;
-                    data.Total = valor;
-                    break;
-                case 2:
-                    //data.Total = Validation.ConvertToDouble(formaPgto);
-                    break;
-                case 3:
-                    //data.Total = Validation.ConvertToDouble(formaPgto);
-                    break;
-                case 4:
-                    //data.Total = Validation.ConvertToDouble(formaPgto);
-                    break;
-                case 5:
-                    //data.Total = Validation.ConvertToDouble(formaPgto);
-                    break;
-                case 6:
-                    //data.Total = Validation.ConvertToDouble(formaPgto);
-                    break;
+                return false;
             }
 
-            data.Id = 0;
-            data.Id_FormaPgto = formaPgto;
-            data.Emissao = DateTime.Now;
+            if (!String.IsNullOrEmpty(inicio))
+            {
+                vencimento = Convert.ToDateTime(inicio);
+            }
 
-            if (data.Save(data))
-                return true;
+            if(parcela.IndexOf("+") > 0)
+            {
+                //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
+                //15+20+30+50+70 / dias e parcelas
+
+                int[] numeros = parcela.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
+
+                data.Total = Validation.Round(valor / numeros.Count());
+
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    vencimento = vencimento.AddDays(numeros[i]);
+
+                    data.Id = 0;
+                    data.Id_FormaPgto = formaPgto;
+                    data.Emissao = Validation.DateNowToSql();
+                    data.Vencimento = Validation.ConvertDateToSQL(vencimento);
+                    data.Save(data);
+                }
+            }
+            else if (Validation.ConvertToInt32(parcela) > 0)
+            {
+                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela));
+
+                int count = 1;
+                while(count <= Validation.ConvertToInt32(parcela))
+                {    
+                    data.Id = 0;
+                    data.Id_FormaPgto = formaPgto;
+                    data.Emissao = Validation.DateNowToSql();
+                    data.Vencimento = Validation.ConvertDateToSQL(vencimento.AddMonths(count));
+                    data.Save(data);
+                    count++;
+                }
+            }
+            else
+            {
+                //1 DINHEIRO 3 CARTÃO DE DÉBITO
+                
+                data.Id = 0;
+                data.Id_FormaPgto = formaPgto;
+                data.Emissao = Validation.DateNowToSql();
+                data.Vencimento = Validation.DateNowToSql();
+                data.Total = valor;
+
+                if (data.Save(data))
+                    return true;
+
+                return false;
+            }
 
             return false;
         }
@@ -115,7 +147,7 @@ namespace Emiplus.Controller
 
             var data = titulos.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .Select("titulo.id", "titulo.total", "titulo.emissao", "formapgto.nome as formapgto")
+                .Select("titulo.id", "titulo.total", "titulo.vencimento", "formapgto.nome as formapgto")
                 .Where("titulo.excluir", 0)
                 .Where("titulo.id_pedido", idPedido)
                 .OrderByDesc("titulo.id")
@@ -126,7 +158,7 @@ namespace Emiplus.Controller
                 Table.Rows.Add(
                     item.ID,
                     item.FORMAPGTO,
-                    Validation.ConvertDateToForm(item.EMISSAO),                    
+                    Validation.ConvertDateToForm(item.VENCIMENTO),  
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
                 );
             }
