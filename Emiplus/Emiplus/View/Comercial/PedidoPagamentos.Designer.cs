@@ -47,12 +47,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GridListaFormaPgtos = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.pagamentos = new System.Windows.Forms.Label();
+            this.troco = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -79,20 +75,26 @@
             this.TelaReceber = new System.Windows.Forms.Panel();
             this.valor = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Info2 = new System.Windows.Forms.PictureBox();
             this.iniciar = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.Info1 = new System.Windows.Forms.PictureBox();
             this.parcelas = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.lTipo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pagamentos = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.colExcluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).BeginInit();
@@ -100,8 +102,8 @@
             this.panel6.SuspendLayout();
             this.TelaReceber.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Info2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Info1)).BeginInit();
             this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -343,7 +345,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(714, 490);
+            this.label4.Location = new System.Drawing.Point(717, 490);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 32);
             this.label4.TabIndex = 128;
@@ -371,7 +373,9 @@
             this.colID,
             this.Column2,
             this.Column1,
-            this.Column3});
+            this.Column3,
+            this.colEditar,
+            this.colExcluir});
             this.GridListaFormaPgtos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaFormaPgtos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaFormaPgtos.Location = new System.Drawing.Point(0, 0);
@@ -380,35 +384,9 @@
             this.GridListaFormaPgtos.ReadOnly = true;
             this.GridListaFormaPgtos.RowHeadersVisible = false;
             this.GridListaFormaPgtos.RowTemplate.Height = 30;
-            this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 156);
             this.GridListaFormaPgtos.TabIndex = 7;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "Id";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Forma de pagamento";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Vencimento";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Valor";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // label2
             // 
@@ -422,24 +400,24 @@
             this.label2.TabIndex = 122;
             this.label2.Text = "Opções";
             // 
-            // pagamentos
+            // troco
             // 
-            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pagamentos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(793, 449);
-            this.pagamentos.Name = "pagamentos";
-            this.pagamentos.Size = new System.Drawing.Size(184, 25);
-            this.pagamentos.TabIndex = 131;
-            this.pagamentos.Text = "R$ 00.00";
-            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.troco.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.troco.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.troco.Location = new System.Drawing.Point(793, 448);
+            this.troco.Name = "troco";
+            this.troco.Size = new System.Drawing.Size(184, 25);
+            this.troco.TabIndex = 131;
+            this.troco.Text = "R$ 00.00";
+            this.troco.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // total
             // 
             this.total.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.total.Location = new System.Drawing.Point(788, 497);
+            this.total.Location = new System.Drawing.Point(788, 496);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(191, 25);
             this.total.TabIndex = 131;
@@ -752,11 +730,11 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(618, 443);
+            this.label5.Location = new System.Drawing.Point(642, 398);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(165, 32);
+            this.label5.Size = new System.Drawing.Size(143, 30);
             this.label5.TabIndex = 132;
             this.label5.Text = "Recebimentos";
             // 
@@ -795,10 +773,10 @@
             // 
             this.TelaReceber.Controls.Add(this.valor);
             this.TelaReceber.Controls.Add(this.panel7);
-            this.TelaReceber.Controls.Add(this.pictureBox2);
+            this.TelaReceber.Controls.Add(this.Info2);
             this.TelaReceber.Controls.Add(this.iniciar);
             this.TelaReceber.Controls.Add(this.label8);
-            this.TelaReceber.Controls.Add(this.pictureBox15);
+            this.TelaReceber.Controls.Add(this.Info1);
             this.TelaReceber.Controls.Add(this.parcelas);
             this.TelaReceber.Controls.Add(this.label9);
             this.TelaReceber.Controls.Add(this.panel8);
@@ -878,17 +856,6 @@
             this.panel7.Size = new System.Drawing.Size(489, 63);
             this.panel7.TabIndex = 193;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(712, 396);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 32);
-            this.label7.TabIndex = 128;
-            this.label7.Text = "Troco";
-            // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -931,16 +898,16 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // Info2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(132, 197);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 199;
-            this.pictureBox2.TabStop = false;
+            this.Info2.BackColor = System.Drawing.Color.White;
+            this.Info2.Image = ((System.Drawing.Image)(resources.GetObject("Info2.Image")));
+            this.Info2.Location = new System.Drawing.Point(128, 198);
+            this.Info2.Name = "Info2";
+            this.Info2.Size = new System.Drawing.Size(15, 15);
+            this.Info2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Info2.TabIndex = 199;
+            this.Info2.TabStop = false;
             // 
             // iniciar
             // 
@@ -1011,16 +978,16 @@
             this.label8.TabIndex = 198;
             this.label8.Text = "Iniciar a partir de";
             // 
-            // pictureBox15
+            // Info1
             // 
-            this.pictureBox15.BackColor = System.Drawing.Color.White;
-            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(72, 142);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 196;
-            this.pictureBox15.TabStop = false;
+            this.Info1.BackColor = System.Drawing.Color.White;
+            this.Info1.Image = ((System.Drawing.Image)(resources.GetObject("Info1.Image")));
+            this.Info1.Location = new System.Drawing.Point(74, 141);
+            this.Info1.Name = "Info1";
+            this.Info1.Size = new System.Drawing.Size(15, 15);
+            this.Info1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Info1.TabIndex = 196;
+            this.Info1.TabStop = false;
             // 
             // parcelas
             // 
@@ -1124,17 +1091,28 @@
             this.label11.TabIndex = 191;
             this.label11.Text = "Valor";
             // 
-            // label6
+            // label7
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(792, 403);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 25);
-            this.label6.TabIndex = 151;
-            this.label6.Text = "R$ 00.00";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(722, 444);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 30);
+            this.label7.TabIndex = 128;
+            this.label7.Text = "Troco";
+            // 
+            // pagamentos
+            // 
+            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pagamentos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pagamentos.Location = new System.Drawing.Point(792, 402);
+            this.pagamentos.Name = "pagamentos";
+            this.pagamentos.Size = new System.Drawing.Size(184, 25);
+            this.pagamentos.TabIndex = 151;
+            this.pagamentos.Text = "R$ 00.00";
+            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel9
             // 
@@ -1145,6 +1123,50 @@
             this.panel9.Size = new System.Drawing.Size(400, 1);
             this.panel9.TabIndex = 137;
             // 
+            // colID
+            // 
+            this.colID.HeaderText = "Id";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Forma de pagamento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Vencimento";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Valor";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // colEditar
+            // 
+            this.colEditar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colEditar.HeaderText = "";
+            this.colEditar.Name = "colEditar";
+            this.colEditar.ReadOnly = true;
+            this.colEditar.ToolTipText = "Editar";
+            this.colEditar.Width = 30;
+            // 
+            // colExcluir
+            // 
+            this.colExcluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colExcluir.HeaderText = "";
+            this.colExcluir.Name = "colExcluir";
+            this.colExcluir.ReadOnly = true;
+            this.colExcluir.ToolTipText = "Remover";
+            this.colExcluir.Width = 30;
+            // 
             // PedidoPagamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1152,13 +1174,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 634);
             this.Controls.Add(this.panel9);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.pagamentos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.total);
-            this.Controls.Add(this.pagamentos);
+            this.Controls.Add(this.troco);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.button3);
@@ -1198,8 +1220,8 @@
             this.TelaReceber.ResumeLayout(false);
             this.TelaReceber.PerformLayout();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Info2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Info1)).EndInit();
             this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1245,12 +1267,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label pagamentos;
+        private System.Windows.Forms.Label troco;
         private System.Windows.Forms.DataGridView GridListaFormaPgtos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private TelasRecebimentos.TelaRecebimentos panelTelaDinheiro;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
@@ -1260,16 +1278,22 @@
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Info2;
         public VisualPlus.Toolkit.Controls.Editors.VisualTextBox iniciar;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox Info1;
         public VisualPlus.Toolkit.Controls.Editors.VisualTextBox parcelas;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lTipo;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label pagamentos;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn colEditar;
+        private System.Windows.Forms.DataGridViewImageColumn colExcluir;
     }
 }

@@ -13,6 +13,7 @@ namespace Emiplus.View.Comercial
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
+        private Model.Titulo _mTitulo = new Model.Titulo();
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         
@@ -50,6 +51,7 @@ namespace Emiplus.View.Comercial
         {
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
+            troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
         }
@@ -84,6 +86,8 @@ namespace Emiplus.View.Comercial
             }
 
             TelaReceber.Visible = false;
+
+            //troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             AtualizarDados();
         }
 
@@ -96,21 +100,21 @@ namespace Emiplus.View.Comercial
             if (tipo == 1)
             {
                 label9.Visible = false;
-                pictureBox15.Visible = false;
+                Info1.Visible = false;
                 parcelas.Visible = false;
 
                 label8.Visible = false;
-                pictureBox2.Visible = false;
+                Info2.Visible = false;
                 iniciar.Visible = false;
             }
             else
             {
                 label9.Visible = true;
-                pictureBox15.Visible = true;
+                Info1.Visible = true;
                 parcelas.Visible = true;
 
                 label8.Visible = true;
-                pictureBox2.Visible = true;
+                Info2.Visible = true;
                 iniciar.Visible = true;
             }
 
@@ -211,6 +215,25 @@ namespace Emiplus.View.Comercial
             {
                 TextBox txt = (TextBox)s;
                 Eventos.MaskPrice(ref txt);
+            };
+
+            GridListaFormaPgtos.CellDoubleClick += (s, e) =>
+            {
+                if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colEditar")
+                {
+                    //caixa2_editar frm = new caixa2_editar(dataGridView3.CurrentRow.Cells[2].Value.ToString(), usuariosinc);
+                    //frm.Show();
+                }
+                else if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
+                {
+                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[5].Value);
+                    if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[5].Value) != "")
+                    {
+                        int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
+                        _mTitulo.Remove(id);
+                        AtualizarDados();
+                    }
+                }
             };
         }
 

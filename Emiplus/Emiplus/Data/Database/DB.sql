@@ -250,6 +250,7 @@ CREATE TABLE TITULO
 	id_pessoa integer,
 	vencimento date,
 	total numeric(18,4),
+	recebido numeric(18,4),
 	baixa_data date,
 	baixa_total numeric(18,4),
 	baixa_id_formapgto numeric(18,4)
