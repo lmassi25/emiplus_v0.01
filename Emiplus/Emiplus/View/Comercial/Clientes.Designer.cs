@@ -152,9 +152,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(30, 157);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 40);
+            this.label1.Size = new System.Drawing.Size(117, 40);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Clientes:";
+            this.label1.Text = "Clientes";
             // 
             // btnEditar
             // 

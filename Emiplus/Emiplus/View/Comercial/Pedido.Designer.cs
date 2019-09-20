@@ -38,9 +38,10 @@
             this.btnHelp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.visualDateTimePicker1 = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.visualButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -60,8 +61,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
-            this.visualDateTimePicker1 = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aberta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fechada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recebiveis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nfe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
@@ -78,10 +85,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(256, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(426, 15);
+            this.label2.Size = new System.Drawing.Size(335, 15);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Gerencie os clientes da sua empresa aqui! Adicione, edite ou delete um clientes.\r" +
-    "\n";
+            this.label2.Text = "Gerencie os pedido aqui! Adicione, edite ou delete um pedido.\r\n";
             // 
             // btnExit
             // 
@@ -202,7 +208,14 @@
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
+            this.Id,
+            this.nr,
+            this.Aberta,
+            this.Cliente,
+            this.Total,
+            this.Fechada,
+            this.Recebiveis,
+            this.nfe});
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -213,12 +226,6 @@
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridLista.Size = new System.Drawing.Size(717, 478);
             this.GridLista.TabIndex = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // label1
             // 
@@ -256,6 +263,62 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 15;
+            // 
+            // visualDateTimePicker1
+            // 
+            this.visualDateTimePicker1.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.visualDateTimePicker1.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.visualDateTimePicker1.ArrowSize = new System.Drawing.Size(10, 5);
+            this.visualDateTimePicker1.BackColor = System.Drawing.Color.White;
+            this.visualDateTimePicker1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualDateTimePicker1.BackColorState.Enabled = System.Drawing.Color.White;
+            this.visualDateTimePicker1.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualDateTimePicker1.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualDateTimePicker1.Border.HoverVisible = true;
+            this.visualDateTimePicker1.Border.Rounding = 6;
+            this.visualDateTimePicker1.Border.Thickness = 1;
+            this.visualDateTimePicker1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualDateTimePicker1.Border.Visible = true;
+            this.visualDateTimePicker1.DropDownImage = null;
+            this.visualDateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.visualDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.visualDateTimePicker1.Image = null;
+            this.visualDateTimePicker1.ImageSize = new System.Drawing.Size(16, 16);
+            this.visualDateTimePicker1.Location = new System.Drawing.Point(48, 364);
+            this.visualDateTimePicker1.MinimumSize = new System.Drawing.Size(0, 25);
+            this.visualDateTimePicker1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualDateTimePicker1.Name = "visualDateTimePicker1";
+            this.visualDateTimePicker1.Size = new System.Drawing.Size(173, 25);
+            this.visualDateTimePicker1.TabIndex = 41;
+            this.visualDateTimePicker1.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            // 
+            // nascimento
+            // 
+            this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.nascimento.ArrowSize = new System.Drawing.Size(10, 5);
+            this.nascimento.BackColor = System.Drawing.Color.White;
+            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
+            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.nascimento.Border.HoverVisible = true;
+            this.nascimento.Border.Rounding = 6;
+            this.nascimento.Border.Thickness = 1;
+            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.nascimento.Border.Visible = true;
+            this.nascimento.DropDownImage = null;
+            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.nascimento.Image = null;
+            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
+            this.nascimento.Location = new System.Drawing.Point(48, 334);
+            this.nascimento.MinimumSize = new System.Drawing.Size(0, 25);
+            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.nascimento.Name = "nascimento";
+            this.nascimento.Size = new System.Drawing.Size(173, 25);
+            this.nascimento.TabIndex = 40;
+            this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // visualButton1
             // 
@@ -538,61 +601,55 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // nascimento
+            // Id
             // 
-            this.nascimento.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.nascimento.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.nascimento.ArrowSize = new System.Drawing.Size(10, 5);
-            this.nascimento.BackColor = System.Drawing.Color.White;
-            this.nascimento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.nascimento.BackColorState.Enabled = System.Drawing.Color.White;
-            this.nascimento.Border.Color = System.Drawing.Color.Gainsboro;
-            this.nascimento.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.nascimento.Border.HoverVisible = true;
-            this.nascimento.Border.Rounding = 6;
-            this.nascimento.Border.Thickness = 1;
-            this.nascimento.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.nascimento.Border.Visible = true;
-            this.nascimento.DropDownImage = null;
-            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.nascimento.Image = null;
-            this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
-            this.nascimento.Location = new System.Drawing.Point(48, 334);
-            this.nascimento.MinimumSize = new System.Drawing.Size(0, 25);
-            this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.nascimento.Name = "nascimento";
-            this.nascimento.Size = new System.Drawing.Size(173, 25);
-            this.nascimento.TabIndex = 40;
-            this.nascimento.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
-            // visualDateTimePicker1
+            // nr
             // 
-            this.visualDateTimePicker1.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.visualDateTimePicker1.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.visualDateTimePicker1.ArrowSize = new System.Drawing.Size(10, 5);
-            this.visualDateTimePicker1.BackColor = System.Drawing.Color.White;
-            this.visualDateTimePicker1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualDateTimePicker1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualDateTimePicker1.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualDateTimePicker1.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualDateTimePicker1.Border.HoverVisible = true;
-            this.visualDateTimePicker1.Border.Rounding = 6;
-            this.visualDateTimePicker1.Border.Thickness = 1;
-            this.visualDateTimePicker1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualDateTimePicker1.Border.Visible = true;
-            this.visualDateTimePicker1.DropDownImage = null;
-            this.visualDateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.visualDateTimePicker1.Image = null;
-            this.visualDateTimePicker1.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualDateTimePicker1.Location = new System.Drawing.Point(48, 364);
-            this.visualDateTimePicker1.MinimumSize = new System.Drawing.Size(0, 25);
-            this.visualDateTimePicker1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualDateTimePicker1.Name = "visualDateTimePicker1";
-            this.visualDateTimePicker1.Size = new System.Drawing.Size(173, 25);
-            this.visualDateTimePicker1.TabIndex = 41;
-            this.visualDateTimePicker1.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.nr.HeaderText = "N°";
+            this.nr.Name = "nr";
+            this.nr.ReadOnly = true;
+            // 
+            // Aberta
+            // 
+            this.Aberta.HeaderText = "Aberta";
+            this.Aberta.Name = "Aberta";
+            this.Aberta.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Fechada
+            // 
+            this.Fechada.HeaderText = "Fechada";
+            this.Fechada.Name = "Fechada";
+            this.Fechada.ReadOnly = true;
+            // 
+            // Recebiveis
+            // 
+            this.Recebiveis.HeaderText = "Recebiveis";
+            this.Recebiveis.Name = "Recebiveis";
+            this.Recebiveis.ReadOnly = true;
+            // 
+            // nfe
+            // 
+            this.nfe.HeaderText = "NF-e";
+            this.nfe.Name = "nfe";
+            this.nfe.ReadOnly = true;
             // 
             // Pedido
             // 
@@ -637,7 +694,6 @@
         private System.Windows.Forms.DataGridView GridLista;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel barraTitulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
@@ -661,5 +717,13 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton visualButton1;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker visualDateTimePicker1;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker nascimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aberta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fechada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recebiveis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nfe;
     }
 }

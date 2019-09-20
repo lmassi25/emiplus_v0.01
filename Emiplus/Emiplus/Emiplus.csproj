@@ -205,7 +205,6 @@
     <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
-    <Compile Include="Controller\TelasControl\PayDinheiro.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
@@ -303,41 +302,17 @@
     <Compile Include="View\Comercial\PedidoPayAcrescimo.Designer.cs">
       <DependentUpon>PedidoPayAcrescimo.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Comercial\PedidoPayCartao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Comercial\PedidoPayCartao.Designer.cs">
-      <DependentUpon>PedidoPayCartao.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Comercial\PedidoPayDesconto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Comercial\PedidoPayDesconto.Designer.cs">
       <DependentUpon>PedidoPayDesconto.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Comercial\PedidoPayDinheiro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Comercial\PedidoPayDinheiro.Designer.cs">
-      <DependentUpon>PedidoPayDinheiro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Comercial\PedidoPayParcelado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Comercial\PedidoPayParcelado.Designer.cs">
-      <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Comercial\AddPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Comercial\TelaRecebimentos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Comercial\TelaRecebimentos.Designer.cs">
-      <DependentUpon>TelaRecebimentos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -393,11 +368,17 @@
     <Compile Include="View\Exemplos.Designer.cs">
       <DependentUpon>Exemplos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\FinanceiroHome.cs">
+    <Compile Include="View\Financeiro\EditarTitulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\FinanceiroHome.Designer.cs">
-      <DependentUpon>FinanceiroHome.cs</DependentUpon>
+    <Compile Include="View\Financeiro\EditarTitulo.Designer.cs">
+      <DependentUpon>EditarTitulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\Titulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\Titulos.Designer.cs">
+      <DependentUpon>Titulos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\AddCategorias.cs">
       <SubType>Form</SubType>
@@ -529,23 +510,11 @@
     <EmbeddedResource Include="View\Comercial\PedidoPayAcrescimo.resx">
       <DependentUpon>PedidoPayAcrescimo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\PedidoPayCartao.resx">
-      <DependentUpon>PedidoPayCartao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoPayDesconto.resx">
       <DependentUpon>PedidoPayDesconto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\PedidoPayDinheiro.resx">
-      <DependentUpon>PedidoPayDinheiro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\PedidoPayParcelado.resx">
-      <DependentUpon>PedidoPayParcelado.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Comercial\TelaRecebimentos.resx">
-      <DependentUpon>TelaRecebimentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -574,8 +543,11 @@
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\FinanceiroHome.resx">
-      <DependentUpon>FinanceiroHome.cs</DependentUpon>
+    <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
+      <DependentUpon>EditarTitulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\Titulos.resx">
+      <DependentUpon>Titulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
       <DependentUpon>AddCategorias.cs</DependentUpon>

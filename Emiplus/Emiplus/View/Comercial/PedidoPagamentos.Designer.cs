@@ -1269,7 +1269,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label troco;
         private System.Windows.Forms.DataGridView GridListaFormaPgtos;
-        private TelasRecebimentos.TelaRecebimentos panelTelaDinheiro;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel TelaReceber;

@@ -88,7 +88,7 @@ namespace Emiplus.Controller
 
             //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
             if (parcela.IndexOf("+") > 0)
-            {   
+            {
                 //15+20+30+50+70 / dias e parcelas
 
                 int[] numeros = parcela.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
@@ -154,26 +154,6 @@ namespace Emiplus.Controller
 
         public void GetDataTableTitulos(DataGridView Table, int idPedido)
         {
-            /*Table.ColumnCount = 5;
-
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
-
-            Table.Columns[1].Name = "Data";
-            Table.Columns[1].Width = 100;
-
-            Table.Columns[2].Name = "Forma de Pagamento";
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Table.Columns[2].Width = 100;
-
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
-
-            Table.Columns[4].Name = "";
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 100;*/
-
             Table.Rows.Clear();
 
             var titulos = new Model.Titulo();
@@ -198,6 +178,35 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
                     Bitmap.FromFile(pathIconEdit),
                     Bitmap.FromFile(pathIconExcluir)
+                );
+            }
+        }
+
+        public void GetDataTableTitulosGerados(DataGridView Table, string Search)
+        {
+            Table.Rows.Clear();
+
+            var titulos = new Model.Titulo();
+
+            var search = "%" + Search + "%";
+            var data = titulos.Query()
+                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where("titulo.excluir", 0)
+                .OrderByDesc("titulo.criado")
+                .Get();
+
+            foreach (var item in data)
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    Validation.ConvertDateToForm(item.EMISSAO),
+                    item.NOME,
+                    item.FORMAPGTO,
+                    Validation.ConvertDateToForm(item.VENCIMENTO),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
                 );
             }
         }
