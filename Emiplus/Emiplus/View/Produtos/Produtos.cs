@@ -17,7 +17,7 @@ namespace Emiplus.View.Produtos
 
         private void Start()
         {
-            ActiveControl = search;
+            search.Select();
         }
 
         private void DataTable()

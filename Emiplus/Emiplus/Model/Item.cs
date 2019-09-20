@@ -30,6 +30,16 @@ namespace Emiplus.Model
         public double EstoqueAtual { get; set; }
         public int Categoriaid { get; set; }
         public string Medida { get; set; }
+        public int Impostoid { get; set; }
+        public string Cest { get; set; }
+        public string Ncm { get; set; }
+        public string Origem { get; set; }
+
+        public double AliqFederal { get; set; }
+        public double AliqEstadual { get; set; }
+        public double AliqMunicipal { get; set; }
+        
+        public string InfAdicional { get; set; }
 
         #endregion
 
