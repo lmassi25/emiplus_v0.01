@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,13 +9,25 @@ namespace Emiplus.Controller
 {
     class Titulo : Data.Core.Controller
     {
+        public double GetTroco(int idPedido)
+        {
+            if (String.IsNullOrEmpty(idPedido.ToString()))
+                return 0;
+
+            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido, SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).First();
+            var total = data.TOTAL;
+            var recebido = data.RECEBIDO;
+
+            return Validation.ConvertToDouble(total - recebido);
+        }
+
         public double GetLancados(int idPedido)
         {
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).First();
-            return Validation.ConvertToDouble(data.TOTAL);
+            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido").Where("id_pedido", idPedido).Where("excluir", 0).First();
+            return Validation.ConvertToDouble(data.RECEBIDO);
         }
 
         public double GetRestante(int idPedido)
@@ -22,7 +35,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).First();
+            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).First();
             var lancado = Validation.ConvertToDouble(data.TOTAL);
 
             double restante = 0;
@@ -39,7 +52,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Pedido().FindById(idPedido).Select("total").First();
+            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).First();
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
@@ -51,9 +64,17 @@ namespace Emiplus.Controller
 
             if (idPedido > 0)
             {
+                if (GetRestante(idPedido) <= 0)
+                {
+                    Alert.Message("Opss", "Valor total já recebido. Verifique os lançamentos!", Alert.AlertType.error);
+                    return false;
+                }
+
                 data.Id_Pedido = idPedido;
-                data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").First().CLIENTE;
+                data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).First().CLIENTE;
             }
+
+            
 
             if (valor < 0)
             {
@@ -65,9 +86,9 @@ namespace Emiplus.Controller
                 vencimento = Convert.ToDateTime(inicio);
             }
 
-            if(parcela.IndexOf("+") > 0)
-            {
-                //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
+            //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
+            if (parcela.IndexOf("+") > 0)
+            {   
                 //15+20+30+50+70 / dias e parcelas
 
                 int[] numeros = parcela.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
@@ -82,10 +103,11 @@ namespace Emiplus.Controller
                     data.Id_FormaPgto = formaPgto;
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSQL(vencimento);
+                    data.Recebido = data.Total;
                     data.Save(data);
                 }
             }
-            else if (Validation.ConvertToInt32(parcela) > 0)
+            else if (Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3)
             {
                 data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela));
 
@@ -96,6 +118,7 @@ namespace Emiplus.Controller
                     data.Id_FormaPgto = formaPgto;
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSQL(vencimento.AddMonths(count));
+                    data.Recebido = data.Total;
                     data.Save(data);
                     count++;
                 }
@@ -108,7 +131,17 @@ namespace Emiplus.Controller
                 data.Id_FormaPgto = formaPgto;
                 data.Emissao = Validation.DateNowToSql();
                 data.Vencimento = Validation.DateNowToSql();
-                data.Total = valor;
+
+                if (formaPgto == 1 && valor > GetRestante(idPedido))
+                {
+                    data.Total = GetRestante(idPedido);
+                    data.Recebido = valor;
+                }
+                else
+                {
+                    data.Total = valor;
+                    data.Recebido = valor;                    
+                }
 
                 if (data.Save(data))
                     return true;
@@ -147,7 +180,7 @@ namespace Emiplus.Controller
 
             var data = titulos.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .Select("titulo.id", "titulo.total", "titulo.vencimento", "formapgto.nome as formapgto")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
                 .Where("titulo.excluir", 0)
                 .Where("titulo.id_pedido", idPedido)
                 .OrderByDesc("titulo.id")
@@ -155,11 +188,16 @@ namespace Emiplus.Controller
 
             foreach (var item in data)
             {
+                string pathIconEdit = $"{Support.BasePath()}\\Assets\\Images\\icons\\edit16x.png";
+                string pathIconExcluir = $"{Support.BasePath()}\\Assets\\Images\\icons\\bin16x.png";
+
                 Table.Rows.Add(
                     item.ID,
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),  
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
+                    Bitmap.FromFile(pathIconEdit),
+                    Bitmap.FromFile(pathIconExcluir)
                 );
             }
         }

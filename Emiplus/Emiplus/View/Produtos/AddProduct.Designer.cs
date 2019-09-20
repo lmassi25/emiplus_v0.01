@@ -788,6 +788,7 @@
             this.referencia.ImageVisible = false;
             this.referencia.ImageWidth = 35;
             this.referencia.Location = new System.Drawing.Point(349, 50);
+            this.referencia.MaxLength = 255;
             this.referencia.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.referencia.Name = "referencia";
             this.referencia.PasswordChar = '\0';
@@ -857,6 +858,7 @@
             this.nome.ImageVisible = false;
             this.nome.ImageWidth = 35;
             this.nome.Location = new System.Drawing.Point(17, 50);
+            this.nome.MaxLength = 255;
             this.nome.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nome.Name = "nome";
             this.nome.PasswordChar = '\0';
