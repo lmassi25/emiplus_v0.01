@@ -4,6 +4,7 @@ using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Emiplus.View.Produtos
 {
@@ -27,10 +28,11 @@ namespace Emiplus.View.Produtos
             ActiveControl = nome;
 
             ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            
-            if (new Categoria().Count() > 0)
+
+            var cat = new Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (cat.Count() > 0)
             {
-                Categorias.DataSource = new Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                Categorias.DataSource = cat;
                 Categorias.DisplayMember = "NOME";
                 Categorias.ValueMember = "ID";
                 Categorias.SelectedValue = _modelItem.Categoriaid;

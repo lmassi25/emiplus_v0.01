@@ -28,50 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoPagamentos));
-            this.label26 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnCFeSat = new System.Windows.Forms.Button();
+            this.btnNfe = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.GridListaProdutos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GridListaFormaPgtos = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.pagamentos = new System.Windows.Forms.Label();
+            this.total = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Acrescimo = new System.Windows.Forms.Button();
             this.Desconto = new System.Windows.Forms.Button();
             this.Cheque = new System.Windows.Forms.Button();
@@ -80,31 +68,42 @@
             this.Debito = new System.Windows.Forms.Button();
             this.Crediario = new System.Windows.Forms.Button();
             this.Boleto = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.TelaReceber = new System.Windows.Forms.Panel();
+            this.valor = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.iniciar = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.parcelas = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lTipo = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.TelaReceber.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(480, 10);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(88, 21);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "R$ 1000.00";
             // 
             // label10
             // 
@@ -112,23 +111,24 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(114, 22);
+            this.label10.Location = new System.Drawing.Point(18, 14);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 17);
+            this.label10.Size = new System.Drawing.Size(147, 17);
             this.label10.TabIndex = 109;
-            this.label10.Text = "Forma do Pagamento";
+            this.label10.Text = "Formas do Pagamento";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button22);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.button20);
             this.panel2.Controls.Add(this.button19);
             this.panel2.Controls.Add(this.button12);
-            this.panel2.Controls.Add(this.button11);
-            this.panel2.Controls.Add(this.button10);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.btnImprimir);
+            this.panel2.Controls.Add(this.btnCFeSat);
+            this.panel2.Controls.Add(this.btnNfe);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnConcluir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -136,7 +136,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 107;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(17, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 151;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button22
             // 
@@ -216,59 +230,59 @@
             this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnImprimir
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button11.Location = new System.Drawing.Point(496, 4);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(161, 65);
-            this.button11.TabIndex = 12;
-            this.button11.Text = "Imprimir Pedido";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImprimir.Location = new System.Drawing.Point(496, 4);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(161, 65);
+            this.btnImprimir.TabIndex = 12;
+            this.btnImprimir.Text = "Imprimir Pedido";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImprimir.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnCFeSat
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button10.Location = new System.Drawing.Point(182, 4);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(148, 65);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "CF-e S@T";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnCFeSat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnCFeSat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCFeSat.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnCFeSat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCFeSat.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCFeSat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCFeSat.Image = ((System.Drawing.Image)(resources.GetObject("btnCFeSat.Image")));
+            this.btnCFeSat.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCFeSat.Location = new System.Drawing.Point(182, 4);
+            this.btnCFeSat.Name = "btnCFeSat";
+            this.btnCFeSat.Size = new System.Drawing.Size(148, 65);
+            this.btnCFeSat.TabIndex = 10;
+            this.btnCFeSat.Text = "CF-e S@T";
+            this.btnCFeSat.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCFeSat.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnNfe
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(339, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 65);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "NF-e";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnNfe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnNfe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNfe.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNfe.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnNfe.Image = ((System.Drawing.Image)(resources.GetObject("btnNfe.Image")));
+            this.btnNfe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNfe.Location = new System.Drawing.Point(339, 4);
+            this.btnNfe.Name = "btnNfe";
+            this.btnNfe.Size = new System.Drawing.Size(148, 65);
+            this.btnNfe.TabIndex = 11;
+            this.btnNfe.Text = "NF-e";
+            this.btnNfe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNfe.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
@@ -291,7 +305,6 @@
             this.btnClose.Text = "Voltar";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // btnConcluir
             // 
@@ -319,85 +332,83 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel3.Location = new System.Drawing.Point(737, 42);
+            this.panel3.Location = new System.Drawing.Point(532, 37);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 500);
             this.panel3.TabIndex = 135;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(81, 12);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(714, 490);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 20);
+            this.label4.Size = new System.Drawing.Size(68, 32);
             this.label4.TabIndex = 128;
-            this.label4.Text = "TOTAL";
+            this.label4.Text = "Total";
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.Controls.Add(this.GridListaProdutos);
-            this.panel1.Location = new System.Drawing.Point(117, 340);
+            this.panel1.Controls.Add(this.GridListaFormaPgtos);
+            this.panel1.Location = new System.Drawing.Point(550, 196);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(582, 156);
+            this.panel1.Size = new System.Drawing.Size(448, 156);
             this.panel1.TabIndex = 120;
             // 
-            // GridListaProdutos
+            // GridListaFormaPgtos
             // 
-            this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
-            this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.GridListaFormaPgtos.AllowUserToAddRows = false;
+            this.GridListaFormaPgtos.AllowUserToDeleteRows = false;
+            this.GridListaFormaPgtos.BackgroundColor = System.Drawing.Color.White;
+            this.GridListaFormaPgtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridListaFormaPgtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridListaFormaPgtos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridListaFormaPgtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridListaFormaPgtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colID,
             this.Column2,
-            this.Column3,
-            this.Column4});
-            this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
-            this.GridListaProdutos.MultiSelect = false;
-            this.GridListaProdutos.Name = "GridListaProdutos";
-            this.GridListaProdutos.RowTemplate.Height = 30;
-            this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaProdutos.Size = new System.Drawing.Size(582, 156);
-            this.GridListaProdutos.TabIndex = 7;
+            this.Column1,
+            this.Column3});
+            this.GridListaFormaPgtos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridListaFormaPgtos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridListaFormaPgtos.Location = new System.Drawing.Point(0, 0);
+            this.GridListaFormaPgtos.MultiSelect = false;
+            this.GridListaFormaPgtos.Name = "GridListaFormaPgtos";
+            this.GridListaFormaPgtos.ReadOnly = true;
+            this.GridListaFormaPgtos.RowHeadersVisible = false;
+            this.GridListaFormaPgtos.RowTemplate.Height = 30;
+            this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 156);
+            this.GridListaFormaPgtos.TabIndex = 7;
             // 
-            // Column1
+            // colID
             // 
-            this.Column1.HeaderText = "Data";
-            this.Column1.Name = "Column1";
+            this.colID.HeaderText = "Id";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.HeaderText = "Forma de pagamento";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Vencimento";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Valor";
             this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Ação";
-            this.Column4.Name = "Column4";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(114, 316);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 17);
-            this.label1.TabIndex = 121;
-            this.label1.Text = "Pagamentos lançados";
+            this.Column3.ReadOnly = true;
             // 
             // label2
             // 
@@ -405,151 +416,35 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(115, 150);
+            this.label2.Location = new System.Drawing.Point(543, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 122;
             this.label2.Text = "Opções";
             // 
-            // panel4
+            // pagamentos
             // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(53)))), ((int)(((byte)(67)))));
-            this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(117, 263);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(582, 41);
-            this.panel4.TabIndex = 126;
+            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pagamentos.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pagamentos.Location = new System.Drawing.Point(793, 449);
+            this.pagamentos.Name = "pagamentos";
+            this.pagamentos.Size = new System.Drawing.Size(184, 25);
+            this.pagamentos.TabIndex = 131;
+            this.pagamentos.Text = "R$ 00.00";
+            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label3
+            // total
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "A pagar:";
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(764, 42);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(215, 80);
-            this.panel7.TabIndex = 138;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(53, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 20);
-            this.label8.TabIndex = 130;
-            this.label8.Text = "PAGAMENTOS";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel8.Controls.Add(this.label9);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 39);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(215, 41);
-            this.panel8.TabIndex = 0;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(52, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 25);
-            this.label9.TabIndex = 131;
-            this.label9.Text = "R$ 1.000.00";
-            // 
-            // panel9
-            // 
-            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel9.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(764, 129);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(215, 80);
-            this.panel9.TabIndex = 139;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(78, 12);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 20);
-            this.label11.TabIndex = 130;
-            this.label11.Text = "TROCO";
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel10.Controls.Add(this.label12);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 39);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(215, 41);
-            this.panel10.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(52, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(116, 25);
-            this.label12.TabIndex = 131;
-            this.label12.Text = "R$ 1.000.00";
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.panel11);
-            this.panel6.Location = new System.Drawing.Point(764, 216);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(215, 80);
-            this.panel6.TabIndex = 140;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel11.Controls.Add(this.label7);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel11.Location = new System.Drawing.Point(0, 39);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(215, 41);
-            this.panel11.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(52, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 25);
-            this.label7.TabIndex = 131;
-            this.label7.Text = "R$ 1.000.00";
+            this.total.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.total.Location = new System.Drawing.Point(788, 497);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(191, 25);
+            this.total.TabIndex = 131;
+            this.total.Text = "R$ 00.00";
+            this.total.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // button18
             // 
@@ -560,7 +455,7 @@
             this.button18.Enabled = false;
             this.button18.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Location = new System.Drawing.Point(531, 45);
+            this.button18.Location = new System.Drawing.Point(435, 37);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(35, 35);
             this.button18.TabIndex = 146;
@@ -575,7 +470,7 @@
             this.button17.Enabled = false;
             this.button17.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(448, 45);
+            this.button17.Location = new System.Drawing.Point(352, 37);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(35, 35);
             this.button17.TabIndex = 145;
@@ -590,7 +485,7 @@
             this.button16.Enabled = false;
             this.button16.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Location = new System.Drawing.Point(365, 45);
+            this.button16.Location = new System.Drawing.Point(269, 37);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(35, 35);
             this.button16.TabIndex = 144;
@@ -605,7 +500,7 @@
             this.button15.Enabled = false;
             this.button15.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(282, 45);
+            this.button15.Location = new System.Drawing.Point(186, 37);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(35, 35);
             this.button15.TabIndex = 143;
@@ -620,7 +515,7 @@
             this.button14.Enabled = false;
             this.button14.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(199, 45);
+            this.button14.Location = new System.Drawing.Point(103, 37);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(35, 35);
             this.button14.TabIndex = 142;
@@ -635,22 +530,11 @@
             this.button13.Enabled = false;
             this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(116, 45);
+            this.button13.Location = new System.Drawing.Point(20, 37);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(35, 35);
             this.button13.TabIndex = 141;
             this.button13.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(766, 381);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(278, 159);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 127;
-            this.pictureBox1.TabStop = false;
             // 
             // Acrescimo
             // 
@@ -664,14 +548,13 @@
             this.Acrescimo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Acrescimo.Image = ((System.Drawing.Image)(resources.GetObject("Acrescimo.Image")));
             this.Acrescimo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Acrescimo.Location = new System.Drawing.Point(203, 172);
+            this.Acrescimo.Location = new System.Drawing.Point(636, 55);
             this.Acrescimo.Name = "Acrescimo";
             this.Acrescimo.Size = new System.Drawing.Size(78, 78);
             this.Acrescimo.TabIndex = 9;
             this.Acrescimo.Text = "Acréscimo";
             this.Acrescimo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Acrescimo.UseVisualStyleBackColor = false;
-            this.Acrescimo.Click += new System.EventHandler(this.Acrescimo_Click);
             // 
             // Desconto
             // 
@@ -685,14 +568,13 @@
             this.Desconto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Desconto.Image = ((System.Drawing.Image)(resources.GetObject("Desconto.Image")));
             this.Desconto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Desconto.Location = new System.Drawing.Point(117, 172);
+            this.Desconto.Location = new System.Drawing.Point(550, 55);
             this.Desconto.Name = "Desconto";
             this.Desconto.Size = new System.Drawing.Size(78, 78);
             this.Desconto.TabIndex = 8;
             this.Desconto.Text = "Descontos";
             this.Desconto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Desconto.UseVisualStyleBackColor = false;
-            this.Desconto.Click += new System.EventHandler(this.Desconto_Click);
             // 
             // Cheque
             // 
@@ -706,10 +588,10 @@
             this.Cheque.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cheque.Image = ((System.Drawing.Image)(resources.GetObject("Cheque.Image")));
             this.Cheque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Cheque.Location = new System.Drawing.Point(201, 63);
+            this.Cheque.Location = new System.Drawing.Point(105, 55);
             this.Cheque.Name = "Cheque";
             this.Cheque.Size = new System.Drawing.Size(78, 78);
-            this.Cheque.TabIndex = 3;
+            this.Cheque.TabIndex = 2;
             this.Cheque.Text = "Cheque";
             this.Cheque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Cheque.UseVisualStyleBackColor = false;
@@ -726,14 +608,13 @@
             this.Dinheiro.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dinheiro.Image = ((System.Drawing.Image)(resources.GetObject("Dinheiro.Image")));
             this.Dinheiro.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Dinheiro.Location = new System.Drawing.Point(120, 63);
+            this.Dinheiro.Location = new System.Drawing.Point(24, 55);
             this.Dinheiro.Name = "Dinheiro";
             this.Dinheiro.Size = new System.Drawing.Size(78, 78);
-            this.Dinheiro.TabIndex = 2;
+            this.Dinheiro.TabIndex = 0;
             this.Dinheiro.Text = "Dinheiro";
             this.Dinheiro.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Dinheiro.UseVisualStyleBackColor = false;
-            this.Dinheiro.Click += new System.EventHandler(this.Dinheiro_Click);
             // 
             // Credito
             // 
@@ -747,14 +628,13 @@
             this.Credito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Credito.Image = ((System.Drawing.Image)(resources.GetObject("Credito.Image")));
             this.Credito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Credito.Location = new System.Drawing.Point(367, 63);
+            this.Credito.Location = new System.Drawing.Point(271, 55);
             this.Credito.Name = "Credito";
             this.Credito.Size = new System.Drawing.Size(78, 78);
             this.Credito.TabIndex = 5;
             this.Credito.Text = "Crédito";
             this.Credito.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Credito.UseVisualStyleBackColor = false;
-            this.Credito.Click += new System.EventHandler(this.Credito_Click);
             // 
             // Debito
             // 
@@ -768,14 +648,13 @@
             this.Debito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Debito.Image = ((System.Drawing.Image)(resources.GetObject("Debito.Image")));
             this.Debito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Debito.Location = new System.Drawing.Point(284, 63);
+            this.Debito.Location = new System.Drawing.Point(188, 55);
             this.Debito.Name = "Debito";
             this.Debito.Size = new System.Drawing.Size(78, 78);
             this.Debito.TabIndex = 4;
             this.Debito.Text = "Débito";
             this.Debito.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Debito.UseVisualStyleBackColor = false;
-            this.Debito.Click += new System.EventHandler(this.Debito_Click);
             // 
             // Crediario
             // 
@@ -789,14 +668,13 @@
             this.Crediario.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Crediario.Image = ((System.Drawing.Image)(resources.GetObject("Crediario.Image")));
             this.Crediario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Crediario.Location = new System.Drawing.Point(450, 63);
+            this.Crediario.Location = new System.Drawing.Point(354, 55);
             this.Crediario.Name = "Crediario";
             this.Crediario.Size = new System.Drawing.Size(78, 78);
             this.Crediario.TabIndex = 6;
             this.Crediario.Text = "Crediário";
             this.Crediario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Crediario.UseVisualStyleBackColor = false;
-            this.Crediario.Click += new System.EventHandler(this.Crediario_Click);
             // 
             // Boleto
             // 
@@ -810,25 +688,462 @@
             this.Boleto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Boleto.Image = ((System.Drawing.Image)(resources.GetObject("Boleto.Image")));
             this.Boleto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Boleto.Location = new System.Drawing.Point(533, 63);
+            this.Boleto.Location = new System.Drawing.Point(437, 55);
             this.Boleto.Name = "Boleto";
             this.Boleto.Size = new System.Drawing.Size(78, 78);
             this.Boleto.TabIndex = 7;
             this.Boleto.Text = "Boleto";
             this.Boleto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Boleto.UseVisualStyleBackColor = false;
-            this.Boleto.Click += new System.EventHandler(this.Boleto_Click);
             // 
-            // pictureBox5
+            // button2
             // 
-            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(17, 17);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(84, 85);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 108;
-            this.pictureBox5.TabStop = false;
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(545, 37);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 35);
+            this.button2.TabIndex = 147;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.Enabled = false;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(634, 37);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(35, 35);
+            this.button3.TabIndex = 148;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Location = new System.Drawing.Point(550, 157);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(448, 40);
+            this.panel4.TabIndex = 149;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(5, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 30);
+            this.label1.TabIndex = 131;
+            this.label1.Text = "Lançamentos";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(618, 443);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 32);
+            this.label5.TabIndex = 132;
+            this.label5.Text = "Recebimentos";
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel5.Location = new System.Drawing.Point(577, 486);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(400, 1);
+            this.panel5.TabIndex = 136;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(61, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(366, 60);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Selecione uma das opções acima para\r\nlançar um recebimento.";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.TelaReceber);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Location = new System.Drawing.Point(26, 157);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(489, 380);
+            this.panel6.TabIndex = 150;
+            // 
+            // TelaReceber
+            // 
+            this.TelaReceber.Controls.Add(this.valor);
+            this.TelaReceber.Controls.Add(this.panel7);
+            this.TelaReceber.Controls.Add(this.pictureBox2);
+            this.TelaReceber.Controls.Add(this.iniciar);
+            this.TelaReceber.Controls.Add(this.label8);
+            this.TelaReceber.Controls.Add(this.pictureBox15);
+            this.TelaReceber.Controls.Add(this.parcelas);
+            this.TelaReceber.Controls.Add(this.label9);
+            this.TelaReceber.Controls.Add(this.panel8);
+            this.TelaReceber.Controls.Add(this.label11);
+            this.TelaReceber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TelaReceber.Location = new System.Drawing.Point(0, 0);
+            this.TelaReceber.Name = "TelaReceber";
+            this.TelaReceber.Size = new System.Drawing.Size(489, 380);
+            this.TelaReceber.TabIndex = 151;
+            // 
+            // valor
+            // 
+            this.valor.AlphaNumeric = false;
+            this.valor.BackColor = System.Drawing.Color.White;
+            this.valor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.valor.BackColorState.Enabled = System.Drawing.Color.White;
+            this.valor.Border.Color = System.Drawing.Color.Gainsboro;
+            this.valor.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.valor.Border.HoverVisible = true;
+            this.valor.Border.Rounding = 8;
+            this.valor.Border.Thickness = 1;
+            this.valor.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.valor.Border.Visible = true;
+            this.valor.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.valor.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.valor.ButtonBorder.HoverVisible = true;
+            this.valor.ButtonBorder.Rounding = 6;
+            this.valor.ButtonBorder.Thickness = 1;
+            this.valor.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.valor.ButtonBorder.Visible = true;
+            this.valor.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.valor.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.valor.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.valor.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.valor.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valor.ButtonIndent = 3;
+            this.valor.ButtonText = "visualButton";
+            this.valor.ButtonVisible = false;
+            this.valor.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valor.Image = null;
+            this.valor.ImageSize = new System.Drawing.Size(16, 16);
+            this.valor.ImageVisible = false;
+            this.valor.ImageWidth = 35;
+            this.valor.Location = new System.Drawing.Point(15, 105);
+            this.valor.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.valor.Name = "valor";
+            this.valor.PasswordChar = '\0';
+            this.valor.ReadOnly = false;
+            this.valor.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.valor.Size = new System.Drawing.Size(247, 32);
+            this.valor.TabIndex = 0;
+            this.valor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.valor.TextBoxWidth = 235;
+            this.valor.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.valor.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valor.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valor.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valor.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.valor.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.valor.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.valor.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.valor.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valor.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.valor.Watermark.Text = "Watermark text";
+            this.valor.Watermark.Visible = false;
+            this.valor.WordWrap = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Controls.Add(this.btnSalvar);
+            this.panel7.Controls.Add(this.btnCancelar);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 317);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(489, 63);
+            this.panel7.TabIndex = 193;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(712, 396);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 32);
+            this.label7.TabIndex = 128;
+            this.label7.Text = "Troco";
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.FlatAppearance.BorderSize = 0;
+            this.btnSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSalvar.Location = new System.Drawing.Point(3, 2);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(116, 60);
+            this.btnSalvar.TabIndex = 1;
+            this.btnSalvar.Text = "Salvar (Enter)";
+            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(125, 2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(101, 60);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar (ESC)";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(132, 197);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 199;
+            this.pictureBox2.TabStop = false;
+            // 
+            // iniciar
+            // 
+            this.iniciar.AlphaNumeric = false;
+            this.iniciar.BackColor = System.Drawing.Color.White;
+            this.iniciar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.iniciar.BackColorState.Enabled = System.Drawing.Color.White;
+            this.iniciar.Border.Color = System.Drawing.Color.Gainsboro;
+            this.iniciar.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.iniciar.Border.HoverVisible = true;
+            this.iniciar.Border.Rounding = 8;
+            this.iniciar.Border.Thickness = 1;
+            this.iniciar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.iniciar.Border.Visible = true;
+            this.iniciar.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.iniciar.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.iniciar.ButtonBorder.HoverVisible = true;
+            this.iniciar.ButtonBorder.Rounding = 6;
+            this.iniciar.ButtonBorder.Thickness = 1;
+            this.iniciar.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.iniciar.ButtonBorder.Visible = true;
+            this.iniciar.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.iniciar.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.iniciar.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.iniciar.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.iniciar.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iniciar.ButtonIndent = 3;
+            this.iniciar.ButtonText = "visualButton";
+            this.iniciar.ButtonVisible = false;
+            this.iniciar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iniciar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.iniciar.Image = null;
+            this.iniciar.ImageSize = new System.Drawing.Size(16, 16);
+            this.iniciar.ImageVisible = false;
+            this.iniciar.ImageWidth = 35;
+            this.iniciar.Location = new System.Drawing.Point(15, 215);
+            this.iniciar.MaxLength = 10;
+            this.iniciar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.iniciar.Name = "iniciar";
+            this.iniciar.PasswordChar = '\0';
+            this.iniciar.ReadOnly = false;
+            this.iniciar.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.iniciar.Size = new System.Drawing.Size(247, 32);
+            this.iniciar.TabIndex = 3;
+            this.iniciar.TextBoxWidth = 235;
+            this.iniciar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.iniciar.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.iniciar.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.iniciar.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.iniciar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.iniciar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.iniciar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.iniciar.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.iniciar.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iniciar.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.iniciar.Watermark.Text = "Watermark text";
+            this.iniciar.Watermark.Visible = false;
+            this.iniciar.WordWrap = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(15, 195);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 17);
+            this.label8.TabIndex = 198;
+            this.label8.Text = "Iniciar a partir de";
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.BackColor = System.Drawing.Color.White;
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Location = new System.Drawing.Point(72, 142);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 196;
+            this.pictureBox15.TabStop = false;
+            // 
+            // parcelas
+            // 
+            this.parcelas.AlphaNumeric = false;
+            this.parcelas.BackColor = System.Drawing.Color.White;
+            this.parcelas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.parcelas.BackColorState.Enabled = System.Drawing.Color.White;
+            this.parcelas.Border.Color = System.Drawing.Color.Gainsboro;
+            this.parcelas.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.parcelas.Border.HoverVisible = true;
+            this.parcelas.Border.Rounding = 8;
+            this.parcelas.Border.Thickness = 1;
+            this.parcelas.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.parcelas.Border.Visible = true;
+            this.parcelas.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.parcelas.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.parcelas.ButtonBorder.HoverVisible = true;
+            this.parcelas.ButtonBorder.Rounding = 6;
+            this.parcelas.ButtonBorder.Thickness = 1;
+            this.parcelas.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.parcelas.ButtonBorder.Visible = true;
+            this.parcelas.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.parcelas.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.parcelas.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.parcelas.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.parcelas.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parcelas.ButtonIndent = 3;
+            this.parcelas.ButtonText = "visualButton";
+            this.parcelas.ButtonVisible = false;
+            this.parcelas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parcelas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.parcelas.Image = null;
+            this.parcelas.ImageSize = new System.Drawing.Size(16, 16);
+            this.parcelas.ImageVisible = false;
+            this.parcelas.ImageWidth = 35;
+            this.parcelas.Location = new System.Drawing.Point(15, 160);
+            this.parcelas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.parcelas.Name = "parcelas";
+            this.parcelas.PasswordChar = '\0';
+            this.parcelas.ReadOnly = false;
+            this.parcelas.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.parcelas.Size = new System.Drawing.Size(247, 32);
+            this.parcelas.TabIndex = 2;
+            this.parcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.parcelas.TextBoxWidth = 235;
+            this.parcelas.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.parcelas.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.parcelas.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.parcelas.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.parcelas.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.parcelas.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.parcelas.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.parcelas.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.parcelas.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parcelas.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.parcelas.Watermark.Text = "Watermark text";
+            this.parcelas.Watermark.Visible = false;
+            this.parcelas.WordWrap = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(15, 140);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 17);
+            this.label9.TabIndex = 195;
+            this.label9.Text = "Parcelas";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.lTipo);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(489, 68);
+            this.panel8.TabIndex = 192;
+            // 
+            // lTipo
+            // 
+            this.lTipo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lTipo.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lTipo.Location = new System.Drawing.Point(3, 20);
+            this.lTipo.Name = "lTipo";
+            this.lTipo.Size = new System.Drawing.Size(483, 30);
+            this.lTipo.TabIndex = 5;
+            this.lTipo.Text = "Tipo";
+            this.lTipo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(15, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 17);
+            this.label11.TabIndex = 191;
+            this.label11.Text = "Valor";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(792, 403);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(184, 25);
+            this.label6.TabIndex = 151;
+            this.label6.Text = "R$ 00.00";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel9.Location = new System.Drawing.Point(577, 437);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(400, 1);
+            this.panel9.TabIndex = 137;
             // 
             // PedidoPagamentos
             // 
@@ -836,22 +1151,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 634);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.total);
+            this.Controls.Add(this.pagamentos);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.Acrescimo);
             this.Controls.Add(this.Desconto);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Cheque);
             this.Controls.Add(this.Dinheiro);
@@ -860,7 +1181,6 @@
             this.Controls.Add(this.Crediario);
             this.Controls.Add(this.Boleto);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1024, 645);
@@ -870,30 +1190,23 @@
             this.Load += new System.EventHandler(this.PedidoPagamentos_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.TelaReceber.ResumeLayout(false);
+            this.TelaReceber.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button Cheque;
         private System.Windows.Forms.Button Dinheiro;
         private System.Windows.Forms.Button Credito;
@@ -901,39 +1214,19 @@
         private System.Windows.Forms.Button Crediario;
         private System.Windows.Forms.Button Boleto;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Desconto;
-        private System.Windows.Forms.DataGridView GridListaProdutos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button Acrescimo;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnConcluir;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label total;
+        private System.Windows.Forms.Button btnNfe;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnCFeSat;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
@@ -945,5 +1238,38 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label pagamentos;
+        private System.Windows.Forms.DataGridView GridListaFormaPgtos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private TelasRecebimentos.TelaRecebimentos panelTelaDinheiro;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel TelaReceber;
+        public VisualPlus.Toolkit.Controls.Editors.VisualTextBox valor;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        public VisualPlus.Toolkit.Controls.Editors.VisualTextBox iniciar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        public VisualPlus.Toolkit.Controls.Editors.VisualTextBox parcelas;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lTipo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel9;
     }
 }

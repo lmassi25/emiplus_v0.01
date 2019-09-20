@@ -7,6 +7,7 @@ namespace Emiplus.View.Comercial
     public partial class PedidoModalItens : Form
     {
         public static string NomeProduto { get; set; }
+        public static double ValorVendaProduto { get; set; }
 
         private string searchItemTexto = AddPedidos.searchItemTexto;
         private Controller.Item _controllerItem = new Controller.Item();
@@ -25,7 +26,7 @@ namespace Emiplus.View.Comercial
 
         private void DataTable()
         {
-            _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text);
+            _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
         }
 
         private void BuscarProduto_TextChanged(object sender, EventArgs e)
@@ -37,9 +38,13 @@ namespace Emiplus.View.Comercial
         {
             if (GridListaProdutos.SelectedRows.Count > 0)
             {
-                DialogResult = DialogResult.OK;
-                NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
-                Close();
+                if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                {
+                    DialogResult = DialogResult.OK;
+                    NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
+                    ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Venda"].Value);
+                    Close();
+                }
             }
         }
 
@@ -48,12 +53,12 @@ namespace Emiplus.View.Comercial
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    GridListaProdutos.Focus();
+                    //GridListaProdutos.Focus();
                     Support.UpDownDataGrid(false, GridListaProdutos);
                     e.Handled = true;
                     break;
                 case Keys.Down:
-                    GridListaProdutos.Focus();
+                    //GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.Handled = true;
                     break;
@@ -67,17 +72,7 @@ namespace Emiplus.View.Comercial
                     SelectItemGrid();
                     break;
                 case Keys.Enter:
-
-                    if (Validation.Event(sender, GridListaProdutos))
-                    {
-                        MessageBox.Show(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
-                    }
-
-                    if (Validation.Event(sender, buscarProduto))
-                    {
-                        GridListaProdutos.Focus();
-                    }
-
+                    SelectItemGrid();
                     break;
             }
         }

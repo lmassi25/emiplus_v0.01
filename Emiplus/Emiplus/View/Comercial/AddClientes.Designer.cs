@@ -62,6 +62,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarContato = new System.Windows.Forms.Button();
             this.btnEditarContato = new System.Windows.Forms.Button();
             this.tabTransporte = new System.Windows.Forms.TabPage();
+            this.uf = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.rntc = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,7 +94,6 @@ namespace Emiplus.View.Comercial
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.Isento = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.uf = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -563,6 +563,64 @@ namespace Emiplus.View.Comercial
             this.tabTransporte.TabIndex = 3;
             this.tabTransporte.Text = "Transporte";
             this.tabTransporte.UseVisualStyleBackColor = true;
+            // 
+            // uf
+            // 
+            this.uf.BackColor = System.Drawing.Color.White;
+            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.uf.BackColorState.Enabled = System.Drawing.Color.White;
+            this.uf.Border.Color = System.Drawing.Color.Gainsboro;
+            this.uf.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.uf.Border.HoverVisible = true;
+            this.uf.Border.Rounding = 6;
+            this.uf.Border.Thickness = 1;
+            this.uf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.uf.Border.Visible = true;
+            this.uf.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.uf.ButtonImage = null;
+            this.uf.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.uf.ButtonWidth = 30;
+            this.uf.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.uf.DropDownHeight = 150;
+            this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uf.DropDownWidth = 500;
+            this.uf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.FormattingEnabled = true;
+            this.uf.ImageList = null;
+            this.uf.ImageVisible = false;
+            this.uf.Index = 0;
+            this.uf.IntegralHeight = false;
+            this.uf.ItemHeight = 22;
+            this.uf.ItemImageVisible = true;
+            this.uf.Location = new System.Drawing.Point(20, 94);
+            this.uf.MaxDropDownItems = 100;
+            this.uf.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.uf.MenuItemNormal = System.Drawing.Color.White;
+            this.uf.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.uf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.uf.Name = "uf";
+            this.uf.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.uf.SeparatorVisible = false;
+            this.uf.Size = new System.Drawing.Size(124, 28);
+            this.uf.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.uf.TabIndex = 48;
+            this.uf.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.uf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.uf.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.uf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.uf.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.uf.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.uf.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.uf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.uf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.uf.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.uf.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.uf.Watermark.Text = "Watermark text";
+            this.uf.Watermark.Visible = false;
             // 
             // label7
             // 
@@ -1341,6 +1399,7 @@ namespace Emiplus.View.Comercial
             this.nascimento.ImageVisible = false;
             this.nascimento.ImageWidth = 35;
             this.nascimento.Location = new System.Drawing.Point(559, 196);
+            this.nascimento.MaxLength = 10;
             this.nascimento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nascimento.Name = "nascimento";
             this.nascimento.PasswordChar = '\0';
@@ -1363,64 +1422,6 @@ namespace Emiplus.View.Comercial
             this.nascimento.Watermark.Visible = false;
             this.nascimento.WordWrap = true;
             this.nascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nascimento_KeyPress);
-            // 
-            // uf
-            // 
-            this.uf.BackColor = System.Drawing.Color.White;
-            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.uf.BackColorState.Enabled = System.Drawing.Color.White;
-            this.uf.Border.Color = System.Drawing.Color.Gainsboro;
-            this.uf.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.uf.Border.HoverVisible = true;
-            this.uf.Border.Rounding = 6;
-            this.uf.Border.Thickness = 1;
-            this.uf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.uf.Border.Visible = true;
-            this.uf.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.uf.ButtonImage = null;
-            this.uf.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.uf.ButtonWidth = 30;
-            this.uf.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.uf.DropDownHeight = 150;
-            this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uf.DropDownWidth = 500;
-            this.uf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.FormattingEnabled = true;
-            this.uf.ImageList = null;
-            this.uf.ImageVisible = false;
-            this.uf.Index = 0;
-            this.uf.IntegralHeight = false;
-            this.uf.ItemHeight = 22;
-            this.uf.ItemImageVisible = true;
-            this.uf.Location = new System.Drawing.Point(20, 94);
-            this.uf.MaxDropDownItems = 100;
-            this.uf.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.uf.MenuItemNormal = System.Drawing.Color.White;
-            this.uf.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.uf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.uf.Name = "uf";
-            this.uf.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.uf.SeparatorVisible = false;
-            this.uf.Size = new System.Drawing.Size(124, 28);
-            this.uf.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.uf.TabIndex = 48;
-            this.uf.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.uf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.uf.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.uf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.uf.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.uf.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.uf.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.uf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.uf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.uf.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.uf.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.uf.Watermark.Text = "Watermark text";
-            this.uf.Watermark.Visible = false;
             // 
             // AddClientes
             // 

@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
     public static class Validation
     {
+        public static double Round(double value)
+        {
+            return Math.Round(value, 2);
+        }
+
         public static string CleanString(string dirtyString)
         {
             StringBuilder str = new StringBuilder(dirtyString);
@@ -47,9 +53,10 @@ namespace Emiplus.Data.Helpers
             }
             else
             {
-                var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
-                double d = obj;
-                res = d.ToString("#,##.##", nfi);
+                //var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
+                //double d = obj;
+                //res = d.ToString("#,##.##", nfi);
+                res = string.Format("{0:N2}", obj);
             }
 
             return res;
@@ -61,14 +68,14 @@ namespace Emiplus.Data.Helpers
         }
 
         public static double ConvertToDouble(object obj)
-        {
+        {                        
             if (obj == null)
                 return 0;
 
             if (obj.ToString() == "")
-                return 0;
+                return 0;            
 
-            return Convert.ToDouble(obj);
+            return Convert.ToDouble(obj.ToString().Replace("R$", "").Trim());
         }
 
         public static int ConvertToInt32(object obj)
@@ -84,6 +91,9 @@ namespace Emiplus.Data.Helpers
 
         public static string ConvertDateToForm(object date)
         {
+            if (date == null)
+                return "";
+
             if (String.IsNullOrEmpty(date.ToString()))
                 return "";
 
@@ -92,10 +102,18 @@ namespace Emiplus.Data.Helpers
 
         public static string ConvertDateToSQL(object date)
         {
+            if (date == null)
+                return "";
+
             if (String.IsNullOrEmpty(date.ToString()))
                 return "";
 
             return Convert.ToDateTime(date).Year + "-" + (Convert.ToDateTime(date).Month).ToString("00") + "-" + (Convert.ToDateTime(date).Day).ToString("00");
+        }
+
+        public static string DateNowToSql()
+        {
+            return DateTime.Now.Year + "-" + (DateTime.Now.Month).ToString("00") + "-" + (DateTime.Now.Day).ToString("00");
         }
 
         public static bool Event(object sender, dynamic control)
@@ -128,6 +146,14 @@ namespace Emiplus.Data.Helpers
             if (value is double) return true;
             if (value is decimal) return true;
             return false;
+        }
+
+        public static string OnlyNumbers(string toNormalize)
+        {
+            string resultString = string.Empty;
+            Regex regexObj = new Regex(@"[^\d\d.\,]");
+            resultString = regexObj.Replace(toNormalize, "");
+            return resultString;
         }
 
         public static bool IsEqualTo<T>(this T firstValue, T secondValue) where T : IComparable<T>

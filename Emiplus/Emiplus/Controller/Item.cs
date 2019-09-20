@@ -7,7 +7,7 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public void GetDataTable(DataGridView Table, string SearchText)
+        public void GetDataTable(DataGridView Table, string SearchText, int page = 0)
         {
             Table.ColumnCount = 6;
 
@@ -16,8 +16,9 @@ namespace Emiplus.Controller
 
             Table.Columns[1].Name = "Categoria";
             Table.Columns[1].Width = 100;
-
-            Table.Columns[2].Name = "Cód. Personalizado";
+            if (page == 1) Table.Columns[1].Visible = false;
+            
+            Table.Columns[2].Name = "Código";
             Table.Columns[2].Width = 100;
 
             Table.Columns[3].Name = "Descrição";
@@ -26,6 +27,7 @@ namespace Emiplus.Controller
             Table.Columns[4].Name = "Custo";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
+            if (page == 1) Table.Columns[4].Visible = false;
 
             Table.Columns[5].Name = "Venda";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -57,8 +59,8 @@ namespace Emiplus.Controller
                     item.CATEGORIA,
                     item.REFERENCIA,
                     item.NOME,
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA)),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA))
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true)
                 );
             }
         }

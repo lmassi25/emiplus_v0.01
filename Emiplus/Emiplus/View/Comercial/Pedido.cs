@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Emiplus.View.Common;
+using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class Pedido : Form
     {
-        public static int Id { get; set; }
+        public static int IdPedido { get; set; }
 
         public Pedido()
         {
@@ -24,7 +25,7 @@ namespace Emiplus.View.Comercial
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
-            Id = 0;
+            IdPedido = 0;
             AddPedidos NovoPedido = new AddPedidos();
             NovoPedido.ShowDialog();
         }

@@ -146,10 +146,12 @@
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
             this.GridListaProdutos.MultiSelect = false;
             this.GridListaProdutos.Name = "GridListaProdutos";
+            this.GridListaProdutos.ReadOnly = true;
             this.GridListaProdutos.RowTemplate.Height = 30;
             this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaProdutos.Size = new System.Drawing.Size(823, 234);
             this.GridListaProdutos.TabIndex = 9;
+            this.GridListaProdutos.TabStop = false;
             // 
             // label1
             // 
@@ -225,7 +227,7 @@
             this.buscarProduto.ReadOnly = false;
             this.buscarProduto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.buscarProduto.Size = new System.Drawing.Size(376, 34);
-            this.buscarProduto.TabIndex = 61;
+            this.buscarProduto.TabIndex = 0;
             this.buscarProduto.TextBoxWidth = 225;
             this.buscarProduto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.buscarProduto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

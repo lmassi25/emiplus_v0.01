@@ -49,32 +49,34 @@
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
         public string Medida { get; set; }
-        public double Total { get; set; } // SOMASSE AO RESPECTIVO TOTAL
+        public double Total { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double Desconto { get; set; } // É o resultado de DescontoItem + DescontoPedido
         public double DescontoItem { get; set; } // valor informado no item
         public double DescontoPedido { get; set; } //  desconto total lançado pelo usuário dividido pelo quantidade de itens lançados
-        public double Frete { get; set; } // SOMASSE AO RESPECTIVO TOTAL
-        public double Produtos { get; set; } // SOMASSE AO RESPECTIVO TOTAL
+        public double Frete { get; set; } // SOMA AO RESPECTIVO TOTAL
+        public double TotalCompra { get; set; }
+        public double TotalVenda { get; set; }
         public string Icms { get; set; } // CST CSOSN                
         public double IcmsBase { get; set; }
         public double IcmsReducaoAliq { get; set; }
-        public double IcmsBaseComReducao { get; set; } // SOMASSE AO RESPECTIVO TOTAL
+        public double IcmsBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsAliq { get; set; }
-        public double IcmsVlr { get; set; }  // SOMASSE AO RESPECTIVO TOTAL // VALOR DE ICMS DO ITEM 
+        public double IcmsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE ICMS DO ITEM 
         public double IcmsStBase { get; set; }
         public double IcmsStReducaoAliq { get; set; }
-        public double IcmsStBaseComReducao { get; set; } // SOMASSE AO RESPECTIVO TOTAL
+        public double IcmsStBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsStAliq { get; set; }
-        public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM  
+        public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
+        public double Icmsstvlr { get; set; }
         public string Ipi { get; set; } // CST
         public double IpiAliq { get; set; }
-        public double IpiVlr { get; set; }  // SOMASSE AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM         
+        public double IpiVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM         
         public string Pis { get; set; } // CST
         public double PisAliq { get; set; }
-        public double PisVlr { get; set; }  // SOMASSE AO RESPECTIVO TOTAL // VALOR DE PIS DO ITEM                 
+        public double PisVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE PIS DO ITEM                 
         public string Cofins { get; set; } // CST
         public double CofinsAliq { get; set; }
-        public double CofinsVlr { get; set; }  // SOMASSE AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM  
+        public double CofinsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM  
 
         #endregion
 
@@ -158,6 +160,12 @@
             return data;
         }
 
+        public PedidoItem SetTipo(string tipo)
+        {
+            Tipo = tipo;
+            return this;
+        }
+
         public PedidoItem SetId(int id)
         {
             Id = id;
@@ -192,14 +200,26 @@
             return this;
         }
 
-        public PedidoItem SetValorVenda(double valorVenda)
+        public bool SetValorVenda(double valorVenda)
         {
-            if (Validation.IsNumber(valorVenda))
+            if (valorVenda == 0 || valorVenda < 0)
             {
-                ValorVenda = valorVenda == 0 ? ItemObj.ValorVenda : valorVenda;
+                if (ItemObj.ValorVenda == 0 || ItemObj.ValorVenda < 0)
+                {
+                    return false;
+                }
+
+                 ValorVenda = ItemObj.ValorVenda;
+                 return true;
             }
 
-            return this;
+            if (!Validation.IsNumber(valorVenda))
+            {
+                return false;
+            }
+
+            ValorVenda = valorVenda;
+            return true;
         }
 
         public PedidoItem SetMedida(string medida)
@@ -213,7 +233,7 @@
         {
             if (Validation.IsNumber(valor))
             {
-                Produtos = valor;
+                TotalVenda = valor;
             }
 
             return this;
@@ -243,7 +263,7 @@
                     return this;
                 }
 
-                DescontoItem = (valor / 100 * (Produtos));
+                DescontoItem = (valor / 100 * (TotalVenda));
             }
 
             return this;
@@ -256,21 +276,21 @@
             return this;
         }
 
-        public PedidoItem SomarProdutosTotal()
+        public double SomarProdutosTotal()
         {
-            Produtos = Quantidade * ValorVenda;
+            TotalVenda = Quantidade * ValorVenda;
 
-            return this;
+            return TotalVenda;
         }
 
-        public PedidoItem SomarTotal()
+        public double SomarTotal()
         {
             SomarDescontoTotal();
             SomarProdutosTotal();
 
-            Total = Produtos - Desconto;
+            Total = TotalVenda - Desconto;
 
-            return this;
+            return Total;
         }
 
         public bool Save(PedidoItem data)

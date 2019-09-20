@@ -10,6 +10,7 @@ namespace Emiplus.Data.Helpers
         {
             // 28/04/1997 - 10 caracateres
             TextBox t = sender as TextBox;
+
             if (e.KeyChar >= 48 && e.KeyChar <= 57)
             {
                 t.SelectionStart = t.Text.Length + 1;
@@ -72,11 +73,8 @@ namespace Emiplus.Data.Helpers
         {
             string n = string.Empty;
             double v = 0;
-
-            if (Validation.IsNumber(txt))
-                return;
-
-            n = txt.Text.Replace(",", "").Replace(".", "");
+            
+            n = Validation.OnlyNumbers(txt.Text.Replace(",", "").Replace(".", ""));
             if (n.Equals(""))
             {
                 n = "";

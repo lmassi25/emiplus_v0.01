@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -51,6 +51,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelarProduto = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,6 +64,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelTwo = new System.Windows.Forms.Panel();
+            this.totaisDescontos = new System.Windows.Forms.Label();
+            this.itens = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.subTotal = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -77,7 +81,6 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.itens = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -376,12 +379,53 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnCancelarProduto);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.btnConcluir);
             this.panel2.Location = new System.Drawing.Point(0, 656);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(134, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 152;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelarProduto
+            // 
+            this.btnCancelarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnCancelarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
+            this.btnCancelarProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelarProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarProduto.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarProduto.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelarProduto.Image")));
+            this.btnCancelarProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelarProduto.Location = new System.Drawing.Point(17, 4);
+            this.btnCancelarProduto.Name = "btnCancelarProduto";
+            this.btnCancelarProduto.Size = new System.Drawing.Size(148, 65);
+            this.btnCancelarProduto.TabIndex = 151;
+            this.btnCancelarProduto.Text = "Cancelar Produto";
+            this.btnCancelarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelarProduto.UseVisualStyleBackColor = false;
+            this.btnCancelarProduto.Click += new System.EventHandler(this.BtnCancelarProduto_Click);
             // 
             // button21
             // 
@@ -453,20 +497,21 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
             this.GridListaProdutos.MultiSelect = false;
             this.GridListaProdutos.Name = "GridListaProdutos";
+            this.GridListaProdutos.ReadOnly = true;
             this.GridListaProdutos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.GridListaProdutos.RowHeadersVisible = false;
             this.GridListaProdutos.RowTemplate.Height = 30;
@@ -540,6 +585,7 @@
             this.panelTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTwo.Controls.Add(this.totaisDescontos);
             this.panelTwo.Controls.Add(this.itens);
             this.panelTwo.Controls.Add(this.visualPanel1);
             this.panelTwo.Controls.Add(this.Quantidade);
@@ -555,6 +601,33 @@
             this.panelTwo.Name = "panelTwo";
             this.panelTwo.Size = new System.Drawing.Size(1008, 577);
             this.panelTwo.TabIndex = 104;
+            // 
+            // totaisDescontos
+            // 
+            this.totaisDescontos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.totaisDescontos.BackColor = System.Drawing.Color.Transparent;
+            this.totaisDescontos.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totaisDescontos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.totaisDescontos.Location = new System.Drawing.Point(641, 544);
+            this.totaisDescontos.Name = "totaisDescontos";
+            this.totaisDescontos.Size = new System.Drawing.Size(336, 17);
+            this.totaisDescontos.TabIndex = 155;
+            this.totaisDescontos.Text = "Total Descontos: R$ 0,00";
+            this.totaisDescontos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // itens
+            // 
+            this.itens.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.itens.AutoSize = true;
+            this.itens.BackColor = System.Drawing.Color.Transparent;
+            this.itens.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.itens.Location = new System.Drawing.Point(132, 544);
+            this.itens.Name = "itens";
+            this.itens.Size = new System.Drawing.Size(52, 17);
+            this.itens.TabIndex = 67;
+            this.itens.Text = "Itens: 0";
+            this.itens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // visualPanel1
             // 
@@ -577,6 +650,7 @@
             this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.visualPanel1.Size = new System.Drawing.Size(870, 50);
             this.visualPanel1.TabIndex = 154;
+            this.visualPanel1.TabStop = false;
             this.visualPanel1.Text = "visualPanel1";
             this.visualPanel1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.visualPanel1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -589,15 +663,15 @@
             // subTotal
             // 
             this.subTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.subTotal.AutoSize = true;
             this.subTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.subTotal.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subTotal.ForeColor = System.Drawing.Color.Gray;
-            this.subTotal.Location = new System.Drawing.Point(697, 5);
+            this.subTotal.Location = new System.Drawing.Point(544, 5);
             this.subTotal.Name = "subTotal";
-            this.subTotal.Size = new System.Drawing.Size(166, 40);
+            this.subTotal.Size = new System.Drawing.Size(324, 40);
             this.subTotal.TabIndex = 101;
             this.subTotal.Text = "R$ 5,000,00";
+            this.subTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label20
             // 
@@ -618,7 +692,7 @@
             this.Quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Quantidade.BackColorState.Enabled = System.Drawing.Color.White;
             this.Quantidade.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Quantidade.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Quantidade.Border.HoverColor = System.Drawing.Color.Gray;
             this.Quantidade.Border.HoverVisible = true;
             this.Quantidade.Border.Rounding = 8;
             this.Quantidade.Border.Thickness = 1;
@@ -653,6 +727,7 @@
             this.Quantidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Quantidade.Size = new System.Drawing.Size(91, 34);
             this.Quantidade.TabIndex = 2;
+            this.Quantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Quantidade.TextBoxWidth = 79;
             this.Quantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Quantidade.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -677,7 +752,7 @@
             this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;
             this.BuscarProduto.Border.Color = System.Drawing.Color.Gainsboro;
-            this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gray;
             this.BuscarProduto.Border.HoverVisible = true;
             this.BuscarProduto.Border.Rounding = 8;
             this.BuscarProduto.Border.Thickness = 1;
@@ -727,7 +802,6 @@
             this.BuscarProduto.Watermark.Visible = false;
             this.BuscarProduto.WordWrap = true;
             this.BuscarProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BuscarProduto_KeyDown);
-            this.BuscarProduto.TextChanged += new System.EventHandler(this.BuscarProduto_TextChanged);
             this.BuscarProduto.Click += new System.EventHandler(this.Produto_Click);
             this.BuscarProduto.Leave += new System.EventHandler(this.Produto_Leave);
             // 
@@ -779,7 +853,7 @@
             this.panelAvancado.Location = new System.Drawing.Point(501, 29);
             this.panelAvancado.Name = "panelAvancado";
             this.panelAvancado.Size = new System.Drawing.Size(482, 65);
-            this.panelAvancado.TabIndex = 96;
+            this.panelAvancado.TabIndex = 3;
             this.panelAvancado.Visible = false;
             // 
             // Medidas
@@ -788,7 +862,7 @@
             this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Medidas.BackColorState.Enabled = System.Drawing.Color.White;
             this.Medidas.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Medidas.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Medidas.Border.HoverColor = System.Drawing.Color.Gray;
             this.Medidas.Border.HoverVisible = true;
             this.Medidas.Border.Rounding = 6;
             this.Medidas.Border.Thickness = 1;
@@ -819,7 +893,7 @@
             this.Medidas.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Medidas.Size = new System.Drawing.Size(91, 33);
             this.Medidas.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Medidas.TabIndex = 82;
+            this.Medidas.TabIndex = 1;
             this.Medidas.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Medidas.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Medidas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -845,7 +919,7 @@
             this.DescontoReais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.DescontoReais.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoReais.Border.Color = System.Drawing.Color.Gainsboro;
-            this.DescontoReais.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DescontoReais.Border.HoverColor = System.Drawing.Color.Gray;
             this.DescontoReais.Border.HoverVisible = true;
             this.DescontoReais.Border.Rounding = 8;
             this.DescontoReais.Border.Thickness = 1;
@@ -879,7 +953,8 @@
             this.DescontoReais.ReadOnly = false;
             this.DescontoReais.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.DescontoReais.Size = new System.Drawing.Size(91, 34);
-            this.DescontoReais.TabIndex = 6;
+            this.DescontoReais.TabIndex = 3;
+            this.DescontoReais.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DescontoReais.TextBoxWidth = 79;
             this.DescontoReais.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.DescontoReais.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -894,6 +969,7 @@
             this.DescontoReais.Watermark.Text = "Watermark text";
             this.DescontoReais.Watermark.Visible = false;
             this.DescontoReais.WordWrap = true;
+            this.DescontoReais.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DescontoReais_KeyDown);
             // 
             // DescontoPorcentagem
             // 
@@ -902,7 +978,7 @@
             this.DescontoPorcentagem.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.DescontoPorcentagem.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoPorcentagem.Border.Color = System.Drawing.Color.Gainsboro;
-            this.DescontoPorcentagem.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.DescontoPorcentagem.Border.HoverColor = System.Drawing.Color.Gray;
             this.DescontoPorcentagem.Border.HoverVisible = true;
             this.DescontoPorcentagem.Border.Rounding = 8;
             this.DescontoPorcentagem.Border.Thickness = 1;
@@ -936,7 +1012,8 @@
             this.DescontoPorcentagem.ReadOnly = false;
             this.DescontoPorcentagem.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.DescontoPorcentagem.Size = new System.Drawing.Size(91, 34);
-            this.DescontoPorcentagem.TabIndex = 5;
+            this.DescontoPorcentagem.TabIndex = 2;
+            this.DescontoPorcentagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DescontoPorcentagem.TextBoxWidth = 79;
             this.DescontoPorcentagem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.DescontoPorcentagem.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -951,6 +1028,7 @@
             this.DescontoPorcentagem.Watermark.Text = "Watermark text";
             this.DescontoPorcentagem.Watermark.Visible = false;
             this.DescontoPorcentagem.WordWrap = true;
+            this.DescontoPorcentagem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DescontoPorcentagem_KeyDown);
             // 
             // Preco
             // 
@@ -959,7 +1037,7 @@
             this.Preco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Preco.BackColorState.Enabled = System.Drawing.Color.White;
             this.Preco.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Preco.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Preco.Border.HoverColor = System.Drawing.Color.Gray;
             this.Preco.Border.HoverVisible = true;
             this.Preco.Border.Rounding = 8;
             this.Preco.Border.Thickness = 1;
@@ -993,7 +1071,8 @@
             this.Preco.ReadOnly = false;
             this.Preco.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Preco.Size = new System.Drawing.Size(91, 34);
-            this.Preco.TabIndex = 3;
+            this.Preco.TabIndex = 0;
+            this.Preco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Preco.TextBoxWidth = 79;
             this.Preco.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Preco.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1008,6 +1087,7 @@
             this.Preco.Watermark.Text = "Watermark text";
             this.Preco.Watermark.Visible = false;
             this.Preco.WordWrap = true;
+            this.Preco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Preco_KeyDown);
             this.Preco.TextChanged += new System.EventHandler(this.Preco_TextChanged);
             // 
             // addProduto
@@ -1023,8 +1103,9 @@
             this.addProduto.Location = new System.Drawing.Point(433, 15);
             this.addProduto.Name = "addProduto";
             this.addProduto.Size = new System.Drawing.Size(42, 41);
-            this.addProduto.TabIndex = 7;
+            this.addProduto.TabIndex = 4;
             this.addProduto.UseVisualStyleBackColor = false;
+            this.addProduto.Click += new System.EventHandler(this.AddProduto_Click);
             // 
             // pictureBox4
             // 
@@ -1035,20 +1116,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
-            // 
-            // itens
-            // 
-            this.itens.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.itens.AutoSize = true;
-            this.itens.BackColor = System.Drawing.Color.Transparent;
-            this.itens.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.itens.Location = new System.Drawing.Point(931, 471);
-            this.itens.Name = "itens";
-            this.itens.Size = new System.Drawing.Size(52, 17);
-            this.itens.TabIndex = 67;
-            this.itens.Text = "Itens: 0";
-            this.itens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AddPedidos
             // 
@@ -1067,7 +1134,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AddPedidos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1141,5 +1207,8 @@
         private System.Windows.Forms.Label label20;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Medidas;
         private System.Windows.Forms.Label itens;
+        private System.Windows.Forms.Label totaisDescontos;
+        private System.Windows.Forms.Button btnCancelarProduto;
+        private System.Windows.Forms.Button button1;
     }
 }
