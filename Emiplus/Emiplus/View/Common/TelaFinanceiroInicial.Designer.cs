@@ -210,7 +210,6 @@
             this.aPagar.Text = "Contas a Pagar";
             this.aPagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aPagar.UseVisualStyleBackColor = false;
-            this.aPagar.Click += new System.EventHandler(this.APagar_Click);
             // 
             // aReceber
             // 
@@ -234,7 +233,6 @@
             this.aReceber.Text = "Contas a Receber";
             this.aReceber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aReceber.UseVisualStyleBackColor = false;
-            this.aReceber.Click += new System.EventHandler(this.AReceber_Click);
             // 
             // label1
             // 

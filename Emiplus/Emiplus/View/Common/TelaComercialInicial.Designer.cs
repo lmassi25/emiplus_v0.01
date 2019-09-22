@@ -127,7 +127,6 @@
             this.Clientes.Text = "Clientes";
             this.Clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Clientes.UseVisualStyleBackColor = false;
-            this.Clientes.Click += new System.EventHandler(this.Clientes_Click);
             // 
             // label3
             // 
@@ -207,7 +206,6 @@
             this.Pedidos.Text = "Pedidos";
             this.Pedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Pedidos.UseVisualStyleBackColor = false;
-            this.Pedidos.Click += new System.EventHandler(this.Pedidos_Click);
             // 
             // button4
             // 
@@ -323,7 +321,6 @@
             this.NovoPedido.Text = "Novo Pedido";
             this.NovoPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.NovoPedido.UseVisualStyleBackColor = false;
-            this.NovoPedido.Click += new System.EventHandler(this.NovoPedido_Click);
             // 
             // visualSeparator1
             // 

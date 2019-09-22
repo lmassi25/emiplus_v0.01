@@ -9,18 +9,23 @@ namespace Emiplus.View.Common
         public TelaFinanceiroInicial()
         {
             InitializeComponent();
+
+            Events();
         }
 
-        private void AReceber_Click(object sender, System.EventArgs e)
+        private void Events()
         {
-            Home.financeiroPage = "Receber";
-            OpenForm.Show<Titulos>(this);
-        }
+            aReceber.Click += (s, e) =>
+            {
+                Home.financeiroPage = "Receber";
+                OpenForm.Show<Titulos>(this);
+            };
 
-        private void APagar_Click(object sender, System.EventArgs e)
-        {
-            Home.financeiroPage = "Pagar";
-            OpenForm.Show<Titulos>(this);
+            aPagar.Click += (s, e) =>
+            {
+                Home.financeiroPage = "Pagar";
+                OpenForm.Show<Titulos>(this);
+            };
         }
     }
 }
