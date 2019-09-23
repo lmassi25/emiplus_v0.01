@@ -7,12 +7,12 @@ namespace Emiplus.View.Produtos
     public partial class Categorias : Form
     {
         public static int idCatSelected { get; set; }
-
         private Controller.Categoria _controller = new Controller.Categoria();
 
         public Categorias()
         {
             InitializeComponent();
+            Events();
         }
 
         private void DataTable()
@@ -20,53 +20,40 @@ namespace Emiplus.View.Produtos
             _controller.GetDataTable(GridListaCategorias, search.Text);
         }
 
-        private void Categorias_Load(object sender, EventArgs e)
+        private void EditCategoria(bool create = false)
         {
-            search.Select();
-            DataTable();
+            if (create)
+            {
+                idCatSelected = 0;
+                OpenForm.Show<AddCategorias>(this);
+                return;
+            }
+
+            if (GridListaCategorias.SelectedRows.Count > 0)
+            {
+                idCatSelected = Convert.ToInt32(GridListaCategorias.SelectedRows[0].Cells["ID"].Value);
+                OpenForm.Show<AddCategorias>(this);
+            }
         }
 
-        private void Label5_Click(object sender, EventArgs e)
+        private void Events()
         {
-            Close();
-        }
+            Load += (s, e) => {
+                search.Select();
+                DataTable();
+            };
 
-        private void Adicionar_Click(object sender, EventArgs e)
-        {
-            idCatSelected = 0;
-            OpenForm.Show<AddCategorias>(this);
-        }
+            label5.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
 
-        private void Search_TextChanged(object sender, EventArgs e)
-        {
-            DataTable();
-        }
+            Adicionar.Click += (s, e) => EditCategoria(true);
+            Editar.Click += (s, e) => EditCategoria();
+            GridListaCategorias.DoubleClick += (s, e) => EditCategoria(); 
 
-        private void Editar_Click(object sender, EventArgs e)
-        {
-            idCatSelected = Convert.ToInt32(GridListaCategorias.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddCategorias>(this);
-        }
+            search.TextChanged += (s, e) => DataTable();
+            search.Enter += (s, e) => DataTable();
 
-        private void GridListaCategorias_DoubleClick(object sender, EventArgs e)
-        {
-            idCatSelected = Convert.ToInt32(GridListaCategorias.SelectedRows[0].Cells["ID"].Value);
-            OpenForm.Show<AddCategorias>(this);
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("http://google.com");
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            DataTable();
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

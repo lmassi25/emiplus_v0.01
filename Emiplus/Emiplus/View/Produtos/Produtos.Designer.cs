@@ -131,8 +131,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // btnExit
             // 
@@ -153,7 +151,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // label3
             // 
@@ -186,7 +183,6 @@
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnEditar
             // 
@@ -208,7 +204,6 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnRelatorios
             // 
@@ -292,7 +287,6 @@
             this.GridListaProdutos.Size = new System.Drawing.Size(659, 280);
             this.GridListaProdutos.TabIndex = 5;
             this.GridListaProdutos.TabStop = false;
-            this.GridListaProdutos.DoubleClick += new System.EventHandler(this.GridListaProdutos_DoubleClick);
             // 
             // panel2
             // 
@@ -361,7 +355,6 @@
             this.label5.Size = new System.Drawing.Size(61, 17);
             this.label5.TabIndex = 3;
             this.label5.Text = "Produtos";
-            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // pictureBox1
             // 
@@ -406,7 +399,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // Produtos
             // 
@@ -425,7 +417,6 @@
             this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Products";
-            this.Load += new System.EventHandler(this.Produtos_Load);
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();

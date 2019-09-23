@@ -151,7 +151,6 @@ namespace Emiplus.View.Comercial
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // btnRemover
             // 
@@ -173,7 +172,6 @@ namespace Emiplus.View.Comercial
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // label1
             // 
@@ -215,7 +213,6 @@ namespace Emiplus.View.Comercial
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnHelp
             // 
@@ -237,7 +234,6 @@ namespace Emiplus.View.Comercial
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // panel5
             // 
@@ -326,7 +322,6 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.Size = new System.Drawing.Size(637, 124);
             this.ListaEnderecos.TabIndex = 4;
             this.ListaEnderecos.TabStop = false;
-            this.ListaEnderecos.DoubleClick += new System.EventHandler(this.ListaEnderecos_DoubleClick);
             // 
             // panel1
             // 
@@ -384,7 +379,6 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarEndereco.Text = "Adicionar";
             this.btnAdicionarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarEndereco.UseVisualStyleBackColor = true;
-            this.btnAdicionarEndereco.Click += new System.EventHandler(this.BtnAdicionarEndereco_Click);
             // 
             // btnEditarEndereco
             // 
@@ -406,7 +400,6 @@ namespace Emiplus.View.Comercial
             this.btnEditarEndereco.Text = "Editar";
             this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarEndereco.UseVisualStyleBackColor = true;
-            this.btnEditarEndereco.Click += new System.EventHandler(this.BtnEditarEndereco_Click);
             // 
             // tabPage3
             // 
@@ -465,7 +458,6 @@ namespace Emiplus.View.Comercial
             this.ListaContatos.Size = new System.Drawing.Size(643, 130);
             this.ListaContatos.TabIndex = 4;
             this.ListaContatos.TabStop = false;
-            this.ListaContatos.DoubleClick += new System.EventHandler(this.ListaContatos_DoubleClick);
             // 
             // panel3
             // 
@@ -523,7 +515,6 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarContato.Text = "Adicionar";
             this.btnAdicionarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarContato.UseVisualStyleBackColor = true;
-            this.btnAdicionarContato.Click += new System.EventHandler(this.BtnAdicionarContato_Click);
             // 
             // btnEditarContato
             // 
@@ -545,7 +536,6 @@ namespace Emiplus.View.Comercial
             this.btnEditarContato.Text = "Editar";
             this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarContato.UseVisualStyleBackColor = true;
-            this.btnEditarContato.Click += new System.EventHandler(this.BtnEditarContato_Click);
             // 
             // tabTransporte
             // 
@@ -817,7 +807,6 @@ namespace Emiplus.View.Comercial
             this.label6.Size = new System.Drawing.Size(53, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Clientes";
-            this.label6.Click += new System.EventHandler(this.Label6_Click_1);
             // 
             // label4
             // 
@@ -1028,7 +1017,6 @@ namespace Emiplus.View.Comercial
             this.pessoaJF.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.pessoaJF.Watermark.Text = "Watermark text";
             this.pessoaJF.Watermark.Visible = false;
-            this.pessoaJF.SelectionChangeCommitted += new System.EventHandler(this.PessoaJF_SelectionChangeCommitted);
             // 
             // label19
             // 
@@ -1168,7 +1156,6 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.Watermark.Text = "Watermark text";
             this.cpfCnpj.Watermark.Visible = false;
             this.cpfCnpj.WordWrap = true;
-            this.cpfCnpj.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CpfCnpj_KeyPress);
             // 
             // label21
             // 
@@ -1321,7 +1308,6 @@ namespace Emiplus.View.Comercial
             this.nomeRS.Watermark.Text = "Watermark text";
             this.nomeRS.Watermark.Visible = false;
             this.nomeRS.WordWrap = true;
-            this.nomeRS.Enter += new System.EventHandler(this.NomeRS_Enter);
             // 
             // Isento
             // 
@@ -1424,7 +1410,6 @@ namespace Emiplus.View.Comercial
             this.nascimento.Watermark.Text = "Watermark text";
             this.nascimento.Watermark.Visible = false;
             this.nascimento.WordWrap = true;
-            this.nascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Nascimento_KeyPress);
             // 
             // AddClientes
             // 
@@ -1446,8 +1431,6 @@ namespace Emiplus.View.Comercial
             this.Name = "AddClientes";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Activated += new System.EventHandler(this.AddClientes_Activated);
-            this.Load += new System.EventHandler(this.AddClientes_Load);
             this.barraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);

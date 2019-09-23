@@ -113,7 +113,6 @@
             this.label5.Size = new System.Drawing.Size(61, 17);
             this.label5.TabIndex = 3;
             this.label5.Text = "Produtos";
-            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // pictureBox1
             // 
@@ -197,8 +196,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // btnExit
             // 
@@ -219,7 +216,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // label3
             // 
@@ -252,7 +248,6 @@
             this.Adicionar.Text = "Adicionar";
             this.Adicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Adicionar.UseVisualStyleBackColor = true;
-            this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
             // Editar
             // 
@@ -274,7 +269,6 @@
             this.Editar.Text = "Editar";
             this.Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Editar.UseVisualStyleBackColor = true;
-            this.Editar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // label2
             // 
@@ -327,7 +321,6 @@
             this.GridListaImpostos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaImpostos.Size = new System.Drawing.Size(659, 280);
             this.GridListaImpostos.TabIndex = 5;
-            this.GridListaImpostos.Click += new System.EventHandler(this.GridListaImpostos_DoubleClick);
             // 
             // panel5
             // 
@@ -360,7 +353,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // Impostos
             // 
@@ -378,7 +370,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Impostos";
             this.Text = "Impostos";
-            this.Load += new System.EventHandler(this.Impostos_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

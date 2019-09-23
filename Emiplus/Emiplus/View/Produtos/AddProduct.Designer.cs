@@ -191,7 +191,6 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // btnEtiqueta
             // 
@@ -213,7 +212,6 @@
             this.btnEtiqueta.Text = "Etiqueta";
             this.btnEtiqueta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEtiqueta.UseVisualStyleBackColor = true;
-            this.btnEtiqueta.Click += new System.EventHandler(this.Button4_Click);
             // 
             // btnDuplicar
             // 
@@ -256,7 +254,6 @@
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // btnHelp
             // 
@@ -278,7 +275,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // panel5
             // 
@@ -311,7 +307,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // panel4
             // 
@@ -683,7 +678,6 @@
             this.valorvenda.Watermark.Text = "Watermark text";
             this.valorvenda.Watermark.Visible = false;
             this.valorvenda.WordWrap = true;
-            this.valorvenda.TextChanged += new System.EventHandler(this.Valorvenda_TextChanged);
             // 
             // label16
             // 
@@ -754,7 +748,6 @@
             this.valorcompra.Watermark.Text = "Watermark text";
             this.valorcompra.Watermark.Visible = false;
             this.valorcompra.WordWrap = true;
-            this.valorcompra.TextChanged += new System.EventHandler(this.Valorcompra_TextChanged);
             // 
             // label15
             // 
@@ -1115,7 +1108,6 @@
             this.btnEstoque.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnEstoque.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnEstoque.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnEstoque.Click += new System.EventHandler(this.BtnEstoque_Click);
             // 
             // estoqueatual
             // 
@@ -1862,7 +1854,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddProduct";
             this.Text = "AddProduct";
-            this.Load += new System.EventHandler(this.AddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

@@ -77,7 +77,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // label4
             // 
@@ -122,7 +121,6 @@
             this.label5.Size = new System.Drawing.Size(61, 17);
             this.label5.TabIndex = 3;
             this.label5.Text = "Produtos";
-            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // pictureBox1
             // 
@@ -164,7 +162,6 @@
             this.GridListaCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaCategorias.Size = new System.Drawing.Size(659, 280);
             this.GridListaCategorias.TabIndex = 5;
-            this.GridListaCategorias.DoubleClick += new System.EventHandler(this.GridListaCategorias_DoubleClick);
             // 
             // panel5
             // 
@@ -218,7 +215,6 @@
             this.Editar.Text = "Editar";
             this.Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Editar.UseVisualStyleBackColor = true;
-            this.Editar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // panel2
             // 
@@ -263,7 +259,6 @@
             this.Adicionar.Text = "Adicionar";
             this.Adicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Adicionar.UseVisualStyleBackColor = true;
-            this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
             // btnExit
             // 
@@ -284,7 +279,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // barraTitulo
             // 
@@ -358,8 +352,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // Categorias
             // 
@@ -378,7 +370,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Categorias";
             this.Text = "Categorias";
-            this.Load += new System.EventHandler(this.Categorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
