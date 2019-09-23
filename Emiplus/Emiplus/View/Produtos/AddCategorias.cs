@@ -22,7 +22,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Events()
+        private new void Events()
         {
             Load += (s, e) =>
             {

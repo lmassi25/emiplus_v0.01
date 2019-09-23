@@ -158,7 +158,6 @@
             this.SelecionarColaborador.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarColaborador.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarColaborador.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.SelecionarColaborador.Click += new System.EventHandler(this.SelecionarColaborador_Click);
             // 
             // SelecionarCliente
             // 
@@ -193,7 +192,6 @@
             this.SelecionarCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.SelecionarCliente.Click += new System.EventHandler(this.SelecionarCliente_Click);
             // 
             // pictureBox9
             // 
@@ -425,7 +423,6 @@
             this.btnCancelarProduto.Text = "Cancelar Produto";
             this.btnCancelarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelarProduto.UseVisualStyleBackColor = false;
-            this.btnCancelarProduto.Click += new System.EventHandler(this.BtnCancelarProduto_Click);
             // 
             // button21
             // 
@@ -464,7 +461,6 @@
             this.btnConcluir.Text = "Pagamento";
             this.btnConcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConcluir.UseVisualStyleBackColor = false;
-            this.btnConcluir.Click += new System.EventHandler(this.BtnConcluir_Click);
             // 
             // label4
             // 
@@ -742,7 +738,6 @@
             this.Quantidade.Watermark.Text = "Watermark text";
             this.Quantidade.Watermark.Visible = false;
             this.Quantidade.WordWrap = true;
-            this.Quantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Quantidade_KeyDown);
             // 
             // BuscarProduto
             // 
@@ -801,9 +796,6 @@
             this.BuscarProduto.Watermark.Text = "Watermark text";
             this.BuscarProduto.Watermark.Visible = false;
             this.BuscarProduto.WordWrap = true;
-            this.BuscarProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BuscarProduto_KeyDown);
-            this.BuscarProduto.Click += new System.EventHandler(this.Produto_Click);
-            this.BuscarProduto.Leave += new System.EventHandler(this.Produto_Leave);
             // 
             // ModoRapido
             // 
@@ -815,7 +807,6 @@
             this.ModoRapido.Size = new System.Drawing.Size(120, 13);
             this.ModoRapido.TabIndex = 95;
             this.ModoRapido.Text = "Modo Avançado (F1) ?";
-            this.ModoRapido.Click += new System.EventHandler(this.ModoRapido_Click);
             // 
             // pictureBox2
             // 
@@ -969,7 +960,6 @@
             this.DescontoReais.Watermark.Text = "Watermark text";
             this.DescontoReais.Watermark.Visible = false;
             this.DescontoReais.WordWrap = true;
-            this.DescontoReais.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DescontoReais_KeyDown);
             // 
             // DescontoPorcentagem
             // 
@@ -1028,7 +1018,6 @@
             this.DescontoPorcentagem.Watermark.Text = "Watermark text";
             this.DescontoPorcentagem.Watermark.Visible = false;
             this.DescontoPorcentagem.WordWrap = true;
-            this.DescontoPorcentagem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DescontoPorcentagem_KeyDown);
             // 
             // Preco
             // 
@@ -1087,8 +1076,6 @@
             this.Preco.Watermark.Text = "Watermark text";
             this.Preco.Watermark.Visible = false;
             this.Preco.WordWrap = true;
-            this.Preco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Preco_KeyDown);
-            this.Preco.TextChanged += new System.EventHandler(this.Preco_TextChanged);
             // 
             // addProduto
             // 
@@ -1105,7 +1092,6 @@
             this.addProduto.Size = new System.Drawing.Size(42, 41);
             this.addProduto.TabIndex = 4;
             this.addProduto.UseVisualStyleBackColor = false;
-            this.addProduto.Click += new System.EventHandler(this.AddProduto_Click);
             // 
             // pictureBox4
             // 
@@ -1134,7 +1120,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.AddPedidos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
