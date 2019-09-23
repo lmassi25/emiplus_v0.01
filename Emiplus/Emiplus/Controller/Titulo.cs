@@ -102,7 +102,7 @@ namespace Emiplus.Controller
                     data.Id = 0;
                     data.Id_FormaPgto = formaPgto;
                     data.Emissao = Validation.DateNowToSql();
-                    data.Vencimento = Validation.ConvertDateToSQL(vencimento);
+                    data.Vencimento = Validation.ConvertDateToSql(vencimento);
                     data.Recebido = data.Total;
                     data.Save(data);
                 }
@@ -117,7 +117,7 @@ namespace Emiplus.Controller
                     data.Id = 0;
                     data.Id_FormaPgto = formaPgto;
                     data.Emissao = Validation.DateNowToSql();
-                    data.Vencimento = Validation.ConvertDateToSQL(vencimento.AddMonths(count));
+                    data.Vencimento = Validation.ConvertDateToSql(vencimento.AddMonths(count));
                     data.Recebido = data.Total;
                     data.Save(data);
                     count++;
@@ -182,18 +182,30 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTableTitulosGerados(DataGridView Table, string Search)
+        public void GetDataTableTitulosGeradosFilter(DataGridView Table, string Search, int tipo, string dataInicial, string dataFinal)
         {
             Table.Rows.Clear();
 
             var titulos = new Model.Titulo();
+
+            string tipoPesquisa = "titulo.vencimento";
+            if (tipo == 0)
+                tipoPesquisa = "titulo.vencimento";
+            else
+                tipoPesquisa = "titulo.emissao";
 
             var search = "%" + Search + "%";
             var data = titulos.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
                 .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
                 .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where(tipoPesquisa, ">=", dataInicial)
+                .Where(tipoPesquisa, "<=", dataFinal)
                 .Where("titulo.excluir", 0)
+                .Where
+                (
+                    q => q.WhereLike("pessoa.nome", search, false)
+                )
                 .OrderByDesc("titulo.criado")
                 .Get();
 

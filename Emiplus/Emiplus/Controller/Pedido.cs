@@ -65,33 +65,39 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTablePedidos(DataGridView Table, string Search)
+        public void GetDataTablePedidos(DataGridView Table, string Search, string dataInicial, string dataFinal)
         {
             Table.Rows.Clear();
 
-            var titulos = new Model.Titulo();
+            var pedidos = new Model.Pedido();
 
             var search = "%" + Search + "%";
-            var data = titulos.Query()
-                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("titulo.excluir", 0)
-                .OrderByDesc("titulo.criado")
+            var data = pedidos.Query()
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where("pedido.excluir", 0)
+                .Where("pedido.criado", ">=", dataInicial)
+                .Where("pedido.criado", "<=", dataFinal)
+                .Where("pedido.excluir", 0)
+                .Where
+                (
+                    q => q.WhereLike("pessoa.nome", search, false)
+                )
+                .OrderByDesc("pedido.criado")
                 .Get();
 
             foreach (var item in data)
             {
                 Table.Rows.Add(
                     item.ID,
-                    Validation.ConvertDateToForm(item.EMISSAO),
+                    item.ID,
                     item.NOME,
-                    item.FORMAPGTO,
-                    Validation.ConvertDateToForm(item.VENCIMENTO),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
+                    Validation.ConvertDateToForm(item.CRIADO),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
                 );
             }
         }
+
+
     }
 }

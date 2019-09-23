@@ -57,6 +57,7 @@ namespace Emiplus.View.Comercial
             else
             {
                 _mPedido.Id = Id;
+                _mPedido.Cliente = 1;
                 _mPedido.Tipo = Home.pedidoPage;
                 if (_mPedido.Save(_mPedido))
                 {

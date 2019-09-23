@@ -35,6 +35,8 @@ CREATE TABLE PESSOA
 	transporte_uf varchar(10),
 	transporte_rntc varchar(255)
 );
+INSERT INTO PESSOA (ID, ID_EMPRESA, TIPO, EXCLUIR, CRIADO, ATUALIZADO, DELETADO, NOME, FANTASIA, RG, CPF, ANIVERSARIO, PESSOATIPO, ISENTO, TRANSPORTE_PLACA, TRANSPORTE_UF, TRANSPORTE_RNTC)
+VALUES (1, 0, 'Clientes', 0, 01.01.2001, 00:00:00.000, 01.01.2001, 00:00:00.000, 01.01.2001, 00:00:00.000, 'Consumidor Final', 0, 0, 0, 01.01.2001, Física, 0, 0, 0, 0);
 
 CREATE TABLE PESSOA_CONTATO
 (
@@ -92,7 +94,8 @@ CREATE TABLE PEDIDO
 	icmsbase numeric(18, 4),
 	icmsstbase numeric(18, 4),
 	pis numeric(18, 4),
-	cofins numeric(18, 4)
+	cofins numeric(18, 4),
+	status integer
 );
 
 CREATE TABLE PEDIDO_ITEM

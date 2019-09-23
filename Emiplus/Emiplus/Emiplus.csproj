@@ -260,6 +260,18 @@
     <Compile Include="View\Comercial\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\DetailsPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\DetailsPedido.Designer.cs">
+      <DependentUpon>DetailsPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\DetailsPedidoPgtos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\DetailsPedidoPgtos.Designer.cs">
+      <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +500,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\DetailsPedido.resx">
+      <DependentUpon>DetailsPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\DetailsPedidoPgtos.resx">
+      <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
