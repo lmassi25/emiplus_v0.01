@@ -8,23 +8,20 @@ namespace Emiplus.View.Comercial
     public partial class Clientes : Form
     {
         public static int Id { get; set; }
-
         private Controller.Pessoa _controller = new Controller.Pessoa();
+
         public Clientes()
         {
             InitializeComponent();
+            Events();
+
             label1.Text = Home.pessoaPage + ":";
             label6.Text = Home.pessoaPage;
 
             if (Home.pessoaPage == "Fornecedores")
-            {
                 label2.Text = "Gerencie os Fornecedores da sua empresa aqui! Adicione, edite ou delete um Fornecedor.";
-            }
             else if (Home.pessoaPage == "Transportadoras")
-            {
                 label2.Text = "Gerencie as Transportadoras da sua empresa aqui! Adicione, edite ou delete uma Transportadora.";
-            }
-
         }
 
         private void LoadData()
@@ -32,8 +29,14 @@ namespace Emiplus.View.Comercial
             _controller.GetDataTableClientes(GridLista, search.Text);
         }
 
-        private void LoadId()
+        private void EditClientes(bool create = false)
         {
+            if (create)
+            {
+                Id = 0;
+                OpenForm.Show<AddClientes>(this);
+            }
+
             if (GridLista.SelectedRows.Count > 0)
             {
                 Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
@@ -41,75 +44,41 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Label5_Click(object sender, EventArgs e)
+        private void Events()
         {
-            Close();
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
-        private void BtnAdicionar_Click(object sender, EventArgs e)
-        {
-            Id = 0;
-            OpenForm.Show<AddClientes>(this);
-        }
-
-        private void BtnEditar_Click(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        private void Clientes_Load(object sender, EventArgs e)
-        {
-            search.Select();
-            LoadData();
-        }
-
-        private void Search_TextChanged(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
-        private void Clientes_Activated(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
-        private void GridLista_DoubleClick(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        private void Search_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 38)
+            Load += (s, e) =>
             {
-                Support.UpDownDataGrid(false, GridLista);
-                e.Handled = true;
-            }
-            else if (e.KeyValue == 40)
+                search.Select();
+                LoadData();
+            };
+            Activated += (s, e) => LoadData();
+
+            search.TextChanged += (s, e) => LoadData();
+            search.Enter += (s, e) => LoadData();
+            search.KeyDown += (s, e) =>
             {
-                Support.UpDownDataGrid(true, GridLista);
-                e.Handled = true;
-            }
+                if (e.KeyValue == 38)
+                {
+                    Support.UpDownDataGrid(false, GridLista);
+                    e.Handled = true;
+                }
+                else if (e.KeyValue == 40)
+                {
+                    Support.UpDownDataGrid(true, GridLista);
+                    e.Handled = true;
+                }
+            };
+
+            btnAdicionar.Click += (s, e) => EditClientes(true);
+            btnEditar.Click += (s, e) => EditClientes();
+            GridLista.DoubleClick += (s, e) => EditClientes();
+
+            btnExit.Click += (s, e) => Close();
+            label5.Click += (s, e) => Close();
+            label8.Click += (s, e) => Close();
+
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
 
-        private void Label8_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

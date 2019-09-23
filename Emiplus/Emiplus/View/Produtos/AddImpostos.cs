@@ -17,7 +17,8 @@ namespace Emiplus.View.Produtos
 
         public AddImpostos()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            Events();
         }
 
         private void LoadData()
@@ -42,7 +43,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void AddImpostos_Load(object sender, EventArgs e)
+        private void Carregar()
         {
             nome.Select();
 
@@ -229,31 +230,12 @@ namespace Emiplus.View.Produtos
                 LoadData();
         }
         
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
         private void GetImpostos_ICMS1(int tipo)
         {
             if(tipo == 0)
-            {
                 _modelImposto.IcmsAliq = Validation.ConvertToDouble(icms_1.Aliq_Value);
-            }
             else
-            {
                 icms_1.Aliq_Value = Validation.Price(_modelImposto.IcmsAliq);
-            }            
         }
 
         private void GetImpostos_ICMS2(int tipo)
@@ -358,26 +340,6 @@ namespace Emiplus.View.Produtos
             }            
         }
 
-        private void BtnSalvar_Click(object sender, EventArgs e)
-        {              
-            _modelImposto.Id = idImpSelected;
-            _modelImposto.Nome = nome.Text;
-            _modelImposto.Cfop = cfop.Text;
-
-            GetImpostos(0);
-
-            if (_modelImposto.Save(_modelImposto))
-            {
-                Close();
-            }
-        }
-
-        private void BtnRemover_Click(object sender, EventArgs e)
-        {
-            var data = _modelImposto.Remove(idImpSelected);
-            if (data) Close();
-        }
-
         private void SetIcms()
         {            
             icms_1.Visible = false;
@@ -410,21 +372,46 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Icms_SelectedValueChanged(object sender, EventArgs e)
+        private void Events()
         {
-            SetIcms();
-        }
+            Load += (s, e) => Carregar();
 
-        private void AddCfop_Click(object sender, EventArgs e)
-        {
-            Cfops form = new Cfops();
-            if (form.ShowDialog() == DialogResult.OK)
+            label6.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
+
+            btnSalvar.Click += (s, e) =>
             {
-            //    _mPedido.Id = Id;
-            //    _mPedido.Colaborador = PedidoModalClientes.Id;
-            //    _mPedido.Save(_mPedido);
-            //    LoadData();
-            }
+                _modelImposto.Id = idImpSelected;
+                _modelImposto.Nome = nome.Text;
+                _modelImposto.Cfop = cfop.Text;
+
+                GetImpostos(0);
+
+                if (_modelImposto.Save(_modelImposto))
+                    Close();
+            };
+            btnRemover.Click += (s, e) =>
+            {
+                var data = _modelImposto.Remove(idImpSelected);
+                if (data)
+                    Close();
+            };
+
+            Icms.SelectedValueChanged += (s, e) => SetIcms();
+
+            addCfop.Click += (s, e) =>
+            {
+                Cfops form = new Cfops();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                //    _mPedido.Id = Id;
+                //    _mPedido.Colaborador = PedidoModalClientes.Id;
+                //    _mPedido.Save(_mPedido);
+                //    LoadData();
+                }
+            };
+
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

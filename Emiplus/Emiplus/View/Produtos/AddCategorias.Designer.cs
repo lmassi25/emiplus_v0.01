@@ -89,7 +89,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnHelp
             // 
@@ -111,7 +110,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // label1
             // 
@@ -154,7 +152,6 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // pictureBox6
             // 
@@ -187,7 +184,6 @@
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // barraTitulo
             // 
@@ -397,7 +393,6 @@
             this.Name = "AddCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCategorias";
-            this.Load += new System.EventHandler(this.AddCategorias_Load);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

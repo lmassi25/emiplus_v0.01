@@ -9,26 +9,31 @@ namespace Emiplus.View.Common
         public TelaComercialInicial()
         {
             InitializeComponent();
+
+            Events();
         }
 
-        private void Clientes_Click(object sender, System.EventArgs e)
+        private void Events()
         {
-            Home.pessoaPage = "Clientes";
-            OpenForm.Show<Comercial.Clientes>(this);
-        }
+            Clientes.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Clientes";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
 
-        private void NovoPedido_Click(object sender, System.EventArgs e)
-        {
-            Home.pedidoPage = "Vendas";
-            AddPedidos.Id = 0;
-            AddPedidos NovoPedido = new AddPedidos();
-            NovoPedido.ShowDialog();
-        }
+            NovoPedido.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Vendas";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
 
-        private void Pedidos_Click(object sender, System.EventArgs e)
-        {
-            Pedido Pedido = new Pedido();
-            Pedido.ShowDialog();
+            Pedidos.Click += (s, e) =>
+            {
+                Pedido Pedido = new Pedido();
+                Pedido.ShowDialog();
+            };
         }
     }
 }

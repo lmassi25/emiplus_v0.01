@@ -18,6 +18,7 @@ namespace Emiplus.View.Produtos
         public AddProduct()
         {
             InitializeComponent();
+            Events();
 
             idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
             if (idPdtSelecionado > 0)
@@ -108,28 +109,7 @@ namespace Emiplus.View.Produtos
             aliq_municipal.Text = Validation.Price(_modelItem.AliqMunicipal);
         }
 
-        private void Label6_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(Support.BasePath());
-            Alert.Message("Title", "Mesasge", Alert.AlertType.error);
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnSalvar_Click(object sender, EventArgs e)
+        private void Save()
         {
             _modelItem.Id = idPdtSelecionado;
             _modelItem.Nome = nome.Text;
@@ -155,31 +135,7 @@ namespace Emiplus.View.Produtos
                 _modelItem.Origem = Impostos.SelectedValue.ToString();
 
             if (_modelItem.Save(_modelItem))
-            {
                 Close();
-            }
-        }
-
-        private void BtnRemover_Click(object sender, EventArgs e)
-        {
-            var data = _modelItem.Remove(idPdtSelecionado);
-            if (data)
-                Close();
-        }
-
-        private void AddProduct_Load(object sender, EventArgs e)
-        {
-            Start();
-        }
-
-        private void BtnEstoque_Click(object sender, EventArgs e)
-        {
-            AddEstoque f = new AddEstoque();
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-                SetFocus();
-            }
         }
 
         private void SetFocus()
@@ -192,17 +148,45 @@ namespace Emiplus.View.Produtos
         {
             _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
         }
-
-        private void Valorcompra_TextChanged(object sender, EventArgs e)
+        
+        private void Events()
         {
-            TextBox txt = (TextBox)sender;
-            Eventos.MaskPrice(ref txt);
-        }
+            Load += (s, e) => Start();
 
-        private void Valorvenda_TextChanged(object sender, EventArgs e)
-        {
-            TextBox txt = (TextBox)sender;
-            Eventos.MaskPrice(ref txt);
+            label6.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
+
+            btnSalvar.Click += (s, e) => Save();
+            btnRemover.Click += (s, e) => 
+            {
+                var data = _modelItem.Remove(idPdtSelecionado);
+                if (data)
+                    Close();
+            };
+
+            btnEstoque.Click += (s, e) =>
+            {
+                AddEstoque f = new AddEstoque();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                    SetFocus();
+                }
+            };
+
+            valorcompra.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Eventos.MaskPrice(ref txt);
+            };
+
+            valorvenda.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Eventos.MaskPrice(ref txt);
+            };
+
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

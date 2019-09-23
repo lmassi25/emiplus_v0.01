@@ -113,99 +113,100 @@ namespace Emiplus.View.Common
 
         public static string pessoaPage { get; set; }
         public static string pedidoPage { get; set; }
+        public static string financeiroPage { get; set; }
 
         public Home()
         {
             InitializeComponent();
+
+            Events();
         }
 
-        private void homeMenuProducts_Click(object sender, EventArgs e)
+        private void Events()
         {
-            homeMenuProducts.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuProducts.ForeColor = Color.WhiteSmoke;
-            pictureBox3.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
+            homeMenuInicio.Click += (s, e) =>
+            {
+                homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuInicio.ForeColor = Color.WhiteSmoke;
+                pictureBox2.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
 
-            homeMenuInicio.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
-        }
+                homeMenuFiscal.BackColor = Color.Transparent;
+                homeMenuProducts.BackColor = Color.Transparent;
+                homeMenuComercial.BackColor = Color.Transparent;
+                homeMenuFinanceiro.BackColor = Color.Transparent;
+                homeMenuSettings.BackColor = Color.Transparent;
+            };
 
-        private void homeMenuComercial_Click(object sender, EventArgs e)
-        {
-            homeMenuComercial.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuComercial.ForeColor = Color.WhiteSmoke;
-            pictureBox4.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
+            homeMenuProducts.Click += (s, e) =>
+            {
+                homeMenuProducts.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuProducts.ForeColor = Color.WhiteSmoke;
+                pictureBox3.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
 
-            homeMenuInicio.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
-        }
+                homeMenuInicio.BackColor = Color.Transparent;
+                homeMenuComercial.BackColor = Color.Transparent;
+                homeMenuFinanceiro.BackColor = Color.Transparent;
+                homeMenuFiscal.BackColor = Color.Transparent;
+                homeMenuSettings.BackColor = Color.Transparent;
+            };
 
-        private void homeMenuFinanceiro_Click(object sender, EventArgs e)
-        {
-            homeMenuFinanceiro.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuFinanceiro.ForeColor = Color.WhiteSmoke;
-            pictureBox5.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaFinanceiroInicial>(panelFormularios);
+            homeMenuComercial.Click += (s, e) =>
+            {
+                homeMenuComercial.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuComercial.ForeColor = Color.WhiteSmoke;
+                pictureBox4.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
 
-            homeMenuInicio.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
-        }
+                homeMenuInicio.BackColor = Color.Transparent;
+                homeMenuProducts.BackColor = Color.Transparent;
+                homeMenuFinanceiro.BackColor = Color.Transparent;
+                homeMenuFiscal.BackColor = Color.Transparent;
+                homeMenuSettings.BackColor = Color.Transparent;
+            };
 
-        private void homeMenuFiscal_Click(object sender, EventArgs e)
-        {
-            homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuFiscal.ForeColor = Color.WhiteSmoke;
-            pictureBox6.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
+            homeMenuFinanceiro.Click += (s, e) =>
+            {
+                homeMenuFinanceiro.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuFinanceiro.ForeColor = Color.WhiteSmoke;
+                pictureBox5.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaFinanceiroInicial>(panelFormularios);
 
-            homeMenuInicio.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
-        }
+                homeMenuInicio.BackColor = Color.Transparent;
+                homeMenuProducts.BackColor = Color.Transparent;
+                homeMenuComercial.BackColor = Color.Transparent;
+                homeMenuFiscal.BackColor = Color.Transparent;
+                homeMenuSettings.BackColor = Color.Transparent;
+            };
 
-        private void HomeMenuSettings_Click(object sender, EventArgs e)
-        {
-            homeMenuSettings.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuSettings.ForeColor = Color.WhiteSmoke;
-            pictureBox7.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaConfigInicial>(panelFormularios);
+            homeMenuFiscal.Click += (s, e) =>
+            {
+                homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuFiscal.ForeColor = Color.WhiteSmoke;
+                pictureBox6.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
 
-            homeMenuInicio.BackColor = Color.Transparent;
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-        }
+                homeMenuInicio.BackColor = Color.Transparent;
+                homeMenuProducts.BackColor = Color.Transparent;
+                homeMenuComercial.BackColor = Color.Transparent;
+                homeMenuFinanceiro.BackColor = Color.Transparent;
+                homeMenuSettings.BackColor = Color.Transparent;
+            };
 
-        private void HomeMenuInicio_Click(object sender, EventArgs e)
-        {
-            homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);
-            homeMenuInicio.ForeColor = Color.WhiteSmoke;
-            pictureBox2.BackColor = Color.FromArgb(37, 48, 50);
-            OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
+            homeMenuSettings.Click += (s, e) =>
+            {
+                homeMenuSettings.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuSettings.ForeColor = Color.WhiteSmoke;
+                pictureBox7.BackColor = Color.FromArgb(37, 48, 50);
+                OpenForm.ShowInPanel<TelaConfigInicial>(panelFormularios);
 
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
-        }
-
-        private void LinkSuporteWeb_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://www.google.com");
+                homeMenuInicio.BackColor = Color.Transparent;
+                homeMenuFiscal.BackColor = Color.Transparent;
+                homeMenuProducts.BackColor = Color.Transparent;
+                homeMenuComercial.BackColor = Color.Transparent;
+                homeMenuFinanceiro.BackColor = Color.Transparent;
+            };
         }
     }
 }

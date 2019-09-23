@@ -1,5 +1,4 @@
 ﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
 using System;
 using System.Windows.Forms;
 
@@ -13,11 +12,7 @@ namespace Emiplus.View.Produtos
         public Produtos()
         {
             InitializeComponent();
-        }
-
-        private void Start()
-        {
-            search.Select();
+            Events();
         }
 
         private void DataTable()
@@ -25,8 +20,15 @@ namespace Emiplus.View.Produtos
             _controller.GetDataTable(GridListaProdutos, search.Text);
         }
 
-        private void LoadId()
+        private void EditProduct(bool create = false)
         {
+            if (create)
+            {
+                idPdtSelecionado = 0;
+                OpenForm.Show<AddProduct>(this);
+                return;
+            }
+
             if (GridListaProdutos.SelectedRows.Count > 0)
             {
                 idPdtSelecionado = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
@@ -34,54 +36,24 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
+        private void Events()
         {
-            idPdtSelecionado = 0;
-            OpenForm.Show<AddProduct>(this);
-        }
+            Load += (s, e) => {
+                search.Select();
+                DataTable();
+            };
 
-        private void Label5_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+            btnAdicionar.Click += (s, e) => EditProduct(true);
+            btnEditar.Click += (s, e) => EditProduct();
+            GridListaProdutos.DoubleClick += (s, e) => EditProduct();
 
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+            label5.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
 
-        private void Produtos_Load(object sender, EventArgs e)
-        {
-            Start();
-            DataTable();
-        }
+            search.TextChanged += (s, e) => DataTable();
+            search.Enter += (s, e) => DataTable();
 
-        private void Search_TextChanged(object sender, EventArgs e)
-        {
-            DataTable();
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        /// <summary>
-        /// Editar produto com double click
-        /// </summary>
-        private void GridListaProdutos_DoubleClick(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            DataTable();
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

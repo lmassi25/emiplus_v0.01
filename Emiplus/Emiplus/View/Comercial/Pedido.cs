@@ -1,6 +1,4 @@
-﻿using Emiplus.View.Common;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
@@ -11,23 +9,20 @@ namespace Emiplus.View.Comercial
         public Pedido()
         {
             InitializeComponent();
+            Events();
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
+        private void Events()
         {
-            Close();
-        }
+            btnAdicionar.Click += (s, e) =>
+            {
+                IdPedido = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
 
-        private void Label5_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnAdicionar_Click(object sender, EventArgs e)
-        {
-            IdPedido = 0;
-            AddPedidos NovoPedido = new AddPedidos();
-            NovoPedido.ShowDialog();
+            btnExit.Click += (s, e) => Close();
+            label5.Click += (s, e) => Close();
         }
     }
 }

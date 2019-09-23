@@ -1,7 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using SqlKata.Execution;
-using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -14,55 +13,42 @@ namespace Emiplus.View.Produtos
         public AddCategorias()
         {
             InitializeComponent();
+            Events();
 
             if (idCatSelected > 0)
-                LoadData();
-        }
-
-        private void LoadData()
-        {
-            _modelCategoria = _modelCategoria.FindById(idCatSelected).First<Categoria>();
-
-            nome.Text = _modelCategoria.Nome;
-        }
-
-        private void AddCategorias_Load(object sender, EventArgs e)
-        {
-            nome.Select();
-
-            ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("http://google.com");
-        }
-
-        private void BtnSalvar_Click(object sender, EventArgs e)
-        {
-            _modelCategoria.Id = idCatSelected;
-            _modelCategoria.Nome = nome.Text;
-
-            if (_modelCategoria.Save(_modelCategoria))
             {
-                Close();
+                _modelCategoria = _modelCategoria.FindById(idCatSelected).First<Categoria>();
+                nome.Text = _modelCategoria.Nome;
             }
         }
 
-        private void BtnRemover_Click(object sender, EventArgs e)
+        private void Events()
         {
-            var data = _modelCategoria.Remove(idCatSelected);
-            if (data) Close();
+            Load += (s, e) =>
+            {
+                nome.Select();
+
+                ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            };
+
+            btnSalvar.Click += (s, e) =>
+            {
+                _modelCategoria.Id = idCatSelected;
+                _modelCategoria.Nome = nome.Text;
+
+                if (_modelCategoria.Save(_modelCategoria))
+                    Close();
+            };
+            btnRemover.Click += (s, e) =>
+            {
+                var data = _modelCategoria.Remove(idCatSelected);
+                if (data) Close();
+            };
+
+            btnExit.Click += (s, e) => Close();
+            label6.Click += (s, e) => Close();
+
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

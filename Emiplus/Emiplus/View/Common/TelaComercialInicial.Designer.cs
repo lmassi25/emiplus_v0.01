@@ -86,10 +86,10 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(22, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 39);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
@@ -127,7 +127,6 @@
             this.Clientes.Text = "Clientes";
             this.Clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Clientes.UseVisualStyleBackColor = false;
-            this.Clientes.Click += new System.EventHandler(this.Clientes_Click);
             // 
             // label3
             // 
@@ -207,7 +206,6 @@
             this.Pedidos.Text = "Pedidos";
             this.Pedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Pedidos.UseVisualStyleBackColor = false;
-            this.Pedidos.Click += new System.EventHandler(this.Pedidos_Click);
             // 
             // button4
             // 
@@ -323,7 +321,6 @@
             this.NovoPedido.Text = "Novo Pedido";
             this.NovoPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.NovoPedido.UseVisualStyleBackColor = false;
-            this.NovoPedido.Click += new System.EventHandler(this.NovoPedido_Click);
             // 
             // visualSeparator1
             // 

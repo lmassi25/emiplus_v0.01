@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Financeiro;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
@@ -7,6 +9,23 @@ namespace Emiplus.View.Common
         public TelaFinanceiroInicial()
         {
             InitializeComponent();
+
+            Events();
+        }
+
+        private void Events()
+        {
+            aReceber.Click += (s, e) =>
+            {
+                Home.financeiroPage = "Receber";
+                OpenForm.Show<Titulos>(this);
+            };
+
+            aPagar.Click += (s, e) =>
+            {
+                Home.financeiroPage = "Pagar";
+                OpenForm.Show<Titulos>(this);
+            };
         }
     }
 }

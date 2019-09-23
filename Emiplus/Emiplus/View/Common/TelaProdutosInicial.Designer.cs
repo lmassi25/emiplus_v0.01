@@ -107,7 +107,6 @@
             this.Produtos.Text = "Produtos";
             this.Produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Produtos.UseVisualStyleBackColor = false;
-            this.Produtos.Click += new System.EventHandler(this.Produtos_Click);
             // 
             // Categorias
             // 
@@ -131,7 +130,6 @@
             this.Categorias.Text = "Categorias";
             this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Categorias.UseVisualStyleBackColor = false;
-            this.Categorias.Click += new System.EventHandler(this.Categorias_Click);
             // 
             // panel1
             // 
@@ -214,7 +212,6 @@
             this.fornecedores.Text = "Fornecedores";
             this.fornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.fornecedores.UseVisualStyleBackColor = false;
-            this.fornecedores.Click += new System.EventHandler(this.Fornecedores_Click);
             // 
             // button4
             // 
@@ -261,7 +258,6 @@
             this.transportadoras.Text = "Transportadoras";
             this.transportadoras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.transportadoras.UseVisualStyleBackColor = false;
-            this.transportadoras.Click += new System.EventHandler(this.Transportadoras_Click);
             // 
             // button6
             // 
@@ -522,7 +518,6 @@
             this.Impostos.Text = "Impostos";
             this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Impostos.UseVisualStyleBackColor = false;
-            this.Impostos.Click += new System.EventHandler(this.Impostos_Click);
             // 
             // TelaProdutosInicial
             // 

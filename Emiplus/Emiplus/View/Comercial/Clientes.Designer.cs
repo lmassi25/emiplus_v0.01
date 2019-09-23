@@ -77,7 +77,6 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.BtnHelp_Click);
             // 
             // label6
             // 
@@ -120,7 +119,6 @@
             this.GridLista.Size = new System.Drawing.Size(659, 280);
             this.GridLista.TabIndex = 5;
             this.GridLista.TabStop = false;
-            this.GridLista.DoubleClick += new System.EventHandler(this.GridLista_DoubleClick);
             // 
             // panel5
             // 
@@ -152,9 +150,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(30, 157);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 40);
+            this.label1.Size = new System.Drawing.Size(117, 40);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Clientes:";
+            this.label1.Text = "Clientes";
             // 
             // btnEditar
             // 
@@ -176,7 +174,6 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // panel2
             // 
@@ -221,7 +218,6 @@
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
             // 
             // btnExit
             // 
@@ -242,7 +238,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // barraTitulo
             // 
@@ -316,9 +311,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Search_KeyDown);
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // panel4
             // 
@@ -354,7 +346,6 @@
             this.label8.Size = new System.Drawing.Size(66, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Comercial";
-            this.label8.Click += new System.EventHandler(this.Label8_Click);
             // 
             // pictureBox2
             // 
@@ -384,8 +375,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Clientes";
             this.Text = "Clientes";
-            this.Activated += new System.EventHandler(this.Clientes_Activated);
-            this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.panel5.ResumeLayout(false);

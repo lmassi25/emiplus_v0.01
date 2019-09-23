@@ -1,4 +1,5 @@
-﻿using SqlKata.Execution;
+﻿using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -64,6 +65,33 @@ namespace Emiplus.Controller
             }
         }
 
+        public void GetDataTablePedidos(DataGridView Table, string Search)
+        {
+            Table.Rows.Clear();
 
+            var titulos = new Model.Titulo();
+
+            var search = "%" + Search + "%";
+            var data = titulos.Query()
+                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where("titulo.excluir", 0)
+                .OrderByDesc("titulo.criado")
+                .Get();
+
+            foreach (var item in data)
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    Validation.ConvertDateToForm(item.EMISSAO),
+                    item.NOME,
+                    item.FORMAPGTO,
+                    Validation.ConvertDateToForm(item.VENCIMENTO),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
+                );
+            }
+        }
     }
 }

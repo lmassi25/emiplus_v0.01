@@ -157,7 +157,6 @@ namespace Emiplus.View.Common
             this.homeMenuInicio.Text = "            Início";
             this.homeMenuInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuInicio.UseVisualStyleBackColor = false;
-            this.homeMenuInicio.Click += new System.EventHandler(this.HomeMenuInicio_Click);
             // 
             // panel5
             // 
@@ -230,7 +229,6 @@ namespace Emiplus.View.Common
             this.homeMenuSettings.Text = "            Configurações";
             this.homeMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuSettings.UseVisualStyleBackColor = false;
-            this.homeMenuSettings.Click += new System.EventHandler(this.HomeMenuSettings_Click);
             // 
             // pictureBox6
             // 
@@ -297,7 +295,6 @@ namespace Emiplus.View.Common
             this.homeMenuFiscal.Text = "            Fiscal";
             this.homeMenuFiscal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuFiscal.UseVisualStyleBackColor = false;
-            this.homeMenuFiscal.Click += new System.EventHandler(this.homeMenuFiscal_Click);
             // 
             // homeMenuFinanceiro
             // 
@@ -316,7 +313,6 @@ namespace Emiplus.View.Common
             this.homeMenuFinanceiro.Text = "            Financeiro";
             this.homeMenuFinanceiro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuFinanceiro.UseVisualStyleBackColor = false;
-            this.homeMenuFinanceiro.Click += new System.EventHandler(this.homeMenuFinanceiro_Click);
             // 
             // homeMenuComercial
             // 
@@ -335,7 +331,6 @@ namespace Emiplus.View.Common
             this.homeMenuComercial.Text = "            Comercial";
             this.homeMenuComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuComercial.UseVisualStyleBackColor = false;
-            this.homeMenuComercial.Click += new System.EventHandler(this.homeMenuComercial_Click);
             // 
             // homeMenuProducts
             // 
@@ -356,7 +351,6 @@ namespace Emiplus.View.Common
             this.homeMenuProducts.Text = "            Produtos";
             this.homeMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuProducts.UseVisualStyleBackColor = false;
-            this.homeMenuProducts.Click += new System.EventHandler(this.homeMenuProducts_Click);
             // 
             // barraTituloHome
             // 

@@ -7,12 +7,12 @@ namespace Emiplus.View.Produtos
     public partial class Impostos : Form
     {
         public static int idImpSelected { get; set; }
-
         private Controller.Imposto _controller = new Controller.Imposto();
 
         public Impostos()
         {
             InitializeComponent();
+            Events();
         }
 
         private void DataTable()
@@ -20,8 +20,15 @@ namespace Emiplus.View.Produtos
             _controller.GetDataTable(GridListaImpostos, search.Text);
         }
 
-        private void LoadId()
+        private void EditImposto(bool create = false)
         {
+            if (create)
+            {
+                idImpSelected = 0;
+                OpenForm.Show<AddImpostos>(this);
+                return;
+            }
+
             if (GridListaImpostos.SelectedRows.Count > 0)
             {
                 idImpSelected = Convert.ToInt32(GridListaImpostos.SelectedRows[0].Cells["ID"].Value);
@@ -29,51 +36,25 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Impostos_Load(object sender, EventArgs e)
+        private void Events()
         {
-            search.Select();
-            DataTable();
-        }
+            Load += (s, e) =>
+            {
+                search.Select();
+                DataTable();
+            };
 
-        private void Label5_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+            label5.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
 
-        private void Adicionar_Click(object sender, EventArgs e)
-        {
-            idImpSelected = 0;
-            OpenForm.Show<AddImpostos>(this);
-        }
+            Adicionar.Click += (s, e) => EditImposto(true);
+            Editar.Click += (s, e) => EditImposto();
+            GridListaImpostos.DoubleClick += (s, e) => EditImposto(); 
 
-        private void Search_TextChanged(object sender, EventArgs e)
-        {
-            DataTable();
-        }
+            search.TextChanged += (s, e) => DataTable();
+            search.Enter += (s, e) => DataTable();
 
-        private void Editar_Click(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        private void GridListaImpostos_DoubleClick(object sender, EventArgs e)
-        {
-            LoadId();
-        }
-
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            DataTable();
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
     }
 }

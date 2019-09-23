@@ -213,7 +213,6 @@
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnHelp
             // 
@@ -391,7 +390,6 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // btnRemover
             // 
@@ -413,7 +411,6 @@
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
-            this.btnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // estoqueatual
             // 
@@ -648,7 +645,6 @@
             this.addCfop.TabIndex = 1;
             this.addCfop.UseVisualStyleBackColor = false;
             this.addCfop.Visible = false;
-            this.addCfop.Click += new System.EventHandler(this.AddCfop_Click);
             // 
             // label9
             // 
@@ -768,7 +764,6 @@
             this.Icms.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.Icms.Watermark.Text = "Watermark text";
             this.Icms.Watermark.Visible = false;
-            this.Icms.SelectedValueChanged += new System.EventHandler(this.Icms_SelectedValueChanged);
             // 
             // label15
             // 
@@ -1256,7 +1251,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddImpostos";
             this.Text = "AddImpostos";
-            this.Load += new System.EventHandler(this.AddImpostos_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
