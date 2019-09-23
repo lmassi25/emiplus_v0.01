@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -32,10 +33,50 @@ namespace Emiplus.Data.Helpers
                 .Replace(":", "").Replace("=", "").Replace("?", "").Replace(",", ".")
                 .Replace("<", "").Replace(">", "").Replace("!", "").Replace("&", "")
                 .Replace("*", "").Replace("(", "").Replace(")", "").Replace("/", "")
-                .Replace("|", "").Replace("Þ", "p").Replace("-", " ").Replace("  ", "")
+                .Replace("|", "").Replace("Þ", "p").Replace("-", " ").Replace("  ", " ")
                 .Replace("\\", "").Replace("~", "");
 
             return str.ToString().Trim();
+        }
+
+        public static string CleanStringForFiscal(string dirtyString)
+        {
+            StringBuilder str = new StringBuilder(dirtyString);
+
+            str.Replace('Ä', 'A').Replace('Å', 'A').Replace('Æ', 'A')
+                .Replace('Ë', 'E').Replace('Ï', 'I').Replace('Ð', 'D').Replace('Ö', 'O')
+                .Replace('Ø', 'O').Replace('Ü', 'U').Replace('ü', 'u').Replace('Ý', 'Y')
+                .Replace('þ', 'b').Replace('ß', 'B').Replace('ä', 'a').Replace('å', 'a')
+                .Replace('æ', 'a').Replace('ë', 'e').Replace('ï', 'i').Replace('ð', 'o')
+                .Replace('ö', 'o').Replace('ø', 'o').Replace('ý', 'y').Replace('ÿ', 'y')
+                .Replace('€', 'E').Replace('§', 'S').Replace("°", "").Replace("º", "")
+                .Replace("ª", "").Replace("^", "").Replace("+", "").Replace("@", "")
+                .Replace("#", "").Replace("$", "").Replace("%", "").Replace("¨", "")
+                .Replace("\"", "").Replace("'", "").Replace("_", "").Replace("{", "")
+                .Replace("}", "").Replace("[", "").Replace("]", "").Replace(";", "")
+                .Replace(":", "").Replace("=", "").Replace("?", "").Replace(",", ".")
+                .Replace("<", "").Replace(">", "").Replace("!", "").Replace("&", "")
+                .Replace("*", "").Replace("(", "").Replace(")", "").Replace("/", "")
+                .Replace("|", "").Replace("Þ", "p").Replace("-", " ").Replace("  ", " ")
+                .Replace("\\", "").Replace("~", "");
+
+            if(str.ToString().Replace(" ", "").All(char.IsDigit))
+            {
+                str = str.Replace(" ", "");
+            }
+
+            return (Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(str.ToString())).ToString().Trim()).ToUpper();
+        }
+
+        public static string OneSpaceString(string aux)
+        {
+            aux = aux.TrimStart();
+            aux = aux.TrimEnd();
+            
+            Regex regex = new Regex(@"\s{2,}");
+            aux = regex.Replace(aux, " ");
+
+            return aux;
         }
 
         /// <summary>
@@ -65,6 +106,17 @@ namespace Emiplus.Data.Helpers
         public static string Price(double price)
         {
             return string.Format("{0:N2}", price);
+        }
+
+        public static string FormatPriceWithDot(object obj)
+        {
+            string aux = "";
+            
+            aux = string.Format("{0:N2}", Validation.ConvertToDouble(obj));
+            aux = aux.Replace(".", "");
+            aux = aux.Replace(",", ".");
+
+            return aux;
         }
 
         public static double ConvertToDouble(object obj)
