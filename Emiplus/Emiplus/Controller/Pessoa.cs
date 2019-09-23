@@ -33,6 +33,7 @@
             var data = address.Query()
                 .Where("EXCLUIR", 0)
                 .Where("TIPO", Home.pessoaPage)
+                .Where("ID", "!=", 1)
                 .Where(q =>
                     q.Where("nome", "like", search)
                         .OrWhere("fantasia", "like", search)

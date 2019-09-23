@@ -212,7 +212,7 @@ namespace Emiplus.View.Comercial
                 _modelPessoa.Tipo = Home.pessoaPage;
                 _modelPessoa.Nome = nomeRS.Text;
                 _modelPessoa.Fantasia = nomeFantasia.Text;
-                _modelPessoa.Aniversario = Validation.ConvertDateToSQL(nascimento.Text);
+                _modelPessoa.Aniversario = Validation.ConvertDateToSql(nascimento.Text);
                 _modelPessoa.CPF = cpfCnpj.Text;
                 _modelPessoa.RG = rgIE.Text;
                 _modelPessoa.Pessoatipo = pessoaJF.Text;

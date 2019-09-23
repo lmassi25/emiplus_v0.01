@@ -45,6 +45,8 @@
         public double PIS { get; set; }
         public double COFINS { get; set; }
 
+        public int status { get; set; }
+
         #endregion
 
         #region SQL CREATE

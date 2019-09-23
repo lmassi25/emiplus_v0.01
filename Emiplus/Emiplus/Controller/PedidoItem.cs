@@ -23,6 +23,7 @@ namespace Emiplus.Controller
             Table.Columns[2].Width = 100;
 
             Table.Columns[3].Name = "Nome do Produto";
+            Table.Columns[3].MinimumWidth = 150;
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[4].Name = "Quantidade";
@@ -51,7 +52,6 @@ namespace Emiplus.Controller
                 .Where("pedido_item.pedido", idPedido)
                 .Where("pedido_item.excluir", 0)
                 .Where("pedido_item.tipo", "Produtos")
-                //.Limit(1)
                 .Get();
 
             int count = 1;

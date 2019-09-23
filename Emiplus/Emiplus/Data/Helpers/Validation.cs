@@ -89,7 +89,7 @@ namespace Emiplus.Data.Helpers
             return Convert.ToInt32(obj);
         }
 
-        public static string ConvertDateToForm(object date)
+        public static string ConvertDateToForm(object date, bool large = false)
         {
             if (date == null)
                 return "";
@@ -97,10 +97,16 @@ namespace Emiplus.Data.Helpers
             if (String.IsNullOrEmpty(date.ToString()))
                 return "";
 
-            return Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year);
+            string data;
+            if (large)
+                data = Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year) + " " + Convert.ToDateTime(date).Hour + ":" + Convert.ToDateTime(date).Minute;
+            else
+                data = Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year);
+
+            return data;
         }
 
-        public static string ConvertDateToSQL(object date)
+        public static string ConvertDateToSql(object date)
         {
             if (date == null)
                 return "";

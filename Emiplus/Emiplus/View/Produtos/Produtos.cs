@@ -15,10 +15,7 @@ namespace Emiplus.View.Produtos
             Events();
         }
 
-        private void DataTable()
-        {
-            _controller.GetDataTable(GridListaProdutos, search.Text);
-        }
+        private void DataTable() => _controller.GetDataTable(GridListaProdutos, search.Text);
 
         private void EditProduct(bool create = false)
         {
