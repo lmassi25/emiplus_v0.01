@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using System;
 using System.Windows.Forms;
 
@@ -6,35 +7,35 @@ namespace Emiplus.View.Comercial
 {
     public partial class Pedido : Form
     {
-        public static int IdPedido { get; set; }
         private Controller.Pedido _cPedido = new Controller.Pedido();
 
         public Pedido()
         {
             InitializeComponent();
             Events();
-
-            dataInicial.Text = DateTime.Now.AddMonths(-1).ToString();
+            
+            dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
+
+            label1.Text = Home.pedidoPage;
         }
 
-        private void Filter()
-        {
-            _cPedido.GetDataTablePedidos(GridLista, search.Text, dataInicial.Text, dataFinal.Text);
-        }
+        private void Filter() => _cPedido.GetDataTablePedidos(GridLista, Home.pedidoPage, search.Text, dataInicial.Text, dataFinal.Text);
 
         private void EditPedido(bool create = false)
         {
             if (create)
             {
-                IdPedido = 0;
+                //Home.pedidoPage = "Vendas";
+                AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
+                return;
             }
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                IdPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 DetailsPedido detailsPedido = new DetailsPedido();
                 detailsPedido.ShowDialog();
             }

@@ -21,29 +21,16 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
             Events();
 
-            KeyDown += KeyDowns;
-            Dinheiro.KeyDown += KeyDowns;
-            Cheque.KeyDown += KeyDowns;
-            Debito.KeyDown += KeyDowns;
-            Credito.KeyDown += KeyDowns;
-            Crediario.KeyDown += KeyDowns;
-            Boleto.KeyDown += KeyDowns;
-            Desconto.KeyDown += KeyDowns;
-            Acrescimo.KeyDown += KeyDowns;
-
-            btnClose.KeyDown += KeyDowns;
-            btnCFeSat.KeyDown += KeyDowns;
-            btnNfe.KeyDown += KeyDowns;
-            btnImprimir.KeyDown += KeyDowns;
-            btnConcluir.KeyDown += KeyDowns;
-
             TelaReceber.Visible = false;
         }
         
         public void AtualizarDados()
         {
+            Dinheiro.Select();
+
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
+            pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true);
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
@@ -108,107 +95,35 @@ namespace Emiplus.View.Comercial
             valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
         }
 
-        /// <summary>
-        /// Eventos Click
-        /// </summary>
-        public void Events()
+        private void JanelasRecebimento(string formaPgto)
         {
-            Load += (s, e) => AtualizarDados();
+            TelaReceber.Visible = true;
+            lTipo.Text = formaPgto;
+            valor.Select();
 
-            Debito.Click += (s, e) =>
+            if (formaPgto == "Cartão de Débito" || formaPgto == "Dinheiro")
             {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Cartão de Débito";
                 Campos(1);
-                valor.Select();
-            };
+                return;
+            }
 
-            Credito.Click += (s, e) =>
+            Campos(0);
+        }
+
+        private void JanelaDesconto()
+        {
+            PedidoPayDesconto.idPedido = IdPedido;
+            PedidoPayDesconto Desconto = new PedidoPayDesconto();
+            if (Desconto.ShowDialog() == DialogResult.OK)
             {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Cartão de Crédito";
-                Campos(0);
-                valor.Select();
-            };
-
-            Dinheiro.Click += (s, e) =>
-            {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Dinheiro";
-                Campos(1);
-                valor.Select();
-            };
-
-            Desconto.Click += (s, e) =>
-            {
-                PedidoPayDesconto Desconto = new PedidoPayDesconto();
-                Desconto.ShowDialog();
-            };
-
-            Acrescimo.Click += (s, e) =>
-            {
-                PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
-                Acrescimo.ShowDialog();
-            };
-
-            Boleto.Click += (s, e) =>
-            {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Boleto";
-                Campos(0);
-                valor.Select();
-            };
-
-            Crediario.Click += (s, e) =>
-            {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Crediário";
-                Campos(0);
-                valor.Select();
-            };
-
-            Cheque.Click += (s, e) =>
-            {
-                TelaReceber.Visible = true;
-                lTipo.Text = "Cheque";
-                Campos(0);
-                valor.Select();
-            };
-
-            btnCancelar.Click += (s, e) => TelaReceber.Visible = false;
-
-            btnSalvar.Click += (s, e) => bSalvar();
-
-            btnClose.Click += (s, e) => Close();
-
-            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
-
-            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
-
-            valor.TextChanged += (s, e) =>
-            {
-                TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
-            };
-
-            GridListaFormaPgtos.CellDoubleClick += (s, e) =>
-            {
-                if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colEditar")
-                {
-                    //caixa2_editar frm = new caixa2_editar(dataGridView3.CurrentRow.Cells[2].Value.ToString(), usuariosinc);
-                    //frm.Show();
-                }
-                else if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
-                {
-                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[5].Value);
-                    if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[5].Value) != "")
-                    {
-                        int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
-                        _mTitulo.Remove(id);
-                        AtualizarDados();
-                    }
-                }
-            };
+                AtualizarDados();
+            }
+        }
+        private void JanelaAcrescimo()
+        {
+            //PedidoPayAcrescimo.idPedido = IdPedido;
+            PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
+            Acrescimo.ShowDialog();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -219,28 +134,28 @@ namespace Emiplus.View.Comercial
                     bSalvar();
                     break;
                 case Keys.F1:
-                    //Dinheiro_Click(sender, e);
+                    JanelasRecebimento("Dinheiro");
                     break;
                 case Keys.F2:
-                    //BuscarProduto.Focus();
+                    JanelasRecebimento("Cheque");
                     break;
                 case Keys.F3:
-                    //Debito_Click(sender, e);
+                    JanelasRecebimento("Cartão de Débito");
                     break;
                 case Keys.F4:
-                    //Credito_Click(sender, e);
+                    JanelasRecebimento("Cartão de Crédito");
                     break;
                 case Keys.F5:
-                    //Crediario_Click(sender, e);
+                    JanelasRecebimento("Crediário");
                     break;
                 case Keys.F6:
-                    //Boleto_Click(sender, e);
+                    JanelasRecebimento("Boleto");
                     break;
                 case Keys.F7:
-                    //Desconto_Click(sender, e);
+                    JanelaDesconto();
                     break;
                 case Keys.F8:
-                    //Acrescimo_Click(sender, e);
+                    JanelaAcrescimo();
                     break;
                 case Keys.F9:
                     //TelaPagamentos();
@@ -255,10 +170,76 @@ namespace Emiplus.View.Comercial
                     //TelaPagamentos();
                     break;
                 case Keys.Escape:
-                    Close();
+                    TelaReceber.Visible = false;
                     break;
             }
         }
 
+        /// <summary>
+        /// Eventos do form
+        /// </summary>
+        public void Events()
+        {
+            KeyDown += KeyDowns;
+            Dinheiro.KeyDown += KeyDowns;
+            Cheque.KeyDown += KeyDowns;
+            Debito.KeyDown += KeyDowns;
+            Credito.KeyDown += KeyDowns;
+            Crediario.KeyDown += KeyDowns;
+            Boleto.KeyDown += KeyDowns;
+            Desconto.KeyDown += KeyDowns;
+            Acrescimo.KeyDown += KeyDowns;
+
+            btnClose.KeyDown += KeyDowns;
+            btnCFeSat.KeyDown += KeyDowns;
+            btnNfe.KeyDown += KeyDowns;
+            btnImprimir.KeyDown += KeyDowns;
+            btnConcluir.KeyDown += KeyDowns;
+            btnSalvar.KeyDown += KeyDowns;
+            btnCancelar.KeyDown += KeyDowns;
+            valor.KeyDown += KeyDowns;
+            parcelas.KeyDown += KeyDowns;
+            iniciar.KeyDown += KeyDowns;
+
+            Load += (s, e) => AtualizarDados();
+
+            Debito.Click += (s, e) => JanelasRecebimento("Cartão de Débito");
+            Credito.Click += (s, e) => JanelasRecebimento("Cartão de Crédito");
+            Dinheiro.Click += (s, e) => JanelasRecebimento("Dinheiro");
+            Boleto.Click += (s, e) => JanelasRecebimento("Boleto");
+            Crediario.Click += (s, e) => JanelasRecebimento("Crediário");
+            Cheque.Click += (s, e) => JanelasRecebimento("Cheque");
+
+            Desconto.Click += (s, e) => JanelaDesconto();
+            Acrescimo.Click += (s, e) => JanelaAcrescimo();
+
+            btnSalvar.Click += (s, e) => bSalvar();
+            btnCancelar.Click += (s, e) => TelaReceber.Visible = false;
+
+            btnClose.Click += (s, e) => Close();
+
+            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+
+            valor.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Eventos.MaskPrice(ref txt);
+            };
+
+            GridListaFormaPgtos.CellDoubleClick += (s, e) =>
+            {
+                if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
+                {
+                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[5].Value);
+                    if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[5].Value) != "")
+                    {
+                        int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
+                        _mTitulo.Remove(id);
+                        AtualizarDados();
+                    }
+                }
+            };
+        }
     }
 }

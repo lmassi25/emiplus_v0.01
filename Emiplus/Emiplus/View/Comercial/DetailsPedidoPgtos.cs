@@ -6,8 +6,9 @@ namespace Emiplus.View.Comercial
 {
     public partial class DetailsPedidoPgtos : Form
     {
-        private int IdPedido = Pedido.IdPedido;
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
+
+        public static int IdPedido;
 
         public DetailsPedidoPgtos()
         {

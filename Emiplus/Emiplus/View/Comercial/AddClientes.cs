@@ -163,20 +163,19 @@ namespace Emiplus.View.Comercial
         {
             _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
 
-            nomeRS.Text = _modelPessoa.Nome;
-            nomeFantasia.Text = _modelPessoa?.Fantasia ?? ""; // testar isso
-            //nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
-            nascimento.Text = _modelPessoa.Aniversario == null ? "" : Validation.ConvertDateToForm(_modelPessoa.Aniversario);
-            cpfCnpj.Text = _modelPessoa.CPF == null ? "" : _modelPessoa.CPF;
-            rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
-            pessoaJF.SelectedItem = _modelPessoa.Pessoatipo == null ? "" : _modelPessoa.Pessoatipo;
+            nomeRS.Text = _modelPessoa?.Nome ?? "";
+            nomeFantasia.Text = _modelPessoa?.Fantasia ?? "";
+            nascimento.Text = Validation.ConvertDateToForm(_modelPessoa?.Aniversario) ?? "";
+            cpfCnpj.Text = _modelPessoa?.CPF ?? "";
+            rgIE.Text = _modelPessoa?.RG ?? "";
+            pessoaJF.SelectedItem = _modelPessoa?.Pessoatipo ?? "";
             Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
 
             if (Home.pessoaPage == "Transportadoras")
             {
-                placa.Text = _modelPessoa.Transporte_placa == null ? "" : _modelPessoa.Transporte_placa;
-                uf.Text = _modelPessoa.Transporte_uf == null ? "" : _modelPessoa.Transporte_placa;
-                rntc.Text = _modelPessoa.Transporte_rntc == null ? "" : _modelPessoa.Transporte_placa;
+                placa.Text = _modelPessoa?.Transporte_placa ?? "";
+                uf.Text = _modelPessoa?.Transporte_placa ?? "";
+                rntc.Text = _modelPessoa?.Transporte_placa ?? "";
             }
         }
 

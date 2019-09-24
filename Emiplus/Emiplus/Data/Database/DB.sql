@@ -82,6 +82,7 @@ CREATE TABLE PEDIDO
 	criado timestamp,
 	atualizado timestamp,
 	deletado timestamp,
+	emissao date,
 	cliente integer,
 	colaborador integer,
 	total numeric(18, 4),
@@ -201,7 +202,8 @@ CREATE TABLE ITEM_MOV_ESTOQUE
 	quantidade numeric(18,4),
 	observacao varchar(255),
 	tipo varchar(10),
-	local varchar(255)
+	local varchar(255),
+	anterior numeric(18,4)
 );
 
 CREATE TABLE IMPOSTO

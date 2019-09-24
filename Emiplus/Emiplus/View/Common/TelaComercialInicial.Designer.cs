@@ -38,12 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Orcamentos = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Devolucoes = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.Consignacoes = new System.Windows.Forms.Button();
             this.NovoPedido = new System.Windows.Forms.Button();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -161,28 +161,28 @@
             this.label1.TabIndex = 66;
             this.label1.Text = "Relatórios";
             // 
-            // button2
+            // Orcamentos
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(62, 359);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 115);
-            this.button2.TabIndex = 70;
-            this.button2.Text = "Orçamentos";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
+            this.Orcamentos.BackColor = System.Drawing.Color.Transparent;
+            this.Orcamentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Orcamentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Orcamentos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Orcamentos.FlatAppearance.BorderSize = 0;
+            this.Orcamentos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Orcamentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Orcamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Orcamentos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Orcamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Orcamentos.Image = ((System.Drawing.Image)(resources.GetObject("Orcamentos.Image")));
+            this.Orcamentos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Orcamentos.Location = new System.Drawing.Point(62, 359);
+            this.Orcamentos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Orcamentos.Name = "Orcamentos";
+            this.Orcamentos.Size = new System.Drawing.Size(126, 115);
+            this.Orcamentos.TabIndex = 70;
+            this.Orcamentos.Text = "Orçamentos";
+            this.Orcamentos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Orcamentos.UseVisualStyleBackColor = false;
             // 
             // Pedidos
             // 
@@ -203,32 +203,32 @@
             this.Pedidos.Name = "Pedidos";
             this.Pedidos.Size = new System.Drawing.Size(126, 115);
             this.Pedidos.TabIndex = 69;
-            this.Pedidos.Text = "Pedidos";
+            this.Pedidos.Text = "Vendas";
             this.Pedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Pedidos.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // Devolucoes
             // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(458, 359);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 115);
-            this.button4.TabIndex = 71;
-            this.button4.Text = "Devolução";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
+            this.Devolucoes.BackColor = System.Drawing.Color.Transparent;
+            this.Devolucoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Devolucoes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Devolucoes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Devolucoes.FlatAppearance.BorderSize = 0;
+            this.Devolucoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Devolucoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Devolucoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Devolucoes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Devolucoes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Devolucoes.Image = ((System.Drawing.Image)(resources.GetObject("Devolucoes.Image")));
+            this.Devolucoes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Devolucoes.Location = new System.Drawing.Point(458, 359);
+            this.Devolucoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Devolucoes.Name = "Devolucoes";
+            this.Devolucoes.Size = new System.Drawing.Size(126, 115);
+            this.Devolucoes.TabIndex = 71;
+            this.Devolucoes.Text = "Devolução";
+            this.Devolucoes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Devolucoes.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -276,28 +276,28 @@
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // Consignacoes
             // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.Location = new System.Drawing.Point(194, 359);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(126, 115);
-            this.button7.TabIndex = 74;
-            this.button7.Text = "Consignação";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = false;
+            this.Consignacoes.BackColor = System.Drawing.Color.Transparent;
+            this.Consignacoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Consignacoes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Consignacoes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Consignacoes.FlatAppearance.BorderSize = 0;
+            this.Consignacoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Consignacoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Consignacoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Consignacoes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Consignacoes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Consignacoes.Image = ((System.Drawing.Image)(resources.GetObject("Consignacoes.Image")));
+            this.Consignacoes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Consignacoes.Location = new System.Drawing.Point(194, 359);
+            this.Consignacoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Consignacoes.Name = "Consignacoes";
+            this.Consignacoes.Size = new System.Drawing.Size(126, 115);
+            this.Consignacoes.TabIndex = 74;
+            this.Consignacoes.Text = "Consignação";
+            this.Consignacoes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Consignacoes.UseVisualStyleBackColor = false;
             // 
             // NovoPedido
             // 
@@ -318,7 +318,7 @@
             this.NovoPedido.Name = "NovoPedido";
             this.NovoPedido.Size = new System.Drawing.Size(126, 115);
             this.NovoPedido.TabIndex = 75;
-            this.NovoPedido.Text = "Novo Pedido";
+            this.NovoPedido.Text = "Nova Venda";
             this.NovoPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.NovoPedido.UseVisualStyleBackColor = false;
             // 
@@ -435,11 +435,11 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.NovoPedido);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.Consignacoes);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Devolucoes);
+            this.Controls.Add(this.Orcamentos);
             this.Controls.Add(this.Pedidos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
@@ -472,12 +472,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Orcamentos;
         private System.Windows.Forms.Button Pedidos;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Devolucoes;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button Consignacoes;
         private System.Windows.Forms.Button NovoPedido;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
         private System.Windows.Forms.Panel panel4;

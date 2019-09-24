@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -90,13 +89,10 @@ namespace Emiplus.Data.Helpers
 
             if (cifrao)
             {
-                res = obj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("pt-br"));
+                res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
             }
             else
             {
-                //var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
-                //double d = obj;
-                //res = d.ToString("#,##.##", nfi);
                 res = string.Format("{0:N2}", obj);
             }
 
@@ -149,11 +145,15 @@ namespace Emiplus.Data.Helpers
             if (String.IsNullOrEmpty(date.ToString()))
                 return "";
 
+            DateTime temp;
+            if (!DateTime.TryParse(date.ToString(), out temp))
+                return "";
+
             string data;
             if (large)
-                data = Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year) + " " + Convert.ToDateTime(date).Hour + ":" + Convert.ToDateTime(date).Minute;
+                data = Convert.ToDateTime(date).ToString("dd/MM/yyyy HH:mm");
             else
-                data = Convert.ToDateTime(date).Day.ToString("00") + "/" + (Convert.ToDateTime(date).Month).ToString("00") + "/" + (Convert.ToDateTime(date).Year);
+                data = Convert.ToDateTime(date).ToString("dd/MM/yyyy");
 
             return data;
         }
@@ -166,12 +166,15 @@ namespace Emiplus.Data.Helpers
             if (String.IsNullOrEmpty(date.ToString()))
                 return "";
 
-            return Convert.ToDateTime(date).Year + "-" + (Convert.ToDateTime(date).Month).ToString("00") + "-" + (Convert.ToDateTime(date).Day).ToString("00");
+            DateTime temp;
+            if (!DateTime.TryParse(date.ToString(), out temp))
+                return "";
+
+            return Convert.ToDateTime(date).ToString("yyyy-MM-dd");
         }
 
         public static string DateNowToSql()
         {
-            //return DateTime.Now.Year + "-" + (DateTime.Now.Month).ToString("00") + "-" + (DateTime.Now.Day).ToString("00");
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
 
