@@ -1,7 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using SqlKata.Execution;
-using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +15,7 @@ namespace Emiplus.View.Comercial
         public AddClienteContato()
         {
             InitializeComponent();
+            Events();
 
             if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
             {
@@ -25,54 +25,46 @@ namespace Emiplus.View.Comercial
 
             if (IdContact > 0)
             {
-                LoadData();
+                _modelContato = _modelContato.FindById(IdContact).First<PessoaContato>();
+
+                contato.Text = _modelContato.Contato;
+                celular.Text = _modelContato.Celular;
+                telefone.Text = _modelContato.Telefone;
+                email.Text = _modelContato.Email;
             }
         }
 
-        private void LoadData()
+        private void Events()
         {
-            _modelContato = _modelContato.FindById(IdContact).First<PessoaContato>();
-
-            contato.Text = _modelContato.Contato;
-            celular.Text = _modelContato.Celular;
-            telefone.Text = _modelContato.Telefone;
-            email.Text = _modelContato.Email;
-        }
-
-
-        private void BtnContatoCancelar_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir o contato?", "Atenção!", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            btnContatoSalvar.Click += (s, e) =>
             {
-                if (_modelContato.Remove(IdContact))
+                _modelContato.Id = IdContact;
+                _modelContato.Id_pessoa = IdPessoa;
+                _modelContato.Contato = contato.Text;
+                _modelContato.Celular = celular.Text;
+                _modelContato.Telefone = telefone.Text;
+                _modelContato.Email = email.Text;
+
+                if (_modelContato.Save(_modelContato))
                 {
                     DialogResult = DialogResult.OK;
                     Close();
                 }
-            }
-        }
-
-        private void BtnContatoSalvar_Click(object sender, EventArgs e)
-        {
-            _modelContato.Id = IdContact;
-            _modelContato.Id_pessoa = IdPessoa;
-            _modelContato.Contato = contato.Text;
-            _modelContato.Celular = celular.Text;
-            _modelContato.Telefone = telefone.Text;
-            _modelContato.Email = email.Text;
-
-            if (_modelContato.Save(_modelContato))
+            };
+            btnContatoDelete.Click += (s, e) =>
             {
-                DialogResult = DialogResult.OK;
-                Close();
-            }
+                var result = MessageBox.Show("Deseja realmente excluir o contato?", "Atenção!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    if (_modelContato.Remove(IdContact))
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                }
+            };
 
-        }
-
-        private void AddClienteContato_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult = DialogResult.OK;
+            FormClosing += (s, e) => DialogResult = DialogResult.OK;
         }
     }
 }

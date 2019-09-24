@@ -6,7 +6,6 @@ namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalClientes : Form
     {
-
         public static int Id { get; set; }
         public static string page { get; set; }
 
@@ -15,26 +14,10 @@ namespace Emiplus.View.Comercial
         public PedidoModalClientes()
         {
             InitializeComponent();
-
-            KeyDown += KeyDowns;
-            search.KeyDown += KeyDowns;
-            GridListaClientes.KeyDown += KeyDowns;
+            Events();
         }
 
-        private void DataTable()
-        {
-            _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
-        }
-
-        private void Search_TextChanged(object sender, EventArgs e)
-        {
-            DataTable();
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            DataTable();
-        }
+        private void DataTable() => _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
 
         private void SelectItemGrid()
         {
@@ -59,24 +42,9 @@ namespace Emiplus.View.Comercial
             if (f.ShowDialog() == DialogResult.OK)
             {
                 DialogResult = DialogResult.OK;
-                Id = AddClientes.Id; // Retorna ID do registro de cliente
+                Id = AddClientes.Id;
                 Close();
             }
-        }
-
-        private void NovoCliente_Click(object sender, EventArgs e)
-        {
-            FormNovoCliente();
-        }
-
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnSelecionar_Click(object sender, EventArgs e)
-        {
-            SelectItemGrid();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -106,15 +74,25 @@ namespace Emiplus.View.Comercial
                     SelectItemGrid();
                     break;
                 case Keys.Enter:
-
-                    // Pressione 'Enter', se estiver na Grid, seleciona cliente
                     if (Validation.Event(sender, GridListaClientes))
-                    {
                         SelectItemGrid();
-                    }
-
                     break;
             }
+        }
+
+        private void Events()
+        {
+            KeyDown += KeyDowns;
+            search.KeyDown += KeyDowns;
+            GridListaClientes.KeyDown += KeyDowns;
+
+            search.TextChanged += (s, e) => DataTable();
+            search.Enter += (s, e) => DataTable();
+
+            NovoCliente.Click += (s, e) => FormNovoCliente();
+            btnSelecionar.Click += (s, e) => SelectItemGrid();
+
+            btnCancelar.Click += (s, e) => Close();
         }
     }
 }

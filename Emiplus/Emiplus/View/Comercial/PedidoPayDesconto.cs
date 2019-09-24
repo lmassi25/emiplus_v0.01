@@ -7,6 +7,12 @@ namespace Emiplus.View.Comercial
         public PedidoPayDesconto()
         {
             InitializeComponent();
+            Events();
+        }
+
+        private void Events()
+        {
+
         }
     }
 }

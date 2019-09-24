@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.btnAddrSalvar = new System.Windows.Forms.Button();
-            this.btnAddrCancelar = new System.Windows.Forms.Button();
+            this.btnAddrDelete = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.rua = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -100,29 +100,27 @@
             this.btnAddrSalvar.Text = "Salvar";
             this.btnAddrSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAddrSalvar.UseVisualStyleBackColor = true;
-            this.btnAddrSalvar.Click += new System.EventHandler(this.BtnAddrSalvar_Click);
             // 
-            // btnAddrCancelar
+            // btnAddrDelete
             // 
-            this.btnAddrCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddrCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddrCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddrCancelar.FlatAppearance.BorderSize = 0;
-            this.btnAddrCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddrCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddrCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAddrCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnAddrCancelar.Image")));
-            this.btnAddrCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddrCancelar.Location = new System.Drawing.Point(16, 3);
-            this.btnAddrCancelar.Name = "btnAddrCancelar";
-            this.btnAddrCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnAddrCancelar.TabIndex = 2;
-            this.btnAddrCancelar.Text = "Excluir";
-            this.btnAddrCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddrCancelar.UseVisualStyleBackColor = true;
-            this.btnAddrCancelar.Click += new System.EventHandler(this.BtnAddrCancelar_Click);
+            this.btnAddrDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddrDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddrDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddrDelete.FlatAppearance.BorderSize = 0;
+            this.btnAddrDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAddrDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAddrDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddrDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddrDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAddrDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnAddrDelete.Image")));
+            this.btnAddrDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAddrDelete.Location = new System.Drawing.Point(16, 3);
+            this.btnAddrDelete.Name = "btnAddrDelete";
+            this.btnAddrDelete.Size = new System.Drawing.Size(69, 60);
+            this.btnAddrDelete.TabIndex = 2;
+            this.btnAddrDelete.Text = "Excluir";
+            this.btnAddrDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddrDelete.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -523,13 +521,12 @@
             this.buscarEndereco.TabIndex = 1;
             this.buscarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buscarEndereco.UseVisualStyleBackColor = true;
-            this.buscarEndereco.Click += new System.EventHandler(this.BuscarEndereco_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel2.Controls.Add(this.btnAddrSalvar);
-            this.panel2.Controls.Add(this.btnAddrCancelar);
+            this.panel2.Controls.Add(this.btnAddrDelete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 238);
             this.panel2.Name = "panel2";
@@ -592,7 +589,6 @@
             this.cep.Watermark.Text = "Watermark text";
             this.cep.Watermark.Visible = false;
             this.cep.WordWrap = true;
-            this.cep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cep_KeyPress);
             // 
             // label1
             // 
@@ -779,11 +775,6 @@
             this.pais.Watermark.Text = "Watermark text";
             this.pais.Watermark.Visible = false;
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
-            // 
             // AddClienteEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -822,7 +813,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddClienteEndereco_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -836,7 +826,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnAddrSalvar;
-        private System.Windows.Forms.Button btnAddrCancelar;
+        private System.Windows.Forms.Button btnAddrDelete;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rua;

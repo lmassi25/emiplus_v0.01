@@ -73,7 +73,6 @@ namespace Emiplus.View.Comercial
 
             btnPgtosLancado.Click += (s, e) =>
             {
-
                 DetailsPedidoPgtos pgtos = new DetailsPedidoPgtos();
                 pgtos.ShowDialog();
             };

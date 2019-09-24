@@ -48,11 +48,7 @@ namespace Emiplus.View.Comercial
 
             btnAdicionar.Click += (s, e) => EditPedido(true);
             btnEditar.Click += (s, e) => EditPedido();
-
-            GridLista.DoubleClick += (s, e) =>
-            {
-
-            };
+            GridLista.DoubleClick += (s, e) =>EditPedido();
 
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();

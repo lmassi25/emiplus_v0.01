@@ -290,6 +290,8 @@ namespace Emiplus.View.Comercial
             // 
             this.ListaEnderecos.AllowUserToAddRows = false;
             this.ListaEnderecos.AllowUserToDeleteRows = false;
+            this.ListaEnderecos.AllowUserToResizeColumns = false;
+            this.ListaEnderecos.AllowUserToResizeRows = false;
             this.ListaEnderecos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -426,6 +428,8 @@ namespace Emiplus.View.Comercial
             // 
             this.ListaContatos.AllowUserToAddRows = false;
             this.ListaContatos.AllowUserToDeleteRows = false;
+            this.ListaContatos.AllowUserToResizeColumns = false;
+            this.ListaContatos.AllowUserToResizeRows = false;
             this.ListaContatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -580,9 +584,9 @@ namespace Emiplus.View.Comercial
             this.uf.ImageVisible = false;
             this.uf.Index = 0;
             this.uf.IntegralHeight = false;
-            this.uf.ItemHeight = 22;
+            this.uf.ItemHeight = 24;
             this.uf.ItemImageVisible = true;
-            this.uf.Location = new System.Drawing.Point(20, 94);
+            this.uf.Location = new System.Drawing.Point(17, 94);
             this.uf.MaxDropDownItems = 100;
             this.uf.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.uf.MenuItemNormal = System.Drawing.Color.White;
@@ -591,7 +595,7 @@ namespace Emiplus.View.Comercial
             this.uf.Name = "uf";
             this.uf.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.uf.SeparatorVisible = false;
-            this.uf.Size = new System.Drawing.Size(124, 28);
+            this.uf.Size = new System.Drawing.Size(124, 30);
             this.uf.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.uf.TabIndex = 48;
             this.uf.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -687,7 +691,7 @@ namespace Emiplus.View.Comercial
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(20, 74);
+            this.label3.Location = new System.Drawing.Point(17, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 17);
             this.label3.TabIndex = 45;

@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClienteContato));
             this.label11 = new System.Windows.Forms.Label();
             this.btnContatoSalvar = new System.Windows.Forms.Button();
-            this.btnContatoCancelar = new System.Windows.Forms.Button();
+            this.btnContatoDelete = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.contato = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -77,29 +77,27 @@
             this.btnContatoSalvar.Text = "Salvar";
             this.btnContatoSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnContatoSalvar.UseVisualStyleBackColor = true;
-            this.btnContatoSalvar.Click += new System.EventHandler(this.BtnContatoSalvar_Click);
             // 
-            // btnContatoCancelar
+            // btnContatoDelete
             // 
-            this.btnContatoCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContatoCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnContatoCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContatoCancelar.FlatAppearance.BorderSize = 0;
-            this.btnContatoCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContatoCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContatoCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoCancelar.Image")));
-            this.btnContatoCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoCancelar.Location = new System.Drawing.Point(16, 5);
-            this.btnContatoCancelar.Name = "btnContatoCancelar";
-            this.btnContatoCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnContatoCancelar.TabIndex = 5;
-            this.btnContatoCancelar.Text = "Excluir";
-            this.btnContatoCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContatoCancelar.UseVisualStyleBackColor = true;
-            this.btnContatoCancelar.Click += new System.EventHandler(this.BtnContatoCancelar_Click);
+            this.btnContatoDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContatoDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnContatoDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContatoDelete.FlatAppearance.BorderSize = 0;
+            this.btnContatoDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnContatoDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnContatoDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContatoDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContatoDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnContatoDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoDelete.Image")));
+            this.btnContatoDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnContatoDelete.Location = new System.Drawing.Point(16, 5);
+            this.btnContatoDelete.Name = "btnContatoDelete";
+            this.btnContatoDelete.Size = new System.Drawing.Size(69, 60);
+            this.btnContatoDelete.TabIndex = 5;
+            this.btnContatoDelete.Text = "Excluir";
+            this.btnContatoDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnContatoDelete.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -394,7 +392,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel2.Controls.Add(this.btnContatoSalvar);
-            this.panel2.Controls.Add(this.btnContatoCancelar);
+            this.panel2.Controls.Add(this.btnContatoDelete);
             this.panel2.Location = new System.Drawing.Point(0, 199);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(670, 68);
@@ -428,7 +426,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddClienteContato_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -440,7 +437,7 @@
         #endregion
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnContatoSalvar;
-        private System.Windows.Forms.Button btnContatoCancelar;
+        private System.Windows.Forms.Button btnContatoDelete;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox contato;

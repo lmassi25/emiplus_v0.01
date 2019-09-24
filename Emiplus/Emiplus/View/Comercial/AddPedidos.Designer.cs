@@ -489,6 +489,8 @@
             // 
             this.GridListaProdutos.AllowUserToAddRows = false;
             this.GridListaProdutos.AllowUserToDeleteRows = false;
+            this.GridListaProdutos.AllowUserToResizeColumns = false;
+            this.GridListaProdutos.AllowUserToResizeRows = false;
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
@@ -666,7 +668,7 @@
             this.subTotal.Name = "subTotal";
             this.subTotal.Size = new System.Drawing.Size(324, 40);
             this.subTotal.TabIndex = 101;
-            this.subTotal.Text = "R$ 5,000,00";
+            this.subTotal.Text = "R$ 00,00";
             this.subTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label20

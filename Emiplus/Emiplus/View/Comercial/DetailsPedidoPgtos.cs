@@ -42,10 +42,7 @@ namespace Emiplus.View.Comercial
 
         private void Events()
         {
-            Load += (s, e) =>
-            {
-                DataTable();
-            };
+            Load += (s, e) => DataTable();
         }
     }
 }

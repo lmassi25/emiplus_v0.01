@@ -1,7 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
 using System.Windows.Forms;
-using Emiplus.View.Common;
 
 namespace Emiplus.View.Comercial
 {
@@ -20,6 +19,7 @@ namespace Emiplus.View.Comercial
         public PedidoPagamentos()
         {
             InitializeComponent();
+            Events();
 
             KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
@@ -37,14 +37,7 @@ namespace Emiplus.View.Comercial
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
 
-            Events();
-
             TelaReceber.Visible = false;
-        }
-
-        private void PedidoPagamentos_Load(object sender, EventArgs e)
-        {
-            AtualizarDados();
         }
         
         public void AtualizarDados()
@@ -54,11 +47,6 @@ namespace Emiplus.View.Comercial
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
-        }
-
-        private void bCancelar()
-        {
-            TelaReceber.Visible = false;
         }
 
         private void bSalvar()
@@ -87,7 +75,6 @@ namespace Emiplus.View.Comercial
 
             TelaReceber.Visible = false;
 
-            //troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             AtualizarDados();
         }
 
@@ -126,6 +113,8 @@ namespace Emiplus.View.Comercial
         /// </summary>
         public void Events()
         {
+            Load += (s, e) => AtualizarDados();
+
             Debito.Click += (s, e) =>
             {
                 TelaReceber.Visible = true;
@@ -186,30 +175,15 @@ namespace Emiplus.View.Comercial
                 valor.Select();
             };
 
-            btnCancelar.Click += (s, e) =>
-            {
-                bCancelar();
-            };
+            btnCancelar.Click += (s, e) => TelaReceber.Visible = false;
 
-            btnSalvar.Click += (s, e) =>
-            {
-                bSalvar();
-            };
+            btnSalvar.Click += (s, e) => bSalvar();
 
-            btnClose.Click += (s, e) =>
-            {
-                Close();
-            };
+            btnClose.Click += (s, e) => Close();
 
-            iniciar.KeyPress += (s, e) =>
-            {
-                Eventos.MaskBirthday(s, e);
-            };
+            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
 
-            iniciar.KeyPress += (s, e) =>
-            {
-                Eventos.MaskBirthday(s, e);
-            };
+            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
 
             valor.TextChanged += (s, e) =>
             {
@@ -241,27 +215,6 @@ namespace Emiplus.View.Comercial
         {
             switch (e.KeyCode)
             {
-                //case Keys.A:
-                //    panelTelaDinheiro.valor.Text = "2,00";
-                //    break;
-                //case Keys.B:
-                //    panelTelaDinheiro.valor.Text = "5,00";
-                //    break;
-                //case Keys.C:
-                //    panelTelaDinheiro.valor.Text = "10,00";
-                //    break;
-                //case Keys.D:
-                //    panelTelaDinheiro.valor.Text = "20,00";
-                //    break;
-                //case Keys.E:
-                //    panelTelaDinheiro.valor.Text = "50,00";
-                //    break;
-                //case Keys.F:
-                //    panelTelaDinheiro.valor.Text = "100,00";
-                //    break;
-                //case Keys.G:
-                //    panelTelaDinheiro.valor.Clear();
-                //    break;
                 case Keys.Enter:
                     bSalvar();
                     break;

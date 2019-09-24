@@ -103,15 +103,9 @@ namespace Emiplus.View.Comercial
                 LoadData();
         }
 
-        private void DataTableAddress()
-        {
-            _controller.GetDataTableEnderecos(ListaEnderecos, Id);
-        }
+        private void DataTableAddress() => _controller.GetDataTableEnderecos(ListaEnderecos, Id);
 
-        private void DataTableContatos()
-        {
-            _controller.GetDataTableContato(ListaContatos, Id);
-        }
+        private void DataTableContatos() => _controller.GetDataTableContato(ListaContatos, Id);
 
         private void GetContato(bool create = false)
         {
@@ -183,10 +177,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void SetFocus()
-        {
-            nomeRS.Focus();
-        }
+        private void SetFocus() => nomeRS.Focus();
 
         private void Events()
         {
@@ -245,10 +236,12 @@ namespace Emiplus.View.Comercial
             btnAdicionarEndereco.Click += (s, e) => GetEndereco(true);
             btnEditarEndereco.Click += (s, e) => GetEndereco();
             ListaEnderecos.DoubleClick += (s, e) => GetEndereco();
+            nomeRS.Enter += (s, e) => DataTableAddress();
 
             btnAdicionarContato.Click += (s, e) => GetContato(true);
             btnEditarContato.Click += (s, e) => GetContato();
             ListaContatos.DoubleClick += (s, e) => GetContato();
+            nomeRS.Enter += (s, e) => DataTableContatos();
 
             pessoaJF.SelectionChangeCommitted += (s, e) =>
             {
