@@ -113,7 +113,8 @@ namespace Emiplus.View.Comercial
             {
                 IdContact = 0;
                 AddClienteContato addContact = new AddClienteContato();
-                if (addContact.ShowDialog() == DialogResult.OK) {
+                if (addContact.ShowDialog() == DialogResult.OK)
+                {
                     SetFocus();
                     DataTableContatos();
                 }
@@ -138,7 +139,8 @@ namespace Emiplus.View.Comercial
             {
                 IdAddress = 0;
                 AddClienteEndereco addAddr = new AddClienteEndereco();
-                if (addAddr.ShowDialog() == DialogResult.OK) {
+                if (addAddr.ShowDialog() == DialogResult.OK)
+                {
                     SetFocus();
                     DataTableAddress();
                 }
@@ -162,7 +164,8 @@ namespace Emiplus.View.Comercial
             _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
 
             nomeRS.Text = _modelPessoa.Nome;
-            nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
+            nomeFantasia.Text = _modelPessoa?.Fantasia ?? ""; // testar isso
+            //nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
             nascimento.Text = _modelPessoa.Aniversario == null ? "" : Validation.ConvertDateToForm(_modelPessoa.Aniversario);
             cpfCnpj.Text = _modelPessoa.CPF == null ? "" : _modelPessoa.CPF;
             rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
