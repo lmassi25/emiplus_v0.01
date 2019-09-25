@@ -1,6 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -8,6 +7,9 @@ namespace Emiplus.Controller
 {
     class PedidoItem : Data.Core.Controller
     {
+        /// <summary>
+        /// Alimenta o Datagrid da tela de Vendas e da tela Detalhes do Pedido.
+        /// </summary>
         public void GetDataTableItens(DataGridView Table, int idPedido)
         {
             Table.ColumnCount = 8;
@@ -44,9 +46,10 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var item = new Model.PedidoItem();
+            if (idPedido <= 0)
+                return;
 
-            var itens = item.Query()
+            var itens = new Model.PedidoItem().Query()
                 .LeftJoin("item", "item.id", "pedido_item.item")
                 .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.total", "item.nome", "item.referencia")
                 .Where("pedido_item.pedido", idPedido)

@@ -68,7 +68,7 @@ namespace Emiplus.Model
 
         #endregion
 
-       
+
         public ItemEstoqueMovimentacao SetQuantidade(double Quantidade)
         {
             this.Quantidade = Quantidade;
@@ -126,16 +126,10 @@ namespace Emiplus.Model
 
             data.Criado = DateTime.Now;
             if (Data(data).Create() == 1)
-            {
-                Alert.Message("Tudo certo!", "Estoque adicionado com sucesso.", Alert.AlertType.success);
-            }
-            else
-            {
-                Alert.Message("Opss", "Erro ao adicionar, verifique os dados.", Alert.AlertType.error);
-                return false;
-            }
+                return true;
 
-            return true;
+            Alert.Message("Opss", "Erro ao adicionar estoque, verifique os dados.", Alert.AlertType.error);
+            return false;
         }
 
         public bool ValidarDados(ItemEstoqueMovimentacao data)

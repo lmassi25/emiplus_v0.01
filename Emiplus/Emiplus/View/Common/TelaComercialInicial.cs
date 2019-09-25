@@ -18,7 +18,7 @@ namespace Emiplus.View.Common
             Clientes.Click += (s, e) =>
             {
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             NovoPedido.Click += (s, e) =>

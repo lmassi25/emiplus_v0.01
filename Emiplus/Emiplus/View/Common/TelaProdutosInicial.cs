@@ -9,7 +9,6 @@ namespace Emiplus.View.Common
         public TelaProdutosInicial()
         {
             InitializeComponent();
-
             Events();
         }
 
@@ -40,6 +39,13 @@ namespace Emiplus.View.Common
             {
                 Home.pessoaPage = "Transportadoras";
                 OpenForm.Show<Comercial.Clientes>(this);
+            };
+
+            Compras.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Compras";
+                Comercial.Pedido Pedido = new Comercial.Pedido();
+                Pedido.ShowDialog();
             };
         }
     }

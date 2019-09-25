@@ -13,9 +13,6 @@
         public PedidoItem() : base("PEDIDO_ITEM") { }
 
         #region CAMPOS 
-
-        //campos obrigatorios para todas as tabelas
-
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -27,7 +24,6 @@
         public string id_empresa { get; private set; }
 
         // referencia com a tabela Pedido
-
         public int Pedido { get; set; } // pedido id
 
         // referencia com a tabela Item 
@@ -36,7 +32,6 @@
         public Item ItemObj { get; set; }
 
         // informações alteraveis na parte fiscal
-
         public string CProd { get; set; }
         public string CEan { get; set; }
         public string xProd { get; set; }
@@ -45,7 +40,6 @@
         public string Origem { get; set; } // 1 digitos
 
         // totais 
-
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
@@ -201,11 +195,14 @@
             {
                 if (ItemObj.ValorVenda == 0 || ItemObj.ValorVenda < 0)
                 {
+                    Alert.Message("Oppss", "É necessário definir um valor de venda.", Alert.AlertType.info);
                     return false;
                 }
-
-                 ValorVenda = ItemObj.ValorVenda;
-                 return true;
+                else
+                {
+                    ValorVenda = ItemObj.ValorVenda;
+                    return true;
+                }
             }
 
             if (!Validation.IsNumber(valorVenda))
@@ -320,24 +317,17 @@
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
-                if (Data(data).Create() == 1)
-                {
-                    return true;
-                }
-                else
+                if (Data(data).Create() != 1)
                 {
                     Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
-            else
+
+            if (data.Id > 0)
             {
                 data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
-                }
-                else
+                if (Data(data).Update("ID", data.Id) != 1)
                 {
                     Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
                     return false;
@@ -351,10 +341,7 @@
         {
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
-            {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
                 return true;
-            }
 
             Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
             return false;

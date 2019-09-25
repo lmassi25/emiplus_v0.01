@@ -13,11 +13,21 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
             Events();
-            
+
+            label3.Text = Home.pedidoPage;
+            label1.Text = Home.pedidoPage;
+
+            if (Home.pedidoPage == "Orçamentos")
+                label2.Text = "Gerencie os orçamenos aqui! Adicione, edite ou delete um orçamento.";
+            else if (Home.pedidoPage == "Consignações")
+                label2.Text = "Gerencie as consignações aqui! Adicione, edite ou delete uma consignação.";
+            else if (Home.pedidoPage == "Devoluções")
+                label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
+            else if (Home.pedidoPage == "Compras")
+                label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
+
             dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
-
-            label1.Text = Home.pedidoPage;
         }
 
         private void Filter() => _cPedido.GetDataTablePedidos(GridLista, Home.pedidoPage, search.Text, dataInicial.Text, dataFinal.Text);
@@ -26,7 +36,6 @@ namespace Emiplus.View.Comercial
         {
             if (create)
             {
-                //Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();

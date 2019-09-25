@@ -379,7 +379,6 @@
             this.btnAlterarQtd.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnAlterarQtd.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnAlterarQtd.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnAlterarQtd.Visible = false;
             // 
             // Categorias
             // 

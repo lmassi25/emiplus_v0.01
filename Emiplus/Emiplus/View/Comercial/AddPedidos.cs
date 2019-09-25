@@ -13,18 +13,15 @@ namespace Emiplus.View.Comercial
     {
         private int ModoRapAva { get; set; }
         private int ModoRapAvaConfig { get; set; }
-        public static int IdItem { get; set; } // Id item datagrid
-        public static string searchItemTexto { get; set; }
 
-        public static int Id { get; set; }
+        public static int Id { get; set; } // id pedido
+        public static int IdPedidoItem { get; set; } // Id item datagrid
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
-
-        private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
@@ -33,10 +30,26 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
             Events();
         }
-        
+
         private void LoadData()
         {
-            label2.Text = "Dados do Pedido: " + Id;
+            if (Home.pedidoPage == "Orçamentos") {
+                label2.Text = $"Dados do Orçamento: {Id}";
+                label3.Text = "Siga as etapas abaixo para criar um novo orçamento!";
+                btnConcluir.Text = "Gerar Venda";
+            } else if (Home.pedidoPage == "Consignações") {
+                label2.Text = $"Dados da Consignação: {Id}";
+                label3.Text = "Siga as etapas abaixo para criar uma nova consignãção!";
+                btnConcluir.Text = "Gerar Venda";
+            } else if (Home.pedidoPage == "Compras") {
+                label2.Text = $"Dados da Compra: {Id}";
+                label3.Text = "Siga as etapas abaixo para adicionar uma nova compra!";
+                btnConcluir.Text = "Pagamento";
+            } else {
+                label2.Text = $"Dados da Venda: {Id}";
+                label3.Text = "Siga as etapas abaixo para adicionar uma nova venda!";
+                btnConcluir.Text = "Receber";
+            }
 
             LoadCliente();
             LoadColaboradorCaixa();
@@ -73,79 +86,11 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void LoadItens()
         {
-            if (collection.Lookup(BuscarProduto.Text) == 0)
-            {
-                if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
-                {
-                    searchItemTexto = BuscarProduto.Text;
-                    PedidoModalItens form = new PedidoModalItens();
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+            // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
+            ModalItens();
 
-                        if (PedidoModalItens.ValorVendaProduto == 0)
-                        {
-                            if (ModoRapAva == 0)
-                            {
-                                AlterarModo();
-                                ModoRapAvaConfig = 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
-            {
-                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
-
-                var pedidoItem = new Model.PedidoItem();
-
-                pedidoItem.SetId(0)
-                    .SetTipo("Produtos")
-                    .SetPedidoId(Id)
-                    .SetItem(item)
-                    .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
-                    .SetMedida(Medidas.Text)
-                    .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text));
-
-                var valorVenda = pedidoItem.SetValorVenda(Validation.ConvertToDouble(Preco.Text));
-                if (!valorVenda)
-                {
-                    Alert.Message("Oppss", "É necessário definir um valor de venda.", Alert.AlertType.info);
-                    if (ModoRapAva == 0)
-                    {
-                        AlterarModo();
-                        ModoRapAvaConfig = 1;
-                    }
-                    Preco.Select();
-                    return;
-                }
-
-                pedidoItem.SomarProdutosTotal();
-                pedidoItem.SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text));
-                pedidoItem.SomarTotal();
-                pedidoItem.Save(pedidoItem);
-
-                _mItemEstoque.SetUsuario(0)
-                    .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text) == 0 ? 1 : Validation.ConvertToDouble(Quantidade.Text))
-                    .SetTipo("R")
-                    .SetLocal("Tela de Vendas")
-                    .SetItem(item)
-                    .Save(_mItemEstoque);
-
-                _controllerPedidoItem.GetDataTableItens(GridListaProdutos, Id);
-
-                LoadTotais();
-                
-                ClearForms();
-
-                if (ModoRapAva == 1 && ModoRapAvaConfig == 1)
-                {
-                    AlterarModo();
-                    ModoRapAvaConfig = 0;
-                }
-            }
+            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
+            AddItem();
 
             PedidoModalItens.NomeProduto = "";
             BuscarProduto.Select();
@@ -179,7 +124,7 @@ namespace Emiplus.View.Comercial
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
-        
+
         /// <summary>
         /// Validação para tela de Pagamentos.
         /// </summary>
@@ -189,6 +134,19 @@ namespace Emiplus.View.Comercial
             {
                 MessageBox.Show("Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir para os recebimentos.", "Opsss");
                 return;
+            }
+
+            if (Home.pedidoPage != "Compras")
+            {
+                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Pedido.Tipo = "Vendas";
+                Pedido.Save(Pedido);
+            }
+            else
+            {
+                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Pedido.Tipo = "Compras";
+                Pedido.Save(Pedido);
             }
 
             OpenForm.Show<PedidoPagamentos>(this);
@@ -245,6 +203,31 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
+        /// Janela para selecionar itens não encontrados.
+        /// </summary>
+        private void ModalItens()
+        {
+            if (collection.Lookup(BuscarProduto.Text) == 0)
+            {
+                if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
+                {
+                    PedidoModalItens.txtSearch = BuscarProduto.Text;
+                    PedidoModalItens form = new PedidoModalItens();
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+
+                        if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
+                        {
+                            AlterarModo();
+                            ModoRapAvaConfig = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Limpa os input text.
         /// </summary>
         private void ClearForms()
@@ -254,6 +237,71 @@ namespace Emiplus.View.Comercial
             Preco.Clear();
             DescontoPorcentagem.Clear();
             DescontoReais.Clear();
+        }
+
+        /// <summary>
+        /// Adiciona item ao pedido, controla o estoque e atualiza os totais.
+        /// </summary>
+        private void AddItem()
+        {
+            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            {
+                var itemId = collection.Lookup(BuscarProduto.Text);
+                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
+
+                double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
+                double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
+                double DescontoPorcentagemTxt = Validation.ConvertToDouble(DescontoPorcentagem.Text);
+                string MedidaTxt = Medidas.Text;
+                double PriceTxt = Validation.ConvertToDouble(Preco.Text);
+
+                var pedidoItem = new Model.PedidoItem();
+                pedidoItem.SetId(0)
+                    .SetTipo("Produtos")
+                    .SetPedidoId(Id)
+                    .SetItem(item)
+                    .SetQuantidade(QuantidadeTxt)
+                    .SetMedida(MedidaTxt)
+                    .SetDescontoReal(DescontoReaisTxt);
+
+                if (!pedidoItem.SetValorVenda(PriceTxt))
+                {
+                    if (ModoRapAva == 0)
+                    {
+                        AlterarModo();
+                        ModoRapAvaConfig = 1;
+                    }
+
+                    Preco.Select();
+                    return;
+                }
+
+                pedidoItem.SetDescontoPorcentagens(DescontoPorcentagemTxt);
+                pedidoItem.SomarTotal();
+                pedidoItem.Save(pedidoItem);
+
+                // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                if (Home.pedidoPage == "Compras")
+                    new Controller.Estoque(pedidoItem.GetLastId(), 0, Home.pedidoPage).Add().Item();
+                else
+                    new Controller.Estoque(pedidoItem.GetLastId(), 0, Home.pedidoPage).Remove().Item();
+
+                // Carrega a Grid com o Item adicionado acima.
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+
+                // Atualiza o total do pedido, e os totais da tela
+                LoadTotais();
+
+                // Limpa os campos
+                ClearForms();
+
+                // Verifica se modo é avançado e altera para modo simples, apenas se modo simples for padrão
+                if (ModoRapAva == 1 && ModoRapAvaConfig == 1)
+                {
+                    AlterarModo();
+                    ModoRapAvaConfig = 0;
+                }
+            }
         }
 
         /// <summary>
@@ -291,13 +339,19 @@ namespace Emiplus.View.Comercial
                             var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
                             if (MessageBox.Show($"Cancelar o item ('{itemName}') no pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                var IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                                _mPedidoItens.Remove(IdItem);
+                                var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                                _mPedidoItens.Remove(idPedidoItem);
+
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                                if (Home.pedidoPage != "Compras")
+                                    new Controller.Estoque(idPedidoItem, 0, Home.pedidoPage).Add().Item();
+                                else
+                                    new Controller.Estoque(idPedidoItem, 0, Home.pedidoPage).Remove().Item();
 
                                 LoadTotais();
                             }
-                        } 
+                        }
                     }
 
                     break;
@@ -406,12 +460,21 @@ namespace Emiplus.View.Comercial
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
                     if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                        IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
                 }
 
                 PedidoModalCancelItem cancel = new PedidoModalCancelItem();
                 if (cancel.ShowDialog() == DialogResult.OK)
-                    LoadItens();
+                    GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+            };
+
+            FormClosed += (s, e) =>
+            {
+                if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
+                    _mPedido.Remove(Id);
+                }
             };
         }
     }

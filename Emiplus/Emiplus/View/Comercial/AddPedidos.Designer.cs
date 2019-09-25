@@ -47,7 +47,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -116,7 +115,6 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,7 +142,7 @@
             this.SelecionarColaborador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelecionarColaborador.ForeColor = System.Drawing.Color.White;
             this.SelecionarColaborador.Image = null;
-            this.SelecionarColaborador.Location = new System.Drawing.Point(762, 54);
+            this.SelecionarColaborador.Location = new System.Drawing.Point(839, 54);
             this.SelecionarColaborador.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarColaborador.Name = "SelecionarColaborador";
             this.SelecionarColaborador.Size = new System.Drawing.Size(144, 20);
@@ -178,7 +176,7 @@
             this.SelecionarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelecionarCliente.ForeColor = System.Drawing.Color.White;
             this.SelecionarCliente.Image = null;
-            this.SelecionarCliente.Location = new System.Drawing.Point(576, 54);
+            this.SelecionarCliente.Location = new System.Drawing.Point(653, 54);
             this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarCliente.Name = "SelecionarCliente";
             this.SelecionarCliente.Size = new System.Drawing.Size(144, 20);
@@ -197,7 +195,7 @@
             // 
             this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(573, 16);
+            this.pictureBox9.Location = new System.Drawing.Point(650, 16);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(27, 32);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -210,7 +208,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(605, 17);
+            this.label15.Location = new System.Drawing.Point(682, 17);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 13);
             this.label15.TabIndex = 40;
@@ -232,7 +230,7 @@
             this.nomeCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nomeCliente.AutoSize = true;
             this.nomeCliente.ForeColor = System.Drawing.Color.Gray;
-            this.nomeCliente.Location = new System.Drawing.Point(606, 34);
+            this.nomeCliente.Location = new System.Drawing.Point(683, 34);
             this.nomeCliente.Name = "nomeCliente";
             this.nomeCliente.Size = new System.Drawing.Size(85, 13);
             this.nomeCliente.TabIndex = 42;
@@ -242,7 +240,7 @@
             // 
             this.pictureBox10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(761, 15);
+            this.pictureBox10.Location = new System.Drawing.Point(838, 15);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(27, 32);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -254,7 +252,7 @@
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Gray;
-            this.label18.Location = new System.Drawing.Point(494, 34);
+            this.label18.Location = new System.Drawing.Point(571, 34);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(31, 13);
             this.label18.TabIndex = 48;
@@ -266,7 +264,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(794, 18);
+            this.label17.Location = new System.Drawing.Point(871, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(60, 13);
             this.label17.TabIndex = 43;
@@ -276,7 +274,7 @@
             // 
             this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(461, 15);
+            this.pictureBox11.Location = new System.Drawing.Point(538, 15);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(27, 32);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -288,7 +286,7 @@
             this.nomeVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nomeVendedor.AutoSize = true;
             this.nomeVendedor.ForeColor = System.Drawing.Color.Gray;
-            this.nomeVendedor.Location = new System.Drawing.Point(796, 33);
+            this.nomeVendedor.Location = new System.Drawing.Point(873, 33);
             this.nomeVendedor.Name = "nomeVendedor";
             this.nomeVendedor.Size = new System.Drawing.Size(85, 13);
             this.nomeVendedor.TabIndex = 45;
@@ -300,7 +298,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(494, 18);
+            this.label19.Location = new System.Drawing.Point(571, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(40, 13);
             this.label19.TabIndex = 46;
@@ -311,7 +309,7 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(391, 34);
+            this.label13.Location = new System.Drawing.Point(468, 34);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(31, 13);
             this.label13.TabIndex = 39;
@@ -321,7 +319,7 @@
             // 
             this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(358, 15);
+            this.pictureBox8.Location = new System.Drawing.Point(435, 15);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(27, 32);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -334,20 +332,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(390, 18);
+            this.label12.Location = new System.Drawing.Point(467, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
             this.label12.TabIndex = 37;
             this.label12.Text = "Caixa:";
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel6.Location = new System.Drawing.Point(337, 18);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1, 48);
-            this.panel6.TabIndex = 35;
             // 
             // label3
             // 
@@ -458,7 +447,7 @@
             this.btnConcluir.Name = "btnConcluir";
             this.btnConcluir.Size = new System.Drawing.Size(148, 65);
             this.btnConcluir.TabIndex = 8;
-            this.btnConcluir.Text = "Pagamento";
+            this.btnConcluir.Text = "Receber";
             this.btnConcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConcluir.UseVisualStyleBackColor = false;
             // 
@@ -1161,7 +1150,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox11;

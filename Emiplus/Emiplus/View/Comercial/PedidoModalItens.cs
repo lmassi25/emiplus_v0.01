@@ -7,8 +7,8 @@ namespace Emiplus.View.Comercial
     {
         public static string NomeProduto { get; set; }
         public static double ValorVendaProduto { get; set; }
+        public static string txtSearch { get; set; }
 
-        private string searchItemTexto = AddPedidos.searchItemTexto;
         private Controller.Item _controllerItem = new Controller.Item();
 
         public PedidoModalItens()
@@ -63,7 +63,7 @@ namespace Emiplus.View.Comercial
         private void Events()
         {
             KeyDown += KeyDowns; // this form
-            buscarProduto.Text = searchItemTexto;
+            buscarProduto.Text = txtSearch;
             buscarProduto.KeyDown += KeyDowns;
             Selecionar.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;

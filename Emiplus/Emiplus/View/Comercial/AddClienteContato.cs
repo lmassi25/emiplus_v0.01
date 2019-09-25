@@ -34,7 +34,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private new void Events()
         {
             btnContatoSalvar.Click += (s, e) =>
             {
