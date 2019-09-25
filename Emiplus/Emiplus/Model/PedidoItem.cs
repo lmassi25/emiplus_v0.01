@@ -6,6 +6,7 @@
     using SqlKata.Execution;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     class PedidoItem : Model
     {
@@ -154,12 +155,6 @@
 
         #endregion
 
-        public object FindByPedido(int id)
-        {
-            var data = Query().Where("pedido", id).Get();
-            return data;
-        }
-
         public PedidoItem SetTipo(string tipo)
         {
             Tipo = tipo;
@@ -291,6 +286,33 @@
             Total = TotalVenda - Desconto;
 
             return Total;
+        }
+
+        public Dictionary<string, double> SumTotais(int id)
+        {
+            var query = Query().SelectRaw("SUM(total) AS total, SUM(desconto) AS desconto, SUM(totalvenda) AS totalvenda, SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, SUM(icmsvlr) AS icmsvlr," +
+                " SUM(icmsstbase) AS icmsstbase, SUM(icmsstvlr) as icmsstvlr, SUM(ipivlr) AS ipivlr, SUM(pisvlr) AS pisvlr, SUM(cofinsvlr) AS cofinsvlr")
+                .Where("pedido", id).Where("excluir", 0).Get();
+
+            Dictionary<string, double> Somas = new Dictionary<string, double>();
+            Somas.Add("Id", Validation.ConvertToDouble(id));
+            for (int i = 0; i < query.Count(); i++)
+            {
+                var data = query.ElementAt(i);
+                
+                Somas.Add("Produtos", Validation.ConvertToDouble(data.TOTALVENDA));
+                Somas.Add("Frete", Validation.ConvertToDouble(data.FRETE));
+                Somas.Add("Desconto", Validation.ConvertToDouble(data.DESCONTO));
+                Somas.Add("IPI", Validation.ConvertToDouble(data.IPIVLR));
+                Somas.Add("ICMSBASE", Validation.ConvertToDouble(data.ICMSBASE));
+                Somas.Add("ICMS", Validation.ConvertToDouble(data.ICMSVLR));
+                Somas.Add("ICMSSTBASE", Validation.ConvertToDouble(data.ICMSSTBASE));
+                Somas.Add("ICMSST", Validation.ConvertToDouble(data.ICMSSTVLR));
+                Somas.Add("COFINS", Validation.ConvertToDouble(data.COFINSVLR));
+                Somas.Add("PIS", Validation.ConvertToDouble(data.PISVLR));
+            }
+
+            return Somas;
         }
 
         public bool Save(PedidoItem data)

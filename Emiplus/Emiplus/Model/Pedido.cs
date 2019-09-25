@@ -1,8 +1,10 @@
 ﻿namespace Emiplus.Model
 {
     using Data.Database;
+    using Emiplus.Data.Helpers;
     using SqlKata;
     using System;
+    using System.Collections.Generic;
 
     class Pedido : Model
     {
@@ -46,6 +48,7 @@
         public double COFINS { get; set; }
 
         public int status { get; set; }
+        public DateTime Emissao { get; set; }
 
         #endregion
 
@@ -76,26 +79,84 @@
         #endregion
 
         #region Generator
-      //  CREATE GENERATOR GEN_PEDIDO_ID;
+        //  CREATE GENERATOR GEN_PEDIDO_ID;
 
-      //  SET TERM !! ;
-      //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
-      //  ACTIVE BEFORE INSERT POSITION 0
-      //  AS
-      //  DECLARE VARIABLE tmp DECIMAL(18,0);
-      //  BEGIN
-      //    IF(NEW.ID IS NULL) THEN
-      //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
-      //  ELSE
-      //  BEGIN
-      //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
-      //      if (tmp< new.ID) then
-      //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
-      //  END
-      //END!!
-      //  SET TERM; !!
+        //  SET TERM !! ;
+        //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
+        //  ACTIVE BEFORE INSERT POSITION 0
+        //  AS
+        //  DECLARE VARIABLE tmp DECIMAL(18,0);
+        //  BEGIN
+        //    IF(NEW.ID IS NULL) THEN
+        //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
+        //  ELSE
+        //  BEGIN
+        //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
+        //      if (tmp< new.ID) then
+        //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
+        //  END
+        //END!!
+        //  SET TERM; !!
 
         #endregion
+
+        public Pedido SaveTotais(Dictionary<string, double> data)
+        {
+            Id = Validation.ConvertToInt32(data["Id"]);
+            Produtos = data["Produtos"];
+            Frete = data["Frete"];
+            Desconto = data["Desconto"];
+            IPI = data["IPI"];
+            ICMSBASE = data["ICMSBASE"];
+            ICMS = data["ICMS"];
+            ICMSSTBASE = data["ICMSSTBASE"];
+            ICMSST = data["ICMSST"];
+            COFINS = data["COFINS"];
+            PIS = data["PIS"];
+            Total = (Produtos + Frete + IPI + ICMSST) - Desconto;
+
+            return this;
+        }
+
+        public double GetDesconto()
+        {
+            return Desconto;
+        }
+
+        public double GetTotal()
+        {
+            return Total;
+        }
+
+        public Pedido SetDescontoReal(double valor)
+        {
+            if (Validation.IsNumber(valor))
+            {
+                if (valor == 0)
+                {
+                    return this;
+                }
+
+                Desconto = valor;
+            }
+
+            return this;
+        }
+
+        public Pedido SetDescontoPorcentagens(double valor)
+        {
+            if (Validation.IsNumber(valor))
+            {
+                if (valor == 0)
+                {
+                    return this;
+                }
+
+                Desconto = (valor / 100 * (Total));
+            }
+
+            return this;
+        }
 
         public bool Save(Pedido data)
         {
@@ -107,6 +168,7 @@
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
+                data.Emissao = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
                     //Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);

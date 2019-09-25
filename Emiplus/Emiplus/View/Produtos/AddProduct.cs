@@ -144,11 +144,8 @@ namespace Emiplus.View.Produtos
             DataTableEstoque();
         }
 
-        private void DataTableEstoque()
-        {
-            _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
-        }
-        
+        private void DataTableEstoque() => _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
+
         private void Events()
         {
             Load += (s, e) => Start();

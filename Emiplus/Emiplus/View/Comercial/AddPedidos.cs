@@ -16,12 +16,13 @@ namespace Emiplus.View.Comercial
         public static int IdItem { get; set; } // Id item datagrid
         public static string searchItemTexto { get; set; }
 
-        public static int Id;
+        public static int Id { get; set; }
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
+        private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
 
@@ -126,6 +127,13 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
+                _mItemEstoque.SetUsuario(0)
+                    .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text) == 0 ? 1 : Validation.ConvertToDouble(Quantidade.Text))
+                    .SetTipo("R")
+                    .SetLocal("Tela de Vendas")
+                    .SetItem(item)
+                    .Save(_mItemEstoque);
+
                 _controllerPedidoItem.GetDataTableItens(GridListaProdutos, Id);
 
                 LoadTotais();
@@ -149,70 +157,12 @@ namespace Emiplus.View.Comercial
         private void LoadTotais()
         {
             itens.Text = "Itens: " + GridListaProdutos.RowCount.ToString();
-            // SELECT SUM(total), SUM(desconto), SUM(totalvenda), SUM(frete), SUM(icmsbase), SUM(icmsvlr), SUM(icmsstbase), SUM(icmsstvlr), SUM(ipivlr), SUM(pisvlr), SUM(cofinsvlr)
-            // total = (totalvenda, frete, icmsbase, icmsvlr, icmsstbase, icmsstvlr, ipivlr, pisvlr, cofinsvlr) - desconto
-            //Math.Round(value, 2);
 
-            var query = _mPedidoItens.Query().SelectRaw("SUM(total) AS total, SUM(desconto) AS desconto, SUM(totalvenda) AS totalvenda, SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, SUM(icmsvlr) AS icmsvlr," +
-                " SUM(icmsstbase) AS icmsstbase, SUM(icmsstvlr) as icmsstvlr, SUM(ipivlr) AS ipivlr, SUM(pisvlr) AS pisvlr, SUM(cofinsvlr) AS cofinsvlr")
-                .Where("pedido", Id).Where("excluir", 0).Get();
+            var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(Id));
+            _mPedido.Save(data);
 
-            double Produtos = 0, Frete = 0, Desconto = 0, IPI = 0, ICMSBASE = 0, ICMS = 0, ICMSSTBASE = 0, ICMSST = 0, COFINS = 0, PIS = 0, TOTAL = 0;
-
-            for (int i = 0; i < query.Count(); i++)
-            {
-                //total do produto  = quantidade * valorvenda
-                //total = (totaldoproduto + impostos + frete) - desconto
-                var data = query.ElementAt(i);
-                //var somar = data.TOTALVENDA + data.FRETE + data.ICMSSTVLR + data.IPIVLR;
-                //var subtrair = data.DESCONTO;
-                //Totais = somar - subtrair;
-
-                Produtos = Validation.ConvertToDouble(data.TOTALVENDA);
-                Frete = Validation.ConvertToDouble(data.FRETE);
-                Desconto = Validation.ConvertToDouble(data.DESCONTO);
-                IPI = Validation.ConvertToDouble(data.IPIVLR);
-                ICMSBASE = Validation.ConvertToDouble(data.ICMSBASE);
-                ICMS = Validation.ConvertToDouble(data.ICMSVLR);
-                ICMSSTBASE = Validation.ConvertToDouble(data.ICMSSTBASE);
-                ICMSST = Validation.ConvertToDouble(data.ICMSSTVLR);
-                COFINS = Validation.ConvertToDouble(data.COFINSVLR);
-                PIS = Validation.ConvertToDouble(data.PISVLR);
-            }
-            
-            _mPedido.Id = Id;
-
-            _mPedido.Produtos = Produtos;
-
-            _mPedido.Frete = Frete;
-
-            //PEDIDO_ITEM.DESCONTO = PEDIDO_ITEM.DESCONTOITEM + PEDIDO_ITEM.DESCONTOPEDIDO
-            //PEDIDO.DESCONTO = SUM(PEDIDO_ITEM.DESCONTO)
-
-            //PEDIDO.DESCONTOLANCADO = form PedidoPayDesconto
-            //PEDIDO.DESCONTOLANCADO = PEGAR O VALOR DO DESCONTO(TELA PedidoPayDesconto), DIVIDIR ENTRE OS ITENS DE FORMA PROPORCIONAL E LANÇAR O RESULTADO NO CAMPO PEDIDO_ITEM.DESCONTOPEDIDO DE CADA UM (CRIAR)
-
-            _mPedido.Desconto = Desconto; // não é o desconto lançado no pedido 
-
-            _mPedido.IPI = IPI;
-
-            _mPedido.ICMSBASE = ICMSBASE;
-            _mPedido.ICMS = ICMS;
-
-            _mPedido.ICMSSTBASE = ICMSSTBASE;
-            _mPedido.ICMSST = ICMSST;
-
-            _mPedido.COFINS = COFINS;
-            _mPedido.PIS = PIS;
-
-            TOTAL = (Produtos + Frete + IPI + ICMSST) - Desconto;
-            _mPedido.Total = TOTAL;
-
-            _mPedido.Save(_mPedido);
-
-            subTotal.Text = Validation.FormatPrice(TOTAL, true);
-
-            totaisDescontos.Text = "Totais descontos: " + Validation.FormatPrice(Desconto, true);
+            subTotal.Text = Validation.FormatPrice(_mPedido.GetTotal(), true);
+            totaisDescontos.Text = "Totais descontos: " + Validation.FormatPrice(_mPedido.GetDesconto(), true);
         }
         
         /// <summary>
@@ -344,6 +294,7 @@ namespace Emiplus.View.Comercial
                                 var IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
                                 _mPedidoItens.Remove(IdItem);
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
                                 LoadTotais();
                             }
                         } 

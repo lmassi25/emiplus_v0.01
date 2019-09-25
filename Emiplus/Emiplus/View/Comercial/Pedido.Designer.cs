@@ -198,6 +198,8 @@
             // 
             this.GridLista.AllowUserToAddRows = false;
             this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -318,7 +320,7 @@
             this.dataFinal.Name = "dataFinal";
             this.dataFinal.Size = new System.Drawing.Size(173, 25);
             this.dataFinal.TabIndex = 41;
-            this.dataFinal.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
             // 
             // dataInicial
             // 

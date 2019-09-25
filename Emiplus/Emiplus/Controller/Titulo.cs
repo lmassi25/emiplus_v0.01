@@ -56,6 +56,15 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
+        public double GetTotalDesconto(int idPedido)
+        {
+            if (String.IsNullOrEmpty(idPedido.ToString()))
+                return 0;
+
+            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).First();
+            return Validation.ConvertToDouble(data.DESCONTO);
+        }
+
         public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")
         {
             var data = new Model.Titulo();

@@ -65,7 +65,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTablePedidos(DataGridView Table, string Search, string dataInicial, string dataFinal)
+        public void GetDataTablePedidos(DataGridView Table, string tipo, string Search, string dataInicial, string dataFinal)
         {
             Table.Rows.Clear();
 
@@ -76,8 +76,9 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where("pedido.excluir", 0)
-                .Where("pedido.criado", ">=", dataInicial)
-                .Where("pedido.criado", "<=", dataFinal)
+                .Where("pedido.tipo", tipo)
+                .Where("pedido.emissao", ">=", dataInicial)
+                .Where("pedido.emissao", "<=", dataFinal)
                 .Where("pedido.excluir", 0)
                 .Where
                 (

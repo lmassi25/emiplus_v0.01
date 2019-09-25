@@ -107,7 +107,6 @@ namespace Emiplus.Model
             
             if (tipo == "A")
             {
-                Console.WriteLine("asas");
                 item.EstoqueAtual = EstoqueAtual + Quantidade;
             }
 
