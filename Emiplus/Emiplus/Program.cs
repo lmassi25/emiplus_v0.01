@@ -3,11 +3,7 @@ using System.Windows.Forms;
 
 namespace Emiplus
 {
-    using Data.Helpers;
-    using Emiplus.View.Produtos;
-    using Emiplus.View.Testes;
     using View.Common;
-
     static class Program
     {
         /// <summary>

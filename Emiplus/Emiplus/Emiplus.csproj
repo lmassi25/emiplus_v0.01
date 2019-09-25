@@ -225,6 +225,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
