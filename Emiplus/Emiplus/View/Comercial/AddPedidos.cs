@@ -141,15 +141,26 @@ namespace Emiplus.View.Comercial
                 var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 Pedido.Tipo = "Vendas";
                 Pedido.Save(Pedido);
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações")
+                {
+                    Home.pedidoPage = "Vendas";
+                    Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
+                    LoadData();
+                }
+                else
+                {
+                    OpenForm.Show<PedidoPagamentos>(this);
+                }
             }
             else
             {
                 var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 Pedido.Tipo = "Compras";
                 Pedido.Save(Pedido);
-            }
 
-            OpenForm.Show<PedidoPagamentos>(this);
+                OpenForm.Show<PedidoPagamentos>(this);
+            }
         }
 
         /// <summary>
@@ -468,13 +479,16 @@ namespace Emiplus.View.Comercial
                     GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
             };
 
-            FormClosed += (s, e) =>
+            FormClosing += (s, e) =>
             {
                 if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
                     _mPedido.Remove(Id);
+                    return;
                 }
+
+                e.Cancel = true;
             };
         }
     }

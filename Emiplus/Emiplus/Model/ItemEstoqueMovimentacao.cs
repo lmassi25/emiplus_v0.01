@@ -115,7 +115,7 @@ namespace Emiplus.Model
                 item.EstoqueAtual = EstoqueAtual - Quantidade;
             }
 
-            item.Save(item);
+            item.Save(item, false);
             return this;
         }
 

@@ -43,7 +43,7 @@ namespace Emiplus.Model
 
         #endregion
 
-        public bool Save(Item data)
+        public bool Save(Item data, bool message = true)
         {
             if (ValidarDados(data))
                 return false;
@@ -54,7 +54,7 @@ namespace Emiplus.Model
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+                    if (message) Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
                     return true;
                 }
 
@@ -67,7 +67,7 @@ namespace Emiplus.Model
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                    if (message) Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
                     return true;
                 }
                 

@@ -231,8 +231,8 @@ namespace Emiplus.View.Comercial
             {
                 if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
                 {
-                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[5].Value);
-                    if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[5].Value) != "")
+                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[4].Value);
+                    if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[4].Value) != "")
                     {
                         int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
                         _mTitulo.Remove(id);

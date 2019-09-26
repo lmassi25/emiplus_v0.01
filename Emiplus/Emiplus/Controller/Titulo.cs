@@ -177,7 +177,6 @@ namespace Emiplus.Controller
 
             foreach (var item in data)
             {
-                string pathIconEdit = $"{Support.BasePath()}\\Assets\\Images\\icons\\edit16x.png";
                 string pathIconExcluir = $"{Support.BasePath()}\\Assets\\Images\\icons\\bin16x.png";
 
                 Table.Rows.Add(
@@ -185,7 +184,6 @@ namespace Emiplus.Controller
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),  
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
-                    Bitmap.FromFile(pathIconEdit),
                     Bitmap.FromFile(pathIconExcluir)
                 );
             }
