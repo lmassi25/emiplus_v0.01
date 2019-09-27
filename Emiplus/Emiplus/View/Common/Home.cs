@@ -1,5 +1,9 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Database;
+using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -118,11 +122,12 @@ namespace Emiplus.View.Common
         public Home()
         {
             InitializeComponent();
+            new Update().CheckUpdate();
             Eventos();
 
-            Console.WriteLine(Config.Get("url"));
-            
-            //new Model.Config().ChangeKey("url").SetValue("www.google.com2").Save();
+            version.Text = "Versão " + Config.Get("APP_VERSION");
+
+            if (Data.Core.Update.AtualizacaoDisponivel) { btnUpdate.Visible = true; } else { btnUpdate.Visible = false; }
         }
 
         private void Eventos()
@@ -209,6 +214,21 @@ namespace Emiplus.View.Common
                 homeMenuProducts.BackColor = Color.Transparent;
                 homeMenuComercial.BackColor = Color.Transparent;
                 homeMenuFinanceiro.BackColor = Color.Transparent;
+            };
+
+            btnUpdate.Click += (s, e) =>
+            {
+                if (MessageBox.Show("Deseja iniciar o processo de atualização?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                }
+            };
+
+            FormClosed += (s, e) =>
+            {
+                Process[] processes = Process.GetProcessesByName("Emiplus");
+                foreach (Process process in processes)
+                    process.Kill();
             };
         }
     }

@@ -30,16 +30,16 @@ namespace Emiplus.View.Common
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.homeMenuInicio = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.version = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.homeMenuSettings = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -56,6 +56,7 @@ namespace Emiplus.View.Common
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnUpdate = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -85,12 +86,12 @@ namespace Emiplus.View.Common
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.homeMenuInicio);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.version);
             this.panel3.Controls.Add(this.pictureBox7);
             this.panel3.Controls.Add(this.homeMenuSettings);
             this.panel3.Controls.Add(this.pictureBox6);
@@ -106,25 +107,6 @@ namespace Emiplus.View.Common
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(275, 729);
             this.panel3.TabIndex = 20;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(47, 669);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 30);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Atualização disponível";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
@@ -188,17 +170,17 @@ namespace Emiplus.View.Common
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
-            // label3
+            // version
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(100, 705);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Versão 1.0.0";
+            this.version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.version.AutoSize = true;
+            this.version.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.version.Location = new System.Drawing.Point(100, 701);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(68, 13);
+            this.version.TabIndex = 23;
+            this.version.Text = "Versão 1.0.0";
             // 
             // pictureBox7
             // 
@@ -436,6 +418,40 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnUpdate.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnUpdate.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.HoverVisible = true;
+            this.btnUpdate.Border.Rounding = 6;
+            this.btnUpdate.Border.Thickness = 1;
+            this.btnUpdate.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnUpdate.Border.Visible = true;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(55, 660);
+            this.btnUpdate.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(161, 34);
+            this.btnUpdate.TabIndex = 155;
+            this.btnUpdate.Text = "   Atualização Disponível";
+            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUpdate.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnUpdate.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,7 +501,7 @@ namespace Emiplus.View.Common
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button homeMenuSettings;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label version;
         private System.Windows.Forms.Panel barraTituloHome;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -495,8 +511,8 @@ namespace Emiplus.View.Common
         private Panel panelFormularios;
         private PictureBox pictureBox8;
         public Button homeMenuInicio;
-        private Button button1;
         private Button button2;
         private Button button3;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnUpdate;
     }
 }

@@ -57,6 +57,9 @@
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
     <Reference Include="Json.Net, Version=1.0.16.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Json.Net.1.0.16\lib\netstandard2.0\Json.Net.dll</HintPath>
     </Reference>
@@ -179,8 +182,11 @@
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Controller\Titulo.cs" />
+    <Compile Include="Data\Core\Config.cs" />
+    <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
+    <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
@@ -299,6 +305,12 @@
     </Compile>
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Carregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Carregar.Designer.cs">
+      <DependentUpon>Carregar.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -520,6 +532,9 @@
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Carregar.resx">
+      <DependentUpon>Carregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -740,6 +755,7 @@
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Data\Core\Config.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

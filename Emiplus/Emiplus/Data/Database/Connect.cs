@@ -3,35 +3,39 @@ using Emiplus.Data.Helpers;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.IO;
+using IniParser;
+using IniParser.Model;
+using System.Windows.Forms;
 
 namespace Emiplus.Data.Database
 {
     class Connect
     {
-        private string _path = @"C:\Emiplus\EMIPLUS.FDB"; // C:\emiplus_v0.01\EMIPLUS.FDB
+        public string _path { get; set; }
+        public bool update { get; set; } = false;
         private const string _user = "sysdba";
         private const string _pass = "masterkey";
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
+        
+
         private string GetDatabase()
         {
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\DATABASE.txt"))
+            if (update)
             {
-                _path = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + "\\DATABASE.txt");
+                if (File.Exists(Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb"))
+                {
+                    return _path = Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb";
+                }
+
+                if (File.Exists("C:\\Emiplus\\Update\\PADRAO.fdb"))
+                {
+                    return _path = "C:\\Emiplus\\Update\\PADRAO.fdb";
+                }                
             }
 
-            if (File.Exists(_path))
-            {
-                return _path;
-            }
-
-            if (File.Exists(Directory.GetCurrentDirectory() + "\\EMIPLUS.FDB"))
-            {
-                return Directory.GetCurrentDirectory() + "\\EMIPLUS.FDB";
-            }
-
-            return _path;
+            return _path = Support.GetIni()["LOCAL"]["path"] + "\\EMIPLUS.FDB";
         }
 
         public QueryFactory Open()

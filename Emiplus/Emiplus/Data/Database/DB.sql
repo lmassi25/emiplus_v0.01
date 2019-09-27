@@ -19,8 +19,8 @@ CREATE TABLE CONFIG
 	config_key varchar(255),
 	config_value varchar(255)
 );
-INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('version', '1.0.0');
-INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('url', 'https://www.ajuda.emiplus.com.br');
+INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('APP_VERSION', '1.0.0');
+INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('APP_URL', 'https://ajuda.emiplus.com.br');
 
 CREATE TABLE PESSOA
 (
