@@ -60,7 +60,7 @@ namespace Emiplus.View.Comercial
         public AddClientes()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             Id = Clientes.Id;
 
@@ -181,7 +181,7 @@ namespace Emiplus.View.Comercial
 
         private void SetFocus() => nomeRS.Focus();
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) =>
             {
@@ -256,12 +256,12 @@ namespace Emiplus.View.Comercial
             cpfCnpj.KeyPress += (s, e) =>
             {
                 if (pessoaJF.Text == "Física")
-                    Eventos.MaskCPF(s, e);
+                    Masks.MaskCPF(s, e);
 
                 if (pessoaJF.Text == "Jurídica")
-                    Eventos.MaskCNPJ(s, e);
+                    Masks.MaskCNPJ(s, e);
             };
-            nascimento.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+            nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
 
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();

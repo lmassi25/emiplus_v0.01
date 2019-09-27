@@ -9,10 +9,10 @@ namespace Emiplus.View.Common
         public TelaProdutosInicial()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
-        private void Events()
+        private void Eventos()
         {
             Produtos.Click += (s, e) =>
             {

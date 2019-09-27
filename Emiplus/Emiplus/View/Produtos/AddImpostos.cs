@@ -18,7 +18,7 @@ namespace Emiplus.View.Produtos
         public AddImpostos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void LoadData()
@@ -372,7 +372,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Carregar();
 

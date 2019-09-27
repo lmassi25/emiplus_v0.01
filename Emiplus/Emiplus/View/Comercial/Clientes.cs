@@ -13,7 +13,7 @@ namespace Emiplus.View.Comercial
         public Clientes()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             label1.Text = Home.pessoaPage + ":";
             label6.Text = Home.pessoaPage;
@@ -24,10 +24,7 @@ namespace Emiplus.View.Comercial
                 label2.Text = "Gerencie as Transportadoras da sua empresa aqui! Adicione, edite ou delete uma Transportadora.";
         }
 
-        private void LoadData()
-        {
-            _controller.GetDataTableClientes(GridLista, search.Text);
-        }
+        private void LoadData() => _controller.GetDataTableClientes(GridLista, search.Text);
 
         private void EditClientes(bool create = false)
         {
@@ -44,7 +41,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) =>
             {

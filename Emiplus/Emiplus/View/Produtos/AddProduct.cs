@@ -18,7 +18,7 @@ namespace Emiplus.View.Produtos
         public AddProduct()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
             if (idPdtSelecionado > 0)
@@ -88,18 +88,18 @@ namespace Emiplus.View.Produtos
         {
             _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
 
-            nome.Text = _modelItem.Nome == null ? "" : _modelItem.Nome;
-            referencia.Text = _modelItem.Referencia == null ? "" : _modelItem.Referencia;
+            nome.Text = _modelItem?.Nome ?? "";
+            referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
             estoqueminimo.Text = Validation.Price(_modelItem.EstoqueMinimo);
             estoqueatual.Text = Validation.Price(_modelItem.EstoqueAtual);
 
-            if (_modelItem.Impostoid != null)
+            if (_modelItem.Impostoid > 0)
                 Impostos.SelectedValue = _modelItem.Impostoid;
 
-            cest.Text = _modelItem.Cest == null ? "" : _modelItem.Cest;
-            ncm.Text = _modelItem.Ncm == null ? "" : _modelItem.Ncm;
+            cest.Text = _modelItem?.Cest ?? "";
+            ncm.Text = _modelItem?.Ncm ?? "";
 
             if (_modelItem.Origem != null)
                 Origens.SelectedValue = _modelItem.Origem;
@@ -146,7 +146,7 @@ namespace Emiplus.View.Produtos
 
         private void DataTableEstoque() => _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Start();
 
@@ -174,13 +174,13 @@ namespace Emiplus.View.Produtos
             valorcompra.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
 
             valorvenda.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");

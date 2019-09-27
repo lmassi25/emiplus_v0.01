@@ -10,10 +10,10 @@ namespace Emiplus.View.Common
         {
             InitializeComponent();
 
-            Events();
+            Eventos();
         }
 
-        private void Events()
+        private void Eventos()
         {
             Clientes.Click += (s, e) =>
             {

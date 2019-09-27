@@ -1,7 +1,8 @@
-﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
+﻿using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
+using System.Linq;
+using static Emiplus.Data.Helpers.Validation;
 
 namespace Emiplus.Controller
 {
@@ -35,12 +36,8 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var produtos = new Model.Item();
-            var categoria = new Model.Categoria();
-
             var search = "%" + SearchText + "%";
-
-            var lista = produtos.Query()
+            var lista = new Model.Item().Query()
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
                 .Select("item.*", "categoria.nome as categoria")
                 .Where("item.excluir", 0)
@@ -52,15 +49,16 @@ namespace Emiplus.Controller
                 .OrderByDesc("item.criado")
                 .Get();
 
-            foreach (var item in lista)
+            for (int i = 0; i < lista.Count(); i++)
             {
+                var item = lista.ElementAt(i);
                 Table.Rows.Add(
                     item.ID,
                     item.CATEGORIA,
                     item.REFERENCIA,
                     item.NOME,
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true)
+                    FormatPrice(ConvertToDouble(item.VALORCOMPRA), false),
+                    FormatPrice(ConvertToDouble(item.VALORVENDA), true)
                 );
             }
         }
@@ -85,22 +83,21 @@ namespace Emiplus.Controller
             Table.Columns[4].Width = 120;
 
             Table.Columns[5].Name = "Obs.";
-            Table.Columns[5].Width = 120;
+            Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[6].Name = "Tela";
             Table.Columns[6].Width = 120;
 
             Table.Rows.Clear();
 
-            var produtos = new Model.ItemEstoqueMovimentacao();
-
-            var lista = produtos.Query()
+            var lista = new Model.ItemEstoqueMovimentacao().Query()
                 .Where("id_item", id)
                 .OrderByDesc("criado")
                 .Get();
 
-            foreach (var item in lista)
+            for (int i = 0; i < lista.Count(); i++)
             {
+                var item = lista.ElementAt(i);
                 Table.Rows.Add(
                     item.ID,
                     item.TIPO == "A" ? "Adicionado" : "Removido",
@@ -111,6 +108,7 @@ namespace Emiplus.Controller
                     item.LOCAL
                 );
             }
+
         }
     }
 }

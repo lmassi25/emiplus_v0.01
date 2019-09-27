@@ -10,7 +10,7 @@ namespace Emiplus.View.Comercial
         public PedidoModalCancelItem()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void CancelItem()
@@ -48,7 +48,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             KeyDown += KeyDowns;
             nr.KeyDown += KeyDowns;

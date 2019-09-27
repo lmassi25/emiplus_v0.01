@@ -19,7 +19,7 @@ namespace Emiplus.View.Comercial
         public PedidoPagamentos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             TelaReceber.Visible = false;
         }
@@ -178,7 +178,7 @@ namespace Emiplus.View.Comercial
         /// <summary>
         /// Eventos do form
         /// </summary>
-        public void Events()
+        public void Eventos()
         {
             KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
@@ -218,13 +218,13 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) => Close();
 
-            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
-            iniciar.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+            iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
 
             valor.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
 
             GridListaFormaPgtos.CellDoubleClick += (s, e) =>

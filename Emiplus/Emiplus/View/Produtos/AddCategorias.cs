@@ -13,7 +13,7 @@ namespace Emiplus.View.Produtos
         public AddCategorias()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (idCatSelected > 0)
             {
@@ -22,7 +22,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private new void Events()
+        private void Eventos()
         {
             Load += (s, e) =>
             {

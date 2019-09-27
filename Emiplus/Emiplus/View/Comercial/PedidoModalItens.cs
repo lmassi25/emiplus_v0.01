@@ -14,7 +14,7 @@ namespace Emiplus.View.Comercial
         public PedidoModalItens()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void SelectItemGrid()
@@ -60,7 +60,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             KeyDown += KeyDowns; // this form
             buscarProduto.Text = txtSearch;

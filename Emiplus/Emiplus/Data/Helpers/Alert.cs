@@ -162,7 +162,7 @@ namespace Emiplus.Data.Helpers
             Rectangle workingArea = Screen.GetWorkingArea(this);
             Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
 
-            Show.Start();
+            Mostrar.Start();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -185,7 +185,7 @@ namespace Emiplus.Data.Helpers
             }
             else
             {
-                Show.Stop();
+                Mostrar.Stop();
             }
         }
 

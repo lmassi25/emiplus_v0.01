@@ -12,7 +12,7 @@ namespace Emiplus.View.Comercial
         public Pedido()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             label3.Text = Home.pedidoPage;
             label1.Text = Home.pedidoPage;
@@ -50,7 +50,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Filter();
             search.TextChanged += (s, e) => Filter();

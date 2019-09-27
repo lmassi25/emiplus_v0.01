@@ -28,7 +28,7 @@ namespace Emiplus.View.Comercial
         public AddPedidos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void LoadData()
@@ -381,7 +381,7 @@ namespace Emiplus.View.Comercial
         /// <summary>
         /// Adiciona os eventos nos Controls do form.
         /// </summary>
-        private void Events()
+        private void Eventos()
         {
             BuscarProduto.Select();
 
@@ -437,7 +437,7 @@ namespace Emiplus.View.Comercial
             Preco.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
             Preco.KeyDown += (s, e) =>
             {

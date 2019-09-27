@@ -35,7 +35,7 @@
             this.icon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.timeout = new System.Windows.Forms.Timer(this.components);
-            this.Show = new System.Windows.Forms.Timer(this.components);
+            this.Mostrar = new System.Windows.Forms.Timer(this.components);
             this.CloseAlert = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
@@ -95,9 +95,9 @@
             this.timeout.Interval = 4000;
             this.timeout.Tick += new System.EventHandler(this.timeout_Tick);
             // 
-            // Show
+            // Mostrar
             // 
-            this.Show.Tick += new System.EventHandler(this.Show_Tick);
+            this.Mostrar.Tick += new System.EventHandler(this.Show_Tick);
             // 
             // CloseAlert
             // 
@@ -148,7 +148,7 @@
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.Timer timeout;
-        private System.Windows.Forms.Timer Show;
+        private System.Windows.Forms.Timer Mostrar;
         private System.Windows.Forms.Timer CloseAlert;
         private System.Windows.Forms.ImageList imageList1;
     }

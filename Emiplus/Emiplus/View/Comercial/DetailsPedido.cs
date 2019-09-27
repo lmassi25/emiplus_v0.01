@@ -20,7 +20,7 @@ namespace Emiplus.View.Comercial
         public DetailsPedido()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (idPedido > 0)
                 LoadData();
@@ -62,7 +62,7 @@ namespace Emiplus.View.Comercial
             _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
         }
 
-        private void Events()
+        private void Eventos()
         {
             btnExit.Click += (s, e) => Close();
 

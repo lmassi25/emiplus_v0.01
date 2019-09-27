@@ -14,7 +14,7 @@ namespace Emiplus.View.Comercial
         public PedidoPayDesconto()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -67,7 +67,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             KeyDown += KeyDowns; 
             btnSalvar.KeyDown += KeyDowns;

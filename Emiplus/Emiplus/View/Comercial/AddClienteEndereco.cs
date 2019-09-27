@@ -3,6 +3,7 @@ using Emiplus.Model;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace Emiplus.View.Comercial
         public AddClienteEndereco()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
             {
@@ -46,7 +47,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             btnAddrSalvar.Click += (s, e) =>
             {
@@ -80,7 +81,7 @@ namespace Emiplus.View.Comercial
                 }
             };
 
-            cep.KeyPress += (s, e) => Eventos.MaskCEP(s, e);
+            cep.KeyPress += (s, e) => Masks.MaskCEP(s, e);
             buscarEndereco.Click += (s, e) =>
             {
                 buscarEndereco.Enabled = false;

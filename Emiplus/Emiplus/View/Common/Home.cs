@@ -118,14 +118,14 @@ namespace Emiplus.View.Common
         public Home()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             Console.WriteLine(Config.Get("url"));
             
             //new Model.Config().ChangeKey("url").SetValue("www.google.com2").Save();
         }
 
-        private void Events()
+        private void Eventos()
         {
             homeMenuInicio.Click += (s, e) =>
             {

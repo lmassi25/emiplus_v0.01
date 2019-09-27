@@ -12,7 +12,7 @@ namespace Emiplus.View.Produtos
         public Produtos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void DataTable() => _controller.GetDataTable(GridListaProdutos, search.Text);
@@ -33,7 +33,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => {
                 search.Select();

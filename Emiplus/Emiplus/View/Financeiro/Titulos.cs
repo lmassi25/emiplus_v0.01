@@ -14,7 +14,7 @@ namespace Emiplus.View.Financeiro
         public Titulos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             label1.Text = "Contas a " + Home.financeiroPage;
             label6.Text = "Contas a " + Home.financeiroPage;
@@ -52,7 +52,7 @@ namespace Emiplus.View.Financeiro
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Filter();
             search.TextChanged += (s, e) => Filter();

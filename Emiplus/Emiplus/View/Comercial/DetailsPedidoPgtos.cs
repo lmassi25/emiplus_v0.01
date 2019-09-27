@@ -13,7 +13,7 @@ namespace Emiplus.View.Comercial
         public DetailsPedidoPgtos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void DataTable()
@@ -41,7 +41,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => DataTable();
         }

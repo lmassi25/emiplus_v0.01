@@ -14,7 +14,7 @@ namespace Emiplus.View.Comercial
         public PedidoModalClientes()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void DataTable() => _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
@@ -80,7 +80,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             KeyDown += KeyDowns;
             search.KeyDown += KeyDowns;

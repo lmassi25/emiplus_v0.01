@@ -9,10 +9,10 @@ namespace Emiplus.View.Common
         public TelaFinanceiroInicial()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
-        private void Events()
+        private void Eventos()
         {
             aReceber.Click += (s, e) =>
             {

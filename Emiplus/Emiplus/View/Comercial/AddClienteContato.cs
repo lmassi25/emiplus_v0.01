@@ -15,7 +15,7 @@ namespace Emiplus.View.Comercial
         public AddClienteContato()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
             {
@@ -34,7 +34,7 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private new void Events()
+        private void Eventos()
         {
             btnContatoSalvar.Click += (s, e) =>
             {
