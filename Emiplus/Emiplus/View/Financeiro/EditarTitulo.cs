@@ -2,14 +2,8 @@
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
@@ -22,7 +16,7 @@ namespace Emiplus.View.Financeiro
         public EditarTitulo()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             label6.Text = "Contas a " + Home.financeiroPage;
             if (Home.financeiroPage == "Pagar")
@@ -31,7 +25,6 @@ namespace Emiplus.View.Financeiro
                 pictureBox1.Left = 325;
             }
 
-            IdTitulo = Titulos.IdTitulo; // Recupera ID selecionado
             if (IdTitulo > 0)
                 LoadData();
         }
@@ -92,7 +85,7 @@ namespace Emiplus.View.Financeiro
                 Close();
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Start();
             
@@ -104,18 +97,18 @@ namespace Emiplus.View.Financeiro
                     Close();
             };
 
-            emissao.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
-            dataRecebido.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
-            vencimento.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+            emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            dataRecebido.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            vencimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             total.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
             recebido.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
-                Eventos.MaskPrice(ref txt);
+                Masks.MaskPrice(ref txt);
             };
 
             btnExit.Click += (s, e) => Close();

@@ -79,7 +79,6 @@
             this.btnSelecionar.Text = "Selecionar (F10)";
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelecionar.UseVisualStyleBackColor = true;
-            this.btnSelecionar.Click += new System.EventHandler(this.BtnSelecionar_Click);
             // 
             // btnCancelar
             // 
@@ -101,7 +100,6 @@
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // panel2
             // 
@@ -120,9 +118,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(148, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(207, 30);
+            this.label11.Size = new System.Drawing.Size(213, 30);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Selecione o Vendedor";
+            this.label11.Text = "Selecione o Vendedor!";
             // 
             // panel3
             // 
@@ -136,6 +134,8 @@
             // 
             this.GridListaVendedores.AllowUserToAddRows = false;
             this.GridListaVendedores.AllowUserToDeleteRows = false;
+            this.GridListaVendedores.AllowUserToResizeColumns = false;
+            this.GridListaVendedores.AllowUserToResizeRows = false;
             this.GridListaVendedores.BackgroundColor = System.Drawing.Color.White;
             this.GridListaVendedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaVendedores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -146,6 +146,8 @@
             this.GridListaVendedores.Location = new System.Drawing.Point(0, 0);
             this.GridListaVendedores.MultiSelect = false;
             this.GridListaVendedores.Name = "GridListaVendedores";
+            this.GridListaVendedores.ReadOnly = true;
+            this.GridListaVendedores.RowHeadersVisible = false;
             this.GridListaVendedores.RowTemplate.Height = 30;
             this.GridListaVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaVendedores.Size = new System.Drawing.Size(443, 218);
@@ -240,8 +242,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // PedidoModalVendedor
             // 
@@ -262,7 +262,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.PedidoModalVendedor_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

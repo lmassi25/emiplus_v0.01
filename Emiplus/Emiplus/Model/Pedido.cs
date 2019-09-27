@@ -1,19 +1,16 @@
 ﻿namespace Emiplus.Model
 {
     using Data.Database;
+    using Emiplus.Data.Helpers;
     using SqlKata;
     using System;
+    using System.Collections.Generic;
 
     class Pedido : Model
     {
-        public Pedido() : base("PEDIDO")
-        {
-        }
+        public Pedido() : base("PEDIDO") {}
 
         #region CAMPOS 
-
-        //campos obrigatorios para todas as tabelas
-
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -25,14 +22,12 @@
         public string id_empresa { get; private set; }
 
         // referencia com a tabela Pessoa
-
         public int Cliente { get; set; }
         //public Pessoa Cliente { get; set; }
         public int Colaborador { get; set; }
         //public Pessoa Colaborador { get; set; }
 
         // totais 
-
         public double Total { get; set; }
         public double Desconto { get; set; }
         public double Frete { get; set; }
@@ -46,6 +41,7 @@
         public double COFINS { get; set; }
 
         public int status { get; set; }
+        public DateTime Emissao { get; set; }
 
         #endregion
 
@@ -76,86 +72,85 @@
         #endregion
 
         #region Generator
-      //  CREATE GENERATOR GEN_PEDIDO_ID;
+        //  CREATE GENERATOR GEN_PEDIDO_ID;
 
-      //  SET TERM !! ;
-      //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
-      //  ACTIVE BEFORE INSERT POSITION 0
-      //  AS
-      //  DECLARE VARIABLE tmp DECIMAL(18,0);
-      //  BEGIN
-      //    IF(NEW.ID IS NULL) THEN
-      //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
-      //  ELSE
-      //  BEGIN
-      //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
-      //      if (tmp< new.ID) then
-      //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
-      //  END
-      //END!!
-      //  SET TERM; !!
+        //  SET TERM !! ;
+        //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
+        //  ACTIVE BEFORE INSERT POSITION 0
+        //  AS
+        //  DECLARE VARIABLE tmp DECIMAL(18,0);
+        //  BEGIN
+        //    IF(NEW.ID IS NULL) THEN
+        //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
+        //  ELSE
+        //  BEGIN
+        //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
+        //      if (tmp< new.ID) then
+        //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
+        //  END
+        //END!!
+        //  SET TERM; !!
 
         #endregion
 
+        public Pedido SaveTotais(Dictionary<string, double> data)
+        {
+            Id = Validation.ConvertToInt32(data["Id"]);
+            Produtos = data["Produtos"];
+            Frete = data["Frete"];
+            Desconto = data["Desconto"];
+            IPI = data["IPI"];
+            ICMSBASE = data["ICMSBASE"];
+            ICMS = data["ICMS"];
+            ICMSSTBASE = data["ICMSSTBASE"];
+            ICMSST = data["ICMSST"];
+            COFINS = data["COFINS"];
+            PIS = data["PIS"];
+            Total = (Produtos + Frete + IPI + ICMSST) - Desconto;
+
+            return this;
+        }
+
+        public double GetDesconto()
+        {
+            return Desconto;
+        }
+
+        public double GetTotal()
+        {
+            return Total;
+        }
+
         public bool Save(Pedido data)
         {
-            //if (ValidarDados(data))
-            //{
-            //    return false;
-            //}
-
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
-                if (Data(data).Create() == 1)
-                {
-                    //Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    //Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                data.Emissao = DateTime.Now;
+                if (Data(data).Create() != 1)
                     return false;
-                }
             }
-            else
+
+            if (data.Id > 0)
             {
                 data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    //Alert.Message("Tudo certo!", "Categoria atualizada com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    //Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                if (Data(data).Update("ID", data.Id) != 1)
                     return false;
-                }
             }
 
             return true;
         }
 
-        public bool ValidarDados(Pedido data)
+        public bool Remove(int id)
         {
-            /*var result = ValitRules<Item>
-                .Create()
-                .Ensure(m => m.Nome, _ => _
-                    .Required()
-                    .WithMessage("Nome é obrigatorio.")
-                    .MinLength(2)
-                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
-                .For(data)
-                .Validate();
-
-            if (!result.Succeeded)
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            if (Data(data).Update("ID", id) == 1)
             {
-                foreach (var message in result.ErrorMessages)
-                {
-                    Alert.Message("Opss!", message, Alert.AlertType.error);
-                    return true;
-                }
+                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
                 return true;
-            }*/
+            }
 
+            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
             return false;
         }
     }

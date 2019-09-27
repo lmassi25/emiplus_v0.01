@@ -15,7 +15,7 @@ namespace Emiplus.View.Produtos
         public AddEstoque()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (IdItem > 0)
             {
@@ -25,7 +25,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             btnCancelar.Click += (s, e) => Close();
 

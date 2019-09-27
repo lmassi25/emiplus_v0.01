@@ -60,7 +60,7 @@ namespace Emiplus.View.Comercial
         public AddClientes()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             Id = Clientes.Id;
 
@@ -103,15 +103,9 @@ namespace Emiplus.View.Comercial
                 LoadData();
         }
 
-        private void DataTableAddress()
-        {
-            _controller.GetDataTableEnderecos(ListaEnderecos, Id);
-        }
+        private void DataTableAddress() => _controller.GetDataTableEnderecos(ListaEnderecos, Id);
 
-        private void DataTableContatos()
-        {
-            _controller.GetDataTableContato(ListaContatos, Id);
-        }
+        private void DataTableContatos() => _controller.GetDataTableContato(ListaContatos, Id);
 
         private void GetContato(bool create = false)
         {
@@ -119,7 +113,8 @@ namespace Emiplus.View.Comercial
             {
                 IdContact = 0;
                 AddClienteContato addContact = new AddClienteContato();
-                if (addContact.ShowDialog() == DialogResult.OK) {
+                if (addContact.ShowDialog() == DialogResult.OK)
+                {
                     SetFocus();
                     DataTableContatos();
                 }
@@ -144,7 +139,8 @@ namespace Emiplus.View.Comercial
             {
                 IdAddress = 0;
                 AddClienteEndereco addAddr = new AddClienteEndereco();
-                if (addAddr.ShowDialog() == DialogResult.OK) {
+                if (addAddr.ShowDialog() == DialogResult.OK)
+                {
                     SetFocus();
                     DataTableAddress();
                 }
@@ -167,28 +163,25 @@ namespace Emiplus.View.Comercial
         {
             _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
 
-            nomeRS.Text = _modelPessoa.Nome;
-            nomeFantasia.Text = _modelPessoa.Fantasia == null ? "" : _modelPessoa.Fantasia;
-            nascimento.Text = _modelPessoa.Aniversario == null ? "" : Validation.ConvertDateToForm(_modelPessoa.Aniversario);
-            cpfCnpj.Text = _modelPessoa.CPF == null ? "" : _modelPessoa.CPF;
-            rgIE.Text = _modelPessoa.RG == null ? "" : _modelPessoa.RG;
-            pessoaJF.SelectedItem = _modelPessoa.Pessoatipo == null ? "" : _modelPessoa.Pessoatipo;
+            nomeRS.Text = _modelPessoa?.Nome ?? "";
+            nomeFantasia.Text = _modelPessoa?.Fantasia ?? "";
+            nascimento.Text = Validation.ConvertDateToForm(_modelPessoa?.Aniversario) ?? "";
+            cpfCnpj.Text = _modelPessoa?.CPF ?? "";
+            rgIE.Text = _modelPessoa?.RG ?? "";
+            pessoaJF.SelectedItem = _modelPessoa?.Pessoatipo ?? "";
             Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
 
             if (Home.pessoaPage == "Transportadoras")
             {
-                placa.Text = _modelPessoa.Transporte_placa == null ? "" : _modelPessoa.Transporte_placa;
-                uf.Text = _modelPessoa.Transporte_uf == null ? "" : _modelPessoa.Transporte_placa;
-                rntc.Text = _modelPessoa.Transporte_rntc == null ? "" : _modelPessoa.Transporte_placa;
+                placa.Text = _modelPessoa?.Transporte_placa ?? "";
+                uf.Text = _modelPessoa?.Transporte_placa ?? "";
+                rntc.Text = _modelPessoa?.Transporte_placa ?? "";
             }
         }
 
-        private void SetFocus()
-        {
-            nomeRS.Focus();
-        }
+        private void SetFocus() => nomeRS.Focus();
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) =>
             {
@@ -245,10 +238,12 @@ namespace Emiplus.View.Comercial
             btnAdicionarEndereco.Click += (s, e) => GetEndereco(true);
             btnEditarEndereco.Click += (s, e) => GetEndereco();
             ListaEnderecos.DoubleClick += (s, e) => GetEndereco();
+            nomeRS.Enter += (s, e) => DataTableAddress();
 
             btnAdicionarContato.Click += (s, e) => GetContato(true);
             btnEditarContato.Click += (s, e) => GetContato();
             ListaContatos.DoubleClick += (s, e) => GetContato();
+            nomeRS.Enter += (s, e) => DataTableContatos();
 
             pessoaJF.SelectionChangeCommitted += (s, e) =>
             {
@@ -261,12 +256,12 @@ namespace Emiplus.View.Comercial
             cpfCnpj.KeyPress += (s, e) =>
             {
                 if (pessoaJF.Text == "Física")
-                    Eventos.MaskCPF(s, e);
+                    Masks.MaskCPF(s, e);
 
                 if (pessoaJF.Text == "Jurídica")
-                    Eventos.MaskCNPJ(s, e);
+                    Masks.MaskCNPJ(s, e);
             };
-            nascimento.KeyPress += (s, e) => Eventos.MaskBirthday(s, e);
+            nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
 
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();

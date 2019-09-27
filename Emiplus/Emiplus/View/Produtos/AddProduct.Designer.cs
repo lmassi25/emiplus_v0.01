@@ -68,11 +68,11 @@
             this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listaEstoque = new System.Windows.Forms.DataGridView();
             this.estoqueminimo = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -959,10 +959,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnEstoque);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.estoqueminimo);
-            this.tabPage1.Controls.Add(this.btnEstoque);
             this.tabPage1.Controls.Add(this.estoqueatual);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
@@ -972,6 +972,39 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Estoque";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnEstoque
+            // 
+            this.btnEstoque.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEstoque.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.btnEstoque.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEstoque.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEstoque.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEstoque.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEstoque.Border.HoverVisible = true;
+            this.btnEstoque.Border.Rounding = 6;
+            this.btnEstoque.Border.Thickness = 1;
+            this.btnEstoque.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnEstoque.Border.Visible = true;
+            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstoque.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstoque.ForeColor = System.Drawing.Color.White;
+            this.btnEstoque.Image = null;
+            this.btnEstoque.Location = new System.Drawing.Point(309, 30);
+            this.btnEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(144, 28);
+            this.btnEstoque.TabIndex = 155;
+            this.btnEstoque.Text = "Alterar Estoque";
+            this.btnEstoque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEstoque.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnEstoque.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnEstoque.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnEstoque.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnEstoque.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEstoque.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEstoque.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // label10
             // 
@@ -1001,6 +1034,8 @@
             // 
             this.listaEstoque.AllowUserToAddRows = false;
             this.listaEstoque.AllowUserToDeleteRows = false;
+            this.listaEstoque.AllowUserToResizeColumns = false;
+            this.listaEstoque.AllowUserToResizeRows = false;
             this.listaEstoque.BackgroundColor = System.Drawing.Color.White;
             this.listaEstoque.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaEstoque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -1074,40 +1109,6 @@
             this.estoqueminimo.Watermark.Text = "Watermark text";
             this.estoqueminimo.Watermark.Visible = false;
             this.estoqueminimo.WordWrap = true;
-            // 
-            // btnEstoque
-            // 
-            this.btnEstoque.BackColor = System.Drawing.Color.Transparent;
-            this.btnEstoque.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoque.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnEstoque.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoque.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoque.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.btnEstoque.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.btnEstoque.Border.HoverVisible = true;
-            this.btnEstoque.Border.Rounding = 6;
-            this.btnEstoque.Border.Thickness = 1;
-            this.btnEstoque.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnEstoque.Border.Visible = true;
-            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEstoque.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEstoque.Image = ((System.Drawing.Image)(resources.GetObject("btnEstoque.Image")));
-            this.btnEstoque.Location = new System.Drawing.Point(308, 10);
-            this.btnEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(154, 48);
-            this.btnEstoque.TabIndex = 2;
-            this.btnEstoque.Text = "  Alterar Estoque";
-            this.btnEstoque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEstoque.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnEstoque.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEstoque.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEstoque.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEstoque.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnEstoque.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnEstoque.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // estoqueatual
             // 
@@ -1928,7 +1929,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualGroupBox visualGroupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView listaEstoque;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEstoque;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox estoqueminimo;
@@ -1959,5 +1959,6 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label20;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox inf_adicional;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEstoque;
     }
 }

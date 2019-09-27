@@ -56,6 +56,15 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
+        public double GetTotalDesconto(int idPedido)
+        {
+            if (String.IsNullOrEmpty(idPedido.ToString()))
+                return 0;
+
+            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).First();
+            return Validation.ConvertToDouble(data.DESCONTO);
+        }
+
         public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")
         {
             var data = new Model.Titulo();
@@ -168,7 +177,6 @@ namespace Emiplus.Controller
 
             foreach (var item in data)
             {
-                string pathIconEdit = $"{Support.BasePath()}\\Assets\\Images\\icons\\edit16x.png";
                 string pathIconExcluir = $"{Support.BasePath()}\\Assets\\Images\\icons\\bin16x.png";
 
                 Table.Rows.Add(
@@ -176,7 +184,6 @@ namespace Emiplus.Controller
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),  
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
-                    Bitmap.FromFile(pathIconEdit),
                     Bitmap.FromFile(pathIconExcluir)
                 );
             }

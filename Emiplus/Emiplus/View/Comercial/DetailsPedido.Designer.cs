@@ -64,6 +64,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTroco = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnPgtosLancado = new System.Windows.Forms.Button();
             this.txtAcrescimo = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -79,8 +81,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.nrPedido = new System.Windows.Forms.Label();
-            this.txtTroco = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -518,6 +518,8 @@
             // 
             this.GridLista.AllowUserToAddRows = false;
             this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
             this.GridLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -561,6 +563,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(239, 596);
             this.panel1.TabIndex = 81;
+            // 
+            // txtTroco
+            // 
+            this.txtTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTroco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTroco.ForeColor = System.Drawing.Color.Gray;
+            this.txtTroco.Location = new System.Drawing.Point(140, 438);
+            this.txtTroco.Name = "txtTroco";
+            this.txtTroco.Size = new System.Drawing.Size(85, 17);
+            this.txtTroco.TabIndex = 120;
+            this.txtTroco.Text = "R$ 00,00";
+            this.txtTroco.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Location = new System.Drawing.Point(7, 438);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(124, 17);
+            this.label11.TabIndex = 119;
+            this.label11.Text = "Troco:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnPgtosLancado
             // 
@@ -739,30 +765,6 @@
             this.nrPedido.Size = new System.Drawing.Size(32, 40);
             this.nrPedido.TabIndex = 86;
             this.nrPedido.Text = "0";
-            // 
-            // txtTroco
-            // 
-            this.txtTroco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTroco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTroco.ForeColor = System.Drawing.Color.Gray;
-            this.txtTroco.Location = new System.Drawing.Point(140, 438);
-            this.txtTroco.Name = "txtTroco";
-            this.txtTroco.Size = new System.Drawing.Size(85, 17);
-            this.txtTroco.TabIndex = 120;
-            this.txtTroco.Text = "R$ 00,00";
-            this.txtTroco.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(7, 438);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(124, 17);
-            this.label11.TabIndex = 119;
-            this.label11.Text = "Troco:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DetailsPedido
             // 

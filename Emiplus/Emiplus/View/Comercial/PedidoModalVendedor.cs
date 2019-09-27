@@ -13,32 +13,11 @@ namespace Emiplus.View.Comercial
         public PedidoModalVendedor()
         {
             InitializeComponent();
-
-            this.KeyDown += KeyDowns;
-            search.KeyDown += KeyDowns;
-            GridListaVendedores.KeyDown += KeyDowns;
+            Eventos();
         }
 
-        private void DataTable()
-        {
-            _controller.GetDataTablePessoa(GridListaVendedores, search.Text, "Colaboradores");
-        }
+        private void DataTable() => _controller.GetDataTablePessoa(GridListaVendedores, search.Text, "Colaboradores");
 
-        private void PedidoModalVendedor_Load(object sender, EventArgs e)
-        {
-            search.Select();
-        }
-
-        private void BtnCancelar_Click(object sender, System.EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnSelecionar_Click(object sender, System.EventArgs e)
-        {
-            SelectItemGrid();
-        }
-        
         private void SelectItemGrid()
         {
             if (GridListaVendedores.SelectedRows.Count > 0)
@@ -48,17 +27,7 @@ namespace Emiplus.View.Comercial
                 Close();
             }
         }
-
-        private void Search_TextChanged(object sender, System.EventArgs e)
-        {
-            DataTable();
-        }
-
-        private void Search_Enter(object sender, EventArgs e)
-        {
-            DataTable();
-        }
-
+        
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -83,15 +52,25 @@ namespace Emiplus.View.Comercial
                     SelectItemGrid();
                     break;
                 case Keys.Enter:
-
-                    // Pressione 'Enter', se estiver na Grid, seleciona colaborador
                     if (Validation.Event(sender, GridListaVendedores))
-                    {
                         SelectItemGrid();
-                    }
-
                     break;
             }
+        }
+
+        private void Eventos()
+        {
+            KeyDown += KeyDowns;
+            search.KeyDown += KeyDowns;
+            GridListaVendedores.KeyDown += KeyDowns;
+
+            Load += (s, e) => search.Select();
+            btnSelecionar.Click += (s, e) => SelectItemGrid();
+            
+            search.TextChanged += (s, e) => DataTable();
+            search.Enter += (s, e) => DataTable();
+
+            btnCancelar.Click += (s, e) => Close();
         }
     }
 }

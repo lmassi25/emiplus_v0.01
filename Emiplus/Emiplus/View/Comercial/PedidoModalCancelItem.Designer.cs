@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalCancelItem));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button21 = new System.Windows.Forms.Button();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.nr = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button21 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,6 +53,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 63);
             this.panel1.TabIndex = 39;
+            // 
+            // button21
+            // 
+            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button21.BackColor = System.Drawing.Color.Transparent;
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button21.Enabled = false;
+            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.Location = new System.Drawing.Point(360, 0);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(35, 35);
+            this.button21.TabIndex = 151;
+            this.button21.UseVisualStyleBackColor = false;
             // 
             // btnContinuar
             // 
@@ -74,7 +90,6 @@
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnContinuar.UseVisualStyleBackColor = true;
-            this.btnContinuar.Click += new System.EventHandler(this.BtnContinuar_Click);
             // 
             // panel2
             // 
@@ -121,7 +136,7 @@
             this.nr.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nr.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.nr.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.nr.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nr.ButtonFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nr.ButtonIndent = 3;
             this.nr.ButtonText = "visualButton";
             this.nr.ButtonVisible = false;
@@ -175,22 +190,6 @@
             this.pictureBox1.TabIndex = 155;
             this.pictureBox1.TabStop = false;
             // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackColor = System.Drawing.Color.Transparent;
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button21.Enabled = false;
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(360, 0);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(35, 35);
-            this.button21.TabIndex = 151;
-            this.button21.UseVisualStyleBackColor = false;
-            // 
             // PedidoModalCancelItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,10 +204,13 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(473, 289);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(473, 289);
             this.Name = "PedidoModalCancelItem";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -1,5 +1,4 @@
 ﻿using Emiplus.Data.Helpers;
-using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -8,30 +7,14 @@ namespace Emiplus.View.Comercial
     {
         public static string NomeProduto { get; set; }
         public static double ValorVendaProduto { get; set; }
+        public static string txtSearch { get; set; }
 
-        private string searchItemTexto = AddPedidos.searchItemTexto;
         private Controller.Item _controllerItem = new Controller.Item();
 
         public PedidoModalItens()
         {
             InitializeComponent();
-
-            KeyDown += KeyDowns; // this form
-
-            buscarProduto.Text = searchItemTexto;
-            buscarProduto.KeyDown += KeyDowns;
-            Selecionar.KeyDown += KeyDowns;
-            GridListaProdutos.KeyDown += KeyDowns;
-        }
-
-        private void DataTable()
-        {
-            _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
-        }
-
-        private void BuscarProduto_TextChanged(object sender, EventArgs e)
-        {
-            DataTable();
+            Eventos();
         }
 
         private void SelectItemGrid()
@@ -77,14 +60,18 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
+        private void Eventos()
         {
-            Close();
-        }
+            KeyDown += KeyDowns; // this form
+            buscarProduto.Text = txtSearch;
+            buscarProduto.KeyDown += KeyDowns;
+            Selecionar.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
 
-        private void Selecionar_Click(object sender, EventArgs e)
-        {
-            SelectItemGrid();
+            buscarProduto.TextChanged += (s, e) => _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
+
+            Selecionar.Click += (s, e) => SelectItemGrid();
+            btnCancelar.Click += (s, e) => Close();
         }
     }
 }

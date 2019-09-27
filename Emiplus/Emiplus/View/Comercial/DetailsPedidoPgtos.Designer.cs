@@ -64,6 +64,8 @@
             // 
             this.GridListaFormaPgtos.AllowUserToAddRows = false;
             this.GridListaFormaPgtos.AllowUserToDeleteRows = false;
+            this.GridListaFormaPgtos.AllowUserToResizeColumns = false;
+            this.GridListaFormaPgtos.AllowUserToResizeRows = false;
             this.GridListaFormaPgtos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaFormaPgtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaFormaPgtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;

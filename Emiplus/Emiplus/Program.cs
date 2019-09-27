@@ -1,12 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace Emiplus
+﻿namespace Emiplus
 {
-    using Data.Helpers;
-    using Emiplus.View.Produtos;
-    using Emiplus.View.Testes;
+    using System;
+    using System.Windows.Forms;
     using View.Common;
+
+    using Emiplus.Data.Core;
 
     static class Program
     {
@@ -18,7 +16,7 @@ namespace Emiplus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form5());
+            Application.Run(new Carregar());
         }
     }
 }

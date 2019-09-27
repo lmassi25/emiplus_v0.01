@@ -10,15 +10,15 @@ namespace Emiplus.View.Common
         {
             InitializeComponent();
 
-            Events();
+            Eventos();
         }
 
-        private void Events()
+        private void Eventos()
         {
             Clientes.Click += (s, e) =>
             {
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             NovoPedido.Click += (s, e) =>
@@ -31,6 +31,28 @@ namespace Emiplus.View.Common
 
             Pedidos.Click += (s, e) =>
             {
+                Home.pedidoPage = "Vendas";
+                Pedido Pedido = new Pedido();
+                Pedido.ShowDialog();
+            };
+
+            Orcamentos.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Orçamentos";
+                Pedido Pedido = new Pedido();
+                Pedido.ShowDialog();
+            };
+
+            Consignacoes.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Consignações";
+                Pedido Pedido = new Pedido();
+                Pedido.ShowDialog();
+            };
+
+            Devolucoes.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Devoluções";
                 Pedido Pedido = new Pedido();
                 Pedido.ShowDialog();
             };

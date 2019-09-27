@@ -80,7 +80,6 @@
             this.btnSelecionar.Text = "Selecionar (F10)";
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelecionar.UseVisualStyleBackColor = true;
-            this.btnSelecionar.Click += new System.EventHandler(this.BtnSelecionar_Click);
             // 
             // btnCancelar
             // 
@@ -102,7 +101,6 @@
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // panel2
             // 
@@ -121,9 +119,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(148, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(180, 30);
+            this.label11.Size = new System.Drawing.Size(186, 30);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Selecione o Cliente";
+            this.label11.Text = "Selecione o Cliente!";
             // 
             // label2
             // 
@@ -171,6 +169,8 @@
             // 
             this.GridListaClientes.AllowUserToAddRows = false;
             this.GridListaClientes.AllowUserToDeleteRows = false;
+            this.GridListaClientes.AllowUserToResizeColumns = false;
+            this.GridListaClientes.AllowUserToResizeRows = false;
             this.GridListaClientes.BackgroundColor = System.Drawing.Color.White;
             this.GridListaClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -181,6 +181,8 @@
             this.GridListaClientes.Location = new System.Drawing.Point(0, 0);
             this.GridListaClientes.MultiSelect = false;
             this.GridListaClientes.Name = "GridListaClientes";
+            this.GridListaClientes.ReadOnly = true;
+            this.GridListaClientes.RowHeadersVisible = false;
             this.GridListaClientes.RowTemplate.Height = 30;
             this.GridListaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaClientes.Size = new System.Drawing.Size(443, 218);
@@ -197,7 +199,6 @@
             this.NovoCliente.Size = new System.Drawing.Size(118, 17);
             this.NovoCliente.TabIndex = 3;
             this.NovoCliente.Text = "Cliente Novo ? (F9)";
-            this.NovoCliente.Click += new System.EventHandler(this.NovoCliente_Click);
             // 
             // search
             // 
@@ -256,8 +257,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            this.search.TextChanged += new System.EventHandler(this.Search_TextChanged);
-            this.search.Enter += new System.EventHandler(this.Search_Enter);
             // 
             // PedidoModalClientes
             // 

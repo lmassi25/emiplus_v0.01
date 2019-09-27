@@ -1,31 +1,26 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class DetailsPedido : Form
     {
-        private int idPedido = Pedido.IdPedido;
         private Model.Pedido _modelPedido = new Model.Pedido();
         private Model.Pessoa _modelPessoa = new Model.Pessoa();
         private Model.PedidoItem _modelPedidoItem = new Model.PedidoItem();
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
+        public static int idPedido { get; set; }
+
         private int pessoaID;
         public DetailsPedido()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             if (idPedido > 0)
                 LoadData();
@@ -41,9 +36,9 @@ namespace Emiplus.View.Comercial
             txtDesconto.Text = Validation.FormatPrice(_modelPedido.Desconto, true);
 
             txtTroco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(idPedido), true);
-            txtSubtotal.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
-            txtPagar.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
-            txtRecebimento.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
+            txtSubtotal.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
+            txtPagar.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
+            txtRecebimento.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
 
             if (_modelPedido.Cliente > 0)
             {
@@ -67,13 +62,13 @@ namespace Emiplus.View.Comercial
             _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
         }
 
-        private void Events()
+        private void Eventos()
         {
             btnExit.Click += (s, e) => Close();
 
             btnPgtosLancado.Click += (s, e) =>
             {
-
+                DetailsPedidoPgtos.IdPedido = idPedido;
                 DetailsPedidoPgtos pgtos = new DetailsPedidoPgtos();
                 pgtos.ShowDialog();
             };

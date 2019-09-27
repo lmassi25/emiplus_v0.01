@@ -3,22 +3,12 @@
     using Data.Database;
     using Data.Helpers;
     using SqlKata;
-    using SqlKata.Execution;
     using System;
-    using System.Reflection;
     using Valit;
 
     class Titulo : Model
     {
         public Titulo() : base("TITULO") {}
-        
-        //FORMAPGTO 
-        //1 DINHEIRO
-
-        //PEDIDO - VENDA - CONTAS A RECEBER 
-        //PEDIDO - COMPRA - CONTAS A PAGAR
-
-        //VENDA - RECEBER --> REGISTROS CONTAS A RECEBER (FORMAPGTO, TOTAL, VENCIMENTO, RECEBIDO) INSERT 
 
         #region CAMPOS 
 
@@ -129,11 +119,11 @@
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Título removido com sucesso.", Alert.AlertType.info);
+                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover o Título.", Alert.AlertType.error);
+            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
             return false;
         }
 

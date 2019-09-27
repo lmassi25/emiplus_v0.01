@@ -1,5 +1,6 @@
 ﻿using SqlKata.Execution;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Emiplus.Controller
 {
@@ -17,11 +18,8 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var categorias = new Model.Categoria();
-
             var search = "%" + SearchText + "%";
-
-            var lista = categorias.Query()
+            var lista = new Model.Categoria().Query()
                 .Where("EXCLUIR", 0)
                 .Where
                 (
@@ -30,8 +28,9 @@ namespace Emiplus.Controller
                 .OrderByDesc("criado")
                 .Get();
 
-            foreach (var data in lista)
+            for (int i = 0; i < lista.Count(); i++)
             {
+                var data = lista.ElementAt(i);
                 Table.Rows.Add(
                     data.ID,
                     data.NOME

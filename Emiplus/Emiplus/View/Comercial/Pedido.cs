@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using System;
 using System.Windows.Forms;
 
@@ -6,41 +7,50 @@ namespace Emiplus.View.Comercial
 {
     public partial class Pedido : Form
     {
-        public static int IdPedido { get; set; }
         private Controller.Pedido _cPedido = new Controller.Pedido();
 
         public Pedido()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
-            dataInicial.Text = DateTime.Now.AddMonths(-1).ToString();
+            label3.Text = Home.pedidoPage;
+            label1.Text = Home.pedidoPage;
+
+            if (Home.pedidoPage == "Orçamentos")
+                label2.Text = "Gerencie os orçamenos aqui! Adicione, edite ou delete um orçamento.";
+            else if (Home.pedidoPage == "Consignações")
+                label2.Text = "Gerencie as consignações aqui! Adicione, edite ou delete uma consignação.";
+            else if (Home.pedidoPage == "Devoluções")
+                label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
+            else if (Home.pedidoPage == "Compras")
+                label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
+
+            dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
         }
 
-        private void Filter()
-        {
-            _cPedido.GetDataTablePedidos(GridLista, search.Text, dataInicial.Text, dataFinal.Text);
-        }
+        private void Filter() => _cPedido.GetDataTablePedidos(GridLista, Home.pedidoPage, search.Text, dataInicial.Text, dataFinal.Text);
 
         private void EditPedido(bool create = false)
         {
             if (create)
             {
-                IdPedido = 0;
+                AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
+                return;
             }
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                IdPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 DetailsPedido detailsPedido = new DetailsPedido();
                 detailsPedido.ShowDialog();
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Filter();
             search.TextChanged += (s, e) => Filter();
@@ -48,11 +58,7 @@ namespace Emiplus.View.Comercial
 
             btnAdicionar.Click += (s, e) => EditPedido(true);
             btnEditar.Click += (s, e) => EditPedido();
-
-            GridLista.DoubleClick += (s, e) =>
-            {
-
-            };
+            GridLista.DoubleClick += (s, e) =>EditPedido();
 
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();

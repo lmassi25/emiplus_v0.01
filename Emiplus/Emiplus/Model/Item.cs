@@ -43,38 +43,36 @@ namespace Emiplus.Model
 
         #endregion
 
-        public bool Save(Item data)
+        public bool Save(Item data, bool message = true)
         {
             if (ValidarDados(data))
                 return false;
 
-            data.Tipo = "Produtos";
-
             if (data.Id == 0)
             {
+                data.Tipo = "Produtos";
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+                    if (message) Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+                    return true;
                 }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao criar produto, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+
+                Alert.Message("Opss", "Erro ao criar produto, verifique os dados.", Alert.AlertType.error);
+                return false;
             }
-            else
+
+            if (data.Id > 0)
             {
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                    if (message) Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                    return true;
                 }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+                
+                Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
+                return false;
             }
 
             return true;

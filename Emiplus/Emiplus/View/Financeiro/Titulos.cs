@@ -1,28 +1,20 @@
 ﻿using Emiplus.Controller;
 using Emiplus.Data.Helpers;
-using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class Titulos : Form
     {
-        public static int IdTitulo { get; set; }
         private Titulo _cTitulo = new Titulo();
 
         public Titulos()
         {
             InitializeComponent();
-            Events();
+            Eventos();
 
             label1.Text = "Contas a " + Home.financeiroPage;
             label6.Text = "Contas a " + Home.financeiroPage;
@@ -34,8 +26,8 @@ namespace Emiplus.View.Financeiro
 
             data.DataSource = new List<String> { "Vencimento", "Emissão" };
 
-            dataInicial.Text = DateTime.Now.ToString();
-            dataFinal.Text = DateTime.Now.ToString();
+            dataInicial.Text = Validation.DateNowToSql();
+            dataFinal.Text = Validation.DateNowToSql();
         }
 
         private void Filter()
@@ -48,27 +40,26 @@ namespace Emiplus.View.Financeiro
         {
             if (create)
             {
-                IdTitulo = 0;
+                EditarTitulo.IdTitulo = 0;
                 OpenForm.Show<EditarTitulo>(this);
                 return;
             }
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                IdTitulo = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                EditarTitulo.IdTitulo = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 OpenForm.Show<EditarTitulo>(this);
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => Filter();
             search.TextChanged += (s, e) => Filter();
+            filtrar.Click += (s, e) => Filter();
 
             btnAdicionar.Click += (s, e) => EditTitulo(true);
             btnEditar.Click += (s, e) => EditTitulo();
-
-            filtrar.Click += (s, e) => Filter();
 
             btnExit.Click += (s, e) => Close();
 

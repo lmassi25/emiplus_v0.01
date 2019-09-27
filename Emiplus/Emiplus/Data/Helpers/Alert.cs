@@ -119,7 +119,6 @@ namespace Emiplus.Data.Helpers
          ********************************************************************/
         #endregion
 
-
         public Alert(string _title, string _message, AlertType type)
         {
             InitializeComponent();
@@ -160,10 +159,10 @@ namespace Emiplus.Data.Helpers
 
         private void Alert_Load(object sender, EventArgs e)
         {
-            Top = 60;
-            Left = Screen.PrimaryScreen.Bounds.Width - this.Width - 60;
+            Rectangle workingArea = Screen.GetWorkingArea(this);
+            Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
 
-            Show.Start();
+            Mostrar.Start();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -186,7 +185,7 @@ namespace Emiplus.Data.Helpers
             }
             else
             {
-                Show.Stop();
+                Mostrar.Stop();
             }
         }
 

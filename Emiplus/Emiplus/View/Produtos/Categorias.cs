@@ -12,7 +12,7 @@ namespace Emiplus.View.Produtos
         public Categorias()
         {
             InitializeComponent();
-            Events();
+            Eventos();
         }
 
         private void DataTable()
@@ -36,7 +36,7 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void Events()
+        private void Eventos()
         {
             Load += (s, e) => {
                 search.Select();

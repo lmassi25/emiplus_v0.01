@@ -3,6 +3,7 @@ using Emiplus.Model;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,12 +15,12 @@ namespace Emiplus.View.Comercial
         private int IdPessoa = AddClientes.Id;
         private PessoaEndereco _modelAddress = new PessoaEndereco();
         private PessoaEndereco retorno = new PessoaEndereco();
-        private int Backspace;
         private string cep_aux;
 
         public AddClienteEndereco()
         {
             InitializeComponent();
+            Eventos();
 
             if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
             {
@@ -32,135 +33,121 @@ namespace Emiplus.View.Comercial
 
             if (IdAddress > 0)
             {
-                LoadData();
+                _modelAddress = _modelAddress.FindById(IdAddress).First<PessoaEndereco>();
+
+                cep.Text = _modelAddress.Cep;
+                rua.Text = _modelAddress.Rua;
+                bairro.Text = _modelAddress.Bairro;
+                cidade.Text = _modelAddress.Cidade;
+                nr.Text = _modelAddress.Nr;
+                complemento.Text = _modelAddress.Complemento;
+                estado.Text = _modelAddress.Estado;
+                pais.Text = _modelAddress.Pais;
+                ibge.Text = _modelAddress.IBGE;
             }
         }
 
-        private void LoadData()
+        private void Eventos()
         {
-            _modelAddress = _modelAddress.FindById(IdAddress).First<PessoaEndereco>();
-
-            cep.Text = _modelAddress.Cep;
-            rua.Text = _modelAddress.Rua;
-            bairro.Text = _modelAddress.Bairro;
-            nr.Text = _modelAddress.Nr;
-            complemento.Text = _modelAddress.Complemento;
-            estado.Text = _modelAddress.Estado;
-            pais.Text = _modelAddress.Pais;
-            ibge.Text = _modelAddress.IBGE;
-        }
-
-        private void BtnAddrCancelar_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir o endereço?", "Atenção!", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            btnAddrSalvar.Click += (s, e) =>
             {
-                if (_modelAddress.Remove(IdAddress))
+                _modelAddress.Id = IdAddress;
+                _modelAddress.Id_pessoa = IdPessoa;
+                _modelAddress.Cep = cep.Text;
+                _modelAddress.Rua = rua.Text;
+                _modelAddress.Bairro = bairro.Text;
+                _modelAddress.Nr = nr.Text;
+                _modelAddress.Complemento = complemento.Text;
+                _modelAddress.Estado = estado.Text;
+                _modelAddress.Pais = pais.Text;
+                _modelAddress.IBGE = ibge.Text;
+
+                if (_modelAddress.Save(_modelAddress))
                 {
                     DialogResult = DialogResult.OK;
                     Close();
                 }
-            }
-        }
-
-        private void BtnAddrSalvar_Click(object sender, EventArgs e)
-        {
-            _modelAddress.Id = IdAddress;
-            _modelAddress.Id_pessoa = IdPessoa;
-            _modelAddress.Cep = cep.Text;
-            _modelAddress.Rua = rua.Text;
-            _modelAddress.Bairro = bairro.Text;
-            _modelAddress.Nr = nr.Text;
-            _modelAddress.Complemento = complemento.Text;
-            _modelAddress.Estado = estado.Text;
-            _modelAddress.Pais = pais.Text;
-            _modelAddress.IBGE = ibge.Text;
-
-            if (_modelAddress.Save(_modelAddress))
+            };
+            btnAddrDelete.Click += (s, e) =>
             {
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-        }
+                var result = MessageBox.Show("Deseja realmente excluir o endereço?", "Atenção!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    if (_modelAddress.Remove(IdAddress))
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                }
+            };
 
-        private void AddClienteEndereco_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-        }
-
-        private void Cep_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Eventos.MaskCEP(sender, e);
-        }
-
-        private void BuscarEndereco_Click(object sender, EventArgs e)
-        {
-            buscarEndereco.Enabled = false;
-
-            rua.Text = "...";
-            bairro.Text = "...";
-            nr.Text = "...";
-            complemento.Text = "...";
-            ibge.Text = "...";
-
-            rua.Enabled = false;
-            bairro.Enabled = false;
-            nr.Enabled = false;
-            complemento.Enabled = false;
-            cidade.Enabled = false;
-            estado.Enabled = false;
-            pais.Enabled = false;
-            ibge.Enabled = false;
-
-            if (String.IsNullOrEmpty(cep.Text))
+            cep.KeyPress += (s, e) => Masks.MaskCEP(s, e);
+            buscarEndereco.Click += (s, e) =>
             {
-                return;
-            }
+                buscarEndereco.Enabled = false;
 
-            if (cep.Text.Replace("-", "").Length != 8)
+                rua.Text = "...";
+                bairro.Text = "...";
+                nr.Text = "...";
+                complemento.Text = "...";
+                ibge.Text = "...";
+
+                rua.Enabled = false;
+                bairro.Enabled = false;
+                nr.Enabled = false;
+                complemento.Enabled = false;
+                cidade.Enabled = false;
+                estado.Enabled = false;
+                pais.Enabled = false;
+                ibge.Enabled = false;
+
+                if (String.IsNullOrEmpty(cep.Text))
+                    return;
+
+                if (cep.Text.Replace("-", "").Length != 8)
+                    return;
+
+                cep_aux = cep.Text.Replace("-", "");
+
+                backgroundWorker1.RunWorkerAsync();
+            };
+
+            FormClosing += (s, e) => DialogResult = DialogResult.OK;
+
+            backgroundWorker1.DoWork += (s, e) =>
             {
-                return;
-            }
-
-            cep_aux = cep.Text.Replace("-", "");
-
-            backgroundWorker1.RunWorkerAsync();           
-        }
-
-        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            retorno = _modelAddress.GetAddr(cep_aux);
-        }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            if (retorno != null)
+                retorno = _modelAddress.GetAddr(cep_aux);
+            };
+            backgroundWorker1.RunWorkerCompleted += (s, e) =>
             {
-                rua.Text = "";
-                bairro.Text = "";
-                nr.Text = "";
-                complemento.Text = "";
-                ibge.Text = "";
+                if (retorno != null)
+                {
+                    rua.Text = "";
+                    bairro.Text = "";
+                    nr.Text = "";
+                    complemento.Text = "";
+                    ibge.Text = "";
 
-                rua.Text = retorno.Rua;
-                bairro.Text = retorno.Bairro;
-                cidade.Text = retorno.Cidade;
-                estado.SelectedItem = retorno.Estado;
-                ibge.Text = retorno.IBGE;
-            }
+                    rua.Text = retorno.Rua;
+                    bairro.Text = retorno.Bairro;
+                    cidade.Text = retorno.Cidade;
+                    estado.SelectedItem = retorno.Estado;
+                    ibge.Text = retorno.IBGE;
+                }
 
-            rua.Enabled = true;
-            bairro.Enabled = true;
-            nr.Enabled = true;
-            complemento.Enabled = true;
-            cidade.Enabled = true;
-            estado.Enabled = true;
-            pais.Enabled = true;
-            ibge.Enabled = true;
+                rua.Enabled = true;
+                bairro.Enabled = true;
+                nr.Enabled = true;
+                complemento.Enabled = true;
+                cidade.Enabled = true;
+                estado.Enabled = true;
+                pais.Enabled = true;
+                ibge.Enabled = true;
 
-            rua.Select();
+                rua.Select();
 
-            buscarEndereco.Enabled = true;
+                buscarEndereco.Enabled = true;
+            };
         }
     }
 }

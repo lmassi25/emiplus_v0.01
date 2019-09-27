@@ -1,4 +1,5 @@
 ﻿using Emiplus.Controller;
+using Emiplus.Data.Database;
 using System;
 using System.Text;
 using System.Windows.Forms;
@@ -79,6 +80,12 @@ namespace Emiplus.View.Testes
 
             xtw.Flush();
             xtw.Close();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            var create = new CreateTables();
+            create.CheckTables();
         }
     }
 }

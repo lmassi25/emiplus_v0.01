@@ -6,15 +6,13 @@
     using SqlKata.Execution;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     class PedidoItem : Model
     {
         public PedidoItem() : base("PEDIDO_ITEM") { }
 
         #region CAMPOS 
-
-        //campos obrigatorios para todas as tabelas
-
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -26,7 +24,6 @@
         public string id_empresa { get; private set; }
 
         // referencia com a tabela Pedido
-
         public int Pedido { get; set; } // pedido id
 
         // referencia com a tabela Item 
@@ -35,7 +32,6 @@
         public Item ItemObj { get; set; }
 
         // informações alteraveis na parte fiscal
-
         public string CProd { get; set; }
         public string CEan { get; set; }
         public string xProd { get; set; }
@@ -44,7 +40,6 @@
         public string Origem { get; set; } // 1 digitos
 
         // totais 
-
         public double ValorCompra { get; set; }
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
@@ -154,12 +149,6 @@
 
         #endregion
 
-        public object FindByPedido(int id)
-        {
-            var data = Query().Where("pedido", id).Get();
-            return data;
-        }
-
         public PedidoItem SetTipo(string tipo)
         {
             Tipo = tipo;
@@ -206,11 +195,14 @@
             {
                 if (ItemObj.ValorVenda == 0 || ItemObj.ValorVenda < 0)
                 {
+                    Alert.Message("Oppss", "É necessário definir um valor de venda.", Alert.AlertType.info);
                     return false;
                 }
-
-                 ValorVenda = ItemObj.ValorVenda;
-                 return true;
+                else
+                {
+                    ValorVenda = ItemObj.ValorVenda;
+                    return true;
+                }
             }
 
             if (!Validation.IsNumber(valorVenda))
@@ -293,29 +285,49 @@
             return Total;
         }
 
+        public Dictionary<string, double> SumTotais(int id)
+        {
+            var query = Query().SelectRaw("SUM(total) AS total, SUM(desconto) AS desconto, SUM(totalvenda) AS totalvenda, SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, SUM(icmsvlr) AS icmsvlr," +
+                " SUM(icmsstbase) AS icmsstbase, SUM(icmsstvlr) as icmsstvlr, SUM(ipivlr) AS ipivlr, SUM(pisvlr) AS pisvlr, SUM(cofinsvlr) AS cofinsvlr")
+                .Where("pedido", id).Where("excluir", 0).Get();
+
+            Dictionary<string, double> Somas = new Dictionary<string, double>();
+            Somas.Add("Id", Validation.ConvertToDouble(id));
+            for (int i = 0; i < query.Count(); i++)
+            {
+                var data = query.ElementAt(i);
+                
+                Somas.Add("Produtos", Validation.ConvertToDouble(data.TOTALVENDA));
+                Somas.Add("Frete", Validation.ConvertToDouble(data.FRETE));
+                Somas.Add("Desconto", Validation.ConvertToDouble(data.DESCONTO));
+                Somas.Add("IPI", Validation.ConvertToDouble(data.IPIVLR));
+                Somas.Add("ICMSBASE", Validation.ConvertToDouble(data.ICMSBASE));
+                Somas.Add("ICMS", Validation.ConvertToDouble(data.ICMSVLR));
+                Somas.Add("ICMSSTBASE", Validation.ConvertToDouble(data.ICMSSTBASE));
+                Somas.Add("ICMSST", Validation.ConvertToDouble(data.ICMSSTVLR));
+                Somas.Add("COFINS", Validation.ConvertToDouble(data.COFINSVLR));
+                Somas.Add("PIS", Validation.ConvertToDouble(data.PISVLR));
+            }
+
+            return Somas;
+        }
+
         public bool Save(PedidoItem data)
         {
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
-                if (Data(data).Create() == 1)
-                {
-                    return true;
-                }
-                else
+                if (Data(data).Create() != 1)
                 {
                     Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
-            else
+
+            if (data.Id > 0)
             {
                 data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
-                }
-                else
+                if (Data(data).Update("ID", data.Id) != 1)
                 {
                     Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
                     return false;
@@ -329,10 +341,7 @@
         {
             var data = new { Excluir = 1, Deletado = DateTime.Now };
             if (Data(data).Update("ID", id) == 1)
-            {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
                 return true;
-            }
 
             Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
             return false;

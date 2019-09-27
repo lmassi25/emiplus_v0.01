@@ -37,7 +37,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.NovoPedido = new System.Windows.Forms.Button();
+            this.novoPagamento = new System.Windows.Forms.Button();
             this.aPagar = new System.Windows.Forms.Button();
             this.aReceber = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.novoRecebimento = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -165,28 +166,28 @@
             this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // NovoPedido
+            // novoPagamento
             // 
-            this.NovoPedido.BackColor = System.Drawing.Color.Transparent;
-            this.NovoPedido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.NovoPedido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NovoPedido.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.NovoPedido.FlatAppearance.BorderSize = 0;
-            this.NovoPedido.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.NovoPedido.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.NovoPedido.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NovoPedido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NovoPedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.NovoPedido.Image = ((System.Drawing.Image)(resources.GetObject("NovoPedido.Image")));
-            this.NovoPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.NovoPedido.Location = new System.Drawing.Point(62, 193);
-            this.NovoPedido.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.NovoPedido.Name = "NovoPedido";
-            this.NovoPedido.Size = new System.Drawing.Size(126, 115);
-            this.NovoPedido.TabIndex = 90;
-            this.NovoPedido.Text = "Novo Pedido";
-            this.NovoPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.NovoPedido.UseVisualStyleBackColor = false;
+            this.novoPagamento.BackColor = System.Drawing.Color.Transparent;
+            this.novoPagamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.novoPagamento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.novoPagamento.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.novoPagamento.FlatAppearance.BorderSize = 0;
+            this.novoPagamento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.novoPagamento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.novoPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.novoPagamento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.novoPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.novoPagamento.Image = ((System.Drawing.Image)(resources.GetObject("novoPagamento.Image")));
+            this.novoPagamento.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.novoPagamento.Location = new System.Drawing.Point(194, 194);
+            this.novoPagamento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.novoPagamento.Name = "novoPagamento";
+            this.novoPagamento.Size = new System.Drawing.Size(126, 128);
+            this.novoPagamento.TabIndex = 90;
+            this.novoPagamento.Text = "Novo Pagamento";
+            this.novoPagamento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.novoPagamento.UseVisualStyleBackColor = false;
             // 
             // aPagar
             // 
@@ -207,7 +208,7 @@
             this.aPagar.Name = "aPagar";
             this.aPagar.Size = new System.Drawing.Size(126, 115);
             this.aPagar.TabIndex = 89;
-            this.aPagar.Text = "Contas a Pagar";
+            this.aPagar.Text = "Pagamentos";
             this.aPagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aPagar.UseVisualStyleBackColor = false;
             // 
@@ -228,9 +229,9 @@
             this.aReceber.Location = new System.Drawing.Point(62, 359);
             this.aReceber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aReceber.Name = "aReceber";
-            this.aReceber.Size = new System.Drawing.Size(126, 129);
+            this.aReceber.Size = new System.Drawing.Size(126, 115);
             this.aReceber.TabIndex = 85;
-            this.aReceber.Text = "Contas a Receber";
+            this.aReceber.Text = "Recebimentos";
             this.aReceber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aReceber.UseVisualStyleBackColor = false;
             // 
@@ -304,17 +305,41 @@
             this.panel1.Size = new System.Drawing.Size(735, 97);
             this.panel1.TabIndex = 80;
             // 
+            // novoRecebimento
+            // 
+            this.novoRecebimento.BackColor = System.Drawing.Color.Transparent;
+            this.novoRecebimento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.novoRecebimento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.novoRecebimento.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.novoRecebimento.FlatAppearance.BorderSize = 0;
+            this.novoRecebimento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.novoRecebimento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.novoRecebimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.novoRecebimento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.novoRecebimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.novoRecebimento.Image = ((System.Drawing.Image)(resources.GetObject("novoRecebimento.Image")));
+            this.novoRecebimento.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.novoRecebimento.Location = new System.Drawing.Point(62, 194);
+            this.novoRecebimento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.novoRecebimento.Name = "novoRecebimento";
+            this.novoRecebimento.Size = new System.Drawing.Size(126, 128);
+            this.novoRecebimento.TabIndex = 95;
+            this.novoRecebimento.Text = "Novo Recebimento";
+            this.novoRecebimento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.novoRecebimento.UseVisualStyleBackColor = false;
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.novoRecebimento);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.visualSeparator2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.visualSeparator1);
-            this.Controls.Add(this.NovoPedido);
+            this.Controls.Add(this.novoPagamento);
             this.Controls.Add(this.aPagar);
             this.Controls.Add(this.aReceber);
             this.Controls.Add(this.label1);
@@ -345,7 +370,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
-        private System.Windows.Forms.Button NovoPedido;
+        private System.Windows.Forms.Button novoPagamento;
         private System.Windows.Forms.Button aPagar;
         private System.Windows.Forms.Button aReceber;
         private System.Windows.Forms.Label label1;
@@ -354,5 +379,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button novoRecebimento;
     }
 }

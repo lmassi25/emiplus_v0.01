@@ -1,11 +1,9 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.View.Common;
-using SqlKata;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -15,76 +13,52 @@ namespace Emiplus.View.Comercial
     {
         private int ModoRapAva { get; set; }
         private int ModoRapAvaConfig { get; set; }
-        public static int IdItem { get; set; } // Id item datagrid
 
-        public static int Id;
+        public static int Id { get; set; } // id pedido
+        public static int IdPedidoItem { get; set; } // Id item datagrid
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Pessoa _mCliente = new Model.Pessoa();
-
-        private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
+        private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-
-        public static string searchItemTexto { get; set; }
 
         public AddPedidos()
         {
             InitializeComponent();
-
-            BuscarProduto.Select();
-
-            this.KeyDown += KeyDowns;
-            ModoRapido.KeyDown += KeyDowns;
-            BuscarProduto.KeyDown += KeyDowns;
-            SelecionarCliente.KeyDown += KeyDowns;
-            SelecionarColaborador.KeyDown += KeyDowns;
-            GridListaProdutos.KeyDown += KeyDowns;
-            btnConcluir.KeyDown += KeyDowns;
-            Quantidade.KeyDown += KeyDowns;
+            Eventos();
         }
-        
-        private void AddPedidos_Load(object sender, EventArgs e)
-        {
-            AutoCompleteItens();
 
-            if (Id > 0)
-            {
-                LoadData();
-            }
-            else
-            {
-                _mPedido.Id = Id;
-                _mPedido.Cliente = 1;
-                _mPedido.Tipo = Home.pedidoPage;
-                if (_mPedido.Save(_mPedido))
-                {
-                    Id = _mPedido.GetLastId();
-                    LoadData();
-                }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao criar Pedido.", Alert.AlertType.error);
-                    Close();
-                }
-            }
-
-            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-        }
-        
         private void LoadData()
         {
-            label2.Text = "Dados do Pedido: " + Id;
+            if (Home.pedidoPage == "Orçamentos") {
+                label2.Text = $"Dados do Orçamento: {Id}";
+                label3.Text = "Siga as etapas abaixo para criar um novo orçamento!";
+                btnConcluir.Text = "Gerar Venda";
+            } else if (Home.pedidoPage == "Consignações") {
+                label2.Text = $"Dados da Consignação: {Id}";
+                label3.Text = "Siga as etapas abaixo para criar uma nova consignãção!";
+                btnConcluir.Text = "Gerar Venda";
+            } else if (Home.pedidoPage == "Compras") {
+                label2.Text = $"Dados da Compra: {Id}";
+                label3.Text = "Siga as etapas abaixo para adicionar uma nova compra!";
+                btnConcluir.Text = "Pagamento";
+            } else {
+                label2.Text = $"Dados da Venda: {Id}";
+                label3.Text = "Siga as etapas abaixo para adicionar uma nova venda!";
+                btnConcluir.Text = "Receber";
+            }
 
             LoadCliente();
             LoadColaboradorCaixa();
-            LoadTabelaPreco();
             LoadTotais();
-            //LoadItens();
         }
 
+        /// <summary>
+        /// Carrega o cliente selecionado.
+        /// </summary>
         private void LoadCliente()
         {
             if (_mPedido.Cliente > 0)
@@ -94,6 +68,9 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        /// <summary>
+        /// Carrega o vendedor selecionado.
+        /// </summary>
         private void LoadColaboradorCaixa()
         {
             if (_mPedido.Colaborador > 0)
@@ -103,151 +80,39 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void LoadTabelaPreco()
-        {
-
-        }
-
-        // collection.Lookup recupera o ID
+        /// <summary>
+        /// Carrega e adiciona os itens no pedido!
+        /// Function: collection.Lookup recupera o ID
+        /// </summary>
         private void LoadItens()
         {
-            if (collection.Lookup(BuscarProduto.Text) == 0)
-            {
-                searchItemTexto = BuscarProduto.Text;
-                PedidoModalItens form = new PedidoModalItens();
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    BuscarProduto.Text = PedidoModalItens.NomeProduto;
+            // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
+            ModalItens();
 
-                    if (PedidoModalItens.ValorVendaProduto == 0)
-                    {
-                        if (ModoRapAva == 0)
-                        {
-                            AlterarModo();
-                            ModoRapAvaConfig = 1;
-                        }
-                    }
-                }
-            }
-
-            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
-            {
-                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
-
-                var pedidoItem = new Model.PedidoItem();
-
-                pedidoItem.SetId(0)
-                    .SetTipo("Produtos")
-                    .SetPedidoId(Id)
-                    .SetItem(item)
-                    .SetQuantidade(Validation.ConvertToDouble(Quantidade.Text))
-                    .SetMedida(Medidas.Text)
-                    .SetDescontoReal(Validation.ConvertToDouble(DescontoReais.Text));
-
-                var valorVenda = pedidoItem.SetValorVenda(Validation.ConvertToDouble(Preco.Text));
-                if (!valorVenda)
-                {
-                    Alert.Message("Oppss", "É necessário definir um valor de venda.", Alert.AlertType.info);
-                    if (ModoRapAva == 0)
-                    {
-                        AlterarModo();
-                        ModoRapAvaConfig = 1;
-                    }
-                    Preco.Select();
-                    return;
-                }
-
-                pedidoItem.SomarProdutosTotal();
-                pedidoItem.SetDescontoPorcentagens(Validation.ConvertToDouble(DescontoPorcentagem.Text));
-                pedidoItem.SomarTotal();
-                pedidoItem.Save(pedidoItem);
-
-                _controllerPedidoItem.GetDataTableItens(GridListaProdutos, Id);
-
-                LoadTotais();
-                
-                ClearForms();
-
-                if (ModoRapAva == 1 && ModoRapAvaConfig == 1)
-                {
-                    AlterarModo();
-                    ModoRapAvaConfig = 0;
-                }
-            }
+            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
+            AddItem();
 
             PedidoModalItens.NomeProduto = "";
             BuscarProduto.Select();
         }
 
+        /// <summary>
+        /// Atualiza o pedido com as somas totais.
+        /// </summary>
         private void LoadTotais()
         {
             itens.Text = "Itens: " + GridListaProdutos.RowCount.ToString();
-            // SELECT SUM(total), SUM(desconto), SUM(totalvenda), SUM(frete), SUM(icmsbase), SUM(icmsvlr), SUM(icmsstbase), SUM(icmsstvlr), SUM(ipivlr), SUM(pisvlr), SUM(cofinsvlr)
-            // total = (totalvenda, frete, icmsbase, icmsvlr, icmsstbase, icmsstvlr, ipivlr, pisvlr, cofinsvlr) - desconto
-            //Math.Round(value, 2);
 
-            var query = _mPedidoItens.Query().SelectRaw("SUM(total) AS total, SUM(desconto) AS desconto, SUM(totalvenda) AS totalvenda, SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, SUM(icmsvlr) AS icmsvlr," +
-                " SUM(icmsstbase) AS icmsstbase, SUM(icmsstvlr) as icmsstvlr, SUM(ipivlr) AS ipivlr, SUM(pisvlr) AS pisvlr, SUM(cofinsvlr) AS cofinsvlr")
-                .Where("pedido", Id).Where("excluir", 0).Get();
+            var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(Id));
+            _mPedido.Save(data);
 
-            double Produtos = 0, Frete = 0, Desconto = 0, IPI = 0, ICMSBASE = 0, ICMS = 0, ICMSSTBASE = 0, ICMSST = 0, COFINS = 0, PIS = 0, TOTAL = 0;
-
-            for (int i = 0; i < query.Count(); i++)
-            {
-                //total do produto  = quantidade * valorvenda
-                //total = (totaldoproduto + impostos + frete) - desconto
-                var data = query.ElementAt(i);
-                //var somar = data.TOTALVENDA + data.FRETE + data.ICMSSTVLR + data.IPIVLR;
-                //var subtrair = data.DESCONTO;
-                //Totais = somar - subtrair;
-
-                Produtos = Validation.ConvertToDouble(data.TOTALVENDA);
-                Frete = Validation.ConvertToDouble(data.FRETE);
-                Desconto = Validation.ConvertToDouble(data.DESCONTO);
-                IPI = Validation.ConvertToDouble(data.IPIVLR);
-                ICMSBASE = Validation.ConvertToDouble(data.ICMSBASE);
-                ICMS = Validation.ConvertToDouble(data.ICMSVLR);
-                ICMSSTBASE = Validation.ConvertToDouble(data.ICMSSTBASE);
-                ICMSST = Validation.ConvertToDouble(data.ICMSSTVLR);
-                COFINS = Validation.ConvertToDouble(data.COFINSVLR);
-                PIS = Validation.ConvertToDouble(data.PISVLR);
-            }
-            
-            _mPedido.Id = Id;
-
-            _mPedido.Produtos = Produtos;
-
-            _mPedido.Frete = Frete;
-
-            //PEDIDO_ITEM.DESCONTO = PEDIDO_ITEM.DESCONTOITEM + PEDIDO_ITEM.DESCONTOPEDIDO
-            //PEDIDO.DESCONTO = SUM(PEDIDO_ITEM.DESCONTO)
-
-            //PEDIDO.DESCONTOLANCADO = form PedidoPayDesconto
-            //PEDIDO.DESCONTOLANCADO = PEGAR O VALOR DO DESCONTO(TELA PedidoPayDesconto), DIVIDIR ENTRE OS ITENS DE FORMA PROPORCIONAL E LANÇAR O RESULTADO NO CAMPO PEDIDO_ITEM.DESCONTOPEDIDO DE CADA UM (CRIAR)
-
-            _mPedido.Desconto = Desconto; // não é o desconto lançado no pedido 
-
-            _mPedido.IPI = IPI;
-
-            _mPedido.ICMSBASE = ICMSBASE;
-            _mPedido.ICMS = ICMS;
-
-            _mPedido.ICMSSTBASE = ICMSSTBASE;
-            _mPedido.ICMSST = ICMSST;
-
-            _mPedido.COFINS = COFINS;
-            _mPedido.PIS = PIS;
-
-            TOTAL = (Produtos + Frete + IPI + ICMSST) - Desconto;
-            _mPedido.Total = TOTAL;
-
-            _mPedido.Save(_mPedido);
-
-            subTotal.Text = Validation.FormatPrice(TOTAL, true);
-
-            totaisDescontos.Text = "Totais descontos: " + Validation.FormatPrice(Desconto, true);
+            subTotal.Text = Validation.FormatPrice(_mPedido.GetTotal(), true);
+            totaisDescontos.Text = "Totais descontos: " + Validation.FormatPrice(_mPedido.GetDesconto(), true);
         }
         
+        /// <summary>
+        /// Autocomplete do campo de busca de produtos.
+        /// </summary>
         private void AutoCompleteItens()
         {
             var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
@@ -259,35 +124,10 @@ namespace Emiplus.View.Comercial
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
-        
-        private void Produto_Click(object sender, EventArgs e)
-        {
-            var BackColor = Color.FromArgb(249, 249, 249);
-            panelTwo.BackColor = BackColor;
-            label4.BackColor = BackColor;
-            label5.BackColor = BackColor;
-            label6.BackColor = BackColor;
-            label7.BackColor = BackColor;
-            label8.BackColor = BackColor;
-            label9.BackColor = BackColor;
-            addProduto.BackColor = BackColor;
-            panel2.BackColor = Color.White;
-        }
 
-        private void Produto_Leave(object sender, EventArgs e)
-        {
-            var BackColor = Color.White;
-            panelTwo.BackColor = Color.White;
-            label4.BackColor = BackColor;
-            label5.BackColor = BackColor;
-            label6.BackColor = BackColor;
-            label7.BackColor = BackColor;
-            label8.BackColor = BackColor;
-            label9.BackColor = BackColor;
-            addProduto.BackColor = BackColor;
-            panel2.BackColor = Color.FromArgb(249, 249, 249);
-        }
-
+        /// <summary>
+        /// Validação para tela de Pagamentos.
+        /// </summary>
         private void TelaPagamentos()
         {
             if (GridListaProdutos.SelectedRows.Count <= 0)
@@ -296,14 +136,37 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            OpenForm.Show<PedidoPagamentos>(this);
+            if (Home.pedidoPage != "Compras")
+            {
+                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Pedido.Tipo = "Vendas";
+                Pedido.Save(Pedido);
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações")
+                {
+                    Home.pedidoPage = "Vendas";
+                    Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
+                    LoadData();
+                }
+                else
+                {
+                    OpenForm.Show<PedidoPagamentos>(this);
+                }
+            }
+            else
+            {
+                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Pedido.Tipo = "Compras";
+                Pedido.Save(Pedido);
+
+                OpenForm.Show<PedidoPagamentos>(this);
+            }
         }
 
-        private void BtnConcluir_Click(object sender, EventArgs e)
-        {
-            TelaPagamentos();
-        }
-
+        /// <summary>
+        /// Altera o modo do pedido, para avançado e simples. 
+        /// 1 = Avançado, 0 = Simples
+        /// </summary>
         private void AlterarModo()
         {
             if (ModoRapAva == 1)
@@ -320,11 +183,9 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void ModoRapido_Click(object sender, EventArgs e)
-        {
-            AlterarModo();
-        }
-
+        /// <summary>
+        /// Janela para selecionar Cliente no pedido.
+        /// </summary>
         private void ModalClientes()
         {
             PedidoModalClientes form = new PedidoModalClientes();
@@ -337,11 +198,9 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void SelecionarCliente_Click(object sender, EventArgs e)
-        {
-            ModalClientes();
-        }
-
+        /// <summary>
+        /// Janela para selecionar vendedor no pedido.
+        /// </summary>
         private void ModalColaborador()
         {
             PedidoModalVendedor form = new PedidoModalVendedor();
@@ -354,24 +213,34 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void SelecionarColaborador_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Janela para selecionar itens não encontrados.
+        /// </summary>
+        private void ModalItens()
         {
-            ModalColaborador();
-        }
-
-        private void BuscarProduto_Enter(object sender, EventArgs e)
-        {
-            LoadItens();
-        }
-
-        private void BuscarProduto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if (collection.Lookup(BuscarProduto.Text) == 0)
             {
-                LoadItens();
+                if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
+                {
+                    PedidoModalItens.txtSearch = BuscarProduto.Text;
+                    PedidoModalItens form = new PedidoModalItens();
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+
+                        if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
+                        {
+                            AlterarModo();
+                            ModoRapAvaConfig = 1;
+                        }
+                    }
+                }
             }
         }
 
+        /// <summary>
+        /// Limpa os input text.
+        /// </summary>
         private void ClearForms()
         {
             BuscarProduto.Clear();
@@ -381,6 +250,74 @@ namespace Emiplus.View.Comercial
             DescontoReais.Clear();
         }
 
+        /// <summary>
+        /// Adiciona item ao pedido, controla o estoque e atualiza os totais.
+        /// </summary>
+        private void AddItem()
+        {
+            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            {
+                var itemId = collection.Lookup(BuscarProduto.Text);
+                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
+
+                double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
+                double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
+                double DescontoPorcentagemTxt = Validation.ConvertToDouble(DescontoPorcentagem.Text);
+                string MedidaTxt = Medidas.Text;
+                double PriceTxt = Validation.ConvertToDouble(Preco.Text);
+
+                var pedidoItem = new Model.PedidoItem();
+                pedidoItem.SetId(0)
+                    .SetTipo("Produtos")
+                    .SetPedidoId(Id)
+                    .SetItem(item)
+                    .SetQuantidade(QuantidadeTxt)
+                    .SetMedida(MedidaTxt)
+                    .SetDescontoReal(DescontoReaisTxt);
+
+                if (!pedidoItem.SetValorVenda(PriceTxt))
+                {
+                    if (ModoRapAva == 0)
+                    {
+                        AlterarModo();
+                        ModoRapAvaConfig = 1;
+                    }
+
+                    Preco.Select();
+                    return;
+                }
+
+                pedidoItem.SetDescontoPorcentagens(DescontoPorcentagemTxt);
+                pedidoItem.SomarTotal();
+                pedidoItem.Save(pedidoItem);
+
+                // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                if (Home.pedidoPage == "Compras")
+                    new Controller.Estoque(pedidoItem.GetLastId(), 0, Home.pedidoPage).Add().Item();
+                else
+                    new Controller.Estoque(pedidoItem.GetLastId(), 0, Home.pedidoPage).Remove().Item();
+
+                // Carrega a Grid com o Item adicionado acima.
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+
+                // Atualiza o total do pedido, e os totais da tela
+                LoadTotais();
+
+                // Limpa os campos
+                ClearForms();
+
+                // Verifica se modo é avançado e altera para modo simples, apenas se modo simples for padrão
+                if (ModoRapAva == 1 && ModoRapAvaConfig == 1)
+                {
+                    AlterarModo();
+                    ModoRapAvaConfig = 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adiciona os eventos de 'KeyDown' a todos os controls com a function KeyDowns
+        /// </summary>
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -413,12 +350,19 @@ namespace Emiplus.View.Comercial
                             var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
                             if (MessageBox.Show($"Cancelar o item ('{itemName}') no pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                var IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                                _mPedidoItens.Remove(IdItem);
+                                var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                                _mPedidoItens.Remove(idPedidoItem);
+
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                                if (Home.pedidoPage != "Compras")
+                                    new Controller.Estoque(idPedidoItem, 0, Home.pedidoPage).Add().Item();
+                                else
+                                    new Controller.Estoque(idPedidoItem, 0, Home.pedidoPage).Remove().Item();
+
                                 LoadTotais();
                             }
-                        } 
+                        }
                     }
 
                     break;
@@ -434,66 +378,118 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void Preco_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Adiciona os eventos nos Controls do form.
+        /// </summary>
+        private void Eventos()
         {
-            TextBox txt = (TextBox)sender;
-            Eventos.MaskPrice(ref txt);
-        }
+            BuscarProduto.Select();
 
-        private void Quantidade_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            KeyDown += KeyDowns;
+            ModoRapido.KeyDown += KeyDowns;
+            BuscarProduto.KeyDown += KeyDowns;
+            SelecionarCliente.KeyDown += KeyDowns;
+            SelecionarColaborador.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
+            btnConcluir.KeyDown += KeyDowns;
+            Quantidade.KeyDown += KeyDowns;
+
+            Load += (s, e) =>
             {
-                if (String.IsNullOrEmpty(BuscarProduto.Text)) BuscarProduto.Focus();
-                else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
-                else { LoadItens(); ClearForms(); }
-            }
-        }
+                AutoCompleteItens();
 
-        private void Preco_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                LoadItens();
-            }
-        }
-
-        private void DescontoPorcentagem_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                LoadItens();
-            }
-        }
-
-        private void DescontoReais_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                LoadItens();
-            }
-        }
-
-        private void AddProduto_Click(object sender, EventArgs e)
-        {
-            LoadItens();
-        }
-
-        private void BtnCancelarProduto_Click(object sender, EventArgs e)
-        {
-            if (GridListaProdutos.SelectedRows.Count > 0)
-            {
-                if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                if (Id > 0)
                 {
-                    IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                    LoadData();
                 }
-            }
+                else
+                {
+                    _mPedido.Id = Id;
+                    _mPedido.Cliente = 1;
+                    _mPedido.Tipo = Home.pedidoPage;
+                    if (_mPedido.Save(_mPedido))
+                    {
+                        Id = _mPedido.GetLastId();
+                        LoadData();
+                    }
+                    else
+                    {
+                        Alert.Message("Opss", "Erro ao criar Pedido.", Alert.AlertType.error);
+                        Close();
+                    }
+                }
 
-            PedidoModalCancelItem cancel = new PedidoModalCancelItem();
-            if (cancel.ShowDialog() == DialogResult.OK)
+                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+            };
+
+            btnConcluir.Click += (s, e) => TelaPagamentos();
+            ModoRapido.Click += (s, e) => AlterarModo();
+            SelecionarCliente.Click += (s, e) => ModalClientes();
+            SelecionarColaborador.Click += (s, e) => ModalColaborador();
+
+            addProduto.Click += (s, e) => LoadItens();
+            BuscarProduto.KeyDown += (s, e) =>
             {
-                LoadItens();
-            }
+                if (e.KeyCode == Keys.Enter)
+                    LoadItens();
+            };
+
+            Preco.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Masks.MaskPrice(ref txt);
+            };
+            Preco.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                    LoadItens();
+            };
+
+            Quantidade.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (String.IsNullOrEmpty(BuscarProduto.Text)) BuscarProduto.Focus();
+                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
+                    else { LoadItens(); ClearForms(); }
+                }
+            };
+
+            DescontoPorcentagem.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                    LoadItens();
+            };
+            DescontoReais.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                    LoadItens();
+            };
+
+            btnCancelarProduto.Click += (s, e) =>
+            {
+                if (GridListaProdutos.SelectedRows.Count > 0)
+                {
+                    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                }
+
+                PedidoModalCancelItem cancel = new PedidoModalCancelItem();
+                if (cancel.ShowDialog() == DialogResult.OK)
+                    GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+            };
+
+            FormClosing += (s, e) =>
+            {
+                if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
+                    _mPedido.Remove(Id);
+                    return;
+                }
+
+                e.Cancel = true;
+            };
         }
     }
 }

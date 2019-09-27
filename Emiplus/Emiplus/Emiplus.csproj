@@ -54,41 +54,14 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.4\lib\netstandard2.0\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.Firebird, Version=7.1.1.0, Culture=neutral, PublicKeyToken=42d22d092898e5f8, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.Firebird.7.1.1\lib\net452\EntityFramework.Firebird.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
-    <Reference Include="FirebirdSql.EntityFrameworkCore.Firebird, Version=7.1.1.0, Culture=neutral, PublicKeyToken=7a73ef09980c56c9, processorArchitecture=MSIL">
-      <HintPath>..\packages\FirebirdSql.EntityFrameworkCore.Firebird.7.1.1\lib\netstandard2.0\FirebirdSql.EntityFrameworkCore.Firebird.dll</HintPath>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
     <Reference Include="Json.Net, Version=1.0.16.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Json.Net.1.0.16\lib\netstandard2.0\Json.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.6\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=2.2.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.2.2.6\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=2.2.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.2.2.6\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
@@ -177,6 +150,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -200,6 +174,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controller\Categoria.cs" />
+    <Compile Include="Controller\Estoque.cs" />
     <Compile Include="Controller\Fiscal.cs" />
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
@@ -207,8 +182,11 @@
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Controller\Titulo.cs" />
+    <Compile Include="Data\Core\Config.cs" />
+    <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
+    <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
@@ -217,7 +195,7 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Helpers\CEP.cs" />
-    <Compile Include="Data\Helpers\Eventos.cs" />
+    <Compile Include="Data\Helpers\Masks.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
@@ -225,6 +203,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
@@ -327,6 +306,12 @@
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\Carregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Carregar.Designer.cs">
+      <DependentUpon>Carregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +371,12 @@
     </Compile>
     <Compile Include="View\Financeiro\EditarTitulo.Designer.cs">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\Nota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\Nota.Designer.cs">
+      <DependentUpon>Nota.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Financeiro\Titulos.cs">
       <SubType>Form</SubType>
@@ -541,6 +532,9 @@
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Carregar.resx">
+      <DependentUpon>Carregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -570,6 +564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\Nota.resx">
+      <DependentUpon>Nota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
       <DependentUpon>Titulos.cs</DependentUpon>
@@ -758,6 +755,7 @@
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Data\Core\Config.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -773,8 +771,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Config\" />
     <Folder Include="View\Fiscal\" />
+    <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />

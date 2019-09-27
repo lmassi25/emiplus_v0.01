@@ -198,6 +198,8 @@
             // 
             this.GridLista.AllowUserToAddRows = false;
             this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -267,9 +269,8 @@
             // 
             // barraTitulo
             // 
-            this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.barraTitulo.Controls.Add(this.dataFinal);
             this.barraTitulo.Controls.Add(this.dataInicial);
@@ -318,7 +319,7 @@
             this.dataFinal.Name = "dataFinal";
             this.dataFinal.Size = new System.Drawing.Size(173, 25);
             this.dataFinal.TabIndex = 41;
-            this.dataFinal.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
             // 
             // dataInicial
             // 
@@ -643,6 +644,7 @@
             this.Controls.Add(this.barraTitulo);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Pedido";
             this.ShowIcon = false;

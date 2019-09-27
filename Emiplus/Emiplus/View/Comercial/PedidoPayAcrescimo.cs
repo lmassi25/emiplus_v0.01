@@ -8,9 +8,15 @@ namespace Emiplus.View.Comercial
         public PedidoPayAcrescimo()
         {
             InitializeComponent();
+            Eventos();
         }
 
         private void PedidoPayAcrescimo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Eventos()
         {
 
         }
