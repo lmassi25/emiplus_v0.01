@@ -61,7 +61,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).First();
+            var data = new Model.Pedido().FindById(idPedido).Select("desconto").Where("excluir", 0).First();
             return Validation.ConvertToDouble(data.DESCONTO);
         }
 
@@ -177,7 +177,7 @@ namespace Emiplus.Controller
 
             foreach (var item in data)
             {
-                string pathIconExcluir = $"{Support.BasePath()}\\Assets\\Images\\icons\\bin16x.png";
+                string pathIconExcluir = $"{Support.BasePath()}\\Emiplus\\Emiplus\\Assets\\Images\\icons\\bin16x.png";
 
                 Table.Rows.Add(
                     item.ID,

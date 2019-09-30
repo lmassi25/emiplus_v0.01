@@ -75,7 +75,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(203, 2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(109, 60);
-            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "Aplicar (ENTER)";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(318, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 60);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             this.porcentagem.ReadOnly = false;
             this.porcentagem.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.porcentagem.Size = new System.Drawing.Size(231, 32);
-            this.porcentagem.TabIndex = 156;
+            this.porcentagem.TabIndex = 0;
             this.porcentagem.TextBoxWidth = 219;
             this.porcentagem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.porcentagem.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -262,7 +262,7 @@
             this.dinheiro.ReadOnly = false;
             this.dinheiro.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dinheiro.Size = new System.Drawing.Size(231, 32);
-            this.dinheiro.TabIndex = 157;
+            this.dinheiro.TabIndex = 2;
             this.dinheiro.TextBoxWidth = 219;
             this.dinheiro.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.dinheiro.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -321,6 +321,7 @@
             this.valorPorcentagem.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.valorPorcentagem.Size = new System.Drawing.Size(81, 32);
             this.valorPorcentagem.TabIndex = 158;
+            this.valorPorcentagem.TabStop = false;
             this.valorPorcentagem.TextBoxWidth = 69;
             this.valorPorcentagem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.valorPorcentagem.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

@@ -4,8 +4,6 @@
     using System.Windows.Forms;
     using View.Common;
 
-    using Emiplus.Data.Core;
-
     static class Program
     {
         /// <summary>
@@ -16,7 +14,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Carregar());
+            Application.Run(new Home());
         }
     }
 }

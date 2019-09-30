@@ -28,8 +28,10 @@ namespace Emiplus.Data.Helpers
         {
             try
             {
-                var ws = new WSCorreios.AtendeClienteClient();
-                var resposta = ws.consultaCEP(cep);
+                using (var ws = new WSCorreios.AtendeClienteClient())
+                {
+                    var resposta = ws.consultaCEP(cep);
+                }
 
                 return true;
             }
@@ -58,31 +60,36 @@ namespace Emiplus.Data.Helpers
 
         public dynamic GetRetornoCorreios()
         {
-            var ws = new WSCorreios.AtendeClienteClient();
-            var resposta = ws.consultaCEP(cep);
+            using (var ws = new WSCorreios.AtendeClienteClient())
+            {
+                var resposta = ws.consultaCEP(cep);
 
-            return resposta;
+                return resposta;
+            }
         }
 
         public string GetIBGE()
         {
-            var json = new WebClient().DownloadString("https://www.emiplus.com.br/app/json/municipio");
-            JObject googleSearch = JObject.Parse(json);
-
-            IList<JToken> results = googleSearch["municipios"].Children().ToList();
-
-            IList<MunicipioJson> searchResults = new List<MunicipioJson>();
-
-            var resposta = GetRetornoCorreios();
-
-            foreach (JToken result in results)
+            using (var json = new WebClient())
             {
-                MunicipioJson searchResult = result.ToObject<MunicipioJson>();
-                searchResults.Add(searchResult);
+                var download = json.DownloadString("https://www.emiplus.com.br/app/json/municipio");
+                JObject googleSearch = JObject.Parse(download);
+            
+                IList<JToken> results = googleSearch["municipios"].Children().ToList();
 
-                if (searchResult.nome == resposta.cidade.ToLower())
+                IList<MunicipioJson> searchResults = new List<MunicipioJson>();
+
+                var resposta = GetRetornoCorreios();
+
+                foreach (JToken result in results)
                 {
-                    return searchResult.id.ToString();
+                    MunicipioJson searchResult = result.ToObject<MunicipioJson>();
+                    searchResults.Add(searchResult);
+
+                    if (string.Compare(searchResult.nome, resposta.cidade, true) == 0)
+                    {
+                        return searchResult.id.ToString();
+                    }
                 }
             }
 

@@ -137,8 +137,7 @@ namespace Emiplus.View.Common
         {
             if(atualiza == 1)
             {
-                var update = new CreateTables();
-                update.CheckTables();
+                new CreateTables().CheckTables();
 
                 // Atualiza a versão no BANCO
                 new Model.Config().ChangeKey("version").SetValue(new Update().GetVersionWebTxt()).Save();

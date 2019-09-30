@@ -37,9 +37,17 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public SqlKata.Query FindAll(string[] columns = null)
         {
-            columns = columns ?? new[] { "*" };
-            var data = db.Query(Entity).Select(columns);
-            return data;
+            try {
+                columns = columns ?? new[] { "*" };
+                var data = db.Query(Entity).Select(columns);
+                return data;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         public int Count()
@@ -69,8 +77,17 @@ namespace Emiplus.Data.Database
         /// </example>
         public SqlKata.Query Query()
         {
-            var data = db.Query(Entity);
-            return data;
+            try
+            {
+                var data = db.Query(Entity);
+                return data;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         /// <summary>
@@ -80,19 +97,35 @@ namespace Emiplus.Data.Database
         /// <returns>Retorna objeto</returns>
         public SqlKata.Query FindById(int id)
         {
-            var data = db.Query(Entity).Where("ID", id);
-            return data;
+            try {
+                var data = db.Query(Entity).Where("ID", id);
+                return data;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         public int GetLastId()
         {
-            int id_num = 0;
-            foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
-            {
-                id_num = Validation.ConvertToInt32(item.NUM);
-            }
+            try {
+                int id_num = 0;
+                foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
+                {
+                    id_num = Validation.ConvertToInt32(item.NUM);
+                }
 
-            return id_num;
+                return id_num;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         public int GetNextId()
@@ -123,6 +156,12 @@ namespace Emiplus.Data.Database
                 Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
                 return 0;
             }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         /// <summary>
@@ -140,6 +179,12 @@ namespace Emiplus.Data.Database
             {
                 Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
                 return 0;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
             }
         }
 
@@ -160,6 +205,12 @@ namespace Emiplus.Data.Database
                 Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
                 return 0;
             }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         /// <summary>
@@ -178,6 +229,12 @@ namespace Emiplus.Data.Database
             {
                 Log.Add(Entity, ex.Message + " | " + ex.InnerException, Log.LogType.fatal);
                 return 0;
+            }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
             }
         }
     }

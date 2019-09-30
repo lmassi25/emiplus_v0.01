@@ -3,9 +3,7 @@ using Emiplus.Data.Helpers;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.IO;
-using IniParser;
-using IniParser.Model;
-using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.Data.Database
 {
@@ -17,8 +15,6 @@ namespace Emiplus.Data.Database
         private const string _pass = "masterkey";
         private const string _db = "sysdba";
         private const string _host = "localhost";
-
-        
 
         private string GetDatabase()
         {
@@ -35,7 +31,7 @@ namespace Emiplus.Data.Database
                 }                
             }
 
-            return _path = Support.GetIni()["LOCAL"]["path"] + "\\EMIPLUS.FDB";
+            return _path = IniFile.Read("Path", "LOCAL") + "\\EMIPLUS.FDB";
         }
 
         public QueryFactory Open()

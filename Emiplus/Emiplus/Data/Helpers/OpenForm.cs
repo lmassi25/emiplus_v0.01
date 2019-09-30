@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
-    public static class OpenForm
+    public class OpenForm
     {
         /// <summary>
         /// Adiciona um Form dentro de outro Form
@@ -21,8 +21,6 @@ namespace Emiplus.Data.Helpers
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
-                //formulario.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
-                //formulario.Size = new Size(Principal.Width, Principal.Height);
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
                 formulario.Focus();
@@ -46,8 +44,6 @@ namespace Emiplus.Data.Helpers
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
-                //formulario.Anchor = (AnchorStyles.Left | AnchorStyles.Top);
-                //formulario.Size = new Size(Principal.Width, Principal.Height);
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
                 Principal.Focus();

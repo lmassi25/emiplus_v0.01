@@ -11,9 +11,11 @@ namespace Emiplus.Data.Core
         /// </summary>
         public string GetVersionWebTxt()
         {
-            WebClient client = new WebClient();
-            string version = client.DownloadString("https://emiplus.com.br/version/version.txt");
-            return version;
+            using (WebClient client = new WebClient())
+            {
+                string version = client.DownloadString("https://emiplus.com.br/version/version.txt");
+                return version;
+            }
         }
 
         /// <summary>
@@ -21,7 +23,7 @@ namespace Emiplus.Data.Core
         /// </summary>
         public void CheckUpdate()
         {
-            if (GetVersionWebTxt() != Config.Get("APP_VERSION"))
+            if (GetVersionWebTxt() != IniFile.Read("Version", "APP"))
             {
                 AtualizacaoDisponivel = true;
                 return;

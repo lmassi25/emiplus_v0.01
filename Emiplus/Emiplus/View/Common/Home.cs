@@ -125,7 +125,7 @@ namespace Emiplus.View.Common
             new Update().CheckUpdate();
             Eventos();
 
-            version.Text = "Versão " + Config.Get("APP_VERSION");
+            version.Text = "Versão " + IniFile.Read("Version", "APP");
 
             if (Data.Core.Update.AtualizacaoDisponivel) { btnUpdate.Visible = true; } else { btnUpdate.Visible = false; }
         }

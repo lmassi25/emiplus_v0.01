@@ -15,19 +15,8 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
             Eventos();
-        }
 
-        private void KeyDowns(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Enter:
-
-                    break;
-                case Keys.Escape:
-
-                    break;
-            }
+            porcentagem.Focus();
         }
 
         private void FormulaDesconto(string total, int idItem)
@@ -52,10 +41,21 @@ namespace Emiplus.View.Comercial
             if (idPedido > 0)
             {
                 var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
+                
+                string descontoValor = string.Empty;
+                if (porcentagem.Text != string.Empty)
+                {
+                    var dataPedido = _mPedido.Query().Select("id", "total").Where("id", idPedido).First<Model.Pedido>();
+                    descontoValor = (Validation.ConvertToDouble(porcentagem.Text) / 100 * (dataPedido.Total)).ToString();
+                }
+                else if (dinheiro.Text != string.Empty)
+                {
+                    descontoValor = dinheiro.Text;
+                }
 
                 foreach (var item in data)
                 {
-                    FormulaDesconto(dinheiro.Text, item.ID);
+                    FormulaDesconto(descontoValor, item.ID);
                 }
 
                 _mPedido.Tipo = "Vendas";
@@ -67,6 +67,19 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    Save();
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
             KeyDown += KeyDowns; 
@@ -74,6 +87,15 @@ namespace Emiplus.View.Comercial
             btnCancelar.KeyDown += KeyDowns;
 
             btnSalvar.Click += (s, e) => Save();
+            porcentagem.TextChanged += (s, e) =>
+            {
+                if (porcentagem.Text != string.Empty)
+                {
+                    var dataPedido = _mPedido.Query().Select("id", "total").Where("id", idPedido).First<Model.Pedido>();
+                    var dP = (Validation.ConvertToDouble(porcentagem.Text) / 100 * (dataPedido.Total));
+                    valorPorcentagem.Text = Validation.FormatPrice(dP);
+                }
+            };
 
             btnCancelar.Click += (s, e) => Close();
         }

@@ -1,4 +1,6 @@
-﻿using SqlKata.Execution;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System;
 using System.IO;
 using System.Linq;
@@ -10,15 +12,18 @@ namespace Emiplus.Data.Database
         private QueryFactory dbLocal;
         private QueryFactory dbPdrao;
 
-        private string _PathPadrao { get; set; } = @"C:\Emiplus\Update\PADRAO.fdb";
-        private string _PathLocal { get; set; } = @"C:\Emiplus\EMIPLUS.fdb";
+        private string _PathPadrao { get; set; }
+        private string _PathLocal { get; set; }
 
         public CreateTables()
         {
+            _PathPadrao = IniFile.Read("Path", "LOCAL") + @"\Update\PADRAO.fdb";
+            _PathLocal = IniFile.Read("Path", "LOCAL") + @"\EMIPLUS.fdb";
+
             var connectPadrao = new Connect();
             connectPadrao.update = true;
             dbPdrao = connectPadrao.Open();
-            
+
             var connectLocal = new Connect();
             //connectLocal._path = _PathLocal;
             dbLocal = connectLocal.Open();
@@ -27,7 +32,7 @@ namespace Emiplus.Data.Database
         private void CreateGenerator(string trigger, string tabela, string generator)
         {
 
-            dbLocal.Select("CREATE GENERATOR "+ generator + ";");
+            dbLocal.Select("CREATE GENERATOR " + generator + ";");
 
             string s2;
             s2 = "CREATE TRIGGER " + trigger + " FOR " + tabela + " ";
@@ -169,7 +174,7 @@ namespace Emiplus.Data.Database
                 if (localColunas.Count() == 0)
                 {
                     CreateColumn(tabela, coluna, tipo, subtipo, tamanho);
-                }                
+                }
             }
 
             var padraoGenerators = dbPdrao.Select(@"SELECT RDB$GENERATOR_NAME as generator FROM Rdb$Generators WHERE RDB$GENERATOR_NAME like 'GEN_%';");
@@ -191,8 +196,6 @@ namespace Emiplus.Data.Database
 
                 if (triggers.Count() == 0)
                 {
-
-                    //Console.WriteLine(item.GENERATOR);
                     string generator = "", trigger = "", tabela = "";
 
                     generator = generatorName;
@@ -217,88 +220,18 @@ namespace Emiplus.Data.Database
             foreach (var config in data)
             {
                 var dataLocal = dbLocal.Select("SELECT * FROM CONFIG");
-                
+
                 InsertRestante(config.CONFIG_KEY, config.CONFIG_VALUE);
             }
         }
         private void InsertRestante(string key, string value)
         {
-            var dataLocal = dbLocal.Select("SELECT * FROM CONFIG WHERE CONFIG_KEY = '"+key+"'");
+            var dataLocal = dbLocal.Select("SELECT * FROM CONFIG WHERE CONFIG_KEY = '" + key + "'");
             if (dataLocal.Count() == 0)
             {
                 String sql = @"INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('" + key + "', '" + value + "');";
                 dbLocal.Select(sql);
             }
-        }
-
-        private void generator()
-        {
-            //SQLCon.Open();
-            //cmd = new FbCommand("SELECT RDB$GENERATOR_NAME FROM Rdb$Generators;", SQLCon);
-            //res = cmd.ExecuteReader();
-            //while (res.Read())
-            //{
-            //    generator = "";
-            //    generator = res["RDB$GENERATOR_NAME"].ToString().Trim();
-
-            //    if (generator != "")
-            //    {
-            //        if (tabela.IndexOf("$") < 0)
-            //        {
-            //            if (dataFireBird.buscaTotal("SELECT RDB$GENERATOR_NAME FROM Rdb$Generators WHERE RDB$GENERATOR_NAME = '" + generator + "';").ToString() == "0")
-            //            {
-            //                tabela = "";
-            //                trigger = "";
-
-            //                trigger = generator.Replace("_ID", "");
-            //                trigger = trigger.Replace("GEN_", "");
-
-            //                trigger = trigger + "_BI";
-
-            //                tabela = dataFireBird.buscaTotal("SELECT RDB$TRIGGER_NAME FROM RDB$TRIGGERS WHERE RDB$TRIGGER_NAME = '" + trigger + "';").ToString();
-
-            //                if (tabela == "")
-            //                {
-            //                    tabela = generator.Replace("_ID", "");
-            //                    tabela = tabela.Replace("GEN_", "");
-            //                }
-            //                else
-            //                {
-            //                    if (tabela == "0")
-            //                    {
-            //                        tabela = generator.Replace("_ID", "");
-            //                        tabela = tabela.Replace("GEN_", "");
-            //                    }
-            //                }
-
-            //                if (tabela == "VENDAS_PROD_CAN_LOG")
-            //                {
-            //                    tabela = "VENDAS_PRODUTOS_CANCELA_LOG";
-            //                }
-
-            //                string s1 = "", s2 = "";
-
-            //                s1 = "CREATE GENERATOR " + generator + ";";
-
-            //                dataFireBird.resUpdate(s1);
-            //                dataTools.destech_logs("atualizaBanco()", s1, "");
-
-            //                s2 = "CREATE TRIGGER " + trigger + " FOR " + tabela + " ";
-            //                s2 = s2 + "ACTIVE BEFORE INSERT ";
-            //                s2 = s2 + "POSITION 0 ";
-            //                s2 = s2 + "AS ";
-            //                s2 = s2 + "BEGIN ";
-            //                s2 = s2 + "IF (NEW.ID IS NULL) THEN ";
-            //                s2 = s2 + "NEW.ID = GEN_ID(" + generator + ", 1); ";
-            //                s2 = s2 + "End";
-
-            //                dataFireBird.resUpdate(s2);
-            //                dataTools.destech_logs("atualizaBanco()", s2, "");
-            //            }
-            //        }
-            //    }
-            //}
-            //SQLCon.Close();
         }
     }
 }
