@@ -59,35 +59,5 @@ namespace Emiplus.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Byte[].
-        /// </summary>
-        internal static byte[] OpenSans_Bold {
-            get {
-                object obj = ResourceManager.GetObject("OpenSans_Bold", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Byte[].
-        /// </summary>
-        internal static byte[] OpenSans_Regular {
-            get {
-                object obj = ResourceManager.GetObject("OpenSans_Regular", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Byte[].
-        /// </summary>
-        internal static byte[] OpenSans_SemiBold {
-            get {
-                object obj = ResourceManager.GetObject("OpenSans_SemiBold", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

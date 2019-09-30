@@ -4,7 +4,7 @@ using System;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-
+using IWshRuntimeLibrary;
 using Emiplus.Data.Helpers;
 using System.IO;
 using Emiplus.Data.Core;
@@ -136,6 +136,37 @@ namespace Emiplus.View.Testes
             //parser.WriteFile(@"C:\Emiplus\Emiplus\Emiplus\Data\Core\Config.ini", data);
 
             //Console.WriteLine(Support.GetIni()["LOCAL"]["path"]);
+        }
+
+        // > Ref > COM > Windows Script Host Object  
+        
+        //private static void CreateShortcut()
+        //{
+        //    string link = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+        //        + Path.DirectorySeparatorChar + Application.ProductName + ".lnk";
+        //    var shell = new WshShell();
+        //    var shortcut = shell.CreateShortcut(link) as IWshShortcut;
+        //    shortcut.TargetPath = Application.ExecutablePath;
+        //    shortcut.WorkingDirectory = Application.StartupPath;
+        //    //shortcut...
+        //    shortcut.Save();
+        //}
+
+        private void CreateShortcut()
+        {
+            object shDesktop = (object)"Desktop";
+            WshShell shell = new WshShell();
+            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\Emiplus.lnk";
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+            shortcut.Description = "Emiplus";
+            shortcut.Hotkey = "Ctrl+Shift+N";
+            shortcut.TargetPath = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\Emiplus.exe";
+            shortcut.Save();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            CreateShortcut();
         }
     }
 }

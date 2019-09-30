@@ -179,7 +179,6 @@
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Controller\Titulo.cs" />
-    <Compile Include="Data\Core\Config.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
     <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
@@ -611,9 +610,6 @@
     <EmbeddedResource Include="View\Testes\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Assets\Fonts\OpenSans-Bold.ttf" />
-    <None Include="Assets\Fonts\OpenSans-Regular.ttf" />
-    <None Include="Assets\Fonts\OpenSans-SemiBold.ttf" />
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -800,6 +796,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\WSCorreios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
