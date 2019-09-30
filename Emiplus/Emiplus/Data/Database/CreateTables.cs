@@ -216,22 +216,22 @@ namespace Emiplus.Data.Database
         /// </summary>
         private void sqlInsert()
         {
-            var data = dbPdrao.Select("SELECT * FROM CONFIG");
-            foreach (var config in data)
-            {
-                var dataLocal = dbLocal.Select("SELECT * FROM CONFIG");
+            //var data = dbPdrao.Select("SELECT * FROM CONFIG");
+            //foreach (var config in data)
+            //{
+            //    var dataLocal = dbLocal.Select("SELECT * FROM CONFIG");
 
-                InsertRestante(config.CONFIG_KEY, config.CONFIG_VALUE);
-            }
+            //    InsertRestante(config.CONFIG_KEY, config.CONFIG_VALUE);
+            //}
         }
         private void InsertRestante(string key, string value)
         {
-            var dataLocal = dbLocal.Select("SELECT * FROM CONFIG WHERE CONFIG_KEY = '" + key + "'");
-            if (dataLocal.Count() == 0)
-            {
-                String sql = @"INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('" + key + "', '" + value + "');";
-                dbLocal.Select(sql);
-            }
+            //var dataLocal = dbLocal.Select("SELECT * FROM CONFIG WHERE CONFIG_KEY = '" + key + "'");
+            //if (dataLocal.Count() == 0)
+            //{
+            //    String sql = @"INSERT INTO CONFIG (CONFIG_KEY, CONFIG_VALUE) VALUES ('" + key + "', '" + value + "');";
+            //    dbLocal.Select(sql);
+            //}
         }
     }
 }
