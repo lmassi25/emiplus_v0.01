@@ -25,9 +25,9 @@ namespace Emiplus.Data.Database
                     return _path = Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb";
                 }
 
-                if (File.Exists("C:\\Emiplus\\Update\\PADRAO.fdb"))
+                if (File.Exists(IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb"))
                 {
-                    return _path = "C:\\Emiplus\\Update\\PADRAO.fdb";
+                    return _path = IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb";
                 }                
             }
 

@@ -124,7 +124,7 @@ namespace Emiplus.View.Common
 
         public void Atualizar()
         {
-            if(Directory.Exists(@"C:\Emiplus\Update"))
+            if(Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
             {
                 atualiza = 1;
                 WindowState = FormWindowState.Normal;
@@ -148,6 +148,9 @@ namespace Emiplus.View.Common
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+                Directory.Delete(IniFile.Read("Path", "LOCAL") + "\\Update", true);
+
             //Login f = new Login();
             Home f = new Home();
             f.Show();
