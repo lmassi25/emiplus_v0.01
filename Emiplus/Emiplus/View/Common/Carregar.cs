@@ -124,7 +124,7 @@ namespace Emiplus.View.Common
 
         public void Atualizar()
         {
-            if(Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+            if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
             {
                 atualiza = 1;
                 WindowState = FormWindowState.Normal;
@@ -140,7 +140,8 @@ namespace Emiplus.View.Common
                 new CreateTables().CheckTables();
 
                 // Atualiza a versão no BANCO
-                new Model.Config().ChangeKey("version").SetValue(new Update().GetVersionWebTxt()).Save();
+                //new Model.Config().ChangeKey("version").SetValue(new Update().GetVersionWebTxt()).Save();
+                IniFile.Write("Version", new Update().GetVersionWebTxt(), "APP");
 
                 Thread.Sleep(7000);
             }
@@ -148,8 +149,11 @@ namespace Emiplus.View.Common
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
-                Directory.Delete(IniFile.Read("Path", "LOCAL") + "\\Update", true);
+            if (atualiza == 1)
+            {
+                //if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+                    //Directory.Delete(IniFile.Read("Path", "LOCAL") + "\\Update", true);
+            } 
 
             //Login f = new Login();
             Home f = new Home();
