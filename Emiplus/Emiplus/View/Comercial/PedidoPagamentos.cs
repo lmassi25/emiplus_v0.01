@@ -30,7 +30,7 @@ namespace Emiplus.View.Comercial
 
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
-            pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true);
+            discount.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true);
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);

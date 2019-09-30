@@ -5,6 +5,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
+using Emiplus.Data.Helpers;
+using System.IO;
+using Emiplus.Data.Core;
+using System.Diagnostics;
+
 namespace Emiplus.View.Testes
 {
     public partial class Form5 : Form
@@ -86,6 +91,51 @@ namespace Emiplus.View.Testes
         {
             var create = new CreateTables();
             create.CheckTables();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var s = IniFile.Read("Path", "LOCAL");
+            Console.WriteLine(s);
+            stopWatch.Stop();
+
+            TimeSpan ts = stopWatch.Elapsed;
+
+            // Format and display the TimeSpan value.
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
+
+            //IniFile.Write("DefaultVolume", "100");
+
+            //var DefaultVolume = IniFile.Read("DefaultVolume");
+            //var teste = IniFile.Read("Teste", "Emiplus");
+            //Console.WriteLine(DefaultVolume);
+            //Console.WriteLine(teste);
+
+            //IniFile.Write("HomePage", "http://www.google.com", "Web");
+            //IniFile.Write("DefaultVolume", "100", "Audio");
+
+            //if(IniFile.KeyExists("DefaultVolume", "Audio1"))
+            //{
+            //    IniFile.Write("DefaultVolume", "200", "Audio1");
+            //}
+
+            //IniFile.DeleteKey("DefaultVolume", "Audio1");
+
+            //IniFile.DeleteSection("Emiplus");
+
+            //var parser = new FileIniDataParser();
+            //IniData data = parser.ReadFile(@"C:\Emiplus\Emiplus\Emiplus\Data\Core\Config.ini");
+
+            //data["UI"]["fullscreen"] = "true";
+            //data["U2"]["fullscreen"] = "false";
+            //parser.WriteFile(@"C:\Emiplus\Emiplus\Emiplus\Data\Core\Config.ini", data);
+
+            //Console.WriteLine(Support.GetIni()["LOCAL"]["path"]);
         }
     }
 }

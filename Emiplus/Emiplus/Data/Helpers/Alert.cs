@@ -130,19 +130,19 @@ namespace Emiplus.Data.Helpers
             {
                 case AlertType.success:
                     this.BackColor = Color.SeaGreen;
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/checkedBranco.png");
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/checkedBranco.png");
                     break;
                 case AlertType.info:
                     this.BackColor = Color.Gray;
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/infoBranco.png");
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/infoBranco.png");
                     break;
                 case AlertType.warning:
                     this.BackColor = Color.FromArgb(255, 128, 0);
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/dangerBranco.png");
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/dangerBranco.png");
                     break;
                 case AlertType.error:
                     this.BackColor = Color.Crimson;
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Assets/Images/icons/errorBranco.png");
+                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/errorBranco.png");
                     break;
             }
         }

@@ -48,7 +48,7 @@ namespace Emiplus.Controller
                 )
                 .OrderByDesc("item.criado")
                 .Get();
-
+            
             for (int i = 0; i < lista.Count(); i++)
             {
                 var item = lista.ElementAt(i);

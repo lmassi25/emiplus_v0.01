@@ -45,29 +45,29 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(65, 7);
+            this.title.Location = new System.Drawing.Point(65, 10);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(94, 18);
+            this.title.Size = new System.Drawing.Size(89, 20);
             this.title.TabIndex = 0;
             this.title.Text = "Tudo certo!";
             // 
             // message
             // 
             this.message.AutoSize = true;
-            this.message.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.message.ForeColor = System.Drawing.Color.White;
-            this.message.Location = new System.Drawing.Point(66, 30);
+            this.message.Location = new System.Drawing.Point(66, 33);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(138, 15);
+            this.message.Size = new System.Drawing.Size(129, 15);
             this.message.TabIndex = 1;
             this.message.Text = "Mensagem de sucesso!";
             // 
             // icon
             // 
             this.icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.icon.Location = new System.Drawing.Point(13, 12);
+            this.icon.Location = new System.Drawing.Point(13, 14);
             this.icon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.icon.Name = "icon";
             this.icon.Size = new System.Drawing.Size(35, 35);

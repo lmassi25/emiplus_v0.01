@@ -40,24 +40,7 @@ namespace Emiplus.Data.Helpers
 
         public static string CleanStringForFiscal(string dirtyString)
         {
-            StringBuilder str = new StringBuilder(dirtyString);
-
-            str.Replace('Ä', 'A').Replace('Å', 'A').Replace('Æ', 'A')
-                .Replace('Ë', 'E').Replace('Ï', 'I').Replace('Ð', 'D').Replace('Ö', 'O')
-                .Replace('Ø', 'O').Replace('Ü', 'U').Replace('ü', 'u').Replace('Ý', 'Y')
-                .Replace('þ', 'b').Replace('ß', 'B').Replace('ä', 'a').Replace('å', 'a')
-                .Replace('æ', 'a').Replace('ë', 'e').Replace('ï', 'i').Replace('ð', 'o')
-                .Replace('ö', 'o').Replace('ø', 'o').Replace('ý', 'y').Replace('ÿ', 'y')
-                .Replace('€', 'E').Replace('§', 'S').Replace("°", "").Replace("º", "")
-                .Replace("ª", "").Replace("^", "").Replace("+", "").Replace("@", "")
-                .Replace("#", "").Replace("$", "").Replace("%", "").Replace("¨", "")
-                .Replace("\"", "").Replace("'", "").Replace("_", "").Replace("{", "")
-                .Replace("}", "").Replace("[", "").Replace("]", "").Replace(";", "")
-                .Replace(":", "").Replace("=", "").Replace("?", "").Replace(",", ".")
-                .Replace("<", "").Replace(">", "").Replace("!", "").Replace("&", "")
-                .Replace("*", "").Replace("(", "").Replace(")", "").Replace("/", "")
-                .Replace("|", "").Replace("Þ", "p").Replace("-", " ").Replace("  ", " ")
-                .Replace("\\", "").Replace("~", "");
+            StringBuilder str = new StringBuilder(CleanString(dirtyString));
 
             if(str.ToString().Replace(" ", "").All(char.IsDigit))
             {
@@ -120,7 +103,7 @@ namespace Emiplus.Data.Helpers
             if (obj == null)
                 return 0;
 
-            if (obj.ToString() == "")
+            if (obj.ToString() == string.Empty)
                 return 0;            
 
             return Convert.ToDouble(obj.ToString().Replace("R$", "").Trim());
@@ -131,7 +114,7 @@ namespace Emiplus.Data.Helpers
             if (obj == null)
                 return 0;
 
-            if (obj.ToString() == "")
+            if (obj.ToString() == string.Empty)
                 return 0;
 
             return Convert.ToInt32(obj);
