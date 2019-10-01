@@ -10,7 +10,7 @@ namespace Emiplus.Data.Database
     class Connect
     {
         public string _path { get; set; }
-        public bool update { get; set; } = false;
+        public bool update { get; set; }
         private const string _user = "sysdba";
         private const string _pass = "masterkey";
         private const string _db = "sysdba";
@@ -36,6 +36,9 @@ namespace Emiplus.Data.Database
 
         public QueryFactory Open()
         {
+            Log Log = new Log();
+            Log.Add("Connect", "Path: " + GetDatabase(), Log.LogType.fatal);
+
             var connection = new FbConnection(
                 $"character set=NONE;initial catalog={GetDatabase()};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
             );
@@ -45,7 +48,6 @@ namespace Emiplus.Data.Database
 
             db.Logger = compiled =>
             {
-                Log Log = new Log();
                 Log.Add("LOGGER", "Query: " + compiled.ToString(), Log.LogType.fatal);
 
                 System.Console.WriteLine(compiled.ToString());

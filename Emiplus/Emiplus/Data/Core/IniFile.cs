@@ -18,9 +18,6 @@ namespace Emiplus.Data.Core
 
         private static string GetPath()
         {
-            if (File.Exists("C:\\emiplus_v0.01\\Emiplus\\Emiplus\\Data\\Core\\Config.ini"))
-                return "C:\\emiplus_v0.01\\Emiplus\\Emiplus\\Data\\Core\\Config.ini";
-
             if (File.Exists(Directory.GetCurrentDirectory() + "\\Config.ini"))
                 return Directory.GetCurrentDirectory() + "\\Config.ini";
 

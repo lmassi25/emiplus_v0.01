@@ -129,20 +129,20 @@ namespace Emiplus.Data.Helpers
             switch (type)
             {
                 case AlertType.success:
-                    this.BackColor = Color.SeaGreen;                    
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/checkedBranco.png");
+                    this.BackColor = Color.SeaGreen;
+                    icon.Image = Properties.Resources.checkedBranco;
                     break;
                 case AlertType.info:
                     this.BackColor = Color.Gray;
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/infoBranco.png");
+                    icon.Image = Properties.Resources.infoBranco;
                     break;
                 case AlertType.warning:
                     this.BackColor = Color.FromArgb(255, 128, 0);
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/dangerBranco.png");
+                    icon.Image = Properties.Resources.dangerBranco;
                     break;
                 case AlertType.error:
                     this.BackColor = Color.Crimson;
-                    icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/errorBranco.png");
+                    icon.Image = Properties.Resources.errorBranco;
                     break;
             }
         }
