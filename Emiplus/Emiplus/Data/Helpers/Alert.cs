@@ -129,7 +129,7 @@ namespace Emiplus.Data.Helpers
             switch (type)
             {
                 case AlertType.success:
-                    this.BackColor = Color.SeaGreen;
+                    this.BackColor = Color.SeaGreen;                    
                     icon.Image = Image.FromFile(Support.BasePath() + "/Emiplus/Emiplus/Assets/Images/icons/checkedBranco.png");
                     break;
                 case AlertType.info:
