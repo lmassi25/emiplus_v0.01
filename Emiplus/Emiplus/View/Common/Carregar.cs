@@ -149,11 +149,11 @@ namespace Emiplus.View.Common
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (atualiza == 1)
-            {
-                //if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
-                    //Directory.Delete(IniFile.Read("Path", "LOCAL") + "\\Update", true);
-            } 
+            //if (atualiza == 1)
+            //{
+            //    if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+            //        Directory.Delete(IniFile.Read("Path", "LOCAL") + "\\Update", true);
+            //}
 
             //Login f = new Login();
             Home f = new Home();
