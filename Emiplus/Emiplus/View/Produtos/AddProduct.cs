@@ -132,7 +132,7 @@ namespace Emiplus.View.Produtos
                 _modelItem.Impostoid = (int)Impostos.SelectedValue;
 
             if (Origens.SelectedValue != null)
-                _modelItem.Origem = Impostos.SelectedValue.ToString();
+                _modelItem.Origem = Origens.SelectedValue.ToString();
 
             if (_modelItem.Save(_modelItem))
                 Close();

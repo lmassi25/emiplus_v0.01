@@ -309,6 +309,12 @@
     <Compile Include="View\Common\Carregar.Designer.cs">
       <DependentUpon>Carregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\Developer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Developer.Designer.cs">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -532,6 +538,9 @@
     <EmbeddedResource Include="View\Common\Carregar.resx">
       <DependentUpon>Carregar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Developer.resx">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -749,7 +758,6 @@
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Data\Core\Config.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -769,6 +777,7 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
     <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />
     <None Include="Connected Services\WSCorreios\configuration.svcinfo" />
@@ -776,6 +785,11 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Assets\Images\icons\checkedBranco.png" />
+    <None Include="Assets\Images\icons\dangerBranco.png" />
+    <None Include="Assets\Images\icons\errorBranco.png" />
+    <None Include="Assets\Images\icons\infoBranco.png" />
+    <None Include="Assets\Images\icons\bin16x.png" />
     <Content Include="Data\Database\DB.sql" />
     <Content Include="iconEmiPlus.ico" />
   </ItemGroup>

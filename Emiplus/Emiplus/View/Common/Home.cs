@@ -127,11 +127,19 @@ namespace Emiplus.View.Common
 
             version.Text = "Versão " + IniFile.Read("Version", "APP");
 
+            if (IniFile.Read("dev", "DEV") == "true")
+                developer.Visible = true;
+
             if (Data.Core.Update.AtualizacaoDisponivel) { btnUpdate.Visible = true; } else { btnUpdate.Visible = false; }
         }
 
         private void Eventos()
         {
+            developer.Click += (s, e) =>
+            {
+                OpenForm.ShowInPanel<Developer>(panelFormularios);
+            };
+
             homeMenuInicio.Click += (s, e) =>
             {
                 homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);

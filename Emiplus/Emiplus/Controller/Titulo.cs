@@ -177,14 +177,12 @@ namespace Emiplus.Controller
 
             foreach (var item in data)
             {
-                string pathIconExcluir = $"{Support.BasePath()}\\Emiplus\\Emiplus\\Assets\\Images\\icons\\bin16x.png";
-
                 Table.Rows.Add(
                     item.ID,
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),  
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
-                    Bitmap.FromFile(pathIconExcluir)
+                    new Bitmap(Properties.Resources.bin16x)
                 );
             }
         }
