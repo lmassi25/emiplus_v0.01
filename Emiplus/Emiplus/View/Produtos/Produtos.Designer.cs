@@ -272,6 +272,8 @@
             // 
             this.GridListaProdutos.AllowUserToAddRows = false;
             this.GridListaProdutos.AllowUserToDeleteRows = false;
+            this.GridListaProdutos.AllowUserToResizeColumns = false;
+            this.GridListaProdutos.AllowUserToResizeRows = false;
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -282,6 +284,7 @@
             this.GridListaProdutos.MultiSelect = false;
             this.GridListaProdutos.Name = "GridListaProdutos";
             this.GridListaProdutos.ReadOnly = true;
+            this.GridListaProdutos.RowHeadersVisible = false;
             this.GridListaProdutos.RowTemplate.Height = 30;
             this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaProdutos.Size = new System.Drawing.Size(659, 280);

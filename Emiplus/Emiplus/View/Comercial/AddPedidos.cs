@@ -93,7 +93,6 @@ namespace Emiplus.View.Comercial
             AddItem();
 
             PedidoModalItens.NomeProduto = "";
-            BuscarProduto.Select();
         }
 
         /// <summary>
@@ -284,6 +283,7 @@ namespace Emiplus.View.Comercial
                     }
 
                     Preco.Select();
+                    Preco.Focus();
                     return;
                 }
 
@@ -312,6 +312,8 @@ namespace Emiplus.View.Comercial
                     AlterarModo();
                     ModoRapAvaConfig = 0;
                 }
+
+                BuscarProduto.Select();
             }
         }
 

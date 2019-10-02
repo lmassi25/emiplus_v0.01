@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Execution;
 using System;
 using System.IO;
@@ -14,6 +15,11 @@ namespace Emiplus.Data.Database
 
         private string _PathPadrao { get; set; }
         private string _PathLocal { get; set; }
+
+        private const string _user = "sysdba";
+        private const string _pass = "masterkey";
+        private const string _db = "sysdba";
+        private const string _host = "localhost";
 
         public CreateTables()
         {
@@ -31,20 +37,23 @@ namespace Emiplus.Data.Database
 
         private void CreateGenerator(string trigger, string tabela, string generator)
         {
+            FbConnection SQLCon = new FbConnection(
+                $"character set=NONE;initial catalog=C:\\Emiplus\\EMIPLUS.fdb;user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+            );
 
-            dbLocal.Select("CREATE GENERATOR " + generator + ";");
+            FbCommand cmd;
+            FbDataReader res;
 
-            string s2;
-            s2 = "CREATE TRIGGER " + trigger + " FOR " + tabela + " ";
-            s2 = s2 + "ACTIVE BEFORE INSERT ";
-            s2 = s2 + "POSITION 0 ";
-            s2 = s2 + "AS ";
-            s2 = s2 + "BEGIN ";
-            s2 = s2 + "IF (NEW.ID IS NULL) THEN ";
-            s2 = s2 + "NEW.ID = GEN_ID(" + generator + ", 1); ";
-            s2 = s2 + "End";
+            string query1 = "CREATE GENERATOR " + generator + ";";
+            string query2 = $@"CREATE TRIGGER {trigger} FOR {tabela} ACTIVE BEFORE INSERT POSITION 0 AS DECLARE VARIABLE tmp DECIMAL(18,0); BEGIN IF (NEW.ID IS NULL) THEN NEW.ID = GEN_ID({generator}, 1); ELSE BEGIN tmp = GEN_ID({generator}, 0); if (tmp < new.ID) then tmp = GEN_ID({generator}, new.ID-tmp); END END";
 
-            dbLocal.Select(s2);
+            SQLCon.Open();
+            cmd = new FbCommand(query1, SQLCon);
+            cmd.ExecuteNonQuery();
+
+            cmd = new FbCommand(query2, SQLCon);
+            cmd.ExecuteNonQuery();
+            SQLCon.Close();
         }
 
         public void CreateTable(string table)
@@ -183,11 +192,21 @@ namespace Emiplus.Data.Database
                 var trigger = itemP.GENERATOR.Trim().Replace("GEN_", "").Replace("_ID", "");
                 InsertGenerator(itemP.GENERATOR.Trim(), trigger);
             }
+
+
+            dbLocal.Select(@"INSERT INTO PESSOA (TIPO, EXCLUIR, NOME) VALUES('Clientes', 0, 'Consumidor Final');");
+
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'DINHEIRO');");
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CHEQUE');");
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE DÉBITO');");
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE CRÉDITO');");
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CREDIÁRIO');");
+            dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'BOLETO');");
         }
 
         private void InsertGenerator(string generatorName, string triggerName)
         {
-            var localGenerators = dbLocal.Select(@"SELECT RDB$GENERATOR_NAME as generator FROM Rdb$Generators WHERE RDB$GENERATOR_NAME like '" + generatorName + "';");
+            var localGenerators = dbLocal.Select(@"SELECT RDB$GENERATOR_NAME as generator FROM Rdb$Generators WHERE RDB$GENERATOR_NAME like '" + generatorName + "%';");
             if (localGenerators.Count() == 0)
             {
                 var triggers = dbLocal.Select(@"select * from RDB$TRIGGERS where RDB$trigger_name like '%" + triggerName + "%'");
@@ -198,8 +217,7 @@ namespace Emiplus.Data.Database
 
                     generator = generatorName;
 
-                    tabela = generator.Replace("_ID", "");
-                    tabela = tabela.Replace("GEN_", "");
+                    tabela = generator.Replace("_ID", "").Replace("GEN_", "");
 
                     trigger = tabela + "_BI";
 

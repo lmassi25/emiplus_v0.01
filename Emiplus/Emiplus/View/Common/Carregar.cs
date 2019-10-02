@@ -124,7 +124,7 @@ namespace Emiplus.View.Common
 
         public void Atualizar()
         {
-            if (Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+            if (IniFile.Read("Update", "APP") == "true" && Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
             {
                 atualiza = 1;
                 WindowState = FormWindowState.Normal;
@@ -139,7 +139,7 @@ namespace Emiplus.View.Common
             {
                 new CreateTables().CheckTables();
 
-                // Atualiza a versão no BANCO
+                // Atualiza a versão no INI
                 IniFile.Write("Version", new Update().GetVersionWebTxt(), "APP");
 
                 Thread.Sleep(7000);

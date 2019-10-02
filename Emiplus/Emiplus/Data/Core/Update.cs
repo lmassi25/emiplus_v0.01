@@ -26,9 +26,11 @@ namespace Emiplus.Data.Core
             if (GetVersionWebTxt() != IniFile.Read("Version", "APP"))
             {
                 AtualizacaoDisponivel = true;
+                IniFile.Write("Update", "true", "APP");
                 return;
             }
 
+            IniFile.Write("Update", "false", "APP");
             AtualizacaoDisponivel = false;
         }
     }
