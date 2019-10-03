@@ -104,6 +104,27 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.developer = new System.Windows.Forms.Button();
+            this.btnUpdate = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.homeMenuInicio = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.version = new System.Windows.Forms.Label();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.homeMenuSettings = new System.Windows.Forms.Button();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.homeMenuFiscal = new System.Windows.Forms.Button();
+            this.homeMenuFinanceiro = new System.Windows.Forms.Button();
+            this.homeMenuComercial = new System.Windows.Forms.Button();
+            this.homeMenuProducts = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -129,6 +150,16 @@
             this.visualGroupBox1.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -140,7 +171,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(224, 455);
+            this.tabControl1.Location = new System.Drawing.Point(328, 455);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(643, 198);
@@ -381,10 +412,10 @@
             this.tabPage2.Controls.Add(this.pictureBox6);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.Impostos);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(635, 168);
+            this.tabPage2.Size = new System.Drawing.Size(635, 172);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Impostos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -686,9 +717,9 @@
             this.tabPage4.Controls.Add(this.pictureBox7);
             this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.aliq_federal);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(635, 168);
+            this.tabPage4.Size = new System.Drawing.Size(635, 172);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Lei de Transparência";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -941,9 +972,9 @@
             this.tabPage3.Controls.Add(this.pictureBox10);
             this.tabPage3.Controls.Add(this.label20);
             this.tabPage3.Controls.Add(this.inf_adicional);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(635, 168);
+            this.tabPage3.Size = new System.Drawing.Size(635, 172);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Informações Adicionais";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1076,7 +1107,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel5.Controls.Add(this.btnExit);
             this.panel5.Controls.Add(this.btnHelp);
-            this.panel5.Location = new System.Drawing.Point(184, 174);
+            this.panel5.Location = new System.Drawing.Point(288, 174);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(731, 97);
             this.panel5.TabIndex = 19;
@@ -1165,7 +1196,7 @@
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox1);
-            this.panel4.Location = new System.Drawing.Point(184, 133);
+            this.panel4.Location = new System.Drawing.Point(288, 133);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 20;
@@ -1438,7 +1469,7 @@
             this.visualGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visualGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.visualGroupBox1.Image = null;
-            this.visualGroupBox1.Location = new System.Drawing.Point(224, 277);
+            this.visualGroupBox1.Location = new System.Drawing.Point(328, 277);
             this.visualGroupBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualGroupBox1.Name = "visualGroupBox1";
             this.visualGroupBox1.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
@@ -1794,7 +1825,7 @@
             this.barraTitulo.Controls.Add(this.btnEtiqueta);
             this.barraTitulo.Controls.Add(this.btnDuplicar);
             this.barraTitulo.Controls.Add(this.btnRemover);
-            this.barraTitulo.Location = new System.Drawing.Point(184, 685);
+            this.barraTitulo.Location = new System.Drawing.Point(288, 685);
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(731, 97);
             this.barraTitulo.TabIndex = 15;
@@ -1902,16 +1933,345 @@
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Location = new System.Drawing.Point(184, 685);
+            this.panel3.Location = new System.Drawing.Point(288, 685);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(731, 97);
             this.panel3.TabIndex = 18;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel7.Controls.Add(this.label21);
+            this.panel7.Controls.Add(this.developer);
+            this.panel7.Controls.Add(this.btnUpdate);
+            this.panel7.Controls.Add(this.pictureBox14);
+            this.panel7.Controls.Add(this.homeMenuInicio);
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Controls.Add(this.version);
+            this.panel7.Controls.Add(this.pictureBox16);
+            this.panel7.Controls.Add(this.homeMenuSettings);
+            this.panel7.Controls.Add(this.pictureBox17);
+            this.panel7.Controls.Add(this.pictureBox18);
+            this.panel7.Controls.Add(this.pictureBox19);
+            this.panel7.Controls.Add(this.pictureBox20);
+            this.panel7.Controls.Add(this.homeMenuFiscal);
+            this.panel7.Controls.Add(this.homeMenuFinanceiro);
+            this.panel7.Controls.Add(this.homeMenuComercial);
+            this.panel7.Controls.Add(this.homeMenuProducts);
+            this.panel7.Location = new System.Drawing.Point(7, 1);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(275, 550);
+            this.panel7.TabIndex = 30;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(50, 475);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(165, 48);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Olá, William Alvares";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // developer
+            // 
+            this.developer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.developer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.developer.FlatAppearance.BorderSize = 0;
+            this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.developer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.developer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.developer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.developer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.developer.Location = new System.Drawing.Point(0, 422);
+            this.developer.Name = "developer";
+            this.developer.Size = new System.Drawing.Size(275, 50);
+            this.developer.TabIndex = 156;
+            this.developer.Text = "            Desenvolvimento";
+            this.developer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.developer.UseVisualStyleBackColor = false;
+            this.developer.Visible = false;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnUpdate.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnUpdate.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.btnUpdate.Border.HoverVisible = true;
+            this.btnUpdate.Border.Rounding = 6;
+            this.btnUpdate.Border.Thickness = 1;
+            this.btnUpdate.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnUpdate.Border.Visible = true;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(55, 481);
+            this.btnUpdate.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(161, 34);
+            this.btnUpdate.TabIndex = 155;
+            this.btnUpdate.Text = "   Atualização Disponível";
+            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUpdate.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnUpdate.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnUpdate.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+            this.pictureBox14.Location = new System.Drawing.Point(26, 103);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 27;
+            this.pictureBox14.TabStop = false;
+            // 
+            // homeMenuInicio
+            // 
+            this.homeMenuInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.homeMenuInicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuInicio.FlatAppearance.BorderSize = 0;
+            this.homeMenuInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuInicio.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuInicio.Location = new System.Drawing.Point(0, 86);
+            this.homeMenuInicio.Name = "homeMenuInicio";
+            this.homeMenuInicio.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuInicio.TabIndex = 26;
+            this.homeMenuInicio.Text = "            Início";
+            this.homeMenuInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuInicio.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
+            this.panel8.Controls.Add(this.label22);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 35);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(275, 45);
+            this.panel8.TabIndex = 25;
+            this.panel8.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(62, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(149, 21);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Olá, William Alvares";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.pictureBox15);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(275, 35);
+            this.panel9.TabIndex = 24;
+            this.panel9.Visible = false;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Location = new System.Drawing.Point(93, 9);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(93, 19);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox15.TabIndex = 26;
+            this.pictureBox15.TabStop = false;
+            // 
+            // version
+            // 
+            this.version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.version.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.version.Location = new System.Drawing.Point(100, 522);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(111, 13);
+            this.version.TabIndex = 23;
+            this.version.Text = "Versão";
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
+            this.pictureBox16.Location = new System.Drawing.Point(26, 543);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 22;
+            this.pictureBox16.TabStop = false;
+            // 
+            // homeMenuSettings
+            // 
+            this.homeMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuSettings.FlatAppearance.BorderSize = 0;
+            this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuSettings.Location = new System.Drawing.Point(0, 366);
+            this.homeMenuSettings.Name = "homeMenuSettings";
+            this.homeMenuSettings.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuSettings.TabIndex = 21;
+            this.homeMenuSettings.Text = "            Configurações";
+            this.homeMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuSettings.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Location = new System.Drawing.Point(26, 326);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 20;
+            this.pictureBox17.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
+            this.pictureBox18.Location = new System.Drawing.Point(26, 270);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox18.TabIndex = 19;
+            this.pictureBox18.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
+            this.pictureBox19.Location = new System.Drawing.Point(26, 214);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox19.TabIndex = 18;
+            this.pictureBox19.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
+            this.pictureBox20.Location = new System.Drawing.Point(26, 159);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(18, 18);
+            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox20.TabIndex = 17;
+            this.pictureBox20.TabStop = false;
+            // 
+            // homeMenuFiscal
+            // 
+            this.homeMenuFiscal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuFiscal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuFiscal.FlatAppearance.BorderSize = 0;
+            this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuFiscal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuFiscal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuFiscal.Location = new System.Drawing.Point(0, 310);
+            this.homeMenuFiscal.Name = "homeMenuFiscal";
+            this.homeMenuFiscal.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuFiscal.TabIndex = 4;
+            this.homeMenuFiscal.Text = "            Fiscal";
+            this.homeMenuFiscal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuFiscal.UseVisualStyleBackColor = false;
+            // 
+            // homeMenuFinanceiro
+            // 
+            this.homeMenuFinanceiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuFinanceiro.FlatAppearance.BorderSize = 0;
+            this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuFinanceiro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuFinanceiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuFinanceiro.Location = new System.Drawing.Point(0, 254);
+            this.homeMenuFinanceiro.Name = "homeMenuFinanceiro";
+            this.homeMenuFinanceiro.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuFinanceiro.TabIndex = 3;
+            this.homeMenuFinanceiro.Text = "            Financeiro";
+            this.homeMenuFinanceiro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuFinanceiro.UseVisualStyleBackColor = false;
+            // 
+            // homeMenuComercial
+            // 
+            this.homeMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuComercial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuComercial.FlatAppearance.BorderSize = 0;
+            this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuComercial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuComercial.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuComercial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuComercial.Location = new System.Drawing.Point(0, 198);
+            this.homeMenuComercial.Name = "homeMenuComercial";
+            this.homeMenuComercial.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuComercial.TabIndex = 2;
+            this.homeMenuComercial.Text = "            Comercial";
+            this.homeMenuComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuComercial.UseVisualStyleBackColor = false;
+            // 
+            // homeMenuProducts
+            // 
+            this.homeMenuProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.homeMenuProducts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeMenuProducts.FlatAppearance.BorderSize = 0;
+            this.homeMenuProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeMenuProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeMenuProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.homeMenuProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuProducts.Location = new System.Drawing.Point(0, 142);
+            this.homeMenuProducts.Name = "homeMenuProducts";
+            this.homeMenuProducts.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuProducts.TabIndex = 1;
+            this.homeMenuProducts.Text = "            Produtos";
+            this.homeMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeMenuProducts.UseVisualStyleBackColor = false;
             // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 915);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.visualGroupBox1);
             this.Controls.Add(this.panel4);
@@ -1951,6 +2311,17 @@
             this.visualGroupBox1.PerformLayout();
             this.barraTitulo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2030,5 +2401,26 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button developer;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnUpdate;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        public System.Windows.Forms.Button homeMenuInicio;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.Label version;
+        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.Button homeMenuSettings;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.Button homeMenuFiscal;
+        private System.Windows.Forms.Button homeMenuFinanceiro;
+        private System.Windows.Forms.Button homeMenuComercial;
+        private System.Windows.Forms.Button homeMenuProducts;
     }
 }

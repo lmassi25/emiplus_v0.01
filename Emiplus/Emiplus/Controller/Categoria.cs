@@ -1,12 +1,27 @@
 ﻿using SqlKata.Execution;
 using System.Windows.Forms;
 using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Emiplus.Controller
 {
     class Categoria
     {
-        public void GetDataTable(DataGridView Table, string SearchText)
+        public async Task<dynamic> GetDataTable(string SearchText = null)
+        {
+            var search = "%" + SearchText + "%";
+
+            return new Model.Categoria().Query()
+                .Where("EXCLUIR", 0)
+                .Where
+                (
+                    q => q.WhereLike("nome", search, false)
+                )
+                .OrderByDesc("criado").GetAsync();
+        }
+
+        public void SetTable(DataGridView Table, IEnumerable<dynamic> lista = null, string SearchText = "", int page = 0)
         {
             Table.ColumnCount = 2;
 
@@ -18,15 +33,15 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var search = "%" + SearchText + "%";
-            var lista = new Model.Categoria().Query()
-                .Where("EXCLUIR", 0)
-                .Where
-                (
-                    q => q.WhereLike("nome", search, false)
-                )
-                .OrderByDesc("criado")
-                .Get();
+            //var search = "%" + SearchText + "%";
+            //var lista = new Model.Categoria().Query()
+            //    .Where("EXCLUIR", 0)
+            //    .Where
+            //    (
+            //        q => q.WhereLike("nome", search, false)
+            //    )
+            //    .OrderByDesc("criado")
+            //    .Get();
 
             for (int i = 0; i < lista.Count(); i++)
             {

@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Produtos
 {
@@ -11,13 +13,15 @@ namespace Emiplus.View.Produtos
     {
         public static int idPdtSelecionado { get; set; }
         private Controller.Item _controller = new Controller.Item();
-        private IEnumerable<dynamic> dataTabela;
-        private string pesquisa;
+
+        private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
+
+        Timer timer = new Timer(1000);
+
         public Produtos()
         {
             InitializeComponent();
-                        
             Eventos();
         }
 
@@ -29,7 +33,7 @@ namespace Emiplus.View.Produtos
             WorkerBackground.RunWorkerAsync();
         }
 
-        private void DataTable() => _controller.SetTable(GridListaProdutos, null, search.Text);
+        private async void DataTable() => await _controller.SetTable(GridListaProdutos, null, search.Text);
         
         private void EditProduct(bool create = false)
         {
@@ -61,28 +65,44 @@ namespace Emiplus.View.Produtos
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
-            search.TextChanged += (s, e) => DataTable();
-            search.Enter += (s, e) => DataTable();
+            search.TextChanged += (s, e) =>
+            {
+                timer.Stop();
+                timer.Start();
+                Loading.Visible = true;
+                GridListaProdutos.Visible = false;
+            };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
             using (var b = WorkerBackground)
             {
-                b.DoWork += (s, e) =>
+                b.DoWork += async (s, e) =>
                 {
-                    dataTabela = _controller.GetDataTable(pesquisa);
-                    Thread.Sleep(1500);
+                    dataTable = await _controller.GetDataTable();
                 };
 
-                b.RunWorkerCompleted += (s, e) =>
+                b.RunWorkerCompleted += async (s, e) =>
                 {
-                    _controller.SetTable(GridListaProdutos, dataTabela);                     
-                    
+                    await _controller.SetTable(GridListaProdutos, dataTable);
+
                     Loading.Visible = false;
-                    GridListaProdutos.Visible = true;                    
+                    GridListaProdutos.Visible = true;
                 };
             }
-               
+
+            timer.AutoReset = false;
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker) delegate {
+                DataTable();
+                Loading.Visible = false;
+                GridListaProdutos.Visible = true;
+            });
+
+            search.Enter += async (s, e) =>
+            {
+                await Task.Delay(100);
+                DataTable();
+            };
         }
     }
 }

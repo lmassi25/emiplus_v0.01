@@ -62,13 +62,13 @@ namespace Emiplus.View.Comercial
 
         private void Eventos()
         {
-            KeyDown += KeyDowns; // this form
+            KeyDown += KeyDowns;
             buscarProduto.Text = txtSearch;
             buscarProduto.KeyDown += KeyDowns;
             Selecionar.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
 
-            //buscarProduto.TextChanged += (s, e) => _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
+            buscarProduto.TextChanged += (s, e) => _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
 
             Selecionar.Click += (s, e) => SelectItemGrid();
             btnCancelar.Click += (s, e) => Close();
