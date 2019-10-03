@@ -183,6 +183,7 @@
     <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
+    <Compile Include="Data\Database\ConnectPure.cs" />
     <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
@@ -477,6 +478,12 @@
     <Compile Include="View\Testes\Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Data\Helpers\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
@@ -618,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">

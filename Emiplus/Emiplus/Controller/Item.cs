@@ -3,12 +3,30 @@ using System;
 using System.Windows.Forms;
 using System.Linq;
 using static Emiplus.Data.Helpers.Validation;
+using System.Collections.Generic;
 
 namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public void GetDataTable(DataGridView Table, string SearchText, int page = 0)
+        public IEnumerable<dynamic> GetDataTable(string SearchText)
+        {
+            var search = "%" + SearchText + "%";
+
+            return new Model.Item().Query()
+                .LeftJoin("categoria", "categoria.id", "item.categoriaid")
+                .Select("item.*", "categoria.nome as categoria")
+                .Where("item.excluir", 0)
+                .Where("item.tipo", "Produtos")
+                .Where
+                (
+                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
+                )
+                .OrderByDesc("item.criado")
+                .Get();
+        }
+
+        public void SetTable(DataGridView Table, IEnumerable<dynamic> lista = null, string SearchText = "", int page = 0)
         {
             Table.ColumnCount = 6;
 
@@ -36,19 +54,11 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var search = "%" + SearchText + "%";
-            var lista = new Model.Item().Query()
-                .LeftJoin("categoria", "categoria.id", "item.categoriaid")
-                .Select("item.*", "categoria.nome as categoria")
-                .Where("item.excluir", 0)
-                .Where("item.tipo", "Produtos")
-                .Where
-                (
-                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
-                )
-                .OrderByDesc("item.criado")
-                .Get();
-            
+            if(lista == null)
+            {
+                lista = GetDataTable(SearchText);
+            }
+
             for (int i = 0; i < lista.Count(); i++)
             {
                 var item = lista.ElementAt(i);

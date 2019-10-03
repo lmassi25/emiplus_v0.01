@@ -1,5 +1,6 @@
 ﻿namespace Emiplus
 {
+    using Emiplus.View.Testes;
     using System;
     using System.Windows.Forms;
     using View.Common;

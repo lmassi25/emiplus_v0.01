@@ -42,7 +42,7 @@ namespace Emiplus.View.Financeiro
 
         private void Start()
         {
-            var formasPagamentos = new FormaPagamento().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            var formasPagamentos = new FormaPagamento().FindAll().Where("excluir", 0).OrderByDesc("nome").Get();
             if (formasPagamentos.Count() > 0)
             {
                 formaPgto.DataSource = formasPagamentos;
@@ -53,9 +53,9 @@ namespace Emiplus.View.Financeiro
             
             IEnumerable<dynamic> clientes;
             if (Home.financeiroPage == "Receber")
-                clientes = new Pessoa().FindAll().WhereFalse("excluir").Where("tipo", "Clientes").OrderByDesc("nome").Get();
+                clientes = new Pessoa().FindAll().Where("excluir", 0).Where("tipo", "Clientes").OrderByDesc("nome").Get();
             else
-                clientes = new Pessoa().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                clientes = new Pessoa().FindAll().Where("excluir", 0).OrderByDesc("nome").Get();
 
             if (clientes.Count() > 0)
             {

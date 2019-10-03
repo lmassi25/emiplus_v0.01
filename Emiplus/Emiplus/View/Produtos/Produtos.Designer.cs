@@ -50,6 +50,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -57,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // barraTitulo
@@ -272,6 +274,8 @@
             // 
             this.GridListaProdutos.AllowUserToAddRows = false;
             this.GridListaProdutos.AllowUserToDeleteRows = false;
+            this.GridListaProdutos.AllowUserToResizeColumns = false;
+            this.GridListaProdutos.AllowUserToResizeRows = false;
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -282,6 +286,7 @@
             this.GridListaProdutos.MultiSelect = false;
             this.GridListaProdutos.Name = "GridListaProdutos";
             this.GridListaProdutos.ReadOnly = true;
+            this.GridListaProdutos.RowHeadersVisible = false;
             this.GridListaProdutos.RowTemplate.Height = 30;
             this.GridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaProdutos.Size = new System.Drawing.Size(659, 280);
@@ -294,6 +299,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridListaProdutos);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
@@ -400,6 +406,18 @@
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = ((System.Drawing.Image)(resources.GetObject("Loading.Image")));
+            this.Loading.Location = new System.Drawing.Point(0, 0);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 6;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -426,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +472,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHelp;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }

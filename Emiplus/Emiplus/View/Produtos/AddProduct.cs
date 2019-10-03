@@ -19,10 +19,6 @@ namespace Emiplus.View.Produtos
         {
             InitializeComponent();
             Eventos();
-
-            idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
-            if (idPdtSelecionado > 0)
-                LoadData();
         }
 
         private void Start()
@@ -148,7 +144,31 @@ namespace Emiplus.View.Produtos
 
         private void Eventos()
         {
-            Load += (s, e) => Start();
+            Load += (s, e) =>
+            {
+                Start();
+
+                idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
+                if (idPdtSelecionado > 0)
+                {
+                    LoadData();
+                }
+                else
+                {
+                    _modelItem.Id = idPdtSelecionado;
+                    _modelItem.Nome = "Novo Produto";
+                    if (_modelItem.Save(_modelItem))
+                    {
+                        idPdtSelecionado = _modelItem.GetLastId();
+                        LoadData();
+                    }
+                    else
+                    {
+                        Alert.Message("Opss", "Erro ao criar.", Alert.AlertType.error);
+                        Close();
+                    }
+                }
+            };
 
             label6.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();

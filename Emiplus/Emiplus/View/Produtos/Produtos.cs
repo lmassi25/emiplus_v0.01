@@ -1,5 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -8,15 +11,26 @@ namespace Emiplus.View.Produtos
     {
         public static int idPdtSelecionado { get; set; }
         private Controller.Item _controller = new Controller.Item();
-
+        private IEnumerable<dynamic> dataTabela;
+        private string pesquisa;
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
         public Produtos()
         {
             InitializeComponent();
+                        
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTable(GridListaProdutos, search.Text);
+        private void DataTableStart()
+        {
+            GridListaProdutos.Visible = false;
+            Loading.Size = new System.Drawing.Size(GridListaProdutos.Width, GridListaProdutos.Height);
+            Loading.Visible = true;
+            WorkerBackground.RunWorkerAsync();
+        }
 
+        private void DataTable() => _controller.SetTable(GridListaProdutos, null, search.Text);
+        
         private void EditProduct(bool create = false)
         {
             if (create)
@@ -37,7 +51,7 @@ namespace Emiplus.View.Produtos
         {
             Load += (s, e) => {
                 search.Select();
-                DataTable();
+                DataTableStart();
             };
 
             btnAdicionar.Click += (s, e) => EditProduct(true);
@@ -51,6 +65,24 @@ namespace Emiplus.View.Produtos
             search.Enter += (s, e) => DataTable();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+
+            using (var b = WorkerBackground)
+            {
+                b.DoWork += (s, e) =>
+                {
+                    dataTabela = _controller.GetDataTable(pesquisa);
+                    Thread.Sleep(1500);
+                };
+
+                b.RunWorkerCompleted += (s, e) =>
+                {
+                    _controller.SetTable(GridListaProdutos, dataTabela);                     
+                    
+                    Loading.Visible = false;
+                    GridListaProdutos.Visible = true;                    
+                };
+            }
+               
         }
     }
 }

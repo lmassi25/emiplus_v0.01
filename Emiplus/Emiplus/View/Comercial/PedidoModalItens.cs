@@ -68,7 +68,7 @@ namespace Emiplus.View.Comercial
             Selecionar.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
 
-            buscarProduto.TextChanged += (s, e) => _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
+            //buscarProduto.TextChanged += (s, e) => _controllerItem.GetDataTable(GridListaProdutos, buscarProduto.Text, 1);
 
             Selecionar.Click += (s, e) => SelectItemGrid();
             btnCancelar.Click += (s, e) => Close();
