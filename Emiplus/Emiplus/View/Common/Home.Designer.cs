@@ -34,6 +34,7 @@ namespace Emiplus.View.Common
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.developer = new System.Windows.Forms.Button();
             this.btnUpdate = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.homeMenuInicio = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@ namespace Emiplus.View.Common
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.developer = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -109,6 +109,25 @@ namespace Emiplus.View.Common
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(275, 729);
             this.panel3.TabIndex = 20;
+            // 
+            // developer
+            // 
+            this.developer.BackColor = System.Drawing.Color.Transparent;
+            this.developer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.developer.FlatAppearance.BorderSize = 0;
+            this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.developer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.developer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.developer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.developer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.developer.Location = new System.Drawing.Point(0, 422);
+            this.developer.Name = "developer";
+            this.developer.Size = new System.Drawing.Size(275, 50);
+            this.developer.TabIndex = 156;
+            this.developer.Text = "            Desenvolvimento";
+            this.developer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.developer.UseVisualStyleBackColor = false;
+            this.developer.Visible = false;
             // 
             // btnUpdate
             // 
@@ -422,8 +441,7 @@ namespace Emiplus.View.Common
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Red;
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(275, 35);
             this.panel2.Name = "panel2";
@@ -452,25 +470,6 @@ namespace Emiplus.View.Common
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
-            // 
-            // developer
-            // 
-            this.developer.BackColor = System.Drawing.Color.Transparent;
-            this.developer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.developer.FlatAppearance.BorderSize = 0;
-            this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.developer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.developer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.developer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.developer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.developer.Location = new System.Drawing.Point(0, 422);
-            this.developer.Name = "developer";
-            this.developer.Size = new System.Drawing.Size(275, 50);
-            this.developer.TabIndex = 156;
-            this.developer.Text = "            Desenvolvimento";
-            this.developer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.developer.UseVisualStyleBackColor = false;
-            this.developer.Visible = false;
             // 
             // Home
             // 
