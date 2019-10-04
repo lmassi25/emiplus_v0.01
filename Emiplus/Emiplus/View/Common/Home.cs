@@ -124,7 +124,9 @@ namespace Emiplus.View.Common
         public Home()
         {
             InitializeComponent();
-            new Update().CheckUpdate();
+            Update update = new Update();
+            update.CheckUpdate();
+            update.CheckIni();
             Eventos();
 
             version.Text = "Versão " + IniFile.Read("Version", "APP");
@@ -136,6 +138,11 @@ namespace Emiplus.View.Common
                 btnUpdate.Visible = true;
             else
                 btnUpdate.Visible = false;
+
+            
+            var teste = new ModelPure();
+            teste.Fetch();
+
         }
 
         private void Eventos()

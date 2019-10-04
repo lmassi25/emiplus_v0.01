@@ -112,7 +112,7 @@ namespace Emiplus.View.Common
             // 
             // developer
             // 
-            this.developer.BackColor = System.Drawing.Color.Transparent;
+            this.developer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.developer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.developer.FlatAppearance.BorderSize = 0;
             this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
@@ -177,7 +177,8 @@ namespace Emiplus.View.Common
             // 
             // homeMenuInicio
             // 
-            this.homeMenuInicio.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuInicio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.homeMenuInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuInicio.FlatAppearance.BorderSize = 0;
@@ -250,7 +251,7 @@ namespace Emiplus.View.Common
             // 
             // homeMenuSettings
             // 
-            this.homeMenuSettings.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuSettings.FlatAppearance.BorderSize = 0;
             this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
@@ -316,7 +317,7 @@ namespace Emiplus.View.Common
             // 
             // homeMenuFiscal
             // 
-            this.homeMenuFiscal.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuFiscal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuFiscal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFiscal.FlatAppearance.BorderSize = 0;
             this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
@@ -334,7 +335,7 @@ namespace Emiplus.View.Common
             // 
             // homeMenuFinanceiro
             // 
-            this.homeMenuFinanceiro.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuFinanceiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFinanceiro.FlatAppearance.BorderSize = 0;
             this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
@@ -352,7 +353,7 @@ namespace Emiplus.View.Common
             // 
             // homeMenuComercial
             // 
-            this.homeMenuComercial.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuComercial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuComercial.FlatAppearance.BorderSize = 0;
             this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
@@ -370,7 +371,7 @@ namespace Emiplus.View.Common
             // 
             // homeMenuProducts
             // 
-            this.homeMenuProducts.BackColor = System.Drawing.Color.Transparent;
+            this.homeMenuProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
             this.homeMenuProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuProducts.FlatAppearance.BorderSize = 0;

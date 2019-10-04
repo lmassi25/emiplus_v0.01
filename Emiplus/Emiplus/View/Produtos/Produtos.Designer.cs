@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,15 +51,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.Loading = new System.Windows.Forms.PictureBox();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // barraTitulo
@@ -306,6 +306,18 @@
             this.panel2.Size = new System.Drawing.Size(659, 280);
             this.panel2.TabIndex = 6;
             // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = ((System.Drawing.Image)(resources.GetObject("Loading.Image")));
+            this.Loading.Location = new System.Drawing.Point(0, 0);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 6;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label4);
@@ -406,18 +418,6 @@
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
-            // Loading
-            // 
-            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Loading.Image = ((System.Drawing.Image)(resources.GetObject("Loading.Image")));
-            this.Loading.Location = new System.Drawing.Point(0, 0);
-            this.Loading.Name = "Loading";
-            this.Loading.Size = new System.Drawing.Size(259, 159);
-            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Loading.TabIndex = 6;
-            this.Loading.TabStop = false;
-            this.Loading.Visible = false;
-            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -439,12 +439,12 @@
             this.barraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

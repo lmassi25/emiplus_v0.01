@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
 using System.Collections;
+using System.ComponentModel;
 
 namespace Emiplus.View.Produtos
 {
@@ -20,7 +21,7 @@ namespace Emiplus.View.Produtos
             InitializeComponent();
             Eventos();
         }
-
+               
         private void Start()
         {
             ActiveControl = nome;
@@ -157,7 +158,7 @@ namespace Emiplus.View.Produtos
                 {
                     _modelItem.Id = idPdtSelecionado;
                     _modelItem.Nome = "Novo Produto";
-                    if (_modelItem.Save(_modelItem))
+                    if (_modelItem.Save(_modelItem, true))
                     {
                         idPdtSelecionado = _modelItem.GetLastId();
                         LoadData();

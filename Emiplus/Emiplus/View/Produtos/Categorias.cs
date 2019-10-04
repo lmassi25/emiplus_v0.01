@@ -1,5 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -9,16 +11,17 @@ namespace Emiplus.View.Produtos
         public static int idCatSelected { get; set; }
         private Controller.Categoria _controller = new Controller.Categoria();
 
+        private IEnumerable<dynamic> dataTable;
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
         public Categorias()
         {
             InitializeComponent();
             Eventos();
+
+            var d = _controller.GetDataTable();
         }
 
-        private void DataTable()
-        {
-            _controller.GetDataTable(GridListaCategorias, search.Text);
-        }
+        private void DataTable() => _controller.SetTable(GridListaCategorias, null, search.Text);
 
         private void EditCategoria(bool create = false)
         {
@@ -54,6 +57,23 @@ namespace Emiplus.View.Produtos
             search.Enter += (s, e) => DataTable();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+
+            using (var b = WorkerBackground)
+            {
+                b.DoWork += (s, e) =>
+                {
+                    //dataTable = _controller.GetDataTable();
+                    //Thread.Sleep(1000);
+                };
+
+                b.RunWorkerCompleted += (s, e) =>
+                {
+                    //_controller.SetTable(GridListaProdutos, dataTable);
+
+                    //Loading.Visible = false;
+                    //GridListaProdutos.Visible = true;
+                };
+            }
         }
     }
 }
