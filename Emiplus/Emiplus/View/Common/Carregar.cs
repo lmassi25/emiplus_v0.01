@@ -142,7 +142,7 @@ namespace Emiplus.View.Common
                 // Atualiza a versão no INI
                 IniFile.Write("Version", new Update().GetVersionWebTxt(), "APP");
 
-                Thread.Sleep(7000);
+                Thread.Sleep(5000);
             }
         }
 

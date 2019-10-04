@@ -186,6 +186,7 @@
     <Compile Include="Data\Database\ConnectPure.cs" />
     <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
+    <Compile Include="Data\Database\ModelPure.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
     </Compile>
