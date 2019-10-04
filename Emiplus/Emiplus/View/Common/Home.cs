@@ -5,6 +5,8 @@ using SqlKata.Execution;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -130,7 +132,10 @@ namespace Emiplus.View.Common
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
 
-            if (Data.Core.Update.AtualizacaoDisponivel) { btnUpdate.Visible = true; } else { btnUpdate.Visible = false; }
+            if (Data.Core.Update.AtualizacaoDisponivel)
+                btnUpdate.Visible = true;
+            else
+                btnUpdate.Visible = false;
         }
 
         private void Eventos()
@@ -228,16 +233,39 @@ namespace Emiplus.View.Common
             {
                 if (MessageBox.Show("Deseja iniciar o processo de atualização?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    IniFile.Write("Update", "true", "APP");
 
+                    if (File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
+                    {
+                        File.Delete($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
+                    }
+
+                    if (!Directory.Exists($"{Support.BasePath()}\\Update"))
+                        Directory.CreateDirectory($"{Support.BasePath()}\\Update");
+
+                    using (var d = new WebClient())
+                    {
+                        d.DownloadFile($"https://github.com/lmassi25/files/releases/download/Install/InstallEmiplus.exe", $"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
+                    }
+
+                    if (!File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
+                    {
+                        Alert.Message("Oopss", "Não foi possível iniciar a atualização. Verifique a conexão com a internet.", Alert.AlertType.error);
+                    }
+
+                    Process.Start($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
+                    KillEmiplus();
                 }
             };
 
-            FormClosed += (s, e) =>
-            {
-                Process[] processes = Process.GetProcessesByName("Emiplus");
-                foreach (Process process in processes)
-                    process.Kill();
-            };
+            FormClosed += (s, e) => KillEmiplus();
+        }
+
+        private void KillEmiplus()
+        {
+            Process[] processes = Process.GetProcessesByName("Emiplus");
+            foreach (Process process in processes)
+                process.Kill();
         }
     }
 }

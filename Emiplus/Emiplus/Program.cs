@@ -1,5 +1,6 @@
 ﻿namespace Emiplus
 {
+    using Emiplus.View.Testes;
     using System;
     using System.Windows.Forms;
     using View.Common;
@@ -14,7 +15,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Carregar());
+            Application.Run(new Form4());
         }
     }
 }

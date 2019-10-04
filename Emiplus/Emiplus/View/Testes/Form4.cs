@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Emiplus.View.Testes
 {
@@ -40,12 +41,31 @@ namespace Emiplus.View.Testes
             }
         }
 
+        System.Timers.Timer timer = new System.Timers.Timer(500);
+
         public Form4()
         {
             InitializeComponent();
 
-            var t = Name = null;
-            Console.WriteLine(t);
+            timer.AutoReset = false;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+        }        
+
+        private void textBox1_TextChanged(object sender, System.EventArgs e)
+        {
+            timer.Stop();
+            timer.Start();
+        }
+
+        private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            //Console.WriteLine("Do something here.");
+            MessageBox.Show("Do something here.");
+        }
+
+        private void TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

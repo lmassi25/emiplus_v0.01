@@ -194,5 +194,29 @@ namespace Emiplus.View.Testes
         {
             T3();
         }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            FbConnection SQLCon = new FbConnection(
+                $"character set=NONE;initial catalog=C:\\Emiplus\\EMIPLUS.fdb;user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+            );
+
+            FbCommand cmd;
+            FbDataReader res;
+
+            //string query = $@"CREATE GENERATOR GEN_PEDIDO_ID; SET TERM !! ; CREATE TRIGGER PEDIDO_BI FOR PEDIDO ACTIVE BEFORE INSERT POSITION 0 AS DECLARE VARIABLE tmp DECIMAL(18,0); BEGIN IF (NEW.ID IS NULL) THEN NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1); ELSE BEGIN tmp = GEN_ID(GEN_PEDIDO_ID, 0); if (tmp < new.ID) then tmp = GEN_ID(GEN_PEDIDO_ID, new.ID-tmp); END END!! SET TERM ; !!";
+            string query1 = "CREATE GENERATOR GEN_PEDIDO_ID;";
+            string query2 = "CREATE TRIGGER PEDIDO_BI FOR PEDIDO ACTIVE BEFORE INSERT POSITION 0 AS DECLARE VARIABLE tmp DECIMAL(18,0); BEGIN IF (NEW.ID IS NULL) THEN NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1); ELSE BEGIN tmp = GEN_ID(GEN_PEDIDO_ID, 0); if (tmp < new.ID) then tmp = GEN_ID(GEN_PEDIDO_ID, new.ID-tmp); END END";
+            
+
+            SQLCon.Open();
+            cmd = new FbCommand(query1, SQLCon);
+            cmd.ExecuteNonQuery();
+
+            cmd = new FbCommand(query2, SQLCon);
+            cmd.ExecuteNonQuery();
+            SQLCon.Close();
+        }
     }
 }
+

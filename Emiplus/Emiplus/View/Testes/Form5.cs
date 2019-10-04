@@ -9,6 +9,8 @@ using Emiplus.Data.Helpers;
 using System.IO;
 using Emiplus.Data.Core;
 using System.Diagnostics;
+using System.IO.Compression;
+using System.Text.RegularExpressions;
 
 namespace Emiplus.View.Testes
 {
@@ -166,7 +168,32 @@ namespace Emiplus.View.Testes
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            CreateShortcut();
+            
+        }
+
+        private void CpfCnpj_TextChanged(object sender, EventArgs e)
+        {
+            //Masks.MaskPrice2(sender, e);
+        }
+               
+        private void Teste2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Decimal && e.KeyChar != (char)Keys.Oemcomma && e.KeyChar != (char)Keys.OemPeriod)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Teste_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Teste_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Masks.MaskOnlyNumberAndChar(sender, e);
+            //TextBox txt = (TextBox)sender;
+            //Masks.MaskPrice(ref txt);
         }
     }
 }

@@ -163,6 +163,7 @@
     <Reference Include="VisualPlus, Version=0.4.1.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VisualPlus.0.4.1.6-beta\lib\NET4\VisualPlus.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
@@ -183,6 +184,7 @@
     <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
+    <Compile Include="Data\Database\ConnectPure.cs" />
     <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
@@ -615,6 +617,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
