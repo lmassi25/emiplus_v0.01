@@ -13,6 +13,7 @@ namespace Emiplus.View.Comercial
     {
         private int ModoRapAva { get; set; }
         private int ModoRapAvaConfig { get; set; }
+        private static string CachePage { get; set; }
 
         public static int Id { get; set; } // id pedido
         public static int IdPedidoItem { get; set; } // Id item datagrid
@@ -28,6 +29,7 @@ namespace Emiplus.View.Comercial
         public AddPedidos()
         {
             InitializeComponent();
+            CachePage = Home.pedidoPage;
             Eventos();
         }
 
@@ -135,7 +137,15 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            if (Home.pedidoPage != "Compras")
+            if (Home.pedidoPage == "Compras")
+            {
+                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Pedido.Tipo = "Compras";
+                Pedido.Save(Pedido);
+
+                OpenForm.Show<PedidoPagamentos>(this);
+            }
+            else
             {
                 var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 Pedido.Tipo = "Vendas";
@@ -152,14 +162,33 @@ namespace Emiplus.View.Comercial
                     OpenForm.Show<PedidoPagamentos>(this);
                 }
             }
-            else
-            {
-                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
-                Pedido.Tipo = "Compras";
-                Pedido.Save(Pedido);
 
-                OpenForm.Show<PedidoPagamentos>(this);
-            }
+
+            //if (Home.pedidoPage != "Compras")
+            //{
+            //    var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+            //    Pedido.Tipo = "Vendas";
+            //    Pedido.Save(Pedido);
+
+            //    if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações")
+            //    {
+            //        Home.pedidoPage = "Vendas";
+            //        Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
+            //        LoadData();
+            //    }
+            //    else
+            //    {
+            //        OpenForm.Show<PedidoPagamentos>(this);
+            //    }
+            //}
+            //else
+            //{
+            //    var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+            //    Pedido.Tipo = "Compras";
+            //    Pedido.Save(Pedido);
+
+            //    OpenForm.Show<PedidoPagamentos>(this);
+            //}
         }
 
         /// <summary>
@@ -483,14 +512,18 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Home.pedidoPage = CachePage;
+                if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
                 {
-                    new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
-                    _mPedido.Remove(Id);
-                    return;
-                }
+                    if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
+                        _mPedido.Remove(Id);
+                        return;
+                    }
 
-                e.Cancel = true;
+                    e.Cancel = true;
+                }
             };
         }
     }

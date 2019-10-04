@@ -534,7 +534,7 @@
             this.cfop_descricao.ImageSize = new System.Drawing.Size(16, 16);
             this.cfop_descricao.ImageVisible = false;
             this.cfop_descricao.ImageWidth = 35;
-            this.cfop_descricao.Location = new System.Drawing.Point(20, 99);
+            this.cfop_descricao.Location = new System.Drawing.Point(9, 86);
             this.cfop_descricao.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cfop_descricao.Name = "cfop_descricao";
             this.cfop_descricao.PasswordChar = '\0';
@@ -565,7 +565,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(20, 81);
+            this.label2.Location = new System.Drawing.Point(8, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 166;
@@ -606,7 +606,7 @@
             this.cfop.ImageSize = new System.Drawing.Size(16, 16);
             this.cfop.ImageVisible = false;
             this.cfop.ImageWidth = 35;
-            this.cfop.Location = new System.Drawing.Point(20, 44);
+            this.cfop.Location = new System.Drawing.Point(9, 26);
             this.cfop.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cfop.Name = "cfop";
             this.cfop.PasswordChar = '\0';
@@ -614,7 +614,7 @@
             this.cfop.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cfop.Size = new System.Drawing.Size(91, 34);
             this.cfop.TabIndex = 0;
-            this.cfop.TextBoxWidth = 68;
+            this.cfop.TextBoxWidth = 79;
             this.cfop.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.cfop.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cfop.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -639,9 +639,9 @@
             this.addCfop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.addCfop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.addCfop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addCfop.Location = new System.Drawing.Point(117, 41);
+            this.addCfop.Location = new System.Drawing.Point(107, 26);
             this.addCfop.Name = "addCfop";
-            this.addCfop.Size = new System.Drawing.Size(42, 41);
+            this.addCfop.Size = new System.Drawing.Size(35, 35);
             this.addCfop.TabIndex = 1;
             this.addCfop.UseVisualStyleBackColor = false;
             this.addCfop.Visible = false;
@@ -652,7 +652,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(20, 26);
+            this.label9.Location = new System.Drawing.Point(7, 7);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 17);
             this.label9.TabIndex = 164;
@@ -733,7 +733,7 @@
             this.Icms.ImageVisible = false;
             this.Icms.Index = 0;
             this.Icms.IntegralHeight = false;
-            this.Icms.ItemHeight = 16;
+            this.Icms.ItemHeight = 23;
             this.Icms.ItemImageVisible = true;
             this.Icms.Location = new System.Drawing.Point(9, 26);
             this.Icms.MaxDropDownItems = 100;
@@ -744,7 +744,7 @@
             this.Icms.Name = "Icms";
             this.Icms.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Icms.SeparatorVisible = false;
-            this.Icms.Size = new System.Drawing.Size(601, 22);
+            this.Icms.Size = new System.Drawing.Size(601, 29);
             this.Icms.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.Icms.TabIndex = 0;
             this.Icms.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -796,7 +796,7 @@
             this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(6, 58);
+            this.label10.Location = new System.Drawing.Point(6, 63);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 17);
             this.label10.TabIndex = 45;
@@ -836,7 +836,7 @@
             this.Aliq_IPI.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq_IPI.ImageVisible = false;
             this.Aliq_IPI.ImageWidth = 35;
-            this.Aliq_IPI.Location = new System.Drawing.Point(9, 78);
+            this.Aliq_IPI.Location = new System.Drawing.Point(9, 83);
             this.Aliq_IPI.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq_IPI.Name = "Aliq_IPI";
             this.Aliq_IPI.PasswordChar = '\0';
@@ -888,7 +888,7 @@
             this.Ipi.IntegralHeight = false;
             this.Ipi.ItemHeight = 23;
             this.Ipi.ItemImageVisible = true;
-            this.Ipi.Location = new System.Drawing.Point(9, 26);
+            this.Ipi.Location = new System.Drawing.Point(9, 27);
             this.Ipi.MaxDropDownItems = 10;
             this.Ipi.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Ipi.MenuItemNormal = System.Drawing.Color.White;
@@ -924,7 +924,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(6, 6);
+            this.label3.Location = new System.Drawing.Point(6, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 17);
             this.label3.TabIndex = 42;
@@ -949,7 +949,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(6, 58);
+            this.label11.Location = new System.Drawing.Point(6, 63);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 17);
             this.label11.TabIndex = 47;
@@ -989,7 +989,7 @@
             this.Aliq_Pis.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq_Pis.ImageVisible = false;
             this.Aliq_Pis.ImageWidth = 35;
-            this.Aliq_Pis.Location = new System.Drawing.Point(9, 78);
+            this.Aliq_Pis.Location = new System.Drawing.Point(9, 83);
             this.Aliq_Pis.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq_Pis.Name = "Aliq_Pis";
             this.Aliq_Pis.PasswordChar = '\0';
@@ -1041,7 +1041,7 @@
             this.Pis.IntegralHeight = false;
             this.Pis.ItemHeight = 23;
             this.Pis.ItemImageVisible = true;
-            this.Pis.Location = new System.Drawing.Point(9, 26);
+            this.Pis.Location = new System.Drawing.Point(9, 27);
             this.Pis.MaxDropDownItems = 10;
             this.Pis.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Pis.MenuItemNormal = System.Drawing.Color.White;
@@ -1077,7 +1077,7 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(6, 6);
+            this.label7.Location = new System.Drawing.Point(6, 7);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 17);
             this.label7.TabIndex = 44;
@@ -1102,7 +1102,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(6, 58);
+            this.label12.Location = new System.Drawing.Point(6, 63);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 17);
             this.label12.TabIndex = 47;
@@ -1142,7 +1142,7 @@
             this.Aliq_Cofins.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq_Cofins.ImageVisible = false;
             this.Aliq_Cofins.ImageWidth = 35;
-            this.Aliq_Cofins.Location = new System.Drawing.Point(9, 78);
+            this.Aliq_Cofins.Location = new System.Drawing.Point(9, 83);
             this.Aliq_Cofins.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq_Cofins.Name = "Aliq_Cofins";
             this.Aliq_Cofins.PasswordChar = '\0';
@@ -1194,7 +1194,7 @@
             this.Cofins.IntegralHeight = false;
             this.Cofins.ItemHeight = 23;
             this.Cofins.ItemImageVisible = true;
-            this.Cofins.Location = new System.Drawing.Point(9, 26);
+            this.Cofins.Location = new System.Drawing.Point(9, 27);
             this.Cofins.MaxDropDownItems = 10;
             this.Cofins.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Cofins.MenuItemNormal = System.Drawing.Color.White;
@@ -1230,7 +1230,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(6, 6);
+            this.label8.Location = new System.Drawing.Point(6, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 17);
             this.label8.TabIndex = 44;

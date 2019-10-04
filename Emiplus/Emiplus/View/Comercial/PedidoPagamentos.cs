@@ -220,6 +220,7 @@ namespace Emiplus.View.Comercial
 
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            valor.KeyPress += (s, e) => Masks.MaskDouble(s, e);
 
             valor.TextChanged += (s, e) =>
             {

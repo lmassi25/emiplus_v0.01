@@ -49,7 +49,7 @@
             this.label16.BackColor = System.Drawing.Color.White;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(158, 104);
+            this.label16.Location = new System.Drawing.Point(151, 111);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(135, 17);
             this.label16.TabIndex = 38;
@@ -89,16 +89,16 @@
             this.AliqST.ImageSize = new System.Drawing.Size(16, 16);
             this.AliqST.ImageVisible = false;
             this.AliqST.ImageWidth = 35;
-            this.AliqST.Location = new System.Drawing.Point(159, 123);
+            this.AliqST.Location = new System.Drawing.Point(154, 130);
             this.AliqST.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.AliqST.Name = "AliqST";
             this.AliqST.PasswordChar = '\0';
             this.AliqST.ReadOnly = false;
             this.AliqST.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.AliqST.Size = new System.Drawing.Size(147, 28);
+            this.AliqST.Size = new System.Drawing.Size(142, 28);
             this.AliqST.TabIndex = 5;
             this.AliqST.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AliqST.TextBoxWidth = 135;
+            this.AliqST.TextBoxWidth = 130;
             this.AliqST.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.AliqST.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.AliqST.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -119,7 +119,7 @@
             this.label17.BackColor = System.Drawing.Color.White;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(3, 103);
+            this.label17.Location = new System.Drawing.Point(3, 110);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(142, 17);
             this.label17.TabIndex = 36;
@@ -159,16 +159,16 @@
             this.RedBaseST.ImageSize = new System.Drawing.Size(16, 16);
             this.RedBaseST.ImageVisible = false;
             this.RedBaseST.ImageWidth = 35;
-            this.RedBaseST.Location = new System.Drawing.Point(6, 123);
+            this.RedBaseST.Location = new System.Drawing.Point(6, 130);
             this.RedBaseST.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.RedBaseST.Name = "RedBaseST";
             this.RedBaseST.PasswordChar = '\0';
             this.RedBaseST.ReadOnly = false;
             this.RedBaseST.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.RedBaseST.Size = new System.Drawing.Size(147, 28);
+            this.RedBaseST.Size = new System.Drawing.Size(142, 28);
             this.RedBaseST.TabIndex = 4;
             this.RedBaseST.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.RedBaseST.TextBoxWidth = 135;
+            this.RedBaseST.TextBoxWidth = 130;
             this.RedBaseST.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.RedBaseST.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.RedBaseST.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -189,7 +189,7 @@
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(299, 54);
+            this.label14.Location = new System.Drawing.Point(299, 57);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 17);
             this.label14.TabIndex = 32;
@@ -229,7 +229,7 @@
             this.AliqICMS.ImageSize = new System.Drawing.Size(16, 16);
             this.AliqICMS.ImageVisible = false;
             this.AliqICMS.ImageWidth = 35;
-            this.AliqICMS.Location = new System.Drawing.Point(302, 73);
+            this.AliqICMS.Location = new System.Drawing.Point(302, 76);
             this.AliqICMS.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.AliqICMS.Name = "AliqICMS";
             this.AliqICMS.PasswordChar = '\0';
@@ -259,7 +259,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(3, 54);
+            this.label12.Location = new System.Drawing.Point(3, 57);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 17);
             this.label12.TabIndex = 30;
@@ -299,7 +299,7 @@
             this.RedBase.ImageSize = new System.Drawing.Size(16, 16);
             this.RedBase.ImageVisible = false;
             this.RedBase.ImageWidth = 35;
-            this.RedBase.Location = new System.Drawing.Point(6, 73);
+            this.RedBase.Location = new System.Drawing.Point(6, 76);
             this.RedBase.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.RedBase.Name = "RedBase";
             this.RedBase.PasswordChar = '\0';
@@ -399,7 +399,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(151, 54);
+            this.label1.Location = new System.Drawing.Point(151, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 17);
             this.label1.TabIndex = 40;
@@ -439,7 +439,7 @@
             this.IVA.ImageSize = new System.Drawing.Size(16, 16);
             this.IVA.ImageVisible = false;
             this.IVA.ImageWidth = 35;
-            this.IVA.Location = new System.Drawing.Point(154, 73);
+            this.IVA.Location = new System.Drawing.Point(154, 76);
             this.IVA.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.IVA.Name = "IVA";
             this.IVA.PasswordChar = '\0';
@@ -481,7 +481,7 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.AliqICMS);
             this.Name = "ICMS_2";
-            this.Size = new System.Drawing.Size(474, 162);
+            this.Size = new System.Drawing.Size(474, 177);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,8 +1,11 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Produtos
 {
@@ -13,15 +16,24 @@ namespace Emiplus.View.Produtos
 
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
+
+        Timer timer = new Timer(Configs.TimeLoading);
+
         public Categorias()
         {
             InitializeComponent();
             Eventos();
-
-            var d = _controller.GetDataTable();
         }
 
-        private void DataTable() => _controller.SetTable(GridListaCategorias, null, search.Text);
+        private void DataTableStart()
+        {
+            GridListaCategorias.Visible = false;
+            Loading.Size = new System.Drawing.Size(GridListaCategorias.Width, GridListaCategorias.Height);
+            Loading.Visible = true;
+            WorkerBackground.RunWorkerAsync();
+        }
+
+        private async void DataTable() => await _controller.SetTable(GridListaCategorias, null, search.Text);
 
         private void EditCategoria(bool create = false)
         {
@@ -39,11 +51,29 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    Support.UpDownDataGrid(false, GridListaCategorias);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    Support.UpDownDataGrid(true, GridListaCategorias);
+                    e.Handled = true;
+                    break;
+                case Keys.Enter:
+                    EditCategoria();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
             Load += (s, e) => {
                 search.Select();
-                DataTable();
+                DataTableStart();
             };
 
             label5.Click += (s, e) => Close();
@@ -51,29 +81,48 @@ namespace Emiplus.View.Produtos
 
             Adicionar.Click += (s, e) => EditCategoria(true);
             Editar.Click += (s, e) => EditCategoria();
-            GridListaCategorias.DoubleClick += (s, e) => EditCategoria(); 
+            GridListaCategorias.DoubleClick += (s, e) => EditCategoria();
+            GridListaCategorias.KeyDown += KeyDowns;
 
-            search.TextChanged += (s, e) => DataTable();
-            search.Enter += (s, e) => DataTable();
+            search.KeyDown += KeyDowns;
+            search.TextChanged += (s, e) =>
+            {
+                timer.Stop();
+                timer.Start();
+                Loading.Visible = true;
+                GridListaCategorias.Visible = false;
+            };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
             using (var b = WorkerBackground)
             {
-                b.DoWork += (s, e) =>
+                b.DoWork += async (s, e) =>
                 {
-                    //dataTable = _controller.GetDataTable();
-                    //Thread.Sleep(1000);
+                    dataTable = await _controller.GetDataTable();
                 };
 
-                b.RunWorkerCompleted += (s, e) =>
+                b.RunWorkerCompleted += async (s, e) =>
                 {
-                    //_controller.SetTable(GridListaProdutos, dataTable);
+                    await _controller.SetTable(GridListaCategorias, dataTable);
 
-                    //Loading.Visible = false;
-                    //GridListaProdutos.Visible = true;
+                    Loading.Visible = false;
+                    GridListaCategorias.Visible = true;
                 };
             }
+
+            timer.AutoReset = false;
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate {
+                DataTable();
+                Loading.Visible = false;
+                GridListaCategorias.Visible = true;
+            });
+
+            search.Enter += async (s, e) =>
+            {
+                await Task.Delay(100);
+                DataTable();
+            };
         }
     }
 }

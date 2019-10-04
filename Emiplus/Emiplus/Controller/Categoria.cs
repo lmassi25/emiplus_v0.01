@@ -3,12 +3,13 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Emiplus.Controller
 {
     class Categoria
     {
-        public async Task<dynamic> GetDataTable(string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
         {
             var search = "%" + SearchText + "%";
 
@@ -18,39 +19,44 @@ namespace Emiplus.Controller
                 (
                     q => q.WhereLike("nome", search, false)
                 )
-                .OrderByDesc("criado").GetAsync();
+                .OrderByDesc("criado")
+                .GetAsync<dynamic>();
         }
 
-        public void SetTable(DataGridView Table, IEnumerable<dynamic> lista = null, string SearchText = "", int page = 0)
+        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
         {
             Table.ColumnCount = 2;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Nome";
-            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Rows.Clear();
 
-            //var search = "%" + SearchText + "%";
-            //var lista = new Model.Categoria().Query()
-            //    .Where("EXCLUIR", 0)
-            //    .Where
-            //    (
-            //        q => q.WhereLike("nome", search, false)
-            //    )
-            //    .OrderByDesc("criado")
-            //    .Get();
-
-            for (int i = 0; i < lista.Count(); i++)
+            if (Data == null)
             {
-                var data = lista.ElementAt(i);
-                Table.Rows.Add(
-                    data.ID,
-                    data.NOME
-                );
+                IEnumerable<dynamic> dados = await GetDataTable(SearchText);
+                Data = dados;
             }
+
+            for (int i = 0; i < Data.Count(); i++)
+            {
+                var item = Data.ElementAt(i);
+
+                Table.Rows.Add(
+                     item.ID,
+                     item.NOME
+                 );
+            }
+
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
     }
 }

@@ -37,12 +37,8 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.GridLista = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.criado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
@@ -68,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -83,7 +80,7 @@
             this.label2.Location = new System.Drawing.Point(256, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(335, 15);
-            this.label2.TabIndex = 17;
+            this.label2.TabIndex = 170;
             this.label2.Text = "Gerencie os pedido aqui! Adicione, edite ou delete um pedido.\r\n";
             // 
             // btnExit
@@ -135,7 +132,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(905, 4);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
-            this.btnAdicionar.TabIndex = 12;
+            this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.UseVisualStyleBackColor = true;
@@ -156,14 +153,13 @@
             this.btnEditar.Location = new System.Drawing.Point(814, 4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(85, 90);
-            this.btnEditar.TabIndex = 11;
+            this.btnEditar.TabIndex = 3;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // btnHelp
             // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHelp.FlatAppearance.BorderSize = 0;
@@ -177,7 +173,7 @@
             this.btnHelp.Location = new System.Drawing.Point(24, 3);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(85, 90);
-            this.btnHelp.TabIndex = 10;
+            this.btnHelp.TabIndex = 100;
             this.btnHelp.Text = "Ajuda!";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -188,11 +184,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridLista);
             this.panel2.Location = new System.Drawing.Point(254, 135);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(717, 478);
             this.panel2.TabIndex = 18;
+            // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 7;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
             // 
             // GridLista
             // 
@@ -204,12 +213,6 @@
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.nr,
-            this.Cliente,
-            this.criado,
-            this.Total});
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -220,41 +223,7 @@
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridLista.Size = new System.Drawing.Size(717, 478);
-            this.GridLista.TabIndex = 5;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // nr
-            // 
-            this.nr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.nr.HeaderText = "N°";
-            this.nr.Name = "nr";
-            this.nr.ReadOnly = true;
-            this.nr.Width = 50;
-            // 
-            // Cliente
-            // 
-            this.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // criado
-            // 
-            this.criado.HeaderText = "Feito em";
-            this.criado.Name = "criado";
-            this.criado.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
+            this.GridLista.TabIndex = 50;
             // 
             // label1
             // 
@@ -264,7 +233,7 @@
             this.label1.Location = new System.Drawing.Point(248, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 40);
-            this.label1.TabIndex = 16;
+            this.label1.TabIndex = 160;
             this.label1.Text = "Pedidos:";
             // 
             // barraTitulo
@@ -371,7 +340,7 @@
             this.btnSearch.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(140, 45);
-            this.btnSearch.TabIndex = 29;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Pesquisar";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.btnSearch.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -424,7 +393,7 @@
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.search.Size = new System.Drawing.Size(200, 34);
-            this.search.TabIndex = 28;
+            this.search.TabIndex = 0;
             this.search.TextBoxWidth = 150;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -481,7 +450,7 @@
             this.label8.Location = new System.Drawing.Point(18, 304);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 17);
-            this.label8.TabIndex = 19;
+            this.label8.TabIndex = 190;
             this.label8.Text = "Período";
             // 
             // radioButton5
@@ -552,7 +521,7 @@
             this.label7.Location = new System.Drawing.Point(50, 134);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 17);
-            this.label7.TabIndex = 13;
+            this.label7.TabIndex = 130;
             this.label7.Text = "Opções de Pesquisa";
             // 
             // panel3
@@ -594,7 +563,7 @@
             this.label3.Location = new System.Drawing.Point(227, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 50;
             this.label3.Text = "Pedidos";
             // 
             // label4
@@ -606,7 +575,7 @@
             this.label4.Location = new System.Drawing.Point(133, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 17);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 30;
             this.label4.Text = "Comercial";
             // 
             // pictureBox2
@@ -652,6 +621,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
@@ -697,10 +667,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSearch;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn criado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }
