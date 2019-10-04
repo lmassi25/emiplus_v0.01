@@ -163,6 +163,7 @@
     <Reference Include="VisualPlus, Version=0.4.1.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\VisualPlus.0.4.1.6-beta\lib\NET4\VisualPlus.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
@@ -479,12 +480,6 @@
     <Compile Include="View\Testes\Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Testes\Form6.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Testes\Form6.Designer.cs">
-      <DependentUpon>Form6.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Data\Helpers\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
@@ -624,11 +619,11 @@
     <EmbeddedResource Include="View\Testes\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Testes\Form6.resx">
-      <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
