@@ -31,14 +31,11 @@ namespace Emiplus.Data.Database
                 }                
             }
 
-            return _path = IniFile.Read("Path", "LOCAL") + "\\EMIPLUS.FDB";
+            return _path = IniFile.Read("PathDatabase", "LOCAL") + "\\EMIPLUS.FDB";
         }
 
         public QueryFactory Open()
         {
-            Log Log = new Log();
-            Log.Add("Connect", "Path: " + GetDatabase(), Log.LogType.fatal);
-
             var connection = new FbConnection(
                 $"character set=NONE;initial catalog={GetDatabase()};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
             );
@@ -48,6 +45,7 @@ namespace Emiplus.Data.Database
 
             db.Logger = compiled =>
             {
+                Log Log = new Log();
                 Log.Add("LOGGER", "Query: " + compiled.ToString(), Log.LogType.fatal);
 
                 System.Console.WriteLine(compiled.ToString());
