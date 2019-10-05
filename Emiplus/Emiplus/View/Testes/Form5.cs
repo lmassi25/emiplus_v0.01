@@ -175,9 +175,7 @@ namespace Emiplus.View.Testes
         {
             //Masks.MaskPrice2(sender, e);
         }
-
-
-
+               
         private void Teste2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Decimal && e.KeyChar != (char)Keys.Oemcomma && e.KeyChar != (char)Keys.OemPeriod)
