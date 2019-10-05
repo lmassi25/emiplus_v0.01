@@ -140,8 +140,8 @@ namespace Emiplus.View.Common
                 btnUpdate.Visible = false;
 
             
-            var teste = new ModelPure();
-            teste.Fetch();
+            //var teste = new ModelPure();
+            //teste.Fetch();
 
         }
 
