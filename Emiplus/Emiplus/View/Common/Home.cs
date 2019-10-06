@@ -138,12 +138,6 @@ namespace Emiplus.View.Common
                 btnUpdate.Visible = true;
             else
                 btnUpdate.Visible = false;
-<<<<<<< HEAD
-=======
-
-            //var teste = new ModelPure();
-            //teste.Fetch();
->>>>>>> 9d45ffc80c478cb4c6cfcb0c009d5e7103e0908a
         }
 
         private void Eventos()
