@@ -147,6 +147,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -188,6 +189,7 @@
     <Compile Include="Data\Database\CreateTables.cs" />
     <Compile Include="Data\Database\Model.cs" />
     <Compile Include="Data\Database\ModelPure.cs" />
+    <Compile Include="Data\Database\Transaction.cs" />
     <Compile Include="Data\Helpers\Alert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,6 +458,12 @@
     <Compile Include="View\Produtos\Produtos.Designer.cs">
       <DependentUpon>Produtos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\cPure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\cPure.Designer.cs">
+      <DependentUpon>cPure.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Testes\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -612,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\cPure.resx">
+      <DependentUpon>cPure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
