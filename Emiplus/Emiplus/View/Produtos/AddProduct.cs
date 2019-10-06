@@ -34,12 +34,9 @@ namespace Emiplus.View.Produtos
                 Categorias.DataSource = cat;
                 Categorias.DisplayMember = "NOME";
                 Categorias.ValueMember = "ID";
-                Categorias.SelectedValue = _modelItem.Categoriaid;
             }
 
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-            if (_modelItem.Medida != null)
-                Medidas.SelectedItem = _modelItem.Medida;
 
             var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (imposto.Count() > 0)
@@ -47,11 +44,9 @@ namespace Emiplus.View.Produtos
                 Impostos.DataSource = imposto;
                 Impostos.DisplayMember = "NOME";
                 Impostos.ValueMember = "ID";
-                
             }
 
             var origens = new ArrayList();
-            
             origens.Add(new ArrayTipo("0", "0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8"));
             origens.Add(new ArrayTipo("1", "1 - Estrangeira - Importação direta, exceto a indicada no código 6"));
             origens.Add(new ArrayTipo("2", "2 - Estrangeira - Adquirida no mercado interno, exceto a indicada no código 7"));
@@ -65,8 +60,6 @@ namespace Emiplus.View.Produtos
             Origens.DataSource = origens;
             Origens.DisplayMember = "Nome";
             Origens.ValueMember = "Id";
-
-            DataTableEstoque();
         }
 
         private class ArrayTipo
@@ -89,8 +82,17 @@ namespace Emiplus.View.Produtos
             referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
-            estoqueminimo.Text = Validation.Price(_modelItem.EstoqueMinimo);
-            estoqueatual.Text = Validation.Price(_modelItem.EstoqueAtual);
+
+            if (_modelItem.Medida == "KG")
+            {
+                estoqueminimo.Text = _modelItem.EstoqueMinimo.ToString();
+                estoqueatual.Text = Validation.FormatNumberKilo(_modelItem.EstoqueAtual);
+            }
+            else
+            {
+                estoqueminimo.Text = _modelItem.EstoqueMinimo.ToString();
+                estoqueatual.Text = Validation.FormatNumberUnidade(_modelItem.EstoqueAtual);
+            }
 
             if (_modelItem.Impostoid > 0)
                 Impostos.SelectedValue = _modelItem.Impostoid;
@@ -101,9 +103,16 @@ namespace Emiplus.View.Produtos
             if (_modelItem.Origem != null)
                 Origens.SelectedValue = _modelItem.Origem;
 
+            if (_modelItem.Medida != null)
+                Medidas.SelectedItem = _modelItem.Medida;
+
+            Categorias.SelectedValue = _modelItem.Categoriaid;
+
             aliq_federal.Text = Validation.Price(_modelItem.AliqFederal);
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
             aliq_municipal.Text = Validation.Price(_modelItem.AliqMunicipal);
+
+            DataTableEstoque();
         }
 
         private void Save()
@@ -135,12 +144,6 @@ namespace Emiplus.View.Produtos
                 Close();
         }
 
-        private void SetFocus()
-        {
-            estoqueminimo.Focus();
-            DataTableEstoque();
-        }
-
         private void DataTableEstoque() => _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
 
         private void Eventos()
@@ -158,7 +161,7 @@ namespace Emiplus.View.Produtos
                 {
                     _modelItem.Id = idPdtSelecionado;
                     _modelItem.Nome = "Novo Produto";
-                    if (_modelItem.Save(_modelItem, true))
+                    if (_modelItem.Save(_modelItem, false))
                     {
                         idPdtSelecionado = _modelItem.GetLastId();
                         LoadData();
@@ -172,7 +175,20 @@ namespace Emiplus.View.Produtos
             };
 
             label6.Click += (s, e) => Close();
-            btnExit.Click += (s, e) => Close();
+            btnExit.Click += (s, e) =>
+            {
+                if (nome.Text == "Novo Produto")
+                {
+                    if (MessageBox.Show($"Esse produto não foi editado, deseja deletar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        var data = _modelItem.Remove(idPdtSelecionado);
+                        if (data)
+                            Close();
+                    }
+                }
+
+                Close();
+            };
 
             btnSalvar.Click += (s, e) => Save();
             btnRemover.Click += (s, e) => 
@@ -188,10 +204,13 @@ namespace Emiplus.View.Produtos
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
-                    SetFocus();
+
+                    estoqueminimo.Focus();
+                    DataTableEstoque();
                 }
             };
 
+            referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e);
             valorcompra.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
@@ -203,6 +222,7 @@ namespace Emiplus.View.Produtos
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
+            estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }

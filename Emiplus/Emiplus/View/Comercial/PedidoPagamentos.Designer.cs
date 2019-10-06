@@ -922,7 +922,7 @@
             // 
             this.Info2.BackColor = System.Drawing.Color.White;
             this.Info2.Image = ((System.Drawing.Image)(resources.GetObject("Info2.Image")));
-            this.Info2.Location = new System.Drawing.Point(128, 198);
+            this.Info2.Location = new System.Drawing.Point(128, 206);
             this.Info2.Name = "Info2";
             this.Info2.Size = new System.Drawing.Size(15, 15);
             this.Info2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -963,7 +963,7 @@
             this.iniciar.ImageSize = new System.Drawing.Size(16, 16);
             this.iniciar.ImageVisible = false;
             this.iniciar.ImageWidth = 35;
-            this.iniciar.Location = new System.Drawing.Point(15, 215);
+            this.iniciar.Location = new System.Drawing.Point(15, 223);
             this.iniciar.MaxLength = 10;
             this.iniciar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.iniciar.Name = "iniciar";
@@ -992,7 +992,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(15, 195);
+            this.label8.Location = new System.Drawing.Point(15, 203);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 17);
             this.label8.TabIndex = 198;
@@ -1002,7 +1002,7 @@
             // 
             this.Info1.BackColor = System.Drawing.Color.White;
             this.Info1.Image = ((System.Drawing.Image)(resources.GetObject("Info1.Image")));
-            this.Info1.Location = new System.Drawing.Point(74, 141);
+            this.Info1.Location = new System.Drawing.Point(74, 145);
             this.Info1.Name = "Info1";
             this.Info1.Size = new System.Drawing.Size(15, 15);
             this.Info1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1043,7 +1043,7 @@
             this.parcelas.ImageSize = new System.Drawing.Size(16, 16);
             this.parcelas.ImageVisible = false;
             this.parcelas.ImageWidth = 35;
-            this.parcelas.Location = new System.Drawing.Point(15, 160);
+            this.parcelas.Location = new System.Drawing.Point(15, 164);
             this.parcelas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.parcelas.Name = "parcelas";
             this.parcelas.PasswordChar = '\0';
@@ -1072,7 +1072,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(15, 140);
+            this.label9.Location = new System.Drawing.Point(15, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 17);
             this.label9.TabIndex = 195;

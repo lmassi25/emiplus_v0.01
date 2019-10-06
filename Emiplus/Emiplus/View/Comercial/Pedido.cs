@@ -1,13 +1,27 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Comercial
 {
+    /// <summary>
+    /// Responsavel por Vendas, Compras, Orçamentos, Consignações, Devoluções
+    /// </summary>
     public partial class Pedido : Form
     {
         private Controller.Pedido _cPedido = new Controller.Pedido();
+
+        private IEnumerable<dynamic> dataTable;
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+
+        Timer timer = new Timer(Configs.TimeLoading);
 
         public Pedido()
         {
@@ -30,7 +44,17 @@ namespace Emiplus.View.Comercial
             dataFinal.Text = DateTime.Now.ToString();
         }
 
-        private void Filter() => _cPedido.GetDataTablePedidos(GridLista, Home.pedidoPage, search.Text, dataInicial.Text, dataFinal.Text);
+        private void DataTableStart()
+        {
+            search.Select();
+
+            GridLista.Visible = false;
+            Loading.Size = new System.Drawing.Size(GridLista.Width, GridLista.Height);
+            Loading.Visible = true;
+            WorkerBackground.RunWorkerAsync();
+        }
+
+        private async void Filter() => await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, search.Text);
 
         private void EditPedido(bool create = false)
         {
@@ -50,20 +74,84 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    Support.UpDownDataGrid(false, GridLista);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    Support.UpDownDataGrid(true, GridLista);
+                    e.Handled = true;
+                    break;
+                case Keys.Enter:
+                    EditPedido();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
-            Load += (s, e) => Filter();
-            search.TextChanged += (s, e) => Filter();
+            Load += (s, e) => DataTableStart();
+
+            search.KeyDown += KeyDowns;
+            search.TextChanged += (s, e) =>
+            {
+                timer.Stop();
+                timer.Start();
+                Loading.Visible = true;
+                GridLista.Visible = false;
+            };
+
             btnSearch.Click += (s, e) => Filter();
 
-            btnAdicionar.Click += (s, e) => EditPedido(true);
+            btnAdicionar.Click += (s, e) =>
+            {
+                if (Home.pedidoPage == "Orçamentos")
+                    Home.pedidoPage = "Orçamentos";
+                
+                EditPedido(true);
+            };
+
             btnEditar.Click += (s, e) => EditPedido();
             GridLista.DoubleClick += (s, e) =>EditPedido();
+            GridLista.KeyDown += KeyDowns;
 
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+
+            using (var b = WorkerBackground)
+            {
+                b.DoWork += async (s, e) =>
+                {
+                    dataTable = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text);
+                };
+
+                b.RunWorkerCompleted += async (s, e) =>
+                {
+                    await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, dataTable, search.Text);
+
+                    Loading.Visible = false;
+                    GridLista.Visible = true;
+                };
+            }
+
+            timer.AutoReset = false;
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate {
+                Filter();
+                Loading.Visible = false;
+                GridLista.Visible = true;
+            });
+
+            search.Enter += async (s, e) =>
+            {
+                await Task.Delay(100);
+                Filter();
+            };
         }
     }
 }

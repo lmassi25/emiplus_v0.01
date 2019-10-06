@@ -181,6 +181,7 @@
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Controller\Titulo.cs" />
+    <Compile Include="Data\Core\Configs.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
     <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
@@ -807,6 +808,7 @@
     <None Include="Assets\Images\icons\errorBranco.png" />
     <None Include="Assets\Images\icons\infoBranco.png" />
     <None Include="Assets\Images\icons\bin16x.png" />
+    <None Include="Assets\Images\loader-page.gif" />
     <Content Include="Data\Database\DB.sql" />
     <Content Include="iconEmiPlus.ico" />
   </ItemGroup>

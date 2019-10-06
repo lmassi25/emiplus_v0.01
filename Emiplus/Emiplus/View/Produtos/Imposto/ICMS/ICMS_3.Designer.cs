@@ -41,7 +41,7 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(3, 54);
+            this.label20.Location = new System.Drawing.Point(3, 57);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(178, 17);
             this.label20.TabIndex = 32;
@@ -81,7 +81,7 @@
             this.Aliq.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq.ImageVisible = false;
             this.Aliq.ImageWidth = 35;
-            this.Aliq.Location = new System.Drawing.Point(6, 74);
+            this.Aliq.Location = new System.Drawing.Point(6, 77);
             this.Aliq.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq.Name = "Aliq";
             this.Aliq.PasswordChar = '\0';

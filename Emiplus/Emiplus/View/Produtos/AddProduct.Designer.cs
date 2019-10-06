@@ -185,7 +185,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(631, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(85, 90);
-            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.TabIndex = 7;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -571,7 +571,7 @@
             this.Categorias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Categorias.DropDownHeight = 100;
             this.Categorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Categorias.DropDownWidth = 100;
+            this.Categorias.DropDownWidth = 250;
             this.Categorias.FormattingEnabled = true;
             this.Categorias.ImageList = null;
             this.Categorias.ImageVisible = false;
@@ -915,7 +915,7 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.White;
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(88, 14);
+            this.pictureBox10.Location = new System.Drawing.Point(85, 14);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1013,7 +1013,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.White;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(431, 14);
+            this.pictureBox9.Location = new System.Drawing.Point(429, 14);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1094,7 +1094,7 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(268, 14);
+            this.pictureBox8.Location = new System.Drawing.Point(266, 14);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1175,7 +1175,7 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.White;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(105, 14);
+            this.pictureBox7.Location = new System.Drawing.Point(103, 14);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(15, 15);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1277,7 +1277,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(17, 113);
+            this.label8.Location = new System.Drawing.Point(17, 123);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 17);
             this.label8.TabIndex = 179;
@@ -1311,7 +1311,7 @@
             this.Origens.IntegralHeight = false;
             this.Origens.ItemHeight = 23;
             this.Origens.ItemImageVisible = true;
-            this.Origens.Location = new System.Drawing.Point(20, 133);
+            this.Origens.Location = new System.Drawing.Point(20, 143);
             this.Origens.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Origens.MenuItemNormal = System.Drawing.Color.White;
             this.Origens.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1402,7 +1402,7 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(120, 64);
+            this.label7.Location = new System.Drawing.Point(120, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 17);
             this.label7.TabIndex = 177;
@@ -1442,7 +1442,7 @@
             this.ncm.ImageSize = new System.Drawing.Size(16, 16);
             this.ncm.ImageVisible = false;
             this.ncm.ImageWidth = 35;
-            this.ncm.Location = new System.Drawing.Point(121, 82);
+            this.ncm.Location = new System.Drawing.Point(121, 87);
             this.ncm.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.ncm.Name = "ncm";
             this.ncm.PasswordChar = '\0';
@@ -1471,7 +1471,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(17, 64);
+            this.label2.Location = new System.Drawing.Point(17, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 175;
@@ -1511,7 +1511,7 @@
             this.cest.ImageSize = new System.Drawing.Size(16, 16);
             this.cest.ImageVisible = false;
             this.cest.ImageWidth = 35;
-            this.cest.Location = new System.Drawing.Point(18, 82);
+            this.cest.Location = new System.Drawing.Point(18, 87);
             this.cest.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cest.Name = "cest";
             this.cest.PasswordChar = '\0';
@@ -1646,6 +1646,7 @@
             this.listaEstoque.MultiSelect = false;
             this.listaEstoque.Name = "listaEstoque";
             this.listaEstoque.ReadOnly = true;
+            this.listaEstoque.RowHeadersVisible = false;
             this.listaEstoque.RowTemplate.Height = 30;
             this.listaEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaEstoque.Size = new System.Drawing.Size(635, 126);
@@ -1678,7 +1679,7 @@
             this.estoqueminimo.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.estoqueminimo.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueminimo.ButtonIndent = 3;
-            this.estoqueminimo.ButtonText = "visualButton";
+            this.estoqueminimo.ButtonText = "KG";
             this.estoqueminimo.ButtonVisible = false;
             this.estoqueminimo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueminimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1723,20 +1724,20 @@
             this.estoqueatual.Border.Thickness = 1;
             this.estoqueatual.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.estoqueatual.Border.Visible = true;
-            this.estoqueatual.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.estoqueatual.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.estoqueatual.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.estoqueatual.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
             this.estoqueatual.ButtonBorder.HoverVisible = true;
             this.estoqueatual.ButtonBorder.Rounding = 6;
             this.estoqueatual.ButtonBorder.Thickness = 1;
             this.estoqueatual.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.estoqueatual.ButtonBorder.Visible = true;
             this.estoqueatual.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.estoqueatual.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.estoqueatual.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.estoqueatual.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.estoqueatual.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueatual.ButtonColor.Enabled = System.Drawing.Color.Gainsboro;
+            this.estoqueatual.ButtonColor.Hover = System.Drawing.Color.Gainsboro;
+            this.estoqueatual.ButtonColor.Pressed = System.Drawing.Color.White;
+            this.estoqueatual.ButtonFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueatual.ButtonIndent = 3;
-            this.estoqueatual.ButtonText = "visualButton";
+            this.estoqueatual.ButtonText = "ROLO";
             this.estoqueatual.ButtonVisible = false;
             this.estoqueatual.Enabled = false;
             this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1751,10 +1752,10 @@
             this.estoqueatual.PasswordChar = '\0';
             this.estoqueatual.ReadOnly = false;
             this.estoqueatual.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.estoqueatual.Size = new System.Drawing.Size(139, 28);
+            this.estoqueatual.Size = new System.Drawing.Size(140, 28);
             this.estoqueatual.TabIndex = 1;
             this.estoqueatual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.estoqueatual.TextBoxWidth = 127;
+            this.estoqueatual.TextBoxWidth = 125;
             this.estoqueatual.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.estoqueatual.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.estoqueatual.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

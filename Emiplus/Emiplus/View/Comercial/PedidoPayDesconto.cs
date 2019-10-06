@@ -85,6 +85,8 @@ namespace Emiplus.View.Comercial
             KeyDown += KeyDowns; 
             btnSalvar.KeyDown += KeyDowns;
             btnCancelar.KeyDown += KeyDowns;
+            porcentagem.KeyDown += KeyDowns;
+            dinheiro.KeyDown += KeyDowns;
 
             btnSalvar.Click += (s, e) => Save();
             porcentagem.TextChanged += (s, e) =>
@@ -98,6 +100,9 @@ namespace Emiplus.View.Comercial
             };
 
             btnCancelar.Click += (s, e) => Close();
+
+            porcentagem.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+            dinheiro.KeyPress += (s, e) => Masks.MaskDouble(s, e);
         }
     }
 }

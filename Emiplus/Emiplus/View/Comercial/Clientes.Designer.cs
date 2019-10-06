@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Loading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel5.SuspendLayout();
@@ -55,6 +56,7 @@
             this.barraTitulo.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -181,6 +183,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridLista);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
@@ -358,6 +361,18 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 7;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -384,6 +399,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +425,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }

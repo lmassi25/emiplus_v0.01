@@ -2,19 +2,44 @@
 {
     using Emiplus.View.Common;
     using SqlKata.Execution;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     class Pessoa : Data.Core.Controller
     {
-        public void GetDataTableClientes(DataGridView Table, string SearchText)
+        public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null)
+        {
+            var search = "%" + SearchText + "%";
+
+            return new Model.Pessoa().Query()
+                .Where("EXCLUIR", 0)
+                .Where("TIPO", Home.pessoaPage)
+                .Where("ID", "!=", 1)
+                .Where(q =>
+                    q.Where("nome", "like", search)
+                        .OrWhere("fantasia", "like", search)
+                        .OrWhere("rg", "like", search)
+                        .OrWhere("cpf", "like", search))
+                .OrderByDesc("criado")
+                .Limit(50)
+                .GetAsync<dynamic>();
+        }
+
+        public async Task SetTableClientes(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
         {
             Table.ColumnCount = 5;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Nome / Razão social";
-            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[2].Name = "Nome Fantasia";
             Table.Columns[2].Width = 150;
@@ -27,23 +52,13 @@
 
             Table.Rows.Clear();
 
-            var address = new Model.Pessoa();
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await GetDataTableClientes(SearchText);
+                Data = dados;
+            }
 
-            var search = "%" + SearchText + "%";
-            var data = address.Query()
-                .Where("EXCLUIR", 0)
-                .Where("TIPO", Home.pessoaPage)
-                .Where("ID", "!=", 1)
-                .Where(q =>
-                    q.Where("nome", "like", search)
-                        .OrWhere("fantasia", "like", search)
-                        .OrWhere("rg", "like", search)
-                        .OrWhere("cpf", "like", search))
-                .OrderByDesc("criado")
-                .Limit(50)
-                .Get();
-
-            foreach (var item in data)
+            foreach (var item in Data)
             {
                 Table.Rows.Add(
                     item.ID,
@@ -53,6 +68,8 @@
                     item.RG
                 );
             }
+
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void GetDataTableEnderecos(DataGridView Table, int Id)

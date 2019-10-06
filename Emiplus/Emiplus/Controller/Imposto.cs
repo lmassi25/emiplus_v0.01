@@ -1,43 +1,58 @@
 ﻿using SqlKata.Execution;
-using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
     class Imposto
     {
-        public void GetDataTable(DataGridView Table, string SearchText)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
         {
-            Table.ColumnCount = 2;
-
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
-
-            Table.Columns[1].Name = "Nome";
-            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            Table.Rows.Clear();
-
-            var impostos = new Model.Imposto();
-
             var search = "%" + SearchText + "%";
 
-            var lista = impostos.Query()
+            return new Model.Imposto().Query()
                 .Where("EXCLUIR", 0)
                 .Where
                 (
                     q => q.WhereLike("nome", search, false)
                 )
                 .OrderByDesc("criado")
-                .Get();
+                .GetAsync<dynamic>();
+        }
 
-            foreach (var data in lista)
+        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
+        {
+            Table.ColumnCount = 2;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Nome";
+
+            Table.Rows.Clear();
+
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await GetDataTable(SearchText);
+                Data = dados;
+            }
+
+            foreach (var item in Data)
             {
                 Table.Rows.Add(
-                    data.ID,
-                    data.NOME
+                    item.ID,
+                    item.NOME
                 );
             }
+
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

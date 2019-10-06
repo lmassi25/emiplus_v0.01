@@ -262,6 +262,7 @@ namespace Emiplus.View.Comercial
                     Masks.MaskCNPJ(s, e);
             };
             nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
 
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();

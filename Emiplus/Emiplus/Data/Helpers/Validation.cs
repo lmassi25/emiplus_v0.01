@@ -171,6 +171,24 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
+        public static string FormatNumberKilo(double num)
+        {
+            long i = (long)Math.Pow(10, (int)Math.Max(0, Math.Log10(num) - 2));
+            num = num / i * i;
+            
+            if (num >= 1000000)
+                return (num / 1000000D).ToString("0.##") + " Ton";
+            if (num >= 1000)
+                return (num / 1000D).ToString("0.##") + " KG";
+
+            return num.ToString("#,0");
+        }
+
+        public static string FormatNumberUnidade(double num)
+        {
+            return num.ToString() + " UN";
+        }
+
         /// <summary>
         /// Determines if a specific value is a number.
         /// </summary>

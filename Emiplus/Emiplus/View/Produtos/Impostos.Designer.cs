@@ -48,6 +48,7 @@
             this.GridListaImpostos = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,6 +56,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaImpostos)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -297,6 +299,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridListaImpostos);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
@@ -307,6 +310,8 @@
             // 
             this.GridListaImpostos.AllowUserToAddRows = false;
             this.GridListaImpostos.AllowUserToDeleteRows = false;
+            this.GridListaImpostos.AllowUserToResizeColumns = false;
+            this.GridListaImpostos.AllowUserToResizeRows = false;
             this.GridListaImpostos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaImpostos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaImpostos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -354,6 +359,18 @@
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 7;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
+            // 
             // Impostos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,6 +396,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridListaImpostos)).EndInit();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +422,6 @@
         private System.Windows.Forms.DataGridView GridListaImpostos;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }

@@ -111,7 +111,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Aliq);
             this.Name = "ICMS_1";
-            this.Size = new System.Drawing.Size(170, 60);
+            this.Size = new System.Drawing.Size(170, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
 

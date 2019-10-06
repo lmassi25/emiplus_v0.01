@@ -33,7 +33,7 @@
             this.tituloProduto = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.novaQtd = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -64,9 +64,9 @@
             this.tituloProduto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tituloProduto.Location = new System.Drawing.Point(67, 27);
             this.tituloProduto.Name = "tituloProduto";
-            this.tituloProduto.Size = new System.Drawing.Size(189, 20);
-            this.tituloProduto.TabIndex = 1;
-            this.tituloProduto.Text = "Meu produto de teste 1234";
+            this.tituloProduto.Size = new System.Drawing.Size(96, 20);
+            this.tituloProduto.TabIndex = 100;
+            this.tituloProduto.Text = "Meu produto";
             // 
             // label8
             // 
@@ -87,19 +87,18 @@
             this.label10.Location = new System.Drawing.Point(268, 187);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 17);
-            this.label10.TabIndex = 12;
+            this.label10.TabIndex = 120;
             this.label10.Text = "Nova quantidade:";
             // 
-            // label11
+            // novaQtd
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(385, 188);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 17);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "0000";
+            this.novaQtd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.novaQtd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.novaQtd.Location = new System.Drawing.Point(385, 188);
+            this.novaQtd.Name = "novaQtd";
+            this.novaQtd.Size = new System.Drawing.Size(73, 17);
+            this.novaQtd.TabIndex = 130;
+            this.novaQtd.Text = "0";
             // 
             // label14
             // 
@@ -139,7 +138,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(39, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -160,7 +159,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(375, 4);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(65, 60);
-            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -237,7 +236,7 @@
             this.quantidade.ReadOnly = false;
             this.quantidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.quantidade.Size = new System.Drawing.Size(223, 28);
-            this.quantidade.TabIndex = 22;
+            this.quantidade.TabIndex = 2;
             this.quantidade.TextBoxWidth = 211;
             this.quantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.quantidade.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -295,7 +294,7 @@
             this.obs.ReadOnly = false;
             this.obs.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.obs.Size = new System.Drawing.Size(400, 69);
-            this.obs.TabIndex = 23;
+            this.obs.TabIndex = 3;
             this.obs.TextBoxWidth = 388;
             this.obs.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.obs.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -344,7 +343,7 @@
             this.btnRadioRemoveItem.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnRadioRemoveItem.Name = "btnRadioRemoveItem";
             this.btnRadioRemoveItem.Size = new System.Drawing.Size(109, 23);
-            this.btnRadioRemoveItem.TabIndex = 24;
+            this.btnRadioRemoveItem.TabIndex = 1;
             this.btnRadioRemoveItem.Text = "Remover Itens";
             this.btnRadioRemoveItem.TextSize = new System.Drawing.Size(89, 19);
             this.btnRadioRemoveItem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -389,7 +388,7 @@
             this.btnRadioAddItem.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnRadioAddItem.Name = "btnRadioAddItem";
             this.btnRadioAddItem.Size = new System.Drawing.Size(109, 23);
-            this.btnRadioAddItem.TabIndex = 25;
+            this.btnRadioAddItem.TabIndex = 0;
             this.btnRadioAddItem.Text = "Adicionar Itens";
             this.btnRadioAddItem.TextSize = new System.Drawing.Size(92, 19);
             this.btnRadioAddItem.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -432,15 +431,15 @@
             // 
             // estoqueAtual
             // 
-            this.estoqueAtual.AutoSize = true;
             this.estoqueAtual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.estoqueAtual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueAtual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.estoqueAtual.Location = new System.Drawing.Point(145, 9);
+            this.estoqueAtual.Location = new System.Drawing.Point(128, 10);
             this.estoqueAtual.Name = "estoqueAtual";
-            this.estoqueAtual.Size = new System.Drawing.Size(41, 20);
-            this.estoqueAtual.TabIndex = 3;
-            this.estoqueAtual.Text = "0000";
+            this.estoqueAtual.Size = new System.Drawing.Size(68, 20);
+            this.estoqueAtual.TabIndex = 30;
+            this.estoqueAtual.Text = "0";
+            this.estoqueAtual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -451,7 +450,7 @@
             this.label9.Location = new System.Drawing.Point(11, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 17);
-            this.label9.TabIndex = 2;
+            this.label9.TabIndex = 20;
             this.label9.Text = "Quantidade Atual:";
             // 
             // visualPanel2
@@ -486,15 +485,15 @@
             // 
             // custoAtual
             // 
-            this.custoAtual.AutoSize = true;
             this.custoAtual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.custoAtual.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.custoAtual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.custoAtual.Location = new System.Drawing.Point(144, 10);
+            this.custoAtual.Location = new System.Drawing.Point(133, 11);
             this.custoAtual.Name = "custoAtual";
-            this.custoAtual.Size = new System.Drawing.Size(41, 20);
-            this.custoAtual.TabIndex = 5;
-            this.custoAtual.Text = "0000";
+            this.custoAtual.Size = new System.Drawing.Size(62, 20);
+            this.custoAtual.TabIndex = 50;
+            this.custoAtual.Text = "0";
+            this.custoAtual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -505,7 +504,7 @@
             this.label4.Location = new System.Drawing.Point(13, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 17);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 40;
             this.label4.Text = "Valor Custo Atual:";
             // 
             // AddEstoque
@@ -524,7 +523,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.novaQtd);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -554,7 +553,7 @@
         private System.Windows.Forms.Label tituloProduto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label novaQtd;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSalvar;

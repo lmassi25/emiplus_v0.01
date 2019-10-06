@@ -48,6 +48,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.Loading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -55,6 +56,7 @@
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.barraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -148,6 +150,8 @@
             // 
             this.GridListaCategorias.AllowUserToAddRows = false;
             this.GridListaCategorias.AllowUserToDeleteRows = false;
+            this.GridListaCategorias.AllowUserToResizeColumns = false;
+            this.GridListaCategorias.AllowUserToResizeRows = false;
             this.GridListaCategorias.BackgroundColor = System.Drawing.Color.White;
             this.GridListaCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaCategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -222,6 +226,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridListaCategorias);
             this.panel2.Location = new System.Drawing.Point(38, 243);
             this.panel2.Name = "panel2";
@@ -353,6 +358,18 @@
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
             // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 7;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
+            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -379,6 +396,7 @@
             this.panel2.ResumeLayout(false);
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +422,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel barraTitulo;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
+        private System.Windows.Forms.PictureBox Loading;
     }
 }
