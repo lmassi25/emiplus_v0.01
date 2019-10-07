@@ -1,4 +1,5 @@
-﻿using Emiplus.View.Common;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -55,6 +56,8 @@ namespace Emiplus.View.Comercial
             btnContinuar.KeyDown += KeyDowns;
 
             btnContinuar.Click += (s, e) => CancelItem();
+
+            nr.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
         }
     }
 }

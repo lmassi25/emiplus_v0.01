@@ -1,8 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -17,7 +17,7 @@ namespace Emiplus.View.Produtos
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(1000);
+        Timer timer = new Timer(Configs.TimeLoading);
 
         public Produtos()
         {
@@ -51,6 +51,24 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    Support.UpDownDataGrid(false, GridListaProdutos);
+                    e.Handled = true;
+                    break;
+                case Keys.Down:
+                    Support.UpDownDataGrid(true, GridListaProdutos);
+                    e.Handled = true;
+                    break;
+                case Keys.Enter:
+                    EditProduct();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
             Load += (s, e) => {
@@ -72,6 +90,8 @@ namespace Emiplus.View.Produtos
                 Loading.Visible = true;
                 GridListaProdutos.Visible = false;
             };
+            search.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 

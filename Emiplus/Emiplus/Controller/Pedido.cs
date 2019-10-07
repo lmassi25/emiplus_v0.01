@@ -1,5 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -65,14 +68,11 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTablePedidos(DataGridView Table, string tipo, string Search, string dataInicial, string dataFinal)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null)
         {
-            Table.Rows.Clear();
+            var search = "%" + SearchText + "%";
 
-            var pedidos = new Model.Pedido();
-
-            var search = "%" + Search + "%";
-            var data = pedidos.Query()
+            return new Model.Pedido().Query()
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where("pedido.excluir", 0)
@@ -85,9 +85,43 @@ namespace Emiplus.Controller
                     q => q.WhereLike("pessoa.nome", search, false)
                 )
                 .OrderByDesc("pedido.criado")
-                .Get();
+                .GetAsync<dynamic>();
+        }
 
-            foreach (var item in data)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null)
+        {
+            Table.ColumnCount = 5;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "N°";
+            Table.Columns[1].Width = 100;
+
+            Table.Columns[2].Name = "Cliente";
+
+            Table.Columns[3].Name = "Criado em";
+            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[3].Width = 100;
+
+            Table.Columns[4].Name = "Total";
+            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[4].Width = 100;
+
+            Table.Rows.Clear();
+
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText);
+                Data = dados;
+            }
+
+            foreach (var item in Data)
             {
                 Table.Rows.Add(
                     item.ID,
@@ -97,8 +131,9 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
                 );
             }
-        }
 
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
 
     }
 }

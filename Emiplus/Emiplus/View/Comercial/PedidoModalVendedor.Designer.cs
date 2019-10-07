@@ -75,7 +75,7 @@
             this.btnSelecionar.Location = new System.Drawing.Point(239, 2);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(119, 60);
-            this.btnSelecionar.TabIndex = 3;
+            this.btnSelecionar.TabIndex = 2;
             this.btnSelecionar.Text = "Selecionar (F10)";
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelecionar.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(360, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(118, 60);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar (ESC)";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             this.GridListaVendedores.RowTemplate.Height = 30;
             this.GridListaVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridListaVendedores.Size = new System.Drawing.Size(443, 218);
-            this.GridListaVendedores.TabIndex = 2;
+            this.GridListaVendedores.TabIndex = 1;
             // 
             // label1
             // 
@@ -227,7 +227,7 @@
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.search.Size = new System.Drawing.Size(376, 34);
-            this.search.TabIndex = 1;
+            this.search.TabIndex = 0;
             this.search.TextBoxWidth = 330;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

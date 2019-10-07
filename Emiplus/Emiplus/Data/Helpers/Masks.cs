@@ -119,14 +119,42 @@ namespace Emiplus.Data.Helpers
         }
 
         /// <summary>
-        /// Permite apenas Letras, Numeros e Pontos, max 255 caracteres
+        /// Permite apenas Letras, Numeros, max 255 caracteres
         /// </summary>
         public static void MaskOnlyNumberAndChar(object sender, KeyPressEventArgs e)
         {
             TextBox t = sender as TextBox;
             t.MaxLength = 255;
 
+            if (!char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Permite apenas Letras, Numeros e Pontos, max 255 caracteres
+        /// </summary>
+        public static void MaskOnlyNumberAndCharAndMore(object sender, KeyPressEventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            t.MaxLength = 255;
+
             if (!char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Permite números e virgulas
+        /// </summary>
+        public static void MaskDouble(object sender, KeyPressEventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            t.MaxLength = 255;
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }

@@ -114,10 +114,7 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) => DialogResult = DialogResult.OK;
 
-            backgroundWorker1.DoWork += (s, e) =>
-            {
-                retorno = _modelAddress.GetAddr(cep_aux);
-            };
+            backgroundWorker1.DoWork += (s, e) => retorno = _modelAddress.GetAddr(cep_aux);
             backgroundWorker1.RunWorkerCompleted += (s, e) =>
             {
                 if (retorno != null)
@@ -148,6 +145,13 @@ namespace Emiplus.View.Comercial
 
                 buscarEndereco.Enabled = true;
             };
+
+            rua.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
+            nr.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
+            bairro.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
+            complemento.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
+            cidade.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
+            ibge.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
         }
     }
 }

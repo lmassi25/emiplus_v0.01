@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalCancelItem));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button21 = new System.Windows.Forms.Button();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
@@ -46,29 +45,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel1.Controls.Add(this.button21);
             this.panel1.Controls.Add(this.btnContinuar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 187);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 63);
             this.panel1.TabIndex = 39;
-            // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackColor = System.Drawing.Color.Transparent;
-            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button21.Enabled = false;
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(360, 0);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(35, 35);
-            this.button21.TabIndex = 151;
-            this.button21.UseVisualStyleBackColor = false;
             // 
             // btnContinuar
             // 
@@ -83,11 +65,11 @@
             this.btnContinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnContinuar.Image = ((System.Drawing.Image)(resources.GetObject("btnContinuar.Image")));
             this.btnContinuar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContinuar.Location = new System.Drawing.Point(372, 1);
+            this.btnContinuar.Location = new System.Drawing.Point(319, 1);
             this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(73, 61);
-            this.btnContinuar.TabIndex = 2;
-            this.btnContinuar.Text = "Continuar";
+            this.btnContinuar.Size = new System.Drawing.Size(126, 61);
+            this.btnContinuar.TabIndex = 1;
+            this.btnContinuar.Text = "Continuar (ENTER)";
             this.btnContinuar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnContinuar.UseVisualStyleBackColor = true;
             // 
@@ -153,7 +135,7 @@
             this.nr.ReadOnly = false;
             this.nr.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nr.Size = new System.Drawing.Size(243, 34);
-            this.nr.TabIndex = 1;
+            this.nr.TabIndex = 0;
             this.nr.TextBoxWidth = 231;
             this.nr.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nr.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -229,6 +211,5 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nr;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button21;
     }
 }

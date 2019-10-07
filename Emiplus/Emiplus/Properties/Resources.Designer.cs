@@ -63,6 +63,16 @@ namespace Emiplus.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _checked {
+            get {
+                object obj = ResourceManager.GetObject("_checked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bin16x {
             get {
                 object obj = ResourceManager.GetObject("bin16x", resourceCulture);
@@ -106,6 +116,26 @@ namespace Emiplus.Properties {
         internal static System.Drawing.Bitmap infoBranco {
             get {
                 object obj = ResourceManager.GetObject("infoBranco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loader_page {
+            get {
+                object obj = ResourceManager.GetObject("loader_page", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap question {
+            get {
+                object obj = ResourceManager.GetObject("question", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

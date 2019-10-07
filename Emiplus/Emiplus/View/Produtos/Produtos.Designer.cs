@@ -36,8 +36,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.btnRelatorios = new System.Windows.Forms.Button();
-            this.btnEstoque = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
@@ -51,6 +49,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.btnEstoque = new System.Windows.Forms.Button();
+            this.btnRelatorios = new System.Windows.Forms.Button();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -207,46 +207,6 @@
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // btnRelatorios
-            // 
-            this.btnRelatorios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRelatorios.FlatAppearance.BorderSize = 0;
-            this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
-            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRelatorios.Location = new System.Drawing.Point(28, 4);
-            this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(85, 90);
-            this.btnRelatorios.TabIndex = 9;
-            this.btnRelatorios.Text = "Relatórios";
-            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRelatorios.UseVisualStyleBackColor = true;
-            // 
-            // btnEstoque
-            // 
-            this.btnEstoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEstoque.FlatAppearance.BorderSize = 0;
-            this.btnEstoque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEstoque.Image = ((System.Drawing.Image)(resources.GetObject("btnEstoque.Image")));
-            this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEstoque.Location = new System.Drawing.Point(119, 4);
-            this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(85, 90);
-            this.btnEstoque.TabIndex = 8;
-            this.btnEstoque.Text = "Estoque";
-            this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEstoque.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -309,8 +269,8 @@
             // Loading
             // 
             this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Loading.Image = ((System.Drawing.Image)(resources.GetObject("Loading.Image")));
-            this.Loading.Location = new System.Drawing.Point(0, 0);
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(259, 159);
             this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -417,6 +377,46 @@
             this.btnHelp.Text = "Ajuda";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHelp.UseVisualStyleBackColor = true;
+            // 
+            // btnEstoque
+            // 
+            this.btnEstoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstoque.FlatAppearance.BorderSize = 0;
+            this.btnEstoque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEstoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEstoque.Image = ((System.Drawing.Image)(resources.GetObject("btnEstoque.Image")));
+            this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEstoque.Location = new System.Drawing.Point(119, 4);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(85, 90);
+            this.btnEstoque.TabIndex = 8;
+            this.btnEstoque.Text = "Estoque";
+            this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEstoque.UseVisualStyleBackColor = true;
+            // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRelatorios.FlatAppearance.BorderSize = 0;
+            this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
+            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRelatorios.Location = new System.Drawing.Point(28, 4);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Size = new System.Drawing.Size(85, 90);
+            this.btnRelatorios.TabIndex = 9;
+            this.btnRelatorios.Text = "Relatórios";
+            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRelatorios.UseVisualStyleBackColor = true;
             // 
             // Produtos
             // 
