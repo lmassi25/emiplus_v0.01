@@ -387,6 +387,42 @@
     <Compile Include="View\Financeiro\Nota.Designer.cs">
       <DependentUpon>Nota.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Financeiro\TelasNota\EditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\EditProduct.Designer.cs">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaDados.Designer.cs">
+      <DependentUpon>TelaDados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaFinal.Designer.cs">
+      <DependentUpon>TelaFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaFrete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaFrete.Designer.cs">
+      <DependentUpon>TelaFrete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaPagamento.Designer.cs">
+      <DependentUpon>TelaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\TelasNota\TelaProdutos.Designer.cs">
+      <DependentUpon>TelaProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Financeiro\Titulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -585,6 +621,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\EditProduct.resx">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaDados.resx">
+      <DependentUpon>TelaDados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaFinal.resx">
+      <DependentUpon>TelaFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaFrete.resx">
+      <DependentUpon>TelaFrete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaPagamento.resx">
+      <DependentUpon>TelaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaProdutos.resx">
+      <DependentUpon>TelaProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
       <DependentUpon>Titulos.cs</DependentUpon>
@@ -809,6 +863,8 @@
     <None Include="Assets\Images\icons\infoBranco.png" />
     <None Include="Assets\Images\icons\bin16x.png" />
     <None Include="Assets\Images\loader-page.gif" />
+    <None Include="Assets\Images\icons\checked.png" />
+    <None Include="Assets\Images\icons\question.png" />
     <Content Include="Data\Database\DB.sql" />
     <Content Include="iconEmiPlus.ico" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿namespace Emiplus
 {
+    using Emiplus.View.Financeiro;
     using Emiplus.View.Testes;
     using System;
     using System.Windows.Forms;
@@ -15,7 +16,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Carregar());
+            Application.Run(new Nota());
         }
     }
 }

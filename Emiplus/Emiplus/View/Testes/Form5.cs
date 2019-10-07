@@ -195,5 +195,10 @@ namespace Emiplus.View.Testes
             //TextBox txt = (TextBox)sender;
             //Masks.MaskPrice(ref txt);
         }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
