@@ -1,4 +1,4 @@
-﻿namespace Emiplus.View.Financeiro.TelasNota
+﻿namespace Emiplus.View.Fiscal.TelasNota
 {
     partial class TelaFrete
     {

@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Fiscal;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
@@ -7,6 +9,28 @@ namespace Emiplus.View.Common
         public TelaFiscalInicial()
         {
             InitializeComponent();
+            Eventos();
+        }
+
+        private void Eventos()
+        {
+            novaNFE.Click += (s, e) =>
+            {
+                Nota nota = new Nota();
+                nota.ShowDialog();
+            };
+
+            nfe.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Notas";
+                Comercial.Pedido Pedido = new Comercial.Pedido();
+                Pedido.ShowDialog();
+            };
+
+            naturezaOP.Click += (s, e) =>
+            {
+                OpenForm.Show<Fiscal.Natureza>(this);
+            };
         }
     }
 }

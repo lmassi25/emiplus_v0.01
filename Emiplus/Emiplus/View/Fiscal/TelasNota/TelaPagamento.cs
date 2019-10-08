@@ -1,7 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using System.Windows.Forms;
 
-namespace Emiplus.View.Financeiro.TelasNota
+namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaPagamento : Form
     {

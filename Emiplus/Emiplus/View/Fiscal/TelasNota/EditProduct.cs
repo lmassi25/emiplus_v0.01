@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Emiplus.View.Financeiro.TelasNota
+namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class EditProduct : Form
     {

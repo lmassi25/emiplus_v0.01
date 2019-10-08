@@ -2,10 +2,11 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Emiplus.View.Financeiro
+namespace Emiplus.View.Fiscal
 {
     public partial class Nota : Form
     {
+
         public Nota()
         {
             InitializeComponent();

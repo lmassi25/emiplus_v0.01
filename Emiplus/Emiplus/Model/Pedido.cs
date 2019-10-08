@@ -43,6 +43,14 @@
         public int status { get; set; }
         public DateTime Emissao { get; set; }
 
+        public string HoraSaida { get; set; }
+        public string Finalidade { get; set; }
+        public string Destino { get; set; }
+        public int id_natureza { get; set; }
+        public string info_contribuinte { get; set; }
+        public string info_fisco { get; set; }
+        public int id_useraddress { get; set; }
+
         #endregion
 
         #region SQL CREATE
