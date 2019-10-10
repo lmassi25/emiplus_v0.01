@@ -6,6 +6,27 @@ namespace Emiplus.Data.Helpers
 {
     class Masks
     {
+        public static void MaskHour(object sender, KeyPressEventArgs e)
+        {
+            // 10:00 - 9 caracateres
+            TextBox t = sender as TextBox;
+            t.MaxLength = 5;
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+            {
+                t.SelectionStart = t.Text.Length + 1;
+
+                if (t.Text.Length == 2)
+                    t.Text += ":";
+                t.SelectionStart = t.Text.Length + 1;
+            }
+        }
+
         public static void MaskBirthday(object sender, KeyPressEventArgs e)
         {
             // 28/04/1997 - 10 caracateres

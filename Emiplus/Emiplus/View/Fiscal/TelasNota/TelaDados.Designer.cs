@@ -33,11 +33,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.visualTextBox2 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.emissao = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.visualTextBox3 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.saida = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.visualTextBox4 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.hora = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tipo = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.localDestino = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
@@ -47,29 +47,29 @@
             this.naturezaOp = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.visualTextBox5 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.infoFisco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.visualTextBox6 = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.infoContribuinte = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.NomeCliente = new System.Windows.Forms.Label();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.step3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.step4 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.step2 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.step1 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.progress2 = new System.Windows.Forms.Panel();
             this.progress4 = new System.Windows.Forms.Panel();
             this.progress5 = new System.Windows.Forms.Panel();
             this.progress3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.step3 = new System.Windows.Forms.PictureBox();
-            this.step4 = new System.Windows.Forms.PictureBox();
-            this.step2 = new System.Windows.Forms.PictureBox();
-            this.step1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.BuscarCliente = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -124,64 +124,64 @@
             this.label5.TabIndex = 104;
             this.label5.Text = "Emissão";
             // 
-            // visualTextBox2
+            // emissao
             // 
-            this.visualTextBox2.AlphaNumeric = false;
-            this.visualTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.visualTextBox2.BackColor = System.Drawing.Color.White;
-            this.visualTextBox2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox2.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox2.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox2.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox2.Border.HoverVisible = true;
-            this.visualTextBox2.Border.Rounding = 8;
-            this.visualTextBox2.Border.Thickness = 1;
-            this.visualTextBox2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox2.Border.Visible = true;
-            this.visualTextBox2.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox2.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox2.ButtonBorder.HoverVisible = true;
-            this.visualTextBox2.ButtonBorder.Rounding = 6;
-            this.visualTextBox2.ButtonBorder.Thickness = 1;
-            this.visualTextBox2.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox2.ButtonBorder.Visible = true;
-            this.visualTextBox2.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox2.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox2.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox2.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox2.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox2.ButtonIndent = 3;
-            this.visualTextBox2.ButtonText = "visualButton";
-            this.visualTextBox2.ButtonVisible = false;
-            this.visualTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox2.Image = null;
-            this.visualTextBox2.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox2.ImageVisible = false;
-            this.visualTextBox2.ImageWidth = 35;
-            this.visualTextBox2.Location = new System.Drawing.Point(30, 181);
-            this.visualTextBox2.MaxLength = 10;
-            this.visualTextBox2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox2.Name = "visualTextBox2";
-            this.visualTextBox2.PasswordChar = '\0';
-            this.visualTextBox2.ReadOnly = false;
-            this.visualTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox2.Size = new System.Drawing.Size(112, 28);
-            this.visualTextBox2.TabIndex = 103;
-            this.visualTextBox2.TextBoxWidth = 100;
-            this.visualTextBox2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox2.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox2.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox2.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox2.Watermark.Text = "Watermark text";
-            this.visualTextBox2.Watermark.Visible = false;
-            this.visualTextBox2.WordWrap = true;
+            this.emissao.AlphaNumeric = false;
+            this.emissao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.emissao.BackColor = System.Drawing.Color.White;
+            this.emissao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.emissao.BackColorState.Enabled = System.Drawing.Color.White;
+            this.emissao.Border.Color = System.Drawing.Color.Gainsboro;
+            this.emissao.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.emissao.Border.HoverVisible = true;
+            this.emissao.Border.Rounding = 8;
+            this.emissao.Border.Thickness = 1;
+            this.emissao.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.emissao.Border.Visible = true;
+            this.emissao.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.emissao.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.emissao.ButtonBorder.HoverVisible = true;
+            this.emissao.ButtonBorder.Rounding = 6;
+            this.emissao.ButtonBorder.Thickness = 1;
+            this.emissao.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.emissao.ButtonBorder.Visible = true;
+            this.emissao.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.emissao.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.emissao.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.emissao.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.emissao.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emissao.ButtonIndent = 3;
+            this.emissao.ButtonText = "visualButton";
+            this.emissao.ButtonVisible = false;
+            this.emissao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.emissao.Image = null;
+            this.emissao.ImageSize = new System.Drawing.Size(16, 16);
+            this.emissao.ImageVisible = false;
+            this.emissao.ImageWidth = 35;
+            this.emissao.Location = new System.Drawing.Point(30, 181);
+            this.emissao.MaxLength = 10;
+            this.emissao.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.emissao.Name = "emissao";
+            this.emissao.PasswordChar = '\0';
+            this.emissao.ReadOnly = false;
+            this.emissao.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.emissao.Size = new System.Drawing.Size(112, 28);
+            this.emissao.TabIndex = 103;
+            this.emissao.TextBoxWidth = 100;
+            this.emissao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.emissao.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.emissao.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.emissao.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.emissao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.emissao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.emissao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.emissao.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.emissao.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emissao.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.emissao.Watermark.Text = "Watermark text";
+            this.emissao.Watermark.Visible = false;
+            this.emissao.WordWrap = true;
             // 
             // label7
             // 
@@ -196,64 +196,64 @@
             this.label7.TabIndex = 106;
             this.label7.Text = "Saída";
             // 
-            // visualTextBox3
+            // saida
             // 
-            this.visualTextBox3.AlphaNumeric = false;
-            this.visualTextBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.visualTextBox3.BackColor = System.Drawing.Color.White;
-            this.visualTextBox3.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox3.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox3.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox3.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox3.Border.HoverVisible = true;
-            this.visualTextBox3.Border.Rounding = 8;
-            this.visualTextBox3.Border.Thickness = 1;
-            this.visualTextBox3.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox3.Border.Visible = true;
-            this.visualTextBox3.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox3.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox3.ButtonBorder.HoverVisible = true;
-            this.visualTextBox3.ButtonBorder.Rounding = 6;
-            this.visualTextBox3.ButtonBorder.Thickness = 1;
-            this.visualTextBox3.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox3.ButtonBorder.Visible = true;
-            this.visualTextBox3.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox3.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox3.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox3.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox3.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox3.ButtonIndent = 3;
-            this.visualTextBox3.ButtonText = "visualButton";
-            this.visualTextBox3.ButtonVisible = false;
-            this.visualTextBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox3.Image = null;
-            this.visualTextBox3.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox3.ImageVisible = false;
-            this.visualTextBox3.ImageWidth = 35;
-            this.visualTextBox3.Location = new System.Drawing.Point(148, 181);
-            this.visualTextBox3.MaxLength = 10;
-            this.visualTextBox3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox3.Name = "visualTextBox3";
-            this.visualTextBox3.PasswordChar = '\0';
-            this.visualTextBox3.ReadOnly = false;
-            this.visualTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox3.Size = new System.Drawing.Size(115, 28);
-            this.visualTextBox3.TabIndex = 105;
-            this.visualTextBox3.TextBoxWidth = 103;
-            this.visualTextBox3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox3.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox3.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox3.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox3.Watermark.Text = "Watermark text";
-            this.visualTextBox3.Watermark.Visible = false;
-            this.visualTextBox3.WordWrap = true;
+            this.saida.AlphaNumeric = false;
+            this.saida.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.saida.BackColor = System.Drawing.Color.White;
+            this.saida.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.saida.BackColorState.Enabled = System.Drawing.Color.White;
+            this.saida.Border.Color = System.Drawing.Color.Gainsboro;
+            this.saida.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.saida.Border.HoverVisible = true;
+            this.saida.Border.Rounding = 8;
+            this.saida.Border.Thickness = 1;
+            this.saida.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.saida.Border.Visible = true;
+            this.saida.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.saida.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.saida.ButtonBorder.HoverVisible = true;
+            this.saida.ButtonBorder.Rounding = 6;
+            this.saida.ButtonBorder.Thickness = 1;
+            this.saida.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.saida.ButtonBorder.Visible = true;
+            this.saida.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.saida.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.saida.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.saida.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.saida.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saida.ButtonIndent = 3;
+            this.saida.ButtonText = "visualButton";
+            this.saida.ButtonVisible = false;
+            this.saida.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saida.Image = null;
+            this.saida.ImageSize = new System.Drawing.Size(16, 16);
+            this.saida.ImageVisible = false;
+            this.saida.ImageWidth = 35;
+            this.saida.Location = new System.Drawing.Point(148, 181);
+            this.saida.MaxLength = 10;
+            this.saida.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.saida.Name = "saida";
+            this.saida.PasswordChar = '\0';
+            this.saida.ReadOnly = false;
+            this.saida.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.saida.Size = new System.Drawing.Size(115, 28);
+            this.saida.TabIndex = 105;
+            this.saida.TextBoxWidth = 103;
+            this.saida.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.saida.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saida.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saida.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saida.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.saida.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.saida.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.saida.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.saida.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saida.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.saida.Watermark.Text = "Watermark text";
+            this.saida.Watermark.Visible = false;
+            this.saida.WordWrap = true;
             // 
             // label8
             // 
@@ -268,64 +268,64 @@
             this.label8.TabIndex = 108;
             this.label8.Text = "Hora";
             // 
-            // visualTextBox4
+            // hora
             // 
-            this.visualTextBox4.AlphaNumeric = false;
-            this.visualTextBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.visualTextBox4.BackColor = System.Drawing.Color.White;
-            this.visualTextBox4.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox4.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox4.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox4.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox4.Border.HoverVisible = true;
-            this.visualTextBox4.Border.Rounding = 8;
-            this.visualTextBox4.Border.Thickness = 1;
-            this.visualTextBox4.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox4.Border.Visible = true;
-            this.visualTextBox4.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox4.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox4.ButtonBorder.HoverVisible = true;
-            this.visualTextBox4.ButtonBorder.Rounding = 6;
-            this.visualTextBox4.ButtonBorder.Thickness = 1;
-            this.visualTextBox4.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox4.ButtonBorder.Visible = true;
-            this.visualTextBox4.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox4.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox4.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox4.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox4.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox4.ButtonIndent = 3;
-            this.visualTextBox4.ButtonText = "visualButton";
-            this.visualTextBox4.ButtonVisible = false;
-            this.visualTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox4.Image = null;
-            this.visualTextBox4.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox4.ImageVisible = false;
-            this.visualTextBox4.ImageWidth = 35;
-            this.visualTextBox4.Location = new System.Drawing.Point(269, 181);
-            this.visualTextBox4.MaxLength = 10;
-            this.visualTextBox4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox4.Name = "visualTextBox4";
-            this.visualTextBox4.PasswordChar = '\0';
-            this.visualTextBox4.ReadOnly = false;
-            this.visualTextBox4.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox4.Size = new System.Drawing.Size(89, 28);
-            this.visualTextBox4.TabIndex = 107;
-            this.visualTextBox4.TextBoxWidth = 77;
-            this.visualTextBox4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox4.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox4.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox4.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox4.Watermark.Text = "Watermark text";
-            this.visualTextBox4.Watermark.Visible = false;
-            this.visualTextBox4.WordWrap = true;
+            this.hora.AlphaNumeric = false;
+            this.hora.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.hora.BackColor = System.Drawing.Color.White;
+            this.hora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.hora.BackColorState.Enabled = System.Drawing.Color.White;
+            this.hora.Border.Color = System.Drawing.Color.Gainsboro;
+            this.hora.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.hora.Border.HoverVisible = true;
+            this.hora.Border.Rounding = 8;
+            this.hora.Border.Thickness = 1;
+            this.hora.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.hora.Border.Visible = true;
+            this.hora.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.hora.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.hora.ButtonBorder.HoverVisible = true;
+            this.hora.ButtonBorder.Rounding = 6;
+            this.hora.ButtonBorder.Thickness = 1;
+            this.hora.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.hora.ButtonBorder.Visible = true;
+            this.hora.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.hora.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.hora.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.hora.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.hora.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hora.ButtonIndent = 3;
+            this.hora.ButtonText = "visualButton";
+            this.hora.ButtonVisible = false;
+            this.hora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hora.Image = null;
+            this.hora.ImageSize = new System.Drawing.Size(16, 16);
+            this.hora.ImageVisible = false;
+            this.hora.ImageWidth = 35;
+            this.hora.Location = new System.Drawing.Point(269, 181);
+            this.hora.MaxLength = 10;
+            this.hora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.hora.Name = "hora";
+            this.hora.PasswordChar = '\0';
+            this.hora.ReadOnly = false;
+            this.hora.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.hora.Size = new System.Drawing.Size(89, 28);
+            this.hora.TabIndex = 107;
+            this.hora.TextBoxWidth = 77;
+            this.hora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.hora.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hora.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hora.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hora.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.hora.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.hora.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.hora.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.hora.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hora.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.hora.Watermark.Text = "Watermark text";
+            this.hora.Watermark.Visible = false;
+            this.hora.WordWrap = true;
             // 
             // tipo
             // 
@@ -616,65 +616,65 @@
             this.label12.TabIndex = 124;
             this.label12.Text = "Informações Adicionais Fisco";
             // 
-            // visualTextBox5
+            // infoFisco
             // 
-            this.visualTextBox5.AlphaNumeric = false;
-            this.visualTextBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.visualTextBox5.BackColor = System.Drawing.Color.White;
-            this.visualTextBox5.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox5.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox5.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox5.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox5.Border.HoverVisible = true;
-            this.visualTextBox5.Border.Rounding = 8;
-            this.visualTextBox5.Border.Thickness = 1;
-            this.visualTextBox5.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox5.Border.Visible = true;
-            this.visualTextBox5.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox5.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox5.ButtonBorder.HoverVisible = true;
-            this.visualTextBox5.ButtonBorder.Rounding = 6;
-            this.visualTextBox5.ButtonBorder.Thickness = 1;
-            this.visualTextBox5.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox5.ButtonBorder.Visible = true;
-            this.visualTextBox5.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox5.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox5.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox5.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox5.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox5.ButtonIndent = 3;
-            this.visualTextBox5.ButtonText = "visualButton";
-            this.visualTextBox5.ButtonVisible = false;
-            this.visualTextBox5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox5.Image = null;
-            this.visualTextBox5.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox5.ImageVisible = false;
-            this.visualTextBox5.ImageWidth = 35;
-            this.visualTextBox5.Location = new System.Drawing.Point(517, 295);
-            this.visualTextBox5.MaxLength = 10;
-            this.visualTextBox5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox5.MultiLine = true;
-            this.visualTextBox5.Name = "visualTextBox5";
-            this.visualTextBox5.PasswordChar = '\0';
-            this.visualTextBox5.ReadOnly = false;
-            this.visualTextBox5.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox5.Size = new System.Drawing.Size(460, 135);
-            this.visualTextBox5.TabIndex = 123;
-            this.visualTextBox5.TextBoxWidth = 448;
-            this.visualTextBox5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox5.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox5.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox5.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox5.Watermark.Text = "Watermark text";
-            this.visualTextBox5.Watermark.Visible = false;
-            this.visualTextBox5.WordWrap = true;
+            this.infoFisco.AlphaNumeric = false;
+            this.infoFisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.infoFisco.BackColor = System.Drawing.Color.White;
+            this.infoFisco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoFisco.BackColorState.Enabled = System.Drawing.Color.White;
+            this.infoFisco.Border.Color = System.Drawing.Color.Gainsboro;
+            this.infoFisco.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.infoFisco.Border.HoverVisible = true;
+            this.infoFisco.Border.Rounding = 8;
+            this.infoFisco.Border.Thickness = 1;
+            this.infoFisco.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.infoFisco.Border.Visible = true;
+            this.infoFisco.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.infoFisco.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.infoFisco.ButtonBorder.HoverVisible = true;
+            this.infoFisco.ButtonBorder.Rounding = 6;
+            this.infoFisco.ButtonBorder.Thickness = 1;
+            this.infoFisco.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.infoFisco.ButtonBorder.Visible = true;
+            this.infoFisco.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.infoFisco.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoFisco.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.infoFisco.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.infoFisco.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoFisco.ButtonIndent = 3;
+            this.infoFisco.ButtonText = "visualButton";
+            this.infoFisco.ButtonVisible = false;
+            this.infoFisco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoFisco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoFisco.Image = null;
+            this.infoFisco.ImageSize = new System.Drawing.Size(16, 16);
+            this.infoFisco.ImageVisible = false;
+            this.infoFisco.ImageWidth = 35;
+            this.infoFisco.Location = new System.Drawing.Point(517, 295);
+            this.infoFisco.MaxLength = 10;
+            this.infoFisco.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.infoFisco.MultiLine = true;
+            this.infoFisco.Name = "infoFisco";
+            this.infoFisco.PasswordChar = '\0';
+            this.infoFisco.ReadOnly = false;
+            this.infoFisco.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.infoFisco.Size = new System.Drawing.Size(460, 135);
+            this.infoFisco.TabIndex = 123;
+            this.infoFisco.TextBoxWidth = 448;
+            this.infoFisco.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.infoFisco.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoFisco.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoFisco.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoFisco.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.infoFisco.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.infoFisco.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.infoFisco.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.infoFisco.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoFisco.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.infoFisco.Watermark.Text = "Watermark text";
+            this.infoFisco.Watermark.Visible = false;
+            this.infoFisco.WordWrap = true;
             // 
             // label13
             // 
@@ -689,65 +689,65 @@
             this.label13.TabIndex = 126;
             this.label13.Text = "Informações Adicionais Contribuinte";
             // 
-            // visualTextBox6
+            // infoContribuinte
             // 
-            this.visualTextBox6.AlphaNumeric = false;
-            this.visualTextBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.visualTextBox6.BackColor = System.Drawing.Color.White;
-            this.visualTextBox6.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox6.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualTextBox6.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualTextBox6.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualTextBox6.Border.HoverVisible = true;
-            this.visualTextBox6.Border.Rounding = 8;
-            this.visualTextBox6.Border.Thickness = 1;
-            this.visualTextBox6.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox6.Border.Visible = true;
-            this.visualTextBox6.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualTextBox6.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualTextBox6.ButtonBorder.HoverVisible = true;
-            this.visualTextBox6.ButtonBorder.Rounding = 6;
-            this.visualTextBox6.ButtonBorder.Thickness = 1;
-            this.visualTextBox6.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualTextBox6.ButtonBorder.Visible = true;
-            this.visualTextBox6.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox6.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualTextBox6.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualTextBox6.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualTextBox6.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox6.ButtonIndent = 3;
-            this.visualTextBox6.ButtonText = "visualButton";
-            this.visualTextBox6.ButtonVisible = false;
-            this.visualTextBox6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox6.Image = null;
-            this.visualTextBox6.ImageSize = new System.Drawing.Size(16, 16);
-            this.visualTextBox6.ImageVisible = false;
-            this.visualTextBox6.ImageWidth = 35;
-            this.visualTextBox6.Location = new System.Drawing.Point(31, 295);
-            this.visualTextBox6.MaxLength = 10;
-            this.visualTextBox6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualTextBox6.MultiLine = true;
-            this.visualTextBox6.Name = "visualTextBox6";
-            this.visualTextBox6.PasswordChar = '\0';
-            this.visualTextBox6.ReadOnly = false;
-            this.visualTextBox6.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.visualTextBox6.Size = new System.Drawing.Size(470, 135);
-            this.visualTextBox6.TabIndex = 125;
-            this.visualTextBox6.TextBoxWidth = 458;
-            this.visualTextBox6.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualTextBox6.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox6.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox6.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualTextBox6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualTextBox6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualTextBox6.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.visualTextBox6.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualTextBox6.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.visualTextBox6.Watermark.Text = "Watermark text";
-            this.visualTextBox6.Watermark.Visible = false;
-            this.visualTextBox6.WordWrap = true;
+            this.infoContribuinte.AlphaNumeric = false;
+            this.infoContribuinte.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.infoContribuinte.BackColor = System.Drawing.Color.White;
+            this.infoContribuinte.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoContribuinte.BackColorState.Enabled = System.Drawing.Color.White;
+            this.infoContribuinte.Border.Color = System.Drawing.Color.Gainsboro;
+            this.infoContribuinte.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.infoContribuinte.Border.HoverVisible = true;
+            this.infoContribuinte.Border.Rounding = 8;
+            this.infoContribuinte.Border.Thickness = 1;
+            this.infoContribuinte.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.infoContribuinte.Border.Visible = true;
+            this.infoContribuinte.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.infoContribuinte.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.infoContribuinte.ButtonBorder.HoverVisible = true;
+            this.infoContribuinte.ButtonBorder.Rounding = 6;
+            this.infoContribuinte.ButtonBorder.Thickness = 1;
+            this.infoContribuinte.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.infoContribuinte.ButtonBorder.Visible = true;
+            this.infoContribuinte.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.infoContribuinte.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoContribuinte.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.infoContribuinte.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.infoContribuinte.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoContribuinte.ButtonIndent = 3;
+            this.infoContribuinte.ButtonText = "visualButton";
+            this.infoContribuinte.ButtonVisible = false;
+            this.infoContribuinte.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoContribuinte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoContribuinte.Image = null;
+            this.infoContribuinte.ImageSize = new System.Drawing.Size(16, 16);
+            this.infoContribuinte.ImageVisible = false;
+            this.infoContribuinte.ImageWidth = 35;
+            this.infoContribuinte.Location = new System.Drawing.Point(31, 295);
+            this.infoContribuinte.MaxLength = 10;
+            this.infoContribuinte.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.infoContribuinte.MultiLine = true;
+            this.infoContribuinte.Name = "infoContribuinte";
+            this.infoContribuinte.PasswordChar = '\0';
+            this.infoContribuinte.ReadOnly = false;
+            this.infoContribuinte.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.infoContribuinte.Size = new System.Drawing.Size(470, 135);
+            this.infoContribuinte.TabIndex = 125;
+            this.infoContribuinte.TextBoxWidth = 458;
+            this.infoContribuinte.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.infoContribuinte.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoContribuinte.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoContribuinte.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoContribuinte.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.infoContribuinte.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.infoContribuinte.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.infoContribuinte.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.infoContribuinte.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoContribuinte.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.infoContribuinte.Watermark.Text = "Watermark text";
+            this.infoContribuinte.Watermark.Visible = false;
+            this.infoContribuinte.WordWrap = true;
             // 
             // label14
             // 
@@ -879,6 +879,28 @@
             this.panel2.Size = new System.Drawing.Size(1008, 97);
             this.panel2.TabIndex = 180;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(809, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // step3
+            // 
+            this.step3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step3.Image = global::Emiplus.Properties.Resources.question;
+            this.step3.Location = new System.Drawing.Point(476, 32);
+            this.step3.Name = "step3";
+            this.step3.Size = new System.Drawing.Size(50, 50);
+            this.step3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step3.TabIndex = 13;
+            this.step3.TabStop = false;
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -903,6 +925,17 @@
             this.label16.TabIndex = 11;
             this.label16.Text = "5. Finalização";
             // 
+            // step4
+            // 
+            this.step4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step4.Image = ((System.Drawing.Image)(resources.GetObject("step4.Image")));
+            this.step4.Location = new System.Drawing.Point(640, 32);
+            this.step4.Name = "step4";
+            this.step4.Size = new System.Drawing.Size(50, 50);
+            this.step4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step4.TabIndex = 8;
+            this.step4.TabStop = false;
+            // 
             // label17
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -915,6 +948,17 @@
             this.label17.TabIndex = 9;
             this.label17.Text = "4. Pagamento";
             // 
+            // step2
+            // 
+            this.step2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step2.Image = global::Emiplus.Properties.Resources.question;
+            this.step2.Location = new System.Drawing.Point(311, 32);
+            this.step2.Name = "step2";
+            this.step2.Size = new System.Drawing.Size(50, 50);
+            this.step2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step2.TabIndex = 6;
+            this.step2.TabStop = false;
+            // 
             // label18
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -926,6 +970,18 @@
             this.label18.Size = new System.Drawing.Size(101, 21);
             this.label18.TabIndex = 7;
             this.label18.Text = "2. Produtos";
+            // 
+            // step1
+            // 
+            this.step1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.step1.Image = ((System.Drawing.Image)(resources.GetObject("step1.Image")));
+            this.step1.Location = new System.Drawing.Point(143, 32);
+            this.step1.Name = "step1";
+            this.step1.Size = new System.Drawing.Size(50, 50);
+            this.step1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step1.TabIndex = 4;
+            this.step1.TabStop = false;
             // 
             // label19
             // 
@@ -974,62 +1030,6 @@
             this.progress3.Name = "progress3";
             this.progress3.Size = new System.Drawing.Size(158, 14);
             this.progress3.TabIndex = 12;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(809, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // step3
-            // 
-            this.step3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step3.Image = global::Emiplus.Properties.Resources.question;
-            this.step3.Location = new System.Drawing.Point(476, 32);
-            this.step3.Name = "step3";
-            this.step3.Size = new System.Drawing.Size(50, 50);
-            this.step3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step3.TabIndex = 13;
-            this.step3.TabStop = false;
-            // 
-            // step4
-            // 
-            this.step4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step4.Image = ((System.Drawing.Image)(resources.GetObject("step4.Image")));
-            this.step4.Location = new System.Drawing.Point(640, 32);
-            this.step4.Name = "step4";
-            this.step4.Size = new System.Drawing.Size(50, 50);
-            this.step4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step4.TabIndex = 8;
-            this.step4.TabStop = false;
-            // 
-            // step2
-            // 
-            this.step2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step2.Image = global::Emiplus.Properties.Resources.question;
-            this.step2.Location = new System.Drawing.Point(311, 32);
-            this.step2.Name = "step2";
-            this.step2.Size = new System.Drawing.Size(50, 50);
-            this.step2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step2.TabIndex = 6;
-            this.step2.TabStop = false;
-            // 
-            // step1
-            // 
-            this.step1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.step1.Image = ((System.Drawing.Image)(resources.GetObject("step1.Image")));
-            this.step1.Location = new System.Drawing.Point(143, 32);
-            this.step1.Name = "step1";
-            this.step1.Size = new System.Drawing.Size(50, 50);
-            this.step1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step1.TabIndex = 4;
-            this.step1.TabStop = false;
             // 
             // button2
             // 
@@ -1188,9 +1188,9 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.addNatureza);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.visualTextBox6);
+            this.Controls.Add(this.infoContribuinte);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.visualTextBox5);
+            this.Controls.Add(this.infoFisco);
             this.Controls.Add(this.naturezaOp);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.finalidade);
@@ -1200,11 +1200,11 @@
             this.Controls.Add(this.tipo);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.visualTextBox4);
+            this.Controls.Add(this.hora);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.visualTextBox3);
+            this.Controls.Add(this.saida);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.visualTextBox2);
+            this.Controls.Add(this.emissao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1230,11 +1230,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox2;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox emissao;
         private System.Windows.Forms.Label label7;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox3;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox saida;
         private System.Windows.Forms.Label label8;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox4;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox hora;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox tipo;
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox localDestino;
@@ -1244,9 +1244,9 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox naturezaOp;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox5;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox infoFisco;
         private System.Windows.Forms.Label label13;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox visualTextBox6;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox infoContribuinte;
         private System.Windows.Forms.Button addNatureza;
         private System.Windows.Forms.Label label14;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarCliente;

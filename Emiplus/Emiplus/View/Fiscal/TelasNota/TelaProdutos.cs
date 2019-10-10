@@ -18,13 +18,15 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
+        private Model.Nota _mNota = new Model.Nota();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public TelaProdutos()
         {
             InitializeComponent();
-            Id = TelaDados.Id;
+            Id = Nota.Id;
+            _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
 
             Eventos();
         }
@@ -35,8 +37,6 @@ namespace Emiplus.View.Fiscal.TelasNota
         /// </summary>
         private void LoadItens()
         {
-            _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
-
             // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
             ModalItens();
 

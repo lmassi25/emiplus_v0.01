@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -242,6 +243,29 @@ namespace Emiplus.Data.Helpers
         public static bool IsLessThanOrEqualTo<T>(this T firstValue, T secondValue) where T : IComparable<T>
         {
             return (firstValue.IsEqualTo(secondValue) || firstValue.IsLessThan(secondValue));
+        }
+
+        public static void BorderInput(VisualPlus.Toolkit.Controls.Editors.VisualTextBox input, BorderColor color)
+        {
+            switch (color)
+            {
+                case BorderColor.Vermelho:
+                    input.Border.Color = Color.FromArgb(255, 128, 128);
+                    input.Border.HoverColor = Color.FromArgb(255, 128, 128);
+                    break;
+                case BorderColor.Azul:
+                    input.Border.Color = Color.FromArgb(128, 128, 255);
+                    input.Border.HoverColor = Color.FromArgb(128, 128, 255);
+                    break;
+                default:
+                    input.Border.Color = Color.Gainsboro;
+                    input.Border.HoverColor = Color.Gainsboro;
+                    break;
+            }
+        }
+
+        public enum BorderColor {
+            Vermelho, Azul
         }
     }
 }

@@ -212,6 +212,7 @@
     <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
     <Compile Include="Model\Natureza.cs" />
+    <Compile Include="Model\Nota.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\PedidoItem.cs" />
     <Compile Include="Model\Pessoa.cs" />
@@ -280,6 +281,12 @@
     </Compile>
     <Compile Include="View\Comercial\PedidoModalItens.Designer.cs">
       <DependentUpon>PedidoModalItens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalTransportadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalTransportadora.Designer.cs">
+      <DependentUpon>PedidoModalTransportadora.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\PedidoModalVendedor.cs">
       <SubType>Form</SubType>
@@ -587,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalItens.resx">
       <DependentUpon>PedidoModalItens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalTransportadora.resx">
+      <DependentUpon>PedidoModalTransportadora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalVendedor.resx">
       <DependentUpon>PedidoModalVendedor.cs</DependentUpon>

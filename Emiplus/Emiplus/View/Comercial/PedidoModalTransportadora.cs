@@ -5,27 +5,27 @@ using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
-    public partial class PedidoModalClientes : Form
+    public partial class PedidoModalTransportadora : Form
     {
         public static int Id { get; set; }
         public static string page { get; set; }
 
         private Controller.Pedido _controller = new Controller.Pedido();
 
-        public PedidoModalClientes()
+        public PedidoModalTransportadora()
         {
             InitializeComponent();
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
+        private void DataTable() => _controller.GetDataTablePessoa(GridLista, search.Text, "Transportadoras");
 
         private void SelectItemGrid()
         {
-            if (GridListaClientes.SelectedRows.Count > 0)
+            if (GridLista.SelectedRows.Count > 0)
             {
                 DialogResult = DialogResult.OK;
-                Id = Convert.ToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
+                Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 Close();
             }
         }
@@ -33,7 +33,7 @@ namespace Emiplus.View.Comercial
         private void FormNovoCliente()
         {
             Id = 0;
-            Home.pessoaPage = "Clientes";
+            Home.pessoaPage = "Transportadoras";
             AddClientes f = new AddClientes();
             f.btnSalvarText = "Salvar e Inserir";
             f.btnSalvarWidth = 150;
@@ -53,13 +53,13 @@ namespace Emiplus.View.Comercial
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    GridListaClientes.Focus();
-                    Support.UpDownDataGrid(false, GridListaClientes);
+                    GridLista.Focus();
+                    Support.UpDownDataGrid(false, GridLista);
                     e.Handled = true;
                     break;
                 case Keys.Down:
-                    GridListaClientes.Focus();
-                    Support.UpDownDataGrid(true, GridListaClientes);
+                    GridLista.Focus();
+                    Support.UpDownDataGrid(true, GridLista);
                     e.Handled = true;
                     break;
                 case Keys.Escape:
@@ -75,7 +75,7 @@ namespace Emiplus.View.Comercial
                     SelectItemGrid();
                     break;
                 case Keys.Enter:
-                    if (Validation.Event(sender, GridListaClientes))
+                    if (Validation.Event(sender, GridLista))
                         SelectItemGrid();
                     break;
             }
@@ -85,12 +85,12 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             search.KeyDown += KeyDowns;
-            GridListaClientes.KeyDown += KeyDowns;
+            GridLista.KeyDown += KeyDowns;
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();
 
-            NovoCliente.Click += (s, e) => FormNovoCliente();
+            Novo.Click += (s, e) => FormNovoCliente();
             btnSelecionar.Click += (s, e) => SelectItemGrid();
 
             btnCancelar.Click += (s, e) => Close();

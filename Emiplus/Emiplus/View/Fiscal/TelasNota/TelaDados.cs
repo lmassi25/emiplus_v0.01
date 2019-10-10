@@ -5,12 +5,15 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+using System;
 
 namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaDados : Form
     {
-        public static int Id { get; set; } // id nota
+        private static int Id { get; set; } // id nota
+        public static int IdDetailsNota { get; set; }
+
         private int IdNatureza { get; set; }
         private int IdCliente { get; set; }
         private int IdAddr { get; set; }
@@ -18,10 +21,17 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.PessoaEndereco _mClienteAddr = new Model.PessoaEndereco();
+        private Model.Nota _mNota = new Model.Nota();
 
         public TelaDados()
         {
             InitializeComponent();
+            Id = Nota.Id;
+            IdDetailsNota = Nota.IdDetailsNota;
+
+            _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
+            _mNota = _mPedido.FindById(IdDetailsNota).FirstOrDefault<Model.Nota>();
+
             Eventos();
         }
 
@@ -96,6 +106,27 @@ namespace Emiplus.View.Fiscal.TelasNota
                 return true;
             }
 
+            if (string.IsNullOrEmpty(emissao.Text))
+            {
+                Validation.BorderInput(emissao, Validation.BorderColor.Vermelho);
+                Alert.Message("Emissão é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(saida.Text))
+            {
+                Validation.BorderInput(saida, Validation.BorderColor.Vermelho);
+                Alert.Message("Saída é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(hora.Text))
+            {
+                Validation.BorderInput(hora, Validation.BorderColor.Vermelho);
+                Alert.Message("Hora é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
+                return true;
+            }
+
             return false;
         }
 
@@ -106,21 +137,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if (Id > 0)
                 {
                     LoadData();
-                }
-                else
-                {
-                    _mPedido.Id = Id;
-                    _mPedido.Tipo = "Nota";
-                    if (_mPedido.Save(_mPedido))
-                    {
-                        Id = _mPedido.GetLastId();
-                        LoadData();
-                    }
-                    else
-                    {
-                        Alert.Message("Opss", "Erro ao criar Nota.", Alert.AlertType.error);
-                        Close();
-                    }
                 }
             };
 
@@ -146,6 +162,17 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     return;
                 }
+
+                _mPedido.Id = Id;
+                _mPedido.Emissao = emissao.Text != "" ? DateTime.Parse(emissao.Text) : DateTime.Now;
+                _mPedido.HoraSaida = saida.Text + "@" + hora.Text;
+                _mPedido.Finalidade = Validation.ConvertToInt32(finalidade.SelectedValue);
+                _mPedido.Destino = Validation.ConvertToInt32(localDestino.SelectedValue);
+                _mPedido.TipoNFe = Validation.ConvertToInt32(tipo.SelectedValue);
+                _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue);
+                _mPedido.info_contribuinte = infoContribuinte.Text;
+                _mPedido.info_fisco = infoFisco.Text;
+                _mPedido.Save(_mPedido);
 
                 OpenForm.Show<TelaProdutos>(this);
             };
@@ -210,6 +237,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                 }
             };
 
+            emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            saida.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            hora.KeyPress += (s, e) => Masks.MaskHour(s, e);
         }
     }
 }
