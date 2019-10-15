@@ -174,8 +174,8 @@ namespace Emiplus.View.Comercial
             if (Home.pessoaPage == "Transportadoras")
             {
                 placa.Text = _modelPessoa?.Transporte_placa ?? "";
-                uf.Text = _modelPessoa?.Transporte_placa ?? "";
-                rntc.Text = _modelPessoa?.Transporte_placa ?? "";
+                uf.Text = _modelPessoa?.Transporte_uf ?? "";
+                rntc.Text = _modelPessoa?.Transporte_rntc ?? "";
             }
         }
 

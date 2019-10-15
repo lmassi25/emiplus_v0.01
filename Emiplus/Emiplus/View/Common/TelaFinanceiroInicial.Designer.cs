@@ -33,20 +33,18 @@
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.novoPagamento = new System.Windows.Forms.Button();
             this.aPagar = new System.Windows.Forms.Button();
             this.aReceber = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.novoRecebimento = new System.Windows.Forms.Button();
+            this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,13 +57,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(155, 336);
+            this.visualSeparator3.Location = new System.Drawing.Point(137, 335);
             this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator3.Name = "visualSeparator3";
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(551, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(571, 4);
             this.visualSeparator3.TabIndex = 94;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -99,29 +97,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Financeiro";
             // 
-            // visualSeparator2
-            // 
-            this.visualSeparator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Location = new System.Drawing.Point(111, 169);
-            this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator2.Name = "visualSeparator2";
-            this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(595, 4);
-            this.visualSeparator2.TabIndex = 92;
-            this.visualSeparator2.Text = "visualSeparator2";
-            this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label5);
@@ -142,29 +117,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // visualSeparator1
-            // 
-            this.visualSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator1.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator1.Location = new System.Drawing.Point(115, 501);
-            this.visualSeparator1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator1.Name = "visualSeparator1";
-            this.visualSeparator1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator1.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator1.ShadowVisible = true;
-            this.visualSeparator1.Size = new System.Drawing.Size(591, 4);
-            this.visualSeparator1.TabIndex = 91;
-            this.visualSeparator1.Text = "visualSeparator1";
-            this.visualSeparator1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // novoPagamento
             // 
@@ -235,39 +187,6 @@
             this.aReceber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.aReceber.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(21, 492);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 18);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "Relatórios";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(21, 328);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 18);
-            this.label6.TabIndex = 82;
-            this.label6.Text = "Movimentações";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(19, 161);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 18);
-            this.label3.TabIndex = 81;
-            this.label3.Text = "Cadastros";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -328,23 +247,66 @@
             this.novoRecebimento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.novoRecebimento.UseVisualStyleBackColor = false;
             // 
+            // visualSeparator2
+            // 
+            this.visualSeparator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator2.Location = new System.Drawing.Point(93, 180);
+            this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator2.Name = "visualSeparator2";
+            this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator2.ShadowVisible = true;
+            this.visualSeparator2.Size = new System.Drawing.Size(615, 4);
+            this.visualSeparator2.TabIndex = 97;
+            this.visualSeparator2.Text = "visualSeparator2";
+            this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(12, 170);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 20);
+            this.label3.TabIndex = 96;
+            this.label3.Text = "Cadastros";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(12, 326);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 20);
+            this.label4.TabIndex = 98;
+            this.label4.Text = "Movimentações";
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.visualSeparator2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.novoRecebimento);
             this.Controls.Add(this.visualSeparator3);
-            this.Controls.Add(this.visualSeparator2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.novoPagamento);
             this.Controls.Add(this.aPagar);
             this.Controls.Add(this.aReceber);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -366,19 +328,17 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
         private System.Windows.Forms.Button novoPagamento;
         private System.Windows.Forms.Button aPagar;
         private System.Windows.Forms.Button aReceber;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button novoRecebimento;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

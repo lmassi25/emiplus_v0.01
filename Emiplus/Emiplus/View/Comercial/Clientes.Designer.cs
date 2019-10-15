@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -48,15 +49,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Loading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHelp
@@ -105,6 +105,8 @@
             // 
             this.GridLista.AllowUserToAddRows = false;
             this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -189,6 +191,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(659, 280);
             this.panel2.TabIndex = 12;
+            // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.Loading.Location = new System.Drawing.Point(3, 3);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(259, 159);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.Loading.TabIndex = 7;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
             // 
             // label3
             // 
@@ -361,18 +375,6 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // Loading
-            // 
-            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
-            this.Loading.Location = new System.Drawing.Point(3, 3);
-            this.Loading.Name = "Loading";
-            this.Loading.Size = new System.Drawing.Size(259, 159);
-            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.Loading.TabIndex = 7;
-            this.Loading.TabStop = false;
-            this.Loading.Visible = false;
-            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -394,12 +396,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

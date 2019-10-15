@@ -16,7 +16,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Nota());
+            Application.Run(new Home());
         }
     }
 }

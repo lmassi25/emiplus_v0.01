@@ -74,34 +74,32 @@
 
         public void GetDataTableEnderecos(DataGridView Table, int Id)
         {
-            Table.ColumnCount = 9;
+            Table.ColumnCount = 8;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Título";
-            Table.Columns[1].Visible = false;
+            Table.Columns[1].Name = "CEP";
+            Table.Columns[1].Width = 100;
 
-            Table.Columns[2].Name = "CEP";
-            Table.Columns[2].Width = 150;
+            Table.Columns[2].Name = "Rua";
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[2].MinimumWidth = 150;
 
-            Table.Columns[3].Name = "Rua";
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[3].Name = "N°";
+            Table.Columns[2].Width = 70;
 
-            Table.Columns[4].Name = "N°";
-            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[4].Name = "Bairro";
+            Table.Columns[4].Width = 150;
 
-            Table.Columns[5].Name = "Bairro";
-            Table.Columns[5].Width = 300;
+            Table.Columns[5].Name = "Cidade";
+            Table.Columns[5].Width = 150;
 
-            Table.Columns[6].Name = "Cidade";
-            Table.Columns[6].Width = 200;
+            Table.Columns[6].Name = "Estado";
+            Table.Columns[6].Width = 100;
 
-            Table.Columns[7].Name = "Estado";
-            Table.Columns[7].Width = 100;
-
-            Table.Columns[8].Name = "País";
-            Table.Columns[8].Width = 100;
+            Table.Columns[7].Name = "País";
+            Table.Columns[7].Width = 70;
 
             Table.Rows.Clear();
 
@@ -117,7 +115,6 @@
             {
                 Table.Rows.Add(
                     item.ID,
-                    item.TITULO,
                     item.CEP,
                     item.RUA,
                     item.NR,

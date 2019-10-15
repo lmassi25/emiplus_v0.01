@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Emiplus.View.Financeiro.TelasNota
+namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaFinal : Form
     {

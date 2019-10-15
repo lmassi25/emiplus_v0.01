@@ -177,6 +177,7 @@
     <Compile Include="Controller\Fiscal.cs" />
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
+    <Compile Include="Controller\Natureza.cs" />
     <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
@@ -210,6 +211,8 @@
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
+    <Compile Include="Model\Natureza.cs" />
+    <Compile Include="Model\Nota.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\PedidoItem.cs" />
     <Compile Include="Model\Pessoa.cs" />
@@ -278,6 +281,12 @@
     </Compile>
     <Compile Include="View\Comercial\PedidoModalItens.Designer.cs">
       <DependentUpon>PedidoModalItens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalTransportadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalTransportadora.Designer.cs">
+      <DependentUpon>PedidoModalTransportadora.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\PedidoModalVendedor.cs">
       <SubType>Form</SubType>
@@ -381,46 +390,64 @@
     <Compile Include="View\Financeiro\EditarTitulo.Designer.cs">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\Nota.cs">
+    <Compile Include="View\Fiscal\AddNatureza.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\Nota.Designer.cs">
+    <Compile Include="View\Fiscal\AddNatureza.Designer.cs">
+      <DependentUpon>AddNatureza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\Natureza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\Natureza.Designer.cs">
+      <DependentUpon>Natureza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\Nota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\Nota.Designer.cs">
       <DependentUpon>Nota.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\EditProduct.cs">
+    <Compile Include="View\Fiscal\TelasNota\DetailsClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\EditProduct.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\DetailsClient.Designer.cs">
+      <DependentUpon>DetailsClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\EditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\EditProduct.Designer.cs">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaDados.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaDados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaDados.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaDados.Designer.cs">
       <DependentUpon>TelaDados.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaFinal.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaFinal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaFinal.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaFinal.Designer.cs">
       <DependentUpon>TelaFinal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaFrete.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaFrete.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaFrete.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaFrete.Designer.cs">
       <DependentUpon>TelaFrete.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaPagamento.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaPagamento.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaPagamento.Designer.cs">
       <DependentUpon>TelaPagamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaProdutos.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Financeiro\TelasNota\TelaProdutos.Designer.cs">
+    <Compile Include="View\Fiscal\TelasNota\TelaProdutos.Designer.cs">
       <DependentUpon>TelaProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Financeiro\Titulos.cs">
@@ -568,6 +595,9 @@
     <EmbeddedResource Include="View\Comercial\PedidoModalItens.resx">
       <DependentUpon>PedidoModalItens.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalTransportadora.resx">
+      <DependentUpon>PedidoModalTransportadora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalVendedor.resx">
       <DependentUpon>PedidoModalVendedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -619,25 +649,34 @@
     <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\Nota.resx">
+    <EmbeddedResource Include="View\Fiscal\AddNatureza.resx">
+      <DependentUpon>AddNatureza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\Natureza.resx">
+      <DependentUpon>Natureza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\EditProduct.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\DetailsClient.resx">
+      <DependentUpon>DetailsClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaDados.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\TelaDados.resx">
       <DependentUpon>TelaDados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaFinal.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\TelaFinal.resx">
       <DependentUpon>TelaFinal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaFrete.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\TelaFrete.resx">
       <DependentUpon>TelaFrete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaPagamento.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\TelaPagamento.resx">
       <DependentUpon>TelaPagamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Financeiro\TelasNota\TelaProdutos.resx">
+    <EmbeddedResource Include="View\Fiscal\TelasNota\TelaProdutos.resx">
       <DependentUpon>TelaProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
@@ -845,7 +884,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Fiscal\" />
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>

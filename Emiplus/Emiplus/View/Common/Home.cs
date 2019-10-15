@@ -208,7 +208,7 @@ namespace Emiplus.View.Common
                 homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);
                 homeMenuFiscal.ForeColor = Color.WhiteSmoke;
                 pictureBox6.BackColor = Color.FromArgb(37, 48, 50);
-                OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
+                OpenForm.ShowInPanel<TelaFiscalInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;
                 homeMenuProducts.BackColor = Color.Transparent;

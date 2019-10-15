@@ -43,6 +43,23 @@
         public int status { get; set; }
         public DateTime Emissao { get; set; }
 
+        public string HoraSaida { get; set; }
+        public int TipoNFe { get; set; }
+        public int Finalidade { get; set; }
+        public int Destino { get; set; }
+        public int id_natureza { get; set; }
+        public string info_contribuinte { get; set; }
+        public string info_fisco { get; set; }
+        public int id_useraddress { get; set; }
+
+        public int TipoFrete { get; set; }
+        public string Volumes_Frete { get; set; }
+        public string PesoLiq_Frete { get; set; }
+        public string PesoBruto_Frete { get; set; }
+        public string Especie_Frete { get; set; }
+        public string Marca_Frete { get; set; }
+        public int Id_Transportadora { get; set; }
+
         #endregion
 
         #region SQL CREATE

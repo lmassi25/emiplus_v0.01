@@ -1,4 +1,4 @@
-﻿namespace Emiplus.View.Financeiro
+﻿namespace Emiplus.View.Fiscal
 {
     partial class Nota
     {
@@ -80,6 +80,7 @@
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Nota";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
