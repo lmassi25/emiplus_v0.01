@@ -1,9 +1,12 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
+using System.Web;
 using System.Xml;
 
 namespace Emiplus.Controller
@@ -22,10 +25,83 @@ namespace Emiplus.Controller
         private Model.Pessoa _destinatario;
         private Model.PessoaEndereco _destinatarioEndereco;
         private Model.PessoaContato _destinatarioContato;
-        
+
+        private Model.Natureza _natureza;
+
+        private string _path;
+        private string _path_enviada;
+        private string _path_autorizada;
+
+        private int _servidor = 2;
+        private string TECNOSPEED_GRUPO = "Destech";
+        private string TECNOSPEED_USUARIO = "admin";
+        private string TECNOSPEED_SENHA = "LE25an10na";
+
+        private string TECNOSPEED_SERVIDOR;
+
+        private string _msg;
+
+        public string requestData;
+        public System.Timers.Timer aTimer = new System.Timers.Timer();
+
+        public Fiscal()
+        {
+            _path = IniFile.Read("Path", "LOCAL");
+
+            if (String.IsNullOrEmpty(_path))
+            {
+                _path = @"C:\Emiplus";
+            }
+
+            if (!Directory.Exists(_path + "\\NFe"))
+            {
+                Directory.CreateDirectory(_path + "\\NFe");
+            }
+
+            _path_enviada = _path + "\\NFe\\Enviadas";
+            if (!Directory.Exists(_path_enviada))
+            {
+                Directory.CreateDirectory(_path_enviada);
+            }
+
+            _path_autorizada = _path + "\\NFe\\Autorizadas";
+            if (!Directory.Exists(_path_autorizada))
+            {
+                Directory.CreateDirectory(_path_autorizada);
+            }
+
+            if (_servidor == 1)
+            {
+                TECNOSPEED_SERVIDOR = "https://managersaas.tecnospeed.com.br:8081/";
+            }
+            else
+            {
+                TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
+            }
+        }
+
+        public string Issue(int Pedido, string tipo)
+        {
+            CreateXml(Pedido, tipo);
+            _emitente.CPF = "05681389000100"; //teste
+
+            string xml = "";
+
+            var arq = new XmlDocument();
+            arq.Load(_path_enviada + "\\169.xml"); //teste
+
+            xml = arq.OuterXml;
+
+            _msg = sendRequest("envia", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+
+            if (_msg.Contains("já existe no banco de dados"))
+                _msg = sendRequest("consulta", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+        }
+
         /// <summary> 
+        /// Cria o arquivo xml
         /// </summary>
-        /// <param name="tipo">NFe, NFCe, CFe</param>
+        /// <param name="tipo">NFe, NFCe, CFe</param>        
         public void CreateXml(int Pedido, string tipo)
         {
             #region DADOS 
@@ -49,32 +125,33 @@ namespace Emiplus.Controller
             _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.Cliente).First<Model.PessoaEndereco>();
             //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
 
+            _natureza = new Model.Natureza().FindById(_pedido.id_natureza).First<Model.Natureza>();
             #endregion
 
             #region PATH 
 
-            string strFilePath = "C:\\emiplus_v0.01\\teste.xml";
+            string strFilePath = _path_enviada + "\\" + Pedido + ".xml";
 
             #endregion
 
             #region XML
 
-            XmlTextWriter xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
+            var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
             xml.Formatting = Formatting.Indented;
 
             xml.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
 
-            if (tipo == "NFe")
-            {
-                xml.WriteStartElement("NFe");
-            }
-            else if (tipo == "NFCe")
+            if (tipo == "NFCe")
             {
                 xml.WriteStartElement("NFe");
             }
             else if (tipo == "CFe")
             {
                 xml.WriteStartElement("CFe");
+            }
+            else
+            {
+                xml.WriteStartElement("NFe");
             }
 
             SetIde(xml, Pedido, tipo);
@@ -106,7 +183,7 @@ namespace Emiplus.Controller
 
             #endregion
         }
-        
+
         private void SetIde(XmlTextWriter xml, int Pedido, string tipo)
         {
             xml.WriteStartElement("ide");
@@ -202,7 +279,7 @@ namespace Emiplus.Controller
                 }
                 
                 xml.WriteElementString("cNF", "9" + "");
-                xml.WriteElementString("natOp", "");
+                xml.WriteElementString("natOp", _natureza.Nome);
 
                 if (tipo == "NFe")
                 {
@@ -222,7 +299,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("nNF", "");
                 xml.WriteElementString("dhEmi", "");
                 xml.WriteElementString("dhSaiEnt", "");
-                xml.WriteElementString("tpNF", "");
+                xml.WriteElementString("tpNF", _pedido.TipoNFe.ToString());
                 xml.WriteElementString("idDest", "");
                 xml.WriteElementString("cMunFG", "");
 
@@ -547,6 +624,111 @@ namespace Emiplus.Controller
             xml.WriteElementString("infCpl", "");
 
             xml.WriteEndElement();//infAdic
+        }
+
+        /// <summary> 
+        /// Envia requisição para a Tecnospeed
+        /// </summary>
+        /// <param name="tipo">envia</param>        
+        /// <param name="xml">conteúdo xml</param>    
+        /// <param name="documento">NFe</param>    
+        private string sendRequest(string tipo, string xml, string documento = "NFe")
+        {
+            switch (tipo)
+            {
+                case "envia":
+                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
+                    return request(requestData, documento, "envia", "POST");
+                    break;
+                /*
+                    case "consulta":
+                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
+                    return request(requestData, documento, "envia", "POST");
+                    break;
+                */
+            }
+
+            return "";
+        }
+
+        public string request(string _requestData, string _documento, string _route, string _method)
+        {
+            if (_method == "POST")
+            {
+                return postRequest(_requestData, _documento, _route);
+            }
+            else
+            {
+                return getRequest(_requestData, _documento, _route);
+            }
+        }
+        
+        public string getRequest(string get_requestData, string get_documento, string get_route)
+        {
+            string Result;
+
+            string url = TECNOSPEED_SERVIDOR + "ManagerAPIWeb/" + get_documento.ToLower() + "/" + get_route + "?" + get_requestData;
+            WebClient _request = new WebClient();
+            byte[] credentials = new UTF8Encoding().GetBytes(TECNOSPEED_USUARIO + ":" + TECNOSPEED_SENHA);
+            _request.Headers[HttpRequestHeader.Authorization] = "Basic " + Convert.ToBase64String(credentials);
+            Console.WriteLine("Basic Auth (Authorization Header):\n\n" + _request.Headers["Authorization"]);
+            Console.WriteLine("URL da Requisição:\n\n" + url);
+            Result = "";
+            try
+            {
+                Result = _request.DownloadString(url);
+            }
+            catch (Exception error)
+            {
+                Result = "Não Foi Possível Concluir a Requisição.\n" +
+                    "- - - - - - - - - - - - - ERRO - - - - - - - - - - - - -\n" + error.ToString();
+            }
+
+            return Result;
+        }
+
+        public string postRequest(string post_requestData, string post_documento, string post_route)
+        {
+            string Result;
+
+            try
+            {
+                //Cria a rota para o servidor de destino da requisição
+                WebRequest request = WebRequest.Create(TECNOSPEED_SERVIDOR + "ManagerAPIWeb/" + post_documento.ToLower() + "/" + post_route);
+                //Define o formato da requisição
+                request.ContentType = "application/x-www-form-urlencoded";
+                //Monta a hash de autorização
+                byte[] credentials = new UTF8Encoding().GetBytes(TECNOSPEED_USUARIO + ":" + TECNOSPEED_SENHA);
+                //Converte a hash de autorização para o header da requisição
+                request.Headers["Authorization"] = "Basic " + Convert.ToBase64String(credentials);
+                request.Timeout = 180000;
+                Console.WriteLine("Basic Auth (Authorization Header):\n\n" + request.Headers["Authorization"]);
+                //Define o método da requisição
+                request.Method = "POST";
+                //Encoda o conteúdo da requisição em um array de bytes
+                byte[] byteArray = Encoding.UTF8.GetBytes(post_requestData);
+                //Define o tamanho da requisição
+                request.ContentLength = byteArray.Length;
+                Console.WriteLine("URL da Requisição:\n\n" + TECNOSPEED_SERVIDOR + "ManagerAPIWeb/" + post_documento.ToLower() + "/" + post_route);
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+                //Captura a resposta da requisição
+                WebResponse response = request.GetResponse();
+                dataStream = response.GetResponseStream();
+                //Implementa um TextReader que lê caracteres de um fluxo de bytes em uma codificação específica.
+                StreamReader reader = new StreamReader(dataStream);
+                Result = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            return Result;
         }
     }
 }

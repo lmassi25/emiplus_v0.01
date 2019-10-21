@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using Emiplus.View.Fiscal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,8 @@ namespace Emiplus.View.Comercial
                 label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
             else if (Home.pedidoPage == "Compras")
                 label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
+            else if (Home.pedidoPage == "Notas")
+                label2.Text = "Gerencie as Notas aqui! Adicione, edite ou delete uma Nota.";
 
             dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
@@ -60,17 +63,35 @@ namespace Emiplus.View.Comercial
         {
             if (create)
             {
-                AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
-                return;
+                if (Home.pedidoPage == "Notas")
+                {
+                    Nota.Id = 0;
+                    Nota nota = new Nota();
+                    nota.ShowDialog();
+                    return;
+                }
+                else
+                {
+                    AddPedidos.Id = 0;
+                    AddPedidos NovoPedido = new AddPedidos();
+                    NovoPedido.ShowDialog();
+                    return;
+                }
             }
-
-            if (GridLista.SelectedRows.Count > 0)
+            else if (GridLista.SelectedRows.Count > 0)
             {
-                DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                DetailsPedido detailsPedido = new DetailsPedido();
-                detailsPedido.ShowDialog();
+                if (Home.pedidoPage == "Notas")
+                {
+                    Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    Nota nota = new Nota();
+                    nota.ShowDialog();
+                }
+                else
+                {
+                    DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    DetailsPedido detailsPedido = new DetailsPedido();
+                    detailsPedido.ShowDialog();
+                }
             }
         }
 

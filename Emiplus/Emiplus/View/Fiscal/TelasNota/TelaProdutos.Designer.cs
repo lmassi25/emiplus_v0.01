@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -262,7 +262,7 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(85, 19);
             this.label35.TabIndex = 251;
-            this.label35.Text = "0.00";
+            this.label35.Text = "0,00";
             // 
             // label12
             // 
@@ -287,7 +287,7 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(85, 17);
             this.label17.TabIndex = 261;
-            this.label17.Text = "0.00";
+            this.label17.Text = "0,00";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label11
@@ -300,7 +300,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 17);
             this.label11.TabIndex = 255;
-            this.label11.Text = "0.00";
+            this.label11.Text = "0,00";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
@@ -339,7 +339,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(85, 17);
             this.label15.TabIndex = 259;
-            this.label15.Text = "0.00";
+            this.label15.Text = "0,00";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label16
@@ -379,7 +379,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(68, 17);
             this.label19.TabIndex = 263;
-            this.label19.Text = "0.00";
+            this.label19.Text = "0,00";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label22
@@ -406,7 +406,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 17);
             this.label13.TabIndex = 257;
-            this.label13.Text = "0.00";
+            this.label13.Text = "0,00";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label24
@@ -433,7 +433,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 253;
-            this.label2.Text = "0.00";
+            this.label2.Text = "0,00";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label21
@@ -446,7 +446,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(68, 17);
             this.label21.TabIndex = 265;
-            this.label21.Text = "0.00";
+            this.label21.Text = "0,00";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label23
@@ -459,7 +459,7 @@
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(68, 17);
             this.label23.TabIndex = 267;
-            this.label23.Text = "0.00";
+            this.label23.Text = "0,00";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -512,7 +512,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(85, 17);
             this.label29.TabIndex = 274;
-            this.label29.Text = "0.00";
+            this.label29.Text = "0,00";
             // 
             // label28
             // 
@@ -537,7 +537,7 @@
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(85, 19);
             this.label33.TabIndex = 278;
-            this.label33.Text = "0.00";
+            this.label33.Text = "0,00";
             // 
             // label27
             // 
@@ -549,7 +549,7 @@
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(85, 17);
             this.label27.TabIndex = 272;
-            this.label27.Text = "0.00";
+            this.label27.Text = "0,00";
             // 
             // label34
             // 
@@ -587,7 +587,7 @@
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(85, 17);
             this.label25.TabIndex = 270;
-            this.label25.Text = "0.00";
+            this.label25.Text = "0,00";
             // 
             // label32
             // 
@@ -647,7 +647,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 19);
             this.label7.TabIndex = 281;
-            this.label7.Text = "0.00";
+            this.label7.Text = "0,00";
             // 
             // panel2
             // 
@@ -828,6 +828,7 @@
             // Quantidade
             // 
             this.Quantidade.AlphaNumeric = false;
+            this.Quantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Quantidade.BackColor = System.Drawing.Color.White;
             this.Quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Quantidade.BackColorState.Enabled = System.Drawing.Color.White;
@@ -885,6 +886,7 @@
             // 
             // label38
             // 
+            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -897,6 +899,7 @@
             // 
             // ModoRapido
             // 
+            this.ModoRapido.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ModoRapido.AutoSize = true;
             this.ModoRapido.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ModoRapido.ForeColor = System.Drawing.Color.Gray;
@@ -908,6 +911,7 @@
             // 
             // panelAvancado
             // 
+            this.panelAvancado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelAvancado.Controls.Add(this.Medidas);
             this.panelAvancado.Controls.Add(this.DescontoReais);
             this.panelAvancado.Controls.Add(this.DescontoPorcentagem);
@@ -1252,11 +1256,12 @@
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(85, 17);
             this.label44.TabIndex = 288;
-            this.label44.Text = "0.00";
+            this.label44.Text = "0,00";
             // 
             // BuscarProduto
             // 
             this.BuscarProduto.AlphaNumeric = false;
+            this.BuscarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -1331,14 +1336,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

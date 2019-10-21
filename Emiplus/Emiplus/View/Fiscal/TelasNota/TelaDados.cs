@@ -13,7 +13,6 @@ namespace Emiplus.View.Fiscal.TelasNota
     {
         private static int Id { get; set; } // id nota
         public static int IdDetailsNota { get; set; }
-
         private int IdNatureza { get; set; }
         private int IdCliente { get; set; }
         private int IdAddr { get; set; }
@@ -59,14 +58,40 @@ namespace Emiplus.View.Fiscal.TelasNota
                 var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
                 NomeCliente.Text = data.Nome;
                 IdCliente = data.Id;
+                LoadAddress();
+            }
+        }
+
+        private void LoadAddress()
+        {
+            var dataAddrFirst = _mClienteAddr.Query().Where("id_pessoa", IdCliente).FirstOrDefault<Model.PessoaEndereco>();
+            if (dataAddrFirst != null)
+            {
+                AddrInfo.Visible = true;
+                AddrInfo.Text = $"Rua: {dataAddrFirst.Rua}, {dataAddrFirst.Cep} - {dataAddrFirst.Bairro} - {dataAddrFirst.Cidade}/{dataAddrFirst.Estado} - {dataAddrFirst.Pais}";
+                IdAddr = dataAddrFirst.Id;
+
+                _mPedido.Id = Id;
+                _mPedido.id_useraddress = IdAddr;
+                _mPedido.Save(_mPedido);
+
+                addAddr.Visible = true;
+                addAddr.Text = "Alterar Endereço.";
+            }
+            else
+            {
+                AddrInfo.Visible = true;
+                addAddr.Visible = true;
+                AddrInfo.Text = "Esse destinatário não possui um endereço cadastrado!";
+                addAddr.Text = "Adicionar Endereço!";
             }
         }
 
         private void LoadData()
         {
             var tipos = new ArrayList();
-            tipos.Add(new { Id = "0", Nome = "Entrada" });
             tipos.Add(new { Id = "1", Nome = "Saída" });
+            tipos.Add(new { Id = "0", Nome = "Entrada" });            
             tipo.DataSource = tipos;
             tipo.DisplayMember = "Nome";
             tipo.ValueMember = "Id";
@@ -90,6 +115,16 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             LoadNatureza();
             LoadCliente();
+
+            emissao.Text = Validation.ConvertDateToForm(_mPedido.Emissao);
+            saida.Text = Validation.ConvertDateToForm(_mPedido.Saida);
+            hora.Text = String.IsNullOrEmpty(_mPedido.HoraSaida) ? "" : _mPedido.HoraSaida;
+            finalidade.SelectedItem = _mPedido.Finalidade;
+            localDestino.SelectedItem = _mPedido.Destino;
+            tipo.SelectedItem = _mPedido.TipoNFe;
+            naturezaOp.SelectedItem = _mPedido.id_natureza;
+            infoContribuinte.Text = _mPedido.info_contribuinte;
+            infoFisco.Text = _mPedido.info_fisco;
         }
 
         private bool Validate()
@@ -110,20 +145,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 Validation.BorderInput(emissao, Validation.BorderColor.Vermelho);
                 Alert.Message("Emissão é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(saida.Text))
-            {
-                Validation.BorderInput(saida, Validation.BorderColor.Vermelho);
-                Alert.Message("Saída é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(hora.Text))
-            {
-                Validation.BorderInput(hora, Validation.BorderColor.Vermelho);
-                Alert.Message("Hora é obrigatório!", "Preencha os campos obrigatórios.", Alert.AlertType.info);
                 return true;
             }
 
@@ -165,7 +186,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 _mPedido.Id = Id;
                 _mPedido.Emissao = emissao.Text != "" ? DateTime.Parse(emissao.Text) : DateTime.Now;
-                _mPedido.HoraSaida = saida.Text + "@" + hora.Text;
+                _mPedido.Saida = saida.Text != "" ? DateTime.Parse(saida.Text) : DateTime.Now;
+                _mPedido.HoraSaida = hora.Text;
                 _mPedido.Finalidade = Validation.ConvertToInt32(finalidade.SelectedValue);
                 _mPedido.Destino = Validation.ConvertToInt32(localDestino.SelectedValue);
                 _mPedido.TipoNFe = Validation.ConvertToInt32(tipo.SelectedValue);
@@ -186,28 +208,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                     _mPedido.Cliente = PedidoModalClientes.Id;
                     _mPedido.Save(_mPedido);
                     LoadData();
-
-                    var dataAddrFirst = _mClienteAddr.Query().Where("id_pessoa", IdCliente).FirstOrDefault<Model.PessoaEndereco>();
-                    if (dataAddrFirst != null)
-                    {
-                        AddrInfo.Visible = true;
-                        AddrInfo.Text = $"Rua: {dataAddrFirst.Rua}, {dataAddrFirst.Cep} - {dataAddrFirst.Bairro} - {dataAddrFirst.Cidade}/{dataAddrFirst.Estado} - {dataAddrFirst.Pais}";
-                        IdAddr = dataAddrFirst.Id;
-
-                        _mPedido.Id = Id;
-                        _mPedido.id_useraddress = IdAddr;
-                        _mPedido.Save(_mPedido);
-
-                        addAddr.Visible = true;
-                        addAddr.Text = "Alterar Endereço.";
-                    }
-                    else
-                    {
-                        AddrInfo.Visible = true;
-                        addAddr.Visible = true;
-                        AddrInfo.Text = "Esse destinatário não possui um endereço cadastrado!";
-                        addAddr.Text = "Adicionar Endereço!";
-                    }
                 }
             };
 
