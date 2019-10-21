@@ -72,7 +72,8 @@ namespace Emiplus.Controller
         {
             var search = "%" + SearchText + "%";
 
-            return new Model.Pedido().Query()
+            if(!string.IsNullOrEmpty(SearchText))
+                return new Model.Pedido().Query()
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where("pedido.excluir", 0)
@@ -84,6 +85,17 @@ namespace Emiplus.Controller
                 (
                     q => q.WhereLike("pessoa.nome", search, false)
                 )
+                .OrderByDesc("pedido.criado")
+                .GetAsync<dynamic>();
+
+            return new Model.Pedido().Query()
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where("pedido.excluir", 0)
+                .Where("pedido.tipo", tipo)
+                .Where("pedido.emissao", ">=", dataInicial)
+                .Where("pedido.emissao", "<=", dataFinal)
+                .Where("pedido.excluir", 0)
                 .OrderByDesc("pedido.criado")
                 .GetAsync<dynamic>();
         }

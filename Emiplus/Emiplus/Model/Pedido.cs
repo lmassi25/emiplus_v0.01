@@ -42,7 +42,7 @@
 
         public int status { get; set; }
         public DateTime Emissao { get; set; }
-
+        public DateTime Saida { get; set; }
         public string HoraSaida { get; set; }
         public int TipoNFe { get; set; }
         public int Finalidade { get; set; }

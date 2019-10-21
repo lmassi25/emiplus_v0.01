@@ -240,6 +240,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 OpenForm.Show<TelaFinal>(this);
             };
+            
+            Back.Click += (s, e) => Close();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -29,7 +30,9 @@ namespace Emiplus.View.Fiscal
                 else
                 {
                     _mPedido.Id = Id;
-                    _mPedido.Tipo = "Nota";
+                    _mPedido.Tipo = "Notas";
+                    _mPedido.Emissao = DateTime.Now;
+                    _mPedido.Saida = DateTime.Now;
                     if (_mPedido.Save(_mPedido))
                     {
                         Id = _mPedido.GetLastId();

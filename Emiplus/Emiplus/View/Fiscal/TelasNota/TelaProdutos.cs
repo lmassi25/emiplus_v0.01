@@ -56,8 +56,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(Id));
             _mPedido.Save(data);
 
-            label35.Text = Validation.FormatPrice(_mPedido.GetTotal(), true);
-            label29.Text = Validation.FormatPrice(_mPedido.GetDesconto(), true);
+            label35.Text = Validation.FormatPrice(_mPedido.GetTotal(), false);
+            label29.Text = Validation.FormatPrice(_mPedido.GetDesconto(), false);
         }
 
         /// <summary>
@@ -243,7 +243,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             }
         }
 
-
         private void Eventos()
         {
             BuscarProduto.Select();
@@ -259,6 +258,11 @@ namespace Emiplus.View.Fiscal.TelasNota
                 AutoCompleteItens();
 
                 Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                LoadTotais();
+                ClearForms();
+                BuscarProduto.Select();
             };
 
             ModoRapido.Click += (s, e) => AlterarModo();
