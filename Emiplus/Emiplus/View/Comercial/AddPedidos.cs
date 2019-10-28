@@ -320,6 +320,8 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
+                new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
+
                 // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
                 if (Home.pedidoPage == "Compras")
                     new Controller.Estoque(pedidoItem.GetLastId(), 0, Home.pedidoPage).Add().Item();

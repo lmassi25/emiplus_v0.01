@@ -476,7 +476,7 @@
             // 
             // Emitir
             // 
-            this.Emitir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Emitir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Emitir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Emitir.BackColorState.Enabled = System.Drawing.Color.White;
             this.Emitir.BackColorState.Hover = System.Drawing.Color.White;

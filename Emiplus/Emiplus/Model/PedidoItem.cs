@@ -61,7 +61,7 @@
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsStAliq { get; set; }
-        public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
+        //public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
         public double Icmsstvlr { get; set; }
         public string Ipi { get; set; } // CST
         public double IpiAliq { get; set; }
@@ -72,6 +72,7 @@
         public string Cofins { get; set; } // CST
         public double CofinsAliq { get; set; }
         public double CofinsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM  
+        public string Cest { get; set; }
 
         #endregion
 
@@ -172,9 +173,23 @@
             ItemObj = item;
             Item = item.Id;
 
+            if(!String.IsNullOrEmpty(item.Referencia))
+            {
+                CProd = item.Referencia;
+            }
+            else
+            {
+                CProd = item.Id.ToString();
+            }
+
+            xProd = item.Nome;
+
             ValorCompra = item.ValorCompra;
 
             Medida = item.Medida;
+            Ncm = item.Ncm;
+            Cest = item.Cest;
+            Origem = item.Origem;
 
             return this;
         }
@@ -314,6 +329,9 @@
 
         public bool Save(PedidoItem data)
         {
+
+            //var imposto = new Imposto().FindById();
+
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
