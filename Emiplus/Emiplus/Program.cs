@@ -8,6 +8,8 @@
 
     static class Program
     {
+        public static string URL_BASE = "http://localhost/app";
+
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -16,7 +18,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            Application.Run(new Carregar());
         }
     }
 }

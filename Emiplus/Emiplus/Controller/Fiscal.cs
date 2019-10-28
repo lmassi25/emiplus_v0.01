@@ -96,6 +96,8 @@ namespace Emiplus.Controller
 
             if (_msg.Contains("já existe no banco de dados"))
                 _msg = sendRequest("consulta", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+
+            return "";
         }
 
         /// <summary> 

@@ -1,7 +1,93 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Emiplus.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="user_id" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="user_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_lastname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_thumb" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="user_email" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_cell" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_level" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="user_status" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="user_plan_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_plan_trial" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="user_plan_status" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="empresa_id" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="empresa_logo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="empresa_razao_social" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_nome_fantasia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_cnpj" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_inscricao_estadual" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_inscricao_municipal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_telefone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_rua" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_cep" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_nr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_bairro" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="empresa_estado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="login_remember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="login_email" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="user_plan_recorrencia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+    <Setting Name="user_plan_fatura" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vazio</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

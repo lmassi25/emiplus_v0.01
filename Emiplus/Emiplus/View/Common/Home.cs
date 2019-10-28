@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using SqlKata.Execution;
 using System;
 using System.Diagnostics;
@@ -124,20 +125,37 @@ namespace Emiplus.View.Common
         public Home()
         {
             InitializeComponent();
-            Update update = new Update();
-            update.CheckUpdate();
-            update.CheckIni();
             Eventos();
 
             version.Text = "Versão " + IniFile.Read("Version", "APP");
+            label1.Text = $"Olá, {Validation.FirstCharToUpper(Settings.Default.user_name)} {Validation.FirstCharToUpper(Settings.Default.user_lastname)}";
+
+            if (string.IsNullOrEmpty(Settings.Default.user_plan_id))
+            {
+                plano.Text = "Contrate um Plano";
+                btnPlano.Text = "Contratar Plano";
+                recorrencia.Text = "Contrate um Plano";
+                fatura.Visible = false;
+                label3.Visible = false;
+            }
+            else
+            {
+                plano.Text = Validation.FirstCharToUpper(Settings.Default.user_plan_id);
+                recorrencia.Text = Validation.FirstCharToUpper(Settings.Default.user_plan_recorrencia);
+                fatura.Text = Settings.Default.user_plan_fatura;
+            }
+
+            if (Settings.Default.user_plan_status == 1)
+            {
+                label6.Visible = false;
+                trialdias.Visible = false;
+            } else
+            {
+                trialdias.Text = $"{Settings.Default.user_plan_trial} dias";
+            }
 
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
-
-            if (Data.Core.Update.AtualizacaoDisponivel)
-                btnUpdate.Visible = true;
-            else
-                btnUpdate.Visible = false;
         }
 
         private void Eventos()
@@ -146,6 +164,8 @@ namespace Emiplus.View.Common
             {
                 OpenForm.ShowInPanel<Developer>(panelFormularios);
             };
+
+            btnPlano.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 
             homeMenuInicio.Click += (s, e) =>
             {
@@ -231,38 +251,12 @@ namespace Emiplus.View.Common
                 homeMenuFinanceiro.BackColor = Color.Transparent;
             };
 
-            btnUpdate.Click += (s, e) =>
-            {
-                if (MessageBox.Show("Deseja iniciar o processo de atualização?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    IniFile.Write("Update", "true", "APP");
-
-                    if (File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
-                    {
-                        File.Delete($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
-                    }
-
-                    if (!Directory.Exists($"{Support.BasePath()}\\Update"))
-                        Directory.CreateDirectory($"{Support.BasePath()}\\Update");
-
-                    using (var d = new WebClient())
-                    {
-                        d.DownloadFile($"https://github.com/lmassi25/files/releases/download/Install/InstallEmiplus.exe", $"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
-                    }
-
-                    if (!File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
-                    {
-                        Alert.Message("Oopss", "Não foi possível iniciar a atualização. Verifique a conexão com a internet.", Alert.AlertType.error);
-                    }
-
-                    Process.Start($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
-                    KillEmiplus();
-                }
-            };
-
             FormClosed += (s, e) => KillEmiplus();
-        }
 
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnAccount.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
+        }
+        
         private void KillEmiplus()
         {
             Process[] processes = Process.GetProcessesByName("Emiplus");

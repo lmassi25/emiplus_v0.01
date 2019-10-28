@@ -72,7 +72,7 @@ namespace Emiplus.Data.Helpers
         {
             using (var json = new WebClient())
             {
-                var download = json.DownloadString("https://www.emiplus.com.br/app/json/municipio");
+                var download = json.DownloadString("https://www.emiplus.com.br/json/municipio");
                 JObject googleSearch = JObject.Parse(download);
             
                 IList<JToken> results = googleSearch["municipios"].Children().ToList();
