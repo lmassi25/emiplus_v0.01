@@ -47,7 +47,7 @@
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.ForeColor = System.Drawing.Color.White;
-            this.title.Location = new System.Drawing.Point(65, 10);
+            this.title.Location = new System.Drawing.Point(65, 9);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(89, 20);
             this.title.TabIndex = 0;
@@ -55,12 +55,11 @@
             // 
             // message
             // 
-            this.message.AutoSize = true;
             this.message.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.message.ForeColor = System.Drawing.Color.White;
-            this.message.Location = new System.Drawing.Point(66, 33);
+            this.message.Location = new System.Drawing.Point(66, 31);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(129, 15);
+            this.message.Size = new System.Drawing.Size(336, 29);
             this.message.TabIndex = 1;
             this.message.Text = "Mensagem de sucesso!";
             // 
@@ -80,7 +79,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(311, 4);
+            this.btnClose.Location = new System.Drawing.Point(379, 4);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(23, 23);
@@ -117,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(126)))), ((int)(((byte)(89)))));
-            this.ClientSize = new System.Drawing.Size(340, 61);
+            this.ClientSize = new System.Drawing.Size(408, 61);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.icon);
             this.Controls.Add(this.message);

@@ -35,7 +35,6 @@ namespace Emiplus.View.Common
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.developer = new System.Windows.Forms.Button();
-            this.btnUpdate = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.homeMenuInicio = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -53,11 +52,21 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.plano = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.recorrencia = new System.Windows.Forms.Label();
+            this.btnPlano = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.trialdias = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.fatura = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
@@ -71,24 +80,25 @@ namespace Emiplus.View.Common
             this.barraTituloHome.SuspendLayout();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.visualPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(62, 12);
+            this.label1.Location = new System.Drawing.Point(3, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 21);
+            this.label1.Size = new System.Drawing.Size(266, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Olá, William Alvares";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel3.Controls.Add(this.visualPanel1);
             this.panel3.Controls.Add(this.developer);
-            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.homeMenuInicio);
             this.panel3.Controls.Add(this.panel5);
@@ -128,40 +138,6 @@ namespace Emiplus.View.Common
             this.developer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.developer.UseVisualStyleBackColor = false;
             this.developer.Visible = false;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnUpdate.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnUpdate.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.btnUpdate.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.btnUpdate.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.btnUpdate.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.btnUpdate.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.btnUpdate.Border.HoverVisible = true;
-            this.btnUpdate.Border.Rounding = 6;
-            this.btnUpdate.Border.Thickness = 1;
-            this.btnUpdate.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnUpdate.Border.Visible = true;
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(55, 660);
-            this.btnUpdate.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(161, 34);
-            this.btnUpdate.TabIndex = 155;
-            this.btnUpdate.Text = "   Atualização Disponível";
-            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUpdate.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnUpdate.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnUpdate.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnUpdate.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnUpdate.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnUpdate.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnUpdate.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // pictureBox2
             // 
@@ -392,57 +368,58 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.White;
-            this.barraTituloHome.Controls.Add(this.button3);
-            this.barraTituloHome.Controls.Add(this.button2);
+            this.barraTituloHome.Controls.Add(this.btnAccount);
+            this.barraTituloHome.Controls.Add(this.btnHelp);
             this.barraTituloHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.barraTituloHome.Location = new System.Drawing.Point(275, 0);
             this.barraTituloHome.Name = "barraTituloHome";
             this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
             // 
-            // button3
+            // btnAccount
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(604, 7);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 23);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "Minha Conta";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccount.FlatAppearance.BorderSize = 0;
+            this.btnAccount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
+            this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAccount.Location = new System.Drawing.Point(606, 4);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(115, 28);
+            this.btnAccount.TabIndex = 32;
+            this.btnAccount.Text = "Minha Conta";
+            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAccount.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnHelp
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(450, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 23);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Precisa de ajuda?";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnHelp.Location = new System.Drawing.Point(452, 4);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(141, 28);
+            this.btnHelp.TabIndex = 31;
+            this.btnHelp.Text = "Precisa de ajuda?";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(275, 35);
             this.panel2.Name = "panel2";
@@ -472,6 +449,169 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
+            // visualPanel1
+            // 
+            this.visualPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.visualPanel1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.visualPanel1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.visualPanel1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.visualPanel1.Border.HoverVisible = true;
+            this.visualPanel1.Border.Rounding = 6;
+            this.visualPanel1.Border.Thickness = 1;
+            this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel1.Border.Visible = true;
+            this.visualPanel1.Controls.Add(this.fatura);
+            this.visualPanel1.Controls.Add(this.label3);
+            this.visualPanel1.Controls.Add(this.trialdias);
+            this.visualPanel1.Controls.Add(this.label6);
+            this.visualPanel1.Controls.Add(this.btnPlano);
+            this.visualPanel1.Controls.Add(this.recorrencia);
+            this.visualPanel1.Controls.Add(this.label4);
+            this.visualPanel1.Controls.Add(this.plano);
+            this.visualPanel1.Controls.Add(this.label2);
+            this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.Location = new System.Drawing.Point(40, 549);
+            this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel1.Name = "visualPanel1";
+            this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel1.Size = new System.Drawing.Size(194, 127);
+            this.visualPanel1.TabIndex = 157;
+            this.visualPanel1.Text = "visualPanel1";
+            this.visualPanel1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(9, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Seu Plano:";
+            // 
+            // plano
+            // 
+            this.plano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.plano.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plano.ForeColor = System.Drawing.Color.Gray;
+            this.plano.Location = new System.Drawing.Point(69, 11);
+            this.plano.Name = "plano";
+            this.plano.Size = new System.Drawing.Size(122, 17);
+            this.plano.TabIndex = 1;
+            this.plano.Text = "Premium";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(9, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Recorrência:";
+            // 
+            // recorrencia
+            // 
+            this.recorrencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.recorrencia.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recorrencia.ForeColor = System.Drawing.Color.Gray;
+            this.recorrencia.Location = new System.Drawing.Point(80, 33);
+            this.recorrencia.Name = "recorrencia";
+            this.recorrencia.Size = new System.Drawing.Size(110, 17);
+            this.recorrencia.TabIndex = 3;
+            this.recorrencia.Text = "Anual";
+            // 
+            // btnPlano
+            // 
+            this.btnPlano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.btnPlano.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPlano.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.btnPlano.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.HoverVisible = true;
+            this.btnPlano.Border.Rounding = 6;
+            this.btnPlano.Border.Thickness = 1;
+            this.btnPlano.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnPlano.Border.Visible = true;
+            this.btnPlano.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlano.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPlano.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlano.ForeColor = System.Drawing.Color.White;
+            this.btnPlano.Image = null;
+            this.btnPlano.Location = new System.Drawing.Point(25, 86);
+            this.btnPlano.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnPlano.Name = "btnPlano";
+            this.btnPlano.Size = new System.Drawing.Size(144, 27);
+            this.btnPlano.TabIndex = 155;
+            this.btnPlano.Text = "Trocar Plano?";
+            this.btnPlano.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPlano.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnPlano.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPlano.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPlano.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(9, 55);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.TabIndex = 156;
+            this.label6.Text = "Dias de Avaliação:";
+            // 
+            // trialdias
+            // 
+            this.trialdias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.trialdias.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trialdias.ForeColor = System.Drawing.Color.Gray;
+            this.trialdias.Location = new System.Drawing.Point(109, 55);
+            this.trialdias.Name = "trialdias";
+            this.trialdias.Size = new System.Drawing.Size(79, 17);
+            this.trialdias.TabIndex = 157;
+            this.trialdias.Text = "15 dias";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(9, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 15);
+            this.label3.TabIndex = 158;
+            this.label3.Text = "Próxima fatura:";
+            // 
+            // fatura
+            // 
+            this.fatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.fatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fatura.ForeColor = System.Drawing.Color.Gray;
+            this.fatura.Location = new System.Drawing.Point(96, 55);
+            this.fatura.Name = "fatura";
+            this.fatura.Size = new System.Drawing.Size(79, 17);
+            this.fatura.TabIndex = 159;
+            this.fatura.Text = "15 dias";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,7 +632,6 @@ namespace Emiplus.View.Common
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -503,6 +642,8 @@ namespace Emiplus.View.Common
             this.barraTituloHome.ResumeLayout(false);
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.visualPanel1.ResumeLayout(false);
+            this.visualPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -530,9 +671,18 @@ namespace Emiplus.View.Common
         private Panel panelFormularios;
         private PictureBox pictureBox8;
         public Button homeMenuInicio;
-        private Button button2;
-        private Button button3;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnUpdate;
+        private Button btnHelp;
         private Button developer;
+        private Button btnAccount;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
+        private Label label2;
+        private Label plano;
+        private Label recorrencia;
+        private Label label4;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnPlano;
+        private Label trialdias;
+        private Label label6;
+        private Label fatura;
+        private Label label3;
     }
 }

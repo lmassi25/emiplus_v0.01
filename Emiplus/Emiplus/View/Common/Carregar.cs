@@ -148,8 +148,7 @@ namespace Emiplus.View.Common
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //Login f = new Login();
-            Home f = new Home();
+            Login f = new Login();
             f.Show();
             Hide();
         }
