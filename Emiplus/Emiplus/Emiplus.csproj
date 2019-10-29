@@ -487,6 +487,12 @@
     <Compile Include="View\Produtos\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\Etiquetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Etiquetas.Designer.cs">
+      <DependentUpon>Etiquetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Impostos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -697,6 +703,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Etiquetas.resx">
+      <DependentUpon>Etiquetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Impostos.resx">
       <DependentUpon>Impostos.cs</DependentUpon>
