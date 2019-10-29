@@ -22,6 +22,7 @@ namespace Emiplus.View.Common
         public Login()
         {
             InitializeComponent();
+            password.Text = "123@qwe";
             Update update = new Update();
             update.CheckUpdate();
             update.CheckIni();
@@ -118,6 +119,7 @@ namespace Emiplus.View.Common
             Settings.Default.user_document = jo["user"]["document"].ToString();
             Settings.Default.user_thumb = jo["user"]["thumb"].ToString();
             Settings.Default.user_email = jo["user"]["email"].ToString();
+            Settings.Default.user_password = password.Text;
             Settings.Default.user_cell = jo["user"]["cell"].ToString();
             Settings.Default.user_level = Validation.ConvertToInt32(jo["user"]["level"]);
             Settings.Default.user_status = Validation.ConvertToInt32(jo["user"]["status"]);
@@ -137,8 +139,14 @@ namespace Emiplus.View.Common
             Settings.Default.empresa_rua = jo["empresa"]["rua"].ToString();
             Settings.Default.empresa_cep = jo["empresa"]["cep"].ToString();
             Settings.Default.empresa_nr = jo["empresa"]["nr"].ToString();
+            Settings.Default.empresa_cidade = jo["empresa"]["cidade"].ToString();
             Settings.Default.empresa_bairro = jo["empresa"]["bairro"].ToString();
             Settings.Default.empresa_estado = jo["empresa"]["estado"].ToString();
+            Settings.Default.empresa_ibge = jo["empresa"]["ibge"].ToString();
+            Settings.Default.empresa_nfe_ultnfe = jo["empresa"]["ultnfe"].ToString();
+            Settings.Default.empresa_nfe_serienfe = jo["empresa"]["serienfe"].ToString();
+            Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["nfe_servidornfe"]);
+            Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
             Settings.Default.Save();
 
             Hide();

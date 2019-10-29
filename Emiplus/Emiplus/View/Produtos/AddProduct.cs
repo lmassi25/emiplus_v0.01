@@ -39,9 +39,12 @@ namespace Emiplus.View.Produtos
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
 
             var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            //imposto = imposto.Concat(new Model.Imposto(){ Id = 0, Nome = "" });
+
             if (imposto.Count() > 0)
             {
                 Impostos.DataSource = imposto;
+                //Impostos.DataBindings.Add(new Model.Imposto() { Id = 0, Nome = "" });
                 Impostos.DisplayMember = "NOME";
                 Impostos.ValueMember = "ID";
             }
@@ -94,8 +97,7 @@ namespace Emiplus.View.Produtos
                 estoqueatual.Text = Validation.FormatNumberUnidade(_modelItem.EstoqueAtual);
             }
 
-            if (_modelItem.Impostoid > 0)
-                Impostos.SelectedValue = _modelItem.Impostoid;
+            Impostos.SelectedValue = _modelItem.Impostoid;
 
             cest.Text = _modelItem?.Cest ?? "";
             ncm.Text = _modelItem?.Ncm ?? "";

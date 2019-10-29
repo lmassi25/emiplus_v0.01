@@ -174,6 +174,8 @@ namespace Emiplus.View.Fiscal.TelasNota
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
+                new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
+
                 // Carrega a Grid com o Item adicionado acima.
                 new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
 

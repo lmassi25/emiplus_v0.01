@@ -37,7 +37,9 @@
         public double IcmsIva { get; set; }
 
         public double IcmsAliq { get; set; }
-        
+
+        public double IcmsStIva { get; set; }
+
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStAliq { get; set; }
         public string Ipi { get; set; } // CST

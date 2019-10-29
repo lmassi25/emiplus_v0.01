@@ -370,5 +370,89 @@ namespace Emiplus.Properties {
                 this["user_plan_fatura"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string empresa_nfe_ultnfe {
+            get {
+                return ((string)(this["empresa_nfe_ultnfe"]));
+            }
+            set {
+                this["empresa_nfe_ultnfe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string empresa_nfe_serienfe {
+            get {
+                return ((string)(this["empresa_nfe_serienfe"]));
+            }
+            set {
+                this["empresa_nfe_serienfe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int empresa_nfe_servidornfe {
+            get {
+                return ((int)(this["empresa_nfe_servidornfe"]));
+            }
+            set {
+                this["empresa_nfe_servidornfe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string user_password {
+            get {
+                return ((string)(this["user_password"]));
+            }
+            set {
+                this["user_password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_cidade {
+            get {
+                return ((string)(this["empresa_cidade"]));
+            }
+            set {
+                this["empresa_cidade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_ibge {
+            get {
+                return ((string)(this["empresa_ibge"]));
+            }
+            set {
+                this["empresa_ibge"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string empresa_crt {
+            get {
+                return ((string)(this["empresa_crt"]));
+            }
+            set {
+                this["empresa_crt"] = value;
+            }
+        }
     }
 }

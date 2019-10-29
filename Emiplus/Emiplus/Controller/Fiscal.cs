@@ -1,11 +1,15 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Newtonsoft.Json.Linq;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 
@@ -28,6 +32,8 @@ namespace Emiplus.Controller
 
         private Model.Natureza _natureza;
 
+        private static readonly HttpClient client = new HttpClient();
+
         private string _path;
         private string _path_enviada;
         private string _path_autorizada;
@@ -43,6 +49,10 @@ namespace Emiplus.Controller
 
         public string requestData;
         public System.Timers.Timer aTimer = new System.Timers.Timer();
+        
+        string chvAcesso = "", cDV = "";
+
+        private JObject userData { get; set; }
 
         public Fiscal()
         {
@@ -79,25 +89,37 @@ namespace Emiplus.Controller
                 TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
             }
         }
-
+        
         public string Issue(int Pedido, string tipo)
         {
-            CreateXml(Pedido, tipo);
-            _emitente.CPF = "05681389000100"; //teste
+            try
+            {
+                CreateXml(Pedido, tipo);
+                //_emitente.CPF = "05681389000100"; //teste
 
-            string xml = "";
+                string xml = "";
 
-            var arq = new XmlDocument();
-            arq.Load(_path_enviada + "\\169.xml"); //teste
+                var arq = new XmlDocument();
+                //arq.Load(_path_enviada + "\\169.xml"); //teste
 
-            xml = arq.OuterXml;
+                xml = arq.OuterXml;
 
-            _msg = sendRequest("envia", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+                _msg = sendRequest("envia", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
 
-            if (_msg.Contains("já existe no banco de dados"))
-                _msg = sendRequest("consulta", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+                if (_msg.Contains("já existe no banco de dados"))
+                    _msg = sendRequest("consulta", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
 
-            return "";
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return "Opss.. encontramos um erro: " + ex.Message;
+            }
+        }
+
+        private int getLastNFeNr()
+        {
+            return Validation.ConvertToInt32(Settings.Default.empresa_nfe_ultnfe) + 1;
         }
 
         /// <summary> 
@@ -119,10 +141,28 @@ namespace Emiplus.Controller
                 _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
             }
 
-            _emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
-            _emitenteEndereco = new Model.PessoaEndereco().FindById(_id_empresa).First<Model.PessoaEndereco>();
-            //_emitenteContato = new Model.PessoaContato().FindById(_id_empresa).First<Model.PessoaContato>();
+            //_emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
+            _emitente = new Model.Pessoa();
 
+            //_emitenteEndereco = new Model.PessoaEndereco().FindById(_id_empresa).First<Model.PessoaEndereco>();
+            _emitenteEndereco = new Model.PessoaEndereco();
+
+            //_emitenteContato = new Model.PessoaContato().FindById(_id_empresa).First<Model.PessoaContato>();
+            _emitenteContato = new Model.PessoaContato();
+
+            _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+            _emitente.CPF = Settings.Default.empresa_cnpj;
+            _emitente.Nome = Settings.Default.empresa_razao_social;
+            _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+            _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+            _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+            _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+            _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+            _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+            _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+            _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+            
             _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).First<Model.Pessoa>();
             _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.Cliente).First<Model.PessoaEndereco>();
             //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
@@ -138,6 +178,10 @@ namespace Emiplus.Controller
 
             #region XML
 
+            chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("mm") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + "00" + Settings.Default.empresa_nfe_serienfe + getLastNFeNr().ToString("0000000") + "1" + "9" + getLastNFeNr().ToString("0000000");
+            cDV = CalculoCDV(chvAcesso);
+            chvAcesso = chvAcesso + "" + cDV;
+
             var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
             xml.Formatting = Formatting.Indented;
 
@@ -146,6 +190,10 @@ namespace Emiplus.Controller
             if (tipo == "NFCe")
             {
                 xml.WriteStartElement("NFe");
+
+                xml.WriteStartElement("infNFe");
+                xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                xml.WriteAttributeString("versao", "4.00");
             }
             else if (tipo == "CFe")
             {
@@ -154,6 +202,10 @@ namespace Emiplus.Controller
             else
             {
                 xml.WriteStartElement("NFe");
+
+                xml.WriteStartElement("infNFe");
+                xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                xml.WriteAttributeString("versao", "4.00");
             }
 
             SetIde(xml, Pedido, tipo);
@@ -177,6 +229,7 @@ namespace Emiplus.Controller
             SetTotal(xml, Pedido, tipo);
 
             xml.WriteEndElement();
+            xml.WriteEndElement();
 
             xml.WriteEndDocument();
 
@@ -184,6 +237,93 @@ namespace Emiplus.Controller
             xml.Close();
 
             #endregion
+        }
+
+        private string codUF(string Estado)
+        {
+            switch (Estado)
+            {
+                case "RO":
+                    return "11";
+                    break;
+                case "AC":
+                    return "12";
+                    break;
+                case "AM":
+                    return "13";
+                    break;
+                case "RR":
+                    return "14";
+                    break;
+                case "PA":
+                    return "15";
+                    break;
+                case "AP":
+                    return "16";
+                    break;
+                case "TO":
+                    return "17";
+                    break;
+                case "MA":
+                    return "21";
+                    break;
+                case "PI":
+                    return "22";
+                    break;
+                case "CE":
+                    return "23";
+                    break;
+                case "RN":
+                    return "24";
+                    break;
+                case "PB":
+                    return "25";
+                    break;
+                case "PE":
+                    return "26";
+                    break;
+                case "AL":
+                    return "27";
+                    break;
+                case "SE":
+                    return "28";
+                    break;
+                case "BA":
+                    return "29";
+                    break;
+                case "MG":
+                    return "31";
+                    break;
+                case "ES":
+                    return "32";
+                    break;
+                case "RJ":
+                    return "33";
+                    break;
+                case "SP":
+                    return "35";
+                    break;
+                case "PR":
+                    return "41";
+                    break;
+                case "SC":
+                    return "42";
+                    break;
+                case "RS":
+                    return "43";
+                    break;
+                case "MT":
+                    return "51";
+                    break;
+                case "GO":
+                    return "52";
+                    break;
+                case "DF":
+                    return "53";
+                    break;
+            }
+
+            return "0";
         }
 
         private void SetIde(XmlTextWriter xml, int Pedido, string tipo)
@@ -198,95 +338,10 @@ namespace Emiplus.Controller
             }
             else
             {
-                switch (_emitenteEndereco.Estado)
-                {
-                    case "RO":
-                        xml.WriteElementString("cUF", "11");
-                        break;
-                    case "AC":
-                        xml.WriteElementString("cUF", "12");
-                        break;
-                    case "AM":
-                        xml.WriteElementString("cUF", "13");
-                        break;
-                    case "RR":
-                        xml.WriteElementString("cUF", "14");
-                        break;
-                    case "PA":
-                        xml.WriteElementString("cUF", "15");
-                        break;
-                    case "AP":
-                        xml.WriteElementString("cUF", "16");
-                        break;
-                    case "TO":
-                        xml.WriteElementString("cUF", "17");
-                        break;
-                    case "MA":
-                        xml.WriteElementString("cUF", "21");
-                        break;
-                    case "PI":
-                        xml.WriteElementString("cUF", "22");
-                        break;
-                    case "CE":
-                        xml.WriteElementString("cUF", "23");
-                        break;
-                    case "RN":
-                        xml.WriteElementString("cUF", "24");
-                        break;
-                    case "PB":
-                        xml.WriteElementString("cUF", "25");
-                        break;
-                    case "PE":
-                        xml.WriteElementString("cUF", "26");
-                        break;
-                    case "AL":
-                        xml.WriteElementString("cUF", "27");
-                        break;
-                    case "SE":
-                        xml.WriteElementString("cUF", "28");
-                        break;
-                    case "BA":
-                        xml.WriteElementString("cUF", "29");
-                        break;
-                    case "MG":
-                        xml.WriteElementString("cUF", "31");
-                        break;
-                    case "ES":
-                        xml.WriteElementString("cUF", "32");
-                        break;
-                    case "RJ":
-                        xml.WriteElementString("cUF", "33");
-                        break;
-                    case "SP":
-                        xml.WriteElementString("cUF", "35");
-                        break;
-                    case "PR":
-                        xml.WriteElementString("cUF", "41");
-                        break;
-                    case "SC":
-                        xml.WriteElementString("cUF", "42");
-                        break;
-                    case "RS":
-                        xml.WriteElementString("cUF", "43");
-                        break;
-                    case "MT":
-                        xml.WriteElementString("cUF", "51");
-                        break;
-                    case "GO":
-                        xml.WriteElementString("cUF", "52");
-                        break;
-                    case "DF":
-                        xml.WriteElementString("cUF", "53");
-                        break;
-                }
+                xml.WriteElementString("cUF", codUF(_emitenteEndereco.Estado));
                 
                 xml.WriteElementString("cNF", "9" + "");
                 xml.WriteElementString("natOp", _natureza.Nome);
-
-                if (tipo == "NFe")
-                {
-                    xml.WriteElementString("indPag", "");
-                }
 
                 if (tipo == "NFe")
                 {
@@ -297,29 +352,35 @@ namespace Emiplus.Controller
                     xml.WriteElementString("mod", "65");
                 }
 
-                xml.WriteElementString("serie", "");
-                xml.WriteElementString("nNF", "");
-                xml.WriteElementString("dhEmi", "");
-                xml.WriteElementString("dhSaiEnt", "");
+                //2019-10-08T08:52:34-03:00
+                string horaSaida = "";
+                if (string.IsNullOrEmpty(_pedido.HoraSaida))
+                {
+                    horaSaida = DateTime.Now.ToString("HH:mm:ss");
+                } else
+                {
+                    horaSaida = _pedido.HoraSaida + ":00";
+                }
+
+                xml.WriteElementString("serie", string.IsNullOrEmpty(Settings.Default.empresa_nfe_serienfe) ? "0" : Settings.Default.empresa_nfe_serienfe);
+                xml.WriteElementString("nNF", getLastNFeNr().ToString());
+                xml.WriteElementString("dhEmi", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + DateTime.Now.ToString("zzz"));
+                xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
                 xml.WriteElementString("tpNF", _pedido.TipoNFe.ToString());
-                xml.WriteElementString("idDest", "");
-                xml.WriteElementString("cMunFG", "");
+                xml.WriteElementString("idDest", _pedido.Destino.ToString());
+                xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
 
                 if (tipo == "NFe")
-                {
                     xml.WriteElementString("tpImp", "1");
-                }
                 else if (tipo == "NFCe")
-                {
                     xml.WriteElementString("tpImp", "4");
-                }
                 
                 xml.WriteElementString("tpEmis", "1");
-                xml.WriteElementString("cDV", "");
-                xml.WriteElementString("tpAmb", "");
-                xml.WriteElementString("finNFe", "");
-                xml.WriteElementString("indFinal", "");
-                xml.WriteElementString("indPres", "");
+                xml.WriteElementString("cDV", cDV);
+                xml.WriteElementString("tpAmb", Settings.Default.empresa_nfe_servidornfe.ToString());
+                xml.WriteElementString("finNFe", _pedido.Finalidade.ToString());
+                xml.WriteElementString("indFinal", "1");
+                xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
                 xml.WriteElementString("verProc", "EMIPLUS");
             }
@@ -344,13 +405,13 @@ namespace Emiplus.Controller
 
             if (tipo == "CFe")
             {
-                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF));
-                xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG));
+                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
+                xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG).Replace(".", ""));
                 xml.WriteElementString("indRatISSQN", "N");
             }
             else
             {
-                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF));
+                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
                 xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_emitente.Nome));
                 xml.WriteElementString("xFant", Validation.CleanStringForFiscal(_emitente.Fantasia));
 
@@ -359,9 +420,9 @@ namespace Emiplus.Controller
                 xml.WriteElementString("xLgr", Validation.CleanStringForFiscal(_emitenteEndereco.Rua));
                 xml.WriteElementString("nro", Validation.CleanStringForFiscal(_emitenteEndereco.Nr));
                 xml.WriteElementString("xBairro", Validation.CleanStringForFiscal(_emitenteEndereco.Bairro));
-                xml.WriteElementString("cMun", "0");
+                xml.WriteElementString("cMun", Validation.CleanStringForFiscal(_emitenteEndereco.IBGE));
                 xml.WriteElementString("xMun", Validation.CleanStringForFiscal(_emitenteEndereco.Cidade));
-                xml.WriteElementString("UF", _emitenteEndereco.Estado);
+                xml.WriteElementString("UF", Validation.CleanStringForFiscal(_emitenteEndereco.Estado));
                 xml.WriteElementString("CEP", Validation.CleanStringForFiscal(_emitenteEndereco.Cep));
                 xml.WriteElementString("cPais", "1058");
                 xml.WriteElementString("xPais", "BRASIL");
@@ -369,7 +430,7 @@ namespace Emiplus.Controller
 
                 xml.WriteEndElement();
 
-                xml.WriteElementString("IE", _emitente.RG);
+                xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG).Replace(".", ""));
 
                 if (tipo == "NFCe")
                 {
@@ -377,7 +438,7 @@ namespace Emiplus.Controller
                     xml.WriteElementString("CNAE", "");
                 }
 
-                xml.WriteElementString("CRT", "");
+                xml.WriteElementString("CRT", Settings.Default.empresa_crt);
             }
 
             xml.WriteEndElement();
@@ -393,7 +454,7 @@ namespace Emiplus.Controller
             }
             else
             {
-                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF));
+                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", ""));
                 xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_destinatario.Nome));
 
                 xml.WriteStartElement("enderDest");
@@ -411,7 +472,7 @@ namespace Emiplus.Controller
 
                 xml.WriteEndElement();
 
-                xml.WriteElementString("indIEDest", "0");
+                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 ? "9" : "1");
                 xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
 
@@ -497,7 +558,90 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("ICMS");
 
-            //xml.WriteElementString("", "");
+            if(_pedidoItem.Icms.Length == 3)
+            {
+                xml.WriteStartElement("ICMSSN" + _pedidoItem.Icms);
+            }
+            else
+            {
+                xml.WriteStartElement("ICMS" + _pedidoItem.Icms);
+            }
+
+            switch (_pedidoItem.Icms)
+            {
+                case "00":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "00");
+                    xml.WriteElementString("modBC", "0");
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
+                    xml.WriteElementString("pICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsAliq));
+                    xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
+                    break;
+                case "40":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "40");
+                    break;
+                case "41":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "41");
+                    break;
+                case "50":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "50");
+                    break;
+                case "60":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "60");
+                    break;
+                case "90":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CST", "90");
+                    break;
+                case "101":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "101");
+                    xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.IcmsAliq));
+                    xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
+                    break;
+                case "102":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "102");
+                    break;
+                case "201":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "201");
+                    xml.WriteElementString("modBCST", "0");
+                    xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("pRedBCST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vBCST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("pICMSST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vICMSST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(0));
+                    break;
+                case "202":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "202");
+                    xml.WriteElementString("modBCST", "0");
+                    xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("pRedBCST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vBCST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("pICMSST", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vICMSST", Validation.FormatPriceWithDot(0));
+                    break;
+                case "500":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "500");
+                    xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
+                    xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
+                    break;
+                case "900":
+                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "900");
+                    break;
+            }
+
+            xml.WriteEndElement();
 
             xml.WriteEndElement();//ICMS
 
@@ -626,6 +770,51 @@ namespace Emiplus.Controller
             xml.WriteElementString("infCpl", "");
 
             xml.WriteEndElement();//infAdic
+        }
+
+        private string CalculoCDV(string chave)
+        {
+            string chaveAcesso = chave;
+
+            string chaveInvertida = ReverseString(chave);
+            int[] t = { 2, 3, 4, 5, 6, 7, 8, 9 };
+            int somatorio = 0;
+            int posicaoParaCalculo = 0;
+            foreach (var v in chaveInvertida)
+            {
+
+                somatorio = somatorio + (int.Parse(v.ToString()) * t[posicaoParaCalculo]);
+                if (posicaoParaCalculo == 7)
+                {
+                    posicaoParaCalculo = 0;
+                }
+                else
+                {
+                    posicaoParaCalculo += 1;
+                }
+            }
+
+            int resto = somatorio % 11;
+            int dv;
+            if (resto == 0 || resto == 1)
+            {
+                dv = 0;
+            }
+            else
+            {
+                dv = (11 - resto);
+            }
+
+            return dv.ToString();
+        }
+
+        private string ReverseString(string prStringEntrada)
+        {
+            char[] arrChar = prStringEntrada.ToCharArray();
+            Array.Reverse(arrChar);
+            string invertida = new String(arrChar);
+
+            return invertida;
         }
 
         /// <summary> 
