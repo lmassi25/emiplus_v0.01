@@ -42,7 +42,7 @@
             this.transportadoras = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.Etiquetas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -305,28 +305,28 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // Etiquetas
             // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(192, 220);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(123, 27);
-            this.button8.TabIndex = 57;
-            this.button8.Text = "Etiquetas";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = false;
+            this.Etiquetas.BackColor = System.Drawing.Color.Transparent;
+            this.Etiquetas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Etiquetas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Etiquetas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Etiquetas.FlatAppearance.BorderSize = 0;
+            this.Etiquetas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Etiquetas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Etiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Etiquetas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Etiquetas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Etiquetas.Image = ((System.Drawing.Image)(resources.GetObject("Etiquetas.Image")));
+            this.Etiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Etiquetas.Location = new System.Drawing.Point(192, 220);
+            this.Etiquetas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Etiquetas.Name = "Etiquetas";
+            this.Etiquetas.Size = new System.Drawing.Size(123, 27);
+            this.Etiquetas.TabIndex = 57;
+            this.Etiquetas.Text = "Etiquetas";
+            this.Etiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Etiquetas.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -534,7 +534,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.Etiquetas);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Compras);
             this.Controls.Add(this.transportadoras);
@@ -575,7 +575,7 @@
         private System.Windows.Forms.Button transportadoras;
         private System.Windows.Forms.Button Compras;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button Etiquetas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;

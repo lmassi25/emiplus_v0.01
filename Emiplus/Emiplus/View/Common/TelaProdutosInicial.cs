@@ -14,20 +14,13 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
-            Produtos.Click += (s, e) =>
-            {
-                OpenForm.Show<Produtos.Produtos>(this);
-            };
+            Produtos.Click += (s, e) => OpenForm.Show<Produtos.Produtos>(this);
 
-            Categorias.Click += (s, e) =>
-            {
-                OpenForm.Show<Produtos.Categorias>(this);
-            };
+            Etiquetas.Click += (s, e) => OpenForm.Show<Produtos.Etiquetas>(this);
 
-            Impostos.Click += (s, e) =>
-            {
-                OpenForm.Show<Produtos.Impostos>(this);
-            };
+            Categorias.Click += (s, e) => OpenForm.Show<Produtos.Categorias>(this);
+
+            Impostos.Click += (s, e) => OpenForm.Show<Produtos.Impostos>(this);
 
             fornecedores.Click += (s, e) =>
             {
