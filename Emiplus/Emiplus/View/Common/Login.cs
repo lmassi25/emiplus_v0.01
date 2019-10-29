@@ -22,7 +22,8 @@ namespace Emiplus.View.Common
         public Login()
         {
             InitializeComponent();
-            password.Text = "123@qwe";
+            email.Text = "william@emiplus.com.br";
+            password.Text = "4586928w";
             Update update = new Update();
             update.CheckUpdate();
             update.CheckIni();

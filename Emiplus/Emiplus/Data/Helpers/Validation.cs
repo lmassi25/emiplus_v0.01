@@ -15,6 +15,11 @@ namespace Emiplus.Data.Helpers
             return Math.Round(value, 2);
         }
 
+        public static double RoundAliquotas(double value)
+        {
+            return Math.Round(value, 4);
+        }
+
         public static string CleanString(string dirtyString)
         {
             StringBuilder str = new StringBuilder(dirtyString);
@@ -192,8 +197,8 @@ namespace Emiplus.Data.Helpers
 
         public static string FirstCharToUpper(string input)
         {
-            if (String.IsNullOrEmpty(input))
-                throw new ArgumentException("ARGH!");
+            if (String.IsNullOrEmpty(input))                
+                return "";
             return input.First().ToString().ToUpper() + input.Substring(1);
         }
 
