@@ -15,6 +15,8 @@ namespace Emiplus.Controller
 
         public void SetImposto(int idPedidoItem, int idImposto = 0)
         {
+            #region IMPOSTO 
+
             if (idImposto == 0)
             {
                 _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).First<Model.PedidoItem>();
@@ -29,7 +31,13 @@ namespace Emiplus.Controller
                 _modelImposto = _modelImposto.FindById(idImposto).First<Model.Imposto>();
             }
 
+            #endregion
+
+            #region CFOP
+
             _modelpedidoItem.Cfop = _modelImposto.Cfop;
+
+            #endregion
 
             #region ICMS
 
@@ -54,7 +62,7 @@ namespace Emiplus.Controller
                 case "00":
                 case "90":
                     _modelpedidoItem.IcmsBase = _modelpedidoItem.Total;
-                    _modelpedidoItem.IcmsAliq = Validation.Round(_modelImposto.IcmsAliq / 100);
+                    _modelpedidoItem.IcmsAliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
                     _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
                     break;
 
@@ -75,18 +83,18 @@ namespace Emiplus.Controller
 
                 case "101":
                     _modelpedidoItem.IcmsBase = _modelpedidoItem.Total;
-                    _modelpedidoItem.IcmsAliq = Validation.Round(_modelImposto.IcmsAliq / 100);
+                    _modelpedidoItem.IcmsAliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
                     _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
                     break;
                 case "201":
                 case "202":
                     //---------------ICMS
                     _modelpedidoItem.IcmsBase = _modelpedidoItem.Total;
-                    _modelpedidoItem.IcmsAliq = Validation.Round(_modelImposto.IcmsAliq / 100);
+                    _modelpedidoItem.IcmsAliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
                     _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
                     //---------------ICMS ST
                     _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsBase + (_modelpedidoItem.IcmsBase * (_modelImposto.IcmsStIva / 100)));
-                    _modelpedidoItem.IcmsStAliq = Validation.Round(_modelImposto.IcmsStAliq / 100);
+                    _modelpedidoItem.IcmsStAliq = Validation.RoundAliquotas(_modelImposto.IcmsStAliq / 100);
                     if(_modelImposto.IcmsStReducaoAliq > 0)
                     {
                         _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsStBase - (_modelpedidoItem.IcmsStBase * (_modelImposto.IcmsStReducaoAliq / 100)));
@@ -141,7 +149,7 @@ namespace Emiplus.Controller
                 case "99":
                     if (_modelImposto.IpiAliq > 0)
                     {
-                        _modelpedidoItem.IpiAliq = Validation.Round(_modelImposto.IpiAliq / 100);
+                        _modelpedidoItem.IpiAliq = Validation.RoundAliquotas(_modelImposto.IpiAliq / 100);
                         _modelpedidoItem.IpiVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.IpiAliq);
                     }
                     break;
@@ -164,7 +172,7 @@ namespace Emiplus.Controller
                 case "99":
                     if (_modelImposto.PisAliq > 0)
                     {
-                        _modelpedidoItem.PisAliq = Validation.Round(_modelImposto.PisAliq / 100);
+                        _modelpedidoItem.PisAliq = Validation.RoundAliquotas(_modelImposto.PisAliq / 100);
                         _modelpedidoItem.PisVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.PisAliq);
                     }
                     break;
@@ -173,6 +181,11 @@ namespace Emiplus.Controller
                     _modelpedidoItem.PisAliq = 0;
                     _modelpedidoItem.PisVlr = 0;
                     break;
+            }
+
+            if (_modelpedidoItem.PisAliq > 0)
+            {
+                _modelpedidoItem.PisAliq = (_modelpedidoItem.PisAliq * 100);
             }
 
             #endregion
@@ -187,7 +200,7 @@ namespace Emiplus.Controller
                 case "99":
                     if (_modelImposto.CofinsAliq > 0)
                     {
-                        _modelpedidoItem.CofinsAliq = Validation.Round(_modelImposto.CofinsAliq / 100);
+                        _modelpedidoItem.CofinsAliq = Validation.RoundAliquotas(_modelImposto.CofinsAliq / 100);
                         _modelpedidoItem.CofinsVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.CofinsAliq);
                     }
                     break;
@@ -196,6 +209,11 @@ namespace Emiplus.Controller
                     _modelpedidoItem.CofinsAliq = 0;
                     _modelpedidoItem.CofinsVlr = 0;
                     break;
+            }
+
+            if (_modelpedidoItem.CofinsAliq > 0)
+            {
+                _modelpedidoItem.CofinsAliq = (_modelpedidoItem.CofinsAliq * 100);
             }
 
             #endregion

@@ -8,7 +8,7 @@
 
     static class Program
     {
-        public static string URL_BASE = "http://localhost/app";
+        public static string URL_BASE = "https://www.emiplus.com.br";
 
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.

@@ -552,7 +552,7 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("imposto");
 
-            xml.WriteElementString("vTotTrib", "");
+            xml.WriteElementString("vTotTrib", "0.00");
 
             #region ICMS
 
@@ -649,11 +649,25 @@ namespace Emiplus.Controller
 
             #region IPI
 
-            xml.WriteStartElement("IPI");
+            if (String.IsNullOrEmpty(_pedidoItem.Ipi))
+            {
+                xml.WriteStartElement("IPI");
 
-            //xml.WriteElementString("", "");
+                xml.WriteElementString("cEnq", "999");
 
-            xml.WriteEndElement();//IPI
+                xml.WriteStartElement("IPITrib");
+
+                xml.WriteElementString("CST", _pedidoItem.Ipi);
+                xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                xml.WriteElementString("pIPI", Validation.FormatPriceWithDot(_pedidoItem.IpiAliq));
+                //xml.WriteElementString("qUnid", qcom);
+                //xml.WriteElementString("vUnid", vprod);
+                xml.WriteElementString("vIPI", Validation.FormatPriceWithDot(_pedidoItem.IpiVlr));
+
+                xml.WriteEndElement(); //IPITrib  
+
+                xml.WriteEndElement();//IPI
+            }
 
             #endregion
 
@@ -669,7 +683,36 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("PIS");
 
-            //xml.WriteElementString("", "");
+            switch (_pedidoItem.Pis)
+            {
+                case "01":
+                    xml.WriteStartElement("PISAliq");
+                    xml.WriteElementString("CST", _pedidoItem.Pis);
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                    xml.WriteElementString("pPIS", Validation.FormatPriceWithDot(_pedidoItem.PisAliq));
+                    xml.WriteElementString("vPIS", Validation.FormatPriceWithDot(_pedidoItem.PisVlr));
+                    xml.WriteEndElement(); //PISAliq
+                    break;
+                case "08":
+                    xml.WriteStartElement("PISNT");
+                    xml.WriteElementString("CST", _pedidoItem.Pis);
+                    xml.WriteEndElement(); //PISNT
+                    break;
+                case "49":
+                case "99":
+                    xml.WriteStartElement("PISOutr");
+                    xml.WriteElementString("CST", _pedidoItem.Pis);
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                    xml.WriteElementString("pPIS", Validation.FormatPriceWithDot(_pedidoItem.PisAliq));
+                    xml.WriteElementString("vPIS", Validation.FormatPriceWithDot(_pedidoItem.PisVlr));
+                    xml.WriteEndElement(); //PISOutr
+                    break;
+                default:
+                    xml.WriteStartElement("PISNT");
+                    xml.WriteElementString("CST", "07");
+                    xml.WriteEndElement(); //PISNT
+                    break;
+            }
 
             xml.WriteEndElement();//PIS
 
@@ -687,7 +730,36 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("COFINS");
 
-            //xml.WriteElementString("", "");
+            switch (_pedidoItem.Cofins)
+            {
+                case "01":
+                    xml.WriteStartElement("COFINSAliq");
+                    xml.WriteElementString("CST", _pedidoItem.Cofins);
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                    xml.WriteElementString("pCOFINS", Validation.FormatPriceWithDot(_pedidoItem.CofinsAliq));
+                    xml.WriteElementString("vCOFINS", Validation.FormatPriceWithDot(_pedidoItem.CofinsVlr));
+                    xml.WriteEndElement(); //COFINSAliq
+                    break;
+                case "08":
+                    xml.WriteStartElement("COFINSNT");
+                    xml.WriteElementString("CST", _pedidoItem.Cofins);
+                    xml.WriteEndElement(); //COFINSNT
+                    break;
+                case "49":
+                case "99":
+                    xml.WriteStartElement("COFINSOutr");
+                    xml.WriteElementString("CST", _pedidoItem.Cofins);
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                    xml.WriteElementString("pCOFINS", Validation.FormatPriceWithDot(_pedidoItem.CofinsAliq));
+                    xml.WriteElementString("vCOFINS", Validation.FormatPriceWithDot(_pedidoItem.CofinsVlr));
+                    xml.WriteEndElement(); //COFINSOutr
+                    break;
+                default:
+                    xml.WriteStartElement("COFINSNT");
+                    xml.WriteElementString("CST", "07");
+                    xml.WriteEndElement(); //COFINSNT
+                    break;
+            }
 
             xml.WriteEndElement();//COFINS
 

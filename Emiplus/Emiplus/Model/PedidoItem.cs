@@ -13,6 +13,7 @@
         public PedidoItem() : base("PEDIDO_ITEM") { }
 
         #region CAMPOS 
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
