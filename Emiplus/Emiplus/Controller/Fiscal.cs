@@ -484,7 +484,15 @@ namespace Emiplus.Controller
             }
             else
             {
-                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", ""));
+                if (_destinatario.Pessoatipo == "Física")
+                {
+                    xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", ""));
+                }
+                else
+                {
+                    xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", ""));
+                }
+                
                 xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_destinatario.Nome));
 
                 xml.WriteStartElement("enderDest");
@@ -503,7 +511,8 @@ namespace Emiplus.Controller
                 xml.WriteEndElement();
 
                 xml.WriteElementString("indIEDest", _destinatario.Isento == 1 ? "9" : "1");
-                xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
+                if (_destinatario.Pessoatipo != "Física")
+                    xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
 
             xml.WriteEndElement();
