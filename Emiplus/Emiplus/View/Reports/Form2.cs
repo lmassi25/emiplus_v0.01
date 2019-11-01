@@ -1,4 +1,4 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +20,7 @@ namespace Emiplus.View.Reports
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            reportViewer1.LocalReport.SetParameters(new ReportParameter("parameter2", "William"));
-            this.reportViewer1.RefreshReport();
+           
         }
     }
 }

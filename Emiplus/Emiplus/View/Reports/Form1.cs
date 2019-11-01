@@ -19,8 +19,6 @@ namespace Emiplus.View.Reports
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
         }
     }
 }
