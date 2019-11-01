@@ -146,7 +146,7 @@ namespace Emiplus.View.Common
             Settings.Default.empresa_ibge = jo["empresa"]["ibge"].ToString();
             Settings.Default.empresa_nfe_ultnfe = jo["empresa"]["ultnfe"].ToString();
             Settings.Default.empresa_nfe_serienfe = jo["empresa"]["serienfe"].ToString();
-            Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["nfe_servidornfe"]);
+            Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
             Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
             Settings.Default.Save();
 

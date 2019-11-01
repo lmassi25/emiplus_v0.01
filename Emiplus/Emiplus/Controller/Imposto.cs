@@ -82,9 +82,8 @@ namespace Emiplus.Controller
                 //900 = Outros
 
                 case "101":
-                    _modelpedidoItem.IcmsBase = _modelpedidoItem.Total;
-                    _modelpedidoItem.IcmsAliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
-                    _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
+                    _modelpedidoItem.Icms101Aliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
+                    _modelpedidoItem.Icms101Vlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.Icms101Aliq);
                     break;
                 case "201":
                 case "202":

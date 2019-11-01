@@ -94,22 +94,43 @@ namespace Emiplus.Controller
         {
             try
             {
-                CreateXml(Pedido, tipo);
-                //_emitente.CPF = "05681389000100"; //teste
+                Boolean done = false;
 
-                string xml = "";
+                CreateXml(Pedido, tipo);
 
                 var arq = new XmlDocument();
-                //arq.Load(_path_enviada + "\\169.xml"); //teste
+                if (File.Exists(_path_enviada + "\\" + _pedido.Id + ".xml"))
+                {
+                    arq.Load(_path_enviada + "\\" + _pedido.Id + ".xml");
+                    string xml = arq.OuterXml;
+                    _msg = RequestSend("FORMATO=XML" + Environment.NewLine + xml);
 
-                xml = arq.OuterXml;
+                    while (!String.IsNullOrEmpty(_msg) && done == false)
+                    {
+                        if(_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                            _msg = RequestResolve();                            
 
-                _msg = sendRequest("envia", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+                        switch (_msg)
+                        {
+                            case "":
+                                _msg = RequestConsult();
+                                done = true;
+                                break;
+                            /*default:
+                                _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                                done = true;
+                                break;*/
+                        }
 
-                if (_msg.Contains("já existe no banco de dados"))
-                    _msg = sendRequest("consulta", "FORMATO=XML" + Environment.NewLine + xml, "NFe");
+                        if (!String.IsNullOrEmpty(_msg))
+                        {
+                            _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                            done = true;
+                        }
+                    }
+                }
 
-                return "";
+                return _msg;
             }
             catch (Exception ex)
             {
@@ -152,8 +173,17 @@ namespace Emiplus.Controller
 
             _emitente.RG = Settings.Default.empresa_inscricao_estadual;
             _emitente.CPF = Settings.Default.empresa_cnpj;
+
             _emitente.Nome = Settings.Default.empresa_razao_social;
             _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+            if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2")
+            {
+                _emitente.RG = "647429018110";
+                _emitente.CPF = "05681389000100";
+                _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+                _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            }
 
             _emitenteEndereco.Rua = Settings.Default.empresa_rua;
             _emitenteEndereco.Nr = Settings.Default.empresa_nr;
@@ -162,7 +192,7 @@ namespace Emiplus.Controller
             _emitenteEndereco.Cep = Settings.Default.empresa_cep;
             _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
             _emitenteEndereco.Estado = Settings.Default.empresa_estado;
-            
+
             _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).First<Model.Pessoa>();
             _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.Cliente).First<Model.PessoaEndereco>();
             //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
@@ -178,7 +208,7 @@ namespace Emiplus.Controller
 
             #region XML
 
-            chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("mm") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + "00" + Settings.Default.empresa_nfe_serienfe + getLastNFeNr().ToString("0000000") + "1" + "9" + getLastNFeNr().ToString("0000000");
+            chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000") + getLastNFeNr().ToString("000000000") + "25" + getLastNFeNr().ToString("0000000");
             cDV = CalculoCDV(chvAcesso);
             chvAcesso = chvAcesso + "" + cDV;
 
@@ -340,7 +370,7 @@ namespace Emiplus.Controller
             {
                 xml.WriteElementString("cUF", codUF(_emitenteEndereco.Estado));
                 
-                xml.WriteElementString("cNF", "9" + "");
+                xml.WriteElementString("cNF", "25" + getLastNFeNr().ToString("0000000"));
                 xml.WriteElementString("natOp", _natureza.Nome);
 
                 if (tipo == "NFe")
@@ -600,8 +630,8 @@ namespace Emiplus.Controller
                 case "101":
                     xml.WriteElementString("orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "101");
-                    xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.IcmsAliq));
-                    xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
+                    xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Aliq));
+                    xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Vlr));
                     break;
                 case "102":
                     xml.WriteElementString("orig", _pedidoItem.Origem);
@@ -895,23 +925,23 @@ namespace Emiplus.Controller
         /// <param name="tipo">envia</param>        
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
-        private string sendRequest(string tipo, string xml, string documento = "NFe")
+        
+        private string RequestSend(string xml, string documento = "NFe")
         {
-            switch (tipo)
-            {
-                case "envia":
-                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
-                    return request(requestData, documento, "envia", "POST");
-                    break;
-                /*
-                    case "consulta":
-                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
-                    return request(requestData, documento, "envia", "POST");
-                    break;
-                */
-            }
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
+            return request(requestData, documento, "envia", "POST");
+        }
 
-            return "";
+        private string RequestConsult(string documento = "NFe")
+        {
+            requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&Campos=situacao&Filtro=" + chvAcesso;
+            return request(requestData, documento, "consulta", "GET");
+        }
+
+        private string RequestResolve(string documento = "NFe")
+        {
+            requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chvAcesso;
+            return request(requestData, documento, "resolve", "POST");
         }
 
         public string request(string _requestData, string _documento, string _route, string _method)
