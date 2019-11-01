@@ -74,6 +74,8 @@
         public double CofinsAliq { get; set; }
         public double CofinsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM  
         public string Cest { get; set; }
+        public double Icms101Aliq { get; set; }
+        public double Icms101Vlr { get; set; }
 
         #endregion
 
