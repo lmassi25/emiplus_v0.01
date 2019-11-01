@@ -1,14 +1,16 @@
-﻿namespace Emiplus
-{
-    using Emiplus.View.Financeiro;
-    using Emiplus.View.Testes;
-    using System;
-    using System.Windows.Forms;
-    using View.Common;
+﻿using Emiplus.View.Financeiro;
+using Emiplus.View.Testes;
+using System;
+using System.Windows.Forms;
+using Emiplus.View.Common;
+using System.IO;
 
+namespace Emiplus
+{
     static class Program
     {
         public static string URL_BASE = "https://www.emiplus.com.br";
+        public static string PATH_BASE { get; set; }
 
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
@@ -16,9 +18,12 @@
         [STAThread]
         static void Main()
         {
+            string workingDirectory = Environment.CurrentDirectory;
+            PATH_BASE = Directory.GetParent(workingDirectory).Parent.FullName;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Reports.Form2());
+            Application.Run(new Carregar());
         }
     }
 }

@@ -1,5 +1,10 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Reports;
+using RazorEngine;
+using RazorEngine.Templating;
 using System;
+using System.Dynamic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -39,6 +44,18 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Compras";
                 Comercial.Pedido Pedido = new Comercial.Pedido();
                 Pedido.ShowDialog();
+            };
+
+            button2.Click += (s, e) =>
+            {
+                dynamic model = new ExpandoObject();
+                model.Name = "Matt";
+
+                var render = Engine.Razor.RunCompile(File.ReadAllText(Program.PATH_BASE + @"\View\Reports\html\Etiqueta10.cshtml"), "templateKey", null, (object)model);
+
+                Browser.htmlRender = render;
+                var f = new Browser();
+                f.ShowDialog();
             };
         }
     }
