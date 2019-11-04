@@ -35,7 +35,7 @@
             this.Produtos = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -144,28 +144,28 @@
             this.panel1.Size = new System.Drawing.Size(735, 97);
             this.panel1.TabIndex = 49;
             // 
-            // button1
+            // HistoricoEntradaSaida
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(62, 517);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 125);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "Histórico de Entradas e Saídas";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
+            this.HistoricoEntradaSaida.BackColor = System.Drawing.Color.Transparent;
+            this.HistoricoEntradaSaida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HistoricoEntradaSaida.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HistoricoEntradaSaida.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.HistoricoEntradaSaida.FlatAppearance.BorderSize = 0;
+            this.HistoricoEntradaSaida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.HistoricoEntradaSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.HistoricoEntradaSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HistoricoEntradaSaida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoricoEntradaSaida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.HistoricoEntradaSaida.Image = ((System.Drawing.Image)(resources.GetObject("HistoricoEntradaSaida.Image")));
+            this.HistoricoEntradaSaida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.HistoricoEntradaSaida.Location = new System.Drawing.Point(62, 517);
+            this.HistoricoEntradaSaida.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HistoricoEntradaSaida.Name = "HistoricoEntradaSaida";
+            this.HistoricoEntradaSaida.Size = new System.Drawing.Size(141, 125);
+            this.HistoricoEntradaSaida.TabIndex = 50;
+            this.HistoricoEntradaSaida.Text = "Histórico de Entradas e Saídas";
+            this.HistoricoEntradaSaida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.HistoricoEntradaSaida.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -541,7 +541,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.fornecedores);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.HistoricoEntradaSaida);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Produtos);
             this.Controls.Add(this.Categorias);
@@ -568,7 +568,7 @@
         private System.Windows.Forms.Button Produtos;
         private System.Windows.Forms.Button Categorias;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button HistoricoEntradaSaida;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button fornecedores;
         private System.Windows.Forms.Button button4;

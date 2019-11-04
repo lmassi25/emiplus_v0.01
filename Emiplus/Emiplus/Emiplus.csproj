@@ -64,6 +64,9 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.4\lib\netstandard2.0\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DotLiquid, Version=2.0.314.0, Culture=neutral, PublicKeyToken=82e46016ecf9f07c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotLiquid.2.0.314\lib\net45\DotLiquid.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
@@ -108,9 +111,6 @@
     </Reference>
     <Reference Include="QueryBuilder, Version=1.1.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.1.1.8-ci-712\lib\net45\QueryBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
@@ -166,9 +166,6 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -558,6 +555,12 @@
     <Compile Include="View\Reports\Browser.Designer.cs">
       <DependentUpon>Browser.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports\EstoqueEntradaSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\EstoqueEntradaSaida.Designer.cs">
+      <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Testes\cPure.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -757,6 +760,9 @@
     <EmbeddedResource Include="View\Reports\Browser.resx">
       <DependentUpon>Browser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\EstoqueEntradaSaida.resx">
+      <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\cPure.resx">
       <DependentUpon>cPure.cs</DependentUpon>
     </EmbeddedResource>
@@ -929,7 +935,7 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="View\Reports\html\Etiqueta.cshtml" />
+    <Content Include="View\Reports\html\Etiqueta.html" />
     <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
     <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />

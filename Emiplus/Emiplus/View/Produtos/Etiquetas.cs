@@ -1,21 +1,19 @@
-﻿using Emiplus.Data.Core;
+﻿using DotLiquid;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using Emiplus.Properties;
 using Emiplus.View.Reports;
-using RazorEngine;
-using RazorEngine.Templating;
 using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Dynamic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
 
@@ -55,7 +53,7 @@ namespace Emiplus.View.Produtos
         private void DataTableStart()
         {
             GridLista.Visible = false;
-            Loading.Size = new System.Drawing.Size(GridLista.Width, GridLista.Height);
+            Loading.Size = new Size(GridLista.Width, GridLista.Height);
             Loading.Visible = true;
             WorkerBackground.RunWorkerAsync();
         }
@@ -66,6 +64,15 @@ namespace Emiplus.View.Produtos
         {
             int count = new Model.Etiqueta().Count();
             qtdAdd.Text = count.ToString();
+            
+            if (count <= 10)
+                modelos.SelectedValue = "10";
+
+            if (count <= 30)
+                modelos.SelectedValue = "30";
+
+            if (count >= 31)
+                modelos.SelectedValue = "60";
         }
 
         /// <summary>
@@ -115,10 +122,6 @@ namespace Emiplus.View.Produtos
 
         private void Render()
         {
-            //dynamic model = new ExpandoObject();
-            //model.Etiqueta = "etiqueta" + modelos.SelectedValue.ToString() + ".css";
-            //model.Colunas = string.IsNullOrEmpty(colunas.Text) ? 0 : Validation.ConvertToInt32(colunas.Text);
-
             var itens = new Model.Etiqueta().Query()
                 .LeftJoin("item", "item.id", "etiqueta.id_item")
                 .Where("item.excluir", 0)
@@ -126,70 +129,82 @@ namespace Emiplus.View.Produtos
                 .Limit(Validation.ConvertToInt32(modelos.SelectedValue) - Validation.ConvertToInt32(colunas.Text))
                 .Get<dynamic>();
 
-            //object renderItem = new {};
-            //IDictionary<string, string> renderItem = new Dictionary<string, string>();
-
-            //List<dynamic> origens = new List<dynamic>();
-            //foreach (var item in itens)
-            //{
-            //    origens.Add(new { Nome = item.NOME, Code = item.REFERENCIA });
-            //}
-
-            //IEnumerable<dynamic> testes = origens;
-            
             var Etiqueta = "etiqueta" + modelos.SelectedValue.ToString() + ".css";
-
-            StringBuilder builder = new StringBuilder();
-            builder.Append("<!DOCTYPE html>");
-            builder.Append("<html lang='pt-br' xmlns='http://www.w3.org/1999/xhtml'>");
-            builder.Append("<head>");
-            builder.Append("    <meta charset='utf-8' />");
-            builder.Append($"    <link href='https://www.emiplus.com.br/razor/css/{Etiqueta}?v=20' rel='stylesheet' />");
-            builder.Append("</head>");
-            builder.Append($"<body class='letter'>");
-            builder.Append("    <section class='sheet padding-10mm'>");
-            builder.Append("        <article>");
-            builder.Append("            <table>");
-            builder.Append("                <tr>");
-
             var Colunas = string.IsNullOrEmpty(colunas.Text) ? 0 : Validation.ConvertToInt32(colunas.Text);
-            for (int i = 0; i < Colunas; i++)
-            {
-                builder.Append("<td></td>");
-            }
 
+            bool logo = false;
+            if (modelos.SelectedValue.ToString() == "10")
+                logo = true;
+
+            bool hideLogoHtml = false;
+            if (hideLogo.Checked)
+                hideLogoHtml = true;
+
+            bool hideRefHtml = false;
+            if (hideRef.Checked)
+                hideRefHtml = true;
+
+            bool hideCodeHtml = false;
+            if (hideCode.Checked)
+                hideCodeHtml = true;
+
+            string logoUrl = Settings.Default.empresa_logo;
+
+            ArrayList t = new ArrayList();
             foreach (var item in itens)
             {
-                builder.Append($"<td>{item.NOME}</td>");
+                var codeImageBar = "";
+                if (!String.IsNullOrEmpty(item.REFERENCIA))
+                {
+                    BarcodeLib.TYPE typeBarCode;
+                    if (Regex.Matches(item.REFERENCIA, @"[a-zA-Z]").Count == 0)
+                        typeBarCode = BarcodeLib.TYPE.EAN13;
+                    else
+                        typeBarCode = BarcodeLib.TYPE.CODE128;
+
+                    Image img = (new BarcodeLib.Barcode()).Encode(typeBarCode, item.REFERENCIA, Color.Black, Color.White, 195, 105);
+                    codeImageBar = ImageToBase64(img, ImageFormat.Png);
+                }
+
+                t.Add(new {
+                    Nome = item.NOME,
+                    Ref = item.REFERENCIA,
+                    Price = Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA)),
+                    Code = codeImageBar
+                });
             }
-            builder.Append("                </tr>");
-            builder.Append("            </table>");
-            builder.Append("        </article>");
-            builder.Append("    </section>");
-            builder.Append("</body>");
-            builder.Append("</html>");
 
-            var r = builder.ToString().Replace("{", "").Replace("}","");
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Etiqueta.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                urlBase = Program.URL_BASE,
+                ModeloCss = Etiqueta,
+                mitens = t,
+                Colunas = Colunas,
+                showLogo = logo,
+                LogoUrl = logoUrl,
+                logoHtml = hideLogoHtml,
+                refHtml = hideRefHtml,
+                codeHtml = hideCodeHtml
+            }));
 
-            //model.Item = origens;
-
-            //foreach (var items in origens)
-            //{
-            //    Console.WriteLine(items.Nome);
-            //}
-
-            //model.Item = new Model.Etiqueta().Query()
-            //    .LeftJoin("item", "item.id", "etiqueta.id_item")
-            //    .Where("item.excluir", 0)
-            //    .OrderByDesc("etiqueta.criado")
-            //    .Limit(Validation.ConvertToInt32(modelos.SelectedValue) - Validation.ConvertToInt32(colunas.Text))
-            //    .Get<dynamic>();
-
-            //var render = Engine.Razor.RunCompile(File.ReadAllText(Program.PATH_BASE + @"\View\Reports\html\Etiqueta.cshtml"), "templateKey", null, (object)model);
-
-            Browser.htmlRender = r;
+            Browser.htmlRender = render;
             var f = new Browser();
             f.ShowDialog();
+        }
+
+        public string ImageToBase64(Image image, ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+
+                // Convert byte[] to base 64 string
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
         }
 
         /// <summary>
