@@ -103,6 +103,26 @@ namespace Emiplus.Controller
             }
         }
 
+        private async System.Threading.Tasks.Task updateUltNfeAsync()
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "token", "f012622defec1e2bad3b8596e0642c" },
+                { "email", Settings.Default.user_email },
+                { "password", Settings.Default.user_password }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync(Program.URL_BASE + "/api/ultimanfe", content);
+            var responseString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(responseString);
+
+            var ultimaNfe = jo["ultimanfe"].ToString();
+
+            Settings.Default.empresa_nfe_ultnfe = ultimaNfe;
+            Settings.Default.Save();
+        }
+
         public void Start(int Pedido)
         {
             _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
@@ -185,6 +205,9 @@ namespace Emiplus.Controller
                             _nota.Serie = serie;
                             _nota.ChaveDeAcesso = chvAcesso;
                             _nota.Save(_nota, false);
+
+                            updateUltNfeAsync();
+
                             done = true;
                         }
 
