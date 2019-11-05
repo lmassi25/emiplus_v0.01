@@ -104,7 +104,7 @@ namespace Emiplus.View.Common
                 Alert.Message("Opss", "Você precisa ativar sua conta, acesse seu e-mail!", Alert.AlertType.info);
                 return;
             }
-            
+
             if (Validation.ConvertToInt32(jo["user"]["plan_status"]) <= 0)
             {
                 if (Validation.ConvertToInt32(jo["user"]["plan_trial"]) <= 0)
@@ -113,7 +113,7 @@ namespace Emiplus.View.Common
                     return;
                 }
             }
-
+            
             Settings.Default.user_id = Validation.ConvertToInt32(jo["user"]["id"]);
             Settings.Default.user_name = jo["user"]["name"].ToString();
             Settings.Default.user_lastname = jo["user"]["lastname"].ToString();
@@ -130,6 +130,7 @@ namespace Emiplus.View.Common
             Settings.Default.user_plan_recorrencia = jo["plano"]["recorrencia"].ToString();
             Settings.Default.user_plan_fatura = jo["plano"]["proxima_fatura"].ToString();
             Settings.Default.empresa_id = Validation.ConvertToInt32(jo["empresa"]["id"]);
+            Settings.Default.empresa_unique_id = jo["empresa"]["id_unique"].ToString();
             Settings.Default.empresa_logo = jo["empresa"]["logo"].ToString();
             Settings.Default.empresa_razao_social = jo["empresa"]["razao_social"].ToString();
             Settings.Default.empresa_nome_fantasia = jo["empresa"]["nome_fantasia"].ToString();

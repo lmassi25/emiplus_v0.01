@@ -44,7 +44,11 @@ namespace Emiplus.View.Common
                 Pedido.ShowDialog();
             };
 
-            HistoricoEntradaSaida.Click += (s, e) => OpenForm.Show<Reports.EstoqueEntradaSaida>(this);
+            HistoricoEntradaSaida.Click += (s, e) =>
+            {
+                EstoqueEntradaSaida Estoque = new EstoqueEntradaSaida();
+                Estoque.ShowDialog();
+            };
         }
     }
 }

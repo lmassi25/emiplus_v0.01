@@ -4,13 +4,15 @@ using System;
 using System.Windows.Forms;
 using Emiplus.View.Common;
 using System.IO;
+using Emiplus.Properties;
 
 namespace Emiplus
 {
     static class Program
     {
-        public static string URL_BASE = "https://www.emiplus.com.br";
+        public static string URL_BASE = "http://localhost/app";
         public static string PATH_BASE { get; set; }
+        public static string UNIQUE_ID_EMPRESA = Settings.Default.empresa_unique_id;
 
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.

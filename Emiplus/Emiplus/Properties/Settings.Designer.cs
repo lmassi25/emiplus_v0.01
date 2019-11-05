@@ -454,5 +454,17 @@ namespace Emiplus.Properties {
                 this["empresa_crt"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_unique_id {
+            get {
+                return ((string)(this["empresa_unique_id"]));
+            }
+            set {
+                this["empresa_unique_id"] = value;
+            }
+        }
     }
 }
