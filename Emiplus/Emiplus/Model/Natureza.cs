@@ -17,7 +17,7 @@ namespace Emiplus.Model
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; }
+        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
         public string Nome { get; set; }
 
         #endregion 

@@ -18,7 +18,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public int id_empresa { get; private set; }
+        public int id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
         public string Nome { get; set; }
         public string Fantasia { get; set; }
         public string RG { get; set; }
