@@ -417,6 +417,12 @@
     <Compile Include="View\Fiscal\AddNatureza.Designer.cs">
       <DependentUpon>AddNatureza.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\BrowserNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\BrowserNfe.Designer.cs">
+      <DependentUpon>BrowserNfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\Natureza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +696,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\AddNatureza.resx">
       <DependentUpon>AddNatureza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\BrowserNfe.resx">
+      <DependentUpon>BrowserNfe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Natureza.resx">
       <DependentUpon>Natureza.cs</DependentUpon>

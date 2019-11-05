@@ -12,6 +12,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Linq;
+using Emiplus.View.Fiscal;
 
 namespace Emiplus.Controller
 {
@@ -246,7 +247,14 @@ namespace Emiplus.Controller
         public string Print(int Pedido, string tipo = "NFe")
         {
             Start(Pedido);
-            return RequestPrint(_nota.ChaveDeAcesso, tipo);
+
+            var pdf = RequestPrint(_nota.ChaveDeAcesso, tipo);
+
+            BrowserNfe.Render = pdf;
+            BrowserNfe browser = new BrowserNfe();
+            browser.ShowDialog();
+
+            return pdf;
         }
 
         /// <summary> 
