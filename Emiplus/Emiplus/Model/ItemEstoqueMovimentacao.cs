@@ -17,7 +17,7 @@ namespace Emiplus.Model
         [Key("ID")]
         public int Id { get; set; }
         public DateTime Criado { get; private set; }
-        public string id_empresa { get; private set; }
+        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
         public int id_item { get; set; }
         public int id_usuario { get; set; }
         public double Quantidade { get; set; }
