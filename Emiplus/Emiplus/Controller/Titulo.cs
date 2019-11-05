@@ -82,9 +82,6 @@ namespace Emiplus.Controller
                 data.Id_Pedido = idPedido;
                 data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).First().CLIENTE;
             }
-
-            
-
             if (valor < 0)
             {
                 return false;
@@ -139,8 +136,16 @@ namespace Emiplus.Controller
                 data.Id = 0;
                 data.Id_FormaPgto = formaPgto;
                 data.Emissao = Validation.DateNowToSql();
-                data.Vencimento = Validation.DateNowToSql();
 
+                if (!String.IsNullOrEmpty(inicio))
+                {
+                    data.Vencimento = Validation.ConvertDateToSql(inicio);
+                }
+                else
+                {
+                    data.Vencimento = Validation.DateNowToSql();
+                }
+                 
                 if (formaPgto == 1 && valor > GetRestante(idPedido))
                 {
                     data.Total = GetRestante(idPedido);

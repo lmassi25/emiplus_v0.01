@@ -18,7 +18,7 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Reports.Form2());
+            Application.Run(new View.Common.Login());
         }
     }
 }

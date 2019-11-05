@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -6,6 +7,8 @@ namespace Emiplus.View.Fiscal.TelasNota
     public partial class TelaFinal : Form
     {
         private static int Id { get; set; } // id nota
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private string _msg;
 
         public TelaFinal()
         {
@@ -20,8 +23,29 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Emitir.Click += (s, e) =>
             {
-                retorno.Text = new Controller.Fiscal().Issue(Id, "NFe");
+                retorno.Text = "Emitindo NF-e .......................................... (1/2)";
+                Emitir.Enabled = false;
+                WorkerBackground.RunWorkerAsync();
             };
+
+            Imprimir.Click += (s, e) =>
+            {
+                retorno.Text = new Controller.Fiscal().Print(Id, "NFe");
+            };
+
+            using (var b = WorkerBackground)
+            {
+                b.DoWork += async (s, e) =>
+                {
+                    _msg = new Controller.Fiscal().Issue(Id, "NFe");
+                };
+
+                b.RunWorkerCompleted += async (s, e) =>
+                {
+                    retorno.Text = _msg;
+                    Emitir.Enabled = true;
+                };
+            }
         }
     }
 }

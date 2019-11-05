@@ -23,7 +23,14 @@ namespace Emiplus.Model
         public string Serie { get; set; }
         public string Status { get; set; }
 
+        public string ChaveDeAcesso { get; set; }
+
         #endregion
+
+        public SqlKata.Query FindByIdPedido(int id)
+        {
+            return Query().Where("id_pedido", id);
+        }
 
         public bool Save(Nota data, bool message = true)
         {
