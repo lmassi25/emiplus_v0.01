@@ -3,6 +3,7 @@
     using Data.Database;
     using Emiplus.Data.Helpers;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
 
     internal class Etiqueta : Model
@@ -23,9 +24,13 @@
         public string id_empresa { get; private set; }
         public int id_item { get; set; }
         public int quantidade { get; set; }
-        public int linha { get; set; }
-        public int coluna { get; set; }
         #endregion 
+
+        public bool Clean()
+        {
+            Query().Delete();
+            return true;
+        }
 
         public bool Save(Etiqueta data)
         {

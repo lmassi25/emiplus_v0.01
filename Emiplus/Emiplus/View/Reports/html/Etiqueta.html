@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <link href="https://www.emiplus.com.br/razor/css/{{ModeloCss}}?v=47" rel="stylesheet" />
+</head>
+<body class="letter">
+    <section class="sheet padding-10mm">
+        <article>
+            <table>
+                <tr>{% if Colunas != 0 %}{% for c in (1..Colunas) %}<td></td>{% endfor %}{% endif %}{% for item in mitens %}
+                    <td>
+                        <span class="title">{{item.Nome}}</span>
+                        <span class="code_barras">{% if !codeHtml %}{% if item.Code != "" %}<img src="data:image/png;base64,{{item.Code}}">{% endif %}{% endif %}</span>
+                        {% if !logoHtml %}{% if showLogo %}
+                        <span class="logo"><img src="{{urlBase}}{{LogoUrl}}"></span>
+                        {% endif %}{% endif %}
+                        <span class="ref">{% if !refHtml %}{% if item.Code != "" %}Ref: {{item.Ref}}{% endif %}{% endif %}</span>
+                        <span class="price"><small>R$</small> {{item.Price}}</span>
+                    </td>{% endfor %}
+                </tr>
+            </table>
+        </article>
+    </section>
+</body>
+</html>

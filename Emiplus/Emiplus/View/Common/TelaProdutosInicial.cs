@@ -1,5 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Reports;
 using System;
+using System.Dynamic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -39,6 +42,12 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Compras";
                 Comercial.Pedido Pedido = new Comercial.Pedido();
                 Pedido.ShowDialog();
+            };
+
+            HistoricoEntradaSaida.Click += (s, e) =>
+            {
+                EstoqueEntradaSaida Estoque = new EstoqueEntradaSaida();
+                Estoque.ShowDialog();
             };
         }
     }

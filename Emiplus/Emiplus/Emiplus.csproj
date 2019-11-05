@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +16,10 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +32,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -51,8 +58,14 @@
     <ApplicationIcon>iconEmiPlus.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeStandard, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.2.2.2\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.4\lib\netstandard2.0\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DotLiquid, Version=2.0.314.0, Culture=neutral, PublicKeyToken=82e46016ecf9f07c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotLiquid.2.0.314\lib\net45\DotLiquid.dll</HintPath>
     </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
@@ -114,7 +127,9 @@
     <Reference Include="SqlKata.Execution, Version=1.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlKata.Execution.1.1.7\lib\net451\SqlKata.Execution.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
@@ -130,6 +145,9 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Interactive.Async, Version=3.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.3.2.0\lib\net46\System.Interactive.Async.dll</HintPath>
@@ -174,6 +192,7 @@
     </Compile>
     <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Estoque.cs" />
+    <Compile Include="Controller\Etiqueta.cs" />
     <Compile Include="Controller\Fiscal.cs" />
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
@@ -530,17 +549,17 @@
     <Compile Include="View\Produtos\Produtos.Designer.cs">
       <DependentUpon>Produtos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\Form1.cs">
+    <Compile Include="View\Reports\Browser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Reports\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\Reports\Browser.Designer.cs">
+      <DependentUpon>Browser.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Reports\Form2.cs">
+    <Compile Include="View\Reports\EstoqueEntradaSaida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Reports\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="View\Reports\EstoqueEntradaSaida.Designer.cs">
+      <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Testes\cPure.cs">
       <SubType>Form</SubType>
@@ -738,13 +757,12 @@
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\Reports\Browser.resx">
+      <DependentUpon>Browser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="View\Reports\EstoqueEntradaSaida.resx">
+      <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Reports\Report1.rdlc" />
     <EmbeddedResource Include="View\Testes\cPure.resx">
       <DependentUpon>cPure.cs</DependentUpon>
     </EmbeddedResource>
@@ -917,6 +935,7 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\Reports\html\Etiqueta.html" />
     <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
     <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />
@@ -966,4 +985,17 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.75.1.14\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.75.1.14\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.75.1.142\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.75.1.142\build\CefSharp.WinForms.targets')" />
 </Project>
