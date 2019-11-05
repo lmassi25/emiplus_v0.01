@@ -23,6 +23,12 @@ namespace Emiplus.Controller
                 _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
                 if (_modelItem.Count() != 0)
                 {
+                    if (_modelItem.Impostoid == 0)
+                    {
+                        Alert.Message("Opss", "O produto não possui imposto.", Alert.AlertType.error);
+                        return;
+                    }
+
                     _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).First<Model.Imposto>();
                 }
             }
