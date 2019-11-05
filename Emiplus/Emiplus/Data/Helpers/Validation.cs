@@ -93,11 +93,29 @@ namespace Emiplus.Data.Helpers
             return string.Format("{0:N2}", price);
         }
 
-        public static string FormatPriceWithDot(object obj)
+        public static string FormatPriceWithDot(object obj, int decimais = 2)
         {
             string aux = "";
+
+            switch (decimais)
+            {
+                case 3:
+                    aux = string.Format("{0:N3}", Validation.ConvertToDouble(obj));
+                    break;
+                case 4:
+                    aux = string.Format("{0:N4}", Validation.ConvertToDouble(obj));
+                    break;
+                case 5:
+                    aux = string.Format("{0:N5}", Validation.ConvertToDouble(obj));
+                    break;
+                case 6:
+                    aux = string.Format("{0:N6}", Validation.ConvertToDouble(obj));
+                    break;
+                default:
+                    aux = string.Format("{0:N2}", Validation.ConvertToDouble(obj));
+                    break;
+            }
             
-            aux = string.Format("{0:N2}", Validation.ConvertToDouble(obj));
             aux = aux.Replace(".", "");
             aux = aux.Replace(",", ".");
 

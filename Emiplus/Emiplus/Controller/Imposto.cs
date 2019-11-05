@@ -217,6 +217,14 @@ namespace Emiplus.Controller
 
             #endregion
 
+            #region vTotTrib
+
+            _modelpedidoItem.Federal = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqFederal / 100));
+            _modelpedidoItem.Estadual = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqEstadual / 100));
+            _modelpedidoItem.Municipal = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqMunicipal / 100));
+
+            #endregion
+
             _modelpedidoItem.Save(_modelpedidoItem);
         }
 

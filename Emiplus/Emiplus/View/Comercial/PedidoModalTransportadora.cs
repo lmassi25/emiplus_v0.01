@@ -26,7 +26,7 @@ namespace Emiplus.View.Comercial
             {
                 DialogResult = DialogResult.OK;
                 Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                Close();
+                this.Close();
             }
         }
 
