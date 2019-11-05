@@ -30,6 +30,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
             _mNota = _mPedido.FindById(IdDetailsNota).FirstOrDefault<Model.Nota>();
+            IdNatureza = _mPedido.id_natureza;
 
             Eventos();
         }
@@ -87,6 +88,27 @@ namespace Emiplus.View.Fiscal.TelasNota
             }
         }
 
+        private void GetData()
+        {
+            _mPedido.Id = Id;
+            _mPedido.Emissao = emissao.Text != "" ? DateTime.Parse(emissao.Text) : DateTime.Now;
+            _mPedido.Saida = saida.Text != "" ? DateTime.Parse(saida.Text) : DateTime.Now;
+            _mPedido.HoraSaida = hora.Text;
+            _mPedido.Finalidade = Validation.ConvertToInt32(finalidade.SelectedValue);
+            _mPedido.Destino = Validation.ConvertToInt32(localDestino.SelectedValue);
+            _mPedido.TipoNFe = Validation.ConvertToInt32(tipo.SelectedValue);
+            _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue);
+            _mPedido.info_contribuinte = infoContribuinte.Text;
+            _mPedido.info_fisco = infoFisco.Text;
+            _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue) > 0 ? Validation.ConvertToInt32(naturezaOp.SelectedValue) : 0;
+            
+            if (PedidoModalClientes.Id > 0)            
+                _mPedido.Cliente = PedidoModalClientes.Id;
+
+            if (DetailsClient.IdAddress > 0)
+                _mPedido.id_useraddress = DetailsClient.IdAddress;
+        }
+
         private void LoadData()
         {
             var tipos = new ArrayList();
@@ -113,9 +135,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             localDestino.DisplayMember = "Nome";
             localDestino.ValueMember = "Id";
 
-            LoadNatureza();
-            LoadCliente();
-
             emissao.Text = Validation.ConvertDateToForm(_mPedido.Emissao);
             saida.Text = Validation.ConvertDateToForm(_mPedido.Saida);
             hora.Text = String.IsNullOrEmpty(_mPedido.HoraSaida) ? "" : _mPedido.HoraSaida;
@@ -125,6 +144,10 @@ namespace Emiplus.View.Fiscal.TelasNota
             naturezaOp.SelectedItem = _mPedido.id_natureza;
             infoContribuinte.Text = _mPedido.info_contribuinte;
             infoFisco.Text = _mPedido.info_fisco;
+            IdNatureza = _mPedido.id_natureza;
+
+            LoadNatureza();
+            LoadCliente();
         }
 
         private bool Validate()
@@ -184,16 +207,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     return;
                 }
 
-                _mPedido.Id = Id;
-                _mPedido.Emissao = emissao.Text != "" ? DateTime.Parse(emissao.Text) : DateTime.Now;
-                _mPedido.Saida = saida.Text != "" ? DateTime.Parse(saida.Text) : DateTime.Now;
-                _mPedido.HoraSaida = hora.Text;
-                _mPedido.Finalidade = Validation.ConvertToInt32(finalidade.SelectedValue);
-                _mPedido.Destino = Validation.ConvertToInt32(localDestino.SelectedValue);
-                _mPedido.TipoNFe = Validation.ConvertToInt32(tipo.SelectedValue);
-                _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue);
-                _mPedido.info_contribuinte = infoContribuinte.Text;
-                _mPedido.info_fisco = infoFisco.Text;
+                GetData();
                 _mPedido.Save(_mPedido);
 
                 OpenForm.Show<TelaProdutos>(this);
@@ -204,8 +218,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 PedidoModalClientes form = new PedidoModalClientes();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    _mPedido.Id = Id;
-                    _mPedido.Cliente = PedidoModalClientes.Id;
+                    GetData();
                     _mPedido.Save(_mPedido);
                     LoadData();
                 }
@@ -219,8 +232,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     DetailsClient form = new DetailsClient();
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        _mPedido.Id = Id;
-                        _mPedido.id_useraddress = DetailsClient.IdAddress;
+                        GetData();
                         _mPedido.Save(_mPedido);
                         LoadData();
 

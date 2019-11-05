@@ -99,13 +99,16 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _mPedido.Especie_Frete = especie.Text;
                 _mPedido.Marca_Frete = marca.Text;
                 _mPedido.Save(_mPedido);
-                                
-                //_mTransportadora.Id = _mPedido.Id_Transportadora > 0 ? _mPedido.Id_Transportadora : 0;
-                //_mTransportadora.Transporte_rntc = rntc.Text;
-                //_mTransportadora.Transporte_uf = uf.Text;
-                //_mTransportadora.Transporte_placa = placa.Text;
-                //_mTransportadora.Save(_mTransportadora, false);
 
+                if (_mPedido.Id_Transportadora > 0)
+                {
+                    _mTransportadora.Id =  _mPedido.Id_Transportadora;
+                    _mTransportadora.Transporte_rntc = rntc.Text;
+                    _mTransportadora.Transporte_uf = uf.Text;
+                    _mTransportadora.Transporte_placa = placa.Text;
+                    _mTransportadora.Save(_mTransportadora, false);
+                }
+                
                 OpenForm.Show<TelaPagamento>(this);
             };
 

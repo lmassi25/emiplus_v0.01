@@ -76,6 +76,9 @@
         public string Cest { get; set; }
         public double Icms101Aliq { get; set; }
         public double Icms101Vlr { get; set; }
+        public double Federal { get; set; }
+        public double Estadual { get; set; }
+        public double Municipal { get; set; }
 
         #endregion
 

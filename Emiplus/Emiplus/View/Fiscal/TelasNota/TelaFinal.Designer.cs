@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEnviarEmail;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaFinal));
-            VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImprimir;
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,8 +54,8 @@
             this.progress5 = new System.Windows.Forms.Panel();
             this.progress3 = new System.Windows.Forms.Panel();
             this.Emitir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.Imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             btnEnviarEmail = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            btnImprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel11.SuspendLayout();
@@ -101,41 +100,6 @@
             btnEnviarEmail.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             btnEnviarEmail.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             btnEnviarEmail.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnImprimir
-            // 
-            btnImprimir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnImprimir.BackColor = System.Drawing.Color.Transparent;
-            btnImprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnImprimir.BackColorState.Enabled = System.Drawing.Color.White;
-            btnImprimir.BackColorState.Hover = System.Drawing.Color.White;
-            btnImprimir.BackColorState.Pressed = System.Drawing.Color.White;
-            btnImprimir.Border.Color = System.Drawing.Color.Silver;
-            btnImprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnImprimir.Border.HoverVisible = true;
-            btnImprimir.Border.Rounding = 6;
-            btnImprimir.Border.Thickness = 1;
-            btnImprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            btnImprimir.Border.Visible = true;
-            btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnImprimir.DialogResult = System.Windows.Forms.DialogResult.None;
-            btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            btnImprimir.Location = new System.Drawing.Point(649, 518);
-            btnImprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new System.Drawing.Size(154, 78);
-            btnImprimir.TabIndex = 187;
-            btnImprimir.Text = "Imprimir DANF-e";
-            btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            btnImprimir.TextStyle.Disabled = System.Drawing.Color.Gray;
-            btnImprimir.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnImprimir.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnImprimir.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnImprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            btnImprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            btnImprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel1
             // 
@@ -508,16 +472,50 @@
             this.Emitir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Emitir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // Imprimir
+            // 
+            this.Imprimir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Imprimir.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Imprimir.BackColorState.Hover = System.Drawing.Color.White;
+            this.Imprimir.BackColorState.Pressed = System.Drawing.Color.White;
+            this.Imprimir.Border.Color = System.Drawing.Color.Silver;
+            this.Imprimir.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Imprimir.Border.HoverVisible = true;
+            this.Imprimir.Border.Rounding = 6;
+            this.Imprimir.Border.Thickness = 1;
+            this.Imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Imprimir.Border.Visible = true;
+            this.Imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Imprimir.Image")));
+            this.Imprimir.Location = new System.Drawing.Point(189, 518);
+            this.Imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.Size = new System.Drawing.Size(154, 78);
+            this.Imprimir.TabIndex = 286;
+            this.Imprimir.Text = "Imprimir DANF-e";
+            this.Imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Imprimir.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Imprimir.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Imprimir.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // TelaFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
+            this.Controls.Add(this.Imprimir);
             this.Controls.Add(this.Emitir);
             this.Controls.Add(this.panel11);
             this.Controls.Add(btnEnviarEmail);
-            this.Controls.Add(btnImprimir);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.retorno);
@@ -567,5 +565,6 @@
         private System.Windows.Forms.Panel progress5;
         private System.Windows.Forms.Panel progress3;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Emitir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Imprimir;
     }
 }
