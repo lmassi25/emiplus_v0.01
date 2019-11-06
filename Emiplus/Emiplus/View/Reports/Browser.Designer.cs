@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.proximo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.anterior = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.anterior = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.proximo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,134 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 52);
             this.panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 30);
+            this.label1.TabIndex = 159;
+            this.label1.Text = "Relatório";
+            // 
+            // anterior
+            // 
+            this.anterior.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.anterior.BackColor = System.Drawing.Color.Transparent;
+            this.anterior.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.anterior.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.anterior.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.anterior.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.anterior.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.anterior.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.anterior.Border.HoverVisible = true;
+            this.anterior.Border.Rounding = 6;
+            this.anterior.Border.Thickness = 1;
+            this.anterior.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.anterior.Border.Visible = true;
+            this.anterior.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.anterior.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.anterior.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.anterior.Image = ((System.Drawing.Image)(resources.GetObject("anterior.Image")));
+            this.anterior.Location = new System.Drawing.Point(683, 10);
+            this.anterior.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.anterior.Name = "anterior";
+            this.anterior.Size = new System.Drawing.Size(33, 34);
+            this.anterior.TabIndex = 158;
+            this.anterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.anterior.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.anterior.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.anterior.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.anterior.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.anterior.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.anterior.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.anterior.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // proximo
+            // 
+            this.proximo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.proximo.BackColor = System.Drawing.Color.Transparent;
+            this.proximo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.proximo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.proximo.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.proximo.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.proximo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.proximo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.proximo.Border.HoverVisible = true;
+            this.proximo.Border.Rounding = 6;
+            this.proximo.Border.Thickness = 1;
+            this.proximo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.proximo.Border.Visible = true;
+            this.proximo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.proximo.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.proximo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.proximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.proximo.Image = ((System.Drawing.Image)(resources.GetObject("proximo.Image")));
+            this.proximo.Location = new System.Drawing.Point(722, 10);
+            this.proximo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.proximo.Name = "proximo";
+            this.proximo.Size = new System.Drawing.Size(33, 34);
+            this.proximo.TabIndex = 157;
+            this.proximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.proximo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.proximo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.proximo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.proximo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.proximo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.proximo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.proximo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.HoverVisible = true;
+            this.imprimir.Border.Rounding = 6;
+            this.imprimir.Border.Thickness = 1;
+            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imprimir.Border.Visible = true;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = null;
+            this.imprimir.Location = new System.Drawing.Point(888, 10);
+            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(108, 34);
+            this.imprimir.TabIndex = 156;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(232, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 17);
+            this.label6.TabIndex = 155;
+            this.label6.Text = "Pesquisar";
             // 
             // search
             // 
@@ -124,134 +252,6 @@
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(232, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 17);
-            this.label6.TabIndex = 155;
-            this.label6.Text = "Pesquisar";
-            // 
-            // imprimir
-            // 
-            this.imprimir.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.imprimir.Border.HoverVisible = true;
-            this.imprimir.Border.Rounding = 6;
-            this.imprimir.Border.Thickness = 1;
-            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.imprimir.Border.Visible = true;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.White;
-            this.imprimir.Image = null;
-            this.imprimir.Location = new System.Drawing.Point(888, 10);
-            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(108, 34);
-            this.imprimir.TabIndex = 156;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
-            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // proximo
-            // 
-            this.proximo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.proximo.BackColor = System.Drawing.Color.Transparent;
-            this.proximo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.proximo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.proximo.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.proximo.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.proximo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.proximo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.proximo.Border.HoverVisible = true;
-            this.proximo.Border.Rounding = 6;
-            this.proximo.Border.Thickness = 1;
-            this.proximo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.proximo.Border.Visible = true;
-            this.proximo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.proximo.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.proximo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.proximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.proximo.Image = ((System.Drawing.Image)(resources.GetObject("proximo.Image")));
-            this.proximo.Location = new System.Drawing.Point(722, 10);
-            this.proximo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.proximo.Name = "proximo";
-            this.proximo.Size = new System.Drawing.Size(33, 34);
-            this.proximo.TabIndex = 157;
-            this.proximo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.proximo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.proximo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.proximo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.proximo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.proximo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.proximo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.proximo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // anterior
-            // 
-            this.anterior.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.anterior.BackColor = System.Drawing.Color.Transparent;
-            this.anterior.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.anterior.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.anterior.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.anterior.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.anterior.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.anterior.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.anterior.Border.HoverVisible = true;
-            this.anterior.Border.Rounding = 6;
-            this.anterior.Border.Thickness = 1;
-            this.anterior.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.anterior.Border.Visible = true;
-            this.anterior.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.anterior.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.anterior.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.anterior.Image = ((System.Drawing.Image)(resources.GetObject("anterior.Image")));
-            this.anterior.Location = new System.Drawing.Point(683, 10);
-            this.anterior.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.anterior.Name = "anterior";
-            this.anterior.Size = new System.Drawing.Size(33, 34);
-            this.anterior.TabIndex = 158;
-            this.anterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.anterior.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.anterior.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.anterior.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.anterior.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.anterior.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.anterior.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.anterior.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 30);
-            this.label1.TabIndex = 159;
-            this.label1.Text = "Relatório";
-            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,8 +261,10 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelBrowser);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Browser";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

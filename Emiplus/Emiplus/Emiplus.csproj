@@ -115,6 +115,9 @@
     <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
     </Reference>
@@ -203,6 +206,7 @@
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\Configs.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
+    <Compile Include="Data\Core\RequestApi.cs" />
     <Compile Include="Data\Core\Update.cs" />
     <Compile Include="Data\Core\Controller.cs" />
     <Compile Include="Data\Database\Connect.cs" />
@@ -941,9 +945,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controller\Relatorios\" />
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\Reports\html\css\Relatorio.css" />
+    <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />

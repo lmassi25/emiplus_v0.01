@@ -1,20 +1,16 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System.Runtime.InteropServices; // Biblioteca para mover tela
+using System.Net.Http;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.Core;
+using Emiplus.Properties;
+using System.IO;
+using System.Diagnostics;
+using System.Net;
+using RestSharp;
 
 namespace Emiplus.View.Common
 {
-    using System.Runtime.InteropServices; // Biblioteca para mover tela
-    using System.Net.Http;
-    using System.Collections.Generic;
-    using Newtonsoft.Json.Linq;
-    using Emiplus.Data.Helpers;
-    using System.Threading.Tasks;
-    using Emiplus.Data.Core;
-    using Emiplus.Properties;
-    using System.IO;
-    using System.Diagnostics;
-    using System.Net;
-
     public partial class Login : Form
     {
         private static readonly HttpClient client = new HttpClient();
@@ -69,22 +65,16 @@ namespace Emiplus.View.Common
         }
         #endregion
 
-        private async Task LoginAsync()
+        private void LoginAsync()
         {
-            var values = new Dictionary<string, string>
+            dynamic obj = new
             {
-                { "token", "f012622defec1e2bad3b8596e0642c" },
-                { "email", email.Text },
-                { "password", password.Text }
+                token = Program.TOKEN,
+                email = email.Text,
+                password = password.Text
             };
 
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await client.PostAsync(Program.URL_BASE + "/api/user", content);
-
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            var jo = JObject.Parse(responseString);
+            var jo = new RequestApi().URL(Program.URL_BASE + "/api/user").Content(obj, Method.POST).Response();
 
             if (jo["error"] != null && jo["error"].ToString() != "")
             {
@@ -121,6 +111,7 @@ namespace Emiplus.View.Common
             Settings.Default.user_thumb = jo["user"]["thumb"].ToString();
             Settings.Default.user_email = jo["user"]["email"].ToString();
             Settings.Default.user_password = password.Text;
+            Settings.Default.user_sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
             Settings.Default.user_cell = jo["user"]["cell"].ToString();
             Settings.Default.user_level = Validation.ConvertToInt32(jo["user"]["level"]);
             Settings.Default.user_status = Validation.ConvertToInt32(jo["user"]["status"]);

@@ -34,15 +34,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.btnSearch = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.BuscarProduto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.imprimir = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.Locais = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.noFilterData = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,18 +62,17 @@
             this.Loading = new System.Windows.Forms.PictureBox();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.visualCheckBox1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
-            this.imprimir = new System.Windows.Forms.Button();
+            this.filterAll = new System.Windows.Forms.RadioButton();
+            this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel5.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -113,6 +119,28 @@
             this.panel4.Size = new System.Drawing.Size(1007, 40);
             this.panel4.TabIndex = 174;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(133, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 17);
+            this.label6.TabIndex = 52;
+            this.label6.Text = "Produtos";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 51;
+            this.pictureBox4.TabStop = false;
+            // 
             // dataFinal
             // 
             this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
@@ -133,7 +161,7 @@
             this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataFinal.Image = null;
             this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataFinal.Location = new System.Drawing.Point(48, 294);
+            this.dataFinal.Location = new System.Drawing.Point(48, 405);
             this.dataFinal.MinimumSize = new System.Drawing.Size(0, 23);
             this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataFinal.Name = "dataFinal";
@@ -161,7 +189,7 @@
             this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataInicial.Image = null;
             this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataInicial.Location = new System.Drawing.Point(48, 264);
+            this.dataInicial.Location = new System.Drawing.Point(48, 375);
             this.dataInicial.MinimumSize = new System.Drawing.Size(0, 23);
             this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataInicial.Name = "dataInicial";
@@ -187,7 +215,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = null;
-            this.btnSearch.Location = new System.Drawing.Point(48, 416);
+            this.btnSearch.Location = new System.Drawing.Point(48, 511);
             this.btnSearch.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(140, 45);
@@ -202,70 +230,72 @@
             this.btnSearch.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnSearch.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // search
+            // BuscarProduto
             // 
-            this.search.AlphaNumeric = false;
-            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BuscarProduto.AlphaNumeric = false;
+            this.BuscarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.BackColorState.Enabled = System.Drawing.Color.White;
-            this.search.Border.Color = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverVisible = true;
-            this.search.Border.Rounding = 8;
-            this.search.Border.Thickness = 1;
-            this.search.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.Border.Visible = true;
-            this.search.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.search.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.search.ButtonBorder.HoverVisible = true;
-            this.search.ButtonBorder.Rounding = 6;
-            this.search.ButtonBorder.Thickness = 1;
-            this.search.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.ButtonBorder.Visible = true;
-            this.search.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.search.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ButtonIndent = 3;
-            this.search.ButtonText = "visualButton";
-            this.search.ButtonVisible = false;
-            this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
-            this.search.ImageSize = new System.Drawing.Size(16, 16);
-            this.search.ImageVisible = true;
-            this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(21, 357);
-            this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.search.Name = "search";
-            this.search.PasswordChar = '\0';
-            this.search.ReadOnly = false;
-            this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.search.Size = new System.Drawing.Size(200, 34);
-            this.search.TabIndex = 0;
-            this.search.TextBoxWidth = 150;
-            this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.search.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.search.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.search.Watermark.Text = "Watermark text";
-            this.search.Watermark.Visible = false;
-            this.search.WordWrap = true;
+            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;
+            this.BuscarProduto.Border.Color = System.Drawing.Color.Gainsboro;
+            this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.BuscarProduto.Border.HoverVisible = true;
+            this.BuscarProduto.Border.Rounding = 8;
+            this.BuscarProduto.Border.Thickness = 1;
+            this.BuscarProduto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscarProduto.Border.Visible = true;
+            this.BuscarProduto.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.BuscarProduto.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.BuscarProduto.ButtonBorder.HoverVisible = true;
+            this.BuscarProduto.ButtonBorder.Rounding = 6;
+            this.BuscarProduto.ButtonBorder.Thickness = 1;
+            this.BuscarProduto.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscarProduto.ButtonBorder.Visible = true;
+            this.BuscarProduto.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscarProduto.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscarProduto.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscarProduto.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BuscarProduto.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarProduto.ButtonIndent = 3;
+            this.BuscarProduto.ButtonText = "visualButton";
+            this.BuscarProduto.ButtonVisible = false;
+            this.BuscarProduto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarProduto.Image = ((System.Drawing.Image)(resources.GetObject("BuscarProduto.Image")));
+            this.BuscarProduto.ImageSize = new System.Drawing.Size(16, 16);
+            this.BuscarProduto.ImageVisible = true;
+            this.BuscarProduto.ImageWidth = 35;
+            this.BuscarProduto.Location = new System.Drawing.Point(21, 468);
+            this.BuscarProduto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.BuscarProduto.Name = "BuscarProduto";
+            this.BuscarProduto.PasswordChar = '\0';
+            this.BuscarProduto.ReadOnly = false;
+            this.BuscarProduto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.BuscarProduto.Size = new System.Drawing.Size(200, 34);
+            this.BuscarProduto.TabIndex = 0;
+            this.BuscarProduto.TextBoxWidth = 150;
+            this.BuscarProduto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.BuscarProduto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarProduto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarProduto.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarProduto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscarProduto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscarProduto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.BuscarProduto.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BuscarProduto.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarProduto.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.BuscarProduto.Watermark.Text = "Watermark text";
+            this.BuscarProduto.Watermark.Visible = false;
+            this.BuscarProduto.WordWrap = true;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(18, 337);
+            this.label11.Location = new System.Drawing.Point(18, 448);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(114, 17);
             this.label11.TabIndex = 26;
@@ -294,6 +324,27 @@
             this.panel5.Size = new System.Drawing.Size(1008, 97);
             this.panel5.TabIndex = 173;
             // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderSize = 0;
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(867, 3);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(116, 90);
+            this.imprimir.TabIndex = 101;
+            this.imprimir.Text = "Gerar Relatório";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = true;
+            // 
             // btnHelp
             // 
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -319,11 +370,17 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.barraTitulo.Controls.Add(this.visualCheckBox1);
+            this.barraTitulo.Controls.Add(this.Usuarios);
+            this.barraTitulo.Controls.Add(this.label12);
+            this.barraTitulo.Controls.Add(this.filterAll);
+            this.barraTitulo.Controls.Add(this.Locais);
+            this.barraTitulo.Controls.Add(this.panel1);
+            this.barraTitulo.Controls.Add(this.label4);
+            this.barraTitulo.Controls.Add(this.noFilterData);
             this.barraTitulo.Controls.Add(this.dataFinal);
             this.barraTitulo.Controls.Add(this.dataInicial);
             this.barraTitulo.Controls.Add(this.btnSearch);
-            this.barraTitulo.Controls.Add(this.search);
+            this.barraTitulo.Controls.Add(this.BuscarProduto);
             this.barraTitulo.Controls.Add(this.label11);
             this.barraTitulo.Controls.Add(this.label10);
             this.barraTitulo.Controls.Add(this.label9);
@@ -338,12 +395,129 @@
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 171;
             // 
+            // Locais
+            // 
+            this.Locais.BackColor = System.Drawing.Color.White;
+            this.Locais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Locais.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Locais.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Locais.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Locais.Border.HoverVisible = true;
+            this.Locais.Border.Rounding = 6;
+            this.Locais.Border.Thickness = 1;
+            this.Locais.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Locais.Border.Visible = true;
+            this.Locais.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Locais.ButtonImage = null;
+            this.Locais.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Locais.ButtonWidth = 30;
+            this.Locais.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Locais.DropDownHeight = 100;
+            this.Locais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Locais.DropDownWidth = 250;
+            this.Locais.FormattingEnabled = true;
+            this.Locais.ImageList = null;
+            this.Locais.ImageVisible = false;
+            this.Locais.Index = 0;
+            this.Locais.IntegralHeight = false;
+            this.Locais.ItemHeight = 23;
+            this.Locais.ItemImageVisible = true;
+            this.Locais.Location = new System.Drawing.Point(78, 243);
+            this.Locais.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Locais.MenuItemNormal = System.Drawing.Color.White;
+            this.Locais.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Locais.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Locais.Name = "Locais";
+            this.Locais.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Locais.Size = new System.Drawing.Size(143, 29);
+            this.Locais.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Locais.TabIndex = 194;
+            this.Locais.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Locais.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Locais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Locais.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Locais.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Locais.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Locais.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Locais.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Locais.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Locais.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Locais.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Locais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Locais.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Locais.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Locais.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Locais.Watermark.Text = "Watermark text";
+            this.Locais.Watermark.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Location = new System.Drawing.Point(22, 328);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 1);
+            this.panel1.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(18, 247);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 193;
+            this.label4.Text = "Local";
+            // 
+            // noFilterData
+            // 
+            this.noFilterData.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.noFilterData.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.noFilterData.Border.HoverVisible = true;
+            this.noFilterData.Border.Rounding = 3;
+            this.noFilterData.Border.Thickness = 1;
+            this.noFilterData.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.Border.Visible = true;
+            this.noFilterData.Box = new System.Drawing.Size(14, 14);
+            this.noFilterData.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.noFilterData.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.noFilterData.BoxSpacing = 2;
+            this.noFilterData.CheckStyle.AutoSize = true;
+            this.noFilterData.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.noFilterData.CheckStyle.Character = '✔';
+            this.noFilterData.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.noFilterData.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noFilterData.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.noFilterData.CheckStyle.ShapeRounding = 3;
+            this.noFilterData.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.noFilterData.CheckStyle.Thickness = 2F;
+            this.noFilterData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.noFilterData.ForeColor = System.Drawing.Color.Gray;
+            this.noFilterData.IsBoxLarger = false;
+            this.noFilterData.Location = new System.Drawing.Point(78, 343);
+            this.noFilterData.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.noFilterData.Name = "noFilterData";
+            this.noFilterData.Size = new System.Drawing.Size(125, 23);
+            this.noFilterData.TabIndex = 191;
+            this.noFilterData.Text = "Não filtrar a data";
+            this.noFilterData.TextSize = new System.Drawing.Size(88, 16);
+            this.noFilterData.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.noFilterData.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(28, 297);
+            this.label10.Location = new System.Drawing.Point(28, 402);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 17);
             this.label10.TabIndex = 24;
@@ -354,7 +528,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(20, 267);
+            this.label9.Location = new System.Drawing.Point(20, 372);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 17);
             this.label9.TabIndex = 21;
@@ -365,7 +539,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(18, 234);
+            this.label8.Location = new System.Drawing.Point(18, 345);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 190;
@@ -375,24 +549,24 @@
             // 
             this.filterRemovido.AutoSize = true;
             this.filterRemovido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterRemovido.Location = new System.Drawing.Point(21, 192);
+            this.filterRemovido.Location = new System.Drawing.Point(21, 213);
             this.filterRemovido.Name = "filterRemovido";
-            this.filterRemovido.Size = new System.Drawing.Size(81, 17);
+            this.filterRemovido.Size = new System.Drawing.Size(59, 17);
             this.filterRemovido.TabIndex = 15;
             this.filterRemovido.TabStop = true;
-            this.filterRemovido.Text = "Removidos";
+            this.filterRemovido.Text = "Retirar";
             this.filterRemovido.UseVisualStyleBackColor = true;
             // 
             // filterAdicionado
             // 
             this.filterAdicionado.AutoSize = true;
             this.filterAdicionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterAdicionado.Location = new System.Drawing.Point(21, 167);
+            this.filterAdicionado.Location = new System.Drawing.Point(21, 189);
             this.filterAdicionado.Name = "filterAdicionado";
-            this.filterAdicionado.Size = new System.Drawing.Size(84, 17);
+            this.filterAdicionado.Size = new System.Drawing.Size(74, 17);
             this.filterAdicionado.TabIndex = 14;
             this.filterAdicionado.TabStop = true;
-            this.filterAdicionado.Text = "Adicionado";
+            this.filterAdicionado.Text = "Adicionar";
             this.filterAdicionado.UseVisualStyleBackColor = true;
             // 
             // label7
@@ -492,91 +666,83 @@
             this.label1.TabIndex = 175;
             this.label1.Text = "Histórico de Entrada e Saída";
             // 
-            // label6
+            // filterAll
             // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(133, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 17);
-            this.label6.TabIndex = 52;
-            this.label6.Text = "Produtos";
+            this.filterAll.AutoSize = true;
+            this.filterAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterAll.Location = new System.Drawing.Point(21, 165);
+            this.filterAll.Name = "filterAll";
+            this.filterAll.Size = new System.Drawing.Size(56, 17);
+            this.filterAll.TabIndex = 195;
+            this.filterAll.TabStop = true;
+            this.filterAll.Text = "Todos";
+            this.filterAll.UseVisualStyleBackColor = true;
             // 
-            // pictureBox4
+            // Usuarios
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 51;
-            this.pictureBox4.TabStop = false;
+            this.Usuarios.BackColor = System.Drawing.Color.White;
+            this.Usuarios.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Usuarios.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Usuarios.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverVisible = true;
+            this.Usuarios.Border.Rounding = 6;
+            this.Usuarios.Border.Thickness = 1;
+            this.Usuarios.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Usuarios.Border.Visible = true;
+            this.Usuarios.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Usuarios.ButtonImage = null;
+            this.Usuarios.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Usuarios.ButtonWidth = 30;
+            this.Usuarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Usuarios.DropDownHeight = 100;
+            this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Usuarios.DropDownWidth = 250;
+            this.Usuarios.FormattingEnabled = true;
+            this.Usuarios.ImageList = null;
+            this.Usuarios.ImageVisible = false;
+            this.Usuarios.Index = 0;
+            this.Usuarios.IntegralHeight = false;
+            this.Usuarios.ItemHeight = 23;
+            this.Usuarios.ItemImageVisible = true;
+            this.Usuarios.Location = new System.Drawing.Point(78, 284);
+            this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
+            this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Usuarios.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.Name = "Usuarios";
+            this.Usuarios.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.Size = new System.Drawing.Size(143, 29);
+            this.Usuarios.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.TabIndex = 197;
+            this.Usuarios.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Usuarios.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Usuarios.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Usuarios.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usuarios.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Usuarios.Watermark.Text = "Watermark text";
+            this.Usuarios.Watermark.Visible = false;
             // 
-            // visualCheckBox1
+            // label12
             // 
-            this.visualCheckBox1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.visualCheckBox1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.visualCheckBox1.Border.HoverVisible = true;
-            this.visualCheckBox1.Border.Rounding = 3;
-            this.visualCheckBox1.Border.Thickness = 1;
-            this.visualCheckBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualCheckBox1.Border.Visible = true;
-            this.visualCheckBox1.Box = new System.Drawing.Size(14, 14);
-            this.visualCheckBox1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualCheckBox1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualCheckBox1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualCheckBox1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.visualCheckBox1.BoxSpacing = 2;
-            this.visualCheckBox1.CheckStyle.AutoSize = true;
-            this.visualCheckBox1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.visualCheckBox1.CheckStyle.Character = '✔';
-            this.visualCheckBox1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.visualCheckBox1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualCheckBox1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.visualCheckBox1.CheckStyle.ShapeRounding = 3;
-            this.visualCheckBox1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualCheckBox1.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.visualCheckBox1.CheckStyle.Thickness = 2F;
-            this.visualCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualCheckBox1.ForeColor = System.Drawing.Color.Gray;
-            this.visualCheckBox1.IsBoxLarger = false;
-            this.visualCheckBox1.Location = new System.Drawing.Point(78, 232);
-            this.visualCheckBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualCheckBox1.Name = "visualCheckBox1";
-            this.visualCheckBox1.Size = new System.Drawing.Size(125, 23);
-            this.visualCheckBox1.TabIndex = 191;
-            this.visualCheckBox1.Text = "Não filtrar a data";
-            this.visualCheckBox1.TextSize = new System.Drawing.Size(88, 16);
-            this.visualCheckBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualCheckBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualCheckBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualCheckBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualCheckBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // imprimir
-            // 
-            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.FlatAppearance.BorderSize = 0;
-            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
-            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.imprimir.Location = new System.Drawing.Point(867, 3);
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(116, 90);
-            this.imprimir.TabIndex = 101;
-            this.imprimir.Text = "Gerar Relatório";
-            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.imprimir.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(18, 288);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 17);
+            this.label12.TabIndex = 196;
+            this.label12.Text = "Usuário";
             // 
             // EstoqueEntradaSaida
             // 
@@ -599,13 +765,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel5.ResumeLayout(false);
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,7 +786,7 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSearch;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarProduto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
@@ -640,7 +806,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox visualCheckBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox noFilterData;
         private System.Windows.Forms.Button imprimir;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Locais;
+        private System.Windows.Forms.RadioButton filterAll;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Usuarios;
+        private System.Windows.Forms.Label label12;
     }
 }

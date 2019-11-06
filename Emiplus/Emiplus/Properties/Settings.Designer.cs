@@ -466,5 +466,17 @@ namespace Emiplus.Properties {
                 this["empresa_unique_id"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int user_sub_user {
+            get {
+                return ((int)(this["user_sub_user"]));
+            }
+            set {
+                this["user_sub_user"] = value;
+            }
+        }
     }
 }
