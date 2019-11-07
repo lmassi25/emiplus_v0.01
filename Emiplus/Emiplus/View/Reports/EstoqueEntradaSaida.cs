@@ -208,13 +208,13 @@ namespace Emiplus.View.Reports
         {
             Load += (s, e) => {
                 BuscarProduto.Select();
-                DataTableStart();
+                //DataTableStart();
                 AutoCompleteItens();
                 AutoCompleteUsers();
 
                 dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
-                GetDataTable();
+                //GetDataTable();
 
                 var origens = new ArrayList();
                 origens.Add(new { Id = "0", Nome = "Todos" });
@@ -242,7 +242,6 @@ namespace Emiplus.View.Reports
                 IEnumerable<dynamic> dados = await GetDataTable();
 
                 ArrayList data = new ArrayList();
-
                 foreach (var item in dados)
                 {
                     var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/list/{Program.TOKEN}/{item.ID_USUARIO}").Content().Response();
@@ -302,13 +301,7 @@ namespace Emiplus.View.Reports
                 DataTable();
                 Loading.Visible = false;
                 GridLista.Visible = true;
-            });
-
-            BuscarProduto.Enter += async (s, e) =>
-            {
-                await Task.Delay(100);
-                DataTable();
-            };
+            });            
         }
     }
 }

@@ -46,6 +46,9 @@
             this.imprimir = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.filterAll = new System.Windows.Forms.RadioButton();
             this.Locais = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,9 +65,6 @@
             this.Loading = new System.Windows.Forms.PictureBox();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.filterAll = new System.Windows.Forms.RadioButton();
-            this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -308,9 +308,10 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(257, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(370, 15);
+            this.label2.Size = new System.Drawing.Size(370, 30);
             this.label2.TabIndex = 176;
-            this.label2.Text = "Consulte o histórico de entrada e saída do estoque do seus produtos.";
+            this.label2.Text = "Consulte o histórico de entrada e saída do estoque do seus produtos.\r\nClique no b" +
+    "otão pesquisar para buscar os dados.";
             // 
             // panel5
             // 
@@ -394,6 +395,84 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 171;
+            // 
+            // Usuarios
+            // 
+            this.Usuarios.BackColor = System.Drawing.Color.White;
+            this.Usuarios.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Usuarios.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Usuarios.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverVisible = true;
+            this.Usuarios.Border.Rounding = 6;
+            this.Usuarios.Border.Thickness = 1;
+            this.Usuarios.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Usuarios.Border.Visible = true;
+            this.Usuarios.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Usuarios.ButtonImage = null;
+            this.Usuarios.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Usuarios.ButtonWidth = 30;
+            this.Usuarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Usuarios.DropDownHeight = 100;
+            this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Usuarios.DropDownWidth = 250;
+            this.Usuarios.FormattingEnabled = true;
+            this.Usuarios.ImageList = null;
+            this.Usuarios.ImageVisible = false;
+            this.Usuarios.Index = 0;
+            this.Usuarios.IntegralHeight = false;
+            this.Usuarios.ItemHeight = 23;
+            this.Usuarios.ItemImageVisible = true;
+            this.Usuarios.Location = new System.Drawing.Point(78, 284);
+            this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
+            this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Usuarios.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.Name = "Usuarios";
+            this.Usuarios.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.Size = new System.Drawing.Size(143, 29);
+            this.Usuarios.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.TabIndex = 197;
+            this.Usuarios.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Usuarios.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Usuarios.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Usuarios.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usuarios.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Usuarios.Watermark.Text = "Watermark text";
+            this.Usuarios.Watermark.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(18, 288);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 17);
+            this.label12.TabIndex = 196;
+            this.label12.Text = "Usuário";
+            // 
+            // filterAll
+            // 
+            this.filterAll.AutoSize = true;
+            this.filterAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterAll.Location = new System.Drawing.Point(21, 165);
+            this.filterAll.Name = "filterAll";
+            this.filterAll.Size = new System.Drawing.Size(56, 17);
+            this.filterAll.TabIndex = 195;
+            this.filterAll.TabStop = true;
+            this.filterAll.Text = "Todos";
+            this.filterAll.UseVisualStyleBackColor = true;
             // 
             // Locais
             // 
@@ -665,84 +744,6 @@
             this.label1.Size = new System.Drawing.Size(360, 40);
             this.label1.TabIndex = 175;
             this.label1.Text = "Histórico de Entrada e Saída";
-            // 
-            // filterAll
-            // 
-            this.filterAll.AutoSize = true;
-            this.filterAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterAll.Location = new System.Drawing.Point(21, 165);
-            this.filterAll.Name = "filterAll";
-            this.filterAll.Size = new System.Drawing.Size(56, 17);
-            this.filterAll.TabIndex = 195;
-            this.filterAll.TabStop = true;
-            this.filterAll.Text = "Todos";
-            this.filterAll.UseVisualStyleBackColor = true;
-            // 
-            // Usuarios
-            // 
-            this.Usuarios.BackColor = System.Drawing.Color.White;
-            this.Usuarios.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.Usuarios.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Usuarios.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Usuarios.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.Usuarios.Border.HoverVisible = true;
-            this.Usuarios.Border.Rounding = 6;
-            this.Usuarios.Border.Thickness = 1;
-            this.Usuarios.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Usuarios.Border.Visible = true;
-            this.Usuarios.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.Usuarios.ButtonImage = null;
-            this.Usuarios.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.Usuarios.ButtonWidth = 30;
-            this.Usuarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.Usuarios.DropDownHeight = 100;
-            this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Usuarios.DropDownWidth = 250;
-            this.Usuarios.FormattingEnabled = true;
-            this.Usuarios.ImageList = null;
-            this.Usuarios.ImageVisible = false;
-            this.Usuarios.Index = 0;
-            this.Usuarios.IntegralHeight = false;
-            this.Usuarios.ItemHeight = 23;
-            this.Usuarios.ItemImageVisible = true;
-            this.Usuarios.Location = new System.Drawing.Point(78, 284);
-            this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
-            this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Usuarios.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Usuarios.Name = "Usuarios";
-            this.Usuarios.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Usuarios.Size = new System.Drawing.Size(143, 29);
-            this.Usuarios.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Usuarios.TabIndex = 197;
-            this.Usuarios.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Usuarios.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Usuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Usuarios.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Usuarios.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Usuarios.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Usuarios.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Usuarios.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.Usuarios.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.Usuarios.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Usuarios.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Usuarios.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Usuarios.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Usuarios.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Usuarios.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.Usuarios.Watermark.Text = "Watermark text";
-            this.Usuarios.Watermark.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(18, 288);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 17);
-            this.label12.TabIndex = 196;
-            this.label12.Text = "Usuário";
             // 
             // EstoqueEntradaSaida
             // 
