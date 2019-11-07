@@ -165,7 +165,7 @@ namespace Emiplus.Data.Helpers
             return data;
         }
 
-        public static string ConvertDateToSql(object date)
+        public static string ConvertDateToSql(object date, bool large = false)
         {
             if (date == null)
                 return "";
@@ -177,7 +177,13 @@ namespace Emiplus.Data.Helpers
             if (!DateTime.TryParse(date.ToString(), out temp))
                 return "";
 
-            return Convert.ToDateTime(date).ToString("yyyy-MM-dd");
+            string data;
+            if (large)
+                data = Convert.ToDateTime(date).ToString("yyyy-MM-dd HH:mm");
+            else
+                data = Convert.ToDateTime(date).ToString("yyyy-MM-dd");
+
+            return data;
         }
 
         public static string DateNowToSql()

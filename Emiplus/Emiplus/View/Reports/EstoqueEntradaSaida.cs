@@ -7,16 +7,11 @@ using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Reports
 {
@@ -27,26 +22,13 @@ namespace Emiplus.View.Reports
         // AutoComplete
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
-        private IEnumerable<dynamic> dataTable;
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
-
-        Timer timer = new Timer(Configs.TimeLoading);
-
         public EstoqueEntradaSaida()
         {
             InitializeComponent();
             Eventos();
         }
 
-        private void DataTableStart()
-        {
-            GridLista.Visible = false;
-            Loading.Size = new Size(GridLista.Width, GridLista.Height);
-            Loading.Visible = true;
-            WorkerBackground.RunWorkerAsync();
-        }
-
-        private async void DataTable() => await SetTable(GridLista);
+        private async Task DataTableAsync() => await SetTable(GridLista);
 
         /// <summary>
         /// Autocomplete do campo de busca de produtos.
@@ -91,8 +73,8 @@ namespace Emiplus.View.Reports
             
             if (!noFilterData.Checked)
             {
-                model.Where("ITEM_MOV_ESTOQUE.criado", ">=", Validation.ConvertDateToSql(dataInicial.Text))
-                .Where("ITEM_MOV_ESTOQUE.criado", "<=", Validation.ConvertDateToSql(dataFinal.Text));
+                model.Where("ITEM_MOV_ESTOQUE.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
+                .Where("ITEM_MOV_ESTOQUE.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
             }
 
             if (Validation.ConvertToInt32(Locais.SelectedValue) >= 1)
@@ -138,39 +120,38 @@ namespace Emiplus.View.Reports
                 model.Where("ITEM_MOV_ESTOQUE.id_item", collection.Lookup(BuscarProduto.Text));
             }
 
-            model.RightJoin("ITEM", "ITEM.id", "ITEM_MOV_ESTOQUE.id_item");
+            model.LeftJoin("ITEM", "ITEM.id", "ITEM_MOV_ESTOQUE.id_item");
+            model.LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario");
+            model.Select("ITEM_MOV_ESTOQUE.*", "ITEM.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user");
+            model.Limit(200);
             model.OrderByDesc("ITEM_MOV_ESTOQUE.ID");
             return model.GetAsync<dynamic>();
         }
 
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
-            Table.ColumnCount = 6;
+            Table.ColumnCount = 5;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "Produto";
+            Table.Columns[0].Name = "Descrição";
             Table.Columns[0].Width = 150;
 
-            Table.Columns[1].Name = "Usuário";
-            Table.Columns[1].Width = 150;
+            Table.Columns[1].Name = "Estoque";
+            Table.Columns[1].Width = 100;
 
-            Table.Columns[2].Name = "Quantidade";
+            Table.Columns[2].Name = "Local";
             Table.Columns[2].Width = 100;
 
-            Table.Columns[3].Name = "Ação";
-            Table.Columns[3].Width = 100;
+            Table.Columns[3].Name = "Usuário";
+            Table.Columns[3].Width = 150;
 
-            Table.Columns[4].Name = "Local";
+            Table.Columns[4].Name = "Data";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
-
-            Table.Columns[5].Name = "Estoque Anterior";
-            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[5].Width = 100;
 
             Table.Rows.Clear();
 
@@ -183,21 +164,15 @@ namespace Emiplus.View.Reports
             for (int i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
+                var tipo = (item.TIPO == "R") ? "-" : "+";
+                var total = (item.TIPO == "R") ? (item.ANTERIOR - item.QUANTIDADE) : (item.ANTERIOR + item.QUANTIDADE);
 
-                var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/list/{Program.TOKEN}/{item.ID_USUARIO}").Content().Response();
-                string userName = "";
-                if (dataUser["erro"] == null)
-                    userName = $"{dataUser["user"]["name"].ToString()} {dataUser["user"]["lastname"].ToString()}";
-                else
-                    userName = "Usuário não encontrado";
-                
                 Table.Rows.Add(
                     item.NOME,
-                    $"{userName}",
-                    item.QUANTIDADE,
-                    (item.TIPO == "R") ? "Retirar" : "Adicionar",
+                    $"{tipo}{item.QUANTIDADE} (atual: {total})",
                     item.LOCAL,
-                    item.ANTERIOR
+                    item.NOME_USER,
+                    Validation.ConvertDateToForm(item.CRIADO, true)
                 );
             }
 
@@ -208,13 +183,11 @@ namespace Emiplus.View.Reports
         {
             Load += (s, e) => {
                 BuscarProduto.Select();
-                //DataTableStart();
                 AutoCompleteItens();
                 AutoCompleteUsers();
 
                 dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
-                //GetDataTable();
 
                 var origens = new ArrayList();
                 origens.Add(new { Id = "0", Nome = "Todos" });
@@ -232,76 +205,55 @@ namespace Emiplus.View.Reports
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
-            btnSearch.Click += (s, e) =>
+            btnSearch.Click += async (s, e) =>
             {
-                DataTable();
+                label13.Visible = false;
+                await DataTableAsync();
             };
 
-            imprimir.Click += async (s, e) =>
-            {
-                IEnumerable<dynamic> dados = await GetDataTable();
-
-                ArrayList data = new ArrayList();
-                foreach (var item in dados)
-                {
-                    var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/list/{Program.TOKEN}/{item.ID_USUARIO}").Content().Response();
-                    string userName = "";
-                    if (dataUser["erro"] == null)
-                        userName = $"{dataUser["user"]["name"].ToString()} {dataUser["user"]["lastname"].ToString()}";
-                    else
-                        userName = "Usuário não encontrado";
-
-                    data.Add(new
-                    {
-                        Nome = item.NOME,
-                        Usuario = userName,
-                        Quantidade = item.QUANTIDADE,
-                        Tipo = (item.TIPO == "R") ? "Retirar" : "Adicionar",
-                        Local = item.LOCAL,
-                        EstoqueAnterior = item.ANTERIOR
-                    });
-                }
-
-                var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\EstoqueEntradaSaida.html"));
-                var render = html.Render(Hash.FromAnonymousObject(new
-                {
-                    INCLUDE_PATH = Program.PATH_BASE,
-                    URL_BASE = Program.PATH_BASE,
-                    Data = data,
-                    noFilterData = noFilterData.Checked,
-                    dataInicial = dataInicial.Text,
-                    dataFinal = dataFinal.Text
-                }));
-
-                Browser.htmlRender = render;
-                var f = new Browser();
-                f.ShowDialog();
-            };
+            imprimir.Click += async (s, e) => await RenderizarAsync();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
+        }
 
-            using (var b = WorkerBackground)
+        private async Task RenderizarAsync()
+        {
+            IEnumerable<dynamic> dados = await GetDataTable();
+            Console.WriteLine(Settings.Default.empresa_logo);
+            ArrayList data = new ArrayList();
+            foreach (var item in dados)
             {
-                //b.DoWork += async (s, e) =>
-                //{
-                //    dataTable = await GetDataTable();
-                //};
-
-                b.RunWorkerCompleted += async (s, e) =>
+                data.Add(new
                 {
-                    await SetTable(GridLista, dataTable);
-
-                    Loading.Visible = false;
-                    GridLista.Visible = true;
-                };
+                    Nome = item.NOME,
+                    Usuario = item.NOME_USER,
+                    Quantidade = item.QUANTIDADE,
+                    Tipo = (item.TIPO == "R") ? "-" : "+",
+                    Local = item.LOCAL,
+                    EstoqueAnterior = item.ANTERIOR,
+                    EstoqueTotal = (item.TIPO == "R") ? item.ANTERIOR - item.QUANTIDADE : item.ANTERIOR + item.QUANTIDADE,
+                    Referencia = item.REFERENCIA,
+                    Criado = Validation.ConvertDateToForm(item.CRIADO, true)
+                });
             }
 
-            timer.AutoReset = false;
-            timer.Elapsed += (s, e) => BuscarProduto.Invoke((MethodInvoker)delegate {
-                DataTable();
-                Loading.Visible = false;
-                GridLista.Visible = true;
-            });            
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\EstoqueEntradaSaida.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                INCLUDE_PATH = Program.PATH_BASE,
+                URL_BASE = Program.PATH_BASE,
+                Data = data,
+                NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                Logo = Settings.Default.empresa_logo,
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                noFilterData = noFilterData.Checked,
+                dataInicial = dataInicial.Text,
+                dataFinal = dataFinal.Text
+            }));
+
+            Browser.htmlRender = render;
+            var f = new Browser();
+            f.ShowDialog();
         }
     }
 }

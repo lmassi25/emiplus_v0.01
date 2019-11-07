@@ -244,6 +244,7 @@
     <Compile Include="Model\PessoaContato.cs" />
     <Compile Include="Model\PessoaEndereco.cs" />
     <Compile Include="Model\Titulo.cs" />
+    <Compile Include="Model\Usuarios.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -949,7 +950,6 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\Reports\html\css\Relatorio.css" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <None Include="Resources\checkedBranco.png" />

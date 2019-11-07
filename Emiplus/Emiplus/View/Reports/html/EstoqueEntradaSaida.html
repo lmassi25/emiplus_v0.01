@@ -6,48 +6,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 
     <link rel="stylesheet" href="https://www.emiplus.com.br/app/templates/default/assets/css/bootstrap.min.css">
-    <link href="https://www.emiplus.com.br/razor/css/Relatorio.css?v=50" rel="stylesheet" />
+    <link href="https://www.emiplus.com.br/razor/css/Relatorio.css?v=58" rel="stylesheet" />
     <style>
         @page {
-            size: legal landscape
+            size: A4 landscape
         }
     </style>
 </head>
-<body class="legal landscape">
-    <div class="book sheet padding-10mm">
+<body>
+    <div>
 
         <div class="page">
 
-            <div class="header">
-                <div class="logo"><img src="https://www.emiplus.com.br/app/templates/default/assets/img/logo-2.png"></div>
-                <div class="infos-top">
-                    {% if noFilterData == false %}
-                    <span><strong>Data Início:</strong> {{dataInicial}}</span>
-                    <span><strong>Data Final:</strong> {{dataFinal}}</span>
-                    {% endif %}
+            <div class="row header">
+                <div class="col-sm-6 logo"><img src="https://www.emiplus.com.br/{{Logo}}"></div>
+                <div class="col-sm-6">
+                    <div class="infos-top">
+                        <span class="title_empresa">{{NomeFantasia}}</span>
+                        <span><strong>Emitido:</strong> {{Emissao}}</span>
+                        {% if noFilterData == false %}
+                        <span><strong>Período:</strong> {{dataInicial}} á {{dataFinal}}</span>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-
+            <div class="title">Histórico de Entradas e Saídas</div>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Usuário</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Ação</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Estoque</th>
                         <th scope="col">Local</th>
-                        <th scope="col">Estoque Anterior</th>
+                        <th scope="col">Usuário</th>
+                        <th scope="col">Data</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in Data %}
                     <tr>
-                        <td>{{item.Nome}}</td>
-                        <td>{{item.Usuario}}</td>
-                        <td>{{item.Quantidade}}</td>
-                        <td>{{item.Tipo}}</td>
+                        <td>{{item.Nome}} <small>(Ref: {{item.Referencia}})</small></td>
+                        <td>{{item.Tipo}}{{item.Quantidade}} (<small>atual:</small>{{item.EstoqueTotal}})</td>
                         <td>{{item.Local}}</td>
-                        <td>{{item.EstoqueAnterior}}</td>
+                        <td>{{item.Usuario}}</td>
+                        <td>{{item.Criado}}</td>
                     </tr>
                     {% endfor %}
 

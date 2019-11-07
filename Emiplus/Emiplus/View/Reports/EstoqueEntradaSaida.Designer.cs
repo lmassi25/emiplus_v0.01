@@ -65,6 +65,7 @@
             this.Loading = new System.Windows.Forms.PictureBox();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -308,10 +309,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(257, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(370, 30);
+            this.label2.Size = new System.Drawing.Size(370, 15);
             this.label2.TabIndex = 176;
-            this.label2.Text = "Consulte o histórico de entrada e saída do estoque do seus produtos.\r\nClique no b" +
-    "otão pesquisar para buscar os dados.";
+            this.label2.Text = "Consulte o histórico de entrada e saída do estoque do seus produtos.";
             // 
             // panel5
             // 
@@ -694,6 +694,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.Loading);
+            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.GridLista);
             this.panel2.Location = new System.Drawing.Point(255, 135);
             this.panel2.Name = "panel2";
@@ -745,6 +746,17 @@
             this.label1.TabIndex = 175;
             this.label1.Text = "Histórico de Entrada e Saída";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(182, 214);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(345, 21);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Clique no botão pesquisar para buscar os dados.";
+            // 
             // EstoqueEntradaSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,6 +783,7 @@
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.ResumeLayout(false);
@@ -815,5 +828,6 @@
         private System.Windows.Forms.RadioButton filterAll;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Usuarios;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
