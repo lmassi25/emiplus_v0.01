@@ -49,6 +49,18 @@ namespace Emiplus.View.Common
                 EstoqueEntradaSaida Estoque = new EstoqueEntradaSaida();
                 Estoque.ShowDialog();
             };
+
+            Estoque.Click += (s, e) =>
+            {
+                Inventario Estoque = new Inventario();
+                Estoque.ShowDialog();
+            };
+
+            ProdutosVendidos.Click += (s, e) =>
+            {
+                ProdutosVendidos ProdVendidos = new ProdutosVendidos();
+                ProdVendidos.ShowDialog();
+            };
         }
     }
 }

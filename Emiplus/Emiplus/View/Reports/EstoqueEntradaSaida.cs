@@ -219,7 +219,7 @@ namespace Emiplus.View.Reports
         private async Task RenderizarAsync()
         {
             IEnumerable<dynamic> dados = await GetDataTable();
-            Console.WriteLine(Settings.Default.empresa_logo);
+
             ArrayList data = new ArrayList();
             foreach (var item in dados)
             {

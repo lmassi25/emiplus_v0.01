@@ -63,9 +63,9 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Loading = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -216,7 +216,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = null;
-            this.btnSearch.Location = new System.Drawing.Point(48, 511);
+            this.btnSearch.Location = new System.Drawing.Point(48, 513);
             this.btnSearch.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(140, 45);
@@ -713,6 +713,17 @@
             this.Loading.TabStop = false;
             this.Loading.Visible = false;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(182, 214);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(345, 21);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Clique no botão pesquisar para buscar os dados.";
+            // 
             // GridLista
             // 
             this.GridLista.AllowUserToAddRows = false;
@@ -745,17 +756,6 @@
             this.label1.Size = new System.Drawing.Size(360, 40);
             this.label1.TabIndex = 175;
             this.label1.Text = "Histórico de Entrada e Saída";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(182, 214);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(345, 21);
-            this.label13.TabIndex = 177;
-            this.label13.Text = "Clique no botão pesquisar para buscar os dados.";
             // 
             // EstoqueEntradaSaida
             // 

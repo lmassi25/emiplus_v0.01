@@ -572,6 +572,18 @@
     <Compile Include="View\Reports\EstoqueEntradaSaida.Designer.cs">
       <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reports\ProdutosVendidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\ProdutosVendidos.Designer.cs">
+      <DependentUpon>ProdutosVendidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Testes\cPure.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -777,6 +789,12 @@
     <EmbeddedResource Include="View\Reports\EstoqueEntradaSaida.resx">
       <DependentUpon>EstoqueEntradaSaida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\ProdutosVendidos.resx">
+      <DependentUpon>ProdutosVendidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\cPure.resx">
       <DependentUpon>cPure.cs</DependentUpon>
     </EmbeddedResource>
@@ -952,6 +970,7 @@
   <ItemGroup>
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
+    <Content Include="View\Reports\html\Inventario.html" />
     <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
     <None Include="Connected Services\WSCorreios\configuration91.svcinfo" />

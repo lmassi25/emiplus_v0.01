@@ -36,15 +36,20 @@ namespace Emiplus.View.Produtos
                 Categorias.ValueMember = "ID";
             }
 
+            var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (fornecedor.Count() > 0)
+            {
+                Fornecedor.DataSource = fornecedor;
+                Fornecedor.DisplayMember = "NOME";
+                Fornecedor.ValueMember = "ID";
+            }
+
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
 
             var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            //imposto = imposto.Concat(new Model.Imposto(){ Id = 0, Nome = "" });
-
             if (imposto.Count() > 0)
             {
                 Impostos.DataSource = imposto;
-                //Impostos.DataBindings.Add(new Model.Imposto() { Id = 0, Nome = "" });
                 Impostos.DisplayMember = "NOME";
                 Impostos.ValueMember = "ID";
             }
@@ -82,6 +87,7 @@ namespace Emiplus.View.Produtos
             _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
 
             nome.Text = _modelItem?.Nome ?? "";
+            codebarras.Text = _modelItem?.CodeBarras ?? "";
             referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
@@ -110,6 +116,8 @@ namespace Emiplus.View.Produtos
 
             Categorias.SelectedValue = _modelItem.Categoriaid;
 
+            Fornecedor.SelectedValue = _modelItem.Fornecedor;
+
             aliq_federal.Text = Validation.Price(_modelItem.AliqFederal);
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
             aliq_municipal.Text = Validation.Price(_modelItem.AliqMunicipal);
@@ -121,6 +129,7 @@ namespace Emiplus.View.Produtos
         {
             _modelItem.Id = idPdtSelecionado;
             _modelItem.Nome = nome.Text;
+            _modelItem.CodeBarras = codebarras.Text;
             _modelItem.Referencia = referencia.Text;
             _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
             _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
@@ -135,6 +144,9 @@ namespace Emiplus.View.Produtos
 
             if (Categorias.SelectedValue != null)
                 _modelItem.Categoriaid = (int)Categorias.SelectedValue;
+
+            if (Fornecedor.SelectedValue != null)
+                _modelItem.Fornecedor = (int)Fornecedor.SelectedValue;
 
             if (Impostos.SelectedValue != null)
                 _modelItem.Impostoid = (int)Impostos.SelectedValue;
