@@ -30,23 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutosInicial));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Produtos = new System.Windows.Forms.Button();
-            this.Categorias = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.fornecedores = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.transportadoras = new System.Windows.Forms.Button();
-            this.Compras = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.Etiquetas = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,24 +44,22 @@
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.Impostos = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ReajusteProduto = new System.Windows.Forms.Button();
+            this.Etiquetas = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.Compras = new System.Windows.Forms.Button();
+            this.transportadoras = new System.Windows.Forms.Button();
+            this.ProdutosVendidos = new System.Windows.Forms.Button();
+            this.fornecedores = new System.Windows.Forms.Button();
+            this.Estoque = new System.Windows.Forms.Button();
+            this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
+            this.Produtos = new System.Windows.Forms.Button();
+            this.Categorias = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -84,52 +71,6 @@
             this.label2.Size = new System.Drawing.Size(96, 30);
             this.label2.TabIndex = 46;
             this.label2.Text = "Produtos";
-            // 
-            // Produtos
-            // 
-            this.Produtos.BackColor = System.Drawing.Color.Transparent;
-            this.Produtos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Produtos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Produtos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Produtos.FlatAppearance.BorderSize = 0;
-            this.Produtos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Produtos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Produtos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Produtos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Produtos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Produtos.Image = ((System.Drawing.Image)(resources.GetObject("Produtos.Image")));
-            this.Produtos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Produtos.Location = new System.Drawing.Point(62, 188);
-            this.Produtos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Produtos.Name = "Produtos";
-            this.Produtos.Size = new System.Drawing.Size(126, 115);
-            this.Produtos.TabIndex = 40;
-            this.Produtos.Text = "Produtos";
-            this.Produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Produtos.UseVisualStyleBackColor = false;
-            // 
-            // Categorias
-            // 
-            this.Categorias.BackColor = System.Drawing.Color.Transparent;
-            this.Categorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Categorias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Categorias.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Categorias.FlatAppearance.BorderSize = 0;
-            this.Categorias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Categorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Categorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Categorias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Categorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
-            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Categorias.Location = new System.Drawing.Point(193, 187);
-            this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(123, 27);
-            this.Categorias.TabIndex = 42;
-            this.Categorias.Text = "Categorias";
-            this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Categorias.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -144,189 +85,18 @@
             this.panel1.Size = new System.Drawing.Size(735, 97);
             this.panel1.TabIndex = 49;
             // 
-            // HistoricoEntradaSaida
+            // pictureBox1
             // 
-            this.HistoricoEntradaSaida.BackColor = System.Drawing.Color.Transparent;
-            this.HistoricoEntradaSaida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HistoricoEntradaSaida.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HistoricoEntradaSaida.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.HistoricoEntradaSaida.FlatAppearance.BorderSize = 0;
-            this.HistoricoEntradaSaida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.HistoricoEntradaSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.HistoricoEntradaSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HistoricoEntradaSaida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HistoricoEntradaSaida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.HistoricoEntradaSaida.Image = ((System.Drawing.Image)(resources.GetObject("HistoricoEntradaSaida.Image")));
-            this.HistoricoEntradaSaida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.HistoricoEntradaSaida.Location = new System.Drawing.Point(62, 517);
-            this.HistoricoEntradaSaida.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.HistoricoEntradaSaida.Name = "HistoricoEntradaSaida";
-            this.HistoricoEntradaSaida.Size = new System.Drawing.Size(141, 125);
-            this.HistoricoEntradaSaida.TabIndex = 50;
-            this.HistoricoEntradaSaida.Text = "Histórico de Entradas e Saídas";
-            this.HistoricoEntradaSaida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.HistoricoEntradaSaida.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(209, 517);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 115);
-            this.button2.TabIndex = 51;
-            this.button2.Text = "Inventário";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // fornecedores
-            // 
-            this.fornecedores.BackColor = System.Drawing.Color.Transparent;
-            this.fornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.fornecedores.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.fornecedores.FlatAppearance.BorderSize = 0;
-            this.fornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.fornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.fornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fornecedores.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fornecedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
-            this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.fornecedores.Location = new System.Drawing.Point(323, 188);
-            this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.fornecedores.Name = "fornecedores";
-            this.fornecedores.Size = new System.Drawing.Size(123, 115);
-            this.fornecedores.TabIndex = 52;
-            this.fornecedores.Text = "Fornecedores";
-            this.fornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.fornecedores.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(337, 517);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 125);
-            this.button4.TabIndex = 53;
-            this.button4.Text = "Produtos Vendidos";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // transportadoras
-            // 
-            this.transportadoras.BackColor = System.Drawing.Color.Transparent;
-            this.transportadoras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.transportadoras.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.transportadoras.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.transportadoras.FlatAppearance.BorderSize = 0;
-            this.transportadoras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.transportadoras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.transportadoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.transportadoras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transportadoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.transportadoras.Image = ((System.Drawing.Image)(resources.GetObject("transportadoras.Image")));
-            this.transportadoras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.transportadoras.Location = new System.Drawing.Point(452, 188);
-            this.transportadoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.transportadoras.Name = "transportadoras";
-            this.transportadoras.Size = new System.Drawing.Size(128, 115);
-            this.transportadoras.TabIndex = 54;
-            this.transportadoras.Text = "Transportadoras";
-            this.transportadoras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.transportadoras.UseVisualStyleBackColor = false;
-            // 
-            // Compras
-            // 
-            this.Compras.BackColor = System.Drawing.Color.Transparent;
-            this.Compras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Compras.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Compras.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Compras.FlatAppearance.BorderSize = 0;
-            this.Compras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Compras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Compras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Compras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Compras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Compras.Image = ((System.Drawing.Image)(resources.GetObject("Compras.Image")));
-            this.Compras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Compras.Location = new System.Drawing.Point(194, 362);
-            this.Compras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Compras.Name = "Compras";
-            this.Compras.Size = new System.Drawing.Size(123, 115);
-            this.Compras.TabIndex = 55;
-            this.Compras.Text = "Compras";
-            this.Compras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Compras.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button7.Location = new System.Drawing.Point(323, 362);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(123, 115);
-            this.button7.TabIndex = 56;
-            this.button7.Text = "Nota Fiscal de Devolução";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // Etiquetas
-            // 
-            this.Etiquetas.BackColor = System.Drawing.Color.Transparent;
-            this.Etiquetas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Etiquetas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Etiquetas.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Etiquetas.FlatAppearance.BorderSize = 0;
-            this.Etiquetas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Etiquetas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Etiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Etiquetas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Etiquetas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Etiquetas.Image = ((System.Drawing.Image)(resources.GetObject("Etiquetas.Image")));
-            this.Etiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Etiquetas.Location = new System.Drawing.Point(192, 220);
-            this.Etiquetas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Etiquetas.Name = "Etiquetas";
-            this.Etiquetas.Size = new System.Drawing.Size(123, 27);
-            this.Etiquetas.TabIndex = 57;
-            this.Etiquetas.Text = "Etiquetas";
-            this.Etiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Etiquetas.UseVisualStyleBackColor = false;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -360,29 +130,6 @@
             this.label6.Size = new System.Drawing.Size(117, 20);
             this.label6.TabIndex = 60;
             this.label6.Text = "Movimentações";
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.Location = new System.Drawing.Point(62, 360);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(126, 125);
-            this.button9.TabIndex = 62;
-            this.button9.Text = "Reajuste de Preços";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // panel4
             // 
@@ -519,6 +266,259 @@
             this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Impostos.UseVisualStyleBackColor = false;
             // 
+            // ReajusteProduto
+            // 
+            this.ReajusteProduto.BackColor = System.Drawing.Color.Transparent;
+            this.ReajusteProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReajusteProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReajusteProduto.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ReajusteProduto.FlatAppearance.BorderSize = 0;
+            this.ReajusteProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ReajusteProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ReajusteProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReajusteProduto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReajusteProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ReajusteProduto.Image = ((System.Drawing.Image)(resources.GetObject("ReajusteProduto.Image")));
+            this.ReajusteProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ReajusteProduto.Location = new System.Drawing.Point(62, 360);
+            this.ReajusteProduto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ReajusteProduto.Name = "ReajusteProduto";
+            this.ReajusteProduto.Size = new System.Drawing.Size(126, 125);
+            this.ReajusteProduto.TabIndex = 62;
+            this.ReajusteProduto.Text = "Reajuste de Produtos";
+            this.ReajusteProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ReajusteProduto.UseVisualStyleBackColor = false;
+            // 
+            // Etiquetas
+            // 
+            this.Etiquetas.BackColor = System.Drawing.Color.Transparent;
+            this.Etiquetas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Etiquetas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Etiquetas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Etiquetas.FlatAppearance.BorderSize = 0;
+            this.Etiquetas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Etiquetas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Etiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Etiquetas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Etiquetas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Etiquetas.Image = ((System.Drawing.Image)(resources.GetObject("Etiquetas.Image")));
+            this.Etiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Etiquetas.Location = new System.Drawing.Point(192, 220);
+            this.Etiquetas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Etiquetas.Name = "Etiquetas";
+            this.Etiquetas.Size = new System.Drawing.Size(123, 27);
+            this.Etiquetas.TabIndex = 57;
+            this.Etiquetas.Text = "Etiquetas";
+            this.Etiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Etiquetas.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button7.Location = new System.Drawing.Point(323, 362);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(123, 115);
+            this.button7.TabIndex = 56;
+            this.button7.Text = "Nota Fiscal de Devolução";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // Compras
+            // 
+            this.Compras.BackColor = System.Drawing.Color.Transparent;
+            this.Compras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Compras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Compras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Compras.FlatAppearance.BorderSize = 0;
+            this.Compras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Compras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Compras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Compras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Compras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Compras.Image = ((System.Drawing.Image)(resources.GetObject("Compras.Image")));
+            this.Compras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Compras.Location = new System.Drawing.Point(194, 362);
+            this.Compras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Compras.Name = "Compras";
+            this.Compras.Size = new System.Drawing.Size(123, 115);
+            this.Compras.TabIndex = 55;
+            this.Compras.Text = "Compras";
+            this.Compras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Compras.UseVisualStyleBackColor = false;
+            // 
+            // transportadoras
+            // 
+            this.transportadoras.BackColor = System.Drawing.Color.Transparent;
+            this.transportadoras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.transportadoras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transportadoras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.transportadoras.FlatAppearance.BorderSize = 0;
+            this.transportadoras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.transportadoras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.transportadoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.transportadoras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transportadoras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.transportadoras.Image = ((System.Drawing.Image)(resources.GetObject("transportadoras.Image")));
+            this.transportadoras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.transportadoras.Location = new System.Drawing.Point(452, 188);
+            this.transportadoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.transportadoras.Name = "transportadoras";
+            this.transportadoras.Size = new System.Drawing.Size(128, 115);
+            this.transportadoras.TabIndex = 54;
+            this.transportadoras.Text = "Transportadoras";
+            this.transportadoras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.transportadoras.UseVisualStyleBackColor = false;
+            // 
+            // ProdutosVendidos
+            // 
+            this.ProdutosVendidos.BackColor = System.Drawing.Color.Transparent;
+            this.ProdutosVendidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ProdutosVendidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProdutosVendidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ProdutosVendidos.FlatAppearance.BorderSize = 0;
+            this.ProdutosVendidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ProdutosVendidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ProdutosVendidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProdutosVendidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProdutosVendidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
+            this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ProdutosVendidos.Location = new System.Drawing.Point(337, 517);
+            this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProdutosVendidos.Name = "ProdutosVendidos";
+            this.ProdutosVendidos.Size = new System.Drawing.Size(140, 125);
+            this.ProdutosVendidos.TabIndex = 53;
+            this.ProdutosVendidos.Text = "Produtos Vendidos";
+            this.ProdutosVendidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ProdutosVendidos.UseVisualStyleBackColor = false;
+            // 
+            // fornecedores
+            // 
+            this.fornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.fornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fornecedores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.fornecedores.FlatAppearance.BorderSize = 0;
+            this.fornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.fornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.fornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fornecedores.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fornecedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
+            this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.fornecedores.Location = new System.Drawing.Point(323, 188);
+            this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.fornecedores.Name = "fornecedores";
+            this.fornecedores.Size = new System.Drawing.Size(123, 115);
+            this.fornecedores.TabIndex = 52;
+            this.fornecedores.Text = "Fornecedores";
+            this.fornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.fornecedores.UseVisualStyleBackColor = false;
+            // 
+            // Estoque
+            // 
+            this.Estoque.BackColor = System.Drawing.Color.Transparent;
+            this.Estoque.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Estoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Estoque.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Estoque.FlatAppearance.BorderSize = 0;
+            this.Estoque.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Estoque.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Estoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Estoque.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Estoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Estoque.Image = ((System.Drawing.Image)(resources.GetObject("Estoque.Image")));
+            this.Estoque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Estoque.Location = new System.Drawing.Point(209, 517);
+            this.Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Estoque.Name = "Estoque";
+            this.Estoque.Size = new System.Drawing.Size(122, 115);
+            this.Estoque.TabIndex = 51;
+            this.Estoque.Text = "Inventário";
+            this.Estoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Estoque.UseVisualStyleBackColor = false;
+            // 
+            // HistoricoEntradaSaida
+            // 
+            this.HistoricoEntradaSaida.BackColor = System.Drawing.Color.Transparent;
+            this.HistoricoEntradaSaida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HistoricoEntradaSaida.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HistoricoEntradaSaida.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.HistoricoEntradaSaida.FlatAppearance.BorderSize = 0;
+            this.HistoricoEntradaSaida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.HistoricoEntradaSaida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.HistoricoEntradaSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HistoricoEntradaSaida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoricoEntradaSaida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.HistoricoEntradaSaida.Image = ((System.Drawing.Image)(resources.GetObject("HistoricoEntradaSaida.Image")));
+            this.HistoricoEntradaSaida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.HistoricoEntradaSaida.Location = new System.Drawing.Point(62, 517);
+            this.HistoricoEntradaSaida.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HistoricoEntradaSaida.Name = "HistoricoEntradaSaida";
+            this.HistoricoEntradaSaida.Size = new System.Drawing.Size(141, 125);
+            this.HistoricoEntradaSaida.TabIndex = 50;
+            this.HistoricoEntradaSaida.Text = "Histórico de Entradas e Saídas";
+            this.HistoricoEntradaSaida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.HistoricoEntradaSaida.UseVisualStyleBackColor = false;
+            // 
+            // Produtos
+            // 
+            this.Produtos.BackColor = System.Drawing.Color.Transparent;
+            this.Produtos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Produtos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Produtos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Produtos.FlatAppearance.BorderSize = 0;
+            this.Produtos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Produtos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Produtos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Produtos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Produtos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Produtos.Image = ((System.Drawing.Image)(resources.GetObject("Produtos.Image")));
+            this.Produtos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Produtos.Location = new System.Drawing.Point(62, 188);
+            this.Produtos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Produtos.Name = "Produtos";
+            this.Produtos.Size = new System.Drawing.Size(126, 115);
+            this.Produtos.TabIndex = 40;
+            this.Produtos.Text = "Produtos";
+            this.Produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Produtos.UseVisualStyleBackColor = false;
+            // 
+            // Categorias
+            // 
+            this.Categorias.BackColor = System.Drawing.Color.Transparent;
+            this.Categorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Categorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Categorias.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Categorias.FlatAppearance.BorderSize = 0;
+            this.Categorias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Categorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Categorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Categorias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Categorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
+            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Categorias.Location = new System.Drawing.Point(193, 187);
+            this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Categorias.Name = "Categorias";
+            this.Categorias.Size = new System.Drawing.Size(123, 27);
+            this.Categorias.TabIndex = 42;
+            this.Categorias.Text = "Categorias";
+            this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Categorias.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -530,7 +530,7 @@
             this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.visualSeparator2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.ReajusteProduto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -538,9 +538,9 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Compras);
             this.Controls.Add(this.transportadoras);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.ProdutosVendidos);
             this.Controls.Add(this.fornecedores);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Estoque);
             this.Controls.Add(this.HistoricoEntradaSaida);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Produtos);
@@ -550,9 +550,9 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TelaProdutosInicial";
             this.Text = "TelaProdutosInicial";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -569,9 +569,9 @@
         private System.Windows.Forms.Button Categorias;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button HistoricoEntradaSaida;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Estoque;
         private System.Windows.Forms.Button fornecedores;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ProdutosVendidos;
         private System.Windows.Forms.Button transportadoras;
         private System.Windows.Forms.Button Compras;
         private System.Windows.Forms.Button button7;
@@ -579,7 +579,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button ReajusteProduto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;

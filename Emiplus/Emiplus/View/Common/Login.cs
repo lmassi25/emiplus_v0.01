@@ -8,6 +8,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Net;
 using RestSharp;
+using SqlKata.Execution;
+using System.Linq;
 
 namespace Emiplus.View.Common
 {
@@ -141,6 +143,27 @@ namespace Emiplus.View.Common
             Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
             Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
             Settings.Default.Save();
+
+            Model.Usuarios usuarios = new Model.Usuarios();
+            var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
+            var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
+            usuarios.Delete("excluir", 0);
+            foreach (var item in dataUser)
+            {
+                var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
+                var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
+                if (exists == null) {
+                    usuarios.Id = 0;
+                    usuarios.Nome = nameComplete;
+                    usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                } else
+                {
+                    usuarios.Id = exists.ID;
+                    usuarios.Nome = nameComplete;
+                    usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                }
+                usuarios.Save(usuarios);
+            }
 
             Hide();
             Home form = new Home();

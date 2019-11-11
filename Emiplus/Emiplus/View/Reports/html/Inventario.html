@@ -24,31 +24,28 @@
                     <div class="infos-top">
                         <span class="title_empresa">{{NomeFantasia}}</span>
                         <span><strong>Emitido:</strong> {{Emissao}}</span>
-                        {% if noFilterData == false %}
-                        <span><strong>Período:</strong> {{dataInicial}} á {{dataFinal}}</span>
-                        {% endif %}
                     </div>
                 </div>
             </div>
-            <div class="title">Histórico de Entradas e Saídas</div>
+            <div class="title">Estoque dos Produtos</div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Descrição</th>
                         <th scope="col">Estoque</th>
-                        <th scope="col">Local</th>
-                        <th scope="col">Usuário</th>
-                        <th scope="col">Data</th>
+                        <th scope="col">Medida</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Fornecedor</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in Data %}
                     <tr>
-                        <td>{{item.Nome}} <small>(Ref: {{item.Referencia}})</small></td>
-                        <td>{{item.Tipo}}{{item.Quantidade}} (<small>atual:</small>{{item.EstoqueTotal}})</td>
-                        <td>{{item.Local}}</td>
-                        <td>{{item.Usuario}}</td>
-                        <td>{{item.Criado}}</td>
+                        <td>{{item.Nome}}</td>
+                        <td>{{item.Estoque}}</td>
+                        <td>{{item.Medida}}</td>
+                        <td>{{item.Categoria}}</td>
+                        <td>{{item.Fornecedor}}</td>
                     </tr>
                     {% endfor %}
 

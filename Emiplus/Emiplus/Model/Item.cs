@@ -40,6 +40,8 @@ namespace Emiplus.Model
         public double AliqMunicipal { get; set; }
         
         public string InfAdicional { get; set; }
+        public string CodeBarras { get; set; }
+        public int Fornecedor { get; set; }
 
         #endregion
 

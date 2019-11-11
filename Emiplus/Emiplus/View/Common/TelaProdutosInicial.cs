@@ -37,6 +37,12 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
+            ReajusteProduto.Click += (s, e) =>
+            {
+                Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
+                Reajuste.ShowDialog();
+            };
+
             Compras.Click += (s, e) =>
             {
                 Home.pedidoPage = "Compras";
@@ -48,6 +54,18 @@ namespace Emiplus.View.Common
             {
                 EstoqueEntradaSaida Estoque = new EstoqueEntradaSaida();
                 Estoque.ShowDialog();
+            };
+
+            Estoque.Click += (s, e) =>
+            {
+                Inventario Estoque = new Inventario();
+                Estoque.ShowDialog();
+            };
+
+            ProdutosVendidos.Click += (s, e) =>
+            {
+                ProdutosVendidos ProdVendidos = new ProdutosVendidos();
+                ProdVendidos.ShowDialog();
             };
         }
     }

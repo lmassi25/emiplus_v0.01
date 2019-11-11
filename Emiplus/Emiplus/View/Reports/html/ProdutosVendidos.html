@@ -30,25 +30,25 @@
                     </div>
                 </div>
             </div>
-            <div class="title">Histórico de Entradas e Saídas</div>
+            <div class="title">Produtos Vendidos</div>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Descrição</th>
-                        <th scope="col">Estoque</th>
-                        <th scope="col">Local</th>
-                        <th scope="col">Usuário</th>
-                        <th scope="col">Data</th>
+                        <th scope="col">Medida</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Qtd. Vendido</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in Data %}
                     <tr>
                         <td>{{item.Nome}} <small>(Ref: {{item.Referencia}})</small></td>
-                        <td>{{item.Tipo}}{{item.Quantidade}} (<small>atual:</small>{{item.EstoqueTotal}})</td>
-                        <td>{{item.Local}}</td>
-                        <td>{{item.Usuario}}</td>
-                        <td>{{item.Criado}}</td>
+                        <td>{{item.Medida}}</td>
+                        <td>{{item.Fornecedor}}</td>
+                        <td>{{item.Categoria}}</td>
+                        <td>{{item.QtdVendido}}</td>
                     </tr>
                     {% endfor %}
 

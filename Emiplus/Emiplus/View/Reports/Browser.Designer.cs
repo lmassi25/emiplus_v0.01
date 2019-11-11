@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.anterior = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.proximo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -54,7 +53,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.anterior);
             this.panel2.Controls.Add(this.proximo);
             this.panel2.Controls.Add(this.imprimir);
@@ -65,19 +63,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 52);
             this.panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 30);
-            this.label1.TabIndex = 159;
-            this.label1.Text = "Relatório";
             // 
             // anterior
             // 
@@ -281,6 +266,5 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton imprimir;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton anterior;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton proximo;
-        private System.Windows.Forms.Label label1;
     }
 }
