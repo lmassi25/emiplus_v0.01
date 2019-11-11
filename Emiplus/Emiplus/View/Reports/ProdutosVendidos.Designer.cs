@@ -65,6 +65,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.noFilterData = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,6 +115,7 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.noFilterData);
             this.barraTitulo.Controls.Add(this.Categorias);
             this.barraTitulo.Controls.Add(this.label12);
             this.barraTitulo.Controls.Add(this.filterAll);
@@ -384,7 +386,7 @@
             this.BuscarProduto.AlphaNumeric = false;
             this.BuscarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;
@@ -455,7 +457,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(28, 402);
+            this.label10.Location = new System.Drawing.Point(28, 403);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 17);
             this.label10.TabIndex = 24;
@@ -466,7 +468,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(20, 372);
+            this.label9.Location = new System.Drawing.Point(20, 373);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 17);
             this.label9.TabIndex = 21;
@@ -630,9 +632,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(257, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(370, 15);
+            this.label2.Size = new System.Drawing.Size(200, 15);
             this.label2.TabIndex = 182;
-            this.label2.Text = "Consulte o histórico de entrada e saída do estoque do seus produtos.";
+            this.label2.Text = "Consulte os produtos vendidos aqui.";
             // 
             // panel5
             // 
@@ -712,6 +714,49 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // noFilterData
+            // 
+            this.noFilterData.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.noFilterData.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.noFilterData.Border.HoverVisible = true;
+            this.noFilterData.Border.Rounding = 3;
+            this.noFilterData.Border.Thickness = 1;
+            this.noFilterData.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.Border.Visible = true;
+            this.noFilterData.Box = new System.Drawing.Size(14, 14);
+            this.noFilterData.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.noFilterData.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.noFilterData.BoxSpacing = 2;
+            this.noFilterData.CheckStyle.AutoSize = true;
+            this.noFilterData.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.noFilterData.CheckStyle.Character = '✔';
+            this.noFilterData.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.noFilterData.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noFilterData.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.noFilterData.CheckStyle.ShapeRounding = 3;
+            this.noFilterData.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.noFilterData.CheckStyle.Thickness = 2F;
+            this.noFilterData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.noFilterData.ForeColor = System.Drawing.Color.Gray;
+            this.noFilterData.IsBoxLarger = false;
+            this.noFilterData.Location = new System.Drawing.Point(80, 343);
+            this.noFilterData.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.noFilterData.Name = "noFilterData";
+            this.noFilterData.Size = new System.Drawing.Size(125, 23);
+            this.noFilterData.TabIndex = 198;
+            this.noFilterData.Text = "Não filtrar a data";
+            this.noFilterData.TextSize = new System.Drawing.Size(88, 16);
+            this.noFilterData.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.noFilterData.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // ProdutosVendidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +774,7 @@
             this.Name = "ProdutosVendidos";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.barraTitulo.PerformLayout();
@@ -782,5 +828,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox noFilterData;
     }
 }

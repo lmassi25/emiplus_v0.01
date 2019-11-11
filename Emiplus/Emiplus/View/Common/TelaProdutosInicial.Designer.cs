@@ -32,18 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutosInicial));
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.Impostos = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.ReajusteProduto = new System.Windows.Forms.Button();
             this.Etiquetas = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
@@ -52,13 +53,12 @@
             this.fornecedores = new System.Windows.Forms.Button();
             this.Estoque = new System.Windows.Forms.Button();
             this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Produtos = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -84,6 +84,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(735, 97);
             this.panel1.TabIndex = 49;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -150,6 +163,16 @@
             this.label8.Size = new System.Drawing.Size(61, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Produtos";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
             // 
             // visualSeparator2
             // 
@@ -243,38 +266,28 @@
             this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Impostos.UseVisualStyleBackColor = false;
             // 
-            // pictureBox4
+            // ReajusteProduto
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button9.Location = new System.Drawing.Point(62, 360);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(126, 125);
-            this.button9.TabIndex = 62;
-            this.button9.Text = "Reajuste de Preços";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.UseVisualStyleBackColor = false;
+            this.ReajusteProduto.BackColor = System.Drawing.Color.Transparent;
+            this.ReajusteProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReajusteProduto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReajusteProduto.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ReajusteProduto.FlatAppearance.BorderSize = 0;
+            this.ReajusteProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ReajusteProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ReajusteProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReajusteProduto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReajusteProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ReajusteProduto.Image = ((System.Drawing.Image)(resources.GetObject("ReajusteProduto.Image")));
+            this.ReajusteProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ReajusteProduto.Location = new System.Drawing.Point(62, 360);
+            this.ReajusteProduto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ReajusteProduto.Name = "ReajusteProduto";
+            this.ReajusteProduto.Size = new System.Drawing.Size(126, 125);
+            this.ReajusteProduto.TabIndex = 62;
+            this.ReajusteProduto.Text = "Reajuste de Produtos";
+            this.ReajusteProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ReajusteProduto.UseVisualStyleBackColor = false;
             // 
             // Etiquetas
             // 
@@ -460,19 +473,6 @@
             this.HistoricoEntradaSaida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.HistoricoEntradaSaida.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(253)))), ((int)(((byte)(251)))));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 36);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
-            // 
             // Produtos
             // 
             this.Produtos.BackColor = System.Drawing.Color.Transparent;
@@ -530,7 +530,7 @@
             this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.visualSeparator2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.ReajusteProduto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -552,10 +552,10 @@
             this.Text = "TelaProdutosInicial";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,7 +579,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button ReajusteProduto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;

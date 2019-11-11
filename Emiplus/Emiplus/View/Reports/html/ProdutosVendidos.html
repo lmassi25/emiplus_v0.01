@@ -35,20 +35,20 @@
                 <thead>
                     <tr>
                         <th scope="col">Descrição</th>
-                        <th scope="col">Qtd. Vendido</th>
                         <th scope="col">Medida</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Qtd. Vendido</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in Data %}
                     <tr>
                         <td>{{item.Nome}} <small>(Ref: {{item.Referencia}})</small></td>
-                        <td>{{item.Tipo}}{{item.Quantidade}} (<small>atual:</small>{{item.EstoqueTotal}})</td>
-                        <td>{{item.Local}}</td>
-                        <td>{{item.Usuario}}</td>
-                        <td>{{item.Criado}}</td>
+                        <td>{{item.Medida}}</td>
+                        <td>{{item.Fornecedor}}</td>
+                        <td>{{item.Categoria}}</td>
+                        <td>{{item.QtdVendido}}</td>
                     </tr>
                     {% endfor %}
 

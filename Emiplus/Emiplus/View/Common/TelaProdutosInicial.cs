@@ -37,6 +37,12 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
+            ReajusteProduto.Click += (s, e) =>
+            {
+                Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
+                Reajuste.ShowDialog();
+            };
+
             Compras.Click += (s, e) =>
             {
                 Home.pedidoPage = "Compras";
