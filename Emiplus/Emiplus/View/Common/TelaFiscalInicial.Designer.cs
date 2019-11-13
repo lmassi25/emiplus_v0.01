@@ -30,48 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaFiscalInicial));
-            this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nfe = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.label3 = new System.Windows.Forms.Label();
             this.novaNFE = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.naturezaOP = new System.Windows.Forms.Button();
+            this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label2 = new System.Windows.Forms.Label();
+            this.visualSeparator6 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
-            // 
-            // visualSeparator3
-            // 
-            this.visualSeparator3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(137, 335);
-            this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator3.Name = "visualSeparator3";
-            this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(571, 4);
-            this.visualSeparator3.TabIndex = 104;
-            this.visualSeparator3.Text = "visualSeparator3";
-            this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // label5
             // 
@@ -131,71 +103,15 @@
             this.nfe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nfe.Image = ((System.Drawing.Image)(resources.GetObject("nfe.Image")));
-            this.nfe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.nfe.Location = new System.Drawing.Point(62, 359);
+            this.nfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nfe.Location = new System.Drawing.Point(256, 94);
             this.nfe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nfe.Name = "nfe";
-            this.nfe.Size = new System.Drawing.Size(126, 115);
+            this.nfe.Size = new System.Drawing.Size(219, 41);
             this.nfe.TabIndex = 100;
-            this.nfe.Text = "NF-e";
-            this.nfe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.nfe.Text = "          NF-e";
+            this.nfe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.nfe.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(51, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 30);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Fiscal";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(12, 326);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 20);
-            this.label4.TabIndex = 108;
-            this.label4.Text = "Movimentações";
-            // 
-            // visualSeparator2
-            // 
-            this.visualSeparator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Location = new System.Drawing.Point(93, 180);
-            this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator2.Name = "visualSeparator2";
-            this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(615, 4);
-            this.visualSeparator2.TabIndex = 107;
-            this.visualSeparator2.Text = "visualSeparator2";
-            this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(12, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 20);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "Cadastros";
             // 
             // novaNFE
             // 
@@ -210,40 +126,15 @@
             this.novaNFE.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.novaNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
-            this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.novaNFE.Location = new System.Drawing.Point(62, 196);
+            this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.novaNFE.Location = new System.Drawing.Point(21, 94);
             this.novaNFE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.novaNFE.Name = "novaNFE";
-            this.novaNFE.Size = new System.Drawing.Size(126, 115);
+            this.novaNFE.Size = new System.Drawing.Size(219, 41);
             this.novaNFE.TabIndex = 105;
-            this.novaNFE.Text = "Nova NF-e";
-            this.novaNFE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.novaNFE.Text = "          Nova NF-e";
+            this.novaNFE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.novaNFE.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(0, 41);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(735, 97);
-            this.panel1.TabIndex = 99;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(24, 42);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(18, 18);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 50;
-            this.pictureBox6.TabStop = false;
             // 
             // naturezaOP
             // 
@@ -258,15 +149,79 @@
             this.naturezaOP.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.naturezaOP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.naturezaOP.Image = ((System.Drawing.Image)(resources.GetObject("naturezaOP.Image")));
-            this.naturezaOP.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.naturezaOP.Location = new System.Drawing.Point(194, 196);
+            this.naturezaOP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.naturezaOP.Location = new System.Drawing.Point(21, 137);
             this.naturezaOP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.naturezaOP.Name = "naturezaOP";
-            this.naturezaOP.Size = new System.Drawing.Size(126, 125);
+            this.naturezaOP.Size = new System.Drawing.Size(219, 41);
             this.naturezaOP.TabIndex = 109;
-            this.naturezaOP.Text = "Natureza da Operação";
-            this.naturezaOP.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.naturezaOP.Text = "          Natureza da Operação";
+            this.naturezaOP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.naturezaOP.UseVisualStyleBackColor = false;
+            // 
+            // visualSeparator4
+            // 
+            this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator4.Location = new System.Drawing.Point(256, 83);
+            this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator4.Name = "visualSeparator4";
+            this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.ShadowVisible = true;
+            this.visualSeparator4.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator4.TabIndex = 113;
+            this.visualSeparator4.Text = "visualSeparator4";
+            this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(252, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 25);
+            this.label2.TabIndex = 112;
+            this.label2.Text = "Movimentações";
+            // 
+            // visualSeparator6
+            // 
+            this.visualSeparator6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator6.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator6.Location = new System.Drawing.Point(21, 83);
+            this.visualSeparator6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator6.Name = "visualSeparator6";
+            this.visualSeparator6.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator6.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator6.ShadowVisible = true;
+            this.visualSeparator6.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator6.TabIndex = 111;
+            this.visualSeparator6.Text = "visualSeparator6";
+            this.visualSeparator6.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator6.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator6.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator6.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.Location = new System.Drawing.Point(17, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 25);
+            this.label7.TabIndex = 110;
+            this.label7.Text = "Cadastros";
             // 
             // TelaFiscalInicial
             // 
@@ -274,15 +229,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualSeparator4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.visualSeparator6);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.naturezaOP);
-            this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.nfe);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.visualSeparator2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.novaNFE);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaFiscalInicial";
@@ -290,29 +244,22 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button nfe;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button novaNFE;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button naturezaOP;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
+        private System.Windows.Forms.Label label2;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator6;
+        private System.Windows.Forms.Label label7;
     }
 }
