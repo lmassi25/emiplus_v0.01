@@ -118,9 +118,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(148, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(213, 30);
+            this.label11.Size = new System.Drawing.Size(237, 30);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Selecione o Vendedor!";
+            this.label11.Text = "Selecione o Colaborador!";
             // 
             // panel3
             // 
@@ -160,9 +160,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(26, 171);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 17);
+            this.label1.Size = new System.Drawing.Size(179, 17);
             this.label1.TabIndex = 59;
-            this.label1.Text = "Vendedores encontrados:";
+            this.label1.Text = "Colaboradores encontrados:";
             // 
             // label2
             // 
@@ -171,9 +171,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(90, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 17);
+            this.label2.Size = new System.Drawing.Size(152, 17);
             this.label2.TabIndex = 58;
-            this.label2.Text = "Buscar vendedor (F1):";
+            this.label2.Text = "Buscar colaborador (F1):";
             // 
             // pictureBox1
             // 

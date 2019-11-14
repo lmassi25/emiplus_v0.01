@@ -1,11 +1,8 @@
 ﻿namespace Emiplus.Model
 {
     using Data.Database;
-    using Data.Helpers;
     using SqlKata;
     using System;
-    using System.Reflection;
-    using Valit;
 
     internal class Usuarios : Model
     {

@@ -1,8 +1,12 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Fiscal;
+using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -18,11 +22,14 @@ namespace Emiplus.View.Comercial
     public partial class Pedido : Form
     {
         private Controller.Pedido _cPedido = new Controller.Pedido();
+        private Model.Pessoa _mPessoa = new Model.Pessoa();
 
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         Timer timer = new Timer(Configs.TimeLoading);
+
+        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public Pedido()
         {
@@ -39,7 +46,10 @@ namespace Emiplus.View.Comercial
             else if (Home.pedidoPage == "Devoluções")
                 label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
             else if (Home.pedidoPage == "Compras")
+            {
                 label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
+                label11.Text = "Procurar por fornecedor";
+            }
             else if (Home.pedidoPage == "Notas")
                 label2.Text = "Gerencie as Notas aqui! Adicione, edite ou delete uma Nota.";
 
@@ -47,9 +57,66 @@ namespace Emiplus.View.Comercial
             dataFinal.Text = DateTime.Now.ToString();
         }
 
+        /// <summary>
+        /// Autocomplete do campo de busca de pessoas.
+        /// </summary>
+        private void AutoCompletePessoas()
+        {
+            var data = _mPessoa.Query();
+
+            data.Select("id", "nome");
+            data.Where("excluir", 0);
+
+            switch (Home.pedidoPage)
+            {
+                case "Compras":
+                    data.Where("tipo", "Fornecedores");
+                    break;
+                case "Consignações":
+                    data.Where("tipo", "Clientes");
+                    break;
+                case "Devoluções":
+                    data.Where("tipo", "Clientes");
+                    break;
+                default:
+                    data.Where("tipo", "Clientes");
+                    break;
+            }
+
+            foreach (var itens in data.Get())
+            {
+                if (itens.NOME != "Novo registro")
+                    collection.Add(itens.NOME, itens.ID);
+            }
+
+            BuscarPessoa.AutoCompleteCustomSource = collection;
+        }
+
+        /// <summary>
+        /// Autocomplete do campo de busca de usuários.
+        /// </summary>
+        private void AutoCompleteUsers()
+        {
+            var users = new ArrayList();
+
+            var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
+            var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
+
+            users.Add(new { Id = "0", Nome = "Todos" });
+            foreach (var item in dataUser)
+            {
+                var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
+                users.Add(new { Id = item.Value["id"].ToString(), Nome = nameComplete });
+            }
+
+            Usuarios.DataSource = users;
+            Usuarios.DisplayMember = "Nome";
+            Usuarios.ValueMember = "Id";
+        }
+
         private void DataTableStart()
         {
-            search.Select();
+            BuscarPessoa.Select();
 
             GridLista.Visible = false;
             Loading.Size = new System.Drawing.Size(GridLista.Width, GridLista.Height);
@@ -57,7 +124,7 @@ namespace Emiplus.View.Comercial
             WorkerBackground.RunWorkerAsync();
         }
 
-        private async void Filter() => await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, search.Text);
+        private async void Filter() => await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text);
 
         private void EditPedido(bool create = false)
         {
@@ -115,15 +182,25 @@ namespace Emiplus.View.Comercial
 
         private void Eventos()
         {
-            Load += (s, e) => DataTableStart();
+            Load += (s, e) =>
+            { 
+                DataTableStart();
+                BuscarPessoa.Select();
+                AutoCompletePessoas();
+                AutoCompleteUsers();
 
-            search.KeyDown += KeyDowns;
-            search.TextChanged += (s, e) =>
+                //dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
+                dataInicial.Text = DateTime.Now.ToString();
+                dataFinal.Text = DateTime.Now.ToString();
+            };
+
+            BuscarPessoa.KeyDown += KeyDowns;
+            BuscarPessoa.TextChanged += (s, e) =>
             {
-                timer.Stop();
-                timer.Start();
-                Loading.Visible = true;
-                GridLista.Visible = false;
+                //timer.Stop();
+                //timer.Start();
+                //Loading.Visible = true;
+                //GridLista.Visible = false;
             };
 
             btnSearch.Click += (s, e) => Filter();
@@ -154,7 +231,7 @@ namespace Emiplus.View.Comercial
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
-                    await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, dataTable, search.Text);
+                    await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, dataTable, BuscarPessoa.Text);
 
                     Loading.Visible = false;
                     GridLista.Visible = true;
@@ -162,13 +239,13 @@ namespace Emiplus.View.Comercial
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate {
+            timer.Elapsed += (s, e) => BuscarPessoa.Invoke((MethodInvoker)delegate {
                 Filter();
                 Loading.Visible = false;
                 GridLista.Visible = true;
             });
 
-            search.Enter += async (s, e) =>
+            BuscarPessoa.Enter += async (s, e) =>
             {
                 await Task.Delay(100);
                 Filter();

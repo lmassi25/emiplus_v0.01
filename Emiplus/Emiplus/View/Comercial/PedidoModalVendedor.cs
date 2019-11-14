@@ -16,7 +16,7 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTablePessoa(GridListaVendedores, search.Text, "Colaboradores");
+        private void DataTable() => _controller.GetDataTableColaboradores(GridListaVendedores, search.Text, "Colaboradores");
 
         private void SelectItemGrid()
         {

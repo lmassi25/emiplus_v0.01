@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
+using Emiplus.View.Reports;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -20,8 +21,8 @@ namespace Emiplus.View.Common
                 Home.pessoaPage = "Clientes";
                 OpenForm.Show<Clientes>(this);
             };
-
-            NovoPedido.Click += (s, e) =>
+            
+            Pedidos.Click += (s, e) =>
             {
                 Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
@@ -29,36 +30,68 @@ namespace Emiplus.View.Common
                 NovoPedido.ShowDialog();
             };
 
-            Pedidos.Click += (s, e) =>
+            Orcamentos.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Orçamentos";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+
+            Consignacoes.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Consignações";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+
+            Devolucoes.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Devoluções";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+            
+            VendasRel.Click += (s, e) =>
             {
                 Home.pedidoPage = "Vendas";
                 Pedido Pedido = new Pedido();
                 Pedido.ShowDialog();
             };
 
-            Orcamentos.Click += (s, e) =>
+            ProdutosVendidos.Click += (s, e) =>
             {
-                Home.pedidoPage = "Orçamentos";
-                Pedido Pedido = new Pedido();
-                Pedido.ShowDialog();
+                Home.pedidoPage = "Vendas";
+                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                ProdVendidos.ShowDialog();
             };
 
-            Consignacoes.Click += (s, e) =>
+            ConsignacoesRel.Click += (s, e) =>
             {
                 Home.pedidoPage = "Consignações";
                 Pedido Pedido = new Pedido();
                 Pedido.ShowDialog();
             };
 
-            Devolucoes.Click += (s, e) =>
+            ProdutosConsignados.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Consignações";
+                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                ProdVendidos.ShowDialog();
+            };
+
+            DevolucoesRel.Click += (s, e) =>
             {
                 Home.pedidoPage = "Devoluções";
                 Pedido Pedido = new Pedido();
                 Pedido.ShowDialog();
             };
 
-            ProdutosVendidos.Click += (s, e) =>
+            ProdutosDevolvidos.Click += (s, e) =>
             {
+                Home.pedidoPage = "Devoluções";
                 Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
                 ProdVendidos.ShowDialog();
             };

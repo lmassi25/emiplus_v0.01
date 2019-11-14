@@ -44,15 +44,11 @@
             this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.btnSearch = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.BuscarPessoa = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -62,6 +58,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imprimir = new System.Windows.Forms.Button();
+            this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.filterRemovido = new System.Windows.Forms.RadioButton();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
@@ -108,6 +109,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.imprimir);
             this.panel5.Controls.Add(this.btnAdicionar);
             this.panel5.Controls.Add(this.btnEditar);
             this.panel5.Controls.Add(this.btnHelp);
@@ -129,7 +131,7 @@
             this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(905, 4);
+            this.btnAdicionar.Location = new System.Drawing.Point(798, 3);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
             this.btnAdicionar.TabIndex = 2;
@@ -150,7 +152,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(814, 4);
+            this.btnEditar.Location = new System.Drawing.Point(707, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(85, 90);
             this.btnEditar.TabIndex = 3;
@@ -241,18 +243,18 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.filterRemovido);
+            this.barraTitulo.Controls.Add(this.Usuarios);
+            this.barraTitulo.Controls.Add(this.label12);
+            this.barraTitulo.Controls.Add(this.panel1);
             this.barraTitulo.Controls.Add(this.dataFinal);
             this.barraTitulo.Controls.Add(this.dataInicial);
             this.barraTitulo.Controls.Add(this.btnSearch);
-            this.barraTitulo.Controls.Add(this.search);
+            this.barraTitulo.Controls.Add(this.BuscarPessoa);
             this.barraTitulo.Controls.Add(this.label11);
             this.barraTitulo.Controls.Add(this.label10);
             this.barraTitulo.Controls.Add(this.label9);
             this.barraTitulo.Controls.Add(this.label8);
-            this.barraTitulo.Controls.Add(this.radioButton5);
-            this.barraTitulo.Controls.Add(this.radioButton4);
-            this.barraTitulo.Controls.Add(this.radioButton3);
-            this.barraTitulo.Controls.Add(this.radioButton2);
             this.barraTitulo.Controls.Add(this.radioButton1);
             this.barraTitulo.Controls.Add(this.label7);
             this.barraTitulo.Controls.Add(this.panel3);
@@ -351,63 +353,63 @@
             this.btnSearch.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnSearch.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // search
+            // BuscarPessoa
             // 
-            this.search.AlphaNumeric = false;
-            this.search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BuscarPessoa.AlphaNumeric = false;
+            this.BuscarPessoa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.BackColorState.Enabled = System.Drawing.Color.White;
-            this.search.Border.Color = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverVisible = true;
-            this.search.Border.Rounding = 8;
-            this.search.Border.Thickness = 1;
-            this.search.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.Border.Visible = true;
-            this.search.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.search.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.search.ButtonBorder.HoverVisible = true;
-            this.search.ButtonBorder.Rounding = 6;
-            this.search.ButtonBorder.Thickness = 1;
-            this.search.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.search.ButtonBorder.Visible = true;
-            this.search.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.search.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.search.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.search.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ButtonIndent = 3;
-            this.search.ButtonText = "visualButton";
-            this.search.ButtonVisible = false;
-            this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
-            this.search.ImageSize = new System.Drawing.Size(16, 16);
-            this.search.ImageVisible = true;
-            this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(21, 427);
-            this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.search.Name = "search";
-            this.search.PasswordChar = '\0';
-            this.search.ReadOnly = false;
-            this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.search.Size = new System.Drawing.Size(200, 34);
-            this.search.TabIndex = 0;
-            this.search.TextBoxWidth = 150;
-            this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.search.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.search.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.search.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.search.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.search.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.search.Watermark.Text = "Watermark text";
-            this.search.Watermark.Visible = false;
-            this.search.WordWrap = true;
+            this.BuscarPessoa.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscarPessoa.BackColorState.Enabled = System.Drawing.Color.White;
+            this.BuscarPessoa.Border.Color = System.Drawing.Color.Gainsboro;
+            this.BuscarPessoa.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.BuscarPessoa.Border.HoverVisible = true;
+            this.BuscarPessoa.Border.Rounding = 8;
+            this.BuscarPessoa.Border.Thickness = 1;
+            this.BuscarPessoa.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscarPessoa.Border.Visible = true;
+            this.BuscarPessoa.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.BuscarPessoa.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.BuscarPessoa.ButtonBorder.HoverVisible = true;
+            this.BuscarPessoa.ButtonBorder.Rounding = 6;
+            this.BuscarPessoa.ButtonBorder.Thickness = 1;
+            this.BuscarPessoa.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscarPessoa.ButtonBorder.Visible = true;
+            this.BuscarPessoa.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscarPessoa.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscarPessoa.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscarPessoa.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BuscarPessoa.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarPessoa.ButtonIndent = 3;
+            this.BuscarPessoa.ButtonText = "visualButton";
+            this.BuscarPessoa.ButtonVisible = false;
+            this.BuscarPessoa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarPessoa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarPessoa.Image = ((System.Drawing.Image)(resources.GetObject("BuscarPessoa.Image")));
+            this.BuscarPessoa.ImageSize = new System.Drawing.Size(16, 16);
+            this.BuscarPessoa.ImageVisible = true;
+            this.BuscarPessoa.ImageWidth = 35;
+            this.BuscarPessoa.Location = new System.Drawing.Point(21, 427);
+            this.BuscarPessoa.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.BuscarPessoa.Name = "BuscarPessoa";
+            this.BuscarPessoa.PasswordChar = '\0';
+            this.BuscarPessoa.ReadOnly = false;
+            this.BuscarPessoa.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.BuscarPessoa.Size = new System.Drawing.Size(200, 34);
+            this.BuscarPessoa.TabIndex = 0;
+            this.BuscarPessoa.TextBoxWidth = 150;
+            this.BuscarPessoa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.BuscarPessoa.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarPessoa.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarPessoa.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscarPessoa.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscarPessoa.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscarPessoa.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.BuscarPessoa.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BuscarPessoa.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscarPessoa.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.BuscarPessoa.Watermark.Text = "Watermark text";
+            this.BuscarPessoa.Watermark.Visible = false;
+            this.BuscarPessoa.WordWrap = true;
             // 
             // label11
             // 
@@ -416,9 +418,9 @@
             this.label11.ForeColor = System.Drawing.Color.Gray;
             this.label11.Location = new System.Drawing.Point(18, 407);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 17);
+            this.label11.Size = new System.Drawing.Size(128, 17);
             this.label11.TabIndex = 26;
-            this.label11.Text = "Procurar";
+            this.label11.Text = "Procurar por cliente";
             // 
             // label10
             // 
@@ -452,54 +454,6 @@
             this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 190;
             this.label8.Text = "Período";
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton5.Location = new System.Drawing.Point(21, 267);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(115, 19);
-            this.radioButton5.TabIndex = 18;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Finalizado /Fiado";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton4.Location = new System.Drawing.Point(21, 242);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(113, 19);
-            this.radioButton4.TabIndex = 17;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Finalizado /Pago";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton3.Location = new System.Drawing.Point(21, 217);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(117, 19);
-            this.radioButton3.TabIndex = 16;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Finalizado /Todos";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.radioButton2.Location = new System.Drawing.Point(21, 192);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(81, 19);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Em Aberto";
-            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -599,6 +553,113 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderSize = 0;
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(889, 3);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(116, 90);
+            this.imprimir.TabIndex = 102;
+            this.imprimir.Text = "Gerar Relatório";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = true;
+            // 
+            // Usuarios
+            // 
+            this.Usuarios.BackColor = System.Drawing.Color.White;
+            this.Usuarios.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Usuarios.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Usuarios.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Usuarios.Border.HoverVisible = true;
+            this.Usuarios.Border.Rounding = 6;
+            this.Usuarios.Border.Thickness = 1;
+            this.Usuarios.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Usuarios.Border.Visible = true;
+            this.Usuarios.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Usuarios.ButtonImage = null;
+            this.Usuarios.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Usuarios.ButtonWidth = 30;
+            this.Usuarios.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Usuarios.DropDownHeight = 100;
+            this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Usuarios.DropDownWidth = 250;
+            this.Usuarios.FormattingEnabled = true;
+            this.Usuarios.ImageList = null;
+            this.Usuarios.ImageVisible = false;
+            this.Usuarios.Index = 0;
+            this.Usuarios.IntegralHeight = false;
+            this.Usuarios.ItemHeight = 23;
+            this.Usuarios.ItemImageVisible = true;
+            this.Usuarios.Location = new System.Drawing.Point(77, 239);
+            this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
+            this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Usuarios.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.Name = "Usuarios";
+            this.Usuarios.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Usuarios.Size = new System.Drawing.Size(143, 29);
+            this.Usuarios.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Usuarios.TabIndex = 200;
+            this.Usuarios.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Usuarios.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Usuarios.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Usuarios.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Usuarios.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Usuarios.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Usuarios.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Usuarios.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usuarios.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Usuarios.Watermark.Text = "Watermark text";
+            this.Usuarios.Watermark.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(17, 243);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 17);
+            this.label12.TabIndex = 199;
+            this.label12.Text = "Usuário";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Location = new System.Drawing.Point(21, 283);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 1);
+            this.panel1.TabIndex = 198;
+            // 
+            // filterRemovido
+            // 
+            this.filterRemovido.AutoSize = true;
+            this.filterRemovido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterRemovido.Location = new System.Drawing.Point(21, 192);
+            this.filterRemovido.Name = "filterRemovido";
+            this.filterRemovido.Size = new System.Drawing.Size(85, 19);
+            this.filterRemovido.TabIndex = 201;
+            this.filterRemovido.TabStop = true;
+            this.filterRemovido.Text = "Canceladas";
+            this.filterRemovido.UseVisualStyleBackColor = true;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -644,10 +705,6 @@
         private System.Windows.Forms.DataGridView GridLista;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel barraTitulo;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel3;
@@ -663,10 +720,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarPessoa;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSearch;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
         private System.Windows.Forms.PictureBox Loading;
+        private System.Windows.Forms.Button imprimir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Usuarios;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton filterRemovido;
     }
 }

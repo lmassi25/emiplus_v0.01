@@ -10,7 +10,7 @@ namespace Emiplus.Controller
     class Pedido
     {
         /// <summary>
-        /// Alimenta grid dos colaboradores e clientes
+        /// Alimenta grid dos clientes
         /// </summary>
         /// <param name="Table">Grid para alimentar</param>
         /// <param name="SearchText">Input box</param>
@@ -68,6 +68,48 @@ namespace Emiplus.Controller
             }
         }
 
+        /// <summary>
+        /// Alimenta grid dos colaboradores
+        /// </summary>
+        /// <param name="Table">Grid para alimentar</param>
+        /// <param name="SearchText">Input box</param>
+        /// <param name="tipo">"Clientes" ou "Colaboradores"</param>
+        public void GetDataTableColaboradores(DataGridView Table, string SearchText, string tipo)
+        {
+            Table.ColumnCount = 2;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Nome";
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
+            Table.Rows.Clear();
+
+            var clientes = new Model.Usuarios();
+
+            var search = "%" + SearchText + "%";
+
+            var data = clientes.Query()
+                .Select("id_user", "nome")
+                .Where("excluir", 0)
+                .Where
+                (
+                    q => q.WhereLike("nome", search)
+                )
+                .OrderByDesc("criado")
+                .Limit(25)
+                .Get();
+
+            foreach (var cliente in data)
+            {
+                Table.Rows.Add(
+                    cliente.ID_USER,
+                    cliente.NOME
+                );
+            }
+        }
+
         public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null)
         {
             var search = "%" + SearchText + "%";
@@ -85,7 +127,7 @@ namespace Emiplus.Controller
                 (
                     q => q.WhereLike("pessoa.nome", search, false)
                 )
-                .OrderByDesc("pedido.criado")
+                .OrderByDesc("pedido.id")
                 .GetAsync<dynamic>();
 
             return new Model.Pedido().Query()
@@ -96,7 +138,7 @@ namespace Emiplus.Controller
                 .Where("pedido.emissao", ">=", dataInicial)
                 .Where("pedido.emissao", "<=", dataFinal)
                 .Where("pedido.excluir", 0)
-                .OrderByDesc("pedido.criado")
+                .OrderByDesc("pedido.id")
                 .GetAsync<dynamic>();
         }
 
