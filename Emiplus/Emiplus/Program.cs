@@ -10,8 +10,8 @@ namespace Emiplus
 {
     static class Program
     {
-        public static string URL_BASE = "http://localhost/app";
-        //public static string URL_BASE = "https://www.emiplus.com.br";
+        //public static string URL_BASE = "http://localhost/app";
+        public static string URL_BASE = "https://www.emiplus.com.br";
         public static string PATH_BASE { get; set; }
         public static string UNIQUE_ID_EMPRESA = Settings.Default.empresa_unique_id;
         public static string TOKEN = "f012622defec1e2bad3b8596e0642c";

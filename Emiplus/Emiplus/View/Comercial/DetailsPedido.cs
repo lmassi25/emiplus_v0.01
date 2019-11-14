@@ -9,7 +9,10 @@ namespace Emiplus.View.Comercial
     public partial class DetailsPedido : Form
     {
         private Model.Pedido _modelPedido = new Model.Pedido();
+
         private Model.Pessoa _modelPessoa = new Model.Pessoa();
+        private Model.Usuarios _modelUsuario = new Model.Usuarios();
+
         private Model.PedidoItem _modelPedidoItem = new Model.PedidoItem();
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
@@ -49,8 +52,8 @@ namespace Emiplus.View.Comercial
 
             if (_modelPedido.Colaborador > 0)
             {
-                var vendedor = _modelPessoa.FindById(_modelPedido.Colaborador).Select("id", "nome").First();
-                vendedor.Text = vendedor.NOME;
+                var data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).First<Model.Usuarios>();
+                vendedor.Text = data.Nome;
             }
 
             if (_modelPedido.status == 0)

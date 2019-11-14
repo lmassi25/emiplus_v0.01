@@ -19,9 +19,13 @@ namespace Emiplus.View.Comercial
         public static int IdPedidoItem { get; set; } // Id item datagrid
 
         private Model.Item _mItem = new Model.Item();
+        
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
+
         private Model.Pessoa _mCliente = new Model.Pessoa();
+        private Model.Usuarios _mUsuario = new Model.Usuarios();
+
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
@@ -65,6 +69,7 @@ namespace Emiplus.View.Comercial
         {
             if (_mPedido.Cliente > 0)
             {
+                _mPedido.Save(_mPedido);
                 var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
                 nomeCliente.Text = data.Nome;
             }
@@ -77,7 +82,8 @@ namespace Emiplus.View.Comercial
         {
             if (_mPedido.Colaborador > 0)
             {
-                var data = _mCliente.FindById(_mPedido.Colaborador).First<Model.Pessoa>();
+                _mPedido.Save(_mPedido);
+                var data = _mUsuario.FindByUserId(_mPedido.Colaborador).First<Model.Usuarios>();
                 nomeVendedor.Text = data.Nome;
             }
         }

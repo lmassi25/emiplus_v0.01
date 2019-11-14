@@ -266,9 +266,9 @@
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label17.Location = new System.Drawing.Point(871, 18);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(60, 13);
+            this.label17.Size = new System.Drawing.Size(75, 13);
             this.label17.TabIndex = 43;
-            this.label17.Text = "Vendedor:";
+            this.label17.Text = "Colaborador:";
             // 
             // pictureBox11
             // 
