@@ -33,6 +33,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label4 = new System.Windows.Forms.Label();
             this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
@@ -45,15 +46,14 @@
             this.DevolucoesRel = new System.Windows.Forms.Button();
             this.VendasRel = new System.Windows.Forms.Button();
             this.ProdutosVendidos = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
             this.Comissoes = new System.Windows.Forms.Button();
-            this.Clientes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
             this.Consignacoes = new System.Windows.Forms.Button();
             this.Orcamentos = new System.Windows.Forms.Button();
             this.Devolucoes = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Clientes = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,17 @@
             this.label8.Size = new System.Drawing.Size(66, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Comercial";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // visualSeparator5
             // 
@@ -325,17 +336,6 @@
             this.ProdutosVendidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProdutosVendidos.UseVisualStyleBackColor = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
@@ -381,52 +381,6 @@
             this.Comissoes.Text = "          Comissões";
             this.Comissoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Comissoes.UseVisualStyleBackColor = false;
-            // 
-            // Clientes
-            // 
-            this.Clientes.BackColor = System.Drawing.Color.Transparent;
-            this.Clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Clientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Clientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Clientes.FlatAppearance.BorderSize = 0;
-            this.Clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Clientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clientes.ForeColor = System.Drawing.Color.DimGray;
-            this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
-            this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(21, 94);
-            this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Clientes.Name = "Clientes";
-            this.Clientes.Size = new System.Drawing.Size(219, 41);
-            this.Clientes.TabIndex = 50;
-            this.Clientes.Text = "          Clientes";
-            this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(493, 94);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 41);
-            this.button1.TabIndex = 99;
-            this.button1.Text = "          Clientes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // Pedidos
             // 
@@ -520,6 +474,52 @@
             this.Devolucoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Devolucoes.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(493, 94);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 41);
+            this.button1.TabIndex = 99;
+            this.button1.Text = "          Clientes";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // Clientes
+            // 
+            this.Clientes.BackColor = System.Drawing.Color.Transparent;
+            this.Clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Clientes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Clientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Clientes.FlatAppearance.BorderSize = 0;
+            this.Clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Clientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clientes.ForeColor = System.Drawing.Color.DimGray;
+            this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
+            this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Clientes.Location = new System.Drawing.Point(21, 94);
+            this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Clientes.Name = "Clientes";
+            this.Clientes.Size = new System.Drawing.Size(219, 41);
+            this.Clientes.TabIndex = 50;
+            this.Clientes.Text = "          Clientes";
+            this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Clientes.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -562,7 +562,6 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button Clientes;
         private System.Windows.Forms.Button Comissoes;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel4;
@@ -580,10 +579,11 @@
         private System.Windows.Forms.Button VendasRel;
         private System.Windows.Forms.Button ProdutosConsignados;
         private System.Windows.Forms.Button ProdutosDevolvidos;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Pedidos;
         private System.Windows.Forms.Button Consignacoes;
         private System.Windows.Forms.Button Orcamentos;
         private System.Windows.Forms.Button Devolucoes;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Clientes;
     }
 }

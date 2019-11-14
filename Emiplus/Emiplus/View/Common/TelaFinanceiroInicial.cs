@@ -14,6 +14,18 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
+            Clientes.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Clientes";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
+            fornecedores.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Fornecedores";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
             aReceber.Click += (s, e) =>
             {
                 Home.financeiroPage = "Receber";

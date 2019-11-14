@@ -51,6 +51,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -61,26 +63,22 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.caixa = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.vendedor = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.cliente = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.aberto = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -120,14 +118,14 @@
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridLista.Location = new System.Drawing.Point(-3, -3);
+            this.GridLista.Location = new System.Drawing.Point(-6, -3);
             this.GridLista.MultiSelect = false;
             this.GridLista.Name = "GridLista";
             this.GridLista.ReadOnly = true;
             this.GridLista.RowHeadersVisible = false;
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(498, 478);
+            this.GridLista.Size = new System.Drawing.Size(511, 478);
             this.GridLista.TabIndex = 5;
             // 
             // panel1
@@ -193,7 +191,7 @@
             this.btnPgtosLancado.Name = "btnPgtosLancado";
             this.btnPgtosLancado.Size = new System.Drawing.Size(239, 47);
             this.btnPgtosLancado.TabIndex = 118;
-            this.btnPgtosLancado.Text = "Ver Pagamentos Lançados!";
+            this.btnPgtosLancado.Text = "Adicionar Entrada / Saída!";
             this.btnPgtosLancado.UseVisualStyleBackColor = false;
             // 
             // txtRecebimento
@@ -378,6 +376,29 @@
             this.panel4.Size = new System.Drawing.Size(1007, 40);
             this.panel4.TabIndex = 93;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(134, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Financeiro";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(110, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -429,8 +450,6 @@
             this.barraTitulo.Controls.Add(this.panel6);
             this.barraTitulo.Controls.Add(this.caixa);
             this.barraTitulo.Controls.Add(this.label45);
-            this.barraTitulo.Controls.Add(this.vendedor);
-            this.barraTitulo.Controls.Add(this.label10);
             this.barraTitulo.Controls.Add(this.cliente);
             this.barraTitulo.Controls.Add(this.label8);
             this.barraTitulo.Controls.Add(this.panel3);
@@ -492,27 +511,6 @@
             this.label45.Text = "Caixa:";
             this.label45.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // vendedor
-            // 
-            this.vendedor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vendedor.ForeColor = System.Drawing.Color.Gray;
-            this.vendedor.Location = new System.Drawing.Point(107, 299);
-            this.vendedor.Name = "vendedor";
-            this.vendedor.Size = new System.Drawing.Size(129, 17);
-            this.vendedor.TabIndex = 92;
-            this.vendedor.Text = "N/D";
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(24, 298);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 17);
-            this.label10.TabIndex = 91;
-            this.label10.Text = "Vendedor:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // cliente
             // 
             this.cliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -527,11 +525,11 @@
             // 
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(24, 272);
+            this.label8.Location = new System.Drawing.Point(13, 272);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.Size = new System.Drawing.Size(88, 17);
             this.label8.TabIndex = 89;
-            this.label8.Text = "Cliente:";
+            this.label8.Text = "Colaborador:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel3
@@ -583,29 +581,6 @@
             this.label18.Text = "Aberto:";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(134, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Financeiro";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(110, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
             // DetailsCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,11 +607,11 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,8 +651,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label caixa;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label vendedor;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label cliente;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
