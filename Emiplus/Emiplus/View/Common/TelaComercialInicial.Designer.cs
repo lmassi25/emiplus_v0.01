@@ -48,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.visualSeparator6 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label7 = new System.Windows.Forms.Label();
+            this.ProdutosVendidos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +124,7 @@
             this.Pedidos.ForeColor = System.Drawing.Color.DimGray;
             this.Pedidos.Image = ((System.Drawing.Image)(resources.GetObject("Pedidos.Image")));
             this.Pedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Pedidos.Location = new System.Drawing.Point(256, 180);
+            this.Pedidos.Location = new System.Drawing.Point(256, 184);
             this.Pedidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pedidos.Name = "Pedidos";
             this.Pedidos.Size = new System.Drawing.Size(219, 41);
@@ -146,7 +147,7 @@
             this.Devolucoes.ForeColor = System.Drawing.Color.DimGray;
             this.Devolucoes.Image = ((System.Drawing.Image)(resources.GetObject("Devolucoes.Image")));
             this.Devolucoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Devolucoes.Location = new System.Drawing.Point(256, 223);
+            this.Devolucoes.Location = new System.Drawing.Point(256, 227);
             this.Devolucoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Devolucoes.Name = "Devolucoes";
             this.Devolucoes.Size = new System.Drawing.Size(219, 41);
@@ -215,7 +216,7 @@
             this.Consignacoes.ForeColor = System.Drawing.Color.DimGray;
             this.Consignacoes.Image = ((System.Drawing.Image)(resources.GetObject("Consignacoes.Image")));
             this.Consignacoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Consignacoes.Location = new System.Drawing.Point(256, 137);
+            this.Consignacoes.Location = new System.Drawing.Point(256, 139);
             this.Consignacoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Consignacoes.Name = "Consignacoes";
             this.Consignacoes.Size = new System.Drawing.Size(219, 41);
@@ -376,12 +377,36 @@
             this.label7.TabIndex = 86;
             this.label7.Text = "Cadastros";
             // 
+            // ProdutosVendidos
+            // 
+            this.ProdutosVendidos.BackColor = System.Drawing.Color.Transparent;
+            this.ProdutosVendidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ProdutosVendidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProdutosVendidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ProdutosVendidos.FlatAppearance.BorderSize = 0;
+            this.ProdutosVendidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ProdutosVendidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ProdutosVendidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProdutosVendidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
+            this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
+            this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 139);
+            this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProdutosVendidos.Name = "ProdutosVendidos";
+            this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
+            this.ProdutosVendidos.TabIndex = 92;
+            this.ProdutosVendidos.Text = "          Produtos Vendidos";
+            this.ProdutosVendidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProdutosVendidos.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.ProdutosVendidos);
             this.Controls.Add(this.visualSeparator5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.visualSeparator4);
@@ -429,5 +454,6 @@
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button ProdutosVendidos;
     }
 }

@@ -42,7 +42,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
             this.transportadoras = new System.Windows.Forms.Button();
-            this.ProdutosVendidos = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
             this.Estoque = new System.Windows.Forms.Button();
             this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
@@ -269,29 +268,6 @@
             this.transportadoras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.transportadoras.UseVisualStyleBackColor = false;
             // 
-            // ProdutosVendidos
-            // 
-            this.ProdutosVendidos.BackColor = System.Drawing.Color.Transparent;
-            this.ProdutosVendidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProdutosVendidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ProdutosVendidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.ProdutosVendidos.FlatAppearance.BorderSize = 0;
-            this.ProdutosVendidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ProdutosVendidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.ProdutosVendidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ProdutosVendidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
-            this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
-            this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 184);
-            this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ProdutosVendidos.Name = "ProdutosVendidos";
-            this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
-            this.ProdutosVendidos.TabIndex = 53;
-            this.ProdutosVendidos.Text = "          Produtos Vendidos";
-            this.ProdutosVendidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.UseVisualStyleBackColor = false;
-            // 
             // fornecedores
             // 
             this.fornecedores.BackColor = System.Drawing.Color.Transparent;
@@ -490,7 +466,6 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Compras);
             this.Controls.Add(this.transportadoras);
-            this.Controls.Add(this.ProdutosVendidos);
             this.Controls.Add(this.fornecedores);
             this.Controls.Add(this.Estoque);
             this.Controls.Add(this.HistoricoEntradaSaida);
@@ -515,7 +490,6 @@
         private System.Windows.Forms.Button HistoricoEntradaSaida;
         private System.Windows.Forms.Button Estoque;
         private System.Windows.Forms.Button fornecedores;
-        private System.Windows.Forms.Button ProdutosVendidos;
         private System.Windows.Forms.Button transportadoras;
         private System.Windows.Forms.Button Compras;
         private System.Windows.Forms.Button button7;

@@ -56,6 +56,12 @@ namespace Emiplus.View.Common
                 Pedido Pedido = new Pedido();
                 Pedido.ShowDialog();
             };
+
+            ProdutosVendidos.Click += (s, e) =>
+            {
+                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                ProdVendidos.ShowDialog();
+            };
         }
     }
 }
