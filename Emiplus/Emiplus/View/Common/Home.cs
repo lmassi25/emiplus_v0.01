@@ -123,6 +123,7 @@ namespace Emiplus.View.Common
         public static string pessoaPage { get; set; }
         public static string pedidoPage { get; set; }
         public static string financeiroPage { get; set; }
+        public static int idCaixa { get; set; }
 
         public Home()
         {

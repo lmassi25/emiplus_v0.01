@@ -193,6 +193,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controller\Caixa.cs" />
     <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Estoque.cs" />
     <Compile Include="Controller\Etiqueta.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Data\Helpers\ToolHelp.cs" />
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
+    <Compile Include="Model\Caixa.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Etiqueta.cs" />
@@ -409,6 +411,24 @@
     </Compile>
     <Compile Include="View\Exemplos.Designer.cs">
       <DependentUpon>Exemplos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\AbrirCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\AbrirCaixa.Designer.cs">
+      <DependentUpon>AbrirCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\Caixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\Caixa.Designer.cs">
+      <DependentUpon>Caixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\DetailsCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\DetailsCaixa.Designer.cs">
+      <DependentUpon>DetailsCaixa.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Financeiro\EditarTitulo.cs">
       <SubType>Form</SubType>
@@ -713,6 +733,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\AbrirCaixa.resx">
+      <DependentUpon>AbrirCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\Caixa.resx">
+      <DependentUpon>Caixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\DetailsCaixa.resx">
+      <DependentUpon>DetailsCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
       <DependentUpon>EditarTitulo.cs</DependentUpon>

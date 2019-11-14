@@ -42,6 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.visualSeparator6 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label7 = new System.Windows.Forms.Label();
+            this.AbrirCaixa = new System.Windows.Forms.Button();
+            this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Caixa = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -246,12 +250,94 @@
             this.label7.TabIndex = 99;
             this.label7.Text = "Cadastros";
             // 
+            // AbrirCaixa
+            // 
+            this.AbrirCaixa.BackColor = System.Drawing.Color.Transparent;
+            this.AbrirCaixa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AbrirCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AbrirCaixa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AbrirCaixa.FlatAppearance.BorderSize = 0;
+            this.AbrirCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AbrirCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.AbrirCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbrirCaixa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AbrirCaixa.ForeColor = System.Drawing.Color.DimGray;
+            this.AbrirCaixa.Image = ((System.Drawing.Image)(resources.GetObject("AbrirCaixa.Image")));
+            this.AbrirCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AbrirCaixa.Location = new System.Drawing.Point(256, 180);
+            this.AbrirCaixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AbrirCaixa.Name = "AbrirCaixa";
+            this.AbrirCaixa.Size = new System.Drawing.Size(219, 41);
+            this.AbrirCaixa.TabIndex = 103;
+            this.AbrirCaixa.Text = "          Abrir Caixa";
+            this.AbrirCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AbrirCaixa.UseVisualStyleBackColor = false;
+            // 
+            // visualSeparator5
+            // 
+            this.visualSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Location = new System.Drawing.Point(491, 83);
+            this.visualSeparator5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator5.Name = "visualSeparator5";
+            this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator5.ShadowVisible = true;
+            this.visualSeparator5.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator5.TabIndex = 105;
+            this.visualSeparator5.Text = "visualSeparator5";
+            this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(487, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.TabIndex = 104;
+            this.label4.Text = "Relatórios";
+            // 
+            // Caixa
+            // 
+            this.Caixa.BackColor = System.Drawing.Color.Transparent;
+            this.Caixa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Caixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Caixa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Caixa.FlatAppearance.BorderSize = 0;
+            this.Caixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Caixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Caixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Caixa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Caixa.ForeColor = System.Drawing.Color.DimGray;
+            this.Caixa.Image = ((System.Drawing.Image)(resources.GetObject("Caixa.Image")));
+            this.Caixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Caixa.Location = new System.Drawing.Point(491, 94);
+            this.Caixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Caixa.Name = "Caixa";
+            this.Caixa.Size = new System.Drawing.Size(219, 41);
+            this.Caixa.TabIndex = 106;
+            this.Caixa.Text = "          Caixa";
+            this.Caixa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Caixa.UseVisualStyleBackColor = false;
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.Caixa);
+            this.Controls.Add(this.visualSeparator5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.AbrirCaixa);
             this.Controls.Add(this.visualSeparator4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.visualSeparator6);
@@ -286,5 +372,9 @@
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button AbrirCaixa;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Caixa;
     }
 }

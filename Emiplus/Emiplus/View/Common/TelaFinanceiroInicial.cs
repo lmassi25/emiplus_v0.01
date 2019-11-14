@@ -39,6 +39,18 @@ namespace Emiplus.View.Common
                 Home.financeiroPage = "Pagar";
                 OpenForm.Show<EditarTitulo>(this);
             };
+            
+            AbrirCaixa.Click += (s, e) =>
+            {
+                AbrirCaixa f = new AbrirCaixa();
+                f.ShowDialog();
+            };
+
+            Caixa.Click += (s, e) =>
+            {
+                Caixa f = new Caixa();
+                f.ShowDialog();
+            };
         }
     }
 }
