@@ -124,7 +124,15 @@ namespace Emiplus.View.Comercial
             WorkerBackground.RunWorkerAsync();
         }
 
-        private async void Filter() => await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text);
+        private async void Filter()
+        {
+            int excluir = 0;
+
+            if (filterRemovido.Checked)
+                excluir = 1;
+
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir);
+        }   
 
         private void EditPedido(bool create = false)
         {
@@ -192,6 +200,8 @@ namespace Emiplus.View.Comercial
                 //dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
+
+                filterTodos.Checked = true;
             };
 
             BuscarPessoa.KeyDown += KeyDowns;

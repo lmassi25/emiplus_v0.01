@@ -110,7 +110,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -118,7 +118,7 @@ namespace Emiplus.Controller
                 return new Model.Pedido().Query()
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("pedido.excluir", 0)
+                .Where("pedido.excluir", excluir)
                 .Where("pedido.tipo", tipo)
                 .Where("pedido.emissao", ">=", dataInicial)
                 .Where("pedido.emissao", "<=", dataFinal)
@@ -133,7 +133,7 @@ namespace Emiplus.Controller
             return new Model.Pedido().Query()
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("pedido.excluir", 0)
+                .Where("pedido.excluir", excluir)
                 .Where("pedido.tipo", tipo)
                 .Where("pedido.emissao", ">=", dataInicial)
                 .Where("pedido.emissao", "<=", dataFinal)
@@ -142,7 +142,7 @@ namespace Emiplus.Controller
                 .GetAsync<dynamic>();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0)
         {
             Table.ColumnCount = 5;
 
@@ -171,7 +171,7 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText);
+                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir);
                 Data = dados;
             }
 
