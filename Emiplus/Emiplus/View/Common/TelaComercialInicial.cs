@@ -15,13 +15,7 @@ namespace Emiplus.View.Common
         }
 
         private void Eventos()
-        {
-            Clientes.Click += (s, e) =>
-            {
-                Home.pessoaPage = "Clientes";
-                OpenForm.Show<Clientes>(this);
-            };
-            
+        {   
             Pedidos.Click += (s, e) =>
             {
                 Home.pedidoPage = "Vendas";

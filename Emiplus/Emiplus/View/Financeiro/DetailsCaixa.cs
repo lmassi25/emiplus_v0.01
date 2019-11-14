@@ -26,6 +26,7 @@ namespace Emiplus.View.Financeiro
         {
             Load += (s, e) =>
             {
+                caixa.Text = idCaixa.ToString();
                 nrPedido.Text = idCaixa.ToString();
             };
 
