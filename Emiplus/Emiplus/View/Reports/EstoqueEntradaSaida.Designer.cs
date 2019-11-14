@@ -559,7 +559,7 @@
             this.noFilterData.Border.Visible = true;
             this.noFilterData.Box = new System.Drawing.Size(14, 14);
             this.noFilterData.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.White;
             this.noFilterData.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.noFilterData.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.noFilterData.BoxSpacing = 2;
