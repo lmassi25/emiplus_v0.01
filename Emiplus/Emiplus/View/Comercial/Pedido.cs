@@ -1,14 +1,17 @@
-﻿using Emiplus.Data.Core;
+﻿using DotLiquid;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Fiscal;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,6 +33,8 @@ namespace Emiplus.View.Comercial
         Timer timer = new Timer(Configs.TimeLoading);
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+
+        private string controle;
 
         public Pedido()
         {
@@ -163,6 +168,12 @@ namespace Emiplus.View.Comercial
                 }
                 else
                 {
+                    if (Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["EXCLUIR"].Value) > 0)
+                    {
+                        Alert.Message("Erro", "Esse registro foi excluido e não é permitido acessá-lo", Alert.AlertType.warning);
+                        return;
+                    }
+
                     DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                     DetailsPedido detailsPedido = new DetailsPedido();
                     detailsPedido.ShowDialog();
@@ -183,6 +194,8 @@ namespace Emiplus.View.Comercial
                     e.Handled = true;
                     break;
                 case Keys.Enter:
+                    if (controle.Equals("BuscarPessoa"))
+                        return;
                     EditPedido();
                     break;
             }
@@ -190,6 +203,8 @@ namespace Emiplus.View.Comercial
 
         private void Eventos()
         {
+            controle = "";
+
             Load += (s, e) =>
             { 
                 DataTableStart();
@@ -204,7 +219,12 @@ namespace Emiplus.View.Comercial
                 filterTodos.Checked = true;
             };
 
-            BuscarPessoa.KeyDown += KeyDowns;
+            BuscarPessoa.KeyDown += (s, e) =>
+            {
+                controle = "BuscarPessoa";
+                KeyDowns(s, e);
+            };
+                
             BuscarPessoa.TextChanged += (s, e) =>
             {
                 //timer.Stop();
@@ -260,6 +280,45 @@ namespace Emiplus.View.Comercial
                 await Task.Delay(100);
                 Filter();
             };
+
+            imprimir.Click += async (s, e) => await RenderizarAsync();
+        }
+
+        private async Task RenderizarAsync()
+        {
+            int excluir = 0;
+
+            if (filterRemovido.Checked)
+                excluir = 1;
+
+            IEnumerable<dynamic> dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir);
+
+            ArrayList data = new ArrayList();
+            foreach (var item in dados)
+            {
+                data.Add(new
+                {
+                    ID = item.ID
+                });
+            }
+
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Pedidos.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                INCLUDE_PATH = Program.PATH_BASE,
+                URL_BASE = Program.PATH_BASE,
+                Data = data,
+                NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                Logo = Settings.Default.empresa_logo,
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                dataInicial = dataInicial.Text,
+                dataFinal = dataFinal.Text,
+                Titulo = Home.pedidoPage
+            }));
+
+            Browser.htmlRender = render;
+            var f = new Browser();
+            f.ShowDialog();
         }
     }
 }

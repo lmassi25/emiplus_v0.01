@@ -1028,6 +1028,7 @@
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />
+    <Content Include="View\Reports\html\Pedidos.html" />
     <Content Include="View\Reports\html\ProdutosVendidos.html" />
     <None Include="Resources\checkedBranco.png" />
     <None Include="Assets\Images\icons\keys\icons8-color-96.png" />
