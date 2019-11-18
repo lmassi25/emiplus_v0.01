@@ -14,7 +14,6 @@
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }

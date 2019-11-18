@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,18 @@ namespace Emiplus.View.Produtos
         {
             InitializeComponent();
             Eventos();
+
+            if (Home.CategoriaPage == "Produtos")
+            {
+                label1.Text = "Categorias";
+                label2.Text = "Se organize melhor criando categorias para seus produtos.";
+            }
+
+            if (Home.CategoriaPage == "Financeiro")
+            {
+                label1.Text = "Categorias de Contas";
+                label2.Text = "Se organize melhor criando categorias de contas para seus produtos.";
+            }
         }
 
         private void DataTableStart()

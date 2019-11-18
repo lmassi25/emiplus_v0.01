@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Reflection;
+using Emiplus.View.Common;
 
 namespace Emiplus.Controller
 {
@@ -19,6 +20,7 @@ namespace Emiplus.Controller
                 (
                     q => q.WhereLike("nome", search, false)
                 )
+                .Where("Tipo", Home.CategoriaPage)
                 .OrderByDesc("criado")
                 .GetAsync<dynamic>();
         }

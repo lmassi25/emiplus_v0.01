@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System.Windows.Forms;
 
@@ -35,6 +36,7 @@ namespace Emiplus.View.Produtos
             {
                 _modelCategoria.Id = idCatSelected;
                 _modelCategoria.Nome = nome.Text;
+                _modelCategoria.Tipo = Home.CategoriaPage;
 
                 if (_modelCategoria.Save(_modelCategoria))
                     Close();

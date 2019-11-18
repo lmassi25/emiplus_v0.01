@@ -49,6 +49,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Clientes = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
+            this.Categorias = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -400,12 +401,36 @@
             this.fornecedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fornecedores.UseVisualStyleBackColor = false;
             // 
+            // Categorias
+            // 
+            this.Categorias.BackColor = System.Drawing.Color.Transparent;
+            this.Categorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Categorias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Categorias.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Categorias.FlatAppearance.BorderSize = 0;
+            this.Categorias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Categorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Categorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Categorias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Categorias.ForeColor = System.Drawing.Color.DimGray;
+            this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
+            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Categorias.Location = new System.Drawing.Point(22, 180);
+            this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Categorias.Name = "Categorias";
+            this.Categorias.Size = new System.Drawing.Size(219, 41);
+            this.Categorias.TabIndex = 110;
+            this.Categorias.Text = "          Categorias de Contas";
+            this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Categorias.UseVisualStyleBackColor = false;
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.Categorias);
             this.Controls.Add(this.fornecedores);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Clientes);
@@ -454,5 +479,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Clientes;
         private System.Windows.Forms.Button fornecedores;
+        private System.Windows.Forms.Button Categorias;
     }
 }

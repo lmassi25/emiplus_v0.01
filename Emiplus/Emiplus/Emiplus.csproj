@@ -231,6 +231,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="Model\Caixa.cs" />
+    <Compile Include="Model\CaixaMovimentacao.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Etiqueta.cs" />
@@ -417,6 +418,12 @@
     </Compile>
     <Compile Include="View\Financeiro\AbrirCaixa.Designer.cs">
       <DependentUpon>AbrirCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\AddCaixaMov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\AddCaixaMov.Designer.cs">
+      <DependentUpon>AddCaixaMov.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Financeiro\Caixa.cs">
       <SubType>Form</SubType>
@@ -742,6 +749,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\AbrirCaixa.resx">
       <DependentUpon>AbrirCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\AddCaixaMov.resx">
+      <DependentUpon>AddCaixaMov.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Caixa.resx">
       <DependentUpon>Caixa.cs</DependentUpon>
