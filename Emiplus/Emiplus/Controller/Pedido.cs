@@ -120,9 +120,8 @@ namespace Emiplus.Controller
                 .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.tipo", tipo)
-                .Where("pedido.emissao", ">=", dataInicial)
-                .Where("pedido.emissao", "<=", dataFinal)
-                .Where("pedido.excluir", 0)
+                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal))
                 .Where
                 (
                     q => q.WhereLike("pessoa.nome", search, false)
@@ -132,19 +131,18 @@ namespace Emiplus.Controller
 
             return new Model.Pedido().Query()
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-                .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Select("pedido.id", "pedido.criado", "pedido.total", "pedido.excluir", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.tipo", tipo)
-                .Where("pedido.emissao", ">=", dataInicial)
-                .Where("pedido.emissao", "<=", dataFinal)
-                .Where("pedido.excluir", 0)
+                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal))
                 .OrderByDesc("pedido.id")
                 .GetAsync<dynamic>();
         }
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -166,6 +164,9 @@ namespace Emiplus.Controller
             Table.Columns[4].Name = "Total";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "EXCLUIR";
+            Table.Columns[5].Visible = false;
 
             Table.Rows.Clear();
 
