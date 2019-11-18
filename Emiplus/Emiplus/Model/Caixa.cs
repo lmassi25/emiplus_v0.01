@@ -31,18 +31,20 @@
         public DateTime Fechado { get; set; }
         #endregion 
 
-        public bool Save(Caixa data)
+        public bool Save(Caixa data, bool message = true)
         {
             if (data.Id == 0)
             {
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Caixa aberto com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Caixa aberto com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao adicionar caixa, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao adicionar caixa, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
@@ -51,11 +53,13 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Caixa atualizado com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Caixa atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }

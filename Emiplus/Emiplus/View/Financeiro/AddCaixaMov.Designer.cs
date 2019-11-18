@@ -45,9 +45,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.Entrada = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
-            this.Saida1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
-            this.Saida2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.Tipo3 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.Tipo1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.Tipo2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
             this.Valor = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnSalvar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 504);
+            this.panel3.Location = new System.Drawing.Point(0, 496);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(429, 68);
             this.panel3.TabIndex = 20;
@@ -307,9 +307,9 @@
             this.visualPanel1.Controls.Add(this.label10);
             this.visualPanel1.Controls.Add(this.label9);
             this.visualPanel1.Controls.Add(this.label7);
-            this.visualPanel1.Controls.Add(this.Entrada);
-            this.visualPanel1.Controls.Add(this.Saida1);
-            this.visualPanel1.Controls.Add(this.Saida2);
+            this.visualPanel1.Controls.Add(this.Tipo3);
+            this.visualPanel1.Controls.Add(this.Tipo1);
+            this.visualPanel1.Controls.Add(this.Tipo2);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualPanel1.Location = new System.Drawing.Point(28, 172);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
@@ -362,141 +362,141 @@
             this.label7.TabIndex = 163;
             this.label7.Text = "Registra lançamento automático no contas a pagar";
             // 
-            // Entrada
+            // Tipo3
             // 
-            this.Entrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Entrada.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Entrada.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Entrada.Border.HoverVisible = true;
-            this.Entrada.Border.Rounding = 12;
-            this.Entrada.Border.Thickness = 1;
-            this.Entrada.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Entrada.Border.Visible = true;
-            this.Entrada.Box = new System.Drawing.Size(14, 14);
-            this.Entrada.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Entrada.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Entrada.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Entrada.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Entrada.BoxSpacing = 2;
-            this.Entrada.CheckStyle.AutoSize = true;
-            this.Entrada.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.Entrada.CheckStyle.Character = '✔';
-            this.Entrada.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Entrada.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Entrada.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.Entrada.CheckStyle.ShapeRounding = 6;
-            this.Entrada.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Entrada.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
-            this.Entrada.CheckStyle.Thickness = 2F;
-            this.Entrada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Entrada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Entrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Entrada.IsBoxLarger = false;
-            this.Entrada.Location = new System.Drawing.Point(16, 108);
-            this.Entrada.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Entrada.Name = "Entrada";
-            this.Entrada.Size = new System.Drawing.Size(210, 23);
-            this.Entrada.TabIndex = 4;
-            this.Entrada.Text = "Entrada - Acréscimo";
-            this.Entrada.TextSize = new System.Drawing.Size(123, 19);
-            this.Entrada.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Entrada.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Entrada.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Entrada.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Entrada.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Entrada.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Entrada.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Tipo3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Tipo3.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Tipo3.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Tipo3.Border.HoverVisible = true;
+            this.Tipo3.Border.Rounding = 12;
+            this.Tipo3.Border.Thickness = 1;
+            this.Tipo3.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo3.Border.Visible = true;
+            this.Tipo3.Box = new System.Drawing.Size(14, 14);
+            this.Tipo3.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo3.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Tipo3.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo3.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Tipo3.BoxSpacing = 2;
+            this.Tipo3.CheckStyle.AutoSize = true;
+            this.Tipo3.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.Tipo3.CheckStyle.Character = '✔';
+            this.Tipo3.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Tipo3.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo3.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.Tipo3.CheckStyle.ShapeRounding = 6;
+            this.Tipo3.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo3.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.Tipo3.CheckStyle.Thickness = 2F;
+            this.Tipo3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Tipo3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tipo3.IsBoxLarger = false;
+            this.Tipo3.Location = new System.Drawing.Point(16, 108);
+            this.Tipo3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Tipo3.Name = "Tipo3";
+            this.Tipo3.Size = new System.Drawing.Size(210, 23);
+            this.Tipo3.TabIndex = 4;
+            this.Tipo3.Text = "Entrada - Acréscimo";
+            this.Tipo3.TextSize = new System.Drawing.Size(123, 19);
+            this.Tipo3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Tipo3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // Saida1
+            // Tipo1
             // 
-            this.Saida1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Saida1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Saida1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Saida1.Border.HoverVisible = true;
-            this.Saida1.Border.Rounding = 12;
-            this.Saida1.Border.Thickness = 1;
-            this.Saida1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Saida1.Border.Visible = true;
-            this.Saida1.Box = new System.Drawing.Size(14, 14);
-            this.Saida1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Saida1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Saida1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Saida1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Saida1.BoxSpacing = 2;
-            this.Saida1.Checked = true;
-            this.Saida1.CheckStyle.AutoSize = true;
-            this.Saida1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.Saida1.CheckStyle.Character = '✔';
-            this.Saida1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Saida1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Saida1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.Saida1.CheckStyle.ShapeRounding = 6;
-            this.Saida1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Saida1.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
-            this.Saida1.CheckStyle.Thickness = 2F;
-            this.Saida1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Saida1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Saida1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Saida1.IsBoxLarger = false;
-            this.Saida1.Location = new System.Drawing.Point(16, 11);
-            this.Saida1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Saida1.Name = "Saida1";
-            this.Saida1.Size = new System.Drawing.Size(210, 23);
-            this.Saida1.TabIndex = 2;
-            this.Saida1.Text = "Saída - Lançamento de Despesa";
-            this.Saida1.TextSize = new System.Drawing.Size(193, 19);
-            this.Saida1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Saida1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Saida1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Saida1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Tipo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Tipo1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Tipo1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Tipo1.Border.HoverVisible = true;
+            this.Tipo1.Border.Rounding = 12;
+            this.Tipo1.Border.Thickness = 1;
+            this.Tipo1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo1.Border.Visible = true;
+            this.Tipo1.Box = new System.Drawing.Size(14, 14);
+            this.Tipo1.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo1.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Tipo1.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo1.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Tipo1.BoxSpacing = 2;
+            this.Tipo1.Checked = true;
+            this.Tipo1.CheckStyle.AutoSize = true;
+            this.Tipo1.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.Tipo1.CheckStyle.Character = '✔';
+            this.Tipo1.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Tipo1.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo1.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.Tipo1.CheckStyle.ShapeRounding = 6;
+            this.Tipo1.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo1.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.Tipo1.CheckStyle.Thickness = 2F;
+            this.Tipo1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Tipo1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tipo1.IsBoxLarger = false;
+            this.Tipo1.Location = new System.Drawing.Point(16, 11);
+            this.Tipo1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Tipo1.Name = "Tipo1";
+            this.Tipo1.Size = new System.Drawing.Size(210, 23);
+            this.Tipo1.TabIndex = 2;
+            this.Tipo1.Text = "Saída - Lançamento de Despesa";
+            this.Tipo1.TextSize = new System.Drawing.Size(193, 19);
+            this.Tipo1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Tipo1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // Saida2
+            // Tipo2
             // 
-            this.Saida2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Saida2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Saida2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Saida2.Border.HoverVisible = true;
-            this.Saida2.Border.Rounding = 12;
-            this.Saida2.Border.Thickness = 1;
-            this.Saida2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Saida2.Border.Visible = true;
-            this.Saida2.Box = new System.Drawing.Size(14, 14);
-            this.Saida2.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Saida2.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Saida2.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Saida2.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Saida2.BoxSpacing = 2;
-            this.Saida2.CheckStyle.AutoSize = true;
-            this.Saida2.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.Saida2.CheckStyle.Character = '✔';
-            this.Saida2.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Saida2.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Saida2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            this.Saida2.CheckStyle.ShapeRounding = 6;
-            this.Saida2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Saida2.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
-            this.Saida2.CheckStyle.Thickness = 2F;
-            this.Saida2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Saida2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Saida2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Saida2.IsBoxLarger = false;
-            this.Saida2.Location = new System.Drawing.Point(16, 60);
-            this.Saida2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Saida2.Name = "Saida2";
-            this.Saida2.Size = new System.Drawing.Size(210, 23);
-            this.Saida2.TabIndex = 3;
-            this.Saida2.Text = "Saída - Sangria";
-            this.Saida2.TextSize = new System.Drawing.Size(93, 19);
-            this.Saida2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Saida2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Saida2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Saida2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Saida2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Tipo2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Tipo2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Tipo2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Tipo2.Border.HoverVisible = true;
+            this.Tipo2.Border.Rounding = 12;
+            this.Tipo2.Border.Thickness = 1;
+            this.Tipo2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo2.Border.Visible = true;
+            this.Tipo2.Box = new System.Drawing.Size(14, 14);
+            this.Tipo2.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo2.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Tipo2.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Tipo2.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Tipo2.BoxSpacing = 2;
+            this.Tipo2.CheckStyle.AutoSize = true;
+            this.Tipo2.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.Tipo2.CheckStyle.Character = '✔';
+            this.Tipo2.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Tipo2.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.Tipo2.CheckStyle.ShapeRounding = 6;
+            this.Tipo2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Tipo2.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.Tipo2.CheckStyle.Thickness = 2F;
+            this.Tipo2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Tipo2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Tipo2.IsBoxLarger = false;
+            this.Tipo2.Location = new System.Drawing.Point(16, 60);
+            this.Tipo2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Tipo2.Name = "Tipo2";
+            this.Tipo2.Size = new System.Drawing.Size(210, 23);
+            this.Tipo2.TabIndex = 3;
+            this.Tipo2.Text = "Saída - Sangria";
+            this.Tipo2.TextSize = new System.Drawing.Size(93, 19);
+            this.Tipo2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Tipo2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Tipo2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Tipo2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Valor
             // 
@@ -540,6 +540,7 @@
             this.Valor.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Valor.Size = new System.Drawing.Size(137, 28);
             this.Valor.TabIndex = 32;
+            this.Valor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Valor.TextBoxWidth = 125;
             this.Valor.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Valor.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -592,10 +593,10 @@
             this.Categorias.ButtonImage = null;
             this.Categorias.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
             this.Categorias.ButtonWidth = 30;
-            this.Categorias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Categorias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Categorias.DropDownHeight = 100;
             this.Categorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Categorias.DropDownWidth = 35;
+            this.Categorias.DropDownWidth = 250;
             this.Categorias.FormattingEnabled = true;
             this.Categorias.ImageList = null;
             this.Categorias.ImageVisible = false;
@@ -603,47 +604,6 @@
             this.Categorias.IntegralHeight = false;
             this.Categorias.ItemHeight = 23;
             this.Categorias.ItemImageVisible = true;
-            this.Categorias.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40"});
             this.Categorias.Location = new System.Drawing.Point(117, 382);
             this.Categorias.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Categorias.MenuItemNormal = System.Drawing.Color.White;
@@ -688,10 +648,10 @@
             this.Fornecedor.ButtonImage = null;
             this.Fornecedor.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
             this.Fornecedor.ButtonWidth = 30;
-            this.Fornecedor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Fornecedor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Fornecedor.DropDownHeight = 100;
             this.Fornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Fornecedor.DropDownWidth = 35;
+            this.Fornecedor.DropDownWidth = 250;
             this.Fornecedor.FormattingEnabled = true;
             this.Fornecedor.ImageList = null;
             this.Fornecedor.ImageVisible = false;
@@ -699,47 +659,6 @@
             this.Fornecedor.IntegralHeight = false;
             this.Fornecedor.ItemHeight = 23;
             this.Fornecedor.ItemImageVisible = true;
-            this.Fornecedor.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40"});
             this.Fornecedor.Location = new System.Drawing.Point(117, 417);
             this.Fornecedor.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Fornecedor.MenuItemNormal = System.Drawing.Color.White;
@@ -863,7 +782,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(429, 572);
+            this.ClientSize = new System.Drawing.Size(429, 564);
             this.Controls.Add(this.Obs);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -880,7 +799,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(445, 455);
+            this.MaximumSize = new System.Drawing.Size(445, 603);
+            this.MinimumSize = new System.Drawing.Size(445, 603);
             this.Name = "AddCaixaMov";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -911,9 +831,9 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Cheque;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Entrada;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Saida1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Saida2;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Tipo3;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Tipo1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton Tipo2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox Valor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

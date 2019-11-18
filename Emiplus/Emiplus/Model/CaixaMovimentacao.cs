@@ -2,6 +2,7 @@
 {
     using Data.Database;
     using Data.Helpers;
+    using Emiplus.Properties;
     using SqlKata;
     using System;
 
@@ -18,8 +19,8 @@
         public int Id { get; set; }
         public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
         public int id_caixa { get; set; }
-        public int id_user { get; set; }
-        public string Tipo { get; set; }
+        public int id_user { get; set; } = Settings.Default.user_id;
+        public int Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }

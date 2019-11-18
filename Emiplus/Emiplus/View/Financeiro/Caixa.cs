@@ -59,6 +59,7 @@ namespace Emiplus.View.Financeiro
 
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "CAIXA.usuario");
             model.Select("CAIXA.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user");
+            model.OrderByRaw("CAIXA.tipo ASC");
             model.OrderByDesc("CAIXA.criado");
             return model.GetAsync<dynamic>();
         }
@@ -156,13 +157,14 @@ namespace Emiplus.View.Financeiro
 
         private void Eventos()
         {
-            Load += (s, e) =>
+            Load += async (s, e) =>
             {
-                DataTableAsync();
                 AutoCompleteUsers();
 
                 dataInicial.Text = DateTime.Today.AddDays(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
+
+                await DataTableAsync();
             };
 
             btnSearch.Click += async (s, e) => await DataTableAsync();
