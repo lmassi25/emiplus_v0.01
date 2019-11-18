@@ -28,23 +28,49 @@
                     </div>
                 </div>
             </div>
+
             <div class="title">{{Titulo}}</div>
+
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">N.</th>
+                        <th scope="col">N°</th>
+                        <th scope="col">Emissão</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Colaborador</th>
+                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in Data %}
                     <tr>
                         <td>{{item.ID}}</td>
+                        <td>{{item.EMISSAO}}</td>
+                        <td>{{item.CLIENTE}}</td>
+                        <td>{{item.COLABORADOR}}</td>
+                        <td style="text-align: right;">{{item.TOTAL}}</td>
                     </tr>
                     {% endfor %}
-
                 </tbody>
             </table>
-
+          
+            <table class="table table-borderless">
+                <tbody>
+                    {% for itemTotal in Total %}
+                    <tr style="text-align: right;">
+                        <td>
+                            <strong>TOTAL: {{itemTotal.TOTAL}}</strong>
+                            <br/>
+                            <strong>{{itemTotal.ID}} registro(s) encontrado(s).</strong>
+                        </td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+ 
         </div>
 
     </div>

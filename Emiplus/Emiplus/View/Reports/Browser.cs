@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing.Printing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
@@ -54,7 +56,22 @@ namespace Emiplus.View.Reports
 
             anterior.Click += (s, e) => chromeBrowser.Find(0, search.Text, false, false, false);
             proximo.Click += (s, e) => chromeBrowser.Find(0, search.Text, true, false, false);
-            imprimir.Click += (s, e) => chromeBrowser.Print();
+            imprimir.Click += (s, e) =>
+            {
+                chromeBrowser.Print();
+            };
+
+            pdf.Click += (s, e) =>
+            {
+                using (var fileDialog = new OpenFileDialog())
+                {
+                    DialogResult res = fileDialog.ShowDialog();
+                    if (res == DialogResult.OK)
+                    {
+                        chromeBrowser.PrintToPdfAsync(fileDialog.FileName);
+                    }
+                }
+            };
         }
     }
 }

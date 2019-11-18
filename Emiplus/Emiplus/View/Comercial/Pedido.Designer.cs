@@ -317,6 +317,7 @@
             this.Usuarios.DropDownHeight = 100;
             this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Usuarios.DropDownWidth = 250;
+            this.Usuarios.Enabled = false;
             this.Usuarios.FormattingEnabled = true;
             this.Usuarios.ImageList = null;
             this.Usuarios.ImageVisible = false;
@@ -324,14 +325,14 @@
             this.Usuarios.IntegralHeight = false;
             this.Usuarios.ItemHeight = 23;
             this.Usuarios.ItemImageVisible = true;
-            this.Usuarios.Location = new System.Drawing.Point(77, 239);
+            this.Usuarios.Location = new System.Drawing.Point(21, 244);
             this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
             this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Usuarios.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Usuarios.Name = "Usuarios";
             this.Usuarios.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Usuarios.Size = new System.Drawing.Size(143, 29);
+            this.Usuarios.Size = new System.Drawing.Size(199, 29);
             this.Usuarios.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.Usuarios.TabIndex = 200;
             this.Usuarios.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -357,16 +358,16 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(17, 243);
+            this.label12.Location = new System.Drawing.Point(20, 224);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 17);
+            this.label12.Size = new System.Drawing.Size(83, 17);
             this.label12.TabIndex = 199;
-            this.label12.Text = "Usuário";
+            this.label12.Text = "Colaborador";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Location = new System.Drawing.Point(21, 283);
+            this.panel1.Location = new System.Drawing.Point(21, 287);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 1);
             this.panel1.TabIndex = 198;

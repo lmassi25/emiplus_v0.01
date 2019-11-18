@@ -37,6 +37,7 @@
             this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label6 = new System.Windows.Forms.Label();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.pdf = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.pdf);
             this.panel2.Controls.Add(this.anterior);
             this.panel2.Controls.Add(this.proximo);
             this.panel2.Controls.Add(this.imprimir);
@@ -84,7 +86,7 @@
             this.anterior.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.anterior.Image = ((System.Drawing.Image)(resources.GetObject("anterior.Image")));
-            this.anterior.Location = new System.Drawing.Point(683, 10);
+            this.anterior.Location = new System.Drawing.Point(506, 10);
             this.anterior.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.anterior.Name = "anterior";
             this.anterior.Size = new System.Drawing.Size(33, 34);
@@ -118,7 +120,7 @@
             this.proximo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.proximo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.proximo.Image = ((System.Drawing.Image)(resources.GetObject("proximo.Image")));
-            this.proximo.Location = new System.Drawing.Point(722, 10);
+            this.proximo.Location = new System.Drawing.Point(545, 10);
             this.proximo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.proximo.Name = "proximo";
             this.proximo.Size = new System.Drawing.Size(33, 34);
@@ -151,7 +153,7 @@
             this.imprimir.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imprimir.ForeColor = System.Drawing.Color.White;
             this.imprimir.Image = null;
-            this.imprimir.Location = new System.Drawing.Point(888, 10);
+            this.imprimir.Location = new System.Drawing.Point(774, 12);
             this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.imprimir.Name = "imprimir";
             this.imprimir.Size = new System.Drawing.Size(108, 34);
@@ -173,7 +175,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(232, 17);
+            this.label6.Location = new System.Drawing.Point(55, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 155;
@@ -214,7 +216,7 @@
             this.search.ImageSize = new System.Drawing.Size(16, 16);
             this.search.ImageVisible = false;
             this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(301, 10);
+            this.search.Location = new System.Drawing.Point(124, 10);
             this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.search.Name = "search";
             this.search.PasswordChar = '\0';
@@ -236,6 +238,40 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
+            // 
+            // pdf
+            // 
+            this.pdf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pdf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pdf.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.pdf.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.HoverVisible = true;
+            this.pdf.Border.Rounding = 6;
+            this.pdf.Border.Thickness = 1;
+            this.pdf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.pdf.Border.Visible = true;
+            this.pdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pdf.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pdf.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdf.ForeColor = System.Drawing.Color.White;
+            this.pdf.Image = null;
+            this.pdf.Location = new System.Drawing.Point(888, 12);
+            this.pdf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.pdf.Name = "pdf";
+            this.pdf.Size = new System.Drawing.Size(108, 34);
+            this.pdf.TabIndex = 159;
+            this.pdf.Text = "Gerar PDF";
+            this.pdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.pdf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.pdf.TextStyle.Enabled = System.Drawing.Color.White;
+            this.pdf.TextStyle.Hover = System.Drawing.Color.White;
+            this.pdf.TextStyle.Pressed = System.Drawing.Color.White;
+            this.pdf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Browser
             // 
@@ -266,5 +302,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton imprimir;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton anterior;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton proximo;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton pdf;
     }
 }
