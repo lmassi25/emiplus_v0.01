@@ -20,6 +20,12 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
+            Categorias.Click += (s, e) =>
+            {
+                Home.CategoriaPage = "Financeiro";
+                OpenForm.Show<Produtos.Categorias>(this);
+            };
+
             fornecedores.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";

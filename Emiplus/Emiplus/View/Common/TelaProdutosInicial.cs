@@ -21,7 +21,11 @@ namespace Emiplus.View.Common
 
             Etiquetas.Click += (s, e) => OpenForm.Show<Produtos.Etiquetas>(this);
 
-            Categorias.Click += (s, e) => OpenForm.Show<Produtos.Categorias>(this);
+            Categorias.Click += (s, e) =>
+            {
+                Home.CategoriaPage = "Produtos";
+                OpenForm.Show<Produtos.Categorias>(this);
+            };
 
             Impostos.Click += (s, e) => OpenForm.Show<Produtos.Impostos>(this);
 
