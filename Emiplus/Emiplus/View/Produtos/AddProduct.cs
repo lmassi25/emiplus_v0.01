@@ -24,7 +24,14 @@ namespace Emiplus.View.Produtos
                
         private void Start()
         {
-            ActiveControl = nome;
+			ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente." + Environment.NewLine + "Para cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine + "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto." , pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque." , pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+			ActiveControl = nome;
 
             //ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
