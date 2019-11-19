@@ -2,6 +2,7 @@
 {
     using Data.Database;
     using Emiplus.Data.Helpers;
+    using Emiplus.View.Common;
     using SqlKata;
     using System;
     using System.Collections.Generic;
@@ -59,6 +60,8 @@
         public string Especie_Frete { get; set; }
         public string Marca_Frete { get; set; }
         public int Id_Transportadora { get; set; }
+
+        public int Id_Caixa { get; set; }
 
         #endregion
 
@@ -142,6 +145,7 @@
         {
             if (data.Id == 0)
             {
+                data.Id_Caixa = Home.idCaixa;
                 data.Criado = DateTime.Now;
                 data.Emissao = DateTime.Now;
                 if (Data(data).Create() != 1)

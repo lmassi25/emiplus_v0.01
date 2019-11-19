@@ -1,6 +1,8 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Comercial;
 using Emiplus.View.Reports;
+using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -24,6 +26,13 @@ namespace Emiplus.View.Common
 
             Pedidos.Click += (s, e) =>
             {
+                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
+                if (Caixa == null)
+                {
+                    Alert.Message("Oppss!", "Você NÃO possui um caixa aberto, abra um caixa para iniciar uma venda.", Alert.AlertType.warning);
+                    return;
+                }
+
                 Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();

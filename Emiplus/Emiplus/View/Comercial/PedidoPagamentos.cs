@@ -218,6 +218,16 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) => Close();
 
+            btnConcluir.Click += (s, e) =>
+            {
+                Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+
+                AddPedidos.btnFinalizado = true;
+
+                Application.OpenForms["AddPedidos"].Close();
+                Close();
+            };
+
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             valor.KeyPress += (s, e) => Masks.MaskDouble(s, e);

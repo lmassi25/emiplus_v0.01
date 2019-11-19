@@ -162,6 +162,9 @@ namespace Emiplus.Data.Helpers
             else
                 data = Convert.ToDateTime(date).ToString("dd/MM/yyyy");
 
+            if (data == "01/01/0001 00:00")
+                data = "";
+
             return data;
         }
 

@@ -57,6 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,6 +68,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel3.Controls.Add(this.btnApagar);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnSalvar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -777,6 +779,28 @@
             this.label6.TabIndex = 162;
             this.label6.Text = "Observação:";
             // 
+            // btnApagar
+            // 
+            this.btnApagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnApagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnApagar.FlatAppearance.BorderSize = 0;
+            this.btnApagar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnApagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnApagar.Image = ((System.Drawing.Image)(resources.GetObject("btnApagar.Image")));
+            this.btnApagar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnApagar.Location = new System.Drawing.Point(100, 4);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(69, 60);
+            this.btnApagar.TabIndex = 6;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Visible = false;
+            // 
             // AddCaixaMov
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,5 +870,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnApagar;
     }
 }

@@ -46,10 +46,11 @@
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label4 = new System.Windows.Forms.Label();
             this.Caixa = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Clientes = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -112,7 +113,7 @@
             this.novoPagamento.ForeColor = System.Drawing.Color.DimGray;
             this.novoPagamento.Image = ((System.Drawing.Image)(resources.GetObject("novoPagamento.Image")));
             this.novoPagamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.novoPagamento.Location = new System.Drawing.Point(256, 137);
+            this.novoPagamento.Location = new System.Drawing.Point(256, 140);
             this.novoPagamento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.novoPagamento.Name = "novoPagamento";
             this.novoPagamento.Size = new System.Drawing.Size(219, 41);
@@ -135,7 +136,7 @@
             this.aPagar.ForeColor = System.Drawing.Color.DimGray;
             this.aPagar.Image = ((System.Drawing.Image)(resources.GetObject("aPagar.Image")));
             this.aPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.aPagar.Location = new System.Drawing.Point(491, 180);
+            this.aPagar.Location = new System.Drawing.Point(491, 140);
             this.aPagar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aPagar.Name = "aPagar";
             this.aPagar.Size = new System.Drawing.Size(219, 41);
@@ -158,7 +159,7 @@
             this.aReceber.ForeColor = System.Drawing.Color.DimGray;
             this.aReceber.Image = ((System.Drawing.Image)(resources.GetObject("aReceber.Image")));
             this.aReceber.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.aReceber.Location = new System.Drawing.Point(491, 137);
+            this.aReceber.Location = new System.Drawing.Point(491, 94);
             this.aReceber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aReceber.Name = "aReceber";
             this.aReceber.Size = new System.Drawing.Size(219, 41);
@@ -268,7 +269,7 @@
             this.AbrirCaixa.ForeColor = System.Drawing.Color.DimGray;
             this.AbrirCaixa.Image = ((System.Drawing.Image)(resources.GetObject("AbrirCaixa.Image")));
             this.AbrirCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AbrirCaixa.Location = new System.Drawing.Point(256, 180);
+            this.AbrirCaixa.Location = new System.Drawing.Point(256, 186);
             this.AbrirCaixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AbrirCaixa.Name = "AbrirCaixa";
             this.AbrirCaixa.Size = new System.Drawing.Size(219, 41);
@@ -323,7 +324,7 @@
             this.Caixa.ForeColor = System.Drawing.Color.DimGray;
             this.Caixa.Image = ((System.Drawing.Image)(resources.GetObject("Caixa.Image")));
             this.Caixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Caixa.Location = new System.Drawing.Point(491, 223);
+            this.Caixa.Location = new System.Drawing.Point(491, 186);
             this.Caixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Caixa.Name = "Caixa";
             this.Caixa.Size = new System.Drawing.Size(219, 41);
@@ -331,29 +332,6 @@
             this.Caixa.Text = "          Caixa";
             this.Caixa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Caixa.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(491, 94);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 41);
-            this.button1.TabIndex = 108;
-            this.button1.Text = "          Clientes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // Clientes
             // 
@@ -369,7 +347,7 @@
             this.Clientes.ForeColor = System.Drawing.Color.DimGray;
             this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
             this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(21, 94);
+            this.Clientes.Location = new System.Drawing.Point(22, 143);
             this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Clientes.Name = "Clientes";
             this.Clientes.Size = new System.Drawing.Size(219, 41);
@@ -392,7 +370,7 @@
             this.fornecedores.ForeColor = System.Drawing.Color.DimGray;
             this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
             this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fornecedores.Location = new System.Drawing.Point(21, 137);
+            this.fornecedores.Location = new System.Drawing.Point(22, 186);
             this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fornecedores.Name = "fornecedores";
             this.fornecedores.Size = new System.Drawing.Size(219, 41);
@@ -415,14 +393,60 @@
             this.Categorias.ForeColor = System.Drawing.Color.DimGray;
             this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
             this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Categorias.Location = new System.Drawing.Point(22, 180);
+            this.Categorias.Location = new System.Drawing.Point(22, 94);
             this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Categorias.Name = "Categorias";
             this.Categorias.Size = new System.Drawing.Size(219, 41);
             this.Categorias.TabIndex = 110;
-            this.Categorias.Text = "          Categorias de Contas";
+            this.Categorias.Text = "          Categorias";
             this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Categorias.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(256, 278);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 41);
+            this.button1.TabIndex = 111;
+            this.button1.Text = "          Fechar Caixa";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.DimGray;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(256, 232);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(219, 41);
+            this.button2.TabIndex = 112;
+            this.button2.Text = "          Entrada/Saída Caixa";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // TelaFinanceiroInicial
             // 
@@ -430,9 +454,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Categorias);
             this.Controls.Add(this.fornecedores);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Clientes);
             this.Controls.Add(this.Caixa);
             this.Controls.Add(this.visualSeparator5);
@@ -476,9 +501,10 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Caixa;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Clientes;
         private System.Windows.Forms.Button fornecedores;
         private System.Windows.Forms.Button Categorias;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

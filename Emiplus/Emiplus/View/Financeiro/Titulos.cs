@@ -33,7 +33,7 @@ namespace Emiplus.View.Financeiro
         private void Filter()
         {
             var tipo = data.Text == "Emissão" ? 1 : 0;
-            _cTitulo.GetDataTableTitulosGeradosFilter(GridLista, search.Text, tipo, dataInicial.Text, dataFinal.Text);
+            _cTitulo.GetDataTableTitulosGeradosFilter(GridLista, Home.financeiroPage, search.Text, tipo, dataInicial.Text, dataFinal.Text);
         }
 
         private void EditTitulo(bool create = false)

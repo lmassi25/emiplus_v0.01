@@ -160,6 +160,16 @@ namespace Emiplus.View.Common
 
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
+
+            //if (idCaixa == 0)
+            //{
+            //    var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
+            //    if (Caixa != null)
+            //    {
+            //        MessageBox.Show("Você possui um CAIXA aberto!");
+            //        idCaixa = Caixa.ID;
+            //    }
+            //}
         }
 
         private void Eventos()

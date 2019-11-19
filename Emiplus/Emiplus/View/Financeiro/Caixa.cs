@@ -161,8 +161,8 @@ namespace Emiplus.View.Financeiro
             {
                 AutoCompleteUsers();
 
-                dataInicial.Text = DateTime.Today.AddDays(-1).ToString();
-                dataFinal.Text = DateTime.Now.ToString();
+                dataInicial.Text = DateTime.Now.ToString("dd/MM/yyyy 00:00");
+                dataFinal.Text = DateTime.Now.ToString("dd/MM/yyyy 23:59");
 
                 await DataTableAsync();
             };

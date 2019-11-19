@@ -36,7 +36,8 @@
         public string Baixa_data { get; set; }
         public double Baixa_total { get; set; }
         public double Baixa_id_formapgto { get; set; }
-
+        public int Id_Caixa_Mov { get; set; }
+        public string Obs { get; set; }
         #endregion 
 
         public Titulo SetTipo(string tipo)
@@ -81,7 +82,7 @@
             return data;
         }
 
-        public bool Save(Titulo data)
+        public bool Save(Titulo data, bool message = true)
         {
             if (data.Id == 0)
             {
@@ -89,11 +90,13 @@
 
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
@@ -102,16 +105,31 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
 
             return true;
+        }
+
+        public bool RemoveIdCaixaMov(int id)
+        {
+            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            if (Data(data).Update("ID_CAIXA_MOV", id) == 1)
+            {
+                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                return true;
+            }
+
+            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+            return false;
         }
 
         public bool Remove(int id)

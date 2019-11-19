@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Drawing;
@@ -80,7 +81,7 @@ namespace Emiplus.Controller
                 }
 
                 data.Id_Pedido = idPedido;
-                data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).First().CLIENTE;
+                data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).FirstOrDefault().CLIENTE;
             }
             if (valor < 0)
             {
@@ -110,6 +111,7 @@ namespace Emiplus.Controller
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSql(vencimento);
                     data.Recebido = data.Total;
+                    data.Id_Caixa = Home.idCaixa;
                     data.Save(data);
                 }
             }
@@ -125,6 +127,7 @@ namespace Emiplus.Controller
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSql(vencimento.AddMonths(count));
                     data.Recebido = data.Total;
+                    data.Id_Caixa = Home.idCaixa;
                     data.Save(data);
                     count++;
                 }
@@ -157,6 +160,7 @@ namespace Emiplus.Controller
                     data.Recebido = valor;                    
                 }
 
+                data.Id_Caixa = Home.idCaixa;
                 if (data.Save(data))
                     return true;
 
@@ -192,7 +196,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public void GetDataTableTitulosGeradosFilter(DataGridView Table, string Search, int tipo, string dataInicial, string dataFinal)
+        public void GetDataTableTitulosGeradosFilter(DataGridView Table, string tela, string Search, int tipo, string dataInicial, string dataFinal)
         {
             Table.Rows.Clear();
 
@@ -212,6 +216,7 @@ namespace Emiplus.Controller
                 .Where(tipoPesquisa, ">=", dataInicial)
                 .Where(tipoPesquisa, "<=", dataFinal)
                 .Where("titulo.excluir", 0)
+                .Where("titulo.tipo", tela)
                 .Where
                 (
                     q => q.WhereLike("pessoa.nome", search, false)
