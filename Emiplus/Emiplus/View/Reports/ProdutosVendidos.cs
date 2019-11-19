@@ -2,6 +2,7 @@
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections;
@@ -110,7 +111,7 @@ namespace Emiplus.View.Reports
                 model.Where("ITEM.id", collection.Lookup(BuscarProduto.Text));
             }
 
-            model.Where("PEDIDO.TIPO", "Vendas");
+            model.Where("PEDIDO.TIPO", Home.pedidoPage);
             model.Join("PEDIDO_ITEM", "PEDIDO_ITEM.item", "ITEM.id", "=", "inner join");
             model.Join("PEDIDO", "PEDIDO.id", "PEDIDO_ITEM.pedido", "=", "inner join");
             model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
@@ -133,7 +134,7 @@ namespace Emiplus.View.Reports
             Table.Columns[0].Name = "Descrição";
             Table.Columns[0].Width = 150;
 
-            Table.Columns[1].Name = "Qtd. Vendas";
+            Table.Columns[1].Name = "Qtd.";
             Table.Columns[1].Width = 100;
 
             Table.Columns[2].Name = "Medida";
@@ -171,12 +172,32 @@ namespace Emiplus.View.Reports
 
         private void Eventos()
         {
-            Load += (s, e) => {
+            Load += (s, e) => 
+            {
+                switch (Home.pedidoPage)
+                {
+                    case "Consignações":
+                        maisVendidos.Text = "Mais Consignado";
+                        menosVendidos.Text = "Menos Consignado";
+                        label1.Text = "Produtos Consignados";
+                        label2.Text = "Consulte os produtos consignados aqui.";
+                        label3.Text = "Produtos Consignados";
+                        break;
+                    case "Devoluções":
+                        maisVendidos.Text = "Mais Devolvido";
+                        menosVendidos.Text = "Menos Devolvido";
+                        label1.Text = "Produtos Devolvidos";
+                        label2.Text = "Consulte os produtos devolvidos aqui.";
+                        label3.Text = "Produtos Devolvidos";
+                        break;
+                }
+
                 filterAll.Checked = true;
                 AutoCompleteItens();
                 AutoCompleteFornecedorCategorias();
 
-                dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
+                //dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
+                dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
             };
 
@@ -212,6 +233,8 @@ namespace Emiplus.View.Reports
                 });
             }
 
+            string tipo_aux = "";
+
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\ProdutosVendidos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
@@ -223,7 +246,8 @@ namespace Emiplus.View.Reports
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
                 noFilterData = noFilterData.Checked,
                 dataInicial = dataInicial.Text,
-                dataFinal = dataFinal.Text
+                dataFinal = dataFinal.Text,
+                Titulo = tipo_aux
             }));
 
             Browser.htmlRender = render;

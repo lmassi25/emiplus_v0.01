@@ -52,7 +52,6 @@
             this.Consignacoes = new System.Windows.Forms.Button();
             this.Orcamentos = new System.Windows.Forms.Button();
             this.Devolucoes = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Clientes = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -212,7 +211,7 @@
             this.ProdutosDevolvidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosDevolvidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosDevolvidos.Image")));
             this.ProdutosDevolvidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosDevolvidos.Location = new System.Drawing.Point(493, 437);
+            this.ProdutosDevolvidos.Location = new System.Drawing.Point(491, 388);
             this.ProdutosDevolvidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosDevolvidos.Name = "ProdutosDevolvidos";
             this.ProdutosDevolvidos.Size = new System.Drawing.Size(219, 41);
@@ -235,7 +234,7 @@
             this.ProdutosConsignados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosConsignados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosConsignados.Image")));
             this.ProdutosConsignados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosConsignados.Location = new System.Drawing.Point(494, 192);
+            this.ProdutosConsignados.Location = new System.Drawing.Point(492, 143);
             this.ProdutosConsignados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosConsignados.Name = "ProdutosConsignados";
             this.ProdutosConsignados.Size = new System.Drawing.Size(219, 41);
@@ -258,12 +257,12 @@
             this.ConsignacoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.ConsignacoesRel.Image = ((System.Drawing.Image)(resources.GetObject("ConsignacoesRel.Image")));
             this.ConsignacoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ConsignacoesRel.Location = new System.Drawing.Point(493, 143);
+            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 94);
             this.ConsignacoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsignacoesRel.Name = "ConsignacoesRel";
             this.ConsignacoesRel.Size = new System.Drawing.Size(219, 41);
             this.ConsignacoesRel.TabIndex = 96;
-            this.ConsignacoesRel.Text = "          Consignação";
+            this.ConsignacoesRel.Text = "          Consignações";
             this.ConsignacoesRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ConsignacoesRel.UseVisualStyleBackColor = false;
             // 
@@ -281,12 +280,12 @@
             this.DevolucoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.DevolucoesRel.Image = ((System.Drawing.Image)(resources.GetObject("DevolucoesRel.Image")));
             this.DevolucoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DevolucoesRel.Location = new System.Drawing.Point(493, 388);
+            this.DevolucoesRel.Location = new System.Drawing.Point(491, 339);
             this.DevolucoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
             this.DevolucoesRel.TabIndex = 95;
-            this.DevolucoesRel.Text = "          Devolução";
+            this.DevolucoesRel.Text = "          Devoluções";
             this.DevolucoesRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DevolucoesRel.UseVisualStyleBackColor = false;
             // 
@@ -304,7 +303,7 @@
             this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
             this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
             this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.VendasRel.Location = new System.Drawing.Point(493, 241);
+            this.VendasRel.Location = new System.Drawing.Point(491, 192);
             this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VendasRel.Name = "VendasRel";
             this.VendasRel.Size = new System.Drawing.Size(219, 41);
@@ -327,7 +326,7 @@
             this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
             this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(494, 290);
+            this.ProdutosVendidos.Location = new System.Drawing.Point(492, 241);
             this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosVendidos.Name = "ProdutosVendidos";
             this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
@@ -373,7 +372,7 @@
             this.Comissoes.ForeColor = System.Drawing.Color.DimGray;
             this.Comissoes.Image = ((System.Drawing.Image)(resources.GetObject("Comissoes.Image")));
             this.Comissoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Comissoes.Location = new System.Drawing.Point(494, 339);
+            this.Comissoes.Location = new System.Drawing.Point(492, 290);
             this.Comissoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Comissoes.Name = "Comissoes";
             this.Comissoes.Size = new System.Drawing.Size(219, 41);
@@ -474,29 +473,6 @@
             this.Devolucoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Devolucoes.UseVisualStyleBackColor = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(493, 94);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 41);
-            this.button1.TabIndex = 99;
-            this.button1.Text = "          Clientes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Clientes
             // 
             this.Clientes.BackColor = System.Drawing.Color.Transparent;
@@ -526,7 +502,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ProdutosDevolvidos);
             this.Controls.Add(this.ProdutosConsignados);
             this.Controls.Add(this.ConsignacoesRel);
@@ -583,7 +558,6 @@
         private System.Windows.Forms.Button Consignacoes;
         private System.Windows.Forms.Button Orcamentos;
         private System.Windows.Forms.Button Devolucoes;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Clientes;
     }
 }
