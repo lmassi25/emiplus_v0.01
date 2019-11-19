@@ -443,6 +443,12 @@
     <Compile Include="View\Financeiro\EditarTitulo.Designer.cs">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Financeiro\FecharCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\FecharCaixa.Designer.cs">
+      <DependentUpon>FecharCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\AddNatureza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -761,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
       <DependentUpon>EditarTitulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\FecharCaixa.resx">
+      <DependentUpon>FecharCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\AddNatureza.resx">
       <DependentUpon>AddNatureza.cs</DependentUpon>

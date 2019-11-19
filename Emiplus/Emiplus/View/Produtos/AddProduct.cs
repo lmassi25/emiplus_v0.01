@@ -28,7 +28,7 @@ namespace Emiplus.View.Produtos
 
             //ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-            var cat = new Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
             if (cat.Count() > 0)
             {
                 Categorias.DataSource = cat;

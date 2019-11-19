@@ -1,14 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
@@ -36,6 +28,7 @@ namespace Emiplus.View.Financeiro
                 if (_modelCaixa.Save(_modelCaixa))
                 {
                     Home.idCaixa = _modelCaixa.GetLastId();
+                    Close();
                 }
             };
 
