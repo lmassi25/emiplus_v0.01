@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.visualSeparator6 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label7 = new System.Windows.Forms.Label();
+            this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label4 = new System.Windows.Forms.Label();
+            this.clientes = new System.Windows.Forms.Button();
+            this.impostos = new System.Windows.Forms.Button();
+            this.transportadoras = new System.Windows.Forms.Button();
+            this.fornecedores = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +110,7 @@
             this.nfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nfe.Image = ((System.Drawing.Image)(resources.GetObject("nfe.Image")));
             this.nfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.nfe.Location = new System.Drawing.Point(256, 94);
+            this.nfe.Location = new System.Drawing.Point(492, 94);
             this.nfe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nfe.Name = "nfe";
             this.nfe.Size = new System.Drawing.Size(219, 41);
@@ -127,7 +133,7 @@
             this.novaNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
             this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.novaNFE.Location = new System.Drawing.Point(21, 94);
+            this.novaNFE.Location = new System.Drawing.Point(257, 94);
             this.novaNFE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.novaNFE.Name = "novaNFE";
             this.novaNFE.Size = new System.Drawing.Size(219, 41);
@@ -150,7 +156,7 @@
             this.naturezaOP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.naturezaOP.Image = ((System.Drawing.Image)(resources.GetObject("naturezaOP.Image")));
             this.naturezaOP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.naturezaOP.Location = new System.Drawing.Point(21, 137);
+            this.naturezaOP.Location = new System.Drawing.Point(22, 286);
             this.naturezaOP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.naturezaOP.Name = "naturezaOP";
             this.naturezaOP.Size = new System.Drawing.Size(219, 41);
@@ -223,12 +229,142 @@
             this.label7.TabIndex = 110;
             this.label7.Text = "Cadastros";
             // 
+            // visualSeparator5
+            // 
+            this.visualSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Location = new System.Drawing.Point(491, 83);
+            this.visualSeparator5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator5.Name = "visualSeparator5";
+            this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator5.ShadowVisible = true;
+            this.visualSeparator5.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator5.TabIndex = 115;
+            this.visualSeparator5.Text = "visualSeparator5";
+            this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(487, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.TabIndex = 114;
+            this.label4.Text = "Relatórios";
+            // 
+            // clientes
+            // 
+            this.clientes.BackColor = System.Drawing.Color.Transparent;
+            this.clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.clientes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.clientes.FlatAppearance.BorderSize = 0;
+            this.clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientes.ForeColor = System.Drawing.Color.DimGray;
+            this.clientes.Image = ((System.Drawing.Image)(resources.GetObject("clientes.Image")));
+            this.clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientes.Location = new System.Drawing.Point(22, 94);
+            this.clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.clientes.Name = "clientes";
+            this.clientes.Size = new System.Drawing.Size(219, 41);
+            this.clientes.TabIndex = 116;
+            this.clientes.Text = "          Clientes";
+            this.clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientes.UseVisualStyleBackColor = false;
+            // 
+            // impostos
+            // 
+            this.impostos.BackColor = System.Drawing.Color.Transparent;
+            this.impostos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.impostos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.impostos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.impostos.FlatAppearance.BorderSize = 0;
+            this.impostos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.impostos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.impostos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.impostos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.impostos.ForeColor = System.Drawing.Color.DimGray;
+            this.impostos.Image = ((System.Drawing.Image)(resources.GetObject("impostos.Image")));
+            this.impostos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.impostos.Location = new System.Drawing.Point(22, 237);
+            this.impostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.impostos.Name = "impostos";
+            this.impostos.Size = new System.Drawing.Size(219, 41);
+            this.impostos.TabIndex = 119;
+            this.impostos.Text = "          Impostos";
+            this.impostos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.impostos.UseVisualStyleBackColor = false;
+            // 
+            // transportadoras
+            // 
+            this.transportadoras.BackColor = System.Drawing.Color.Transparent;
+            this.transportadoras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.transportadoras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transportadoras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.transportadoras.FlatAppearance.BorderSize = 0;
+            this.transportadoras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.transportadoras.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.transportadoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.transportadoras.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transportadoras.ForeColor = System.Drawing.Color.DimGray;
+            this.transportadoras.Image = ((System.Drawing.Image)(resources.GetObject("transportadoras.Image")));
+            this.transportadoras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.transportadoras.Location = new System.Drawing.Point(22, 188);
+            this.transportadoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.transportadoras.Name = "transportadoras";
+            this.transportadoras.Size = new System.Drawing.Size(219, 41);
+            this.transportadoras.TabIndex = 118;
+            this.transportadoras.Text = "          Transportadoras";
+            this.transportadoras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.transportadoras.UseVisualStyleBackColor = false;
+            // 
+            // fornecedores
+            // 
+            this.fornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.fornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fornecedores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.fornecedores.FlatAppearance.BorderSize = 0;
+            this.fornecedores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.fornecedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.fornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fornecedores.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fornecedores.ForeColor = System.Drawing.Color.DimGray;
+            this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
+            this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fornecedores.Location = new System.Drawing.Point(22, 143);
+            this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.fornecedores.Name = "fornecedores";
+            this.fornecedores.Size = new System.Drawing.Size(219, 41);
+            this.fornecedores.TabIndex = 117;
+            this.fornecedores.Text = "          Fornecedores";
+            this.fornecedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fornecedores.UseVisualStyleBackColor = false;
+            // 
             // TelaFiscalInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.impostos);
+            this.Controls.Add(this.transportadoras);
+            this.Controls.Add(this.fornecedores);
+            this.Controls.Add(this.clientes);
+            this.Controls.Add(this.visualSeparator5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.visualSeparator4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.visualSeparator6);
@@ -261,5 +397,11 @@
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator6;
         private System.Windows.Forms.Label label7;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button clientes;
+        private System.Windows.Forms.Button impostos;
+        private System.Windows.Forms.Button transportadoras;
+        private System.Windows.Forms.Button fornecedores;
     }
 }

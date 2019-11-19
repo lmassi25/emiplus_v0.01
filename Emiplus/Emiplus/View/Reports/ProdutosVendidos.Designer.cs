@@ -34,6 +34,7 @@
             this.Loading = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.noFilterData = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.Categorias = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.filterAll = new System.Windows.Forms.RadioButton();
@@ -65,7 +66,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.noFilterData = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -140,6 +140,49 @@
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 177;
             // 
+            // noFilterData
+            // 
+            this.noFilterData.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.noFilterData.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.noFilterData.Border.HoverVisible = true;
+            this.noFilterData.Border.Rounding = 3;
+            this.noFilterData.Border.Thickness = 1;
+            this.noFilterData.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.Border.Visible = true;
+            this.noFilterData.Box = new System.Drawing.Size(14, 14);
+            this.noFilterData.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.noFilterData.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.noFilterData.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.noFilterData.BoxSpacing = 2;
+            this.noFilterData.CheckStyle.AutoSize = true;
+            this.noFilterData.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.noFilterData.CheckStyle.Character = '✔';
+            this.noFilterData.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.noFilterData.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noFilterData.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.noFilterData.CheckStyle.ShapeRounding = 3;
+            this.noFilterData.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.noFilterData.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.noFilterData.CheckStyle.Thickness = 2F;
+            this.noFilterData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.noFilterData.ForeColor = System.Drawing.Color.Gray;
+            this.noFilterData.IsBoxLarger = false;
+            this.noFilterData.Location = new System.Drawing.Point(80, 343);
+            this.noFilterData.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.noFilterData.Name = "noFilterData";
+            this.noFilterData.Size = new System.Drawing.Size(125, 23);
+            this.noFilterData.TabIndex = 198;
+            this.noFilterData.Text = "Não filtrar a data";
+            this.noFilterData.TextSize = new System.Drawing.Size(88, 16);
+            this.noFilterData.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.noFilterData.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.noFilterData.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.noFilterData.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // Categorias
             // 
             this.Categorias.BackColor = System.Drawing.Color.White;
@@ -202,9 +245,9 @@
             this.label12.ForeColor = System.Drawing.Color.Gray;
             this.label12.Location = new System.Drawing.Point(18, 288);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 17);
+            this.label12.Size = new System.Drawing.Size(66, 17);
             this.label12.TabIndex = 196;
-            this.label12.Text = "Categorias";
+            this.label12.Text = "Categoria";
             // 
             // filterAll
             // 
@@ -656,9 +699,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(133, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 17);
+            this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 52;
-            this.label6.Text = "Produtos";
+            this.label6.Text = "Comercial";
             // 
             // pictureBox4
             // 
@@ -713,49 +756,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // noFilterData
-            // 
-            this.noFilterData.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.noFilterData.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.noFilterData.Border.HoverVisible = true;
-            this.noFilterData.Border.Rounding = 3;
-            this.noFilterData.Border.Thickness = 1;
-            this.noFilterData.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.noFilterData.Border.Visible = true;
-            this.noFilterData.Box = new System.Drawing.Size(14, 14);
-            this.noFilterData.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.noFilterData.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.noFilterData.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.noFilterData.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.noFilterData.BoxSpacing = 2;
-            this.noFilterData.CheckStyle.AutoSize = true;
-            this.noFilterData.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.noFilterData.CheckStyle.Character = '✔';
-            this.noFilterData.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.noFilterData.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noFilterData.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.noFilterData.CheckStyle.ShapeRounding = 3;
-            this.noFilterData.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.noFilterData.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.noFilterData.CheckStyle.Thickness = 2F;
-            this.noFilterData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.noFilterData.ForeColor = System.Drawing.Color.Gray;
-            this.noFilterData.IsBoxLarger = false;
-            this.noFilterData.Location = new System.Drawing.Point(80, 343);
-            this.noFilterData.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.noFilterData.Name = "noFilterData";
-            this.noFilterData.Size = new System.Drawing.Size(125, 23);
-            this.noFilterData.TabIndex = 198;
-            this.noFilterData.Text = "Não filtrar a data";
-            this.noFilterData.TextSize = new System.Drawing.Size(88, 16);
-            this.noFilterData.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.noFilterData.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.noFilterData.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.noFilterData.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.noFilterData.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.noFilterData.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.noFilterData.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // ProdutosVendidos
             // 

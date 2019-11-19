@@ -298,7 +298,24 @@ namespace Emiplus.View.Comercial
             {
                 data.Add(new
                 {
-                    ID = item.ID
+                    //.Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
+                    ID = item.ID,
+                    EMISSAO = Validation.ConvertDateToForm(item.EMISSAO),
+                    CLIENTE = item.NOME,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                    COLABORADOR = item.COLABORADOR,
+                    CRIADO = item.CRIADO
+                });
+            }
+
+            IEnumerable<dynamic> dados2 = await _cPedido.GetDataTableTotaisPedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir);
+            ArrayList data2 = new ArrayList();
+            foreach (var item in dados2)
+            {
+                data2.Add(new
+                {
+                    ID = item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
                 });
             }
 
@@ -308,6 +325,7 @@ namespace Emiplus.View.Comercial
                 INCLUDE_PATH = Program.PATH_BASE,
                 URL_BASE = Program.PATH_BASE,
                 Data = data,
+                Total = data2,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
                 Logo = Settings.Default.empresa_logo,
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),

@@ -114,35 +114,59 @@ namespace Emiplus.Controller
         {
             var search = "%" + SearchText + "%";
 
-            if(!string.IsNullOrEmpty(SearchText))
-                return new Model.Pedido().Query()
-                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-                .Select("pedido.id", "pedido.criado", "pedido.total", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("pedido.excluir", excluir)
-                .Where("pedido.tipo", tipo)
-                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal))
-                .Where
+            var query = new Model.Pedido().Query();
+
+            query
+            .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+            .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
+            .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")            
+            .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
+            .Where("pedido.excluir", excluir)
+            .Where("pedido.tipo", tipo)
+            .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+            .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (!string.IsNullOrEmpty(SearchText))
+                query.Where
                 (
                     q => q.WhereLike("pessoa.nome", search, false)
-                )
-                .OrderByDesc("pedido.id")
-                .GetAsync<dynamic>();
+                );
 
-            return new Model.Pedido().Query()
-                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-                .Select("pedido.id", "pedido.criado", "pedido.total", "pedido.excluir", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("pedido.excluir", excluir)
-                .Where("pedido.tipo", tipo)
-                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal))
-                .OrderByDesc("pedido.id")
-                .GetAsync<dynamic>();
+            query.OrderByDesc("pedido.id");
+
+            return query.GetAsync<dynamic>();
+        }
+
+        public Task<IEnumerable<dynamic>> GetDataTableTotaisPedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0)
+        {
+            var search = "%" + SearchText + "%";
+
+            var query = new Model.Pedido().Query();
+
+            query
+            .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+            .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
+            .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
+
+            .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
+
+            .Where("pedido.excluir", excluir)
+            .Where("pedido.tipo", tipo)
+            .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+            .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (!string.IsNullOrEmpty(SearchText))
+                query.Where
+                (
+                    q => q.WhereLike("pessoa.nome", search, false)
+                );
+
+            return query.GetAsync<dynamic>();
         }
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0)
         {
-            Table.ColumnCount = 6;
+            Table.ColumnCount = 8;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -153,20 +177,26 @@ namespace Emiplus.Controller
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "N°";
-            Table.Columns[1].Width = 100;
+            Table.Columns[1].Width = 50;
 
-            Table.Columns[2].Name = "Cliente";
+            Table.Columns[2].Name = "Emissão";
+            Table.Columns[2].Width = 50;
 
-            Table.Columns[3].Name = "Criado em";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
+            Table.Columns[3].Name = "Cliente";
+            Table.Columns[3].Width = 150;
 
             Table.Columns[4].Name = "Total";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
+            
+            Table.Columns[5].Name = "Colaborador";
+            Table.Columns[5].Width = 150;
 
-            Table.Columns[5].Name = "EXCLUIR";
-            Table.Columns[5].Visible = false;
+            Table.Columns[6].Name = "Criado em";
+            Table.Columns[6].Width = 120;
+            
+            Table.Columns[7].Name = "EXCLUIR";
+            Table.Columns[7].Visible = false;
 
             Table.Rows.Clear();
 
@@ -181,9 +211,12 @@ namespace Emiplus.Controller
                 Table.Rows.Add(
                     item.ID,
                     item.ID,
+                    Validation.ConvertDateToForm(item.EMISSAO),
                     item.NOME,
-                    Validation.ConvertDateToForm(item.CRIADO),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+                    item.COLABORADOR,
+                    item.CRIADO,
+                    item.EXCLUIR
                 );
             }
 
