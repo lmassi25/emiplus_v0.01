@@ -29,8 +29,9 @@ namespace Emiplus.View.Financeiro
         {
             _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
 
-            //txtSaldoDinheiro.Text = Validation.FormatPrice(_controllerCaixa.SumDinheiro(idCaixa), true);
-            //txtSaldoTotal.Text = Validation.FormatPrice(_controllerCaixa.SumTotal(idCaixa), true);
+            var Dinheiro = Validation.ConvertToDouble(_controllerCaixa.SumPagamento(_modelCaixa.Id, 1) + _modelCaixa.Saldo_Inicial - _controllerCaixa.SumSaidas(_modelCaixa.Id));
+            txtSaldoDinheiro.Text = Validation.FormatPrice(Dinheiro, true);
+            txtSaldoTotal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
         }
 
         private void Eventos()

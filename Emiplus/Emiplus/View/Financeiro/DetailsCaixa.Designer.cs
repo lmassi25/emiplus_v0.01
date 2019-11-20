@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsCaixa));
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -83,7 +83,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnFechar = new System.Windows.Forms.Panel();
+            this.panel998 = new System.Windows.Forms.Panel();
             this.FecharCaixa = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -111,7 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.btnFechar.SuspendLayout();
+            this.panel998.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,24 +147,24 @@
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridLista.ColumnHeadersHeight = 25;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle4;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.EnableHeadersVisualStyles = false;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -325,7 +325,7 @@
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(128, 17);
             this.label31.TabIndex = 139;
-            this.label31.Text = "Cartâo Crédito:";
+            this.label31.Text = "Cartão Crédito:";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtCarCred
@@ -347,7 +347,7 @@
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(128, 17);
             this.label33.TabIndex = 137;
-            this.label33.Text = "Cartâo Débito:";
+            this.label33.Text = "Cartão Débito:";
             this.label33.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtCarDeb
@@ -791,37 +791,37 @@
             this.label1.TabIndex = 89;
             this.label1.Text = "Detalhes do Caixa:";
             // 
-            // btnFechar
+            // panel998
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel998.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFechar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnFechar.Controls.Add(this.FecharCaixa);
-            this.btnFechar.Controls.Add(this.label21);
-            this.btnFechar.Controls.Add(this.label24);
-            this.btnFechar.Controls.Add(this.label19);
-            this.btnFechar.Controls.Add(this.txtSaidas);
-            this.btnFechar.Controls.Add(this.label14);
-            this.btnFechar.Controls.Add(this.panel8);
-            this.btnFechar.Controls.Add(this.txtSaldoInicial);
-            this.btnFechar.Controls.Add(this.txtEntradas);
-            this.btnFechar.Controls.Add(this.label9);
-            this.btnFechar.Controls.Add(this.label10);
-            this.btnFechar.Controls.Add(this.panel7);
-            this.btnFechar.Controls.Add(this.panel6);
-            this.btnFechar.Controls.Add(this.caixa);
-            this.btnFechar.Controls.Add(this.label45);
-            this.btnFechar.Controls.Add(this.colaborador);
-            this.btnFechar.Controls.Add(this.label8);
-            this.btnFechar.Controls.Add(this.panel3);
-            this.btnFechar.Controls.Add(this.btnExit);
-            this.btnFechar.Controls.Add(this.aberto);
-            this.btnFechar.Controls.Add(this.label18);
-            this.btnFechar.Controls.Add(this.txtSaldoFinal);
-            this.btnFechar.Location = new System.Drawing.Point(0, 41);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(239, 596);
-            this.btnFechar.TabIndex = 87;
+            this.panel998.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel998.Controls.Add(this.FecharCaixa);
+            this.panel998.Controls.Add(this.label21);
+            this.panel998.Controls.Add(this.label24);
+            this.panel998.Controls.Add(this.label19);
+            this.panel998.Controls.Add(this.txtSaidas);
+            this.panel998.Controls.Add(this.label14);
+            this.panel998.Controls.Add(this.panel8);
+            this.panel998.Controls.Add(this.txtSaldoInicial);
+            this.panel998.Controls.Add(this.txtEntradas);
+            this.panel998.Controls.Add(this.label9);
+            this.panel998.Controls.Add(this.label10);
+            this.panel998.Controls.Add(this.panel7);
+            this.panel998.Controls.Add(this.panel6);
+            this.panel998.Controls.Add(this.caixa);
+            this.panel998.Controls.Add(this.label45);
+            this.panel998.Controls.Add(this.colaborador);
+            this.panel998.Controls.Add(this.label8);
+            this.panel998.Controls.Add(this.panel3);
+            this.panel998.Controls.Add(this.btnExit);
+            this.panel998.Controls.Add(this.aberto);
+            this.panel998.Controls.Add(this.label18);
+            this.panel998.Controls.Add(this.txtSaldoFinal);
+            this.panel998.Location = new System.Drawing.Point(0, 41);
+            this.panel998.Name = "panel998";
+            this.panel998.Size = new System.Drawing.Size(239, 596);
+            this.panel998.TabIndex = 87;
             // 
             // FecharCaixa
             // 
@@ -1049,7 +1049,7 @@
             this.Controls.Add(this.nrTerminal);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.panel998);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DetailsCaixa";
             this.ShowIcon = false;
@@ -1065,7 +1065,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.btnFechar.ResumeLayout(false);
+            this.panel998.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1144,7 +1144,7 @@
         private System.Windows.Forms.Label txtVendasMedia;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button FecharCaixa;
-        private System.Windows.Forms.Panel btnFechar;
+        private System.Windows.Forms.Panel panel998;
         private System.Windows.Forms.Button btnFinalizarImprimir;
     }
 }

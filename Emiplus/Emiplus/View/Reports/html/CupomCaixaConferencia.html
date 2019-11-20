@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://www.emiplus.com.br/app/templates/default/assets/css/bootstrap.min.css">
+    <link href="https://www.emiplus.com.br/razor/css/Cupom.css?v=22" rel="stylesheet" />
+    <style>
+        @page {
+            size: A4;
+            width: 80mm
+        }
+    </style>
+</head>
+<body>
+
+    <table class="printer-ticket">
+        <thead>
+            <tr>
+                <th class="title" colspan="3">Victor Shop</th>
+            </tr>
+            <tr>
+                <th colspan="3">CNPJ: 05.681.389/0001-00<br>Endereço: Rua Dom Afonso Henrique, 940 - Parque Estoril - São José do Rio Preto/SP</th>
+            </tr>
+            <tr>
+                <th colspan="3">Emitido: 20/11/2019 11:05</th>
+            </tr>
+            <tr>
+                <th class="ttu" colspan="3">
+                    <b>Conferência de Caixa</b>
+                </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Operador</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Responsável:</td>
+                <td align="right">William a</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Início:</td>
+                <td align="right">00:00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Término:</td>
+                <td align="right">00:00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Terminal:</td>
+                <td align="right">1</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Resumo de Vendas</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Total:</td>
+                <td align="right">R$4.300,60</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Acrésimos:</td>
+                <td align="right">R$40,60</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Descontos:</td>
+                <td align="right">R$10,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2"></td>
+                <td align="right"></td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2"></td>
+                <td align="right"></td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2"></td>
+                <td align="right"></td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Vendas Registradas:</td>
+                <td align="right">20</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Média por Vendas</td>
+                <td align="right">R$40,00</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Vendas Canceladas</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Total Canceladas:</td>
+                <td align="right">R$00,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Vendas Canceladas:</td>
+                <td align="right">0</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Formas de Recebimento</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Dinheiro</td>
+                <td align="right">R$10,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Cheque</td>
+                <td align="right">R$10,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Cartão de Débito</td>
+                <td align="right">R$10,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Cartão de Crédito</td>
+                <td align="right">R$0,44</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Crediário</td>
+                <td align="right">R$0,44</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Boleto</td>
+                <td align="right">R$0,44</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Fechamento</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Saldo Inicial</td>
+                <td align="right">{{txtSaldoInicial}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Entradas</td>
+                <td align="right">R$200,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Saídas</td>
+                <td align="right">R$200,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Saldo Final</td>
+                <td align="right">R$20.000,00</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

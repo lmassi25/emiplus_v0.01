@@ -1,9 +1,13 @@
-﻿using Emiplus.Data.Helpers;
+﻿using DotLiquid;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -42,13 +46,11 @@ namespace Emiplus.View.Financeiro
             aberto.Text = Validation.ConvertDateToForm(_modelCaixa.Criado, true);
             label7.Text = _modelCaixa.Tipo == "Aberto" ? "Caixa Aberto" : "Caixa Fechado";
 
-            
-
             if (_modelCaixa.Tipo == "Fechado")
             {
                 panel7.BackColor = Color.FromArgb(192, 0, 0);
                 label9.Text = Validation.ConvertDateToForm(_modelCaixa.Fechado, true);
-                btnFechar.Visible = false;
+                FecharCaixa.Enabled = false;
             }
             
             LoadUsuario(_modelCaixa.Usuario);
@@ -275,7 +277,26 @@ namespace Emiplus.View.Financeiro
             btnExit.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
+
+            btnFinalizarImprimir.Click += (s, e) => RenderizarAsync();
         }
 
+        private async Task RenderizarAsync()
+        {
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomCaixaConferencia.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                INCLUDE_PATH = Program.PATH_BASE,
+                URL_BASE = Program.PATH_BASE,
+                txtSaldoInicial = txtSaldoInicial.Text,
+                NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                Logo = Settings.Default.empresa_logo,
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+            }));
+
+            Browser.htmlRender = render;
+            var f = new Browser();
+            f.ShowDialog();
+        }
     }
 }
