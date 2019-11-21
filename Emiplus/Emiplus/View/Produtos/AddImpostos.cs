@@ -47,7 +47,7 @@ namespace Emiplus.View.Produtos
         {
             nome.Select();
 
-            ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite um nome para o imposto que está cadastrando." + Environment.NewLine + "Utilize uma descrição para a finalidade do imposto. " , pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             #region COMBOBOX
 
@@ -413,5 +413,10 @@ namespace Emiplus.View.Produtos
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
-    }
+
+		private void pictureBox6_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

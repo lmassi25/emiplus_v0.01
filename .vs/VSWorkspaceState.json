@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Emiplus"
+    "\\Emiplus",
+    "\\Emiplus\\Emiplus",
+    "\\Emiplus\\Emiplus\\View",
+    "\\Emiplus\\Emiplus\\View\\Produtos"
   ],
+  "SelectedNode": "\\Emiplus\\Emiplus\\View\\Produtos\\AddCategorias.Designer.cs",
   "PreviewInSolutionExplorer": false
 }
