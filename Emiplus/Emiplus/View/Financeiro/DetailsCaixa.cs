@@ -1,6 +1,7 @@
 ﻿using DotLiquid;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
+using Emiplus.View.Common;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
@@ -17,7 +18,7 @@ namespace Emiplus.View.Financeiro
 {
     public partial class DetailsCaixa : Form
     {
-        public static int idCaixa { get; set; }
+        public static int idCaixa { get; set; } = Home.idCaixa;
 
         private Controller.Caixa _controllerCaixa = new Controller.Caixa();
         private Model.Caixa _modelCaixa = new Model.Caixa();
@@ -49,7 +50,7 @@ namespace Emiplus.View.Financeiro
             if (_modelCaixa.Tipo == "Fechado")
             {
                 panel7.BackColor = Color.FromArgb(192, 0, 0);
-                label9.Text = Validation.ConvertDateToForm(_modelCaixa.Fechado, true);
+                txtFechado.Text = Validation.ConvertDateToForm(_modelCaixa.Fechado, true);
                 FecharCaixa.Enabled = false;
             }
             
@@ -249,7 +250,7 @@ namespace Emiplus.View.Financeiro
                 FecharCaixa f = new FecharCaixa();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    label9.Text = DateTime.Now.ToString("dd/mm/YYYY HH:mm");
+                    txtFechado.Text = DateTime.Now.ToString("dd/mm/YYYY HH:mm");
                     panel7.BackColor = Color.FromArgb(192, 0, 0);
                     label7.Text = "Caixa Fechado";
                 }
@@ -288,10 +289,31 @@ namespace Emiplus.View.Financeiro
             {
                 INCLUDE_PATH = Program.PATH_BASE,
                 URL_BASE = Program.PATH_BASE,
-                txtSaldoInicial = txtSaldoInicial.Text,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                CNPJ = Settings.Default.empresa_cnpj,
+                Address = $"{Settings.Default.empresa_rua} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
                 Logo = Settings.Default.empresa_logo,
-                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
+                txtResponsavel = colaborador.Text,
+                txtSaldoInicial = txtSaldoInicial.Text,
+                txtAberto = aberto.Text,
+                txtFechado = txtFechado.Text,
+                nrTerminal = nrTerminal.Text,
+                txtVendasTotal = txtVendasTotal.Text,
+                txtVendasAcrescimos = txtVendasAcrescimos.Text,
+                txtVendasDescontos = txtVendasDescontos.Text,
+                txtVendasMedia = txtVendasMedia.Text,
+                txtVendasCanceladasTotal = txtVendasCanceladasTotal.Text,
+                txtVendasCanceladas = txtVendasCanceladas.Text,
+                txtDinheiro = txtDinheiro.Text,
+                txtCheque = txtCheque.Text,
+                txtCarDeb = txtCarDeb.Text,
+                txtCarCred = txtCarCred.Text,
+                txtCrediario = txtCrediario.Text,
+                txtBoleto = txtBoleto.Text,
+                txtEntradas = txtEntradas.Text,
+                txtSaidas = txtSaidas.Text,
+                txtSaldoFinal = txtSaldoFinal.Text
             }));
 
             Browser.htmlRender = render;
