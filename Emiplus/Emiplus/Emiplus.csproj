@@ -1034,6 +1034,7 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />

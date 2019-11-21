@@ -14,6 +14,7 @@ namespace Emiplus.View.Comercial
         private int ModoRapAva { get; set; }
         private int ModoRapAvaConfig { get; set; }
         private static string CachePage { get; set; }
+        public static bool btnFinalizado { get; set; } // Alimenta quando o botão finalizado for clicado
 
         public static int Id { get; set; } // id pedido
         public static int IdPedidoItem { get; set; } // Id item datagrid
@@ -39,6 +40,8 @@ namespace Emiplus.View.Comercial
 
         private void LoadData()
         {
+            IDCaixa.Text = Home.idCaixa.ToString();
+
             if (Home.pedidoPage == "Orçamentos") {
                 label2.Text = $"Dados do Orçamento: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar um novo orçamento!";
@@ -168,7 +171,6 @@ namespace Emiplus.View.Comercial
                     OpenForm.Show<PedidoPagamentos>(this);
                 }
             }
-
 
             //if (Home.pedidoPage != "Compras")
             //{
@@ -520,18 +522,22 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                Home.pedidoPage = CachePage;
-                if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
+                if (!btnFinalizado)
                 {
-                    if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    Home.pedidoPage = CachePage;
+                    if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
                     {
-                        new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
-                        _mPedido.Remove(Id);
-                        return;
-                    }
+                        if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
+                            _mPedido.Remove(Id);
+                            return;
+                        }
 
-                    e.Cancel = true;
+                        e.Cancel = true;
+                    }
                 }
+                btnFinalizado = false;
             };
         }
     }

@@ -44,7 +44,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.nomeVendedor = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.IDCaixa = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@
             this.panel1.Controls.Add(this.pictureBox11);
             this.panel1.Controls.Add(this.nomeVendedor);
             this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.IDCaixa);
             this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label3);
@@ -304,16 +304,16 @@
             this.label19.TabIndex = 46;
             this.label19.Text = "Tabela";
             // 
-            // label13
+            // IDCaixa
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(468, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 13);
-            this.label13.TabIndex = 39;
-            this.label13.Text = "0001";
+            this.IDCaixa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.IDCaixa.AutoSize = true;
+            this.IDCaixa.ForeColor = System.Drawing.Color.Gray;
+            this.IDCaixa.Location = new System.Drawing.Point(468, 34);
+            this.IDCaixa.Name = "IDCaixa";
+            this.IDCaixa.Size = new System.Drawing.Size(31, 13);
+            this.IDCaixa.TabIndex = 39;
+            this.IDCaixa.Text = "0001";
             // 
             // pictureBox8
             // 
@@ -1150,7 +1150,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label IDCaixa;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label19;
