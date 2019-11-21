@@ -69,18 +69,22 @@ namespace Emiplus.View.Comercial
 
                 case "Orçamentos":
                     ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show("Selecione uma unidade comercial. Exemplo: UN = Unidade.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
 
                 case "Consignações":
                     ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show("Selecione uma unidade comercial. Exemplo: UN = Unidade.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
 
                 case "Compras":
                     ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show("Selecione uma unidade comercial. Exemplo: UN = Unidade.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
 
                 default:
                     ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show("Selecione uma unidade comercial. Exemplo: UN = Unidade.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
             }
         }
