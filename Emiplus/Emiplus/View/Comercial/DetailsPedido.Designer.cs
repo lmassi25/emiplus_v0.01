@@ -81,6 +81,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.nrPedido = new System.Windows.Forms.Label();
+            this.btnReceber = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -376,6 +377,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.btnReceber);
             this.panel5.Controls.Add(this.button22);
             this.panel5.Controls.Add(this.button21);
             this.panel5.Controls.Add(this.button20);
@@ -396,7 +398,7 @@
             this.button22.Enabled = false;
             this.button22.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Location = new System.Drawing.Point(7, 18);
+            this.button22.Location = new System.Drawing.Point(136, 18);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(35, 35);
             this.button22.TabIndex = 156;
@@ -410,7 +412,7 @@
             this.button21.Enabled = false;
             this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(131, 18);
+            this.button21.Location = new System.Drawing.Point(260, 18);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(35, 35);
             this.button21.TabIndex = 155;
@@ -424,7 +426,7 @@
             this.button20.Enabled = false;
             this.button20.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(255, 18);
+            this.button20.Location = new System.Drawing.Point(384, 18);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(35, 35);
             this.button20.TabIndex = 154;
@@ -439,7 +441,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(259, 20);
+            this.btnImprimir.Location = new System.Drawing.Point(388, 20);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(118, 65);
             this.btnImprimir.TabIndex = 153;
@@ -456,7 +458,7 @@
             this.btnCFeSat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCFeSat.Image = ((System.Drawing.Image)(resources.GetObject("btnCFeSat.Image")));
             this.btnCFeSat.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCFeSat.Location = new System.Drawing.Point(11, 20);
+            this.btnCFeSat.Location = new System.Drawing.Point(140, 20);
             this.btnCFeSat.Name = "btnCFeSat";
             this.btnCFeSat.Size = new System.Drawing.Size(114, 65);
             this.btnCFeSat.TabIndex = 151;
@@ -473,7 +475,7 @@
             this.btnNfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNfe.Image = ((System.Drawing.Image)(resources.GetObject("btnNfe.Image")));
             this.btnNfe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNfe.Location = new System.Drawing.Point(135, 20);
+            this.btnNfe.Location = new System.Drawing.Point(264, 20);
             this.btnNfe.Name = "btnNfe";
             this.btnNfe.Size = new System.Drawing.Size(114, 65);
             this.btnNfe.TabIndex = 152;
@@ -766,6 +768,24 @@
             this.nrPedido.TabIndex = 86;
             this.nrPedido.Text = "0";
             // 
+            // btnReceber
+            // 
+            this.btnReceber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(187)))), ((int)(((byte)(46)))));
+            this.btnReceber.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReceber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnReceber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceber.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceber.ForeColor = System.Drawing.Color.White;
+            this.btnReceber.Image = ((System.Drawing.Image)(resources.GetObject("btnReceber.Image")));
+            this.btnReceber.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnReceber.Location = new System.Drawing.Point(12, 20);
+            this.btnReceber.Name = "btnReceber";
+            this.btnReceber.Size = new System.Drawing.Size(118, 65);
+            this.btnReceber.TabIndex = 157;
+            this.btnReceber.Text = "Recebimentos";
+            this.btnReceber.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReceber.UseVisualStyleBackColor = false;
+            // 
             // DetailsPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -858,5 +878,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label txtTroco;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnReceber;
     }
 }

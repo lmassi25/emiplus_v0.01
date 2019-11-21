@@ -110,7 +110,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -125,6 +125,9 @@ namespace Emiplus.Controller
             .Where("pedido.tipo", tipo)
             .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
             .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (idPedido != 0)
+                query.Where("pedido.id", idPedido);
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
@@ -164,7 +167,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0)
         {
             Table.ColumnCount = 8;
 
@@ -202,7 +205,7 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir);
+                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido);
                 Data = dados;
             }
 

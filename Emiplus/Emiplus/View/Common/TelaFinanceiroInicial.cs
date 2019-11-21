@@ -62,13 +62,6 @@ namespace Emiplus.View.Common
             
             AbrirCaixa.Click += (s, e) =>
             {
-                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
-                if (Caixa != null)
-                {
-                    Alert.Message("Oppss!", "Você possui um caixa aberto, feche antes de abrir um novo!", Alert.AlertType.warning);
-                    return;
-                }
-
                 AbrirCaixa f = new AbrirCaixa();
                 f.ShowDialog();
             };

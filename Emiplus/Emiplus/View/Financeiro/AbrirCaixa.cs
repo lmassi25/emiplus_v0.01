@@ -28,6 +28,7 @@ namespace Emiplus.View.Financeiro
                 if (_modelCaixa.Save(_modelCaixa))
                 {
                     Home.idCaixa = _modelCaixa.GetLastId();
+                    DialogResult = DialogResult.OK;
                     Close();
                 }
             };

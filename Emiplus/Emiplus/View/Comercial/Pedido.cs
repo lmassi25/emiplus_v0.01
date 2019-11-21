@@ -136,7 +136,7 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir);
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text));
         }   
 
         private void EditPedido(bool create = false)

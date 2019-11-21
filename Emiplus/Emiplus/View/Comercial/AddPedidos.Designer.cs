@@ -733,7 +733,7 @@
             // BuscarProduto
             // 
             this.BuscarProduto.AlphaNumeric = false;
-            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;

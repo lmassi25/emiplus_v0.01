@@ -94,20 +94,18 @@ namespace Emiplus.Controller
             {
                 Home.idCaixa = Caixa.ID;
 
-                string message = $"Existe um caixa aberto do dia {Validation.ConvertDateToForm(Caixa.CRIADO, true)}, deseja fechar?";
-                string caption = "Aviso!";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+                string message = $"Antes de começar, há um caixa aberto do dia: {Validation.ConvertDateToForm(Caixa.CRIADO)}. {Environment.NewLine}Deseja realizar o FECHAMENTO agora?";
+                string caption = "Atenção!";
 
-                result = MessageBox.Show(message, caption, buttons);
-                if (result == DialogResult.Yes)
+                var result = AlertOptions.Message(caption, message, AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
                     DetailsCaixa f = new DetailsCaixa();
                     f.ShowDialog();
                 } 
                 else
                 {
-                    MessageBox.Show("Os recebimentos gerados a partir de vendas serão lançados no caixa aberto!", "Atenção", MessageBoxButtons.OK);
+                    AlertOptions.Message("Atenção!", "Os recebimentos gerados a partir de vendas serão lançados no caixa aberto!", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                 }
             }
         }

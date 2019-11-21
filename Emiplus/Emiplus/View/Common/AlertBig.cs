@@ -117,9 +117,88 @@ namespace Emiplus.View.Common
          ********************************************************************/
         #endregion
 
-        public AlertBig()
+        public AlertBig(string _title, string _message, AlertType type, AlertBtn btn, bool focus = false)
         {
             InitializeComponent();
+
+            title.Text = _title;
+            message.Text = _message;
+
+            switch (type)
+            {
+                case AlertType.success:
+                    icon.Image = Properties.Resources.success;
+                    break;
+                case AlertType.info:
+                    icon.Image = Properties.Resources.info;
+                    break;
+                case AlertType.warning:
+                    icon.Image = Properties.Resources.warning;
+                    break;
+                case AlertType.error:
+                    icon.Image = Properties.Resources.error;
+                    break;
+            }
+
+            switch (btn)
+            {
+                case AlertBtn.YesNo:
+                    btnNo.Visible = true;
+                    btnSim.Visible = true;
+                    if (focus)
+                        btnNo.Focus();
+                    else
+                        btnSim.Focus();
+                    break;
+                case AlertBtn.OK:
+                    btnOk.Visible = true;
+                    btnOk.Focus();
+                    break;
+            }
+
+            Retorno();
+        }
+
+        public enum AlertType
+        {
+            success, info, warning, error
+        }
+
+        public enum AlertBtn
+        {
+            YesNo, OK
+        }
+
+        //public static bool Message(string _title, string _message, AlertType type, AlertBtn btn)
+        //{
+        //    var f = new AlertBig(_title, _message, type, btn).ShowDialog();
+        //    return true;
+        //    //if(f.ShowDialog == DialogResult.OK)
+        //    //{
+        //    //    return true;
+        //    //}
+        //    //else 
+        //}
+
+        public void Retorno()
+        {
+            btnOk.Click += (s, e) =>
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+
+            btnNo.Click += (s, e) =>
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            };
+
+            btnSim.Click += (s, e) =>
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            };
         }
     }
 }

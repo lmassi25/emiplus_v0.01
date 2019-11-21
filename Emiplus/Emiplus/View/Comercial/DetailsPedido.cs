@@ -1,4 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using Emiplus.View.Financeiro;
 using SqlKata.Execution;
 using System.Drawing;
 using System.Linq;
@@ -76,7 +78,32 @@ namespace Emiplus.View.Comercial
                 pgtos.ShowDialog();
             };
 
+            btnReceber.Click += (s, e) =>
+            {
+                if (Home.idCaixa == 0)
+                {
+                    if (AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo))
+                    {
+                        AbrirCaixa f = new AbrirCaixa();
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            OpenPedidoPagamentos();
+                        }
+                    }
+                }
+
+                OpenPedidoPagamentos();
+            };
+
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
+        }
+
+        private void OpenPedidoPagamentos()
+        {
+            AddPedidos.Id = idPedido;
+            PedidoPagamentos pagamentos = new PedidoPagamentos();
+            pagamentos.ShowDialog();
+            LoadData();
         }
     }
 }

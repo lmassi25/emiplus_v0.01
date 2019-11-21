@@ -54,10 +54,15 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados da Compra: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma nova compra!";
                 btnConcluir.Text = "Pagamento";
-            } else {
+            } else {                
                 label2.Text = $"Dados da Venda: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma nova venda!";
                 btnConcluir.Text = "Receber";
+
+                if (Home.idCaixa == 0)
+                {
+                    btnConcluir.Text = "Finalizar";
+                }
             }
 
             LoadCliente();
@@ -162,8 +167,23 @@ namespace Emiplus.View.Comercial
         {
             if (GridListaProdutos.SelectedRows.Count <= 0)
             {
-                MessageBox.Show("Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir para os recebimentos.", "Opsss");
+                AlertOptions.Message("Atenção!", "Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                 return;
+            }
+
+            if (btnConcluir.Text == "Finalizar")
+            {
+                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                {
+                    
+                }
+                else
+                {
+                    Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+                }
+
+                btnFinalizado = true;
+                Close();
             }
 
             if (Home.pedidoPage == "Compras")
