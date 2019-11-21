@@ -347,6 +347,12 @@
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\AlertBig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\AlertBig.Designer.cs">
+      <DependentUpon>AlertBig.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Carregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -719,6 +725,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\AlertBig.resx">
+      <DependentUpon>AlertBig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Carregar.resx">
       <DependentUpon>Carregar.cs</DependentUpon>
