@@ -414,6 +414,12 @@
     <Compile Include="View\Common\TelaProdutosInicial.Designer.cs">
       <DependentUpon>TelaProdutosInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\VideoTutorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\VideoTutorial.Designer.cs">
+      <DependentUpon>VideoTutorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Exemplos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -760,6 +766,9 @@
     <EmbeddedResource Include="View\Common\TelaProdutosInicial.resx">
       <DependentUpon>TelaProdutosInicial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\VideoTutorial.resx">
+      <DependentUpon>VideoTutorial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1092,8 +1101,25 @@
     <WCFMetadataStorage Include="Connected Services\WSCorreios\" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

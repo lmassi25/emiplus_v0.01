@@ -178,28 +178,23 @@ namespace Emiplus.View.Comercial
                 rntc.Text = _modelPessoa?.Transporte_rntc ?? "";
             }
 
-			switch (Home.pessoaPage)
+            ToolHelp.Show("Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine + "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+            switch (Home.pessoaPage)
 			{
 				default:
-					ToolHelp.Show("Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine + "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 					ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 					break;
 
 				case "Fornecedores":
-					ToolHelp.Show("Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine + "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+					ToolHelp.Show("Caso o fornecedor seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 					break;
 
 				case "Transportadoras":
-					ToolHelp.Show("Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine + "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+					ToolHelp.Show("Caso a transportadora seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 					break;
-				
 			}
-
 		}
 
         private void SetFocus() => nomeRS.Focus();
@@ -248,6 +243,7 @@ namespace Emiplus.View.Comercial
                     Close();
                 }
             };
+
             btnRemover.Click += (s, e) =>
             {
                 var result = MessageBox.Show("Deseja realmente excluir?", "Atenção!", MessageBoxButtons.YesNo);
@@ -291,6 +287,7 @@ namespace Emiplus.View.Comercial
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=uC1K5kdPCfU");
         }
     }
 }
