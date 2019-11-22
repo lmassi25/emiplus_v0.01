@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace Emiplus.View.Financeiro
                 _modelCaixa.Fechado = DateTime.Now;
                 if (_modelCaixa.Save(_modelCaixa, false))
                 {
+                    Home.idCaixa = 0;
                     DialogResult = DialogResult.OK;
                     Close();
                 }

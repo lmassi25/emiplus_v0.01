@@ -49,8 +49,8 @@
             this.Clientes = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.FecharCaixa = new System.Windows.Forms.Button();
+            this.EntradaSaidaCaixa = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -402,51 +402,51 @@
             this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Categorias.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // FecharCaixa
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(256, 278);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 41);
-            this.button1.TabIndex = 111;
-            this.button1.Text = "          Fechar Caixa";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.FecharCaixa.BackColor = System.Drawing.Color.Transparent;
+            this.FecharCaixa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FecharCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FecharCaixa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.FecharCaixa.FlatAppearance.BorderSize = 0;
+            this.FecharCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.FecharCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.FecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FecharCaixa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FecharCaixa.ForeColor = System.Drawing.Color.DimGray;
+            this.FecharCaixa.Image = ((System.Drawing.Image)(resources.GetObject("FecharCaixa.Image")));
+            this.FecharCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FecharCaixa.Location = new System.Drawing.Point(256, 278);
+            this.FecharCaixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FecharCaixa.Name = "FecharCaixa";
+            this.FecharCaixa.Size = new System.Drawing.Size(219, 41);
+            this.FecharCaixa.TabIndex = 111;
+            this.FecharCaixa.Text = "          Fechar Caixa";
+            this.FecharCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FecharCaixa.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // EntradaSaidaCaixa
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.DimGray;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(256, 232);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 41);
-            this.button2.TabIndex = 112;
-            this.button2.Text = "          Entrada/Saída Caixa";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
+            this.EntradaSaidaCaixa.BackColor = System.Drawing.Color.Transparent;
+            this.EntradaSaidaCaixa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EntradaSaidaCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EntradaSaidaCaixa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.EntradaSaidaCaixa.FlatAppearance.BorderSize = 0;
+            this.EntradaSaidaCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EntradaSaidaCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.EntradaSaidaCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EntradaSaidaCaixa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntradaSaidaCaixa.ForeColor = System.Drawing.Color.DimGray;
+            this.EntradaSaidaCaixa.Image = ((System.Drawing.Image)(resources.GetObject("EntradaSaidaCaixa.Image")));
+            this.EntradaSaidaCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EntradaSaidaCaixa.Location = new System.Drawing.Point(256, 232);
+            this.EntradaSaidaCaixa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EntradaSaidaCaixa.Name = "EntradaSaidaCaixa";
+            this.EntradaSaidaCaixa.Size = new System.Drawing.Size(219, 41);
+            this.EntradaSaidaCaixa.TabIndex = 112;
+            this.EntradaSaidaCaixa.Text = "          Entrada/Saída Caixa";
+            this.EntradaSaidaCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EntradaSaidaCaixa.UseVisualStyleBackColor = false;
             // 
             // TelaFinanceiroInicial
             // 
@@ -454,8 +454,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EntradaSaidaCaixa);
+            this.Controls.Add(this.FecharCaixa);
             this.Controls.Add(this.Categorias);
             this.Controls.Add(this.fornecedores);
             this.Controls.Add(this.Clientes);
@@ -504,7 +504,7 @@
         private System.Windows.Forms.Button Clientes;
         private System.Windows.Forms.Button fornecedores;
         private System.Windows.Forms.Button Categorias;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button FecharCaixa;
+        private System.Windows.Forms.Button EntradaSaidaCaixa;
     }
 }

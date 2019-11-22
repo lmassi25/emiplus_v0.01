@@ -42,10 +42,11 @@
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.BuscaID = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.filterRemovido = new System.Windows.Forms.RadioButton();
             this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.btnSearch = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -63,8 +64,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BuscaID = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Status = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
@@ -266,12 +267,13 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.Status);
+            this.barraTitulo.Controls.Add(this.label13);
             this.barraTitulo.Controls.Add(this.BuscaID);
             this.barraTitulo.Controls.Add(this.label6);
             this.barraTitulo.Controls.Add(this.filterRemovido);
             this.barraTitulo.Controls.Add(this.Usuarios);
             this.barraTitulo.Controls.Add(this.label12);
-            this.barraTitulo.Controls.Add(this.panel1);
             this.barraTitulo.Controls.Add(this.dataFinal);
             this.barraTitulo.Controls.Add(this.dataInicial);
             this.barraTitulo.Controls.Add(this.btnSearch);
@@ -289,11 +291,82 @@
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 15;
             // 
+            // BuscaID
+            // 
+            this.BuscaID.AlphaNumeric = false;
+            this.BuscaID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BuscaID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.BuscaID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.BuscaID.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscaID.BackColorState.Enabled = System.Drawing.Color.White;
+            this.BuscaID.Border.Color = System.Drawing.Color.Gainsboro;
+            this.BuscaID.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.BuscaID.Border.HoverVisible = true;
+            this.BuscaID.Border.Rounding = 8;
+            this.BuscaID.Border.Thickness = 1;
+            this.BuscaID.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscaID.Border.Visible = true;
+            this.BuscaID.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.BuscaID.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.BuscaID.ButtonBorder.HoverVisible = true;
+            this.BuscaID.ButtonBorder.Rounding = 6;
+            this.BuscaID.ButtonBorder.Thickness = 1;
+            this.BuscaID.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.BuscaID.ButtonBorder.Visible = true;
+            this.BuscaID.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscaID.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscaID.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BuscaID.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BuscaID.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscaID.ButtonIndent = 3;
+            this.BuscaID.ButtonText = "visualButton";
+            this.BuscaID.ButtonVisible = false;
+            this.BuscaID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscaID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscaID.Image = ((System.Drawing.Image)(resources.GetObject("BuscaID.Image")));
+            this.BuscaID.ImageSize = new System.Drawing.Size(16, 16);
+            this.BuscaID.ImageVisible = true;
+            this.BuscaID.ImageWidth = 35;
+            this.BuscaID.Location = new System.Drawing.Point(21, 491);
+            this.BuscaID.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.BuscaID.Name = "BuscaID";
+            this.BuscaID.PasswordChar = '\0';
+            this.BuscaID.ReadOnly = false;
+            this.BuscaID.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.BuscaID.Size = new System.Drawing.Size(200, 34);
+            this.BuscaID.TabIndex = 202;
+            this.BuscaID.TextBoxWidth = 150;
+            this.BuscaID.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.BuscaID.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscaID.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscaID.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BuscaID.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscaID.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.BuscaID.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.BuscaID.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.BuscaID.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BuscaID.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.BuscaID.Watermark.Text = "Watermark text";
+            this.BuscaID.Watermark.Visible = false;
+            this.BuscaID.WordWrap = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(18, 471);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 17);
+            this.label6.TabIndex = 203;
+            this.label6.Text = "Buscar por ID";
+            // 
             // filterRemovido
             // 
             this.filterRemovido.AutoSize = true;
             this.filterRemovido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterRemovido.Location = new System.Drawing.Point(21, 192);
+            this.filterRemovido.Location = new System.Drawing.Point(21, 179);
             this.filterRemovido.Name = "filterRemovido";
             this.filterRemovido.Size = new System.Drawing.Size(85, 19);
             this.filterRemovido.TabIndex = 201;
@@ -321,7 +394,6 @@
             this.Usuarios.DropDownHeight = 100;
             this.Usuarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Usuarios.DropDownWidth = 250;
-            this.Usuarios.Enabled = false;
             this.Usuarios.FormattingEnabled = true;
             this.Usuarios.ImageList = null;
             this.Usuarios.ImageVisible = false;
@@ -329,7 +401,7 @@
             this.Usuarios.IntegralHeight = false;
             this.Usuarios.ItemHeight = 23;
             this.Usuarios.ItemImageVisible = true;
-            this.Usuarios.Location = new System.Drawing.Point(21, 244);
+            this.Usuarios.Location = new System.Drawing.Point(21, 230);
             this.Usuarios.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Usuarios.MenuItemNormal = System.Drawing.Color.White;
             this.Usuarios.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -362,19 +434,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(20, 224);
+            this.label12.Location = new System.Drawing.Point(20, 210);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 17);
             this.label12.TabIndex = 199;
             this.label12.Text = "Colaborador";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Location = new System.Drawing.Point(21, 287);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 1);
-            this.panel1.TabIndex = 198;
             // 
             // dataFinal
             // 
@@ -396,7 +460,7 @@
             this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataFinal.Image = null;
             this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataFinal.Location = new System.Drawing.Point(48, 364);
+            this.dataFinal.Location = new System.Drawing.Point(48, 375);
             this.dataFinal.MinimumSize = new System.Drawing.Size(0, 25);
             this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataFinal.Name = "dataFinal";
@@ -424,7 +488,7 @@
             this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataInicial.Image = null;
             this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataInicial.Location = new System.Drawing.Point(48, 334);
+            this.dataInicial.Location = new System.Drawing.Point(48, 345);
             this.dataInicial.MinimumSize = new System.Drawing.Size(0, 25);
             this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataInicial.Name = "dataInicial";
@@ -502,7 +566,7 @@
             this.BuscarPessoa.ImageSize = new System.Drawing.Size(16, 16);
             this.BuscarPessoa.ImageVisible = true;
             this.BuscarPessoa.ImageWidth = 35;
-            this.BuscarPessoa.Location = new System.Drawing.Point(21, 427);
+            this.BuscarPessoa.Location = new System.Drawing.Point(21, 429);
             this.BuscarPessoa.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.BuscarPessoa.Name = "BuscarPessoa";
             this.BuscarPessoa.PasswordChar = '\0';
@@ -530,7 +594,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(18, 407);
+            this.label11.Location = new System.Drawing.Point(18, 409);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(128, 17);
             this.label11.TabIndex = 26;
@@ -541,7 +605,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(28, 367);
+            this.label10.Location = new System.Drawing.Point(28, 378);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 17);
             this.label10.TabIndex = 24;
@@ -552,7 +616,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(20, 337);
+            this.label9.Location = new System.Drawing.Point(20, 348);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(27, 17);
             this.label9.TabIndex = 21;
@@ -563,7 +627,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(18, 304);
+            this.label8.Location = new System.Drawing.Point(18, 323);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 17);
             this.label8.TabIndex = 190;
@@ -573,7 +637,7 @@
             // 
             this.filterTodos.AutoSize = true;
             this.filterTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterTodos.Location = new System.Drawing.Point(21, 167);
+            this.filterTodos.Location = new System.Drawing.Point(21, 154);
             this.filterTodos.Name = "filterTodos";
             this.filterTodos.Size = new System.Drawing.Size(56, 19);
             this.filterTodos.TabIndex = 14;
@@ -586,7 +650,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(50, 134);
+            this.label7.Location = new System.Drawing.Point(50, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 17);
             this.label7.TabIndex = 130;
@@ -667,76 +731,71 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // BuscaID
+            // Status
             // 
-            this.BuscaID.AlphaNumeric = false;
-            this.BuscaID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BuscaID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.BuscaID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.BuscaID.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscaID.BackColorState.Enabled = System.Drawing.Color.White;
-            this.BuscaID.Border.Color = System.Drawing.Color.Gainsboro;
-            this.BuscaID.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.BuscaID.Border.HoverVisible = true;
-            this.BuscaID.Border.Rounding = 8;
-            this.BuscaID.Border.Thickness = 1;
-            this.BuscaID.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscaID.Border.Visible = true;
-            this.BuscaID.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.BuscaID.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.BuscaID.ButtonBorder.HoverVisible = true;
-            this.BuscaID.ButtonBorder.Rounding = 6;
-            this.BuscaID.ButtonBorder.Thickness = 1;
-            this.BuscaID.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscaID.ButtonBorder.Visible = true;
-            this.BuscaID.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscaID.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscaID.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscaID.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.BuscaID.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscaID.ButtonIndent = 3;
-            this.BuscaID.ButtonText = "visualButton";
-            this.BuscaID.ButtonVisible = false;
-            this.BuscaID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscaID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscaID.Image = ((System.Drawing.Image)(resources.GetObject("BuscaID.Image")));
-            this.BuscaID.ImageSize = new System.Drawing.Size(16, 16);
-            this.BuscaID.ImageVisible = true;
-            this.BuscaID.ImageWidth = 35;
-            this.BuscaID.Location = new System.Drawing.Point(21, 489);
-            this.BuscaID.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.BuscaID.Name = "BuscaID";
-            this.BuscaID.PasswordChar = '\0';
-            this.BuscaID.ReadOnly = false;
-            this.BuscaID.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.BuscaID.Size = new System.Drawing.Size(200, 34);
-            this.BuscaID.TabIndex = 202;
-            this.BuscaID.TextBoxWidth = 150;
-            this.BuscaID.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.BuscaID.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscaID.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscaID.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscaID.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscaID.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscaID.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.BuscaID.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.BuscaID.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscaID.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.BuscaID.Watermark.Text = "Watermark text";
-            this.BuscaID.Watermark.Visible = false;
-            this.BuscaID.WordWrap = true;
+            this.Status.BackColor = System.Drawing.Color.White;
+            this.Status.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Status.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Status.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Status.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Status.Border.HoverVisible = true;
+            this.Status.Border.Rounding = 6;
+            this.Status.Border.Thickness = 1;
+            this.Status.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Status.Border.Visible = true;
+            this.Status.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Status.ButtonImage = null;
+            this.Status.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Status.ButtonWidth = 30;
+            this.Status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Status.DropDownHeight = 100;
+            this.Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status.DropDownWidth = 250;
+            this.Status.FormattingEnabled = true;
+            this.Status.ImageList = null;
+            this.Status.ImageVisible = false;
+            this.Status.Index = 0;
+            this.Status.IntegralHeight = false;
+            this.Status.ItemHeight = 23;
+            this.Status.ItemImageVisible = true;
+            this.Status.Location = new System.Drawing.Point(21, 284);
+            this.Status.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Status.MenuItemNormal = System.Drawing.Color.White;
+            this.Status.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Status.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Status.Name = "Status";
+            this.Status.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Status.Size = new System.Drawing.Size(199, 29);
+            this.Status.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Status.TabIndex = 205;
+            this.Status.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Status.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Status.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Status.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Status.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Status.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Status.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Status.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Status.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Status.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Status.Watermark.Text = "Watermark text";
+            this.Status.Watermark.Visible = false;
             // 
-            // label6
+            // label13
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(18, 469);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 17);
-            this.label6.TabIndex = 203;
-            this.label6.Text = "Buscar por ID";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(20, 264);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 17);
+            this.label13.TabIndex = 204;
+            this.label13.Text = "Status";
             // 
             // Pedido
             // 
@@ -806,9 +865,10 @@
         private System.Windows.Forms.Button imprimir;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Usuarios;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton filterRemovido;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscaID;
         private System.Windows.Forms.Label label6;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Status;
+        private System.Windows.Forms.Label label13;
     }
 }

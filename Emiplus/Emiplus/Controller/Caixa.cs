@@ -89,7 +89,7 @@ namespace Emiplus.Controller
         {
             CheckCaixa();
 
-            var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).Where("criado", "<", Validation.ConvertDateToSql(DateTime.Now)).FirstOrDefault();
+            var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).Where("criado", "<", Validation.ConvertDateToSql(DateTime.Now)).WhereFalse("excluir").FirstOrDefault();
             if (Caixa != null)
             {
                 Home.idCaixa = Caixa.ID;
@@ -100,12 +100,24 @@ namespace Emiplus.Controller
                 var result = AlertOptions.Message(caption, message, AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
+                    DetailsCaixa.idCaixa = Home.idCaixa;
                     DetailsCaixa f = new DetailsCaixa();
                     f.ShowDialog();
                 } 
                 else
                 {
                     AlertOptions.Message("Atenção!", "Os recebimentos gerados a partir de vendas serão lançados no caixa aberto!", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                }
+            }
+
+            var CaixaAberto = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).WhereFalse("excluir").FirstOrDefault();
+            if (CaixaAberto == null)
+            {
+                var result = AlertOptions.Message("Atenção!", $"Você não possui um Caixa aberto.{Environment.NewLine} Deseja abrir agora?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    AbrirCaixa f = new AbrirCaixa();
+                    f.ShowDialog();
                 }
             }
         }
@@ -115,7 +127,7 @@ namespace Emiplus.Controller
             // Verifica se o caixa do usuário está aberto 
             if (Home.idCaixa == 0)
             {
-                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
+                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).WhereFalse("excluir").FirstOrDefault();
                 if (Caixa != null)
                 {
                     Home.idCaixa = Caixa.ID;

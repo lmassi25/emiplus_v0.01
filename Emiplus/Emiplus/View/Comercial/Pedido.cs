@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -136,7 +137,7 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text));
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
         }   
 
         private void EditPedido(bool create = false)
@@ -212,11 +213,20 @@ namespace Emiplus.View.Comercial
                 AutoCompletePessoas();
                 AutoCompleteUsers();
 
-                //dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
 
+                var status = new ArrayList();
+                status.Add(new { ID = 0, NOME = "Todos" });
+                status.Add(new { ID = 1, NOME = "Recebimento Pendente"});
+                status.Add(new { ID = 2, NOME = @"Finalizado\Recebido"});
+                
+                Status.DataSource = status;
+                Status.DisplayMember = "NOME";
+                Status.ValueMember = "ID";
+
                 filterTodos.Checked = true;
+                Status.SelectedValue = "";
             };
 
             BuscarPessoa.KeyDown += (s, e) =>
@@ -251,6 +261,25 @@ namespace Emiplus.View.Comercial
             label5.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+
+            GridLista.CellFormatting += (s, e) =>
+            {
+                foreach (DataGridViewRow row in GridLista.Rows)
+                {
+                    if (row.Cells[7].Value.ToString().Contains("Finalizado"))
+                    {
+                        row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[7].Style.ForeColor = Color.White;
+                        row.Cells[7].Style.BackColor = Color.FromArgb(139, 215, 146);
+                    }
+                    else
+                    {
+                        row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[7].Style.ForeColor = Color.White;
+                        row.Cells[7].Style.BackColor = Color.FromArgb(255, 89, 89);
+                    }
+                }
+            };
 
             using (var b = WorkerBackground)
             {

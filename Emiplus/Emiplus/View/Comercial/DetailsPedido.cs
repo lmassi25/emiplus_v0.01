@@ -82,7 +82,8 @@ namespace Emiplus.View.Comercial
             {
                 if (Home.idCaixa == 0)
                 {
-                    if (AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo))
+                    var result = AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                    if (result)
                     {
                         AbrirCaixa f = new AbrirCaixa();
                         if (f.ShowDialog() == DialogResult.OK)
@@ -91,8 +92,10 @@ namespace Emiplus.View.Comercial
                         }
                     }
                 }
-
-                OpenPedidoPagamentos();
+                else
+                {
+                    OpenPedidoPagamentos();
+                }
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
