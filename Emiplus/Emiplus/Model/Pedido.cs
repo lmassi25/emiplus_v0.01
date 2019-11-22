@@ -2,6 +2,7 @@
 {
     using Data.Database;
     using Emiplus.Data.Helpers;
+    using Emiplus.Properties;
     using Emiplus.View.Common;
     using SqlKata;
     using System;
@@ -60,35 +61,9 @@
         public string Especie_Frete { get; set; }
         public string Marca_Frete { get; set; }
         public int Id_Transportadora { get; set; }
+        public int Id_Caixa { get; set; } = Home.idCaixa;
+        public int id_usuario { get; set; } = Settings.Default.user_id;
 
-        public int Id_Caixa { get; set; }
-
-        #endregion
-
-        #region SQL CREATE
-        //CREATE TABLE PEDIDO
-        //(
-        //id integer not null primary key,
-        //tipo integer not null,
-        //excluir integer,
-        //criado timestamp,
-        //atualizado timestamp,
-        //deletado timestamp,
-        //empresaid varchar(255),
-        //        cliente integer,
-        //        colaborador integer,
-        //        total numeric(18, 4),
-        //        desconto numeric(18, 4),
-        //        frete numeric(18, 4),
-        //        produtos numeric(18, 4),
-        //        icms numeric(18, 4),
-        //        icmsst numeric(18, 4),
-        //        ipi numeric(18, 4),
-        //        icmsbase numeric(18, 4),
-        //        icmstbase numeric(18, 4),
-        //        pis numeric(18, 4),
-        //        cofins numeric(18, 4)
-        //);
         #endregion
 
         #region Generator
@@ -151,8 +126,7 @@
                 if (Data(data).Create() != 1)
                     return false;
             }
-
-            if (data.Id > 0)
+            else
             {
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) != 1)

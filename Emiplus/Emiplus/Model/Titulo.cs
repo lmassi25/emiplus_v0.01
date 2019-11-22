@@ -2,6 +2,7 @@
 {
     using Data.Database;
     using Data.Helpers;
+    using Emiplus.Properties;
     using SqlKata;
     using System;
     using Valit;
@@ -38,6 +39,8 @@
         public double Baixa_id_formapgto { get; set; }
         public int Id_Caixa_Mov { get; set; }
         public string Obs { get; set; }
+        public int id_usuario { get; set; } = Settings.Default.user_id;
+
         #endregion 
 
         public Titulo SetTipo(string tipo)

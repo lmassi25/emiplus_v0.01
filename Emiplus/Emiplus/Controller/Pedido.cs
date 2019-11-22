@@ -110,7 +110,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -120,11 +120,20 @@ namespace Emiplus.Controller
             .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
             .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
             .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")            
-            .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
+            .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
             .Where("pedido.excluir", excluir)
             .Where("pedido.tipo", tipo)
             .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
             .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (usuario != 0)
+                query.Where("pedido.colaborador", usuario);
+
+            if (status != 0)
+                query.Where("pedido.status", status);
+
+            if (idPedido != 0)
+                query.Where("pedido.id", idPedido);
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
@@ -164,12 +173,12 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
-            Table.ColumnCount = 8;
+            Table.ColumnCount = 9;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
@@ -180,29 +189,32 @@ namespace Emiplus.Controller
             Table.Columns[1].Width = 50;
 
             Table.Columns[2].Name = "Emissão";
-            Table.Columns[2].Width = 50;
+            Table.Columns[2].MinimumWidth = 80;
 
             Table.Columns[3].Name = "Cliente";
             Table.Columns[3].Width = 150;
 
             Table.Columns[4].Name = "Total";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 100;
+            Table.Columns[4].Width = 70;
             
             Table.Columns[5].Name = "Colaborador";
             Table.Columns[5].Width = 150;
 
             Table.Columns[6].Name = "Criado em";
             Table.Columns[6].Width = 120;
-            
-            Table.Columns[7].Name = "EXCLUIR";
-            Table.Columns[7].Visible = false;
+
+            Table.Columns[7].Name = "Status";
+            Table.Columns[7].MinimumWidth = 150;
+
+            Table.Columns[8].Name = "EXCLUIR";
+            Table.Columns[8].Visible = false;
 
             Table.Rows.Clear();
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir);
+                IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
                 Data = dados;
             }
 
@@ -216,6 +228,7 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
                     item.CRIADO,
+                    (item.STATUS == 1 ? "Recebimento Pendente" : @"Finalizado\Recebido"),
                     item.EXCLUIR
                 );
             }
