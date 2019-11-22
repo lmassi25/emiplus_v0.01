@@ -1,4 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
 
@@ -220,9 +222,29 @@ namespace Emiplus.View.Comercial
 
             btnConcluir.Click += (s, e) =>
             {
+                Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
+                Pedido.Id = IdPedido;
+                if (_mPedido.Total < _controllerTitulo.GetLancados(IdPedido))
+                {
+                    //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    //return;
+                    Pedido.status = 1; //FINALIZADO\RECEBIDO
+                }
+                else
+                {
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE
+                }           
+                
+                Pedido.Save(Pedido);
+                
                 Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
                 AddPedidos.btnFinalizado = true;
+
+                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                {
+
+                }
 
                 Application.OpenForms["AddPedidos"].Close();
                 Close();

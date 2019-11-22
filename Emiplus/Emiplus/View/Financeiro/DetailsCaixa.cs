@@ -18,7 +18,7 @@ namespace Emiplus.View.Financeiro
 {
     public partial class DetailsCaixa : Form
     {
-        public static int idCaixa { get; set; } = Home.idCaixa;
+        public static int idCaixa { get; set; }
 
         private Controller.Caixa _controllerCaixa = new Controller.Caixa();
         private Model.Caixa _modelCaixa = new Model.Caixa();
@@ -42,8 +42,9 @@ namespace Emiplus.View.Financeiro
         {
             _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
             
-            caixa.Text = _modelCaixa.Terminal;
-            nrTerminal.Text = _modelCaixa.Terminal;
+            caixa.Text = _modelCaixa.Id.ToString();
+            nrCaixa.Text = _modelCaixa.Id.ToString();
+            terminal.Text = _modelCaixa.Terminal;
             aberto.Text = Validation.ConvertDateToForm(_modelCaixa.Criado, true);
             label7.Text = _modelCaixa.Tipo == "Aberto" ? "Caixa Aberto" : "Caixa Fechado";
 
@@ -92,7 +93,8 @@ namespace Emiplus.View.Financeiro
             model.Where("id_caixa", idCaixa);
             model.WhereFalse("CAIXA_MOV.excluir");
             model.LeftJoin("FORMAPGTO", "FORMAPGTO.id", "CAIXA_MOV.id_formapgto");
-            model.Select("FORMAPGTO.nome as nome_pgto", "CAIXA_MOV.*");
+            model.LeftJoin("USUARIOS", "USUARIOS.id_user", "CAIXA_MOV.id_user");
+            model.Select("FORMAPGTO.nome as nome_pgto", "CAIXA_MOV.*", "USUARIOS.NOME as USER_NAME");
             model.OrderByDesc("CAIXA_MOV.criado");
             return model.GetAsync<dynamic>();
         }
@@ -102,7 +104,8 @@ namespace Emiplus.View.Financeiro
             var model = new Model.Titulo().Query();
             model.Where("id_caixa", idCaixa);
             model.LeftJoin("FORMAPGTO", "FORMAPGTO.id", "TITULO.ID_FORMAPGTO");
-            model.Select("FORMAPGTO.nome as nome_pgto", "TITULO.*");
+            model.LeftJoin("USUARIOS", "USUARIOS.id_user", "TITULO.id_usuario");
+            model.Select("FORMAPGTO.nome as nome_pgto", "TITULO.*", "USUARIOS.NOME as USER_NAME");
             model.OrderByDesc("TITULO.criado");
             return model.GetAsync<dynamic>();
         }
@@ -129,7 +132,8 @@ namespace Emiplus.View.Financeiro
                     CRIADO = item.CRIADO,
                     DESCRICAO = item.DESCRICAO,
                     VALOR = item.VALOR,
-                    NOME_PGTO = item.NOME_PGTO
+                    NOME_PGTO = item.NOME_PGTO,
+                    USER_NAME = item.USER_NAME
                 });
             }
 
@@ -142,7 +146,8 @@ namespace Emiplus.View.Financeiro
                     CRIADO = item.CRIADO,
                     DESCRICAO = $"Venda N° {item.ID_PEDIDO}",
                     VALOR = item.TOTAL,
-                    NOME_PGTO = item.NOME_PGTO
+                    NOME_PGTO = item.NOME_PGTO,
+                    USER_NAME = item.USER_NAME
                 });
             }
 
@@ -151,10 +156,10 @@ namespace Emiplus.View.Financeiro
 
         public async Task SetTable(DataGridView Table)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             
             Table.RowHeadersVisible = false;
 
@@ -163,16 +168,18 @@ namespace Emiplus.View.Financeiro
             
             Table.Columns[1].Name = "Data/Hora";
             Table.Columns[1].Width = 100;
-            //Table.Columns[1].SortMode = DataGridViewColumnSortMode.Automatic;
         
             Table.Columns[2].Name = "Descrição";
-            Table.Columns[2].Width = 150;
+            Table.Columns[2].MinimumWidth = 230;
 
             Table.Columns[3].Name = "Valor";
             Table.Columns[3].Width = 80;
 
             Table.Columns[4].Name = "Forma Pagto.";
             Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "Usuário";
+            Table.Columns[5].Width = 150;
 
             Table.Rows.Clear();
 
@@ -186,16 +193,20 @@ namespace Emiplus.View.Financeiro
                     Validation.ConvertDateToForm(item.CRIADO, true),
                     item.DESCRICAO,
                     valor,
-                    item.NOME_PGTO
+                    item.NOME_PGTO,
+                    item.USER_NAME
                 );
             }
 
             Table.Sort(Table.Columns[1], System.ComponentModel.ListSortDirection.Descending);
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void EditMovimentacao()
         {
+            if (Restrito()) return;
+
             if (GridLista.SelectedRows.Count == 0)
                 return;
 
@@ -216,6 +227,17 @@ namespace Emiplus.View.Financeiro
             }
         }
 
+        private bool Restrito()
+        {
+            if (Home.idCaixa != idCaixa)
+            {
+                Alert.Message("Oppss!", "Você não tem permissão para fazer alterações nesse caixa.", Alert.AlertType.warning);
+                return true;
+            }
+
+            return false;
+        }
+
         private void Eventos()
         {
             Load += async (s, e) =>
@@ -229,6 +251,8 @@ namespace Emiplus.View.Financeiro
 
             btnLancamentos.Click += (s, e) =>
             {
+                if (Restrito()) return;
+
                 if (_modelCaixa.Tipo == "Fechado")
                 {
                     Alert.Message("Oppss!", "Não é possível fazer lançamentos em um caixa fechado.", Alert.AlertType.warning);
@@ -246,6 +270,8 @@ namespace Emiplus.View.Financeiro
 
             FecharCaixa.Click += (s, e) =>
             {
+                if (Restrito()) return;
+
                 Financeiro.FecharCaixa.idCaixa = idCaixa;
                 FecharCaixa f = new FecharCaixa();
                 if (f.ShowDialog() == DialogResult.OK)
@@ -253,6 +279,8 @@ namespace Emiplus.View.Financeiro
                     txtFechado.Text = DateTime.Now.ToString("dd/mm/YYYY HH:mm");
                     panel7.BackColor = Color.FromArgb(192, 0, 0);
                     label7.Text = "Caixa Fechado";
+                    FecharCaixa.Enabled = false;
+                    btnLancamentos.Enabled = false;
                 }
             };
 
@@ -284,6 +312,8 @@ namespace Emiplus.View.Financeiro
 
         private async Task RenderizarAsync()
         {
+            if (Restrito()) return;
+
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomCaixaConferencia.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
@@ -298,7 +328,7 @@ namespace Emiplus.View.Financeiro
                 txtSaldoInicial = txtSaldoInicial.Text,
                 txtAberto = aberto.Text,
                 txtFechado = txtFechado.Text,
-                nrTerminal = nrTerminal.Text,
+                nrTerminal = nrCaixa.Text,
                 txtVendasTotal = txtVendasTotal.Text,
                 txtVendasAcrescimos = txtVendasAcrescimos.Text,
                 txtVendasDescontos = txtVendasDescontos.Text,

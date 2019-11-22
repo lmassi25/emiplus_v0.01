@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
@@ -54,35 +55,22 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados da Compra: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma nova compra!";
                 btnConcluir.Text = "Pagamento";
-            } else {
+            } else {                
                 label2.Text = $"Dados da Venda: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma nova venda!";
                 btnConcluir.Text = "Receber";
+
+                if (Home.idCaixa == 0)
+                {
+                    btnConcluir.Text = "Finalizar";
+                }
             }
 
             LoadCliente();
             LoadColaboradorCaixa();
             LoadTotais();
 
-            switch (Home.pedidoPage)
-            {
-
-                case "Orçamentos":
-                    ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                    break;
-
-                case "Consignações":
-                    ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                    break;
-
-                case "Compras":
-                    ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                    break;
-
-                default:
-                    ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                    break;
-            }
+            ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         /// <summary>
@@ -162,13 +150,32 @@ namespace Emiplus.View.Comercial
         {
             if (GridListaProdutos.SelectedRows.Count <= 0)
             {
-                MessageBox.Show("Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir para os recebimentos.", "Opsss");
+                AlertOptions.Message("Atenção!", "Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                 return;
+            }
+
+            if (btnConcluir.Text == "Finalizar")
+            {
+                btnFinalizado = true;
+                _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                _mPedido.Id = Id;
+                _mPedido.Tipo = "Vendas";
+                _mPedido.status = 1; //RECEBIMENTO PENDENTE
+                _mPedido.Save(_mPedido);
+
+                Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+
+                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                {
+                    
+                }
+
+                Close();
             }
 
             if (Home.pedidoPage == "Compras")
             {
-                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Model.Pedido Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 Pedido.Tipo = "Compras";
                 Pedido.Save(Pedido);
 
@@ -176,7 +183,7 @@ namespace Emiplus.View.Comercial
             }
             else
             {
-                var Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                Model.Pedido Pedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 Pedido.Tipo = "Vendas";
                 Pedido.Save(Pedido);
 
@@ -465,12 +472,14 @@ namespace Emiplus.View.Comercial
                 }
                 else
                 {
-                    _mPedido.Id = Id;
+                    _mPedido.Id = 0;
                     _mPedido.Cliente = 1;
+                    _mPedido.Colaborador = Settings.Default.user_id;
                     _mPedido.Tipo = Home.pedidoPage;
                     if (_mPedido.Save(_mPedido))
                     {
                         Id = _mPedido.GetLastId();
+                        _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
                         LoadData();
                     }
                     else

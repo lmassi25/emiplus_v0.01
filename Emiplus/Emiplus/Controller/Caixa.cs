@@ -89,25 +89,35 @@ namespace Emiplus.Controller
         {
             CheckCaixa();
 
-            var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).Where("criado", "<", Validation.ConvertDateToSql(DateTime.Now)).FirstOrDefault();
+            var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).Where("criado", "<", Validation.ConvertDateToSql(DateTime.Now)).WhereFalse("excluir").FirstOrDefault();
             if (Caixa != null)
             {
                 Home.idCaixa = Caixa.ID;
 
-                string message = $"Existe um caixa aberto do dia {Validation.ConvertDateToForm(Caixa.CRIADO, true)}, deseja fechar?";
-                string caption = "Aviso!";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
+                string message = $"Antes de começar, há um caixa aberto do dia: {Validation.ConvertDateToForm(Caixa.CRIADO)}. {Environment.NewLine}Deseja realizar o FECHAMENTO agora?";
+                string caption = "Atenção!";
 
-                result = MessageBox.Show(message, caption, buttons);
-                if (result == DialogResult.Yes)
+                var result = AlertOptions.Message(caption, message, AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
+                    DetailsCaixa.idCaixa = Home.idCaixa;
                     DetailsCaixa f = new DetailsCaixa();
                     f.ShowDialog();
                 } 
                 else
                 {
-                    MessageBox.Show("Os recebimentos gerados a partir de vendas serão lançados no caixa aberto!", "Atenção", MessageBoxButtons.OK);
+                    AlertOptions.Message("Atenção!", "Os recebimentos gerados a partir de vendas serão lançados no caixa aberto!", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                }
+            }
+
+            var CaixaAberto = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).WhereFalse("excluir").FirstOrDefault();
+            if (CaixaAberto == null)
+            {
+                var result = AlertOptions.Message("Atenção!", $"Você não possui um Caixa aberto.{Environment.NewLine} Deseja abrir agora?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    AbrirCaixa f = new AbrirCaixa();
+                    f.ShowDialog();
                 }
             }
         }
@@ -117,7 +127,7 @@ namespace Emiplus.Controller
             // Verifica se o caixa do usuário está aberto 
             if (Home.idCaixa == 0)
             {
-                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
+                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).WhereFalse("excluir").FirstOrDefault();
                 if (Caixa != null)
                 {
                     Home.idCaixa = Caixa.ID;

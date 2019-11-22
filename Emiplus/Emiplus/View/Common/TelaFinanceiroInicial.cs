@@ -62,21 +62,51 @@ namespace Emiplus.View.Common
             
             AbrirCaixa.Click += (s, e) =>
             {
-                var Caixa = new Model.Caixa().Query().Where("tipo", "Aberto").Where("usuario", Settings.Default.user_id).FirstOrDefault();
-                if (Caixa != null)
+                if (Home.idCaixa == 0)
                 {
-                    Alert.Message("Oppss!", "Você possui um caixa aberto, feche antes de abrir um novo!", Alert.AlertType.warning);
-                    return;
+                    AbrirCaixa f = new AbrirCaixa();
+                    f.ShowDialog();
                 }
-
-                AbrirCaixa f = new AbrirCaixa();
-                f.ShowDialog();
+                else
+                {
+                    Alert.Message("Oopps!", "Já existe um caixa aberto.", Alert.AlertType.warning);
+                }
             };
 
             Caixa.Click += (s, e) =>
             {
                 Caixa f = new Caixa();
                 f.ShowDialog();
+            };
+
+            EntradaSaidaCaixa.Click += (s, e) =>
+            {
+                if (Home.idCaixa == 0)
+                {
+                    Alert.Message("Oopps!", "Você não possui um caixa aberto.", Alert.AlertType.warning);
+                    return;
+                }
+
+                AddCaixaMov.idCaixa = Home.idCaixa;
+                AddCaixaMov.idMov = 0;
+                var f = new AddCaixaMov();
+                f.ShowDialog();
+            };
+
+            FecharCaixa.Click += (s, e) =>
+            {
+                if (Home.idCaixa == 0)
+                {
+                    Alert.Message("Oopps!", "Você não possui um caixa aberto.", Alert.AlertType.warning);
+                    return;
+                }
+
+                Financeiro.FecharCaixa.idCaixa = Home.idCaixa;
+                FecharCaixa f = new FecharCaixa();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Alert.Message("Pronto!", "Caixa fechado com sucesso.", Alert.AlertType.success);
+                }
             };
         }
     }

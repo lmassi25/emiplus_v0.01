@@ -222,6 +222,7 @@
     <Compile Include="Data\Helpers\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Helpers\AlertOptions.cs" />
     <Compile Include="Data\Helpers\CEP.cs" />
     <Compile Include="Data\Helpers\Masks.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
@@ -1043,6 +1044,10 @@
     <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Images\icons\info %281%29.png" />
+    <None Include="Assets\Images\icons\success.png" />
+    <None Include="Assets\Images\icons\error.png" />
+    <None Include="Assets\Images\icons\warning.png" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />

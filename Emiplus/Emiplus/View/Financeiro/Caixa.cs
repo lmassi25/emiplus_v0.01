@@ -59,6 +59,7 @@ namespace Emiplus.View.Financeiro
 
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "CAIXA.usuario");
             model.Select("CAIXA.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user");
+            model.Where("CAIXA.excluir", "0");
             model.OrderByRaw("CAIXA.tipo ASC");
             model.OrderByDesc("CAIXA.criado");
             return model.GetAsync<dynamic>();
@@ -66,7 +67,7 @@ namespace Emiplus.View.Financeiro
         
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
-            Table.ColumnCount = 9;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -74,7 +75,7 @@ namespace Emiplus.View.Financeiro
             Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            Table.Columns[0].Width = 60;
 
             Table.Columns[1].Name = "Terminal";
             Table.Columns[1].Width = 60;
@@ -85,20 +86,11 @@ namespace Emiplus.View.Financeiro
             Table.Columns[3].Name = "Fechado em";
             Table.Columns[3].Width = 100;
 
-            Table.Columns[4].Name = "Saldo Inicial";
-            Table.Columns[4].Width = 80;
+            Table.Columns[4].Name = "Aberto por";
+            Table.Columns[4].Width = 130;
 
-            Table.Columns[5].Name = "Saldo Final";
+            Table.Columns[5].Name = "Status";
             Table.Columns[5].Width = 80;
-
-            Table.Columns[6].Name = "Saldo Final Informado";
-            Table.Columns[6].Width = 80;
-
-            Table.Columns[7].Name = "Usuário";
-            Table.Columns[7].Width = 130;
-
-            Table.Columns[8].Name = "Status";
-            Table.Columns[8].Width = 50;
 
             Table.Rows.Clear();
 
@@ -117,15 +109,12 @@ namespace Emiplus.View.Financeiro
                     item.TERMINAL,
                     Validation.ConvertDateToForm(item.CRIADO, true),
                     Validation.ConvertDateToForm(item.FECHADO, true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.SALDO_INICIAL), true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.SALDO_FINAL), true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.SALDO_FINAL_INFORMADO), true),
                     item.NOME_USER,
                     item.TIPO
                 );
             }
 
-            Table.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void ShowDetailsCaixa()
@@ -165,6 +154,25 @@ namespace Emiplus.View.Financeiro
                 dataFinal.Text = DateTime.Now.ToString("dd/MM/yyyy 23:59");
 
                 await DataTableAsync();
+            };
+
+            GridLista.CellFormatting += (s, e) =>
+            {
+                foreach (DataGridViewRow row in GridLista.Rows)
+                {
+                    if (row.Cells[5].Value.ToString().Contains("Fechado"))
+                    {
+                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[5].Style.ForeColor = Color.White;
+                        row.Cells[5].Style.BackColor = Color.FromArgb(139, 215, 146);
+                    }
+                    else
+                    {
+                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[5].Style.ForeColor = Color.White;
+                        row.Cells[5].Style.BackColor = Color.FromArgb(255, 89, 89);
+                    }
+                }
             };
 
             btnSearch.Click += async (s, e) => await DataTableAsync();
