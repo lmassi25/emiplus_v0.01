@@ -1,10 +1,17 @@
 ﻿using Emiplus.Data.Core;
+using Emiplus.View.Common;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
     public class Support
     {
+        public static void Video(string videoUrl)
+        {
+            VideoTutorial f = new VideoTutorial(videoUrl);
+            f.Show();
+        }
+
         public static string BasePath()
         {
             return IniFile.Read("Path", "LOCAL");
