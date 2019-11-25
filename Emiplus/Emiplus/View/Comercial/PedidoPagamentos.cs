@@ -15,7 +15,9 @@ namespace Emiplus.View.Comercial
         private Model.Titulo _mTitulo = new Model.Titulo();
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
-        
+
+        private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
+
         public PedidoPagamentos()
         {
             InitializeComponent();
@@ -191,7 +193,13 @@ namespace Emiplus.View.Comercial
             Acrescimo.KeyDown += KeyDowns;
 
             btnClose.KeyDown += KeyDowns;
-            btnCFeSat.KeyDown += KeyDowns;
+            
+            btnCFeSat.KeyDown += (s, e) =>
+            {
+                KeyDowns(s, e);
+                MessageBox.Show(_controllerFiscal.Emitir(357, "CFe"));
+            };
+            
             btnNfe.KeyDown += KeyDowns;
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
