@@ -97,7 +97,8 @@ namespace Emiplus.Data.Database
         /// <returns>Retorna objeto</returns>
         public SqlKata.Query FindById(int id)
         {
-            try {
+            try 
+            {
                 var data = db.Query(Entity).Where("ID", id);
                 return data;
             }
