@@ -30,14 +30,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Imprimir.Click += (s, e) =>
             {
-                retorno.Text = new Controller.Fiscal().Print(Id, "NFe");
+                retorno.Text = new Controller.Fiscal().Imprimir(Id, "NFe");
             };
 
             using (var b = WorkerBackground)
             {
                 b.DoWork += async (s, e) =>
                 {
-                    _msg = new Controller.Fiscal().Issue(Id, "NFe");
+                    _msg = new Controller.Fiscal().Emitir(Id, "NFe");
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>

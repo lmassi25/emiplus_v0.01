@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -7,6 +8,18 @@ namespace Emiplus.Controller
 {
     class PedidoItem : Data.Core.Controller
     {
+        public IEnumerable<dynamic> GetDataItens(int idPedido)
+        {
+            var itens = new Model.PedidoItem().Query()
+                .LeftJoin("item", "item.id", "pedido_item.item")
+                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.total", "item.nome", "item.referencia")
+                .Where("pedido_item.pedido", idPedido)
+                .Where("pedido_item.excluir", 0)
+                .Where("pedido_item.tipo", "Produtos");
+
+            return itens.Get();
+        }
+
         /// <summary>
         /// Alimenta o Datagrid da tela de Vendas e da tela Detalhes do Pedido.
         /// </summary>
@@ -49,13 +62,15 @@ namespace Emiplus.Controller
             if (idPedido <= 0)
                 return;
 
-            var itens = new Model.PedidoItem().Query()
-                .LeftJoin("item", "item.id", "pedido_item.item")
-                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.total", "item.nome", "item.referencia")
-                .Where("pedido_item.pedido", idPedido)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos")
-                .Get();
+            //var itens = new Model.PedidoItem().Query()
+            //    .LeftJoin("item", "item.id", "pedido_item.item")
+            //    .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.total", "item.nome", "item.referencia")
+            //    .Where("pedido_item.pedido", idPedido)
+            //    .Where("pedido_item.excluir", 0)
+            //    .Where("pedido_item.tipo", "Produtos")
+            //    .Get();
+
+            var itens = GetDataItens(idPedido);
 
             int count = 1;
             foreach (var data in itens)

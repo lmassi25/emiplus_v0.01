@@ -17,7 +17,9 @@ namespace Emiplus.View.Comercial
         private Model.Titulo _mTitulo = new Model.Titulo();
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
-        
+
+        private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
+
         public PedidoPagamentos()
         {
             InitializeComponent();
@@ -193,7 +195,13 @@ namespace Emiplus.View.Comercial
             Acrescimo.KeyDown += KeyDowns;
 
             btnClose.KeyDown += KeyDowns;
-            btnCFeSat.KeyDown += KeyDowns;
+            
+            btnCFeSat.KeyDown += (s, e) =>
+            {
+                KeyDowns(s, e);
+                MessageBox.Show(_controllerFiscal.Emitir(357, "CFe"));
+            };
+            
             btnNfe.KeyDown += KeyDowns;
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
@@ -228,11 +236,11 @@ namespace Emiplus.View.Comercial
                 {
                     //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     //return;
-                    Pedido.status = 1; //FINALIZADO\RECEBIDO
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE
                 }
                 else
                 {
-                    Pedido.status = 2; //RECEBIMENTO PENDENTE
+                    Pedido.status = 1; //FINALIZADO\RECEBIDO
                 }           
                 
                 Pedido.Save(Pedido);

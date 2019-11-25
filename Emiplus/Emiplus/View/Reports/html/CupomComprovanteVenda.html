@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://www.emiplus.com.br/razor/css/Cupom.css?v=36" rel="stylesheet" />
+</head>
+<body>
+
+    <table class="printer-ticket">
+        <thead>
+            <tr>
+                <th colspan="4"><img src="https://www.emiplus.com.br/{{Logo}}" style="height: 70px;" /><br />{{NomeFantasia}}<br />CNPJ: {{CNPJ}}<br>Endereço: {{AddressEmpresa}}</th>
+            </tr>
+            <tr>
+                <th class="ttu" colspan="3">
+                    <b>Comprovante de Venda</b>
+                </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="ttu">
+                <td colspan="2">Responsável:</td>
+                <td align="right">{{Vendedor}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Emitido:</td>
+                <td align="right">{{Emissao}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Terminal:</td>
+                <td align="right">{{Caixa}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">N° da Venda:</td>
+                <td align="right">{{NrVenda}}</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Dados do Cliente</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Nome:</td>
+                <td align="right">{{Cliente}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Endereço:</td>
+                <td align="right" style="width: 223px;">{{Endereco}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Telefone:</td>
+                <td align="right">{{Telefone}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table class="printer-ticket-itens">
+        <thead>
+            <tr>
+                <th class="ttu" colspan="6" style="border-bottom: none; padding: 3px">
+                    <b>Produtos</b>
+                </th>
+            </tr>
+        <th colspan="1" width="20px">Item</th>
+        <th colspan="1" width="73px">Cód. Barras</th>
+        <th colspan="1" width="108px">Desc</th>
+        <th colspan="1">Qtd</th>
+        <th colspan="1">Preço</th>
+        </thead>
+        <tfoot>
+            {% for item in Data %}
+            <tr class="ttu">
+                <td align="left" colspan="1">{{item.Nr}}</td>
+                <td align="left">{{item.CodeBarras}}</td>
+                <td>{{item.Nome}}</td>
+                <td align="right">{{item.Qtd}}</td>
+                <td align="right">{{item.Price}}</td>
+            </tr>
+            {% endfor %}
+            <tr class="sup ttu p--0">
+                <td colspan="5">
+                    <b>Pagamento</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="3">TOTAL:</td>
+                <td colspan="2" align="right">{{Total}}</td>
+            </tr>
+            {% for item in Pagamentos %}
+            <tr class="ttu">
+                <td colspan="3">{{item.Forma}}:</td>
+                <td colspan="2" align="right">{{item.Valor}}</td>
+            </tr>
+            {% endfor %}
+            <tr class="ttu">
+                <td colspan="3">Troco:</td>
+                <td colspan="2" align="right">{{Troco}}</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="5">
+                    <b>Observações</b>
+                </td>
+            </tr>
+            <tr class="center ttu p--0">
+                <td colspan="5">
+                    Documento não fiscal
+                </td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="6" style="text-align: center">Emitido por <img src="https://www.emiplus.com.br/app/templates/default/assets/img/logo-2.png" width="80px" style="vertical-align: middle; padding-left: 5px;"><br><small>www.emiplus.com.br</small></td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
