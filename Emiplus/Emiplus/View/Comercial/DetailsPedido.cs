@@ -1,8 +1,15 @@
-﻿using Emiplus.Data.Helpers;
+﻿using DotLiquid;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Financeiro;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +19,8 @@ namespace Emiplus.View.Comercial
     {
         private Model.Pedido _modelPedido = new Model.Pedido();
 
+        private Model.PessoaContato _modelPessoaContato = new Model.PessoaContato();
+        private Model.PessoaEndereco _modelPessoaAddr = new Model.PessoaEndereco();
         private Model.Pessoa _modelPessoa = new Model.Pessoa();
         private Model.Usuarios _modelUsuario = new Model.Usuarios();
 
@@ -96,6 +105,75 @@ namespace Emiplus.View.Comercial
                 {
                     OpenPedidoPagamentos();
                 }
+            };
+
+            btnImprimir.Click += (s, e) =>
+            {
+
+                IEnumerable<dynamic> dados = new Controller.PedidoItem().GetDataItens(idPedido);
+
+                ArrayList data = new ArrayList();
+                var nr = 0;
+                foreach (var item in dados)
+                {
+                    nr++;
+                    data.Add(new
+                    {
+                        Nr = nr,
+                        Nome = item.NOME,
+                        CodeBarras = item.CODEBARRAS,
+                        Ref = item.REFERENCIA,
+                        Qtd = item.QUANTIDADE,
+                        ValorVenda = item.VALORVENDA,
+                        Price = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
+                    });
+                }
+
+                var dataPgtos = _controllerTitulo.GetDataPgtosLancados(idPedido);
+                ArrayList newDataPgtos = new ArrayList();
+                foreach (var item in dataPgtos)
+                {
+                    newDataPgtos.Add(new
+                    {
+                        Forma = item.FORMAPGTO,
+                        Valor = Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
+                    });
+                }
+
+                Model.Pessoa dataCliente = _modelPessoa.FindById(_modelPedido.Cliente).FirstOrDefault<Model.Pessoa>();
+                Model.Usuarios dataVendedor = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+                _modelPessoaAddr = _modelPessoaAddr.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaEndereco>();
+                _modelPessoaContato = _modelPessoaContato.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaContato>();
+
+                var Addr = _modelPessoaAddr.Rua + " " + _modelPessoaAddr.Nr + " - CEP: " + _modelPessoaAddr.Cep + " - " + _modelPessoaAddr.Complemento + " | " + _modelPessoaAddr.Bairro + " - " + _modelPessoaAddr.Cidade + "/" + _modelPessoaAddr.Estado;
+
+                var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomComprovanteVendaA4.html"));
+                var render = html.Render(Hash.FromAnonymousObject(new
+                {
+                    NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                    CNPJ = Settings.Default.empresa_cnpj,
+                    AddressEmpresa = $"{Settings.Default.empresa_rua} {Settings.Default.empresa_nr} - {Settings.Default.empresa_cep} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
+                    Logo = Settings.Default.empresa_logo,
+                    Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                    Cliente = dataCliente.Nome,
+                    Vendedor = dataVendedor.Nome,
+                    Caixa = caixa.Text,
+                    Endereco = Addr,
+                    Telefone = _modelPessoaContato.Telefone,
+                    Celular = _modelPessoaContato.Celular,
+                    Data = data,
+                    Troco = txtTroco.Text.Replace("-", ""),
+                    Pagamentos = newDataPgtos,
+                    subTotal = txtSubtotal.Text,
+                    Descontos = txtDesconto.Text,
+                    Acrescimo = txtAcrescimo.Text,
+                    Total = txtPagar.Text,
+                    NrVenda = idPedido
+                }));
+
+                Browser.htmlRender = render;
+                var f = new Browser();
+                f.ShowDialog();
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");

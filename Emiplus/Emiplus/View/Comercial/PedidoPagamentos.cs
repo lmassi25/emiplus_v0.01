@@ -236,11 +236,11 @@ namespace Emiplus.View.Comercial
                 {
                     //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     //return;
-                    Pedido.status = 1; //FINALIZADO\RECEBIDO
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE
                 }
                 else
                 {
-                    Pedido.status = 2; //RECEBIMENTO PENDENTE
+                    Pedido.status = 1; //FINALIZADO\RECEBIDO
                 }           
                 
                 Pedido.Save(Pedido);

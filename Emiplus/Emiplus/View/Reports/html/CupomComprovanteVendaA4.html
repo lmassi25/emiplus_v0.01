@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+
+    <link href="https://www.emiplus.com.br/razor/css/invoice-2.css?v=2" rel="stylesheet">
+    <link href="https://www.emiplus.com.br/razor/css/style.bundle.css?v=2" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="kt-invoice-2">
+        <div class="kt-invoice__head">
+            <div class="kt-invoice__container">
+                <div class="kt-invoice__brand">
+                    <h1 class="kt-invoice__title">COMPROVANTE DE VENDA</h1>
+                    <div href="#" class="kt-invoice__logo">
+                        <a href="#"><img src="https://www.emiplus.com.br/{{Logo}}" width="70px"></a>
+                        <span class="kt-invoice__desc">
+                            <span>{{NomeFantasia}} CNPJ: {{CNPJ}}</span>
+                            <span>Endereço: {{AddressEmpresa}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="kt-invoice__items">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">Emissão</span>
+                        <span class="kt-invoice__text">{{Emissao}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">N° da Venda</span>
+                        <span class="kt-invoice__text">{{NrVenda}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">Vendido para</span>
+                        <span class="kt-invoice__text">{{Cliente}}<br /> Endereço: {{Endereco}}<br />{{Telefone}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kt-invoice__body">
+            <div class="kt-invoice__container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>DESCRIÇÃO</th>
+                                <th>REFERÊNCIA</th>
+                                <th>QUANTIDADE</th>
+                                <th>VLR. UNITÁRIO</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in Data %}
+                            <tr>
+                                <td>{{item.Nome}}<br> {% if item.CodeBarras %}<small>(Código de barras: {{item.CodeBarras}})</small>{% endif %}</td>
+                                <td>{{item.Ref}}</td>
+                                <td>{{item.Qtd}}</td>
+                                <td>{{item.ValorVenda}}</td>
+                                <td class="kt-font-danger kt-font-lg">{{item.Price}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="kt-invoice__body">
+            <div class="kt-invoice__container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>FORMA DE PAGAMENTO</th>
+                                <th>VALOR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in Pagamentos %}
+                            <tr>
+                                <td>{{item.Forma}}</td>
+                                <td class="kt-font-danger kt-font-lg">{{item.Valor}}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>TROCO</td>
+                                <td class="kt-font-danger kt-font-lg">{{Troco}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="kt-invoice__footer">
+            <div class="kt-invoice__container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>TOTAL PRODUTOS</th>
+                                <th>DESCONTOS</th>
+                                <th>ACRÉSCIMOS</th>
+                                <th>TOTAL VENDA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{subTotal}}</td>
+                                <td>{{Descontos}}</td>
+                                <td>{{Acrescimo}}</td>
+                                <td class="kt-font-danger kt-font-xl kt-font-boldest">{{Total}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
