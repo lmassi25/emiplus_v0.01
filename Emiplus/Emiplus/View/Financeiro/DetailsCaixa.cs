@@ -1,6 +1,7 @@
 ﻿using DotLiquid;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
+using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
@@ -142,7 +143,7 @@ namespace Emiplus.View.Financeiro
             {
                 objeto.Add(new
                 {
-                    ID = item.ID,
+                    ID = item.ID_PEDIDO,
                     CRIADO = item.CRIADO,
                     DESCRICAO = $"Venda N° {item.ID_PEDIDO}",
                     VALOR = item.TOTAL,
@@ -200,7 +201,6 @@ namespace Emiplus.View.Financeiro
 
             Table.Sort(Table.Columns[1], System.ComponentModel.ListSortDirection.Descending);
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void EditMovimentacao()
@@ -212,9 +212,11 @@ namespace Emiplus.View.Financeiro
 
             if (Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value) > 0)
             {
-                if (GridLista.SelectedRows[0].Cells["ID"].Value.ToString().Contains("Venda"))
+                if (GridLista.SelectedRows[0].Cells["Descrição"].Value.ToString().Contains("Venda"))
                 {
-                    Alert.Message("", "", Alert.AlertType.warning);
+                    DetailsPedido.idPedido = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    DetailsPedido detailsPedido = new DetailsPedido();
+                    detailsPedido.ShowDialog();
                     return;
                 }
 

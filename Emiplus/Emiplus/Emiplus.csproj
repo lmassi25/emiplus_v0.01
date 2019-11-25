@@ -1058,6 +1058,8 @@
     <None Include="Assets\Images\icons\error.png" />
     <None Include="Assets\Images\icons\warning.png" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
+    <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
+    <Content Include="View\Reports\html\CupomComprovanteVendaA4.html" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />

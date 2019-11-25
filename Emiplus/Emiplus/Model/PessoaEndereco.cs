@@ -51,6 +51,11 @@
         //);
         #endregion
 
+        public SqlKata.Query FindByIdUser(int id)
+        {
+            return Query().Where("id_pessoa", id);
+        }
+
         public PessoaEndereco GetAddr(string cep)
         {
             if (cep.Length != 8)
