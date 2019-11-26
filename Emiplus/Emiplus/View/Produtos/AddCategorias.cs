@@ -29,7 +29,7 @@ namespace Emiplus.View.Produtos
             {
                 nome.Select();
 
-                ToolHelp.Show("Título identificador da categoria.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show("Digite o nome que deseja para a categoria.\nVocê pode cadastrar a Marca do produto como uma categoria por exemplo.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             };
 
             btnSalvar.Click += (s, e) =>
