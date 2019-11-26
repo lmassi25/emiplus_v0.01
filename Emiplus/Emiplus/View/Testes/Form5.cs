@@ -26,7 +26,7 @@ namespace Emiplus.View.Testes
             //criarXMLTeste();
 
             var f = new Controller.Fiscal();
-            f.CreateXml(168, "NFe");
+            //f.CriarXml(168, "NFe");
         }
 
         private void criarXMLTeste()

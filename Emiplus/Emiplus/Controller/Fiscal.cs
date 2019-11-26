@@ -50,11 +50,12 @@ namespace Emiplus.Controller
         private string _path_enviada;
         private string _path_autorizada;
 
-        private int _servidor = 2;
+        private int _servidorNFE = 2;
+        private int _servidorCFE = 2;
+
         private string TECNOSPEED_GRUPO = "Destech";
         private string TECNOSPEED_USUARIO = "admin";
         private string TECNOSPEED_SENHA = "LE25an10na";
-
         private string TECNOSPEED_SERVIDOR;
 
         private string _msg;
@@ -67,42 +68,6 @@ namespace Emiplus.Controller
         #endregion
 
         private JObject userData { get; set; }
-
-        public Fiscal()
-        {
-            _path = IniFile.Read("Path", "LOCAL");
-
-            if (String.IsNullOrEmpty(_path))
-            {
-                _path = @"C:\Emiplus";
-            }
-
-            if (!Directory.Exists(_path + "\\NFe"))
-            {
-                Directory.CreateDirectory(_path + "\\NFe");
-            }
-
-            _path_enviada = _path + "\\NFe\\Enviadas";
-            if (!Directory.Exists(_path_enviada))
-            {
-                Directory.CreateDirectory(_path_enviada);
-            }
-
-            _path_autorizada = _path + "\\NFe\\Autorizadas";
-            if (!Directory.Exists(_path_autorizada))
-            {
-                Directory.CreateDirectory(_path_autorizada);
-            }
-
-            if (_servidor == 1)
-            {
-                TECNOSPEED_SERVIDOR = "https://managersaas.tecnospeed.com.br:8081/";
-            }
-            else
-            {
-                TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
-            }
-        }
 
         private async System.Threading.Tasks.Task updateUltNfeAsync()
         {
@@ -124,11 +89,70 @@ namespace Emiplus.Controller
             Settings.Default.Save();
         }
 
-        public void Start(int Pedido)
+        private void Start(int Pedido, string tipo = "NFe")
         {
-            _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
-            _nota = new Model.Nota().FindByIdPedido(_pedido.Id).First<Model.Nota>();
+            _path = IniFile.Read("Path", "LOCAL");
 
+            if (String.IsNullOrEmpty(_path))
+            {
+                _path = @"C:\Emiplus";
+            }
+
+            switch (tipo)
+            {
+                case "NFe":
+                    if (!Directory.Exists(_path + "\\NFe"))
+                    {
+                        Directory.CreateDirectory(_path + "\\NFe");
+                    }
+
+                    _path_enviada = _path + "\\NFe\\Enviadas";
+                    if (!Directory.Exists(_path_enviada))
+                    {
+                        Directory.CreateDirectory(_path_enviada);
+                    }
+
+                    _path_autorizada = _path + "\\NFe\\Autorizadas";
+                    if (!Directory.Exists(_path_autorizada))
+                    {
+                        Directory.CreateDirectory(_path_autorizada);
+                    }
+
+                    _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+
+                    break;
+
+                case "CFe":
+                    if (!Directory.Exists(_path + "\\CFe"))
+                    {
+                        Directory.CreateDirectory(_path + "\\CFe");
+                    }
+
+                    _path_enviada = _path + "\\CFe\\Enviadas";
+                    if (!Directory.Exists(_path_enviada))
+                    {
+                        Directory.CreateDirectory(_path_enviada);
+                    }
+
+                    _path_autorizada = _path + "\\CFe\\Autorizadas";
+                    if (!Directory.Exists(_path_autorizada))
+                    {
+                        Directory.CreateDirectory(_path_autorizada);
+                    }
+                    break;
+            }
+
+            if (_servidorNFE == 1)
+            {
+                TECNOSPEED_SERVIDOR = "https://managersaas.tecnospeed.com.br:8081/";
+            }
+            else
+            {
+                TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
+            }
+
+            _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
+            
             if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
             {
                 _id_empresa = 1;
@@ -174,77 +198,32 @@ namespace Emiplus.Controller
         /// Envia
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>  
-        public string Issue(int Pedido, string tipo = "NFe")
+        public string Emitir(int Pedido, string tipo = "NFe")
         {
-            Start(Pedido);
+            Start(Pedido, tipo);
 
             try
             {
-                Boolean done = false;
+                CriarXML(Pedido, tipo);
 
-                CreateXml(Pedido, tipo);
+                if (!String.IsNullOrEmpty(_msg))
+                    return _msg;
 
-                var arq = new XmlDocument();
-                if (File.Exists(_path_enviada + "\\" + _pedido.Id + ".xml"))
-                {
-                    arq.Load(_path_enviada + "\\" + _pedido.Id + ".xml");
-                    //arq.Load(@"E:\Destech\NF-e\Enviadas\201910\35191005681389000100550000000060851900060855-nfe.xml");
-
-                    string xml = arq.OuterXml;
-                    _msg = RequestSend("FORMATO=XML" + Environment.NewLine + xml);
-
-                    while (!String.IsNullOrEmpty(_msg) && done == false)
-                    {
-                        if(_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
-                            _msg = RequestResolve();
-
-                        if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
-                        {
-                            _msg = "Autorizado o uso da NF-e";
-                            _nota.Status = "Autorizada";
-                            _nota.nr_Nota = nNF;
-                            _nota.Serie = serie;
-                            _nota.ChaveDeAcesso = chvAcesso;
-                            _nota.Save(_nota, false);
-
-                            updateUltNfeAsync();
-
-                            done = true;
-                        }
-
-                        switch (_msg)
-                        {
-                            case "":
-                                _msg = RequestConsult();
-                                done = true;
-                                break;                            
-                                /*default:
-                                    _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
-                                    done = true;
-                                    break;*/
-                        }
-
-                        if (!String.IsNullOrEmpty(_msg))
-                        {
-                            _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
-                            done = true;
-                        }
-                    }
-                }
-
-                return _msg;
+                TransmitirXML(Pedido, tipo);
             }
             catch (Exception ex)
             {
                 return "Opss.. encontramos um erro: " + ex.Message;
             }
+
+            return _msg;
         }
 
         /// <summary> 
         /// Imprime
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param> 
-        public string Print(int Pedido, string tipo = "NFe")
+        public string Imprimir(int Pedido, string tipo = "NFe")
         {
             Start(Pedido);
 
@@ -261,15 +240,58 @@ namespace Emiplus.Controller
         /// XML
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>        
-        public void CreateXml(int Pedido, string tipo)
+        private void CriarXML(int Pedido, string tipo)
         {
             #region DADOS 
 
-            _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).First<Model.Pessoa>();
-            _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.Cliente).First<Model.PessoaEndereco>();
-            //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
+            if (tipo != "CFe")
+            {
+                _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
+                if (_destinatario == null)
+                {
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    return;
+                }
 
-            _natureza = new Model.Natureza().FindById(_pedido.id_natureza).First<Model.Natureza>();
+                _destinatarioEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Cliente).FirstOrDefault<Model.PessoaEndereco>();
+                //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
+                if (_destinatarioEndereco == null)
+                {
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    return;
+                }
+
+                if (_pedido.id_natureza > 0)
+                {
+                    _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
+                }
+                else
+                { 
+                    var checkNatureza = new Model.Natureza().Query().Where("NOME", "VENDA").FirstOrDefault<Model.Natureza>();
+                    if (checkNatureza == null)
+                    {
+                        Model.Natureza nat = new Model.Natureza();
+                        nat.Id = 0;
+                        nat.Nome = "VENDA";
+                        nat.Save(nat);
+                        if (nat.Save(nat))
+                        {
+                            var idNatureza = nat.GetLastId();
+                            _pedido.id_natureza = idNatureza;
+                            _pedido.Save(_pedido);
+                        }
+
+                        _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
+                    }
+                    else
+                    {
+                        _pedido.id_natureza = checkNatureza.Id;
+                        _pedido.Save(_pedido);
+
+                        _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();                        
+                    }
+                }
+            }
             
             #endregion
 
@@ -280,15 +302,7 @@ namespace Emiplus.Controller
             #endregion
 
             #region XML
-
-            cNF = "25" + getLastNFeNr().ToString("000000");
-            nNF = getLastNFeNr().ToString("000000000");
-            serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
-
-            chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
-            cDV = CalculoCDV(chvAcesso);
-            chvAcesso = chvAcesso + "" + cDV;
-
+                        
             var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
             xml.Formatting = Formatting.Indented;
 
@@ -296,6 +310,14 @@ namespace Emiplus.Controller
 
             if (tipo == "NFCe")
             {
+                cNF = "25" + getLastNFeNr().ToString("000000");
+                nNF = getLastNFeNr().ToString("000000000");
+                serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+
+                chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
+                cDV = CalculoCDV(chvAcesso);
+                chvAcesso = chvAcesso + "" + cDV;
+
                 xml.WriteStartElement("NFe");
 
                 xml.WriteStartElement("infNFe");
@@ -305,9 +327,19 @@ namespace Emiplus.Controller
             else if (tipo == "CFe")
             {
                 xml.WriteStartElement("CFe");
+                xml.WriteStartElement("infCFe");
+                xml.WriteAttributeString("versaoDadosEnt", "0.07");
             }
             else
             {
+                cNF = "25" + getLastNFeNr().ToString("000000");
+                nNF = getLastNFeNr().ToString("000000000");
+                serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+
+                chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
+                cDV = CalculoCDV(chvAcesso);
+                chvAcesso = chvAcesso + "" + cDV;
+
                 xml.WriteStartElement("NFe");
                 xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
 
@@ -336,8 +368,10 @@ namespace Emiplus.Controller
 
             SetTotal(xml, Pedido, tipo);
 
-            SetTransp(xml, Pedido, tipo);
+            if (tipo != "CFe")
+                SetTransp(xml, Pedido, tipo);
 
+           
             SetPag(xml, Pedido, tipo);
 
             SetInfAdic(xml, Pedido, tipo);
@@ -351,6 +385,79 @@ namespace Emiplus.Controller
             xml.Close();
 
             #endregion
+        }
+
+        /// <summary> 
+        /// Transmitir XML
+        /// </summary>
+        /// <param name="tipo">NFe, NFCe, CFe</param>        
+        private void TransmitirXML(int Pedido, string tipo = "NFe")
+        {
+            Boolean done = false;
+            var arq = new XmlDocument();
+            string arqPath = _path_enviada + "\\" + _pedido.Id + ".xml";
+
+            if (!File.Exists(arqPath))
+            {
+                _msg = "Opss.. encontramos um erro: XML não encontrado.";
+                return;
+            }
+            
+            arq.Load(arqPath);
+
+            switch (tipo)
+            {
+                case "NFe":
+
+                    _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
+
+                    while (!String.IsNullOrEmpty(_msg) && done == false)
+                    {
+                        if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                            _msg = RequestResolve();
+
+                        if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                        {
+                            _msg = "Autorizado o uso da NF-e";
+                            _nota.Status = "Autorizada";
+                            _nota.nr_Nota = nNF;
+                            _nota.Serie = serie;
+                            _nota.ChaveDeAcesso = chvAcesso;
+                            _nota.Save(_nota, false);
+
+                            updateUltNfeAsync();
+
+                            done = true;
+                        }
+
+                        switch (_msg)
+                        {
+                            case "":
+                                _msg = RequestConsult();
+                                done = true;
+                                break;
+                                /*default:
+                                    _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                                    done = true;
+                                    break;*/
+                        }
+
+                        if (!String.IsNullOrEmpty(_msg))
+                        {
+                            _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                            done = true;
+                        }
+                    }
+
+                    break;
+
+                case "CFe":
+
+                    Random rdn = new Random();
+                    _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), "12345678", arq.OuterXml));
+
+                    break;
+            }
         }
 
         private int getLastNFeNr()
@@ -451,9 +558,18 @@ namespace Emiplus.Controller
 
             if (tipo == "CFe")
             {
-                xml.WriteElementString("CNPJ", "");
-                xml.WriteElementString("signAC", "");
-                xml.WriteElementString("numeroCaixa", "");
+                if (_servidorCFE == 2)
+                {
+                    xml.WriteElementString("CNPJ", "16716114000172");
+                    xml.WriteElementString("signAC", "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT");
+                    xml.WriteElementString("numeroCaixa", "001");
+                }
+                else
+                {
+                    xml.WriteElementString("CNPJ", "05681389000100");
+                    xml.WriteElementString("signAC", "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT");
+                    xml.WriteElementString("numeroCaixa", "001");
+                }
             }
             else
             {
@@ -485,8 +601,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("nNF", getLastNFeNr().ToString());
                 xml.WriteElementString("dhEmi", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + DateTime.Now.ToString("zzz"));
                 xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
-                xml.WriteElementString("tpNF", _pedido.TipoNFe.ToString());
-                xml.WriteElementString("idDest", _pedido.Destino.ToString());
+                xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
+                xml.WriteElementString("idDest", _pedido.Destino > 0 ? _pedido.Destino.ToString() : "1");
                 xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
 
                 if (tipo == "NFe")
@@ -497,7 +613,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("tpEmis", "1");
                 xml.WriteElementString("cDV", cDV);
                 xml.WriteElementString("tpAmb", Settings.Default.empresa_nfe_servidornfe.ToString());
-                xml.WriteElementString("finNFe", _pedido.Finalidade.ToString());
+                xml.WriteElementString("finNFe", _pedido.Finalidade > 0 ? _pedido.Finalidade.ToString() : "1");
                 xml.WriteElementString("indFinal", "1");
                 xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
@@ -524,8 +640,17 @@ namespace Emiplus.Controller
 
             if (tipo == "CFe")
             {
-                xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
-                xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG).Replace(".", ""));
+                if (_servidorCFE == 2)
+                {
+                    xml.WriteElementString("CNPJ", "08723218000186");
+                    xml.WriteElementString("IE", "149626224113");
+                }
+                else
+                {
+                    xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
+                    xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG).Replace(".", ""));
+                }
+                
                 xml.WriteElementString("indRatISSQN", "N");
             }
             else
@@ -606,7 +731,7 @@ namespace Emiplus.Controller
 
                 xml.WriteEndElement();
 
-                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 ? "9" : "1");
+                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 || _destinatario.Pessoatipo == "Física" ? "9" : "1");
                 if (_destinatario.Pessoatipo != "Física")
                     xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
@@ -640,7 +765,16 @@ namespace Emiplus.Controller
             if (tipo == "CFe")
             {
                 xml.WriteElementString("cProd", Validation.CleanStringForFiscal(_pedidoItem.CProd));
-                xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
+
+                if (!String.IsNullOrEmpty(_pedidoItem.CEan))
+                {
+                    xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
+                }
+                else
+                {
+                    xml.WriteElementString("cEAN", "SEM GTIN");
+                }
+
                 xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
                 xml.WriteElementString("NCM", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
                 xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
@@ -942,41 +1076,44 @@ namespace Emiplus.Controller
         {
             xml.WriteStartElement("total");
 
-            xml.WriteStartElement("ICMSTot");
-
-            xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedido.ICMSBASE));
-            xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedido.ICMS));
-            xml.WriteElementString("vICMSDeson", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vFCP", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vBCST", Validation.FormatPriceWithDot(_pedido.ICMSSTBASE));
-            xml.WriteElementString("vST", Validation.FormatPriceWithDot(_pedido.ICMSST));
-            xml.WriteElementString("vFCPST", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vFCPSTRet", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedido.Produtos));
-            xml.WriteElementString("vFrete", Validation.FormatPriceWithDot(_pedido.Frete));
-            xml.WriteElementString("vSeg", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedido.Desconto));
-            xml.WriteElementString("vII", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vIPI", Validation.FormatPriceWithDot(_pedido.IPI));
-            xml.WriteElementString("vIPIDevol", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vPIS", Validation.FormatPriceWithDot(_pedido.PIS));
-            xml.WriteElementString("vCOFINS", Validation.FormatPriceWithDot(_pedido.COFINS));
-            xml.WriteElementString("vOutro", Validation.FormatPriceWithDot(0));
-            xml.WriteElementString("vNF", Validation.FormatPriceWithDot(_pedido.Total));
-            
-            var query = _pedidoItem
-                .Query()
-                .SelectRaw("SUM(Federal) AS Federal, SUM(Estadual) AS Estadual, SUM(Municipal) AS Municipal")
-                .Where("pedido", Pedido)
-                .Where("excluir", 0)
-                .Get();
-
-            foreach (var data in query)
+            if (tipo != "CFe")
             {
-                xml.WriteElementString("vTotTrib", Validation.FormatPriceWithDot(Validation.ConvertToDouble(data.FEDERAL) + Validation.ConvertToDouble(data.ESTADUAL) + Validation.ConvertToDouble(data.MUNICIPAL)));
+                xml.WriteStartElement("ICMSTot");
+
+                xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedido.ICMSBASE));
+                xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedido.ICMS));
+                xml.WriteElementString("vICMSDeson", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vFCP", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vBCST", Validation.FormatPriceWithDot(_pedido.ICMSSTBASE));
+                xml.WriteElementString("vST", Validation.FormatPriceWithDot(_pedido.ICMSST));
+                xml.WriteElementString("vFCPST", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vFCPSTRet", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedido.Produtos));
+                xml.WriteElementString("vFrete", Validation.FormatPriceWithDot(_pedido.Frete));
+                xml.WriteElementString("vSeg", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedido.Desconto));
+                xml.WriteElementString("vII", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vIPI", Validation.FormatPriceWithDot(_pedido.IPI));
+                xml.WriteElementString("vIPIDevol", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vPIS", Validation.FormatPriceWithDot(_pedido.PIS));
+                xml.WriteElementString("vCOFINS", Validation.FormatPriceWithDot(_pedido.COFINS));
+                xml.WriteElementString("vOutro", Validation.FormatPriceWithDot(0));
+                xml.WriteElementString("vNF", Validation.FormatPriceWithDot(_pedido.Total));
+
+                var query = _pedidoItem
+                    .Query()
+                    .SelectRaw("SUM(Federal) AS Federal, SUM(Estadual) AS Estadual, SUM(Municipal) AS Municipal")
+                    .Where("pedido", Pedido)
+                    .Where("excluir", 0)
+                    .Get();
+
+                foreach (var data in query)
+                {
+                    xml.WriteElementString("vTotTrib", Validation.FormatPriceWithDot(Validation.ConvertToDouble(data.FEDERAL) + Validation.ConvertToDouble(data.ESTADUAL) + Validation.ConvertToDouble(data.MUNICIPAL)));
+                }
+
+                xml.WriteEndElement();//ICMSTot
             }
-            
-            xml.WriteEndElement();//ICMSTot
 
             xml.WriteEndElement();//total
         }
@@ -1064,68 +1201,80 @@ namespace Emiplus.Controller
 
         private void SetPag(XmlTextWriter xml, int Pedido, string tipo)
         {
-            double total = 0; int countFat = 0;
-
-            pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-            foreach (var data in pagamentos)
+            if (tipo != "CFe")
             {
-                total = total + Validation.ConvertToDouble(data.TOTAL);
-            }
-            
-            if (_pedido.Total != total) //SE O PAGAMENTO LANÇADO NÃO FOI IGUAL AO TOTAL DO PEDIDO NÃO INFORMA PAGAMENTO
-            {
-                xml.WriteStartElement("pag");
-                SetDetPag(xml);
-                xml.WriteEndElement();//pag
-                return;
-            }
+                double total = 0; int countFat = 0;
 
-            #region FATURA + PARCELAS 
+                pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                foreach (var data in pagamentos)
+                {
+                    total = total + Validation.ConvertToDouble(data.TOTAL);
+                }
 
-            pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-            if (pagamentos.Count() > 0)
-            {
-                countFat = 1;
-                xml.WriteStartElement("cobr");
-                SetDetPag(xml, "", Validation.FormatPriceWithDot(_pedido.Total), 1, _pedido.Id.ToString());
-            }
+                if (_pedido.Total != total) //SE O PAGAMENTO LANÇADO NÃO FOI IGUAL AO TOTAL DO PEDIDO NÃO INFORMA PAGAMENTO
+                {
+                    xml.WriteStartElement("pag");
+                    SetDetPag(xml);
+                    xml.WriteEndElement();//pag
+                    return;
+                }
 
-            int count = 1;
-            pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-            if (pagamentos.Count() > 0)
-            {
-                if (countFat == 0)
+                #region FATURA + PARCELAS 
+
+                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                if (pagamentos.Count() > 0)
                 {
                     countFat = 1;
                     xml.WriteStartElement("cobr");
+                    SetDetPag(xml, "", Validation.FormatPriceWithDot(_pedido.Total), 1, _pedido.Id.ToString());
                 }
 
-                foreach (var data in pagamentos)
+                int count = 1;
+                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                if (pagamentos.Count() > 0)
                 {
-                    SetDetPag(xml, data.ID_FORMAPGTO.ToString("00"), Validation.FormatPriceWithDot(data.TOTAL), 2, count.ToString("000"), Validation.ConvertDateToSql(data.VENCIMENTO));
-                    count++;
+                    if (countFat == 0)
+                    {
+                        countFat = 1;
+                        xml.WriteStartElement("cobr");
+                    }
+
+                    foreach (var data in pagamentos)
+                    {
+                        SetDetPag(xml, data.ID_FORMAPGTO.ToString("00"), Validation.FormatPriceWithDot(data.TOTAL), 2, count.ToString("000"), Validation.ConvertDateToSql(data.VENCIMENTO));
+                        count++;
+                    }
                 }
-            }
 
-            #endregion
+                #endregion
 
-            if (countFat == 1)
-            {
-                xml.WriteEndElement();//cobr
+                if (countFat == 1)
+                {
+                    xml.WriteEndElement();//cobr
+                }
             }
 
             #region PAGAMENTOS
 
-            pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-            xml.WriteStartElement("pag");
+            if (tipo != "CFe")
+            {
+                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                xml.WriteStartElement("pag");
+            }
+            else
+            {
+                pagamentos = new Model.Titulo().Query().Select("titulo.id_formapgto as id_formapgto").SelectRaw("SUM(titulo.total) as total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).GroupBy("titulo.id_formapgto").Get();
+                xml.WriteStartElement("pgto");
+            }
+                        
             foreach (var data in pagamentos)
             {
-                SetDetPag(xml, data.ID_FORMAPGTO.ToString("00"), Validation.FormatPriceWithDot(data.TOTAL));
+                SetDetPag(xml, data.ID_FORMAPGTO.ToString("00"), Validation.FormatPriceWithDot(data.TOTAL), tipo == "CFe" ? 3 : 0);
             }
 
             #endregion
            
-            xml.WriteEndElement();//pag
+            xml.WriteEndElement();//pag ou pgto
         }
               
         private void SetDetPag(XmlTextWriter xml, string formaPgto = "90", string valor = "0.00", int tag = 0, string n = "", string venc = "")
@@ -1146,6 +1295,12 @@ namespace Emiplus.Controller
                     xml.WriteElementString("dVenc", venc);
                     xml.WriteElementString("vDup", valor);
                     xml.WriteEndElement();//dup
+                    break;
+                case 3:
+                    xml.WriteStartElement("MP");
+                    xml.WriteElementString("cMP", formaPgto == "06" ? "99" : formaPgto);
+                    xml.WriteElementString("vMP", valor);
+                    xml.WriteEndElement();//MP
                     break;
                 default:
                     xml.WriteStartElement("detPag");
@@ -1265,7 +1420,7 @@ namespace Emiplus.Controller
             return request(requestData, documento, "imprime", "GET");
         }
 
-        public string request(string _requestData, string _documento, string _route, string _method)
+        private string request(string _requestData, string _documento, string _route, string _method)
         {
             if (_method == "POST")
             {
@@ -1277,7 +1432,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public string getMessage(string message)
+        private string getMessage(string message)
         {
             if (message.LastIndexOf(",") > 0)
             {
@@ -1302,8 +1457,8 @@ namespace Emiplus.Controller
 
             return message;
         }
-        
-        public string getRequest(string get_requestData, string get_documento, string get_route)
+
+        private string getRequest(string get_requestData, string get_documento, string get_route)
         {
             string Result;
 
@@ -1327,7 +1482,7 @@ namespace Emiplus.Controller
             return Result;
         }
 
-        public string postRequest(string post_requestData, string post_documento, string post_route)
+        private string postRequest(string post_requestData, string post_documento, string post_route)
         {
             string Result;
 

@@ -41,6 +41,11 @@
         //);
         #endregion
 
+        public SqlKata.Query FindByIdUser(int id)
+        {
+            return Query().Where("id_pessoa", id);
+        }
+
         public bool Save(PessoaContato data)
         {
             if (ValidarDados(data))

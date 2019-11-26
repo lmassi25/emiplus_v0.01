@@ -12,7 +12,6 @@ namespace Emiplus.View.Fiscal.TelasNota
     public partial class TelaDados : Form
     {
         private static int Id { get; set; } // id nota
-        public static int IdDetailsNota { get; set; }
         private int IdNatureza { get; set; }
         private int IdCliente { get; set; }
         private int IdAddr { get; set; }
@@ -26,10 +25,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             InitializeComponent();
             Id = Nota.Id;
-            IdDetailsNota = Nota.IdDetailsNota;
-
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
-            _mNota = _mPedido.FindById(IdDetailsNota).FirstOrDefault<Model.Nota>();
+            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
             IdNatureza = _mPedido.id_natureza;
 
             Eventos();

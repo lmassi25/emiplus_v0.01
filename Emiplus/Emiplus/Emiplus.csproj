@@ -204,6 +204,7 @@
     <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
+    <Compile Include="Controller\Sat.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\Configs.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
@@ -287,6 +288,12 @@
     </Compile>
     <Compile Include="View\Comercial\DetailsPedidoPgtos.Designer.cs">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesNfe.Designer.cs">
+      <DependentUpon>OpcoesNfe.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\Pedido.cs">
       <SubType>Form</SubType>
@@ -498,6 +505,12 @@
     <Compile Include="View\Fiscal\TelasNota\EditProduct.Designer.cs">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\TelasNota\OpcoesNfeRapida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\OpcoesNfeRapida.Designer.cs">
+      <DependentUpon>OpcoesNfeRapida.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\TelasNota\TelaDados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -672,6 +685,12 @@
     <Compile Include="View\Testes\Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Data\Helpers\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
@@ -702,6 +721,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\DetailsPedidoPgtos.resx">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\OpcoesNfe.resx">
+      <DependentUpon>OpcoesNfe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
@@ -808,6 +830,9 @@
     <EmbeddedResource Include="View\Fiscal\TelasNota\EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\OpcoesNfeRapida.resx">
+      <DependentUpon>OpcoesNfeRapida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\TelaDados.resx">
       <DependentUpon>TelaDados.cs</DependentUpon>
     </EmbeddedResource>
@@ -894,6 +919,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
@@ -1058,6 +1086,8 @@
     <None Include="Assets\Images\icons\error.png" />
     <None Include="Assets\Images\icons\warning.png" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
+    <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
+    <Content Include="View\Reports\html\CupomComprovanteVendaA4.html" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />

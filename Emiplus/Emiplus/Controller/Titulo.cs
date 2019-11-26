@@ -2,6 +2,7 @@
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -53,7 +54,7 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).First();
+            var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).FirstOrDefault();
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
@@ -170,19 +171,33 @@ namespace Emiplus.Controller
             return false;
         }
 
+        public IEnumerable<dynamic> GetDataPgtosLancados(int idPedido)
+        {
+            var data = new Model.Titulo().Query()
+                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
+                .Where("titulo.excluir", 0)
+                .Where("titulo.id_pedido", idPedido)
+                .OrderByDesc("titulo.id");
+
+            return data.Get();
+        }
+
         public void GetDataTableTitulos(DataGridView Table, int idPedido)
         {
             Table.Rows.Clear();
 
             var titulos = new Model.Titulo();
 
-            var data = titulos.Query()
-                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
-                .Where("titulo.excluir", 0)
-                .Where("titulo.id_pedido", idPedido)
-                .OrderByDesc("titulo.id")
-                .Get();
+            //var data = titulos.Query()
+            //    .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+            //    .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
+            //    .Where("titulo.excluir", 0)
+            //    .Where("titulo.id_pedido", idPedido)
+            //    .OrderByDesc("titulo.id")
+            //    .Get();
+
+            var data = GetDataPgtosLancados(idPedido);
 
             foreach (var item in data)
             {
