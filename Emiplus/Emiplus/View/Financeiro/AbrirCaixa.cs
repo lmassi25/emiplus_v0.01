@@ -16,6 +16,8 @@ namespace Emiplus.View.Financeiro
         {
             InitializeComponent();
             Eventos();
+            ToolHelp.Show("Abre um novo caixa.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Utiliza um caixa existente aberto por outro usuário.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         private void Eventos()
