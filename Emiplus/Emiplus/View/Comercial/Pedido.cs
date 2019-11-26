@@ -46,15 +46,25 @@ namespace Emiplus.View.Comercial
             label1.Text = Home.pedidoPage;
 
             if (Home.pedidoPage == "Orçamentos")
+            {
                 label2.Text = "Gerencie os orçamenos aqui! Adicione, edite ou delete um orçamento.";
+                btnAdicionar.Text = "Novo Orçamento";
+            }
             else if (Home.pedidoPage == "Consignações")
+            {
                 label2.Text = "Gerencie as consignações aqui! Adicione, edite ou delete uma consignação.";
+                btnAdicionar.Text = "Nova Consig.";
+            }
             else if (Home.pedidoPage == "Devoluções")
+            {
                 label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
+                btnAdicionar.Text = "Nova Devol.";
+            }
             else if (Home.pedidoPage == "Compras")
             {
                 label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
                 label11.Text = "Procurar por fornecedor";
+                btnAdicionar.Text = "Nova Compra";
             }
             else if (Home.pedidoPage == "Notas")
                 label2.Text = "Gerencie as Notas aqui! Adicione, edite ou delete uma Nota.";
