@@ -117,17 +117,25 @@ namespace Emiplus.Controller
             var query = new Model.Pedido().Query();
 
             query
-            .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-            .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
-            .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")            
-            .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
-            .Where("pedido.excluir", excluir)
-            .Where("pedido.tipo", tipo)
-            .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-            .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
+                .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
+                .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Where("pedido.excluir", excluir)
+                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+            
+            if (!tipo.Contains("Notas"))
+                query.Where("pedido.tipo", tipo);
+
+            if (tipo.Contains("Notas"))
+            {
+                query.LeftJoin("nota", "nota.id_pedido", "pedido.id");
+                query.Select("nota.nr_nota", "nota.serie", "nota.status as statusnfe");
+            }
 
             if (usuario != 0)
-                query.Where("pedido.colaborador", usuario);
+               query.Where("pedido.colaborador", usuario);
 
             if (status != 0)
                 query.Where("pedido.status", status);
@@ -211,7 +219,7 @@ namespace Emiplus.Controller
             Table.Columns[8].Visible = false;
 
             Table.Rows.Clear();
-
+            
             if (Data == null)
             {
                 IEnumerable<dynamic> dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
@@ -220,6 +228,16 @@ namespace Emiplus.Controller
 
             foreach (var item in Data)
             {
+                var statusNfePedido = "";
+                if (tipo == "Notas")
+                {
+                    statusNfePedido = item.STATUSNFE == null ? "Pendente" : item.STATUSNFE;
+                }
+                else
+                {
+                    statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : @"Finalizado\Recebido";
+                }
+
                 Table.Rows.Add(
                     item.ID,
                     item.ID,
@@ -228,10 +246,11 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
                     item.CRIADO,
-                    (item.STATUS == 1 ? "Recebimento Pendente" : @"Finalizado\Recebido"),
+                    statusNfePedido,
                     item.EXCLUIR
                 );
             }
+
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

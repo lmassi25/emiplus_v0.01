@@ -118,7 +118,7 @@ namespace Emiplus.Controller
                         Directory.CreateDirectory(_path_autorizada);
                     }
 
-                    _nota = new Model.Nota().FindByIdPedido(_pedido.Id).First<Model.Nota>();
+                    _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
 
                     break;
 
@@ -206,6 +206,9 @@ namespace Emiplus.Controller
             {
                 CriarXML(Pedido, tipo);
 
+                if (!String.IsNullOrEmpty(_msg))
+                    return _msg;
+
                 TransmitirXML(Pedido, tipo);
             }
             catch (Exception ex)
@@ -243,11 +246,51 @@ namespace Emiplus.Controller
 
             if (tipo != "CFe")
             {
-                _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).First<Model.Pessoa>();
-                _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.Cliente).First<Model.PessoaEndereco>();
-                //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
+                _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
+                if (_destinatario == null)
+                {
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    return;
+                }
 
-                _natureza = new Model.Natureza().FindById(_pedido.id_natureza).First<Model.Natureza>();
+                _destinatarioEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Cliente).FirstOrDefault<Model.PessoaEndereco>();
+                //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
+                if (_destinatarioEndereco == null)
+                {
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    return;
+                }
+
+                if (_pedido.id_natureza > 0)
+                {
+                    _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
+                }
+                else
+                { 
+                    var checkNatureza = new Model.Natureza().Query().Where("NOME", "VENDA").FirstOrDefault<Model.Natureza>();
+                    if (checkNatureza == null)
+                    {
+                        Model.Natureza nat = new Model.Natureza();
+                        nat.Id = 0;
+                        nat.Nome = "VENDA";
+                        nat.Save(nat);
+                        if (nat.Save(nat))
+                        {
+                            var idNatureza = nat.GetLastId();
+                            _pedido.id_natureza = idNatureza;
+                            _pedido.Save(_pedido);
+                        }
+
+                        _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
+                    }
+                    else
+                    {
+                        _pedido.id_natureza = checkNatureza.Id;
+                        _pedido.Save(_pedido);
+
+                        _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();                        
+                    }
+                }
             }
             
             #endregion
@@ -558,8 +601,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("nNF", getLastNFeNr().ToString());
                 xml.WriteElementString("dhEmi", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + DateTime.Now.ToString("zzz"));
                 xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
-                xml.WriteElementString("tpNF", _pedido.TipoNFe.ToString());
-                xml.WriteElementString("idDest", _pedido.Destino.ToString());
+                xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
+                xml.WriteElementString("idDest", _pedido.Destino > 0 ? _pedido.Destino.ToString() : "1");
                 xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
 
                 if (tipo == "NFe")
@@ -570,7 +613,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("tpEmis", "1");
                 xml.WriteElementString("cDV", cDV);
                 xml.WriteElementString("tpAmb", Settings.Default.empresa_nfe_servidornfe.ToString());
-                xml.WriteElementString("finNFe", _pedido.Finalidade.ToString());
+                xml.WriteElementString("finNFe", _pedido.Finalidade > 0 ? _pedido.Finalidade.ToString() : "1");
                 xml.WriteElementString("indFinal", "1");
                 xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
@@ -688,7 +731,7 @@ namespace Emiplus.Controller
 
                 xml.WriteEndElement();
 
-                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 ? "9" : "1");
+                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 || _destinatario.Pessoatipo == "Física" ? "9" : "1");
                 if (_destinatario.Pessoatipo != "Física")
                     xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }

@@ -3,6 +3,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Financeiro;
+using Emiplus.View.Fiscal.TelasNota;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
@@ -174,6 +175,23 @@ namespace Emiplus.View.Comercial
                 Browser.htmlRender = render;
                 var f = new Browser();
                 f.ShowDialog();
+            };
+
+            btnNfe.Click += (s, e) =>
+            {
+                var checkNota = new Model.Nota().FindByIdPedido(idPedido).Where("status", null).FirstOrDefault();
+                if (checkNota != null)
+                {
+                    OpcoesNfe.idPedido = idPedido;
+                    OpcoesNfe f = new OpcoesNfe();
+                    f.Show();
+                }
+                else
+                {
+                    OpcoesNfeRapida.idPedido = idPedido;
+                    OpcoesNfeRapida f = new OpcoesNfeRapida();
+                    f.Show();
+                }                
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
