@@ -481,6 +481,12 @@
     <Compile Include="View\Fiscal\BrowserNfe.Designer.cs">
       <DependentUpon>BrowserNfe.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\DetailsNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\DetailsNota.Designer.cs">
+      <DependentUpon>DetailsNota.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\Natureza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -818,6 +824,9 @@
     <EmbeddedResource Include="View\Fiscal\BrowserNfe.resx">
       <DependentUpon>BrowserNfe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\DetailsNota.resx">
+      <DependentUpon>DetailsNota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Natureza.resx">
       <DependentUpon>Natureza.cs</DependentUpon>
     </EmbeddedResource>
@@ -1085,6 +1094,8 @@
     <None Include="Assets\Images\icons\success.png" />
     <None Include="Assets\Images\icons\error.png" />
     <None Include="Assets\Images\icons\warning.png" />
+    <None Include="Assets\Images\icons\box.png" />
+    <None Include="Assets\Images\icons\money-bag %281%29.png" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
     <Content Include="View\Reports\html\CupomComprovanteVendaA4.html" />

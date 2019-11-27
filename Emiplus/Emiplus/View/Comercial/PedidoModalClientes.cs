@@ -86,6 +86,8 @@ namespace Emiplus.View.Comercial
             KeyDown += KeyDowns;
             search.KeyDown += KeyDowns;
             GridListaClientes.KeyDown += KeyDowns;
+            btnSelecionar.KeyDown += KeyDowns;
+            btnCancelar.KeyDown += KeyDowns;
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();

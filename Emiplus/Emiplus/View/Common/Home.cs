@@ -259,17 +259,10 @@ namespace Emiplus.View.Common
                 homeMenuFinanceiro.BackColor = Color.Transparent;
             };
 
-            FormClosed += (s, e) => KillEmiplus();
+            FormClosed += (s, e) => Validation.KillEmiplus();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
             btnAccount.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
-        }
-        
-        private void KillEmiplus()
-        {
-            Process[] processes = Process.GetProcessesByName("Emiplus");
-            foreach (Process process in processes)
-                process.Kill();
         }
     }
 }

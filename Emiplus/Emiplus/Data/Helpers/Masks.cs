@@ -6,6 +6,12 @@ namespace Emiplus.Data.Helpers
 {
     class Masks
     {
+        public static void MaskMaxLength(object sender, KeyPressEventArgs e, int maxLenght = 255)
+        {
+            TextBox t = sender as TextBox;
+            t.MaxLength = maxLenght;
+        }
+
         public static void MaskHour(object sender, KeyPressEventArgs e)
         {
             // 10:00 - 9 caracateres
@@ -142,10 +148,10 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Permite apenas Letras, Numeros, max 255 caracteres
         /// </summary>
-        public static void MaskOnlyNumberAndChar(object sender, KeyPressEventArgs e)
+        public static void MaskOnlyNumberAndChar(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;
-            t.MaxLength = 255;
+            t.MaxLength = maxLenght;
 
             if (!char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32))
             {
@@ -156,10 +162,10 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Permite apenas Letras, Numeros e Pontos, max 255 caracteres
         /// </summary>
-        public static void MaskOnlyNumberAndCharAndMore(object sender, KeyPressEventArgs e)
+        public static void MaskOnlyNumberAndCharAndMore(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;
-            t.MaxLength = 255;
+            t.MaxLength = maxLenght;
 
             if (!char.IsLetterOrDigit(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32) && (e.KeyChar != '.'))
             {
@@ -170,10 +176,10 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Permite números e virgulas
         /// </summary>
-        public static void MaskDouble(object sender, KeyPressEventArgs e)
+        public static void MaskDouble(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;
-            t.MaxLength = 255;
+            t.MaxLength = maxLenght;
 
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != ','))
             {
@@ -184,10 +190,10 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Permite apenas numeros, max 255 caracteres
         /// </summary>
-        public static void MaskOnlyNumbers(object sender, KeyPressEventArgs e)
+        public static void MaskOnlyNumbers(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;
-            t.MaxLength = 255;
+            t.MaxLength = maxLenght;
 
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32))
             {
@@ -198,10 +204,10 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Permite apenas letras, max 255 caracteres
         /// </summary>
-        public static void MaskOnlyChars(object sender, KeyPressEventArgs e)
+        public static void MaskOnlyChars(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;
-            t.MaxLength = 255;
+            t.MaxLength = maxLenght;
 
             if (!char.IsLetter(e.KeyChar) && (e.KeyChar != 8) && (e.KeyChar != 32))
             {

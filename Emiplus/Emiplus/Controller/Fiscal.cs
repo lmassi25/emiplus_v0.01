@@ -229,11 +229,16 @@ namespace Emiplus.Controller
 
             var pdf = RequestPrint(_nota.ChaveDeAcesso, tipo);
 
-            BrowserNfe.Render = pdf;
-            BrowserNfe browser = new BrowserNfe();
-            browser.ShowDialog();
+            if(pdf.Contains(".pdf"))
+            {
+                BrowserNfe.Render = pdf;
+                BrowserNfe browser = new BrowserNfe();
+                browser.ShowDialog();
 
-            return pdf;
+                return "";
+            }
+            else
+                return pdf;
         }
 
         /// <summary> 

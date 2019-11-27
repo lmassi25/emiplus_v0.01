@@ -35,17 +35,20 @@
             this.btnEmissaoPasso = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Close
             // 
-            this.Close.BackColor = System.Drawing.Color.Transparent;
+            this.Close.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Close.Image = ((System.Drawing.Image)(resources.GetObject("Close.Image")));
-            this.Close.Location = new System.Drawing.Point(593, 12);
+            this.Close.Location = new System.Drawing.Point(778, 148);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(35, 35);
             this.Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -54,6 +57,7 @@
             // 
             // btnEmissaoRapida
             // 
+            this.btnEmissaoRapida.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEmissaoRapida.BackColor = System.Drawing.Color.Transparent;
             this.btnEmissaoRapida.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEmissaoRapida.BackColorState.Enabled = System.Drawing.Color.DarkSlateGray;
@@ -71,7 +75,7 @@
             this.btnEmissaoRapida.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmissaoRapida.ForeColor = System.Drawing.Color.White;
             this.btnEmissaoRapida.Image = null;
-            this.btnEmissaoRapida.Location = new System.Drawing.Point(212, 356);
+            this.btnEmissaoRapida.Location = new System.Drawing.Point(386, 497);
             this.btnEmissaoRapida.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnEmissaoRapida.Name = "btnEmissaoRapida";
             this.btnEmissaoRapida.Size = new System.Drawing.Size(177, 40);
@@ -88,6 +92,7 @@
             // 
             // btnEmissaoPasso
             // 
+            this.btnEmissaoPasso.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEmissaoPasso.BackColor = System.Drawing.Color.Transparent;
             this.btnEmissaoPasso.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnEmissaoPasso.BackColorState.Enabled = System.Drawing.Color.CadetBlue;
@@ -105,7 +110,7 @@
             this.btnEmissaoPasso.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmissaoPasso.ForeColor = System.Drawing.Color.White;
             this.btnEmissaoPasso.Image = null;
-            this.btnEmissaoPasso.Location = new System.Drawing.Point(212, 409);
+            this.btnEmissaoPasso.Location = new System.Drawing.Point(386, 548);
             this.btnEmissaoPasso.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnEmissaoPasso.Name = "btnEmissaoPasso";
             this.btnEmissaoPasso.Size = new System.Drawing.Size(177, 40);
@@ -122,11 +127,12 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(69)))), ((int)(((byte)(95)))));
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Location = new System.Drawing.Point(188, 151);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(312, 30);
             this.label1.TabIndex = 157;
@@ -134,40 +140,52 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(323, 23);
+            this.pictureBox3.Location = new System.Drawing.Point(506, 161);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(15, 15);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 158;
             this.pictureBox3.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(180, 141);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(640, 462);
+            this.pictureBox1.TabIndex = 159;
+            this.pictureBox1.TabStop = false;
+            // 
             // OpcoesNfe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(640, 462);
-            this.Controls.Add(this.pictureBox3);
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1011, 765);
+            this.Controls.Add(this.Close);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnEmissaoPasso);
             this.Controls.Add(this.btnEmissaoRapida);
-            this.Controls.Add(this.Close);
+            this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 462);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 462);
             this.Name = "OpcoesNfe";
+            this.Opacity = 0.95D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OpcoesNfe";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.Close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +198,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEmissaoPasso;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

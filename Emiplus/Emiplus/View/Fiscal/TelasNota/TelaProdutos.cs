@@ -27,6 +27,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             InitializeComponent();
             Id = Nota.Id;
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
+            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
             Eventos();
         }
@@ -265,6 +266,13 @@ namespace Emiplus.View.Fiscal.TelasNota
                 LoadTotais();
                 ClearForms();
                 BuscarProduto.Select();
+
+                if (!String.IsNullOrEmpty(_mNota.Status))
+                {
+                    progress5.Visible = false;
+                    pictureBox1.Visible = false;
+                    label9.Visible = false;
+                }
             };
 
             ModoRapido.Click += (s, e) => AlterarModo();

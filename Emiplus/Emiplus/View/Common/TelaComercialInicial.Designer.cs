@@ -211,7 +211,7 @@
             this.ProdutosDevolvidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosDevolvidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosDevolvidos.Image")));
             this.ProdutosDevolvidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosDevolvidos.Location = new System.Drawing.Point(491, 388);
+            this.ProdutosDevolvidos.Location = new System.Drawing.Point(491, 362);
             this.ProdutosDevolvidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosDevolvidos.Name = "ProdutosDevolvidos";
             this.ProdutosDevolvidos.Size = new System.Drawing.Size(219, 41);
@@ -234,7 +234,7 @@
             this.ProdutosConsignados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosConsignados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosConsignados.Image")));
             this.ProdutosConsignados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosConsignados.Location = new System.Drawing.Point(492, 143);
+            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 139);
             this.ProdutosConsignados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosConsignados.Name = "ProdutosConsignados";
             this.ProdutosConsignados.Size = new System.Drawing.Size(219, 41);
@@ -280,7 +280,7 @@
             this.DevolucoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.DevolucoesRel.Image = ((System.Drawing.Image)(resources.GetObject("DevolucoesRel.Image")));
             this.DevolucoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DevolucoesRel.Location = new System.Drawing.Point(491, 339);
+            this.DevolucoesRel.Location = new System.Drawing.Point(491, 317);
             this.DevolucoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
@@ -303,7 +303,7 @@
             this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
             this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
             this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.VendasRel.Location = new System.Drawing.Point(491, 192);
+            this.VendasRel.Location = new System.Drawing.Point(491, 184);
             this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VendasRel.Name = "VendasRel";
             this.VendasRel.Size = new System.Drawing.Size(219, 41);
@@ -326,7 +326,7 @@
             this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
             this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(492, 241);
+            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 227);
             this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosVendidos.Name = "ProdutosVendidos";
             this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
@@ -372,7 +372,7 @@
             this.Comissoes.ForeColor = System.Drawing.Color.DimGray;
             this.Comissoes.Image = ((System.Drawing.Image)(resources.GetObject("Comissoes.Image")));
             this.Comissoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Comissoes.Location = new System.Drawing.Point(492, 290);
+            this.Comissoes.Location = new System.Drawing.Point(491, 272);
             this.Comissoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Comissoes.Name = "Comissoes";
             this.Comissoes.Size = new System.Drawing.Size(219, 41);

@@ -51,6 +51,7 @@ namespace Emiplus.View.Comercial
                     Close();
                 }
             };
+
             btnContatoDelete.Click += (s, e) =>
             {
                 var result = MessageBox.Show("Deseja realmente excluir o contato?", "Atenção!", MessageBoxButtons.YesNo);
@@ -63,6 +64,11 @@ namespace Emiplus.View.Comercial
                     }
                 }
             };
+
+            contato.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
+            telefone.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
+            celular.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
+            email.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 50);
 
             FormClosing += (s, e) => DialogResult = DialogResult.OK;
         }

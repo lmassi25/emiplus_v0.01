@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -305,6 +306,81 @@ namespace Emiplus.Data.Helpers
 
         public enum BorderColor {
             Vermelho, Azul
+        }
+
+        public static int digitoVerificador(string codbarras)
+        {
+            int digitoParaSomar = 0;
+
+            double pares = 0, impares = 0, total = 0, multiplicador = 1;
+
+            int item = 0;
+
+            if (codbarras != "")
+            {
+                if (codbarras.Length == 12)
+                {
+                    item = 0;
+                    while (item < 12)
+                    {
+                        string auxNum = "";
+                        auxNum = codbarras.Substring(item, 1);
+                        //MessageBox.Show(auxNum);
+
+                        if ((ConvertToInt32(auxNum) % 2) == 0)
+                            pares = pares + (ConvertToInt32(auxNum) * multiplicador);
+                        else
+                            impares = impares + (ConvertToInt32(auxNum) * multiplicador);
+
+                        if (multiplicador == 1)
+                            multiplicador = 3;
+                        else
+                            multiplicador = 1;
+
+                        item++;
+                    }
+                }
+            }
+
+            //impares = impares * 3;
+            total = impares + pares;
+
+            digitoParaSomar = -1;
+
+            int procurarMultiplo = 0;
+            while (procurarMultiplo == 0)
+            {
+                digitoParaSomar++;
+                if ((total + digitoParaSomar) % 10 == 0)
+                    procurarMultiplo = 1;
+            }
+
+            return digitoParaSomar;
+        }
+
+        public static long RandomNumeric(int maxNumeric)
+        {
+            long x = 0;
+
+            Random random = new Random();
+            for (int i = 0; i < maxNumeric; i++)
+            {
+                x += (long)(Math.Pow(10, i) * random.Next(1, 10));
+            }
+
+            return x;
+        }
+
+        public static string CodeBarrasRandom()
+        {
+            return "789" + RandomNumeric(9) + digitoVerificador(RandomNumeric(9).ToString());
+        }
+
+        public static void KillEmiplus()
+        {
+            Process[] processes = Process.GetProcessesByName("Emiplus");
+            foreach (Process process in processes)
+                process.Kill();
         }
     }
 }

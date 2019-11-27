@@ -52,13 +52,8 @@
 
         public bool Save(Pessoa data, bool message = true)
         {
-            if (ValidarDados(data))
-                return false;
-
             if(String.IsNullOrEmpty(data.Aniversario))
-            {
                 data.Aniversario = null;
-            }
 
             if (data.Id == 0)
             {
@@ -77,6 +72,9 @@
             }
             else
             {
+                if (ValidarDados(data))
+                    return false;
+
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
@@ -117,11 +115,11 @@
         {
             var result = ValitRules<Pessoa>
                 .Create()
-                .Ensure(m => m.Nome, _ => _
+                .Ensure(m => m.CPF, _ => _
                     .Required()
-                    .WithMessage("Nome é obrigatorio.")
-                    .MinLength(2)
-                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
+                    .WithMessage("CPF ou CNPJ é obrigatório.")
+                    .MinLength(11)
+                    .WithMessage("CPF ou CNPJ inválido."))
                 .For(data)
                 .Validate();
 

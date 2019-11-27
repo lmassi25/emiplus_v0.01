@@ -5,6 +5,7 @@ using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Fiscal;
+using Emiplus.View.Fiscal.TelasNota;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
@@ -58,6 +59,8 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Notas")
                 label2.Text = "Gerencie as Notas aqui! Adicione, edite ou delete uma Nota.";
+            else if (Home.pedidoPage == "Vendas")
+                label2.Text = "Gerencie suas vendas aqui! Adicione, edite ou delete uma venda.";
 
             dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
@@ -163,9 +166,18 @@ namespace Emiplus.View.Comercial
             {
                 if (Home.pedidoPage == "Notas")
                 {
-                    Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    Nota nota = new Nota();
-                    nota.ShowDialog();
+                    if(!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
+                    {
+                        OpcoesNfeRapida.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value); ;
+                        OpcoesNfeRapida f = new OpcoesNfeRapida();
+                        f.Show();
+                    }
+                    else
+                    {
+                        Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        Nota nota = new Nota();
+                        nota.ShowDialog();
+                    }
                 }
                 else
                 {
