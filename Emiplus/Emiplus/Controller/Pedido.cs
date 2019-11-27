@@ -117,23 +117,18 @@ namespace Emiplus.Controller
             var query = new Model.Pedido().Query();
 
             query
+                .LeftJoin("nota", "nota.id_pedido", "pedido.id")
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
             
             if (!tipo.Contains("Notas"))
                 query.Where("pedido.tipo", tipo);
-
-            if (tipo.Contains("Notas"))
-            {
-                query.LeftJoin("nota", "nota.id_pedido", "pedido.id");
-                query.Select("nota.nr_nota", "nota.serie", "nota.status as statusnfe");
-            }
-
+            
             if (usuario != 0)
                query.Where("pedido.colaborador", usuario);
 
@@ -183,7 +178,10 @@ namespace Emiplus.Controller
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
-            Table.ColumnCount = 9;
+            if (!tipo.Contains("Notas"))
+                Table.ColumnCount = 10;
+            else
+                Table.ColumnCount = 9;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -214,10 +212,17 @@ namespace Emiplus.Controller
 
             Table.Columns[7].Name = "Status";
             Table.Columns[7].MinimumWidth = 150;
-
+            
             Table.Columns[8].Name = "EXCLUIR";
             Table.Columns[8].Visible = false;
 
+            if (!tipo.Contains("Notas"))
+            {
+                Table.Columns[9].Name = "NF-e";
+                Table.Columns[9].MinimumWidth = 80;
+                Table.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            
             Table.Rows.Clear();
             
             if (Data == null)
@@ -247,7 +252,8 @@ namespace Emiplus.Controller
                     item.COLABORADOR,
                     item.CRIADO,
                     statusNfePedido,
-                    item.EXCLUIR
+                    item.EXCLUIR,
+                    item.NFE
                 );
             }
 

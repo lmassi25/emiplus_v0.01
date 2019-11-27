@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using SqlKata.Execution;
+using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 
@@ -9,6 +11,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         private static int Id { get; set; } // id nota
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
         private string _msg;
+
+        private Model.Nota _mNota = new Model.Nota();
 
         public TelaFinal()
         {

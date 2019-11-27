@@ -390,6 +390,7 @@ namespace Emiplus.View.Produtos
                 if (_modelImposto.Save(_modelImposto))
                     Close();
             };
+
             btnRemover.Click += (s, e) =>
             {
                 var data = _modelImposto.Remove(idImpSelected);
@@ -410,6 +411,8 @@ namespace Emiplus.View.Produtos
                 //    LoadData();
                 }
             };
+
+            cfop.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 4);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }

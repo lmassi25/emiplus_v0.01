@@ -228,20 +228,14 @@ namespace Emiplus.View.Common
                     }
 
                     Process.Start($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
-                    KillEmiplus();
+                    Validation.KillEmiplus();
                 }
             };
 
+            FormClosed += (s, e) => Validation.KillEmiplus();
             btnFechar.Click += (s, e) => Close();
             linkRecover.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin/forgotten");
             linkSupport.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-        }
-
-        private void KillEmiplus()
-        {
-            Process[] processes = Process.GetProcessesByName("Emiplus");
-            foreach (Process process in processes)
-                process.Kill();
         }
     }
 }

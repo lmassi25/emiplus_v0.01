@@ -19,6 +19,7 @@ namespace Emiplus.View.Comercial
         public static int Id { get; set; }
         public static int IdAddress { get; set; }
         public static int IdContact { get; set; }
+        private static bool disableRGie { get; set; } = true;
 
         private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
         private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
@@ -74,9 +75,12 @@ namespace Emiplus.View.Comercial
             label1.Text = "Adicionar " + Home.pessoaPage;
             label1.Left = 307;
             pictureBox2.Left = 284;
+            label4.Text = "Comercial";
 
             if (Home.pessoaPage == "Fornecedores")
             {
+                pictureBox1.Image = Properties.Resources.box;
+                label4.Text = "Produtos";
                 label1.Left = 343;
                 pictureBox2.Left = 319;
             }
@@ -84,6 +88,8 @@ namespace Emiplus.View.Comercial
             credencial.TabPages.Remove(tabTransporte); // Tab 'Transporte'
             if (Home.pessoaPage == "Transportadoras")
             {
+                pictureBox1.Image = Properties.Resources.box;
+                label4.Text = "Produtos";
                 label1.Left = 359;
                 pictureBox2.Left = 335;
                 credencial.TabPages.Add(tabTransporte);
@@ -209,8 +215,14 @@ namespace Emiplus.View.Comercial
                 pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
                 pessoaJF.SelectedItem = "Física";
 
+                if (pessoaJF.Text == "Física")
+                    Isento.Checked = true;
+                else
+                    Isento.Checked = false;
+
                 SetFocus();
             };
+
             Activated += (s, e) =>
             {
                 DataTableAddress();
@@ -228,6 +240,15 @@ namespace Emiplus.View.Comercial
                 _modelPessoa.RG = rgIE.Text;
                 _modelPessoa.Pessoatipo = pessoaJF.Text;
                 _modelPessoa.Isento = Isento.Checked ? 1 : 0;
+
+                if (!Isento.Checked)
+                {
+                    if (string.IsNullOrEmpty(rgIE.Text))
+                    {
+                        Alert.Message("Oppss", "Inscrição estadual é obrigatório para pessoa jurídica.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
 
                 if (Home.pessoaPage == "Transportadoras")
                 {
@@ -264,7 +285,7 @@ namespace Emiplus.View.Comercial
             ListaContatos.DoubleClick += (s, e) => GetContato();
             nomeRS.Enter += (s, e) => DataTableContatos();
 
-            pessoaJF.SelectionChangeCommitted += (s, e) =>
+            pessoaJF.SelectedIndexChanged += (s, e) =>
             {
                 if (pessoaJF.Text == "Física")
                     Isento.Checked = true;
@@ -280,8 +301,27 @@ namespace Emiplus.View.Comercial
                 if (pessoaJF.Text == "Jurídica")
                     Masks.MaskCNPJ(s, e);
             };
+
+            Isento.Click += (s, e) =>
+            {
+                if (disableRGie)
+                {
+                    if (pessoaJF.Text != "Jurídica")
+                        rgIE.Enabled = false;
+
+                    disableRGie = false;
+                }
+                else
+                {
+                    rgIE.Enabled = true;
+                    disableRGie = true;
+                }
+            };
+
             nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
+            rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
+            nomeRS.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
+            nomeFantasia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
 
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();

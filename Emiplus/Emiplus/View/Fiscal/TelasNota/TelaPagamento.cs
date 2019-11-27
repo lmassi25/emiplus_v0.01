@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
+using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
 
@@ -14,12 +15,15 @@ namespace Emiplus.View.Fiscal.TelasNota
         //private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         //private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Titulo _mTitulo = new Model.Titulo();
-
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
+        private Model.Nota _mNota = new Model.Nota();
 
         public TelaPagamento()
         {
             InitializeComponent();
+
+            _mNota = _mNota.FindByIdPedido(IdPedido).FirstOrDefault<Model.Nota>();
+
             Eventos();
 
             TelaReceber.Visible = false;
@@ -197,7 +201,18 @@ namespace Emiplus.View.Fiscal.TelasNota
             parcelas.KeyDown += KeyDowns;
             iniciar.KeyDown += KeyDowns;
 
-            Load += (s, e) => AtualizarDados();
+            Load += (s, e) =>
+            {
+                AtualizarDados();
+
+                if (!String.IsNullOrEmpty(_mNota.Status))
+                {
+                    progress5.Visible = false;
+                    pictureBox1.Visible = false;
+                    label13.Visible = false;
+                    Next.Visible = false;
+                }
+            };
 
             Debito.Click += (s, e) => JanelasRecebimento("Cartão de Débito");
             Credito.Click += (s, e) => JanelasRecebimento("Cartão de Crédito");

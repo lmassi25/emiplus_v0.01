@@ -96,7 +96,7 @@ namespace Emiplus.View.Financeiro
             Tipo2.Click += (s, e) =>
             {
                 Categorias.Enabled = true;
-                Fornecedor.Enabled = true;
+                Fornecedor.Enabled = false;
             };
 
             Tipo3.Click += (s, e) =>

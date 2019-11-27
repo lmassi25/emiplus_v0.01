@@ -63,6 +63,20 @@ namespace Emiplus.View.Produtos
                 if (btnRadioRemoveItem.Checked)
                     novaQtd.Text = (Validation.ConvertToDouble(quantidade.Text) - item.EstoqueAtual).ToString();
             };
+
+            btnRadioAddItem.Click += (s, e) =>
+            {
+                var item = _modelItem.FindById(IdItem).First<Item>();
+                if (!string.IsNullOrEmpty(quantidade.Text))
+                    novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
+            };
+
+            btnRadioRemoveItem.Click += (s, e) =>
+            {
+                var item = _modelItem.FindById(IdItem).First<Item>();
+                if (!string.IsNullOrEmpty(quantidade.Text))
+                    novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
+            };
         }
     }
 }

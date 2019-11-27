@@ -179,19 +179,30 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedido(idPedido).Where("status", null).FirstOrDefault();
-                if (checkNota != null)
+                var checkNota = new Model.Nota().FindByIdPedido(idPedido).Get();
+
+                if(checkNota.Count() == 0)
                 {
                     OpcoesNfe.idPedido = idPedido;
                     OpcoesNfe f = new OpcoesNfe();
                     f.Show();
                 }
-                else
+
+                foreach (var item in checkNota)
                 {
-                    OpcoesNfeRapida.idPedido = idPedido;
-                    OpcoesNfeRapida f = new OpcoesNfeRapida();
-                    f.Show();
-                }                
+                    if (item.STATUS == null)
+                    {
+                        OpcoesNfe.idPedido = idPedido;
+                        OpcoesNfe f = new OpcoesNfe();
+                        f.Show();
+                    }
+                    else
+                    {
+                        OpcoesNfeRapida.idPedido = idPedido;
+                        OpcoesNfeRapida f = new OpcoesNfeRapida();
+                        f.Show();
+                    }
+                }                               
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");

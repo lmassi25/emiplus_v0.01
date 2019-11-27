@@ -163,7 +163,7 @@ namespace Emiplus.View.Comercial
             this.btnRemover.Location = new System.Drawing.Point(28, 3);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(85, 90);
-            this.btnRemover.TabIndex = 10;
+            this.btnRemover.TabIndex = 8;
             this.btnRemover.Text = "Apagar";
             this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemover.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@ namespace Emiplus.View.Comercial
             this.btnExit.Location = new System.Drawing.Point(28, 4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(85, 90);
-            this.btnExit.TabIndex = 8;
+            this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Voltar";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.UseVisualStyleBackColor = true;
@@ -394,7 +394,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarEndereco.Location = new System.Drawing.Point(557, 4);
             this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
             this.btnAdicionarEndereco.Size = new System.Drawing.Size(80, 60);
-            this.btnAdicionarEndereco.TabIndex = 4;
+            this.btnAdicionarEndereco.TabIndex = 1;
             this.btnAdicionarEndereco.Text = "Adicionar";
             this.btnAdicionarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarEndereco.UseVisualStyleBackColor = true;
@@ -415,7 +415,7 @@ namespace Emiplus.View.Comercial
             this.btnEditarEndereco.Location = new System.Drawing.Point(471, 4);
             this.btnEditarEndereco.Name = "btnEditarEndereco";
             this.btnEditarEndereco.Size = new System.Drawing.Size(80, 60);
-            this.btnEditarEndereco.TabIndex = 3;
+            this.btnEditarEndereco.TabIndex = 0;
             this.btnEditarEndereco.Text = "Editar";
             this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarEndereco.UseVisualStyleBackColor = true;
@@ -532,7 +532,7 @@ namespace Emiplus.View.Comercial
             this.btnAdicionarContato.Location = new System.Drawing.Point(559, 5);
             this.btnAdicionarContato.Name = "btnAdicionarContato";
             this.btnAdicionarContato.Size = new System.Drawing.Size(80, 60);
-            this.btnAdicionarContato.TabIndex = 4;
+            this.btnAdicionarContato.TabIndex = 1;
             this.btnAdicionarContato.Text = "Adicionar";
             this.btnAdicionarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarContato.UseVisualStyleBackColor = true;
@@ -553,7 +553,7 @@ namespace Emiplus.View.Comercial
             this.btnEditarContato.Location = new System.Drawing.Point(473, 5);
             this.btnEditarContato.Name = "btnEditarContato";
             this.btnEditarContato.Size = new System.Drawing.Size(80, 60);
-            this.btnEditarContato.TabIndex = 3;
+            this.btnEditarContato.TabIndex = 0;
             this.btnEditarContato.Text = "Editar";
             this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarContato.UseVisualStyleBackColor = true;
@@ -614,7 +614,7 @@ namespace Emiplus.View.Comercial
             this.uf.SeparatorVisible = false;
             this.uf.Size = new System.Drawing.Size(124, 30);
             this.uf.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.uf.TabIndex = 48;
+            this.uf.TabIndex = 1;
             this.uf.TextAlignment = System.Drawing.StringAlignment.Center;
             this.uf.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.uf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -686,7 +686,7 @@ namespace Emiplus.View.Comercial
             this.rntc.ReadOnly = false;
             this.rntc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.rntc.Size = new System.Drawing.Size(259, 28);
-            this.rntc.TabIndex = 46;
+            this.rntc.TabIndex = 2;
             this.rntc.TextBoxWidth = 247;
             this.rntc.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.rntc.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -777,7 +777,7 @@ namespace Emiplus.View.Comercial
             this.placa.ReadOnly = false;
             this.placa.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.placa.Size = new System.Drawing.Size(259, 28);
-            this.placa.TabIndex = 42;
+            this.placa.TabIndex = 0;
             this.placa.TextBoxWidth = 247;
             this.placa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.placa.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -957,7 +957,7 @@ namespace Emiplus.View.Comercial
             this.nascimento.ReadOnly = false;
             this.nascimento.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nascimento.Size = new System.Drawing.Size(112, 28);
-            this.nascimento.TabIndex = 2;
+            this.nascimento.TabIndex = 6;
             this.nascimento.TextBoxWidth = 100;
             this.nascimento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nascimento.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1020,7 +1020,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nomeFantasia.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.nomeFantasia.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.nomeFantasia.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeFantasia.ButtonFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomeFantasia.ButtonIndent = 3;
             this.nomeFantasia.ButtonText = "visualButton";
             this.nomeFantasia.ButtonVisible = false;
@@ -1038,7 +1038,7 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia.ReadOnly = false;
             this.nomeFantasia.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nomeFantasia.Size = new System.Drawing.Size(229, 28);
-            this.nomeFantasia.TabIndex = 1;
+            this.nomeFantasia.TabIndex = 5;
             this.nomeFantasia.TextBoxWidth = 217;
             this.nomeFantasia.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nomeFantasia.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1096,7 +1096,7 @@ namespace Emiplus.View.Comercial
             this.nomeRS.ReadOnly = false;
             this.nomeRS.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.nomeRS.Size = new System.Drawing.Size(259, 28);
-            this.nomeRS.TabIndex = 0;
+            this.nomeRS.TabIndex = 4;
             this.nomeRS.TextBoxWidth = 247;
             this.nomeRS.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.nomeRS.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1226,7 +1226,7 @@ namespace Emiplus.View.Comercial
             this.rgIE.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.rgIE.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rgIE.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.rgIE.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rgIE.ButtonFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rgIE.ButtonIndent = 3;
             this.rgIE.ButtonText = "visualButton";
             this.rgIE.ButtonVisible = false;
@@ -1237,13 +1237,14 @@ namespace Emiplus.View.Comercial
             this.rgIE.ImageVisible = false;
             this.rgIE.ImageWidth = 35;
             this.rgIE.Location = new System.Drawing.Point(361, 43);
+            this.rgIE.MaxLength = 12;
             this.rgIE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.rgIE.Name = "rgIE";
             this.rgIE.PasswordChar = '\0';
             this.rgIE.ReadOnly = false;
             this.rgIE.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.rgIE.Size = new System.Drawing.Size(150, 28);
-            this.rgIE.TabIndex = 5;
+            this.rgIE.TabIndex = 2;
             this.rgIE.TextBoxWidth = 138;
             this.rgIE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.rgIE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1337,7 +1338,7 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.ReadOnly = false;
             this.cpfCnpj.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cpfCnpj.Size = new System.Drawing.Size(201, 28);
-            this.cpfCnpj.TabIndex = 4;
+            this.cpfCnpj.TabIndex = 1;
             this.cpfCnpj.TextBoxWidth = 189;
             this.cpfCnpj.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.cpfCnpj.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1386,7 +1387,7 @@ namespace Emiplus.View.Comercial
             this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Isento.Name = "Isento";
             this.Isento.Size = new System.Drawing.Size(56, 23);
-            this.Isento.TabIndex = 6;
+            this.Isento.TabIndex = 3;
             this.Isento.Text = "Isento";
             this.Isento.TextSize = new System.Drawing.Size(41, 19);
             this.Isento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));

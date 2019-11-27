@@ -14,6 +14,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.Pessoa _mTransportadora = new Model.Pessoa();
+        private Model.Nota _mNota = new Model.Nota();
 
         public TelaFrete()
         {
@@ -21,6 +22,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             Id = Nota.Id;
 
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
+            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
             Eventos();
         }
@@ -66,8 +68,15 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void Eventos()
         {
-            Load += (s, e) => {
+            Load += (s, e) => 
+            {
                 LoadData();
+                if (!String.IsNullOrEmpty(_mNota.Status))
+                {
+                    progress5.Visible = false;
+                    pictureBox1.Visible = false;
+                    label9.Visible = false;
+                }
             };
 
             SelecionarTransportadora.Click += (s, e) =>
@@ -81,7 +90,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     _mPedido.Id_Transportadora = PedidoModalTransportadora.Id;
                     _mPedido.Save(_mPedido);
                     LoadData();
-                }
+                }                
             };
 
             Next.Click += (s, e) =>

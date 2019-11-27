@@ -519,9 +519,14 @@ namespace Emiplus.View.Comercial
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (String.IsNullOrEmpty(BuscarProduto.Text)) BuscarProduto.Focus();
-                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
-                    else { LoadItens(); ClearForms(); }
+                    if (String.IsNullOrEmpty(BuscarProduto.Text))
+                        BuscarProduto.Focus();
+                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text))
+                        Preco.Focus();
+                    else {
+                        LoadItens();
+                        ClearForms();
+                    }
                 }
             };
 
