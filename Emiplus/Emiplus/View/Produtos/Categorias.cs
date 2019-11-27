@@ -83,11 +83,17 @@ namespace Emiplus.View.Produtos
                 case Keys.Enter:
                     EditCategoria();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) => {
                 search.Select();
                 DataTableStart();
@@ -99,9 +105,9 @@ namespace Emiplus.View.Produtos
             Adicionar.Click += (s, e) => EditCategoria(true);
             Editar.Click += (s, e) => EditCategoria();
             GridListaCategorias.DoubleClick += (s, e) => EditCategoria();
-            GridListaCategorias.KeyDown += KeyDowns;
+            //GridListaCategorias.KeyDown += KeyDowns;
 
-            search.KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
             search.TextChanged += (s, e) =>
             {
                 timer.Stop();

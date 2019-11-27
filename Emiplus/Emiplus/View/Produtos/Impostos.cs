@@ -66,11 +66,17 @@ namespace Emiplus.View.Produtos
                 case Keys.Enter:
                     EditImposto();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 search.Select();
@@ -91,8 +97,8 @@ namespace Emiplus.View.Produtos
                 Loading.Visible = true;
                 GridListaImpostos.Visible = false;
             };
-            search.KeyDown += KeyDowns;
-            GridListaImpostos.KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
+            //GridListaImpostos.KeyDown += KeyDowns;
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 

@@ -12,6 +12,8 @@ namespace Emiplus.View.Fiscal
         public BrowserNfe()
         {
             InitializeComponent();
+            Eventos();
+
             InitializeChromiumAsync();
         }
 
@@ -31,6 +33,22 @@ namespace Emiplus.View.Fiscal
             browserSettings.FileAccessFromFileUrls = CefState.Enabled;
             browserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
             chromeBrowser.BrowserSettings = browserSettings;
+        }
+
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+        private void Eventos()
+        {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
         }
     }
 }

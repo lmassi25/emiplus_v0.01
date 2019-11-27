@@ -66,11 +66,17 @@ namespace Emiplus.View.Produtos
                 case Keys.Enter:
                     EditProduct();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) => {
                 search.Select();
                 DataTableStart();
@@ -90,8 +96,8 @@ namespace Emiplus.View.Produtos
                 Loading.Visible = true;
                 GridListaProdutos.Visible = false;
             };
-            search.KeyDown += KeyDowns;
-            GridListaProdutos.KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
+            //GridListaProdutos.KeyDown += KeyDowns;
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 

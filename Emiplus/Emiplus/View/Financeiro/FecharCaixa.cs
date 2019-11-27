@@ -35,8 +35,21 @@ namespace Emiplus.View.Financeiro
             txtSaldoTotal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 LoadData();

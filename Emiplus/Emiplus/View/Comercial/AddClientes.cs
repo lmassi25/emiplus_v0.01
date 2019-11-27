@@ -205,8 +205,21 @@ namespace Emiplus.View.Comercial
 
         private void SetFocus() => nomeRS.Focus();
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 DataTableAddress();
@@ -267,8 +280,8 @@ namespace Emiplus.View.Comercial
 
             btnRemover.Click += (s, e) =>
             {
-                var result = MessageBox.Show("Deseja realmente excluir?", "Atenção!", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
                     if (_modelPessoa.Remove(Id))
                         Close();

@@ -205,7 +205,8 @@ namespace Emiplus.View.Common
 
             btnUpdate.Click += (s, e) =>
             {
-                if (MessageBox.Show("Deseja iniciar o processo de atualização?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                var result = AlertOptions.Message("Atenção!", "Deseja iniciar o processo de atualização?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
                     IniFile.Write("Update", "true", "APP");
 

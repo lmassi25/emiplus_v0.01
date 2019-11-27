@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedido));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -42,6 +44,8 @@
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.Status = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.BuscaID = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.filterRemovido = new System.Windows.Forms.RadioButton();
@@ -64,8 +68,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Status = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
@@ -238,7 +240,23 @@
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -290,6 +308,72 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 15;
+            // 
+            // Status
+            // 
+            this.Status.BackColor = System.Drawing.Color.White;
+            this.Status.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Status.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Status.Border.Color = System.Drawing.Color.Gainsboro;
+            this.Status.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Status.Border.HoverVisible = true;
+            this.Status.Border.Rounding = 6;
+            this.Status.Border.Thickness = 1;
+            this.Status.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Status.Border.Visible = true;
+            this.Status.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.Status.ButtonImage = null;
+            this.Status.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.Status.ButtonWidth = 30;
+            this.Status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.Status.DropDownHeight = 100;
+            this.Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status.DropDownWidth = 250;
+            this.Status.FormattingEnabled = true;
+            this.Status.ImageList = null;
+            this.Status.ImageVisible = false;
+            this.Status.Index = 0;
+            this.Status.IntegralHeight = false;
+            this.Status.ItemHeight = 23;
+            this.Status.ItemImageVisible = true;
+            this.Status.Location = new System.Drawing.Point(21, 284);
+            this.Status.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Status.MenuItemNormal = System.Drawing.Color.White;
+            this.Status.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Status.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Status.Name = "Status";
+            this.Status.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Status.Size = new System.Drawing.Size(199, 29);
+            this.Status.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Status.TabIndex = 205;
+            this.Status.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Status.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Status.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Status.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Status.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Status.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.Status.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.Status.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Status.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Status.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Status.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.Status.Watermark.Text = "Watermark text";
+            this.Status.Watermark.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(20, 264);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 17);
+            this.label13.TabIndex = 204;
+            this.label13.Text = "Status";
             // 
             // BuscaID
             // 
@@ -730,72 +814,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // Status
-            // 
-            this.Status.BackColor = System.Drawing.Color.White;
-            this.Status.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.Status.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Status.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Status.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.Status.Border.HoverVisible = true;
-            this.Status.Border.Rounding = 6;
-            this.Status.Border.Thickness = 1;
-            this.Status.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Status.Border.Visible = true;
-            this.Status.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.Status.ButtonImage = null;
-            this.Status.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.Status.ButtonWidth = 30;
-            this.Status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.Status.DropDownHeight = 100;
-            this.Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Status.DropDownWidth = 250;
-            this.Status.FormattingEnabled = true;
-            this.Status.ImageList = null;
-            this.Status.ImageVisible = false;
-            this.Status.Index = 0;
-            this.Status.IntegralHeight = false;
-            this.Status.ItemHeight = 23;
-            this.Status.ItemImageVisible = true;
-            this.Status.Location = new System.Drawing.Point(21, 284);
-            this.Status.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Status.MenuItemNormal = System.Drawing.Color.White;
-            this.Status.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Status.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Status.Name = "Status";
-            this.Status.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Status.Size = new System.Drawing.Size(199, 29);
-            this.Status.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Status.TabIndex = 205;
-            this.Status.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Status.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Status.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Status.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Status.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Status.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Status.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Status.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.Status.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.Status.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Status.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Status.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Status.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Status.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.Status.Watermark.Text = "Watermark text";
-            this.Status.Watermark.Visible = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(20, 264);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 17);
-            this.label13.TabIndex = 204;
-            this.label13.Text = "Status";
             // 
             // Pedido
             // 

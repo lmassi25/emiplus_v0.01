@@ -77,11 +77,17 @@ namespace Emiplus.View.Comercial
                 case Keys.Enter:
                     EditClientes();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 search.Select();

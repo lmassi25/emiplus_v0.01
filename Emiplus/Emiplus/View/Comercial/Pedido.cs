@@ -211,12 +211,17 @@ namespace Emiplus.View.Comercial
                         return;
                     EditPedido();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
             controle = "";
+            KeyDown += KeyDowns;
+            KeyPreview = true;
 
             Load += (s, e) =>
             { 
@@ -267,7 +272,7 @@ namespace Emiplus.View.Comercial
 
             btnEditar.Click += (s, e) => EditPedido();
             GridLista.DoubleClick += (s, e) =>EditPedido();
-            GridLista.KeyDown += KeyDowns;
+            //GridLista.KeyDown += KeyDowns;
 
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();
@@ -296,8 +301,6 @@ namespace Emiplus.View.Comercial
                         row.Cells[7].Style.ForeColor = Color.White;
                         row.Cells[7].Style.BackColor = Color.FromArgb(255, 89, 89);
                     }
-
-                    
                 }
             };
 

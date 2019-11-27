@@ -84,8 +84,10 @@ namespace Emiplus.View.Comercial
         private void Eventos()
         {
             KeyDown += KeyDowns;
-            search.KeyDown += KeyDowns;
-            GridLista.KeyDown += KeyDowns;
+            KeyPreview = true;
+            //KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
+            //GridLista.KeyDown += KeyDowns;
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();

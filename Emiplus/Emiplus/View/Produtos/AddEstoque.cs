@@ -25,8 +25,21 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             btnCancelar.Click += (s, e) => Close();
 
             btnSalvar.Click += (s, e) =>

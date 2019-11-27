@@ -20,11 +20,24 @@ namespace Emiplus.View.Financeiro
             ToolHelp.Show("Utiliza um caixa existente aberto por outro usuário.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
-                Caixas.SelectedValue = 1;
+                Caixas.SelectedValue = "1";
                 Caixas.Enabled = false;
 
                 var caixas = new Model.Caixa().Query()

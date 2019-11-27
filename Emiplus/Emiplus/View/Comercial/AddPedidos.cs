@@ -416,7 +416,9 @@ namespace Emiplus.View.Comercial
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
                         {
                             var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
-                            if (MessageBox.Show($"Cancelar o item ('{itemName}') no pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                            if (result)
                             {
                                 var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
                                 _mPedidoItens.Remove(idPedidoItem);
@@ -452,15 +454,8 @@ namespace Emiplus.View.Comercial
         private void Eventos()
         {
             BuscarProduto.Select();
-
+            KeyPreview = true;
             KeyDown += KeyDowns;
-            ModoRapido.KeyDown += KeyDowns;
-            BuscarProduto.KeyDown += KeyDowns;
-            SelecionarCliente.KeyDown += KeyDowns;
-            SelecionarColaborador.KeyDown += KeyDowns;
-            GridListaProdutos.KeyDown += KeyDowns;
-            btnConcluir.KeyDown += KeyDowns;
-            Quantidade.KeyDown += KeyDowns;
 
             Load += (s, e) =>
             {
@@ -561,7 +556,8 @@ namespace Emiplus.View.Comercial
                     Home.pedidoPage = CachePage;
                     if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
                     {
-                        if (MessageBox.Show($"Você está prestes a excluir o Pedido! Deseja continuar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir o Pedido! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                        if (result)
                         {
                             new Controller.Estoque(Id, 0, Home.pedidoPage).Add().Pedido();
                             _mPedido.Remove(Id);
