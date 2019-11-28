@@ -61,8 +61,10 @@ namespace Emiplus.View.Comercial
         private void Eventos()
         {
             KeyDown += KeyDowns;
-            search.KeyDown += KeyDowns;
-            GridListaVendedores.KeyDown += KeyDowns;
+            KeyPreview = true;
+            //KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
+            //GridListaVendedores.KeyDown += KeyDowns;
 
             Load += (s, e) => search.Select();
             btnSelecionar.Click += (s, e) => SelectItemGrid();

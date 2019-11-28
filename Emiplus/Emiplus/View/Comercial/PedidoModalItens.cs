@@ -62,16 +62,16 @@ namespace Emiplus.View.Comercial
 
         private void Eventos()
         {
-            Load += async (s, e) =>
-            {
-                await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
-            };
-
             KeyDown += KeyDowns;
+            KeyPreview = true;
+
+            Load += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
+            
+            //KeyDown += KeyDowns;
             buscarProduto.Text = txtSearch;
-            buscarProduto.KeyDown += KeyDowns;
-            Selecionar.KeyDown += KeyDowns;
-            GridListaProdutos.KeyDown += KeyDowns;
+            //buscarProduto.KeyDown += KeyDowns;
+            //Selecionar.KeyDown += KeyDowns;
+            //GridListaProdutos.KeyDown += KeyDowns;
 
             buscarProduto.TextChanged += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
 

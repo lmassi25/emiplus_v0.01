@@ -185,16 +185,19 @@ namespace Emiplus.View.Comercial
         public void Eventos()
         {
             KeyDown += KeyDowns;
-            Dinheiro.KeyDown += KeyDowns;
-            Cheque.KeyDown += KeyDowns;
-            Debito.KeyDown += KeyDowns;
-            Credito.KeyDown += KeyDowns;
-            Crediario.KeyDown += KeyDowns;
-            Boleto.KeyDown += KeyDowns;
-            Desconto.KeyDown += KeyDowns;
-            Acrescimo.KeyDown += KeyDowns;
+            KeyPreview = true;
 
-            btnClose.KeyDown += KeyDowns;
+            //KeyDown += KeyDowns;
+            //Dinheiro.KeyDown += KeyDowns;
+            //Cheque.KeyDown += KeyDowns;
+            //Debito.KeyDown += KeyDowns;
+            //Credito.KeyDown += KeyDowns;
+            //Crediario.KeyDown += KeyDowns;
+            //Boleto.KeyDown += KeyDowns;
+            //Desconto.KeyDown += KeyDowns;
+            //Acrescimo.KeyDown += KeyDowns;
+
+            //btnClose.KeyDown += KeyDowns;
             
             btnCFeSat.KeyDown += (s, e) =>
             {
@@ -202,14 +205,14 @@ namespace Emiplus.View.Comercial
                 MessageBox.Show(_controllerFiscal.Emitir(357, "CFe"));
             };
             
-            btnNfe.KeyDown += KeyDowns;
-            btnImprimir.KeyDown += KeyDowns;
-            btnConcluir.KeyDown += KeyDowns;
-            btnSalvar.KeyDown += KeyDowns;
-            btnCancelar.KeyDown += KeyDowns;
-            valor.KeyDown += KeyDowns;
-            parcelas.KeyDown += KeyDowns;
-            iniciar.KeyDown += KeyDowns;
+            //btnNfe.KeyDown += KeyDowns;
+            //btnImprimir.KeyDown += KeyDowns;
+            //btnConcluir.KeyDown += KeyDowns;
+            //btnSalvar.KeyDown += KeyDowns;
+            //btnCancelar.KeyDown += KeyDowns;
+            //valor.KeyDown += KeyDowns;
+            //parcelas.KeyDown += KeyDowns;
+            //iniciar.KeyDown += KeyDowns;
 
             Load += (s, e) => AtualizarDados();
 

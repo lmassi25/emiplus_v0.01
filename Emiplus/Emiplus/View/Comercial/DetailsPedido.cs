@@ -77,8 +77,21 @@ namespace Emiplus.View.Comercial
             _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             btnExit.Click += (s, e) => Close();
 
             btnPgtosLancado.Click += (s, e) =>
@@ -181,7 +194,7 @@ namespace Emiplus.View.Comercial
             {
                 var checkNota = new Model.Nota().FindByIdPedido(idPedido).Get();
 
-                if(checkNota.Count() == 0)
+                if (checkNota.Count() == 0)
                 {
                     OpcoesNfe.idPedido = idPedido;
                     OpcoesNfe f = new OpcoesNfe();
@@ -202,7 +215,7 @@ namespace Emiplus.View.Comercial
                         OpcoesNfeRapida f = new OpcoesNfeRapida();
                         f.Show();
                     }
-                }                               
+                }
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");

@@ -47,9 +47,6 @@ namespace Emiplus.Model
 
         public bool Save(Item data, bool message = true)
         {
-            if (ValidarDados(data))
-                return false;
-
             if (data.Id == 0)
             {
                 data.Tipo = "Produtos";
@@ -66,6 +63,9 @@ namespace Emiplus.Model
 
             if (data.Id > 0)
             {
+                if (ValidarDados(data))
+                    return false;
+
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {

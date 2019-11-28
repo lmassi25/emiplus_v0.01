@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -46,9 +47,21 @@ namespace Emiplus.View.Comercial
                 ibge.Text = _modelAddress.IBGE;
             }
         }
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             btnAddrSalvar.Click += (s, e) =>
             {
                 _modelAddress.Id = IdAddress;
@@ -70,8 +83,8 @@ namespace Emiplus.View.Comercial
             };
             btnAddrDelete.Click += (s, e) =>
             {
-                var result = MessageBox.Show("Deseja realmente excluir o endereço?", "Atenção!", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir o endereço?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
                     if (_modelAddress.Remove(IdAddress))
                     {

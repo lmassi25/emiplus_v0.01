@@ -17,9 +17,7 @@ namespace Emiplus.View.Comercial
         private void CancelItem()
         {
             if (IdPedidoItem <= 0)
-            {
                 return;
-            }
 
             Model.PedidoItem item = new Model.PedidoItem();
 
@@ -33,7 +31,6 @@ namespace Emiplus.View.Comercial
 
             DialogResult = DialogResult.OK;
             Close();
-
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -52,8 +49,10 @@ namespace Emiplus.View.Comercial
         private void Eventos()
         {
             KeyDown += KeyDowns;
-            nr.KeyDown += KeyDowns;
-            btnContinuar.KeyDown += KeyDowns;
+            KeyPreview = true;
+            //KeyDown += KeyDowns;
+            //nr.KeyDown += KeyDowns;
+            //btnContinuar.KeyDown += KeyDowns;
 
             btnContinuar.Click += (s, e) => CancelItem();
 
