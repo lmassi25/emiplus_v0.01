@@ -1,4 +1,5 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Controller;
+using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
 using Emiplus.View.Common;
@@ -527,6 +528,12 @@ namespace Emiplus.View.Comercial
                         ClearForms();
                     }
                 }
+            };
+
+            imprimir.Click += (s, e) =>
+            {
+                PedidoImpressao print = new PedidoImpressao();
+                print.Print(Id);
             };
 
             DescontoPorcentagem.KeyDown += (s, e) =>

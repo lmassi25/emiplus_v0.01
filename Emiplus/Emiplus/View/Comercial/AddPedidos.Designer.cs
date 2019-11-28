@@ -81,6 +81,8 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.imprimir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -370,6 +372,8 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.imprimir);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnCancelarProduto);
             this.panel2.Controls.Add(this.button21);
@@ -397,7 +401,7 @@
             // btnCancelarProduto
             // 
             this.btnCancelarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.btnCancelarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
+            this.btnCancelarProduto.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnCancelarProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancelarProduto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelarProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
@@ -1105,6 +1109,43 @@
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(671, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 35);
+            this.button2.TabIndex = 154;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.imprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(672, 4);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(148, 65);
+            this.imprimir.TabIndex = 153;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = false;
+            // 
             // AddPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1196,5 +1237,7 @@
         private System.Windows.Forms.Label totaisDescontos;
         private System.Windows.Forms.Button btnCancelarProduto;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button imprimir;
     }
 }

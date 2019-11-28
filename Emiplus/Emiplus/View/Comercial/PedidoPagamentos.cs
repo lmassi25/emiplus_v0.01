@@ -1,4 +1,5 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Controller;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
@@ -216,6 +217,12 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) => AtualizarDados();
 
+            btnImprimir.Click += (s, e) =>
+            {
+                PedidoImpressao print = new PedidoImpressao();
+                print.Print(IdPedido);
+            };
+
             Debito.Click += (s, e) => JanelasRecebimento("Cartão de Débito");
             Credito.Click += (s, e) => JanelasRecebimento("Cartão de Crédito");
             Dinheiro.Click += (s, e) => JanelasRecebimento("Dinheiro");
@@ -254,7 +261,8 @@ namespace Emiplus.View.Comercial
 
                 if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                 {
-
+                    PedidoImpressao print = new PedidoImpressao();
+                    print.Print(IdPedido);
                 }
 
                 Application.OpenForms["AddPedidos"].Close();
