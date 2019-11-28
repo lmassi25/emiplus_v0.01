@@ -23,6 +23,8 @@ namespace Emiplus.View.Produtos
         {
             InitializeComponent();
             Eventos();
+
+            ToolHelp.Show("Pesquise pelo produto utilizando a Descrição, Cód. de Barras ou Categoria do Produto.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         private void DataTableStart()
