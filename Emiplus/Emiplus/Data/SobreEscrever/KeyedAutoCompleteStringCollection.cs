@@ -12,8 +12,11 @@ namespace Emiplus.Data.SobreEscrever
 
         public void Add(string value, int key)
         {
-            base.Add(value);
-            keyedValues.Add(value, key); // intentionally backwards
+            if(!String.IsNullOrEmpty(value))
+            {
+                base.Add(value);
+                keyedValues.Add(value, key); // intentionally backwards
+            }   
         }
 
         public int Lookup(string value)
@@ -28,6 +31,5 @@ namespace Emiplus.Data.SobreEscrever
                 return 0;
             }
         }
-
     }
 }

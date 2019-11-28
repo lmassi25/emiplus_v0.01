@@ -86,8 +86,15 @@ namespace Emiplus.View.Produtos
             btnEditar.Click += (s, e) => EditProduct();
             GridListaProdutos.DoubleClick += (s, e) => EditProduct();
 
-            label5.Click += (s, e) => Close();
-            btnExit.Click += (s, e) => Close();
+            label5.Click += (s, e) =>
+            {
+                Close();
+            };
+            
+            btnExit.Click += (s, e) => 
+            {
+                Close();
+            };
 
             search.TextChanged += (s, e) =>
             {

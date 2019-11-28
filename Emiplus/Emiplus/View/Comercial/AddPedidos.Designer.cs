@@ -258,6 +258,7 @@
             this.label18.Size = new System.Drawing.Size(31, 13);
             this.label18.TabIndex = 48;
             this.label18.Text = "0001";
+            this.label18.Visible = false;
             // 
             // label17
             // 
@@ -281,6 +282,7 @@
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox11.TabIndex = 47;
             this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
             // 
             // nomeVendedor
             // 
@@ -304,6 +306,7 @@
             this.label19.Size = new System.Drawing.Size(40, 13);
             this.label19.TabIndex = 46;
             this.label19.Text = "Tabela";
+            this.label19.Visible = false;
             // 
             // IDCaixa
             // 

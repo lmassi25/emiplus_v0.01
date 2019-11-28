@@ -255,7 +255,7 @@ namespace Emiplus.View.Produtos
                     }
                 }
 
-                Close();
+                nome.Focus();
             };
 
             btnSalvar.Click += (s, e) => Save();

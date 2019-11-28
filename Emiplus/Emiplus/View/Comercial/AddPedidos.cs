@@ -47,6 +47,9 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados do Orçamento: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar um novo orçamento!";
                 btnConcluir.Text = "Gerar Venda";
+                pictureBox8.Visible = false;
+                label12.Visible = false;
+                IDCaixa.Visible = false;
             } else if (Home.pedidoPage == "Consignações") {
                 label2.Text = $"Dados da Consignação: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar uma nova consignãção!";
@@ -137,7 +140,8 @@ namespace Emiplus.View.Comercial
 
             foreach (var itens in item)
             {
-                collection.Add(itens.NOME, itens.ID);
+                if(!String.IsNullOrEmpty(itens.NOME))
+                    collection.Add(itens.NOME, itens.ID);
             }
 
             BuscarProduto.AutoCompleteCustomSource = collection;
