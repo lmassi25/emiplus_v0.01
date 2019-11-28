@@ -1,4 +1,5 @@
 ﻿using DotLiquid;
+using Emiplus.Controller;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
@@ -96,13 +97,6 @@ namespace Emiplus.View.Comercial
 
             btnPgtosLancado.Click += (s, e) =>
             {
-                DetailsPedidoPgtos.IdPedido = idPedido;
-                DetailsPedidoPgtos pgtos = new DetailsPedidoPgtos();
-                pgtos.ShowDialog();
-            };
-
-            btnReceber.Click += (s, e) =>
-            {
                 if (Home.idCaixa == 0)
                 {
                     var result = AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
@@ -123,71 +117,8 @@ namespace Emiplus.View.Comercial
 
             btnImprimir.Click += (s, e) =>
             {
-
-                IEnumerable<dynamic> dados = new Controller.PedidoItem().GetDataItens(idPedido);
-
-                ArrayList data = new ArrayList();
-                var nr = 0;
-                foreach (var item in dados)
-                {
-                    nr++;
-                    data.Add(new
-                    {
-                        Nr = nr,
-                        Nome = item.NOME,
-                        CodeBarras = item.CODEBARRAS,
-                        Ref = item.REFERENCIA,
-                        Qtd = item.QUANTIDADE,
-                        ValorVenda = item.VALORVENDA,
-                        Price = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
-                    });
-                }
-
-                var dataPgtos = _controllerTitulo.GetDataPgtosLancados(idPedido);
-                ArrayList newDataPgtos = new ArrayList();
-                foreach (var item in dataPgtos)
-                {
-                    newDataPgtos.Add(new
-                    {
-                        Forma = item.FORMAPGTO,
-                        Valor = Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
-                    });
-                }
-
-                Model.Pessoa dataCliente = _modelPessoa.FindById(_modelPedido.Cliente).FirstOrDefault<Model.Pessoa>();
-                Model.Usuarios dataVendedor = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
-                _modelPessoaAddr = _modelPessoaAddr.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaEndereco>();
-                _modelPessoaContato = _modelPessoaContato.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaContato>();
-
-                var Addr = _modelPessoaAddr.Rua + " " + _modelPessoaAddr.Nr + " - CEP: " + _modelPessoaAddr.Cep + " - " + _modelPessoaAddr.Complemento + " | " + _modelPessoaAddr.Bairro + " - " + _modelPessoaAddr.Cidade + "/" + _modelPessoaAddr.Estado;
-
-                var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomComprovanteVendaA4.html"));
-                var render = html.Render(Hash.FromAnonymousObject(new
-                {
-                    NomeFantasia = Settings.Default.empresa_nome_fantasia,
-                    CNPJ = Settings.Default.empresa_cnpj,
-                    AddressEmpresa = $"{Settings.Default.empresa_rua} {Settings.Default.empresa_nr} - {Settings.Default.empresa_cep} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
-                    Logo = Settings.Default.empresa_logo,
-                    Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
-                    Cliente = dataCliente.Nome,
-                    Vendedor = dataVendedor.Nome,
-                    Caixa = caixa.Text,
-                    Endereco = Addr,
-                    Telefone = _modelPessoaContato.Telefone,
-                    Celular = _modelPessoaContato.Celular,
-                    Data = data,
-                    Troco = txtTroco.Text.Replace("-", ""),
-                    Pagamentos = newDataPgtos,
-                    subTotal = txtSubtotal.Text,
-                    Descontos = txtDesconto.Text,
-                    Acrescimo = txtAcrescimo.Text,
-                    Total = txtPagar.Text,
-                    NrVenda = idPedido
-                }));
-
-                Browser.htmlRender = render;
-                var f = new Browser();
-                f.ShowDialog();
+                PedidoImpressao print = new PedidoImpressao();
+                print.Print(idPedido);
             };
 
             btnNfe.Click += (s, e) =>

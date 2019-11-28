@@ -202,6 +202,7 @@
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Controller\Natureza.cs" />
     <Compile Include="Controller\Pedido.cs" />
+    <Compile Include="Controller\PedidoImpressao.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
     <Compile Include="Controller\Sat.cs" />

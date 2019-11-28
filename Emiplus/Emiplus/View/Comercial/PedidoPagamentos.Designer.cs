@@ -233,7 +233,7 @@
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(161, 65);
             this.btnImprimir.TabIndex = 12;
-            this.btnImprimir.Text = "Imprimir Pedido";
+            this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.UseVisualStyleBackColor = true;
             // 
