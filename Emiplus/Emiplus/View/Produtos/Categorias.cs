@@ -25,17 +25,21 @@ namespace Emiplus.View.Produtos
             InitializeComponent();
             Eventos();
 
-            //if (Home.CategoriaPage == "Produtos")
-            //{
-            //    label1.Text = "Categorias";
-            //    label2.Text = "Se organize melhor criando categorias para seus produtos.";
-            //}
+            if (Home.CategoriaPage == "Produtos")
+            {
+                pictureBox1.Image = Properties.Resources.box;
+                label5.Text = "Produtos";
+                label1.Text = "Categorias";
+                label2.Text = "Se organize melhor criando categorias para seus produtos.";
+            }
 
-            //if (Home.CategoriaPage == "Financeiro")
-            //{
-            //    label1.Text = "Categorias de Contas";
-            //    label2.Text = "Se organize melhor criando categorias de contas para seus produtos.";
-            //}
+            if (Home.CategoriaPage == "Financeiro")
+            {
+                pictureBox1.Image = Properties.Resources.money_bag__1_;
+                label5.Text = "Financeiro";
+                label1.Text = "Categorias de Contas";
+                label2.Text = "Se organize melhor criando categorias de contas para seus produtos.";
+            }
         }
 
         private void DataTableStart()
@@ -79,11 +83,17 @@ namespace Emiplus.View.Produtos
                 case Keys.Enter:
                     EditCategoria();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) => {
                 search.Select();
                 DataTableStart();
@@ -95,9 +105,9 @@ namespace Emiplus.View.Produtos
             Adicionar.Click += (s, e) => EditCategoria(true);
             Editar.Click += (s, e) => EditCategoria();
             GridListaCategorias.DoubleClick += (s, e) => EditCategoria();
-            GridListaCategorias.KeyDown += KeyDowns;
+            //GridListaCategorias.KeyDown += KeyDowns;
 
-            search.KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
             search.TextChanged += (s, e) =>
             {
                 timer.Stop();

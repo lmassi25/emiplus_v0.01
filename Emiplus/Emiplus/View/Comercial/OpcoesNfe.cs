@@ -129,11 +129,21 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        /// <summary>
-        /// Eventos do form
-        /// </summary>
-        public void Eventos()
+        private void KeyDowns(object sender, KeyEventArgs e)
         {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+        private void Eventos()
+        {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 var checkNota = _modelNota.FindByIdPedido(idPedido).FirstOrDefault<Model.Nota>();

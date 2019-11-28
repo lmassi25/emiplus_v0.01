@@ -67,11 +67,17 @@ namespace Emiplus.View.Fiscal
                 case Keys.Enter:
                     EditCategoria();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) => {
                 search.Select();
                 DataTableStart();
@@ -83,9 +89,9 @@ namespace Emiplus.View.Fiscal
             Adicionar.Click += (s, e) => EditCategoria(true);
             Editar.Click += (s, e) => EditCategoria();
             GridLista.DoubleClick += (s, e) => EditCategoria();
-            GridLista.KeyDown += KeyDowns;
+            //GridLista.KeyDown += KeyDowns;
 
-            search.KeyDown += KeyDowns;
+            //search.KeyDown += KeyDowns;
             search.TextChanged += (s, e) =>
             {
                 timer.Stop();

@@ -42,18 +42,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.OutroCaixa = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
             this.MeuCaixa = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.Caixas = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.visualPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // label13
@@ -110,7 +110,7 @@
             this.ValorInicial.ReadOnly = false;
             this.ValorInicial.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ValorInicial.Size = new System.Drawing.Size(118, 28);
-            this.ValorInicial.TabIndex = 25;
+            this.ValorInicial.TabIndex = 3;
             this.ValorInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ValorInicial.TextBoxWidth = 106;
             this.ValorInicial.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -150,10 +150,10 @@
             this.btnCriar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCriar.Image = ((System.Drawing.Image)(resources.GetObject("btnCriar.Image")));
             this.btnCriar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCriar.Location = new System.Drawing.Point(241, 1);
+            this.btnCriar.Location = new System.Drawing.Point(227, 1);
             this.btnCriar.Name = "btnCriar";
             this.btnCriar.Size = new System.Drawing.Size(119, 60);
-            this.btnCriar.TabIndex = 3;
+            this.btnCriar.TabIndex = 6;
             this.btnCriar.Text = "Abrir Caixa";
             this.btnCriar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCriar.UseVisualStyleBackColor = true;
@@ -221,7 +221,7 @@
             this.Obs.ReadOnly = false;
             this.Obs.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Obs.Size = new System.Drawing.Size(326, 69);
-            this.Obs.TabIndex = 48;
+            this.Obs.TabIndex = 5;
             this.Obs.TextBoxWidth = 314;
             this.Obs.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Obs.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -326,7 +326,7 @@
             this.Terminal.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Terminal.Size = new System.Drawing.Size(202, 29);
             this.Terminal.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Terminal.TabIndex = 156;
+            this.Terminal.TabIndex = 4;
             this.Terminal.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Terminal.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Terminal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -400,6 +400,28 @@
             this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(185, 43);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(127, 14);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 25;
+            this.pictureBox4.TabStop = false;
+            // 
             // OutroCaixa
             // 
             this.OutroCaixa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -434,7 +456,7 @@
             this.OutroCaixa.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.OutroCaixa.Name = "OutroCaixa";
             this.OutroCaixa.Size = new System.Drawing.Size(177, 23);
-            this.OutroCaixa.TabIndex = 2;
+            this.OutroCaixa.TabIndex = 1;
             this.OutroCaixa.Text = "Utilizar um caixa já aberto";
             this.OutroCaixa.TextSize = new System.Drawing.Size(157, 19);
             this.OutroCaixa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -480,7 +502,7 @@
             this.MeuCaixa.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.MeuCaixa.Name = "MeuCaixa";
             this.MeuCaixa.Size = new System.Drawing.Size(170, 23);
-            this.MeuCaixa.TabIndex = 3;
+            this.MeuCaixa.TabIndex = 0;
             this.MeuCaixa.Text = "Abrir novo caixa";
             this.MeuCaixa.TextSize = new System.Drawing.Size(100, 19);
             this.MeuCaixa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -540,7 +562,7 @@
             this.Caixas.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Caixas.Size = new System.Drawing.Size(326, 29);
             this.Caixas.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Caixas.TabIndex = 160;
+            this.Caixas.TabIndex = 2;
             this.Caixas.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Caixas.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.Caixas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -558,28 +580,6 @@
             this.Caixas.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
             this.Caixas.Watermark.Text = "Watermark text";
             this.Caixas.Watermark.Visible = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(127, 14);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 25;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(185, 43);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -622,8 +622,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.visualPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -82,11 +82,13 @@ namespace Emiplus.View.Comercial
 
         private void Eventos()
         {
-            KeyDown += KeyDowns; 
-            btnSalvar.KeyDown += KeyDowns;
-            btnCancelar.KeyDown += KeyDowns;
-            porcentagem.KeyDown += KeyDowns;
-            dinheiro.KeyDown += KeyDowns;
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+            //KeyDown += KeyDowns; 
+            //btnSalvar.KeyDown += KeyDowns;
+            //btnCancelar.KeyDown += KeyDowns;
+            //porcentagem.KeyDown += KeyDowns;
+            //dinheiro.KeyDown += KeyDowns;
 
             btnSalvar.Click += (s, e) => Save();
             porcentagem.TextChanged += (s, e) =>

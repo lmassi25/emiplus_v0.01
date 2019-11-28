@@ -240,8 +240,21 @@ namespace Emiplus.View.Financeiro
             return false;
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += async (s, e) =>
             {
                 LoadData();

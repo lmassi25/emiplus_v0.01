@@ -97,6 +97,20 @@ namespace Emiplus.View.Common
                 Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
                 ProdVendidos.ShowDialog();
             };
+
+            OrcamentosRel.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Orçamentos";
+                Pedido Pedido = new Pedido();
+                Pedido.ShowDialog();
+            };
+
+            ProdutosOrcados.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Orçamentos";
+                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                ProdVendidos.ShowDialog();
+            };
         }
     }
 }

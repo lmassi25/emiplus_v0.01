@@ -32,9 +32,17 @@ namespace Emiplus.View.Comercial
             label6.Text = Home.pessoaPage;
 
             if (Home.pessoaPage == "Fornecedores")
+            {
+                pictureBox2.Image = Properties.Resources.box;
+                label8.Text = "Produtos";
                 label2.Text = "Gerencie os Fornecedores da sua empresa aqui! Adicione, edite ou delete um Fornecedor.";
+            }
             else if (Home.pessoaPage == "Transportadoras")
+            {
+                pictureBox2.Image = Properties.Resources.box;
+                label8.Text = "Produtos";
                 label2.Text = "Gerencie as Transportadoras da sua empresa aqui! Adicione, edite ou delete uma Transportadora.";
+            }
         }
 
         private async void DataTable() => await _controller.SetTableClientes(GridLista, null, search.Text);
@@ -69,11 +77,17 @@ namespace Emiplus.View.Comercial
                 case Keys.Enter:
                     EditClientes();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 search.Select();

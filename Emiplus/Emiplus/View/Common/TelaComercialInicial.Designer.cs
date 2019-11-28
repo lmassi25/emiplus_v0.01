@@ -53,6 +53,8 @@
             this.Orcamentos = new System.Windows.Forms.Button();
             this.Devolucoes = new System.Windows.Forms.Button();
             this.Clientes = new System.Windows.Forms.Button();
+            this.ProdutosOrcados = new System.Windows.Forms.Button();
+            this.OrcamentosRel = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -211,7 +213,7 @@
             this.ProdutosDevolvidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosDevolvidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosDevolvidos.Image")));
             this.ProdutosDevolvidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosDevolvidos.Location = new System.Drawing.Point(491, 388);
+            this.ProdutosDevolvidos.Location = new System.Drawing.Point(491, 452);
             this.ProdutosDevolvidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosDevolvidos.Name = "ProdutosDevolvidos";
             this.ProdutosDevolvidos.Size = new System.Drawing.Size(219, 41);
@@ -234,7 +236,7 @@
             this.ProdutosConsignados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosConsignados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosConsignados.Image")));
             this.ProdutosConsignados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosConsignados.Location = new System.Drawing.Point(492, 143);
+            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 229);
             this.ProdutosConsignados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosConsignados.Name = "ProdutosConsignados";
             this.ProdutosConsignados.Size = new System.Drawing.Size(219, 41);
@@ -257,7 +259,7 @@
             this.ConsignacoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.ConsignacoesRel.Image = ((System.Drawing.Image)(resources.GetObject("ConsignacoesRel.Image")));
             this.ConsignacoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 94);
+            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 184);
             this.ConsignacoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsignacoesRel.Name = "ConsignacoesRel";
             this.ConsignacoesRel.Size = new System.Drawing.Size(219, 41);
@@ -280,7 +282,7 @@
             this.DevolucoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.DevolucoesRel.Image = ((System.Drawing.Image)(resources.GetObject("DevolucoesRel.Image")));
             this.DevolucoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DevolucoesRel.Location = new System.Drawing.Point(491, 339);
+            this.DevolucoesRel.Location = new System.Drawing.Point(491, 407);
             this.DevolucoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
@@ -303,7 +305,7 @@
             this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
             this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
             this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.VendasRel.Location = new System.Drawing.Point(491, 192);
+            this.VendasRel.Location = new System.Drawing.Point(491, 274);
             this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VendasRel.Name = "VendasRel";
             this.VendasRel.Size = new System.Drawing.Size(219, 41);
@@ -326,7 +328,7 @@
             this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
             this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(492, 241);
+            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 317);
             this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosVendidos.Name = "ProdutosVendidos";
             this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
@@ -357,6 +359,7 @@
             this.button6.Text = "          Tabela de Preços";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Visible = false;
             // 
             // Comissoes
             // 
@@ -372,7 +375,7 @@
             this.Comissoes.ForeColor = System.Drawing.Color.DimGray;
             this.Comissoes.Image = ((System.Drawing.Image)(resources.GetObject("Comissoes.Image")));
             this.Comissoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Comissoes.Location = new System.Drawing.Point(492, 290);
+            this.Comissoes.Location = new System.Drawing.Point(491, 362);
             this.Comissoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Comissoes.Name = "Comissoes";
             this.Comissoes.Size = new System.Drawing.Size(219, 41);
@@ -496,12 +499,60 @@
             this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Clientes.UseVisualStyleBackColor = false;
             // 
+            // ProdutosOrcados
+            // 
+            this.ProdutosOrcados.BackColor = System.Drawing.Color.Transparent;
+            this.ProdutosOrcados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ProdutosOrcados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProdutosOrcados.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ProdutosOrcados.FlatAppearance.BorderSize = 0;
+            this.ProdutosOrcados.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ProdutosOrcados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ProdutosOrcados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProdutosOrcados.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProdutosOrcados.ForeColor = System.Drawing.Color.DimGray;
+            this.ProdutosOrcados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosOrcados.Image")));
+            this.ProdutosOrcados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProdutosOrcados.Location = new System.Drawing.Point(492, 139);
+            this.ProdutosOrcados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ProdutosOrcados.Name = "ProdutosOrcados";
+            this.ProdutosOrcados.Size = new System.Drawing.Size(219, 41);
+            this.ProdutosOrcados.TabIndex = 100;
+            this.ProdutosOrcados.Text = "          Produtos Orçados";
+            this.ProdutosOrcados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProdutosOrcados.UseVisualStyleBackColor = false;
+            // 
+            // OrcamentosRel
+            // 
+            this.OrcamentosRel.BackColor = System.Drawing.Color.Transparent;
+            this.OrcamentosRel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.OrcamentosRel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OrcamentosRel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.OrcamentosRel.FlatAppearance.BorderSize = 0;
+            this.OrcamentosRel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.OrcamentosRel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.OrcamentosRel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OrcamentosRel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrcamentosRel.ForeColor = System.Drawing.Color.DimGray;
+            this.OrcamentosRel.Image = ((System.Drawing.Image)(resources.GetObject("OrcamentosRel.Image")));
+            this.OrcamentosRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OrcamentosRel.Location = new System.Drawing.Point(492, 94);
+            this.OrcamentosRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OrcamentosRel.Name = "OrcamentosRel";
+            this.OrcamentosRel.Size = new System.Drawing.Size(219, 41);
+            this.OrcamentosRel.TabIndex = 99;
+            this.OrcamentosRel.Text = "          Orçamentos";
+            this.OrcamentosRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OrcamentosRel.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.ProdutosOrcados);
+            this.Controls.Add(this.OrcamentosRel);
             this.Controls.Add(this.ProdutosDevolvidos);
             this.Controls.Add(this.ProdutosConsignados);
             this.Controls.Add(this.ConsignacoesRel);
@@ -559,5 +610,7 @@
         private System.Windows.Forms.Button Orcamentos;
         private System.Windows.Forms.Button Devolucoes;
         private System.Windows.Forms.Button Clientes;
+        private System.Windows.Forms.Button ProdutosOrcados;
+        private System.Windows.Forms.Button OrcamentosRel;
     }
 }

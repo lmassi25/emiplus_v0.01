@@ -58,7 +58,10 @@ namespace Emiplus.View.Fiscal.TelasNota
                     return;
                 }
 
-                retorno.Text = new Controller.Fiscal().Imprimir(idPedido, "NFe");
+                var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe");
+
+                if (!msg.Contains(".pdf"))
+                    retorno.Text = msg;
             };
 
             using (var b = WorkerBackground)

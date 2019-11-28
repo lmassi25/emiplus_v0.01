@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections;
 using System.ComponentModel;
+using Emiplus.View.Common;
 
 namespace Emiplus.View.Produtos
 {
@@ -24,7 +25,7 @@ namespace Emiplus.View.Produtos
                
         private void Start()
         {
-			ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente." + Environment.NewLine + "Para cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+			ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 			ToolHelp.Show("Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine + "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 			ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 			ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
@@ -32,8 +33,6 @@ namespace Emiplus.View.Produtos
 			ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque." , pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
 			ActiveControl = nome;
-
-            //ToolHelp.Show("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
             if (cat.Count() > 0)
@@ -89,15 +88,9 @@ namespace Emiplus.View.Produtos
             }
         }
 
-        private void LoadData()
+        private void LoadEstoque()
         {
             _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
-
-            nome.Text = _modelItem?.Nome ?? "";
-            codebarras.Text = _modelItem?.CodeBarras ?? "";
-            referencia.Text = _modelItem?.Referencia ?? "";
-            valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
-            valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
 
             if (_modelItem.Medida == "KG")
             {
@@ -109,6 +102,18 @@ namespace Emiplus.View.Produtos
                 estoqueminimo.Text = _modelItem.EstoqueMinimo.ToString();
                 estoqueatual.Text = Validation.FormatNumberUnidade(_modelItem.EstoqueAtual);
             }
+        }
+
+        private void LoadData()
+        {
+            _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
+
+            nome.Text = _modelItem?.Nome ?? "";
+            codebarras.Text = _modelItem?.CodeBarras ?? "";
+            referencia.Text = _modelItem?.Referencia ?? "";
+            valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
+            valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+            LoadEstoque();
 
             Impostos.SelectedValue = _modelItem.Impostoid;
 
@@ -134,6 +139,34 @@ namespace Emiplus.View.Produtos
 
         private void Save()
         {
+            if (!string.IsNullOrEmpty(nome.Text))
+            {
+                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("nome", nome.Text).FirstOrDefault();
+                if (data != null)
+                {
+                    Alert.Message("Oppss", "Já existe um produto cadastrado com esse NOME.", Alert.AlertType.error);
+                    return;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(codebarras.Text))
+            {
+                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("codebarras", codebarras.Text).FirstOrDefault();
+                if (data != null)
+                {
+                    Alert.Message("Oppss", "Já existe um produto cadastrado com esse código de barras.", Alert.AlertType.error);
+                    return;
+                }
+            }
+            else
+            {
+                var result = AlertOptions.Message("Atenção!", "É necessário preencher o código de barras, deseja gerar um código automático?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                    codebarras.Text = Validation.CodeBarrasRandom();
+                else
+                    return;
+            }
+
             _modelItem.Id = idPdtSelecionado;
             _modelItem.Nome = nome.Text;
             _modelItem.CodeBarras = codebarras.Text;
@@ -167,8 +200,21 @@ namespace Emiplus.View.Produtos
 
         private void DataTableEstoque() => _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 Start();
@@ -181,7 +227,6 @@ namespace Emiplus.View.Produtos
                 else
                 {
                     _modelItem.Id = idPdtSelecionado;
-                    _modelItem.Nome = "Novo Produto";
                     if (_modelItem.Save(_modelItem, false))
                     {
                         idPdtSelecionado = _modelItem.GetLastId();
@@ -198,9 +243,11 @@ namespace Emiplus.View.Produtos
             label6.Click += (s, e) => Close();
             btnExit.Click += (s, e) =>
             {
-                if (nome.Text == "Novo Produto")
+                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
+                if (dataProd != null)
                 {
-                    if (MessageBox.Show($"Esse produto não foi editado, deseja deletar?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                    if (result)
                     {
                         var data = _modelItem.Remove(idPdtSelecionado);
                         if (data)
@@ -208,15 +255,19 @@ namespace Emiplus.View.Produtos
                     }
                 }
 
-                Close();
+                nome.Focus();
             };
 
             btnSalvar.Click += (s, e) => Save();
             btnRemover.Click += (s, e) => 
             {
-                var data = _modelItem.Remove(idPdtSelecionado);
-                if (data)
-                    Close();
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um produto, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    var data = _modelItem.Remove(idPdtSelecionado);
+                    if (data)
+                        Close();
+                }
             };
 
             btnEstoque.Click += (s, e) =>
@@ -224,14 +275,13 @@ namespace Emiplus.View.Produtos
                 AddEstoque f = new AddEstoque();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    LoadEstoque();
 
                     estoqueminimo.Focus();
                     DataTableEstoque();
                 }
             };
 
-            referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e);
             valorcompra.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
@@ -243,7 +293,13 @@ namespace Emiplus.View.Produtos
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
+
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+            codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
+            referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
+            ncm.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+            ncm.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 8);
+            nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }

@@ -56,7 +56,7 @@
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.step5 = new System.Windows.Forms.PictureBox();
             this.step3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             this.addAddr = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.step5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).BeginInit();
@@ -860,7 +860,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(248)))));
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.step5);
             this.panel2.Controls.Add(this.step3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label16);
@@ -879,16 +879,16 @@
             this.panel2.Size = new System.Drawing.Size(1008, 97);
             this.panel2.TabIndex = 180;
             // 
-            // pictureBox1
+            // step5
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(809, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.step5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step5.Image = ((System.Drawing.Image)(resources.GetObject("step5.Image")));
+            this.step5.Location = new System.Drawing.Point(809, 32);
+            this.step5.Name = "step5";
+            this.step5.Size = new System.Drawing.Size(50, 50);
+            this.step5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step5.TabIndex = 15;
+            this.step5.TabStop = false;
             // 
             // step3
             // 
@@ -1215,7 +1215,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.step5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).EndInit();
@@ -1257,7 +1257,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox step5;
         private System.Windows.Forms.PictureBox step3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label16;

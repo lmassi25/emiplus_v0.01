@@ -81,8 +81,21 @@ namespace Emiplus.View.Financeiro
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) =>
             {
                 Start();
@@ -96,7 +109,7 @@ namespace Emiplus.View.Financeiro
             Tipo2.Click += (s, e) =>
             {
                 Categorias.Enabled = true;
-                Fornecedor.Enabled = true;
+                Fornecedor.Enabled = false;
             };
 
             Tipo3.Click += (s, e) =>

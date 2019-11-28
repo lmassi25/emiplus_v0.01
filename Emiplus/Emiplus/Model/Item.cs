@@ -47,9 +47,6 @@ namespace Emiplus.Model
 
         public bool Save(Item data, bool message = true)
         {
-            if (ValidarDados(data))
-                return false;
-
             if (data.Id == 0)
             {
                 data.Tipo = "Produtos";
@@ -66,6 +63,9 @@ namespace Emiplus.Model
 
             if (data.Id > 0)
             {
+                if (ValidarDados(data))
+                    return false;
+
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
@@ -107,7 +107,10 @@ namespace Emiplus.Model
                     .Required()
                     .WithMessage("Nome é obrigatorio.")
                     .MinLength(2)
-                    .WithMessage("N é possivel q seu nome seja menor q 2 caracateres"))
+                    .WithMessage("Coloque um nome válido."))
+                .Ensure(m => m.Ncm, _ => _
+                    .MaxLength(8)
+                    .WithMessage("O NCM não pode ser MAIOR que 8 caracateres."))
                 .For(data)
                 .Validate();
 

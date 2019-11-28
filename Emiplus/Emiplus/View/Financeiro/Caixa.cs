@@ -141,11 +141,17 @@ namespace Emiplus.View.Financeiro
                 case Keys.Enter:
                     ShowDetailsCaixa();
                     break;
+                case Keys.Escape:
+                    Close();
+                    break;
             }
         }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += async (s, e) =>
             {
                 AutoCompleteUsers();
@@ -178,6 +184,9 @@ namespace Emiplus.View.Financeiro
             btnSearch.Click += async (s, e) => await DataTableAsync();
 
             GridLista.DoubleClick += (s, e) => ShowDetailsCaixa();
+
+            label4.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
         }

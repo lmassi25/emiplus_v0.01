@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -46,9 +47,21 @@ namespace Emiplus.View.Comercial
                 ibge.Text = _modelAddress.IBGE;
             }
         }
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
 
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             btnAddrSalvar.Click += (s, e) =>
             {
                 _modelAddress.Id = IdAddress;
@@ -70,8 +83,8 @@ namespace Emiplus.View.Comercial
             };
             btnAddrDelete.Click += (s, e) =>
             {
-                var result = MessageBox.Show("Deseja realmente excluir o endereço?", "Atenção!", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir o endereço?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
                 {
                     if (_modelAddress.Remove(IdAddress))
                     {
@@ -146,12 +159,12 @@ namespace Emiplus.View.Comercial
                 buscarEndereco.Enabled = true;
             };
 
-            rua.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
-            nr.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
-            bairro.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
-            complemento.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
-            cidade.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
-            ibge.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
+            rua.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e, 50);
+            nr.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e, 10);
+            bairro.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e, 30);
+            complemento.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e, 50);
+            cidade.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e, 50);
+            ibge.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 50);
         }
     }
 }

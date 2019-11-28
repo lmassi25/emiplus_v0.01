@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.View.Comercial;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             InitializeComponent();
             Id = Nota.Id;
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
+            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
             Eventos();
         }
@@ -229,7 +231,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
                         {
                             var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
-                            if (MessageBox.Show($"Cancelar o item ('{itemName}') no pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                            if (result)
                             {
                                 var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
                                 _mPedidoItens.Remove(idPedidoItem);
@@ -265,6 +269,13 @@ namespace Emiplus.View.Fiscal.TelasNota
                 LoadTotais();
                 ClearForms();
                 BuscarProduto.Select();
+
+                if (!String.IsNullOrEmpty(_mNota.Status))
+                {
+                    progress5.Visible = false;
+                    pictureBox1.Visible = false;
+                    label9.Visible = false;
+                }
             };
 
             ModoRapido.Click += (s, e) => AlterarModo();

@@ -179,6 +179,13 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     LoadData();
                 }
+
+                if(!String.IsNullOrEmpty(_mNota.Status))
+                {
+                    progress5.Visible = false;
+                    step5.Visible = false;
+                    label16.Visible = false;
+                }
             };
 
             addNatureza.Click += (s, e) =>

@@ -25,8 +25,21 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             btnCancelar.Click += (s, e) => Close();
 
             btnSalvar.Click += (s, e) =>
@@ -62,6 +75,20 @@ namespace Emiplus.View.Produtos
                 
                 if (btnRadioRemoveItem.Checked)
                     novaQtd.Text = (Validation.ConvertToDouble(quantidade.Text) - item.EstoqueAtual).ToString();
+            };
+
+            btnRadioAddItem.Click += (s, e) =>
+            {
+                var item = _modelItem.FindById(IdItem).First<Item>();
+                if (!string.IsNullOrEmpty(quantidade.Text))
+                    novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
+            };
+
+            btnRadioRemoveItem.Click += (s, e) =>
+            {
+                var item = _modelItem.FindById(IdItem).First<Item>();
+                if (!string.IsNullOrEmpty(quantidade.Text))
+                    novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
             };
         }
     }

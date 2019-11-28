@@ -372,8 +372,21 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Load += (s, e) => Carregar();
 
             label6.Click += (s, e) => Close();
@@ -390,6 +403,7 @@ namespace Emiplus.View.Produtos
                 if (_modelImposto.Save(_modelImposto))
                     Close();
             };
+
             btnRemover.Click += (s, e) =>
             {
                 var data = _modelImposto.Remove(idImpSelected);
@@ -411,12 +425,9 @@ namespace Emiplus.View.Produtos
                 }
             };
 
+            cfop.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 4);
+
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
-
-		private void pictureBox6_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
