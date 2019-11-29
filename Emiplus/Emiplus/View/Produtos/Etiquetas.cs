@@ -36,6 +36,10 @@ namespace Emiplus.View.Produtos
         {
             InitializeComponent();
             Eventos();
+
+            ToolHelp.Show("Informe a quantidade de posições que você já utilizou na folha atual.", pictureBox2, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Selecione o modelo da etiqueta.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite a quantidade de etiquetas que deseja gerar.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         private void Start()
