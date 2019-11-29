@@ -34,6 +34,7 @@ namespace Emiplus.Controller
 
             ArrayList data = new ArrayList();
             var nr = 0;
+            var countItens = 0;
             foreach (var item in dados)
             {
                 nr++;
@@ -47,7 +48,10 @@ namespace Emiplus.Controller
                     ValorVenda = item.VALORVENDA,
                     Price = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
                 });
+                countItens += item.QUANTIDADE;
             }
+
+
 
             var dataPgtos = _controllerTitulo.GetDataPgtosLancados(idPedido);
             ArrayList newDataPgtos = new ArrayList();
@@ -123,7 +127,8 @@ namespace Emiplus.Controller
                 NrVenda = idPedido,
                 titulo = titulo,
                 titulo2 = titulo2,
-                orcamento = orcamento
+                orcamento = orcamento,
+                count = countItens
             }));
 
             Browser.htmlRender = render;

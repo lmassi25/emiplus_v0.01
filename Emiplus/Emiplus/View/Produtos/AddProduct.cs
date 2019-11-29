@@ -22,7 +22,20 @@ namespace Emiplus.View.Produtos
             InitializeComponent();
             Eventos();
         }
-               
+        
+        private void LoadFornecedores()
+        {
+            Fornecedor.Refresh();
+
+            var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (fornecedor.Count() > 0)
+            {
+                Fornecedor.DataSource = fornecedor;
+                Fornecedor.DisplayMember = "NOME";
+                Fornecedor.ValueMember = "ID";
+            }
+        }
+
         private void Start()
         {
 			ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
@@ -42,13 +55,7 @@ namespace Emiplus.View.Produtos
                 Categorias.ValueMember = "ID";
             }
 
-            var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (fornecedor.Count() > 0)
-            {
-                Fornecedor.DataSource = fornecedor;
-                Fornecedor.DisplayMember = "NOME";
-                Fornecedor.ValueMember = "ID";
-            }
+            LoadFornecedores();
 
             Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
 
@@ -294,6 +301,19 @@ namespace Emiplus.View.Produtos
             {
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
+            };
+
+            btnAddFornecedor.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Fornecedores";
+                Comercial.AddClientes.Id = 0;
+                Comercial.AddClientes f = new Comercial.AddClientes();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadFornecedores();
+                }
             };
 
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);

@@ -104,9 +104,6 @@ namespace Emiplus.View.Comercial
                 if (_modelPessoa.Save(_modelPessoa))
                     Id = _modelPessoa.GetLastId();
             }
-
-            if (Id > 0)
-                LoadData();
         }
 
         private void DataTableAddress() => _controller.GetDataTableEnderecos(ListaEnderecos, Id);
@@ -167,6 +164,7 @@ namespace Emiplus.View.Comercial
 
         private void LoadData()
         {
+            //SelectedIndex = Combox1.FindStringExact("test1")
             _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
 
             nomeRS.Text = _modelPessoa?.Nome ?? "";
@@ -174,7 +172,7 @@ namespace Emiplus.View.Comercial
             nascimento.Text = Validation.ConvertDateToForm(_modelPessoa?.Aniversario) ?? "";
             cpfCnpj.Text = _modelPessoa?.CPF ?? "";
             rgIE.Text = _modelPessoa?.RG ?? "";
-            pessoaJF.SelectedItem = _modelPessoa?.Pessoatipo ?? "";
+            pessoaJF.Text = _modelPessoa?.Pessoatipo ?? "Física";
             Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
 
             if (Home.pessoaPage == "Transportadoras")
@@ -226,12 +224,14 @@ namespace Emiplus.View.Comercial
                 DataTableContatos();
 
                 pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
-                pessoaJF.SelectedItem = "Física";
 
                 if (pessoaJF.Text == "Física")
                     Isento.Checked = true;
                 else
                     Isento.Checked = false;
+
+                if (Id > 0)
+                    LoadData();
 
                 SetFocus();
             };
@@ -244,6 +244,16 @@ namespace Emiplus.View.Comercial
 
             btnSalvar.Click += (s, e) =>
             {
+                if (!string.IsNullOrEmpty(cpfCnpj.Text))
+                {
+                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).FirstOrDefault();
+                    if (data != null)
+                    {
+                        Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                        return;
+                    }
+                }
+
                 _modelPessoa.Id = Id;
                 _modelPessoa.Tipo = Home.pessoaPage;
                 _modelPessoa.Nome = nomeRS.Text;
