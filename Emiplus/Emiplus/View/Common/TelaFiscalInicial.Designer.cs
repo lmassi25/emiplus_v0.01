@@ -107,7 +107,7 @@
             this.nfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.nfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nfe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nfe.ForeColor = System.Drawing.Color.DimGray;
             this.nfe.Image = ((System.Drawing.Image)(resources.GetObject("nfe.Image")));
             this.nfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.nfe.Location = new System.Drawing.Point(492, 94);
@@ -130,7 +130,7 @@
             this.novaNFE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.novaNFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.novaNFE.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.novaNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.novaNFE.ForeColor = System.Drawing.Color.DimGray;
             this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
             this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.novaNFE.Location = new System.Drawing.Point(257, 94);
@@ -153,7 +153,7 @@
             this.naturezaOP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.naturezaOP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.naturezaOP.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naturezaOP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.naturezaOP.ForeColor = System.Drawing.Color.DimGray;
             this.naturezaOP.Image = ((System.Drawing.Image)(resources.GetObject("naturezaOP.Image")));
             this.naturezaOP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.naturezaOP.Location = new System.Drawing.Point(22, 286);
@@ -257,9 +257,9 @@
             this.label4.ForeColor = System.Drawing.Color.Gray;
             this.label4.Location = new System.Drawing.Point(487, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 114;
-            this.label4.Text = "Relatórios";
+            this.label4.Text = "Gerencial";
             // 
             // clientes
             // 

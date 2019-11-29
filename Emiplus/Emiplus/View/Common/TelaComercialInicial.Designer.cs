@@ -131,9 +131,9 @@
             this.label4.ForeColor = System.Drawing.Color.Gray;
             this.label4.Location = new System.Drawing.Point(487, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 90;
-            this.label4.Text = "Relatórios";
+            this.label4.Text = "Gerencial";
             // 
             // visualSeparator4
             // 
@@ -221,6 +221,7 @@
             this.ProdutosDevolvidos.Text = "          Produtos Devolvidos";
             this.ProdutosDevolvidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProdutosDevolvidos.UseVisualStyleBackColor = false;
+            this.ProdutosDevolvidos.Visible = false;
             // 
             // ProdutosConsignados
             // 

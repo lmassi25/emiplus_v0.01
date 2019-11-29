@@ -1186,6 +1186,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Activated += new System.EventHandler(this.AddPedidos_Activated);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddPedidos_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

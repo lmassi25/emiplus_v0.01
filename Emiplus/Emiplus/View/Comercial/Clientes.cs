@@ -1,9 +1,14 @@
-﻿using Emiplus.Data.Core;
+﻿using DotLiquid;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Common;
+using Emiplus.View.Reports;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -143,7 +148,42 @@ namespace Emiplus.View.Comercial
                 await Task.Delay(100);
                 DataTable();
             };
+
+            imprimir.Click += async (s, e) => await RenderizarAsync();
         }
 
+        private async Task RenderizarAsync()
+        {
+            IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(search.Text);
+
+            ArrayList data = new ArrayList();
+            foreach (var item in dados)
+            {
+                data.Add(new
+                {
+                    ID = item.ID,
+                    NOME = item.NOME,
+                    FANTASIA = item.FANTASIA,
+                    CPF = item.CPF,
+                    RG = item.RG
+                });
+            }
+
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Pessoas.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                INCLUDE_PATH = Program.PATH_BASE,
+                URL_BASE = Program.PATH_BASE,
+                Data = data,
+                NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                Logo = Settings.Default.empresa_logo,
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                Titulo = Home.pessoaPage
+            }));
+
+            Browser.htmlRender = render;
+            var f = new Browser();
+            f.ShowDialog();
+        }
     }
 }

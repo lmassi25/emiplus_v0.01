@@ -258,15 +258,26 @@ namespace Emiplus.View.Comercial
 
                 var status = new ArrayList();
                 status.Add(new { ID = 0, NOME = "Todos" });
-                status.Add(new { ID = 1, NOME = "Recebimento Pendente"});
-                status.Add(new { ID = 2, NOME = @"Finalizado\Recebido"});
-                
+
+                if (Home.pedidoPage == "Notas")
+                {
+                    status.Add(new { ID = 1, NOME = "Pendentes" });
+                    status.Add(new { ID = 2, NOME = "Autorizadas" });
+                    status.Add(new { ID = 3, NOME = "Canceladas" });
+                }
+                else
+                {
+                    status.Add(new { ID = 1, NOME = "Recebimento Pendente" });
+                    status.Add(new { ID = 2, NOME = @"Finalizado\Recebido" });
+                }
+
                 Status.DataSource = status;
                 Status.DisplayMember = "NOME";
                 Status.ValueMember = "ID";
+                Status.SelectedValue = 0;
 
                 filterTodos.Checked = true;
-                Status.SelectedValue = "";
+                
             };
 
             BuscarPessoa.KeyDown += (s, e) =>

@@ -660,5 +660,17 @@ namespace Emiplus.View.Comercial
         {
             KeyDowns(sender, e);
         }
+
+        private void AddPedidos_Activated(object sender, EventArgs e)
+        {
+            Console.WriteLine("Ativo: AddPedidos");
+
+            //var controles = Application.OpenForms["AddPedidos"].Controls;
+
+            //foreach (var item in controles)
+            //{
+            //    //Console.WriteLine(controles.);
+            //}
+        }
     }
 }

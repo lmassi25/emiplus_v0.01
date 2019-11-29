@@ -25,7 +25,7 @@ namespace Emiplus.Controller
 
             return new Model.Item().Query()
                 .LeftJoin("categoria", "categoria.id", "item.categoriaid")
-                .Select("item.id", "item.nome", "item.referencia", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
+                .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
                 .Where("item.excluir", 0)
                 .Where("item.tipo", "Produtos")
                 .Where
@@ -39,7 +39,7 @@ namespace Emiplus.Controller
 
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
         {
-            Table.ColumnCount = 7;
+            Table.ColumnCount = 8;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -50,26 +50,29 @@ namespace Emiplus.Controller
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "Categoria";
-            Table.Columns[1].Width = 100;
+            Table.Columns[1].Width = 150;
             if (page == 1) Table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Código";
-            Table.Columns[2].Width = 100;
+            Table.Columns[2].Name = "Cód. de Barras";
+            Table.Columns[2].Width = 130;
 
-            Table.Columns[3].Name = "Descrição";
+            Table.Columns[3].Name = "Referência";
+            Table.Columns[3].Width = 100;
 
-            Table.Columns[4].Name = "Custo";
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 100;
-            if (page == 1) Table.Columns[4].Visible = false;
+            Table.Columns[4].Name = "Descrição";
 
-            Table.Columns[5].Name = "Venda";
+            Table.Columns[5].Name = "Custo";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[5].Width = 100;
+            if (page == 1) Table.Columns[5].Visible = false;
 
-            Table.Columns[6].Name = "Estoque Atual";
+            Table.Columns[6].Name = "Venda";
             Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[6].Width = 120;
+            Table.Columns[6].Width = 100;
+
+            Table.Columns[7].Name = "Estoque Atual";
+            Table.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[7].Width = 120;
 
             Table.Rows.Clear();
 
@@ -86,6 +89,7 @@ namespace Emiplus.Controller
                 Table.Rows.Add(
                     item.ID,
                     item.CATEGORIA,
+                    item.CODEBARRAS,
                     item.REFERENCIA,
                     item.NOME,
                     FormatPrice(ConvertToDouble(item.VALORCOMPRA), false),
@@ -94,7 +98,7 @@ namespace Emiplus.Controller
                 );
             }
 
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void GetDataTableEstoque(DataGridView Table, int id)
@@ -108,7 +112,7 @@ namespace Emiplus.Controller
             Table.Columns[1].Width = 100;
 
             Table.Columns[2].Name = "Quantidade";
-            Table.Columns[2].Width = 50;
+            Table.Columns[2].Width = 100;
 
             Table.Columns[3].Name = "Data/Hora";
             Table.Columns[3].Width = 120;

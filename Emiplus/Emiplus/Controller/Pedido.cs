@@ -137,7 +137,28 @@ namespace Emiplus.Controller
                query.Where("pedido.colaborador", usuario);
 
             if (status != 0)
-                query.Where("pedido.status", status);
+            {
+                if(tipo == "Notas")
+                {
+                    //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
+                    switch (status)
+                    {
+                        case 1:
+                            query.Where("nota.status", null);
+                            break;
+                        case 2:
+                            query.Where("nota.status", "Autorizada");
+                            break;
+                        case 3:
+                            query.Where("nota.status", "Cancelada");
+                            break;
+                    }                    
+                }
+                else
+                {
+                    query.Where("pedido.status", status);
+                }
+            }   
 
             if (idPedido != 0)
                 query.Where("pedido.id", idPedido);
