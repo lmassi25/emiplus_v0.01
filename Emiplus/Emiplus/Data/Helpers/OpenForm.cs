@@ -13,7 +13,7 @@ namespace Emiplus.Data.Helpers
         public static void Show<MeuForm>(Form Principal) where MeuForm : Form, new()
         {
             Form formulario;
-            formulario = Principal.Controls.OfType<MeuForm>().FirstOrDefault();
+            formulario = Principal.Controls.OfType<MeuForm>().LastOrDefault();
 
             if (formulario == null)
             {
@@ -24,6 +24,8 @@ namespace Emiplus.Data.Helpers
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
                 formulario.Focus();
+                formulario.Select();
+                formulario.Activate();
                 formulario.Show();
                 formulario.BringToFront();
             }

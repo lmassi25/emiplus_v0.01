@@ -5,6 +5,7 @@
     using Emiplus.Properties;
     using Emiplus.View.Common;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
     using System.Collections.Generic;
 
@@ -136,16 +137,20 @@
             return true;
         }
 
-        public bool Remove(int id)
+        public bool Remove(int id, string column = "ID", bool message = true)
         {
             var data = new { Excluir = 1, Deletado = DateTime.Now };
-            if (Data(data).Update("ID", id) == 1)
+            if (Data(data).Update(column, id) == 1)
             {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                if (message)
+                    Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+            if (message)
+                Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
+
             return false;
         }
     }

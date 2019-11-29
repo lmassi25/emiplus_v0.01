@@ -40,6 +40,40 @@ namespace Emiplus.View.Comercial
 
             if (idPedido > 0)
                 LoadData();
+
+            switch (Home.pedidoPage)
+            {
+                case "Devoluções":
+                    label1.Text = "Detalhes da Devolução:";
+                    label6.Text = "Detalhes da Devolução";
+                    label3.Text = "Devoluções";
+                    button21.Visible = false;
+                    button22.Visible = false;
+                    btnNfe.Visible = false;
+                    btnCFeSat.Visible = false;
+                    btnPgtosLancado.Visible = false;
+                    label11.Visible = false;
+                    label43.Visible = false;
+                    label41.Visible = false;
+                    txtTroco.Visible = false;
+                    txtRecebimento.Visible = false;
+                    txtAcrescimo.Visible = false;
+                    panel8.Visible = false;
+                    nrPedido.Left = 542;
+                    break;
+                case "Compras":
+                    label1.Text = "Detalhes da Compra:";
+                    label6.Text = "Detalhes da Compra";
+                    label3.Text = "Compras";
+                    button22.Visible = false;
+                    btnCFeSat.Visible = false;
+                    label43.Text = "Total Pago:";
+                    btnPgtosLancado.Text = "Ver Pagamentos Lançados!";
+                    nrPedido.Left = 510;
+                    btnNfe.Visible = false;
+                    button21.Visible = false;
+                    break;
+            }
         }
 
         private void LoadData()
@@ -97,7 +131,7 @@ namespace Emiplus.View.Comercial
 
             btnPgtosLancado.Click += (s, e) =>
             {
-                if (Home.idCaixa == 0)
+                if (Home.idCaixa == 0 && Home.pedidoPage == "Vendas")
                 {
                     var result = AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
@@ -112,6 +146,17 @@ namespace Emiplus.View.Comercial
                 else
                 {
                     OpenPedidoPagamentos();
+                }
+            };
+
+            btnRemove.Click += (s, e) =>
+            {
+                var result = AlertOptions.Message("Atenção!", "Deseja realmente apagar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    var remove = new Controller.Pedido();
+                    remove.Remove(idPedido);
+                    Close();
                 }
             };
 
@@ -155,6 +200,7 @@ namespace Emiplus.View.Comercial
         private void OpenPedidoPagamentos()
         {
             AddPedidos.Id = idPedido;
+            PedidoPagamentos.hideFinalizar = true;
             PedidoPagamentos pagamentos = new PedidoPagamentos();
             pagamentos.ShowDialog();
             LoadData();

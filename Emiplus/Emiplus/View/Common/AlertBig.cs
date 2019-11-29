@@ -169,19 +169,13 @@ namespace Emiplus.View.Common
             YesNo, OK
         }
 
-        //public static bool Message(string _title, string _message, AlertType type, AlertBtn btn)
-        //{
-        //    var f = new AlertBig(_title, _message, type, btn).ShowDialog();
-        //    return true;
-        //    //if(f.ShowDialog == DialogResult.OK)
-        //    //{
-        //    //    return true;
-        //    //}
-        //    //else 
-        //}
-
         public void Retorno()
         {
+            KeyDown += KeyDowns;
+            btnOk.KeyDown += KeyDowns;
+            btnSim.KeyDown += KeyDowns;
+            btnNo.KeyDown += KeyDowns;
+
             btnOk.Click += (s, e) =>
             {
                 DialogResult = DialogResult.OK;
@@ -199,6 +193,16 @@ namespace Emiplus.View.Common
                 DialogResult = DialogResult.OK;
                 Close();
             };
+        }
+
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }

@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoPagamentos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label10 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoPagamentos));
+            this.label101 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button22 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.enviarEmail = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnCFeSat = new System.Windows.Forms.Button();
             this.btnNfe = new System.Windows.Forms.Button();
@@ -70,8 +70,6 @@
             this.Debito = new System.Windows.Forms.Button();
             this.Crediario = new System.Windows.Forms.Button();
             this.Boleto = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -98,6 +96,11 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.discount = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).BeginInit();
@@ -108,35 +111,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.Info2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Info1)).BeginInit();
             this.panel8.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
-            // label10
+            // label101
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(18, 14);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 17);
-            this.label10.TabIndex = 109;
-            this.label10.Text = "Formas de Pagamento";
+            this.label101.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label101.AutoSize = true;
+            this.label101.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label101.ForeColor = System.Drawing.Color.Gray;
+            this.label101.Location = new System.Drawing.Point(18, 96);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(146, 17);
+            this.label101.TabIndex = 109;
+            this.label101.Text = "Formas de Pagamento";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button22);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.button20);
             this.panel2.Controls.Add(this.button19);
-            this.panel2.Controls.Add(this.button12);
+            this.panel2.Controls.Add(this.enviarEmail);
             this.panel2.Controls.Add(this.btnImprimir);
             this.panel2.Controls.Add(this.btnCFeSat);
             this.panel2.Controls.Add(this.btnNfe);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnConcluir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 561);
+            this.panel2.Location = new System.Drawing.Point(0, 656);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 107;
@@ -180,7 +186,7 @@
             this.button20.Enabled = false;
             this.button20.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(492, 2);
+            this.button20.Location = new System.Drawing.Point(659, 2);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(35, 35);
             this.button20.TabIndex = 148;
@@ -201,23 +207,23 @@
             this.button19.TabIndex = 147;
             this.button19.UseVisualStyleBackColor = false;
             // 
-            // button12
+            // enviarEmail
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button12.Location = new System.Drawing.Point(665, 4);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(161, 65);
-            this.button12.TabIndex = 13;
-            this.button12.Text = "Enviar por E-mail";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.UseVisualStyleBackColor = true;
+            this.enviarEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.enviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.enviarEmail.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.enviarEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enviarEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.enviarEmail.Image = ((System.Drawing.Image)(resources.GetObject("enviarEmail.Image")));
+            this.enviarEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.enviarEmail.Location = new System.Drawing.Point(493, 4);
+            this.enviarEmail.Name = "enviarEmail";
+            this.enviarEmail.Size = new System.Drawing.Size(161, 65);
+            this.enviarEmail.TabIndex = 13;
+            this.enviarEmail.Text = "Enviar por E-mail";
+            this.enviarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.enviarEmail.UseVisualStyleBackColor = true;
             // 
             // btnImprimir
             // 
@@ -229,7 +235,7 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(496, 4);
+            this.btnImprimir.Location = new System.Drawing.Point(663, 4);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(161, 65);
             this.btnImprimir.TabIndex = 12;
@@ -321,28 +327,28 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel3.Location = new System.Drawing.Point(532, 37);
+            this.panel3.Location = new System.Drawing.Point(533, 187);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 500);
+            this.panel3.Size = new System.Drawing.Size(1, 425);
             this.panel3.TabIndex = 135;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(717, 499);
+            this.label4.Location = new System.Drawing.Point(589, 594);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 32);
+            this.label4.Size = new System.Drawing.Size(196, 32);
             this.label4.TabIndex = 128;
             this.label4.Text = "Total";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.GridListaFormaPgtos);
-            this.panel1.Location = new System.Drawing.Point(550, 196);
+            this.panel1.Location = new System.Drawing.Point(550, 284);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(448, 156);
             this.panel1.TabIndex = 120;
@@ -431,7 +437,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(543, 14);
+            this.label2.Location = new System.Drawing.Point(543, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 122;
@@ -442,7 +448,7 @@
             this.troco.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.troco.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.troco.Location = new System.Drawing.Point(793, 457);
+            this.troco.Location = new System.Drawing.Point(792, 552);
             this.troco.Name = "troco";
             this.troco.Size = new System.Drawing.Size(184, 25);
             this.troco.TabIndex = 131;
@@ -454,9 +460,9 @@
             this.total.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.total.Location = new System.Drawing.Point(788, 505);
+            this.total.Location = new System.Drawing.Point(792, 600);
             this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(191, 25);
+            this.total.Size = new System.Drawing.Size(184, 25);
             this.total.TabIndex = 131;
             this.total.Text = "R$ 00.00";
             this.total.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -470,7 +476,7 @@
             this.button18.Enabled = false;
             this.button18.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Location = new System.Drawing.Point(435, 37);
+            this.button18.Location = new System.Drawing.Point(435, 119);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(35, 35);
             this.button18.TabIndex = 146;
@@ -485,7 +491,7 @@
             this.button17.Enabled = false;
             this.button17.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(352, 37);
+            this.button17.Location = new System.Drawing.Point(352, 119);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(35, 35);
             this.button17.TabIndex = 145;
@@ -500,7 +506,7 @@
             this.button16.Enabled = false;
             this.button16.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Location = new System.Drawing.Point(269, 37);
+            this.button16.Location = new System.Drawing.Point(269, 119);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(35, 35);
             this.button16.TabIndex = 144;
@@ -515,7 +521,7 @@
             this.button15.Enabled = false;
             this.button15.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(186, 37);
+            this.button15.Location = new System.Drawing.Point(186, 119);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(35, 35);
             this.button15.TabIndex = 143;
@@ -530,7 +536,7 @@
             this.button14.Enabled = false;
             this.button14.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(103, 37);
+            this.button14.Location = new System.Drawing.Point(103, 119);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(35, 35);
             this.button14.TabIndex = 142;
@@ -545,7 +551,7 @@
             this.button13.Enabled = false;
             this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(20, 37);
+            this.button13.Location = new System.Drawing.Point(20, 119);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(35, 35);
             this.button13.TabIndex = 141;
@@ -563,13 +569,14 @@
             this.Acrescimo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Acrescimo.Image = ((System.Drawing.Image)(resources.GetObject("Acrescimo.Image")));
             this.Acrescimo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Acrescimo.Location = new System.Drawing.Point(636, 55);
+            this.Acrescimo.Location = new System.Drawing.Point(636, 137);
             this.Acrescimo.Name = "Acrescimo";
             this.Acrescimo.Size = new System.Drawing.Size(78, 78);
             this.Acrescimo.TabIndex = 9;
             this.Acrescimo.Text = "Acréscimo";
             this.Acrescimo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Acrescimo.UseVisualStyleBackColor = false;
+            this.Acrescimo.Visible = false;
             // 
             // Desconto
             // 
@@ -583,7 +590,7 @@
             this.Desconto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Desconto.Image = ((System.Drawing.Image)(resources.GetObject("Desconto.Image")));
             this.Desconto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Desconto.Location = new System.Drawing.Point(550, 55);
+            this.Desconto.Location = new System.Drawing.Point(550, 137);
             this.Desconto.Name = "Desconto";
             this.Desconto.Size = new System.Drawing.Size(78, 78);
             this.Desconto.TabIndex = 8;
@@ -603,7 +610,7 @@
             this.Cheque.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cheque.Image = ((System.Drawing.Image)(resources.GetObject("Cheque.Image")));
             this.Cheque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Cheque.Location = new System.Drawing.Point(105, 55);
+            this.Cheque.Location = new System.Drawing.Point(105, 137);
             this.Cheque.Name = "Cheque";
             this.Cheque.Size = new System.Drawing.Size(78, 78);
             this.Cheque.TabIndex = 2;
@@ -613,6 +620,7 @@
             // 
             // Dinheiro
             // 
+            this.Dinheiro.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuItem;
             this.Dinheiro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dinheiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.Dinheiro.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -623,7 +631,7 @@
             this.Dinheiro.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dinheiro.Image = ((System.Drawing.Image)(resources.GetObject("Dinheiro.Image")));
             this.Dinheiro.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Dinheiro.Location = new System.Drawing.Point(24, 55);
+            this.Dinheiro.Location = new System.Drawing.Point(24, 137);
             this.Dinheiro.Name = "Dinheiro";
             this.Dinheiro.Size = new System.Drawing.Size(78, 78);
             this.Dinheiro.TabIndex = 0;
@@ -643,7 +651,7 @@
             this.Credito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Credito.Image = ((System.Drawing.Image)(resources.GetObject("Credito.Image")));
             this.Credito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Credito.Location = new System.Drawing.Point(271, 55);
+            this.Credito.Location = new System.Drawing.Point(271, 137);
             this.Credito.Name = "Credito";
             this.Credito.Size = new System.Drawing.Size(78, 78);
             this.Credito.TabIndex = 5;
@@ -663,7 +671,7 @@
             this.Debito.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Debito.Image = ((System.Drawing.Image)(resources.GetObject("Debito.Image")));
             this.Debito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Debito.Location = new System.Drawing.Point(188, 55);
+            this.Debito.Location = new System.Drawing.Point(188, 137);
             this.Debito.Name = "Debito";
             this.Debito.Size = new System.Drawing.Size(78, 78);
             this.Debito.TabIndex = 4;
@@ -683,7 +691,7 @@
             this.Crediario.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Crediario.Image = ((System.Drawing.Image)(resources.GetObject("Crediario.Image")));
             this.Crediario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Crediario.Location = new System.Drawing.Point(354, 55);
+            this.Crediario.Location = new System.Drawing.Point(354, 137);
             this.Crediario.Name = "Crediario";
             this.Crediario.Size = new System.Drawing.Size(78, 78);
             this.Crediario.TabIndex = 6;
@@ -703,7 +711,7 @@
             this.Boleto.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Boleto.Image = ((System.Drawing.Image)(resources.GetObject("Boleto.Image")));
             this.Boleto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Boleto.Location = new System.Drawing.Point(437, 55);
+            this.Boleto.Location = new System.Drawing.Point(437, 137);
             this.Boleto.Name = "Boleto";
             this.Boleto.Size = new System.Drawing.Size(78, 78);
             this.Boleto.TabIndex = 7;
@@ -711,42 +719,12 @@
             this.Boleto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Boleto.UseVisualStyleBackColor = false;
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(545, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 35);
-            this.button2.TabIndex = 147;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Enabled = false;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(634, 37);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 35);
-            this.button3.TabIndex = 148;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Location = new System.Drawing.Point(550, 157);
+            this.panel4.Location = new System.Drawing.Point(550, 245);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(448, 40);
             this.panel4.TabIndex = 149;
@@ -766,20 +744,20 @@
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(642, 407);
+            this.label5.Location = new System.Drawing.Point(589, 502);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 30);
+            this.label5.Size = new System.Drawing.Size(196, 30);
             this.label5.TabIndex = 132;
             this.label5.Text = "Recebimentos";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel5.Location = new System.Drawing.Point(577, 495);
+            this.panel5.Location = new System.Drawing.Point(577, 590);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(400, 1);
             this.panel5.TabIndex = 136;
@@ -802,9 +780,9 @@
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel6.Controls.Add(this.TelaReceber);
             this.panel6.Controls.Add(this.label3);
-            this.panel6.Location = new System.Drawing.Point(26, 157);
+            this.panel6.Location = new System.Drawing.Point(26, 245);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(489, 380);
+            this.panel6.Size = new System.Drawing.Size(489, 387);
             this.panel6.TabIndex = 150;
             // 
             // TelaReceber
@@ -822,7 +800,7 @@
             this.TelaReceber.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TelaReceber.Location = new System.Drawing.Point(0, 0);
             this.TelaReceber.Name = "TelaReceber";
-            this.TelaReceber.Size = new System.Drawing.Size(489, 380);
+            this.TelaReceber.Size = new System.Drawing.Size(489, 387);
             this.TelaReceber.TabIndex = 151;
             // 
             // valor
@@ -889,7 +867,7 @@
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.btnSalvar);
             this.panel7.Controls.Add(this.btnCancelar);
-            this.panel7.Location = new System.Drawing.Point(0, 317);
+            this.panel7.Location = new System.Drawing.Point(0, 324);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(489, 63);
             this.panel7.TabIndex = 193;
@@ -1132,21 +1110,21 @@
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(722, 453);
+            this.label7.Location = new System.Drawing.Point(589, 548);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 30);
+            this.label7.Size = new System.Drawing.Size(196, 30);
             this.label7.TabIndex = 128;
             this.label7.Text = "Troco";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pagamentos
             // 
             this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(792, 411);
+            this.pagamentos.Location = new System.Drawing.Point(792, 506);
             this.pagamentos.Name = "pagamentos";
             this.pagamentos.Size = new System.Drawing.Size(184, 25);
             this.pagamentos.TabIndex = 151;
@@ -1157,7 +1135,7 @@
             // 
             this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel9.Location = new System.Drawing.Point(577, 446);
+            this.panel9.Location = new System.Drawing.Point(577, 541);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(400, 1);
             this.panel9.TabIndex = 137;
@@ -1166,7 +1144,7 @@
             // 
             this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel10.Location = new System.Drawing.Point(577, 399);
+            this.panel10.Location = new System.Drawing.Point(577, 494);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(400, 1);
             this.panel10.TabIndex = 153;
@@ -1176,7 +1154,7 @@
             this.discount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.discount.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.discount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.discount.Location = new System.Drawing.Point(792, 364);
+            this.discount.Location = new System.Drawing.Point(792, 459);
             this.discount.Name = "discount";
             this.discount.Size = new System.Drawing.Size(184, 25);
             this.discount.TabIndex = 154;
@@ -1186,21 +1164,83 @@
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(683, 360);
+            this.label12.Location = new System.Drawing.Point(589, 455);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 30);
+            this.label12.Size = new System.Drawing.Size(196, 30);
             this.label12.TabIndex = 152;
             this.label12.Text = "Desconto";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel11.Controls.Add(this.pictureBox12);
+            this.panel11.Controls.Add(this.label10);
+            this.panel11.Controls.Add(this.label13);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1008, 80);
+            this.panel11.TabIndex = 145241;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Location = new System.Drawing.Point(17, 15);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 49;
+            this.pictureBox12.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(75, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(259, 13);
+            this.label10.TabIndex = 10001;
+            this.label10.Text = "Siga as etapas abaixo para criar um novo pedido!";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DimGray;
+            this.label13.Location = new System.Drawing.Point(72, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(198, 30);
+            this.label13.TabIndex = 1000;
+            this.label13.Text = "Dados do Pedido: N";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(21, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 35);
+            this.button1.TabIndex = 151;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // PedidoPagamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 634);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.discount);
             this.Controls.Add(this.label12);
@@ -1214,8 +1254,6 @@
             this.Controls.Add(this.troco);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
@@ -1233,9 +1271,10 @@
             this.Controls.Add(this.Debito);
             this.Controls.Add(this.Crediario);
             this.Controls.Add(this.Boleto);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label101);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 645);
             this.Name = "PedidoPagamentos";
             this.ShowIcon = false;
@@ -1253,6 +1292,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Info2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Info1)).EndInit();
             this.panel8.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1265,7 +1307,7 @@
         private System.Windows.Forms.Button Debito;
         private System.Windows.Forms.Button Crediario;
         private System.Windows.Forms.Button Boleto;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label101;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
@@ -1279,7 +1321,7 @@
         private System.Windows.Forms.Button btnNfe;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCFeSat;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button enviarEmail;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
@@ -1290,8 +1332,6 @@
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
@@ -1325,5 +1365,10 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label discount;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -25,6 +25,7 @@ namespace Emiplus.Model
         public string tipo { get; set; }
         public string local { get; set; }
         public double Anterior { get; set; }
+        public int Id_Pedido { get; set; }
 
         #endregion
 
@@ -95,6 +96,12 @@ namespace Emiplus.Model
         public ItemEstoqueMovimentacao SetUsuario(int id_usuario)
         {
             this.id_usuario = id_usuario;
+            return this;
+        }
+
+        public ItemEstoqueMovimentacao SetIdPedido(int id_pedido)
+        {
+            Id_Pedido = id_pedido;
             return this;
         }
 

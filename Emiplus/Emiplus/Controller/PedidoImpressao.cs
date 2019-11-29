@@ -92,6 +92,11 @@ namespace Emiplus.Controller
                     titulo2 = "Devolvido";
                     orcamento = false;
                     break;
+                case "Compras":
+                    titulo = "Compra";
+                    titulo2 = "Comprado";
+                    orcamento = false;
+                    break;
             }
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomComprovanteVendaA4.html"));

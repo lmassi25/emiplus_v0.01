@@ -99,7 +99,7 @@ namespace Emiplus.Controller
 
         public void GetDataTableEstoque(DataGridView Table, int id)
         {
-            Table.ColumnCount = 7;
+            Table.ColumnCount = 8;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
@@ -108,23 +108,28 @@ namespace Emiplus.Controller
             Table.Columns[1].Width = 100;
 
             Table.Columns[2].Name = "Quantidade";
-            Table.Columns[2].Width = 100;
+            Table.Columns[2].Width = 50;
 
             Table.Columns[3].Name = "Data/Hora";
             Table.Columns[3].Width = 120;
 
             Table.Columns[4].Name = "Usuário";
             Table.Columns[4].Width = 120;
-
+            
             Table.Columns[5].Name = "Obs.";
             Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[6].Name = "Tela";
             Table.Columns[6].Width = 120;
 
+            Table.Columns[7].Name = "Pedido";
+            Table.Columns[7].Width = 50;            
+
             Table.Rows.Clear();
 
             var lista = new Model.ItemEstoqueMovimentacao().Query()
+                 .LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario")
+                 .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
                 .Where("id_item", id)
                 .OrderByDesc("criado")
                 .Get();
@@ -137,9 +142,10 @@ namespace Emiplus.Controller
                     item.TIPO == "A" ? "Adicionado" : "Removido",
                     item.QUANTIDADE,
                     String.Format("{0:d/M/yyyy HH:mm}", item.CRIADO),
-                    0,
+                    item.NOME_USER,
                     item.OBSERVACAO,
-                    item.LOCAL
+                    item.LOCAL,
+                    item.ID_PEDIDO
                 );
             }
 
