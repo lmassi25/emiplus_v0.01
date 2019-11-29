@@ -698,6 +698,12 @@
     <Compile Include="View\Testes\Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Data\Helpers\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
@@ -933,6 +939,9 @@
     <EmbeddedResource Include="View\Testes\Form6.resx">
       <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
     <None Include="Connected Services\WSCorreios\Emiplus.WSCorreios.atualizaPagamentoNaEntregaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1103,6 +1112,7 @@
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />
+    <Content Include="View\Reports\html\Titulos.html" />
     <Content Include="View\Reports\html\Pedidos.html" />
     <Content Include="View\Reports\html\ProdutosVendidos.html" />
     <None Include="Resources\checkedBranco.png" />
