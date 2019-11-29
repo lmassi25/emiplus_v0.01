@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.View.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -137,6 +138,17 @@ namespace Emiplus.View.Produtos
             {
                 await Task.Delay(100);
                 DataTable();
+            };
+
+            btnRelatorios.Click += (s, e) =>
+            {
+
+            };
+
+            btnEstoque.Click += (s, e) =>
+            {
+                Inventario Estoque = new Inventario();
+                Estoque.ShowDialog();
             };
         }
     }

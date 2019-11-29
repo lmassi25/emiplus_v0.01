@@ -96,6 +96,7 @@
             this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnAddFornecedor = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -117,6 +118,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -878,6 +880,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnAddFornecedor);
             this.tabPage3.Controls.Add(this.pictureBox14);
             this.tabPage3.Controls.Add(this.pictureBox10);
             this.tabPage3.Controls.Add(this.label21);
@@ -1848,6 +1851,17 @@
             this.tabControl1.Size = new System.Drawing.Size(652, 225);
             this.tabControl1.TabIndex = 29;
             // 
+            // btnAddFornecedor
+            // 
+            this.btnAddFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFornecedor.Image")));
+            this.btnAddFornecedor.Location = new System.Drawing.Point(314, 32);
+            this.btnAddFornecedor.Name = "btnAddFornecedor";
+            this.btnAddFornecedor.Size = new System.Drawing.Size(27, 27);
+            this.btnAddFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddFornecedor.TabIndex = 10;
+            this.btnAddFornecedor.TabStop = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1891,6 +1905,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1962,5 +1977,6 @@
 		private System.Windows.Forms.PictureBox pictureBox5;
 		private System.Windows.Forms.PictureBox pictureBox8;
 		private System.Windows.Forms.PictureBox pictureBox7;
-	}
+        private System.Windows.Forms.PictureBox btnAddFornecedor;
+    }
 }

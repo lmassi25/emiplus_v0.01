@@ -95,7 +95,15 @@ namespace Emiplus.View.Comercial
                 btnConcluir.Text = "Receber";
 
                 if (Home.idCaixa == 0)
+                {
                     btnConcluir.Text = "Finalizar";
+                }
+
+                if (Home.idCaixa != 0)
+                {
+                    imprimir.Visible = false;
+                    button2.Visible = false;
+                }
             }
 
             // Carrega a Grid com os itens
@@ -211,6 +219,7 @@ namespace Emiplus.View.Comercial
                 }
 
                 Close();
+                return;
             }
 
             switch (Home.pedidoPage)
