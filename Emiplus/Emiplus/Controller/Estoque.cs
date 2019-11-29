@@ -1,6 +1,7 @@
 ﻿namespace Emiplus.Controller
 {
     using Emiplus.Data.Helpers;
+    using Emiplus.Properties;
     using SqlKata.Execution;
     using System.Linq;
 
@@ -12,13 +13,14 @@
         private string Obs { get; set; }
         private string Local { get; set; }
         private string Action { get; set; }
+        private int idPedido { get; set; }
 
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
-        public Estoque(int id, int user, string local, string obs = "")
+        public Estoque(int id, string local, string obs = "")
         {
             Id = id;
-            User = user;
+            User = Settings.Default.user_id;
             Local = local;
             Obs = obs;
         }
@@ -59,7 +61,7 @@
                 var item = GetItem(data.ITEM);
                 Amount = Validation.ConvertToDouble(data.QUANTIDADE);
 
-                _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetItem(item).Save(_mItemEstoque);
+                _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetIdPedido(Id).SetItem(item).Save(_mItemEstoque);
             }
 
         }
@@ -75,7 +77,7 @@
             var item = GetItem(pedidoItem.Item);
             Amount = Validation.ConvertToDouble(pedidoItem.Quantidade);
 
-            _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetItem(item).Save(_mItemEstoque);
+            _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetIdPedido(pedidoItem.Pedido).SetItem(item).Save(_mItemEstoque);
         }
     }
 }

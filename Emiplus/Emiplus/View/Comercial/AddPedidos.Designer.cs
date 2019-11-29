@@ -51,6 +51,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.imprimir = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCancelarProduto = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
@@ -81,8 +84,6 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.imprimir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -124,7 +125,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 80);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 145240;
             // 
             // SelecionarColaborador
             // 
@@ -183,7 +184,7 @@
             this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarCliente.Name = "SelecionarCliente";
             this.SelecionarCliente.Size = new System.Drawing.Size(144, 20);
-            this.SelecionarCliente.TabIndex = 151;
+            this.SelecionarCliente.TabIndex = 15100;
             this.SelecionarCliente.Text = "Selecionar (F7)";
             this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -214,7 +215,7 @@
             this.label15.Location = new System.Drawing.Point(682, 17);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(46, 13);
-            this.label15.TabIndex = 40;
+            this.label15.TabIndex = 40025;
             this.label15.Text = "Cliente:";
             // 
             // pictureBox12
@@ -236,7 +237,7 @@
             this.nomeCliente.Location = new System.Drawing.Point(683, 34);
             this.nomeCliente.Name = "nomeCliente";
             this.nomeCliente.Size = new System.Drawing.Size(85, 13);
-            this.nomeCliente.TabIndex = 42;
+            this.nomeCliente.TabIndex = 4200;
             this.nomeCliente.Text = "Não informado";
             // 
             // pictureBox10
@@ -258,7 +259,7 @@
             this.label18.Location = new System.Drawing.Point(571, 34);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(31, 13);
-            this.label18.TabIndex = 48;
+            this.label18.TabIndex = 22025;
             this.label18.Text = "0001";
             this.label18.Visible = false;
             // 
@@ -271,7 +272,7 @@
             this.label17.Location = new System.Drawing.Point(871, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(75, 13);
-            this.label17.TabIndex = 43;
+            this.label17.TabIndex = 4300;
             this.label17.Text = "Colaborador:";
             // 
             // pictureBox11
@@ -294,7 +295,7 @@
             this.nomeVendedor.Location = new System.Drawing.Point(873, 33);
             this.nomeVendedor.Name = "nomeVendedor";
             this.nomeVendedor.Size = new System.Drawing.Size(85, 13);
-            this.nomeVendedor.TabIndex = 45;
+            this.nomeVendedor.TabIndex = 4500;
             this.nomeVendedor.Text = "Não informado";
             // 
             // label19
@@ -306,7 +307,7 @@
             this.label19.Location = new System.Drawing.Point(571, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(40, 13);
-            this.label19.TabIndex = 46;
+            this.label19.TabIndex = 2000;
             this.label19.Text = "Tabela";
             this.label19.Visible = false;
             // 
@@ -318,7 +319,7 @@
             this.IDCaixa.Location = new System.Drawing.Point(468, 34);
             this.IDCaixa.Name = "IDCaixa";
             this.IDCaixa.Size = new System.Drawing.Size(31, 13);
-            this.IDCaixa.TabIndex = 39;
+            this.IDCaixa.TabIndex = 10005;
             this.IDCaixa.Text = "0001";
             // 
             // pictureBox8
@@ -341,7 +342,7 @@
             this.label12.Location = new System.Drawing.Point(467, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 37;
+            this.label12.TabIndex = 100012;
             this.label12.Text = "Caixa:";
             // 
             // label3
@@ -352,7 +353,7 @@
             this.label3.Location = new System.Drawing.Point(75, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(259, 13);
-            this.label3.TabIndex = 33;
+            this.label3.TabIndex = 10001;
             this.label3.Text = "Siga as etapas abaixo para criar um novo pedido!";
             // 
             // label2
@@ -364,7 +365,7 @@
             this.label2.Location = new System.Drawing.Point(72, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 30);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 1000;
             this.label2.Text = "Dados do Pedido: N";
             // 
             // panel2
@@ -372,6 +373,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.imprimir);
             this.panel2.Controls.Add(this.button1);
@@ -382,6 +384,65 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 2;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDelete.Location = new System.Drawing.Point(175, 4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(148, 65);
+            this.btnDelete.TabIndex = 155;
+            this.btnDelete.Text = "Apagar ";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(670, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 35);
+            this.button2.TabIndex = 154;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(672, 4);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(148, 65);
+            this.imprimir.TabIndex = 153;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -400,13 +461,12 @@
             // 
             // btnCancelarProduto
             // 
-            this.btnCancelarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnCancelarProduto.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnCancelarProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancelarProduto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelarProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
-            this.btnCancelarProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
-            this.btnCancelarProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
+            this.btnCancelarProduto.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnCancelarProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnCancelarProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnCancelarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarProduto.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarProduto.ForeColor = System.Drawing.Color.White;
@@ -1109,43 +1169,6 @@
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(671, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 35);
-            this.button2.TabIndex = 154;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // imprimir
-            // 
-            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.imprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(106)))), ((int)(((byte)(187)))));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
-            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
-            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(97)))), ((int)(((byte)(176)))));
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.White;
-            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
-            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.imprimir.Location = new System.Drawing.Point(672, 4);
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(148, 65);
-            this.imprimir.TabIndex = 153;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.imprimir.UseVisualStyleBackColor = false;
-            // 
             // AddPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1163,6 +1186,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddPedidos_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -1239,5 +1263,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button imprimir;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

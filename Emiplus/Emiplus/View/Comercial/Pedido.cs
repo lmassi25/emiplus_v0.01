@@ -46,31 +46,28 @@ namespace Emiplus.View.Comercial
             label3.Text = Home.pedidoPage;
             label1.Text = Home.pedidoPage;
 
-            if (Home.pedidoPage == "Orçamentos")
+            switch (Home.pedidoPage)
             {
-                label2.Text = "Gerencie os orçamenos aqui! Adicione, edite ou delete um orçamento.";
-                btnAdicionar.Text = "Novo Orçamento";
+                case "Orçamentos":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
+                    break;
+                case "Consignações":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
+                    break;
+                case "Devoluções":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
+                    break;
+                case "Compras":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
+                    label11.Text = "Procurar por fornecedor";
+                    break;
+                case "Notas":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma nota.";
+                    break;
+                case "Vendas":
+                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
+                    break;
             }
-            else if (Home.pedidoPage == "Consignações")
-            {
-                label2.Text = "Gerencie as consignações aqui! Adicione, edite ou delete uma consignação.";
-                btnAdicionar.Text = "Nova Consig.";
-            }
-            else if (Home.pedidoPage == "Devoluções")
-            {
-                label2.Text = "Gerencie as devoluções aqui! Adicione, edite ou delete uma devolução.";
-                btnAdicionar.Text = "Nova Devol.";
-            }
-            else if (Home.pedidoPage == "Compras")
-            {
-                label2.Text = "Gerencie as compras aqui! Adicione, edite ou delete uma compra.";
-                label11.Text = "Procurar por fornecedor";
-                btnAdicionar.Text = "Nova Compra";
-            }
-            else if (Home.pedidoPage == "Notas")
-                label2.Text = "Gerencie as Notas aqui! Adicione, edite ou delete uma Nota.";
-            else if (Home.pedidoPage == "Vendas")
-                label2.Text = "Gerencie suas vendas aqui! Adicione, edite ou delete uma venda.";
 
             dataInicial.Text = DateTime.Now.ToString();
             dataFinal.Text = DateTime.Now.ToString();
@@ -172,8 +169,24 @@ namespace Emiplus.View.Comercial
                     return;
                 }
             }
-            else if (GridLista.SelectedRows.Count > 0)
+            
+            if (GridLista.SelectedRows.Count > 0)
             {
+                Model.Pedido dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Pedido>();
+                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage)
+                {
+                    Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
+                    return;
+                }
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações")
+                {
+                    AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    AddPedidos NovoPedido = new AddPedidos();
+                    NovoPedido.ShowDialog();
+                    return;
+                }
+                
                 if (Home.pedidoPage == "Notas")
                 {
                     if(!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
@@ -274,14 +287,14 @@ namespace Emiplus.View.Comercial
 
             btnAdicionar.Click += (s, e) =>
             {
-                if (Home.pedidoPage == "Orçamentos")
-                    Home.pedidoPage = "Orçamentos";
+                //if (Home.pedidoPage == "Orçamentos")
+                //    Home.pedidoPage = "Orçamentos";
                 
                 EditPedido(true);
             };
 
             btnEditar.Click += (s, e) => EditPedido();
-            GridLista.DoubleClick += (s, e) =>EditPedido();
+            GridLista.DoubleClick += (s, e) => EditPedido();
             //GridLista.KeyDown += KeyDowns;
 
             btnExit.Click += (s, e) => Close();

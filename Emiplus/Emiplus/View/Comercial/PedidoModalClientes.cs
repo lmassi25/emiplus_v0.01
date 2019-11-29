@@ -75,8 +75,8 @@ namespace Emiplus.View.Comercial
                     SelectItemGrid();
                     break;
                 case Keys.Enter:
-                    if (Validation.Event(sender, GridListaClientes))
-                        SelectItemGrid();
+                    //if (Validation.Event(sender, GridListaClientes))
+                    SelectItemGrid();
                     break;
             }
         }

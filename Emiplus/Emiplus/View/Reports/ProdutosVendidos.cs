@@ -42,8 +42,7 @@ namespace Emiplus.View.Reports
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
-
-
+        
         private void AutoCompleteFornecedorCategorias()
         {
             var cats = new ArrayList();
@@ -202,6 +201,13 @@ namespace Emiplus.View.Reports
                         label1.Text = "Produtos Devolvidos";
                         label2.Text = "Consulte os produtos devolvidos aqui.";
                         label3.Text = "Produtos Devolvidos";
+                        break;
+                    case "Orçamentos":
+                        maisVendidos.Text = "Mais Orçado";
+                        menosVendidos.Text = "Menos Orçado";
+                        label1.Text = "Produtos Orçados";
+                        label2.Text = "Consulte os produtos orçados aqui.";
+                        label3.Text = "Produtos Orçados";
                         break;
                 }
 

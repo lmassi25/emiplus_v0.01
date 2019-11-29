@@ -61,7 +61,7 @@
             this.btnSim.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSim.Name = "btnSim";
             this.btnSim.Size = new System.Drawing.Size(131, 34);
-            this.btnSim.TabIndex = 155;
+            this.btnSim.TabIndex = 0;
             this.btnSim.Text = "Sim";
             this.btnSim.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSim.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -95,7 +95,7 @@
             this.btnNo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(131, 34);
-            this.btnNo.TabIndex = 156;
+            this.btnNo.TabIndex = 1;
             this.btnNo.Text = "Não";
             this.btnNo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -149,7 +149,7 @@
             this.btnOk.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(131, 34);
-            this.btnOk.TabIndex = 160;
+            this.btnOk.TabIndex = 0;
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOk.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -186,6 +186,10 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(382, 334);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(382, 334);
             this.Name = "AlertBig";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

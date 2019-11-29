@@ -61,10 +61,18 @@ namespace Emiplus.View.Reports
 
             search.KeyUp += (s, e) =>
             {
-                if (search.Text.Length <= 0)
-                    chromeBrowser.StopFinding(true);
-                else
-                    chromeBrowser.Find(0, search.Text, true, false, false);
+                try
+                {
+                    if (search.Text.Length <= 0)
+                        chromeBrowser.StopFinding(true);
+                    else
+                        chromeBrowser.Find(0, search.Text, true, false, false);
+                }
+                catch (Exception)
+                {
+
+                }
+                
             };
 
             anterior.Click += (s, e) => chromeBrowser.Find(0, search.Text, false, false, false);

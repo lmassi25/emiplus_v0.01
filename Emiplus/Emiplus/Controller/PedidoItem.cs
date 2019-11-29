@@ -39,7 +39,6 @@ namespace Emiplus.Controller
 
             Table.Columns[3].Name = "Nome do Produto";
             Table.Columns[3].MinimumWidth = 150;
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[4].Name = "Quantidade";
             Table.Columns[4].Width = 100;
@@ -88,6 +87,7 @@ namespace Emiplus.Controller
             }
 
             Table.Sort(Table.Columns[1], ListSortDirection.Descending);
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

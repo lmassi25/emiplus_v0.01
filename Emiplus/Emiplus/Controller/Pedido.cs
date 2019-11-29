@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System.Collections.Generic;
 using System.Reflection;
@@ -9,6 +10,9 @@ namespace Emiplus.Controller
 {
     class Pedido
     {
+        private Model.Pedido _modelPedido = new Model.Pedido();
+        private Model.Titulo _modelTitulo = new Model.Titulo();
+
         /// <summary>
         /// Alimenta grid dos clientes
         /// </summary>
@@ -121,7 +125,7 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
@@ -178,10 +182,7 @@ namespace Emiplus.Controller
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
-            if (!tipo.Contains("Notas"))
-                Table.ColumnCount = 10;
-            else
-                Table.ColumnCount = 9;
+            Table.ColumnCount = 11;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -212,17 +213,25 @@ namespace Emiplus.Controller
 
             Table.Columns[7].Name = "Status";
             Table.Columns[7].MinimumWidth = 150;
-            
+            Table.Columns[7].Visible = false;
+
+            if (tipo == "Vendas" || tipo == "Notas")
+                Table.Columns[7].Visible = true;
+
             Table.Columns[8].Name = "EXCLUIR";
             Table.Columns[8].Visible = false;
 
-            if (!tipo.Contains("Notas"))
-            {
-                Table.Columns[9].Name = "NF-e";
-                Table.Columns[9].MinimumWidth = 80;
-                Table.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            }
-            
+            Table.Columns[9].Name = "NF-e";
+            Table.Columns[9].MinimumWidth = 80;
+            Table.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[9].Visible = false;
+
+            if (tipo == "Vendas")
+                Table.Columns[9].Visible = true;
+
+            Table.Columns[10].Name = "TIPO";
+            Table.Columns[10].Visible = false;
+
             Table.Rows.Clear();
             
             if (Data == null)
@@ -235,13 +244,9 @@ namespace Emiplus.Controller
             {
                 var statusNfePedido = "";
                 if (tipo == "Notas")
-                {
                     statusNfePedido = item.STATUSNFE == null ? "Pendente" : item.STATUSNFE;
-                }
                 else
-                {
                     statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : @"Finalizado\Recebido";
-                }
 
                 Table.Rows.Add(
                     item.ID,
@@ -253,13 +258,25 @@ namespace Emiplus.Controller
                     item.CRIADO,
                     statusNfePedido,
                     item.EXCLUIR,
-                    item.NFE
+                    item.NFE,
+                    item.TIPO
                 );
             }
 
-
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+    
+        public void Remove(int idPedido)
+        {
+            _modelPedido.Remove(idPedido, "id", false);
+            _modelTitulo.Remove(idPedido, "id_pedido", false);
 
+            if (Home.pedidoPage == "Vendas" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Orçamentos")
+                new Controller.Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Add().Pedido();
+            else if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                new Controller.Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Remove().Pedido();
+
+            Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
+        }
     }
 }
