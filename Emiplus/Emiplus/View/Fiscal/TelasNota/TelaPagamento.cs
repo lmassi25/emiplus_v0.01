@@ -24,9 +24,25 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             _mNota = _mNota.FindByIdPedido(IdPedido).FirstOrDefault<Model.Nota>();
 
+            DisableCampos();
             Eventos();
 
             TelaReceber.Visible = false;
+        }
+
+        private void DisableCampos()
+        {
+            if (Nota.disableCampos)
+            {
+                Dinheiro.Enabled = false;
+                Cheque.Enabled = false;
+                Debito.Enabled = false;
+                Credito.Enabled = false;
+                Crediario.Enabled = false;
+                Boleto.Enabled = false;
+                Desconto.Enabled = false;
+                Acrescimo.Enabled = false;
+            }
         }
 
         public void AtualizarDados()

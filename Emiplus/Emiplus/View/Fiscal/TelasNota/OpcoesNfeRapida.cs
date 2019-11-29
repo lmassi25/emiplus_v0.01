@@ -30,6 +30,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             btnDetalhes.Click += (s, e) =>
             {
+                Nota.disableCampos = true;
                 Nota.Id = idPedido;
                 Nota nota = new Nota();
                 nota.ShowDialog();

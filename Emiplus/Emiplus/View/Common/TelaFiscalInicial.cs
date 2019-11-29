@@ -16,6 +16,7 @@ namespace Emiplus.View.Common
         {
             novaNFE.Click += (s, e) =>
             {
+                Nota.disableCampos = false;
                 Nota.Id = 0;
                 Nota nota = new Nota();
                 nota.ShowDialog();

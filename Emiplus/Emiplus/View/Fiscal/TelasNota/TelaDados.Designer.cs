@@ -72,7 +72,6 @@
             this.progress3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.BuscarCliente = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addNatureza = new System.Windows.Forms.Button();
             this.AddrInfo = new System.Windows.Forms.Label();
             this.addAddr = new System.Windows.Forms.Label();
@@ -129,7 +128,7 @@
             this.emissao.AlphaNumeric = false;
             this.emissao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.emissao.BackColor = System.Drawing.Color.White;
-            this.emissao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.emissao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.emissao.BackColorState.Enabled = System.Drawing.Color.White;
             this.emissao.Border.Color = System.Drawing.Color.Gainsboro;
             this.emissao.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -201,7 +200,7 @@
             this.saida.AlphaNumeric = false;
             this.saida.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.saida.BackColor = System.Drawing.Color.White;
-            this.saida.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.saida.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.saida.BackColorState.Enabled = System.Drawing.Color.White;
             this.saida.Border.Color = System.Drawing.Color.Gainsboro;
             this.saida.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -273,7 +272,7 @@
             this.hora.AlphaNumeric = false;
             this.hora.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.hora.BackColor = System.Drawing.Color.White;
-            this.hora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.hora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.hora.BackColorState.Enabled = System.Drawing.Color.White;
             this.hora.Border.Color = System.Drawing.Color.Gainsboro;
             this.hora.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -621,7 +620,7 @@
             this.infoFisco.AlphaNumeric = false;
             this.infoFisco.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.infoFisco.BackColor = System.Drawing.Color.White;
-            this.infoFisco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoFisco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.infoFisco.BackColorState.Enabled = System.Drawing.Color.White;
             this.infoFisco.Border.Color = System.Drawing.Color.Gainsboro;
             this.infoFisco.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -694,7 +693,7 @@
             this.infoContribuinte.AlphaNumeric = false;
             this.infoContribuinte.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.infoContribuinte.BackColor = System.Drawing.Color.White;
-            this.infoContribuinte.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.infoContribuinte.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.infoContribuinte.BackColorState.Enabled = System.Drawing.Color.White;
             this.infoContribuinte.Border.Color = System.Drawing.Color.Gainsboro;
             this.infoContribuinte.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -765,7 +764,7 @@
             // SelecionarCliente
             // 
             this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
             this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
             this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
@@ -781,12 +780,12 @@
             this.SelecionarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelecionarCliente.ForeColor = System.Drawing.Color.White;
             this.SelecionarCliente.Image = null;
-            this.SelecionarCliente.Location = new System.Drawing.Point(324, 513);
+            this.SelecionarCliente.Location = new System.Drawing.Point(30, 513);
             this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarCliente.Name = "SelecionarCliente";
-            this.SelecionarCliente.Size = new System.Drawing.Size(103, 34);
+            this.SelecionarCliente.Size = new System.Drawing.Size(190, 34);
             this.SelecionarCliente.TabIndex = 152;
-            this.SelecionarCliente.Text = "Buscar";
+            this.SelecionarCliente.Text = "Selecione o Destinatário";
             this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.SelecionarCliente.TextStyle.Enabled = System.Drawing.Color.White;
@@ -1065,65 +1064,6 @@
             this.button1.TabIndex = 178;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // BuscarCliente
-            // 
-            this.BuscarCliente.AlphaNumeric = false;
-            this.BuscarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BuscarCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.BuscarCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.BuscarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscarCliente.BackColorState.Enabled = System.Drawing.Color.White;
-            this.BuscarCliente.Border.Color = System.Drawing.Color.Gainsboro;
-            this.BuscarCliente.Border.HoverColor = System.Drawing.Color.Gray;
-            this.BuscarCliente.Border.HoverVisible = true;
-            this.BuscarCliente.Border.Rounding = 8;
-            this.BuscarCliente.Border.Thickness = 1;
-            this.BuscarCliente.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscarCliente.Border.Visible = true;
-            this.BuscarCliente.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.BuscarCliente.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.BuscarCliente.ButtonBorder.HoverVisible = true;
-            this.BuscarCliente.ButtonBorder.Rounding = 6;
-            this.BuscarCliente.ButtonBorder.Thickness = 1;
-            this.BuscarCliente.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscarCliente.ButtonBorder.Visible = true;
-            this.BuscarCliente.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscarCliente.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscarCliente.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscarCliente.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.BuscarCliente.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarCliente.ButtonIndent = 3;
-            this.BuscarCliente.ButtonText = "visualButton";
-            this.BuscarCliente.ButtonVisible = false;
-            this.BuscarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarCliente.Image = ((System.Drawing.Image)(resources.GetObject("BuscarCliente.Image")));
-            this.BuscarCliente.ImageSize = new System.Drawing.Size(16, 16);
-            this.BuscarCliente.ImageVisible = true;
-            this.BuscarCliente.ImageWidth = 35;
-            this.BuscarCliente.Location = new System.Drawing.Point(31, 513);
-            this.BuscarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.BuscarCliente.Name = "BuscarCliente";
-            this.BuscarCliente.PasswordChar = '\0';
-            this.BuscarCliente.ReadOnly = false;
-            this.BuscarCliente.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.BuscarCliente.Size = new System.Drawing.Size(286, 34);
-            this.BuscarCliente.TabIndex = 130;
-            this.BuscarCliente.TextBoxWidth = 240;
-            this.BuscarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.BuscarCliente.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarCliente.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarCliente.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscarCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscarCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.BuscarCliente.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.BuscarCliente.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarCliente.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.BuscarCliente.Watermark.Text = "Watermark text";
-            this.BuscarCliente.Watermark.Visible = false;
-            this.BuscarCliente.WordWrap = true;
-            // 
             // addNatureza
             // 
             this.addNatureza.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1184,7 +1124,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NomeCliente);
             this.Controls.Add(this.SelecionarCliente);
-            this.Controls.Add(this.BuscarCliente);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.addNatureza);
             this.Controls.Add(this.label13);
@@ -1249,7 +1188,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox infoContribuinte;
         private System.Windows.Forms.Button addNatureza;
         private System.Windows.Forms.Label label14;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarCliente;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarCliente;
         private System.Windows.Forms.Label NomeCliente;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Next;
