@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="https://www.emiplus.com.br/app/templates/default/assets/css/bootstrap.min.css">
+    <link href="https://www.emiplus.com.br/razor/css/Relatorio.css?v=58" rel="stylesheet" />
+    <style>
+        @page {
+            size: A4 landscape
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        <div class="page">
+
+            <div class="row header">
+                <div class="col-sm-6 logo"><img src="https://www.emiplus.com.br/{{Logo}}"></div>
+                <div class="col-sm-6">
+                    <div class="infos-top">
+                        <span class="title_empresa">{{NomeFantasia}}</span>
+                        <span><strong>Emitido:</strong> {{Emissao}}</span>                        
+                    </div>
+                </div>
+            </div>
+            <div class="title">Produtos</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Cód. Barras</th>
+                        <th scope="col">Referência</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col">Venda</th>
+                        <th scope="col">Est. atual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Data %}
+                    <tr>
+                        <td>{{item.CATEGORIA}}</td>
+                        <td>{{item.CODEBARRAS}}</td>
+                        <td>{{item.REFERENCIA}}</td>
+                        <td>{{item.NOME}}</td>
+                        <td style="text-align: right;">{{item.CUSTO}}</td>
+                        <td style="text-align: right;">{{item.VENDA}}</td>
+                        <td style="text-align: right;">{{item.ESTOQUEATUAL}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</body>
+</html>

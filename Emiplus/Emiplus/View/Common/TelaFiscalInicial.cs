@@ -32,6 +32,29 @@ namespace Emiplus.View.Common
             {
                 OpenForm.Show<Fiscal.Natureza>(this);
             };
+
+            clientes.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Clientes";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
+            fornecedores.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Fornecedores";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
+            transportadoras.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Transportadoras";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
+            impostos.Click += (s, e) =>
+            {
+                OpenForm.Show<Produtos.Impostos>(this);
+            };
         }
     }
 }

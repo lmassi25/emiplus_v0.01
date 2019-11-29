@@ -402,5 +402,10 @@ namespace Emiplus.View.Comercial
                 AddPedidos.btnFinalizado = false;
             };
         }
+
+        private void PedidoPagamentos_Activated(object sender, EventArgs e)
+        {
+            Console.WriteLine("Ativo: PedidoPagamentos");            
+        }
     }
 }

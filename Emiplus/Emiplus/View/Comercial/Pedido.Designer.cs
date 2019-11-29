@@ -452,10 +452,10 @@
             this.filterRemovido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.filterRemovido.Location = new System.Drawing.Point(21, 179);
             this.filterRemovido.Name = "filterRemovido";
-            this.filterRemovido.Size = new System.Drawing.Size(85, 19);
+            this.filterRemovido.Size = new System.Drawing.Size(77, 19);
             this.filterRemovido.TabIndex = 201;
             this.filterRemovido.TabStop = true;
-            this.filterRemovido.Text = "Canceladas";
+            this.filterRemovido.Text = "Apagadas";
             this.filterRemovido.UseVisualStyleBackColor = true;
             // 
             // Usuarios

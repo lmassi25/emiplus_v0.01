@@ -1112,6 +1112,8 @@
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />
     <Content Include="View\Reports\html\Inventario.html" />
+    <Content Include="View\Reports\html\Pessoas.html" />
+    <Content Include="View\Reports\html\Produtos.html" />
     <Content Include="View\Reports\html\Titulos.html" />
     <Content Include="View\Reports\html\Pedidos.html" />
     <Content Include="View\Reports\html\ProdutosVendidos.html" />

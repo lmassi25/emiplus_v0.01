@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Comercial;
 using Emiplus.View.Reports;
 using System;
 using System.Dynamic;
@@ -64,6 +65,14 @@ namespace Emiplus.View.Common
             {
                 Inventario Estoque = new Inventario();
                 Estoque.ShowDialog();
+            };
+
+            CompraNova.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Compras";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
             };
         }
     }

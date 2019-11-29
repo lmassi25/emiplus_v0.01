@@ -39,7 +39,6 @@
             this.Impostos = new System.Windows.Forms.Button();
             this.ReajusteProduto = new System.Windows.Forms.Button();
             this.Etiquetas = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
             this.transportadoras = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
@@ -51,6 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label4 = new System.Windows.Forms.Label();
+            this.novaNFE = new System.Windows.Forms.Button();
+            this.CompraNova = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -199,29 +200,6 @@
             this.Etiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Etiquetas.UseVisualStyleBackColor = false;
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.DimGray;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(256, 184);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(219, 41);
-            this.button7.TabIndex = 56;
-            this.button7.Text = "          NFe de Devolução";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
             // Compras
             // 
             this.Compras.BackColor = System.Drawing.Color.Transparent;
@@ -236,7 +214,7 @@
             this.Compras.ForeColor = System.Drawing.Color.DimGray;
             this.Compras.Image = ((System.Drawing.Image)(resources.GetObject("Compras.Image")));
             this.Compras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Compras.Location = new System.Drawing.Point(256, 139);
+            this.Compras.Location = new System.Drawing.Point(491, 184);
             this.Compras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Compras.Name = "Compras";
             this.Compras.Size = new System.Drawing.Size(219, 41);
@@ -443,9 +421,55 @@
             this.label4.ForeColor = System.Drawing.Color.Gray;
             this.label4.Location = new System.Drawing.Point(487, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 84;
-            this.label4.Text = "Relatórios";
+            this.label4.Text = "Gerencial";
+            // 
+            // novaNFE
+            // 
+            this.novaNFE.BackColor = System.Drawing.Color.Transparent;
+            this.novaNFE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.novaNFE.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.novaNFE.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.novaNFE.FlatAppearance.BorderSize = 0;
+            this.novaNFE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.novaNFE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.novaNFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.novaNFE.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.novaNFE.ForeColor = System.Drawing.Color.DimGray;
+            this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
+            this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.novaNFE.Location = new System.Drawing.Point(256, 184);
+            this.novaNFE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.novaNFE.Name = "novaNFE";
+            this.novaNFE.Size = new System.Drawing.Size(219, 41);
+            this.novaNFE.TabIndex = 106;
+            this.novaNFE.Text = "          Nova NF-e Devolução";
+            this.novaNFE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.novaNFE.UseVisualStyleBackColor = false;
+            // 
+            // CompraNova
+            // 
+            this.CompraNova.BackColor = System.Drawing.Color.Transparent;
+            this.CompraNova.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CompraNova.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CompraNova.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.CompraNova.FlatAppearance.BorderSize = 0;
+            this.CompraNova.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.CompraNova.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.CompraNova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CompraNova.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompraNova.ForeColor = System.Drawing.Color.DimGray;
+            this.CompraNova.Image = ((System.Drawing.Image)(resources.GetObject("CompraNova.Image")));
+            this.CompraNova.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CompraNova.Location = new System.Drawing.Point(256, 139);
+            this.CompraNova.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CompraNova.Name = "CompraNova";
+            this.CompraNova.Size = new System.Drawing.Size(219, 41);
+            this.CompraNova.TabIndex = 107;
+            this.CompraNova.Text = "          Nova Compra";
+            this.CompraNova.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CompraNova.UseVisualStyleBackColor = false;
             // 
             // TelaProdutosInicial
             // 
@@ -453,6 +477,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.CompraNova);
+            this.Controls.Add(this.novaNFE);
             this.Controls.Add(this.visualSeparator5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.visualSeparator4);
@@ -463,7 +489,6 @@
             this.Controls.Add(this.ReajusteProduto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Etiquetas);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.Compras);
             this.Controls.Add(this.transportadoras);
             this.Controls.Add(this.fornecedores);
@@ -492,7 +517,6 @@
         private System.Windows.Forms.Button fornecedores;
         private System.Windows.Forms.Button transportadoras;
         private System.Windows.Forms.Button Compras;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button Etiquetas;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ReajusteProduto;
@@ -506,5 +530,7 @@
         private System.Windows.Forms.Label label2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button novaNFE;
+        private System.Windows.Forms.Button CompraNova;
     }
 }

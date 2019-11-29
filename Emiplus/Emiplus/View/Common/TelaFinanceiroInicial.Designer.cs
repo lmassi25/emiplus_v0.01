@@ -113,7 +113,7 @@
             this.novoPagamento.ForeColor = System.Drawing.Color.DimGray;
             this.novoPagamento.Image = ((System.Drawing.Image)(resources.GetObject("novoPagamento.Image")));
             this.novoPagamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.novoPagamento.Location = new System.Drawing.Point(256, 140);
+            this.novoPagamento.Location = new System.Drawing.Point(256, 137);
             this.novoPagamento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.novoPagamento.Name = "novoPagamento";
             this.novoPagamento.Size = new System.Drawing.Size(219, 41);
@@ -136,7 +136,7 @@
             this.aPagar.ForeColor = System.Drawing.Color.DimGray;
             this.aPagar.Image = ((System.Drawing.Image)(resources.GetObject("aPagar.Image")));
             this.aPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.aPagar.Location = new System.Drawing.Point(491, 140);
+            this.aPagar.Location = new System.Drawing.Point(491, 137);
             this.aPagar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aPagar.Name = "aPagar";
             this.aPagar.Size = new System.Drawing.Size(219, 41);
@@ -347,7 +347,7 @@
             this.Clientes.ForeColor = System.Drawing.Color.DimGray;
             this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
             this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(22, 143);
+            this.Clientes.Location = new System.Drawing.Point(22, 137);
             this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Clientes.Name = "Clientes";
             this.Clientes.Size = new System.Drawing.Size(219, 41);
