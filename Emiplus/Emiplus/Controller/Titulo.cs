@@ -11,6 +11,8 @@ namespace Emiplus.Controller
 {
     class Titulo : Data.Core.Controller
     {
+        public static string status { get; set; }
+
         public double GetTroco(int idPedido)
         {
             if (String.IsNullOrEmpty(idPedido.ToString()))
@@ -183,6 +185,54 @@ namespace Emiplus.Controller
             return data.Get();
         }
 
+        public IEnumerable<dynamic> GetDataTableTitulosGerados(string tela, string Search, int tipo, string dataInicial, string dataFinal)
+        {
+            var titulos = new Model.Titulo();
+
+            string tipoPesquisa = "titulo.vencimento";
+            if (tipo == 0)
+                tipoPesquisa = "titulo.vencimento";
+            else
+                tipoPesquisa = "titulo.emissao";
+
+            var search = "%" + Search + "%";
+            var data = titulos.Query()
+                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where(tipoPesquisa, ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where(tipoPesquisa, "<=", Validation.ConvertDateToSql(dataFinal))
+                .Where("titulo.excluir", 0)
+                .Where("titulo.tipo", tela)
+                .OrderByDesc("titulo.criado");
+
+            if (Controller.Titulo.status == "Pendentes")
+            {
+                data.Where
+                (
+                    q => q.Where("titulo.recebido", "=", 0)
+                );
+            }
+
+            if (Controller.Titulo.status == "Recebidos" || Controller.Titulo.status == "Pagos")
+            {
+                data.Where
+                (
+                    q => q.Where("titulo.recebido", "<>", 0)
+                );
+            }
+
+            if (!String.IsNullOrEmpty(search) && search != "%%")
+            {
+                data.Where
+                (
+                    q => q.Where("titulo.recebido", search, false)
+                );
+            }
+
+            return data.Get();
+        }
+
         public void GetDataTableTitulos(DataGridView Table, int idPedido)
         {
             Table.Rows.Clear();
@@ -214,32 +264,8 @@ namespace Emiplus.Controller
         public void GetDataTableTitulosGeradosFilter(DataGridView Table, string tela, string Search, int tipo, string dataInicial, string dataFinal)
         {
             Table.Rows.Clear();
-
-            var titulos = new Model.Titulo();
-
-            string tipoPesquisa = "titulo.vencimento";
-            if (tipo == 0)
-                tipoPesquisa = "titulo.vencimento";
-            else
-                tipoPesquisa = "titulo.emissao";
-
-            var search = "%" + Search + "%";
-            var data = titulos.Query()
-                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where(tipoPesquisa, ">=", dataInicial)
-                .Where(tipoPesquisa, "<=", dataFinal)
-                .Where("titulo.excluir", 0)
-                .Where("titulo.tipo", tela)
-                .Where
-                (
-                    q => q.WhereLike("pessoa.nome", search, false)
-                )
-                .OrderByDesc("titulo.criado")
-                .Get();
-
-            foreach (var item in data)
+                        
+            foreach (var item in GetDataTableTitulosGerados(tela, Search, tipo, dataInicial, dataFinal))
             {
                 Table.Rows.Add(
                     item.ID,

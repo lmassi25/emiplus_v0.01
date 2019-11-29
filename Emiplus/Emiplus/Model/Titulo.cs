@@ -89,6 +89,7 @@
         {
             if (data.Id == 0)
             {
+                data.Emissao = Validation.DateNowToSql();
                 data.Criado = DateTime.Now;
 
                 if (Data(data).Create() == 1)

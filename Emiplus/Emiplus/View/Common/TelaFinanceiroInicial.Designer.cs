@@ -306,9 +306,9 @@
             this.label4.ForeColor = System.Drawing.Color.Gray;
             this.label4.Location = new System.Drawing.Point(487, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.Size = new System.Drawing.Size(86, 25);
             this.label4.TabIndex = 104;
-            this.label4.Text = "Relatórios";
+            this.label4.Text = "Gerencial";
             // 
             // Caixa
             // 

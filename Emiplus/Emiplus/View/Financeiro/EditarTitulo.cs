@@ -2,6 +2,7 @@
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,59 +17,39 @@ namespace Emiplus.View.Financeiro
         public EditarTitulo()
         {
             InitializeComponent();
-            Eventos();
-
-            label6.Text = "Contas a " + Home.financeiroPage;
-            if (Home.financeiroPage == "Pagar")
-            {
-                label4.Left = 350;
-                pictureBox1.Left = 325;
-            }
-
-            if (IdTitulo > 0)
-                LoadData();
+            Eventos();            
         }
 
         private void LoadData()
         {
             _modelTitulo = _modelTitulo.FindById(IdTitulo).First<Titulo>();
 
+            emissao.Text = _modelTitulo.Emissao == null ? Validation.ConvertDateToForm(Validation.DateNowToSql()) : Validation.ConvertDateToForm(_modelTitulo.Emissao);
             vencimento.Text = _modelTitulo.Vencimento == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Vencimento);
-            emissao.Text = _modelTitulo.Emissao == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Emissao);
+            
             total.Text = _modelTitulo.Total == null ? "" : Validation.Price(_modelTitulo.Total);
+            
             dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = _modelTitulo.Recebido == null ? "" : Validation.Price(_modelTitulo.Recebido);
         }
 
-        private void Start()
-        {
-            var formasPagamentos = new FormaPagamento().FindAll().Where("excluir", 0).OrderByDesc("nome").Get();
-            if (formasPagamentos.Count() > 0)
-            {
-                formaPgto.DataSource = formasPagamentos;
-                formaPgto.DisplayMember = "NOME";
-                formaPgto.ValueMember = "ID";
-                formaPgto.SelectedValue = _modelTitulo.Id_FormaPgto;
-            }
-            
-            IEnumerable<dynamic> clientes;
-            if (Home.financeiroPage == "Receber")
-                clientes = new Pessoa().FindAll().Where("excluir", 0).Where("tipo", "Clientes").OrderByDesc("nome").Get();
-            else
-                clientes = new Pessoa().FindAll().Where("excluir", 0).OrderByDesc("nome").Get();
-
-            if (clientes.Count() > 0)
-            {
-                cliente.DataSource = clientes;
-                cliente.DisplayMember = "NOME";
-                cliente.ValueMember = "ID";
-                cliente.SelectedValue = _modelTitulo.Id_Pessoa;
-            }
-        }
-
         private void Save()
         {
+            if (String.IsNullOrEmpty(emissao.Text))
+            {
+                Alert.Message("Atenção", "É necessário informar uma data de emissão", Alert.AlertType.warning);
+                emissao.Focus();
+                return;
+            }
+
+            if (String.IsNullOrEmpty(vencimento.Text))
+            {
+                Alert.Message("Atenção", "É necessário informar uma data de vencimento", Alert.AlertType.warning);
+                return;
+            }
+
             _modelTitulo.Id = IdTitulo;
+            _modelTitulo.Tipo = Home.financeiroPage;
             _modelTitulo.Vencimento = Validation.ConvertDateToSql(vencimento.Text);
             _modelTitulo.Emissao = Validation.ConvertDateToSql(emissao.Text);
             _modelTitulo.Total = Validation.ConvertToDouble(total.Text);
@@ -81,6 +62,9 @@ namespace Emiplus.View.Financeiro
             if (formaPgto.SelectedValue != null)
                 _modelTitulo.Id_FormaPgto = (int)formaPgto.SelectedValue;
 
+            if (receita.SelectedValue != null)
+                _modelTitulo.Id_Categoria = (int)receita.SelectedValue;
+            
             if (_modelTitulo.Save(_modelTitulo))
                 Close();
         }
@@ -100,7 +84,60 @@ namespace Emiplus.View.Financeiro
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => Start();
+            Load += (s, e) =>
+            {
+                if (Home.financeiroPage == "Pagar")
+                {
+                    label23.Text = "Pagar para:";
+                    label6.Text = "Pagamentos";
+                    label8.Text = "Despesa";
+                    label3.Text = "Forma Pagar";
+
+                    visualGroupBox2.Text = "Pagamento";
+                    label9.Text = "Data Pagamento";
+                    label10.Text = "Valor Pagamento";
+
+                    //label4.Left = 350;
+                    //pictureBox1.Left = 325;
+                }
+
+                if (IdTitulo > 0)
+                    LoadData();
+                else
+                {
+                    emissao.Text = Validation.ConvertDateToForm(Validation.DateNowToSql());
+                    vencimento.Text = Validation.ConvertDateToForm(Validation.DateNowToSql());
+                }
+
+                var formasPagamentos = new FormaPagamento().FindAll().Where("excluir", 0).OrderByDesc("nome").Get();
+                if (formasPagamentos.Count() > 0)
+                {
+                    formaPgto.DataSource = formasPagamentos;
+                    formaPgto.DisplayMember = "NOME";
+                    formaPgto.ValueMember = "ID";
+                    formaPgto.SelectedValue = _modelTitulo.Id_FormaPgto;
+                }
+
+                IEnumerable<dynamic> clientes;
+                clientes = new Pessoa().FindAll().Where("excluir", 0).WhereNotLike("nome", "%Novo registro%").OrderByDesc("nome").Get();
+                if (clientes.Count() > 0)
+                {
+                    cliente.DataSource = clientes;
+                    cliente.DisplayMember = "NOME";
+                    cliente.ValueMember = "ID";
+                    cliente.SelectedValue = _modelTitulo.Id_Pessoa;
+                }
+
+                IEnumerable<dynamic> categorias;
+                categorias = new Categoria().FindAll().Where("excluir", 0).Where("tipo", "Financeiro").OrderByDesc("nome").Get();
+                if (categorias.Count() > 0)
+                {
+                    receita.DataSource = categorias;
+                    receita.DisplayMember = "NOME";
+                    receita.ValueMember = "ID";
+                    receita.SelectedValue = _modelTitulo.Id_Categoria;
+                }
+            };
             
             btnSalvar.Click += (s, e) => Save();
             btnRemover.Click += (s, e) =>
@@ -118,6 +155,7 @@ namespace Emiplus.View.Financeiro
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
+
             recebido.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
