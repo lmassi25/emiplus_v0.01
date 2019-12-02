@@ -75,7 +75,7 @@ namespace Emiplus.View.Comercial
                 button19.Visible = false;
                 btnImprimir.Left = 835;
                 button20.Left = 830;
-            }
+            }           
         }
 
         public void AtualizarDados()
@@ -337,6 +337,13 @@ namespace Emiplus.View.Comercial
 
                 Dinheiro.Focus();
                 Dinheiro.Select();
+
+                if (AddPedidos.telapagamentos)
+                {
+                    Application.OpenForms["AddPedidos"].Close();
+                    Application.OpenForms["PedidoPagamentos"].Focus();
+                    AddPedidos.telapagamentos = false;
+                }
             };            
 
             btnImprimir.Click += (s, e) =>
@@ -360,6 +367,10 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
+                AddPedidos.Id = IdPedido;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+
                 Close();
             };
 
