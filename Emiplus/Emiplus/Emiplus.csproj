@@ -290,6 +290,18 @@
     <Compile Include="View\Comercial\DetailsPedidoPgtos.Designer.cs">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\OpcoesCfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesCfe.Designer.cs">
+      <DependentUpon>OpcoesCfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesCfeCpf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesCfeCpf.Designer.cs">
+      <DependentUpon>OpcoesCfeCpf.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\OpcoesNfe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -734,6 +746,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\DetailsPedidoPgtos.resx">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\OpcoesCfe.resx">
+      <DependentUpon>OpcoesCfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\OpcoesCfeCpf.resx">
+      <DependentUpon>OpcoesCfeCpf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesNfe.resx">
       <DependentUpon>OpcoesNfe.cs</DependentUpon>

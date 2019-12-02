@@ -57,21 +57,23 @@ namespace Emiplus.View.Comercial
             {
                 label2.Text = $"Dados do Orçamento: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar um orçamento!";
-                btnConcluir.Text = "Gerar Venda";
+                btnConcluir.Text = "Finalizar";
                 pictureBox8.Visible = false;
                 label12.Visible = false;
                 IDCaixa.Visible = false;
                 btnDelete.Text = "Apagar Orçamento";
+                btnGerarVenda.Visible = true;
             }
             else if (Home.pedidoPage == "Consignações")
             {
                 label2.Text = $"Dados da Consignação: {Id}";
-                label3.Text = "Siga as etapas abaixo para criar uma consignãção!";
-                btnConcluir.Text = "Gerar Venda";
+                label3.Text = "Siga as etapas abaixo para criar uma consignação!";
+                btnConcluir.Text = "Finalizar";
                 pictureBox8.Visible = false;
                 label12.Visible = false;
                 IDCaixa.Visible = false;
                 btnDelete.Text = "Apagar Consignação";
+                btnGerarVenda.Visible = true;
             }
             else if (Home.pedidoPage == "Compras")
             {
@@ -89,9 +91,11 @@ namespace Emiplus.View.Comercial
                 label12.Visible = false;
                 IDCaixa.Visible = false;
                 btnDelete.Visible = false;
+                btnGerarVenda.Visible = false;
             }
             else
             {
+                btnGerarVenda.Visible = false;
                 btnDelete.Visible = false;
                 label2.Text = $"Dados da Venda: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma venda!";
@@ -203,11 +207,7 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            PedidoPagamentos f = new PedidoPagamentos();
-            _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
-            _mPedido.Id = Id;
-
-            if (btnConcluir.Text == "Finalizar")
+            if (btnConcluir.Text == "Finalizar" && Home.idCaixa == 0 && Home.pedidoPage == "Vendas") //Necessário para vendas balcão
             {
                 btnFinalizado = true;
                 _mPedido.Id = Id;
@@ -226,6 +226,10 @@ namespace Emiplus.View.Comercial
                 Close();
                 return;
             }
+
+            PedidoPagamentos f = new PedidoPagamentos();
+            _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
+            _mPedido.Id = Id;
 
             switch (Home.pedidoPage)
             {
@@ -247,23 +251,34 @@ namespace Emiplus.View.Comercial
                     {
                         Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
                         Close();
-                    }
-                    Alert.Message("Opss", "Problema ao finalizar Devolução", Alert.AlertType.error);
-                    break;
-
-                case "Orçamentos":
-                case "Consignações":
-                    _mPedido.Tipo = "Vendas";
-                    if (_mPedido.Save(_mPedido))
-                    {
-                        Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
-                        Home.pedidoPage = "Vendas";
-                        LoadData();
                         return;
                     }
                     Alert.Message("Opss", "Problema ao finalizar Devolução", Alert.AlertType.error);
                     break;
 
+                case "Consignações":
+                    _mPedido.Tipo = "Consignações";
+                    _mPedido.status = 1; //FINALIZADO
+                    if (_mPedido.Save(_mPedido))
+                    {
+                        Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
+                        Close();
+                        return;
+                    }
+                    Alert.Message("Opss", "Problema ao finalizar Consignação", Alert.AlertType.error);
+                    break;
+
+                case "Orçamentos":
+                    _mPedido.Tipo = "Orçamentos";
+                    _mPedido.status = 1; //FINALIZADO
+                    if (_mPedido.Save(_mPedido))
+                    {
+                        Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
+                        Close();
+                        return;
+                    }
+                    Alert.Message("Opss", "Problema ao finalizar Orçamento", Alert.AlertType.error);
+                    break;
                 default:
                     btnFinalizado = true;
                     f.Show();
@@ -567,6 +582,21 @@ namespace Emiplus.View.Comercial
             btnConcluir.Click += (s, e) =>
             {
                 TelaPagamentos();
+            };
+
+            btnGerarVenda.Click += (s, e) =>
+            {
+                PedidoPagamentos f = new PedidoPagamentos();
+                _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
+                _mPedido.Id = Id;
+                _mPedido.Tipo = "Vendas";
+                if (_mPedido.Save(_mPedido))
+                {
+                    Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
+                    Home.pedidoPage = "Vendas";
+                    LoadData();
+                    return;
+                }
             };
 
             ModoRapido.Click += (s, e) => AlterarModo();

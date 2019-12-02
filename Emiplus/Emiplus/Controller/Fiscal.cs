@@ -769,26 +769,28 @@ namespace Emiplus.Controller
 
             if (tipo == "CFe")
             {
-                xml.WriteElementString("cProd", Validation.CleanStringForFiscal(_pedidoItem.CProd));
+                xml.WriteElementString("cProd", Validation.CleanStringForFiscal(_pedidoItem.Id.ToString()));
 
                 if (!String.IsNullOrEmpty(_pedidoItem.CEan))
                 {
                     xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
                 }
-                else
-                {
-                    xml.WriteElementString("cEAN", "SEM GTIN");
-                }
+                //else
+                //{
+                //    xml.WriteElementString("cEAN", "SEM GTIN");
+                //}
 
                 xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
                 xml.WriteElementString("NCM", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
-                xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
+                xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Cfop));
                 xml.WriteElementString("uCom", _pedidoItem.Medida);
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 4));
-                xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 6));
+                xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
                 xml.WriteElementString("indRegra", "A");
-                if(_pedidoItem.Desconto > 0)
-                    xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto));
+                xml.WriteElementString("vDesc", "0.00");
+                xml.WriteElementString("vOutro", "0.00");                
+                //if(_pedidoItem.Desconto > 0)
+                //    xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto));
             }
             else
             {
@@ -841,8 +843,11 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("imposto");
 
-            totalTrib = _pedidoItem.Federal + _pedidoItem.Estadual + _pedidoItem.Municipal;            
-            xml.WriteElementString("vTotTrib", Validation.FormatPriceWithDot(totalTrib));
+            if (tipo != "CFe")
+            {
+                totalTrib = _pedidoItem.Federal + _pedidoItem.Estadual + _pedidoItem.Municipal;
+                xml.WriteElementString("vTotTrib", Validation.FormatPriceWithDot(totalTrib));
+            }
 
             #endregion
 
@@ -862,7 +867,7 @@ namespace Emiplus.Controller
             switch (_pedidoItem.Icms)
             {
                 case "00":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "00");
                     xml.WriteElementString("modBC", "0");
                     xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
@@ -870,37 +875,37 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
                     break;
                 case "40":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "40");
                     break;
                 case "41":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "41");
                     break;
                 case "50":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "50");
                     break;
                 case "60":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "60");
                     break;
                 case "90":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "90");
                     break;
                 case "101":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "101");
                     xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Aliq));
                     xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Vlr));
                     break;
                 case "102":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "102");
                     break;
                 case "201":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "201");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -912,7 +917,7 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(0));
                     break;
                 case "202":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "202");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -922,13 +927,13 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vICMSST", Validation.FormatPriceWithDot(0));
                     break;
                 case "500":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "500");
                     xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
                     xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
                     break;
                 case "900":
-                    xml.WriteElementString("orig", _pedidoItem.Origem);
+                    xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "900");
                     break;
             }

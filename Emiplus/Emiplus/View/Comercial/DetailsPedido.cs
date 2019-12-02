@@ -76,6 +76,41 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        public void Nfe()
+        {
+            var checkNota = new Model.Nota().FindByIdPedido(idPedido).Get();
+
+            if (checkNota.Count() == 0)
+            {
+                OpcoesNfe.idPedido = idPedido;
+                OpcoesNfe f = new OpcoesNfe();
+                f.Show();
+            }
+
+            foreach (var item in checkNota)
+            {
+                if (item.STATUS == null)
+                {
+                    OpcoesNfe.idPedido = idPedido;
+                    OpcoesNfe f = new OpcoesNfe();
+                    f.Show();
+                }
+                else
+                {
+                    OpcoesNfeRapida.idPedido = idPedido;
+                    OpcoesNfeRapida f = new OpcoesNfeRapida();
+                    f.Show();
+                }
+            }
+        }
+
+        public void Cfe()
+        {
+            OpcoesCfeCpf.idPedido = idPedido;
+            OpcoesCfeCpf f = new OpcoesCfeCpf();
+            f.Show();
+        }
+        
         private void LoadData()
         {
             _modelPedido = _modelPedido.FindById(idPedido).First<Model.Pedido>();
@@ -118,6 +153,12 @@ namespace Emiplus.View.Comercial
             {
                 case Keys.Escape:
                     Close();
+                    break;
+                case Keys.F9:
+                    Cfe();
+                    break;
+                case Keys.F10:
+                    Nfe();
                     break;
             }
         }
@@ -168,30 +209,12 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedido(idPedido).Get();
+                Nfe();
+            };
 
-                if (checkNota.Count() == 0)
-                {
-                    OpcoesNfe.idPedido = idPedido;
-                    OpcoesNfe f = new OpcoesNfe();
-                    f.Show();
-                }
-
-                foreach (var item in checkNota)
-                {
-                    if (item.STATUS == null)
-                    {
-                        OpcoesNfe.idPedido = idPedido;
-                        OpcoesNfe f = new OpcoesNfe();
-                        f.Show();
-                    }
-                    else
-                    {
-                        OpcoesNfeRapida.idPedido = idPedido;
-                        OpcoesNfeRapida f = new OpcoesNfeRapida();
-                        f.Show();
-                    }
-                }
+            btnCFeSat.Click += (s, e) =>
+            {
+                Cfe();
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
