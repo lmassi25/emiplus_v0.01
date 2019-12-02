@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -38,24 +39,30 @@ namespace Emiplus.View.Comercial
                 case Keys.Up:
                     //GridListaProdutos.Focus();
                     Support.UpDownDataGrid(false, GridListaProdutos);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Down:
                     //GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Escape:
                     Close();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F1:
                     buscarProduto.Focus();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F10:
                     SelectItemGrid();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Enter:
                     SelectItemGrid();
+                    e.SuppressKeyPress = true;
                     break;
             }
         }
