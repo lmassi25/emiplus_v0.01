@@ -29,6 +29,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
             IdNatureza = _mPedido.id_natureza;
 
+            DisableCampos();
             Eventos();
         }
 
@@ -44,6 +45,22 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             if (IdNatureza > 0)
                 naturezaOp.SelectedValue = IdNatureza;
+        }
+
+        private void DisableCampos()
+        {
+            if (Nota.disableCampos) {
+                emissao.Enabled = false;
+                saida.Enabled = false;
+                hora.Enabled = false;
+                tipo.Enabled = false;
+                finalidade.Enabled = false;
+                localDestino.Enabled = false;
+                naturezaOp.Enabled = false;
+                infoContribuinte.Enabled = false;
+                infoFisco.Enabled = false;
+                SelecionarCliente.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -207,12 +224,12 @@ namespace Emiplus.View.Fiscal.TelasNota
             Next.Click += (s, e) =>
             {
                 if (Validate())
-                {
                     return;
-                }
-
+                
                 GetData();
-                _mPedido.Save(_mPedido);
+
+                if (!Nota.disableCampos)
+                    _mPedido.Save(_mPedido);
 
                 OpenForm.Show<TelaProdutos>(this);
             };

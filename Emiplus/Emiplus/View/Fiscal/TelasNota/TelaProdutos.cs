@@ -30,6 +30,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
             _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
+            DisableCampos();
             Eventos();
         }
 
@@ -46,6 +47,20 @@ namespace Emiplus.View.Fiscal.TelasNota
             AddItem();
 
             PedidoModalItens.NomeProduto = "";
+        }
+
+        private void DisableCampos()
+        {
+            if (Nota.disableCampos)
+            {
+                BuscarProduto.Enabled = false;
+                Quantidade.Enabled = false;
+                Preco.Enabled = false;
+                Medidas.Enabled = false;
+                DescontoPorcentagem.Enabled = false;
+                DescontoReais.Enabled = false;
+                addProduto.Enabled = false;
+            }
         }
 
         /// <summary>

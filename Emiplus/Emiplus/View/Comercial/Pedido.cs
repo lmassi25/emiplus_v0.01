@@ -156,6 +156,7 @@ namespace Emiplus.View.Comercial
             {
                 if (Home.pedidoPage == "Notas")
                 {
+                    Nota.disableCampos = false;
                     Nota.Id = 0;
                     Nota nota = new Nota();
                     nota.ShowDialog();
@@ -173,7 +174,7 @@ namespace Emiplus.View.Comercial
             if (GridLista.SelectedRows.Count > 0)
             {
                 Model.Pedido dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Pedido>();
-                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage)
+                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas")
                 {
                     Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
                     return;

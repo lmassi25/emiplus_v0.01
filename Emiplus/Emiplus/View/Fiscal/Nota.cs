@@ -9,6 +9,11 @@ namespace Emiplus.View.Fiscal
     {
         public static int Id { get; set; } // id nota
         public static int IdDetailsNota { get; set; }
+        
+        /// <summary>
+        /// True - Desabilita os campos na tela da Nota
+        /// </summary>
+        public static bool disableCampos { get; set; }
 
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.Nota _mNota = new Model.Nota();

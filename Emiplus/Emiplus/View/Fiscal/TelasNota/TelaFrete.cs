@@ -24,7 +24,25 @@ namespace Emiplus.View.Fiscal.TelasNota
             _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
             _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
+            DisableCampos();
             Eventos();
+        }
+
+        private void DisableCampos()
+        {
+            if (Nota.disableCampos)
+            {
+                tipo.Enabled = false;
+                volumes.Enabled = false;
+                pesoLiquido.Enabled = false;
+                pesoBruto.Enabled = false;
+                especie.Enabled = false;
+                marca.Enabled = false;
+                SelecionarTransportadora.Enabled = false;
+                placa.Enabled = false;
+                uf.Enabled = false;
+                rntc.Enabled = false;
+            }
         }
 
         private bool Validate()
@@ -96,9 +114,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             Next.Click += (s, e) =>
             {
                 if (Validate())
-                {
                     return;
-                }
 
                 _mPedido.Id = Id;
                 _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedValue);
@@ -107,7 +123,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _mPedido.PesoBruto_Frete = pesoBruto.Text;
                 _mPedido.Especie_Frete = especie.Text;
                 _mPedido.Marca_Frete = marca.Text;
-                _mPedido.Save(_mPedido);
+
+                if (!Nota.disableCampos)
+                    _mPedido.Save(_mPedido);
 
                 if (_mPedido.Id_Transportadora > 0)
                 {
@@ -115,7 +133,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                     _mTransportadora.Transporte_rntc = rntc.Text;
                     _mTransportadora.Transporte_uf = uf.Text;
                     _mTransportadora.Transporte_placa = placa.Text;
-                    _mTransportadora.Save(_mTransportadora, false);
+
+                    if (!Nota.disableCampos)
+                        _mTransportadora.Save(_mTransportadora, false);
                 }
                 
                 OpenForm.Show<TelaPagamento>(this);

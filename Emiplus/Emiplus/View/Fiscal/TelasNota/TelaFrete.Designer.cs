@@ -56,7 +56,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.transportadoraSelecionada = new System.Windows.Forms.Label();
             this.SelecionarTransportadora = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.BuscarTransportadora = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -118,7 +117,7 @@
             this.pesoBruto.AlphaNumeric = false;
             this.pesoBruto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pesoBruto.BackColor = System.Drawing.Color.White;
-            this.pesoBruto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.pesoBruto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.pesoBruto.BackColorState.Enabled = System.Drawing.Color.White;
             this.pesoBruto.Border.Color = System.Drawing.Color.Gainsboro;
             this.pesoBruto.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -190,7 +189,7 @@
             this.pesoLiquido.AlphaNumeric = false;
             this.pesoLiquido.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pesoLiquido.BackColor = System.Drawing.Color.White;
-            this.pesoLiquido.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.pesoLiquido.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.pesoLiquido.BackColorState.Enabled = System.Drawing.Color.White;
             this.pesoLiquido.Border.Color = System.Drawing.Color.Gainsboro;
             this.pesoLiquido.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -262,7 +261,7 @@
             this.marca.AlphaNumeric = false;
             this.marca.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.marca.BackColor = System.Drawing.Color.White;
-            this.marca.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.marca.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.marca.BackColorState.Enabled = System.Drawing.Color.White;
             this.marca.Border.Color = System.Drawing.Color.Gainsboro;
             this.marca.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -334,7 +333,7 @@
             this.especie.AlphaNumeric = false;
             this.especie.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.especie.BackColor = System.Drawing.Color.White;
-            this.especie.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.especie.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.especie.BackColorState.Enabled = System.Drawing.Color.White;
             this.especie.Border.Color = System.Drawing.Color.Gainsboro;
             this.especie.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -406,7 +405,7 @@
             this.volumes.AlphaNumeric = false;
             this.volumes.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.volumes.BackColor = System.Drawing.Color.White;
-            this.volumes.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.volumes.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.volumes.BackColorState.Enabled = System.Drawing.Color.White;
             this.volumes.Border.Color = System.Drawing.Color.Gainsboro;
             this.volumes.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -478,7 +477,7 @@
             this.rntc.AlphaNumeric = false;
             this.rntc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rntc.BackColor = System.Drawing.Color.White;
-            this.rntc.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.rntc.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.rntc.BackColorState.Enabled = System.Drawing.Color.White;
             this.rntc.Border.Color = System.Drawing.Color.Gainsboro;
             this.rntc.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -550,7 +549,7 @@
             this.uf.AlphaNumeric = false;
             this.uf.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.uf.BackColor = System.Drawing.Color.White;
-            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.uf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.uf.BackColorState.Enabled = System.Drawing.Color.White;
             this.uf.Border.Color = System.Drawing.Color.Gainsboro;
             this.uf.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -622,7 +621,7 @@
             this.placa.AlphaNumeric = false;
             this.placa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.placa.BackColor = System.Drawing.Color.White;
-            this.placa.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.placa.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.placa.BackColorState.Enabled = System.Drawing.Color.White;
             this.placa.Border.Color = System.Drawing.Color.Gainsboro;
             this.placa.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -871,7 +870,7 @@
             // SelecionarTransportadora
             // 
             this.SelecionarTransportadora.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SelecionarTransportadora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarTransportadora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.SelecionarTransportadora.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
             this.SelecionarTransportadora.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
             this.SelecionarTransportadora.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
@@ -887,12 +886,12 @@
             this.SelecionarTransportadora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelecionarTransportadora.ForeColor = System.Drawing.Color.White;
             this.SelecionarTransportadora.Image = null;
-            this.SelecionarTransportadora.Location = new System.Drawing.Point(324, 285);
+            this.SelecionarTransportadora.Location = new System.Drawing.Point(29, 285);
             this.SelecionarTransportadora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarTransportadora.Name = "SelecionarTransportadora";
-            this.SelecionarTransportadora.Size = new System.Drawing.Size(109, 34);
+            this.SelecionarTransportadora.Size = new System.Drawing.Size(222, 34);
             this.SelecionarTransportadora.TabIndex = 208;
-            this.SelecionarTransportadora.Text = "Buscar";
+            this.SelecionarTransportadora.Text = "Selecione a Transportadora";
             this.SelecionarTransportadora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SelecionarTransportadora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.SelecionarTransportadora.TextStyle.Enabled = System.Drawing.Color.White;
@@ -901,65 +900,6 @@
             this.SelecionarTransportadora.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarTransportadora.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.SelecionarTransportadora.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // BuscarTransportadora
-            // 
-            this.BuscarTransportadora.AlphaNumeric = false;
-            this.BuscarTransportadora.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BuscarTransportadora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.BuscarTransportadora.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.BuscarTransportadora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscarTransportadora.BackColorState.Enabled = System.Drawing.Color.White;
-            this.BuscarTransportadora.Border.Color = System.Drawing.Color.Gainsboro;
-            this.BuscarTransportadora.Border.HoverColor = System.Drawing.Color.Gray;
-            this.BuscarTransportadora.Border.HoverVisible = true;
-            this.BuscarTransportadora.Border.Rounding = 8;
-            this.BuscarTransportadora.Border.Thickness = 1;
-            this.BuscarTransportadora.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscarTransportadora.Border.Visible = true;
-            this.BuscarTransportadora.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.BuscarTransportadora.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.BuscarTransportadora.ButtonBorder.HoverVisible = true;
-            this.BuscarTransportadora.ButtonBorder.Rounding = 6;
-            this.BuscarTransportadora.ButtonBorder.Thickness = 1;
-            this.BuscarTransportadora.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.BuscarTransportadora.ButtonBorder.Visible = true;
-            this.BuscarTransportadora.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscarTransportadora.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.BuscarTransportadora.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BuscarTransportadora.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.BuscarTransportadora.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarTransportadora.ButtonIndent = 3;
-            this.BuscarTransportadora.ButtonText = "visualButton";
-            this.BuscarTransportadora.ButtonVisible = false;
-            this.BuscarTransportadora.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarTransportadora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("BuscarTransportadora.Image")));
-            this.BuscarTransportadora.ImageSize = new System.Drawing.Size(16, 16);
-            this.BuscarTransportadora.ImageVisible = true;
-            this.BuscarTransportadora.ImageWidth = 35;
-            this.BuscarTransportadora.Location = new System.Drawing.Point(31, 285);
-            this.BuscarTransportadora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.BuscarTransportadora.Name = "BuscarTransportadora";
-            this.BuscarTransportadora.PasswordChar = '\0';
-            this.BuscarTransportadora.ReadOnly = false;
-            this.BuscarTransportadora.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.BuscarTransportadora.Size = new System.Drawing.Size(286, 34);
-            this.BuscarTransportadora.TabIndex = 207;
-            this.BuscarTransportadora.TextBoxWidth = 240;
-            this.BuscarTransportadora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.BuscarTransportadora.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarTransportadora.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarTransportadora.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BuscarTransportadora.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscarTransportadora.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.BuscarTransportadora.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.BuscarTransportadora.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.BuscarTransportadora.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BuscarTransportadora.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.BuscarTransportadora.Watermark.Text = "Watermark text";
-            this.BuscarTransportadora.Watermark.Visible = false;
-            this.BuscarTransportadora.WordWrap = true;
             // 
             // label14
             // 
@@ -1173,7 +1113,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.transportadoraSelecionada);
             this.Controls.Add(this.SelecionarTransportadora);
-            this.Controls.Add(this.BuscarTransportadora);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -1241,7 +1180,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label transportadoraSelecionada;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarTransportadora;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarTransportadora;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Back;
