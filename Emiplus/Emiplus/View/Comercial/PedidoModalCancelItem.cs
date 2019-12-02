@@ -39,9 +39,11 @@ namespace Emiplus.View.Comercial
             {
                 case Keys.Escape:
                     Close();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Enter:
                     CancelItem();
+                    e.SuppressKeyPress = true;
                     break;
             }
         }

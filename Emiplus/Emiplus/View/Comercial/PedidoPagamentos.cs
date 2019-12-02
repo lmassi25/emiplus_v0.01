@@ -243,30 +243,37 @@ namespace Emiplus.View.Comercial
             {
                 case Keys.Enter:
                     bSalvar();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F1:
                     TelaESC = true;
                     JanelasRecebimento("Dinheiro");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F2:
                     TelaESC = true;
                     JanelasRecebimento("Cheque");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F3:
                     TelaESC = true;
                     JanelasRecebimento("Cartão de Débito");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F4:
                     TelaESC = true;
                     JanelasRecebimento("Cartão de Crédito");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F5:
                     TelaESC = true;
                     JanelasRecebimento("Crediário");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F6:
                     TelaESC = true;
                     JanelasRecebimento("Boleto");
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F7:
 
@@ -279,22 +286,28 @@ namespace Emiplus.View.Comercial
                     break;
                 case Keys.F10:
                     Nfe();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F11:
-                    PedidoImpressao print = new PedidoImpressao();
-                    print.Print(IdPedido);
+                    new PedidoImpressao().Print(IdPedido);
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F12:
                     Concluir();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Escape:
                     if (TelaESC)
                     {
                         TelaReceber.Visible = false;
                         TelaESC = false;
+                        e.SuppressKeyPress = true;
                     }
                     else
+                    {
+                        e.SuppressKeyPress = true;
                         Close();
+                    }                        
                     break;
             }
         }
@@ -337,13 +350,6 @@ namespace Emiplus.View.Comercial
 
                 Dinheiro.Focus();
                 Dinheiro.Select();
-
-                if (AddPedidos.telapagamentos)
-                {
-                    Application.OpenForms["AddPedidos"].Close();
-                    Application.OpenForms["PedidoPagamentos"].Focus();
-                    AddPedidos.telapagamentos = false;
-                }
             };            
 
             btnImprimir.Click += (s, e) =>
@@ -367,11 +373,11 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
-                AddPedidos.Id = IdPedido;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                //AddPedidos.telapedidos = true;
 
-                Close();
+                AddPedidos.Id = IdPedido;
+                AddPedidos f = new AddPedidos();
+                f.Show();
             };
 
             btnConcluir.Click += (s, e) =>

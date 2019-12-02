@@ -14,22 +14,24 @@ namespace Emiplus.View.Comercial
     public partial class AddPedidos : Form
     {
         private int ModoRapAva { get; set; }
+
         private int ModoRapAvaConfig { get; set; }
+
         private static string CachePage { get; set; }
+
         public static bool btnFinalizado { get; set; } // Alimenta quando o botão finalizado for clicado
+
+        public static bool telapedidos { get; set; }
         public static bool telapagamentos { get; set; } // Alimenta quando o botão finalizado for clicado
 
         public static int Id { get; set; } // id pedido
         public static int IdPedidoItem { get; set; } // Id item datagrid
 
         private Model.Item _mItem = new Model.Item();
-
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
-
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Usuarios _mUsuario = new Model.Usuarios();
-
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
@@ -193,7 +195,7 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void TelaPagamentos()
         {
-            //AddPedidos.telapagamentos = true;
+            AddPedidos.telapagamentos = true;
 
             if (GridListaProdutos.SelectedRows.Count <= 0)
             {
@@ -264,7 +266,7 @@ namespace Emiplus.View.Comercial
 
                 default:
                     btnFinalizado = true;
-                    f.ShowDialog();
+                    f.Show();
                     break;
             }
         }
@@ -302,6 +304,8 @@ namespace Emiplus.View.Comercial
                 _mPedido.Save(_mPedido);
                 LoadData();
             }
+
+            BuscarProduto.Select();
         }
 
         /// <summary>
@@ -317,6 +321,8 @@ namespace Emiplus.View.Comercial
                 _mPedido.Save(_mPedido);
                 LoadData();
             }
+
+            BuscarProduto.Select();
         }
 
         /// <summary>
@@ -431,29 +437,37 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void KeyDowns(object sender, KeyEventArgs e)
         {
+            //BeginInvoke(new Action(() =>
+            //{
+            //}));
+            //e.SuppressKeyPress = true;
             switch (e.KeyCode)
             {
                 case Keys.Up:
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(false, GridListaProdutos);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Down:
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Escape:
                     Close();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F1:
                     AlterarModo();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F2:
                     BuscarProduto.Focus();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F3:
-
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
@@ -477,20 +491,22 @@ namespace Emiplus.View.Comercial
                             }
                         }
                     }
-
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F5:
-                    PedidoImpressao print = new PedidoImpressao();
-                    print.Print(Id);
+                    new PedidoImpressao().Print(Id);
                     break;
                 case Keys.F7:
                     ModalClientes();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F8:
                     ModalColaborador();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F10:
                     TelaPagamentos();
+                    e.SuppressKeyPress = true;
                     break;
             }
         }
@@ -545,7 +561,7 @@ namespace Emiplus.View.Comercial
                     }
                 }
 
-                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };                
             };
 
             btnConcluir.Click += (s, e) =>
@@ -652,16 +668,6 @@ namespace Emiplus.View.Comercial
                 }
                 btnFinalizado = false;
             };
-        }
-
-        private void AddPedidos_KeyDown(object sender, KeyEventArgs e)
-        {
-            KeyDowns(sender, e);
-        }
-
-        private void AddPedidos_Activated(object sender, EventArgs e)
-        {
-            Console.WriteLine("Ativo: AddPedidos");
         }
     }
 }

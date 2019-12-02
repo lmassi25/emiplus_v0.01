@@ -55,28 +55,34 @@ namespace Emiplus.View.Comercial
                 case Keys.Up:
                     GridLista.Focus();
                     Support.UpDownDataGrid(false, GridLista);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Down:
                     GridLista.Focus();
                     Support.UpDownDataGrid(true, GridLista);
+                    e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
                 case Keys.Escape:
                     Close();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F1:
                     search.Focus();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F9:
                     FormNovoCliente();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.F10:
                     SelectItemGrid();
+                    e.SuppressKeyPress = true;
                     break;
                 case Keys.Enter:
-                    if (Validation.Event(sender, GridLista))
-                        SelectItemGrid();
+                    SelectItemGrid();
+                    e.SuppressKeyPress = true;
                     break;
             }
         }
