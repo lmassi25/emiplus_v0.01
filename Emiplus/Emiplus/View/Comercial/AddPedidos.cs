@@ -17,6 +17,7 @@ namespace Emiplus.View.Comercial
         private int ModoRapAvaConfig { get; set; }
         private static string CachePage { get; set; }
         public static bool btnFinalizado { get; set; } // Alimenta quando o botão finalizado for clicado
+        public static bool telapagamentos { get; set; } // Alimenta quando o botão finalizado for clicado
 
         public static int Id { get; set; } // id pedido
         public static int IdPedidoItem { get; set; } // Id item datagrid
@@ -192,6 +193,8 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void TelaPagamentos()
         {
+            //AddPedidos.telapagamentos = true;
+
             if (GridListaProdutos.SelectedRows.Count <= 0)
             {
                 AlertOptions.Message("Atenção!", "Seu pedido não contém itens! Adicione pelo menos 1 item para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
@@ -228,7 +231,7 @@ namespace Emiplus.View.Comercial
                     _mPedido.Tipo = "Compras";
                     if (_mPedido.Save(_mPedido))
                     {
-                        btnFinalizado = true;
+                        btnFinalizado = true;                        
                         f.ShowDialog();
                         return;
                     }
@@ -487,7 +490,7 @@ namespace Emiplus.View.Comercial
                     ModalColaborador();
                     break;
                 case Keys.F10:
-                    btnConcluir.Select();
+                    TelaPagamentos();
                     break;
             }
         }
@@ -549,11 +552,6 @@ namespace Emiplus.View.Comercial
             {
                 TelaPagamentos();
             };
-
-            //btnConcluir.Enter += (s, e) =>
-            //{
-            //    TelaPagamentos();
-            //};
 
             ModoRapido.Click += (s, e) => AlterarModo();
             SelecionarCliente.Click += (s, e) => ModalClientes();
@@ -664,13 +662,6 @@ namespace Emiplus.View.Comercial
         private void AddPedidos_Activated(object sender, EventArgs e)
         {
             Console.WriteLine("Ativo: AddPedidos");
-
-            //var controles = Application.OpenForms["AddPedidos"].Controls;
-
-            //foreach (var item in controles)
-            //{
-            //    //Console.WriteLine(controles.);
-            //}
         }
     }
 }
