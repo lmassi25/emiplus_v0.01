@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -263,8 +264,46 @@ namespace Emiplus.Controller
 
         public void GetDataTableTitulosGeradosFilter(DataGridView Table, string tela, string Search, int tipo, string dataInicial, string dataFinal)
         {
+            Table.ColumnCount = 7;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Emissão";
+            Table.Columns[1].Width = 100;
+
+            if (Home.financeiroPage == "Receber")
+                Table.Columns[2].Name = "Receber de";
+            else
+                Table.Columns[2].Name = "Pagar para";
+
+            Table.Columns[2].Width = 150;
+
+            Table.Columns[3].Name = "Forma de Pagamento";
+            Table.Columns[3].Width = 160;
+
+            Table.Columns[4].Name = "Vencimento";
+            Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "Total";
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[5].Width = 100;
+
+            if (Home.financeiroPage == "Receber")
+                Table.Columns[6].Name = "Recebido";
+            else
+                Table.Columns[6].Name = "Pago";
+
+            Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[6].Width = 100;
+
             Table.Rows.Clear();
-                        
+
             foreach (var item in GetDataTableTitulosGerados(tela, Search, tipo, dataInicial, dataFinal))
             {
                 Table.Rows.Add(
@@ -277,6 +316,8 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
                 );
             }
+
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

@@ -1,6 +1,11 @@
-﻿using Emiplus.Data.Helpers;
+﻿using DotLiquid;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +17,8 @@ namespace Emiplus.View.Financeiro
         public static int idCaixa { get; set; }
         private CaixaMovimentacao _modelCaixaMov = new CaixaMovimentacao();
         private Titulo _modelTitulo = new Titulo();
+        private Model.Caixa _modelCaixa = new Model.Caixa();
+        private Model.Usuarios _modelUsuarios = new Model.Usuarios();
 
         public AddCaixaMov()
         {
@@ -41,6 +48,7 @@ namespace Emiplus.View.Financeiro
 
             if (idMov > 0)
             {
+                imprimir.Visible = true;
                 btnApagar.Visible = true;
 
                 _modelCaixaMov = _modelCaixaMov.FindById(idMov).FirstOrDefault<CaixaMovimentacao>();
@@ -105,17 +113,20 @@ namespace Emiplus.View.Financeiro
             {
                 Categorias.Enabled = true;
                 Fornecedor.Enabled = true;
+                imprimir.Visible = false;
             };
             Tipo2.Click += (s, e) =>
             {
                 Categorias.Enabled = true;
                 Fornecedor.Enabled = false;
+                imprimir.Visible = true;
             };
 
             Tipo3.Click += (s, e) =>
             {
                 Categorias.Enabled = false;
                 Fornecedor.Enabled = false;
+                imprimir.Visible = false;
             };
 
             btnSalvar.Click += (s, e) =>
@@ -198,7 +209,34 @@ namespace Emiplus.View.Financeiro
                 }
             };
 
+            imprimir.Click += (s, e) =>
+            {
+                _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
+
+                var user = _modelUsuarios.FindByUserId(_modelCaixa.Usuario).FirstOrDefault();
+                string userName = "";
+                if (user != null)
+                    userName = user.NOME;
+
+                var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomAssinaturaCaixaMov.html"));
+                var render = html.Render(Hash.FromAnonymousObject(new
+                {
+                    INCLUDE_PATH = Program.PATH_BASE,
+                    URL_BASE = Program.PATH_BASE,
+                    Emissao = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
+                    nrTerminal = _modelCaixa.Terminal,
+                    nrCaixa = _modelCaixa.Id.ToString(),
+                    Responsavel = userName,
+                    Valor = Valor.Text
+                }));
+
+                Browser.htmlRender = render;
+                var f = new Browser();
+                f.ShowDialog();
+            };
+
             btnCancelar.Click += (s, e) => Close();
         }
+
     }
 }

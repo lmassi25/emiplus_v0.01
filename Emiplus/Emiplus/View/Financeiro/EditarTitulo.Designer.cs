@@ -65,7 +65,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.recebido = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnImprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.visualGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,7 +82,7 @@
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.White;
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(579, 30);
+            this.pictureBox12.Location = new System.Drawing.Point(573, 31);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(15, 15);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,9 +109,9 @@
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label23.Location = new System.Drawing.Point(16, 30);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(78, 17);
+            this.label23.Size = new System.Drawing.Size(75, 17);
             this.label23.TabIndex = 24;
-            this.label23.Text = "Receber de:";
+            this.label23.Text = "Receber de";
             // 
             // emissao
             // 
@@ -231,9 +231,9 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(17, 86);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 17);
+            this.label8.Size = new System.Drawing.Size(131, 17);
             this.label8.TabIndex = 98;
-            this.label8.Text = "Receita";
+            this.label8.Text = "Categoria de Contas";
             // 
             // receita
             // 
@@ -487,7 +487,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(474, 30);
+            this.pictureBox4.Location = new System.Drawing.Point(470, 31);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(15, 15);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -939,7 +939,7 @@
             this.visualGroupBox2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualGroupBox2.Border.Visible = true;
             this.visualGroupBox2.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
-            this.visualGroupBox2.Controls.Add(this.btnEstoque);
+            this.visualGroupBox2.Controls.Add(this.btnImprimir);
             this.visualGroupBox2.Controls.Add(this.label10);
             this.visualGroupBox2.Controls.Add(this.label9);
             this.visualGroupBox2.Controls.Add(this.dataRecebido);
@@ -968,40 +968,40 @@
             this.visualGroupBox2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.visualGroupBox2.TitleBoxHeight = 25;
             // 
-            // btnEstoque
+            // btnImprimir
             // 
-            this.btnEstoque.BackColor = System.Drawing.Color.White;
-            this.btnEstoque.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoque.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.btnEstoque.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnEstoque.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnEstoque.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnEstoque.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnEstoque.Border.HoverVisible = true;
-            this.btnEstoque.Border.Rounding = 6;
-            this.btnEstoque.Border.Thickness = 1;
-            this.btnEstoque.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnEstoque.Border.Visible = true;
-            this.btnEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEstoque.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEstoque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoque.ForeColor = System.Drawing.Color.White;
-            this.btnEstoque.Image = null;
-            this.btnEstoque.Location = new System.Drawing.Point(393, 50);
-            this.btnEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(144, 28);
-            this.btnEstoque.TabIndex = 2;
-            this.btnEstoque.Text = "Imprimir Comprovante";
-            this.btnEstoque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEstoque.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnEstoque.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnEstoque.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnEstoque.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnEstoque.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnEstoque.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnEstoque.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnEstoque.Visible = false;
+            this.btnImprimir.BackColor = System.Drawing.Color.White;
+            this.btnImprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.btnImprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnImprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnImprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnImprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnImprimir.Border.HoverVisible = true;
+            this.btnImprimir.Border.Rounding = 6;
+            this.btnImprimir.Border.Thickness = 1;
+            this.btnImprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnImprimir.Border.Visible = true;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Image = null;
+            this.btnImprimir.Location = new System.Drawing.Point(387, 49);
+            this.btnImprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(155, 28);
+            this.btnImprimir.TabIndex = 2;
+            this.btnImprimir.Text = "Imprimir Comprovante";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnImprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnImprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnImprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnImprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnImprimir.Visible = false;
             // 
             // EditarTitulo
             // 
@@ -1072,6 +1072,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox dataRecebido;
         private VisualPlus.Toolkit.Controls.Layout.VisualGroupBox visualGroupBox2;
         private System.Windows.Forms.Button button1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEstoque;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImprimir;
     }
 }

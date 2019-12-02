@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://www.emiplus.com.br/razor/css/Cupom.css?v=31" rel="stylesheet" />
+
+</head>
+<body>
+
+    <table class="printer-ticket">
+        <thead>
+            <tr>
+                <th colspan="3">Emitido: {{Emissao}}</th>
+            </tr>
+            <tr>
+                <th class="ttu" colspan="3">
+                    <b>Movimentação de Caixa</b>
+                </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Operador</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Responsável:</td>
+                <td align="right">{{Responsavel}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Caixa:</td>
+                <td align="right">{{nrCaixa}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Terminal:</td>
+                <td align="right">{{nrTerminal}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Movimentação:</td>
+                <td align="right">Sangria</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Valor:</td>
+                <td align="right">{{Valor}}</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Observação:</td>
+                <td align="right">{{Obs.Text}}</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3" style="border-bottom: 0px;border-top: 1px solid;">
+                    <b>Assinatura</b>
+                </td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="4" style="text-align: center">Emitido por <img src="https://www.emiplus.com.br/app/templates/default/assets/img/logo-2.png" width="80px" style="vertical-align: middle; padding-left: 5px;"><br><small>www.emiplus.com.br</small></td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+            <tr class="ttu color-white">
+                <td colspan="2">A</td>
+                <td align="right">B</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

@@ -88,7 +88,7 @@ namespace Emiplus.View.Financeiro
             {
                 if (Home.financeiroPage == "Pagar")
                 {
-                    label23.Text = "Pagar para:";
+                    label23.Text = "Pagar para";
                     label6.Text = "Pagamentos";
                     label8.Text = "Despesa";
                     label3.Text = "Forma Pagar";

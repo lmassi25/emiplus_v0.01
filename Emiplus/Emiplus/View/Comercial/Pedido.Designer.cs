@@ -442,9 +442,9 @@
             this.label6.ForeColor = System.Drawing.Color.Gray;
             this.label6.Location = new System.Drawing.Point(18, 471);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 17);
+            this.label6.Size = new System.Drawing.Size(92, 17);
             this.label6.TabIndex = 203;
-            this.label6.Text = "Buscar por ID";
+            this.label6.Text = "Buscar por N°";
             // 
             // filterRemovido
             // 

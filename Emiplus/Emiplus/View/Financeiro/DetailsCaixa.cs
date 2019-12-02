@@ -327,7 +327,7 @@ namespace Emiplus.View.Financeiro
 
         private async Task RenderizarAsync()
         {
-            if (Restrito()) return;
+            //if (Restrito()) return;
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomCaixaConferencia.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
