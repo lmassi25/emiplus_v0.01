@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCaixaMov));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -57,7 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnApagar = new System.Windows.Forms.Button();
+            this.imprimir = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -68,6 +69,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel3.Controls.Add(this.imprimir);
             this.panel3.Controls.Add(this.btnApagar);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnSalvar);
@@ -76,6 +78,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(429, 68);
             this.panel3.TabIndex = 20;
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnApagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnApagar.FlatAppearance.BorderSize = 0;
+            this.btnApagar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnApagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnApagar.Image = ((System.Drawing.Image)(resources.GetObject("btnApagar.Image")));
+            this.btnApagar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnApagar.Location = new System.Drawing.Point(100, 5);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(69, 60);
+            this.btnApagar.TabIndex = 6;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Visible = false;
             // 
             // btnCancelar
             // 
@@ -90,7 +114,7 @@
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(25, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(25, 5);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(69, 60);
             this.btnCancelar.TabIndex = 5;
@@ -111,7 +135,7 @@
             this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalvar.Location = new System.Drawing.Point(336, 4);
+            this.btnSalvar.Location = new System.Drawing.Point(336, 5);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(65, 60);
             this.btnSalvar.TabIndex = 4;
@@ -779,27 +803,27 @@
             this.label6.TabIndex = 162;
             this.label6.Text = "Observação:";
             // 
-            // btnApagar
+            // imprimir
             // 
-            this.btnApagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnApagar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnApagar.FlatAppearance.BorderSize = 0;
-            this.btnApagar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnApagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApagar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnApagar.Image = ((System.Drawing.Image)(resources.GetObject("btnApagar.Image")));
-            this.btnApagar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnApagar.Location = new System.Drawing.Point(100, 4);
-            this.btnApagar.Name = "btnApagar";
-            this.btnApagar.Size = new System.Drawing.Size(69, 60);
-            this.btnApagar.TabIndex = 6;
-            this.btnApagar.Text = "Apagar";
-            this.btnApagar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnApagar.UseVisualStyleBackColor = true;
-            this.btnApagar.Visible = false;
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderSize = 0;
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(261, 5);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(69, 60);
+            this.imprimir.TabIndex = 7;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = true;
+            this.imprimir.Visible = false;
             // 
             // AddCaixaMov
             // 
@@ -871,5 +895,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button imprimir;
     }
 }

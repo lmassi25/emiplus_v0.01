@@ -77,6 +77,7 @@ namespace Emiplus.View.Reports
 
             anterior.Click += (s, e) => chromeBrowser.Find(0, search.Text, false, false, false);
             proximo.Click += (s, e) => chromeBrowser.Find(0, search.Text, true, false, false);
+
             imprimir.Click += (s, e) =>
             {
                 chromeBrowser.Print();

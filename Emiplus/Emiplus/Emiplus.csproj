@@ -1106,6 +1106,7 @@
     <None Include="Assets\Images\icons\warning.png" />
     <None Include="Assets\Images\icons\box.png" />
     <None Include="Assets\Images\icons\money-bag %281%29.png" />
+    <Content Include="View\Reports\html\CupomAssinaturaCaixaMov.html" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
     <Content Include="View\Reports\html\CupomComprovanteVendaA4.html" />
