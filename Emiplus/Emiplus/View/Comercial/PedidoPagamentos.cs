@@ -179,7 +179,7 @@ namespace Emiplus.View.Comercial
             Acrescimo.ShowDialog();
         }
 
-        public void Concluir()
+        public void Concluir(int imprimir = 1)
         {
             Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
             Pedido.Id = IdPedido;
@@ -197,20 +197,25 @@ namespace Emiplus.View.Comercial
 
             Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
-            AddPedidos.btnFinalizado = true;
-
-            if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+            if(imprimir == 1)
             {
-                PedidoImpressao print = new PedidoImpressao();
-                print.Print(IdPedido);
-            }
+                AddPedidos.btnFinalizado = true;
 
-            Application.OpenForms["AddPedidos"].Close();
-            Close();
+                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                {
+                    PedidoImpressao print = new PedidoImpressao();
+                    print.Print(IdPedido);
+                }
+
+                Application.OpenForms["AddPedidos"].Close();
+                Close();
+            }
         }
 
         public void Nfe()
         {
+            Concluir(0);
+
             var checkNota = new Model.Nota().FindByIdPedido(IdPedido).Get();
 
             if (checkNota.Count() == 0)
@@ -235,6 +240,15 @@ namespace Emiplus.View.Comercial
                     f.Show();
                 }
             }
+        }
+
+        public void Cfe()
+        {
+            Concluir(0);
+
+            OpcoesCfeCpf.idPedido = IdPedido;
+            OpcoesCfeCpf f = new OpcoesCfeCpf();
+            f.Show();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -282,7 +296,7 @@ namespace Emiplus.View.Comercial
 
                     break;
                 case Keys.F9:
-
+                    Cfe();
                     break;
                 case Keys.F10:
                     Nfe();
@@ -332,7 +346,6 @@ namespace Emiplus.View.Comercial
             btnCFeSat.KeyDown += (s, e) =>
             {
                 KeyDowns(s, e);
-                MessageBox.Show(_controllerFiscal.Emitir(357, "CFe"));
             };
 
             btnNfe.KeyDown += KeyDowns;
@@ -412,6 +425,11 @@ namespace Emiplus.View.Comercial
             btnNfe.Click += (s, e) =>
             {
                 Nfe();
+            };
+
+            btnCFeSat.Click += (s, e) =>
+            {
+                Cfe();
             };
 
             FormClosing += (s, e) =>

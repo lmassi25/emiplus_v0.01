@@ -65,6 +65,10 @@
         public int Id_Caixa { get; set; } = Home.idCaixa;
         public int id_usuario { get; set; } = Settings.Default.user_id;
 
+        public string cfe_nome { get; set; }
+
+        public string cfe_cpf { get; set; }
+
         #endregion
 
         #region Generator
