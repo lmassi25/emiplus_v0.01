@@ -12,14 +12,20 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
 using ChoETL;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Fiscal
 {
     public partial class ImportarNFe : Form
     {
-        OpenFileDialog ofd = new OpenFileDialog();
         private string pathXml { get; set; }
         private dynamic dataNota { get; set; }
+
+        OpenFileDialog ofd = new OpenFileDialog();
+        private Model.Item _mItem = new Model.Item();
+        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public ImportarNFe()
         {
@@ -29,8 +35,15 @@ namespace Emiplus.View.Fiscal
 
         private void LoadDataNota()
         {
+            dataEmissao.Text = Validation.ConvertDateToForm(dataNota.ide.dhEmi, true);
+            nrNota.Text = dataNota.ide.nNF;
+            chaveAcesso.Text = dataNota.Id;
+
             LoadGridProdutos();
             LoadGridFornecedor();
+
+            BuscarProduto.Enabled = true;
+            btnVincular.Enabled = true;
         }
 
         private void LoadGridProdutos()
@@ -96,64 +109,58 @@ namespace Emiplus.View.Fiscal
         /// <param name="dataProdutos">array dos produtos</param>
         private void SetDataTable(DataGridView Table, ArrayList dataProdutos)
         {
-            Table.ColumnCount = 9;
+            Table.ColumnCount = 8;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "N°";
-            Table.Columns[0].Width = 50;
-
+            Table.Columns[0].Name = "Status";
+            Table.Columns[0].Width = 80;
+            
             Table.Columns[1].Name = "Referência";
             Table.Columns[1].Width = 70;
 
             Table.Columns[2].Name = "Cód. de Barras";
-            Table.Columns[2].Width = 130;
+            Table.Columns[2].Width = 100;
 
             Table.Columns[3].Name = "Descrição";
             Table.Columns[3].Width = 130;
 
-            Table.Columns[4].Name = "NCM";
-            Table.Columns[3].Width = 100;
+            Table.Columns[4].Name = "Medida";
+            Table.Columns[4].Width = 60;
 
-            Table.Columns[5].Name = "CFOP";
-            Table.Columns[5].Width = 100;
+            Table.Columns[5].Name = "Qtd.";
+            Table.Columns[5].Width = 60;
 
-            Table.Columns[6].Name = "Medida";
-            Table.Columns[6].Width = 70;
+            Table.Columns[6].Name = "Vlr. Compra";
+            Table.Columns[6].Width = 80;
 
-            Table.Columns[7].Name = "Qtd.";
-            Table.Columns[7].Width = 100;
-
-            Table.Columns[8].Name = "Vlr. Unitário";
-            Table.Columns[8].Width = 100;
+            Table.Columns[7].Name = "Vlr. Venda";
+            Table.Columns[7].Width = 80;
 
             Table.Rows.Clear();
 
             foreach (dynamic item in dataProdutos)
             {
                 Table.Rows.Add(
-                    item.nItem,
+                    "Não Vinculado",
                     item.cProd,
                     item.cEAN,
                     item.xProd,
-                    item.NCM,
-                    item.CFOP,
                     item.uCom,
                     item.qCom,
-                    item.vUnCom
+                    item.vUnCom,
+                    "00.0"
                 );
             }
 
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-
         private void LoadGridFornecedor()
         {
-            ArrayList dataFornecedor = new ArrayList();
             if (dataNota.ContainsKey("dest"))
             {
                 string document = "";
@@ -163,87 +170,49 @@ namespace Emiplus.View.Fiscal
                 if (dataNota.dest.ContainsKey("CNPJ"))
                     document = dataNota.dest.CNPJ;
 
-                dataFornecedor.Add(
-                    new
-                    {
-                        Document = document,
-                        Nome = dataNota.dest.xNome,
-                        Rua = dataNota.dest.enderDest.xLgr,
-                        Nr = dataNota.dest.enderDest.nro,
-                        Bairro = dataNota.dest.enderDest.xBairro,
-                        IBGE = dataNota.dest.enderDest.cMun,
-                        Cidade = dataNota.dest.enderDest.xMun,
-                        UF = dataNota.dest.enderDest.UF,
-                        CEP = dataNota.dest.enderDest.CEP
-                    });
+                CPFcnpj.Text = document;
+                razaoSocial.Text = dataNota.dest.xNome;
             }
-            
-            SetDataTableFornecedor(gridFornecedor, dataFornecedor);
         }
 
-        private void SetDataTableFornecedor(DataGridView Table, ArrayList dataProdutos)
+        /// <summary>
+        /// Autocomplete do campo de busca de produtos.
+        /// </summary>
+        private void AutoCompleteItens()
         {
-            Table.ColumnCount = 9;
+            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-
-            #region Colunas
-            Table.RowHeadersVisible = false;
-
-            Table.Columns[0].Name = "CPF";
-            Table.Columns[0].Width = 50;
-
-            Table.Columns[1].Name = "Nome";
-            Table.Columns[1].Width = 130;
-
-            Table.Columns[2].Name = "Rua";
-            Table.Columns[2].Width = 130;
-
-            Table.Columns[3].Name = "N°";
-            Table.Columns[3].Width = 50;
-
-            Table.Columns[4].Name = "Bairro";
-            Table.Columns[4].Width = 100;
-
-            Table.Columns[5].Name = "IBGE";
-            Table.Columns[5].Width = 100;
-
-            Table.Columns[6].Name = "Cidade";
-            Table.Columns[6].Width = 70;
-
-            Table.Columns[7].Name = "UF";
-            Table.Columns[7].Width = 100;
-
-            Table.Columns[8].Name = "CEP";
-            Table.Columns[8].Width = 100;
-
-            Table.Rows.Clear();
-            #endregion
-
-            foreach (dynamic item in dataProdutos)
+            foreach (var itens in item)
             {
-                Table.Rows.Add(
-                    item.Document,
-                    item.Nome,
-                    item.Rua,
-                    item.Nr,
-                    item.Bairro,
-                    item.IBGE,
-                    item.Cidade,
-                    item.UF,
-                    item.CEP
-                );
+                collection.Add(itens.NOME, itens.ID);
             }
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            BuscarProduto.AutoCompleteCustomSource = collection;
+        }
+
+        private void VincularProduto()
+        {
+            if (collection.Lookup(BuscarProduto.Text) > 0)
+            {
+                if (GridLista.SelectedRows.Count > 0)
+                {
+                    panelVinculacao.Visible = true;
+                    
+                    var codeBarras = GridLista.SelectedRows[0].Cells["Cód. de Barras"].Value;
+                    MessageBox.Show(codeBarras.ToString());
+
+                    return;
+                }
+
+                Alert.Message("Oppss", "Selecione um produto para vincular.", Alert.AlertType.warning);
+            }
         }
 
         private void Eventos()
         {
             Load += (s, e) =>
             {
-
+                AutoCompleteItens();
             };
 
             btnSelecinarNfe.Click += (s, e) =>
@@ -278,7 +247,25 @@ namespace Emiplus.View.Fiscal
                 }
             };
 
+            btnVincular.Click += (s, e) => VincularProduto();
+
+            btnChecarItem.Click += (s, e) =>
+            {
+                if (GridLista.SelectedRows.Count > 0)
+                {
+                    panelVinculacao.Visible = true;
+
+                    var codeBarras = GridLista.SelectedRows[0].Cells["Cód. de Barras"].Value;
+                    MessageBox.Show(codeBarras.ToString());
+
+                    return;
+                }
+
+                Alert.Message("Oppss", "Selecione um produto para vincular.", Alert.AlertType.warning);
+            };
+
             btnExit.Click += (s, e) => Close();
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
         }
     }
 }
