@@ -81,7 +81,11 @@ namespace Emiplus.View.Comercial
 
             Imprimir.Click += (s, e) =>
             {
-                
+                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null)
+                {
+
+                }
             };
 
             using (var b = WorkerBackground)
