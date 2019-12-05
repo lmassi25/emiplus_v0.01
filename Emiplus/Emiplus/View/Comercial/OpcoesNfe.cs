@@ -146,10 +146,11 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).FirstOrDefault<Model.Nota>();
+                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "NFe").FirstOrDefault<Model.Nota>();
                 if (checkNota == null)
                 {
                     _modelNota.Id = 0;
+                    _modelNota.Tipo = "NFe";
                     _modelNota.id_pedido = idPedido;
                     _modelNota.Save(_modelNota, false);
                 }

@@ -246,9 +246,28 @@ namespace Emiplus.View.Comercial
         {
             Concluir(0);
 
-            OpcoesCfeCpf.idPedido = IdPedido;
-            OpcoesCfeCpf f = new OpcoesCfeCpf();
-            f.Show();
+            var checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
+            if(checkNota == null)
+            {
+                OpcoesCfeCpf.idPedido = IdPedido;
+                OpcoesCfeCpf f = new OpcoesCfeCpf();
+                f.Show();
+
+                return;
+            }
+
+            if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
+            {
+                OpcoesCfeCpf.idPedido = IdPedido;
+                OpcoesCfeCpf f = new OpcoesCfeCpf();
+                f.Show();
+            }
+            else
+            {
+                OpcoesCfe.idPedido = IdPedido;
+                OpcoesCfe f = new OpcoesCfe();
+                f.Show();
+            }            
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)

@@ -153,20 +153,32 @@ namespace Emiplus.View.Produtos
                 hideCodeHtml = true;
 
             string logoUrl = Settings.Default.empresa_logo;
-
+            string aux_codbar = "";
+            
             ArrayList t = new ArrayList();
             foreach (var item in itens)
             {
-                var codeImageBar = "";
-                if (!String.IsNullOrEmpty(item.REFERENCIA))
+                var codeImageBar = ""; aux_codbar = "";
+
+                if (!String.IsNullOrEmpty(item.CODEBARRAS) && String.IsNullOrEmpty(aux_codbar))
+                {
+                    aux_codbar = item.CODEBARRAS;
+                }
+
+                if (!String.IsNullOrEmpty(item.REFERENCIA) && String.IsNullOrEmpty(aux_codbar))
+                {
+                    aux_codbar = item.REFERENCIA;
+                }
+
+                if (!String.IsNullOrEmpty(aux_codbar))
                 {
                     BarcodeLib.TYPE typeBarCode;
-                    if (Regex.Matches(item.REFERENCIA, @"[a-zA-Z]").Count == 0)
+                    if (Regex.Matches(aux_codbar, @"[a-zA-Z]").Count > 0)
                         typeBarCode = BarcodeLib.TYPE.EAN13;
                     else
                         typeBarCode = BarcodeLib.TYPE.CODE128;
 
-                    Image img = (new BarcodeLib.Barcode()).Encode(typeBarCode, item.REFERENCIA, Color.Black, Color.White, 195, 105);
+                    Image img = (new BarcodeLib.Barcode()).Encode(typeBarCode, aux_codbar, Color.Black, Color.White, 195, 105);
                     codeImageBar = ImageToBase64(img, ImageFormat.Png);
                 }
 
