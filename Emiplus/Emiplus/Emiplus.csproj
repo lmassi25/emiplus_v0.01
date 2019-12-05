@@ -211,6 +211,7 @@
     <Compile Include="Controller\Estoque.cs" />
     <Compile Include="Controller\Etiqueta.cs" />
     <Compile Include="Controller\Fiscal.cs" />
+    <Compile Include="Controller\ImportarNfe.cs" />
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Controller\Natureza.cs" />
