@@ -52,6 +52,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.novaNFE = new System.Windows.Forms.Button();
             this.CompraNova = new System.Windows.Forms.Button();
+            this.importarNfe = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -471,12 +472,36 @@
             this.CompraNova.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CompraNova.UseVisualStyleBackColor = false;
             // 
+            // importarNfe
+            // 
+            this.importarNfe.BackColor = System.Drawing.Color.Transparent;
+            this.importarNfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.importarNfe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.importarNfe.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.importarNfe.FlatAppearance.BorderSize = 0;
+            this.importarNfe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.importarNfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.importarNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importarNfe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importarNfe.ForeColor = System.Drawing.Color.DimGray;
+            this.importarNfe.Image = ((System.Drawing.Image)(resources.GetObject("importarNfe.Image")));
+            this.importarNfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.importarNfe.Location = new System.Drawing.Point(491, 229);
+            this.importarNfe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.importarNfe.Name = "importarNfe";
+            this.importarNfe.Size = new System.Drawing.Size(219, 41);
+            this.importarNfe.TabIndex = 108;
+            this.importarNfe.Text = "          Importar NFe";
+            this.importarNfe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.importarNfe.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.importarNfe);
             this.Controls.Add(this.CompraNova);
             this.Controls.Add(this.novaNFE);
             this.Controls.Add(this.visualSeparator5);
@@ -532,5 +557,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button novaNFE;
         private System.Windows.Forms.Button CompraNova;
+        private System.Windows.Forms.Button importarNfe;
     }
 }

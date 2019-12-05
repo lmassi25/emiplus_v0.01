@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
+using Emiplus.View.Fiscal;
 using Emiplus.View.Reports;
 using System;
 using System.Dynamic;
@@ -73,6 +74,12 @@ namespace Emiplus.View.Common
                 AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
+            };
+
+            importarNfe.Click += (s, e) =>
+            {
+                ImportarNFe f = new ImportarNFe();
+                f.ShowDialog();
             };
         }
     }
