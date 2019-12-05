@@ -19,6 +19,7 @@ namespace Emiplus.View.Produtos
             if (IdItem > 0)
             {
                 var item = _modelItem.FindById(IdItem).First<Item>();
+
                 tituloProduto.Text = item.Nome;
                 estoqueAtual.Text = item.EstoqueAtual.ToString();
                 custoAtual.Text = Validation.FormatPrice(item.ValorCompra);
@@ -64,17 +65,17 @@ namespace Emiplus.View.Produtos
                 }
             };
 
-            quantidade.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
+            quantidade.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             obs.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
 
             quantidade.TextChanged += (s, e) =>
             {
                 var item = _modelItem.FindById(IdItem).First<Item>();
                 if (btnRadioAddItem.Checked)
-                    novaQtd.Text = (Validation.ConvertToDouble(quantidade.Text) + item.EstoqueAtual).ToString();
+                    novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
                 
                 if (btnRadioRemoveItem.Checked)
-                    novaQtd.Text = (Validation.ConvertToDouble(quantidade.Text) - item.EstoqueAtual).ToString();
+                    novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
             };
 
             btnRadioAddItem.Click += (s, e) =>

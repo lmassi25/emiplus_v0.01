@@ -135,6 +135,7 @@ namespace Emiplus.View.Produtos
             referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+
             LoadEstoque();
 
             if (_modelItem.Impostoid > 0)
@@ -262,7 +263,7 @@ namespace Emiplus.View.Produtos
         private void Eventos()
         {
             KeyDown += KeyDowns;
-            //KeyPreview = true;
+            KeyPreview = true;
 
             Load += (s, e) =>
             {
