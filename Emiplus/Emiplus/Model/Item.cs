@@ -31,6 +31,7 @@ namespace Emiplus.Model
         public int Categoriaid { get; set; }
         public string Medida { get; set; }
         public int Impostoid { get; set; }
+        public int Impostoidcfe { get; set; }
         public string Cest { get; set; }
         public string Ncm { get; set; }
         public string Origem { get; set; }

@@ -22,7 +22,7 @@ namespace Emiplus.View.Produtos
             InitializeComponent();
             Eventos();
         }
-        
+
         private void LoadFornecedores()
         {
             Fornecedor.Refresh();
@@ -38,14 +38,14 @@ namespace Emiplus.View.Produtos
 
         private void Start()
         {
-			ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-			ToolHelp.Show("Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine + "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-			ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-			ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-			ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto." , pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-			ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque." , pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine + "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque.", pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-			ActiveControl = nome;
+            ActiveControl = nome;
 
             var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
             if (cat.Count() > 0)
@@ -62,10 +62,22 @@ namespace Emiplus.View.Produtos
             var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (imposto.Count() > 0)
             {
-                Impostos.DataSource = imposto;
-                Impostos.DisplayMember = "NOME";
-                Impostos.ValueMember = "ID";
+                ImpostoNFE.DataSource = imposto;
+                ImpostoNFE.DisplayMember = "NOME";
+                ImpostoNFE.ValueMember = "ID";
             }
+
+            ImpostoNFE.SelectedValue = 0;
+
+            var imposto2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (imposto2.Count() > 0)
+            {
+                ImpostoCFE.DataSource = imposto2;
+                ImpostoCFE.DisplayMember = "NOME";
+                ImpostoCFE.ValueMember = "ID";
+            }
+
+            ImpostoCFE.SelectedValue = 0;
 
             var origens = new ArrayList();
             origens.Add(new ArrayTipo("0", "0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8"));
@@ -81,6 +93,9 @@ namespace Emiplus.View.Produtos
             Origens.DataSource = origens;
             Origens.DisplayMember = "Nome";
             Origens.ValueMember = "Id";
+
+            filterMaisRecentes.Checked = true;
+            filterTodos.Checked = false;
         }
 
         private class ArrayTipo
@@ -122,7 +137,25 @@ namespace Emiplus.View.Produtos
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
             LoadEstoque();
 
-            Impostos.SelectedValue = _modelItem.Impostoid;
+            if (_modelItem.Impostoid > 0)
+            {
+                ImpostoNFE.SelectedValue = _modelItem.Impostoid;
+                chkImpostoNFE.Checked = true;
+            }
+            else
+            {
+                ImpostoNFE.Enabled = false;
+            }
+
+            if (_modelItem.Impostoidcfe > 0)
+            {
+                ImpostoCFE.SelectedValue = _modelItem.Impostoidcfe;
+                chkImpostoCFE.Checked = true;
+            }
+            else
+            {
+                ImpostoCFE.Enabled = false;
+            }
 
             cest.Text = _modelItem?.Cest ?? "";
             ncm.Text = _modelItem?.Ncm ?? "";
@@ -195,8 +228,11 @@ namespace Emiplus.View.Produtos
             if (Fornecedor.SelectedValue != null)
                 _modelItem.Fornecedor = (int)Fornecedor.SelectedValue;
 
-            if (Impostos.SelectedValue != null)
-                _modelItem.Impostoid = (int)Impostos.SelectedValue;
+            if (ImpostoNFE.SelectedValue != null)
+                _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
+
+            if (ImpostoCFE.SelectedValue != null)
+                _modelItem.Impostoidcfe = (int)ImpostoCFE.SelectedValue;
 
             if (Origens.SelectedValue != null)
                 _modelItem.Origem = Origens.SelectedValue.ToString();
@@ -205,7 +241,13 @@ namespace Emiplus.View.Produtos
                 Close();
         }
 
-        private void DataTableEstoque() => _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
+        private void DataTableEstoque()
+        {
+            if(filterMaisRecentes.Checked == true)
+                _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado, 10);
+            else
+                _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
+        }   
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
@@ -220,7 +262,7 @@ namespace Emiplus.View.Produtos
         private void Eventos()
         {
             KeyDown += KeyDowns;
-            KeyPreview = true;
+            //KeyPreview = true;
 
             Load += (s, e) =>
             {
@@ -324,6 +366,42 @@ namespace Emiplus.View.Produtos
             nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+
+            chkImpostoNFE.Click += (s, e) =>
+            {
+                if(chkImpostoNFE.Checked == true)
+                {
+                    ImpostoNFE.Enabled = true;
+                }
+                else
+                {
+                    ImpostoNFE.Enabled = false;
+                    ImpostoNFE.SelectedValue = 0;
+                }
+            };
+
+            chkImpostoCFE.Click += (s, e) =>
+            {
+                if (chkImpostoCFE.Checked == true)
+                {
+                    ImpostoCFE.Enabled = true;
+                }
+                else
+                {
+                    ImpostoCFE.Enabled = false;
+                    ImpostoCFE.SelectedValue = 0;
+                }
+            };
+
+            filterTodos.Click += (s, e) =>
+            {
+                DataTableEstoque();
+            };
+
+            filterMaisRecentes.Click += (s, e) =>
+            {
+                DataTableEstoque();
+            };
         }
     }
 }
