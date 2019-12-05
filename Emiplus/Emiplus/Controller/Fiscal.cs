@@ -13,6 +13,7 @@ using System.Web;
 using System.Xml;
 using System.Linq;
 using Emiplus.View.Fiscal;
+using System.Xml.Linq;
 
 namespace Emiplus.Controller
 {
@@ -139,6 +140,9 @@ namespace Emiplus.Controller
                     {
                         Directory.CreateDirectory(_path_autorizada);
                     }
+
+                    _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+
                     break;
             }
 
@@ -183,6 +187,14 @@ namespace Emiplus.Controller
                 _emitente.CPF = "05681389000100";
                 _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
                 _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            }
+
+            if(Settings.Default.empresa_nfe_servidornfe.ToString() == "2" && tipo == "CFe")
+            {
+                _emitente.CPF = "08723218000186";
+                TECNOSPEED_GRUPO = "grupo-teste";
+                TECNOSPEED_USUARIO = "admin";
+                TECNOSPEED_SENHA = "123mudar";
             }
 
             _emitenteEndereco.Rua = Settings.Default.empresa_rua;
@@ -412,6 +424,8 @@ namespace Emiplus.Controller
 
             switch (tipo)
             {
+                #region NFE 
+
                 case "NFe":
 
                     _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
@@ -424,6 +438,7 @@ namespace Emiplus.Controller
                         if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
                         {
                             _msg = "Autorizado o uso da NF-e";
+                            _nota.Tipo = tipo;
                             _nota.Status = "Autorizada";
                             _nota.nr_Nota = nNF;
                             _nota.Serie = serie;
@@ -456,14 +471,67 @@ namespace Emiplus.Controller
 
                     break;
 
+                #endregion
+
+                #region CFE 
+
                 case "CFe":
 
                     Random rdn = new Random();
                     _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), "12345678", arq.OuterXml));
 
+                    if (_msg.Contains("Emitido com sucesso + conteudo notas"))
+                    {
+                        StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
+                        txt.Write(_msg);
+                        txt.Close();
+
+                        if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
+                            Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+
+                        string ChaveDeAcesso = "", nr_Nota = "";
+
+                        try
+                        {
+                            XmlDocument oXML = new XmlDocument();
+                            oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+
+                            ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
+                            nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
+
+                            var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
+
+                            //------------------------nota salva
+                            if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                                Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
+
+                            doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+                            //------------------------nota salva
+
+                            ////------------------------
+                            _msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            ////------------------------
+                        }
+                        catch (Exception ex)
+                        { }
+
+                        _msg = "Emitido com sucesso + conteudo notas";
+                        _nota.Tipo = tipo;
+                        _nota.Status = "Autorizada";
+                        _nota.nr_Nota = nr_Nota;
+                        _nota.ChaveDeAcesso = ChaveDeAcesso;
+                        _nota.Save(_nota, false);
+                    }
+
                     break;
+
+                #endregion
             }
         }
+
+        #region NFE 
 
         private int getLastNFeNr()
         {
@@ -1393,13 +1461,17 @@ namespace Emiplus.Controller
             return invertida;
         }
 
+        #endregion
+
+        #region Tecnospeed
+
         /// <summary> 
         /// Envia requisição para a Tecnospeed
         /// </summary>
         /// <param name="tipo">envia</param>        
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
-        
+
         private string RequestSend(string xml, string documento = "NFe")
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
@@ -1426,10 +1498,28 @@ namespace Emiplus.Controller
 
         private string RequestPrint(string chavedeacesso, string documento = "NFe")
         {
-            requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";
+            switch (documento)
+            {
+                case "CFe":
+                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";
+                    break;
+                default:
+                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";                    
+                    break;
+            }
+
+            if (documento == "CFe")
+                documento = "cfesat";
+
             return request(requestData, documento, "imprime", "GET");
         }
 
+        private string RequestImport(string xml, string documento = "CFe")
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
+            return request(requestData, "cfesat", "importa", "POST");
+        }
+        
         private string request(string _requestData, string _documento, string _route, string _method)
         {
             if (_method == "POST")
@@ -1535,5 +1625,26 @@ namespace Emiplus.Controller
 
             return Result;
         }
+
+        #endregion
+
+        #region CFE 
+
+        private static string Sep_Delimitador(char sep, int posicao, string dados)
+        {
+            string[] ret_dados = dados.Split(sep);
+            return ret_dados[posicao];
+        }
+
+        private static string Base64ToString(string base64)  // caso queira tirar o arquivo de base 64
+        {
+            byte[] arq;
+            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            arq = Convert.FromBase64String(base64);
+            base64 = enc.GetString(arq);
+            return base64;
+        }
+
+        #endregion
     }
 }

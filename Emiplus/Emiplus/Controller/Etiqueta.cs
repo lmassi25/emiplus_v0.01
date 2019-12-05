@@ -24,7 +24,7 @@ namespace Emiplus.Controller
 
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -34,18 +34,21 @@ namespace Emiplus.Controller
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Código";
-            Table.Columns[1].Width = 100;
+            Table.Columns[1].Name = "Cód. de Barras";
+            Table.Columns[1].Width = 150;
 
-            Table.Columns[2].Name = "Descrição";
+            Table.Columns[2].Name = "Referência";
+            Table.Columns[2].Width = 100;
+            
+            Table.Columns[3].Name = "Descrição";
 
-            Table.Columns[3].Name = "Preço";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
-
-            Table.Columns[4].Name = "Quantidade";
+            Table.Columns[4].Name = "Preço";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "Quantidade";
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[5].Width = 100;
 
             Table.Rows.Clear();
 
@@ -61,6 +64,7 @@ namespace Emiplus.Controller
 
                 Table.Rows.Add(
                     item.ID,
+                    item.CODEBARRAS,
                     item.REFERENCIA,
                     item.NOME,
                     FormatPrice(ConvertToDouble(item.VALORVENDA), true),
@@ -68,7 +72,7 @@ namespace Emiplus.Controller
                 );
             }
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

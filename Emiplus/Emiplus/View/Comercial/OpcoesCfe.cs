@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Emiplus.View.Comercial
     {
         public static int idPedido { get; set; } // id pedido
 
+        private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         private string _msg;
@@ -41,17 +43,39 @@ namespace Emiplus.View.Comercial
         public void Eventos()
         {
             //KeyPreview = true;
-            KeyDown += KeyDowns;
+            //KeyDown += KeyDowns;
 
             Load += (s, e) =>
             {
-                
+                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null)
+                    Emitir.Text = "Emitir";
+                else
+                {
+                    if(checkNota.Status == "Autorizada")
+                        Emitir.Text = "Cancelar";
+
+                    if (checkNota.Status == "Cancelada")
+                    {
+                        Emitir.Text = "Cancelar";
+                        Emitir.Enabled = false;
+                    }
+                }
             };
 
-            Emitir.KeyDown += KeyDowns;
+            //Emitir.KeyDown += KeyDowns;
 
             Emitir.Click += (s, e) =>
             {
+                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null)
+                {
+                    _modelNota.Id = 0;
+                    _modelNota.Tipo = "CFe";
+                    _modelNota.id_pedido = idPedido;
+                    _modelNota.Save(_modelNota, false);
+                }
+
                 WorkerBackground.RunWorkerAsync();
             };
 

@@ -13,6 +13,9 @@ namespace Emiplus.Model
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
+        public string Tipo { get; set; }
+
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
@@ -30,6 +33,11 @@ namespace Emiplus.Model
         public SqlKata.Query FindByIdPedido(int id)
         {
             return Query().Where("id_pedido", id);
+        }
+
+        public SqlKata.Query FindByIdPedidoAndTipo(int id, string tipo)
+        {
+            return Query().Where("tipo", tipo).Where("id_pedido", id);
         }
 
         public bool Save(Nota data, bool message = true)

@@ -106,11 +106,21 @@ namespace Emiplus.View.Comercial
 
         public void Cfe()
         {
-            OpcoesCfeCpf.idPedido = idPedido;
-            OpcoesCfeCpf f = new OpcoesCfeCpf();
-            f.Show();
+            var checkNota = new Model.Nota().FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+            if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
+            {
+                OpcoesCfeCpf.idPedido = idPedido;
+                OpcoesCfeCpf f = new OpcoesCfeCpf();
+                f.Show();
+            }
+            else
+            {
+                OpcoesCfe.idPedido = idPedido;
+                OpcoesCfe f = new OpcoesCfe();
+                f.Show();
+            }
         }
-        
+
         private void LoadData()
         {
             _modelPedido = _modelPedido.FindById(idPedido).First<Model.Pedido>();

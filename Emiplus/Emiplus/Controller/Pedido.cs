@@ -125,7 +125,7 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
@@ -203,7 +203,7 @@ namespace Emiplus.Controller
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
-            Table.ColumnCount = 11;
+            Table.ColumnCount = 12;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -247,11 +247,19 @@ namespace Emiplus.Controller
             Table.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[9].Visible = false;
 
-            if (tipo == "Vendas")
-                Table.Columns[9].Visible = true;
-
-            Table.Columns[10].Name = "TIPO";
+            Table.Columns[10].Name = "CF-e";
+            Table.Columns[10].MinimumWidth = 80;
+            Table.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[10].Visible = false;
+
+            if (tipo == "Vendas")
+            {
+                Table.Columns[9].Visible = true;
+                Table.Columns[10].Visible = true;
+            }
+              
+            Table.Columns[11].Name = "TIPO";
+            Table.Columns[11].Visible = false;
 
             Table.Rows.Clear();
             
@@ -279,7 +287,8 @@ namespace Emiplus.Controller
                     item.CRIADO,
                     statusNfePedido,
                     item.EXCLUIR,
-                    item.NFE,
+                    item.TIPONFE == "NFe" ? item.NFE : "",
+                    item.TIPONFE == "CFe" ? item.NFE : "",
                     item.TIPO
                 );
             }
