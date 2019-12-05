@@ -101,7 +101,7 @@ namespace Emiplus.Controller
             Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public void GetDataTableEstoque(DataGridView Table, int id)
+        public void GetDataTableEstoque(DataGridView Table, int id, int limit = 0)
         {
             Table.ColumnCount = 8;
 
@@ -135,12 +135,16 @@ namespace Emiplus.Controller
                  .LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario")
                  .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
                 .Where("id_item", id)
-                .OrderByDesc("criado")
-                .Get();
-
-            for (int i = 0; i < lista.Count(); i++)
+                .OrderByDesc("criado");
+            
+            if(limit > 0)
             {
-                var item = lista.ElementAt(i);
+                lista.Limit(limit);
+            }
+
+            for (int i = 0; i < lista.Get().Count(); i++)
+            {
+                var item = lista.Get().ElementAt(i);
                 Table.Rows.Add(
                     item.ID,
                     item.TIPO == "A" ? "Adicionado" : "Removido",

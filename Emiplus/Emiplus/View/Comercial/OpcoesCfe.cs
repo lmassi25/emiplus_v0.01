@@ -79,6 +79,11 @@ namespace Emiplus.View.Comercial
                 WorkerBackground.RunWorkerAsync();
             };
 
+            Imprimir.Click += (s, e) =>
+            {
+                
+            };
+
             using (var b = WorkerBackground)
             {
                 b.DoWork += async (s, e) =>
