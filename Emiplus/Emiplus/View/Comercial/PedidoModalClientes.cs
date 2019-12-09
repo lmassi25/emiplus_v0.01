@@ -15,10 +15,38 @@ namespace Emiplus.View.Comercial
         public PedidoModalClientes()
         {
             InitializeComponent();
+
+            switch (Home.pedidoPage)
+            {
+                case "Compras":
+                    label11.Text = "Selecione o Fornecedor!";
+                    label2.Text = "Buscar fornecedor (F1):";
+                    NovoCliente.Text = "Fornecedor Novo ? (F9)";
+                    label1.Text = "Fornecedores encontrados:";
+                    break;
+                default:
+                    label11.Text = "Selecione o Cliente!";
+                    label2.Text = "Buscar cliente (F1):";
+                    NovoCliente.Text = "Cliente Novo ? (F9)";
+                    label1.Text = "Clientes encontrados:";
+                    break;
+            }
+
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
+        private void DataTable() 
+        {
+            switch (Home.pedidoPage)
+            {
+                case "Compras":
+                    _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Fornecedores");
+                    break;
+                default:
+                    _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
+                    break;
+            }
+        } 
 
         private void SelectItemGrid()
         {
@@ -33,7 +61,17 @@ namespace Emiplus.View.Comercial
         private void FormNovoCliente()
         {
             Id = 0;
-            Home.pessoaPage = "Clientes";
+
+            switch (Home.pedidoPage)
+            {
+                case "Compras":
+                    Home.pessoaPage = "Fornecedores";
+                    break;
+                default:
+                    Home.pessoaPage = "Clientes";
+                    break;
+            }
+            
             AddClientes f = new AddClientes();
             f.btnSalvarText = "Salvar e Inserir";
             f.btnSalvarWidth = 150;

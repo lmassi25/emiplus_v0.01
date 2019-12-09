@@ -109,9 +109,9 @@ namespace Emiplus.Model
                     .WithMessage("Nome é obrigatorio.")
                     .MinLength(2)
                     .WithMessage("Coloque um nome válido."))
-                .Ensure(m => m.Ncm, _ => _
-                    .MaxLength(8)
-                    .WithMessage("O NCM não pode ser MAIOR que 8 caracateres."))
+                //.Ensure(m => m.Ncm, _ => _
+                    //.MaxLength(8)
+                    //.WithMessage("O NCM não pode ser MAIOR que 8 caracateres."))
                 .For(data)
                 .Validate();
 
