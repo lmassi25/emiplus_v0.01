@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEnviarEmail;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpcoesNfeRapida));
             this.Imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Emitir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -37,47 +36,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.retorno = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.btnDetalhes = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.visualButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.visualButton2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.CartaCorrecao = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.Cancelar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            btnEnviarEmail = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.EnviarEmail = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEnviarEmail
-            // 
-            btnEnviarEmail.BackColor = System.Drawing.Color.Transparent;
-            btnEnviarEmail.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnEnviarEmail.BackColorState.Enabled = System.Drawing.Color.White;
-            btnEnviarEmail.BackColorState.Hover = System.Drawing.Color.White;
-            btnEnviarEmail.BackColorState.Pressed = System.Drawing.Color.White;
-            btnEnviarEmail.Border.Color = System.Drawing.Color.Silver;
-            btnEnviarEmail.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnEnviarEmail.Border.HoverVisible = true;
-            btnEnviarEmail.Border.Rounding = 6;
-            btnEnviarEmail.Border.Thickness = 1;
-            btnEnviarEmail.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            btnEnviarEmail.Border.Visible = true;
-            btnEnviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnEnviarEmail.DialogResult = System.Windows.Forms.DialogResult.None;
-            btnEnviarEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnEnviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnEnviarEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnEnviarEmail.Image")));
-            btnEnviarEmail.Location = new System.Drawing.Point(335, 283);
-            btnEnviarEmail.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            btnEnviarEmail.Name = "btnEnviarEmail";
-            btnEnviarEmail.Size = new System.Drawing.Size(154, 78);
-            btnEnviarEmail.TabIndex = 2;
-            btnEnviarEmail.Text = "Enviar por E-mail";
-            btnEnviarEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            btnEnviarEmail.TextStyle.Disabled = System.Drawing.Color.Gray;
-            btnEnviarEmail.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnEnviarEmail.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnEnviarEmail.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnEnviarEmail.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            btnEnviarEmail.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            btnEnviarEmail.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Imprimir
             // 
@@ -261,71 +226,71 @@
             this.btnDetalhes.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnDetalhes.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // visualButton1
+            // CartaCorrecao
             // 
-            this.visualButton1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualButton1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualButton1.BackColorState.Hover = System.Drawing.Color.White;
-            this.visualButton1.BackColorState.Pressed = System.Drawing.Color.White;
-            this.visualButton1.Border.Color = System.Drawing.Color.Silver;
-            this.visualButton1.Border.HoverColor = System.Drawing.Color.Silver;
-            this.visualButton1.Border.HoverVisible = true;
-            this.visualButton1.Border.Rounding = 6;
-            this.visualButton1.Border.Thickness = 1;
-            this.visualButton1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualButton1.Border.Visible = true;
-            this.visualButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.visualButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton1.Image = null;
-            this.visualButton1.Location = new System.Drawing.Point(173, 367);
-            this.visualButton1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualButton1.Name = "visualButton1";
-            this.visualButton1.Size = new System.Drawing.Size(154, 78);
-            this.visualButton1.TabIndex = 4;
-            this.visualButton1.Text = "Carta de Correção";
-            this.visualButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.visualButton1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualButton1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.CartaCorrecao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CartaCorrecao.BackColorState.Enabled = System.Drawing.Color.White;
+            this.CartaCorrecao.BackColorState.Hover = System.Drawing.Color.White;
+            this.CartaCorrecao.BackColorState.Pressed = System.Drawing.Color.White;
+            this.CartaCorrecao.Border.Color = System.Drawing.Color.Silver;
+            this.CartaCorrecao.Border.HoverColor = System.Drawing.Color.Silver;
+            this.CartaCorrecao.Border.HoverVisible = true;
+            this.CartaCorrecao.Border.Rounding = 6;
+            this.CartaCorrecao.Border.Thickness = 1;
+            this.CartaCorrecao.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.CartaCorrecao.Border.Visible = true;
+            this.CartaCorrecao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CartaCorrecao.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.CartaCorrecao.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CartaCorrecao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CartaCorrecao.Image = null;
+            this.CartaCorrecao.Location = new System.Drawing.Point(173, 367);
+            this.CartaCorrecao.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.CartaCorrecao.Name = "CartaCorrecao";
+            this.CartaCorrecao.Size = new System.Drawing.Size(154, 78);
+            this.CartaCorrecao.TabIndex = 4;
+            this.CartaCorrecao.Text = "Carta de Correção";
+            this.CartaCorrecao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CartaCorrecao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.CartaCorrecao.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CartaCorrecao.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CartaCorrecao.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CartaCorrecao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.CartaCorrecao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.CartaCorrecao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // visualButton2
+            // Cancelar
             // 
-            this.visualButton2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualButton2.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualButton2.BackColorState.Hover = System.Drawing.Color.White;
-            this.visualButton2.BackColorState.Pressed = System.Drawing.Color.White;
-            this.visualButton2.Border.Color = System.Drawing.Color.Silver;
-            this.visualButton2.Border.HoverColor = System.Drawing.Color.Silver;
-            this.visualButton2.Border.HoverVisible = true;
-            this.visualButton2.Border.Rounding = 6;
-            this.visualButton2.Border.Thickness = 1;
-            this.visualButton2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualButton2.Border.Visible = true;
-            this.visualButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.visualButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton2.Image = null;
-            this.visualButton2.Location = new System.Drawing.Point(335, 367);
-            this.visualButton2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualButton2.Name = "visualButton2";
-            this.visualButton2.Size = new System.Drawing.Size(154, 78);
-            this.visualButton2.TabIndex = 5;
-            this.visualButton2.Text = "Cancelar NF-e";
-            this.visualButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.visualButton2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualButton2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualButton2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Cancelar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Cancelar.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Cancelar.BackColorState.Hover = System.Drawing.Color.White;
+            this.Cancelar.BackColorState.Pressed = System.Drawing.Color.White;
+            this.Cancelar.Border.Color = System.Drawing.Color.Silver;
+            this.Cancelar.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Cancelar.Border.HoverVisible = true;
+            this.Cancelar.Border.Rounding = 6;
+            this.Cancelar.Border.Thickness = 1;
+            this.Cancelar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Cancelar.Border.Visible = true;
+            this.Cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cancelar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Cancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Cancelar.Image = null;
+            this.Cancelar.Location = new System.Drawing.Point(335, 367);
+            this.Cancelar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Size = new System.Drawing.Size(154, 78);
+            this.Cancelar.TabIndex = 5;
+            this.Cancelar.Text = "Cancelar NF-e";
+            this.Cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.Cancelar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Cancelar.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Cancelar.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Cancelar.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Cancelar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Cancelar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Cancelar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // pictureBox1
             // 
@@ -337,19 +302,52 @@
             this.pictureBox1.TabIndex = 298;
             this.pictureBox1.TabStop = false;
             // 
+            // EnviarEmail
+            // 
+            this.EnviarEmail.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.EnviarEmail.BackColorState.Enabled = System.Drawing.Color.White;
+            this.EnviarEmail.BackColorState.Hover = System.Drawing.Color.White;
+            this.EnviarEmail.BackColorState.Pressed = System.Drawing.Color.White;
+            this.EnviarEmail.Border.Color = System.Drawing.Color.Silver;
+            this.EnviarEmail.Border.HoverColor = System.Drawing.Color.Silver;
+            this.EnviarEmail.Border.HoverVisible = true;
+            this.EnviarEmail.Border.Rounding = 6;
+            this.EnviarEmail.Border.Thickness = 1;
+            this.EnviarEmail.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.EnviarEmail.Border.Visible = true;
+            this.EnviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnviarEmail.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.EnviarEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.Image = null;
+            this.EnviarEmail.Location = new System.Drawing.Point(335, 283);
+            this.EnviarEmail.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.EnviarEmail.Name = "EnviarEmail";
+            this.EnviarEmail.Size = new System.Drawing.Size(154, 78);
+            this.EnviarEmail.TabIndex = 501;
+            this.EnviarEmail.Text = "Enviar Email";
+            this.EnviarEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EnviarEmail.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.EnviarEmail.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.EnviarEmail.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.EnviarEmail.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // OpcoesNfeRapida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(501, 455);
+            this.Controls.Add(this.EnviarEmail);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.visualButton2);
-            this.Controls.Add(this.visualButton1);
+            this.Controls.Add(this.Cancelar);
+            this.Controls.Add(this.CartaCorrecao);
             this.Controls.Add(this.btnDetalhes);
             this.Controls.Add(this.Imprimir);
             this.Controls.Add(this.Emitir);
-            this.Controls.Add(btnEnviarEmail);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.retorno);
@@ -376,8 +374,9 @@
         private System.Windows.Forms.Label label12;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox retorno;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnDetalhes;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton visualButton1;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton visualButton2;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton CartaCorrecao;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Cancelar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton EnviarEmail;
     }
 }

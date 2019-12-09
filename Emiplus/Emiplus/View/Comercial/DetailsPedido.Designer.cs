@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailsPedido));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -56,6 +57,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
@@ -83,7 +85,8 @@
             this.txtSubtotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.nrPedido = new System.Windows.Forms.Label();
-            this.btnRemove = new System.Windows.Forms.Button();
+            this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -204,6 +207,8 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.SelecionarColaborador);
+            this.barraTitulo.Controls.Add(this.SelecionarCliente);
             this.barraTitulo.Controls.Add(this.panel7);
             this.barraTitulo.Controls.Add(this.panel6);
             this.barraTitulo.Controls.Add(this.caixa);
@@ -276,7 +281,7 @@
             // 
             this.vendedor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendedor.ForeColor = System.Drawing.Color.Gray;
-            this.vendedor.Location = new System.Drawing.Point(107, 299);
+            this.vendedor.Location = new System.Drawing.Point(107, 329);
             this.vendedor.Name = "vendedor";
             this.vendedor.Size = new System.Drawing.Size(129, 17);
             this.vendedor.TabIndex = 92;
@@ -286,11 +291,11 @@
             // 
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(24, 298);
+            this.label10.Location = new System.Drawing.Point(12, 328);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 17);
+            this.label10.Size = new System.Drawing.Size(89, 17);
             this.label10.TabIndex = 91;
-            this.label10.Text = "Vendedor:";
+            this.label10.Text = "Colaborador:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // cliente
@@ -307,9 +312,9 @@
             // 
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(24, 272);
+            this.label8.Location = new System.Drawing.Point(12, 272);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.Size = new System.Drawing.Size(89, 17);
             this.label8.TabIndex = 89;
             this.label8.Text = "Cliente:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -391,6 +396,23 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1008, 97);
             this.panel5.TabIndex = 84;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
+            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRemove.Location = new System.Drawing.Point(24, 20);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(114, 65);
+            this.btnRemove.TabIndex = 157;
+            this.btnRemove.Text = "Apagar";
+            this.btnRemove.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // button22
             // 
@@ -783,22 +805,73 @@
             this.nrPedido.TabIndex = 86;
             this.nrPedido.Text = "0";
             // 
-            // btnRemove
+            // SelecionarCliente
             // 
-            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRemove.Location = new System.Drawing.Point(24, 20);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(114, 65);
-            this.btnRemove.TabIndex = 157;
-            this.btnRemove.Text = "Apagar";
-            this.btnRemove.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.HoverVisible = true;
+            this.SelecionarCliente.Border.Rounding = 6;
+            this.SelecionarCliente.Border.Thickness = 1;
+            this.SelecionarCliente.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.SelecionarCliente.Border.Visible = true;
+            this.SelecionarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarCliente.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.SelecionarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelecionarCliente.ForeColor = System.Drawing.Color.White;
+            this.SelecionarCliente.Image = null;
+            this.SelecionarCliente.Location = new System.Drawing.Point(56, 293);
+            this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.SelecionarCliente.Name = "SelecionarCliente";
+            this.SelecionarCliente.Size = new System.Drawing.Size(144, 20);
+            this.SelecionarCliente.TabIndex = 15101;
+            this.SelecionarCliente.Text = "Alterar cliente";
+            this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.SelecionarCliente.TextStyle.Enabled = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.Hover = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.Pressed = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // SelecionarColaborador
+            // 
+            this.SelecionarColaborador.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarColaborador.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarColaborador.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.SelecionarColaborador.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.HoverVisible = true;
+            this.SelecionarColaborador.Border.Rounding = 6;
+            this.SelecionarColaborador.Border.Thickness = 1;
+            this.SelecionarColaborador.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.SelecionarColaborador.Border.Visible = true;
+            this.SelecionarColaborador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarColaborador.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.SelecionarColaborador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelecionarColaborador.ForeColor = System.Drawing.Color.White;
+            this.SelecionarColaborador.Image = null;
+            this.SelecionarColaborador.Location = new System.Drawing.Point(56, 348);
+            this.SelecionarColaborador.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.SelecionarColaborador.Name = "SelecionarColaborador";
+            this.SelecionarColaborador.Size = new System.Drawing.Size(144, 20);
+            this.SelecionarColaborador.TabIndex = 15102;
+            this.SelecionarColaborador.Text = "Alterar colaborador";
+            this.SelecionarColaborador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SelecionarColaborador.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.SelecionarColaborador.TextStyle.Enabled = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.Hover = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.Pressed = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarColaborador.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarColaborador.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // DetailsPedido
             // 
@@ -892,5 +965,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button btnRemove;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarColaborador;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarCliente;
     }
 }
