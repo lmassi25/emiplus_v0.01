@@ -45,6 +45,7 @@ namespace Emiplus.View.Comercial
             {
                 case "Devoluções":
                     label1.Text = "Detalhes da Devolução:";
+                    label2.Text = "Confira nessa tela todas as informações da sua devolução.";
                     label6.Text = "Detalhes da Devolução";
                     label3.Text = "Devoluções";
                     button21.Visible = false;
@@ -63,8 +64,10 @@ namespace Emiplus.View.Comercial
                     break;
                 case "Compras":
                     label1.Text = "Detalhes da Compra:";
+                    label2.Text = "Confira nessa tela todas as informações da sua compra.";
                     label6.Text = "Detalhes da Compra";
                     label3.Text = "Compras";
+                    label8.Text = "Fornecedor";
                     button22.Visible = false;
                     btnCFeSat.Visible = false;
                     label43.Text = "Total Pago:";
@@ -139,7 +142,8 @@ namespace Emiplus.View.Comercial
             {
                 var pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").First();
                 pessoaID = pessoa.ID;
-                cliente.Text = pessoa.NOME;
+                if(pessoa.NOME != "Consumidor Final")
+                    cliente.Text = pessoa.NOME;
             }
 
             if (_modelPedido.Colaborador > 0)
@@ -169,6 +173,10 @@ namespace Emiplus.View.Comercial
                     break;
                 case Keys.F10:
                     Nfe();
+                    break;
+                case Keys.F11:
+                    new PedidoImpressao().Print(idPedido);
+                    e.SuppressKeyPress = true;
                     break;
             }
         }

@@ -32,8 +32,8 @@ namespace Emiplus.View.Financeiro
             }
             else if (Home.financeiroPage == "Pagar")
             {
-                label1.Text = "Recebimentos";
-                label6.Text = "Recebimentos";
+                label1.Text = "Pagamentos";
+                label6.Text = "Pagamentos";
                 label2.Text = "Confira aqui todas os títulos a Pagar/Pagos da sua empresa.";
                 status.DataSource = new List<String> { "Todos", "Pendentes", "Pagos" };
             }

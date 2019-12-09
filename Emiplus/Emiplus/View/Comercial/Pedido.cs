@@ -52,20 +52,20 @@ namespace Emiplus.View.Comercial
                     label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
                     break;
                 case "Consignações":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
+                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
                     break;
                 case "Devoluções":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
+                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
                     break;
                 case "Compras":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
+                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
                     label11.Text = "Procurar por fornecedor";
                     break;
                 case "Notas":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma nota.";
+                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma nota.";
                     break;
                 case "Vendas":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
+                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
                     break;
             }
 

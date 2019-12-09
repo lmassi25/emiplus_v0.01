@@ -218,6 +218,15 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
+            if(Home.pedidoPage == "Compras")
+            {
+                if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
+                {
+                    AlertOptions.Message("Atenção!", "Seu pedido não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    return;
+                }
+            }
+
             if (btnConcluir.Text == "Finalizar" && Home.idCaixa == 0 && Home.pedidoPage == "Vendas") //Necessário para vendas balcão
             {
                 btnFinalizado = true;
@@ -696,7 +705,7 @@ namespace Emiplus.View.Comercial
                     Home.pedidoPage = CachePage;
                     if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
                     {
-                        var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir o Pedido! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                        var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                         if (result)
                         {
                             new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();

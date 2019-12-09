@@ -219,7 +219,11 @@ namespace Emiplus.Controller
             Table.Columns[2].Name = "Emissão";
             Table.Columns[2].MinimumWidth = 80;
 
-            Table.Columns[3].Name = "Cliente";
+            if (tipo == "Compras")
+                Table.Columns[3].Name = "Fornecedor";
+            else
+                Table.Columns[3].Name = "Cliente";
+
             Table.Columns[3].Width = 150;
 
             Table.Columns[4].Name = "Total";
@@ -281,7 +285,7 @@ namespace Emiplus.Controller
                     item.ID,
                     item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
-                    item.NOME,
+                    item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
                     item.CRIADO,

@@ -165,6 +165,12 @@ namespace Emiplus.Controller
                 }
 
                 data.Id_Caixa = Home.idCaixa;
+
+                if (Home.pedidoPage == "Compras")
+                    data.Tipo = "Pagar";
+                else
+                    data.Tipo = "Receber";
+
                 if (data.Save(data))
                     return true;
 
