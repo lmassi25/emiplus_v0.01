@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using System;
 using System.Windows.Forms;
 
@@ -26,7 +27,10 @@ namespace Emiplus.View.Comercial
                 {
                     DialogResult = DialogResult.OK;
                     NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
-                    ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Venda"].Value);
+                    if(Home.pedidoPage == "Compras")
+                        ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Custo"].Value);
+                    else
+                        ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Venda"].Value);
                     Close();
                 }
             }

@@ -64,7 +64,7 @@ namespace Emiplus.Controller
             Table.Columns[5].Name = "Custo";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[5].Width = 100;
-            if (page == 1) Table.Columns[5].Visible = false;
+            //if (page == 1) Table.Columns[5].Visible = false;
 
             Table.Columns[6].Name = "Venda";
             Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

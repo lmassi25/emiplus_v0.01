@@ -197,7 +197,15 @@ namespace Emiplus.View.Comercial
 
             Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
-            if(imprimir == 1)
+            if (Home.pedidoPage == "Compras")
+            {
+                AddPedidos.btnFinalizado = true;
+                imprimir = 0;
+                Application.OpenForms["AddPedidos"].Close();
+                Close();
+            }
+                
+            if (imprimir == 1)
             {
                 AddPedidos.btnFinalizado = true;
 

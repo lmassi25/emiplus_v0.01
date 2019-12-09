@@ -2,6 +2,7 @@
 {
     using Data.Database;
     using Emiplus.Data.Helpers;
+    using Emiplus.View.Common;
     using SqlKata;
     using SqlKata.Execution;
     using System;
@@ -214,6 +215,20 @@
         {
             if (valorVenda == 0 || valorVenda < 0)
             {
+                if (Home.pedidoPage == "Compras")
+                {
+                    if (ItemObj.ValorCompra == 0 || ItemObj.ValorCompra < 0)
+                    {
+                        Alert.Message("Oppss", "É necessário definir um valor de compra.", Alert.AlertType.info);
+                        return false;
+                    }
+                    else
+                    {
+                        ValorVenda = ItemObj.ValorCompra;
+                        return true;
+                    }
+                }
+
                 if (ItemObj.ValorVenda == 0 || ItemObj.ValorVenda < 0)
                 {
                     Alert.Message("Oppss", "É necessário definir um valor de venda.", Alert.AlertType.info);
