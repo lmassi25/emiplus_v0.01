@@ -208,6 +208,103 @@ namespace Emiplus.View.Fiscal
             }
         }
 
+        private void LoadPag()
+        {
+            ArrayList Pagamentos = new ArrayList();
+            ArrayList datesTimes = new ArrayList();
+
+            string dateTime = "";
+            string Valor = "";
+            string Tipo = "";
+
+            if (dataNota.ContainsKey("cobr") == true)
+            {
+                if (dataNota.cobr is ChoETL.ChoDynamicObject)
+                {
+                    if (dataNota.cobr.ContainsKey("dups") == true)
+                    {
+                        int u = -1;
+                        foreach (var dataCOBR in dataNota.cobr.dups)
+                        {
+                            u++;
+                            //string dateTime = "";
+                            //string Tipo = "";
+                            //string Valor = "";
+
+                            dateTime = dataCOBR.dVenc;
+                            Valor = dataCOBR.vDup;
+
+                            datesTimes.Add(new { dateTime });
+
+                            Pagamentos.Add(new
+                            {
+                                dateTime = dateTime,
+                                Tipo = Tipo,
+                                Valor = Valor
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    int u = -1;
+                    foreach (var dataCOBR in dataNota.cobr)
+                    {
+                        u++;
+
+                        dateTime = dataCOBR.dVenc;
+                        Valor = dataCOBR.vDup;
+
+                        
+                        Pagamentos.Add(new
+                        {
+                            dateTime = dateTime,
+                            Tipo = Tipo,
+                            Valor = Valor
+                        });
+                    }
+                }
+
+            }
+
+            if (dataNota.ContainsKey("pag") == true)
+            {
+                Pagamentos.Clear();
+
+                int u = -1;
+                foreach (var dataCOBR in dataNota.pag)
+                {
+                    u++;
+                    
+                    if (dataNota.ContainsKey("pag"))
+                    {
+                        if (dataCOBR.Key == "detPag")
+                            Tipo = dataCOBR.Value.tPag;
+                        else
+                            Tipo = dataCOBR.tPag;
+
+                        if (dataCOBR.Key == "detPag")
+                            Valor = dataCOBR.Value.vPag;
+                        else
+                            Valor = dataCOBR.vPag;
+                    }
+
+                    if (datesTimes.Count > 0)
+                    {
+                        dateTime = datesTimes[u].ToString();
+                    }
+
+                    Pagamentos.Add(new
+                    {
+                        dateTime = dateTime,
+                        Tipo = Tipo,
+                        Valor = Valor
+                    });
+                }
+            }
+
+        }
+
         private void Eventos()
         {
             Load += (s, e) =>
@@ -243,7 +340,14 @@ namespace Emiplus.View.Fiscal
                         break;
                     }
 
+                    Controller.ImportarNfe clas = new Controller.ImportarNfe(pathXml);
+
+                    var prod = clas.GetProdutos();
+                    var forn = clas.GetFornecedor();
+                    var pags = clas.GetPagamentos();
+
                     LoadDataNota();
+                    //LoadPagamentos();
                 }
             };
 
@@ -266,6 +370,11 @@ namespace Emiplus.View.Fiscal
 
             btnExit.Click += (s, e) => Close();
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
+        }
+
+        private void nome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
