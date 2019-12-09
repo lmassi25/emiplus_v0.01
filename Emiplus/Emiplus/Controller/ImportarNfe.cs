@@ -1,4 +1,5 @@
 ﻿using ChoETL;
+using Emiplus.Data.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,24 +14,9 @@ namespace Emiplus.Controller
         private dynamic dataNota { get; set; }
 
         /// <summary>
-        /// Versão 4.0
+        /// Dados da Nota
         /// </summary>
-        private string versao { get; set; }
-        private string Id { get; set; }
-        private string Nature_Operacao { get; set; }
-        private string Serie { get; set; }
-        private string Nr { get; set; }
-        private string Emissao { get; set; }
-
-        //private string cnpj_CPF { get; set; }
-        //private string Razao_Social { get; set; }
-        //private string Addr_Rua { get; set; }
-        //private string Addr_Nr { get; set; }
-        //private string Addr_Bairro { get; set; }
-        //private string Addr_IBGE { get; set; }
-        //private string Addr_Cidade { get; set; }
-        //private string Addr_UF { get; set; }
-        //private string Addr_CEP { get; set; }
+        public ArrayList Dados { get; set; }
 
         /// <summary>
         /// Dados do Fornecedor
@@ -40,7 +26,7 @@ namespace Emiplus.Controller
         /// <summary>
         /// Lista de Produtos
         /// </summary>
-        private ArrayList Produtos { get; set; }
+        public ArrayList Produtos { get; set; }
 
         /// <summary>
         /// Totais dos impostos da NFe
@@ -68,24 +54,46 @@ namespace Emiplus.Controller
                 break;
             }
 
+            LoadDados();
             LoadProdutos();
             LoadFornecedor();
             LoadPagamentos();
         }
 
-        public ArrayList GetProdutos()
+        public dynamic GetDados()
+        {
+            return Dados[0];
+        }
+
+        public dynamic GetProdutos()
         {
             return Produtos;
         }
 
-        public ArrayList GetFornecedor()
+        public dynamic GetFornecedor()
         {
-            return Fornecedor;
+            return Fornecedor[0];
         }
 
         public ArrayList GetPagamentos()
         {
             return Pagamentos;
+        }
+
+        private void LoadDados()
+        {
+            Dados = new ArrayList();
+            Dados.Add(new
+            {
+                Versao = dataNota.versao,
+                Nr = dataNota.ide.nNF,
+                Codigo = dataNota.ide.cNF,
+                Id = dataNota.Id,
+                Serie = dataNota.ide.serie,
+                NaturezaOpercao = dataNota.ide.natOp,
+                Emissao = Validation.ConvertDateToForm(dataNota.ide.dhEmi, true),
+                cUF = dataNota.ide.cUF
+            });
         }
 
         private void LoadProdutos()
@@ -96,7 +104,7 @@ namespace Emiplus.Controller
             else
                 produtos = dataNota.det;
 
-            ArrayList Produtos = new ArrayList();
+            Produtos = new ArrayList();
             if (dataNota.ContainsKey("dets"))
             {
                 // Imp_ICMSSN_orig = item.imposto.ICMS[0].orig,
@@ -140,7 +148,7 @@ namespace Emiplus.Controller
         {
             if (dataNota.ContainsKey("dest"))
             {
-                ArrayList Fornecedor = new ArrayList();
+                Fornecedor = new ArrayList();
 
                 string document = "";
                 string ie = "";
@@ -155,7 +163,7 @@ namespace Emiplus.Controller
 
                 if (dataNota.dest.enderDest.ContainsKey("fone"))
                     ie = dataNota.dest.enderDest.fone;
-                
+
                 Fornecedor.Add(
                     new
                     {
@@ -178,23 +186,98 @@ namespace Emiplus.Controller
 
         private void LoadPagamentos()
         {
-            ArrayList Pagamentos = new ArrayList();
+            Pagamentos = new ArrayList();
+            ArrayList datesTimes = new ArrayList();
 
-            if (dataNota.ContainsKey("cobr"))
+            string dateTime = "";
+            string Valor = "";
+            string Tipo = "";
+
+            if (dataNota.ContainsKey("cobr") == true)
             {
-                dynamic cobr = dataNota.cobr;
-                
-                foreach (var dataCOBR in cobr)
+                if (dataNota.cobr is ChoETL.ChoDynamicObject)
                 {
+                    if (dataNota.cobr.ContainsKey("dups") == true)
+                    {
+                        int u = -1;
+                        foreach (var dataCOBR in dataNota.cobr.dups)
+                        {
+                            u++;
+                            //string dateTime = "";
+                            //string Tipo = "";
+                            //string Valor = "";
 
+                            dateTime = dataCOBR.dVenc;
+                            Valor = dataCOBR.vDup;
+
+                            datesTimes.Add(new { dateTime });
+
+                            Pagamentos.Add(new
+                            {
+                                dateTime = dateTime,
+                                Tipo = Tipo,
+                                Valor = Valor
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    int u = -1;
+                    foreach (var dataCOBR in dataNota.cobr)
+                    {
+                        u++;
+
+                        dateTime = dataCOBR.dVenc;
+                        Valor = dataCOBR.vDup;
+
+
+                        Pagamentos.Add(new
+                        {
+                            dateTime = dateTime,
+                            Tipo = Tipo,
+                            Valor = Valor
+                        });
+                    }
+                }
+
+            }
+
+            if (dataNota.ContainsKey("pag") == true)
+            {
+                Pagamentos.Clear();
+
+                int u = -1;
+                foreach (var dataCOBR in dataNota.pag)
+                {
+                    u++;
+
+                    if (dataNota.ContainsKey("pag"))
+                    {
+                        if (dataCOBR.Key == "detPag")
+                            Tipo = dataCOBR.Value.tPag;
+                        else
+                            Tipo = dataCOBR.tPag;
+
+                        if (dataCOBR.Key == "detPag")
+                            Valor = dataCOBR.Value.vPag;
+                        else
+                            Valor = dataCOBR.vPag;
+                    }
+
+                    if (datesTimes.Count > 0)
+                    {
+                        dateTime = datesTimes[u].ToString();
+                    }
+
+                    Pagamentos.Add(new
+                    {
+                        dateTime = dateTime,
+                        Tipo = Tipo,
+                        Valor = Valor
+                    });
                 }
             }
-
-            if (dataNota.ContainsKey("pag"))
-            {
-
-            }
         }
-
     }
 }

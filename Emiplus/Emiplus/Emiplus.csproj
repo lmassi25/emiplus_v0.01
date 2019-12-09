@@ -622,6 +622,12 @@
     <Compile Include="View\Produtos\Etiquetas.Designer.cs">
       <DependentUpon>Etiquetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarFornecedor.Designer.cs">
+      <DependentUpon>ImportarFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Impostos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -652,6 +658,12 @@
     <Compile Include="View\Produtos\Imposto\ICMS\ICMS_3.Designer.cs">
       <DependentUpon>ICMS_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\ImportarNfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\ImportarNfe.Designer.cs">
+      <DependentUpon>ImportarNfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Produtos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -663,6 +675,12 @@
     </Compile>
     <Compile Include="View\Produtos\ReajusteDeProduto.Designer.cs">
       <DependentUpon>ReajusteDeProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarProdutos.Designer.cs">
+      <DependentUpon>ImportarProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\Browser.cs">
       <SubType>Form</SubType>
@@ -926,6 +944,9 @@
     <EmbeddedResource Include="View\Produtos\Etiquetas.resx">
       <DependentUpon>Etiquetas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarFornecedor.resx">
+      <DependentUpon>ImportarFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Impostos.resx">
       <DependentUpon>Impostos.cs</DependentUpon>
     </EmbeddedResource>
@@ -941,11 +962,17 @@
     <EmbeddedResource Include="View\Produtos\Imposto\ICMS\ICMS_3.resx">
       <DependentUpon>ICMS_3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\ImportarNfe.resx">
+      <DependentUpon>ImportarNfe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\ReajusteDeProduto.resx">
       <DependentUpon>ReajusteDeProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarProdutos.resx">
+      <DependentUpon>ImportarProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\Browser.resx">
       <DependentUpon>Browser.cs</DependentUpon>

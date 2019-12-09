@@ -78,7 +78,7 @@ namespace Emiplus.View.Common
 
             importarNfe.Click += (s, e) =>
             {
-                ImportarNFe f = new ImportarNFe();
+                Produtos.ImportarNfe f = new Produtos.ImportarNfe();
                 f.ShowDialog();
             };
         }
