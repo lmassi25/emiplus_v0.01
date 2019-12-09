@@ -28,6 +28,20 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
+        private string checkCupom()
+        {
+            var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+
+            if (checkNota == null)
+                return null;
+
+            if(checkNota.Status == null)
+                return null;
+
+            return checkNota.Status;
+        }
+
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -48,15 +62,14 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
-                if (checkNota == null)
+                if (checkCupom() == null)
                     Emitir.Text = "Emitir";
                 else
                 {
-                    if(checkNota.Status == "Autorizada")
+                    if(checkCupom() == "Autorizada")
                         Emitir.Text = "Cancelar";
 
-                    if (checkNota.Status == "Cancelada")
+                    if (checkCupom() == "Cancelada")
                     {
                         Emitir.Text = "Cancelar";
                         Emitir.Enabled = false;
@@ -82,8 +95,7 @@ namespace Emiplus.View.Comercial
 
             Imprimir.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").Where("status", null).FirstOrDefault();
-                if (checkNota != null)
+                if (checkCupom() == null)
                 {
                     Alert.Message("Opps!", "Emita o cupom para imprimir.", Alert.AlertType.warning);
                     return;

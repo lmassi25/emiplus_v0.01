@@ -19,6 +19,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Threading;
+using ESC_POS_USB_NET.Printer;
 
 namespace Emiplus.Controller
 {
@@ -251,117 +252,16 @@ namespace Emiplus.Controller
             {
                 case "CFe":
 
-                    //BrowserNfe.Render = pdf;                    
-                    //browser.ShowDialog();
+                    var printername = IniFile.Read("Printer", "LOCAL");
 
-                    //using (var client = new WebClient())
-                    //{
-                    //    client.DownloadFile(pdf, _path_autorizada + "\\impressao.pdf");
-                    //}
-
-                    //C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader
-
-
-                    string filename = _path_autorizada + "\\impressao.pdf";
-                    string printerName = "Jetway JP-800";
-
-                    FileInfo file = new FileInfo(_path_autorizada + "\\impressao.pdf");
-                    if (file.Exists)
-                    {
-                        ProcessStartInfo info = new ProcessStartInfo();
-                        info.Verb = "print";
-                        info.FileName = filename;
-                        info.CreateNoWindow = true;
-                        info.WindowStyle = ProcessWindowStyle.Hidden;
-
-                        Process p = new Process();
-                        p.StartInfo = info;
-                        p.Start();
-
-                        p.WaitForInputIdle();
-                        System.Threading.Thread.Sleep(3000);
-                        if (false == p.CloseMainWindow())
-                            p.Kill();
-
-                        //Process proc = new Process();
-                        //proc.StartInfo.FileName = @"C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe";
-                        //proc.StartInfo.Arguments = @" /t /h " + "\"" + _path_autorizada + "\\impressao.pdf" + "\"" + " " + "\"" + printerName + "\"";
-                        //proc.StartInfo.UseShellExecute = true;
-                        //proc.StartInfo.CreateNoWindow = true;
-                        //proc.Start();
-                        //Thread.Sleep(1000);
-                        //proc.WaitForInputIdle();
-
-                        //proc.Kill();
-
-                        //    //Process process = new Process();
-                        //    //Process objP = new Process();
-
-                        //    //objP.StartInfo.FileName = pdf;
-
-                        //    //objP.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //Hide the window.
-                        //    //objP.StartInfo.Verb = "print";
-                        //    //objP.StartInfo.CreateNoWindow = true;
-                        //    //objP.Start();
-
-                        //    //objP.CloseMainWindow();
-
-                        //    //System.IO.File.Copy(_path_autorizada + "\\impressao.pdf", "Jetway JP-800");
-
-                        //    //OpenFileDialog ofd = new OpenFileDialog();
-                        //    //if (ofd.ShowDialog() == DialogResult.OK)
-                        //    //{
-                        //    //    Fiscal.ShellExecuteA(0, "print", _path_autorizada + "\\impressao.pdf", null, null, 0);
-                        //    //}
-
-                        //    //Process process = new Process
-                        //    //{
-                        //    //    StartInfo = new ProcessStartInfo
-                        //    //    {
-                        //    //        Verb = "print",
-                        //    //        FileName = _path_autorizada + "\\impressao.pdf",
-                        //    //    },
-                        //    //};
-
-                        //    //process.Start();
-
-                        //    //Process.Start(
-                        //    //Registry.LocalMachine.OpenSubKey(
-                        //    //    @"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                        //    //    @"\App Paths\AcroRd32.exe").GetValue("").ToString(),
-                        //    //string.Format("/h /t \"{0}\" \"{1}\"", _path_autorizada + "\\impressao.pdf", "\\192.168.1.188\\Jetway JP-800"));
-
-                        //    //ProcessStartInfo info = new ProcessStartInfo();
-                        //    //info.Verb = "print";
-                        //    //info.FileName = _path_autorizada + "\\impressao.pdf";
-                        //    //info.CreateNoWindow = true;
-                        //    //info.WindowStyle = ProcessWindowStyle.Hidden;
-
-                        //    //Process p = new Process();
-                        //    //p.StartInfo = info;
-                        //    //p.Start();
-
-                        //    //p.WaitForInputIdle();
-                        //    //System.Threading.Thread.Sleep(3000);
-                        //    //if (false == p.CloseMainWindow())
-                        //    //    p.Kill();
-
-                        //    //Process proc = new Process();
-                        //    //proc.StartInfo.FileName = @"C:\Emiplus\pdf2vec.exe";
-                        //    //string strArguments = "";
-                        //    //strArguments += "-psmode 0";
-                        //    //strArguments += @"C:\Emiplus\NFe\Autorizadas\impressao.pdf C:\Emiplus\NFe\Autorizadas\impressao\impressao.ps";
-                        //    //Console.WriteLine(strArguments);
-                        //    //proc.StartInfo.Arguments = @strArguments;
-                        //    //proc.Start();
-                        //    //proc.WaitForExit();
-
-
-
+                    if(printername == null)
                         return "";
-                    }
 
-                    break;
+                    Printer printer = new Printer(printername);
+
+
+                    return "";
+
 
                 case "NFe":
 
@@ -375,9 +275,7 @@ namespace Emiplus.Controller
                     else
                     {
                         return pdf;
-                    }                        
-
-                    break;
+                    } 
             }
 
             return "";

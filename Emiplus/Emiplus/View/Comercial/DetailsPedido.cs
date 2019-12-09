@@ -75,36 +75,36 @@ namespace Emiplus.View.Comercial
                     nrPedido.Left = 510;
                     btnNfe.Visible = false;
                     button21.Visible = false;
+                    SelecionarCliente.Text = "Alterar fornecedor";
                     break;
             }
         }
 
         public void Nfe()
         {
-            var checkNota = new Model.Nota().FindByIdPedido(idPedido).Get();
+            var checkNota = new Model.Nota().FindByIdPedido(idPedido).Where("nota.tipo", "NFe").FirstOrDefault();
 
-            if (checkNota.Count() == 0)
+            if (checkNota == null)
             {
                 OpcoesNfe.idPedido = idPedido;
-                OpcoesNfe f = new OpcoesNfe();
-                f.Show();
+                OpcoesNfe f1 = new OpcoesNfe();
+                f1.Show();
+
+                return;
             }
 
-            foreach (var item in checkNota)
+            if(checkNota.STATUS != null)
             {
-                if (item.STATUS == null)
-                {
-                    OpcoesNfe.idPedido = idPedido;
-                    OpcoesNfe f = new OpcoesNfe();
-                    f.Show();
-                }
-                else
-                {
-                    OpcoesNfeRapida.idPedido = idPedido;
-                    OpcoesNfeRapida f = new OpcoesNfeRapida();
-                    f.Show();
-                }
+                OpcoesNfeRapida.idPedido = idPedido;
+                OpcoesNfeRapida f2 = new OpcoesNfeRapida();
+                f2.Show();
+
+                return;
             }
+
+            OpcoesNfe.idPedido = idPedido;
+            OpcoesNfe f3 = new OpcoesNfe();
+            f3.Show();     
         }
 
         public void Cfe()
@@ -236,6 +236,30 @@ namespace Emiplus.View.Comercial
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
+
+            SelecionarCliente.Click += (s, e) =>
+            {
+                var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
+                if (checkNota != null)
+                {
+                    Alert.Message("Ação não permitida!", "Existe um documento fiscal vinculado.", Alert.AlertType.warning);
+                    return;
+                }
+ 
+                ModalClientes();
+            };
+
+            SelecionarColaborador.Click += (s, e) =>
+            {
+                var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
+                if (checkNota != null)
+                {
+                    Alert.Message("Ação não permitida!", "Existe um documento fiscal vinculado.", Alert.AlertType.warning);
+                    return;
+                }
+
+                ModalColaborador();
+            };
         }
 
         private void OpenPedidoPagamentos()
@@ -245,6 +269,30 @@ namespace Emiplus.View.Comercial
             PedidoPagamentos pagamentos = new PedidoPagamentos();
             pagamentos.ShowDialog();
             LoadData();
+        }
+
+        private void ModalClientes()
+        {
+            PedidoModalClientes form = new PedidoModalClientes();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _modelPedido.Id = idPedido;
+                _modelPedido.Cliente = PedidoModalClientes.Id;
+                _modelPedido.Save(_modelPedido);
+                LoadData();
+            }
+        }
+
+        public void ModalColaborador()
+        {
+            PedidoModalVendedor form = new PedidoModalVendedor();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _modelPedido.Id = idPedido;
+                _modelPedido.Colaborador = PedidoModalVendedor.Id;
+                _modelPedido.Save(_modelPedido);
+                LoadData();
+            }
         }
     }
 }
