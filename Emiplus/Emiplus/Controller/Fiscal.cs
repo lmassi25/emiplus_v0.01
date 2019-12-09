@@ -14,6 +14,11 @@ using System.Xml;
 using System.Linq;
 using Emiplus.View.Fiscal;
 using System.Xml.Linq;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
+using System.Threading;
 
 namespace Emiplus.Controller
 {
@@ -239,18 +244,143 @@ namespace Emiplus.Controller
         {
             Start(Pedido);
 
-            var pdf = RequestPrint(_nota.ChaveDeAcesso, tipo);
+            BrowserNfe browser = new BrowserNfe();
+            var pdf = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
 
-            if(pdf.Contains(".pdf"))
+            switch (tipo)
             {
-                BrowserNfe.Render = pdf;
-                BrowserNfe browser = new BrowserNfe();
-                browser.ShowDialog();
+                case "CFe":
 
-                return "";
+                    //BrowserNfe.Render = pdf;                    
+                    //browser.ShowDialog();
+
+                    //using (var client = new WebClient())
+                    //{
+                    //    client.DownloadFile(pdf, _path_autorizada + "\\impressao.pdf");
+                    //}
+
+                    //C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader
+
+
+                    string filename = _path_autorizada + "\\impressao.pdf";
+                    string printerName = "Jetway JP-800";
+
+                    FileInfo file = new FileInfo(_path_autorizada + "\\impressao.pdf");
+                    if (file.Exists)
+                    {
+                        ProcessStartInfo info = new ProcessStartInfo();
+                        info.Verb = "print";
+                        info.FileName = filename;
+                        info.CreateNoWindow = true;
+                        info.WindowStyle = ProcessWindowStyle.Hidden;
+
+                        Process p = new Process();
+                        p.StartInfo = info;
+                        p.Start();
+
+                        p.WaitForInputIdle();
+                        System.Threading.Thread.Sleep(3000);
+                        if (false == p.CloseMainWindow())
+                            p.Kill();
+
+                        //Process proc = new Process();
+                        //proc.StartInfo.FileName = @"C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe";
+                        //proc.StartInfo.Arguments = @" /t /h " + "\"" + _path_autorizada + "\\impressao.pdf" + "\"" + " " + "\"" + printerName + "\"";
+                        //proc.StartInfo.UseShellExecute = true;
+                        //proc.StartInfo.CreateNoWindow = true;
+                        //proc.Start();
+                        //Thread.Sleep(1000);
+                        //proc.WaitForInputIdle();
+
+                        //proc.Kill();
+
+                        //    //Process process = new Process();
+                        //    //Process objP = new Process();
+
+                        //    //objP.StartInfo.FileName = pdf;
+
+                        //    //objP.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //Hide the window.
+                        //    //objP.StartInfo.Verb = "print";
+                        //    //objP.StartInfo.CreateNoWindow = true;
+                        //    //objP.Start();
+
+                        //    //objP.CloseMainWindow();
+
+                        //    //System.IO.File.Copy(_path_autorizada + "\\impressao.pdf", "Jetway JP-800");
+
+                        //    //OpenFileDialog ofd = new OpenFileDialog();
+                        //    //if (ofd.ShowDialog() == DialogResult.OK)
+                        //    //{
+                        //    //    Fiscal.ShellExecuteA(0, "print", _path_autorizada + "\\impressao.pdf", null, null, 0);
+                        //    //}
+
+                        //    //Process process = new Process
+                        //    //{
+                        //    //    StartInfo = new ProcessStartInfo
+                        //    //    {
+                        //    //        Verb = "print",
+                        //    //        FileName = _path_autorizada + "\\impressao.pdf",
+                        //    //    },
+                        //    //};
+
+                        //    //process.Start();
+
+                        //    //Process.Start(
+                        //    //Registry.LocalMachine.OpenSubKey(
+                        //    //    @"SOFTWARE\Microsoft\Windows\CurrentVersion" +
+                        //    //    @"\App Paths\AcroRd32.exe").GetValue("").ToString(),
+                        //    //string.Format("/h /t \"{0}\" \"{1}\"", _path_autorizada + "\\impressao.pdf", "\\192.168.1.188\\Jetway JP-800"));
+
+                        //    //ProcessStartInfo info = new ProcessStartInfo();
+                        //    //info.Verb = "print";
+                        //    //info.FileName = _path_autorizada + "\\impressao.pdf";
+                        //    //info.CreateNoWindow = true;
+                        //    //info.WindowStyle = ProcessWindowStyle.Hidden;
+
+                        //    //Process p = new Process();
+                        //    //p.StartInfo = info;
+                        //    //p.Start();
+
+                        //    //p.WaitForInputIdle();
+                        //    //System.Threading.Thread.Sleep(3000);
+                        //    //if (false == p.CloseMainWindow())
+                        //    //    p.Kill();
+
+                        //    //Process proc = new Process();
+                        //    //proc.StartInfo.FileName = @"C:\Emiplus\pdf2vec.exe";
+                        //    //string strArguments = "";
+                        //    //strArguments += "-psmode 0";
+                        //    //strArguments += @"C:\Emiplus\NFe\Autorizadas\impressao.pdf C:\Emiplus\NFe\Autorizadas\impressao\impressao.ps";
+                        //    //Console.WriteLine(strArguments);
+                        //    //proc.StartInfo.Arguments = @strArguments;
+                        //    //proc.Start();
+                        //    //proc.WaitForExit();
+
+
+
+                        return "";
+                    }
+
+                    break;
+
+                case "NFe":
+
+                    if (pdf.Contains(".pdf"))
+                    {
+                        BrowserNfe.Render = pdf;
+                        browser.ShowDialog();
+
+                        return "";
+                    }
+                    else
+                    {
+                        return pdf;
+                    }                        
+
+                    break;
             }
-            else
-                return pdf;
+
+            return "";
         }
 
         /// <summary> 
@@ -879,8 +1009,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Cfop));
 
                 xml.WriteElementString("uCom", _pedidoItem.Medida);
-                xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 4));
-                xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 6));
+                xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
+                xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
 
                 xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedidoItem.Total));
 
@@ -894,8 +1024,8 @@ namespace Emiplus.Controller
                 }
 
                 xml.WriteElementString("uTrib", _pedidoItem.Medida);
-                xml.WriteElementString("qTrib", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 4));
-                xml.WriteElementString("vUnTrib", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 6));
+                xml.WriteElementString("qTrib", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
+                xml.WriteElementString("vUnTrib", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
 
                 xml.WriteElementString("indTot", "1");
 
@@ -935,7 +1065,10 @@ namespace Emiplus.Controller
             switch (_pedidoItem.Icms)
             {
                 case "00":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if(tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "00");
                     xml.WriteElementString("modBC", "0");
                     xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
@@ -943,37 +1076,61 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
                     break;
                 case "40":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "40");
                     break;
                 case "41":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "41");
                     break;
                 case "50":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "50");
                     break;
                 case "60":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "60");
                     break;
                 case "90":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "90");
                     break;
                 case "101":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "101");
                     xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Aliq));
                     xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Vlr));
                     break;
                 case "102":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "102");
                     break;
                 case "201":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "201");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -985,7 +1142,10 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(0));
                     break;
                 case "202":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "202");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -995,13 +1155,19 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vICMSST", Validation.FormatPriceWithDot(0));
                     break;
                 case "500":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "500");
                     xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
                     xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
                     break;
                 case "900":
-                    xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "900");
                     break;
             }
@@ -1646,5 +1812,9 @@ namespace Emiplus.Controller
         }
 
         #endregion
+
+        [DllImport("shell32.dll", EntryPoint = "ShellExecute")]
+        public static extern int ShellExecuteA(int hwnd, string lpOperation,
+        string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
     }
 }

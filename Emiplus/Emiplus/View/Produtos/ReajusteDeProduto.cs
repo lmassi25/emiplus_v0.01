@@ -37,7 +37,8 @@ namespace Emiplus.View.Produtos
 
             foreach (var itens in item)
             {
-                collection.Add(itens.NOME, itens.ID);
+                if(!String.IsNullOrEmpty(itens.NOME))
+                    collection.Add(itens.NOME, itens.ID);
             }
 
             BuscarProduto.AutoCompleteCustomSource = collection;
@@ -48,7 +49,7 @@ namespace Emiplus.View.Produtos
             var cats = new ArrayList();
             cats.Add(new { Id = "0", Nome = "Todas" });
 
-            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").Where("tipo", "=", "Produtos").OrderByDesc("nome").Get();
             foreach (var item in cat)
             {
                 cats.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
@@ -93,6 +94,8 @@ namespace Emiplus.View.Produtos
 
             model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
             model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.FORNECEDOR");
+            model.Where("ITEM.excluir", 0);
+            model.Where("ITEM.nome", "<>", "");
             model.SelectRaw("ITEM.id, ITEM.nome, ITEM.medida, ITEM.valorvenda, ITEM.estoqueatual, ITEM.CATEGORIAID, CATEGORIA.NOME as CAT_NAME, PESSOA.NOME as FORNECEDOR_NAME");
             return model.GetAsync<dynamic>();
         }
@@ -186,13 +189,13 @@ namespace Emiplus.View.Produtos
 
             GridLista.CellEndEdit += (s, e) =>
             {
-                int ID = Convert.ToInt32(GridLista.Rows[e.RowIndex].Cells["ID"].Value);
-                string NOME = GridLista.Rows[e.RowIndex].Cells["Descricao"].Value.ToString();
+                int ID = Validation.ConvertToInt32(GridLista.Rows[e.RowIndex].Cells["ID"].Value);
+                string NOME = GridLista.Rows[e.RowIndex].Cells["Descricao"].Value != null ? GridLista.Rows[e.RowIndex].Cells["Descricao"].Value.ToString() : "";
                 string MEDIDA = Convert.ToString((GridLista.Rows[0].Cells["Medida"] as DataGridViewComboBoxCell).FormattedValue.ToString());
-                int CATEGORIA = Convert.ToInt32(GridLista.Rows[e.RowIndex].Cells["Categoria"].Value);
-                int FORNECEDORES = Convert.ToInt32(GridLista.Rows[e.RowIndex].Cells["Fornecedores"].Value);
-                string VALORVENDA = GridLista.Rows[e.RowIndex].Cells["ValorVenda"].Value.ToString();
-                string ESTOQUEATUAL = GridLista.Rows[e.RowIndex].Cells["Estoque"].Value.ToString();
+                int CATEGORIA = Validation.ConvertToInt32(GridLista.Rows[e.RowIndex].Cells["Categoria"].Value);
+                int FORNECEDORES = Validation.ConvertToInt32(GridLista.Rows[e.RowIndex].Cells["Fornecedores"].Value);
+                string VALORVENDA = GridLista.Rows[e.RowIndex].Cells["ValorVenda"].Value != null ? GridLista.Rows[e.RowIndex].Cells["ValorVenda"].Value.ToString() : "0";
+                string ESTOQUEATUAL = GridLista.Rows[e.RowIndex].Cells["Estoque"].Value != null ? GridLista.Rows[e.RowIndex].Cells["Estoque"].Value.ToString() : "0";
 
                 _mItem = _mItem.FindById(ID).FirstOrDefault<Model.Item>();
                 _mItem.Id = ID;

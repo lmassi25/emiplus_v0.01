@@ -77,6 +77,11 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Compras")
             {
+                label15.Text = "Fornecedor:";
+
+                pictureBox8.Visible = false;
+                label12.Visible = false;
+                IDCaixa.Visible = false;
                 label2.Text = $"Dados da Compra: {Id}";
                 label3.Text = "Siga as etapas abaixo para adicionar uma compra!";
                 btnConcluir.Text = "Pagamento";
@@ -132,6 +137,12 @@ namespace Emiplus.View.Comercial
             {
                 _mPedido.Save(_mPedido);
                 var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
+                
+                if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
+                {
+                    return;    
+                }
+
                 nomeCliente.Text = data.Nome;
             }
         }

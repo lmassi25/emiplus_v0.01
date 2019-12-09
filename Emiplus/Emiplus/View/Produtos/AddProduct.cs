@@ -362,8 +362,10 @@ namespace Emiplus.View.Produtos
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
             referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-            ncm.KeyPress += (s, e) => Masks.MaskDouble(s, e);
-            ncm.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 8);
+            
+            ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
+            cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
+
             nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");

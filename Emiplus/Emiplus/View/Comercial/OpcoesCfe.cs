@@ -1,4 +1,5 @@
-﻿using SqlKata.Execution;
+﻿using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,11 +82,14 @@ namespace Emiplus.View.Comercial
 
             Imprimir.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
-                if (checkNota == null)
+                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").Where("status", null).FirstOrDefault();
+                if (checkNota != null)
                 {
-
+                    Alert.Message("Opps!", "Emita o cupom para imprimir.", Alert.AlertType.warning);
+                    return;
                 }
+
+                var msg = new Controller.Fiscal().Imprimir(idPedido, "CFe");
             };
 
             using (var b = WorkerBackground)
