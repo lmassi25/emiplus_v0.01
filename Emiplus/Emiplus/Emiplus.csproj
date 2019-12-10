@@ -248,9 +248,6 @@
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Helpers\AlertOptions.cs" />
-    <Compile Include="Data\Helpers\AutoCls.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Data\Helpers\CEP.cs" />
     <Compile Include="Data\Helpers\Masks.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
@@ -1186,6 +1183,10 @@
     <None Include="Assets\Images\icons\warning.png" />
     <None Include="Assets\Images\icons\box.png" />
     <None Include="Assets\Images\icons\money-bag %281%29.png" />
+    <None Include="Assets\Images\icons\error16x.png" />
+    <None Include="Assets\Images\icons\success16x.png" />
+    <None Include="Assets\Images\icons\edit16x.png" />
+    <None Include="Assets\Images\icons\warning16x.png" />
     <Content Include="View\Reports\html\CupomAssinaturaCaixaMov.html" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
