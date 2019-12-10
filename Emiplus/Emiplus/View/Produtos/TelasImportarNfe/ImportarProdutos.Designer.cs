@@ -70,6 +70,9 @@
             this.BuscarProduto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label9 = new System.Windows.Forms.Label();
+            this.IDPDT = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnMarcarCheckBox = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.warning = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -146,6 +149,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.Controls.Add(this.Back);
             this.panel1.Controls.Add(this.btnImportar);
             this.panel1.Location = new System.Drawing.Point(0, 671);
             this.panel1.Name = "panel1";
@@ -175,7 +179,7 @@
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(147, 40);
             this.btnImportar.TabIndex = 177;
-            this.btnImportar.Text = "Importar";
+            this.btnImportar.Text = "Avançar";
             this.btnImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.btnImportar.TextStyle.Enabled = System.Drawing.Color.White;
@@ -313,6 +317,7 @@
             this.panelVinculacao.Controls.Add(this.referencia);
             this.panelVinculacao.Controls.Add(this.label16);
             this.panelVinculacao.Controls.Add(this.nome);
+            this.panelVinculacao.Controls.Add(this.IDPDT);
             this.panelVinculacao.Location = new System.Drawing.Point(34, 517);
             this.panelVinculacao.Name = "panelVinculacao";
             this.panelVinculacao.Size = new System.Drawing.Size(937, 139);
@@ -1077,9 +1082,136 @@
             this.label9.ForeColor = System.Drawing.Color.Gray;
             this.label9.Location = new System.Drawing.Point(27, 410);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(249, 25);
+            this.label9.Size = new System.Drawing.Size(402, 25);
             this.label9.TabIndex = 40047;
-            this.label9.Text = "Vincular a produtos existentes";
+            this.label9.Text = "Gostaria de vincular a um produto já cadastrado?";
+            // 
+            // IDPDT
+            // 
+            this.IDPDT.AlphaNumeric = false;
+            this.IDPDT.BackColor = System.Drawing.Color.White;
+            this.IDPDT.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.IDPDT.BackColorState.Enabled = System.Drawing.Color.White;
+            this.IDPDT.Border.Color = System.Drawing.Color.Gainsboro;
+            this.IDPDT.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.IDPDT.Border.HoverVisible = true;
+            this.IDPDT.Border.Rounding = 8;
+            this.IDPDT.Border.Thickness = 1;
+            this.IDPDT.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.IDPDT.Border.Visible = true;
+            this.IDPDT.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.IDPDT.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.IDPDT.ButtonBorder.HoverVisible = true;
+            this.IDPDT.ButtonBorder.Rounding = 6;
+            this.IDPDT.ButtonBorder.Thickness = 1;
+            this.IDPDT.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.IDPDT.ButtonBorder.Visible = true;
+            this.IDPDT.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.IDPDT.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.IDPDT.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.IDPDT.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IDPDT.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.ButtonIndent = 3;
+            this.IDPDT.ButtonText = "visualButton";
+            this.IDPDT.ButtonVisible = false;
+            this.IDPDT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.Image = null;
+            this.IDPDT.ImageSize = new System.Drawing.Size(16, 16);
+            this.IDPDT.ImageVisible = false;
+            this.IDPDT.ImageWidth = 35;
+            this.IDPDT.Location = new System.Drawing.Point(279, 31);
+            this.IDPDT.MaxLength = 255;
+            this.IDPDT.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.IDPDT.Name = "IDPDT";
+            this.IDPDT.PasswordChar = '\0';
+            this.IDPDT.ReadOnly = false;
+            this.IDPDT.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.IDPDT.Size = new System.Drawing.Size(60, 28);
+            this.IDPDT.TabIndex = 69;
+            this.IDPDT.TextBoxWidth = 48;
+            this.IDPDT.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.IDPDT.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.IDPDT.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.IDPDT.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.IDPDT.Visible = false;
+            this.IDPDT.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.IDPDT.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.IDPDT.Watermark.Text = "Watermark text";
+            this.IDPDT.Watermark.Visible = false;
+            this.IDPDT.WordWrap = true;
+            // 
+            // Back
+            // 
+            this.Back.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Back.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Back.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Back.BackColorState.Hover = System.Drawing.Color.White;
+            this.Back.BackColorState.Pressed = System.Drawing.Color.White;
+            this.Back.Border.Color = System.Drawing.Color.Silver;
+            this.Back.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Back.Border.HoverVisible = true;
+            this.Back.Border.Rounding = 6;
+            this.Back.Border.Thickness = 1;
+            this.Back.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Back.Border.Visible = true;
+            this.Back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Back.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Back.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.Image = null;
+            this.Back.Location = new System.Drawing.Point(32, 12);
+            this.Back.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(116, 34);
+            this.Back.TabIndex = 219;
+            this.Back.Text = "Voltar";
+            this.Back.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Back.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Back.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Back.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Back.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnMarcarCheckBox
+            // 
+            this.btnMarcarCheckBox.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMarcarCheckBox.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.BackColorState.Hover = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.BackColorState.Pressed = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.Border.HoverColor = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.HoverVisible = true;
+            this.btnMarcarCheckBox.Border.Rounding = 6;
+            this.btnMarcarCheckBox.Border.Thickness = 1;
+            this.btnMarcarCheckBox.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMarcarCheckBox.Border.Visible = true;
+            this.btnMarcarCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarCheckBox.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMarcarCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarCheckBox.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.Image = null;
+            this.btnMarcarCheckBox.Location = new System.Drawing.Point(32, 89);
+            this.btnMarcarCheckBox.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnMarcarCheckBox.Name = "btnMarcarCheckBox";
+            this.btnMarcarCheckBox.Size = new System.Drawing.Size(116, 18);
+            this.btnMarcarCheckBox.TabIndex = 40051;
+            this.btnMarcarCheckBox.Tag = " ";
+            this.btnMarcarCheckBox.Text = "Desmarcar Todos";
+            this.btnMarcarCheckBox.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMarcarCheckBox.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnMarcarCheckBox.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // pictureBox4
             // 
@@ -1172,6 +1304,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnMarcarCheckBox);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.btnVincular);
             this.Controls.Add(this.panelVinculacao);
@@ -1256,5 +1389,8 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox warning;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox IDPDT;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Back;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnMarcarCheckBox;
     }
 }

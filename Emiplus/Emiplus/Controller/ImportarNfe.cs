@@ -111,19 +111,25 @@ namespace Emiplus.Controller
 
                 foreach (var item in produtos)
                 {
-                    Produtos.Add(
-                        new
-                        {
-                            nrItem = item.nItem,
-                            Referencia = item.prod.cProd,
-                            CodeBarras = item.prod.cEAN,
-                            Descricao = item.prod.xProd,
-                            NCM = item.prod.NCM,
-                            CFOP = item.prod.CFOP,
-                            Medida = item.prod.uCom,
-                            Quantidade = item.prod.qCom,
-                            VlrCompra = item.prod.vUnCom
-                        });
+                    object obj = new
+                    {
+                        nrItem = item.nItem,
+                        Referencia = item.prod.cProd,
+                        CodeBarras = item.prod.cEAN,
+                        Descricao = item.prod.xProd,
+                        NCM = item.prod.NCM,
+                        CFOP = item.prod.CFOP,
+                        Medida = item.prod.uCom,
+                        Quantidade = item.prod.qCom,
+                        VlrCompra = item.prod.vUnCom
+                    };
+
+                    if (Produtos.Contains(obj))
+                    {
+                        Produtos.
+                    }
+
+                    Produtos.Add(obj);
                 }
             }
             else
