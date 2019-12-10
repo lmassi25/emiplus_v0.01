@@ -20,6 +20,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Threading;
 using ESC_POS_USB_NET.Printer;
+using System.Drawing;
 
 namespace Emiplus.Controller
 {
@@ -259,6 +260,89 @@ namespace Emiplus.Controller
 
                     Printer printer = new Printer(printername);
 
+                    //using (WebClient wc = new WebClient())
+                    //{
+                    //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                    //    MemoryStream stream = new MemoryStream(originalData);
+                    //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                    //    Bitmap bitmap = new Bitmap(img);
+                    //    printer.Image(bitmap);
+                    //}
+
+                    printer.AlignCenter();
+                    printer.BoldMode("CHARMOSA COSMETICOS");
+                    printer.Append("S. R. MENDES GOMES - CONFECCOES");
+                    printer.Append("Rua Brasil, 379 - Centro - Monte Aprazível/SP");
+                    printer.Append("(17) 3333-3333");
+
+                    printer.NewLines(3);
+
+                    printer.BoldMode("CNPJ: 09.461.157/0001-99 IE: 462.084.949.119");
+                    printer.Separator();
+
+                    printer.BoldMode("Extrato N°");
+                    printer.BoldMode("CUPOM FISCAL ELETRÔNICO - SAT");
+                    printer.Separator();
+
+                    printer.AlignLeft();
+                    printer.Append("CPF/CNPJ do Consumidor: 222.222.222-03");
+                    printer.Separator();
+
+                    printer.AlignCenter();
+                    printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
+                    printer.Separator();
+
+                    printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+
+                    printer.NewLines(2);
+
+                    printer.Append(AddSpaces("Subtotal","0,00"));
+                    printer.Append(AddSpaces("Descontos", "0,00"));
+                    printer.BoldMode(AddSpaces("TOTAL R$", "0,00"));
+                    
+                    printer.NewLines(2);
+
+                    printer.Append(AddSpaces("<meio pagamento>", "0,00"));
+                    printer.Append(AddSpaces("Troco R$", "0,00"));
+
+                    printer.Separator();
+
+                    printer.AlignLeft();
+                    printer.Append("OBSERVAÇÕES DO CONTRIBUINTE");
+                    printer.NewLines(2);
+
+                    printer.Append("*Valor aproximado dos tributos do item");
+                    printer.Append(AddSpaces("Valor aproximado dos tributos deste cupom R$", "0,00"));
+                    printer.Append("(conforme Lei Fed.12.741/2012)");
+
+                    printer.Separator();
+
+                    printer.AlignCenter();
+                    printer.Append("SAT N° 000.000.000");
+                    printer.Append("00/00/0000 - 00:00:00");
+                    printer.NewLines(2);
+
+                    printer.CondensedMode("35191208723218000186599000134890002403570063");
+                    
+                    //printer.Code128("3519120872321800018659");
+                    //printer.Code128("9000134890002403570063");
+                    //printer.Code128("35191208723218000186599000134890002403570063");
+
+                    //printer.SetLineHeight(50);
+                    //printer.Append(BarcodeString("3519120872321800018659"));
+                    //printer.Append(BarcodeString("9000134890002403570063"));
+
+                    //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
+                    printer.QrCode("|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q==");
+
+                    printer.NewLines(3);
+
+                    printer.AlignCenter();
+                    printer.Append("Consulte o QRCode pelo aplicativo De olho na");
+                    printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
+
+                    printer.FullPaperCut();
+                    printer.PrintDocument();
 
                     return "";
 
@@ -1714,5 +1798,26 @@ namespace Emiplus.Controller
         [DllImport("shell32.dll", EntryPoint = "ShellExecute")]
         public static extern int ShellExecuteA(int hwnd, string lpOperation,
         string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
+
+        public static string AddSpaces(string valueF, string valueE)
+        {
+            return valueF + "".PadLeft(48-(valueF.Length + valueE.Length)) + valueE;
+        }
+
+        // Set Barcode height
+        static byte[] SetBarcodeHeight = new byte[] { 0x1D, 0x68, 0x25 };
+        // Set Barcode width
+        static byte[] SetBarcodeWidth = new byte[] { 0x1D, 0x77, 0x03 };
+        // Begin barcode printing
+        static byte[] EAN13BarCodeStart = new byte[] { 0x1D, 0x6B, 67, 13 };
+
+        public static string BarcodeString(string barcode)
+        {
+            string s = ASCIIEncoding.ASCII.GetString(SetBarcodeHeight);
+            s += ASCIIEncoding.ASCII.GetString(SetBarcodeWidth);
+            s += string.Format("{0}{1}", ASCIIEncoding.ASCII.GetString(EAN13BarCodeStart), barcode);
+
+            return s;
+        }
     }
 }

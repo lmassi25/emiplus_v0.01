@@ -38,7 +38,7 @@
                         <th scope="col">Emissão</th>
                         <th scope="col">Cliente</th>
                         <th scope="col">Colaborador</th>
-                        <th scope="col">Total</th>
+                        <th style="text-align: right;" scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +59,7 @@
                     {% for itemTotal in Total %}
                     <tr style="text-align: right;">
                         <td>
-                            <strong>TOTAL{{itemTotal.TOTAL}}</strong>
+                            <strong>TOTAL {{itemTotal.TOTAL}}</strong>
                             <br/>
                             <strong>{{itemTotal.ID}} registro(s) encontrado(s).</strong>
                         </td>

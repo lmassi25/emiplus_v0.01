@@ -1,13 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -40,8 +34,7 @@ namespace Emiplus.View.Comercial
 
             return checkNota.Status;
         }
-
-
+        
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
