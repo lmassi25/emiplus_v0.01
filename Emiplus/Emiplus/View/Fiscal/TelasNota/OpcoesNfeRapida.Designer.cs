@@ -61,7 +61,7 @@
             this.Imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Imprimir.Image")));
+            this.Imprimir.Image = null;
             this.Imprimir.Location = new System.Drawing.Point(173, 283);
             this.Imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Imprimir.Name = "Imprimir";
