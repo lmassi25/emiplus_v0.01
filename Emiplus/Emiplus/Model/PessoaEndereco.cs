@@ -87,7 +87,7 @@
             return this;
         }
 
-        public bool Save(PessoaEndereco data)
+        public bool Save(PessoaEndereco data, bool message = true)
         {
             if (ValidarDados(data))
                 return false;
@@ -97,11 +97,14 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Endereço salvo com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Endereço salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
@@ -110,11 +113,14 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Endereço atualizado com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Endereço atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }

@@ -82,10 +82,6 @@ namespace Emiplus.View.Produtos
                         notas.Add(dataNfe);
                     }
 
-                    //pathXml = Path.GetDirectoryName(ofd.FileName) + @"\" + ofd.SafeFileName;
-                    //pathFile.Text = pathXml;
-
-                    //dataNfe = new Controller.ImportarNfe(pathXml);
                     LoadDadosNota();
                 }
             };

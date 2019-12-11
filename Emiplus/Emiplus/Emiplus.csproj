@@ -631,6 +631,12 @@
     <Compile Include="View\Produtos\Etiquetas.Designer.cs">
       <DependentUpon>Etiquetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarCompraConcluido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarCompraConcluido.Designer.cs">
+      <DependentUpon>ImportarCompraConcluido.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\TelasImportarNfe\ImportarFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -684,6 +690,12 @@
     </Compile>
     <Compile Include="View\Produtos\ReajusteDeProduto.Designer.cs">
       <DependentUpon>ReajusteDeProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarPagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\TelasImportarNfe\ImportarPagamentos.Designer.cs">
+      <DependentUpon>ImportarPagamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\TelasImportarNfe\ImportarProdutos.cs">
       <SubType>Form</SubType>
@@ -959,6 +971,9 @@
     <EmbeddedResource Include="View\Produtos\Etiquetas.resx">
       <DependentUpon>Etiquetas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarCompraConcluido.resx">
+      <DependentUpon>ImportarCompraConcluido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarFornecedor.resx">
       <DependentUpon>ImportarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -985,6 +1000,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\ReajusteDeProduto.resx">
       <DependentUpon>ReajusteDeProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarPagamentos.resx">
+      <DependentUpon>ImportarPagamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarProdutos.resx">
       <DependentUpon>ImportarProdutos.cs</DependentUpon>

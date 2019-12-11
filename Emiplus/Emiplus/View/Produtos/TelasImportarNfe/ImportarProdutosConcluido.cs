@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
         private void SetTable()
         {
-            GridLista.VirtualMode = true;
-
             GridLista.ColumnCount = 2;
 
             GridLista.Columns[0].Name = "Produto";
@@ -59,12 +58,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         private void Importar()
         {
             btnImportar.Visible = false;
-            pictureBox2.Visible = true;
 
             bool success = false;
             foreach (dynamic item in ImportarProdutos.produtos)
             {
                 _mItem.Id = item.Id;
+                _mItem.Tipo = "Produtos";
+                _mItem.Excluir = 0;
                 _mItem.Referencia = item.Referencia;
                 _mItem.CodeBarras = item.CodeBarras;
                 _mItem.Nome = item.Nome;
@@ -73,11 +73,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.Categoriaid = item.CategoriaId;
                 _mItem.ValorCompra = item.ValorCompra;
                 _mItem.ValorVenda = item.ValorVenda;
-                Thread.Sleep(5000);
+                _mItem.Fornecedor = Validation.ConvertToInt32(item.Fornecedor);
                 if (_mItem.Save(_mItem, false))
                 {
                     success = true;
-                    
+
                     foreach (DataGridViewRow gridData in GridLista.Rows)
                     {
                         if ((int)gridData.Cells["Ordem"].Value == (int)item.Ordem)
@@ -93,7 +93,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             if (success)
             {
                 label1.Text = "Importação Concluída! :)";
-                pictureBox2.Visible = false;
                 btnImportar.Visible = false;
                 btnClose.Visible = true;
             }
