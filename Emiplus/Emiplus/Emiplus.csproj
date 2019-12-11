@@ -227,6 +227,7 @@
     <Compile Include="Controller\Imposto.cs" />
     <Compile Include="Controller\Item.cs" />
     <Compile Include="Controller\Natureza.cs" />
+    <Compile Include="Controller\Nota.cs" />
     <Compile Include="Controller\Pedido.cs" />
     <Compile Include="Controller\PedidoImpressao.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
@@ -543,6 +544,18 @@
     </Compile>
     <Compile Include="View\Fiscal\Nota.Designer.cs">
       <DependentUpon>Nota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\CartaCorrecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\CartaCorrecao.Designer.cs">
+      <DependentUpon>CartaCorrecao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\CartaCorrecaoAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\CartaCorrecaoAdd.Designer.cs">
+      <DependentUpon>CartaCorrecaoAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Fiscal\TelasNota\DetailsClient.cs">
       <SubType>Form</SubType>
@@ -910,6 +923,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\CartaCorrecao.resx">
+      <DependentUpon>CartaCorrecao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\CartaCorrecaoAdd.resx">
+      <DependentUpon>CartaCorrecaoAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\DetailsClient.resx">
       <DependentUpon>DetailsClient.cs</DependentUpon>

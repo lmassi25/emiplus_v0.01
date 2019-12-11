@@ -51,7 +51,7 @@ namespace Emiplus.Controller
         private Model.PessoaContato _transportadoraContato;
 
         private Model.Natureza _natureza;
-
+               
         private static readonly HttpClient client = new HttpClient();
 
         private string _path;
@@ -641,6 +641,67 @@ namespace Emiplus.Controller
 
                 #endregion
             }
+        }
+
+        /// <summary> 
+        /// Envia
+        /// </summary>
+        /// <param name="tipo">NFe, NFCe, CFe</param>  
+        public string EmitirCCe(int Pedido)
+        {
+            Model.Nota _notaCCe = new Model.Nota();
+
+            _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", Pedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+            Start(Pedido, "NFe");
+
+            string SeqEvento = "";
+
+            if(_notaCCe.Serie == null)
+            {
+                SeqEvento = new Controller.Nota().GetSeqCCe(Pedido);
+                _notaCCe.Serie = SeqEvento;
+            }
+                
+            string arqPath = _path_enviada + "\\CCe" + _pedido.Id + ".tx2";
+
+            if (File.Exists(arqPath))
+            {
+                File.Delete(arqPath);
+            }
+
+            #region TX2
+
+            StreamWriter tx2 = new StreamWriter(arqPath, true, Encoding.UTF8);
+
+            tx2.WriteLine("Documento=CCE");
+            tx2.WriteLine("ChaveNota=" + _nota.ChaveDeAcesso);
+            tx2.WriteLine("dhEvento=" + Validation.DateNowToSql() + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00"));
+            tx2.WriteLine("Orgao=" + codUF(_emitenteEndereco.Estado));
+            tx2.WriteLine("SeqEvento=" + SeqEvento);
+            tx2.WriteLine("Correcao=" + _notaCCe.correcao);
+            tx2.WriteLine("Lote=" + "0000000000" + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") + "5");
+            tx2.WriteLine("Fuso=" + DateTime.Now.ToString("zzz"));
+
+            tx2.Close();
+
+            #endregion
+
+            if (!File.Exists(arqPath))
+            {
+                _msg = "Opss.. encontramos um erro: Arquivo não encontrado.";
+                return _msg;
+            }
+
+            _msg = RequestSend(File.ReadAllText(arqPath));
+
+            if(_msg.Contains("AUTORIZADA"))
+            {
+                _notaCCe.Status = "Autorizada";
+                _notaCCe.Save(_notaCCe, false);
+            }
+
+            return _msg;
         }
 
         #region NFE 
@@ -1619,6 +1680,12 @@ namespace Emiplus.Controller
         /// <param name="tipo">envia</param>        
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
+
+        private string RequestSendCCe(string tx2)
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + tx2;
+            return request(requestData, "NFe", "envia", "POST");
+        }
 
         private string RequestSend(string xml, string documento = "NFe")
         {
