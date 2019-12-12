@@ -521,11 +521,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             }
                         }
 
-                        
                         estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
 
                         if (ImportarNfe.optionSelected == 1)
                             estoque = 0;
+
+                        if (ImportarNfe.optionSelected == 3)
+                            estoque = Validation.ConvertToDouble(item.Cells[6].Value);
 
                         produtos.Add(new
                         {

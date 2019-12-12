@@ -98,6 +98,38 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     }
                 }
 
+                OpenForm.Show<TelasImportarNfe.ImportarCompraConcluido>(this);
+            };
+
+            GridLista.CellClick += (s, e) =>
+            {
+                if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
+                {
+                    if ((bool)GridLista.SelectedRows[0].Cells["Importar"].Value == false)
+                        GridLista.SelectedRows[0].Cells["Importar"].Value = true;
+                    else
+                        GridLista.SelectedRows[0].Cells["Importar"].Value = false;
+                }
+            };
+
+            GridLista.CellMouseEnter += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
+                    dataGridView.Cursor = Cursors.Hand;
+            };
+
+            GridLista.CellMouseLeave += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
+                    dataGridView.Cursor = Cursors.Default;
             };
 
             Back.Click += (s, e) => Close();
