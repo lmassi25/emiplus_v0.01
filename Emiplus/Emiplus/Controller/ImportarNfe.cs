@@ -75,7 +75,7 @@ namespace Emiplus.Controller
             return Fornecedor[0];
         }
 
-        public ArrayList GetPagamentos()
+        public dynamic GetPagamentos()
         {
             return Pagamentos;
         }
@@ -111,19 +111,25 @@ namespace Emiplus.Controller
 
                 foreach (var item in produtos)
                 {
-                    Produtos.Add(
-                        new
-                        {
-                            nrItem = item.nItem,
-                            Referencia = item.prod.cProd,
-                            CodeBarras = item.prod.cEAN,
-                            Descricao = item.prod.xProd,
-                            NCM = item.prod.NCM,
-                            CFOP = item.prod.CFOP,
-                            Medida = item.prod.uCom,
-                            Quantidade = item.prod.qCom,
-                            VlrCompra = item.prod.vUnCom
-                        });
+                    object obj = new
+                    {
+                        nrItem = item.nItem,
+                        Referencia = item.prod.cProd,
+                        CodeBarras = item.prod.cEAN,
+                        Descricao = item.prod.xProd,
+                        NCM = item.prod.NCM,
+                        CFOP = item.prod.CFOP,
+                        Medida = item.prod.uCom,
+                        Quantidade = item.prod.qCom,
+                        VlrCompra = item.prod.vUnCom
+                    };
+
+                    //if (Produtos.Contains(obj))
+                    //{
+                    //    Produtos.
+                    //}
+
+                    Produtos.Add(obj);
                 }
             }
             else
@@ -146,39 +152,46 @@ namespace Emiplus.Controller
 
         private void LoadFornecedor()
         {
-            if (dataNota.ContainsKey("dest"))
+            if (dataNota.ContainsKey("emit"))
             {
                 Fornecedor = new ArrayList();
 
                 string document = "";
                 string ie = "";
-                if (dataNota.dest.ContainsKey("CPF"))
-                    document = dataNota.dest.CPF;
+                string email = "";
+                string fone = "";
+                if (dataNota.emit.ContainsKey("CPF"))
+                    document = dataNota.emit.CPF;
 
-                if (dataNota.dest.ContainsKey("CNPJ"))
-                    document = dataNota.dest.CNPJ;
+                if (dataNota.emit.ContainsKey("CNPJ"))
+                    document = dataNota.emit.CNPJ;
 
-                if (dataNota.dest.ContainsKey("IE"))
-                    ie = dataNota.dest.IE;
+                if (dataNota.emit.ContainsKey("IE"))
+                    ie = dataNota.emit.IE;
 
-                if (dataNota.dest.enderDest.ContainsKey("fone"))
-                    ie = dataNota.dest.enderDest.fone;
+                if (dataNota.emit.enderEmit.ContainsKey("fone"))
+                    fone = dataNota.emit.enderEmit.fone;
+
+                if (dataNota.emit.ContainsKey("email"))
+                    email = dataNota.emit.email;
 
                 Fornecedor.Add(
                     new
                     {
                         IE = ie,
                         CPFcnpj = document,
-                        razaoSocial = dataNota.dest.xNome,
-                        Addr_Rua = dataNota.dest.enderDest.xLgr,
-                        Addr_Nr = dataNota.dest.enderDest.nro,
-                        Addr_Bairro = dataNota.dest.enderDest.xBairro,
-                        Addr_IBGE = dataNota.dest.enderDest.cMun,
-                        Addr_Cidade = dataNota.dest.enderDest.xMun,
-                        Addr_UF = dataNota.dest.enderDest.UF,
-                        Addr_CEP = dataNota.dest.enderDest.CEP,
-                        Addr_cPais = dataNota.dest.enderDest.cPais,
-                        Addr_xPais = dataNota.dest.enderDest.xPais
+                        razaoSocial = dataNota.emit.xNome,
+                        Addr_Rua = dataNota.emit.enderEmit.xLgr,
+                        Addr_Nr = dataNota.emit.enderEmit.nro,
+                        Addr_Bairro = dataNota.emit.enderEmit.xBairro,
+                        Addr_IBGE = dataNota.emit.enderEmit.cMun,
+                        Addr_Cidade = dataNota.emit.enderEmit.xMun,
+                        Addr_UF = dataNota.emit.enderEmit.UF,
+                        Addr_CEP = dataNota.emit.enderEmit.CEP,
+                        Addr_cPais = dataNota.emit.enderEmit.cPais,
+                        Addr_xPais = dataNota.emit.enderEmit.xPais,
+                        Email = email,
+                        Tel = fone
                     }
                 );
             }
@@ -210,7 +223,7 @@ namespace Emiplus.Controller
                             dateTime = dataCOBR.dVenc;
                             Valor = dataCOBR.vDup;
 
-                            datesTimes.Add(new { dateTime });
+                            datesTimes.Add(dateTime);
 
                             Pagamentos.Add(new
                             {

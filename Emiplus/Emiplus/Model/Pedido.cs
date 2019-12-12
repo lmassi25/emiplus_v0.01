@@ -68,6 +68,7 @@
         public string cfe_nome { get; set; }
 
         public string cfe_cpf { get; set; }
+        public string Chavedeacesso { get; set; }
 
         #endregion
 

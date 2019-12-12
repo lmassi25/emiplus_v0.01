@@ -29,27 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportarProdutos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnImportar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.btnVincular = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panelVinculacao = new System.Windows.Forms.Panel();
+            this.warning = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.valorCompraAtual = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.novoEstoque = new System.Windows.Forms.Label();
             this.estoqueProduto = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnSalvarVinculacao = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.estoqueatual = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -60,37 +67,33 @@
             this.valorvenda = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.valorcompra = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
             this.codebarras = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.referencia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.nome = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.IDPDT = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.BuscarProduto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnMarcarCheckBox = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.warning = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panelVinculacao.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.warning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -129,6 +132,16 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Importar Nota Fiscal";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(197, 11);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -141,16 +154,61 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Produtos";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.Controls.Add(this.Back);
             this.panel1.Controls.Add(this.btnImportar);
             this.panel1.Location = new System.Drawing.Point(0, 671);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 58);
             this.panel1.TabIndex = 179;
+            // 
+            // Back
+            // 
+            this.Back.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Back.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Back.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Back.BackColorState.Hover = System.Drawing.Color.White;
+            this.Back.BackColorState.Pressed = System.Drawing.Color.White;
+            this.Back.Border.Color = System.Drawing.Color.Silver;
+            this.Back.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Back.Border.HoverVisible = true;
+            this.Back.Border.Rounding = 6;
+            this.Back.Border.Thickness = 1;
+            this.Back.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Back.Border.Visible = true;
+            this.Back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Back.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Back.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.Image = null;
+            this.Back.Location = new System.Drawing.Point(32, 12);
+            this.Back.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(116, 34);
+            this.Back.TabIndex = 219;
+            this.Back.Text = "Voltar";
+            this.Back.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Back.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Back.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Back.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Back.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Back.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnImportar
             // 
@@ -175,7 +233,7 @@
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(147, 40);
             this.btnImportar.TabIndex = 177;
-            this.btnImportar.Text = "Importar";
+            this.btnImportar.Text = "Avançar";
             this.btnImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.btnImportar.TextStyle.Enabled = System.Drawing.Color.White;
@@ -218,23 +276,23 @@
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle6;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -313,11 +371,34 @@
             this.panelVinculacao.Controls.Add(this.referencia);
             this.panelVinculacao.Controls.Add(this.label16);
             this.panelVinculacao.Controls.Add(this.nome);
+            this.panelVinculacao.Controls.Add(this.IDPDT);
             this.panelVinculacao.Location = new System.Drawing.Point(34, 517);
             this.panelVinculacao.Name = "panelVinculacao";
             this.panelVinculacao.Size = new System.Drawing.Size(937, 139);
             this.panelVinculacao.TabIndex = 40049;
             this.panelVinculacao.Visible = false;
+            // 
+            // warning
+            // 
+            this.warning.BackColor = System.Drawing.Color.White;
+            this.warning.Image = global::Emiplus.Properties.Resources.warning16x;
+            this.warning.Location = new System.Drawing.Point(888, 36);
+            this.warning.Name = "warning";
+            this.warning.Size = new System.Drawing.Size(15, 15);
+            this.warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.warning.TabIndex = 68;
+            this.warning.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.White;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(718, 13);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 67;
+            this.pictureBox10.TabStop = false;
             // 
             // valorCompraAtual
             // 
@@ -388,6 +469,17 @@
             this.label23.TabIndex = 61;
             this.label23.Text = "Estoque Atual:";
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(488, 73);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 60;
+            this.pictureBox8.TabStop = false;
+            // 
             // btnSalvarVinculacao
             // 
             this.btnSalvarVinculacao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -420,6 +512,17 @@
             this.btnSalvarVinculacao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnSalvarVinculacao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnSalvarVinculacao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(79, 74);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 55;
+            this.pictureBox6.TabStop = false;
             // 
             // estoqueatual
             // 
@@ -766,6 +869,17 @@
             this.valorcompra.Watermark.Visible = false;
             this.valorcompra.WordWrap = true;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(78, 13);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 47;
+            this.pictureBox5.TabStop = false;
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -976,6 +1090,65 @@
             this.nome.Watermark.Visible = false;
             this.nome.WordWrap = true;
             // 
+            // IDPDT
+            // 
+            this.IDPDT.AlphaNumeric = false;
+            this.IDPDT.BackColor = System.Drawing.Color.White;
+            this.IDPDT.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.IDPDT.BackColorState.Enabled = System.Drawing.Color.White;
+            this.IDPDT.Border.Color = System.Drawing.Color.Gainsboro;
+            this.IDPDT.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.IDPDT.Border.HoverVisible = true;
+            this.IDPDT.Border.Rounding = 8;
+            this.IDPDT.Border.Thickness = 1;
+            this.IDPDT.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.IDPDT.Border.Visible = true;
+            this.IDPDT.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.IDPDT.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.IDPDT.ButtonBorder.HoverVisible = true;
+            this.IDPDT.ButtonBorder.Rounding = 6;
+            this.IDPDT.ButtonBorder.Thickness = 1;
+            this.IDPDT.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.IDPDT.ButtonBorder.Visible = true;
+            this.IDPDT.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.IDPDT.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.IDPDT.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.IDPDT.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IDPDT.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.ButtonIndent = 3;
+            this.IDPDT.ButtonText = "visualButton";
+            this.IDPDT.ButtonVisible = false;
+            this.IDPDT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.Image = null;
+            this.IDPDT.ImageSize = new System.Drawing.Size(16, 16);
+            this.IDPDT.ImageVisible = false;
+            this.IDPDT.ImageWidth = 35;
+            this.IDPDT.Location = new System.Drawing.Point(279, 31);
+            this.IDPDT.MaxLength = 255;
+            this.IDPDT.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.IDPDT.Name = "IDPDT";
+            this.IDPDT.PasswordChar = '\0';
+            this.IDPDT.ReadOnly = false;
+            this.IDPDT.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.IDPDT.Size = new System.Drawing.Size(60, 28);
+            this.IDPDT.TabIndex = 69;
+            this.IDPDT.TextBoxWidth = 48;
+            this.IDPDT.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.IDPDT.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.IDPDT.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.IDPDT.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.IDPDT.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.IDPDT.Visible = false;
+            this.IDPDT.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.IDPDT.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDPDT.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.IDPDT.Watermark.Text = "Watermark text";
+            this.IDPDT.Watermark.Visible = false;
+            this.IDPDT.WordWrap = true;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1077,9 +1250,43 @@
             this.label9.ForeColor = System.Drawing.Color.Gray;
             this.label9.Location = new System.Drawing.Point(27, 410);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(249, 25);
+            this.label9.Size = new System.Drawing.Size(402, 25);
             this.label9.TabIndex = 40047;
-            this.label9.Text = "Vincular a produtos existentes";
+            this.label9.Text = "Gostaria de vincular a um produto já cadastrado?";
+            // 
+            // btnMarcarCheckBox
+            // 
+            this.btnMarcarCheckBox.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMarcarCheckBox.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.BackColorState.Hover = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.BackColorState.Pressed = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.Border.HoverColor = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.HoverVisible = true;
+            this.btnMarcarCheckBox.Border.Rounding = 6;
+            this.btnMarcarCheckBox.Border.Thickness = 1;
+            this.btnMarcarCheckBox.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMarcarCheckBox.Border.Visible = true;
+            this.btnMarcarCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarCheckBox.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMarcarCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarCheckBox.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.Image = null;
+            this.btnMarcarCheckBox.Location = new System.Drawing.Point(32, 89);
+            this.btnMarcarCheckBox.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnMarcarCheckBox.Name = "btnMarcarCheckBox";
+            this.btnMarcarCheckBox.Size = new System.Drawing.Size(116, 18);
+            this.btnMarcarCheckBox.TabIndex = 40051;
+            this.btnMarcarCheckBox.Tag = " ";
+            this.btnMarcarCheckBox.Text = "Desmarcar Todos";
+            this.btnMarcarCheckBox.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMarcarCheckBox.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnMarcarCheckBox.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // pictureBox4
             // 
@@ -1091,87 +1298,13 @@
             this.pictureBox4.TabIndex = 40050;
             this.pictureBox4.TabStop = false;
             // 
-            // warning
-            // 
-            this.warning.BackColor = System.Drawing.Color.White;
-            this.warning.Image = global::Emiplus.Properties.Resources.warning16x;
-            this.warning.Location = new System.Drawing.Point(888, 36);
-            this.warning.Name = "warning";
-            this.warning.Size = new System.Drawing.Size(15, 15);
-            this.warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.warning.TabIndex = 68;
-            this.warning.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.White;
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(718, 13);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 67;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(488, 73);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 60;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(79, 74);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 55;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(78, 13);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 47;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(197, 11);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // ImportarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnMarcarCheckBox);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.btnVincular);
             this.Controls.Add(this.panelVinculacao);
@@ -1190,19 +1323,19 @@
             this.ShowInTaskbar = false;
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.panelVinculacao.ResumeLayout(false);
             this.panelVinculacao.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1256,5 +1389,8 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox warning;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox IDPDT;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Back;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnMarcarCheckBox;
     }
 }

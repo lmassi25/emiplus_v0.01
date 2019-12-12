@@ -348,7 +348,7 @@
             return Somas;
         }
 
-        public bool Save(PedidoItem data)
+        public bool Save(PedidoItem data, bool message = true)
         {
 
             //var imposto = new Imposto().FindById();
@@ -358,7 +358,9 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() != 1)
                 {
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
@@ -368,7 +370,9 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) != 1)
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }

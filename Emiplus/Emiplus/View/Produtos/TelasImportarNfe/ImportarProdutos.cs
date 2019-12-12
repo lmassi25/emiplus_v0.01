@@ -19,6 +19,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
     {
         private ImportarNfe dataNfe = new ImportarNfe();
         private Model.Item _mItem = new Model.Item();
+        private Model.Pessoa _mPessoa = new Model.Pessoa();
+        private Model.PessoaContato _mPessoaContato = new Model.PessoaContato();
+        private Model.PessoaEndereco _mPessoaAddr = new Model.PessoaEndereco();
+
+        public static ArrayList produtos = new ArrayList();
+        public static ArrayList fornecedores = new ArrayList();
+
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public ImportarProdutos()
@@ -42,6 +49,60 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
+        private int IDFornecedor(dynamic item)
+        {
+            int idFornecedor = 0;
+            string cnpj = item.GetFornecedor().CPFcnpj;
+            var p = _mPessoa.Query().Select("*").Where("cpf", cnpj).FirstOrDefault<Model.Pessoa>();
+            if (p != null)
+            { 
+                idFornecedor = p.Id;
+                return idFornecedor;
+            }
+            else
+            {
+                Model.Pessoa fornecedorCadastro = new Model.Pessoa();
+                fornecedorCadastro.Id = 0;
+                fornecedorCadastro.Tipo = "Fornecedores";
+                fornecedorCadastro.Pessoatipo = "Jurídica";
+                fornecedorCadastro.CPF = item.GetFornecedor().CPFcnpj;
+                fornecedorCadastro.Nome = item.GetFornecedor().razaoSocial;
+                fornecedorCadastro.RG = item.GetFornecedor().IE;
+                if (fornecedorCadastro.Save(fornecedorCadastro, false))
+                {
+                    idFornecedor = fornecedorCadastro.GetLastId();
+
+                    Model.PessoaEndereco fornecedorAddr = new Model.PessoaEndereco();
+                    fornecedorAddr.Id = 0;
+                    fornecedorAddr.Id_pessoa = idFornecedor;
+                    fornecedorAddr.Cep = item.GetFornecedor().Addr_CEP;
+                    fornecedorAddr.Rua = item.GetFornecedor().Addr_Rua;
+                    fornecedorAddr.Estado = item.GetFornecedor().Addr_UF;
+                    fornecedorAddr.Cidade = item.GetFornecedor().Addr_Cidade;
+                    fornecedorAddr.Nr = item.GetFornecedor().Addr_Nr;
+                    fornecedorAddr.Bairro = item.GetFornecedor().Addr_Bairro;
+                    fornecedorAddr.IBGE = item.GetFornecedor().Addr_IBGE;
+                    fornecedorAddr.Pais = "Brasil";
+                    fornecedorAddr.Save(fornecedorAddr, false);
+
+                    if (!string.IsNullOrEmpty(item.GetFornecedor().Email) || !string.IsNullOrEmpty(item.GetFornecedor().Tel))
+                    {
+                        Model.PessoaContato fornecedorContato = new Model.PessoaContato();
+                        fornecedorContato.Id = 0;
+                        fornecedorContato.Contato = "Contato 1";
+                        fornecedorContato.Id_pessoa = idFornecedor;
+                        fornecedorContato.Email = item.GetFornecedor().Email;
+                        fornecedorContato.Telefone = item.GetFornecedor().Tel;
+                        fornecedorContato.Save(fornecedorContato, false);
+                    }
+
+                    return idFornecedor;
+                }
+            }
+
+            return 0;
+        }
+
         /// <summary>
         /// Pega os produtos das notas e cria um novo arraylist
         /// </summary>
@@ -55,9 +116,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 foreach (Controller.ImportarNfe item in count)
                 {
+                    int idFornecedor = IDFornecedor(item);
                     foreach (dynamic pdt in item.GetProdutos())
                     {
-                        allProdutos.Insert(0, pdt);
+                        object produtos = new
+                        {
+                            pdt,
+                            Fornecedor = idFornecedor
+                        };
+
+                        allProdutos.Insert(0, produtos);
                     }
                 }
 
@@ -80,7 +148,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         /// <param name="dataProdutos">array dos produtos</param>
         private void SetDataTable(DataGridView Table, ArrayList dataProdutos)
         {
-            Table.ColumnCount = 10;
+            Table.ColumnCount = 12;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -118,8 +186,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Table.Columns[5].Name = "Medida";
             Table.Columns[5].Width = 60;
 
-            Table.Columns[6].Name = "Qtd.";
+            if (ImportarNfe.optionSelected != 1)
+                Table.Columns[6].Name = "Qtd. (+)";
+            else
+                Table.Columns[6].Name = "Qtd.";
             Table.Columns[6].Width = 60;
+            if (ImportarNfe.optionSelected == 1)
+                Table.Columns[6].Visible = false;
 
             Table.Columns[7].Name = "Vlr. Compra";
             Table.Columns[7].Width = 100;
@@ -148,30 +221,38 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Table.Columns[12].Name = "EDITADO";
             Table.Columns[12].Visible = false;
 
+            Table.Columns[13].Name = "IDVINCULO";
+            Table.Columns[13].Visible = false;
+
+            Table.Columns[14].Name = "Fornecedor";
+            Table.Columns[14].Visible = false;
+
             Table.Rows.Clear();
 
             foreach (dynamic item in dataProdutos)
             {
                 dynamic findItem = null;
-                if (FindItem(item.CodeBarras) != null)
+                if (FindItem(item.pdt.CodeBarras) != null)
                 {
-                    findItem = FindItem(item.CodeBarras);
+                    findItem = FindItem(item.pdt.CodeBarras);
                 }
 
                 Table.Rows.Add(
                     true,
                     findItem != null ? new Bitmap(Properties.Resources.success16x) : new Bitmap(Properties.Resources.error16x),
-                    item.Referencia,
-                    item.CodeBarras,
-                    item.Descricao,
-                    item.Medida,
-                    FormatPriceXml(item.Quantidade),
-                    FormatPriceXml(item.VlrCompra),
+                    item.pdt.Referencia,
+                    item.pdt.CodeBarras,
+                    item.pdt.Descricao,
+                    item.pdt.Medida,
+                    FormatPriceXml(item.pdt.Quantidade),
+                    FormatPriceXml(item.pdt.VlrCompra),
                     findItem != null ? Validation.FormatPrice(Validation.ConvertToDouble(findItem.VALORVENDA)) : "00,00",
                     new Bitmap(Properties.Resources.edit16x),
                     findItem != null ? findItem.ID : 0,
                     findItem != null ? findItem.CATEGORIAID : "",
-                    "0"
+                    "0",
+                    "0",
+                    item.Fornecedor
                 );
             }
 
@@ -185,7 +266,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         {
             if (edit)
             {
-                _mItem = new Model.Item();
+                Model.Item _mItem = new Model.Item();
                 
                 panelVinculacao.Visible = true;
                 panelVinculacao.Location = new Point(34, 453);
@@ -193,20 +274,31 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 pictureBox4.Visible = false;
                 BuscarProduto.Visible = false;
                 btnVincular.Visible = false;
-                label9.Text = "Editar produto selecionado";
+                label9.Text = "Edite o produto selecionado abaixo";
+
+                if (ImportarNfe.optionSelected == 1)
+                {
+                    label21.Visible = false;
+                    pictureBox8.Visible = false;
+                    estoqueatual.Visible = false;
+                    label23.Visible = false;
+                    estoqueProduto.Visible = false;
+                    label24.Visible = false;
+                    novoEstoque.Visible = false;
+                }
 
                 string id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
                 string editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
                 
                 // TRÁS ALGUNS DADOS DO BANCO CASO EXISTA ALGUM REGISTRO, SE NÃO, PEGA OS DADOS DO DATAGRID "PARA EDITAR"
-                _mItem = _mItem.Query().Select("*").Where("ID", id).FirstOrDefault<Model.Item>();
+                _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Model.Item>();
                 if (_mItem != null && editado == "0")
                 {
                     nome.Text = _mItem?.Nome ?? "";
                     codebarras.Text = _mItem?.CodeBarras ?? "";
                     referencia.Text = _mItem?.Referencia ?? "";
                     valorcompra.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
-                    estoqueatual.Text = GridLista.SelectedRows[0].Cells["Qtd."].Value.ToString();
+                    estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
                     valorvenda.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorVenda));
                     valorCompraAtual.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
                     estoqueProduto.Text = _mItem.EstoqueAtual.ToString();
@@ -223,7 +315,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     codebarras.Text = GridLista.SelectedRows[0].Cells["Cód. de Barras"].Value.ToString();
                     referencia.Text = GridLista.SelectedRows[0].Cells["Referência"].Value.ToString();
                     valorcompra.Text = Validation.FormatPrice(Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value));
-                    estoqueatual.Text = GridLista.SelectedRows[0].Cells["Qtd."].Value.ToString();
+                    estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
                     valorvenda.Text = GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value.ToString();
                     valorCompraAtual.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
                     estoqueProduto.Text = "N/D";
@@ -240,10 +332,36 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 if (GridLista.SelectedRows.Count > 0)
                 {
+                    _mItem = new Model.Item();
+
                     panelVinculacao.Visible = true;
 
-                    var codeBarras = GridLista.SelectedRows[0].Cells["Importar"].Value;
-                    MessageBox.Show(codeBarras.ToString());
+                    int id = collection.Lookup(BuscarProduto.Text); // id produto
+                    string editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
+
+                    _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Model.Item>();
+                    if (_mItem != null && editado == "0")
+                    {
+                        IDPDT.Text = _mItem?.Id.ToString() ?? "0";
+                        nome.Text = _mItem?.Nome ?? "";
+                        codebarras.Text = _mItem?.CodeBarras ?? "";
+                        referencia.Text = _mItem?.Referencia ?? "";
+                        valorcompra.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
+                        estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
+                        valorvenda.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorVenda));
+                        valorCompraAtual.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
+                        estoqueProduto.Text = _mItem.EstoqueAtual.ToString();
+                        novoEstoque.Text = (Validation.ConvertToDouble(estoqueatual.Text) + Validation.ConvertToDouble(estoqueProduto.Text)).ToString();
+
+                        if (_mItem.Medida != null)
+                            Medidas.SelectedItem = _mItem.Medida;
+
+                        Categorias.SelectedValue = _mItem.Categoriaid;
+                    }
+                    else
+                    {
+                        Alert.Message("Oppss", "Não encontramos o produto.", Alert.AlertType.warning);
+                    }
 
                     return;
                 }
@@ -261,7 +379,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.SelectedRows[0].Cells["Cód. de Barras"].Value = codebarras.Text;
             GridLista.SelectedRows[0].Cells["Referência"].Value = referencia.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value = valorcompra.Text;
-            GridLista.SelectedRows[0].Cells["Qtd."].Value = estoqueatual.Text;
+
+            if (ImportarNfe.optionSelected == 1)
+                GridLista.SelectedRows[0].Cells[6].Value = 0;
+
+            if (ImportarNfe.optionSelected == 2)
+                GridLista.SelectedRows[0].Cells[6].Value = estoqueatual.Text;
+
             GridLista.SelectedRows[0].Cells["Medida"].Value = Medidas.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value = valorvenda.Text;
 
@@ -269,11 +393,17 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value = (int)Categorias.SelectedValue;
             
             GridLista.SelectedRows[0].Cells["EDITADO"].Value = "1";
+            GridLista.SelectedRows[0].Cells["IDVINCULO"].Value = IDPDT.Text;
+
+            if (!string.IsNullOrEmpty(IDPDT.Text))
+                GridLista.SelectedRows[0].Cells["Cadastrado"].Value = new Bitmap(Properties.Resources.success16x);
+
+            GridLista.Enabled = true;
         }
 
         private dynamic FindItem(string codeBarras)
         {
-            var findItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).FirstOrDefault();
+            var findItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).Where("excluir", 0).FirstOrDefault();
             if (findItem != null)
                 return findItem;
 
@@ -296,6 +426,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 }
 
                 Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+
+
+                if (ImportarNfe.optionSelected == 1)
+                {
+                    BuscarProduto.Visible = false;
+                    label10.Visible = false;
+                    pictureBox4.Visible = false;
+                    btnVincular.Visible = false;
+                    label9.Text = "Edite o produto selecionado abaixo";
+                }
             };
 
             btnVincular.Click += (s, e) => VincularProduto();
@@ -305,7 +445,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 BuscarProduto.Enabled = true;
 
                 if (GridLista.Columns[e.ColumnIndex].Name == "Editar")
+                {
                     VincularProduto(true);
+                    GridLista.Enabled = false;
+                }
 
                 if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
                 {
@@ -340,17 +483,73 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 SalvarProduto();
 
-                label10.Visible = true;
-                pictureBox4.Visible = true;
-                BuscarProduto.Visible = true;
-                btnVincular.Visible = true;
-                label9.Text = "Vincular a produtos existentes";
-                panelVinculacao.Location = new Point(34, 517);
+                if (ImportarNfe.optionSelected != 1)
+                {
+                    label10.Visible = true;
+                    pictureBox4.Visible = true;
+                    BuscarProduto.Visible = true;
+                    btnVincular.Visible = true;
+                    label9.Text = "Vincular a produtos existentes";
+                    panelVinculacao.Location = new Point(34, 517);
+                }
+
                 panelVinculacao.Visible = false;
             };
 
             btnImportar.Click += (s, e) =>
             {
+                produtos.Clear();
+
+                int i = -1;
+                foreach (DataGridViewRow item in GridLista.Rows)
+                {
+                    i++;
+                    if ((bool)item.Cells["Importar"].Value == true)
+                    {
+                        int id = Validation.ConvertToInt32(item.Cells["IDVINCULO"].Value);
+                        double estoque = 0;
+                        string codeBarras = item.Cells["Cód. de Barras"].Value.ToString();
+                        
+                        if (!string.IsNullOrEmpty(codeBarras))
+                        {
+                            Model.Item _mItem = new Model.Item();
+                            _mItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).Where("excluir", 0).FirstOrDefault<Model.Item>();
+                            if (_mItem != null)
+                            {
+                                id = _mItem.Id;
+                                estoque = _mItem.EstoqueAtual;
+                            }
+                        }
+
+                        estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
+
+                        if (ImportarNfe.optionSelected == 1)
+                            estoque = 0;
+
+                        if (ImportarNfe.optionSelected == 3)
+                            estoque = Validation.ConvertToDouble(item.Cells[6].Value);
+
+                        produtos.Add(new
+                        {
+                            Ordem = i,
+                            Id = id,
+                            Referencia = item.Cells["Referência"].Value.ToString(),
+                            CodeBarras = item.Cells["Cód. de Barras"].Value.ToString(),
+                            Nome = item.Cells["Descrição"].Value.ToString(),
+                            Medida = item.Cells["Medida"].Value.ToString(),
+                            Estoque = estoque,
+                            CategoriaId = Validation.ConvertToInt32(item.Cells["CATEGORIAID"].Value),
+                            ValorCompra = Validation.ConvertToDouble(item.Cells["Vlr. Compra"].Value),
+                            ValorVenda = Validation.ConvertToDouble(item.Cells["Vlr. Venda"].Value),
+                            Fornecedor = item.Cells["Fornecedor"].Value.ToString()
+                        });
+                    }
+                }
+
+                if (ImportarNfe.optionSelected == 3)
+                    OpenForm.Show<TelasImportarNfe.ImportarPagamentos>(this);
+                else
+                    OpenForm.Show<TelasImportarNfe.ImportarProdutosConcluido>(this);
 
             };
 
@@ -367,6 +566,25 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
                 WarningInput(txt, warning);
             };
+
+            btnMarcarCheckBox.Click += (s, e) =>
+            {
+                foreach (DataGridViewRow item in GridLista.Rows)
+                {
+                    if ((bool)item.Cells["Importar"].Value == true)
+                    {
+                        item.Cells["Importar"].Value = false;
+                        btnMarcarCheckBox.Text = "Marcar Todos";
+                    }
+                    else
+                    {
+                        item.Cells["Importar"].Value = true;
+                        btnMarcarCheckBox.Text = "Desmarcar Todos";
+                    }
+                }
+            };
+
+            Back.Click += (s, e) => Close();
         }
         
         public static string FormatPriceXml(string value)

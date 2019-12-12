@@ -23,7 +23,7 @@ namespace Emiplus.View.Produtos
         /// 2 - Maipular Estoque
         /// 3 - Importar Compra
         /// </summary>
-        private int optionSelected { get; set; }
+        public static int optionSelected { get; set; }
 
         OpenFileDialog ofd = new OpenFileDialog();
         Controller.ImportarNfe dataNfe;
@@ -82,10 +82,6 @@ namespace Emiplus.View.Produtos
                         notas.Add(dataNfe);
                     }
 
-                    //pathXml = Path.GetDirectoryName(ofd.FileName) + @"\" + ofd.SafeFileName;
-                    //pathFile.Text = pathXml;
-
-                    //dataNfe = new Controller.ImportarNfe(pathXml);
                     LoadDadosNota();
                 }
             };
@@ -93,16 +89,19 @@ namespace Emiplus.View.Produtos
             Op1.Click += (s, e) =>
             {
                 MultipleImports = true;
+                optionSelected = 1;
             };
 
             Op2.Click += (s, e) =>
             {
                 MultipleImports = true;
+                optionSelected = 2;
             };
 
             Op3.Click += (s, e) =>
             {
                 MultipleImports = false;
+                optionSelected = 3;
             };
 
             btnAvancar.Click += (s, e) =>

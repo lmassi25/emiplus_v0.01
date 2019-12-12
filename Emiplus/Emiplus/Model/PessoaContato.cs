@@ -46,7 +46,7 @@
             return Query().Where("id_pessoa", id);
         }
 
-        public bool Save(PessoaContato data)
+        public bool Save(PessoaContato data, bool message = true)
         {
             if (ValidarDados(data))
                 return false;
@@ -56,11 +56,14 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Contato salvo com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Contato salvo com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
@@ -69,11 +72,14 @@
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    Alert.Message("Tudo certo!", "Contato atualizado com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Contato atualizado com sucesso.", Alert.AlertType.success);
                 }
                 else
                 {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                    if (message)
+                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
