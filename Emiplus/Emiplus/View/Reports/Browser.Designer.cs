@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pdf = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.anterior = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.proximo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label6 = new System.Windows.Forms.Label();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pdf = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,40 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 52);
             this.panel2.TabIndex = 1;
+            // 
+            // pdf
+            // 
+            this.pdf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pdf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pdf.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.pdf.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.pdf.Border.HoverVisible = true;
+            this.pdf.Border.Rounding = 6;
+            this.pdf.Border.Thickness = 1;
+            this.pdf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.pdf.Border.Visible = true;
+            this.pdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pdf.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pdf.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdf.ForeColor = System.Drawing.Color.White;
+            this.pdf.Image = null;
+            this.pdf.Location = new System.Drawing.Point(888, 12);
+            this.pdf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.pdf.Name = "pdf";
+            this.pdf.Size = new System.Drawing.Size(108, 34);
+            this.pdf.TabIndex = 159;
+            this.pdf.Text = "Gerar PDF";
+            this.pdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.pdf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.pdf.TextStyle.Enabled = System.Drawing.Color.White;
+            this.pdf.TextStyle.Hover = System.Drawing.Color.White;
+            this.pdf.TextStyle.Pressed = System.Drawing.Color.White;
+            this.pdf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // anterior
             // 
@@ -239,40 +273,6 @@
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
             // 
-            // pdf
-            // 
-            this.pdf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pdf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pdf.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.pdf.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.pdf.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.pdf.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.pdf.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.pdf.Border.HoverVisible = true;
-            this.pdf.Border.Rounding = 6;
-            this.pdf.Border.Thickness = 1;
-            this.pdf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pdf.Border.Visible = true;
-            this.pdf.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pdf.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.pdf.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pdf.ForeColor = System.Drawing.Color.White;
-            this.pdf.Image = null;
-            this.pdf.Location = new System.Drawing.Point(888, 12);
-            this.pdf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(108, 34);
-            this.pdf.TabIndex = 159;
-            this.pdf.Text = "Gerar PDF";
-            this.pdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.pdf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.pdf.TextStyle.Enabled = System.Drawing.Color.White;
-            this.pdf.TextStyle.Hover = System.Drawing.Color.White;
-            this.pdf.TextStyle.Pressed = System.Drawing.Color.White;
-            this.pdf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.pdf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.pdf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,7 +285,6 @@
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Browser";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

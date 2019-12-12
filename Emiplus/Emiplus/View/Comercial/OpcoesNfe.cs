@@ -151,7 +151,7 @@ namespace Emiplus.View.Comercial
                 {
                     _modelNota.Id = 0;
                     _modelNota.Tipo = "NFe";
-                    _modelNota.id_pedido = idPedido;
+                    _modelNota.id_pedido = idPedido;                    
                     _modelNota.Save(_modelNota, false);
                 }
             };

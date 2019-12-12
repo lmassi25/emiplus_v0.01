@@ -28,6 +28,8 @@ namespace Emiplus.Model
 
         public string ChaveDeAcesso { get; set; }
 
+        public string correcao { get; set; }
+
         #endregion
 
         public SqlKata.Query FindByIdPedido(int id)

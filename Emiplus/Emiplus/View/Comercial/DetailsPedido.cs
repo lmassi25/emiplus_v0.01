@@ -142,8 +142,9 @@ namespace Emiplus.View.Comercial
             {
                 var pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").First();
                 pessoaID = pessoa.ID;
-                if(pessoa.NOME != "Consumidor Final")
-                    cliente.Text = pessoa.NOME;
+                //if(pessoa.NOME != "Consumidor Final")
+                //    cliente.Text = pessoa.NOME;
+
             }
 
             if (_modelPedido.Colaborador > 0)

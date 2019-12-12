@@ -63,6 +63,27 @@ namespace Emiplus.View.Fiscal.TelasNota
                 WorkerBackground.RunWorkerAsync();
             };
 
+            CartaCorrecao.Click += (s, e) =>
+            {
+                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Autorizada").Where("nota.tipo", "NFe").FirstOrDefault();
+                if (checkNota == null)
+                {
+                    Alert.Message("Ação não permitida!", "Não é possível emitir uma Carta de Correção.", Alert.AlertType.warning);
+                    return;
+                }
+
+                //retorno.Text = "Emitindo Carta Correção .......................................... (1/2)";
+
+                //p1 = 3;
+                //Campos(false);
+                //WorkerBackground.RunWorkerAsync();
+
+                CartaCorrecao cce = new CartaCorrecao();
+                cce.Show();
+
+                Application.OpenForms["OpcoesNfeRapida"].Close();
+            };
+
             Imprimir.Click += (s, e) =>
             {
                 var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", null).Where("nota.tipo", "NFe").FirstOrDefault();
@@ -98,6 +119,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                             var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe");
                             if (!msg.Contains(".pdf"))
                                 _msg = msg;
+                            break;
+                        case 3:                            
+                            //_msg = new Controller.Fiscal().EmitirCCe(idPedido, "Nota gerada com informacoes incorretas, por gentileza verificar as corretas");
                             break;
                     }
                 };

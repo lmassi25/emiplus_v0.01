@@ -209,11 +209,11 @@ namespace Emiplus.View.Comercial
             {
                 AddPedidos.btnFinalizado = true;
 
-                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
-                {
-                    PedidoImpressao print = new PedidoImpressao();
-                    print.Print(IdPedido);
-                }
+                //if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                //{
+                //    PedidoImpressao print = new PedidoImpressao();
+                //    print.Print(IdPedido);
+                //}
 
                 Application.OpenForms["AddPedidos"].Close();
                 Close();

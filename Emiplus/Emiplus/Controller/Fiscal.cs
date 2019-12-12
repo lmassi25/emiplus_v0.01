@@ -51,7 +51,7 @@ namespace Emiplus.Controller
         private Model.PessoaContato _transportadoraContato;
 
         private Model.Natureza _natureza;
-
+               
         private static readonly HttpClient client = new HttpClient();
 
         private string _path;
@@ -253,6 +253,8 @@ namespace Emiplus.Controller
             {
                 case "CFe":
 
+                    #region CFE 
+
                     var printername = IniFile.Read("Printer", "LOCAL");
 
                     if(printername == null)
@@ -346,13 +348,31 @@ namespace Emiplus.Controller
 
                     return "";
 
+                    #endregion
 
                 case "NFe":
 
                     if (pdf.Contains(".pdf"))
                     {
-                        BrowserNfe.Render = pdf;
-                        browser.ShowDialog();
+                        if (File.Exists(_path_autorizada + "\\NFe.pdf"))
+                            File.Delete(_path_autorizada + "\\NFe.pdf");
+
+                        Thread.Sleep(100);
+
+                        using (var client = new WebClient())
+                        {
+                            client.DownloadFile(pdf, _path_autorizada + "\\NFe.pdf");
+                        }
+
+                        if (!File.Exists(_path_autorizada + "\\NFe.pdf"))
+                        {
+                            return "Arquivo não encontrado!";
+                        }
+
+                        //BrowserNfe.Render = pdf;
+                        //browser.ShowDialog();
+
+                        System.Diagnostics.Process.Start(_path_autorizada + "\\NFe.pdf");
 
                         return "";
                     }
@@ -643,6 +663,108 @@ namespace Emiplus.Controller
             }
         }
 
+        public string EmitirCCe(int Pedido)
+        {
+            Model.Nota _notaCCe = new Model.Nota();
+
+            _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", Pedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+            Start(Pedido, "NFe");
+
+            string SeqEvento = "";
+
+            if(_notaCCe.Serie == null)
+            {
+                SeqEvento = new Controller.Nota().GetSeqCCe(Pedido);
+                _notaCCe.Serie = SeqEvento;
+            }
+                
+            string arqPath = _path_enviada + "\\CCe" + _pedido.Id + ".tx2";
+
+            if (File.Exists(arqPath))
+            {
+                File.Delete(arqPath);
+            }
+
+            #region TX2
+
+            StreamWriter tx2 = new StreamWriter(arqPath, true, Encoding.UTF8);
+
+            tx2.WriteLine("Documento=CCE");
+            tx2.WriteLine("ChaveNota=" + _nota.ChaveDeAcesso);
+            tx2.WriteLine("dhEvento=" + Validation.DateNowToSql() + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00"));
+            tx2.WriteLine("Orgao=" + codUF(_emitenteEndereco.Estado));
+            tx2.WriteLine("SeqEvento=" + SeqEvento);
+            tx2.WriteLine("Correcao=" + _notaCCe.correcao);
+            tx2.WriteLine("Lote=" + "0000000000" + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") + "5");
+            tx2.WriteLine("Fuso=" + DateTime.Now.ToString("zzz"));
+
+            tx2.Close();
+
+            #endregion
+
+            if (!File.Exists(arqPath))
+            {
+                _msg = "Opss.. encontramos um erro: Arquivo não encontrado.";
+                return _msg;
+            }
+
+            _msg = RequestSend(File.ReadAllText(arqPath));
+
+            if(_msg.Contains("AUTORIZADA"))
+            {
+                _notaCCe.Status = "Autorizada";
+                _notaCCe.Save(_notaCCe, false);
+            }
+            else
+            {
+                _notaCCe.Excluir = 1;
+                _notaCCe.Save(_notaCCe, false);
+            }
+
+            return _msg;
+        }
+
+        public string ImprimirCCe(int Pedido)
+        {
+            Start(Pedido);
+
+            //Model.Nota _notaCCe = new Model.Nota();
+            //_notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", Pedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+            BrowserNfe browser = new BrowserNfe();
+            var pdf = RequestPrint(_nota.ChaveDeAcesso, "CCe");
+            
+            if (pdf.Contains(".pdf"))
+            {
+                if (File.Exists(_path_autorizada + "\\CCe.pdf"))
+                    File.Delete(_path_autorizada + "\\CCe.pdf");
+
+                Thread.Sleep(100);
+
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile(pdf, _path_autorizada + "\\CCe.pdf");
+                }
+
+                if(!File.Exists(_path_autorizada + "\\CCe.pdf"))
+                {
+                    return "Arquivo não encontrado!";
+                }
+
+                //BrowserNfe.Render = _path_autorizada + "\\CCe.pdf";
+                //browser.ShowDialog();
+
+                System.Diagnostics.Process.Start(_path_autorizada + "\\CCe.pdf");
+
+                return "";
+            }
+            else
+            {
+                return pdf;
+            }
+        }
+
         #region NFE 
 
         private int getLastNFeNr()
@@ -885,11 +1007,17 @@ namespace Emiplus.Controller
             {
                 if (_destinatario.Pessoatipo == "Física")
                 {
-                    xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
+                    if(_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                        xml.WriteElementString("CPF", "");
+                    else
+                        xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
                 }
                 else
                 {
-                    xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
+                    if (_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                        xml.WriteElementString("CNPJ", "00000000000000");
+                    else
+                        xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
                 }
 
                 if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2")
@@ -1620,6 +1748,12 @@ namespace Emiplus.Controller
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
 
+        private string RequestSendCCe(string tx2)
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + tx2;
+            return request(requestData, "NFe", "envia", "POST");
+        }
+
         private string RequestSend(string xml, string documento = "NFe")
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
@@ -1651,6 +1785,9 @@ namespace Emiplus.Controller
                 case "CFe":
                     requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";
                     break;
+                case "CCe":
+                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1&Documento=CCe";
+                    break;
                 default:
                     requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";                    
                     break;
@@ -1658,6 +1795,8 @@ namespace Emiplus.Controller
 
             if (documento == "CFe")
                 documento = "cfesat";
+            if (documento == "CCe")
+                documento = "NFe";
 
             return request(requestData, documento, "imprime", "GET");
         }
