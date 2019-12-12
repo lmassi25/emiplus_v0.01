@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,11 +75,19 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             btnAdicionar.Click += (s, e) =>
             {
+                Model.Nota _notaCCe = new Model.Nota();
+                _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).First<Model.Nota>();
+
+                if(_notaCCe != null)
+                {
+                    Alert.Message("Ação não permitida", "Existe outra CCe transmitindo", Alert.AlertType.warning);
+                    return;
+                }
+
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    DataTableStart();
-
+                    p1 = 1;
                     WorkerBackground2.RunWorkerAsync();
                 }
             };
@@ -86,7 +95,36 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnRetransmitir.Click += (s, e) =>
             {
                 //validação de registro com status Transmitindo...
+                p1 = 1;
                 WorkerBackground2.RunWorkerAsync();
+            };
+
+            imprimir.Click += (s, e) =>
+            {
+                imprimir.Text = "Imprimindo...";
+                p1 = 2;
+                WorkerBackground2.RunWorkerAsync();
+            };
+
+            btnRemover.Click += (s, e) =>
+            {
+                Model.Nota _notaCCe = new Model.Nota();
+                _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).First<Model.Nota>();
+
+                if (_notaCCe != null)
+                {
+                    Alert.Message("Ação não permitida", "Exclusão não realizada", Alert.AlertType.warning);
+                    return;
+                }
+
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar uma carta de correção, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    _notaCCe.Excluir = 1;
+                    _notaCCe.Save(_notaCCe);
+
+                    DataTableStart();
+                }
             };
 
             GridLista.CellFormatting += (s, e) =>
@@ -111,26 +149,41 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 b.DoWork += async (s, e) =>
                 {
-                    _msg = new Controller.Fiscal().EmitirCCe(idPedido);
+                    switch (p1)
+                    {
+                        case 1:
+                            _msg = new Controller.Fiscal().EmitirCCe(idPedido);
+                            break;
+                        case 2:
+                            var msg = new Controller.Fiscal().ImprimirCCe(idPedido);
+                            if (!msg.Contains(".pdf"))
+                                _msg = msg;
+                            break;
+                    }
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
-                {
-                    if (_msg.Contains("AUTORIZADA"))
-                        Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
-                    else
-                        Alert.Message("Opss", _msg, Alert.AlertType.error);//AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
+                {                    
+                    switch (p1)
+                    {
+                        case 1:
+                            
+                            if (_msg.Contains("AUTORIZADA"))
+                                Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
+                            else
+                                Alert.Message("Opss", _msg, Alert.AlertType.error);//AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
+
+                            break;                            
+                        case 2:
+                            imprimir.Text = "Imprimir";
+                            break;
+                    }
 
                     DataTableStart();
+
+                    p1 = 0;
                 };
             }
-
-            imprimir.Click += async (s, e) => await RenderizarAsync();
-        }
-
-        private async Task RenderizarAsync()
-        {
-            
         }
     }
 }
