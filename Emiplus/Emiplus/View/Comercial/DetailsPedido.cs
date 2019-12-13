@@ -175,9 +175,15 @@ namespace Emiplus.View.Comercial
                     Close();
                     break;
                 case Keys.F9:
+                    if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                        return;
+
                     Cfe();
                     break;
                 case Keys.F10:
+                    if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
+                        return;
+
                     Nfe();
                     break;
                 case Keys.F11:
@@ -233,11 +239,17 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                    return;
+
                 Nfe();
             };
 
             btnCFeSat.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
+                    return;
+
                 Cfe();
             };
 

@@ -371,10 +371,20 @@ namespace Emiplus.View.Comercial
 
             btnCFeSat.KeyDown += (s, e) =>
             {
+                if (UserPermission.SetControl(btnCFeSat, pictureBox1, "fiscal_emissaocfe"))
+                    return;
+
                 KeyDowns(s, e);
             };
 
-            btnNfe.KeyDown += KeyDowns;
+            btnNfe.KeyDown += (s, e) =>
+            {
+                if (UserPermission.SetControl(btnNfe, pictureBox6, "fiscal_emissaonfe"))
+                    return;
+
+                KeyDowns(s, e);
+            };
+
             btnImprimir.KeyDown += KeyDowns;
             btnConcluir.KeyDown += KeyDowns;
             btnSalvar.KeyDown += KeyDowns;
@@ -450,11 +460,17 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(btnNfe, pictureBox6, "fiscal_emissaonfe"))
+                    return;
+
                 Nfe();
             };
 
             btnCFeSat.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(btnCFeSat, pictureBox1, "fiscal_emissaocfe"))
+                    return;
+
                 Cfe();
             };
 

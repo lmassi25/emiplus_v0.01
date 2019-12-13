@@ -160,6 +160,8 @@ namespace Emiplus.View.Common
 
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
+
+            var teste = new UserPermission();
         }
 
         private void Eventos()
@@ -191,6 +193,9 @@ namespace Emiplus.View.Common
 
             homeMenuProducts.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(homeMenuProducts, pictureBox9, "all_produtos"))
+                    return;
+
                 homeMenuProducts.BackColor = Color.FromArgb(37, 48, 50);
                 homeMenuProducts.ForeColor = Color.WhiteSmoke;
                 pictureBox3.BackColor = Color.FromArgb(37, 48, 50);
@@ -205,6 +210,9 @@ namespace Emiplus.View.Common
 
             homeMenuComercial.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(homeMenuComercial, pictureBox10, "all_comercial"))
+                    return;
+
                 homeMenuComercial.BackColor = Color.FromArgb(37, 48, 50);
                 homeMenuComercial.ForeColor = Color.WhiteSmoke;
                 pictureBox4.BackColor = Color.FromArgb(37, 48, 50);
@@ -219,6 +227,9 @@ namespace Emiplus.View.Common
 
             homeMenuFinanceiro.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(homeMenuFinanceiro, pictureBox11, "all_comercial"))
+                    return;
+
                 homeMenuFinanceiro.BackColor = Color.FromArgb(37, 48, 50);
                 homeMenuFinanceiro.ForeColor = Color.WhiteSmoke;
                 pictureBox5.BackColor = Color.FromArgb(37, 48, 50);
@@ -233,6 +244,9 @@ namespace Emiplus.View.Common
 
             homeMenuFiscal.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(homeMenuFiscal, pictureBox12, "all_comercial"))
+                    return;
+
                 homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);
                 homeMenuFiscal.ForeColor = Color.WhiteSmoke;
                 pictureBox6.BackColor = Color.FromArgb(37, 48, 50);
