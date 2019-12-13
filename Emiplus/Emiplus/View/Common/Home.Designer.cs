@@ -34,6 +34,16 @@ namespace Emiplus.View.Common
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.fatura = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.trialdias = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnPlano = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.recorrencia = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.plano = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.developer = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.homeMenuInicio = new System.Windows.Forms.Button();
@@ -57,17 +67,12 @@ namespace Emiplus.View.Common
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.plano = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.recorrencia = new System.Windows.Forms.Label();
-            this.btnPlano = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.trialdias = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.fatura = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
+            this.visualPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,7 +85,10 @@ namespace Emiplus.View.Common
             this.barraTituloHome.SuspendLayout();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            this.visualPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -97,6 +105,10 @@ namespace Emiplus.View.Common
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel3.Controls.Add(this.pictureBox12);
+            this.panel3.Controls.Add(this.pictureBox11);
+            this.panel3.Controls.Add(this.pictureBox10);
+            this.panel3.Controls.Add(this.pictureBox9);
             this.panel3.Controls.Add(this.visualPanel1);
             this.panel3.Controls.Add(this.developer);
             this.panel3.Controls.Add(this.pictureBox2);
@@ -119,6 +131,169 @@ namespace Emiplus.View.Common
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(275, 729);
             this.panel3.TabIndex = 20;
+            // 
+            // visualPanel1
+            // 
+            this.visualPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.visualPanel1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.visualPanel1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.visualPanel1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
+            this.visualPanel1.Border.HoverVisible = true;
+            this.visualPanel1.Border.Rounding = 6;
+            this.visualPanel1.Border.Thickness = 1;
+            this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel1.Border.Visible = true;
+            this.visualPanel1.Controls.Add(this.fatura);
+            this.visualPanel1.Controls.Add(this.label3);
+            this.visualPanel1.Controls.Add(this.trialdias);
+            this.visualPanel1.Controls.Add(this.label6);
+            this.visualPanel1.Controls.Add(this.btnPlano);
+            this.visualPanel1.Controls.Add(this.recorrencia);
+            this.visualPanel1.Controls.Add(this.label4);
+            this.visualPanel1.Controls.Add(this.plano);
+            this.visualPanel1.Controls.Add(this.label2);
+            this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.Location = new System.Drawing.Point(40, 549);
+            this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel1.Name = "visualPanel1";
+            this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel1.Size = new System.Drawing.Size(194, 127);
+            this.visualPanel1.TabIndex = 157;
+            this.visualPanel1.Text = "visualPanel1";
+            this.visualPanel1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // fatura
+            // 
+            this.fatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.fatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fatura.ForeColor = System.Drawing.Color.Gray;
+            this.fatura.Location = new System.Drawing.Point(96, 55);
+            this.fatura.Name = "fatura";
+            this.fatura.Size = new System.Drawing.Size(79, 17);
+            this.fatura.TabIndex = 159;
+            this.fatura.Text = "15 dias";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(9, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 15);
+            this.label3.TabIndex = 158;
+            this.label3.Text = "Próxima fatura:";
+            // 
+            // trialdias
+            // 
+            this.trialdias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.trialdias.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trialdias.ForeColor = System.Drawing.Color.Gray;
+            this.trialdias.Location = new System.Drawing.Point(109, 55);
+            this.trialdias.Name = "trialdias";
+            this.trialdias.Size = new System.Drawing.Size(79, 17);
+            this.trialdias.TabIndex = 157;
+            this.trialdias.Text = "15 dias";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(9, 55);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.TabIndex = 156;
+            this.label6.Text = "Dias de Avaliação:";
+            // 
+            // btnPlano
+            // 
+            this.btnPlano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.btnPlano.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPlano.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.btnPlano.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnPlano.Border.HoverVisible = true;
+            this.btnPlano.Border.Rounding = 6;
+            this.btnPlano.Border.Thickness = 1;
+            this.btnPlano.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnPlano.Border.Visible = true;
+            this.btnPlano.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlano.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPlano.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlano.ForeColor = System.Drawing.Color.White;
+            this.btnPlano.Image = null;
+            this.btnPlano.Location = new System.Drawing.Point(25, 86);
+            this.btnPlano.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnPlano.Name = "btnPlano";
+            this.btnPlano.Size = new System.Drawing.Size(144, 27);
+            this.btnPlano.TabIndex = 155;
+            this.btnPlano.Text = "Trocar Plano?";
+            this.btnPlano.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPlano.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnPlano.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnPlano.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPlano.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPlano.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // recorrencia
+            // 
+            this.recorrencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.recorrencia.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recorrencia.ForeColor = System.Drawing.Color.Gray;
+            this.recorrencia.Location = new System.Drawing.Point(80, 33);
+            this.recorrencia.Name = "recorrencia";
+            this.recorrencia.Size = new System.Drawing.Size(110, 17);
+            this.recorrencia.TabIndex = 3;
+            this.recorrencia.Text = "Anual";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(9, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Recorrência:";
+            // 
+            // plano
+            // 
+            this.plano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.plano.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plano.ForeColor = System.Drawing.Color.Gray;
+            this.plano.Location = new System.Drawing.Point(69, 11);
+            this.plano.Name = "plano";
+            this.plano.Size = new System.Drawing.Size(122, 17);
+            this.plano.TabIndex = 1;
+            this.plano.Text = "Premium";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(9, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 15);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Seu Plano:";
             // 
             // developer
             // 
@@ -449,168 +624,49 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // visualPanel1
+            // pictureBox9
             // 
-            this.visualPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.visualPanel1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualPanel1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.visualPanel1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
-            this.visualPanel1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(41)))));
-            this.visualPanel1.Border.HoverVisible = true;
-            this.visualPanel1.Border.Rounding = 6;
-            this.visualPanel1.Border.Thickness = 1;
-            this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualPanel1.Border.Visible = true;
-            this.visualPanel1.Controls.Add(this.fatura);
-            this.visualPanel1.Controls.Add(this.label3);
-            this.visualPanel1.Controls.Add(this.trialdias);
-            this.visualPanel1.Controls.Add(this.label6);
-            this.visualPanel1.Controls.Add(this.btnPlano);
-            this.visualPanel1.Controls.Add(this.recorrencia);
-            this.visualPanel1.Controls.Add(this.label4);
-            this.visualPanel1.Controls.Add(this.plano);
-            this.visualPanel1.Controls.Add(this.label2);
-            this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.Location = new System.Drawing.Point(40, 549);
-            this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualPanel1.Name = "visualPanel1";
-            this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.visualPanel1.Size = new System.Drawing.Size(194, 127);
-            this.visualPanel1.TabIndex = 157;
-            this.visualPanel1.Text = "visualPanel1";
-            this.visualPanel1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualPanel1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(257, 177);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 27;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Visible = false;
             // 
-            // label2
+            // pictureBox10
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(9, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Seu Plano:";
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(257, 233);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 158;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Visible = false;
             // 
-            // plano
+            // pictureBox11
             // 
-            this.plano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.plano.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plano.ForeColor = System.Drawing.Color.Gray;
-            this.plano.Location = new System.Drawing.Point(69, 11);
-            this.plano.Name = "plano";
-            this.plano.Size = new System.Drawing.Size(122, 17);
-            this.plano.TabIndex = 1;
-            this.plano.Text = "Premium";
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(257, 289);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 159;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
             // 
-            // label4
+            // pictureBox12
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(9, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 15);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Recorrência:";
-            // 
-            // recorrencia
-            // 
-            this.recorrencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.recorrencia.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recorrencia.ForeColor = System.Drawing.Color.Gray;
-            this.recorrencia.Location = new System.Drawing.Point(80, 33);
-            this.recorrencia.Name = "recorrencia";
-            this.recorrencia.Size = new System.Drawing.Size(110, 17);
-            this.recorrencia.TabIndex = 3;
-            this.recorrencia.Text = "Anual";
-            // 
-            // btnPlano
-            // 
-            this.btnPlano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.btnPlano.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnPlano.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.btnPlano.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnPlano.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnPlano.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnPlano.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnPlano.Border.HoverVisible = true;
-            this.btnPlano.Border.Rounding = 6;
-            this.btnPlano.Border.Thickness = 1;
-            this.btnPlano.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnPlano.Border.Visible = true;
-            this.btnPlano.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPlano.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPlano.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlano.ForeColor = System.Drawing.Color.White;
-            this.btnPlano.Image = null;
-            this.btnPlano.Location = new System.Drawing.Point(25, 86);
-            this.btnPlano.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnPlano.Name = "btnPlano";
-            this.btnPlano.Size = new System.Drawing.Size(144, 27);
-            this.btnPlano.TabIndex = 155;
-            this.btnPlano.Text = "Trocar Plano?";
-            this.btnPlano.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPlano.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnPlano.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnPlano.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnPlano.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnPlano.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnPlano.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnPlano.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(9, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 15);
-            this.label6.TabIndex = 156;
-            this.label6.Text = "Dias de Avaliação:";
-            // 
-            // trialdias
-            // 
-            this.trialdias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.trialdias.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trialdias.ForeColor = System.Drawing.Color.Gray;
-            this.trialdias.Location = new System.Drawing.Point(109, 55);
-            this.trialdias.Name = "trialdias";
-            this.trialdias.Size = new System.Drawing.Size(79, 17);
-            this.trialdias.TabIndex = 157;
-            this.trialdias.Text = "15 dias";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(9, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 15);
-            this.label3.TabIndex = 158;
-            this.label3.Text = "Próxima fatura:";
-            // 
-            // fatura
-            // 
-            this.fatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.fatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fatura.ForeColor = System.Drawing.Color.Gray;
-            this.fatura.Location = new System.Drawing.Point(96, 55);
-            this.fatura.Name = "fatura";
-            this.fatura.Size = new System.Drawing.Size(79, 17);
-            this.fatura.TabIndex = 159;
-            this.fatura.Text = "15 dias";
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Location = new System.Drawing.Point(257, 345);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 160;
+            this.pictureBox12.TabStop = false;
+            this.pictureBox12.Visible = false;
             // 
             // Home
             // 
@@ -630,6 +686,8 @@ namespace Emiplus.View.Common
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel3.ResumeLayout(false);
+            this.visualPanel1.ResumeLayout(false);
+            this.visualPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -642,8 +700,10 @@ namespace Emiplus.View.Common
             this.barraTituloHome.ResumeLayout(false);
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            this.visualPanel1.ResumeLayout(false);
-            this.visualPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -684,5 +744,9 @@ namespace Emiplus.View.Common
         private Label label6;
         private Label fatura;
         private Label label3;
+        private PictureBox pictureBox9;
+        private PictureBox pictureBox12;
+        private PictureBox pictureBox11;
+        private PictureBox pictureBox10;
     }
 }

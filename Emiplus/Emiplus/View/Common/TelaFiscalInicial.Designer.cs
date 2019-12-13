@@ -47,8 +47,22 @@
             this.impostos = new System.Windows.Forms.Button();
             this.transportadoras = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -156,7 +170,7 @@
             this.naturezaOP.ForeColor = System.Drawing.Color.DimGray;
             this.naturezaOP.Image = ((System.Drawing.Image)(resources.GetObject("naturezaOP.Image")));
             this.naturezaOP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.naturezaOP.Location = new System.Drawing.Point(22, 286);
+            this.naturezaOP.Location = new System.Drawing.Point(22, 274);
             this.naturezaOP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.naturezaOP.Name = "naturezaOP";
             this.naturezaOP.Size = new System.Drawing.Size(219, 41);
@@ -298,7 +312,7 @@
             this.impostos.ForeColor = System.Drawing.Color.DimGray;
             this.impostos.Image = ((System.Drawing.Image)(resources.GetObject("impostos.Image")));
             this.impostos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.impostos.Location = new System.Drawing.Point(22, 237);
+            this.impostos.Location = new System.Drawing.Point(22, 229);
             this.impostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.impostos.Name = "impostos";
             this.impostos.Size = new System.Drawing.Size(219, 41);
@@ -321,7 +335,7 @@
             this.transportadoras.ForeColor = System.Drawing.Color.DimGray;
             this.transportadoras.Image = ((System.Drawing.Image)(resources.GetObject("transportadoras.Image")));
             this.transportadoras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.transportadoras.Location = new System.Drawing.Point(22, 188);
+            this.transportadoras.Location = new System.Drawing.Point(22, 184);
             this.transportadoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.transportadoras.Name = "transportadoras";
             this.transportadoras.Size = new System.Drawing.Size(219, 41);
@@ -344,7 +358,7 @@
             this.fornecedores.ForeColor = System.Drawing.Color.DimGray;
             this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
             this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fornecedores.Location = new System.Drawing.Point(22, 143);
+            this.fornecedores.Location = new System.Drawing.Point(22, 139);
             this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fornecedores.Name = "fornecedores";
             this.fornecedores.Size = new System.Drawing.Size(219, 41);
@@ -353,12 +367,96 @@
             this.fornecedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fornecedores.UseVisualStyleBackColor = false;
             // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(226, 120);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 121;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(226, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 122;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(226, 210);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 123;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(226, 255);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 124;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(226, 300);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 125;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Visible = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(461, 120);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 126;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Visible = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(696, 120);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 127;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Visible = false;
+            // 
             // TelaFiscalInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.impostos);
             this.Controls.Add(this.transportadoras);
             this.Controls.Add(this.fornecedores);
@@ -380,6 +478,13 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +508,12 @@
         private System.Windows.Forms.Button impostos;
         private System.Windows.Forms.Button transportadoras;
         private System.Windows.Forms.Button fornecedores;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }
