@@ -274,39 +274,92 @@ namespace Emiplus.Controller
                     //}
 
                     printer.AlignCenter();
-                    printer.BoldMode("CHARMOSA COSMETICOS");
-                    printer.Append("S. R. MENDES GOMES - CONFECCOES");
-                    printer.Append("Rua Brasil, 379 - Centro - Monte Aprazível/SP");
-                    printer.Append("(17) 3333-3333");
+                    printer.BoldMode(_emitente.Fantasia);
+                    printer.Append(_emitente.Nome);
+                    printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                    printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                    printer.Append(_emitenteContato.Telefone);
 
-                    printer.NewLines(3);
+                    printer.NewLines(2);
 
-                    printer.BoldMode("CNPJ: 09.461.157/0001-99 IE: 462.084.949.119");
+                    printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
                     printer.Separator();
 
-                    printer.BoldMode("Extrato N°");
+                    printer.BoldMode("Extrato N°" + _nota.nr_Nota);
                     printer.BoldMode("CUPOM FISCAL ELETRÔNICO - SAT");
                     printer.Separator();
 
                     printer.AlignLeft();
-                    printer.Append("CPF/CNPJ do Consumidor: 222.222.222-03");
+                    printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);
                     printer.Separator();
 
                     printer.AlignCenter();
                     printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
                     printer.Separator();
 
-                    printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+                    //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+
+                    itens = new Model.PedidoItem().Query()
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                    .Where("pedido_item.pedido", Pedido)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .OrderBy("pedido_item.id")
+                    .Get();
+
+                    int count = 0;
+
+                    foreach (var data in itens)
+                    {
+                        count++;
+                        printer.Append(AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
+                    }
 
                     printer.NewLines(2);
 
-                    printer.Append(AddSpaces("Subtotal","0,00"));
-                    printer.Append(AddSpaces("Descontos", "0,00"));
-                    printer.BoldMode(AddSpaces("TOTAL R$", "0,00"));
+                    printer.Append(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)));
+                    printer.Append(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)));
+                    printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
                     
                     printer.NewLines(2);
 
-                    printer.Append(AddSpaces("<meio pagamento>", "0,00"));
+                    //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                    //total = total + Validation.ConvertToDouble(data.TOTAL);
+
+                    string formapgto = "";
+
+                    pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                    foreach (var data in pagamentos)
+                    {
+                        switch (data.ID_FORMAPGTO)
+                        {
+                            case 1:
+                                formapgto = "Dinheiro";
+                                break;
+                            case 2:
+                                formapgto = "Cheque";
+                                break;
+                            case 3:
+                                formapgto = "Cartão de Débito";
+                                break;
+                            case 4:
+                                formapgto = "Cartão de Crédito";
+                                break;
+                            case 5:
+                                formapgto = "Crediário";
+                                break;
+                            case 6:
+                                formapgto = "Boleto";
+                                break;
+                            default:
+                                formapgto = "N/D";
+                                break;
+                        }
+
+                        printer.Append(AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL)));
+                    }
+
                     printer.Append(AddSpaces("Troco R$", "0,00"));
 
                     printer.Separator();
@@ -315,29 +368,52 @@ namespace Emiplus.Controller
                     printer.Append("OBSERVAÇÕES DO CONTRIBUINTE");
                     printer.NewLines(2);
 
-                    printer.Append("*Valor aproximado dos tributos do item");
-                    printer.Append(AddSpaces("Valor aproximado dos tributos deste cupom R$", "0,00"));
-                    printer.Append("(conforme Lei Fed.12.741/2012)");
+                    printer.CondensedMode("*Valor aproximado dos tributos do item");
+
+                    var totais = new Model.PedidoItem().Query()
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .SelectRaw("SUM(pedido_item.federal) as federal, SUM(pedido_item.estadual) as estadual, SUM(pedido_item.municipal) as municipal")
+                    .Where("pedido_item.pedido", Pedido)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .Get();
+
+                    foreach (var data in totais)
+                    {
+                        printer.CondensedMode(AddSpaces("Valor aproximado dos tributos deste cupom ", Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL, true)));
+                    }
+                                        
+                    printer.CondensedMode("(conforme Lei Fed.12.741/2012)");
 
                     printer.Separator();
 
                     printer.AlignCenter();
-                    printer.Append("SAT N° 000.000.000");
-                    printer.Append("00/00/0000 - 00:00:00");
+                    printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
+                    printer.Append(_nota.Criado.ToString());
                     printer.NewLines(2);
-
-                    printer.CondensedMode("35191208723218000186599000134890002403570063");
                     
-                    //printer.Code128("3519120872321800018659");
-                    //printer.Code128("9000134890002403570063");
-                    //printer.Code128("35191208723218000186599000134890002403570063");
+                    string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                    cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
 
-                    //printer.SetLineHeight(50);
-                    //printer.Append(BarcodeString("3519120872321800018659"));
-                    //printer.Append(BarcodeString("9000134890002403570063"));
+                    printer.CondensedMode(cfeid);
+                    
+                    printer.Code128(_nota.ChaveDeAcesso.Substring(0, 22));
+                    printer.Code128(_nota.ChaveDeAcesso.Substring(22, 22));
 
                     //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
-                    printer.QrCode("|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q==");
+
+                    string qrcode = "123456";
+                    if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                    {
+                        //qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + cfeData + cfeHora + "|" + _pedido.Total + "|" + _pedido.cfe_cpf + "|" + cfeAssinatura;
+                    }
+                    else
+                    {
+                        //qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + cfeData + cfeHora + "|" + _pedido.Total + "|" + "" + "|" + cfeAssinatura;
+                    }
+
+                    //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                    printer.QrCode(qrcode);
 
                     printer.NewLines(3);
 
@@ -353,6 +429,8 @@ namespace Emiplus.Controller
                     #endregion
 
                 case "NFe":
+
+                    #region NFE
 
                     if (pdf.Contains(".pdf"))
                     {
@@ -383,7 +461,9 @@ namespace Emiplus.Controller
                     else
                     {
                         return pdf;
-                    } 
+                    }
+
+                    #endregion
             }
 
             return "";
@@ -1958,7 +2038,10 @@ namespace Emiplus.Controller
 
         public static string AddSpaces(string valueF, string valueE)
         {
-            return valueF + "".PadLeft(48-(valueF.Length + valueE.Length)) + valueE;
+            if ((valueF + valueE).Length <= 48)
+                return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
+            else
+                return valueF + " " + valueE;
         }
 
         // Set Barcode height
