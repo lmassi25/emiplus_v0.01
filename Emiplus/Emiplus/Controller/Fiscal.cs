@@ -249,6 +249,8 @@ namespace Emiplus.Controller
             BrowserNfe browser = new BrowserNfe();
             var pdf = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
 
+            new Log().Add("PRINTER", pdf, Log.LogType.info);
+
             switch (tipo)
             {
                 case "CFe":
@@ -357,13 +359,15 @@ namespace Emiplus.Controller
                         if (File.Exists(_path_autorizada + "\\NFe.pdf"))
                             File.Delete(_path_autorizada + "\\NFe.pdf");
 
-                        Thread.Sleep(100);
+                        Thread.Sleep(1000);
 
                         using (var client = new WebClient())
                         {
                             client.DownloadFile(pdf, _path_autorizada + "\\NFe.pdf");
                         }
-
+                        
+                        Thread.Sleep(1000);
+                        
                         if (!File.Exists(_path_autorizada + "\\NFe.pdf"))
                         {
                             return "Arquivo não encontrado!";
@@ -398,7 +402,19 @@ namespace Emiplus.Controller
                 _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
                 if (_destinatario == null)
                 {
-                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
+                    return;
+                }
+
+                if (_destinatario.Nome == "Consumidor Final")
+                {
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
+                    return;
+                }
+
+                if (Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                {
+                    _msg = "CPF/CNPJ do Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
                     return;
                 }
 
@@ -735,22 +751,24 @@ namespace Emiplus.Controller
             BrowserNfe browser = new BrowserNfe();
             var pdf = RequestPrint(_nota.ChaveDeAcesso, "CCe");
             
+            new Log().Add("PRINTER", pdf, Log.LogType.info);
+
             if (pdf.Contains(".pdf"))
             {
                 if (File.Exists(_path_autorizada + "\\CCe.pdf"))
                     File.Delete(_path_autorizada + "\\CCe.pdf");
 
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
 
                 using (var client = new WebClient())
                 {
                     client.DownloadFile(pdf, _path_autorizada + "\\CCe.pdf");
                 }
 
-                if(!File.Exists(_path_autorizada + "\\CCe.pdf"))
-                {
+                Thread.Sleep(1000);
+
+                if (!File.Exists(_path_autorizada + "\\CCe.pdf"))                
                     return "Arquivo não encontrado!";
-                }
 
                 //BrowserNfe.Render = _path_autorizada + "\\CCe.pdf";
                 //browser.ShowDialog();
@@ -1008,7 +1026,7 @@ namespace Emiplus.Controller
                 if (_destinatario.Pessoatipo == "Física")
                 {
                     if(_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
-                        xml.WriteElementString("CPF", "");
+                        xml.WriteElementString("CPF", "00000000000");
                     else
                         xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
                 }
