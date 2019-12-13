@@ -76,7 +76,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnAdicionar.Click += (s, e) =>
             {
                 Model.Nota _notaCCe = new Model.Nota();
-                _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).First<Model.Nota>();
+                _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
 
                 if(_notaCCe != null)
                 {

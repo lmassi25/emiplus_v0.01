@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,9 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _modelNota.Status = "Transmitindo...";
                 _modelNota.id_pedido = CartaCorrecao.idPedido;
                 _modelNota.correcao = correcao.Text;
+
+                _modelNota.correcao = Validation.CleanStringForFiscal(Validation.OneSpaceString(_modelNota.correcao));
+
                 _modelNota.Save(_modelNota, false);
 
                 DialogResult = DialogResult.OK;

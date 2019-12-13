@@ -42,6 +42,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -85,8 +87,6 @@
             this.txtSubtotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.nrPedido = new System.Windows.Forms.Label();
-            this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -225,6 +225,74 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 80;
+            // 
+            // SelecionarColaborador
+            // 
+            this.SelecionarColaborador.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarColaborador.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarColaborador.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.SelecionarColaborador.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarColaborador.Border.HoverVisible = true;
+            this.SelecionarColaborador.Border.Rounding = 6;
+            this.SelecionarColaborador.Border.Thickness = 1;
+            this.SelecionarColaborador.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.SelecionarColaborador.Border.Visible = true;
+            this.SelecionarColaborador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarColaborador.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.SelecionarColaborador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelecionarColaborador.ForeColor = System.Drawing.Color.White;
+            this.SelecionarColaborador.Image = null;
+            this.SelecionarColaborador.Location = new System.Drawing.Point(56, 348);
+            this.SelecionarColaborador.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.SelecionarColaborador.Name = "SelecionarColaborador";
+            this.SelecionarColaborador.Size = new System.Drawing.Size(144, 20);
+            this.SelecionarColaborador.TabIndex = 15102;
+            this.SelecionarColaborador.Text = "Alterar colaborador";
+            this.SelecionarColaborador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SelecionarColaborador.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.SelecionarColaborador.TextStyle.Enabled = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.Hover = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.Pressed = System.Drawing.Color.White;
+            this.SelecionarColaborador.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarColaborador.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarColaborador.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // SelecionarCliente
+            // 
+            this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.Border.HoverVisible = true;
+            this.SelecionarCliente.Border.Rounding = 6;
+            this.SelecionarCliente.Border.Thickness = 1;
+            this.SelecionarCliente.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.SelecionarCliente.Border.Visible = true;
+            this.SelecionarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SelecionarCliente.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.SelecionarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelecionarCliente.ForeColor = System.Drawing.Color.White;
+            this.SelecionarCliente.Image = null;
+            this.SelecionarCliente.Location = new System.Drawing.Point(56, 293);
+            this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.SelecionarCliente.Name = "SelecionarCliente";
+            this.SelecionarCliente.Size = new System.Drawing.Size(144, 20);
+            this.SelecionarCliente.TabIndex = 15101;
+            this.SelecionarCliente.Text = "Alterar cliente";
+            this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.SelecionarCliente.TextStyle.Enabled = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.Hover = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.Pressed = System.Drawing.Color.White;
+            this.SelecionarCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.SelecionarCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel7
             // 
@@ -805,74 +873,6 @@
             this.nrPedido.TabIndex = 86;
             this.nrPedido.Text = "0";
             // 
-            // SelecionarCliente
-            // 
-            this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.Border.HoverVisible = true;
-            this.SelecionarCliente.Border.Rounding = 6;
-            this.SelecionarCliente.Border.Thickness = 1;
-            this.SelecionarCliente.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.SelecionarCliente.Border.Visible = true;
-            this.SelecionarCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SelecionarCliente.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.SelecionarCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelecionarCliente.ForeColor = System.Drawing.Color.White;
-            this.SelecionarCliente.Image = null;
-            this.SelecionarCliente.Location = new System.Drawing.Point(56, 293);
-            this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.SelecionarCliente.Name = "SelecionarCliente";
-            this.SelecionarCliente.Size = new System.Drawing.Size(144, 20);
-            this.SelecionarCliente.TabIndex = 15101;
-            this.SelecionarCliente.Text = "Alterar cliente";
-            this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.SelecionarCliente.TextStyle.Enabled = System.Drawing.Color.White;
-            this.SelecionarCliente.TextStyle.Hover = System.Drawing.Color.White;
-            this.SelecionarCliente.TextStyle.Pressed = System.Drawing.Color.White;
-            this.SelecionarCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.SelecionarCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.SelecionarCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // SelecionarColaborador
-            // 
-            this.SelecionarColaborador.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SelecionarColaborador.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SelecionarColaborador.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.SelecionarColaborador.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarColaborador.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarColaborador.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarColaborador.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarColaborador.Border.HoverVisible = true;
-            this.SelecionarColaborador.Border.Rounding = 6;
-            this.SelecionarColaborador.Border.Thickness = 1;
-            this.SelecionarColaborador.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.SelecionarColaborador.Border.Visible = true;
-            this.SelecionarColaborador.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SelecionarColaborador.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.SelecionarColaborador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelecionarColaborador.ForeColor = System.Drawing.Color.White;
-            this.SelecionarColaborador.Image = null;
-            this.SelecionarColaborador.Location = new System.Drawing.Point(56, 348);
-            this.SelecionarColaborador.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.SelecionarColaborador.Name = "SelecionarColaborador";
-            this.SelecionarColaborador.Size = new System.Drawing.Size(144, 20);
-            this.SelecionarColaborador.TabIndex = 15102;
-            this.SelecionarColaborador.Text = "Alterar colaborador";
-            this.SelecionarColaborador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SelecionarColaborador.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.SelecionarColaborador.TextStyle.Enabled = System.Drawing.Color.White;
-            this.SelecionarColaborador.TextStyle.Hover = System.Drawing.Color.White;
-            this.SelecionarColaborador.TextStyle.Pressed = System.Drawing.Color.White;
-            this.SelecionarColaborador.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.SelecionarColaborador.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.SelecionarColaborador.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // DetailsPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,6 +888,8 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "DetailsPedido";
             this.ShowIcon = false;

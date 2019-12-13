@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,6 +30,11 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void Campos(Boolean enabled)
         {
+            //if (enabled)
+            //    label12.Focus = true;
+            //else
+            //    label12.Focus = false;
+
             Emitir.Enabled = enabled;
             Imprimir.Enabled = enabled;
             EnviarEmail.Enabled = enabled;
@@ -57,10 +63,14 @@ namespace Emiplus.View.Fiscal.TelasNota
                 }
 
                 retorno.Text = "Emitindo NF-e .......................................... (1/2)";
-                
-                p1 = 1;
-                Campos(false);
-                WorkerBackground.RunWorkerAsync();
+
+                if (p1 == 0)
+                {
+                    p1 = 1;
+                    WorkerBackground.RunWorkerAsync();
+                }
+                else
+                    Alert.Message("Ação não permitida", "Aguarde processo finalizar", Alert.AlertType.warning);
             };
 
             CartaCorrecao.Click += (s, e) =>
@@ -71,12 +81,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                     Alert.Message("Ação não permitida!", "Não é possível emitir uma Carta de Correção.", Alert.AlertType.warning);
                     return;
                 }
-
-                //retorno.Text = "Emitindo Carta Correção .......................................... (1/2)";
-
-                //p1 = 3;
-                //Campos(false);
-                //WorkerBackground.RunWorkerAsync();
 
                 CartaCorrecao cce = new CartaCorrecao();
                 cce.Show();
@@ -93,9 +97,15 @@ namespace Emiplus.View.Fiscal.TelasNota
                     return;
                 }
 
-                p1 = 2;
-                Campos(false);
-                WorkerBackground.RunWorkerAsync();
+                retorno.Text = "Imprimindo NF-e .......................................... (1/2)";
+
+                if (p1 == 0)
+                {
+                    p1 = 2;
+                    WorkerBackground.RunWorkerAsync();
+                }
+                else
+                    Alert.Message("Ação não permitida", "Aguarde processo finalizar", Alert.AlertType.warning);
             };
 
             using (var b = WorkerBackground)
@@ -130,7 +140,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     p1 = 0;
                     retorno.Text = _msg;
-                    Campos(true);
                 };
             }
         }

@@ -136,12 +136,13 @@ namespace Emiplus.View.Comercial
             if (_mPedido.Cliente > 0)
             {
                 _mPedido.Save(_mPedido);
-                var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
+                var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
                 
                 if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
-                {
                     return;    
-                }
+
+                if (data == null)
+                    return;
 
                 nomeCliente.Text = data.Nome;
             }
@@ -155,7 +156,12 @@ namespace Emiplus.View.Comercial
             if (_mPedido.Colaborador > 0)
             {
                 _mPedido.Save(_mPedido);
-                var data = _mUsuario.FindByUserId(_mPedido.Colaborador).First<Model.Usuarios>();
+
+                var data = _mUsuario.FindByUserId(_mPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+
+                if (data == null)
+                    return;
+
                 nomeVendedor.Text = data.Nome;
             }
         }

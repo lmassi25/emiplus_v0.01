@@ -140,20 +140,25 @@ namespace Emiplus.View.Comercial
 
             if (_modelPedido.Cliente > 0)
             {
-                var pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").First();
-                pessoaID = pessoa.ID;
-                //if(pessoa.NOME != "Consumidor Final")
-                //    cliente.Text = pessoa.NOME;
+                var pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault();
 
+                if (pessoa == null)
+                    return;
+
+                pessoaID = pessoa.ID;                
             }
 
             if (_modelPedido.Colaborador > 0)
             {
-                var data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).First<Model.Usuarios>();
+                var data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+
+                if (data == null)
+                    return;
+
                 vendedor.Text = data.Nome;
             }
 
-            if (_modelPedido.status == 0)
+            if (_modelPedido.status != 0)
             {
                 panel7.BackColor = Color.FromArgb(215, 90, 74);
                 label7.Text = "Fechado";
