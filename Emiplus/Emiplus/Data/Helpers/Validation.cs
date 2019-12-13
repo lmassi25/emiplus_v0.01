@@ -78,6 +78,22 @@ namespace Emiplus.Data.Helpers
         public static string FormatPrice(double obj, bool cifrao = false)
         {
             string res;
+            
+            if (cifrao)
+            {
+                res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
+            }
+            else
+            {
+                res = string.Format("{0:N2}", obj);
+            }
+
+            return res;
+        }
+
+        public static string FormatDecimalPrice(decimal obj, bool cifrao = false)
+        {
+            string res;
 
             if (cifrao)
             {
