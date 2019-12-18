@@ -42,7 +42,7 @@ namespace Emiplus.Controller
             Table.ColumnCount = 8;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
@@ -60,6 +60,7 @@ namespace Emiplus.Controller
             Table.Columns[3].Width = 100;
 
             Table.Columns[4].Name = "Descrição";
+            Table.Columns[4].Width = 120;
 
             Table.Columns[5].Name = "Custo";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -94,7 +95,7 @@ namespace Emiplus.Controller
                     item.NOME,
                     FormatPrice(ConvertToDouble(item.VALORCOMPRA), false),
                     FormatPrice(ConvertToDouble(item.VALORVENDA), true),
-                    FormatMedida(item.MEDIDA, ConvertToDouble(item.ESTOQUEATUAL))
+                    FormatMedidas(item.MEDIDA, ConvertToDouble(item.ESTOQUEATUAL))
                 );
             }
 

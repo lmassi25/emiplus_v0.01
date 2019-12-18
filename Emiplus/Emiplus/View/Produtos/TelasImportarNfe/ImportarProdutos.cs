@@ -237,6 +237,22 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     findItem = FindItem(item.pdt.CodeBarras);
                 }
 
+                bool goBack = false;
+                int rowIndex = -1;
+                foreach (DataGridViewRow row in Table.Rows)
+                    if (row.Cells["Cód. de Barras"].Value.ToString().Equals(item.pdt.CodeBarras))
+                    {
+                        rowIndex = row.Index;
+                        goBack = true;
+                        var getQtd = GridLista.Rows[rowIndex].Cells[6].Value;
+                        var getValorCompra = GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value;
+                        //GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value = Validation.FormatPrice(Validation.ConvertToDouble(getValorCompra) + Validation.ConvertToDouble(FormatPriceXml(item.pdt.VlrCompra)));
+                        GridLista.Rows[rowIndex].Cells[6].Value = Validation.ConvertToDouble(getQtd) + Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade));
+                    }
+
+                if (goBack)
+                    continue;
+
                 Table.Rows.Add(
                     true,
                     findItem != null ? new Bitmap(Properties.Resources.success16x) : new Bitmap(Properties.Resources.error16x),
@@ -244,8 +260,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     item.pdt.CodeBarras,
                     item.pdt.Descricao,
                     item.pdt.Medida,
-                    FormatPriceXml(item.pdt.Quantidade),
-                    FormatPriceXml(item.pdt.VlrCompra),
+                    Validation.FormatMedidas(item.pdt.Medida, Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade))),
+                    Validation.FormatPriceXml(item.pdt.VlrCompra),
                     findItem != null ? Validation.FormatPrice(Validation.ConvertToDouble(findItem.VALORVENDA)) : "00,00",
                     new Bitmap(Properties.Resources.edit16x),
                     findItem != null ? findItem.ID : 0,
@@ -547,9 +563,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 }
 
                 if (ImportarNfe.optionSelected == 3)
-                    OpenForm.Show<TelasImportarNfe.ImportarPagamentos>(this);
+                    OpenForm.Show<ImportarPagamentos>(this);
                 else
-                    OpenForm.Show<TelasImportarNfe.ImportarProdutosConcluido>(this);
+                    OpenForm.Show<ImportarProdutosConcluido>(this);
 
             };
 
@@ -564,7 +580,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
 
-                WarningInput(txt, warning);
+                Validation.WarningInput(txt, warning);
             };
 
             btnMarcarCheckBox.Click += (s, e) =>
@@ -585,30 +601,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             };
 
             Back.Click += (s, e) => Close();
-        }
-        
-        public static string FormatPriceXml(string value)
-        {
-            string p1 = "", p2 = ",00";
-
-            p1 = value.Substring(0, value.IndexOf('.'));
-
-            if (value.Substring(value.IndexOf('.'), (value.Length - value.IndexOf('.'))).Length >= 3)
-                p2 = value.Substring(value.IndexOf('.'), 3).Replace(".", ",");
-            
-            return Validation.FormatPrice(Validation.ConvertToDouble(p1 + p2));
-        }
-
-        private void WarningInput(TextBox textbox, PictureBox img)
-        {
-            if (String.IsNullOrEmpty(textbox.Text) || textbox.Text == "0,00")
-            {
-                img.Image = Properties.Resources.warning16x;
-            }
-            else
-            {
-                img.Image = Properties.Resources.success16x;
-            }
         }
     }
 }
