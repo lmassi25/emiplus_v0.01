@@ -223,6 +223,75 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
+        /// <summary>
+        /// Retorna o valor de acordo com a medida, Exemplo: UN retornará números inteiros (120), KG retornará número com 3 casas decimais
+        /// </summary>
+        /// <param name="Medida"></param>
+        /// <param name="Valor"></param>
+        /// <returns></returns>
+        public static string FormatMedidas(string Medida, double Valor)
+        {
+            switch (Medida)
+            {
+                case "UN":
+                case "PC":
+                case "MÇ":
+                case "BD":
+                case "DZ":
+                case "CX":
+                case "FD":
+                case "PAR":
+                case "PR":
+                case "KIT":
+                case "CNT":
+                case "PCT":
+                    string result = Valor.ToString();
+                    
+                    if (Valor.ToString().Contains(","))
+                        result = Valor.ToString().Substring(0, Valor.ToString().IndexOf(","));
+
+                    if (Valor.ToString().Contains("."))
+                        result = Valor.ToString().Substring(0, Valor.ToString().IndexOf("."));
+                    
+                    return result.ToString();
+                    break;
+
+                case "KG":
+                case "GR":
+                case "L":
+                case "ML":
+                case "M2":
+                    return Valor.ToString("0.000");
+                    break;
+            }
+
+            return "";
+        }
+
+        public static string FormatPriceXml(string value)
+        {
+            string p1 = "", p2 = ",00";
+
+            p1 = value.Substring(0, value.IndexOf('.'));
+
+            if (value.Substring(value.IndexOf('.'), (value.Length - value.IndexOf('.'))).Length >= 3)
+                p2 = value.Substring(value.IndexOf('.'), 3).Replace(".", ",");
+
+            return FormatPrice(ConvertToDouble(p1 + p2));
+        }
+
+        public static void WarningInput(TextBox textbox, PictureBox img)
+        {
+            if (String.IsNullOrEmpty(textbox.Text) || textbox.Text == "0,00")
+            {
+                img.Image = Properties.Resources.warning16x;
+            }
+            else
+            {
+                img.Image = Properties.Resources.success16x;
+            }
+        }
+
         public static string FormatNumberKilo(double num)
         {
             //long i = (long)Math.Pow(10, (int)Math.Max(0, Math.Log10(num) - 2));

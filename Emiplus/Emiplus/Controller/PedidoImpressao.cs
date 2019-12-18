@@ -51,8 +51,6 @@ namespace Emiplus.Controller
                 countItens += item.QUANTIDADE;
             }
 
-
-
             var dataPgtos = _controllerTitulo.GetDataPgtosLancados(idPedido);
             ArrayList newDataPgtos = new ArrayList();
             foreach (var item in dataPgtos)
@@ -66,8 +64,11 @@ namespace Emiplus.Controller
 
             Model.Pessoa dataCliente = _modelPessoa.FindById(_modelPedido.Cliente).FirstOrDefault<Model.Pessoa>();
             Model.Usuarios dataVendedor = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
-            _modelPessoaAddr = _modelPessoaAddr.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaEndereco>();
-            _modelPessoaContato = _modelPessoaContato.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaContato>();
+            if (dataCliente != null && !string.IsNullOrEmpty(dataCliente.Id.ToString()))
+            {
+                _modelPessoaAddr = _modelPessoaAddr.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaEndereco>();
+                _modelPessoaContato = _modelPessoaContato.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaContato>();
+            }
 
             var Addr = _modelPessoaAddr.Rua + " " + _modelPessoaAddr.Nr + " - CEP: " + _modelPessoaAddr.Cep + " - " + _modelPessoaAddr.Complemento + " | " + _modelPessoaAddr.Bairro + " - " + _modelPessoaAddr.Cidade + "/" + _modelPessoaAddr.Estado;
 
@@ -111,8 +112,8 @@ namespace Emiplus.Controller
                 AddressEmpresa = $"{Settings.Default.empresa_rua} {Settings.Default.empresa_nr} - {Settings.Default.empresa_cep} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
                 Logo = Settings.Default.empresa_logo,
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
-                Cliente = dataCliente.Nome,
-                Vendedor = dataVendedor.Nome,
+                Cliente = dataCliente?.Nome ?? "",
+                Vendedor = dataVendedor?.Nome ?? "",
                 Caixa = _modelPedido.Id_Caixa,
                 Endereco = Addr,
                 Telefone = _modelPessoaContato.Telefone,
