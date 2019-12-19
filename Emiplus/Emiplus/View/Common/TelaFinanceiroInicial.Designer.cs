@@ -48,7 +48,7 @@
             this.Caixa = new System.Windows.Forms.Button();
             this.Clientes = new System.Windows.Forms.Button();
             this.fornecedores = new System.Windows.Forms.Button();
-            this.Categorias = new System.Windows.Forms.Button();
+            this.Receitas = new System.Windows.Forms.Button();
             this.FecharCaixa = new System.Windows.Forms.Button();
             this.EntradaSaidaCaixa = new System.Windows.Forms.Button();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -62,6 +62,8 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.Despesas = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -369,7 +372,7 @@
             this.Clientes.ForeColor = System.Drawing.Color.DimGray;
             this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
             this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(22, 138);
+            this.Clientes.Location = new System.Drawing.Point(22, 182);
             this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Clientes.Name = "Clientes";
             this.Clientes.Size = new System.Drawing.Size(219, 41);
@@ -392,7 +395,7 @@
             this.fornecedores.ForeColor = System.Drawing.Color.DimGray;
             this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
             this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fornecedores.Location = new System.Drawing.Point(22, 182);
+            this.fornecedores.Location = new System.Drawing.Point(22, 226);
             this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fornecedores.Name = "fornecedores";
             this.fornecedores.Size = new System.Drawing.Size(219, 41);
@@ -401,28 +404,28 @@
             this.fornecedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fornecedores.UseVisualStyleBackColor = false;
             // 
-            // Categorias
+            // Receitas
             // 
-            this.Categorias.BackColor = System.Drawing.Color.Transparent;
-            this.Categorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Categorias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Categorias.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Categorias.FlatAppearance.BorderSize = 0;
-            this.Categorias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Categorias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Categorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Categorias.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Categorias.ForeColor = System.Drawing.Color.DimGray;
-            this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
-            this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Categorias.Location = new System.Drawing.Point(22, 94);
-            this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Categorias.Name = "Categorias";
-            this.Categorias.Size = new System.Drawing.Size(219, 41);
-            this.Categorias.TabIndex = 110;
-            this.Categorias.Text = "          Categorias";
-            this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Categorias.UseVisualStyleBackColor = false;
+            this.Receitas.BackColor = System.Drawing.Color.Transparent;
+            this.Receitas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Receitas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Receitas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Receitas.FlatAppearance.BorderSize = 0;
+            this.Receitas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Receitas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Receitas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Receitas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Receitas.ForeColor = System.Drawing.Color.DimGray;
+            this.Receitas.Image = ((System.Drawing.Image)(resources.GetObject("Receitas.Image")));
+            this.Receitas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Receitas.Location = new System.Drawing.Point(22, 94);
+            this.Receitas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Receitas.Name = "Receitas";
+            this.Receitas.Size = new System.Drawing.Size(219, 41);
+            this.Receitas.TabIndex = 110;
+            this.Receitas.Text = "          Receitas";
+            this.Receitas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Receitas.UseVisualStyleBackColor = false;
             // 
             // FecharCaixa
             // 
@@ -484,7 +487,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(226, 164);
+            this.pictureBox1.Location = new System.Drawing.Point(226, 215);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -495,7 +498,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(226, 208);
+            this.pictureBox3.Location = new System.Drawing.Point(226, 259);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(15, 15);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -591,12 +594,48 @@
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Visible = false;
             // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(226, 165);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 132;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Visible = false;
+            // 
+            // Despesas
+            // 
+            this.Despesas.BackColor = System.Drawing.Color.Transparent;
+            this.Despesas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Despesas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Despesas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Despesas.FlatAppearance.BorderSize = 0;
+            this.Despesas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Despesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Despesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Despesas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Despesas.ForeColor = System.Drawing.Color.DimGray;
+            this.Despesas.Image = ((System.Drawing.Image)(resources.GetObject("Despesas.Image")));
+            this.Despesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Despesas.Location = new System.Drawing.Point(22, 138);
+            this.Despesas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Despesas.Name = "Despesas";
+            this.Despesas.Size = new System.Drawing.Size(219, 41);
+            this.Despesas.TabIndex = 131;
+            this.Despesas.Text = "          Despesas";
+            this.Despesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Despesas.UseVisualStyleBackColor = false;
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.pictureBox13);
+            this.Controls.Add(this.Despesas);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
@@ -610,7 +649,7 @@
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.EntradaSaidaCaixa);
             this.Controls.Add(this.FecharCaixa);
-            this.Controls.Add(this.Categorias);
+            this.Controls.Add(this.Receitas);
             this.Controls.Add(this.fornecedores);
             this.Controls.Add(this.Clientes);
             this.Controls.Add(this.Caixa);
@@ -644,6 +683,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -668,7 +708,7 @@
         private System.Windows.Forms.Button Caixa;
         private System.Windows.Forms.Button Clientes;
         private System.Windows.Forms.Button fornecedores;
-        private System.Windows.Forms.Button Categorias;
+        private System.Windows.Forms.Button Receitas;
         private System.Windows.Forms.Button FecharCaixa;
         private System.Windows.Forms.Button EntradaSaidaCaixa;
         private System.Windows.Forms.PictureBox pictureBox11;
@@ -682,5 +722,7 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.Button Despesas;
     }
 }

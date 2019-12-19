@@ -28,8 +28,7 @@ namespace Emiplus
         static void Main()
         {
             userPermissions.Clear();
-            SetPermissions();
-
+            
             string workingDirectory = Environment.CurrentDirectory;
             PATH_BASE = Directory.GetParent(workingDirectory).Parent.FullName;
 
@@ -38,7 +37,7 @@ namespace Emiplus
             Application.Run(new Carregar());
         }
 
-        private static void SetPermissions()
+        public static void SetPermissions()
         {
             var jo = new RequestApi().URL($"{Program.URL_BASE}/api/permissions/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
 

@@ -231,9 +231,9 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(17, 86);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(131, 17);
+            this.label8.Size = new System.Drawing.Size(51, 17);
             this.label8.TabIndex = 98;
-            this.label8.Text = "Categoria de Contas";
+            this.label8.Text = "Receita";
             // 
             // receita
             // 

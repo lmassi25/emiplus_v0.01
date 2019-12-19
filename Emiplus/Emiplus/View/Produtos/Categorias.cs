@@ -33,12 +33,22 @@ namespace Emiplus.View.Produtos
                 label2.Text = "Se organize melhor criando categorias para seus produtos.";
             }
 
-            if (Home.CategoriaPage == "Financeiro")
+            if (Home.CategoriaPage == "Receitas")
             {
                 pictureBox1.Image = Properties.Resources.money_bag__1_;
                 label5.Text = "Financeiro";
-                label1.Text = "Categorias de Contas";
-                label2.Text = "Se organize melhor criando categorias de contas para seus produtos.";
+                label1.Text = "Nova Receita";
+                label2.Text = "Se organize melhor criando os tipos de receitas para lançar no financeiro.";
+                label3.Text = "Busque por uma receita:";
+            }
+
+            if (Home.CategoriaPage == "Despesas")
+            {
+                pictureBox1.Image = Properties.Resources.money_bag__1_;
+                label5.Text = "Financeiro";
+                label1.Text = "Nova Despesa";
+                label2.Text = "Se organize melhor criando os tipos de despesas para lançar no financeiro.";
+                label3.Text = "Busque por uma despesa:";
             }
         }
 

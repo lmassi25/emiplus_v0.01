@@ -158,10 +158,10 @@ namespace Emiplus.View.Common
                 trialdias.Text = $"{Settings.Default.user_plan_trial} dias";
             }
 
+            Program.SetPermissions();
+
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
-
-            var teste = new UserPermission();
         }
 
         private void Eventos()
