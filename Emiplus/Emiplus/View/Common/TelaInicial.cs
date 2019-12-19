@@ -48,7 +48,7 @@ namespace Emiplus.View.Common
             valorTotalVendas.Text = GetTotalVendas.TOTAL == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
             
             if (GetReceberHoje != null && Pedidos != null)
-                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetReceberHoje.TOTAL / Pedidos.TOTAL), true);
+                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL / Pedidos.TOTAL), true);
             else
                 valorMedioVendas.Text = "R$ 00,00";
 

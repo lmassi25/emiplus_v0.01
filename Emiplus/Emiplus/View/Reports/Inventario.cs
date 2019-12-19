@@ -174,7 +174,7 @@ namespace Emiplus.View.Reports
                 });
             }
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Inventario.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Inventario.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 INCLUDE_PATH = Program.PATH_BASE,

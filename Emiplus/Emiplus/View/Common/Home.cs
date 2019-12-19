@@ -153,7 +153,8 @@ namespace Emiplus.View.Common
             {
                 label6.Visible = false;
                 trialdias.Visible = false;
-            } else
+            } 
+            else
             {
                 trialdias.Text = $"{Settings.Default.user_plan_trial} dias";
             }

@@ -190,7 +190,7 @@ namespace Emiplus.View.Produtos
                 });
             }
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Etiqueta.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Etiqueta.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 urlBase = Program.URL_BASE,

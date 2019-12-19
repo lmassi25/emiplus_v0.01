@@ -1,11 +1,7 @@
-﻿using Emiplus.View.Financeiro;
-using Emiplus.View.Testes;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using Emiplus.View.Common;
-using System.IO;
 using Emiplus.Properties;
-using Emiplus.View.Comercial;
 using System.Collections;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
@@ -27,10 +23,8 @@ namespace Emiplus
         [STAThread]
         static void Main()
         {
-            userPermissions.Clear();
-            
-            string workingDirectory = Environment.CurrentDirectory;
-            PATH_BASE = Directory.GetParent(workingDirectory).Parent.FullName;
+            userPermissions.Clear();   
+            PATH_BASE = IniFile.Read("Path", "LOCAL");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -104,7 +104,7 @@ namespace Emiplus.Controller
                     break;
             }
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomComprovanteVendaA4.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\CupomComprovanteVendaA4.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
