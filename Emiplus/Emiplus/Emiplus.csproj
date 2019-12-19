@@ -480,6 +480,18 @@
     <Compile Include="View\Common\VideoTutorial.Designer.cs">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\Cfesat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Cfesat.Designer.cs">
+      <DependentUpon>Cfesat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Configuracoes\Cfesat_logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Cfesat_logs.Designer.cs">
+      <DependentUpon>Cfesat_logs.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Exemplos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -922,6 +934,12 @@
     <EmbeddedResource Include="View\Common\VideoTutorial.resx">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Cfesat.resx">
+      <DependentUpon>Cfesat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Cfesat_logs.resx">
+      <DependentUpon>Cfesat_logs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1245,7 +1263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\Relatorios\" />
-    <Folder Include="View\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Images\icons\info %281%29.png" />
