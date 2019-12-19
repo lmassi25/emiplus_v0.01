@@ -28,7 +28,7 @@ namespace Emiplus.Controller
     {
         #region V
 
-        private int _id_empresa = 0;
+        private int _id_empresa = 1;
 
         private Model.Pedido _pedido;        
         private Model.PedidoItem _pedidoItem;
@@ -73,6 +73,8 @@ namespace Emiplus.Controller
 
         string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "";
 
+        Random rdn = new Random();
+
         #endregion
 
         private JObject userData { get; set; }
@@ -97,7 +99,7 @@ namespace Emiplus.Controller
             Settings.Default.Save();
         }
 
-        private void Start(int Pedido, string tipo = "NFe")
+        private void Start(int Pedido = 0, string tipo = "NFe")
         {
             _path = IniFile.Read("Path", "LOCAL");
 
@@ -126,7 +128,8 @@ namespace Emiplus.Controller
                         Directory.CreateDirectory(_path_autorizada);
                     }
 
-                    _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+                    if(Pedido > 0)
+                        _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
 
                     break;
 
@@ -148,7 +151,8 @@ namespace Emiplus.Controller
                         Directory.CreateDirectory(_path_autorizada);
                     }
 
-                    _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+                    if (Pedido > 0)
+                        _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
 
                     break;
             }
@@ -161,16 +165,19 @@ namespace Emiplus.Controller
             {
                 TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
             }
-
-            _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
             
-            if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
+            if (Pedido > 0)
             {
-                _id_empresa = 1;
-            }
-            else
-            {
-                _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
+                _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
+
+                if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
+                {
+                    _id_empresa = 1;
+                }
+                else
+                {
+                    _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
+                }
             }
 
             //_emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
@@ -257,7 +264,7 @@ namespace Emiplus.Controller
 
                     #region CFE 
 
-                    var printername = IniFile.Read("Printer", "LOCAL");
+                    var printername = IniFile.Read("Printer", "SAT");
 
                     if(printername == null)
                         return "";
@@ -706,7 +713,7 @@ namespace Emiplus.Controller
                 case "CFe":
 
                     Random rdn = new Random();
-                    _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), "12345678", arq.OuterXml));
+                    _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), IniFile.Read("Codigo_Ativacao", "SAT"), arq.OuterXml));
 
                     if (_msg.Contains("Emitido com sucesso + conteudo notas"))
                     {
@@ -2015,19 +2022,98 @@ namespace Emiplus.Controller
 
         #region CFE 
 
+        private string GetCodAtivacao()
+        {
+            if (IniFile.Read("Servidor", "SAT") == "Homologacao")
+                return "12345678";
+            else
+                return IniFile.Read("Codigo_Ativacao", "SAT");
+        }
+
         private static string Sep_Delimitador(char sep, int posicao, string dados)
         {
             string[] ret_dados = dados.Split(sep);
             return ret_dados[posicao];
         }
 
-        private static string Base64ToString(string base64)  // caso queira tirar o arquivo de base 64
+        public static string Base64ToString(string base64)  // caso queira tirar o arquivo de base 64
         {
             byte[] arq;
-            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            //System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();
             arq = Convert.FromBase64String(base64);
             base64 = enc.GetString(arq);
             return base64;
+        }
+
+        public static IntPtr NativeUtf8FromString(string managedString)
+        {
+            int len = Encoding.UTF8.GetByteCount(managedString);
+            byte[] buffer = new byte[len + 1];
+            Encoding.UTF8.GetBytes(managedString, 0, managedString.Length, buffer, 0);
+            IntPtr nativeUtf8 = Marshal.AllocHGlobal(buffer.Length);
+            Marshal.Copy(buffer, 0, nativeUtf8, buffer.Length);
+            return nativeUtf8;
+        }
+
+        public static string StringFromNativeUtf8(IntPtr nativeUtf8)
+        {
+            try
+            {
+                int len = 0;
+                while (Marshal.ReadByte(nativeUtf8, len) != 0) ++len;
+                byte[] buffer = new byte[len];
+                Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
+                return Encoding.UTF8.GetString(buffer);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public string Logs(int tipo = 0)
+        {
+            Start();
+
+            string ret = "", msg = "", caracter = "";
+
+            if(tipo == 0)
+                ret = StringFromNativeUtf8(Sat.ExtrairLogs(rdn.Next(999999), GetCodAtivacao()));
+            else
+                ret = StringFromNativeUtf8(Sat.ConsultarStatusOperacional(rdn.Next(999999), GetCodAtivacao()));
+
+            if (!String.IsNullOrEmpty(ret))
+            {
+                if (tipo == 0)
+                {
+                    ret = Base64ToString(Sep_Delimitador('|', 5, ret));
+                    caracter = "\n";
+
+                    foreach (String item in ret.Split(caracter.ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        if (!String.IsNullOrEmpty(item))
+                        {
+                            if (String.IsNullOrEmpty(msg))
+                                msg = item.TrimEnd();
+                            else
+                                msg = msg + Environment.NewLine + item.TrimEnd();
+                        }
+                    }
+                }
+                else
+                    msg = ret;
+            }
+
+            if (String.IsNullOrEmpty(msg))
+                msg = "Não foi possível consular os logs.";
+
+            return msg;
+        }
+
+        public string Consulta()
+        {
+            return StringFromNativeUtf8(Sat.ConsultarSAT(rdn.Next(999999)));
         }
 
         #endregion

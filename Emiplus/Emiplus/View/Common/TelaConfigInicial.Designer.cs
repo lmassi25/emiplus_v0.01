@@ -29,18 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Comercial");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Financeiro");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("S@T");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Impressora");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("CF-e S@T", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Fiscal", new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("E-mail");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Comercial");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Financeiro");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("CF-e S@T");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Fiscal", new System.Windows.Forms.TreeNode[] {
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("E-mail");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaConfigInicial));
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.menu = new System.Windows.Forms.TreeView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -49,7 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.tela = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,38 +53,34 @@
             this.visualPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeView1
+            // menu
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.menu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeView1.Location = new System.Drawing.Point(13, 11);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "comercial";
-            treeNode1.Text = "Comercial";
-            treeNode2.Name = "financeiro";
-            treeNode2.Text = "Financeiro";
-            treeNode3.Name = "sat";
-            treeNode3.Text = "S@T";
-            treeNode4.Name = "impressora";
-            treeNode4.Text = "Impressora";
-            treeNode5.Name = "cfesat";
-            treeNode5.Text = "CF-e S@T";
-            treeNode6.Name = "fiscal";
-            treeNode6.Text = "Fiscal";
-            treeNode7.Name = "email";
-            treeNode7.Text = "E-mail";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
+            this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.menu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.menu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menu.Location = new System.Drawing.Point(13, 11);
+            this.menu.Name = "menu";
+            treeNode6.Name = "comercial";
+            treeNode6.Text = "Comercial";
+            treeNode7.Name = "financeiro";
+            treeNode7.Text = "Financeiro";
+            treeNode8.Name = "cfesat";
+            treeNode8.Text = "CF-e S@T";
+            treeNode9.Name = "fiscal";
+            treeNode9.Text = "Fiscal";
+            treeNode10.Name = "email";
+            treeNode10.Text = "E-mail";
+            this.menu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode6,
-            treeNode7});
-            this.treeView1.Size = new System.Drawing.Size(183, 454);
-            this.treeView1.TabIndex = 28;
+            treeNode7,
+            treeNode9,
+            treeNode10});
+            this.menu.Size = new System.Drawing.Size(183, 454);
+            this.menu.TabIndex = 28;
             // 
             // panel4
             // 
@@ -184,7 +176,7 @@
             this.visualPanel1.Border.Thickness = 1;
             this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualPanel1.Border.Visible = true;
-            this.visualPanel1.Controls.Add(this.treeView1);
+            this.visualPanel1.Controls.Add(this.menu);
             this.visualPanel1.ForeColor = System.Drawing.Color.White;
             this.visualPanel1.Location = new System.Drawing.Point(12, 156);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
@@ -201,36 +193,15 @@
             this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // visualPanel2
+            // tela
             // 
-            this.visualPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tela.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.visualPanel2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualPanel2.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualPanel2.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualPanel2.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualPanel2.Border.HoverVisible = true;
-            this.visualPanel2.Border.Rounding = 6;
-            this.visualPanel2.Border.Thickness = 1;
-            this.visualPanel2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualPanel2.Border.Visible = true;
-            this.visualPanel2.ForeColor = System.Drawing.Color.White;
-            this.visualPanel2.Location = new System.Drawing.Point(228, 156);
-            this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualPanel2.Name = "visualPanel2";
-            this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
-            this.visualPanel2.Size = new System.Drawing.Size(493, 481);
-            this.visualPanel2.TabIndex = 81;
-            this.visualPanel2.Text = "panelTree";
-            this.visualPanel2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualPanel2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.tela.Location = new System.Drawing.Point(228, 156);
+            this.tela.Name = "tela";
+            this.tela.Size = new System.Drawing.Size(493, 481);
+            this.tela.TabIndex = 81;
             // 
             // TelaConfigInicial
             // 
@@ -238,7 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.visualPanel2);
+            this.Controls.Add(this.tela);
             this.Controls.Add(this.visualPanel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
@@ -258,7 +229,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView menu;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
@@ -267,6 +238,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
-        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel2;
+        private System.Windows.Forms.Panel tela;
     }
 }
