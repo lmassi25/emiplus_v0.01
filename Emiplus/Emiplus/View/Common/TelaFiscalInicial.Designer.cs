@@ -588,7 +588,7 @@
             this.EnviarXml.Name = "EnviarXml";
             this.EnviarXml.Size = new System.Drawing.Size(219, 41);
             this.EnviarXml.TabIndex = 176;
-            this.EnviarXml.Text = "          Enviar xml por email";
+            this.EnviarXml.Text = "          Enviar xml por e-mail";
             this.EnviarXml.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.EnviarXml.UseVisualStyleBackColor = false;
             // 
