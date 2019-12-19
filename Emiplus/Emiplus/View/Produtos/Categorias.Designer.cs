@@ -202,7 +202,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(38, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(353, 20);
+            this.label2.Size = new System.Drawing.Size(683, 37);
             this.label2.TabIndex = 11;
             this.label2.Text = "Se organize melhor criando categorias para seus produtos.";
             // 

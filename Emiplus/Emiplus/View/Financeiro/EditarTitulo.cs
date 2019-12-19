@@ -128,8 +128,14 @@ namespace Emiplus.View.Financeiro
                     cliente.SelectedValue = _modelTitulo.Id_Pessoa;
                 }
 
+                var CategoriasdeContas = "";
+                if (Home.financeiroPage == "Pagar")
+                    CategoriasdeContas = "Despesas";
+                else
+                    CategoriasdeContas = "Receitas";
+
                 IEnumerable<dynamic> categorias;
-                categorias = new Categoria().FindAll().Where("excluir", 0).Where("tipo", "Financeiro").OrderByDesc("nome").Get();
+                categorias = new Categoria().FindAll().Where("excluir", 0).Where("tipo", CategoriasdeContas).OrderByDesc("nome").Get();
                 if (categorias.Count() > 0)
                 {
                     receita.DataSource = categorias;

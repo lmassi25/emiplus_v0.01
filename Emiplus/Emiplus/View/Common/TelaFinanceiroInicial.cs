@@ -25,12 +25,21 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
-            Categorias.Click += (s, e) =>
+            Receitas.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(Categorias, pictureBox11, "fin_categorias"))
+                if (UserPermission.SetControl(Receitas, pictureBox11, "fin_receitas"))
                     return;
 
-                Home.CategoriaPage = "Financeiro";
+                Home.CategoriaPage = "Receitas";
+                OpenForm.Show<Produtos.Categorias>(this);
+            };
+
+            Despesas.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(Despesas, pictureBox13, "fin_despesas"))
+                    return;
+
+                Home.CategoriaPage = "Despesas";
                 OpenForm.Show<Produtos.Categorias>(this);
             };
 
