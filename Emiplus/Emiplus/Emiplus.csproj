@@ -756,6 +756,12 @@
     <Compile Include="View\Reports\ProdutosVendidos.Designer.cs">
       <DependentUpon>ProdutosVendidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Testes\backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Testes\backup.Designer.cs">
+      <DependentUpon>backup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Testes\cPure.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -891,9 +897,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaFinanceiroInicial.resx">
       <DependentUpon>TelaFinanceiroInicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Common\TelaFiscalInicial.resx">
-      <DependentUpon>TelaFiscalInicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
@@ -1047,6 +1050,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\ProdutosVendidos.resx">
       <DependentUpon>ProdutosVendidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Testes\backup.resx">
+      <DependentUpon>backup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\cPure.resx">
       <DependentUpon>cPure.cs</DependentUpon>
