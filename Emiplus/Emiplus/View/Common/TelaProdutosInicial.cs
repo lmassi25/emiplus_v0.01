@@ -19,38 +19,71 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
-            Produtos.Click += (s, e) => OpenForm.Show<Produtos.Produtos>(this);
+            Produtos.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(Produtos, pictureBox9, "pdt_pdt"))
+                    return;
 
-            Etiquetas.Click += (s, e) => OpenForm.Show<Produtos.Etiquetas>(this);
+                OpenForm.Show<Produtos.Produtos>(this);
+            };
+
+            Etiquetas.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(Etiquetas, pictureBox2, "pdt_etiquetas"))
+                    return;
+
+                OpenForm.Show<Produtos.Etiquetas>(this);
+            };
 
             Categorias.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(Categorias, pictureBox1, "pdt_cats"))
+                    return;
+
                 Home.CategoriaPage = "Produtos";
                 OpenForm.Show<Produtos.Categorias>(this);
             };
 
-            Impostos.Click += (s, e) => OpenForm.Show<Produtos.Impostos>(this);
+            Impostos.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(Impostos, pictureBox3, "pdt_impostos"))
+                    return;
+
+                OpenForm.Show<Produtos.Impostos>(this);
+            };
 
             fornecedores.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(fornecedores, pictureBox5, "pdt_fornecedores"))
+                    return;
+
                 Home.pessoaPage = "Fornecedores";
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
             transportadoras.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(transportadoras, pictureBox6, "pdt_transportadoras"))
+                    return;
+
                 Home.pessoaPage = "Transportadoras";
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
             ReajusteProduto.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(ReajusteProduto, pictureBox7, "pdt_reajuste"))
+                    return;
+
                 Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
                 Reajuste.ShowDialog();
             };
 
             Compras.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(Compras, pictureBox8, "pdt_novacompra"))
+                    return;
+
                 Home.pedidoPage = "Compras";
                 Comercial.Pedido Pedido = new Comercial.Pedido();
                 Pedido.ShowDialog();
@@ -58,18 +91,27 @@ namespace Emiplus.View.Common
 
             HistoricoEntradaSaida.Click += (s, e) =>
             {
-                EstoqueEntradaSaida Estoque = new EstoqueEntradaSaida();
-                Estoque.ShowDialog();
+                if (UserPermission.SetControl(HistoricoEntradaSaida, pictureBox11, "pdt_entradassaidas"))
+                    return;
+
+                EstoqueEntradaSaida formEntradaeSaida = new EstoqueEntradaSaida();
+                formEntradaeSaida.ShowDialog();
             };
 
             Estoque.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(this.Estoque, pictureBox12, "pdt_inventario"))
+                    return;
+
                 Inventario Estoque = new Inventario();
                 Estoque.ShowDialog();
             };
 
             CompraNova.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(Compras, pictureBox13, "pdt_compras"))
+                    return;
+
                 Home.pedidoPage = "Compras";
                 AddPedidos.Id = 0;
                 AddPedidos NovoPedido = new AddPedidos();
@@ -78,6 +120,9 @@ namespace Emiplus.View.Common
 
             importarNfe.Click += (s, e) =>
             {
+                if (UserPermission.SetControl(importarNfe, pictureBox14, "pdt_importarnfe"))
+                    return;
+
                 Produtos.ImportarNfe f = new Produtos.ImportarNfe();
                 f.ShowDialog();
             };

@@ -30,10 +30,17 @@ namespace Emiplus.View.Produtos
                 label5.Text = "Produtos";
             }
 
-            if (Home.CategoriaPage == "Financeiro")
+            if (Home.CategoriaPage == "Receitas")
             {
                 pictureBox1.Image = Properties.Resources.money_bag__1_;
-                label1.Text = "Nova Categoria de Contas";
+                label1.Text = "Nova Receita";
+                label5.Text = "Financeiro";
+            }
+
+            if (Home.CategoriaPage == "Despesas")
+            {
+                pictureBox1.Image = Properties.Resources.money_bag__1_;
+                label1.Text = "Nova Despesa";
                 label5.Text = "Financeiro";
             }
         }
