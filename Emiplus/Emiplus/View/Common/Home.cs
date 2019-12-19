@@ -162,6 +162,25 @@ namespace Emiplus.View.Common
 
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
+
+            StartInicio();
+        }
+
+        /// <summary>
+        /// Inicia a tela inicial ao abrir o programa
+        /// </summary>
+        private void StartInicio()
+        {
+            homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);
+            homeMenuInicio.ForeColor = Color.WhiteSmoke;
+            pictureBox2.BackColor = Color.FromArgb(37, 48, 50);
+            OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
+
+            homeMenuFiscal.BackColor = Color.Transparent;
+            homeMenuProducts.BackColor = Color.Transparent;
+            homeMenuComercial.BackColor = Color.Transparent;
+            homeMenuFinanceiro.BackColor = Color.Transparent;
+            homeMenuSettings.BackColor = Color.Transparent;
         }
 
         private void Eventos()
@@ -177,19 +196,7 @@ namespace Emiplus.View.Common
 
             btnPlano.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 
-            homeMenuInicio.Click += (s, e) =>
-            {
-                homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);
-                homeMenuInicio.ForeColor = Color.WhiteSmoke;
-                pictureBox2.BackColor = Color.FromArgb(37, 48, 50);
-                OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
-
-                homeMenuFiscal.BackColor = Color.Transparent;
-                homeMenuProducts.BackColor = Color.Transparent;
-                homeMenuComercial.BackColor = Color.Transparent;
-                homeMenuFinanceiro.BackColor = Color.Transparent;
-                homeMenuSettings.BackColor = Color.Transparent;
-            };
+            homeMenuInicio.Click += (s, e) => StartInicio();
 
             homeMenuProducts.Click += (s, e) =>
             {

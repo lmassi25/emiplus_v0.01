@@ -137,11 +137,11 @@ namespace Emiplus.View.Comercial
             {
                 _mPedido.Save(_mPedido);
                 var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
-                
-                if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
-                    return;    
 
                 if (data == null)
+                    return;
+
+                if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
                     return;
 
                 nomeCliente.Text = data.Nome;
