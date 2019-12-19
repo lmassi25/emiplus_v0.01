@@ -63,9 +63,5 @@ namespace Emiplus.View.Testes
             MessageBox.Show("Do something here.");
         }
 
-        private void TextBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
     }
 }

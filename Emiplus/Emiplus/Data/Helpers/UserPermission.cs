@@ -19,6 +19,21 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
+        public static bool SetControlLabel(Label button, PictureBox img, string tela)
+        {
+            if (!GetPermission(tela))
+            {
+                img.Visible = true;
+
+                button.Cursor = Cursors.No;
+                Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+
+                return true;
+            }
+
+            return false;
+        }
+
         private static bool GetPermission(string tela)
         {
             if (Program.userPermissions.Count == 1 && Program.userPermissions[0].ToString() == "{ all = 1 }")
