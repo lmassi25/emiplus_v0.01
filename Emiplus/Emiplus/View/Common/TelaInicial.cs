@@ -42,9 +42,8 @@ namespace Emiplus.View.Common
 
         private void LoadData()
         {
-            totalVendas.Text = Pedidos.TOTAL.ToString();
-            itensVendidos.Text = Pedidos_Itens.TOTAL.ToString();
-            itensVendidos.Text = Pedidos_Itens.TOTAL.ToString();
+            totalVendas.Text = Pedidos != null ? Pedidos.TOTAL.ToString() : "0";
+            itensVendidos.Text = Pedidos_Itens != null ? Pedidos_Itens.TOTAL.ToString() : "0";
             valorTotalVendas.Text = GetTotalVendas.TOTAL == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
             
             if (GetReceberHoje != null && Pedidos != null)
@@ -130,7 +129,7 @@ namespace Emiplus.View.Common
             int dias = 7;
             for (int i = 0; i < dias; i++)
             {
-                var data = new Model.Pedido().Query().SelectRaw("COUNT(ID) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas")
+                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas")
                 .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
                 .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true)).FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToInt32(data.TOTAL) : "0");
@@ -151,8 +150,6 @@ namespace Emiplus.View.Common
                 Title = "Últimos 7 dias (da semana atual)",
                 Labels = new[] { labels[6], labels[5], labels[4], labels[3], labels[2], labels[1], "Hoje" }
             });
-
-            Func<double, string> formatFunc = (x) => string.Format("{0:N2}", x);
 
             cartesianChart1.AxisY.Add(new Axis
             {

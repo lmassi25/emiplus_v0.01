@@ -190,6 +190,12 @@ namespace Emiplus.View.Common
                 new Controller.Caixa().CheckCaixaDate();
             };
 
+            chatOnline.Click += (s, e) =>
+            {
+                Suporte f = new Suporte();
+                f.Show();
+            };
+
             developer.Click += (s, e) =>
             {
                 OpenForm.ShowInPanel<Developer>(panelFormularios);

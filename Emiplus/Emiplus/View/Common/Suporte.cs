@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using Emiplus.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +14,8 @@ using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
-    public partial class VideoTutorial : Form
+    public partial class Suporte : Form
     {
-        private string video { get; set; }
 
         #region DLL SHADOW
         /********************************************************************
@@ -126,30 +128,86 @@ namespace Emiplus.View.Common
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        public VideoTutorial(string _urlVideo)
+        public ChromiumWebBrowser chromeBrowser;
+
+        public Suporte()
         {
             InitializeComponent();
+            InitializeChromiumAsync();
+            Eventos();
+        }
 
-            //watch?v=iqIAhAJMKFE
-            video = _urlVideo.Replace("watch?v=", "embed/");
+        public void InitializeChromiumAsync()
+        {
+            var embed = "<!DOCTYPE html> <html><head>" +
+                "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>" +
+                "</head><body style=\"margin:0px!important\" style=\"text-align: center\">" +
+                "<img src=\"https://www.emiplus.com.br/app/templates/default/assets/img/confused.png\" style=\"width: 32%; display: block; text-align: center; margin: 0 auto; padding: 40px 40px 25px;\">" +
+                "<span style=\"width: 51%; display: block; text-align: center; margin: 0 auto; font-size: 1.2em; font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; font-weight: 300; padding: 30px 0px;\">" +
+                "Clique no ícone flutuante para falar com o suporte! <img src=\"https://www.emiplus.com.br/app/templates/default/assets/img/smile.png\" width=\"25px\"></span>" +
+                "<script>" +
+                "(function(o, c, t, a, d, e, s, k) {" +
+                "o.octadesk = o.octadesk || { };" +
+                "s = c.getElementsByTagName(\"body\")[0];" +
+                "k = c.createElement(\"script\");" +
+                "k.async = 1;" +
+                "k.src = t + '/' + a + '?showButton=' + d + '&openOnMessage=' + e;" +
+                "s.appendChild(k);" +
+                "})(window, document, 'https://chat.octadesk.services/api/widget', 'destech', true, true);" +
+                "window.addEventListener('onOctaChatReady', function(e) {" +
+                "octadesk.chat.login({" +
+                "user:" +
+                "{" +
+                $"name: '{Settings.Default.user_name} {Settings.Default.user_lastname}'," +
+                $"email: '{Settings.Default.user_email}'" +
+                "}" +
+                "})" +
+                "})" +
+                "</script> " +
+            "</body></html>";
+
+            CefSettings settings = new CefSettings();
+
+            if (!Cef.IsInitialized)
+                Cef.Initialize(settings);
+
+            chromeBrowser = new ChromiumWebBrowser(string.Empty);
+
+            panelBrowser.Controls.Add(chromeBrowser);
+
+            chromeBrowser.LoadHtml(embed, "https://rendering/");
+            chromeBrowser.Dock = DockStyle.Fill;
+
+            BrowserSettings browserSettings = new BrowserSettings();
+            browserSettings.FileAccessFromFileUrls = CefState.Enabled;
+            browserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            chromeBrowser.BrowserSettings = browserSettings;
+        }
+
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+        private void Eventos()
+        {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
 
             btnFechar.Click += (s, e) =>
             {
                 Close();
             };
-        }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            var embed = "<html><head>" +
-            "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
-            "</head><body style=\"margin:0px!important\">" +
-            "<iframe style=\"display: block;background: #000;border: none;height: 100vh;width: 100vw;\" src =\"{0}\"" +
-            "frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>" +
-            "</body></html>";
-            var url = video;
-            this.webBrowser1.DocumentText = string.Format(embed, url);
+            minimize.Click += (s, e) =>
+            {
+                this.WindowState = FormWindowState.Minimized;
+            };
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -159,13 +217,6 @@ namespace Emiplus.View.Common
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
-        }
-
-        private void panel1_DoubleClick(object sender, EventArgs e)
-        {
-            WindowState = WindowState == FormWindowState.Maximized
-                        ? FormWindowState.Normal
-                        : FormWindowState.Maximized;
         }
     }
 }

@@ -438,6 +438,12 @@
     <Compile Include="View\Common\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\Suporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Suporte.Designer.cs">
+      <DependentUpon>Suporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\TelaComercialInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -912,6 +918,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Suporte.resx">
+      <DependentUpon>Suporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaComercialInicial.resx">
       <DependentUpon>TelaComercialInicial.cs</DependentUpon>
