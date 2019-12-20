@@ -266,7 +266,7 @@ namespace Emiplus.View.Comercial
 
                 if (!Isento.Checked)
                 {
-                    if (string.IsNullOrEmpty(rgIE.Text))
+                    if (pessoaJF.Text == "Jurídica" && string.IsNullOrEmpty(rgIE.Text))
                     {
                         Alert.Message("Oppss", "Inscrição estadual é obrigatório para pessoa jurídica.", Alert.AlertType.warning);
                         return;
@@ -350,7 +350,7 @@ namespace Emiplus.View.Comercial
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=uC1K5kdPCfU");
+            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=cliGo_X51Uo");
         }
     }
 }

@@ -133,20 +133,29 @@ namespace Emiplus.View.Produtos
                 int n = Table.Rows.Add();
 
                 DataGridViewComboBoxCell cellMedidas = new DataGridViewComboBoxCell();
-                cellMedidas.Style.NullValue = item.MEDIDA;
-                cellMedidas.DataSource = Medidas;
+                if (Medidas.Count > 0)
+                {
+                    cellMedidas.Style.NullValue = item.MEDIDA;
+                    cellMedidas.DataSource = Medidas;
+                }
 
                 DataGridViewComboBoxCell cellCategorias = new DataGridViewComboBoxCell();
-                cellCategorias.ValueMember = "Id";
-                cellCategorias.DisplayMember = "Nome";
-                cellCategorias.Style.NullValue = item.CAT_NAME;
-                cellCategorias.DataSource = cats;
+                if (cats.Count > 0)
+                {
+                    cellCategorias.ValueMember = "Id";
+                    cellCategorias.DisplayMember = "Nome";
+                    cellCategorias.Style.NullValue = item.CAT_NAME;
+                    cellCategorias.DataSource = cats;
+                }
 
                 DataGridViewComboBoxCell cellFornecedores = new DataGridViewComboBoxCell();
-                cellFornecedores.ValueMember = "Id";
-                cellFornecedores.DisplayMember = "Nome";
-                cellFornecedores.Style.NullValue = item.FORNECEDOR_NAME;
-                cellFornecedores.DataSource = fornecedores;
+                if (fornecedores.Count > 0)
+                {
+                    cellFornecedores.ValueMember = "Id";
+                    cellFornecedores.DisplayMember = "Nome";
+                    cellFornecedores.Style.NullValue = item.FORNECEDOR_NAME;
+                    cellFornecedores.DataSource = fornecedores;
+                }
 
                 Table.Rows[n].Cells[0].Value = item.ID;
                 Table.Rows[n].Cells[1].Value = item.NOME;
