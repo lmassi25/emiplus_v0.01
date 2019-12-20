@@ -268,6 +268,7 @@
     <Compile Include="Data\Helpers\Masks.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
+    <Compile Include="Data\Helpers\Resolution.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
     <Compile Include="Data\Helpers\ToolHelp.cs" />
     <Compile Include="Data\Helpers\UserPermission.cs" />
@@ -551,18 +552,6 @@
     </Compile>
     <Compile Include="View\Fiscal\BrowserNfe.Designer.cs">
       <DependentUpon>BrowserNfe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Fiscal\DetailsNota.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Fiscal\DetailsNota.Designer.cs">
-      <DependentUpon>DetailsNota.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Fiscal\ImportarNFe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Fiscal\ImportarNFe.Designer.cs">
-      <DependentUpon>ImportarNFe.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Fiscal\Natureza.cs">
       <SubType>Form</SubType>
@@ -975,12 +964,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\BrowserNfe.resx">
       <DependentUpon>BrowserNfe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Fiscal\DetailsNota.resx">
-      <DependentUpon>DetailsNota.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Fiscal\ImportarNFe.resx">
-      <DependentUpon>ImportarNFe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Natureza.resx">
       <DependentUpon>Natureza.cs</DependentUpon>

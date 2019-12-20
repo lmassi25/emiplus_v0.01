@@ -257,6 +257,8 @@ namespace Emiplus.View.Financeiro
 
             Load += async (s, e) =>
             {
+                Resolution.SetScreenMaximized(this);
+
                 LoadData();
                 await DataTableAsync();
             };

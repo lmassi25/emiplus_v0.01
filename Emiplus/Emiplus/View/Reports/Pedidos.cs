@@ -215,6 +215,7 @@ namespace Emiplus.View.Reports
 
             Load += (s, e) => 
             {
+                Resolution.SetScreenMaximized(this);
 
                 screen = Home.pedidoPage;
 

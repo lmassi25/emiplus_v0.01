@@ -140,6 +140,8 @@ namespace Emiplus.View.Reports
             KeyPreview = true;
 
             Load += (s, e) => {
+                Resolution.SetScreenMaximized(this);
+
                 AutoCompleteFornecedorCategorias();
             };
 

@@ -20,8 +20,7 @@ namespace Emiplus.View.Common
         public Login()
         {
             InitializeComponent();
-            email.Text = "william@emiplus.com.br";
-            password.Text = "4586928w";
+
             Update update = new Update();
             update.CheckUpdate();
             update.CheckIni();
@@ -200,6 +199,11 @@ namespace Emiplus.View.Common
         {
             email.KeyDown += KeyDowns;
             password.KeyDown += KeyDowns;
+
+            Load += (s, e) =>
+            {
+                Resolution.ValidateResolution();
+            };
 
             btnEntrar.Click += (s, e) => LoginAsync();
 

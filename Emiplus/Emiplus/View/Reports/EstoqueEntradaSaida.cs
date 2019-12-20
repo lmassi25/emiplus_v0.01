@@ -195,6 +195,8 @@ namespace Emiplus.View.Reports
             KeyPreview = true;
 
             Load += (s, e) => {
+                Resolution.SetScreenMaximized(this);
+
                 BuscarProduto.Select();
                 AutoCompleteItens();
                 AutoCompleteUsers();

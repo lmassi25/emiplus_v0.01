@@ -174,6 +174,8 @@ namespace Emiplus.View.Produtos
             KeyPreview = true;
 
             Load += async (s, e) => {
+                Resolution.SetScreenMaximized(this);
+
                 await DataTableAsync();
                 AutoCompleteItens();
                 AutoCompleteFornecedorCategorias();

@@ -134,6 +134,10 @@ namespace Emiplus.View.Common
             version.Text = "Versão " + IniFile.Read("Version", "APP");
             label1.Text = $"Olá, {Validation.FirstCharToUpper(Settings.Default.user_name)} {Validation.FirstCharToUpper(Settings.Default.user_lastname)}";
 
+            Rectangle resolution = Screen.PrimaryScreen.Bounds;
+            Console.WriteLine(resolution.Width);
+            Console.WriteLine(resolution.Height);
+
             if (string.IsNullOrEmpty(Settings.Default.user_plan_id))
             {
                 plano.Text = "Contrate um Plano";

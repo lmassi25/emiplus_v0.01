@@ -43,8 +43,8 @@ namespace Emiplus.View.Common
         private void LoadData()
         {
             totalVendas.Text = Pedidos != null ? Pedidos.TOTAL.ToString() : "0";
-            itensVendidos.Text = Pedidos_Itens != null ? Pedidos_Itens.TOTAL.ToString() : "0";
-            valorTotalVendas.Text = GetTotalVendas.TOTAL == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
+            itensVendidos.Text = Pedidos_Itens.TOTAL != null ? Pedidos_Itens.TOTAL.ToString() : "0";
+            valorTotalVendas.Text = GetTotalVendas == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
             
             if (GetReceberHoje != null && Pedidos != null)
                 valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL / Pedidos.TOTAL), true);

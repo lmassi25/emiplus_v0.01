@@ -154,6 +154,8 @@ namespace Emiplus.View.Financeiro
 
             Load += async (s, e) =>
             {
+                Resolution.SetScreenMaximized(this);
+
                 AutoCompleteUsers();
 
                 dataInicial.Text = DateTime.Now.ToString("dd/MM/yyyy 00:00");

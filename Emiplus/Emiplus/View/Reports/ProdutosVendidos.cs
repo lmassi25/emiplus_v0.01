@@ -186,6 +186,8 @@ namespace Emiplus.View.Reports
 
             Load += (s, e) => 
             {
+                Resolution.SetScreenMaximized(this);
+
                 switch (Home.pedidoPage)
                 {
                     case "Consignações":
