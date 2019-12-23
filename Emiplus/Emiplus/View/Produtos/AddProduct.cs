@@ -8,6 +8,8 @@ using System.Linq;
 using System.Collections;
 using System.ComponentModel;
 using Emiplus.View.Common;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Emiplus.View.Produtos
 {
@@ -16,6 +18,12 @@ namespace Emiplus.View.Produtos
         public static int idPdtSelecionado { get; set; }
         private Item _modelItem = new Item();
         private Controller.Item _controllerItem = new Controller.Item();
+
+        private BackgroundWorker backOn = new BackgroundWorker();
+        private IEnumerable<dynamic> categorias { get; set;}
+        private IEnumerable<dynamic> fornecedores { get; set;}
+        private IEnumerable<dynamic> impostos { get; set;}
+        private IEnumerable<dynamic> impostos2 { get; set;}
 
         public AddProduct()
         {
@@ -27,10 +35,10 @@ namespace Emiplus.View.Produtos
         {
             Fornecedor.Refresh();
 
-            var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (fornecedor.Count() > 0)
+            //var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (fornecedores.Count() > 0)
             {
-                Fornecedor.DataSource = fornecedor;
+                Fornecedor.DataSource = fornecedores;
                 Fornecedor.DisplayMember = "NOME";
                 Fornecedor.ValueMember = "ID";
             }
@@ -45,34 +53,34 @@ namespace Emiplus.View.Produtos
             ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque.", pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-            ActiveControl = nome;
+            //ActiveControl = nome;
 
-            var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (cat.Count() > 0)
+            //var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (categorias.Count() > 0)
             {
-                Categorias.DataSource = cat;
+                Categorias.DataSource = categorias;
                 Categorias.DisplayMember = "NOME";
                 Categorias.ValueMember = "ID";
             }
 
             LoadFornecedores();
 
-            Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-
-            var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (imposto.Count() > 0)
+            Medidas.DataSource = Support.GetUnidades();
+            
+            //var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (impostos.Count() > 0)
             {
-                ImpostoNFE.DataSource = imposto;
+                ImpostoNFE.DataSource = impostos;
                 ImpostoNFE.DisplayMember = "NOME";
                 ImpostoNFE.ValueMember = "ID";
             }
 
             ImpostoNFE.SelectedValue = 0;
 
-            var imposto2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (imposto2.Count() > 0)
+            //var imposto2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (impostos2.Count() > 0)
             {
-                ImpostoCFE.DataSource = imposto2;
+                ImpostoCFE.DataSource = impostos2;
                 ImpostoCFE.DisplayMember = "NOME";
                 ImpostoCFE.ValueMember = "ID";
             }
@@ -112,24 +120,12 @@ namespace Emiplus.View.Produtos
 
         private void LoadEstoque()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
-
-            if (_modelItem.Medida == "KG")
-            {
-                estoqueminimo.Text = _modelItem.EstoqueMinimo.ToString();
-                estoqueatual.Text = Validation.FormatNumberKilo(_modelItem.EstoqueAtual);
-            }
-            else
-            {
-                estoqueminimo.Text = _modelItem.EstoqueMinimo.ToString();
-                estoqueatual.Text = Validation.FormatNumberUnidade(_modelItem.EstoqueAtual);
-            }
+            //_modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
+            estoqueatual.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueAtual);
         }
 
         private void LoadData()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
-
             nome.Text = _modelItem?.Nome ?? "";
             codebarras.Text = _modelItem?.CodeBarras ?? "";
             referencia.Text = _modelItem?.Referencia ?? "";
@@ -265,29 +261,13 @@ namespace Emiplus.View.Produtos
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
-                Start();
-
-                idPdtSelecionado = Produtos.idPdtSelecionado; // Recupera ID selecionado
-                if (idPdtSelecionado > 0)
+                this.BeginInvoke((MethodInvoker)delegate
                 {
-                    LoadData();
-                }
-                else
-                {
-                    _modelItem.Id = idPdtSelecionado;
-                    if (_modelItem.Save(_modelItem, false))
-                    {
-                        idPdtSelecionado = _modelItem.GetLastId();
-                        LoadData();
-                    }
-                    else
-                    {
-                        Alert.Message("Opss", "Erro ao criar.", Alert.AlertType.error);
-                        Close();
-                    }
-                }
+                    idPdtSelecionado = Produtos.idPdtSelecionado;
+                    backOn.RunWorkerAsync();
+                });
             };
 
             label6.Click += (s, e) => Close();
@@ -404,6 +384,40 @@ namespace Emiplus.View.Produtos
             filterMaisRecentes.Click += (s, e) =>
             {
                 DataTableEstoque();
+            };
+
+           backOn.DoWork += (s, e) =>
+            {
+                _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
+                categorias = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
+                fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+                impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            };
+
+            backOn.RunWorkerCompleted += (s, e) =>
+            {
+                Start();
+
+                if (idPdtSelecionado > 0)
+                {
+                    LoadData();
+                }
+                else
+                {
+                    _modelItem = new Model.Item();
+                    _modelItem.Id = idPdtSelecionado;
+                    if (_modelItem.Save(_modelItem, false))
+                    {
+                        idPdtSelecionado = _modelItem.GetLastId();
+                        LoadData();
+                    }
+                    else
+                    {
+                        Alert.Message("Opss", "Erro ao criar.", Alert.AlertType.error);
+                        Close();
+                    }
+                }
             };
         }
     }

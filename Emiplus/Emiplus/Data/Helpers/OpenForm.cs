@@ -18,14 +18,14 @@ namespace Emiplus.Data.Helpers
             if (formulario == null)
             {
                 formulario = new MeuForm();
+                formulario.SuspendLayout();
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
                 formulario.Focus();
-                formulario.Select();
-                formulario.Activate();
+                formulario.ResumeLayout();
                 formulario.Show();
                 formulario.BringToFront();
             }
@@ -43,12 +43,14 @@ namespace Emiplus.Data.Helpers
             if (formulario == null)
             {
                 formulario = new MeuForm();
+                formulario.SuspendLayout();
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
                 Principal.Controls.Add(formulario);
                 Principal.Tag = formulario;
                 Principal.Focus();
+                formulario.ResumeLayout();
                 formulario.Show();
                 formulario.BringToFront();
             }

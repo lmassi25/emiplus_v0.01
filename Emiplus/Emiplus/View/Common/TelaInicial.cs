@@ -194,8 +194,10 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
+                this.Refresh();
+
                 ToolHelp.Show($"Referente ao período {DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
                 dataSemana.Text = $"{DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})";
