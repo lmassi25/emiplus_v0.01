@@ -291,6 +291,12 @@ namespace Emiplus.View.Common
                 homeMenuFinanceiro.BackColor = Color.Transparent;
             };
 
+            btnSendSugesttion.Click += (s, e) =>
+            {
+                Suggestion f = new Suggestion();
+                f.ShowDialog();
+            };
+
             FormClosed += (s, e) => Validation.KillEmiplus();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");

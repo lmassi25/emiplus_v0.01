@@ -461,6 +461,12 @@
     <Compile Include="View\Common\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\Suggestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Suggestion.Designer.cs">
+      <DependentUpon>Suggestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Suporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -929,6 +935,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Suggestion.resx">
+      <DependentUpon>Suggestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Suporte.resx">
       <DependentUpon>Suporte.cs</DependentUpon>

@@ -66,12 +66,13 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
+            this.chatOnline = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.chatOnline = new System.Windows.Forms.Button();
+            this.btnSendSugesttion = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -588,6 +589,7 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.White;
+            this.barraTituloHome.Controls.Add(this.btnSendSugesttion);
             this.barraTituloHome.Controls.Add(this.chatOnline);
             this.barraTituloHome.Controls.Add(this.btnAccount);
             this.barraTituloHome.Controls.Add(this.btnHelp);
@@ -596,6 +598,26 @@ namespace Emiplus.View.Common
             this.barraTituloHome.Name = "barraTituloHome";
             this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
+            // 
+            // chatOnline
+            // 
+            this.chatOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chatOnline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chatOnline.FlatAppearance.BorderSize = 0;
+            this.chatOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chatOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chatOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chatOnline.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chatOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.chatOnline.Image = ((System.Drawing.Image)(resources.GetObject("chatOnline.Image")));
+            this.chatOnline.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.chatOnline.Location = new System.Drawing.Point(331, 4);
+            this.chatOnline.Name = "chatOnline";
+            this.chatOnline.Size = new System.Drawing.Size(112, 28);
+            this.chatOnline.TabIndex = 33;
+            this.chatOnline.Text = "Chat Online";
+            this.chatOnline.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chatOnline.UseVisualStyleBackColor = true;
             // 
             // btnAccount
             // 
@@ -609,7 +631,7 @@ namespace Emiplus.View.Common
             this.btnAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
             this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAccount.Location = new System.Drawing.Point(599, 4);
+            this.btnAccount.Location = new System.Drawing.Point(598, 4);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(122, 28);
             this.btnAccount.TabIndex = 32;
@@ -629,7 +651,7 @@ namespace Emiplus.View.Common
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnHelp.Location = new System.Drawing.Point(450, 4);
+            this.btnHelp.Location = new System.Drawing.Point(449, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(143, 28);
             this.btnHelp.TabIndex = 31;
@@ -670,25 +692,25 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // chatOnline
+            // btnSendSugesttion
             // 
-            this.chatOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatOnline.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chatOnline.FlatAppearance.BorderSize = 0;
-            this.chatOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.chatOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.chatOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chatOnline.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chatOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chatOnline.Image = ((System.Drawing.Image)(resources.GetObject("chatOnline.Image")));
-            this.chatOnline.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.chatOnline.Location = new System.Drawing.Point(332, 3);
-            this.chatOnline.Name = "chatOnline";
-            this.chatOnline.Size = new System.Drawing.Size(112, 28);
-            this.chatOnline.TabIndex = 33;
-            this.chatOnline.Text = "Chat Online";
-            this.chatOnline.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chatOnline.UseVisualStyleBackColor = true;
+            this.btnSendSugesttion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendSugesttion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSendSugesttion.FlatAppearance.BorderSize = 0;
+            this.btnSendSugesttion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSendSugesttion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSendSugesttion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendSugesttion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendSugesttion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSendSugesttion.Image = ((System.Drawing.Image)(resources.GetObject("btnSendSugesttion.Image")));
+            this.btnSendSugesttion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnSendSugesttion.Location = new System.Drawing.Point(188, 4);
+            this.btnSendSugesttion.Name = "btnSendSugesttion";
+            this.btnSendSugesttion.Size = new System.Drawing.Size(137, 28);
+            this.btnSendSugesttion.TabIndex = 34;
+            this.btnSendSugesttion.Text = "Enviar Sugestão";
+            this.btnSendSugesttion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSendSugesttion.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -771,5 +793,6 @@ namespace Emiplus.View.Common
         private PictureBox pictureBox11;
         private PictureBox pictureBox10;
         private Button chatOnline;
+        private Button btnSendSugesttion;
     }
 }
