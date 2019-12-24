@@ -1,11 +1,19 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.View.Common;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
     public class Support
     {
+     
+        public static List<String> GetUnidades()
+        {
+            return new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+        }
+
         public static void Video(string videoUrl)
         {
             VideoTutorial f = new VideoTutorial(videoUrl);

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing.Printing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Reports
 {
@@ -56,6 +55,8 @@ namespace Emiplus.View.Reports
 
             Load += (s, e) =>
             {
+                Resolution.SetScreenMaximized(this);
+
                 search.Select();
             };
 

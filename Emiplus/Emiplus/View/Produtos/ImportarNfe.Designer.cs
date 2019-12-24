@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportarNfe));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,6 +43,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.dadosNota = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GridLista = new System.Windows.Forms.DataGridView();
+            this.Emissão = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chave = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,30 +55,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAvancar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.GridLista = new System.Windows.Forms.DataGridView();
-            this.Op1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
-            this.Op2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
             this.Op3 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
-            this.Emissão = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Chave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Op2 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.Op1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualRadioButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.visualPanel1.SuspendLayout();
             this.dadosNota.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.visualPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.visualPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -295,6 +295,78 @@
             this.dadosNota.TabIndex = 40044;
             this.dadosNota.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.GridLista);
+            this.panel2.Location = new System.Drawing.Point(22, 58);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(656, 113);
+            this.panel2.TabIndex = 40052;
+            // 
+            // GridLista
+            // 
+            this.GridLista.AllowUserToAddRows = false;
+            this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
+            this.GridLista.BackgroundColor = System.Drawing.Color.White;
+            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Emissão,
+            this.Nr,
+            this.Chave});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridLista.Location = new System.Drawing.Point(0, 0);
+            this.GridLista.MultiSelect = false;
+            this.GridLista.Name = "GridLista";
+            this.GridLista.RowHeadersVisible = false;
+            this.GridLista.RowTemplate.Height = 30;
+            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridLista.Size = new System.Drawing.Size(656, 113);
+            this.GridLista.TabIndex = 5;
+            this.GridLista.TabStop = false;
+            // 
+            // Emissão
+            // 
+            this.Emissão.HeaderText = "Emissão";
+            this.Emissão.Name = "Emissão";
+            this.Emissão.ReadOnly = true;
+            // 
+            // Nr
+            // 
+            this.Nr.HeaderText = "N°";
+            this.Nr.Name = "Nr";
+            this.Nr.ReadOnly = true;
+            // 
+            // Chave
+            // 
+            this.Chave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Chave.HeaderText = "Chave de Acesso";
+            this.Chave.Name = "Chave";
+            this.Chave.ReadOnly = true;
+            // 
             // visualSeparator4
             // 
             this.visualSeparator4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -405,6 +477,7 @@
             // 
             // visualPanel2
             // 
+            this.visualPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualPanel2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualPanel2.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualPanel2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -437,41 +510,6 @@
             this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(5, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(730, 39);
-            this.label9.TabIndex = 40045;
-            this.label9.Text = "O que você deseja fazer?";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(247, 74);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 40049;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(427, 74);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 40050;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -483,58 +521,95 @@
             this.pictureBox4.TabIndex = 40051;
             this.pictureBox4.TabStop = false;
             // 
-            // panel2
+            // Op3
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.GridLista);
-            this.panel2.Location = new System.Drawing.Point(22, 58);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(656, 113);
-            this.panel2.TabIndex = 40052;
+            this.Op3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Op3.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Op3.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Op3.Border.HoverVisible = true;
+            this.Op3.Border.Rounding = 12;
+            this.Op3.Border.Thickness = 1;
+            this.Op3.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Op3.Border.Visible = true;
+            this.Op3.Box = new System.Drawing.Size(14, 14);
+            this.Op3.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Op3.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Op3.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Op3.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Op3.BoxSpacing = 2;
+            this.Op3.CheckStyle.AutoSize = true;
+            this.Op3.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.Op3.CheckStyle.Character = '✔';
+            this.Op3.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Op3.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Op3.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.Op3.CheckStyle.ShapeRounding = 6;
+            this.Op3.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Op3.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.Op3.CheckStyle.Thickness = 2F;
+            this.Op3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Op3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Op3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op3.IsBoxLarger = false;
+            this.Op3.Location = new System.Drawing.Point(469, 70);
+            this.Op3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Op3.Name = "Op3";
+            this.Op3.Size = new System.Drawing.Size(142, 23);
+            this.Op3.TabIndex = 40054;
+            this.Op3.Text = "Importar a Compra";
+            this.Op3.TextSize = new System.Drawing.Size(117, 19);
+            this.Op3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Op3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Op3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Op3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // GridLista
+            // Op2
             // 
-            this.GridLista.AllowUserToAddRows = false;
-            this.GridLista.AllowUserToDeleteRows = false;
-            this.GridLista.AllowUserToResizeColumns = false;
-            this.GridLista.AllowUserToResizeRows = false;
-            this.GridLista.BackgroundColor = System.Drawing.Color.White;
-            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Emissão,
-            this.Nr,
-            this.Chave});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle4;
-            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridLista.Location = new System.Drawing.Point(0, 0);
-            this.GridLista.MultiSelect = false;
-            this.GridLista.Name = "GridLista";
-            this.GridLista.RowHeadersVisible = false;
-            this.GridLista.RowTemplate.Height = 30;
-            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(656, 113);
-            this.GridLista.TabIndex = 5;
-            this.GridLista.TabStop = false;
+            this.Op2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Op2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Op2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Op2.Border.HoverVisible = true;
+            this.Op2.Border.Rounding = 12;
+            this.Op2.Border.Thickness = 1;
+            this.Op2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Op2.Border.Visible = true;
+            this.Op2.Box = new System.Drawing.Size(14, 14);
+            this.Op2.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Op2.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Op2.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Op2.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Op2.BoxSpacing = 2;
+            this.Op2.CheckStyle.AutoSize = true;
+            this.Op2.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
+            this.Op2.CheckStyle.Character = '✔';
+            this.Op2.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.Op2.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Op2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.Op2.CheckStyle.ShapeRounding = 6;
+            this.Op2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Op2.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
+            this.Op2.CheckStyle.Thickness = 2F;
+            this.Op2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Op2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Op2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op2.IsBoxLarger = false;
+            this.Op2.Location = new System.Drawing.Point(294, 70);
+            this.Op2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Op2.Name = "Op2";
+            this.Op2.Size = new System.Drawing.Size(130, 23);
+            this.Op2.TabIndex = 40053;
+            this.Op2.Text = "Manipular Estoque";
+            this.Op2.TextSize = new System.Drawing.Size(115, 19);
+            this.Op2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Op2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Op2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Op2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Op2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Op1
             // 
@@ -582,114 +657,40 @@
             this.Op1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Op1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // Op2
+            // pictureBox2
             // 
-            this.Op2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Op2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Op2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Op2.Border.HoverVisible = true;
-            this.Op2.Border.Rounding = 12;
-            this.Op2.Border.Thickness = 1;
-            this.Op2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Op2.Border.Visible = true;
-            this.Op2.Box = new System.Drawing.Size(14, 14);
-            this.Op2.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Op2.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Op2.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Op2.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Op2.BoxSpacing = 2;
-            this.Op2.CheckStyle.AutoSize = true;
-            this.Op2.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.Op2.CheckStyle.Character = '✔';
-            this.Op2.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Op2.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Op2.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.Op2.CheckStyle.ShapeRounding = 6;
-            this.Op2.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Op2.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
-            this.Op2.CheckStyle.Thickness = 2F;
-            this.Op2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Op2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Op2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op2.IsBoxLarger = false;
-            this.Op2.Location = new System.Drawing.Point(294, 70);
-            this.Op2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Op2.Name = "Op2";
-            this.Op2.Size = new System.Drawing.Size(130, 23);
-            this.Op2.TabIndex = 40053;
-            this.Op2.Text = "Manipular Estoque";
-            this.Op2.TextSize = new System.Drawing.Size(115, 19);
-            this.Op2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Op2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Op2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Op2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(427, 74);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 40050;
+            this.pictureBox2.TabStop = false;
             // 
-            // Op3
+            // pictureBox7
             // 
-            this.Op3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Op3.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Op3.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.Op3.Border.HoverVisible = true;
-            this.Op3.Border.Rounding = 12;
-            this.Op3.Border.Thickness = 1;
-            this.Op3.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Op3.Border.Visible = true;
-            this.Op3.Box = new System.Drawing.Size(14, 14);
-            this.Op3.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Op3.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Op3.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Op3.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Op3.BoxSpacing = 2;
-            this.Op3.CheckStyle.AutoSize = true;
-            this.Op3.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 8, 8);
-            this.Op3.CheckStyle.Character = '✔';
-            this.Op3.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.Op3.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Op3.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.Op3.CheckStyle.ShapeRounding = 6;
-            this.Op3.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Op3.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Shape;
-            this.Op3.CheckStyle.Thickness = 2F;
-            this.Op3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Op3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Op3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op3.IsBoxLarger = false;
-            this.Op3.Location = new System.Drawing.Point(469, 70);
-            this.Op3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Op3.Name = "Op3";
-            this.Op3.Size = new System.Drawing.Size(142, 23);
-            this.Op3.TabIndex = 40054;
-            this.Op3.Text = "Importar a Compra";
-            this.Op3.TextSize = new System.Drawing.Size(117, 19);
-            this.Op3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Op3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Op3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Op3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Op3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(247, 74);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 40049;
+            this.pictureBox7.TabStop = false;
             // 
-            // Emissão
+            // label9
             // 
-            this.Emissão.HeaderText = "Emissão";
-            this.Emissão.Name = "Emissão";
-            this.Emissão.ReadOnly = true;
-            // 
-            // Nr
-            // 
-            this.Nr.HeaderText = "N°";
-            this.Nr.Name = "Nr";
-            this.Nr.ReadOnly = true;
-            // 
-            // Chave
-            // 
-            this.Chave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Chave.HeaderText = "Chave de Acesso";
-            this.Chave.Name = "Chave";
-            this.Chave.ReadOnly = true;
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(5, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(730, 39);
+            this.label9.TabIndex = 40045;
+            this.label9.Text = "O que você deseja fazer?";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ImportarNfe
             // 
@@ -716,13 +717,13 @@
             this.visualPanel1.ResumeLayout(false);
             this.visualPanel1.PerformLayout();
             this.dadosNota.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.visualPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.visualPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

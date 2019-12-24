@@ -186,6 +186,8 @@ namespace Emiplus.View.Reports
 
             Load += (s, e) => 
             {
+                Resolution.SetScreenMaximized(this);
+
                 switch (Home.pedidoPage)
                 {
                     case "Consignações":
@@ -254,7 +256,7 @@ namespace Emiplus.View.Reports
 
             string tipo_aux = "";
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\ProdutosVendidos.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\ProdutosVendidos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 INCLUDE_PATH = Program.PATH_BASE,

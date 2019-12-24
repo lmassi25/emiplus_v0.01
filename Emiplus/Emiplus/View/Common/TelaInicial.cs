@@ -42,13 +42,12 @@ namespace Emiplus.View.Common
 
         private void LoadData()
         {
-            totalVendas.Text = Pedidos.TOTAL.ToString();
-            itensVendidos.Text = Pedidos_Itens.TOTAL.ToString();
-            itensVendidos.Text = Pedidos_Itens.TOTAL.ToString();
-            valorTotalVendas.Text = GetTotalVendas.TOTAL == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
+            totalVendas.Text = Pedidos != null ? Pedidos.TOTAL.ToString() : "0";
+            itensVendidos.Text = Pedidos_Itens.TOTAL != null ? Pedidos_Itens.TOTAL.ToString() : "0";
+            valorTotalVendas.Text = GetTotalVendas == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
             
             if (GetReceberHoje != null && Pedidos != null)
-                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetReceberHoje.TOTAL / Pedidos.TOTAL), true);
+                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL / Pedidos.TOTAL), true);
             else
                 valorMedioVendas.Text = "R$ 00,00";
 
@@ -130,7 +129,7 @@ namespace Emiplus.View.Common
             int dias = 7;
             for (int i = 0; i < dias; i++)
             {
-                var data = new Model.Pedido().Query().SelectRaw("COUNT(ID) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas")
+                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas")
                 .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
                 .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true)).FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToInt32(data.TOTAL) : "0");
@@ -151,8 +150,6 @@ namespace Emiplus.View.Common
                 Title = "Últimos 7 dias (da semana atual)",
                 Labels = new[] { labels[6], labels[5], labels[4], labels[3], labels[2], labels[1], "Hoje" }
             });
-
-            Func<double, string> formatFunc = (x) => string.Format("{0:N2}", x);
 
             cartesianChart1.AxisY.Add(new Axis
             {
@@ -197,8 +194,10 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
+                this.Refresh();
+
                 ToolHelp.Show($"Referente ao período {DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
                 dataSemana.Text = $"{DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})";

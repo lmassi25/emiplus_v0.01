@@ -70,7 +70,9 @@ namespace Emiplus.Controller
                 _modelPessoaContato = _modelPessoaContato.FindByIdUser(dataCliente.Id).FirstOrDefault<Model.PessoaContato>();
             }
 
-            var Addr = _modelPessoaAddr.Rua + " " + _modelPessoaAddr.Nr + " - CEP: " + _modelPessoaAddr.Cep + " - " + _modelPessoaAddr.Complemento + " | " + _modelPessoaAddr.Bairro + " - " + _modelPessoaAddr.Cidade + "/" + _modelPessoaAddr.Estado;
+            var Addr = "";
+            if (_modelPessoaAddr != null)
+                Addr = _modelPessoaAddr.Rua + " " + _modelPessoaAddr.Nr + " - CEP: " + _modelPessoaAddr.Cep + " - " + _modelPessoaAddr.Complemento + " | " + _modelPessoaAddr.Bairro + " - " + _modelPessoaAddr.Cidade + "/" + _modelPessoaAddr.Estado;
 
             string titulo = "";
             string titulo2 = "";
@@ -104,7 +106,7 @@ namespace Emiplus.Controller
                     break;
             }
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\CupomComprovanteVendaA4.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\CupomComprovanteVendaA4.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
@@ -116,8 +118,8 @@ namespace Emiplus.Controller
                 Vendedor = dataVendedor?.Nome ?? "",
                 Caixa = _modelPedido.Id_Caixa,
                 Endereco = Addr,
-                Telefone = _modelPessoaContato.Telefone,
-                Celular = _modelPessoaContato.Celular,
+                Telefone = _modelPessoaContato != null ? _modelPessoaContato.Telefone : "",
+                Celular = _modelPessoaContato != null ? _modelPessoaContato.Celular : "",
                 Data = data,
                 Troco = Validation.FormatPrice(_controllerTitulo.GetTroco(idPedido), true).Replace("-", ""),
                 Pagamentos = newDataPgtos,

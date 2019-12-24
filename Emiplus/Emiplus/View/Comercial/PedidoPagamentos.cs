@@ -86,6 +86,11 @@ namespace Emiplus.View.Comercial
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
+
+            if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                Desconto.Enabled = false;
+            else
+                Desconto.Enabled = true;
         }
 
         private void bSalvar()
@@ -423,10 +428,11 @@ namespace Emiplus.View.Comercial
             btnClose.Click += (s, e) =>
             {
                 //AddPedidos.telapedidos = true;
+                Close();
 
-                AddPedidos.Id = IdPedido;
-                AddPedidos f = new AddPedidos();
-                f.Show();
+                //AddPedidos.Id = IdPedido;
+                //AddPedidos f = new AddPedidos();
+                //f.Show();
             };
 
             btnConcluir.Click += (s, e) =>

@@ -41,6 +41,8 @@ namespace Emiplus.View.Fiscal
 
             Load += (s, e) =>
             {
+                Resolution.SetScreenMaximized(this);
+
                 if (Id > 0)
                 {
                     // Id = 

@@ -62,6 +62,21 @@ namespace Emiplus.Data.Core
             
             if (!IniFile.KeyExists("dev", "DEV"))
                 IniFile.Write("dev", "false", "DEV");
+
+            if (!IniFile.KeyExists("Printer", "SAT"))
+                IniFile.Write("Printer", "", "SAT");
+
+            if (!IniFile.KeyExists("N_Serie", "SAT"))
+                IniFile.Write("N_Serie", "", "SAT");
+
+            if (!IniFile.KeyExists("Assinatura", "SAT"))
+                IniFile.Write("Assinatura", "", "SAT");
+
+            if (!IniFile.KeyExists("Codigo_Ativacao", "SAT"))
+                IniFile.Write("Codigo_Ativacao", "", "SAT");
+
+            if (!IniFile.KeyExists("Servidor", "SAT"))
+                IniFile.Write("Servidor", "", "SAT");
         }
     }
 }

@@ -61,6 +61,8 @@ namespace Emiplus.View.Produtos
         {
             Load += (s, e) =>
             {
+                Resolution.SetScreenMaximized(this);
+
                 MultipleImports = true;
                 optionSelected = 1;
             };

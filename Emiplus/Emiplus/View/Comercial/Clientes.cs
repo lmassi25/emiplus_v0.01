@@ -169,7 +169,7 @@ namespace Emiplus.View.Comercial
                 });
             }
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\View\Reports\html\Pessoas.html"));
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pessoas.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 INCLUDE_PATH = Program.PATH_BASE,

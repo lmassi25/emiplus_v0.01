@@ -1,11 +1,7 @@
-﻿using Emiplus.View.Financeiro;
-using Emiplus.View.Testes;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using Emiplus.View.Common;
-using System.IO;
 using Emiplus.Properties;
-using Emiplus.View.Comercial;
 using System.Collections;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
@@ -14,10 +10,21 @@ namespace Emiplus
 {
     static class Program
     {
-        //public static string URL_BASE = "http://localhost/app";
         public static string URL_BASE = "https://www.emiplus.com.br";
+
+        /// <summary>
+        /// Caminho definido no Config.ini
+        /// </summary>
         public static string PATH_BASE { get; set; }
+
+        /// <summary>
+        /// ID unico para cada CNPJ
+        /// </summary>
         public static string UNIQUE_ID_EMPRESA = Settings.Default.empresa_unique_id;
+
+        /// <summary>
+        /// Token de autenticação para API
+        /// </summary>
         public static string TOKEN = "f012622defec1e2bad3b8596e0642c";
         public static ArrayList userPermissions = new ArrayList();
 
@@ -27,10 +34,8 @@ namespace Emiplus
         [STAThread]
         static void Main()
         {
-            userPermissions.Clear();
-            
-            string workingDirectory = Environment.CurrentDirectory;
-            PATH_BASE = Directory.GetParent(workingDirectory).Parent.FullName;
+            userPermissions.Clear();   
+            PATH_BASE = IniFile.Read("Path", "LOCAL");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

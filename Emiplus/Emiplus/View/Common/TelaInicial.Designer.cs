@@ -104,7 +104,7 @@
             this.visualPanel2.Controls.Add(this.aReceberHoje);
             this.visualPanel2.Controls.Add(this.label1);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(12, 65);
+            this.visualPanel2.Location = new System.Drawing.Point(12, 47);
             this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel2.Name = "visualPanel2";
             this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
@@ -233,7 +233,7 @@
             this.visualPanel3.Controls.Add(this.aPagarHoje);
             this.visualPanel3.Controls.Add(this.label2);
             this.visualPanel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel3.Location = new System.Drawing.Point(253, 65);
+            this.visualPanel3.Location = new System.Drawing.Point(253, 47);
             this.visualPanel3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel3.Name = "visualPanel3";
             this.visualPanel3.Padding = new System.Windows.Forms.Padding(5);
@@ -366,7 +366,7 @@
             this.visualPanel4.Controls.Add(this.totalVendas);
             this.visualPanel4.Controls.Add(this.label15);
             this.visualPanel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel4.Location = new System.Drawing.Point(494, 65);
+            this.visualPanel4.Location = new System.Drawing.Point(494, 47);
             this.visualPanel4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel4.Name = "visualPanel4";
             this.visualPanel4.Padding = new System.Windows.Forms.Padding(5);
@@ -510,7 +510,7 @@
             this.visualPanel5.Controls.Add(this.aReceberAtrasado);
             this.visualPanel5.Controls.Add(this.label9);
             this.visualPanel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel5.Location = new System.Drawing.Point(12, 219);
+            this.visualPanel5.Location = new System.Drawing.Point(12, 201);
             this.visualPanel5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel5.Name = "visualPanel5";
             this.visualPanel5.Padding = new System.Windows.Forms.Padding(5);
@@ -577,7 +577,7 @@
             this.visualPanel6.Controls.Add(this.aPagarAtrasado);
             this.visualPanel6.Controls.Add(this.label10);
             this.visualPanel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel6.Location = new System.Drawing.Point(253, 219);
+            this.visualPanel6.Location = new System.Drawing.Point(253, 201);
             this.visualPanel6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel6.Name = "visualPanel6";
             this.visualPanel6.Padding = new System.Windows.Forms.Padding(5);
@@ -682,7 +682,7 @@
             this.dataSemana.BackColor = System.Drawing.Color.Transparent;
             this.dataSemana.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataSemana.ForeColor = System.Drawing.Color.Silver;
-            this.dataSemana.Location = new System.Drawing.Point(410, 344);
+            this.dataSemana.Location = new System.Drawing.Point(410, 326);
             this.dataSemana.Name = "dataSemana";
             this.dataSemana.Size = new System.Drawing.Size(159, 15);
             this.dataSemana.TabIndex = 168;
@@ -695,7 +695,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(195, 339);
+            this.label6.Location = new System.Drawing.Point(195, 321);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(210, 21);
             this.label6.TabIndex = 169;
@@ -704,7 +704,7 @@
             // cartesianChart1
             // 
             this.cartesianChart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cartesianChart1.Location = new System.Drawing.Point(12, 366);
+            this.cartesianChart1.Location = new System.Drawing.Point(12, 348);
             this.cartesianChart1.Name = "cartesianChart1";
             this.cartesianChart1.Size = new System.Drawing.Size(708, 274);
             this.cartesianChart1.TabIndex = 170;

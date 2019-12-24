@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Fiscal
 {
@@ -49,6 +50,8 @@ namespace Emiplus.View.Fiscal
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+
+            Load += (s, e) => Resolution.SetScreenMaximized(this);
         }
     }
 }

@@ -118,6 +118,13 @@ namespace Emiplus.View.Common
          ********************************************************************/
         #endregion
 
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
 
         public VideoTutorial(string _urlVideo)
         {
@@ -143,6 +150,22 @@ namespace Emiplus.View.Common
             "</body></html>";
             var url = video;
             this.webBrowser1.DocumentText = string.Format(embed, url);
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void panel1_DoubleClick(object sender, EventArgs e)
+        {
+            WindowState = WindowState == FormWindowState.Maximized
+                        ? FormWindowState.Normal
+                        : FormWindowState.Maximized;
         }
     }
 }

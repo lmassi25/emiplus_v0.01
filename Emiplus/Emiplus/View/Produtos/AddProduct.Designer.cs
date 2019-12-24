@@ -84,6 +84,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cest = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.filterMaisRecentes = new System.Windows.Forms.RadioButton();
+            this.filterTodos = new System.Windows.Forms.RadioButton();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -95,14 +97,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
-            this.ImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.chkImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.filterMaisRecentes = new System.Windows.Forms.RadioButton();
-            this.filterTodos = new System.Windows.Forms.RadioButton();
+            this.ImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
+            this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -125,8 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -512,7 +512,6 @@
             this.codebarras.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.codebarras.Size = new System.Drawing.Size(174, 28);
             this.codebarras.TabIndex = 1;
-            this.codebarras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.codebarras.TextBoxWidth = 162;
             this.codebarras.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.codebarras.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1546,6 +1545,32 @@
             this.tabPage1.Text = "Estoque";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // filterMaisRecentes
+            // 
+            this.filterMaisRecentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterMaisRecentes.AutoSize = true;
+            this.filterMaisRecentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterMaisRecentes.Location = new System.Drawing.Point(541, 39);
+            this.filterMaisRecentes.Name = "filterMaisRecentes";
+            this.filterMaisRecentes.Size = new System.Drawing.Size(97, 19);
+            this.filterMaisRecentes.TabIndex = 203;
+            this.filterMaisRecentes.TabStop = true;
+            this.filterMaisRecentes.Text = "Mais recentes";
+            this.filterMaisRecentes.UseVisualStyleBackColor = true;
+            // 
+            // filterTodos
+            // 
+            this.filterTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.filterTodos.AutoSize = true;
+            this.filterTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.filterTodos.Location = new System.Drawing.Point(479, 39);
+            this.filterTodos.Name = "filterTodos";
+            this.filterTodos.Size = new System.Drawing.Size(56, 19);
+            this.filterTodos.TabIndex = 202;
+            this.filterTodos.TabStop = true;
+            this.filterTodos.Text = "Todos";
+            this.filterTodos.UseVisualStyleBackColor = true;
+            // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
@@ -1808,6 +1833,159 @@
             this.tabPage5.Text = "Impostos";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // chkImpostoCFE
+            // 
+            this.chkImpostoCFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.chkImpostoCFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.chkImpostoCFE.Border.HoverVisible = true;
+            this.chkImpostoCFE.Border.Rounding = 3;
+            this.chkImpostoCFE.Border.Thickness = 1;
+            this.chkImpostoCFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.chkImpostoCFE.Border.Visible = true;
+            this.chkImpostoCFE.Box = new System.Drawing.Size(14, 14);
+            this.chkImpostoCFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chkImpostoCFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.chkImpostoCFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chkImpostoCFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chkImpostoCFE.BoxSpacing = 2;
+            this.chkImpostoCFE.CheckStyle.AutoSize = true;
+            this.chkImpostoCFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.chkImpostoCFE.CheckStyle.Character = '✔';
+            this.chkImpostoCFE.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.chkImpostoCFE.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImpostoCFE.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.chkImpostoCFE.CheckStyle.ShapeRounding = 3;
+            this.chkImpostoCFE.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.chkImpostoCFE.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.chkImpostoCFE.CheckStyle.Thickness = 2F;
+            this.chkImpostoCFE.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkImpostoCFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoCFE.IsBoxLarger = false;
+            this.chkImpostoCFE.Location = new System.Drawing.Point(17, 76);
+            this.chkImpostoCFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.chkImpostoCFE.Name = "chkImpostoCFE";
+            this.chkImpostoCFE.Size = new System.Drawing.Size(272, 23);
+            this.chkImpostoCFE.TabIndex = 179;
+            this.chkImpostoCFE.Text = "Utilizar este imposto para emissão de CFe S@T";
+            this.chkImpostoCFE.TextSize = new System.Drawing.Size(260, 17);
+            this.chkImpostoCFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.chkImpostoCFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoCFE.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoCFE.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoCFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.chkImpostoCFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.chkImpostoCFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.White;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(295, 80);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 178;
+            this.pictureBox9.TabStop = false;
+            // 
+            // ImpostoCFE
+            // 
+            this.ImpostoCFE.BackColor = System.Drawing.Color.White;
+            this.ImpostoCFE.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.ImpostoCFE.BackColorState.Enabled = System.Drawing.Color.White;
+            this.ImpostoCFE.Border.Color = System.Drawing.Color.Gainsboro;
+            this.ImpostoCFE.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.ImpostoCFE.Border.HoverVisible = true;
+            this.ImpostoCFE.Border.Rounding = 6;
+            this.ImpostoCFE.Border.Thickness = 1;
+            this.ImpostoCFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.ImpostoCFE.Border.Visible = true;
+            this.ImpostoCFE.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.ImpostoCFE.ButtonImage = null;
+            this.ImpostoCFE.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.ImpostoCFE.ButtonWidth = 30;
+            this.ImpostoCFE.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ImpostoCFE.DropDownHeight = 100;
+            this.ImpostoCFE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ImpostoCFE.DropDownWidth = 300;
+            this.ImpostoCFE.FormattingEnabled = true;
+            this.ImpostoCFE.ImageList = null;
+            this.ImpostoCFE.ImageVisible = false;
+            this.ImpostoCFE.Index = 0;
+            this.ImpostoCFE.IntegralHeight = false;
+            this.ImpostoCFE.ItemHeight = 23;
+            this.ImpostoCFE.ItemImageVisible = true;
+            this.ImpostoCFE.Location = new System.Drawing.Point(17, 105);
+            this.ImpostoCFE.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ImpostoCFE.MenuItemNormal = System.Drawing.Color.White;
+            this.ImpostoCFE.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ImpostoCFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.ImpostoCFE.Name = "ImpostoCFE";
+            this.ImpostoCFE.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ImpostoCFE.SeparatorVisible = false;
+            this.ImpostoCFE.Size = new System.Drawing.Size(590, 29);
+            this.ImpostoCFE.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.ImpostoCFE.TabIndex = 177;
+            this.ImpostoCFE.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.ImpostoCFE.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.ImpostoCFE.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ImpostoCFE.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.ImpostoCFE.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.ImpostoCFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.ImpostoCFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ImpostoCFE.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.ImpostoCFE.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.ImpostoCFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.ImpostoCFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.ImpostoCFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.ImpostoCFE.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ImpostoCFE.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImpostoCFE.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.ImpostoCFE.Watermark.Text = "Watermark text";
+            this.ImpostoCFE.Watermark.Visible = false;
+            // 
+            // chkImpostoNFE
+            // 
+            this.chkImpostoNFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.chkImpostoNFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.chkImpostoNFE.Border.HoverVisible = true;
+            this.chkImpostoNFE.Border.Rounding = 3;
+            this.chkImpostoNFE.Border.Thickness = 1;
+            this.chkImpostoNFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.chkImpostoNFE.Border.Visible = true;
+            this.chkImpostoNFE.Box = new System.Drawing.Size(14, 14);
+            this.chkImpostoNFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chkImpostoNFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.chkImpostoNFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chkImpostoNFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chkImpostoNFE.BoxSpacing = 2;
+            this.chkImpostoNFE.CheckStyle.AutoSize = true;
+            this.chkImpostoNFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.chkImpostoNFE.CheckStyle.Character = '✔';
+            this.chkImpostoNFE.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.chkImpostoNFE.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImpostoNFE.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.chkImpostoNFE.CheckStyle.ShapeRounding = 3;
+            this.chkImpostoNFE.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.chkImpostoNFE.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.chkImpostoNFE.CheckStyle.Thickness = 2F;
+            this.chkImpostoNFE.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkImpostoNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoNFE.IsBoxLarger = false;
+            this.chkImpostoNFE.Location = new System.Drawing.Point(17, 12);
+            this.chkImpostoNFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.chkImpostoNFE.Name = "chkImpostoNFE";
+            this.chkImpostoNFE.Size = new System.Drawing.Size(240, 23);
+            this.chkImpostoNFE.TabIndex = 176;
+            this.chkImpostoNFE.Text = "Utilizar este imposto para emissão de NFe";
+            this.chkImpostoNFE.TextSize = new System.Drawing.Size(233, 17);
+            this.chkImpostoNFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.chkImpostoNFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoNFE.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoNFE.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkImpostoNFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.chkImpostoNFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.chkImpostoNFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // ImpostoNFE
             // 
             this.ImpostoNFE.BackColor = System.Drawing.Color.White;
@@ -1875,185 +2053,6 @@
             this.pictureBox6.TabIndex = 175;
             this.pictureBox6.TabStop = false;
             // 
-            // chkImpostoNFE
-            // 
-            this.chkImpostoNFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.chkImpostoNFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.chkImpostoNFE.Border.HoverVisible = true;
-            this.chkImpostoNFE.Border.Rounding = 3;
-            this.chkImpostoNFE.Border.Thickness = 1;
-            this.chkImpostoNFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.chkImpostoNFE.Border.Visible = true;
-            this.chkImpostoNFE.Box = new System.Drawing.Size(14, 14);
-            this.chkImpostoNFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoNFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.chkImpostoNFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoNFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.chkImpostoNFE.BoxSpacing = 2;
-            this.chkImpostoNFE.CheckStyle.AutoSize = true;
-            this.chkImpostoNFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.chkImpostoNFE.CheckStyle.Character = '✔';
-            this.chkImpostoNFE.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.chkImpostoNFE.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImpostoNFE.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.chkImpostoNFE.CheckStyle.ShapeRounding = 3;
-            this.chkImpostoNFE.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.chkImpostoNFE.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.chkImpostoNFE.CheckStyle.Thickness = 2F;
-            this.chkImpostoNFE.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkImpostoNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoNFE.IsBoxLarger = false;
-            this.chkImpostoNFE.Location = new System.Drawing.Point(17, 12);
-            this.chkImpostoNFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.chkImpostoNFE.Name = "chkImpostoNFE";
-            this.chkImpostoNFE.Size = new System.Drawing.Size(240, 23);
-            this.chkImpostoNFE.TabIndex = 176;
-            this.chkImpostoNFE.Text = "Utilizar este imposto para emissão de NFe";
-            this.chkImpostoNFE.TextSize = new System.Drawing.Size(233, 17);
-            this.chkImpostoNFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.chkImpostoNFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoNFE.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoNFE.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoNFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.chkImpostoNFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.chkImpostoNFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // ImpostoCFE
-            // 
-            this.ImpostoCFE.BackColor = System.Drawing.Color.White;
-            this.ImpostoCFE.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.ImpostoCFE.BackColorState.Enabled = System.Drawing.Color.White;
-            this.ImpostoCFE.Border.Color = System.Drawing.Color.Gainsboro;
-            this.ImpostoCFE.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.ImpostoCFE.Border.HoverVisible = true;
-            this.ImpostoCFE.Border.Rounding = 6;
-            this.ImpostoCFE.Border.Thickness = 1;
-            this.ImpostoCFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.ImpostoCFE.Border.Visible = true;
-            this.ImpostoCFE.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.ImpostoCFE.ButtonImage = null;
-            this.ImpostoCFE.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.ImpostoCFE.ButtonWidth = 30;
-            this.ImpostoCFE.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ImpostoCFE.DropDownHeight = 100;
-            this.ImpostoCFE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ImpostoCFE.DropDownWidth = 300;
-            this.ImpostoCFE.FormattingEnabled = true;
-            this.ImpostoCFE.ImageList = null;
-            this.ImpostoCFE.ImageVisible = false;
-            this.ImpostoCFE.Index = 0;
-            this.ImpostoCFE.IntegralHeight = false;
-            this.ImpostoCFE.ItemHeight = 23;
-            this.ImpostoCFE.ItemImageVisible = true;
-            this.ImpostoCFE.Location = new System.Drawing.Point(17, 105);
-            this.ImpostoCFE.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ImpostoCFE.MenuItemNormal = System.Drawing.Color.White;
-            this.ImpostoCFE.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ImpostoCFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.ImpostoCFE.Name = "ImpostoCFE";
-            this.ImpostoCFE.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ImpostoCFE.SeparatorVisible = false;
-            this.ImpostoCFE.Size = new System.Drawing.Size(590, 29);
-            this.ImpostoCFE.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.ImpostoCFE.TabIndex = 177;
-            this.ImpostoCFE.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.ImpostoCFE.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.ImpostoCFE.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ImpostoCFE.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.ImpostoCFE.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.ImpostoCFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.ImpostoCFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ImpostoCFE.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.ImpostoCFE.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.ImpostoCFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.ImpostoCFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.ImpostoCFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.ImpostoCFE.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ImpostoCFE.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImpostoCFE.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.ImpostoCFE.Watermark.Text = "Watermark text";
-            this.ImpostoCFE.Watermark.Visible = false;
-            // 
-            // chkImpostoCFE
-            // 
-            this.chkImpostoCFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.chkImpostoCFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.chkImpostoCFE.Border.HoverVisible = true;
-            this.chkImpostoCFE.Border.Rounding = 3;
-            this.chkImpostoCFE.Border.Thickness = 1;
-            this.chkImpostoCFE.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.chkImpostoCFE.Border.Visible = true;
-            this.chkImpostoCFE.Box = new System.Drawing.Size(14, 14);
-            this.chkImpostoCFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoCFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.chkImpostoCFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoCFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.chkImpostoCFE.BoxSpacing = 2;
-            this.chkImpostoCFE.CheckStyle.AutoSize = true;
-            this.chkImpostoCFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.chkImpostoCFE.CheckStyle.Character = '✔';
-            this.chkImpostoCFE.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.chkImpostoCFE.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkImpostoCFE.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.chkImpostoCFE.CheckStyle.ShapeRounding = 3;
-            this.chkImpostoCFE.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.chkImpostoCFE.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.chkImpostoCFE.CheckStyle.Thickness = 2F;
-            this.chkImpostoCFE.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkImpostoCFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoCFE.IsBoxLarger = false;
-            this.chkImpostoCFE.Location = new System.Drawing.Point(17, 76);
-            this.chkImpostoCFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.chkImpostoCFE.Name = "chkImpostoCFE";
-            this.chkImpostoCFE.Size = new System.Drawing.Size(272, 23);
-            this.chkImpostoCFE.TabIndex = 179;
-            this.chkImpostoCFE.Text = "Utilizar este imposto para emissão de CFe S@T";
-            this.chkImpostoCFE.TextSize = new System.Drawing.Size(260, 17);
-            this.chkImpostoCFE.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.chkImpostoCFE.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoCFE.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoCFE.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chkImpostoCFE.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.chkImpostoCFE.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.chkImpostoCFE.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.White;
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(295, 80);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 178;
-            this.pictureBox9.TabStop = false;
-            // 
-            // filterMaisRecentes
-            // 
-            this.filterMaisRecentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.filterMaisRecentes.AutoSize = true;
-            this.filterMaisRecentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterMaisRecentes.Location = new System.Drawing.Point(541, 39);
-            this.filterMaisRecentes.Name = "filterMaisRecentes";
-            this.filterMaisRecentes.Size = new System.Drawing.Size(97, 19);
-            this.filterMaisRecentes.TabIndex = 203;
-            this.filterMaisRecentes.TabStop = true;
-            this.filterMaisRecentes.Text = "Mais recentes";
-            this.filterMaisRecentes.UseVisualStyleBackColor = true;
-            // 
-            // filterTodos
-            // 
-            this.filterTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.filterTodos.AutoSize = true;
-            this.filterTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterTodos.Location = new System.Drawing.Point(479, 39);
-            this.filterTodos.Name = "filterTodos";
-            this.filterTodos.Size = new System.Drawing.Size(56, 19);
-            this.filterTodos.TabIndex = 202;
-            this.filterTodos.TabStop = true;
-            this.filterTodos.Text = "Todos";
-            this.filterTodos.UseVisualStyleBackColor = true;
-            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2098,8 +2097,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }

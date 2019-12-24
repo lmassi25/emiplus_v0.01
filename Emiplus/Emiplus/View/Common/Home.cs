@@ -134,6 +134,10 @@ namespace Emiplus.View.Common
             version.Text = "Versão " + IniFile.Read("Version", "APP");
             label1.Text = $"Olá, {Validation.FirstCharToUpper(Settings.Default.user_name)} {Validation.FirstCharToUpper(Settings.Default.user_lastname)}";
 
+            Rectangle resolution = Screen.PrimaryScreen.Bounds;
+            Console.WriteLine(resolution.Width);
+            Console.WriteLine(resolution.Height);
+
             if (string.IsNullOrEmpty(Settings.Default.user_plan_id))
             {
                 plano.Text = "Contrate um Plano";
@@ -153,7 +157,8 @@ namespace Emiplus.View.Common
             {
                 label6.Visible = false;
                 trialdias.Visible = false;
-            } else
+            } 
+            else
             {
                 trialdias.Text = $"{Settings.Default.user_plan_trial} dias";
             }
@@ -187,6 +192,12 @@ namespace Emiplus.View.Common
         {
             Load += (s, e) => {
                 new Controller.Caixa().CheckCaixaDate();
+            };
+
+            chatOnline.Click += (s, e) =>
+            {
+                Suporte f = new Suporte();
+                f.Show();
             };
 
             developer.Click += (s, e) =>
@@ -278,6 +289,12 @@ namespace Emiplus.View.Common
                 homeMenuProducts.BackColor = Color.Transparent;
                 homeMenuComercial.BackColor = Color.Transparent;
                 homeMenuFinanceiro.BackColor = Color.Transparent;
+            };
+
+            btnSendSugesttion.Click += (s, e) =>
+            {
+                Suggestion f = new Suggestion();
+                f.ShowDialog();
             };
 
             FormClosed += (s, e) => Validation.KillEmiplus();
