@@ -70,9 +70,11 @@ namespace Emiplus.View.Comercial
                     Status.Visible = false;
                     break;
                 case "Notas":
+                    label1.Text = "NF-e";
                     label2.Text = "Gerencie as NF-e aqui! Adicione, edite ou apague uma nota.";
                     break;
                 case "Cupons":
+                    label1.Text = "CF-e S@T";
                     label2.Text = "Gerencie os CF-e S@T aqui! Adicione, edite ou apague um cupom.";
                     break;
                 case "Vendas":
@@ -163,6 +165,8 @@ namespace Emiplus.View.Comercial
 
         private void EditPedido(bool create = false)
         {
+            OpcoesCfe.tipoTela = 0;
+
             if (create)
             {
                 if (Home.pedidoPage == "Notas")
@@ -185,7 +189,7 @@ namespace Emiplus.View.Comercial
             if (GridLista.SelectedRows.Count > 0)
             {
                 Model.Pedido dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Pedido>();
-                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas")
+                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" && Home.pedidoPage != "Cupons")
                 {
                     Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
                     return;
@@ -201,7 +205,10 @@ namespace Emiplus.View.Comercial
 
                 if (Home.pedidoPage == "Cupons")
                 {
-                    Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
+                    OpcoesCfe.tipoTela = 1;
+                    OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);                    
+                    OpcoesCfe f = new OpcoesCfe();
+                    f.Show();
                     return;
                 }
                 

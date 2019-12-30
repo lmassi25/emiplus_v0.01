@@ -9,6 +9,7 @@ namespace Emiplus.View.Comercial
     public partial class OpcoesCfe : Form
     {
         public static int idPedido { get; set; } // id pedido
+        public static int tipoTela { get; set; } = 0;
 
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
@@ -18,6 +19,9 @@ namespace Emiplus.View.Comercial
         public OpcoesCfe()
         {
             InitializeComponent();
+
+            if (OpcoesCfe.tipoTela == 0)
+                btnDetalhes.Visible = false;
 
             Eventos();
         }
