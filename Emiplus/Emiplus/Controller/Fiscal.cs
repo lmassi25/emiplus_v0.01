@@ -131,6 +131,9 @@ namespace Emiplus.Controller
                     if(Pedido > 0)
                         _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
 
+                    if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                        chvAcesso = _nota.ChaveDeAcesso;
+
                     break;
 
                 case "CFe":
@@ -236,6 +239,102 @@ namespace Emiplus.Controller
                     return _msg;
 
                 TransmitirXML(Pedido, tipo);
+            }
+            catch (Exception ex)
+            {
+                return "Opss.. encontramos um erro: " + ex.Message;
+            }
+
+            return _msg;
+        }
+
+        /// <summary> 
+        /// Cancelar
+        /// </summary>
+        /// <param name="tipo">NFe, NFCe, CFe</param>  
+        public string Cancelar(int Pedido, string tipo = "NFe", string justificativa = "")
+        {
+            Start(Pedido, tipo);
+
+            try
+            {
+                switch (tipo)
+                {
+                    #region NFE 
+
+                    case "NFe":
+
+                        _msg = RequestCancela(tipo, justificativa);
+
+                        if (_msg.Contains("Evento registrado e vinculado a NF-e"))
+                        {
+                            _msg = "NF-e cancelada com sucesso.";
+                            _nota.Status = "Cancelada";
+                            _nota.Save(_nota, false);
+                        }
+
+                        break;
+
+                    #endregion
+
+                    #region CFE 
+
+                    case "CFe":
+
+                        //Random rdn = new Random();
+                        //_msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), ));
+
+                        if (_msg.Contains("Emitido com sucesso + conteudo notas"))
+                        {
+                            //StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
+                            //txt.Write(_msg);
+                            //txt.Close();
+
+                            //if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
+                            //    Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+
+                            //string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+
+                            //try
+                            //{
+                            //    XmlDocument oXML = new XmlDocument();
+                            //    oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+
+                            //    ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
+                            //    nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
+                            //    assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
+
+                            //    var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            //    doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
+
+                            //    //------------------------nota salva
+                            //    if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                            //        Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
+
+                            //    doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            //    doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+                            //    //------------------------nota salva
+
+                            //    ////------------------------
+                            //    _msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            //    ////------------------------
+                            //}
+                            //catch (Exception ex)
+                            //{ }
+
+                            //_msg = "Emitido com sucesso + conteudo notas";
+                            //_nota.Tipo = tipo;
+                            //_nota.Status = "Autorizada";
+                            //_nota.nr_Nota = nr_Nota;
+                            //_nota.ChaveDeAcesso = ChaveDeAcesso;
+                            //_nota.assinatura_qrcode = assinatura_qrcode;
+                            //_nota.Save(_nota, false);
+                        }
+
+                        break;
+
+                        #endregion
+                }
             }
             catch (Exception ex)
             {
@@ -404,19 +503,21 @@ namespace Emiplus.Controller
 
                     printer.CondensedMode(cfeid);
                     
-                    printer.Code128(_nota.ChaveDeAcesso.Substring(0, 22));
-                    printer.Code128(_nota.ChaveDeAcesso.Substring(22, 22));
+                    printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
+                    printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
 
                     //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
 
-                    string qrcode = "123456";
+                    string qrcode = "", total_qrcode = "";
+                    total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
                     if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
                     {
-                        //qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + cfeData + cfeHora + "|" + _pedido.Total + "|" + _pedido.cfe_cpf + "|" + cfeAssinatura;
+                        qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
                     }
                     else
                     {
-                        //qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + cfeData + cfeHora + "|" + _pedido.Total + "|" + "" + "|" + cfeAssinatura;
+                        qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
                     }
 
                     //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
@@ -474,6 +575,32 @@ namespace Emiplus.Controller
             }
 
             return "";
+        }
+
+        public string EnviarEmail(int Pedido, string email, string tipo = "NFe")
+        {
+            Start(Pedido);
+
+            _msg = "Opss.. Não foi possível enviar o email.";
+
+            try
+            {
+                switch (tipo)
+                {
+                    case "NFe":
+
+                        _msg = RequestEmail(email, tipo);
+
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _msg = "Opss.. encontramos um erro: " + ex.Message;
+            }
+
+            return _msg;
         }
 
         /// <summary> 
@@ -713,7 +840,7 @@ namespace Emiplus.Controller
                 case "CFe":
 
                     Random rdn = new Random();
-                    _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), IniFile.Read("Codigo_Ativacao", "SAT"), arq.OuterXml));
+                    _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), arq.OuterXml));
 
                     if (_msg.Contains("Emitido com sucesso + conteudo notas"))
                     {
@@ -724,7 +851,7 @@ namespace Emiplus.Controller
                         if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
                             Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
 
-                        string ChaveDeAcesso = "", nr_Nota = "";
+                        string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
 
                         try
                         {
@@ -733,6 +860,7 @@ namespace Emiplus.Controller
 
                             ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
                             nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
+                            assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
 
                             var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
                             doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
@@ -757,6 +885,7 @@ namespace Emiplus.Controller
                         _nota.Status = "Autorizada";
                         _nota.nr_Nota = nr_Nota;
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
+                        _nota.assinatura_qrcode = assinatura_qrcode;
                         _nota.Save(_nota, false);
                     }
 
@@ -1865,6 +1994,12 @@ namespace Emiplus.Controller
             return request(requestData, documento, "envia", "POST");
         }
 
+        private string RequestCancela(string documento = "NFe", string justificativa = "")
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chvAcesso + "&Justificativa=" + justificativa;
+            return request(requestData, documento, "cancela", "POST");
+        }
+
         private string RequestConsult(string documento = "NFe")
         {
             requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&Campos=situacao&Filtro=" + chvAcesso;
@@ -1904,6 +2039,41 @@ namespace Emiplus.Controller
                 documento = "NFe";
 
             return request(requestData, documento, "imprime", "GET");
+        }
+
+        private string RequestEmail(string email, string documento = "NFe")
+        {
+            string conteudoemail = "<![CDATA[<html> " +
+                
+                "<head> " +
+                "<meta http-equiv='Content-Language' content='pt-br'> " +
+                "<meta http-equiv='Content-Type' content='text/html; charset=utf-8'> " +
+                "</head> " +
+                
+                "<body> " +
+                "<br/> " +
+                "<br/> " +
+                "<br/> " +
+                "<table> " +
+                "<tr> " +
+                //"<th width='15%'></th> " +
+                "<th style='font-family:Helvetica; font-weight:normal; text-align: left; font-size: 15px;'> " +
+                "<p style='font-size: 20px;'>Olá,</p> " +
+                "<p> Estamos enviando neste momento sua Nota Fiscal Eletrônica. </p> " +
+                "<p> Existem arquivos em anexo neste e-mail. O arquivo de extensão PDF se trata da cópia eletrônica da Nota Fiscal. O(s) arquivo(s) de extensão XML são necessário(s) apenas para efeito de contabilidade em empresas. </p> " +
+                "<p> O código chave de sua Nota Fiscal Eletrônica é " + chvAcesso + " e você pode consultar a autenticidade deste documento juntamente ao Fisco através do site <a href='http://www.nfe.fazenda.gov.br' target='_blank'>http://www.nfe.fazenda.gov.br</a> informando o número do código chave. </p> <p> *** Para visualização da sua Nota Fiscal Eletrônica em anexo, é necessário ter instalado um leitor de arquivos PDF. Caso você ainda não tenha, o download pode ser feito gratuitamente no site <a href='https://get.adobe.com/br/reader/'  target='_blank'>https://get.adobe.com/br/reader/</a> </p> " +
+                "<br> <p style='font-size:25px; text-align: center;'>Obrigado.</p> <br> " +
+                "<p style='font-size:10px; text-align: center;'> Desenvolvido por Emiplus <br> <a href='https://www.emiplus.com.br' style='font-size:12px;'>www.emiplus.com.br</a> </p> " +
+                "</th> " +
+                //"<th width='15%'></th> " +
+                "</tr> " +
+                "</table> " +
+                "</body> " +
+
+                "</html>]]>";
+            
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&EmailDestinatario=" + email + "&ChaveNota=" + chvAcesso + "&Assunto=Nota Fiscal Eletrônica&Texto=" + conteudoemail + "&AnexaPDF=1&ConteudoHTML=1";            
+            return request(requestData, documento, "email", "POST");
         }
 
         private string RequestImport(string xml, string documento = "CFe")
