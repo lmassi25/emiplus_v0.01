@@ -13,9 +13,7 @@ namespace Emiplus.Model
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-
         public string Tipo { get; set; }
-
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
@@ -25,10 +23,9 @@ namespace Emiplus.Model
         public string nr_Nota { get; set; }
         public string Serie { get; set; }
         public string Status { get; set; }
-
         public string ChaveDeAcesso { get; set; }
-
         public string correcao { get; set; }
+        public string assinatura_qrcode { get; set; }
 
         #endregion
 

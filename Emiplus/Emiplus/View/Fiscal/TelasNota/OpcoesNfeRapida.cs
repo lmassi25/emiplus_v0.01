@@ -19,7 +19,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
-        private string _msg;
+        private string _msg, justificativa;
         private int p1 = 0;
 
         public OpcoesNfeRapida()
@@ -57,7 +57,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
                 if (checkNota != null)
-                {                    
+                {
                     Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
                     return;
                 }
@@ -87,6 +87,53 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 Application.OpenForms["OpcoesNfeRapida"].Close();
             };
+
+            Cancelar.Click += (s, e) =>
+            {
+                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Autorizada").Where("nota.tipo", "NFe").FirstOrDefault();
+                if (checkNota == null)
+                {
+                    Alert.Message("Ação não permitida!", "Não é possível cancelar uma nota Pendente/Cancelada.", Alert.AlertType.warning);
+                    return;
+                }
+
+                CartaCorrecaoAdd.tela = "Cancelar";
+                CartaCorrecaoAdd f = new CartaCorrecaoAdd();                
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    CartaCorrecaoAdd.tela = "";
+                    justificativa = CartaCorrecaoAdd.justificativa;
+
+                    retorno.Text = "Cancelando NF-e .......................................... (1/2)";
+
+                    p1 = 4;
+                    WorkerBackground.RunWorkerAsync();
+                }
+            };
+
+            EnviarEmail.Click += (s, e) =>
+            {
+                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Pendente").Where("nota.tipo", "NFe").FirstOrDefault();
+                if (checkNota != null)
+                {
+                    Alert.Message("Ação não permitida!", "Não é possível enviar uma nota Pendente.", Alert.AlertType.warning);
+                    return;
+                }
+
+                CartaCorrecaoAdd.tela = "Email";
+                CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    CartaCorrecaoAdd.tela = "";
+                    justificativa = CartaCorrecaoAdd.justificativa;
+
+                    retorno.Text = "Enviando NF-e .......................................... (1/2)";
+
+                    p1 = 5;
+                    WorkerBackground.RunWorkerAsync();
+                }
+            };
+
 
             Imprimir.Click += (s, e) =>
             {
@@ -132,6 +179,14 @@ namespace Emiplus.View.Fiscal.TelasNota
                             break;
                         case 3:                            
                             //_msg = new Controller.Fiscal().EmitirCCe(idPedido, "Nota gerada com informacoes incorretas, por gentileza verificar as corretas");
+                            break;
+                        case 4:
+                            if (justificativa.Length <= 15)
+                                break;
+                            _msg = new Controller.Fiscal().Cancelar(idPedido, "NFe", justificativa);
+                            break;
+                        case 5:                            
+                            _msg = new Controller.Fiscal().EnviarEmail(idPedido, justificativa);
                             break;
                     }
                 };
