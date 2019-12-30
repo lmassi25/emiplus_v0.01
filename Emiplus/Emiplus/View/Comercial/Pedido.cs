@@ -211,6 +211,14 @@ namespace Emiplus.View.Comercial
                         return;
                     }
 
+                    if (Home.pedidoPage == "Compras" && GridLista.SelectedRows[0].Cells["Status"].Value.ToString() == "Pendente")
+                    {
+                        AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        AddPedidos NovoPedido = new AddPedidos();
+                        NovoPedido.ShowDialog();
+                        return;
+                    }
+                    
                     DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                     DetailsPedido detailsPedido = new DetailsPedido();
                     detailsPedido.ShowDialog();
