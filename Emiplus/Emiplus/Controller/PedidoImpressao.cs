@@ -81,27 +81,27 @@ namespace Emiplus.Controller
             {
                 case "Vendas":
                     titulo = "Venda";
-                    titulo2 = "Vendido";
+                    titulo2 = "Cliente";
                     orcamento = true;
                     break;
                 case "Orçamentos":
                     titulo = "Orçamento";
-                    titulo2 = "Orçado";
+                    titulo2 = "Cliente";
                     orcamento = false;
                     break;
                 case "Consignações":
                     titulo = "Consignação";
-                    titulo2 = "Consignado";
+                    titulo2 = "Cliente";
                     orcamento = false;
                     break;
                 case "Devoluções":
                     titulo = "Devolução";
-                    titulo2 = "Devolvido";
+                    titulo2 = "Cliente";
                     orcamento = false;
                     break;
                 case "Compras":
                     titulo = "Compra";
-                    titulo2 = "Comprado";
+                    titulo2 = "Fornecedor";
                     orcamento = false;
                     break;
             }

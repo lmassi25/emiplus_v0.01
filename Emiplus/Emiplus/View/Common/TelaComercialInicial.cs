@@ -103,12 +103,12 @@ namespace Emiplus.View.Common
 
             ProdutosConsignados.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(ProdutosConsignados, pictureBox10, "com_pdtconsignados"))
-                    return;
+                //if (UserPermission.SetControl(ProdutosConsignados, pictureBox10, "com_pdtconsignados"))
+                //    return;
 
-                Home.pedidoPage = "Consignações";
-                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
-                ProdVendidos.ShowDialog();
+                //Home.pedidoPage = "Consignações";
+                //Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                //ProdVendidos.ShowDialog();
             };
 
             DevolucoesRel.Click += (s, e) =>
@@ -133,12 +133,12 @@ namespace Emiplus.View.Common
 
             ProdutosOrcados.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(ProdutosOrcados, pictureBox8, "com_pdtorcados"))
-                    return;
+                //if (UserPermission.SetControl(ProdutosOrcados, pictureBox8, "com_pdtorcados"))
+                //    return;
 
-                Home.pedidoPage = "Orçamentos";
-                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
-                ProdVendidos.ShowDialog();
+                //Home.pedidoPage = "Orçamentos";
+                //Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                //ProdVendidos.ShowDialog();
             };
         }
     }

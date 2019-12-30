@@ -279,7 +279,7 @@ namespace Emiplus.Controller
                 if (tipo == "Notas")
                     statusNfePedido = item.STATUSNFE == null ? "Pendente" : item.STATUSNFE;
                 else
-                    statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : @"Finalizado\Recebido";
+                    statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : item.STATUS == 0 ?  "Pendente" : @"Finalizado\Recebido";
 
                 Table.Rows.Add(
                     item.ID,

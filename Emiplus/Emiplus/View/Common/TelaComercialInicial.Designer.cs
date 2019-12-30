@@ -240,7 +240,7 @@
             this.ProdutosConsignados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosConsignados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosConsignados.Image")));
             this.ProdutosConsignados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 229);
+            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 514);
             this.ProdutosConsignados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosConsignados.Name = "ProdutosConsignados";
             this.ProdutosConsignados.Size = new System.Drawing.Size(219, 41);
@@ -248,6 +248,7 @@
             this.ProdutosConsignados.Text = "          Produtos Consignados";
             this.ProdutosConsignados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProdutosConsignados.UseVisualStyleBackColor = false;
+            this.ProdutosConsignados.Visible = false;
             // 
             // ConsignacoesRel
             // 
@@ -263,7 +264,7 @@
             this.ConsignacoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.ConsignacoesRel.Image = ((System.Drawing.Image)(resources.GetObject("ConsignacoesRel.Image")));
             this.ConsignacoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 184);
+            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 139);
             this.ConsignacoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsignacoesRel.Name = "ConsignacoesRel";
             this.ConsignacoesRel.Size = new System.Drawing.Size(219, 41);
@@ -286,7 +287,7 @@
             this.DevolucoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.DevolucoesRel.Image = ((System.Drawing.Image)(resources.GetObject("DevolucoesRel.Image")));
             this.DevolucoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DevolucoesRel.Location = new System.Drawing.Point(491, 407);
+            this.DevolucoesRel.Location = new System.Drawing.Point(492, 320);
             this.DevolucoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
@@ -309,7 +310,7 @@
             this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
             this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
             this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.VendasRel.Location = new System.Drawing.Point(491, 274);
+            this.VendasRel.Location = new System.Drawing.Point(491, 184);
             this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VendasRel.Name = "VendasRel";
             this.VendasRel.Size = new System.Drawing.Size(219, 41);
@@ -332,7 +333,7 @@
             this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
             this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 317);
+            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 227);
             this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosVendidos.Name = "ProdutosVendidos";
             this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
@@ -379,7 +380,7 @@
             this.Comissoes.ForeColor = System.Drawing.Color.DimGray;
             this.Comissoes.Image = ((System.Drawing.Image)(resources.GetObject("Comissoes.Image")));
             this.Comissoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Comissoes.Location = new System.Drawing.Point(491, 362);
+            this.Comissoes.Location = new System.Drawing.Point(492, 275);
             this.Comissoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Comissoes.Name = "Comissoes";
             this.Comissoes.Size = new System.Drawing.Size(219, 41);
@@ -517,7 +518,7 @@
             this.ProdutosOrcados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosOrcados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosOrcados.Image")));
             this.ProdutosOrcados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosOrcados.Location = new System.Drawing.Point(492, 139);
+            this.ProdutosOrcados.Location = new System.Drawing.Point(492, 465);
             this.ProdutosOrcados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosOrcados.Name = "ProdutosOrcados";
             this.ProdutosOrcados.Size = new System.Drawing.Size(219, 41);
@@ -525,6 +526,7 @@
             this.ProdutosOrcados.Text = "          Produtos Orçados";
             this.ProdutosOrcados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProdutosOrcados.UseVisualStyleBackColor = false;
+            this.ProdutosOrcados.Visible = false;
             // 
             // OrcamentosRel
             // 
@@ -629,7 +631,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(696, 165);
+            this.pictureBox8.Location = new System.Drawing.Point(696, 491);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -640,7 +642,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(696, 210);
+            this.pictureBox9.Location = new System.Drawing.Point(696, 165);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -651,7 +653,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(696, 255);
+            this.pictureBox10.Location = new System.Drawing.Point(696, 540);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -662,7 +664,7 @@
             // pictureBox12
             // 
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(696, 300);
+            this.pictureBox12.Location = new System.Drawing.Point(696, 210);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(15, 15);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -673,7 +675,7 @@
             // pictureBox13
             // 
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(696, 343);
+            this.pictureBox13.Location = new System.Drawing.Point(696, 253);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(15, 15);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -684,7 +686,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(696, 388);
+            this.pictureBox14.Location = new System.Drawing.Point(697, 301);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(15, 15);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -695,7 +697,7 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(696, 433);
+            this.pictureBox15.Location = new System.Drawing.Point(697, 346);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(15, 15);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
