@@ -50,19 +50,30 @@ namespace Emiplus.View.Comercial
             {
                 case "Orçamentos":
                     label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
+                    label13.Visible = false;
+                    Status.Visible = false;
                     break;
                 case "Consignações":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
+                    label13.Visible = false;
+                    Status.Visible = false;
                     break;
                 case "Devoluções":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
+                    label13.Visible = false;
+                    Status.Visible = false;
                     break;
                 case "Compras":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
                     label11.Text = "Procurar por fornecedor";
+                    label13.Visible = false;
+                    Status.Visible = false;
                     break;
                 case "Notas":
-                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma nota.";
+                    label2.Text = "Gerencie as NF-e aqui! Adicione, edite ou apague uma nota.";
+                    break;
+                case "Cupons":
+                    label2.Text = "Gerencie os CF-e S@T aqui! Adicione, edite ou apague um cupom.";
                     break;
                 case "Vendas":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
@@ -187,6 +198,12 @@ namespace Emiplus.View.Comercial
                     NovoPedido.ShowDialog();
                     return;
                 }
+
+                if (Home.pedidoPage == "Cupons")
+                {
+                    Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
+                    return;
+                }
                 
                 if (Home.pedidoPage == "Notas")
                 {
@@ -202,7 +219,7 @@ namespace Emiplus.View.Comercial
                         Nota nota = new Nota();
                         nota.ShowDialog();
                     }
-                }
+                }                
                 else
                 {
                     if (Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["EXCLUIR"].Value) > 0)
@@ -376,7 +393,16 @@ namespace Emiplus.View.Comercial
                 Filter();
             };
 
-            imprimir.Click += async (s, e) => await RenderizarAsync();
+            imprimir.Click += async (s, e) =>
+            {
+                if(Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
+                {
+                    Alert.Message("Ação não permitida", "Relatório não disponível", Alert.AlertType.warning);
+                    return;
+                }
+
+                await RenderizarAsync();
+            };            
         }
 
         private async Task RenderizarAsync()

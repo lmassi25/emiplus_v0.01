@@ -31,6 +31,9 @@ namespace Emiplus.View.Financeiro
             
             dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = _modelTitulo.Recebido == null ? "" : Validation.Price(_modelTitulo.Recebido);
+
+            if (_modelTitulo.Id == 0)
+                btnRemover.Visible = false;
         }
 
         private void Save()

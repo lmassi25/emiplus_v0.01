@@ -233,8 +233,7 @@ namespace Emiplus.View.Comercial
 
             btnImprimir.Click += (s, e) =>
             {
-                PedidoImpressao print = new PedidoImpressao();
-                print.Print(idPedido);
+                new Controller.Pedido().Imprimir(idPedido);
             };
 
             btnNfe.Click += (s, e) =>

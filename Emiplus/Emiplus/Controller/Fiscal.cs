@@ -173,14 +173,14 @@ namespace Emiplus.Controller
             {
                 _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
 
-                if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
-                {
-                    _id_empresa = 1;
-                }
-                else
-                {
-                    _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
-                }
+                //if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
+                //{
+                //    _id_empresa = 1;
+                //}
+                //else
+                //{
+                //    _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
+                //}
             }
 
             //_emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
@@ -715,7 +715,7 @@ namespace Emiplus.Controller
                 nNF = getLastNFeNr().ToString("000000000");
                 serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
 
-                chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
+                chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
                 cDV = CalculoCDV(chvAcesso);
                 chvAcesso = chvAcesso + "" + cDV;
 
@@ -1936,7 +1936,6 @@ namespace Emiplus.Controller
             int posicaoParaCalculo = 0;
             foreach (var v in chaveInvertida)
             {
-
                 somatorio = somatorio + (int.Parse(v.ToString()) * t[posicaoParaCalculo]);
                 if (posicaoParaCalculo == 7)
                 {

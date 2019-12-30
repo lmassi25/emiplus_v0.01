@@ -665,8 +665,7 @@ namespace Emiplus.View.Comercial
 
             imprimir.Click += (s, e) =>
             {
-                PedidoImpressao print = new PedidoImpressao();
-                print.Print(Id);
+                new Controller.Pedido().Imprimir(Id);
             };
 
             DescontoPorcentagem.KeyDown += (s, e) =>

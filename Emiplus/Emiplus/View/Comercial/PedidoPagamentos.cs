@@ -408,8 +408,7 @@ namespace Emiplus.View.Comercial
 
             btnImprimir.Click += (s, e) =>
             {
-                PedidoImpressao print = new PedidoImpressao();
-                print.Print(IdPedido);
+                new Controller.Pedido().Imprimir(IdPedido);
             };
 
             Debito.Click += (s, e) => JanelasRecebimento("Cartão de Débito");

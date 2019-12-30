@@ -13,6 +13,14 @@ namespace Emiplus.Data.Helpers
 {
     public static class Validation
     {
+        public static string AddSpaces(string valueF, string valueE)
+        {
+            if ((valueF + valueE).Length <= 48)
+                return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
+            else
+                return valueF + " " + valueE;
+        }
+
         public static double Round(double value)
         {
             return Math.Round(value, 2);
