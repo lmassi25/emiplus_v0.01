@@ -4,14 +4,16 @@ namespace Emiplus.Data.Helpers
 {
     class UserPermission
     {   
-        public static bool SetControl(Button button, PictureBox img, string tela)
+        public static bool SetControl(Button button, PictureBox img, string tela, bool message = true)
         {
             if (!GetPermission(tela))
             {
                 img.Visible = true;
 
                 button.Cursor = Cursors.No;
-                Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+
+                if (message)
+                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
 
                 return true;
             }

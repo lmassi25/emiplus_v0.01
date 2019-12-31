@@ -66,13 +66,14 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
+            this.btnSendSugesttion = new System.Windows.Forms.Button();
             this.chatOnline = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.btnSendSugesttion = new System.Windows.Forms.Button();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -91,6 +92,7 @@ namespace Emiplus.View.Common
             this.barraTituloHome.SuspendLayout();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,6 +109,7 @@ namespace Emiplus.View.Common
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel3.Controls.Add(this.pictureBox13);
             this.panel3.Controls.Add(this.pictureBox12);
             this.panel3.Controls.Add(this.pictureBox11);
             this.panel3.Controls.Add(this.pictureBox10);
@@ -599,6 +602,26 @@ namespace Emiplus.View.Common
             this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
             // 
+            // btnSendSugesttion
+            // 
+            this.btnSendSugesttion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendSugesttion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSendSugesttion.FlatAppearance.BorderSize = 0;
+            this.btnSendSugesttion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSendSugesttion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSendSugesttion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendSugesttion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendSugesttion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSendSugesttion.Image = ((System.Drawing.Image)(resources.GetObject("btnSendSugesttion.Image")));
+            this.btnSendSugesttion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnSendSugesttion.Location = new System.Drawing.Point(188, 4);
+            this.btnSendSugesttion.Name = "btnSendSugesttion";
+            this.btnSendSugesttion.Size = new System.Drawing.Size(137, 28);
+            this.btnSendSugesttion.TabIndex = 34;
+            this.btnSendSugesttion.Text = "Enviar Sugestão";
+            this.btnSendSugesttion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSendSugesttion.UseVisualStyleBackColor = true;
+            // 
             // chatOnline
             // 
             this.chatOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -692,25 +715,16 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // btnSendSugesttion
+            // pictureBox13
             // 
-            this.btnSendSugesttion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSendSugesttion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSendSugesttion.FlatAppearance.BorderSize = 0;
-            this.btnSendSugesttion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnSendSugesttion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnSendSugesttion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendSugesttion.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendSugesttion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSendSugesttion.Image = ((System.Drawing.Image)(resources.GetObject("btnSendSugesttion.Image")));
-            this.btnSendSugesttion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSendSugesttion.Location = new System.Drawing.Point(188, 4);
-            this.btnSendSugesttion.Name = "btnSendSugesttion";
-            this.btnSendSugesttion.Size = new System.Drawing.Size(137, 28);
-            this.btnSendSugesttion.TabIndex = 34;
-            this.btnSendSugesttion.Text = "Enviar Sugestão";
-            this.btnSendSugesttion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSendSugesttion.UseVisualStyleBackColor = true;
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(257, 121);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 161;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Visible = false;
             // 
             // Home
             // 
@@ -748,6 +762,7 @@ namespace Emiplus.View.Common
             this.barraTituloHome.ResumeLayout(false);
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -794,5 +809,6 @@ namespace Emiplus.View.Common
         private PictureBox pictureBox10;
         private Button chatOnline;
         private Button btnSendSugesttion;
+        private PictureBox pictureBox13;
     }
 }

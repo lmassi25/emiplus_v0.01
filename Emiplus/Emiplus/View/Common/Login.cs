@@ -106,7 +106,7 @@ namespace Emiplus.View.Common
                     return;
                 }
             }
-            
+
             Settings.Default.user_id = Validation.ConvertToInt32(jo["user"]["id"]);
             Settings.Default.user_name = jo["user"]["name"].ToString();
             Settings.Default.user_lastname = jo["user"]["lastname"].ToString();
