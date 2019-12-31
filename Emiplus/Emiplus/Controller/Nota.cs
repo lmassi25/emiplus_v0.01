@@ -88,5 +88,46 @@ namespace Emiplus.Controller
 
             return "1";
         }
+
+        public Task<IEnumerable<dynamic>> GetDataTableDoc(int idPedido)
+        {
+            return new Model.Nota().Query()
+                .Where("EXCLUIR", 0)
+                .Where("id_pedido", idPedido)
+                .Where("tipo", "Documento")
+                .OrderByDesc("criado")
+                .GetAsync<dynamic>();
+        }
+
+        public async Task SetTableDoc(DataGridView Table, int idPedido)
+        {
+            Table.ColumnCount = 5;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+            
+            Table.Columns[1].Name = "Chave de Acesso";
+
+            Table.Rows.Clear();
+
+            IEnumerable<dynamic> dados = await GetDataTable(idPedido);
+
+            for (int i = 0; i < dados.Count(); i++)
+            {
+                var item = dados.ElementAt(i);
+
+                Table.Rows.Add(
+                     item.ID,
+                     item.CHAVEDEACESSO
+                 );
+            }
+
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
     }
 }

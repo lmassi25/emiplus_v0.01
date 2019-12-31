@@ -51,23 +51,19 @@ namespace Emiplus.View.Comercial
                 case "Orçamentos":
                     label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
                     label13.Visible = false;
-                    Status.Visible = false;
                     break;
                 case "Consignações":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
                     label13.Visible = false;
-                    Status.Visible = false;
                     break;
                 case "Devoluções":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
                     label13.Visible = false;
-                    Status.Visible = false;
                     break;
                 case "Compras":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
                     label11.Text = "Procurar por fornecedor";
                     label13.Visible = false;
-                    Status.Visible = false;
                     break;
                 case "Notas":
                     label1.Text = "NF-e";
@@ -297,6 +293,11 @@ namespace Emiplus.View.Comercial
                     status.Add(new { ID = 1, NOME = "Pendentes" });
                     status.Add(new { ID = 2, NOME = "Autorizadas" });
                     status.Add(new { ID = 3, NOME = "Canceladas" });
+                }
+                else if(Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                {
+                    status.Add(new { ID = 0, NOME = "Pendente" });
+                    status.Add(new { ID = 1, NOME = "Finalizado" });
                 }
                 else
                 {

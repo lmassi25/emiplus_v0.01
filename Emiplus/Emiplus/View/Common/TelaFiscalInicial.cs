@@ -99,7 +99,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(AlterarNFE, pictureBox10, "fiscal_alterar"))
                     return;
 
-                OpenForm.Show<Produtos.Impostos>(this);
+                AlertOptions.Message("", "Para alterar o últ. n° da NF-e acesse nossa área do Cliente online.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
             };
 
             EnviarXml.Click += (s, e) =>
