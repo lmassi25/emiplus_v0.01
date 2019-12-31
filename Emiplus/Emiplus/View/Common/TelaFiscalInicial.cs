@@ -115,7 +115,9 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(CFE, pictureBox8, "fiscal_cfe"))
                     return;
 
-                OpenForm.Show<Produtos.Impostos>(this);
+                Home.pedidoPage = "Cupons";
+                Comercial.Pedido Pedido = new Comercial.Pedido();
+                Pedido.ShowDialog();
             };
         }
     }

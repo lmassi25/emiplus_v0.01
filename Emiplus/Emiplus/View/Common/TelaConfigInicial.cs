@@ -17,6 +17,9 @@ namespace Emiplus.View.Common
             {
                 switch (e.Node.Name)
                 {
+                    case "comercial":
+                        OpenForm.ShowInPanel<Configuracoes.Comercial>(tela);
+                        break;
                     case "cfesat":
                         OpenForm.ShowInPanel<Configuracoes.Cfesat>(tela);
                         break;
