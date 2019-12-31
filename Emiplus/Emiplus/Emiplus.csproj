@@ -617,6 +617,12 @@
     <Compile Include="View\Fiscal\TelasNota\DetailsClient.Designer.cs">
       <DependentUpon>DetailsClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\TelasNota\DocumentosReferenciados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\DocumentosReferenciados.Designer.cs">
+      <DependentUpon>DocumentosReferenciados.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\TelasNota\EditProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1019,6 +1025,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\DetailsClient.resx">
       <DependentUpon>DetailsClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\DocumentosReferenciados.resx">
+      <DependentUpon>DocumentosReferenciados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>

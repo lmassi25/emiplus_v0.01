@@ -25,7 +25,7 @@ namespace Emiplus.Controller
                 {
                     if (_modelItem.Impostoid == 0)
                     {
-                        Alert.Message("Opss", "O produto não possui imposto.", Alert.AlertType.error);
+                        //Alert.Message("Opss", "O produto não possui imposto.", Alert.AlertType.error);
                         return;
                     }
 

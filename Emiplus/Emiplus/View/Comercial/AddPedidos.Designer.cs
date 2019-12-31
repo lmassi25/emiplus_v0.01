@@ -51,6 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnGerarVenda = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.imprimir = new System.Windows.Forms.Button();
@@ -84,7 +85,6 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnGerarVenda = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -386,6 +386,29 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 2;
+            // 
+            // btnGerarVenda
+            // 
+            this.btnGerarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarVenda.BackColor = System.Drawing.Color.DarkMagenta;
+            this.btnGerarVenda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGerarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarVenda.FlatAppearance.BorderSize = 0;
+            this.btnGerarVenda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkMagenta;
+            this.btnGerarVenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkMagenta;
+            this.btnGerarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerarVenda.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnGerarVenda.ForeColor = System.Drawing.Color.White;
+            this.btnGerarVenda.Image = ((System.Drawing.Image)(resources.GetObject("btnGerarVenda.Image")));
+            this.btnGerarVenda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGerarVenda.Location = new System.Drawing.Point(516, 4);
+            this.btnGerarVenda.Name = "btnGerarVenda";
+            this.btnGerarVenda.Size = new System.Drawing.Size(148, 65);
+            this.btnGerarVenda.TabIndex = 156;
+            this.btnGerarVenda.Text = "Gerar Venda";
+            this.btnGerarVenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGerarVenda.UseVisualStyleBackColor = false;
+            this.btnGerarVenda.Visible = false;
             // 
             // btnDelete
             // 
@@ -753,7 +776,7 @@
             // 
             this.Quantidade.AlphaNumeric = false;
             this.Quantidade.BackColor = System.Drawing.Color.White;
-            this.Quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Quantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.Quantidade.BackColorState.Enabled = System.Drawing.Color.White;
             this.Quantidade.Border.Color = System.Drawing.Color.Gainsboro;
             this.Quantidade.Border.HoverColor = System.Drawing.Color.Gray;
@@ -812,7 +835,7 @@
             this.BuscarProduto.AlphaNumeric = false;
             this.BuscarProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.BuscarProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BuscarProduto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.BuscarProduto.BackColorState.Enabled = System.Drawing.Color.White;
             this.BuscarProduto.Border.Color = System.Drawing.Color.Gainsboro;
             this.BuscarProduto.Border.HoverColor = System.Drawing.Color.Gray;
@@ -918,7 +941,7 @@
             // Medidas
             // 
             this.Medidas.BackColor = System.Drawing.Color.White;
-            this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.Medidas.BackColorState.Enabled = System.Drawing.Color.White;
             this.Medidas.Border.Color = System.Drawing.Color.Gainsboro;
             this.Medidas.Border.HoverColor = System.Drawing.Color.Gray;
@@ -975,7 +998,7 @@
             // 
             this.DescontoReais.AlphaNumeric = false;
             this.DescontoReais.BackColor = System.Drawing.Color.White;
-            this.DescontoReais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.DescontoReais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.DescontoReais.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoReais.Border.Color = System.Drawing.Color.Gainsboro;
             this.DescontoReais.Border.HoverColor = System.Drawing.Color.Gray;
@@ -1033,7 +1056,7 @@
             // 
             this.DescontoPorcentagem.AlphaNumeric = false;
             this.DescontoPorcentagem.BackColor = System.Drawing.Color.White;
-            this.DescontoPorcentagem.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.DescontoPorcentagem.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.DescontoPorcentagem.BackColorState.Enabled = System.Drawing.Color.White;
             this.DescontoPorcentagem.Border.Color = System.Drawing.Color.Gainsboro;
             this.DescontoPorcentagem.Border.HoverColor = System.Drawing.Color.Gray;
@@ -1091,7 +1114,7 @@
             // 
             this.Preco.AlphaNumeric = false;
             this.Preco.BackColor = System.Drawing.Color.White;
-            this.Preco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Preco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.Preco.BackColorState.Enabled = System.Drawing.Color.White;
             this.Preco.Border.Color = System.Drawing.Color.Gainsboro;
             this.Preco.Border.HoverColor = System.Drawing.Color.Gray;
@@ -1170,29 +1193,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
-            // 
-            // btnGerarVenda
-            // 
-            this.btnGerarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGerarVenda.BackColor = System.Drawing.Color.DarkMagenta;
-            this.btnGerarVenda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGerarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerarVenda.FlatAppearance.BorderSize = 0;
-            this.btnGerarVenda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkMagenta;
-            this.btnGerarVenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkMagenta;
-            this.btnGerarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGerarVenda.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnGerarVenda.ForeColor = System.Drawing.Color.White;
-            this.btnGerarVenda.Image = ((System.Drawing.Image)(resources.GetObject("btnGerarVenda.Image")));
-            this.btnGerarVenda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGerarVenda.Location = new System.Drawing.Point(516, 4);
-            this.btnGerarVenda.Name = "btnGerarVenda";
-            this.btnGerarVenda.Size = new System.Drawing.Size(148, 65);
-            this.btnGerarVenda.TabIndex = 156;
-            this.btnGerarVenda.Text = "Gerar Venda";
-            this.btnGerarVenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnGerarVenda.UseVisualStyleBackColor = false;
-            this.btnGerarVenda.Visible = false;
             // 
             // AddPedidos
             // 

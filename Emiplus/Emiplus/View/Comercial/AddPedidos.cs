@@ -63,6 +63,25 @@ namespace Emiplus.View.Comercial
                 IDCaixa.Visible = false;
                 btnDelete.Text = "Apagar Orçamento";
                 btnGerarVenda.Visible = true;
+
+                if (_mPedido.status == 1)
+                {
+                    btnConcluir.Text = "Reabrir";
+
+                    BuscarProduto.Enabled = false;
+                    Quantidade.Enabled = false;
+                    Preco.Enabled = false;
+                    Medidas.Enabled = false;
+                    DescontoPorcentagem.Enabled = false;
+                    DescontoReais.Enabled = false;
+                    addProduto.Enabled = false;
+                }
+                else
+                {
+                    btnConcluir.Text = "Finalizar";
+                    btnDelete.Visible = false;
+                    btnGerarVenda.Visible = false;
+                }   
             }
             else if (Home.pedidoPage == "Consignações")
             {
@@ -74,6 +93,25 @@ namespace Emiplus.View.Comercial
                 IDCaixa.Visible = false;
                 btnDelete.Text = "Apagar Consignação";
                 btnGerarVenda.Visible = true;
+
+                if (_mPedido.status == 1)
+                {
+                    btnConcluir.Text = "Reabrir";
+
+                    BuscarProduto.Enabled = false;
+                    Quantidade.Enabled = false;
+                    Preco.Enabled = false;
+                    Medidas.Enabled = false;
+                    DescontoPorcentagem.Enabled = false;
+                    DescontoReais.Enabled = false;
+                    addProduto.Enabled = false;
+                }
+                else
+                {
+                    btnConcluir.Text = "Finalizar";
+                    btnDelete.Visible = false;
+                    btnGerarVenda.Visible = false;
+                }
             }
             else if (Home.pedidoPage == "Compras")
             {
@@ -97,6 +135,26 @@ namespace Emiplus.View.Comercial
                 IDCaixa.Visible = false;
                 btnDelete.Visible = false;
                 btnGerarVenda.Visible = false;
+
+                //verificar vinculação 
+
+                if (_mPedido.status == 1)
+                {
+                    btnConcluir.Text = "Reabrir";
+
+                    BuscarProduto.Enabled = false;
+                    Quantidade.Enabled = false;
+                    Preco.Enabled = false;
+                    Medidas.Enabled = false;
+                    DescontoPorcentagem.Enabled = false;
+                    DescontoReais.Enabled = false;
+                    addProduto.Enabled = false;
+                }
+                else
+                {
+                    btnConcluir.Text = "Finalizar";
+                    btnDelete.Visible = false;
+                }
             }
             else
             {
@@ -233,6 +291,31 @@ namespace Emiplus.View.Comercial
                 }
             }
 
+            if (btnConcluir.Text == "Reabrir")
+            {
+                BuscarProduto.Enabled = true;
+                Quantidade.Enabled = true;
+                Preco.Enabled = true;
+                Medidas.Enabled = true;
+                DescontoPorcentagem.Enabled = true;
+                DescontoReais.Enabled = true;
+                addProduto.Enabled = true;
+
+                btnDelete.Visible = false;
+                btnGerarVenda.Visible = false;
+
+                _mPedido.Id = Id;
+                _mPedido.status = 0;
+                _mPedido.Save(_mPedido);
+
+                Alert.Message("Tudo certo!", "Reaberto com sucesso.", Alert.AlertType.success);
+                btnConcluir.Text = "Finalizar";
+
+                BuscarProduto.Select();
+
+                return;
+            }
+
             if (btnConcluir.Text == "Finalizar" && Home.idCaixa == 0 && Home.pedidoPage == "Vendas") //Necessário para vendas balcão
             {
                 btnFinalizado = true;
@@ -275,7 +358,13 @@ namespace Emiplus.View.Comercial
                     _mPedido.status = 1; //FINALIZADO
                     if (_mPedido.Save(_mPedido))
                     {
+                        if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                        {
+                            new Controller.Pedido().Imprimir(Id);
+                        }
+
                         Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
+                        btnFinalizado = true;
                         Close();
                         return;
                     }
@@ -287,7 +376,13 @@ namespace Emiplus.View.Comercial
                     _mPedido.status = 1; //FINALIZADO
                     if (_mPedido.Save(_mPedido))
                     {
+                        if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                        {
+                            new Controller.Pedido().Imprimir(Id);
+                        }
+
                         Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
+                        btnFinalizado = true;
                         Close();
                         return;
                     }
@@ -299,7 +394,13 @@ namespace Emiplus.View.Comercial
                     _mPedido.status = 1; //FINALIZADO
                     if (_mPedido.Save(_mPedido))
                     {
+                        if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                        {
+                            new Controller.Pedido().Imprimir(Id);
+                        }
+
                         Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
+                        btnFinalizado = true;
                         Close();
                         return;
                     }
@@ -509,6 +610,13 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F3:
+
+                    if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
+                    {
+                        Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
+                        return;
+                    }
+
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
@@ -535,7 +643,7 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F5:
-                    new PedidoImpressao().Print(Id);
+                    new Controller.Pedido().Imprimir(Id);
                     break;
                 case Keys.F7:
                     ModalClientes();
@@ -618,6 +726,14 @@ namespace Emiplus.View.Comercial
                 _mPedido.Tipo = "Vendas";
                 if (_mPedido.Save(_mPedido))
                 {
+                    BuscarProduto.Enabled = true;
+                    Quantidade.Enabled = true;
+                    Preco.Enabled = true;
+                    Medidas.Enabled = true;
+                    DescontoPorcentagem.Enabled = true;
+                    DescontoReais.Enabled = true;
+                    addProduto.Enabled = true;
+
                     Alert.Message("Tudo certo!", "Venda gerada com sucesso.", Alert.AlertType.success);
                     Home.pedidoPage = "Vendas";
                     LoadData();
@@ -681,6 +797,12 @@ namespace Emiplus.View.Comercial
 
             btnCancelarProduto.Click += (s, e) =>
             {
+                if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
+                {
+                    Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
+                    return;
+                }
+
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
                     if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
@@ -705,21 +827,21 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                    btnFinalizado = true;
+
                 if (!btnFinalizado)
                 {
                     Home.pedidoPage = CachePage;
-                    if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Vendas")
+                    var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if (result)
                     {
-                        var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                        if (result)
-                        {
-                            new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
-                            _mPedido.Remove(Id);
-                            return;
-                        }
-
-                        e.Cancel = true;
+                        new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
+                        _mPedido.Remove(Id);
+                        return;
                     }
+
+                    e.Cancel = true;
                 }
                 btnFinalizado = false;
             };

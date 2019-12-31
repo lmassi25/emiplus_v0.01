@@ -189,8 +189,7 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")                
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
@@ -282,10 +281,15 @@ namespace Emiplus.Controller
             Table.Columns[0].Visible = false;
 
             if (tipo == "Notas")
-                Table.Columns[1].Name = "Venda";
+            {
+                Table.Columns[1].Name = "N° Sefaz";
+                Table.Columns[1].Width = 75;
+            }                
             else
+            {
                 Table.Columns[1].Name = "N°";
-            Table.Columns[1].Width = 50;
+                Table.Columns[1].Width = 50;
+            }
 
             Table.Columns[2].Name = "Emissão";
             Table.Columns[2].MinimumWidth = 80;
@@ -309,10 +313,10 @@ namespace Emiplus.Controller
 
             Table.Columns[7].Name = "Status";
             Table.Columns[7].MinimumWidth = 150;
-            Table.Columns[7].Visible = false;
+            Table.Columns[7].Visible = true;
 
-            if (tipo == "Vendas" || tipo == "Notas")
-                Table.Columns[7].Visible = true;
+            //if (tipo == "Vendas" || tipo == "Notas")
+            //    Table.Columns[7].Visible = true;
 
             Table.Columns[8].Name = "EXCLUIR";
             Table.Columns[8].Visible = false;
@@ -337,19 +341,37 @@ namespace Emiplus.Controller
             Table.Columns[11].Visible = false;
 
             Table.Rows.Clear();
-            
+                        
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = tipo == "Notas" || tipo ==  "Cupons" ? await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario) : await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
-                Data = dados;
+                IEnumerable<dynamic> dados;
+
+                switch (tipo)
+                {
+                    case "Notas":
+                        dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
+                        break;
+                    case "Cupons":
+                        dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
+                        break;
+                    default:
+                        dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
+                        break;
+                }
+                
+                Data = dados;                
             }
 
             foreach (var item in Data)
             {
                 var statusNfePedido = "";
-                if (tipo != "Notas")
+
+                if (tipo == "Vendas")
                     statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
-                                
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                    statusNfePedido = item.STATUS == 1 ? "Finalizado" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
+
                 string n_cfe = "", n_nfe = "";
                 foreach (dynamic item2 in GetDadosNota(item.ID))
                 {
@@ -367,7 +389,7 @@ namespace Emiplus.Controller
 
                 Table.Rows.Add(
                     item.ID,
-                    item.ID,
+                    tipo == "Notas" ? n_nfe : tipo == "Cupom" ? n_nfe : item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
                     item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
@@ -379,7 +401,7 @@ namespace Emiplus.Controller
                     n_cfe,
                     item.TIPO
                 );
-            }
+            } 
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

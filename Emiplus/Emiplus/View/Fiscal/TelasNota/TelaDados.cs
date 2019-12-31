@@ -21,6 +21,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Model.PessoaEndereco _mClienteAddr = new Model.PessoaEndereco();
         private Model.Nota _mNota = new Model.Nota();
 
+        public static bool telaDados { get; set; } = false;
+
         public TelaDados()
         {
             InitializeComponent();
@@ -225,7 +227,9 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 if (Validate())
                     return;
-                
+
+                telaDados = true;
+
                 GetData();
 
                 if (!Nota.disableCampos)
@@ -270,9 +274,15 @@ namespace Emiplus.View.Fiscal.TelasNota
                 }
             };
 
+            Documentos.Click += (s, e) =>
+            {
+                DocumentosReferenciados form = new DocumentosReferenciados();
+                form.Show();
+            };
+
             emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             saida.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            hora.KeyPress += (s, e) => Masks.MaskHour(s, e);
+            hora.KeyPress += (s, e) => Masks.MaskHour(s, e);            
         }
     }
 }
