@@ -129,7 +129,7 @@ namespace Emiplus.Controller
                     }
 
                     if(Pedido > 0)
-                        _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+                        _nota = new Model.Nota().FindByIdPedidoAndTipo(Pedido, tipo).First<Model.Nota>();
 
                     if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
                         chvAcesso = _nota.ChaveDeAcesso;
@@ -607,7 +607,7 @@ namespace Emiplus.Controller
         /// XML
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>        
-        private void CriarXML(int Pedido, string tipo)
+        private void CriarXML(int Pedido, string tipo, int modelo = 0)
         {
             #region DADOS 
 
@@ -671,99 +671,173 @@ namespace Emiplus.Controller
                     }
                 }
             }
-            
-            #endregion
-
-            #region PATH 
-
-            string strFilePath = _path_enviada + "\\" + Pedido + ".xml";
 
             #endregion
 
-            #region XML
-                        
-            var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
-            xml.Formatting = Formatting.Indented;
+            string strFilePath = "";
 
-            xml.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
-
-            if (tipo == "NFCe")
+            switch (modelo)
             {
-                cNF = "25" + getLastNFeNr().ToString("000000");
-                nNF = getLastNFeNr().ToString("000000000");
-                serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+                case 1:
 
-                chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
-                cDV = CalculoCDV(chvAcesso);
-                chvAcesso = chvAcesso + "" + cDV;
+                    #region 1
 
-                xml.WriteStartElement("NFe");
+                    #region PATH 
 
-                xml.WriteStartElement("infNFe");
-                xml.WriteAttributeString("versao", "4.00");
-                xml.WriteAttributeString("Id", "NFe" + chvAcesso);                
+                    strFilePath = _path_enviada + "\\" + Pedido + "Canc.xml";
+
+                    #endregion
+
+                    #region XML
+
+                    var xmlCanc = new XmlTextWriter(strFilePath, Encoding.UTF8);
+                    xmlCanc.Formatting = Formatting.Indented;
+
+                    xmlCanc.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
+
+                    xmlCanc.WriteStartElement("CFeCanc");
+                    xmlCanc.WriteStartElement("infCFe");
+                    xmlCanc.WriteAttributeString("chCanc", _nota.ChaveDeAcesso);
+
+                    xmlCanc.WriteStartElement("ide");
+
+                    if (_servidorCFE == 2)
+                    {
+                        xmlCanc.WriteElementString("CNPJ", "16716114000172");
+                        xmlCanc.WriteElementString("signAC", "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT");
+                        xmlCanc.WriteElementString("numeroCaixa", "001");
+                    }
+                    else
+                    {
+                        xmlCanc.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "").Trim());
+                        xmlCanc.WriteElementString("signAC", IniFile.Read("Assinatura", "SAT"));
+                        xmlCanc.WriteElementString("numeroCaixa", "001");
+                    }
+
+                    xmlCanc.WriteEndElement();
+                    
+                    xmlCanc.WriteStartElement("emit");
+                    xmlCanc.WriteEndElement();
+
+                    xmlCanc.WriteStartElement("dest");
+                    xmlCanc.WriteEndElement();
+
+                    xmlCanc.WriteStartElement("total");
+                    xmlCanc.WriteEndElement();
+
+                    xmlCanc.WriteEndElement();
+                    xmlCanc.WriteEndElement();
+
+                    xmlCanc.WriteEndDocument();
+
+                    xmlCanc.Flush();
+                    xmlCanc.Close();
+
+                    #endregion
+
+                    #endregion
+
+                    break;
+
+                default:
+
+                    #region 0
+                    
+                    #region PATH 
+
+                    strFilePath = _path_enviada + "\\" + Pedido + ".xml";
+
+                    #endregion
+
+                    #region XML
+
+                    var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
+                    xml.Formatting = Formatting.Indented;
+
+                    xml.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
+
+                    if (tipo == "NFCe")
+                    {
+                        cNF = "25" + getLastNFeNr().ToString("000000");
+                        nNF = getLastNFeNr().ToString("000000000");
+                        serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+
+                        chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
+                        cDV = CalculoCDV(chvAcesso);
+                        chvAcesso = chvAcesso + "" + cDV;
+
+                        xml.WriteStartElement("NFe");
+
+                        xml.WriteStartElement("infNFe");
+                        xml.WriteAttributeString("versao", "4.00");
+                        xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                    }
+                    else if (tipo == "CFe")
+                    {
+                        xml.WriteStartElement("CFe");
+                        xml.WriteStartElement("infCFe");
+                        xml.WriteAttributeString("versaoDadosEnt", "0.07");
+                    }
+                    else
+                    {
+                        cNF = "25" + getLastNFeNr().ToString("000000");
+                        nNF = getLastNFeNr().ToString("000000000");
+                        serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+
+                        chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
+                        cDV = CalculoCDV(chvAcesso);
+                        chvAcesso = chvAcesso + "" + cDV;
+
+                        xml.WriteStartElement("NFe");
+                        xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+
+                        xml.WriteStartElement("infNFe");
+                        xml.WriteAttributeString("versao", "4.00");
+                        xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                    }
+
+                    SetIde(xml, Pedido, tipo);
+
+                    SetEmit(xml, Pedido, tipo);
+
+                    SetDest(xml, Pedido, tipo);
+
+                    int count = 1;
+                    itens = new Model.PedidoItem().Query()
+                        .Where("pedido_item.pedido", Pedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos")
+                        .Get();
+                    foreach (var data in itens)
+                    {
+                        SetDet(xml, Pedido, tipo, count, data.ID);
+                        count++;
+                    }
+
+                    SetTotal(xml, Pedido, tipo);
+
+                    if (tipo != "CFe")
+                        SetTransp(xml, Pedido, tipo);
+
+
+                    SetPag(xml, Pedido, tipo);
+
+                    SetInfAdic(xml, Pedido, tipo);
+
+                    xml.WriteEndElement();
+                    xml.WriteEndElement();
+
+                    xml.WriteEndDocument();
+
+                    xml.Flush();
+                    xml.Close();
+
+                    #endregion
+
+                    #endregion
+
+                    break;
             }
-            else if (tipo == "CFe")
-            {
-                xml.WriteStartElement("CFe");
-                xml.WriteStartElement("infCFe");
-                xml.WriteAttributeString("versaoDadosEnt", "0.07");
-            }
-            else
-            {
-                cNF = "25" + getLastNFeNr().ToString("000000");
-                nNF = getLastNFeNr().ToString("000000000");
-                serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
-
-                chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
-                cDV = CalculoCDV(chvAcesso);
-                chvAcesso = chvAcesso + "" + cDV;
-
-                xml.WriteStartElement("NFe");
-                xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
-
-                xml.WriteStartElement("infNFe");
-                xml.WriteAttributeString("versao", "4.00");
-                xml.WriteAttributeString("Id", "NFe" + chvAcesso);                
-            }
-
-            SetIde(xml, Pedido, tipo);
-
-            SetEmit(xml, Pedido, tipo);
-
-            SetDest(xml, Pedido, tipo);
-
-            int count = 1;
-            itens = new Model.PedidoItem().Query()
-                .Where("pedido_item.pedido", Pedido)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos")
-                .Get();
-            foreach (var data in itens)
-            {
-                SetDet(xml, Pedido, tipo, count, data.ID);
-                count++;
-            }
-
-            SetTotal(xml, Pedido, tipo);
-
-            if (tipo != "CFe")
-                SetTransp(xml, Pedido, tipo);
-
-           
-            SetPag(xml, Pedido, tipo);
-
-            SetInfAdic(xml, Pedido, tipo);
-
-            xml.WriteEndElement();
-            xml.WriteEndElement();
-
-            xml.WriteEndDocument();
-
-            xml.Flush();
-            xml.Close();
-
-            #endregion
         }
 
         /// <summary> 
@@ -2301,8 +2375,10 @@ namespace Emiplus.Controller
 
         // Set Barcode height
         static byte[] SetBarcodeHeight = new byte[] { 0x1D, 0x68, 0x25 };
+
         // Set Barcode width
         static byte[] SetBarcodeWidth = new byte[] { 0x1D, 0x77, 0x03 };
+
         // Begin barcode printing
         static byte[] EAN13BarCodeStart = new byte[] { 0x1D, 0x6B, 67, 13 };
 
