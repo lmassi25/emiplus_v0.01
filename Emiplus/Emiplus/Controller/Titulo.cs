@@ -229,11 +229,11 @@ namespace Emiplus.Controller
                 );
             }
 
-            if (!String.IsNullOrEmpty(search) && search != "%%")
+            if (!string.IsNullOrEmpty(Search))
             {
                 data.Where
                 (
-                    q => q.Where("titulo.recebido", search, false)
+                    q => q.Where("pessoa.nome", "like", search)
                 );
             }
 

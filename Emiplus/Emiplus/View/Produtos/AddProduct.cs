@@ -273,7 +273,7 @@ namespace Emiplus.View.Produtos
             label6.Click += (s, e) => Close();
             btnExit.Click += (s, e) =>
             {
-                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
+                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
                 if (dataProd != null)
                 {
                     var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);

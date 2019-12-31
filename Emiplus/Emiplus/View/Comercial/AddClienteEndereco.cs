@@ -81,6 +81,7 @@ namespace Emiplus.View.Comercial
                     Close();
                 }
             };
+
             btnAddrDelete.Click += (s, e) =>
             {
                 var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir o endereço?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);

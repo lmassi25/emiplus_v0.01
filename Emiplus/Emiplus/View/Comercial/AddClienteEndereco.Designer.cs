@@ -47,7 +47,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.ibge = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.buscarEndereco = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cep = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.estado = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.pais = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buscarEndereco = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +140,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(155, 78);
+            this.label12.Location = new System.Drawing.Point(192, 77);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(31, 17);
             this.label12.TabIndex = 30;
@@ -180,15 +180,15 @@
             this.rua.ImageSize = new System.Drawing.Size(16, 16);
             this.rua.ImageVisible = false;
             this.rua.ImageWidth = 35;
-            this.rua.Location = new System.Drawing.Point(155, 98);
+            this.rua.Location = new System.Drawing.Point(195, 98);
             this.rua.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.rua.Name = "rua";
             this.rua.PasswordChar = '\0';
             this.rua.ReadOnly = false;
             this.rua.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.rua.Size = new System.Drawing.Size(399, 28);
+            this.rua.Size = new System.Drawing.Size(359, 28);
             this.rua.TabIndex = 2;
-            this.rua.TextBoxWidth = 387;
+            this.rua.TextBoxWidth = 347;
             this.rua.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.rua.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rua.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -503,25 +503,6 @@
             this.ibge.Watermark.Visible = false;
             this.ibge.WordWrap = true;
             // 
-            // buscarEndereco
-            // 
-            this.buscarEndereco.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buscarEndereco.BackgroundImage")));
-            this.buscarEndereco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buscarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buscarEndereco.FlatAppearance.BorderSize = 0;
-            this.buscarEndereco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buscarEndereco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buscarEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buscarEndereco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buscarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buscarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buscarEndereco.Location = new System.Drawing.Point(126, 99);
-            this.buscarEndereco.Name = "buscarEndereco";
-            this.buscarEndereco.Size = new System.Drawing.Size(25, 25);
-            this.buscarEndereco.TabIndex = 1;
-            this.buscarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.buscarEndereco.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -775,19 +756,52 @@
             this.pais.Watermark.Text = "Watermark text";
             this.pais.Watermark.Visible = false;
             // 
+            // buscarEndereco
+            // 
+            this.buscarEndereco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buscarEndereco.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.buscarEndereco.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.buscarEndereco.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.buscarEndereco.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.buscarEndereco.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.buscarEndereco.Border.HoverVisible = true;
+            this.buscarEndereco.Border.Rounding = 6;
+            this.buscarEndereco.Border.Thickness = 1;
+            this.buscarEndereco.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.buscarEndereco.Border.Visible = true;
+            this.buscarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buscarEndereco.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buscarEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscarEndereco.ForeColor = System.Drawing.Color.White;
+            this.buscarEndereco.Image = null;
+            this.buscarEndereco.Location = new System.Drawing.Point(126, 98);
+            this.buscarEndereco.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.buscarEndereco.Name = "buscarEndereco";
+            this.buscarEndereco.Size = new System.Drawing.Size(63, 28);
+            this.buscarEndereco.TabIndex = 155;
+            this.buscarEndereco.Text = "Buscar";
+            this.buscarEndereco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buscarEndereco.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.buscarEndereco.TextStyle.Enabled = System.Drawing.Color.White;
+            this.buscarEndereco.TextStyle.Hover = System.Drawing.Color.White;
+            this.buscarEndereco.TextStyle.Pressed = System.Drawing.Color.White;
+            this.buscarEndereco.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.buscarEndereco.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.buscarEndereco.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // AddClienteEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(670, 306);
+            this.Controls.Add(this.buscarEndereco);
             this.Controls.Add(this.pais);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cidade);
             this.Controls.Add(this.cep);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buscarEndereco);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.ibge);
             this.Controls.Add(this.label17);
@@ -840,7 +854,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox ibge;
-        private System.Windows.Forms.Button buscarEndereco;
         private System.Windows.Forms.Panel panel2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox cep;
         private System.Windows.Forms.Label label1;
@@ -848,5 +861,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox estado;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox pais;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton buscarEndereco;
     }
 }

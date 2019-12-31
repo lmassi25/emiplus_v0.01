@@ -80,8 +80,8 @@ namespace Emiplus.View.Comercial
             };
 
             contato.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-            telefone.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
-            celular.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
+            telefone.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 13);
+            celular.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 12);
             email.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 50);
 
             FormClosing += (s, e) => DialogResult = DialogResult.OK;

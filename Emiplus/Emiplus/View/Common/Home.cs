@@ -1,16 +1,9 @@
 ﻿using Emiplus.Data.Core;
-using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
-using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
-using System.Web.UI;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -168,7 +161,8 @@ namespace Emiplus.View.Common
             if (IniFile.Read("dev", "DEV") == "true")
                 developer.Visible = true;
 
-            StartInicio();
+            if (!UserPermission.SetControl(homeMenuInicio, pictureBox13, "tela_inicial", false))
+                StartInicio();
         }
 
         /// <summary>
@@ -207,7 +201,13 @@ namespace Emiplus.View.Common
 
             btnPlano.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 
-            homeMenuInicio.Click += (s, e) => StartInicio();
+            homeMenuInicio.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(homeMenuInicio, pictureBox13, "tela_inicial"))
+                    return;
+
+                StartInicio();
+            };
 
             homeMenuProducts.Click += (s, e) =>
             {
