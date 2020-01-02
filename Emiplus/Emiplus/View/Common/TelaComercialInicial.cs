@@ -140,6 +140,23 @@ namespace Emiplus.View.Common
                 //Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
                 //ProdVendidos.ShowDialog();
             };
+
+            Comissoes.Click += (s, e) =>
+            {
+                if (UserPermission.SetControl(Comissoes, pictureBox14, "com_comissoes"))
+                    return;
+
+                Model.Usuarios usuarios = new Model.Usuarios().FindByUserId(Settings.Default.user_id).FirstOrDefault<Model.Usuarios>();
+                if (usuarios.Sub_user == 0)
+                {
+                    OpenForm.Show<Comissão>(this);
+                } else
+                {
+                    DetalhesComissao.idUser = Settings.Default.user_id;
+                    OpenForm.Show<DetalhesComissao>(this);
+                }
+                
+            };
         }
     }
 }
