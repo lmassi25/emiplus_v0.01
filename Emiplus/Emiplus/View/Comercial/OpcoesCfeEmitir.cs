@@ -42,6 +42,7 @@ namespace Emiplus.View.Comercial
                     {
                         _modelNota.Id = 0;
                         _modelNota.Tipo = "CFe";
+                        _modelNota.Status = "Pendente";
                         _modelNota.id_pedido = idPedido;
                         _modelNota.Save(_modelNota, false);
                     }
@@ -57,7 +58,13 @@ namespace Emiplus.View.Comercial
                     {
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
+
                         new Controller.Fiscal().Imprimir(idPedido, "CFe");
+                        
+                        Application.OpenForms["PedidoPagamentos"].Close();
+                        AddPedidos.btnFinalizado = true;
+                        Application.OpenForms["AddPedidos"].Close();
+                        
                         Close();
                     }
                 };

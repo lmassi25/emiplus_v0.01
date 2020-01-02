@@ -91,7 +91,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(InutilizarNFE, pictureBox9, "fiscal_inutilizar"))
                     return;
 
-                OpenForm.Show<Produtos.Impostos>(this);
+                Alert.Message("Ação não permitida", "Função não disponível", Alert.AlertType.warning);
             };
 
             AlterarNFE.Click += (s, e) =>
@@ -106,6 +106,8 @@ namespace Emiplus.View.Common
             {
                 if (UserPermission.SetControl(EnviarXml, pictureBox12, "fiscal_enviar"))
                     return;
+
+                Alert.Message("Ação não permitida", "Função não disponível", Alert.AlertType.warning);
             };
 
             CFE.Click += (s, e) =>

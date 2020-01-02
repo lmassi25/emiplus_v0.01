@@ -198,7 +198,11 @@ namespace Emiplus.Controller
                 query.Where("nota.tipo", "NFe");
 
             if (tipo == "Cupons")
+            {
                 query.Where("nota.tipo", "CFe");
+                query.Where("nota.status", "<>", "Pendente");
+            }
+                
 
             if (usuario != 0)
                 query.Where("pedido.colaborador", usuario);
@@ -280,7 +284,7 @@ namespace Emiplus.Controller
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            if (tipo == "Notas")
+            if (tipo == "Notas" || tipo == "Cupons")
             {
                 Table.Columns[1].Name = "N° Sefaz";
                 Table.Columns[1].Width = 75;
@@ -384,12 +388,17 @@ namespace Emiplus.Controller
                     }
 
                     if (item2.TIPONFE == "CFe")
+                    {
                         n_cfe = item2.NFE;
+
+                        if (tipo == "Cupons")
+                            statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
+                    }                        
                 }
 
                 Table.Rows.Add(
                     item.ID,
-                    tipo == "Notas" ? n_nfe : tipo == "Cupom" ? n_nfe : item.ID,
+                    tipo == "Notas" ? n_nfe : tipo == "Cupons" ? n_cfe : item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
                     item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),

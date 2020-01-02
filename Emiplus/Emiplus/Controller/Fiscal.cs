@@ -362,7 +362,7 @@ namespace Emiplus.Controller
         /// <param name="tipo">NFe, NFCe, CFe</param> 
         public string Imprimir(int Pedido, string tipo = "NFe")
         {
-            Start(Pedido);
+            Start(Pedido, tipo);
 
             BrowserNfe browser = new BrowserNfe();
             var pdf = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
@@ -1483,7 +1483,10 @@ namespace Emiplus.Controller
 
             xml.WriteStartElement("ICMS");
 
-            if(_pedidoItem.Icms.Length == 3)
+            if (String.IsNullOrEmpty(_pedidoItem.Icms))
+                _pedidoItem.Icms = "0";
+
+            if (_pedidoItem.Icms.Length == 3)
             {
                 xml.WriteStartElement("ICMSSN" + _pedidoItem.Icms);
             }
@@ -1611,6 +1614,9 @@ namespace Emiplus.Controller
             #region IPI
 
             if (String.IsNullOrEmpty(_pedidoItem.Ipi))
+                _pedidoItem.Ipi = "0";
+
+            if (!String.IsNullOrEmpty(_pedidoItem.Ipi))
             {
                 xml.WriteStartElement("IPI");
 
@@ -1641,6 +1647,9 @@ namespace Emiplus.Controller
             #endregion
 
             #region PIS
+
+            if (String.IsNullOrEmpty(_pedidoItem.Pis))
+                _pedidoItem.Pis = "0";
 
             xml.WriteStartElement("PIS");
 
@@ -1688,6 +1697,9 @@ namespace Emiplus.Controller
             #endregion
 
             #region COFINS
+
+            if (String.IsNullOrEmpty(_pedidoItem.Cofins))
+                _pedidoItem.Cofins = "0";
 
             xml.WriteStartElement("COFINS");
 

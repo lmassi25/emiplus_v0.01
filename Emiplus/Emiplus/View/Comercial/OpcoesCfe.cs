@@ -134,6 +134,15 @@ namespace Emiplus.View.Comercial
                     Emitir.Enabled = true;
                 };
             }
+
+            btnDetalhes.Click += (s, e) =>
+            {
+                DetailsPedido.idPedido = idPedido;
+                DetailsPedido detailsPedido = new DetailsPedido();
+                detailsPedido.Show();
+
+                Close();
+            };
         }
     }
 }

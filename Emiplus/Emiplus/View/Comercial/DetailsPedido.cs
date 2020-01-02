@@ -116,20 +116,17 @@ namespace Emiplus.View.Comercial
 
                 _modelNota.Id = 0;
                 _modelNota.Tipo = "CFe";
+                _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = idPedido;
                 _modelNota.Save(_modelNota, false);
 
-                OpcoesCfeCpf.idPedido = idPedido;
-                OpcoesCfeCpf.emitir = true;
-                OpcoesCfeCpf f = new OpcoesCfeCpf();
-                f.Show();
-
-                return;
+                checkNota = _modelNota;
             }
 
             if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
             {
                 OpcoesCfeCpf.idPedido = idPedido;
+                OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
                 f.Show();
             }
@@ -182,6 +179,18 @@ namespace Emiplus.View.Comercial
             }
 
             _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
+
+            var checkCupom = new Model.Nota().Query().Where("nota.status", "Autorizada").Where("nota.id_pedido", idPedido).Where("nota.tipo", "CFe").FirstOrDefault();
+            if (checkCupom != null)
+            {
+                labelCfe.Text = checkCupom.NR_NOTA.ToString();
+            }
+
+            var checkNota = new Model.Nota().Query().Where("nota.status", "Autorizada").Where("nota.id_pedido", idPedido).Where("nota.tipo", "NFe").FirstOrDefault();
+            if (checkNota != null)
+            {
+                labelNfe.Text = checkNota.NR_NOTA.ToString();
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -293,6 +302,16 @@ namespace Emiplus.View.Comercial
                 }
 
                 ModalColaborador();
+            };
+
+            impostos.CheckStateChanged += (s, e) =>
+            {
+                if (impostos.Checked)
+                    PedidoItem.impostos = true;
+                else
+                    PedidoItem.impostos = false;
+
+                _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
             };
         }
 

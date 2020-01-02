@@ -57,6 +57,9 @@ namespace Emiplus.Data.Helpers
 
         public static string CleanStringForFiscal(string dirtyString)
         {
+            if (!String.IsNullOrEmpty(dirtyString))
+                return "";
+
             StringBuilder str = new StringBuilder(CleanString(dirtyString));
 
             if(str.ToString().Replace(" ", "").All(char.IsDigit))
