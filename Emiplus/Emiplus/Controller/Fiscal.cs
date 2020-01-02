@@ -155,7 +155,7 @@ namespace Emiplus.Controller
                     }
 
                     if (Pedido > 0)
-                        _nota = new Model.Nota().FindByIdPedido(Pedido).First<Model.Nota>();
+                        _nota = new Model.Nota().FindByIdPedidoAndTipo(Pedido, tipo).First<Model.Nota>();
 
                     break;
             }
@@ -281,8 +281,20 @@ namespace Emiplus.Controller
 
                     case "CFe":
 
-                        //Random rdn = new Random();
-                        //_msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), ));
+                        CriarXML(Pedido, "CFe", 1);
+
+                        var arq = new XmlDocument();
+
+                        if (!File.Exists(_path_enviada + "\\" + Pedido + "Canc.xml"))
+                        {
+                            _msg = "Opss.. encontramos um erro: XML não encontrado.";
+                            return _msg;
+                        }
+
+                        arq.Load(_path_enviada + "\\" + Pedido + "Canc.xml");
+
+                        Random rdn = new Random();
+                        _msg = Sat.StringFromNativeUtf8(Sat.CancelarUltimaVenda(rdn.Next(999999), GetCodAtivacao(), _nota.ChaveDeAcesso, arq.OuterXml));
 
                         if (_msg.Contains("Emitido com sucesso + conteudo notas"))
                         {

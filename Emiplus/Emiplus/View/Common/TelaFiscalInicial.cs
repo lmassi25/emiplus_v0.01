@@ -106,8 +106,6 @@ namespace Emiplus.View.Common
             {
                 if (UserPermission.SetControl(EnviarXml, pictureBox12, "fiscal_enviar"))
                     return;
-
-                OpenForm.Show<Produtos.Impostos>(this);
             };
 
             CFE.Click += (s, e) =>

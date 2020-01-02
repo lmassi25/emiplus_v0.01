@@ -1023,10 +1023,10 @@
             this.Documentos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Documentos.ForeColor = System.Drawing.Color.White;
             this.Documentos.Image = null;
-            this.Documentos.Location = new System.Drawing.Point(755, 113);
+            this.Documentos.Location = new System.Drawing.Point(779, 113);
             this.Documentos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Documentos.Name = "Documentos";
-            this.Documentos.Size = new System.Drawing.Size(222, 34);
+            this.Documentos.Size = new System.Drawing.Size(198, 30);
             this.Documentos.TabIndex = 183;
             this.Documentos.Text = "Documentos fiscais referenciados";
             this.Documentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

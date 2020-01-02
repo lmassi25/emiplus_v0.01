@@ -14,6 +14,8 @@ namespace Emiplus.View.Comercial
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
+        int p1 = 0;
+
         private string _msg;
 
         public OpcoesCfe()
@@ -78,16 +80,25 @@ namespace Emiplus.View.Comercial
 
             Emitir.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
-                if (checkNota == null)
+                if(Emitir.Text == "Cancelar")
                 {
-                    _modelNota.Id = 0;
-                    _modelNota.Tipo = "CFe";
-                    _modelNota.id_pedido = idPedido;
-                    _modelNota.Save(_modelNota, false);
+                    p1 = 2;
+                    WorkerBackground.RunWorkerAsync();
                 }
+                else
+                {
+                    p1 = 1;
+                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                    if (checkNota == null)
+                    {
+                        _modelNota.Id = 0;
+                        _modelNota.Tipo = "CFe";
+                        _modelNota.id_pedido = idPedido;
+                        _modelNota.Save(_modelNota, false);
+                    }
 
-                WorkerBackground.RunWorkerAsync();
+                    WorkerBackground.RunWorkerAsync();
+                }                
             };
 
             Imprimir.Click += (s, e) =>
@@ -104,12 +115,21 @@ namespace Emiplus.View.Comercial
             using (var b = WorkerBackground)
             {
                 b.DoWork += async (s, e) =>
-                {                    
-                    _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
+                {
+                    switch (p1)
+                    {
+                        case 1:
+                            _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
+                            break;
+                        case 2:
+                            _msg = new Controller.Fiscal().Cancelar(idPedido, "CFe");
+                            break;
+                    }                    
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
+                    p1 = 0;
                     retorno.Text = _msg;
                     Emitir.Enabled = true;
                 };
