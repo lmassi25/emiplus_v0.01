@@ -39,6 +39,14 @@ namespace Emiplus.Controller
 
             #endregion
 
+            #region NCM | CEST | ORIGEM 
+
+            _modelpedidoItem.Ncm = _modelItem.Ncm;
+            _modelpedidoItem.Cest = _modelItem.Cest;
+            _modelpedidoItem.Origem = _modelItem.Origem;
+
+            #endregion
+
             #region CFOP
 
             _modelpedidoItem.Cfop = _modelImposto.Cfop;

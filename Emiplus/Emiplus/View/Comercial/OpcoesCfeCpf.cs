@@ -45,11 +45,11 @@ namespace Emiplus.View.Comercial
 
         private void Continuar()
         {
-            if (String.IsNullOrEmpty(nomeRS.Text) && nomeRS.Text != "Consumidor Final")
+            if (!String.IsNullOrEmpty(nomeRS.Text) && nomeRS.Text != "Consumidor Final")
                 _mPedido.cfe_nome = Validation.CleanStringForFiscal(nomeRS.Text);
 
-            if (String.IsNullOrEmpty(cpfCnpj.Text))
-                _mPedido.cfe_cpf = Validation.CleanStringForFiscal(cpfCnpj.Text);
+            if (!String.IsNullOrEmpty(cpfCnpj.Text))
+                _mPedido.cfe_cpf = Validation.CleanStringForFiscal(cpfCnpj.Text.Replace(".", "").Replace(" ", ""));
 
             _mPedido.Save(_mPedido);
 

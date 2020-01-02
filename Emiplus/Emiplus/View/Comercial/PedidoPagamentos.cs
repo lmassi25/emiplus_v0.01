@@ -31,6 +31,7 @@ namespace Emiplus.View.Comercial
 
             Eventos();
 
+            AddPedidos.btnFinalizado = false;
             TelaReceber.Visible = false;
 
             if (Home.pedidoPage == "Orçamentos")
@@ -202,6 +203,8 @@ namespace Emiplus.View.Comercial
 
             Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
+            AddPedidos.btnFinalizado = true;
+
             if (Home.pedidoPage == "Compras")
             {
                 AddPedidos.btnFinalizado = true;
@@ -258,34 +261,33 @@ namespace Emiplus.View.Comercial
         {
             Concluir(0);
 
-            //var checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
-            //if(checkNota == null)
-            //{
-            //    OpcoesCfeCpf.idPedido = IdPedido;
-            //    OpcoesCfeCpf f = new OpcoesCfeCpf();
-            //    f.Show();
-
-            //    return;
-            //}
-
-            //if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
-            //{
-            //    OpcoesCfeCpf.idPedido = IdPedido;
-            //    OpcoesCfeCpf f = new OpcoesCfeCpf();
-            //    f.Show();
-            //}
-            //else
-            //{
-            //    OpcoesCfe.idPedido = IdPedido;
-            //    OpcoesCfe f = new OpcoesCfe();
-            //    f.Show();
-            //}  
-
             var checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
             if (checkNota == null)
             {
+                Model.Nota _modelNota = new Model.Nota();
+
+                _modelNota.Id = 0;
+                _modelNota.Tipo = "CFe";
+                _modelNota.Status = "Pendente";
+                _modelNota.id_pedido = IdPedido;
+                _modelNota.Save(_modelNota, false);
+
+                checkNota = _modelNota;
+            }
+
+            if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
+            {
+                OpcoesCfeEmitir.fecharTelas = true;
+
                 OpcoesCfeCpf.idPedido = IdPedido;
+                OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
+                f.Show();
+            }
+            else
+            {
+                OpcoesCfe.idPedido = IdPedido;
+                OpcoesCfe f = new OpcoesCfe();
                 f.Show();
             }
         }
@@ -489,7 +491,8 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                AddPedidos.btnFinalizado = false;
+                if(AddPedidos.btnFinalizado)                
+                    Application.OpenForms["AddPedidos"].Close();
             };
         }
 

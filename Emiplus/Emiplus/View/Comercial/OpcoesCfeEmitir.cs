@@ -15,7 +15,7 @@ namespace Emiplus.View.Comercial
     public partial class OpcoesCfeEmitir : Form
     {
         public static int idPedido { get; set; } // id pedido
-
+        public static bool fecharTelas { get; set; }
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
         private string _msg;
@@ -42,6 +42,7 @@ namespace Emiplus.View.Comercial
                     {
                         _modelNota.Id = 0;
                         _modelNota.Tipo = "CFe";
+                        _modelNota.Status = "Pendente";
                         _modelNota.id_pedido = idPedido;
                         _modelNota.Save(_modelNota, false);
                     }
@@ -57,8 +58,16 @@ namespace Emiplus.View.Comercial
                     {
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
+
                         new Controller.Fiscal().Imprimir(idPedido, "CFe");
-                        Close();
+                        
+                        if(fecharTelas)
+                        {
+                            Application.OpenForms["PedidoPagamentos"].Close();
+                            AddPedidos.btnFinalizado = true;
+                            Application.OpenForms["AddPedidos"].Close();
+                            Close();
+                        }
                     }
                 };
             }
