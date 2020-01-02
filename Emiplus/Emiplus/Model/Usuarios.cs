@@ -22,6 +22,8 @@
         public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
         public string Nome { get; set; }
         public int Id_User { get; set; }
+        public int Comissao { get; set; }
+        public int Sub_user { get; set; }
 
         #endregion 
 

@@ -478,5 +478,17 @@ namespace Emiplus.Properties {
                 this["user_sub_user"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int user_comissao {
+            get {
+                return ((int)(this["user_comissao"]));
+            }
+            set {
+                this["user_comissao"] = value;
+            }
+        }
     }
 }

@@ -341,6 +341,12 @@
     <Compile Include="View\Comercial\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\Comissão.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Comissão.Designer.cs">
+      <DependentUpon>Comissão.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\DetailsPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,6 +358,12 @@
     </Compile>
     <Compile Include="View\Comercial\DetailsPedidoPgtos.Designer.cs">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\DetalhesComissao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\DetalhesComissao.Designer.cs">
+      <DependentUpon>DetalhesComissao.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\OpcoesCfe.cs">
       <SubType>Form</SubType>
@@ -900,11 +912,17 @@
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Comissão.resx">
+      <DependentUpon>Comissão.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\DetailsPedido.resx">
       <DependentUpon>DetailsPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\DetailsPedidoPgtos.resx">
       <DependentUpon>DetailsPedidoPgtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\DetalhesComissao.resx">
+      <DependentUpon>DetalhesComissao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesCfe.resx">
       <DependentUpon>OpcoesCfe.cs</DependentUpon>

@@ -21,7 +21,7 @@ namespace Emiplus.View.Common
         {
             InitializeComponent();
 
-            password.Text = "leandro2510";
+            password.Text = "4586928w";
 
             Update update = new Update();
             update.CheckUpdate();
@@ -123,6 +123,7 @@ namespace Emiplus.View.Common
             Settings.Default.user_plan_status = Validation.ConvertToInt32(jo["user"]["plan_status"]);
             Settings.Default.user_plan_recorrencia = jo["plano"]["recorrencia"].ToString();
             Settings.Default.user_plan_fatura = jo["plano"]["proxima_fatura"].ToString();
+            Settings.Default.user_comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
             Settings.Default.empresa_id = Validation.ConvertToInt32(jo["empresa"]["id"]);
             Settings.Default.empresa_unique_id = jo["empresa"]["id_unique"].ToString();
             Settings.Default.empresa_logo = jo["empresa"]["logo"].ToString();
@@ -155,13 +156,19 @@ namespace Emiplus.View.Common
                 var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
                 if (exists == null) {
                     usuarios.Id = 0;
+                    usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
                     usuarios.Nome = nameComplete;
                     usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                    usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                    usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
                 } else
                 {
                     usuarios.Id = exists.ID;
+                    usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
                     usuarios.Nome = nameComplete;
                     usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                    usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                    usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
                 }
                 usuarios.Save(usuarios);
             }
