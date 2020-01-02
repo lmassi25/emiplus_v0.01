@@ -37,9 +37,16 @@ namespace Emiplus
             userPermissions.Clear();   
             PATH_BASE = IniFile.Read("Path", "LOCAL");
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Carregar());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Carregar());
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString(), "error");
+            }
         }
 
         public static void SetPermissions()
