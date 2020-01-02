@@ -103,6 +103,7 @@
             this.Debito = new System.Windows.Forms.Button();
             this.Crediario = new System.Windows.Forms.Button();
             this.Boleto = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -1114,11 +1115,11 @@
             this.Acrescimo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Acrescimo.Image = ((System.Drawing.Image)(resources.GetObject("Acrescimo.Image")));
             this.Acrescimo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Acrescimo.Location = new System.Drawing.Point(636, 137);
+            this.Acrescimo.Location = new System.Drawing.Point(646, 137);
             this.Acrescimo.Name = "Acrescimo";
-            this.Acrescimo.Size = new System.Drawing.Size(78, 78);
+            this.Acrescimo.Size = new System.Drawing.Size(90, 78);
             this.Acrescimo.TabIndex = 9;
-            this.Acrescimo.Text = "Acréscimo";
+            this.Acrescimo.Text = "Acréscimos";
             this.Acrescimo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Acrescimo.UseVisualStyleBackColor = false;
             this.Acrescimo.Visible = false;
@@ -1137,7 +1138,7 @@
             this.Desconto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Desconto.Location = new System.Drawing.Point(550, 137);
             this.Desconto.Name = "Desconto";
-            this.Desconto.Size = new System.Drawing.Size(78, 78);
+            this.Desconto.Size = new System.Drawing.Size(90, 78);
             this.Desconto.TabIndex = 8;
             this.Desconto.Text = "Descontos";
             this.Desconto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1264,12 +1265,33 @@
             this.Boleto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Boleto.UseVisualStyleBackColor = false;
             // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(742, 137);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 78);
+            this.button2.TabIndex = 145242;
+            this.button2.Text = "Devoluções";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // PedidoPagamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.discount);
@@ -1405,5 +1427,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button button2;
     }
 }

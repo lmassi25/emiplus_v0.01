@@ -125,8 +125,10 @@ namespace Emiplus.View.Comercial
 
             if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
             {
+                OpcoesCfeEmitir.fecharTelas = false;
+
                 OpcoesCfeCpf.idPedido = idPedido;
-                OpcoesCfeCpf.emitir = true;
+                OpcoesCfeCpf.emitir = true;                
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
                 f.Show();
             }

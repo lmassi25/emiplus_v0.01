@@ -233,6 +233,21 @@ namespace Emiplus.Controller
 
             try
             {
+                if(tipo == "CFe")
+                {
+                    var itens = new Model.PedidoItem().Query()
+                        .LeftJoin("item", "item.id", "pedido_item.item")
+                        .Select("pedido_item.id")
+                        .Where("pedido_item.pedido", Pedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos");
+
+                    foreach (var item in itens.Get())
+                    {
+                        new Controller.Imposto().SetImposto(item.ID);
+                    }
+                }
+
                 CriarXML(Pedido, tipo);
 
                 if (!String.IsNullOrEmpty(_msg))
@@ -692,7 +707,7 @@ namespace Emiplus.Controller
             {
                 case 1:
 
-                    #region 1
+                    #region XML CANCELAMENTO CFe
 
                     #region PATH 
 
@@ -753,7 +768,7 @@ namespace Emiplus.Controller
 
                 default:
 
-                    #region 0
+                    #region XML EMISSÃO 
                     
                     #region PATH 
 
@@ -973,6 +988,12 @@ namespace Emiplus.Controller
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
                         _nota.assinatura_qrcode = assinatura_qrcode;
                         _nota.Save(_nota, false);
+                    }
+                    else
+                    {
+                        StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
+                        txt.Write(_msg);
+                        txt.Close();
                     }
 
                     break;
@@ -1321,7 +1342,17 @@ namespace Emiplus.Controller
 
             if (tipo == "CFe")
             {
-
+                if(!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                {
+                    if(_pedido.cfe_cpf.Length >= 9)
+                    {
+                        xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                    }
+                    else
+                    {
+                        xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                    }
+                }
             }
             else
             {
@@ -1613,10 +1644,10 @@ namespace Emiplus.Controller
 
             #region IPI
 
-            if (String.IsNullOrEmpty(_pedidoItem.Ipi))
-                _pedidoItem.Ipi = "0";
+            //if (String.IsNullOrEmpty(_pedidoItem.Ipi))
+            //    _pedidoItem.Ipi = "0";
 
-            if (!String.IsNullOrEmpty(_pedidoItem.Ipi))
+            if (!String.IsNullOrEmpty(_pedidoItem.Ipi) && _pedidoItem.Ipi != "0")
             {
                 xml.WriteStartElement("IPI");
 
@@ -1648,8 +1679,8 @@ namespace Emiplus.Controller
 
             #region PIS
 
-            if (String.IsNullOrEmpty(_pedidoItem.Pis))
-                _pedidoItem.Pis = "0";
+            //if (String.IsNullOrEmpty(_pedidoItem.Pis))
+            //    _pedidoItem.Pis = "0";
 
             xml.WriteStartElement("PIS");
 
@@ -1698,8 +1729,8 @@ namespace Emiplus.Controller
 
             #region COFINS
 
-            if (String.IsNullOrEmpty(_pedidoItem.Cofins))
-                _pedidoItem.Cofins = "0";
+            //if (String.IsNullOrEmpty(_pedidoItem.Cofins))
+            //    _pedidoItem.Cofins = "0";
 
             xml.WriteStartElement("COFINS");
 
@@ -2341,7 +2372,7 @@ namespace Emiplus.Controller
 
         public string Logs(int tipo = 0)
         {
-            Start();
+            Start(0, "CFe");
 
             string ret = "", msg = "", caracter = "";
 

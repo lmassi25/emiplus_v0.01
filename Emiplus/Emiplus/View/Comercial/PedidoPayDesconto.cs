@@ -90,6 +90,20 @@ namespace Emiplus.View.Comercial
             //porcentagem.KeyDown += KeyDowns;
             //dinheiro.KeyDown += KeyDowns;
 
+            Load += (s, e) =>
+            {
+                Model.Pedido data = _mPedido.Query().Select("desconto").Where("id", idPedido).FirstOrDefault<Model.Pedido>();
+
+                if(data != null)
+                {
+                    if (data.Desconto > 0)
+                    {
+                        dinheiro.Text = Validation.FormatPrice(data.Desconto);
+                    }
+                }
+
+            };
+
             btnSalvar.Click += (s, e) => Save();
             porcentagem.TextChanged += (s, e) =>
             {
