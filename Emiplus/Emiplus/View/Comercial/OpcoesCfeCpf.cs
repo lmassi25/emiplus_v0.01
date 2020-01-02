@@ -2,12 +2,8 @@
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -15,8 +11,11 @@ namespace Emiplus.View.Comercial
     public partial class OpcoesCfeCpf : Form
     {
         public static int idPedido { get; set; } // id pedido
+        public static bool emitir { get; set; }
         private Model.Pedido _mPedido = new Model.Pedido();        
         private Model.Pessoa _mCliente = new Model.Pessoa();
+
+        private string _msg;
 
         public OpcoesCfeCpf()
         {
@@ -54,11 +53,22 @@ namespace Emiplus.View.Comercial
 
             _mPedido.Save(_mPedido);
 
-            OpcoesCfe.idPedido = idPedido;
-            OpcoesCfe f = new OpcoesCfe();
-            f.Show();
+            if(emitir)
+            {
+                OpcoesCfeEmitir.idPedido = idPedido;
+                OpcoesCfeEmitir f = new OpcoesCfeEmitir();
+                f.Show();
 
-            Close();
+                Close();
+            }
+            else
+            {
+                OpcoesCfe.idPedido = idPedido;
+                OpcoesCfe f = new OpcoesCfe();
+                f.Show();
+
+                Close();
+            }            
         }
 
         /// <summary>

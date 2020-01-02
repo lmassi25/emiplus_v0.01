@@ -365,6 +365,12 @@
     <Compile Include="View\Comercial\OpcoesCfeCpf.Designer.cs">
       <DependentUpon>OpcoesCfeCpf.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\OpcoesCfeEmitir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesCfeEmitir.Designer.cs">
+      <DependentUpon>OpcoesCfeEmitir.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\OpcoesNfe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -622,6 +628,12 @@
     </Compile>
     <Compile Include="View\Fiscal\TelasNota\DocumentosReferenciados.Designer.cs">
       <DependentUpon>DocumentosReferenciados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\DocumentosReferenciadosAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\DocumentosReferenciadosAdd.Designer.cs">
+      <DependentUpon>DocumentosReferenciadosAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Fiscal\TelasNota\EditProduct.cs">
       <SubType>Form</SubType>
@@ -900,6 +912,9 @@
     <EmbeddedResource Include="View\Comercial\OpcoesCfeCpf.resx">
       <DependentUpon>OpcoesCfeCpf.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\OpcoesCfeEmitir.resx">
+      <DependentUpon>OpcoesCfeEmitir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesNfe.resx">
       <DependentUpon>OpcoesNfe.cs</DependentUpon>
     </EmbeddedResource>
@@ -1028,6 +1043,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\DocumentosReferenciados.resx">
       <DependentUpon>DocumentosReferenciados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\DocumentosReferenciadosAdd.resx">
+      <DependentUpon>DocumentosReferenciadosAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\EditProduct.resx">
       <DependentUpon>EditProduct.cs</DependentUpon>

@@ -101,7 +101,7 @@ namespace Emiplus.Controller
 
         public async Task SetTableDoc(DataGridView Table, int idPedido)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 2;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -115,7 +115,7 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            IEnumerable<dynamic> dados = await GetDataTable(idPedido);
+            IEnumerable<dynamic> dados = await GetDataTableDoc(idPedido);
 
             for (int i = 0; i < dados.Count(); i++)
             {

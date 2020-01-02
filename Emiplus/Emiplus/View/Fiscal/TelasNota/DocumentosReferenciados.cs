@@ -1,4 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +17,6 @@ namespace Emiplus.View.Fiscal.TelasNota
     {
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
-        private BackgroundWorker WorkerBackground2 = new BackgroundWorker();
-
-        private int p1 = 0;
-        private string _msg;
 
         public static int idPedido { get; set; }
 
@@ -71,42 +69,24 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             btnAdicionar.Click += (s, e) =>
             {
-                //Model.Nota _notaCCe = new Model.Nota();
-                ////_notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
-
-                //if (_notaCCe != null)
-                //{
-                //    Alert.Message("Ação não permitida", "Existe outra CCe transmitindo", Alert.AlertType.warning);
-                //    return;
-                //}
-
-                //CartaCorrecaoAdd f = new CartaCorrecaoAdd();
-                //if (f.ShowDialog() == DialogResult.OK)
-                //{
-                //    p1 = 1;
-                //    WorkerBackground2.RunWorkerAsync();
-                //}
+                DocumentosReferenciadosAdd f = new DocumentosReferenciadosAdd();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    DataTableStart();
+                }
             };
 
             btnRemover.Click += (s, e) =>
             {
-                //Model.Nota _notaCCe = new Model.Nota();
-                //_notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).First<Model.Nota>();
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar uma chave de acesso, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    _mNota = _mNota.FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Nota>();
+                    _mNota.Excluir = 1;
+                    _mNota.Save(_mNota, false);
 
-                //if (_notaCCe != null)
-                //{
-                //    Alert.Message("Ação não permitida", "Exclusão não realizada", Alert.AlertType.warning);
-                //    return;
-                //}
-
-                //var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar uma carta de correção, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                //if (result)
-                //{
-                //    _notaCCe.Excluir = 1;
-                //    _notaCCe.Save(_notaCCe);
-
-                //    DataTableStart();
-                //}
+                    DataTableStart();
+                }
             };
 
             using (var b = WorkerBackground)
