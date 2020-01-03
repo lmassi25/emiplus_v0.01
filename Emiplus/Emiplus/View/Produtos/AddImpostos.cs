@@ -31,18 +31,6 @@ namespace Emiplus.View.Produtos
             GetImpostos(1);
         }
 
-        private class ImpostoTipo
-        {
-            public string Id { get; set; }
-            public string Nome { get; set; }
-
-            public ImpostoTipo(string Id, string Nome)
-            {
-                this.Id = Id;
-                this.Nome = Nome;
-            }
-        }
-
         private void Carregar()
         {
             nome.Select();
@@ -53,29 +41,29 @@ namespace Emiplus.View.Produtos
 
             var icms = new ArrayList();
 
-            icms.Add(new ImpostoTipo("0", ""));
-            icms.Add(new ImpostoTipo("00", "00 - Tributação integralmente"));
-            icms.Add(new ImpostoTipo("10", "10 - Tributação com cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("20", "20 - Tributação com redução de base de cálculo"));
-            icms.Add(new ImpostoTipo("30", "30 - Tributação Isenta ou não tributada e com cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("40", "40 - Tributação Isenta"));
-            icms.Add(new ImpostoTipo("41", "41 - Não Tributada"));
-            icms.Add(new ImpostoTipo("50", "50 - Tributação Suspensa"));
-            icms.Add(new ImpostoTipo("51", "51 - Tributação com Diferimento"));
-            icms.Add(new ImpostoTipo("60", "60 - Tributação ICMS cobrado anteriormente por S.T."));
-            icms.Add(new ImpostoTipo("70", "70 - Tributação ICMS com redução de base de cálculo e cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("90", "90 - Tributação ICMS: Outros"));
+            icms.Add(new { Id = "0", Nome = "" });
+            icms.Add(new { Id = "00", Nome = "00 - Tributação integralmente" });
+            icms.Add(new { Id = "10", Nome = "10 - Tributação com cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "20", Nome = "20 - Tributação com redução de base de cálculo" });
+            icms.Add(new { Id = "30", Nome = "30 - Tributação Isenta ou não tributada e com cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "40", Nome = "40 - Tributação Isenta" });
+            icms.Add(new { Id = "41", Nome = "41 - Não Tributada" });
+            icms.Add(new { Id = "50", Nome = "50 - Tributação Suspensa" });
+            icms.Add(new { Id = "51", Nome = "51 - Tributação com Diferimento" });
+            icms.Add(new { Id = "60", Nome = "60 - Tributação ICMS cobrado anteriormente por S.T." });
+            icms.Add(new { Id = "70", Nome = "70 - Tributação ICMS com redução de base de cálculo e cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "90", Nome = "90 - Tributação ICMS: Outros" });
 
-            icms.Add(new ImpostoTipo("101", "101 - Tributada pelo Simples Nacional com permissão de crédito"));
-            icms.Add(new ImpostoTipo("102", "102 - Tributada pelo Simples Nacional sem permissão de crédito"));
-            icms.Add(new ImpostoTipo("103", "103 - Isenção do ICMS no Simples Nacional para faixa de receita bruta"));
-            icms.Add(new ImpostoTipo("201", "201 - Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("202", "202 - Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("203", "203 - Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por S.T."));
-            icms.Add(new ImpostoTipo("300", "300 - Imune"));
-            icms.Add(new ImpostoTipo("400", "400 - Não tributada pelo Simples Nacional"));
-            icms.Add(new ImpostoTipo("500", "500 - ICMS cobrado anteriormente por S.T. (substituído) ou por antecipação"));
-            icms.Add(new ImpostoTipo("900", "900 - Outros"));
+            icms.Add(new { Id = "101", Nome = "101 - Tributada pelo Simples Nacional com permissão de crédito" });
+            icms.Add(new { Id = "102", Nome = "102 - Tributada pelo Simples Nacional sem permissão de crédito" });
+            icms.Add(new { Id = "103", Nome = "103 - Isenção do ICMS no Simples Nacional para faixa de receita bruta" });
+            icms.Add(new { Id = "201", Nome = "201 - Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "202", Nome = "202 - Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "203", Nome = "203 - Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por S.T." });
+            icms.Add(new { Id = "300", Nome = "300 - Imune" });
+            icms.Add(new { Id = "400", Nome = "400 - Não tributada pelo Simples Nacional" });
+            icms.Add(new { Id = "500", Nome = "500 - ICMS cobrado anteriormente por S.T. (substituído) ou por antecipação" });
+            icms.Add(new { Id = "900", Nome = "900 - Outros" });
 
             Icms.DataSource = icms;
             Icms.DisplayMember = "Nome";
@@ -85,24 +73,24 @@ namespace Emiplus.View.Produtos
 
             //IPITrib
 
-            ipi.Add(new ImpostoTipo("0", ""));
-            ipi.Add(new ImpostoTipo("00", "00 - Tributado: Entrada com recuperação de crédito"));
-            ipi.Add(new ImpostoTipo("49", "49 - Tributado: Outras entradas"));
-            ipi.Add(new ImpostoTipo("50", "50 - Tributado: Saída tributada"));
-            ipi.Add(new ImpostoTipo("99", "99 - Tributado: Outras saídas"));
+            ipi.Add(new { Id = "0", Nome = "" });
+            ipi.Add(new { Id = "00", Nome = "00 - Tributado: Entrada com recuperação de crédito" });
+            ipi.Add(new { Id = "49", Nome = "49 - Tributado: Outras entradas" });
+            ipi.Add(new { Id = "50", Nome = "50 - Tributado: Saída tributada" });
+            ipi.Add(new { Id = "99", Nome = "99 - Tributado: Outras saídas" });
 
             //IPINT
 
-            ipi.Add(new ImpostoTipo("01", "01 - Não Tributado: Entrada tributada com alíquota zero"));
-            ipi.Add(new ImpostoTipo("02", "02 - Não Tributado: Entrada isenta"));
-            ipi.Add(new ImpostoTipo("03", "03 - Não Tributado: Entrada não-tributada"));
-            ipi.Add(new ImpostoTipo("04", "04 - Não Tributado: Entrada imune"));
-            ipi.Add(new ImpostoTipo("05", "05 - Não Tributado: Entrada com suspensão"));
-            ipi.Add(new ImpostoTipo("51", "51 - Não Tributado: Saída tributada com alíquota zero"));
-            ipi.Add(new ImpostoTipo("52", "52 - Não Tributado: Saída isenta"));
-            ipi.Add(new ImpostoTipo("53", "53 - Não Tributado: Saída não-tributada"));
-            ipi.Add(new ImpostoTipo("54", "54 - Não Tributado: Saída imune"));
-            ipi.Add(new ImpostoTipo("55", "55 - Não Tributado: Saída com suspensão"));
+            ipi.Add(new { Id = "01", Nome = "01 - Não Tributado: Entrada tributada com alíquota zero" });
+            ipi.Add(new { Id = "02", Nome = "02 - Não Tributado: Entrada isenta" });
+            ipi.Add(new { Id = "03", Nome = "03 - Não Tributado: Entrada não-tributada" });
+            ipi.Add(new { Id = "04", Nome = "04 - Não Tributado: Entrada imune" });
+            ipi.Add(new { Id = "05", Nome = "05 - Não Tributado: Entrada com suspensão" });
+            ipi.Add(new { Id = "51", Nome = "51 - Não Tributado: Saída tributada com alíquota zero" });
+            ipi.Add(new { Id = "52", Nome = "52 - Não Tributado: Saída isenta" });
+            ipi.Add(new { Id = "53", Nome = "53 - Não Tributado: Saída não-tributada" });
+            ipi.Add(new { Id = "54", Nome = "54 - Não Tributado: Saída imune" });
+            ipi.Add(new { Id = "55", Nome = "55 - Não Tributado: Saída com suspensão" });
 
             Ipi.DataSource = ipi;
             Ipi.DisplayMember = "Nome";
@@ -112,49 +100,49 @@ namespace Emiplus.View.Produtos
 
             //PISAliq
 
-            pis.Add(new ImpostoTipo("0", ""));
-            pis.Add(new ImpostoTipo("01", "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))"));
-            pis.Add(new ImpostoTipo("02", "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))"));
+            pis.Add(new { Id = "0", Nome = "" });
+            pis.Add(new { Id = "01", Nome = "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))" });
+            pis.Add(new { Id = "02", Nome = "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))" });
 
             //PISQtde
 
-            pis.Add(new ImpostoTipo("03", "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)"));
+            pis.Add(new { Id = "03", Nome = "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)" });
 
             //PISNT
 
-            pis.Add(new ImpostoTipo("04", "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))"));
-            pis.Add(new ImpostoTipo("05", "05 - Não Tributado: Operação Tributável (Substituição Tributária)"));
-            pis.Add(new ImpostoTipo("06", "06 - Não Tributado: Operação Tributável (alíquota zero)"));
-            pis.Add(new ImpostoTipo("07", "07 - Não Tributado: Operação Isenta da Contribuição"));
-            pis.Add(new ImpostoTipo("08", "08 - Não Tributado: Operação Sem Incidência da Contribuição"));
-            pis.Add(new ImpostoTipo("09", "09 - Não Tributado: Operação com Suspensão da Contribuição"));
+            pis.Add(new { Id = "04", Nome = "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))" });
+            pis.Add(new { Id = "05", Nome = "05 - Não Tributado: Operação Tributável (Substituição Tributária)" });
+            pis.Add(new { Id = "06", Nome = "06 - Não Tributado: Operação Tributável (alíquota zero)" });
+            pis.Add(new { Id = "07", Nome = "07 - Não Tributado: Operação Isenta da Contribuição" });
+            pis.Add(new { Id = "08", Nome = "08 - Não Tributado: Operação Sem Incidência da Contribuição" });
+            pis.Add(new { Id = "09", Nome = "09 - Não Tributado: Operação com Suspensão da Contribuição" });
 
             //PISOutr
 
-            pis.Add(new ImpostoTipo("49", "49 - Outras Operações: Outras Operações de Saída"));
-            pis.Add(new ImpostoTipo("50", "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno"));
-            pis.Add(new ImpostoTipo("51", "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno"));
-            pis.Add(new ImpostoTipo("52", "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação"));
-            pis.Add(new ImpostoTipo("53", "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"));
-            pis.Add(new ImpostoTipo("54", "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"));
-            pis.Add(new ImpostoTipo("55", "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação"));
-            pis.Add(new ImpostoTipo("56", "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação"));
-            pis.Add(new ImpostoTipo("60", "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno"));
-            pis.Add(new ImpostoTipo("61", "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno"));
-            pis.Add(new ImpostoTipo("62", "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação"));
-            pis.Add(new ImpostoTipo("63", "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"));
-            pis.Add(new ImpostoTipo("64", "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"));
-            pis.Add(new ImpostoTipo("65", "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação"));
-            pis.Add(new ImpostoTipo("66", "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação"));
-            pis.Add(new ImpostoTipo("67", "67 - Outras Operações: Crédito Presumido - Outras Operações"));
-            pis.Add(new ImpostoTipo("70", "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito"));
-            pis.Add(new ImpostoTipo("71", "71 - Outras Operações: Operação de Aquisição com Isenção"));
-            pis.Add(new ImpostoTipo("72", "72 - Outras Operações: Operação de Aquisição com Suspensão"));
-            pis.Add(new ImpostoTipo("73", "73 - Outras Operações: Operação de Aquisição a Alíquota Zero"));
-            pis.Add(new ImpostoTipo("74", "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição"));
-            pis.Add(new ImpostoTipo("75", "75 - Outras Operações: Operação de Aquisição por Substituição Tributária"));
-            pis.Add(new ImpostoTipo("98", "98 - Outras Operações: Outras Operações de Entrada"));
-            pis.Add(new ImpostoTipo("99", "99 - Outras Operações: Outras Operações"));
+            pis.Add(new { Id = "49", Nome = "49 - Outras Operações: Outras Operações de Saída" });
+            pis.Add(new { Id = "50", Nome = "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno" });
+            pis.Add(new { Id = "51", Nome = "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno" });
+            pis.Add(new { Id = "52", Nome = "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação" });
+            pis.Add(new { Id = "53", Nome = "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno" });
+            pis.Add(new { Id = "54", Nome = "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação" });
+            pis.Add(new { Id = "55", Nome = "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação" });
+            pis.Add(new { Id = "56", Nome = "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação" });
+            pis.Add(new { Id = "60", Nome = "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno" });
+            pis.Add(new { Id = "61", Nome = "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno" });
+            pis.Add(new { Id = "62", Nome = "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação" });
+            pis.Add(new { Id = "63", Nome = "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno" });
+            pis.Add(new { Id = "64", Nome = "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação" });
+            pis.Add(new { Id = "65", Nome = "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação" });
+            pis.Add(new { Id = "66", Nome = "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação" });
+            pis.Add(new { Id = "67", Nome = "67 - Outras Operações: Crédito Presumido - Outras Operações" });
+            pis.Add(new { Id = "70", Nome = "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito" });
+            pis.Add(new { Id = "71", Nome = "71 - Outras Operações: Operação de Aquisição com Isenção" });
+            pis.Add(new { Id = "72", Nome = "72 - Outras Operações: Operação de Aquisição com Suspensão" });
+            pis.Add(new { Id = "73", Nome = "73 - Outras Operações: Operação de Aquisição a Alíquota Zero" });
+            pis.Add(new { Id = "74", Nome = "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição" });
+            pis.Add(new { Id = "75", Nome = "75 - Outras Operações: Operação de Aquisição por Substituição Tributária" });
+            pis.Add(new { Id = "98", Nome = "98 - Outras Operações: Outras Operações de Entrada" });
+            pis.Add(new { Id = "99", Nome = "99 - Outras Operações: Outras Operações" });
 
             Pis.DataSource = pis;
             Pis.DisplayMember = "Nome";
@@ -164,49 +152,49 @@ namespace Emiplus.View.Produtos
 
             //COFINSAliq
 
-            cofins.Add(new ImpostoTipo("0", ""));
-            cofins.Add(new ImpostoTipo("01", "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))"));
-            cofins.Add(new ImpostoTipo("02", "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))"));
+            cofins.Add(new { Id = "0", Nome = "" });
+            cofins.Add(new { Id = "01", Nome = "01 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo))" });
+            cofins.Add(new { Id = "02", Nome = "02 - Tributado pela Alíquota: Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada))" });
 
             //COFINSQtde
 
-            cofins.Add(new ImpostoTipo("03", "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)"));
+            cofins.Add(new { Id = "03", Nome = "03 - Tributado pela Quantidade: Operação Tributável (base de cálculo = quantidade vendida x alíquota por unidade de produto)" });
 
             //COFINSNT
 
-            cofins.Add(new ImpostoTipo("04", "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))"));
-            cofins.Add(new ImpostoTipo("05", "05 - Não Tributado: Operação Tributável (Substituição Tributária)"));
-            cofins.Add(new ImpostoTipo("06", "06 - Não Tributado: Operação Tributável (alíquota zero)"));
-            cofins.Add(new ImpostoTipo("07", "07 - Não Tributado: Operação Isenta da Contribuição"));
-            cofins.Add(new ImpostoTipo("08", "08 - Não Tributado: Operação Sem Incidência da Contribuição"));
-            cofins.Add(new ImpostoTipo("09", "09 - Não Tributado: Operação com Suspensão da Contribuição"));
+            cofins.Add(new { Id = "04", Nome = "04 - Não Tributado: Operação Tributável (tributação monofásica (alíquota zero))" });
+            cofins.Add(new { Id = "05", Nome = "05 - Não Tributado: Operação Tributável (Substituição Tributária)" });
+            cofins.Add(new { Id = "06", Nome = "06 - Não Tributado: Operação Tributável (alíquota zero)" });
+            cofins.Add(new { Id = "07", Nome = "07 - Não Tributado: Operação Isenta da Contribuição" });
+            cofins.Add(new { Id = "08", Nome = "08 - Não Tributado: Operação Sem Incidência da Contribuição" });
+            cofins.Add(new { Id = "09", Nome = "09 - Não Tributado: Operação com Suspensão da Contribuição" });
 
             //COFINSOutr
 
-            cofins.Add(new ImpostoTipo("49", "49 - Outras Operações: Outras Operações de Saída"));
-            cofins.Add(new ImpostoTipo("50", "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("51", "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("52", "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação"));
-            cofins.Add(new ImpostoTipo("53", "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("54", "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"));
-            cofins.Add(new ImpostoTipo("55", "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação"));
-            cofins.Add(new ImpostoTipo("56", "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação"));
-            cofins.Add(new ImpostoTipo("60", "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("61", "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("62", "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação"));
-            cofins.Add(new ImpostoTipo("63", "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno"));
-            cofins.Add(new ImpostoTipo("64", "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação"));
-            cofins.Add(new ImpostoTipo("65", "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação"));
-            cofins.Add(new ImpostoTipo("66", "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação"));
-            cofins.Add(new ImpostoTipo("67", "67 - Outras Operações: Crédito Presumido - Outras Operações"));
-            cofins.Add(new ImpostoTipo("70", "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito"));
-            cofins.Add(new ImpostoTipo("71", "71 - Outras Operações: Operação de Aquisição com Isenção"));
-            cofins.Add(new ImpostoTipo("72", "72 - Outras Operações: Operação de Aquisição com Suspensão"));
-            cofins.Add(new ImpostoTipo("73", "73 - Outras Operações: Operação de Aquisição a Alíquota Zero"));
-            cofins.Add(new ImpostoTipo("74", "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição"));
-            cofins.Add(new ImpostoTipo("75", "75 - Outras Operações: Operação de Aquisição por Substituição Tributária"));
-            cofins.Add(new ImpostoTipo("98", "98 - Outras Operações: Outras Operações de Entrada"));
-            cofins.Add(new ImpostoTipo("99", "99 - Outras Operações: Outras Operações"));
+            cofins.Add(new { Id = "49", Nome = "49 - Outras Operações: Outras Operações de Saída" });
+            cofins.Add(new { Id = "50", Nome = "50 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Tributada no Mercado Interno" });
+            cofins.Add(new { Id = "51", Nome = "51 - Outras Operações: Operação com Direito a Crédito - Vinculada Exclusivamente a Receita Não Tributada no Mercado Interno" });
+            cofins.Add(new { Id = "52", Nome = "52 - Outras Operações: Operação com Direito a Crédito – Vinculada Exclusivamente a Receita de Exportação" });
+            cofins.Add(new { Id = "53", Nome = "53 - Outras Operações: Operação com Direito a Crédito - Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno" });
+            cofins.Add(new { Id = "54", Nome = "54 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas no Mercado Interno e de Exportação" });
+            cofins.Add(new { Id = "55", Nome = "55 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas NãoTributadas no Mercado Interno e de Exportação" });
+            cofins.Add(new { Id = "56", Nome = "56 - Outras Operações: Operação com Direito a Crédito -Vinculada a Receitas Tributadas e Não - Tributadas no Mercado Interno, e de Exportação" });
+            cofins.Add(new { Id = "60", Nome = "60 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Tributada no Mercado Interno" });
+            cofins.Add(new { Id = "61", Nome = "61 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita Não - Tributada no Mercado Interno" });
+            cofins.Add(new { Id = "62", Nome = "62 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada Exclusivamente a Receita de Exportação" });
+            cofins.Add(new { Id = "63", Nome = "63 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno" });
+            cofins.Add(new { Id = "64", Nome = "64 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas no Mercado Interno e de Exportação" });
+            cofins.Add(new { Id = "65", Nome = "65 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Não-Tributadas no Mercado Interno e de Exportação" });
+            cofins.Add(new { Id = "66", Nome = "66 - Outras Operações: Crédito Presumido - Operação de Aquisição Vinculada a Receitas Tributadas e Não-Tributadas no Mercado Interno, e de Exportação" });
+            cofins.Add(new { Id = "67", Nome = "67 - Outras Operações: Crédito Presumido - Outras Operações" });
+            cofins.Add(new { Id = "70", Nome = "70 - Outras Operações: Operação de Aquisição sem Direito a Crédito" });
+            cofins.Add(new { Id = "71", Nome = "71 - Outras Operações: Operação de Aquisição com Isenção" });
+            cofins.Add(new { Id = "72", Nome = "72 - Outras Operações: Operação de Aquisição com Suspensão" });
+            cofins.Add(new { Id = "73", Nome = "73 - Outras Operações: Operação de Aquisição a Alíquota Zero" });
+            cofins.Add(new { Id = "74", Nome = "74 - Outras Operações: Operação de Aquisição; sem Incidência da Contribuição" });
+            cofins.Add(new { Id = "75", Nome = "75 - Outras Operações: Operação de Aquisição por Substituição Tributária" });
+            cofins.Add(new { Id = "98", Nome = "98 - Outras Operações: Outras Operações de Entrada" });
+            cofins.Add(new { Id = "99", Nome = "99 - Outras Operações: Outras Operações" });
 
             Cofins.DataSource = cofins;
             Cofins.DisplayMember = "Nome";

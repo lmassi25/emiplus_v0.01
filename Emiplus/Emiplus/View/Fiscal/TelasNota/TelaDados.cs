@@ -199,7 +199,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     LoadData();
                 }
 
-                if(!String.IsNullOrEmpty(_mNota.Status))
+                if(_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
                 {
                     progress5.Visible = false;
                     step5.Visible = false;
