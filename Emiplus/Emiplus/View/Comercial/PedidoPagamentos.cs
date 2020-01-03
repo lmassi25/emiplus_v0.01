@@ -83,7 +83,8 @@ namespace Emiplus.View.Comercial
         {
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
-            discount.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true);
+            discount.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true); // falta somar as devolluções 
+
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
@@ -183,6 +184,16 @@ namespace Emiplus.View.Comercial
             //PedidoPayAcrescimo.idPedido = IdPedido;
             PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
             Acrescimo.ShowDialog();
+        }
+
+        private void JanelaDevolucao()
+        {
+            PedidoPayDevolucao.idPedido = IdPedido;
+            PedidoPayDevolucao D = new PedidoPayDevolucao();
+            if (D.ShowDialog() == DialogResult.OK)
+            {
+                AtualizarDados();
+            }
         }
 
         public void Concluir(int imprimir = 1)
@@ -430,6 +441,7 @@ namespace Emiplus.View.Comercial
 
             Desconto.Click += (s, e) => JanelaDesconto();
             Acrescimo.Click += (s, e) => JanelaAcrescimo();
+            Devolucao.Click += (s, e) => JanelaDevolucao();
 
             btnSalvar.Click += (s, e) => bSalvar();
             btnCancelar.Click += (s, e) => TelaReceber.Visible = false;

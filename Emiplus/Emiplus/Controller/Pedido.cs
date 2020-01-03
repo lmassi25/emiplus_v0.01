@@ -606,7 +606,17 @@ namespace Emiplus.Controller
 
                 printer.Separator();
                 
-                printer.NewLines(3);
+                if (_pedido.Tipo == "Devoluções")
+                {
+                    printer.NewLines(3);
+                    printer.AlignCenter();
+                    printer.BoldMode("Voucher: " + _pedido.Voucher);
+                    printer.Code39(_pedido.Voucher);
+                    printer.CondensedMode("*Utilize este voucher na próxima compra para receber o desconto.");
+                    printer.Separator();
+                }
+                else
+                    printer.NewLines(3);
 
                 printer.FullPaperCut();
                 printer.PrintDocument();
@@ -620,13 +630,53 @@ namespace Emiplus.Controller
             print.Print(idPedido);
         }
 
+        /// <summary>
+        /// Voucher
+        /// </summary>    
         private Random random = new Random();
-
         public string RandomString(int length)
-        {
+        {            
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        /// <summary>
+        /// Alimenta grid das devoluções
+        /// </summary>        
+        public void GetDataTableDevolucoes(DataGridView Table, int pedido)
+        {
+            Table.ColumnCount = 4;
+
+            Table.Columns[0].Name = "ID";
+
+            Table.Columns[1].Name = "Voucher";
+
+            Table.Columns[2].Name = "Cliente";
+
+            Table.Columns[3].Name = "Valor";
+            
+            Table.Rows.Clear();
+
+            var devolucoes = new Model.Pedido().Query();
+
+            var data = devolucoes
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .Select("pedido.id", "pedido.voucher", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Where("pedido.excluir", "0")
+                .Where("pedido.venda", pedido)
+                .Where("pedido.tipo", "Devoluções")
+                .Get();
+
+            foreach (var item in data)
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    item.VOUCHER,
+                    item.NOME,
+                    item.TOTAL
+                );
+            }
         }
     }
 }

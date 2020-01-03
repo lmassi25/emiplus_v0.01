@@ -1362,6 +1362,7 @@
     <None Include="Assets\Images\icons\success16x.png" />
     <None Include="Assets\Images\icons\edit16x.png" />
     <None Include="Assets\Images\icons\warning16x.png" />
+    <None Include="Resources\voucher.png" />
     <Content Include="View\Reports\html\CupomAssinaturaCaixaMov.html" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
