@@ -22,7 +22,6 @@ namespace Emiplus.View.Comercial
         private bool TelaESC { get; set; }
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
-
         private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
 
         public PedidoPagamentos()
@@ -83,8 +82,15 @@ namespace Emiplus.View.Comercial
         {
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
-            discount.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true); // falta somar as devolluções 
+            dynamic devolucoes = _mPedido.Query()
+                .SelectRaw("SUM(total) as total")
+                .Where("excluir", 0)
+                .Where("tipo", "Devoluções")
+                .Where("Venda", IdPedido)
+                .FirstOrDefault<Model.Pedido>();
 
+            acrescimos.Text = Validation.FormatPrice(0, true);
+            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);            
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
