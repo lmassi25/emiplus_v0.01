@@ -14,6 +14,7 @@
         public Pedido() : base("PEDIDO") {}
 
         #region CAMPOS 
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -24,10 +25,15 @@
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
 
+        public string Vourcher { get; private set; }
+
         // referencia com a tabela Pessoa
         public int Cliente { get; set; }
+
         //public Pessoa Cliente { get; set; }
+
         public int Colaborador { get; set; }
+
         //public Pessoa Colaborador { get; set; }
 
         // totais 
@@ -42,7 +48,6 @@
         public double ICMSSTBASE { get; set; }
         public double PIS { get; set; }
         public double COFINS { get; set; }
-
         public int status { get; set; }
         public DateTime Emissao { get; set; }
         public DateTime Saida { get; set; }
@@ -54,7 +59,6 @@
         public string info_contribuinte { get; set; }
         public string info_fisco { get; set; }
         public int id_useraddress { get; set; }
-
         public int TipoFrete { get; set; }
         public string Volumes_Frete { get; set; }
         public string PesoLiq_Frete { get; set; }
@@ -64,9 +68,7 @@
         public int Id_Transportadora { get; set; }
         public int Id_Caixa { get; set; } = Home.idCaixa;
         public int id_usuario { get; set; } = Settings.Default.user_id;
-
         public string cfe_nome { get; set; }
-
         public string cfe_cpf { get; set; }
         public string Chavedeacesso { get; set; }
 

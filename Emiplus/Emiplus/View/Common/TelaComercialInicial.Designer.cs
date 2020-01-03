@@ -292,7 +292,7 @@
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
             this.DevolucoesRel.TabIndex = 95;
-            this.DevolucoesRel.Text = "          Devoluções";
+            this.DevolucoesRel.Text = "          Trocas";
             this.DevolucoesRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.DevolucoesRel.UseVisualStyleBackColor = false;
             // 
@@ -477,7 +477,7 @@
             this.Devolucoes.Name = "Devolucoes";
             this.Devolucoes.Size = new System.Drawing.Size(219, 41);
             this.Devolucoes.TabIndex = 71;
-            this.Devolucoes.Text = "          Nova Devolução";
+            this.Devolucoes.Text = "          Nova Troca";
             this.Devolucoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Devolucoes.UseVisualStyleBackColor = false;
             // 
