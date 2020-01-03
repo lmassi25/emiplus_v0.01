@@ -89,7 +89,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             Load += (s, e) => 
             {
                 LoadData();
-                if (!String.IsNullOrEmpty(_mNota.Status))
+                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
                 {
                     progress5.Visible = false;
                     pictureBox1.Visible = false;

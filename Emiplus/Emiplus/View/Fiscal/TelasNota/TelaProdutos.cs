@@ -285,7 +285,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 ClearForms();
                 BuscarProduto.Select();
 
-                if (!String.IsNullOrEmpty(_mNota.Status))
+                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
                 {
                     progress5.Visible = false;
                     pictureBox1.Visible = false;
@@ -308,6 +308,19 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 if (e.KeyCode == Keys.Enter)
                     LoadItens();
+            };
+
+            GridListaProdutos.DoubleClick += (s, e) =>
+            {
+                if (GridListaProdutos.SelectedRows.Count > 0)
+                {
+                    EditProduct.idPdt = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                    EditProduct f = new EditProduct();
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                    }
+                }
             };
 
             Preco.TextChanged += (s, e) =>

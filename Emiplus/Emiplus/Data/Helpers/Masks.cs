@@ -6,6 +6,12 @@ namespace Emiplus.Data.Helpers
 {
     class Masks
     {
+        public static void MaskPriceEvent(object s, EventArgs e)
+        {
+            TextBox txt = (TextBox)s;
+            Masks.MaskPrice(ref txt);
+        }
+
         public static void MaskMaxLength(object sender, KeyPressEventArgs e, int maxLenght = 255)
         {
             TextBox t = sender as TextBox;

@@ -87,35 +87,12 @@ namespace Emiplus.View.Produtos
 
             ImpostoCFE.SelectedValue = 0;
 
-            var origens = new ArrayList();
-            origens.Add(new ArrayTipo("0", "0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8"));
-            origens.Add(new ArrayTipo("1", "1 - Estrangeira - Importação direta, exceto a indicada no código 6"));
-            origens.Add(new ArrayTipo("2", "2 - Estrangeira - Adquirida no mercado interno, exceto a indicada no código 7"));
-            origens.Add(new ArrayTipo("3", "3 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40 % e inferior ou igual a 70 %"));
-            origens.Add(new ArrayTipo("4", "4 - Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam as legislações citadas nos Ajustes"));
-            origens.Add(new ArrayTipo("5", "5 - Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40 %"));
-            origens.Add(new ArrayTipo("6", "6 - Estrangeira - Importação direta, sem similar nacional, constante em lista da CAMEX e gás natural"));
-            origens.Add(new ArrayTipo("7", "7 - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante lista CAMEX e gás natural."));
-            origens.Add(new ArrayTipo("8", "8 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 70 %"));
-
-            Origens.DataSource = origens;
+            Origens.DataSource = Support.GetOrigens();
             Origens.DisplayMember = "Nome";
             Origens.ValueMember = "Id";
 
             filterMaisRecentes.Checked = true;
             filterTodos.Checked = false;
-        }
-
-        private class ArrayTipo
-        {
-            public string Id { get; set; }
-            public string Nome { get; set; }
-
-            public ArrayTipo(string Id, string Nome)
-            {
-                this.Id = Id;
-                this.Nome = Nome;
-            }
         }
 
         private void LoadEstoque()
