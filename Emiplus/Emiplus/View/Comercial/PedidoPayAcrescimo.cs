@@ -10,7 +10,7 @@ namespace Emiplus.View.Comercial
         private Model.Pedido _mPedido = new Model.Pedido();
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
 
-        public static int idPedido;
+        public static int idPedido { get; set; }
 
         public PedidoPayAcrescimo()
         {
@@ -40,21 +40,21 @@ namespace Emiplus.View.Comercial
         {
             if (idPedido > 0)
             {
+                _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                 var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
 
                 string freteValor = Frete.Text;
 
                 foreach (var item in data)
-                {
                     FormulaFrete(freteValor, item.ID);
-                }
 
                 _mPedido.Tipo = "Vendas";
-                _mPedido = _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
-                _mPedido.Save(_mPedido);
-
-                DialogResult = DialogResult.OK;
-                Close();
+                _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
+                if (_mPedido.Save(_mPedido))
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
             }
         }
 
@@ -75,22 +75,14 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns; 
-            //btnSalvar.KeyDown += KeyDowns;
-            //btnCancelar.KeyDown += KeyDowns;
-            //porcentagem.KeyDown += KeyDowns;
-            //dinheiro.KeyDown += KeyDowns;
 
             Load += (s, e) =>
             {
                 Model.Pedido data = _mPedido.Query().Select("frete").Where("id", idPedido).FirstOrDefault<Model.Pedido>();
-
                 if (data != null)
                 {
                     if (data.Desconto > 0)
-                    {
                         Frete.Text = Validation.FormatPrice(data.Frete);
-                    }
                 }
 
             };
