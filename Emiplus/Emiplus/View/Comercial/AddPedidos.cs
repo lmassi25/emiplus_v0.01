@@ -238,8 +238,20 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void LoadItens()
         {
-            // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
-            ModalItens();
+            if (BuscarProduto.Text.Length > 0)
+            {
+                Model.Item item = _mItem.FindAll().Where("excluir", 0).Where("tipo", "Produtos").Where("codebarras", BuscarProduto.Text)
+                    .OrWhere("referencia", BuscarProduto.Text).FirstOrDefault<Model.Item>();
+                if (item != null)
+                {
+                    BuscarProduto.Text = item.Nome;
+                }
+                else
+                {
+                    // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
+                    ModalItens();
+                }
+            }
 
             // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
             AddItem();
