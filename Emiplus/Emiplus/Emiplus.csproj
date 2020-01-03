@@ -269,6 +269,7 @@
     <Compile Include="Controller\Sat.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\Configs.cs" />
+    <Compile Include="Data\Core\EmailSMTP.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
     <Compile Include="Data\Core\RequestApi.cs" />
     <Compile Include="Data\Core\Update.cs" />

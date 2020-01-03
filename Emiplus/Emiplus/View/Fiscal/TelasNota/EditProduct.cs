@@ -16,6 +16,7 @@ namespace Emiplus.View.Fiscal.TelasNota
     public partial class EditProduct : Form
     {
         public static int idPdt { get; set; }
+        public static int nrItem { get; set; }
         private Model.PedidoItem itemPedido;
 
         public EditProduct()
@@ -181,7 +182,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             itemPedido = new Model.PedidoItem().Query().Where("pedido_item.id", idPdt).FirstOrDefault<Model.PedidoItem>();
             if (itemPedido != null)
             {
-                item.Text = "";
+                item.Text = nrItem.ToString();
                 referencia.Text = itemPedido?.CProd ?? "";
                 codebarras.Text = itemPedido?.CEan ?? "";
                 descricao.Text = itemPedido?.xProd ?? "";
@@ -221,6 +222,10 @@ namespace Emiplus.View.Fiscal.TelasNota
                 federal.Text = Validation.Price(itemPedido.Federal);
                 estadual.Text = Validation.Price(itemPedido.Estadual);
                 municipal.Text = Validation.Price(itemPedido.Municipal);
+
+                infoAdicional.Text = itemPedido.Info_Adicional != null ? itemPedido.Info_Adicional : "";
+                pedidoCompra.Text = itemPedido.Pedido_compra != null ? itemPedido.Pedido_compra : "";
+                itemPedidoCompra.Text = itemPedido.Item_Pedido_Compra != null ? itemPedido.Item_Pedido_Compra : "";
             }
 
             medida.DataSource = Support.GetUnidades();
@@ -279,6 +284,10 @@ namespace Emiplus.View.Fiscal.TelasNota
             itemPedido.Estadual = Validation.ConvertToDouble(estadual.Text);
             itemPedido.Municipal = Validation.ConvertToDouble(municipal.Text);
 
+            itemPedido.Info_Adicional = infoAdicional.Text;
+            itemPedido.Pedido_compra = pedidoCompra.Text;
+            itemPedido.Item_Pedido_Compra = itemPedidoCompra.Text;
+
             if (itemPedido.Save(itemPedido))
             {
                 DialogResult = DialogResult.OK;
@@ -294,16 +303,20 @@ namespace Emiplus.View.Fiscal.TelasNota
                 LoadDados();
             };
 
-            btnCancelar.Click += (s, e) => {
-
-            };
+            btnCancelar.Click += (s, e) => Close();
 
             btnSalvar.Click += (s, e) => {
                 Save();
             };
 
             btnExcluir.Click += (s, e) => {
-
+                itemPedido.Id = idPdt;
+                itemPedido.Excluir = 1;
+                if (itemPedido.Save(itemPedido))
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
             };
 
             valorUnitario.TextChanged += new EventHandler(Masks.MaskPriceEvent);
