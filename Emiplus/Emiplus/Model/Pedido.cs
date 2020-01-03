@@ -25,7 +25,7 @@
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
 
-        public string Vourcher { get; private set; }
+        public string Voucher { get; set; }
 
         // referencia com a tabela Pessoa
         public int Cliente { get; set; }
