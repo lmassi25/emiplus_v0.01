@@ -141,8 +141,8 @@ namespace Emiplus.View.Comercial
                 label12.Visible = true;
                 label12.Text = "Voucher";
                 IDCaixa.Visible = true;
-                _mPedido.Vourcher = new Controller.Pedido().RandomString(6);.
-                label12.Text = _mPedido.Vourcher;
+                _mPedido.Voucher = new Controller.Pedido().RandomString(6);
+                label12.Text = _mPedido.Voucher;
 
                 //verificar vinculação 
 
