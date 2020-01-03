@@ -89,7 +89,7 @@ namespace Emiplus.View.Comercial
                 .Where("Venda", IdPedido)
                 .FirstOrDefault<Model.Pedido>();
 
-            acrescimos.Text = Validation.FormatPrice(0, true);
+            acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(IdPedido), true);
             discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);            
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
@@ -180,26 +180,23 @@ namespace Emiplus.View.Comercial
             PedidoPayDesconto.idPedido = IdPedido;
             PedidoPayDesconto Desconto = new PedidoPayDesconto();
             if (Desconto.ShowDialog() == DialogResult.OK)
-            {
                 AtualizarDados();
-            }
         }
 
         private void JanelaAcrescimo()
         {
-            //PedidoPayAcrescimo.idPedido = IdPedido;
+            PedidoPayAcrescimo.idPedido = IdPedido;
             PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
-            Acrescimo.ShowDialog();
+            if (Acrescimo.ShowDialog() == DialogResult.OK)
+                AtualizarDados();
         }
 
         private void JanelaDevolucao()
         {
             PedidoPayDevolucao.idPedido = IdPedido;
-            PedidoPayDevolucao D = new PedidoPayDevolucao();
-            if (D.ShowDialog() == DialogResult.OK)
-            {
+            PedidoPayDevolucao f = new PedidoPayDevolucao();
+            if (f.ShowDialog() == DialogResult.OK)
                 AtualizarDados();
-            }
         }
 
         public void Concluir(int imprimir = 1)

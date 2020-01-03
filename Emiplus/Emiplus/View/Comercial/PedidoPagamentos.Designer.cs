@@ -386,7 +386,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(589, 594);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 32);
+            this.label4.Size = new System.Drawing.Size(196, 30);
             this.label4.TabIndex = 128;
             this.label4.Text = "Total";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -497,7 +497,7 @@
             this.troco.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.troco.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.troco.Location = new System.Drawing.Point(792, 552);
+            this.troco.Location = new System.Drawing.Point(792, 553);
             this.troco.Name = "troco";
             this.troco.Size = new System.Drawing.Size(184, 25);
             this.troco.TabIndex = 131;
@@ -509,7 +509,7 @@
             this.total.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.total.Location = new System.Drawing.Point(792, 600);
+            this.total.Location = new System.Drawing.Point(792, 598);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(184, 25);
             this.total.TabIndex = 131;
@@ -543,7 +543,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(589, 502);
+            this.label5.Location = new System.Drawing.Point(589, 504);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(196, 30);
             this.label5.TabIndex = 132;
@@ -554,7 +554,7 @@
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel5.Location = new System.Drawing.Point(577, 590);
+            this.panel5.Location = new System.Drawing.Point(577, 591);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(400, 1);
             this.panel5.TabIndex = 136;
@@ -909,7 +909,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(589, 548);
+            this.label7.Location = new System.Drawing.Point(589, 549);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(196, 30);
             this.label7.TabIndex = 128;
@@ -921,7 +921,7 @@
             this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(792, 506);
+            this.pagamentos.Location = new System.Drawing.Point(792, 508);
             this.pagamentos.Name = "pagamentos";
             this.pagamentos.Size = new System.Drawing.Size(184, 25);
             this.pagamentos.TabIndex = 151;
@@ -932,7 +932,7 @@
             // 
             this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel9.Location = new System.Drawing.Point(577, 541);
+            this.panel9.Location = new System.Drawing.Point(577, 543);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(400, 1);
             this.panel9.TabIndex = 137;
@@ -941,7 +941,7 @@
             // 
             this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel10.Location = new System.Drawing.Point(577, 494);
+            this.panel10.Location = new System.Drawing.Point(577, 496);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(400, 1);
             this.panel10.TabIndex = 153;
@@ -951,7 +951,7 @@
             this.discount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.discount.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.discount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.discount.Location = new System.Drawing.Point(792, 459);
+            this.discount.Location = new System.Drawing.Point(792, 463);
             this.discount.Name = "discount";
             this.discount.Size = new System.Drawing.Size(184, 25);
             this.discount.TabIndex = 154;
@@ -963,7 +963,7 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(589, 455);
+            this.label12.Location = new System.Drawing.Point(589, 459);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(196, 30);
             this.label12.TabIndex = 152;

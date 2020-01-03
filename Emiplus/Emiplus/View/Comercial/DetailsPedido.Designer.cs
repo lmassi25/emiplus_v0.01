@@ -42,6 +42,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.labelCfe = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.labelNfe = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.impostos = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -89,12 +95,6 @@
             this.txtSubtotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.nrPedido = new System.Windows.Forms.Label();
-            this.impostos = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
-            this.labelNfe = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.labelCfe = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -242,6 +242,99 @@
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 80;
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel9.Location = new System.Drawing.Point(18, 387);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(200, 1);
+            this.panel9.TabIndex = 15108;
+            // 
+            // labelCfe
+            // 
+            this.labelCfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCfe.ForeColor = System.Drawing.Color.Gray;
+            this.labelCfe.Location = new System.Drawing.Point(107, 435);
+            this.labelCfe.Name = "labelCfe";
+            this.labelCfe.Size = new System.Drawing.Size(129, 17);
+            this.labelCfe.TabIndex = 15107;
+            this.labelCfe.Text = "N/D";
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Gray;
+            this.label16.Location = new System.Drawing.Point(12, 434);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 17);
+            this.label16.TabIndex = 15106;
+            this.label16.Text = "CF-e S@T:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelNfe
+            // 
+            this.labelNfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNfe.ForeColor = System.Drawing.Color.Gray;
+            this.labelNfe.Location = new System.Drawing.Point(107, 408);
+            this.labelNfe.Name = "labelNfe";
+            this.labelNfe.Size = new System.Drawing.Size(129, 17);
+            this.labelNfe.TabIndex = 15105;
+            this.labelNfe.Text = "N/D";
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(12, 407);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 17);
+            this.label12.TabIndex = 15104;
+            this.label12.Text = "NF-e:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // impostos
+            // 
+            this.impostos.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.impostos.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.impostos.Border.HoverVisible = true;
+            this.impostos.Border.Rounding = 3;
+            this.impostos.Border.Thickness = 1;
+            this.impostos.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.impostos.Border.Visible = true;
+            this.impostos.Box = new System.Drawing.Size(14, 14);
+            this.impostos.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.impostos.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.impostos.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.impostos.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.impostos.BoxSpacing = 2;
+            this.impostos.CheckStyle.AutoSize = true;
+            this.impostos.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
+            this.impostos.CheckStyle.Character = '✔';
+            this.impostos.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
+            this.impostos.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.impostos.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.impostos.CheckStyle.ShapeRounding = 3;
+            this.impostos.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.impostos.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
+            this.impostos.CheckStyle.Thickness = 2F;
+            this.impostos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.impostos.ForeColor = System.Drawing.Color.DimGray;
+            this.impostos.IsBoxLarger = false;
+            this.impostos.Location = new System.Drawing.Point(35, 460);
+            this.impostos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.impostos.Name = "impostos";
+            this.impostos.Size = new System.Drawing.Size(178, 23);
+            this.impostos.TabIndex = 15103;
+            this.impostos.Text = "Exibir impostos dos produtos";
+            this.impostos.TextSize = new System.Drawing.Size(150, 16);
+            this.impostos.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.impostos.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.impostos.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.impostos.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.impostos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.impostos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.impostos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // SelecionarColaborador
             // 
             this.SelecionarColaborador.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -365,7 +458,7 @@
             // 
             this.vendedor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendedor.ForeColor = System.Drawing.Color.Gray;
-            this.vendedor.Location = new System.Drawing.Point(107, 329);
+            this.vendedor.Location = new System.Drawing.Point(99, 329);
             this.vendedor.Name = "vendedor";
             this.vendedor.Size = new System.Drawing.Size(129, 17);
             this.vendedor.TabIndex = 92;
@@ -386,7 +479,7 @@
             // 
             this.cliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cliente.ForeColor = System.Drawing.Color.Gray;
-            this.cliente.Location = new System.Drawing.Point(107, 273);
+            this.cliente.Location = new System.Drawing.Point(99, 273);
             this.cliente.Name = "cliente";
             this.cliente.Size = new System.Drawing.Size(129, 17);
             this.cliente.TabIndex = 90;
@@ -913,99 +1006,6 @@
             this.nrPedido.TabIndex = 86;
             this.nrPedido.Text = "0";
             // 
-            // impostos
-            // 
-            this.impostos.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.impostos.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.impostos.Border.HoverVisible = true;
-            this.impostos.Border.Rounding = 3;
-            this.impostos.Border.Thickness = 1;
-            this.impostos.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.impostos.Border.Visible = true;
-            this.impostos.Box = new System.Drawing.Size(14, 14);
-            this.impostos.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.impostos.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.impostos.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.impostos.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.impostos.BoxSpacing = 2;
-            this.impostos.CheckStyle.AutoSize = true;
-            this.impostos.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
-            this.impostos.CheckStyle.Character = '✔';
-            this.impostos.CheckStyle.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(136)))), ((int)(((byte)(45)))));
-            this.impostos.CheckStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.impostos.CheckStyle.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.impostos.CheckStyle.ShapeRounding = 3;
-            this.impostos.CheckStyle.ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.impostos.CheckStyle.Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark;
-            this.impostos.CheckStyle.Thickness = 2F;
-            this.impostos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.impostos.ForeColor = System.Drawing.Color.DimGray;
-            this.impostos.IsBoxLarger = false;
-            this.impostos.Location = new System.Drawing.Point(35, 460);
-            this.impostos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.impostos.Name = "impostos";
-            this.impostos.Size = new System.Drawing.Size(178, 23);
-            this.impostos.TabIndex = 15103;
-            this.impostos.Text = "Exibir impostos dos produtos";
-            this.impostos.TextSize = new System.Drawing.Size(150, 16);
-            this.impostos.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.impostos.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impostos.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impostos.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impostos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.impostos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.impostos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // labelNfe
-            // 
-            this.labelNfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNfe.ForeColor = System.Drawing.Color.Gray;
-            this.labelNfe.Location = new System.Drawing.Point(107, 408);
-            this.labelNfe.Name = "labelNfe";
-            this.labelNfe.Size = new System.Drawing.Size(129, 17);
-            this.labelNfe.TabIndex = 15105;
-            this.labelNfe.Text = "N/D";
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Gray;
-            this.label12.Location = new System.Drawing.Point(12, 407);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 17);
-            this.label12.TabIndex = 15104;
-            this.label12.Text = "NF-e:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelCfe
-            // 
-            this.labelCfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCfe.ForeColor = System.Drawing.Color.Gray;
-            this.labelCfe.Location = new System.Drawing.Point(107, 435);
-            this.labelCfe.Name = "labelCfe";
-            this.labelCfe.Size = new System.Drawing.Size(129, 17);
-            this.labelCfe.TabIndex = 15107;
-            this.labelCfe.Text = "N/D";
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(12, 434);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 17);
-            this.label16.TabIndex = 15106;
-            this.label16.Text = "CF-e S@T:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel9.Location = new System.Drawing.Point(18, 387);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(200, 1);
-            this.panel9.TabIndex = 15108;
-            // 
             // DetailsPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1021,7 +1021,6 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "DetailsPedido";

@@ -61,6 +61,15 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(data.TOTAL);
         }
 
+        public double GetTotalProdutos(int idPedido)
+        {
+            if (String.IsNullOrEmpty(idPedido.ToString()))
+                return 0;
+
+            var data = new Model.Pedido().FindById(idPedido).Select("produtos").Where("excluir", 0).FirstOrDefault();
+            return Validation.ConvertToDouble(data.PRODUTOS);
+        }
+
         public double GetTotalDesconto(int idPedido)
         {
             if (String.IsNullOrEmpty(idPedido.ToString()))
@@ -68,6 +77,15 @@ namespace Emiplus.Controller
 
             var data = new Model.Pedido().FindById(idPedido).Select("desconto").Where("excluir", 0).First();
             return Validation.ConvertToDouble(data.DESCONTO);
+        }
+
+        public double GetTotalFrete(int idPedido)
+        {
+            if (String.IsNullOrEmpty(idPedido.ToString()))
+                return 0;
+
+            var data = new Model.Pedido().FindById(idPedido).Select("frete").Where("excluir", 0).First();
+            return Validation.ConvertToDouble(data.FRETE);
         }
 
         public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")

@@ -142,7 +142,7 @@ namespace Emiplus.View.Comercial
 
         private void LoadData()
         {
-            _modelPedido = _modelPedido.FindById(idPedido).First<Model.Pedido>();
+            _modelPedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
 
             nrPedido.Text = idPedido.ToString("D5");
             aberto.Text = Validation.ConvertDateToForm(_modelPedido.Criado, true);
@@ -150,28 +150,23 @@ namespace Emiplus.View.Comercial
             txtDesconto.Text = Validation.FormatPrice(_modelPedido.Desconto, true);
 
             txtTroco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(idPedido), true);
-            txtSubtotal.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
+            txtSubtotal.Text = Validation.FormatPrice(_controllerTitulo.GetTotalProdutos(idPedido), true);
             txtPagar.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
+            txtAcrescimo.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(idPedido), true);
             txtRecebimento.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
 
             if (_modelPedido.Cliente > 0)
             {
-                var pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault();
-
-                if (pessoa == null)
-                    return;
-
-                pessoaID = pessoa.ID;                
+                Model.Pessoa pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault<Model.Pessoa>();
+                if (pessoa != null)
+                    pessoaID = pessoa.Id;                
             }
 
             if (_modelPedido.Colaborador > 0)
             {
-                var data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
-
-                if (data == null)
-                    return;
-
-                vendedor.Text = data.Nome;
+                Model.Usuarios data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+                if (data != null)
+                    vendedor.Text = data.Nome;
             }
 
             if (_modelPedido.status != 0)
