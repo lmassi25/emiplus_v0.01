@@ -13,6 +13,8 @@ namespace Emiplus.View.Comercial
 {
     public partial class AddPedidos : Form
     {
+        #region V
+
         private int ModoRapAva { get; set; }
 
         private int ModoRapAvaConfig { get; set; }
@@ -35,6 +37,8 @@ namespace Emiplus.View.Comercial
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+
+        #endregion
 
         public AddPedidos()
         {
@@ -127,14 +131,18 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Devoluções")
             {
-                label2.Text = $"Dados da Devolução: {Id}";
-                label3.Text = "Siga as etapas abaixo para criar uma devolução!";
+                label2.Text = $"Dados da Troca: {Id}";
+                label3.Text = "Siga as etapas abaixo para criar uma troca!";
                 btnConcluir.Text = "Finalizar";
                 pictureBox8.Visible = false;
-                label12.Visible = false;
-                IDCaixa.Visible = false;
                 btnDelete.Visible = false;
                 btnGerarVenda.Visible = false;
+
+                label12.Visible = true;
+                label12.Text = "Voucher";
+                IDCaixa.Visible = true;
+                _mPedido.Vourcher = new Controller.Pedido().RandomString(6);.
+                label12.Text = _mPedido.Vourcher;
 
                 //verificar vinculação 
 
@@ -282,11 +290,14 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            if(Home.pedidoPage == "Compras")
+            if(Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
             {
                 if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
                 {
-                    AlertOptions.Message("Atenção!", "Seu pedido não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    if(Home.pedidoPage == "Compras")
+                        AlertOptions.Message("Atenção!", "Sua compra não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    else if (Home.pedidoPage == "Compras")
+                        AlertOptions.Message("Atenção!", "Sua troca não contém cliente! Adicione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     return;
                 }
             }

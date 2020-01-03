@@ -316,7 +316,7 @@
             SomarDescontoTotal();
             SomarProdutosTotal();
 
-            Total = TotalVenda - Desconto;
+            Total = (TotalVenda + Frete) - Desconto;
 
             return Total;
         }

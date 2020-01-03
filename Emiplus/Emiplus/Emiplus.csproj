@@ -437,6 +437,12 @@
     <Compile Include="View\Comercial\AddPedidos.Designer.cs">
       <DependentUpon>AddPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\PedidoPayDevolucao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoPayDevolucao.Designer.cs">
+      <DependentUpon>PedidoPayDevolucao.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\AlertBig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -947,6 +953,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddPedidos.resx">
       <DependentUpon>AddPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoPayDevolucao.resx">
+      <DependentUpon>PedidoPayDevolucao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\AlertBig.resx">
       <DependentUpon>AlertBig.cs</DependentUpon>
