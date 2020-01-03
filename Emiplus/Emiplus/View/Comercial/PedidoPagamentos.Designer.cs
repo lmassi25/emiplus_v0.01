@@ -104,6 +104,9 @@
             this.Debito = new System.Windows.Forms.Button();
             this.Crediario = new System.Windows.Forms.Button();
             this.Boleto = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.acrescimos = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -394,7 +397,7 @@
             this.panel1.Controls.Add(this.GridListaFormaPgtos);
             this.panel1.Location = new System.Drawing.Point(550, 284);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 156);
+            this.panel1.Size = new System.Drawing.Size(448, 84);
             this.panel1.TabIndex = 120;
             // 
             // GridListaFormaPgtos
@@ -439,7 +442,7 @@
             this.GridListaFormaPgtos.RowHeadersVisible = false;
             this.GridListaFormaPgtos.RowTemplate.Height = 30;
             this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 156);
+            this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 84);
             this.GridListaFormaPgtos.TabIndex = 7;
             // 
             // colID
@@ -964,7 +967,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(196, 30);
             this.label12.TabIndex = 152;
-            this.label12.Text = "Desconto";
+            this.label12.Text = "Descontos";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel11
@@ -1284,12 +1287,48 @@
             this.Boleto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Boleto.UseVisualStyleBackColor = false;
             // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel12.Location = new System.Drawing.Point(577, 453);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(400, 1);
+            this.panel12.TabIndex = 145244;
+            // 
+            // acrescimos
+            // 
+            this.acrescimos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.acrescimos.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acrescimos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.acrescimos.Location = new System.Drawing.Point(792, 418);
+            this.acrescimos.Name = "acrescimos";
+            this.acrescimos.Size = new System.Drawing.Size(184, 25);
+            this.acrescimos.TabIndex = 145245;
+            this.acrescimos.Text = "R$ 00.00";
+            this.acrescimos.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(589, 414);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(196, 30);
+            this.label14.TabIndex = 145243;
+            this.label14.Text = "Acréscimos";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // PedidoPagamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.panel12);
+            this.Controls.Add(this.acrescimos);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.Devolucao);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel10);
@@ -1427,5 +1466,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button Devolucao;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label acrescimos;
+        private System.Windows.Forms.Label label14;
     }
 }

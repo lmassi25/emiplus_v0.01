@@ -19,12 +19,6 @@ namespace Emiplus.View.Comercial
         private Model.Pedido _mPedido = new Model.Pedido();
         private Controller.Pedido _controller = new Controller.Pedido();
 
-        public PedidoPayDevolucao()
-        {
-            InitializeComponent();
-            Eventos();
-        }
-
         private void Save()
         {
             if(String.IsNullOrEmpty(Voucher.Text))
