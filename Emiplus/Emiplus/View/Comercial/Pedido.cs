@@ -57,8 +57,7 @@ namespace Emiplus.View.Comercial
                     label13.Visible = false;
                     break;
                 case "Devoluções":
-                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma devolução.";
-                    label13.Visible = false;
+                    label2.Text = "Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
                     break;
                 case "Compras":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
@@ -191,7 +190,7 @@ namespace Emiplus.View.Comercial
                     return;
                 }
 
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações")
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Devoluções")
                 {
                     AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                     AddPedidos NovoPedido = new AddPedidos();

@@ -134,17 +134,17 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados da Troca: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar uma troca!";
                 btnConcluir.Text = "Finalizar";
-                pictureBox8.Visible = false;
+                
                 btnDelete.Visible = false;
                 btnGerarVenda.Visible = false;
 
+                pictureBox8.Visible = true;
+                pictureBox8.Image = Properties.Resources.voucher;
                 label12.Visible = true;
                 label12.Text = "Voucher";
                 IDCaixa.Visible = true;
-                _mPedido.Voucher = new Controller.Pedido().RandomString(6);
-                label12.Text = _mPedido.Voucher;
-
-                //verificar vinculação 
+                _mPedido.Voucher = new Controller.Pedido().RandomString(4);
+                IDCaixa.Text = _mPedido.Voucher;
 
                 if (_mPedido.status == 1)
                 {
@@ -296,7 +296,7 @@ namespace Emiplus.View.Comercial
                 {
                     if(Home.pedidoPage == "Compras")
                         AlertOptions.Message("Atenção!", "Sua compra não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
-                    else if (Home.pedidoPage == "Compras")
+                    else if (Home.pedidoPage == "Devoluções")
                         AlertOptions.Message("Atenção!", "Sua troca não contém cliente! Adicione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     return;
                 }
@@ -839,7 +839,10 @@ namespace Emiplus.View.Comercial
             FormClosing += (s, e) =>
             {
                 if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
-                    btnFinalizado = true;
+                {
+                    if (_mPedido.status == 1)
+                        btnFinalizado = true;
+                }
 
                 if (!btnFinalizado)
                 {

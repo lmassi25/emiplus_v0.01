@@ -71,6 +71,7 @@
         public string cfe_nome { get; set; }
         public string cfe_cpf { get; set; }
         public string Chavedeacesso { get; set; }
+        public int Venda { get; set; }
 
         #endregion
 
@@ -122,6 +123,11 @@
         public double GetTotal()
         {
             return Total;
+        }
+
+        public SqlKata.Query FindByVoucher(string voucher)
+        {
+            return Query().Where("voucher", voucher.ToUpper());
         }
 
         public bool Save(Pedido data)

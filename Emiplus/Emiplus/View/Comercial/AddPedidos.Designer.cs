@@ -257,7 +257,7 @@
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Gray;
-            this.label18.Location = new System.Drawing.Point(571, 34);
+            this.label18.Location = new System.Drawing.Point(468, 34);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(31, 13);
             this.label18.TabIndex = 22025;
@@ -280,7 +280,7 @@
             // 
             this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(538, 15);
+            this.pictureBox11.Location = new System.Drawing.Point(435, 15);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(27, 32);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -305,7 +305,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(571, 18);
+            this.label19.Location = new System.Drawing.Point(467, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(40, 13);
             this.label19.TabIndex = 2000;
@@ -317,7 +317,7 @@
             this.IDCaixa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.IDCaixa.AutoSize = true;
             this.IDCaixa.ForeColor = System.Drawing.Color.Gray;
-            this.IDCaixa.Location = new System.Drawing.Point(468, 34);
+            this.IDCaixa.Location = new System.Drawing.Point(571, 34);
             this.IDCaixa.Name = "IDCaixa";
             this.IDCaixa.Size = new System.Drawing.Size(31, 13);
             this.IDCaixa.TabIndex = 10005;
@@ -327,7 +327,7 @@
             // 
             this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(435, 15);
+            this.pictureBox8.Location = new System.Drawing.Point(538, 15);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(27, 32);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -340,7 +340,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(467, 18);
+            this.label12.Location = new System.Drawing.Point(571, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
             this.label12.TabIndex = 100012;
