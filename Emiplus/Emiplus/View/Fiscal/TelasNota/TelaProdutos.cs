@@ -315,6 +315,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
                     EditProduct.idPdt = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                    EditProduct.nrItem = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["#"].Value);
                     EditProduct f = new EditProduct();
                     if (f.ShowDialog() == DialogResult.OK)
                     {

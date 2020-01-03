@@ -80,6 +80,9 @@
         public double Federal { get; set; }
         public double Estadual { get; set; }
         public double Municipal { get; set; }
+        public string Info_Adicional { get; set; }
+        public string Pedido_compra { get; set; }
+        public string Item_Pedido_Compra { get; set; }
 
         #endregion
 
@@ -181,14 +184,11 @@
             Item = item.Id;
 
             if(!String.IsNullOrEmpty(item.Referencia))
-            {
                 CProd = item.Referencia;
-            }
             else
-            {
                 CProd = item.Id.ToString();
-            }
 
+            CEan = item.CodeBarras;
             xProd = item.Nome;
 
             ValorCompra = item.ValorCompra;
