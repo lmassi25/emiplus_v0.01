@@ -135,7 +135,7 @@ namespace Emiplus.Controller
                     }
 
                     if(Pedido > 0)
-                        _nota = new Model.Nota().FindByIdPedidoAndTipo(Pedido, tipo).First<Model.Nota>();
+                        _nota = new Model.Nota().FindByIdPedidoAndTipoAndStatus(Pedido, tipo).First<Model.Nota>();
 
                     if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
                         chvAcesso = _nota.ChaveDeAcesso;
@@ -317,51 +317,52 @@ namespace Emiplus.Controller
                         Random rdn = new Random();
                         _msg = Sat.StringFromNativeUtf8(Sat.CancelarUltimaVenda(rdn.Next(999999), GetCodAtivacao(), _nota.ChaveDeAcesso, arq.OuterXml));
 
-                        if (_msg.Contains("Emitido com sucesso + conteudo notas"))
+                        if (_msg.Contains("Cupom cancelado com sucesso"))
                         {
-                            //StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
-                            //txt.Write(_msg);
-                            //txt.Close();
+                            StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + "Canc.txt", false, Encoding.UTF8);
+                            txt.Write(_msg);
+                            txt.Close();
 
-                            //if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
-                            //    Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+                            if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
+                                Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
 
-                            //string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+                            string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
 
-                            //try
-                            //{
-                            //    XmlDocument oXML = new XmlDocument();
-                            //    oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            try
+                            {
+                                XmlDocument oXML = new XmlDocument();
+                                oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
 
-                            //    ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
-                            //    nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
-                            //    assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
+                                ChaveDeAcesso = oXML.SelectSingleNode("/CFeCanc/infCFe").Attributes.GetNamedItem("chCanc").Value;
+                                assinatura_qrcode = oXML.SelectSingleNode("/CFeCanc/infCFe/ide").ChildNodes[10].InnerText;
 
-                            //    var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            //    doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
+                                var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                                doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
 
-                            //    //------------------------nota salva
-                            //    if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
-                            //        Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
+                                //------------------------nota salva
+                                if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                                    Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
 
-                            //    doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            //    doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
-                            //    //------------------------nota salva
+                                doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                                doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+                                //------------------------nota salva
 
-                            //    ////------------------------
-                            //    _msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            //    ////------------------------
-                            //}
-                            //catch (Exception ex)
-                            //{ }
+                                ////------------------------
+                                _msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                                ////------------------------
+                            }
+                            catch (Exception ex)
+                            { }
 
-                            //_msg = "Emitido com sucesso + conteudo notas";
-                            //_nota.Tipo = tipo;
-                            //_nota.Status = "Autorizada";
+                            _msg = "Cupom cancelado com sucesso";
+
+                            _nota.Tipo = tipo;
+                            _nota.Status = "Cancelado";
                             //_nota.nr_Nota = nr_Nota;
-                            //_nota.ChaveDeAcesso = ChaveDeAcesso;
-                            //_nota.assinatura_qrcode = assinatura_qrcode;
-                            //_nota.Save(_nota, false);
+                            //_nota.id_pedido = 0;
+                            _nota.ChaveDeAcesso = ChaveDeAcesso;
+                            _nota.assinatura_qrcode = assinatura_qrcode;
+                            _nota.Save(_nota, false);
                         }
 
                         break;
@@ -381,7 +382,7 @@ namespace Emiplus.Controller
         /// Imprime
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param> 
-        public string Imprimir(int Pedido, string tipo = "NFe")
+        public string Imprimir(int Pedido, string tipo = "NFe", int Nota = 0)
         {
             Start(Pedido, tipo);
 
@@ -2431,6 +2432,8 @@ namespace Emiplus.Controller
 
         #endregion
 
+        #region CODEBARRA
+                
         [DllImport("shell32.dll", EntryPoint = "ShellExecute")]
         public static extern int ShellExecuteA(int hwnd, string lpOperation,
         string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
@@ -2460,5 +2463,7 @@ namespace Emiplus.Controller
 
             return s;
         }
+
+        #endregion
     }
 }

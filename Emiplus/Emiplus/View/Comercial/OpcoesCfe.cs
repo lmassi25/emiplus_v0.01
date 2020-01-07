@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -70,8 +71,8 @@ namespace Emiplus.View.Comercial
 
                     if (checkCupom() == "Cancelada")
                     {
-                        Emitir.Text = "Cancelar";
-                        Emitir.Enabled = false;
+                        Emitir.Visible = false;
+                        Imprimir.Location = new Point(330, 303);
                     }
                 }
             };
@@ -82,11 +83,15 @@ namespace Emiplus.View.Comercial
             {
                 if(Emitir.Text == "Cancelar")
                 {
+                    retorno.Text = "Cancelando cupom...";
+
                     p1 = 2;
                     WorkerBackground.RunWorkerAsync();
                 }
                 else
                 {
+                    retorno.Text = "Emitindo cupom...";
+
                     p1 = 1;
                     var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
                     if (checkNota == null)

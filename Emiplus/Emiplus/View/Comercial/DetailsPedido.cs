@@ -122,17 +122,16 @@ namespace Emiplus.View.Comercial
 
                 checkNota = _modelNota;
             }
-
-            if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
+            else if (checkNota.Status == "Pendente")
             {
                 OpcoesCfeEmitir.fecharTelas = false;
 
                 OpcoesCfeCpf.idPedido = idPedido;
-                OpcoesCfeCpf.emitir = true;                
+                OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
                 f.Show();
             }
-            else
+            else if (checkNota.Status == "Autorizada" && checkNota.Status == "Cancelada")
             {
                 OpcoesCfe.idPedido = idPedido;
                 OpcoesCfe f = new OpcoesCfe();

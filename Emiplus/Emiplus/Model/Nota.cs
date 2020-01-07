@@ -36,6 +36,11 @@ namespace Emiplus.Model
             return Query().Where("id_pedido", id);
         }
 
+        public SqlKata.Query FindByIdPedidoAndTipoAndStatus(int id, string tipo, string status = "Pendente")
+        {
+            return Query().Where("status", status).Where("tipo", tipo).Where("id_pedido", id);
+        }
+
         public SqlKata.Query FindByIdPedidoAndTipo(int id, string tipo)
         {
             return Query().Where("tipo", tipo).Where("id_pedido", id);
