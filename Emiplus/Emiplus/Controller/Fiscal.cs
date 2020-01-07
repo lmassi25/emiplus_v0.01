@@ -79,6 +79,9 @@ namespace Emiplus.Controller
 
         private JObject userData { get; set; }
 
+        /// <summary> 
+        /// Atualiza Última Nota
+        /// </summary>
         private async System.Threading.Tasks.Task updateUltNfeAsync()
         {
             var values = new Dictionary<string, string>
@@ -99,6 +102,9 @@ namespace Emiplus.Controller
             Settings.Default.Save();
         }
 
+        /// <summary> 
+        /// Atualiza os Config
+        /// </summary>
         private void Start(int Pedido = 0, string tipo = "NFe")
         {
             _path = IniFile.Read("Path", "LOCAL");
@@ -604,6 +610,9 @@ namespace Emiplus.Controller
             return "";
         }
 
+        /// <summary> 
+        /// Enviar email
+        /// </summary>
         public string EnviarEmail(int Pedido, string email, string tipo = "NFe")
         {
             Start(Pedido);
@@ -1002,6 +1011,9 @@ namespace Emiplus.Controller
             }
         }
 
+        /// <summary> 
+        /// Emitir CCe
+        /// </summary>
         public string EmitirCCe(int Pedido)
         {
             Model.Nota _notaCCe = new Model.Nota();
@@ -1064,6 +1076,9 @@ namespace Emiplus.Controller
             return _msg;
         }
 
+        /// <summary> 
+        /// Imprimir XML
+        /// </summary>
         public string ImprimirCCe(int Pedido)
         {
             Start(Pedido);
