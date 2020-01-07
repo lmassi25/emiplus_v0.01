@@ -375,6 +375,7 @@ namespace Emiplus.View.Comercial
                     else
                     {
                         e.SuppressKeyPress = true;
+                        AddPedidos.btnVoltar = true;
                         Close();
                     }                        
                     break;
@@ -451,12 +452,8 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
-                //AddPedidos.telapedidos = true;
+                AddPedidos.btnVoltar = true;
                 Close();
-
-                //AddPedidos.Id = IdPedido;
-                //AddPedidos f = new AddPedidos();
-                //f.Show();
             };
 
             btnConcluir.Click += (s, e) =>
