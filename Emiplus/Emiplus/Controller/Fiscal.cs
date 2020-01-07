@@ -250,7 +250,7 @@ namespace Emiplus.Controller
 
                     foreach (var item in itens.Get())
                     {
-                        new Controller.Imposto().SetImposto(item.ID);
+                        new Controller.Imposto().SetImposto(item.ID, 0, "CFe");
                     }
                 }
 
@@ -1445,10 +1445,10 @@ namespace Emiplus.Controller
             {
                 xml.WriteElementString("cProd", Validation.CleanStringForFiscal(_pedidoItem.Id.ToString()));
 
-                if (!String.IsNullOrEmpty(_pedidoItem.CEan))
-                {
-                    xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
-                }
+                //if (!String.IsNullOrEmpty(_pedidoItem.CEan))
+                //{
+                //    xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
+                //}
                 //else
                 //{
                 //    xml.WriteElementString("cEAN", "SEM GTIN");

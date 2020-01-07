@@ -285,10 +285,9 @@ namespace Emiplus.View.Comercial
                 _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = IdPedido;
                 _modelNota.Save(_modelNota, false);
-
-                checkNota = _modelNota;
             }
 
+            checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
             if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
             {
                 OpcoesCfeEmitir.fecharTelas = true;
@@ -503,8 +502,8 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                if(AddPedidos.btnFinalizado)                
-                    Application.OpenForms["AddPedidos"].Close();
+                if (AddPedidos.btnFinalizado)
+                    try { Application.OpenForms["AddPedidos"].Close(); } catch (Exception) { }                    
             };
         }
 
