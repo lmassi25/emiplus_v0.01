@@ -474,6 +474,7 @@
             this.novaNFE.Text = "          Nova NF-e Devolução";
             this.novaNFE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.novaNFE.UseVisualStyleBackColor = false;
+            this.novaNFE.Visible = false;
             // 
             // CompraNova
             // 

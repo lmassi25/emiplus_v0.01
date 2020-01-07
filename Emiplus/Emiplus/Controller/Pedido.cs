@@ -632,7 +632,7 @@ namespace Emiplus.Controller
 
         /// <summary>
         /// Voucher
-        /// </summary>    
+        /// </summary>
         private Random random = new Random();
         public string RandomString(int length)
         {            
@@ -643,7 +643,7 @@ namespace Emiplus.Controller
 
         /// <summary>
         /// Alimenta grid das devoluções
-        /// </summary>        
+        /// </summary>
         public void GetDataTableDevolucoes(DataGridView Table, int pedido)
         {
             Table.ColumnCount = 4;

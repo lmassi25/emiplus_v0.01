@@ -591,6 +591,7 @@
             this.EnviarXml.Text = "          Enviar xml por e-mail";
             this.EnviarXml.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.EnviarXml.UseVisualStyleBackColor = false;
+            this.EnviarXml.Visible = false;
             // 
             // TelaFiscalInicial
             // 

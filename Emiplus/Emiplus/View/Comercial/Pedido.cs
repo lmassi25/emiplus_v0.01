@@ -50,11 +50,11 @@ namespace Emiplus.View.Comercial
             {
                 case "Orçamentos":
                     label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
-                    label13.Visible = false;
+                    //label13.Visible = false;
                     break;
                 case "Consignações":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
-                    label13.Visible = false;
+                    //label13.Visible = false;
                     break;
                 case "Devoluções":
                     label2.Text = "Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
@@ -62,7 +62,7 @@ namespace Emiplus.View.Comercial
                 case "Compras":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
                     label11.Text = "Procurar por fornecedor";
-                    label13.Visible = false;
+                    //label13.Visible = false;
                     break;
                 case "Notas":
                     label1.Text = "NF-e";
