@@ -72,6 +72,8 @@
         public string cfe_cpf { get; set; }
         public string Chavedeacesso { get; set; }
         public int Venda { get; set; }
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
 
         #endregion
 
@@ -134,6 +136,7 @@
         {
             if (data.Id == 0)
             {
+                data.id_sync = Validation.RandomSecurity();
                 data.Id_Caixa = Home.idCaixa;
                 data.Criado = DateTime.Now;
                 data.Emissao = DateTime.Now;

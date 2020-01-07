@@ -164,6 +164,9 @@ namespace Emiplus.View.Common
 
             if (!UserPermission.SetControl(homeMenuInicio, pictureBox13, "tela_inicial", false))
                 StartInicio();
+
+            Sync f = new Sync();
+            f.Show();
         }
 
         /// <summary>
