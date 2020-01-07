@@ -153,7 +153,7 @@ namespace Emiplus.View.Common
                 "k.async = 1;" +
                 "k.src = t + '/' + a + '?showButton=' + d + '&openOnMessage=' + e;" +
                 "s.appendChild(k);" +
-                "})(window, document, 'https://chat.octadesk.services/api/widget', 'destech', true, true);" +
+                "})(window, document, 'https://chat.octadesk.services/api/widget', 'emiplus', true, true);" +
                 "window.addEventListener('onOctaChatReady', function(e) {" +
                 "octadesk.chat.login({" +
                 "user:" +

@@ -17,38 +17,48 @@ namespace Emiplus.View.Common
     {
         BackgroundWorker backWork = new BackgroundWorker();
 
+        /// <summary>
+        /// Acesso ao banco local
+        /// </summary>
+        private QueryFactory connect = new Connect().Open();
+
+        /// <summary>
+        /// Acesso ao banco online
+        /// </summary>
+        private QueryFactory connectOnline = new ConnectOnline().Open();
+
         public Sync()
         {
             InitializeComponent();
             Eventos();
 
-            var teste = new ConnectOnline().Open();
-            //var users = teste.Query().From("sys_caixa").Get();
-
-            var cols = new[] { "id", "id_empresa", "tipo", "excluir", "criado", "atualizado", "deletado", "usuario", "saldo_inicial", "saldo_final", "saldo_final_informado", "observacao", "fechado", "terminal" };
-            //teste.Query("sys_caixa").AsInsert(cols, new Model.Caixa().FindAll().Get());
-            //var co = new Model.Caixa().Query().Limit(100);
-            var cos2 = new Model.Caixa().Query().Limit(100).Get();
-            //var s = ConvertListToObject(cos2);
-            //var result = cos2.Cast<IEnumerable<object>>().ToList();
-            //var affected = teste.Query("caixa").Insert(cols, co);
-            //var affected2 = teste.Query("caixa").AsInsert(cols, co);
-
-            //var cols = new[] { "id", "id_empresa" };
-
-            var data = new[] {
-    new object[] { 1000, "A", "", "", "", "", "", "", "", "", "", "", "", "" },
-    new object[] { 1000, "B", "", "", "", "", "", "", "", "", "", "", "", "" },
-    new object[] { 1000, "C", "", "", "", "", "", "", "", "", "", "", "", "" },
-    new object[] { 1000, "D", "", "", "", "", "", "", "", "", "", "", "", "" },
-};
-
-            //teste.Query("caixa").Insert(cols, cos2);
+            var cols = new[] { "id", "id_empresa", "tipo", "excluir", "criado", "atualizado", "deletado", "usuario", "saldo_inicial", "saldo_final", "saldo_final_informado", "observacao", "fechado", "terminal", "id_sync", "status_sync" };
+            
             Console.WriteLine(Validation.RandomSecurity());
+
+            GetDataAsync("CAIXA");
+        }
+        
+        private async Task GetDataAsync(string Table)
+        {
+            var baseQuery = connect.Query().From(Table).Where("status_sync", "CREATE").OrWhereNull("status_sync");
+
+            // CREATE = criar no banco online!
+            var data = await baseQuery.Clone().From(Table).GetAsync();
+            if (data != null)
+            {
+                foreach (dynamic item in data)
+                {
+                    Console.WriteLine(item.Keys());
+                    Console.WriteLine(item.ID);
+                }
+            }
         }
 
         private void Eventos()
         {
+            //GetCaixaAsync();
+
             Shown += (s, e) =>
             {
                 backWork.RunWorkerAsync();
