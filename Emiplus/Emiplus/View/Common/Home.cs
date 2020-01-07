@@ -1,10 +1,15 @@
 ﻿using Emiplus.Data.Core;
+using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
+using SqlKata.Execution;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Emiplus.View.Common
 {
@@ -118,12 +123,12 @@ namespace Emiplus.View.Common
         public static string financeiroPage { get; set; }
         public static int idCaixa { get; set; }
         public static string CategoriaPage { get; set; }
-        
+
         public Home()
         {
             InitializeComponent();
             Eventos();
-
+            
             version.Text = "Versão " + IniFile.Read("Version", "APP");
             label1.Text = $"Olá, {Validation.FirstCharToUpper(Settings.Default.user_name)} {Validation.FirstCharToUpper(Settings.Default.user_lastname)}";
 
