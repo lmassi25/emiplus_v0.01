@@ -151,7 +151,7 @@ namespace Emiplus.View.Common
             {
                 label6.Visible = false;
                 trialdias.Visible = false;
-            } 
+            }
             else
             {
                 trialdias.Text = $"{Settings.Default.user_plan_trial} dias";
@@ -165,9 +165,8 @@ namespace Emiplus.View.Common
             if (!UserPermission.SetControl(homeMenuInicio, pictureBox13, "tela_inicial", false))
                 StartInicio();
 
-            //Sync f = new Sync();
-            //f.Hide();
-            //f.Show();
+            Sync f = new Sync();
+            f.Show();
         }
 
         /// <summary>
