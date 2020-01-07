@@ -37,7 +37,7 @@ namespace Emiplus.View.Comercial
             {
                 b.DoWork += async (s, e) =>
                 {
-                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                    var checkNota = _modelNota.FindByIdPedidoAndTipoAndStatus(idPedido, "CFe").FirstOrDefault<Model.Nota>();
                     if (checkNota == null)
                     {
                         _modelNota.Id = 0;
@@ -58,7 +58,7 @@ namespace Emiplus.View.Comercial
                     {
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
-
+                        
                         new Controller.Fiscal().Imprimir(idPedido, "CFe");
                         
                         if(fecharTelas)

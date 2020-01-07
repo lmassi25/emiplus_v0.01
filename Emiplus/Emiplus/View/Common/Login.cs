@@ -22,7 +22,7 @@ namespace Emiplus.View.Common
             InitializeComponent();
 
             //password.Text = "4586928w";
-            password.Text = "leandro2510";
+            //password.Text = "leandro2510";
 
             Update update = new Update();
             update.CheckUpdate();

@@ -285,19 +285,19 @@ namespace Emiplus.View.Comercial
                 _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = IdPedido;
                 _modelNota.Save(_modelNota, false);
-            }
 
-            checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
-            if (checkNota.Status != "Autorizada" && checkNota.Status != "Cancelada")
+                checkNota = _modelNota;
+            }
+            else if (checkNota.Status == "Pendente")
             {
-                OpcoesCfeEmitir.fecharTelas = true;
+                OpcoesCfeEmitir.fecharTelas = false;
 
                 OpcoesCfeCpf.idPedido = IdPedido;
                 OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
                 f.Show();
             }
-            else
+            else if (checkNota.Status == "Autorizada" && checkNota.Status == "Cancelada")
             {
                 OpcoesCfe.idPedido = IdPedido;
                 OpcoesCfe f = new OpcoesCfe();
