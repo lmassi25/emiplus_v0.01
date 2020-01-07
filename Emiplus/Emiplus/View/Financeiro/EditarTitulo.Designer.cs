@@ -254,7 +254,7 @@
             this.receita.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.receita.DropDownHeight = 100;
             this.receita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.receita.DropDownWidth = 250;
+            this.receita.DropDownWidth = 500;
             this.receita.FormattingEnabled = true;
             this.receita.ImageList = null;
             this.receita.ImageVisible = false;
@@ -309,7 +309,7 @@
             this.cliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cliente.DropDownHeight = 100;
             this.cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cliente.DropDownWidth = 250;
+            this.cliente.DropDownWidth = 500;
             this.cliente.FormattingEnabled = true;
             this.cliente.ImageList = null;
             this.cliente.ImageVisible = false;
@@ -435,7 +435,7 @@
             this.formaPgto.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.formaPgto.DropDownHeight = 100;
             this.formaPgto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.formaPgto.DropDownWidth = 150;
+            this.formaPgto.DropDownWidth = 200;
             this.formaPgto.FormattingEnabled = true;
             this.formaPgto.ImageList = null;
             this.formaPgto.ImageVisible = false;

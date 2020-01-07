@@ -39,6 +39,7 @@ namespace Emiplus.Controller
 
             Table.Columns[2].Name = "Código";
             Table.Columns[2].Width = 100;
+            Table.Columns[2].Visible = false;
 
             Table.Columns[3].Name = "Nome do Produto";
             Table.Columns[3].MinimumWidth = 150;

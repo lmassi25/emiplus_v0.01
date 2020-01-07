@@ -13,7 +13,7 @@ namespace Emiplus.Controller
         private Model.Item _modelItem = new Model.Item();
         private Model.Imposto _modelImposto = new Model.Imposto();
 
-        public void SetImposto(int idPedidoItem, int idImposto = 0)
+        public void SetImposto(int idPedidoItem, int idImposto = 0, string tipo = "")
         {
             #region IMPOSTO 
 
@@ -23,13 +23,22 @@ namespace Emiplus.Controller
                 _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
                 if (_modelItem.Count() != 0)
                 {
-                    if (_modelItem.Impostoid == 0)
+                    switch (tipo)
                     {
-                        //Alert.Message("Opss", "O produto não possui imposto.", Alert.AlertType.error);
-                        return;
-                    }
+                        case "CFe":
 
-                    _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).First<Model.Imposto>();
+                            if (_modelItem.Impostoidcfe == 0)
+                                break;
+
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe).First<Model.Imposto>();
+                            break;
+                        default:
+                            if (_modelItem.Impostoid == 0)
+                                break;
+
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).First<Model.Imposto>();
+                            break;
+                    }                    
                 }
             }
             else

@@ -21,11 +21,11 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
 
-            _mPedido = _mPedido.FindById(idPedido).First<Model.Pedido>();
-            
-            if(_mPedido.Cliente > 0)            
-                _mCliente = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
+            _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
 
+            if (_mPedido.Cliente > 0)
+                try { _mCliente = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>(); } catch (Exception) { }
+            
             Eventos();
         }
         
@@ -83,9 +83,17 @@ namespace Emiplus.View.Comercial
             {
                 pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
 
-                nomeRS.Text = _mCliente?.Nome ?? "";
-                cpfCnpj.Text = _mCliente?.CPF ?? "";
-                pessoaJF.Text = _mCliente?.Pessoatipo ?? "Física";
+                //nomeRS.Text = _mCliente?.Nome ?? "";
+                //cpfCnpj.Text = _mCliente?.CPF ?? "";
+                //pessoaJF.Text = _mCliente?.Pessoatipo ?? "Física";
+
+                if (!String.IsNullOrEmpty(_mPedido.cfe_nome) && _mPedido.cfe_nome != "Consumidor Final")
+                    nomeRS.Text = _mPedido.cfe_nome;
+
+                if (!String.IsNullOrEmpty(_mPedido.cfe_cpf))
+                {
+                    cpfCnpj.Text = _mPedido.cfe_cpf;
+                }                    
             };
 
             cpfCnpj.KeyPress += (s, e) =>
