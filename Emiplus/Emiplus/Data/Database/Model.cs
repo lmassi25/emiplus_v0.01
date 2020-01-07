@@ -20,6 +20,13 @@ namespace Emiplus.Data.Database
             Log = new Log();
         }
 
+        public Model SetDbOnline()
+        {
+            db = new ConnectOnline().Open();
+
+            return this;
+        }
+
         /// <summary>
         /// Alimenta a query Create e Update com os objetos
         /// </summary>
