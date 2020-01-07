@@ -27,6 +27,8 @@ namespace Emiplus.Model
         public double Anterior { get; set; }
         public int Id_Pedido { get; set; }
 
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
         #endregion
 
         #region SQL CREATE
@@ -131,6 +133,7 @@ namespace Emiplus.Model
             if (ValidarDados(data))
                 return false;
 
+            data.id_sync = Validation.RandomSecurity();
             data.Criado = DateTime.Now;
             if (Data(data).Create() == 1)
                 return true;

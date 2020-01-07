@@ -511,5 +511,12 @@ namespace Emiplus.Data.Helpers
 
             return destImage;
         }
+
+        public static int RandomSecurity()
+        {
+            DateTime foo = DateTime.UtcNow;
+            long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
+            return (int)unixTime;
+        }
     }
 }

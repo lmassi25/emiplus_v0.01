@@ -40,7 +40,8 @@
         public int Id_Caixa_Mov { get; set; }
         public string Obs { get; set; }
         public int id_usuario { get; set; } = Settings.Default.user_id;
-
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
         #endregion 
 
         public Titulo SetTipo(string tipo)
@@ -89,6 +90,7 @@
         {
             if (data.Id == 0)
             {
+                data.id_sync = Validation.RandomSecurity();
                 data.Emissao = Validation.DateNowToSql();
                 data.Criado = DateTime.Now;
 

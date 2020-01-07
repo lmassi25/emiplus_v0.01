@@ -1,4 +1,6 @@
 ﻿using Emiplus.Data.Database;
+using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,12 @@ namespace Emiplus.View.Common
 {
     public partial class Sync : Form
     {
+        BackgroundWorker backWork = new BackgroundWorker();
+
         public Sync()
         {
             InitializeComponent();
+            Eventos();
 
             var teste = new ConnectOnline().Open();
             //var users = teste.Query().From("sys_caixa").Get();
@@ -38,7 +43,26 @@ namespace Emiplus.View.Common
     new object[] { 1000, "D", "", "", "", "", "", "", "", "", "", "", "", "" },
 };
 
-            teste.Query("caixa").Insert(cols, cos2);
+            //teste.Query("caixa").Insert(cols, cos2);
+            Console.WriteLine(Validation.RandomSecurity());
+        }
+
+        private void Eventos()
+        {
+            Shown += (s, e) =>
+            {
+                backWork.RunWorkerAsync();
+            };
+
+            backWork.DoWork += (s, e) =>
+            {
+
+            };
+
+            backWork.RunWorkerCompleted += (s, e) =>
+            {
+
+            };
         }
     }
 }

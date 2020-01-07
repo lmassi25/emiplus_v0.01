@@ -48,7 +48,9 @@
         public double PisAliq { get; set; }
         public string Cofins { get; set; } // CST
         public double CofinsAliq { get; set; }
-
+        
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
         #endregion
 
         #region SQL
@@ -105,6 +107,7 @@
 
             if (data.Id == 0)
             {
+                data.id_sync = Validation.RandomSecurity();
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {

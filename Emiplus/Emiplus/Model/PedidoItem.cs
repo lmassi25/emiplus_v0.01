@@ -83,6 +83,8 @@
         public string Info_Adicional { get; set; }
         public string Pedido_compra { get; set; }
         public string Item_Pedido_Compra { get; set; }
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
 
         #endregion
 
@@ -355,6 +357,7 @@
 
             if (data.Id == 0)
             {
+                data.id_sync = Validation.RandomSecurity();
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() != 1)
                 {

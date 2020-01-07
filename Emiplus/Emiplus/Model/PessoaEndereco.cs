@@ -28,6 +28,8 @@
         public string Complemento { get; set; }
         public string Pais { get; set; }
         public string IBGE { get; set; }
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
 
         #region SQL CREATE
         //CREATE TABLE PESSOA_ENDERECO
@@ -94,6 +96,7 @@
 
             if (data.Id == 0)
             {
+                data.id_sync = Validation.RandomSecurity();
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {

@@ -307,7 +307,6 @@
     <Compile Include="Model\Caixa.cs" />
     <Compile Include="Model\CaixaMovimentacao.cs" />
     <Compile Include="Model\Categoria.cs" />
-    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Etiqueta.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
@@ -504,6 +503,12 @@
     </Compile>
     <Compile Include="View\Common\Suporte.Designer.cs">
       <DependentUpon>Suporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Sync.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Sync.Designer.cs">
+      <DependentUpon>Sync.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\TelaComercialInicial.cs">
       <SubType>Form</SubType>
@@ -1003,6 +1008,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Suporte.resx">
       <DependentUpon>Suporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Sync.resx">
+      <DependentUpon>Sync.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaComercialInicial.resx">
       <DependentUpon>TelaComercialInicial.cs</DependentUpon>

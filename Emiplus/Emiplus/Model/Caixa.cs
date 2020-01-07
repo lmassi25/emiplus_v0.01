@@ -29,6 +29,8 @@
         public string Observacao { get; set; }
         public string Terminal { get; set; }
         public DateTime Fechado { get; set; }
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
         #endregion 
 
         public bool Save(Caixa data, bool message = true)
