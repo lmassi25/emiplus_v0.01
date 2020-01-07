@@ -22,6 +22,7 @@ namespace Emiplus.View.Comercial
         private static string CachePage { get; set; }
 
         public static bool btnFinalizado { get; set; } // Alimenta quando o botão finalizado for clicado
+        public static bool btnVoltar { get; set; } // Alimenta quando o botão finalizado for clicado
 
         public static bool telapedidos { get; set; }
         public static bool telapagamentos { get; set; } // Alimenta quando o botão finalizado for clicado
@@ -143,7 +144,10 @@ namespace Emiplus.View.Comercial
                 label12.Visible = true;
                 label12.Text = "Voucher";
                 IDCaixa.Visible = true;
-                _mPedido.Voucher = new Controller.Pedido().RandomString(4);
+                
+                if(String.IsNullOrEmpty(_mPedido.Voucher))
+                    _mPedido.Voucher = new Controller.Pedido().RandomString(4);
+
                 IDCaixa.Text = _mPedido.Voucher;
 
                 if (_mPedido.status == 1)
@@ -854,6 +858,12 @@ namespace Emiplus.View.Comercial
                 {
                     if (_mPedido.status == 1)
                         btnFinalizado = true;
+                }
+
+                if(btnVoltar)
+                {
+                    btnVoltar = false;
+                    return;
                 }
 
                 if (!btnFinalizado)

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCaixaMov));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.imprimir = new System.Windows.Forms.Button();
             this.btnApagar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.imprimir = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -78,6 +78,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(429, 68);
             this.panel3.TabIndex = 20;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderSize = 0;
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(261, 5);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(69, 60);
+            this.imprimir.TabIndex = 7;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = true;
+            this.imprimir.Visible = false;
             // 
             // btnApagar
             // 
@@ -360,9 +382,9 @@
             this.label10.ForeColor = System.Drawing.Color.Gray;
             this.label10.Location = new System.Drawing.Point(41, 131);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(261, 17);
+            this.label10.Size = new System.Drawing.Size(247, 17);
             this.label10.TabIndex = 165;
-            this.label10.Text = "Não registra lançamento no contas a receber";
+            this.label10.Text = "Não registra lançamento nos recebimentos";
             // 
             // label9
             // 
@@ -372,9 +394,9 @@
             this.label9.ForeColor = System.Drawing.Color.Gray;
             this.label9.Location = new System.Drawing.Point(41, 84);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(253, 17);
+            this.label9.Size = new System.Drawing.Size(242, 17);
             this.label9.TabIndex = 164;
-            this.label9.Text = "Não registra lançamento no contas a pagar";
+            this.label9.Text = "Não registra lançamento nos pagamentos";
             // 
             // label7
             // 
@@ -384,9 +406,9 @@
             this.label7.ForeColor = System.Drawing.Color.Gray;
             this.label7.Location = new System.Drawing.Point(36, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(295, 17);
+            this.label7.Size = new System.Drawing.Size(284, 17);
             this.label7.TabIndex = 163;
-            this.label7.Text = "Registra lançamento automático no contas a pagar";
+            this.label7.Text = "Registra lançamento automático nos pagamentos";
             // 
             // Tipo3
             // 
@@ -802,28 +824,6 @@
             this.label6.Size = new System.Drawing.Size(83, 17);
             this.label6.TabIndex = 162;
             this.label6.Text = "Observação:";
-            // 
-            // imprimir
-            // 
-            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.FlatAppearance.BorderSize = 0;
-            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
-            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.imprimir.Location = new System.Drawing.Point(261, 5);
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(69, 60);
-            this.imprimir.TabIndex = 7;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.imprimir.UseVisualStyleBackColor = true;
-            this.imprimir.Visible = false;
             // 
             // AddCaixaMov
             // 
