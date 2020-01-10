@@ -363,6 +363,7 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
+            PedidoPagamentos.hideFinalizar = false;
             PedidoPagamentos f = new PedidoPagamentos();
             _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
             _mPedido.Id = Id;
@@ -863,13 +864,13 @@ namespace Emiplus.View.Comercial
                 if(btnVoltar)
                 {
                     btnVoltar = false;
-                    return;
+                    //return;
                 }
 
                 if (!btnFinalizado)
                 {
                     Home.pedidoPage = CachePage;
-                    var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir!" + Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
                         new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();

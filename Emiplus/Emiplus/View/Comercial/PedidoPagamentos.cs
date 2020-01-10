@@ -48,13 +48,7 @@ namespace Emiplus.View.Comercial
                 label13.Text = $"Dados da Devolução: {IdPedido}";
                 label10.Text = "Siga as etapas abaixo para criar uma devolução!";
             }
-            else
-            {
-                label13.Text = $"Dados da Venda: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para adicionar uma venda!";
-            }
-
-            if (Home.pedidoPage == "Compras")
+            else if (Home.pedidoPage == "Compras")
             {
                 label13.Text = $"Dados da Compra: {IdPedido}";
                 label10.Text = "Siga as etapas abaixo para adicionar uma compra!";
@@ -67,14 +61,26 @@ namespace Emiplus.View.Comercial
                 button22.Visible = false;
             }
             else
-                hideFinalizar = false;
+            {
+                label13.Text = $"Dados da Venda: {IdPedido}";
+                label10.Text = "Siga as etapas abaixo para adicionar uma venda!";
+            }
 
             if (hideFinalizar)
             {
+                btnCFeSat.Visible = false;
+                button22.Visible = false;
+
+                btnNfe.Visible = false;
+                button21.Visible = false;
+
                 btnConcluir.Visible = false;
                 button19.Visible = false;
-                btnImprimir.Left = 835;
-                button20.Left = 830;
+
+                //btnImprimir.Left = 835;
+                //button20.Left = 830;
+                btnImprimir.Visible = false;
+                button20.Visible = false;
             }           
         }
 
@@ -221,7 +227,6 @@ namespace Emiplus.View.Comercial
 
             if (Home.pedidoPage == "Compras")
             {
-                AddPedidos.btnFinalizado = true;
                 imprimir = 0;
                 Application.OpenForms["AddPedidos"].Close();
                 Close();
@@ -229,15 +234,22 @@ namespace Emiplus.View.Comercial
                 
             if (imprimir == 1)
             {
-                AddPedidos.btnFinalizado = true;
-
                 if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                 {
                     PedidoImpressao print = new PedidoImpressao();
                     print.Print(IdPedido);
                 }
 
-                Application.OpenForms["AddPedidos"].Close();
+                try
+                {
+                    Application.OpenForms["AddPedidos"].Close();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
                 Close();
             }
         }
@@ -275,7 +287,9 @@ namespace Emiplus.View.Comercial
         {
             Concluir(0);
 
-            var checkNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "CFe").FirstOrDefault<Model.Nota>();
+            OpcoesCfe.idNota = 0;
+
+            var checkNota = new Model.Nota().FindByIdPedidoUltReg(IdPedido).FirstOrDefault<Model.Nota>();
             if (checkNota == null)
             {
                 Model.Nota _modelNota = new Model.Nota();
@@ -288,19 +302,48 @@ namespace Emiplus.View.Comercial
 
                 checkNota = _modelNota;
             }
+
+            if (checkNota != null)
+                OpcoesCfe.idNota = checkNota.Id;
+            else
+                return;
+
+            if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
+            {
+                OpcoesCfe.idPedido = IdPedido;
+                OpcoesCfe f = new OpcoesCfe();
+                f.Show();
+            }
+            else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
+            {
+                var result = AlertOptions.Message("Atenção!", "Existem registro(s) de cupon(s) cancelado(s) a partir desta venda. Deseja gerar um novo cupom?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    Model.Nota _modelNota = new Model.Nota();
+
+                    _modelNota.Id = 0;
+                    _modelNota.Tipo = "CFe";
+                    _modelNota.Status = "Pendente";
+                    _modelNota.id_pedido = IdPedido;
+                    _modelNota.Save(_modelNota, false);
+
+                    checkNota = _modelNota;
+
+                    OpcoesCfeEmitir.fecharTelas = true;
+
+                    OpcoesCfeCpf.idPedido = IdPedido;
+                    OpcoesCfeCpf.emitir = true;
+                    OpcoesCfeCpf f = new OpcoesCfeCpf();
+                    f.Show();
+                }
+            }
             else if (checkNota.Status == "Pendente")
             {
-                OpcoesCfeEmitir.fecharTelas = false;
+                OpcoesCfeEmitir.fecharTelas = true;
 
                 OpcoesCfeCpf.idPedido = IdPedido;
                 OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
-                f.Show();
-            }
-            else if (checkNota.Status == "Autorizada" && checkNota.Status == "Cancelada")
-            {
-                OpcoesCfe.idPedido = IdPedido;
-                OpcoesCfe f = new OpcoesCfe();
                 f.Show();
             }
         }
@@ -426,6 +469,8 @@ namespace Emiplus.View.Comercial
             {
                 AtualizarDados();
 
+                AddPedidos.btnFinalizado = false;
+
                 Dinheiro.Focus();
                 Dinheiro.Select();
             };            
@@ -503,7 +548,17 @@ namespace Emiplus.View.Comercial
             FormClosing += (s, e) =>
             {
                 if (AddPedidos.btnFinalizado)
-                    try { Application.OpenForms["AddPedidos"].Close(); } catch (Exception) { }                    
+                {
+                    try
+                    {
+                        Application.OpenForms["AddPedidos"].Close();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
             };
         }
 

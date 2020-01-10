@@ -33,6 +33,7 @@ namespace Emiplus.View.Comercial
         public static int idPedido { get; set; }
 
         private int pessoaID;
+
         public DetailsPedido()
         {
             InitializeComponent();
@@ -109,8 +110,10 @@ namespace Emiplus.View.Comercial
 
         public void Cfe()
         {
-            var checkNota = new Model.Nota().FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
-            if(checkNota == null)
+            OpcoesCfe.idNota = 0;
+
+            var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido).FirstOrDefault<Model.Nota>();
+            if (checkNota == null)
             {
                 Model.Nota _modelNota = new Model.Nota();
 
@@ -122,6 +125,41 @@ namespace Emiplus.View.Comercial
 
                 checkNota = _modelNota;
             }
+
+            if (checkNota != null)
+                OpcoesCfe.idNota = checkNota.Id;
+            else
+                return;
+
+            if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
+            {
+                OpcoesCfe.idPedido = idPedido;
+                OpcoesCfe f = new OpcoesCfe();
+                f.Show();
+            }
+            else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
+            {
+                var result = AlertOptions.Message("Atenção!", "Existem registro(s) de cupon(s) cancelado(s) a partir desta venda. Deseja gerar um novo cupom?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    Model.Nota _modelNota = new Model.Nota();
+
+                    _modelNota.Id = 0;
+                    _modelNota.Tipo = "CFe";
+                    _modelNota.Status = "Pendente";
+                    _modelNota.id_pedido = idPedido;
+                    _modelNota.Save(_modelNota, false);
+
+                    checkNota = _modelNota;
+
+                    OpcoesCfeEmitir.fecharTelas = false;
+
+                    OpcoesCfeCpf.idPedido = idPedido;
+                    OpcoesCfeCpf.emitir = true;
+                    OpcoesCfeCpf f = new OpcoesCfeCpf();
+                    f.Show();
+                }
+            }
             else if (checkNota.Status == "Pendente")
             {
                 OpcoesCfeEmitir.fecharTelas = false;
@@ -129,12 +167,6 @@ namespace Emiplus.View.Comercial
                 OpcoesCfeCpf.idPedido = idPedido;
                 OpcoesCfeCpf.emitir = true;
                 OpcoesCfeCpf f = new OpcoesCfeCpf();
-                f.Show();
-            }
-            else if (checkNota.Status == "Autorizada" && checkNota.Status == "Cancelada")
-            {
-                OpcoesCfe.idPedido = idPedido;
-                OpcoesCfe f = new OpcoesCfe();
                 f.Show();
             }
         }
@@ -224,6 +256,12 @@ namespace Emiplus.View.Comercial
 
             btnPgtosLancado.Click += (s, e) =>
             {
+                if (labelCfe.Text != "N/D" || labelNfe.Text != "N/D")
+                {
+                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
+                    return;
+                }
+
                 if (Home.idCaixa == 0 && Home.pedidoPage == "Vendas")
                 {
                     var result = AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
@@ -244,6 +282,12 @@ namespace Emiplus.View.Comercial
 
             btnRemove.Click += (s, e) =>
             {
+                if (labelCfe.Text != "N/D" || labelNfe.Text != "N/D")
+                {
+                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
+                    return;
+                }
+
                 var result = AlertOptions.Message("Atenção!", "Deseja realmente apagar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
@@ -281,10 +325,10 @@ namespace Emiplus.View.Comercial
                 var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
                 if (checkNota != null)
                 {
-                    Alert.Message("Ação não permitida!", "Existe um documento fiscal vinculado.", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
                     return;
                 }
- 
+
                 ModalClientes();
             };
 
@@ -293,7 +337,7 @@ namespace Emiplus.View.Comercial
                 var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
                 if (checkNota != null)
                 {
-                    Alert.Message("Ação não permitida!", "Existe um documento fiscal vinculado.", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
                     return;
                 }
 
@@ -315,6 +359,7 @@ namespace Emiplus.View.Comercial
         {
             AddPedidos.Id = idPedido;
             PedidoPagamentos.hideFinalizar = true;
+            OpcoesCfeEmitir.fecharTelas = false;
             PedidoPagamentos pagamentos = new PedidoPagamentos();
             pagamentos.ShowDialog();
             LoadData();

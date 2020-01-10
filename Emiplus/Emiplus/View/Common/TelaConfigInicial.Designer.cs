@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Comercial");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("CF-e S@T");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Fiscal", new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Preferências");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Produtos");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Comercial");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Financeiro");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("CF-e S@T");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Fiscal", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaConfigInicial));
             this.menu = new System.Windows.Forms.TreeView();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -62,15 +65,24 @@
             this.menu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.menu.Location = new System.Drawing.Point(13, 11);
             this.menu.Name = "menu";
-            treeNode1.Name = "comercial";
-            treeNode1.Text = "Comercial";
-            treeNode2.Name = "cfesat";
-            treeNode2.Text = "CF-e S@T";
-            treeNode3.Name = "fiscal";
-            treeNode3.Text = "Fiscal";
+            treeNode1.Name = "Nó0";
+            treeNode1.Text = "Preferências";
+            treeNode2.Name = "Nó1";
+            treeNode2.Text = "Produtos";
+            treeNode3.Name = "comercial";
+            treeNode3.Text = "Comercial";
+            treeNode4.Name = "Nó2";
+            treeNode4.Text = "Financeiro";
+            treeNode5.Name = "cfesat";
+            treeNode5.Text = "CF-e S@T";
+            treeNode6.Name = "fiscal";
+            treeNode6.Text = "Fiscal";
             this.menu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode3});
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode6});
             this.menu.Size = new System.Drawing.Size(183, 454);
             this.menu.TabIndex = 28;
             // 

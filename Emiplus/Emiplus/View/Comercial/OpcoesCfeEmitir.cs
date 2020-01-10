@@ -37,16 +37,6 @@ namespace Emiplus.View.Comercial
             {
                 b.DoWork += async (s, e) =>
                 {
-                    var checkNota = _modelNota.FindByIdPedidoAndTipoAndStatus(idPedido, "CFe").FirstOrDefault<Model.Nota>();
-                    if (checkNota == null)
-                    {
-                        _modelNota.Id = 0;
-                        _modelNota.Tipo = "CFe";
-                        _modelNota.Status = "Pendente";
-                        _modelNota.id_pedido = idPedido;
-                        _modelNota.Save(_modelNota, false);
-                    }
-
                     _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
                 };
 
@@ -63,11 +53,19 @@ namespace Emiplus.View.Comercial
                         
                         if(fecharTelas)
                         {
-                            Application.OpenForms["PedidoPagamentos"].Close();
-                            AddPedidos.btnFinalizado = true;
-                            Application.OpenForms["AddPedidos"].Close();
-                            Close();
+                            try
+                            {
+                                Application.OpenForms["PedidoPagamentos"].Close();
+                                AddPedidos.btnFinalizado = true;
+                                Application.OpenForms["AddPedidos"].Close();
+                            }
+                            catch (Exception)
+                            {
+                                throw;
+                            }                          
                         }
+
+                        Close();
                     }
                 };
             }
