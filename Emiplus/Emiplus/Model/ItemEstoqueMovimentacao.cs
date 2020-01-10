@@ -134,6 +134,7 @@ namespace Emiplus.Model
                 return false;
 
             data.id_sync = Validation.RandomSecurity();
+            data.status_sync = "CREATE";
             data.Criado = DateTime.Now;
             if (Data(data).Create() == 1)
                 return true;

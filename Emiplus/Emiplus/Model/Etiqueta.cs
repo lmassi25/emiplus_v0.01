@@ -38,6 +38,7 @@
         {
             if (data.Id == 0)
             {
+                data.status_sync = "CREATE";
                 data.id_sync = Validation.RandomSecurity();
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
