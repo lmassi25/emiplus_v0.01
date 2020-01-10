@@ -60,7 +60,7 @@ namespace Emiplus.Controller
         private string _path_autorizada;
 
         private int _servidorNFE = 2;
-        private int _servidorCFE = 2;
+        private int _servidorCFE = 1;
 
         private string TECNOSPEED_GRUPO = "Destech";
         private string TECNOSPEED_USUARIO = "admin";
