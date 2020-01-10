@@ -123,6 +123,7 @@ namespace Emiplus.View.Common
         public static string financeiroPage { get; set; }
         public static int idCaixa { get; set; }
         public static string CategoriaPage { get; set; }
+        public static bool syncActive { get; set; }
 
         public Home()
         {
@@ -167,6 +168,7 @@ namespace Emiplus.View.Common
 
             Sync f = new Sync();
             f.Show();
+            f.Hide();
         }
 
         /// <summary>
