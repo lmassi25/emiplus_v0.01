@@ -1352,7 +1352,7 @@ namespace Emiplus.Controller
                 else
                 {
                     xml.WriteElementString("CNPJ", "05681389000100");
-                    xml.WriteElementString("signAC", "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT");
+                    xml.WriteElementString("signAC", IniFile.Read("Assinatura", "SAT"));
                     xml.WriteElementString("numeroCaixa", "001");
                 }
             }
