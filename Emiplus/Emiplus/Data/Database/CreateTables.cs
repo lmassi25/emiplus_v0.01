@@ -200,48 +200,49 @@ namespace Emiplus.Data.Database
             var formaPgto = dbLocal.Select(@"SELECT NOME FROM FORMAPGTO");
             if (formaPgto.Count() == 0)
             {
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'DINHEIRO');");
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CHEQUE');");
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE DÉBITO');");
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE CRÉDITO');");
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CREDIÁRIO');");
-                dbLocal.Select(@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'BOLETO');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'DINHEIRO');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CHEQUE');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE DÉBITO');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CARTÃO DE CRÉDITO');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'CREDIÁRIO');");
+                dbLocal.Select($@"INSERT INTO FORMAPGTO (EXCLUIR, NOME) VALUES (0, 'BOLETO');");
             }
 
             var despesas = dbLocal.Select(@"SELECT NOME FROM CATEGORIA");
             if (despesas.Count() == 0)
             {
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Aluguel', 'Despesas', {Validation.RandomSecurity()}51, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Água', 'Despesas', {Validation.RandomSecurity()}58, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Energia Elétrica', 'Despesas', {Validation.RandomSecurity()}68, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'IPTU', 'Despesas', {Validation.RandomSecurity()}48, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Telefone Fixo', 'Despesas', {Validation.RandomSecurity()}78, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Telefone Celular Empresarial', 'Despesas', {Validation.RandomSecurity()}69, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Internet', 'Despesas', {Validation.RandomSecurity()}84, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Manutenção Predial', 'Despesas', {Validation.RandomSecurity()}78, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Seguro Predial', 'Despesas', {Validation.RandomSecurity()}74, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Serviço de Limpeza', 'Despesas', {Validation.RandomSecurity()}12, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Salários', 'Despesas', {Validation.RandomSecurity()}13, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Previdência Social (INSS)', 'Despesas', {Validation.RandomSecurity()}14, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'FGTS', 'Despesas', {Validation.RandomSecurity()}15, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, '13° Salário', 'Despesas', {Validation.RandomSecurity()}16, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Férias', 'Despesas', {Validation.RandomSecurity()}17, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Horas Extras', 'Despesas', {Validation.RandomSecurity()}18, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Rescisão Contratual', 'Despesas', {Validation.RandomSecurity()}19, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Comissão', 'Despesas', {Validation.RandomSecurity()}20, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Vale Transporte', 'Despesas', {Validation.RandomSecurity()}21, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Plano de Saúde', 'Despesas', {Validation.RandomSecurity()}22, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Vale Refeição', 'Despesas', {Validation.RandomSecurity()}23, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Adiantamento', 'Despesas', {Validation.RandomSecurity()}24, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Tarifas Bancárias', 'Despesas', {Validation.RandomSecurity()}25, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Alvará', 'Despesas', {Validation.RandomSecurity()}26, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Contribuição Sindical', 'Despesas', {Validation.RandomSecurity()}27, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Pró-labora', 'Despesas', {Validation.RandomSecurity()}28, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Distribuição de lucros', 'Despesas', {Validation.RandomSecurity()}29, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Contador', 'Despesas', {Validation.RandomSecurity()}60, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Combustível', 'Despesas', {Validation.RandomSecurity()}61, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Correios', 'Despesas', {Validation.RandomSecurity()}62, 'CREATE');");
-                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Marketing e Publicidade', 'Despesas', {Validation.RandomSecurity()}63, 'CREATE');");
+                int idSync = Validation.RandomSecurity();
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Aluguel', 'Despesas', '{idSync + 51}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Água', 'Despesas', '{idSync + 52}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Energia Elétrica', 'Despesas', '{idSync + 53}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'IPTU', 'Despesas', '{idSync + 54}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Telefone Fixo', 'Despesas', '{idSync + 55}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Telefone Celular Empresarial', 'Despesas', '{idSync + 56}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Internet', 'Despesas', '{idSync + 57}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Manutenção Predial', 'Despesas', '{idSync + 58}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Seguro Predial', 'Despesas', '{idSync + 59}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Serviço de Limpeza', 'Despesas', '{idSync + 60}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Salários', 'Despesas', '{idSync + 61}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Previdência Social (INSS)', 'Despesas', '{idSync + 62}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'FGTS', 'Despesas', '{idSync + 63}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, '13° Salário', 'Despesas', '{idSync + 64}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Férias', 'Despesas', '{idSync + 65}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Horas Extras', 'Despesas', '{idSync + 66}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Rescisão Contratual', 'Despesas', '{idSync + 67}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Comissão', 'Despesas', '{idSync + 68}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Vale Transporte', 'Despesas', '{idSync + 69}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Plano de Saúde', 'Despesas', '{idSync + 70}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Vale Refeição', 'Despesas', '{idSync + 71}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Adiantamento', 'Despesas', '{idSync + 72}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Tarifas Bancárias', 'Despesas', '{idSync + 73}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Alvará', 'Despesas', '{idSync + 74}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Contribuição Sindical', 'Despesas', '{idSync + 75}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Pró-labora', 'Despesas', '{idSync + 76}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Distribuição de lucros', 'Despesas', '{idSync + 77}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Contador', 'Despesas', '{idSync + 78}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Combustível', 'Despesas', '{idSync + 79}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Correios', 'Despesas', '{idSync + 80}', 'CREATE');");
+                dbLocal.Select($@"INSERT INTO CATEGORIA (EXCLUIR, NOME, TIPO, ID_SYNC, STATUS_SYNC) VALUES (0, 'Marketing e Publicidade', 'Despesas', '{idSync + 81}', 'CREATE');");
             }
         }
 

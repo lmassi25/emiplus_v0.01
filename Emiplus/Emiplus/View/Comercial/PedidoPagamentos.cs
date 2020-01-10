@@ -236,8 +236,9 @@ namespace Emiplus.View.Comercial
             {
                 if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                 {
-                    PedidoImpressao print = new PedidoImpressao();
-                    print.Print(IdPedido);
+                    new Controller.Pedido().Imprimir(IdPedido);
+                    //PedidoImpressao print = new PedidoImpressao();
+                    //print.Print(IdPedido);
                 }
 
                 try
@@ -400,8 +401,7 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F11:
-                    new PedidoImpressao().Print(IdPedido);
-                    e.SuppressKeyPress = true;
+                    Concluir();
                     break;
                 case Keys.F12:
                     Concluir();

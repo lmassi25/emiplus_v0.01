@@ -137,6 +137,7 @@
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
+                data.status_sync = "CREATE";
                 data.Id_Caixa = Home.idCaixa;
                 data.Criado = DateTime.Now;
                 data.Emissao = DateTime.Now;
@@ -145,6 +146,7 @@
             }
             else
             {
+                data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) != 1)
                     return false;
@@ -155,7 +157,7 @@
 
         public bool Remove(int id, string column = "ID", bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update(column, id) == 1)
             {
                 if (message)

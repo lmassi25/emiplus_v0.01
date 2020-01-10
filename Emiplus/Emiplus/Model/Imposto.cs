@@ -53,53 +53,6 @@
         public string status_sync { get; set; }
         #endregion
 
-        #region SQL
-
-        //CREATE TABLE Impostos
-        //(
-        //    id integer not null primay key,
-        //    tipo integer,
-        //    excluir integer,
-        //    criado timestamp,
-        //    atualizado timestamp,
-        //    deletado timestamp,
-        //    empresaid integer,
-        //    nome varchar(255),
-        //    icms varchar(10),
-        //    IcmsReducaoAliq numeric(18,4),
-        //    IcmsAliq numeric(18,4),
-        //    IcmsStIva numeric(18,4),
-        //    IcmsStReducaoAliq numeric(18,4),
-        //    IcmsStAliq numeric(18,4),
-        //    Ipi varchar(10),
-        //    IpiAliq numeric(18,4),
-        //    Pis varchar(10),
-        //    PisAliq numeric(18,4),
-        //    Cofins varchar(10),
-        //    CofinsAliq numeric(18,4),
-        //);
-
-        //CREATE GENERATOR GEN_IMPOSTO_ID;
-
-        //SET TERM !! ;
-        //        CREATE TRIGGER IMPOSTO_BI FOR IMPOSTO
-        //        ACTIVE BEFORE INSERT POSITION 0
-        //AS
-        //DECLARE VARIABLE tmp DECIMAL(18,0);
-        //        BEGIN
-        //          IF(NEW.ID IS NULL) THEN
-        //           NEW.ID = GEN_ID(GEN_IMPOSTO_ID, 1);
-        //        ELSE
-        //        BEGIN
-        //    tmp = GEN_ID(GEN_IMPOSTO_ID, 0);
-        //    if (tmp< new.ID) then
-        //     tmp = GEN_ID(GEN_IMPOSTO_ID, new.ID - tmp);
-        //        END
-        //      END!!
-        //SET TERM; !!
-
-        #endregion 
-
         public bool Save(Imposto data)
         {
             if (ValidarDados(data))            
@@ -108,6 +61,7 @@
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
+                data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
@@ -121,6 +75,7 @@
             }
             else
             {
+                data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
@@ -138,7 +93,7 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Imposto removido com sucesso.", Alert.AlertType.info);

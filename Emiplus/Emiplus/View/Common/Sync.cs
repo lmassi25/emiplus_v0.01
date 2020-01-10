@@ -159,8 +159,8 @@ namespace Emiplus.View.Common
                 await RunSyncAsync("categoria");
                 await RunSyncAsync("caixa_mov");
                 await RunSyncAsync("categoria");
-                await RunSyncAsync("etiqueta");
-                await RunSyncAsync("formapgto");
+                // await RunSyncAsync("etiqueta");
+                // await RunSyncAsync("formapgto");
                 await RunSyncAsync("imposto");
                 await RunSyncAsync("item");
                 await RunSyncAsync("item_mov_estoque");

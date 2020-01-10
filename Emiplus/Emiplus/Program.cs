@@ -5,13 +5,14 @@ using Emiplus.Properties;
 using System.Collections;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Emiplus
 {
     static class Program
     {
-        //public static string URL_BASE = "https://www.emiplus.com.br";
-        public static string URL_BASE = "http://localhost/app";
+        public static string URL_BASE = "https://www.emiplus.com.br";
 
         /// <summary>
         /// Caminho definido no Config.ini
@@ -38,16 +39,15 @@ namespace Emiplus
             userPermissions.Clear();   
             PATH_BASE = IniFile.Read("Path", "LOCAL");
 
-            try
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Carregar());
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.ToString(), "error");
-            }
+            //Application.ThreadException += new ThreadExceptionEventHandler(ErrorHandlerForm.Form1_UIThreadException);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Carregar());
+
+            //EventLog myLog = new EventLog();
+            //myLog.Source = "ThreadException";
+            //myLog.WriteEntry("\n\nStack Trace:\n");
+
         }
 
         public static void SetPermissions()

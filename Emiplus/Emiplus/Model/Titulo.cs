@@ -36,7 +36,7 @@
         public double Recebido { get; set; }
         public string Baixa_data { get; set; }
         public double Baixa_total { get; set; }
-        public double Baixa_id_formapgto { get; set; }
+        public int Baixa_id_formapgto { get; set; }
         public int Id_Caixa_Mov { get; set; }
         public string Obs { get; set; }
         public int id_usuario { get; set; } = Settings.Default.user_id;
@@ -91,6 +91,7 @@
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
+                data.status_sync = "CREATE";
                 data.Emissao = Validation.DateNowToSql();
                 data.Criado = DateTime.Now;
 
@@ -108,6 +109,7 @@
             }
             else
             {
+                data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
@@ -127,7 +129,7 @@
 
         public bool RemoveIdCaixaMov(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update("ID_CAIXA_MOV", id) == 1)
             {
                 Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
@@ -140,7 +142,7 @@
         
         public bool Remove(int id, string column = "ID", bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now };
+            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update(column, id) == 1)
             {
                 if (message)
