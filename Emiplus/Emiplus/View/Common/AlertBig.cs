@@ -156,6 +156,7 @@ namespace Emiplus.View.Common
                     break;
             }
 
+            Eventos();
             Retorno();
         }
 
@@ -203,6 +204,40 @@ namespace Emiplus.View.Common
                     Close();
                     break;
             }
+        }
+        
+        /// <summary>
+        /// Eventos do form
+        /// </summary>
+        public void Eventos()
+        {
+            btnSim.Enter += (s, e) =>
+            {
+                btnSim.BackColorState.Enabled = Color.FromArgb(16, 150, 73);
+                btnSim.BackColorState.Hover = Color.FromArgb(16, 150, 73);
+                btnSim.Border.Color = Color.FromArgb(6, 102, 47);
+                btnSim.Border.HoverColor = Color.FromArgb(6, 102, 47);
+
+                btnNo.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
+                btnNo.BackColorState.Hover = Color.FromArgb(255, 40, 81);
+                btnNo.Border.Color = Color.FromArgb(241, 33, 73);
+                btnNo.Border.HoverColor = Color.FromArgb(241, 33, 73);
+                this.Refresh();
+            };
+
+            btnNo.Enter += (s, e) =>
+            {
+                btnSim.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
+                btnSim.BackColorState.Hover = Color.FromArgb(46, 204, 113);
+                btnSim.Border.Color = Color.FromArgb(39, 192, 104);
+                btnSim.Border.HoverColor = Color.FromArgb(39, 192, 104);
+
+                btnNo.BackColorState.Enabled = Color.FromArgb(170, 9, 40);
+                btnNo.BackColorState.Hover = Color.FromArgb(170, 9, 40);
+                btnNo.Border.Color = Color.FromArgb(135, 4, 29);
+                btnNo.Border.HoverColor = Color.FromArgb(135, 4, 29);
+                this.Refresh();
+            };
         }
     }
 }

@@ -201,7 +201,8 @@ namespace Emiplus.View.Comercial
                 if (Home.pedidoPage == "Cupons")
                 {
                     OpcoesCfe.tipoTela = 1;
-                    OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);                    
+                    OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    OpcoesCfe.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);                    
                     OpcoesCfe f = new OpcoesCfe();
                     f.Show();
                     return;

@@ -21,6 +21,7 @@ using Microsoft.Win32;
 using System.Threading;
 using ESC_POS_USB_NET.Printer;
 using System.Drawing;
+using Emiplus.View.Comercial;
 
 namespace Emiplus.Controller
 {
@@ -160,8 +161,8 @@ namespace Emiplus.Controller
                         Directory.CreateDirectory(_path_autorizada);
                     }
 
-                    if (Pedido > 0)
-                        _nota = new Model.Nota().FindByIdPedidoAndTipo(Pedido, tipo).First<Model.Nota>();
+                    //if (Pedido > 0)
+                    //    _nota = new Model.Nota().FindByIdPedidoAndTipoAndStatus(Pedido, tipo).First<Model.Nota>();
 
                     break;
             }
@@ -212,7 +213,7 @@ namespace Emiplus.Controller
                 _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             }
 
-            if(Settings.Default.empresa_nfe_servidornfe.ToString() == "2" && tipo == "CFe")
+            if(IniFile.Read("Servidor", "SAT") == "Homologacao" && tipo == "CFe")
             {
                 _emitente.CPF = "08723218000186";
                 TECNOSPEED_GRUPO = "grupo-teste";
@@ -233,7 +234,7 @@ namespace Emiplus.Controller
         /// Envia
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>  
-        public string Emitir(int Pedido, string tipo = "NFe")
+        public string Emitir(int Pedido, string tipo = "NFe", int Nota = 0)
         {
             Start(Pedido, tipo);
 
@@ -241,6 +242,8 @@ namespace Emiplus.Controller
             {
                 if(tipo == "CFe")
                 {
+                    _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
+
                     var itens = new Model.PedidoItem().Query()
                         .LeftJoin("item", "item.id", "pedido_item.item")
                         .Select("pedido_item.id")
@@ -273,7 +276,7 @@ namespace Emiplus.Controller
         /// Cancelar
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>  
-        public string Cancelar(int Pedido, string tipo = "NFe", string justificativa = "")
+        public string Cancelar(int Pedido, string tipo = "NFe", string justificativa = "", int Nota = 0)
         {
             Start(Pedido, tipo);
 
@@ -302,6 +305,14 @@ namespace Emiplus.Controller
 
                     case "CFe":
 
+                        _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Autorizada").FirstOrDefault<Model.Nota>();
+
+                        if(_nota == null)
+                        {
+                            _msg = "Problema ao cancelar cupom fiscal. Cupom autorizado não identificado!";
+                            return _msg;
+                        }
+
                         CriarXML(Pedido, "CFe", 1);
 
                         var arq = new XmlDocument();
@@ -326,25 +337,28 @@ namespace Emiplus.Controller
                             if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
                                 Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
 
-                            string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+                            string ChaveDeAcesso = "", ChaveDeAcessoCanc = "",  nr_Nota = "", assinatura_qrcode = "";
 
                             try
                             {
                                 XmlDocument oXML = new XmlDocument();
                                 oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
 
-                                ChaveDeAcesso = oXML.SelectSingleNode("/CFeCanc/infCFe").Attributes.GetNamedItem("chCanc").Value;
+                                ChaveDeAcesso = oXML.SelectSingleNode("/CFeCanc/infCFe").Attributes.GetNamedItem("Id").Value;
+                                ChaveDeAcessoCanc = oXML.SelectSingleNode("/CFeCanc/infCFe").Attributes.GetNamedItem("chCanc").Value;
+
+                                nr_Nota = oXML.SelectSingleNode("/CFeCanc/infCFe/ide").ChildNodes[4].InnerText;
                                 assinatura_qrcode = oXML.SelectSingleNode("/CFeCanc/infCFe/ide").ChildNodes[10].InnerText;
 
                                 var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                                doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
+                                doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\CFeCanc" + ChaveDeAcesso.Replace("CFe", "") + ".xml");
 
                                 //------------------------nota salva
                                 if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
                                     Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
 
                                 doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                                doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+                                doc.Save(_path_autorizada + "\\bkp\\CFeCanc" + ChaveDeAcesso.Replace("CFe", "") + ".xml");
                                 //------------------------nota salva
 
                                 ////------------------------
@@ -358,11 +372,21 @@ namespace Emiplus.Controller
 
                             _nota.Tipo = tipo;
                             _nota.Status = "Cancelado";
-                            //_nota.nr_Nota = nr_Nota;
-                            //_nota.id_pedido = 0;
+                            _nota.Criado = DateTime.Now;
+                            //-----------------------------------N° e Chave de acesso do cupom que foi emitido e agora está cancelado
+                            _nota.Serie = _nota.nr_Nota;
+                            _nota.correcao = ChaveDeAcessoCanc;
+                            //-----------------------------------N° e Chave de acesso do cupom que foi emitido e agora está cancelado
+                            _nota.nr_Nota = nr_Nota;                            
                             _nota.ChaveDeAcesso = ChaveDeAcesso;
                             _nota.assinatura_qrcode = assinatura_qrcode;
                             _nota.Save(_nota, false);
+                        }
+                        else
+                        {
+                            StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + "Canc.txt", false, Encoding.UTF8);
+                            txt.Write(_msg);
+                            txt.Close();
                         }
 
                         break;
@@ -387,194 +411,289 @@ namespace Emiplus.Controller
             Start(Pedido, tipo);
 
             BrowserNfe browser = new BrowserNfe();
-            var pdf = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
-
-            new Log().Add("PRINTER", pdf, Log.LogType.info);
-
+            
             switch (tipo)
             {
                 case "CFe":
 
-                    #region CFE 
+                    _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido).FirstOrDefault<Model.Nota>();
 
-                    var printername = IniFile.Read("Printer", "SAT");
-
-                    if(printername == null)
-                        return "";
-
-                    Printer printer = new Printer(printername);
-
-                    //using (WebClient wc = new WebClient())
-                    //{
-                    //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
-                    //    MemoryStream stream = new MemoryStream(originalData);
-                    //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
-                    //    Bitmap bitmap = new Bitmap(img);
-                    //    printer.Image(bitmap);
-                    //}
-
-                    printer.AlignCenter();
-                    printer.BoldMode(_emitente.Fantasia);
-                    printer.Append(_emitente.Nome);
-                    printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
-                    printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
-                    printer.Append(_emitenteContato.Telefone);
-
-                    printer.NewLines(2);
-
-                    printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
-                    printer.Separator();
-
-                    printer.BoldMode("Extrato N°" + _nota.nr_Nota);
-                    printer.BoldMode("CUPOM FISCAL ELETRÔNICO - SAT");
-                    printer.Separator();
-
-                    printer.AlignLeft();
-                    printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);
-                    printer.Separator();
-
-                    printer.AlignCenter();
-                    printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
-                    printer.Separator();
-
-                    //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
-
-                    itens = new Model.PedidoItem().Query()
-                    .LeftJoin("item", "pedido_item.item", "item.id")
-                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
-                    .Where("pedido_item.pedido", Pedido)
-                    .Where("pedido_item.excluir", 0)
-                    .Where("pedido_item.tipo", "Produtos")
-                    .OrderBy("pedido_item.id")
-                    .Get();
-
-                    int count = 0;
-
-                    foreach (var data in itens)
+                    if (_nota.Status == "Autorizada")
                     {
-                        count++;
-                        printer.Append(AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
-                    }
+                        #region CFE AUTORIZADO
 
-                    printer.NewLines(2);
+                        //verificar status do registro e gerar dois tipo de impressao 
 
-                    printer.Append(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)));
-                    printer.Append(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)));
-                    printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
-                    
-                    printer.NewLines(2);
+                        var printername = IniFile.Read("Printer", "SAT");
 
-                    //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-                    //total = total + Validation.ConvertToDouble(data.TOTAL);
+                        if (printername == null)
+                            return "";
 
-                    string formapgto = "";
+                        Printer printer = new Printer(printername);
 
-                    pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-                    foreach (var data in pagamentos)
-                    {
-                        switch (data.ID_FORMAPGTO)
+                        //using (WebClient wc = new WebClient())
+                        //{
+                        //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                        //    MemoryStream stream = new MemoryStream(originalData);
+                        //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                        //    Bitmap bitmap = new Bitmap(img);
+                        //    printer.Image(bitmap);
+                        //}
+
+                        printer.AlignCenter();
+                        printer.BoldMode(_emitente.Fantasia);
+                        printer.Append(_emitente.Nome);
+                        printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                        printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                        printer.Append(_emitenteContato.Telefone);
+
+                        printer.NewLines(2);
+
+                        printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                        printer.Separator();
+
+                        printer.BoldMode("Extrato N°" + _nota.nr_Nota);
+                        printer.BoldMode("CUPOM FISCAL ELETRÔNICO - SAT");
+                        printer.Separator();
+
+                        printer.AlignLeft();
+                        printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);
+                        printer.Separator();
+
+                        printer.AlignCenter();
+                        printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
+                        printer.Separator();
+
+                        //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+
+                        itens = new Model.PedidoItem().Query()
+                        .LeftJoin("item", "pedido_item.item", "item.id")
+                        .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                        .Where("pedido_item.pedido", Pedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos")
+                        .OrderBy("pedido_item.id")
+                        .Get();
+
+                        int count = 0;
+
+                        foreach (var data in itens)
                         {
-                            case 1:
-                                formapgto = "Dinheiro";
-                                break;
-                            case 2:
-                                formapgto = "Cheque";
-                                break;
-                            case 3:
-                                formapgto = "Cartão de Débito";
-                                break;
-                            case 4:
-                                formapgto = "Cartão de Crédito";
-                                break;
-                            case 5:
-                                formapgto = "Crediário";
-                                break;
-                            case 6:
-                                formapgto = "Boleto";
-                                break;
-                            default:
-                                formapgto = "N/D";
-                                break;
+                            count++;
+                            printer.Append(AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
                         }
 
-                        printer.Append(AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL)));
+                        printer.NewLines(2);
+
+                        printer.Append(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)));
+                        printer.Append(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)));
+                        printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
+
+                        printer.NewLines(2);
+
+                        //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                        //total = total + Validation.ConvertToDouble(data.TOTAL);
+
+                        string formapgto = "";
+
+                        pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                        foreach (var data in pagamentos)
+                        {
+                            switch (data.ID_FORMAPGTO)
+                            {
+                                case 1:
+                                    formapgto = "Dinheiro";
+                                    break;
+                                case 2:
+                                    formapgto = "Cheque";
+                                    break;
+                                case 3:
+                                    formapgto = "Cartão de Débito";
+                                    break;
+                                case 4:
+                                    formapgto = "Cartão de Crédito";
+                                    break;
+                                case 5:
+                                    formapgto = "Crediário";
+                                    break;
+                                case 6:
+                                    formapgto = "Boleto";
+                                    break;
+                                default:
+                                    formapgto = "N/D";
+                                    break;
+                            }
+
+                            printer.Append(AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL)));
+                        }
+
+                        printer.Append(AddSpaces("Troco R$", "0,00"));
+
+                        printer.Separator();
+
+                        printer.AlignLeft();
+                        printer.Append("OBSERVAÇÕES DO CONTRIBUINTE");
+                        printer.NewLines(2);
+
+                        printer.CondensedMode("*Valor aproximado dos tributos do item");
+
+                        var totais = new Model.PedidoItem().Query()
+                        .LeftJoin("item", "pedido_item.item", "item.id")
+                        .SelectRaw("SUM(pedido_item.federal) as federal, SUM(pedido_item.estadual) as estadual, SUM(pedido_item.municipal) as municipal")
+                        .Where("pedido_item.pedido", Pedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos")
+                        .Get();
+
+                        foreach (var data in totais)
+                        {
+                            printer.CondensedMode(AddSpaces("Valor aproximado dos tributos deste cupom ", Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL, true)));
+                        }
+
+                        printer.CondensedMode("(conforme Lei Fed.12.741/2012)");
+
+                        printer.Separator();
+
+                        printer.AlignCenter();
+                        printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
+                        printer.Append(_nota.Criado.ToString());
+                        printer.NewLines(2);
+
+                        string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                        cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+
+                        printer.CondensedMode(cfeid);
+
+                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
+                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
+
+                        //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
+
+                        string qrcode = "", total_qrcode = "";
+                        total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                        if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                        {
+                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                        }
+                        else
+                        {
+                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+                        }
+
+                        //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                        printer.QrCode(qrcode);
+
+                        printer.NewLines(3);
+
+                        printer.AlignCenter();
+                        printer.Append("Consulte o QRCode pelo aplicativo De olho na");
+                        printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
+
+                        printer.FullPaperCut();
+                        printer.PrintDocument();
+
+                        return "Impresso com sucesso!";
+
+                        #endregion
                     }
-
-                    printer.Append(AddSpaces("Troco R$", "0,00"));
-
-                    printer.Separator();
-
-                    printer.AlignLeft();
-                    printer.Append("OBSERVAÇÕES DO CONTRIBUINTE");
-                    printer.NewLines(2);
-
-                    printer.CondensedMode("*Valor aproximado dos tributos do item");
-
-                    var totais = new Model.PedidoItem().Query()
-                    .LeftJoin("item", "pedido_item.item", "item.id")
-                    .SelectRaw("SUM(pedido_item.federal) as federal, SUM(pedido_item.estadual) as estadual, SUM(pedido_item.municipal) as municipal")
-                    .Where("pedido_item.pedido", Pedido)
-                    .Where("pedido_item.excluir", 0)
-                    .Where("pedido_item.tipo", "Produtos")
-                    .Get();
-
-                    foreach (var data in totais)
+                    else if (_nota.Status == "Cancelado")
                     {
-                        printer.CondensedMode(AddSpaces("Valor aproximado dos tributos deste cupom ", Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL, true)));
+                        #region CFE CANCELADO
+
+                        var printername = IniFile.Read("Printer", "SAT");
+
+                        if (printername == null)
+                            return "";
+
+                        Printer printer = new Printer(printername);
+
+                        //using (WebClient wc = new WebClient())
+                        //{
+                        //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                        //    MemoryStream stream = new MemoryStream(originalData);
+                        //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                        //    Bitmap bitmap = new Bitmap(img);
+                        //    printer.Image(bitmap);
+                        //}
+
+                        printer.AlignCenter();
+                        printer.BoldMode(_emitente.Fantasia);
+                        printer.Append(_emitente.Nome);
+                        printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                        printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                        printer.Append(_emitenteContato.Telefone);
+
+                        printer.NewLines(2);
+
+                        printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                        printer.Separator();
+
+                        printer.BoldMode("Extrato N°" + _nota.nr_Nota);
+                        printer.BoldMode("CUPOM FISCAL ELETRONICO - SAT");
+                        printer.BoldMode("CANCELADO");
+                        printer.Separator();
+
+                        printer.AlignLeft();
+                        printer.BoldMode("DADOS DO CUPOM FISCAL ELETRONICO CANCELADO");
+                        printer.NewLines(2);
+                        printer.Append("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf);                        
+                        printer.BoldMode(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));                        
+                        printer.Separator();
+
+                        printer.AlignCenter();
+                        printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
+                        printer.Append(_nota.Criado.ToString());
+                        printer.NewLines(2);
+
+                        string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
+                        cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+
+                        printer.CondensedMode(cfeid);
+
+                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
+                        printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
+
+                        //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
+
+                        string qrcode = "", total_qrcode = "";
+                        total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
+
+                        if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                        {
+                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
+                        }
+                        else
+                        {
+                            qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
+                        }
+
+                        //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
+                        printer.QrCode(qrcode);
+
+                        printer.NewLines(3);
+
+                        printer.AlignCenter();
+                        printer.Append("Consulte o QRCode pelo aplicativo De olho na");
+                        printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
+
+                        printer.FullPaperCut();
+                        printer.PrintDocument();
+
+                        return "Impresso com sucesso!";
+                        
+                        #endregion
                     }
-                                        
-                    printer.CondensedMode("(conforme Lei Fed.12.741/2012)");
 
-                    printer.Separator();
-
-                    printer.AlignCenter();
-                    printer.Append("SAT N° " + IniFile.Read("N_SERIE", "SAT"));
-                    printer.Append(_nota.Criado.ToString());
-                    printer.NewLines(2);
-                    
-                    string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
-                    cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
-
-                    printer.CondensedMode(cfeid);
-                    
-                    printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(0, 22));
-                    printer.Code128(_nota.ChaveDeAcesso.Replace("CFe", "").Substring(22, 22));
-
-                    //cfeid + "|" + cfeData + cfeHora + "|" + "" + "|" + cfeAssinatura;
-
-                    string qrcode = "", total_qrcode = "";
-                    total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
-
-                    if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
-                    {
-                        qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
-                    }
-                    else
-                    {
-                        qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
-                    }
-
-                    //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
-                    printer.QrCode(qrcode);
-
-                    printer.NewLines(3);
-
-                    printer.AlignCenter();
-                    printer.Append("Consulte o QRCode pelo aplicativo De olho na");
-                    printer.Append("nota, disponível na AppStore(Apple) e PlayStore(Android)");
-
-                    printer.FullPaperCut();
-                    printer.PrintDocument();
-
-                    return "";
-
-                    #endregion
-
+                    break;
                 case "NFe":
 
                     #region NFE
 
-                    if (pdf.Contains(".pdf"))
+                    var pdfNFE = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
+                    new Log().Add("PRINTER", pdfNFE, Log.LogType.info);
+
+                    if (pdfNFE.Contains(".pdf"))
                     {
                         if (File.Exists(_path_autorizada + "\\NFe.pdf"))
                             File.Delete(_path_autorizada + "\\NFe.pdf");
@@ -583,7 +702,7 @@ namespace Emiplus.Controller
 
                         using (var client = new WebClient())
                         {
-                            client.DownloadFile(pdf, _path_autorizada + "\\NFe.pdf");
+                            client.DownloadFile(pdfNFE, _path_autorizada + "\\NFe.pdf");
                         }
                         
                         Thread.Sleep(1000);
@@ -602,7 +721,7 @@ namespace Emiplus.Controller
                     }
                     else
                     {
-                        return pdf;
+                        return pdfNFE;
                     }
 
                     #endregion
@@ -627,7 +746,6 @@ namespace Emiplus.Controller
                     case "NFe":
 
                         _msg = RequestEmail(email, tipo);
-
                         break;
                 }
 
@@ -756,8 +874,10 @@ namespace Emiplus.Controller
                     xmlCanc.WriteStartElement("emit");
                     xmlCanc.WriteEndElement();
 
-                    xmlCanc.WriteStartElement("dest");
-                    xmlCanc.WriteEndElement();
+                    if (!String.IsNullOrEmpty(_pedido.cfe_cpf))                    
+                        xmlCanc.WriteElementString("dest", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                    else
+                        xmlCanc.WriteElementString("dest", "");
 
                     xmlCanc.WriteStartElement("total");
                     xmlCanc.WriteEndElement();
@@ -993,6 +1113,7 @@ namespace Emiplus.Controller
 
                         _msg = "Emitido com sucesso + conteudo notas";
                         _nota.Tipo = tipo;
+                        _nota.Criado = DateTime.Now;
                         _nota.Status = "Autorizada";
                         _nota.nr_Nota = nr_Nota;
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
@@ -1122,7 +1243,7 @@ namespace Emiplus.Controller
             }
         }
 
-        #region NFE 
+        #region XML 
 
         private int getLastNFeNr()
         {
@@ -1535,12 +1656,13 @@ namespace Emiplus.Controller
 
             if (_pedidoItem.Icms.Length == 3)
             {
-                xml.WriteStartElement("ICMSSN" + _pedidoItem.Icms);
+                if(tipo == "CFe" && _pedidoItem.Icms == "500")
+                    xml.WriteStartElement("ICMSSN102");
+                else
+                    xml.WriteStartElement("ICMSSN" + _pedidoItem.Icms);
             }
             else
-            {
                 xml.WriteStartElement("ICMS" + _pedidoItem.Icms);
-            }
 
             switch (_pedidoItem.Icms)
             {
@@ -1607,6 +1729,7 @@ namespace Emiplus.Controller
                     xml.WriteElementString("CSOSN", "102");
                     break;
                 case "201":
+
                     if (tipo == "NFe")
                         xml.WriteElementString("orig", _pedidoItem.Origem);
                     else
@@ -1640,8 +1763,11 @@ namespace Emiplus.Controller
                     else
                         xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "500");
-                    xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
-                    xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
+                    if (tipo != "CFe")
+                    {
+                        xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
+                        xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
+                    }
                     break;
                 case "900":
                     if (tipo == "NFe")
@@ -2432,7 +2558,7 @@ namespace Emiplus.Controller
 
         #endregion
 
-        #region CODEBARRA
+        #region CODEBAR
                 
         [DllImport("shell32.dll", EntryPoint = "ShellExecute")]
         public static extern int ShellExecuteA(int hwnd, string lpOperation,

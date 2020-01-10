@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata;
+using SqlKata.Execution;
 using System;
 
 namespace Emiplus.Model
@@ -15,7 +16,7 @@ namespace Emiplus.Model
         public int Id { get; set; }
         public string Tipo { get; set; }
         public int Excluir { get; set; }
-        public DateTime Criado { get; private set; }
+        public DateTime Criado { get; set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
@@ -44,6 +45,33 @@ namespace Emiplus.Model
         public SqlKata.Query FindByIdPedidoAndTipo(int id, string tipo)
         {
             return Query().Where("tipo", tipo).Where("id_pedido", id);
+        }
+        
+        public SqlKata.Query FindByIdPedidoUltReg(int Pedido, string status = "")
+        {
+            int id = 0;
+
+            try
+            {
+                var res = new Model.Nota()
+                    .Query()
+                    .SelectRaw("MAX(ID) as TOTAL")
+                    .Where("NOTA.ID_PEDIDO", Pedido);
+
+                if (!String.IsNullOrEmpty(status))
+                    res.Where("NOTA.STATUS", status);
+
+                foreach (var item in res.Get())
+                {
+                    id = Validation.ConvertToInt32(item.TOTAL);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Query().Where("NOTA.ID", id);
         }
 
         public bool Save(Nota data, bool message = true)

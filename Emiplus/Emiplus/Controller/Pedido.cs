@@ -191,7 +191,7 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota")
                 //.Where("nota.excluir", excluir)
                 //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
                 //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
@@ -244,7 +244,7 @@ namespace Emiplus.Controller
                     q => q.WhereLike("pessoa.nome", search, false)
                 );
 
-            query.OrderByDesc("pedido.id");
+            query.OrderByDesc("nota.id");
 
             return query.GetAsync<dynamic>();
         }
@@ -278,7 +278,7 @@ namespace Emiplus.Controller
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
-            Table.ColumnCount = 12;
+            Table.ColumnCount = 13;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -348,6 +348,9 @@ namespace Emiplus.Controller
             Table.Columns[11].Name = "TIPO";
             Table.Columns[11].Visible = false;
 
+            Table.Columns[12].Name = "IDNOTA";
+            Table.Columns[12].Visible = false;
+
             Table.Rows.Clear();
                         
             if (Data == null)
@@ -381,7 +384,7 @@ namespace Emiplus.Controller
                     statusNfePedido = item.STATUS == 1 ? "Finalizado" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
 
                 string n_cfe = "", n_nfe = "";
-                foreach (dynamic item2 in GetDadosNota(item.ID))
+                foreach (dynamic item2 in tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID))
                 {
                     if (item2.TIPONFE == "NFe")
                     {
@@ -393,7 +396,10 @@ namespace Emiplus.Controller
 
                     if (item2.TIPONFE == "CFe")
                     {
-                        n_cfe = item2.NFE;
+                        if (tipo == "Vendas" && item2.STATUSNFE == "Cancelado")
+                            n_cfe = "";
+                        else
+                            n_cfe = item2.NFE;
 
                         if (tipo == "Cupons")
                             statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
@@ -401,32 +407,39 @@ namespace Emiplus.Controller
                 }
 
                 Table.Rows.Add(
+                    //tipo == "Notas" ? item.ID : tipo == "Cupons" ? item.IDNOTA : item.ID,
                     item.ID,
                     tipo == "Notas" ? n_nfe : tipo == "Cupons" ? n_cfe : item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
                     item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
-                    item.CRIADO,
+                    tipo == "Notas" || tipo == "Cupons" ? item.CRIADONOTA : item.CRIADO,
                     statusNfePedido,
                     item.EXCLUIR,
                     n_nfe,
                     n_cfe,
-                    item.TIPO
+                    item.TIPO,
+                    tipo == "Notas" ? item.IDNOTA : tipo == "Cupons" ? item.IDNOTA : 0
                 );
             } 
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private IEnumerable<dynamic> GetDadosNota(int idpedido)
+        private IEnumerable<dynamic> GetDadosNota(int idpedido = 0, int idnota = 0)
         {
             var query = new Model.Nota().Query();
 
             query
                 .Select("nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
-                .Where("nota.excluir", 0)
-                .Where("nota.id_pedido", idpedido);
+                .Where("nota.excluir", 0);
+
+            if(idpedido > 0)
+                query.Where("nota.id_pedido", idpedido);
+
+            if (idnota > 0)
+                query.Where("nota.id", idnota);
 
             return query.Get();
         }

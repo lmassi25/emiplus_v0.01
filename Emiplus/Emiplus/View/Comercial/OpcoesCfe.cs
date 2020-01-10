@@ -10,13 +10,11 @@ namespace Emiplus.View.Comercial
     public partial class OpcoesCfe : Form
     {
         public static int idPedido { get; set; } // id pedido
+        public static int idNota { get; set; } // id nota
         public static int tipoTela { get; set; } = 0;
-
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
-
         int p1 = 0;
-
         private string _msg;
 
         public OpcoesCfe()
@@ -31,8 +29,13 @@ namespace Emiplus.View.Comercial
 
         private string checkCupom()
         {
-            var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+            Model.Nota checkNota = new Model.Nota();
 
+            if(idNota > 0)
+                checkNota = _modelNota.FindById(idNota).FirstOrDefault<Model.Nota>();
+            else
+                checkNota = _modelNota.FindByIdPedidoUltReg(idPedido).FirstOrDefault<Model.Nota>();
+            
             if (checkNota == null)
                 return null;
 
@@ -62,18 +65,15 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                if (checkCupom() == null)
+                if (checkCupom() == null || checkCupom() == "Pendente")                
                     Emitir.Text = "Emitir";
-                else
+                else if (checkCupom() == "Autorizada" || checkCupom() == "Autorizado")
+                    Emitir.Text = "Cancelar";
+                else if (checkCupom() == "Cancelada" || checkCupom() == "Cancelado")
                 {
-                    if(checkCupom() == "Autorizada")
-                        Emitir.Text = "Cancelar";
-
-                    if (checkCupom() == "Cancelada")
-                    {
-                        Emitir.Visible = false;
-                        Imprimir.Location = new Point(330, 303);
-                    }
+                    Emitir.Visible = false;
+                    btnDetalhes.Visible = false;
+                    Imprimir.Location = new Point(330, 303);
                 }
             };
 
@@ -114,7 +114,11 @@ namespace Emiplus.View.Comercial
                     return;
                 }
 
+                retorno.Text = "Imprimindo cupom...";
+
                 var msg = new Controller.Fiscal().Imprimir(idPedido, "CFe");
+
+                retorno.Text = "CF-e S@T impresso com sucesso!";
             };
 
             using (var b = WorkerBackground)

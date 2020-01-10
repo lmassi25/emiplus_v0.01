@@ -271,6 +271,7 @@
             this.enviarEmail.Text = "Enviar por E-mail";
             this.enviarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.enviarEmail.UseVisualStyleBackColor = true;
+            this.enviarEmail.Visible = false;
             // 
             // btnImprimir
             // 
