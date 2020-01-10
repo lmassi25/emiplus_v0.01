@@ -1,17 +1,13 @@
-﻿using Emiplus.Data.Database;
-using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Database;
 using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Dynamic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+using RestSharp;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Properties;
+using Newtonsoft.Json;
 
 namespace Emiplus.View.Common
 {
@@ -24,170 +20,165 @@ namespace Emiplus.View.Common
         /// </summary>
         private QueryFactory connect = new Connect().Open();
 
-        /// <summary>
-        /// Acesso ao banco online
-        /// </summary>
-        private QueryFactory connectOnline = new ConnectOnline().Open();
-
         public Sync()
         {
             InitializeComponent();
             Eventos();
-
-            var cols = new[] { "id", "id_empresa", "tipo", "excluir", "criado", "atualizado", "deletado", "usuario", "saldo_inicial", "saldo_final", "saldo_final_informado", "observacao", "fechado", "terminal", "id_sync", "status_sync" };
-            
-            Console.WriteLine(Validation.RandomSecurity());
-
-            Caixa();
         }
 
-        /// <summary>
-        /// Recupera os dados das tabelas para manipulação
-        /// Função retorna os registros 'CREATE' ou 'NULL'
-        /// </summary>
-        /// <param name="Table"></param>
-        /// <returns></returns>
-        private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
+        private async Task RunSyncAsync(string table)
         {
-            var baseQuery = connect.Query().Where("status_sync", "CREATE").OrWhereNull("status_sync").OrWhere("status_sync", string.Empty);
-
-            // CREATE = criar no banco online!
-            return await baseQuery.Clone().From(Table).GetAsync();
-        }
-
-        private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string Table)
-        {
-            var baseQuery = connect.Query().Where("status_sync", "UPDATE");
-
-            // CREATE = criar no banco online!
-            return await baseQuery.Clone().From(Table).GetAsync();
-        }
-
-        private object Columns(string Table, dynamic item)
-        {
-            dynamic columns = "";
-            if (Table == "CAIXA")
-            {
-                columns = new
-                {
-                    id = item.ID,
-                    id_empresa = item.ID_EMPRESA,
-                    tipo = item.TIPO,
-                    excluir = item.EXCLUIR,
-                    criado = item.CRIADO,
-                    atualizado = item.ATUALIZADO,
-                    deletado = item.DELETADO,
-                    usuario = item.USUARIO,
-                    saldo_inicial = item.SALDO_INICIAL,
-                    saldo_final = item.SALDO_FINAL,
-                    saldo_final_informado = item.SALDO_FINAL_INFORMADO,
-                    observacao = item.OBSERVACAO,
-                    terminal = item.TERMINAL,
-                    fechado = item.FECHADO,
-                    id_sync = item.ID_SYNC,
-                    status_sync = "CREATED"
-                };
-            }
-
-            return columns;
-        }
-
-
-        #region
-        private void Caixa()
-        {
-            string table = "CAIXA";
-
             // ######### CREATE #########
-            var dataCreate = GetCreateDataAsync(table);
+            var dataCreate = await GetCreateDataAsync(table);
             if (dataCreate != null)
             {
-                foreach (dynamic item in dataCreate.Result)
+                foreach (dynamic item in dataCreate)
                 {
                     // inserie no banco online
-                    var con = connectOnline.Query(table);
-                    InsertAsync(con, table, item);
+                    dynamic obj = new
+                    {
+                        token = Program.TOKEN,
+                        id_empresa = Settings.Default.empresa_unique_id,
+                        data = JsonConvert.SerializeObject(item),
+                        status_sync = "CREATED"
+                    };
 
-                    // atualiza local (CREATE -> CREATED)
-                    UpdateAsync(connect, table, item.ID, item);
+                    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
+                    if (response["status"] == "OK")
+                        await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
                 }
             }
 
             // ######### UPDATE #########
-            var dataUpdate = GetUpdateDataAsync(table);
+            var dataUpdate = await GetUpdateDataAsync(table);
             if (dataUpdate != null)
             {
-                foreach (dynamic item in dataUpdate.Result)
+                foreach (dynamic item in dataUpdate)
                 {
-                    if (CheckCreated(table, item.ID))
+                    if (CheckCreated(table, item.ID_SYNC))
                     {
                         // inserie no banco online
-                        var con = connectOnline.Query(table);
-                        InsertAsync(con, table, item);
+                        dynamic obj = new
+                        {
+                            token = Program.TOKEN,
+                            id_empresa = Settings.Default.empresa_unique_id,
+                            data = JsonConvert.SerializeObject(item),
+                            status_sync = "CREATED"
+                        };
 
-                        // atualiza local (UPDATE -> CREATED)
-                        UpdateAsync(connect, table, item.ID, item);
+                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
+                        if (response["status"] == "OK")
+                            await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
                     }
 
                     // atualiza online (UPDATE -> CREATED)
-                    UpdateAsync(connectOnline, table, item.ID, item);
-
-                    // atualiza local (UPDATE -> CREATED)
-                    UpdateAsync(connect, table, item.ID, item);
+                    if (UpdateOnline(table, item.ID_SYNC, item))
+                        await UpdateAsync(table, item.ID_SYNC);  // atualiza local (UPDATE -> CREATED)
                 }
             }
         }
 
-        private async Task UpdateAsync(QueryFactory con, string table, int id, object item)
-        {
-            await con.Query(table).Where("id", id).UpdateAsync(Columns(table, item));
-        }
-        #endregion
-
+        #region Metodos geral
         /// <summary>
-        /// Insere os dados no banco Online
+        /// Recupera os dados das tabelas do sistema local para manipulação
+        /// Função retorna os registros 'CREATE' ou 'NULL'
         /// </summary>
-        /// <param name="con">passe a conexão com o DB online</param>
-        /// <param name="table">table do banco</param>
-        /// <param name="item">object para ser inserido</param>
-        /// <returns></returns>
-        private async Task InsertAsync(SqlKata.Query con, string table, object item)
+        private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
         {
-            await con.InsertAsync(Columns(table, item));
+            var baseQuery = connect.Query().Where("status_sync", "CREATE").OrWhereNull("status_sync").OrWhere("status_sync", string.Empty);
+
+            return await baseQuery.Clone().From(Table).GetAsync();
         }
 
         /// <summary>
-        /// Checa se o 'item' já foi inserido no banco online, true = não existe, false = já existe no banco
+        /// Recupera os dados das tabelas do sistema local para manipulação
+        /// Função retorna os registros 'UPDATE'
         /// </summary>
-        /// <param name="table"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private bool CheckCreated(string table, int id)
+        private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string Table)
         {
-            var check = connectOnline.Query(table).Where("id", id).FirstOrDefault();
-            if (check == null)
+            var baseQuery = connect.Query().Where("status_sync", "UPDATE");
+
+            return await baseQuery.Clone().From(Table).GetAsync();
+        }
+
+        /// <summary>
+        /// Atualiza o registro local, UPDATE -> CREATED
+        /// </summary>
+        ///  private async Task UpdateAsync(string table, int id, object item) => await connect.Query(table).Where("id", id).UpdateAsync(Columns(table, item));
+        private async Task UpdateAsync(string table, int id) => await connect.Query(table).Where("id_sync", id).UpdateAsync(new { status_sync = "CREATED" });
+
+        /// <summary>
+        /// Atualiza os dados no banco online
+        /// </summary>
+        private bool UpdateOnline(string table, int id, dynamic item)
+        {
+            dynamic obj = new
+            {
+                token = Program.TOKEN,
+                id_empresa = Settings.Default.empresa_unique_id,
+                data = JsonConvert.SerializeObject(item),
+                status_sync = "CREATED"
+            };
+
+            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table}/update/{id}").Content(obj, Method.POST).Response();
+            if (response["status"] == "OK")
                 return true;
 
             return false;
         }
 
+        /// <summary>
+        /// Checa se o 'item' já foi inserido no banco online, true = não existe, false = já existe no banco
+        /// </summary>
+        private bool CheckCreated(string table, int id)
+        {
+            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}").Content().Response();
+            if (response["status"].ToString() == "FAIL")
+                return true;
+
+            return false;
+        }
+        #endregion
+
         private void Eventos()
         {
-            //GetCaixaAsync();
-
-            Shown += (s, e) =>
+            Load += (s, e) =>
             {
-                backWork.RunWorkerAsync();
+                if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
+                    timer1.Start();
             };
 
-            backWork.DoWork += (s, e) =>
+            timer1.Tick += (s, e) =>
             {
+                backWork.RunWorkerAsync();
+                Home.syncActive = true;
+            };
 
+            backWork.DoWork += async (s, e) =>
+            {
+                await RunSyncAsync("categoria");
+                await RunSyncAsync("caixa_mov");
+                await RunSyncAsync("categoria");
+                await RunSyncAsync("etiqueta");
+                await RunSyncAsync("formapgto");
+                await RunSyncAsync("imposto");
+                await RunSyncAsync("item");
+                await RunSyncAsync("item_mov_estoque");
+                await RunSyncAsync("natureza");
+                await RunSyncAsync("pessoa");
+                await RunSyncAsync("pessoa_contato");
+                await RunSyncAsync("pessoa_endereco");
+                await RunSyncAsync("titulo");
+                await RunSyncAsync("nota");
+                await RunSyncAsync("pedido");
+                await RunSyncAsync("pedido_item");
             };
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
-
+                timer1.Enabled = true;
+                timer1.Start();
+                Home.syncActive = false;
             };
         }
     }

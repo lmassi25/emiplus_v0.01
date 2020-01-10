@@ -490,5 +490,17 @@ namespace Emiplus.Properties {
                 this["user_comissao"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string user_dbhost {
+            get {
+                return ((string)(this["user_dbhost"]));
+            }
+            set {
+                this["user_dbhost"] = value;
+            }
+        }
     }
 }

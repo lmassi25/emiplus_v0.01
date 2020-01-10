@@ -125,6 +125,7 @@ namespace Emiplus.View.Common
             Settings.Default.user_plan_recorrencia = jo["plano"]["recorrencia"].ToString();
             Settings.Default.user_plan_fatura = jo["plano"]["proxima_fatura"].ToString();
             Settings.Default.user_comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
+            Settings.Default.user_dbhost = jo["user"]["db_host"].ToString();
             Settings.Default.empresa_id = Validation.ConvertToInt32(jo["empresa"]["id"]);
             Settings.Default.empresa_unique_id = jo["empresa"]["id_unique"].ToString();
             Settings.Default.empresa_logo = jo["empresa"]["logo"].ToString();
