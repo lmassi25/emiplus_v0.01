@@ -67,6 +67,7 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
+            this.syncOn = new System.Windows.Forms.PictureBox();
             this.btnSendSugesttion = new System.Windows.Forms.Button();
             this.chatOnline = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@ namespace Emiplus.View.Common
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -91,6 +93,7 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.barraTituloHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.syncOn)).BeginInit();
             this.panelFormularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
@@ -603,6 +606,7 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.White;
+            this.barraTituloHome.Controls.Add(this.syncOn);
             this.barraTituloHome.Controls.Add(this.btnSendSugesttion);
             this.barraTituloHome.Controls.Add(this.chatOnline);
             this.barraTituloHome.Controls.Add(this.btnAccount);
@@ -612,6 +616,19 @@ namespace Emiplus.View.Common
             this.barraTituloHome.Name = "barraTituloHome";
             this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
             this.barraTituloHome.TabIndex = 2;
+            // 
+            // syncOn
+            // 
+            this.syncOn.BackColor = System.Drawing.Color.Transparent;
+            this.syncOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.syncOn.Image = global::Emiplus.Properties.Resources.loader_page;
+            this.syncOn.Location = new System.Drawing.Point(6, 9);
+            this.syncOn.Name = "syncOn";
+            this.syncOn.Size = new System.Drawing.Size(18, 18);
+            this.syncOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.syncOn.TabIndex = 162;
+            this.syncOn.TabStop = false;
+            this.syncOn.Visible = false;
             // 
             // btnSendSugesttion
             // 
@@ -726,6 +743,11 @@ namespace Emiplus.View.Common
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 5000;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -761,6 +783,7 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.barraTituloHome.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.syncOn)).EndInit();
             this.panelFormularios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
@@ -810,5 +833,7 @@ namespace Emiplus.View.Common
         private Button chatOnline;
         private Button btnSendSugesttion;
         private PictureBox pictureBox13;
+        public PictureBox syncOn;
+        private Timer timer1;
     }
 }

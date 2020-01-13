@@ -7,6 +7,9 @@ using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using System.Threading;
 using System.Diagnostics;
+using RestSharp;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Emiplus
 {
@@ -39,30 +42,91 @@ namespace Emiplus
             userPermissions.Clear();   
             PATH_BASE = IniFile.Read("Path", "LOCAL");
 
-            //Application.ThreadException += new ThreadExceptionEventHandler(ErrorHandlerForm.Form1_UIThreadException);
+            Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Carregar());
-
         }
 
         public static void SetPermissions()
         {
-            var jo = new RequestApi().URL($"{Program.URL_BASE}/api/permissions/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
-
-            if (jo["error"] != null && jo["error"].ToString() != "")
+            if (Support.CheckForInternetConnection())
             {
-                Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
-                return;
-            }
+                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/permissions/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
 
-            if (string.IsNullOrEmpty(jo["telas"].ToString()))
-                Program.userPermissions.Add(new { all = 1 });
+                if (jo["error"] != null && jo["error"].ToString() != "")
+                {
+                    Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(jo["telas"].ToString()))
+                    Program.userPermissions.Add(new { all = 1 });
+                else
+                {
+                    foreach (dynamic item in jo["telas"])
+                        Program.userPermissions.Add(new { Key = item.Name, Value = item.Value.ToString() });
+                }
+
+                var data = JsonConvert.SerializeObject(userPermissions);
+
+                //gravando informação em um arquivo na pasta raiz do executavel
+                System.IO.StreamWriter writerJson = System.IO.File.CreateText($".\\P{Settings.Default.user_id}.json");
+                writerJson.Write(data);
+                writerJson.Flush();
+                writerJson.Dispose();
+            } 
             else
             {
-                foreach (dynamic item in jo["telas"])
-                    Program.userPermissions.Add(new { Key = item.Name, Value = item.Value.ToString() });
+                String dataJson = System.IO.File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
+                userPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
             }
+        }
+    }
+
+    internal class CustomExceptionHandler
+    {
+        // Handle the exception event
+        public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
+        {
+            Exception e = t.Exception;
+            object obj = new
+            {
+                token = Program.TOKEN,
+                usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
+                empresa = Settings.Default.empresa_razao_social,
+                name = e.GetType().Name.ToString(),
+                error = e.StackTrace.ToString(),
+                message = e.Message.ToString()
+            };
+            new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
+
+            Error result = new Error();
+
+            // Exit the program when the user clicks Abort.
+            if (result.ShowDialog() == DialogResult.OK)
+                Application.Exit();
+        }
+
+        // Create and display the error message.
+        private static DialogResult ShowThreadExceptionDialog(Exception e)
+        {
+            object obj = new
+            {
+                token = Program.TOKEN,
+                usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
+                empresa = Settings.Default.empresa_razao_social,
+                name = e.GetType().Name.ToString(),
+                error = e.StackTrace.ToString(),
+                message = e.Message.ToString()
+            };
+            new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
+
+            string errorMsg = "Um erro ocorreu. Entre em contato com o administrador com as seguintes informações:\n\n";
+            errorMsg += String.Format("Exception Type: {0}\n\n {1}", e.GetType().Name, e.Message.ToString());
+            errorMsg += "\n\nStack Trace:\n" + e.StackTrace;
+            return MessageBox.Show(errorMsg, "Application Error",
+                MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
         }
     }
 }

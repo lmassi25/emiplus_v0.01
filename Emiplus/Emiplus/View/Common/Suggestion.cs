@@ -156,7 +156,6 @@ namespace Emiplus.View.Common
 
             btnSend.Click += (s, e) =>
             {
-                Console.WriteLine(Sugestao.Text.Length);
                 if (Sugestao.Text.Length < 15)
                 {
                     Alert.Message("Oppss", "Sua sugestão é muito curta, escreva em mais detalhes.", Alert.AlertType.error);

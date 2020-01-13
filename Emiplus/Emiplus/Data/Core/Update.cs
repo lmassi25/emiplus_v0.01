@@ -13,7 +13,7 @@ namespace Emiplus.Data.Core
         {
             using (WebClient client = new WebClient())
             {
-                string version = client.DownloadString("https://emiplus.com.br/version/version.txt");
+                string version = client.DownloadString(Program.URL_BASE + "/version/version.txt");
                 return version;
             }
         }
