@@ -299,7 +299,7 @@ namespace Emiplus.View.Comercial
                 dataFinal.Text = DateTime.Now.ToString();
 
                 var status = new ArrayList();
-                status.Add(new { ID = 0, NOME = "Todos" });
+                status.Add(new { ID = 99, NOME = "Todos" });
 
                 if (Home.pedidoPage == "Notas")
                 {
@@ -314,14 +314,14 @@ namespace Emiplus.View.Comercial
                 }
                 else
                 {
-                    status.Add(new { ID = 1, NOME = "Recebimento Pendente" });
-                    status.Add(new { ID = 2, NOME = @"Finalizado\Recebido" });
+                    status.Add(new { ID = 2, NOME = "Recebimento Pendente" });
+                    status.Add(new { ID = 1, NOME = @"Finalizado\Recebido" });
                 }
 
                 Status.DataSource = status;
                 Status.DisplayMember = "NOME";
                 Status.ValueMember = "ID";
-                Status.SelectedValue = 0;
+                Status.SelectedValue = 99;
 
                 filterTodos.Checked = true;
                 

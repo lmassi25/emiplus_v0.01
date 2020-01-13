@@ -245,6 +245,23 @@ namespace Emiplus.View.Comercial
 
             btnExit.Click += (s, e) => Close();
 
+            Load += (s, e) =>
+            {
+                Model.Pedido Pedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+                Pedido.Id = idPedido;
+                if (_modelPedido.Total < _controllerTitulo.GetLancados(idPedido))
+                {
+                    //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    //return;
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE
+                }
+                else
+                {
+                    Pedido.status = 1; //FINALIZADO\RECEBIDO
+                }
+                Pedido.Save(Pedido);
+            };
+
             btnPgtosLancado.Click += (s, e) =>
             {
                 if (labelCfe.Text != "N/D" || labelNfe.Text != "N/D")

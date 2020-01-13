@@ -142,29 +142,36 @@ namespace Emiplus.Controller
             if (usuario != 0)
                query.Where("pedido.colaborador", usuario);
 
-            if (status != 0)
+            if (status != 99)
             {
-                if(tipo == "Notas")
+                if (status != 0)
                 {
-                    //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
-                    switch (status)
+                    if (tipo == "Notas")
                     {
-                        case 1:
-                            query.Where("nota.status", null);
-                            break;
-                        case 2:
-                            query.Where("nota.status", "Autorizada");
-                            break;
-                        case 3:
-                            query.Where("nota.status", "Cancelada");
-                            break;
-                    }                    
+                        //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
+                        switch (status)
+                        {
+                            case 1:
+                                query.Where("nota.status", null);
+                                break;
+                            case 2:
+                                query.Where("nota.status", "Autorizada");
+                                break;
+                            case 3:
+                                query.Where("nota.status", "Cancelada");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        query.Where("pedido.status", status);
+                    }
                 }
                 else
                 {
                     query.Where("pedido.status", status);
                 }
-            }   
+            }
 
             if (idPedido != 0)
                 query.Where("pedido.id", idPedido);
@@ -359,10 +366,8 @@ namespace Emiplus.Controller
 
                 switch (tipo)
                 {
-                    case "Notas":
-                        dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
-                        break;
                     case "Cupons":
+                    case "Notas":
                         dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
                         break;
                     default:
@@ -378,7 +383,7 @@ namespace Emiplus.Controller
                 var statusNfePedido = "";
 
                 if (tipo == "Vendas")
-                    statusNfePedido = item.STATUS == 1 ? "Recebimento Pendente" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
+                    statusNfePedido = item.STATUS == 2 ? "Recebimento Pendente" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
 
                 if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                     statusNfePedido = item.STATUS == 1 ? "Finalizado" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
