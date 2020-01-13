@@ -30,6 +30,7 @@ namespace Emiplus.Controller
         #region V
 
         private int _id_empresa = 1;
+        private int _id_nota;
 
         private Model.Pedido _pedido;        
         private Model.PedidoItem _pedidoItem;
@@ -132,12 +133,14 @@ namespace Emiplus.Controller
                     if (!Directory.Exists(_path_autorizada))
                         Directory.CreateDirectory(_path_autorizada);
 
-                    if(Pedido > 0)
-                        _nota = new Model.Nota().FindByIdPedidoAndTipoAndStatus(Pedido, tipo).First<Model.Nota>();
+                    if (_id_nota > 0)
+                    {
+                        _nota = new Model.Nota().FindById(_id_nota).First<Model.Nota>();
 
-                    if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
-                        chvAcesso = _nota.ChaveDeAcesso;
-
+                        if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                            chvAcesso = _nota.ChaveDeAcesso;
+                    }
+                        
                     break;
 
                 case "CFe":
@@ -219,25 +222,28 @@ namespace Emiplus.Controller
         /// <param name="tipo">NFe, NFCe, CFe</param>  
         public string Emitir(int Pedido, string tipo = "NFe", int Nota = 0)
         {
+            _id_nota = Nota;
+
             Start(Pedido, tipo);
 
             try
             {
-                if(tipo == "CFe")
-                {
+                if (tipo == "CFe")                
                     _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
 
-                    var itens = new Model.PedidoItem().Query()
+                //if (tipo == "NFe")
+                    //_nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
+
+                var itens = new Model.PedidoItem().Query()
                         .LeftJoin("item", "item.id", "pedido_item.item")
                         .Select("pedido_item.id")
                         .Where("pedido_item.pedido", Pedido)
                         .Where("pedido_item.excluir", 0)
                         .Where("pedido_item.tipo", "Produtos");
 
-                    foreach (var item in itens.Get())
-                    {
-                        new Controller.Imposto().SetImposto(item.ID, 0, "CFe");
-                    }
+                foreach (var item in itens.Get())
+                {
+                    new Controller.Imposto().SetImposto(item.ID, 0, tipo);
                 }
 
                 CriarXML(Pedido, tipo);
@@ -261,6 +267,7 @@ namespace Emiplus.Controller
         /// <param name="tipo">NFe, NFCe, CFe</param>  
         public string Cancelar(int Pedido, string tipo = "NFe", string justificativa = "", int Nota = 0)
         {
+            _id_nota = Nota;
             Start(Pedido, tipo);
 
             try
@@ -391,6 +398,7 @@ namespace Emiplus.Controller
         /// <param name="tipo">NFe, NFCe, CFe</param> 
         public string Imprimir(int Pedido, string tipo = "NFe", int Nota = 0)
         {
+            _id_nota = Nota;
             Start(Pedido, tipo);
 
             BrowserNfe browser = new BrowserNfe();
@@ -774,7 +782,7 @@ namespace Emiplus.Controller
                 //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
                 if (_destinatarioEndereco == null)
                 {
-                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
+                    _msg = "Endereço do destinátário não encontrado. É necessário informar o endereço do destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
                     return;
                 }
 

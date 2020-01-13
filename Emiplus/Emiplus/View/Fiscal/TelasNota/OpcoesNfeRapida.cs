@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         public OpcoesNfeRapida()
         {
             InitializeComponent();
+
             Eventos();
         }
 
@@ -54,13 +56,34 @@ namespace Emiplus.View.Fiscal.TelasNota
             };
 
             Emitir.Click += (s, e) =>
-            {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
-                if (checkNota != null)
+            {                
+                //var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
+                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                
+                if (checkNota.Status == "Cancelada")
                 {
-                    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
-                    return;
+                    var result = AlertOptions.Message("Atenção!", "Existem registro(s) de nota(s) cancelada(s) a partir desta venda. Deseja gerar um nova nota?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if (result)
+                    {
+                        Model.Nota _modelNotaNova = new Model.Nota();
+
+                        _modelNotaNova.Id = 0;
+                        _modelNotaNova.Tipo = "NFe";
+                        _modelNotaNova.Status = "Pendente";
+                        _modelNotaNova.id_pedido = idPedido;
+                        _modelNotaNova.Save(_modelNota, false);
+
+                        checkNota = _modelNotaNova;
+                    }
                 }
+
+                //if (checkNota.Status != "Pendente")
+                //{
+                //    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
+                //    return;
+                //}
+
+                _modelNota = checkNota;
 
                 retorno.Text = "Emitindo NF-e .......................................... (1/2)";
 
@@ -75,12 +98,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             CartaCorrecao.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Autorizada").Where("nota.tipo", "NFe").FirstOrDefault();
-                if (checkNota == null)
+                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível emitir uma Carta de Correção.", Alert.AlertType.warning);
                     return;
                 }
+
+                _modelNota = checkNota;
 
                 CartaCorrecao cce = new CartaCorrecao();
                 cce.Show();
@@ -90,12 +115,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Cancelar.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Autorizada").Where("nota.tipo", "NFe").FirstOrDefault();
-                if (checkNota == null)
+                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível cancelar uma nota Pendente/Cancelada.", Alert.AlertType.warning);
                     return;
                 }
+
+                _modelNota = checkNota;
 
                 CartaCorrecaoAdd.tela = "Cancelar";
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();                
@@ -113,12 +140,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             EnviarEmail.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", "Pendente").Where("nota.tipo", "NFe").FirstOrDefault();
-                if (checkNota != null)
+                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível enviar uma nota Pendente.", Alert.AlertType.warning);
                     return;
                 }
+
+                _modelNota = checkNota;
 
                 CartaCorrecaoAdd.tela = "Email";
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
@@ -137,12 +166,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Imprimir.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedido(idPedido).Where("status", null).Where("nota.tipo", "NFe").FirstOrDefault();
-                if (checkNota != null)
+                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota.Status == "Pendente")
                 {
                     Alert.Message("Opps!", "Emita a nota para imprimir.", Alert.AlertType.warning);
                     return;
                 }
+
+                _modelNota = checkNota;
 
                 retorno.Text = "Imprimindo NF-e .......................................... (1/2)";
 
@@ -170,21 +201,28 @@ namespace Emiplus.View.Fiscal.TelasNota
                                 _modelNota.Save(_modelNota);
                             }
 
-                            _msg = new Controller.Fiscal().Emitir(idPedido, "NFe");
+                            _msg = new Controller.Fiscal().Emitir(idPedido, "NFe", _modelNota.Id);
+
                             break;
+
                         case 2:
-                            var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe");
+                            var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe", _modelNota.Id);
                             if (!msg.Contains(".pdf"))
                                 _msg = msg;
+
                             break;
+
                         case 3:                            
                             //_msg = new Controller.Fiscal().EmitirCCe(idPedido, "Nota gerada com informacoes incorretas, por gentileza verificar as corretas");
                             break;
+
                         case 4:
                             if (justificativa.Length <= 15)
                                 break;
-                            _msg = new Controller.Fiscal().Cancelar(idPedido, "NFe", justificativa);
+
+                            _msg = new Controller.Fiscal().Cancelar(idPedido, "NFe", justificativa, _modelNota.Id);
                             break;
+
                         case 5:                            
                             _msg = new Controller.Fiscal().EnviarEmail(idPedido, justificativa);
                             break;

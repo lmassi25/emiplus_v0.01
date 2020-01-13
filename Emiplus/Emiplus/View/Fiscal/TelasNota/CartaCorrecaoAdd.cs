@@ -86,7 +86,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             btnCancelar.Click += (s, e) =>
             {
-                DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.Cancel;
                 Close();
             };
 

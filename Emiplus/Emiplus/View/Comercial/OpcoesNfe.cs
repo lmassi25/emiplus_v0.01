@@ -17,7 +17,6 @@ namespace Emiplus.View.Comercial
     public partial class OpcoesNfe : Form
     {
         public static int idPedido { get; set; }
-
         private Model.Nota _modelNota = new Model.Nota();
 
         #region DLL SHADOW
@@ -151,7 +150,8 @@ namespace Emiplus.View.Comercial
                 {
                     _modelNota.Id = 0;
                     _modelNota.Tipo = "NFe";
-                    _modelNota.id_pedido = idPedido;                    
+                    _modelNota.Status = "Pendente";
+                    _modelNota.id_pedido = idPedido;
                     _modelNota.Save(_modelNota, false);
                 }
             };
