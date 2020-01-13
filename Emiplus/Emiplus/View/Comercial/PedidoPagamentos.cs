@@ -290,7 +290,7 @@ namespace Emiplus.View.Comercial
 
             OpcoesCfe.idNota = 0;
 
-            var checkNota = new Model.Nota().FindByIdPedidoUltReg(IdPedido).FirstOrDefault<Model.Nota>();
+            var checkNota = new Model.Nota().FindByIdPedidoUltReg(IdPedido, "", "CFe").FirstOrDefault<Model.Nota>();
             if (checkNota == null)
             {
                 Model.Nota _modelNota = new Model.Nota();

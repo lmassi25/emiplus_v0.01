@@ -60,7 +60,7 @@ namespace Emiplus.Controller
         private string _path_autorizada;
 
         private int _servidorNFE = 2;
-        private int _servidorCFE = 1;
+        private int _servidorCFE = 2;
 
         private string TECNOSPEED_GRUPO = "Destech";
         private string TECNOSPEED_USUARIO = "admin";
@@ -72,7 +72,7 @@ namespace Emiplus.Controller
         public string requestData;
         public System.Timers.Timer aTimer = new System.Timers.Timer();
 
-        string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "";
+        string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "", layoutCFE = "", assinaturaCFE = "", layoutNFE = "";
 
         Random rdn = new Random();
 
@@ -111,29 +111,26 @@ namespace Emiplus.Controller
             _path = IniFile.Read("Path", "LOCAL");
 
             if (String.IsNullOrEmpty(_path))
-            {
                 _path = @"C:\Emiplus";
-            }
+
+            _servidorNFE = Settings.Default.empresa_nfe_servidornfe;
+
+            if (IniFile.Read("Servidor", "SAT") == "Producao")
+                _servidorCFE = 1;
 
             switch (tipo)
             {
                 case "NFe":
                     if (!Directory.Exists(_path + "\\NFe"))
-                    {
                         Directory.CreateDirectory(_path + "\\NFe");
-                    }
 
                     _path_enviada = _path + "\\NFe\\Enviadas";
                     if (!Directory.Exists(_path_enviada))
-                    {
                         Directory.CreateDirectory(_path_enviada);
-                    }
 
                     _path_autorizada = _path + "\\NFe\\Autorizadas";
                     if (!Directory.Exists(_path_autorizada))
-                    {
                         Directory.CreateDirectory(_path_autorizada);
-                    }
 
                     if(Pedido > 0)
                         _nota = new Model.Nota().FindByIdPedidoAndTipoAndStatus(Pedido, tipo).First<Model.Nota>();
@@ -145,50 +142,36 @@ namespace Emiplus.Controller
 
                 case "CFe":
                     if (!Directory.Exists(_path + "\\CFe"))
-                    {
                         Directory.CreateDirectory(_path + "\\CFe");
-                    }
 
                     _path_enviada = _path + "\\CFe\\Enviadas";
                     if (!Directory.Exists(_path_enviada))
-                    {
                         Directory.CreateDirectory(_path_enviada);
-                    }
 
                     _path_autorizada = _path + "\\CFe\\Autorizadas";
                     if (!Directory.Exists(_path_autorizada))
-                    {
                         Directory.CreateDirectory(_path_autorizada);
-                    }
 
                     //if (Pedido > 0)
                     //    _nota = new Model.Nota().FindByIdPedidoAndTipoAndStatus(Pedido, tipo).First<Model.Nota>();
+
+                    if (!String.IsNullOrEmpty(IniFile.Read("Layout", "SAT")))
+                        layoutCFE = IniFile.Read("Layout", "SAT");
+                    else
+                        layoutCFE = "0.08";
+
+                    assinaturaCFE = IniFile.Read("Assinatura", "SAT");
 
                     break;
             }
 
             if (_servidorNFE == 1)
-            {
                 TECNOSPEED_SERVIDOR = "https://managersaas.tecnospeed.com.br:8081/";
-            }
             else
-            {
                 TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
-            }
             
-            if (Pedido > 0)
-            {
+            if (Pedido > 0)            
                 _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
-
-                //if (Validation.ConvertToInt32(_pedido.id_empresa) == 0)
-                //{
-                //    _id_empresa = 1;
-                //}
-                //else
-                //{
-                //    _id_empresa = Validation.ConvertToInt32(_pedido.id_empresa);
-                //}
-            }
 
             //_emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
             _emitente = new Model.Pessoa();
@@ -199,13 +182,13 @@ namespace Emiplus.Controller
             //_emitenteContato = new Model.PessoaContato().FindById(_id_empresa).First<Model.PessoaContato>();
             _emitenteContato = new Model.PessoaContato();
 
-            _emitente.RG = Settings.Default.empresa_inscricao_estadual;
-            _emitente.CPF = Settings.Default.empresa_cnpj;
+            _emitente.RG = Validation.CleanStringForFiscal(Settings.Default.empresa_inscricao_estadual).Replace(" ", "");
+            _emitente.CPF = Validation.CleanStringForFiscal(Settings.Default.empresa_cnpj).Replace(" ", "");
 
             _emitente.Nome = Settings.Default.empresa_razao_social;
             _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
 
-            if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2")
+            if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2" && tipo == "NFe")
             {
                 _emitente.RG = "647429018110";
                 _emitente.CPF = "05681389000100";
@@ -213,7 +196,7 @@ namespace Emiplus.Controller
                 _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             }
 
-            if(IniFile.Read("Servidor", "SAT") == "Homologacao" && tipo == "CFe")
+            if (IniFile.Read("Servidor", "SAT") == "Homologacao" && tipo == "CFe")
             {
                 _emitente.CPF = "08723218000186";
                 TECNOSPEED_GRUPO = "grupo-teste";
@@ -864,8 +847,9 @@ namespace Emiplus.Controller
                     }
                     else
                     {
-                        xmlCanc.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "").Trim());
-                        xmlCanc.WriteElementString("signAC", IniFile.Read("Assinatura", "SAT"));
+                        xmlCanc.WriteElementString("CNPJ", "05681389000100");
+                        xmlCanc.WriteElementString("signAC", assinaturaCFE);
+                        //xmlCanc.WriteElementString("signAC", "UJs4qtHeDIZvEyoBlvBhIdxlQcjkt76XTQ2biRyRHFPTtfchubnuRqjEhCbcu33dR4yWMMs7eSHea8shVSCHMnPYhBxuvvHPqtetiSw1zufrq55uHv8Wx1Stb39iExxii2m24pPpbsV0xH5lM1eBs/a6Gpi6EM7+ZYA0irhHmqwo0qsq8N64nz5M7j5OfR+CzvuelsFbjf0JTCdDpGkfjDGQZwXPeHimW1y8cUriJkW4jpD+BQDZT/l3IlWdn+hspwekc+ASHYWbDX8xTSDMDm+58HXMch/4Rdj58PUxIuAxDauDILJFtF6d5yQ8irxrqOpZzfqBJRbwOtmm6bg7Pw==");
                         xmlCanc.WriteElementString("numeroCaixa", "001");
                     }
 
@@ -933,7 +917,7 @@ namespace Emiplus.Controller
                     {
                         xml.WriteStartElement("CFe");
                         xml.WriteStartElement("infCFe");
-                        xml.WriteAttributeString("versaoDadosEnt", "0.07");
+                        xml.WriteAttributeString("versaoDadosEnt", "0.08");
                     }
                     else
                     {
@@ -1345,14 +1329,14 @@ namespace Emiplus.Controller
             {
                 if (_servidorCFE == 2)
                 {
-                    xml.WriteElementString("CNPJ", "16716114000172");
+                    xml.WriteElementString("CNPJ", "16716114000172"); //TANCA
                     xml.WriteElementString("signAC", "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT");
                     xml.WriteElementString("numeroCaixa", "001");
                 }
                 else
                 {
-                    xml.WriteElementString("CNPJ", "05681389000100");
-                    xml.WriteElementString("signAC", IniFile.Read("Assinatura", "SAT"));
+                    xml.WriteElementString("CNPJ", "05681389000100"); //SH
+                    xml.WriteElementString("signAC", assinaturaCFE);                    
                     xml.WriteElementString("numeroCaixa", "001");
                 }
             }

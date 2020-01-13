@@ -31,8 +31,8 @@ namespace Emiplus.Data.Core
         /// <param name="Section">Seção da Key</param>
         public static string Read(string Key, string Section = null)
         {
-            var RetVal = new StringBuilder(255);
-            GetPrivateProfileString(Section ?? EXE, Key, "", RetVal, 255, GetPath());
+            var RetVal = new StringBuilder(1000);
+            GetPrivateProfileString(Section ?? EXE, Key, "", RetVal, 1000, GetPath());
             return RetVal.ToString();
         }
 
