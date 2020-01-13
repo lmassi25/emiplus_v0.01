@@ -259,29 +259,9 @@ namespace Emiplus.View.Comercial
         {
             Concluir(0);
 
-            var checkNota = new Model.Nota().FindByIdPedido(IdPedido).Where("nota.tipo", "NFe").FirstOrDefault();
-
-            if (checkNota == null)
-            {
-                OpcoesNfe.idPedido = IdPedido;
-                OpcoesNfe f1 = new OpcoesNfe();
-                f1.Show();
-
-                return;
-            }
-
-            if (checkNota.STATUS != null)
-            {
-                OpcoesNfeRapida.idPedido = IdPedido;
-                OpcoesNfeRapida f2 = new OpcoesNfeRapida();
-                f2.Show();
-
-                return;
-            }
-
-            OpcoesNfe.idPedido = IdPedido;
-            OpcoesNfe f3 = new OpcoesNfe();
-            f3.Show();
+            OpcoesNfeRapida.idPedido = IdPedido;
+            OpcoesNfeRapida f = new OpcoesNfeRapida();
+            f.Show();
         }
 
         public void Cfe()
