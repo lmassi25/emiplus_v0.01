@@ -247,7 +247,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             itemPedido.CProd = referencia.Text;
             itemPedido.CEan = codebarras.Text;
             itemPedido.xProd = descricao.Text;
-            itemPedido.Origem = origem.Text;
+            itemPedido.Origem = origem.Text != "" ? origem.Text.Substring(0, 1) : "0";
             itemPedido.Ncm = ncm.Text;
             itemPedido.Cest = cest.Text;
             itemPedido.Cfop = cfop.Text;

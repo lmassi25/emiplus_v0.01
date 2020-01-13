@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Data.Core;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace Emiplus.Data.Helpers
 
         public static bool SetScreenMaximized(Form f)
         {
+            if (IniFile.Read("Maximizar", "TELAS") == "true")
+            {
+                f.WindowState = FormWindowState.Maximized;
+                return true;
+            }
+
             if (resolution.Height == 768)
             {
                 f.WindowState = FormWindowState.Maximized;

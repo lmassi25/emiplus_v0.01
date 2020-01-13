@@ -643,6 +643,12 @@
     <Compile Include="View\Fiscal\Nota.Designer.cs">
       <DependentUpon>Nota.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\TelasNota\AlterarImposto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\TelasNota\AlterarImposto.Designer.cs">
+      <DependentUpon>AlterarImposto.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\TelasNota\CartaCorrecao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1084,6 +1090,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\TelasNota\AlterarImposto.resx">
+      <DependentUpon>AlterarImposto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\TelasNota\CartaCorrecao.resx">
       <DependentUpon>CartaCorrecao.cs</DependentUpon>

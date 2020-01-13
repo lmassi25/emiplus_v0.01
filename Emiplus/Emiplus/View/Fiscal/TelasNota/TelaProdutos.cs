@@ -1,4 +1,5 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Controller;
+using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.View.Comercial;
 using Emiplus.View.Common;
@@ -12,9 +13,13 @@ namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaProdutos : Form
     {
+        #region V 
+
         private int ModoRapAva { get; set; }
         private static int Id { get; set; }
         private int ModoRapAvaConfig { get; set; }
+
+        public static int idImposto { get; set; }
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
@@ -22,6 +27,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Model.Nota _mNota = new Model.Nota();
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+
+        #endregion
 
         public TelaProdutos()
         {
@@ -194,6 +201,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
                 // Carrega a Grid com o Item adicionado acima.
+                PedidoItem.impostos = true;
                 new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
 
                 // Atualiza o total do pedido, e os totais da tela
@@ -220,12 +228,12 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             switch (e.KeyCode)
             {
-                case Keys.Up:
+                case Keys.Up:           
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(false, GridListaProdutos);
                     e.Handled = true;
                     break;
-                case Keys.Down:
+                case Keys.Down:                    
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.Handled = true;
@@ -240,7 +248,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                     BuscarProduto.Focus();
                     break;
                 case Keys.F3:
-
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
@@ -259,7 +266,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                             }
                         }
                     }
-
                     break;
             }
         }
@@ -280,6 +286,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
 
+                PedidoItem.impostos = true;
                 new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
                 LoadTotais();
                 ClearForms();
@@ -319,8 +326,18 @@ namespace Emiplus.View.Fiscal.TelasNota
                     EditProduct f = new EditProduct();
                     if (f.ShowDialog() == DialogResult.OK)
                     {
+                        PedidoItem.impostos = true;
                         new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
                     }
+                }
+            };
+
+            GridListaProdutos.SelectionChanged += (s, e) =>
+            {
+                if (GridListaProdutos.SelectedRows.Count > 0)
+                {
+                    AlterarImposto.Text = "Alterar Imposto (Item: " + GridListaProdutos.SelectedRows[0].Cells["#"].Value + ")";
+                    AlterarImposto.Refresh();
                 }
             };
 
@@ -329,6 +346,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
+            
             Preco.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -356,6 +374,23 @@ namespace Emiplus.View.Fiscal.TelasNota
                     LoadItens();
             };
 
+            AlterarImposto.Click += (s, e) =>
+            {
+                if (GridListaProdutos.SelectedRows.Count > 0)
+                {
+                    AlterarImposto f = new AlterarImposto();
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        if(idImposto > 0)
+                            new Controller.Imposto().SetImposto(Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value), idImposto, "NFe");
+
+                        PedidoItem.impostos = true;
+                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                    }
+                }
+
+                BuscarProduto.Select();
+            };
         }
     }
 }

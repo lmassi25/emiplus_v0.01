@@ -191,13 +191,13 @@ namespace Emiplus.Controller
             _emitente.Nome = Settings.Default.empresa_razao_social;
             _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
 
-            if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2" && tipo == "NFe")
-            {
-                _emitente.RG = "647429018110";
-                _emitente.CPF = "05681389000100";
-                _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
-                _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
-            }
+            //if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2" && tipo == "NFe")
+            //{
+            //    _emitente.RG = "647429018110";
+            //    _emitente.CPF = "05681389000100";
+            //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            //}
 
             if (IniFile.Read("Servidor", "SAT") == "Homologacao" && tipo == "CFe")
             {
@@ -220,7 +220,7 @@ namespace Emiplus.Controller
         /// Envia
         /// </summary>
         /// <param name="tipo">NFe, NFCe, CFe</param>  
-        public string Emitir(int Pedido, string tipo = "NFe", int Nota = 0)
+        public string Emitir(int Pedido, string tipo = "NFe", int Nota = 0, bool imposto = true)
         {
             _id_nota = Nota;
 
@@ -234,16 +234,19 @@ namespace Emiplus.Controller
                 //if (tipo == "NFe")
                     //_nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
 
-                var itens = new Model.PedidoItem().Query()
+                if(imposto)
+                {
+                    var itens = new Model.PedidoItem().Query()
                         .LeftJoin("item", "item.id", "pedido_item.item")
                         .Select("pedido_item.id")
                         .Where("pedido_item.pedido", Pedido)
                         .Where("pedido_item.excluir", 0)
                         .Where("pedido_item.tipo", "Produtos");
 
-                foreach (var item in itens.Get())
-                {
-                    new Controller.Imposto().SetImposto(item.ID, 0, tipo);
+                    foreach (var item in itens.Get())
+                    {
+                        new Controller.Imposto().SetImposto(item.ID, 0, tipo);
+                    }
                 }
 
                 CriarXML(Pedido, tipo);
@@ -1570,6 +1573,8 @@ namespace Emiplus.Controller
 
                 xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
                 xml.WriteElementString("NCM", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
+                if(!String.IsNullOrEmpty(_pedidoItem.Cest))
+                    xml.WriteElementString("CEST", Validation.CleanStringForFiscal(_pedidoItem.Cest));
                 xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Cfop));
                 xml.WriteElementString("uCom", _pedidoItem.Medida);
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 4));
@@ -1596,8 +1601,10 @@ namespace Emiplus.Controller
                 xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
 
                 xml.WriteElementString("NCM", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
-                xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Cfop));
+                if (!String.IsNullOrEmpty(_pedidoItem.Cest))
+                    xml.WriteElementString("CEST", Validation.CleanStringForFiscal(_pedidoItem.Cest));
 
+                xml.WriteElementString("CFOP", Validation.CleanStringForFiscal(_pedidoItem.Cfop));                
                 xml.WriteElementString("uCom", _pedidoItem.Medida);
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
                 xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
@@ -1757,8 +1764,8 @@ namespace Emiplus.Controller
                     xml.WriteElementString("CSOSN", "500");
                     if (tipo != "CFe")
                     {
-                        xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
-                        xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
+                        //xml.WriteElementString("vBCSTRet", Validation.FormatPriceWithDot(0));
+                        //xml.WriteElementString("vICMSSTRet", Validation.FormatPriceWithDot(0));
                     }
                     break;
                 case "900":
@@ -2243,7 +2250,7 @@ namespace Emiplus.Controller
         /// <param name="tipo">envia</param>        
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
-
+        
         private string RequestSendCCe(string tx2)
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + tx2;

@@ -18,6 +18,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             InitializeComponent();
             Id = Nota.Id;
+            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
+
             Eventos();
         }
 
@@ -34,14 +36,14 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Imprimir.Click += (s, e) =>
             {
-                retorno.Text = new Controller.Fiscal().Imprimir(Id, "NFe");
+                retorno.Text = new Controller.Fiscal().Imprimir(Id, "NFe", _mNota.Id);
             };
 
             using (var b = WorkerBackground)
             {
                 b.DoWork += async (s, e) =>
                 {
-                    _msg = new Controller.Fiscal().Emitir(Id, "NFe");
+                    _msg = new Controller.Fiscal().Emitir(Id, "NFe", _mNota.Id, false);
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>

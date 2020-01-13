@@ -19,6 +19,8 @@ namespace Emiplus.View.Comercial
 {
     public partial class DetailsPedido : Form
     {
+        #region V
+
         private Model.Pedido _modelPedido = new Model.Pedido();
 
         private Model.PessoaContato _modelPessoaContato = new Model.PessoaContato();
@@ -30,6 +32,8 @@ namespace Emiplus.View.Comercial
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
+        #endregion
+
         public static int idPedido { get; set; }
 
         private int pessoaID;
@@ -38,6 +42,8 @@ namespace Emiplus.View.Comercial
         {
             InitializeComponent();
             Eventos();
+
+            Resolution.SetScreenMaximized(this);
 
             if (idPedido > 0)
                 LoadData();
@@ -79,6 +85,8 @@ namespace Emiplus.View.Comercial
                     SelecionarCliente.Text = "Alterar fornecedor";
                     break;
             }
+
+            PedidoItem.impostos = false;
         }
 
         public void Nfe()
@@ -170,7 +178,10 @@ namespace Emiplus.View.Comercial
             {
                 Model.Pessoa pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault<Model.Pessoa>();
                 if (pessoa != null)
-                    pessoaID = pessoa.Id;                
+                {
+                    pessoaID = pessoa.Id;
+                    cliente.Text = pessoa.Nome;
+                }   
             }
 
             if (_modelPedido.Colaborador > 0)
@@ -302,11 +313,15 @@ namespace Emiplus.View.Comercial
 
             SelecionarCliente.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
                 if (checkNota != null)
                 {
-                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
-                    return;
+                    if (checkNota.Status == "Autorizada")
+                    {
+                        Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
+                        return;
+                    }
+                        
                 }
 
                 ModalClientes();
@@ -314,11 +329,15 @@ namespace Emiplus.View.Comercial
 
             SelecionarColaborador.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedido(idPedido).WhereNotNull("status").FirstOrDefault();
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
                 if (checkNota != null)
                 {
-                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
-                    return;
+                    if (checkNota.Status == "Autorizada")
+                    {
+                        Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
+                        return;
+                    }
+
                 }
 
                 ModalColaborador();

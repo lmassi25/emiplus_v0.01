@@ -51,6 +51,8 @@ namespace Emiplus.View.Comercial
 
             Eventos();
 
+            Resolution.SetScreenMaximized(this);
+
             BuscarProduto.Select();
         }
 

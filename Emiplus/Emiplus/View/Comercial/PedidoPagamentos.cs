@@ -30,6 +30,8 @@ namespace Emiplus.View.Comercial
 
             Eventos();
 
+            Resolution.SetScreenMaximized(this);
+
             AddPedidos.btnFinalizado = false;
             TelaReceber.Visible = false;
 
@@ -381,7 +383,7 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F11:
-                    Concluir();
+                    new PedidoImpressao().Print(IdPedido);
                     break;
                 case Keys.F12:
                     Concluir();
