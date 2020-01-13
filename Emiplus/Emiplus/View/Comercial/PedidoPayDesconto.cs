@@ -21,10 +21,10 @@ namespace Emiplus.View.Comercial
 
         private void FormulaDesconto(string total, int idItem)
         {
-            var dataPedido = _mPedido.Query().Select("id", "total").Where("id", idPedido).First<Model.Pedido>();
+            _mPedido = _mPedido.Query().Where("id", idPedido).FirstOrDefault<Model.Pedido>();
             _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<Model.PedidoItem>();
 
-            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / dataPedido.Total);
+            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / _mPedido.Total);
             var soma2 = Validation.Round(soma1 / 100);
             var soma3 = Validation.Round(Validation.ConvertToDouble(total) * soma2);
 
@@ -41,12 +41,12 @@ namespace Emiplus.View.Comercial
             if (idPedido > 0)
             {
                 var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
-                
+                _mPedido = _mPedido.Query().Where("id", idPedido).FirstOrDefault<Model.Pedido>();
+
                 string descontoValor = string.Empty;
                 if (porcentagem.Text != string.Empty)
                 {
-                    var dataPedido = _mPedido.Query().Select("id", "total").Where("id", idPedido).First<Model.Pedido>();
-                    descontoValor = (Validation.ConvertToDouble(porcentagem.Text) / 100 * (dataPedido.Total)).ToString();
+                    descontoValor = (Validation.ConvertToDouble(porcentagem.Text) / 100 * (_mPedido.Total)).ToString();
                 }
                 else if (dinheiro.Text != string.Empty)
                 {
