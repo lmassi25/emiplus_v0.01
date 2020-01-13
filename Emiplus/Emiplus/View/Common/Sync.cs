@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emiplus.Properties;
 using Newtonsoft.Json;
+using Emiplus.Data.Helpers;
+using System.Threading;
 
 namespace Emiplus.View.Common
 {
@@ -152,6 +154,7 @@ namespace Emiplus.View.Common
             {
                 backWork.RunWorkerAsync();
                 Home.syncActive = true;
+                timer1.Stop();
             };
 
             backWork.DoWork += async (s, e) =>
@@ -172,10 +175,15 @@ namespace Emiplus.View.Common
                 await RunSyncAsync("nota");
                 await RunSyncAsync("pedido");
                 await RunSyncAsync("pedido_item");
+
+                Thread.Sleep(60000);
             };
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
+
+                new Log().Add("SYNC", "Sincronização", Log.LogType.fatal);
+
                 timer1.Enabled = true;
                 timer1.Start();
                 Home.syncActive = false;

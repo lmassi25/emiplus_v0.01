@@ -24,6 +24,8 @@
         public int Id_User { get; set; }
         public int Comissao { get; set; }
         public int Sub_user { get; set; }
+        public string email { get; set; }
+        public string senha { get; set; }
 
         #endregion 
 

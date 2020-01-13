@@ -10,6 +10,7 @@ using System.Net;
 using RestSharp;
 using SqlKata.Execution;
 using System.Linq;
+using System;
 
 namespace Emiplus.View.Common
 {
@@ -21,36 +22,46 @@ namespace Emiplus.View.Common
         {
             InitializeComponent();
 
-            //password.Text = "4586928w";
-            //password.Text = "leandro2510";
+            var emial = "curruwilla@gmail.com";
+            var senha = "4586928w";
 
-            Update update = new Update();
-            update.CheckUpdate();
-            update.CheckIni();
+            string encryptedstring = StringCipher.Encrypt(senha, senha);
+            Console.WriteLine(encryptedstring);
+
+            string decryptedstring = StringCipher.Decrypt(encryptedstring, senha);
+            Console.WriteLine(decryptedstring);
+            
             Eventos();
 
             version.Text = "Versão " + IniFile.Read("Version", "APP");
 
-            if (Data.Core.Update.AtualizacaoDisponivel)
+            if (Support.CheckForInternetConnection())
             {
-                btnUpdate.Visible = true;
-                btnUpdate.Text = "Atualizar Versão " + update.GetVersionWebTxt();
-                label5.Visible = false;
-                email.Visible = false;
-                label6.Visible = false;
-                password.Visible = false;
-                btnEntrar.Visible = false;
-                label1.Text = "Antes de continuar..";
-            }
-            else
-            {
-                btnUpdate.Visible = false;
-                label5.Visible = true;
-                email.Visible = true;
-                label6.Visible = true;
-                password.Visible = true;
-                btnEntrar.Visible = true;
-                label1.Text = "Entre com sua conta";
+                Update update = new Update();
+                update.CheckUpdate();
+                update.CheckIni();
+
+                if (Data.Core.Update.AtualizacaoDisponivel)
+                {
+                    btnUpdate.Visible = true;
+                    btnUpdate.Text = "Atualizar Versão " + update.GetVersionWebTxt();
+                    label5.Visible = false;
+                    email.Visible = false;
+                    label6.Visible = false;
+                    password.Visible = false;
+                    btnEntrar.Visible = false;
+                    label1.Text = "Antes de continuar..";
+                }
+                else
+                {
+                    btnUpdate.Visible = false;
+                    label5.Visible = true;
+                    email.Visible = true;
+                    label6.Visible = true;
+                    password.Visible = true;
+                    btnEntrar.Visible = true;
+                    label1.Text = "Entre com sua conta";
+                }
             }
 
             InitData();
@@ -71,108 +82,151 @@ namespace Emiplus.View.Common
 
         private void LoginAsync()
         {
-            dynamic obj = new
+            if (string.IsNullOrEmpty(email.Text) && string.IsNullOrEmpty(password.Text))
             {
-                token = Program.TOKEN,
-                email = email.Text,
-                password = password.Text
-            };
-
-            var jo = new RequestApi().URL(Program.URL_BASE + "/api/user").Content(obj, Method.POST).Response();
-
-            if (jo["error"] != null && jo["error"].ToString() != "")
-            {
-                Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
+                Alert.Message("Opps", "Preencha todos os campos.", Alert.AlertType.error);
                 return;
             }
 
-            if (remember.Checked)
-                Settings.Default.login_remember = true;
-            else
-                Settings.Default.login_remember = false;
-
-            Settings.Default.login_email = email.Text;
-
-            if (Validation.ConvertToInt32(jo["user"]["status"]) <= 0)
+            if (Support.CheckForInternetConnection())
             {
-                Alert.Message("Opss", "Você precisa ativar sua conta, acesse seu e-mail!", Alert.AlertType.info);
-                return;
-            }
-
-            if (Validation.ConvertToInt32(jo["user"]["plan_status"]) <= 0)
-            {
-                if (Validation.ConvertToInt32(jo["user"]["plan_trial"]) <= 0)
+                dynamic obj = new
                 {
-                    Alert.Message("Opss", "Seus dias de avaliação acabou, contrate um plano.", Alert.AlertType.info);
+                    token = Program.TOKEN,
+                    email = email.Text,
+                    password = password.Text
+                };
+
+                var jo = new RequestApi().URL(Program.URL_BASE + "/api/user").Content(obj, Method.POST).Response();
+
+                if (jo["error"] != null && jo["error"].ToString() != "")
+                {
+                    Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
                     return;
                 }
-            }
 
-            Settings.Default.user_id = Validation.ConvertToInt32(jo["user"]["id"]);
-            Settings.Default.user_name = jo["user"]["name"].ToString();
-            Settings.Default.user_lastname = jo["user"]["lastname"].ToString();
-            Settings.Default.user_document = jo["user"]["document"].ToString();
-            Settings.Default.user_thumb = jo["user"]["thumb"].ToString();
-            Settings.Default.user_email = jo["user"]["email"].ToString();
-            Settings.Default.user_password = password.Text;
-            Settings.Default.user_sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
-            Settings.Default.user_cell = jo["user"]["cell"].ToString();
-            Settings.Default.user_level = Validation.ConvertToInt32(jo["user"]["level"]);
-            Settings.Default.user_status = Validation.ConvertToInt32(jo["user"]["status"]);
-            Settings.Default.user_plan_id = jo["user"]["plan_id"].ToString();
-            Settings.Default.user_plan_trial = Validation.ConvertToInt32(jo["user"]["plan_trial"]);
-            Settings.Default.user_plan_status = Validation.ConvertToInt32(jo["user"]["plan_status"]);
-            Settings.Default.user_plan_recorrencia = jo["plano"]["recorrencia"].ToString();
-            Settings.Default.user_plan_fatura = jo["plano"]["proxima_fatura"].ToString();
-            Settings.Default.user_comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
-            Settings.Default.user_dbhost = jo["user"]["db_host"].ToString();
-            Settings.Default.empresa_id = Validation.ConvertToInt32(jo["empresa"]["id"]);
-            Settings.Default.empresa_unique_id = jo["empresa"]["id_unique"].ToString();
-            Settings.Default.empresa_logo = jo["empresa"]["logo"].ToString();
-            Settings.Default.empresa_razao_social = jo["empresa"]["razao_social"].ToString();
-            Settings.Default.empresa_nome_fantasia = jo["empresa"]["nome_fantasia"].ToString();
-            Settings.Default.empresa_cnpj = jo["empresa"]["cnpj"].ToString();
-            Settings.Default.empresa_inscricao_estadual = jo["empresa"]["inscricao_estadual"].ToString();
-            Settings.Default.empresa_inscricao_municipal = jo["empresa"]["inscricao_municipal"].ToString();
-            Settings.Default.empresa_telefone = jo["empresa"]["telefone"].ToString();
-            Settings.Default.empresa_rua = jo["empresa"]["rua"].ToString();
-            Settings.Default.empresa_cep = jo["empresa"]["cep"].ToString();
-            Settings.Default.empresa_nr = jo["empresa"]["nr"].ToString();
-            Settings.Default.empresa_cidade = jo["empresa"]["cidade"].ToString();
-            Settings.Default.empresa_bairro = jo["empresa"]["bairro"].ToString();
-            Settings.Default.empresa_estado = jo["empresa"]["estado"].ToString();
-            Settings.Default.empresa_ibge = jo["empresa"]["ibge"].ToString();
-            Settings.Default.empresa_nfe_ultnfe = jo["empresa"]["ultnfe"].ToString();
-            Settings.Default.empresa_nfe_serienfe = jo["empresa"]["serienfe"].ToString();
-            Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
-            Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
-            Settings.Default.Save();
+                if (remember.Checked)
+                    Settings.Default.login_remember = true;
+                else
+                    Settings.Default.login_remember = false;
 
-            Model.Usuarios usuarios = new Model.Usuarios();
-            var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
-            var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
-            usuarios.Delete("excluir", 0);
-            foreach (var item in dataUser)
-            {
-                var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
-                var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
-                if (exists == null) {
-                    usuarios.Id = 0;
-                    usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
-                    usuarios.Nome = nameComplete;
-                    usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
-                    usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
-                    usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
-                } else
+                Settings.Default.login_email = email.Text;
+
+                if (Validation.ConvertToInt32(jo["user"]["status"]) <= 0)
                 {
-                    usuarios.Id = exists.ID;
-                    usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
-                    usuarios.Nome = nameComplete;
-                    usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
-                    usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
-                    usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
+                    Alert.Message("Opss", "Você precisa ativar sua conta, acesse seu e-mail!", Alert.AlertType.info);
+                    return;
                 }
-                usuarios.Save(usuarios);
+
+                if (Validation.ConvertToInt32(jo["user"]["plan_status"]) <= 0)
+                {
+                    if (Validation.ConvertToInt32(jo["user"]["plan_trial"]) <= 0)
+                    {
+                        Alert.Message("Opss", "Seus dias de avaliação acabou, contrate um plano.", Alert.AlertType.info);
+                        return;
+                    }
+                }
+
+                Settings.Default.user_id = Validation.ConvertToInt32(jo["user"]["id"]);
+                Settings.Default.user_name = jo["user"]["name"].ToString();
+                Settings.Default.user_lastname = jo["user"]["lastname"].ToString();
+                Settings.Default.user_document = jo["user"]["document"].ToString();
+                Settings.Default.user_thumb = jo["user"]["thumb"].ToString();
+                Settings.Default.user_email = jo["user"]["email"].ToString();
+                Settings.Default.user_password = password.Text;
+                Settings.Default.user_sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
+                Settings.Default.user_cell = jo["user"]["cell"].ToString();
+                Settings.Default.user_level = Validation.ConvertToInt32(jo["user"]["level"]);
+                Settings.Default.user_status = Validation.ConvertToInt32(jo["user"]["status"]);
+                Settings.Default.user_plan_id = jo["user"]["plan_id"].ToString();
+                Settings.Default.user_plan_trial = Validation.ConvertToInt32(jo["user"]["plan_trial"]);
+                Settings.Default.user_plan_status = Validation.ConvertToInt32(jo["user"]["plan_status"]);
+                Settings.Default.user_plan_recorrencia = jo["plano"]["recorrencia"].ToString();
+                Settings.Default.user_plan_fatura = jo["plano"]["proxima_fatura"].ToString();
+                Settings.Default.user_comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
+                Settings.Default.user_dbhost = jo["user"]["db_host"].ToString();
+                Settings.Default.empresa_id = Validation.ConvertToInt32(jo["empresa"]["id"]);
+                Settings.Default.empresa_unique_id = jo["empresa"]["id_unique"].ToString();
+                Settings.Default.empresa_logo = jo["empresa"]["logo"].ToString();
+                Settings.Default.empresa_razao_social = jo["empresa"]["razao_social"].ToString();
+                Settings.Default.empresa_nome_fantasia = jo["empresa"]["nome_fantasia"].ToString();
+                Settings.Default.empresa_cnpj = jo["empresa"]["cnpj"].ToString();
+                Settings.Default.empresa_inscricao_estadual = jo["empresa"]["inscricao_estadual"].ToString();
+                Settings.Default.empresa_inscricao_municipal = jo["empresa"]["inscricao_municipal"].ToString();
+                Settings.Default.empresa_telefone = jo["empresa"]["telefone"].ToString();
+                Settings.Default.empresa_rua = jo["empresa"]["rua"].ToString();
+                Settings.Default.empresa_cep = jo["empresa"]["cep"].ToString();
+                Settings.Default.empresa_nr = jo["empresa"]["nr"].ToString();
+                Settings.Default.empresa_cidade = jo["empresa"]["cidade"].ToString();
+                Settings.Default.empresa_bairro = jo["empresa"]["bairro"].ToString();
+                Settings.Default.empresa_estado = jo["empresa"]["estado"].ToString();
+                Settings.Default.empresa_ibge = jo["empresa"]["ibge"].ToString();
+                Settings.Default.empresa_nfe_ultnfe = jo["empresa"]["ultnfe"].ToString();
+                Settings.Default.empresa_nfe_serienfe = jo["empresa"]["serienfe"].ToString();
+                Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
+                Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
+                Settings.Default.Save();
+
+                Model.Usuarios usuarios = new Model.Usuarios();
+                var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
+                var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
+                usuarios.Delete("excluir", 0);
+                foreach (var item in dataUser)
+                {
+                    var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
+                    var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
+                    if (exists == null)
+                    {
+                        usuarios.Id = 0;
+                        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
+                        usuarios.Nome = nameComplete;
+                        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
+                        usuarios.email = item.Value["email"].ToString();
+                        usuarios.senha = StringCipher.Encrypt(password.Text, password.Text);
+                    }
+                    else
+                    {
+                        usuarios.Id = exists.ID;
+                        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
+                        usuarios.Nome = nameComplete;
+                        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
+                        usuarios.email = item.Value["email"].ToString();
+                        usuarios.senha = StringCipher.Encrypt(password.Text, password.Text);
+                    }
+                    usuarios.Save(usuarios);
+                }
+            }
+            else
+            {
+                Model.Usuarios user = new Model.Usuarios();
+
+                var checkUsuarios = user.FindAll().Get();
+                if (checkUsuarios.Count() == 0)
+                {
+                    Alert.Message("Opps", "Você precisa estar conectado a internet no seu primeiro Login ao sistema.", Alert.AlertType.error);
+                    return;
+                }
+
+                var getUser = user.FindAll().Where("email", email.Text).FirstOrDefault<Model.Usuarios>();
+
+                string decryptedstring = "";
+                if (getUser != null)
+                {
+                    decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
+
+                    if (decryptedstring != password.Text)
+                    {
+                        Alert.Message("Opps", "Senha incorreta!", Alert.AlertType.error);
+                        return;
+                    }
+
+                    Settings.Default.user_id = getUser.Id_User;
+                    Settings.Default.empresa_unique_id = getUser.id_empresa;
+                }
             }
 
             Hide();
@@ -220,6 +274,12 @@ namespace Emiplus.View.Common
 
             btnUpdate.Click += (s, e) =>
             {
+                if (Support.CheckForInternetConnection())
+                {
+                    AlertOptions.Message("Atenção!", "Você precisa estar conectado a internet para atualizar.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    return;
+                }
+
                 var result = AlertOptions.Message("Atenção!", "Deseja iniciar o processo de atualização?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {

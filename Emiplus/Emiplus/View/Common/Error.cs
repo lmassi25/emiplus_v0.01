@@ -1,33 +1,33 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Database;
-using Emiplus.Data.Helpers;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
-    public partial class Carregar : Form
+    public partial class Error : Form
     {
-        #region Shadow box
 
+        #region DLL SHADOW
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
          ********************************************************************/
-
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
     (
-        int nLeftRect, // x-coordinate of upper-left corner
-        int nTopRect, // y-coordinate of upper-left corner
-        int nRightRect, // x-coordinate of lower-right corner
-        int nBottomRect, // y-coordinate of lower-right corner
+        int nLeftRect,     // x-coordinate of upper-left corner
+        int nTopRect,      // y-coordinate of upper-left corner
+        int nRightRect,    // x-coordinate of lower-right corner
+        int nBottomRect,   // y-coordinate of lower-right corner
         int nWidthEllipse, // height of ellipse
         int nHeightEllipse // width of ellipse
-     );
+    );
 
         [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
@@ -42,6 +42,7 @@ namespace Emiplus.View.Common
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
+        private const int WS_EX_TOPMOST = 0x00000008;
 
         public struct MARGINS                           // struct for box shadow
         {
@@ -64,6 +65,8 @@ namespace Emiplus.View.Common
                 CreateParams cp = base.CreateParams;
                 if (!m_aeroEnabled)
                     cp.ClassStyle |= CS_DROPSHADOW;
+
+                cp.ExStyle |= WS_EX_TOPMOST;
 
                 return cp;
             }
@@ -88,7 +91,7 @@ namespace Emiplus.View.Common
                     if (m_aeroEnabled)
                     {
                         var v = 2;
-                        DwmSetWindowAttribute(Handle, 2, ref v, 4);
+                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
                             bottomHeight = 1,
@@ -96,10 +99,10 @@ namespace Emiplus.View.Common
                             rightWidth = 1,
                             topHeight = 1
                         };
-                        DwmExtendFrameIntoClientArea(Handle, ref margins);
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+
                     }
                     break;
-
                 default:
                     break;
             }
@@ -107,55 +110,31 @@ namespace Emiplus.View.Common
 
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
+
         }
-
         /********************************************************************
-         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\
+         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\ 
          ********************************************************************/
+        #endregion
 
-        #endregion Shadow box
-
-        int atualiza = 0;
-
-        public Carregar()
+        public Error()
         {
             InitializeComponent();
-            Atualizar();
+            Eventos();
         }
 
-        public void Atualizar()
+        private void Eventos()
         {
-            if (Support.CheckForInternetConnection())
+            btnFechar.Click += (s, e) =>
             {
-                if (IniFile.Read("Update", "APP") == "true" && Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
-                {
-                    atualiza = 1;
-                    WindowState = FormWindowState.Normal;
-                }
-            }
+                DialogResult = DialogResult.OK;
+                Close();
+            };
 
-            backgroundWorker1.RunWorkerAsync();
-        }
-
-        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (atualiza == 1)
+            btnContinuar.Click += (s, e) =>
             {
-                new CreateTables().CheckTables();
-
-                // Atualiza a versão no INI
-                IniFile.Write("Version", new Update().GetVersionWebTxt(), "APP");
-
-                Thread.Sleep(5000);
-            }
+                Close();
+            };
         }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Login f = new Login();
-            f.Show();
-            Hide();
-        }
-
     }
 }

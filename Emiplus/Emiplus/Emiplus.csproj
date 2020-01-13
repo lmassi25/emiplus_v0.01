@@ -299,6 +299,7 @@
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />
     <Compile Include="Data\Helpers\Resolution.cs" />
+    <Compile Include="Data\Helpers\StringCipher.cs" />
     <Compile Include="Data\Helpers\Support.cs" />
     <Compile Include="Data\Helpers\ToolHelp.cs" />
     <Compile Include="Data\Helpers\UserPermission.cs" />
@@ -479,6 +480,12 @@
     </Compile>
     <Compile Include="View\Common\Developer.Designer.cs">
       <DependentUpon>Developer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\Home.cs">
       <SubType>Form</SubType>
@@ -996,6 +1003,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Developer.resx">
       <DependentUpon>Developer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

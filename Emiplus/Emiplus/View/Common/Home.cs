@@ -166,11 +166,15 @@ namespace Emiplus.View.Common
             if (!UserPermission.SetControl(homeMenuInicio, pictureBox13, "tela_inicial", false))
                 StartInicio();
 
-            //Sync f = new Sync();
-            //f.Show();
-            //f.Hide();
+            if (Support.CheckForInternetConnection())
+            {
+                Sync f = new Sync();
+                f.Show();
+                f.Hide();
+            }
 
-            //throw new System.ArgumentException("Parameter cannot be null", "original");
+            ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
+            timer1.Start();
         }
 
         /// <summary>
@@ -309,6 +313,20 @@ namespace Emiplus.View.Common
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
             btnAccount.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
+
+            timer1.Tick += (s, e) =>
+            {
+                if (syncActive)
+                {
+                    syncOn.Visible = true;
+                    barraTituloHome.Refresh();
+                }
+                else
+                {
+                    syncOn.Visible = false;
+                    barraTituloHome.Refresh();
+                }
+            };
         }
     }
 }
