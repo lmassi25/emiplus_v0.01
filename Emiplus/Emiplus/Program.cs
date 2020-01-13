@@ -44,10 +44,6 @@ namespace Emiplus
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Carregar());
 
-            //EventLog myLog = new EventLog();
-            //myLog.Source = "ThreadException";
-            //myLog.WriteEntry("\n\nStack Trace:\n");
-
         }
 
         public static void SetPermissions()
