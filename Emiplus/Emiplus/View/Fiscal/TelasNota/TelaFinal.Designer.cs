@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEnviarEmail;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaFinal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -55,7 +54,7 @@
             this.progress3 = new System.Windows.Forms.Panel();
             this.Emitir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            btnEnviarEmail = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.EnviarEmail = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel11.SuspendLayout();
@@ -65,41 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.step2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEnviarEmail
-            // 
-            btnEnviarEmail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnEnviarEmail.BackColor = System.Drawing.Color.Transparent;
-            btnEnviarEmail.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnEnviarEmail.BackColorState.Enabled = System.Drawing.Color.White;
-            btnEnviarEmail.BackColorState.Hover = System.Drawing.Color.White;
-            btnEnviarEmail.BackColorState.Pressed = System.Drawing.Color.White;
-            btnEnviarEmail.Border.Color = System.Drawing.Color.Silver;
-            btnEnviarEmail.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            btnEnviarEmail.Border.HoverVisible = true;
-            btnEnviarEmail.Border.Rounding = 6;
-            btnEnviarEmail.Border.Thickness = 1;
-            btnEnviarEmail.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            btnEnviarEmail.Border.Visible = true;
-            btnEnviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnEnviarEmail.DialogResult = System.Windows.Forms.DialogResult.None;
-            btnEnviarEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnEnviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnEnviarEmail.Image = ((System.Drawing.Image)(resources.GetObject("btnEnviarEmail.Image")));
-            btnEnviarEmail.Location = new System.Drawing.Point(819, 518);
-            btnEnviarEmail.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            btnEnviarEmail.Name = "btnEnviarEmail";
-            btnEnviarEmail.Size = new System.Drawing.Size(154, 78);
-            btnEnviarEmail.TabIndex = 188;
-            btnEnviarEmail.Text = "Enviar por E-mail";
-            btnEnviarEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            btnEnviarEmail.TextStyle.Disabled = System.Drawing.Color.Gray;
-            btnEnviarEmail.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            btnEnviarEmail.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnEnviarEmail.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            btnEnviarEmail.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            btnEnviarEmail.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            btnEnviarEmail.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel1
             // 
@@ -491,7 +455,7 @@
             this.Imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Imprimir.Image")));
-            this.Imprimir.Location = new System.Drawing.Point(189, 518);
+            this.Imprimir.Location = new System.Drawing.Point(663, 518);
             this.Imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Imprimir.Name = "Imprimir";
             this.Imprimir.Size = new System.Drawing.Size(154, 78);
@@ -506,16 +470,50 @@
             this.Imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // EnviarEmail
+            // 
+            this.EnviarEmail.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.EnviarEmail.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.EnviarEmail.BackColorState.Enabled = System.Drawing.Color.White;
+            this.EnviarEmail.BackColorState.Hover = System.Drawing.Color.White;
+            this.EnviarEmail.BackColorState.Pressed = System.Drawing.Color.White;
+            this.EnviarEmail.Border.Color = System.Drawing.Color.Silver;
+            this.EnviarEmail.Border.HoverColor = System.Drawing.Color.Silver;
+            this.EnviarEmail.Border.HoverVisible = true;
+            this.EnviarEmail.Border.Rounding = 6;
+            this.EnviarEmail.Border.Thickness = 1;
+            this.EnviarEmail.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.EnviarEmail.Border.Visible = true;
+            this.EnviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnviarEmail.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.EnviarEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.Image = ((System.Drawing.Image)(resources.GetObject("EnviarEmail.Image")));
+            this.EnviarEmail.Location = new System.Drawing.Point(823, 518);
+            this.EnviarEmail.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.EnviarEmail.Name = "EnviarEmail";
+            this.EnviarEmail.Size = new System.Drawing.Size(154, 78);
+            this.EnviarEmail.TabIndex = 287;
+            this.EnviarEmail.Text = "Enviar por E-mail";
+            this.EnviarEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EnviarEmail.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.EnviarEmail.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EnviarEmail.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.EnviarEmail.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.EnviarEmail.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // TelaFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
+            this.Controls.Add(this.EnviarEmail);
             this.Controls.Add(this.Imprimir);
             this.Controls.Add(this.Emitir);
             this.Controls.Add(this.panel11);
-            this.Controls.Add(btnEnviarEmail);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.retorno);
@@ -566,5 +564,6 @@
         private System.Windows.Forms.Panel progress3;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Emitir;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Imprimir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton EnviarEmail;
     }
 }

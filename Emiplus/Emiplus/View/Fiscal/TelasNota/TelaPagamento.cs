@@ -22,7 +22,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             InitializeComponent();
 
-            _mNota = _mNota.FindByIdPedidoAndTipo(IdPedido, "NFe").FirstOrDefault<Model.Nota>();
+            _mNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "NFe").FirstOrDefault<Model.Nota>();
 
             DisableCampos();
             Eventos();

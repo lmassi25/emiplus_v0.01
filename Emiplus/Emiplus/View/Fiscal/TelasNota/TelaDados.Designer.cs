@@ -56,10 +56,15 @@
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.step5 = new System.Windows.Forms.PictureBox();
+            this.step3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.step4 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.step2 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.step1 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.progress2 = new System.Windows.Forms.Panel();
             this.progress4 = new System.Windows.Forms.Panel();
@@ -68,11 +73,6 @@
             this.AddrInfo = new System.Windows.Forms.Label();
             this.addAddr = new System.Windows.Forms.Label();
             this.Documentos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.step5 = new System.Windows.Forms.PictureBox();
-            this.step3 = new System.Windows.Forms.PictureBox();
-            this.step4 = new System.Windows.Forms.PictureBox();
-            this.step2 = new System.Windows.Forms.PictureBox();
-            this.step1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addNatureza = new System.Windows.Forms.Button();
@@ -652,7 +652,7 @@
             this.infoFisco.ImageVisible = false;
             this.infoFisco.ImageWidth = 35;
             this.infoFisco.Location = new System.Drawing.Point(517, 295);
-            this.infoFisco.MaxLength = 10;
+            this.infoFisco.MaxLength = 1000;
             this.infoFisco.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.infoFisco.MultiLine = true;
             this.infoFisco.Name = "infoFisco";
@@ -725,7 +725,7 @@
             this.infoContribuinte.ImageVisible = false;
             this.infoContribuinte.ImageWidth = 35;
             this.infoContribuinte.Location = new System.Drawing.Point(31, 295);
-            this.infoContribuinte.MaxLength = 10;
+            this.infoContribuinte.MaxLength = 1000;
             this.infoContribuinte.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.infoContribuinte.MultiLine = true;
             this.infoContribuinte.Name = "infoContribuinte";
@@ -879,6 +879,28 @@
             this.panel2.Size = new System.Drawing.Size(1008, 97);
             this.panel2.TabIndex = 180;
             // 
+            // step5
+            // 
+            this.step5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step5.Image = ((System.Drawing.Image)(resources.GetObject("step5.Image")));
+            this.step5.Location = new System.Drawing.Point(809, 32);
+            this.step5.Name = "step5";
+            this.step5.Size = new System.Drawing.Size(50, 50);
+            this.step5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step5.TabIndex = 15;
+            this.step5.TabStop = false;
+            // 
+            // step3
+            // 
+            this.step3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step3.Image = global::Emiplus.Properties.Resources.question;
+            this.step3.Location = new System.Drawing.Point(476, 32);
+            this.step3.Name = "step3";
+            this.step3.Size = new System.Drawing.Size(50, 50);
+            this.step3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step3.TabIndex = 13;
+            this.step3.TabStop = false;
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -903,6 +925,17 @@
             this.label16.TabIndex = 11;
             this.label16.Text = "5. Finalização";
             // 
+            // step4
+            // 
+            this.step4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step4.Image = ((System.Drawing.Image)(resources.GetObject("step4.Image")));
+            this.step4.Location = new System.Drawing.Point(640, 32);
+            this.step4.Name = "step4";
+            this.step4.Size = new System.Drawing.Size(50, 50);
+            this.step4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step4.TabIndex = 8;
+            this.step4.TabStop = false;
+            // 
             // label17
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -915,6 +948,17 @@
             this.label17.TabIndex = 9;
             this.label17.Text = "4. Pagamento";
             // 
+            // step2
+            // 
+            this.step2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step2.Image = global::Emiplus.Properties.Resources.question;
+            this.step2.Location = new System.Drawing.Point(311, 32);
+            this.step2.Name = "step2";
+            this.step2.Size = new System.Drawing.Size(50, 50);
+            this.step2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step2.TabIndex = 6;
+            this.step2.TabStop = false;
+            // 
             // label18
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -926,6 +970,18 @@
             this.label18.Size = new System.Drawing.Size(101, 21);
             this.label18.TabIndex = 7;
             this.label18.Text = "2. Produtos";
+            // 
+            // step1
+            // 
+            this.step1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.step1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.step1.Image = ((System.Drawing.Image)(resources.GetObject("step1.Image")));
+            this.step1.Location = new System.Drawing.Point(143, 32);
+            this.step1.Name = "step1";
+            this.step1.Size = new System.Drawing.Size(50, 50);
+            this.step1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.step1.TabIndex = 4;
+            this.step1.TabStop = false;
             // 
             // label19
             // 
@@ -1037,62 +1093,6 @@
             this.Documentos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Documentos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Documentos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // step5
-            // 
-            this.step5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step5.Image = ((System.Drawing.Image)(resources.GetObject("step5.Image")));
-            this.step5.Location = new System.Drawing.Point(809, 32);
-            this.step5.Name = "step5";
-            this.step5.Size = new System.Drawing.Size(50, 50);
-            this.step5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step5.TabIndex = 15;
-            this.step5.TabStop = false;
-            // 
-            // step3
-            // 
-            this.step3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step3.Image = global::Emiplus.Properties.Resources.question;
-            this.step3.Location = new System.Drawing.Point(476, 32);
-            this.step3.Name = "step3";
-            this.step3.Size = new System.Drawing.Size(50, 50);
-            this.step3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step3.TabIndex = 13;
-            this.step3.TabStop = false;
-            // 
-            // step4
-            // 
-            this.step4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step4.Image = ((System.Drawing.Image)(resources.GetObject("step4.Image")));
-            this.step4.Location = new System.Drawing.Point(640, 32);
-            this.step4.Name = "step4";
-            this.step4.Size = new System.Drawing.Size(50, 50);
-            this.step4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step4.TabIndex = 8;
-            this.step4.TabStop = false;
-            // 
-            // step2
-            // 
-            this.step2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step2.Image = global::Emiplus.Properties.Resources.question;
-            this.step2.Location = new System.Drawing.Point(311, 32);
-            this.step2.Name = "step2";
-            this.step2.Size = new System.Drawing.Size(50, 50);
-            this.step2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step2.TabIndex = 6;
-            this.step2.TabStop = false;
-            // 
-            // step1
-            // 
-            this.step1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.step1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.step1.Image = ((System.Drawing.Image)(resources.GetObject("step1.Image")));
-            this.step1.Location = new System.Drawing.Point(143, 32);
-            this.step1.Name = "step1";
-            this.step1.Size = new System.Drawing.Size(50, 50);
-            this.step1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.step1.TabIndex = 4;
-            this.step1.TabStop = false;
             // 
             // button2
             // 

@@ -215,7 +215,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                             //}
 
                             _msg = new Controller.Fiscal().Emitir(idPedido, "NFe", _modelNota.Id);
-
                             break;
 
                         case 2:
@@ -237,7 +236,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                             break;
 
                         case 5:                            
-                            _msg = new Controller.Fiscal().EnviarEmail(idPedido, justificativa);
+                            _msg = new Controller.Fiscal().EnviarEmail(idPedido, justificativa, "NFe", _modelNota.Id);
                             break;
                     }
                 };

@@ -1,4 +1,5 @@
-﻿using SqlKata.Execution;
+﻿using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -10,8 +11,8 @@ namespace Emiplus.View.Fiscal.TelasNota
     {
         private static int Id { get; set; } // id nota
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
-        private string _msg;
-
+        private string _msg, justificativa;
+        private int p1 = 0;
         private Model.Nota _mNota = new Model.Nota();
 
         public TelaFinal()
@@ -39,15 +40,45 @@ namespace Emiplus.View.Fiscal.TelasNota
                 retorno.Text = new Controller.Fiscal().Imprimir(Id, "NFe", _mNota.Id);
             };
 
+            EnviarEmail.Click += (s, e) =>
+            {
+                var checkNota = _mNota.FindByIdPedidoUltReg(Id, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota.Status != "Autorizada")
+                {
+                    Alert.Message("Ação não permitida!", "Não é possível enviar uma nota Pendente.", Alert.AlertType.warning);
+                    return;
+                }
+
+                _mNota = checkNota;
+
+                CartaCorrecaoAdd.tela = "Email";
+                CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    CartaCorrecaoAdd.tela = "";
+                    justificativa = CartaCorrecaoAdd.justificativa;
+
+                    retorno.Text = "Enviando NF-e .......................................... (1/2)";
+
+                    p1 = 5;
+                    WorkerBackground.RunWorkerAsync();
+                }
+            };
+
             using (var b = WorkerBackground)
             {
                 b.DoWork += async (s, e) =>
                 {
-                    _msg = new Controller.Fiscal().Emitir(Id, "NFe", _mNota.Id, false);
+                    if(p1 == 5)
+                        _msg = new Controller.Fiscal().EnviarEmail(Id, justificativa, "NFe", _mNota.Id); 
+                    else
+                        _msg = new Controller.Fiscal().Emitir(Id, "NFe", _mNota.Id, false);
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
+                    p1 = 0;
+
                     retorno.Text = _msg;
                     Emitir.Enabled = true;
                 };

@@ -727,8 +727,9 @@ namespace Emiplus.Controller
         /// <summary> 
         /// Enviar email
         /// </summary>
-        public string EnviarEmail(int Pedido, string email, string tipo = "NFe")
-        {
+        public string EnviarEmail(int Pedido, string email, string tipo = "NFe", int Nota = 0)
+        {            
+            _id_nota = Nota;
             Start(Pedido);
 
             _msg = "Opss.. Não foi possível enviar o email.";
@@ -737,8 +738,7 @@ namespace Emiplus.Controller
             {
                 switch (tipo)
                 {
-                    case "NFe":
-
+                    default:
                         _msg = RequestEmail(email, tipo);
                         break;
                 }
@@ -2048,8 +2048,8 @@ namespace Emiplus.Controller
                 if (!String.IsNullOrEmpty(_pedido.Marca_Frete))
                     xml.WriteElementString("marca", _pedido.Marca_Frete);
 
-                xml.WriteElementString("pesoL", Validation.FormatPriceWithDot(_pedido.PesoLiq_Frete));
-                xml.WriteElementString("pesoB", Validation.FormatPriceWithDot(_pedido.PesoBruto_Frete));
+                xml.WriteElementString("pesoL", Validation.FormatPriceWithDot(_pedido.PesoLiq_Frete, 3));
+                xml.WriteElementString("pesoB", Validation.FormatPriceWithDot(_pedido.PesoBruto_Frete, 3));
 
                 xml.WriteEndElement();//vol
             }
@@ -2292,13 +2292,13 @@ namespace Emiplus.Controller
             switch (documento)
             {
                 case "CFe":
-                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";
+                    requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";
                     break;
                 case "CCe":
-                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1&Documento=CCe";
+                    requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1&Documento=CCe";
                     break;
                 default:
-                    requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";                    
+                    requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chavedeacesso + "&Url=1";                    
                     break;
             }
 
