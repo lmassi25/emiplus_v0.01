@@ -221,7 +221,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 AtualizarDados();
 
-                if (!String.IsNullOrEmpty(_mNota.Status))
+                if (!_mNota.Status.Contains("Pendente"))
                 {
                     progress5.Visible = false;
                     pictureBox1.Visible = false;

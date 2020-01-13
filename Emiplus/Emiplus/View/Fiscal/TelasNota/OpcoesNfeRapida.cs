@@ -59,7 +59,20 @@ namespace Emiplus.View.Fiscal.TelasNota
             {                
                 //var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
                 var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-                
+
+                if (checkNota == null)
+                {
+                    Model.Nota _modelNotaNova = new Model.Nota();
+
+                    _modelNotaNova.Id = 0;
+                    _modelNotaNova.Tipo = "NFe";
+                    _modelNotaNova.Status = "Pendente";
+                    _modelNotaNova.id_pedido = idPedido;
+                    _modelNotaNova.Save(_modelNotaNova, false);
+
+                    checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                }
+
                 if (checkNota.Status == "Cancelada")
                 {
                     var result = AlertOptions.Message("Atenção!", "Existem registro(s) de nota(s) cancelada(s) a partir desta venda. Deseja gerar um nova nota?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
@@ -71,17 +84,17 @@ namespace Emiplus.View.Fiscal.TelasNota
                         _modelNotaNova.Tipo = "NFe";
                         _modelNotaNova.Status = "Pendente";
                         _modelNotaNova.id_pedido = idPedido;
-                        _modelNotaNova.Save(_modelNota, false);
+                        _modelNotaNova.Save(_modelNotaNova, false);
 
-                        checkNota = _modelNotaNova;
+                        checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
                     }
                 }
 
-                //if (checkNota.Status != "Pendente")
-                //{
-                //    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
-                //    return;
-                //}
+                if (checkNota.Status != "Pendente")
+                {
+                    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
+                    return;
+                }
 
                 _modelNota = checkNota;
 
@@ -193,13 +206,13 @@ namespace Emiplus.View.Fiscal.TelasNota
                     switch (p1)
                     {
                         case 1:
-                            _modelNota = _modelNota.FindByIdPedido(idPedido).FirstOrDefault<Model.Nota>();
-                            if (_modelNota == null)
-                            {
-                                _modelNota.Id = 0;
-                                _modelNota.id_pedido = idPedido;
-                                _modelNota.Save(_modelNota);
-                            }
+                            //_modelNota = _modelNota.FindByIdPedido(idPedido).FirstOrDefault<Model.Nota>();
+                            //if (_modelNota == null)
+                            //{
+                            //    _modelNota.Id = 0;
+                            //    _modelNota.id_pedido = idPedido;
+                            //    _modelNota.Save(_modelNota);
+                            //}
 
                             _msg = new Controller.Fiscal().Emitir(idPedido, "NFe", _modelNota.Id);
 

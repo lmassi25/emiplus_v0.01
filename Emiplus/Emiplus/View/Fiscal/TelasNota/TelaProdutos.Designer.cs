@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -102,6 +102,7 @@
             this.BuscarProduto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
+            this.AlterarImposto = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1336,14 +1337,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1362,12 +1363,47 @@
             this.GridListaProdutos.TabIndex = 9;
             this.GridListaProdutos.TabStop = false;
             // 
+            // AlterarImposto
+            // 
+            this.AlterarImposto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.AlterarImposto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.AlterarImposto.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.AlterarImposto.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.AlterarImposto.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.AlterarImposto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.AlterarImposto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.AlterarImposto.Border.HoverVisible = true;
+            this.AlterarImposto.Border.Rounding = 6;
+            this.AlterarImposto.Border.Thickness = 1;
+            this.AlterarImposto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.AlterarImposto.Border.Visible = true;
+            this.AlterarImposto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AlterarImposto.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.AlterarImposto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlterarImposto.ForeColor = System.Drawing.Color.White;
+            this.AlterarImposto.Image = null;
+            this.AlterarImposto.Location = new System.Drawing.Point(774, 115);
+            this.AlterarImposto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.AlterarImposto.Name = "AlterarImposto";
+            this.AlterarImposto.Size = new System.Drawing.Size(173, 20);
+            this.AlterarImposto.TabIndex = 290;
+            this.AlterarImposto.Text = "Alterar Imposto (Item: 1)";
+            this.AlterarImposto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AlterarImposto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.AlterarImposto.TextStyle.Enabled = System.Drawing.Color.White;
+            this.AlterarImposto.TextStyle.Hover = System.Drawing.Color.White;
+            this.AlterarImposto.TextStyle.Pressed = System.Drawing.Color.White;
+            this.AlterarImposto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.AlterarImposto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.AlterarImposto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // TelaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
+            this.Controls.Add(this.AlterarImposto);
             this.Controls.Add(this.BuscarProduto);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.label43);
@@ -1508,5 +1544,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarProduto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView GridListaProdutos;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton AlterarImposto;
     }
 }

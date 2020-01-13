@@ -26,6 +26,8 @@ namespace Emiplus.View.Comercial
     /// </summary>
     public partial class Pedido : Form
     {
+        #region V
+
         private Controller.Pedido _cPedido = new Controller.Pedido();
         private Model.Pessoa _mPessoa = new Model.Pessoa();
 
@@ -38,6 +40,8 @@ namespace Emiplus.View.Comercial
 
         private string controle;
 
+        #endregion
+
         public Pedido()
         {
             InitializeComponent();
@@ -45,6 +49,7 @@ namespace Emiplus.View.Comercial
 
             label3.Text = Home.pedidoPage;
             label1.Text = Home.pedidoPage;
+            Resolution.SetScreenMaximized(this);
 
             switch (Home.pedidoPage)
             {

@@ -15,12 +15,13 @@ namespace Emiplus.Controller
 
         public void SetImposto(int idPedidoItem, int idImposto = 0, string tipo = "")
         {
+            _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).First<Model.PedidoItem>();
+            _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
+
             #region IMPOSTO 
 
             if (idImposto == 0)
-            {
-                _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).First<Model.PedidoItem>();
-                _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
+            {                
                 if (_modelItem.Count() != 0)
                 {
                     switch (tipo)

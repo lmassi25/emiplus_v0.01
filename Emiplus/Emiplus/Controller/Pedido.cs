@@ -353,8 +353,8 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
                         
-            if (Data == null)
-            {
+            //if (Data == null)
+            //{
                 IEnumerable<dynamic> dados;
 
                 switch (tipo)
@@ -370,8 +370,8 @@ namespace Emiplus.Controller
                         break;
                 }
                 
-                Data = dados;                
-            }
+                Data = dados;
+            //}
 
             foreach (var item in Data)
             {
@@ -384,11 +384,19 @@ namespace Emiplus.Controller
                     statusNfePedido = item.STATUS == 1 ? "Finalizado" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
 
                 string n_cfe = "", n_nfe = "";
-                foreach (dynamic item2 in tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID))
+                var dataNota = tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) : tipo == "Notas" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID);
+
+                if (dataNota == null)
+                    return;
+
+                foreach (dynamic item2 in dataNota)
                 {
                     if (item2.TIPONFE == "NFe")
                     {
-                        n_nfe = item2.NFE;
+                        if (tipo == "Vendas" && item2.STATUSNFE == "Cancelada")
+                            n_nfe = "";
+                        else
+                            n_nfe = item2.NFE;
 
                         if (tipo == "Notas")
                             statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
@@ -440,6 +448,8 @@ namespace Emiplus.Controller
 
             if (idnota > 0)
                 query.Where("nota.id", idnota);
+
+            query.OrderBy("nota.id");
 
             return query.Get();
         }
