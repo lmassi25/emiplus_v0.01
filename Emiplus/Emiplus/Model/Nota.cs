@@ -47,7 +47,7 @@ namespace Emiplus.Model
             return Query().Where("tipo", tipo).Where("id_pedido", id);
         }
         
-        public SqlKata.Query FindByIdPedidoUltReg(int Pedido, string status = "")
+        public SqlKata.Query FindByIdPedidoUltReg(int Pedido, string status = "", string tipo = "")
         {
             int id = 0;
 
@@ -60,6 +60,9 @@ namespace Emiplus.Model
 
                 if (!String.IsNullOrEmpty(status))
                     res.Where("NOTA.STATUS", status);
+
+                if (!String.IsNullOrEmpty(tipo))
+                    res.Where("NOTA.TIPO", tipo);
 
                 foreach (var item in res.Get())
                 {

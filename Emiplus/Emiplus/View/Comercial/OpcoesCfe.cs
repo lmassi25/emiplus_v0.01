@@ -34,7 +34,7 @@ namespace Emiplus.View.Comercial
             if(idNota > 0)
                 checkNota = _modelNota.FindById(idNota).FirstOrDefault<Model.Nota>();
             else
-                checkNota = _modelNota.FindByIdPedidoUltReg(idPedido).FirstOrDefault<Model.Nota>();
+                checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Model.Nota>();
             
             if (checkNota == null)
                 return null;
