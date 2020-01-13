@@ -87,7 +87,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
         {
-            var baseQuery = connect.Query().Where("status_sync", "CREATE").OrWhereNull("status_sync").OrWhere("status_sync", string.Empty);
+            var baseQuery = connect.Query().Where("status_sync", "CREATE").OrWhereNull("status_sync").OrWhere("status_sync", string.Empty).WhereNotNull("id_sync");
 
             return await baseQuery.Clone().From(Table).GetAsync();
         }
@@ -98,7 +98,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string Table)
         {
-            var baseQuery = connect.Query().Where("status_sync", "UPDATE");
+            var baseQuery = connect.Query().Where("status_sync", "UPDATE").WhereNotNull("id_sync");
 
             return await baseQuery.Clone().From(Table).GetAsync();
         }
@@ -175,8 +175,6 @@ namespace Emiplus.View.Common
                 await RunSyncAsync("nota");
                 await RunSyncAsync("pedido");
                 await RunSyncAsync("pedido_item");
-
-                Thread.Sleep(60000);
             };
 
             backWork.RunWorkerCompleted += (s, e) =>
