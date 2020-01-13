@@ -67,6 +67,7 @@ namespace Emiplus.View.Fiscal
                         _mNota.Id = 0;
                         _mNota.id_pedido = Id;
                         _mNota.Tipo = "NFe";
+                        _mNota.Status = "Pendente";
                         _mNota.Save(_mNota, false);
 
                         IdDetailsNota = _mNota.GetLastId();
