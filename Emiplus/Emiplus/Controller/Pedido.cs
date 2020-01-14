@@ -220,7 +220,7 @@ namespace Emiplus.Controller
 
             if (status != 0)
             {
-                if (tipo == "Notas")
+                if (tipo == "Notas" || tipo == "Cupons")
                 {
                     //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
                     switch (status)
@@ -382,11 +382,16 @@ namespace Emiplus.Controller
             {
                 var statusNfePedido = "";
 
+                if (tipo == "Compras")
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Pago" : item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
+
                 if (tipo == "Vendas")
-                    statusNfePedido = item.STATUS == 2 ? "Recebimento Pendente" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
 
                 if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
-                    statusNfePedido = item.STATUS == 1 ? "Finalizado" : item.STATUS == 0 ? "Pendente" : @"Finalizado\Recebido";
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
+
+                #region N° SEFAZ 
 
                 string n_cfe = "", n_nfe = "";
                 var dataNota = tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) : tipo == "Notas" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID);
@@ -418,6 +423,8 @@ namespace Emiplus.Controller
                             statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
                     }                        
                 }
+
+                #endregion
 
                 Table.Rows.Add(
                     //tipo == "Notas" ? item.ID : tipo == "Cupons" ? item.IDNOTA : item.ID,
