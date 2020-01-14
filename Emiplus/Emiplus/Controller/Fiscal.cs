@@ -928,7 +928,7 @@ namespace Emiplus.Controller
                     {
                         xml.WriteStartElement("CFe");
                         xml.WriteStartElement("infCFe");
-                        xml.WriteAttributeString("versaoDadosEnt", "0.08");
+                        xml.WriteAttributeString("versaoDadosEnt", layoutCFE);
                     }
                     else
                     {
@@ -1065,43 +1065,43 @@ namespace Emiplus.Controller
 
                 case "CFe":
 
+                    string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+
                     Random rdn = new Random();
                     _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), arq.OuterXml));
 
-                    if (_msg.Contains("Emitido com sucesso + conteudo notas"))
-                    {
-                        StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
-                        txt.Write(_msg);
-                        txt.Close();
+                    StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + "_" + Validation.RandomSecurity() + ".txt", false, Encoding.UTF8);
+                    txt.Write(_msg);
+                    txt.Close();
 
+                    if (_msg.Contains("Emitido com sucesso"))
+                    {
                         if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
                             Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+                        
+                        XmlDocument oXML = new XmlDocument();
+                        oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
 
-                        string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+                        ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
+                        nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
+                        assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
+
+                        var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                        doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
 
                         try
                         {
-                            XmlDocument oXML = new XmlDocument();
-                            oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            ////------------------------nota salva
+                            //if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                            //    Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
 
-                            ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
-                            nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
-                            assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
+                            //doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            //doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+                            ////------------------------nota salva
 
-                            var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
-
-                            //------------------------nota salva
-                            if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
-                                Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
-
-                            doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
-                            //------------------------nota salva
-
-                            ////------------------------
-                            _msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            ////------------------------
+                            //////------------------------
+                            //_msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                            //////------------------------
                         }
                         catch (Exception ex)
                         { }
@@ -1114,12 +1114,6 @@ namespace Emiplus.Controller
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
                         _nota.assinatura_qrcode = assinatura_qrcode;
                         _nota.Save(_nota, false);
-                    }
-                    else
-                    {
-                        StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + ".txt", false, Encoding.UTF8);
-                        txt.Write(_msg);
-                        txt.Close();
                     }
 
                     break;
@@ -1398,6 +1392,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
                 xml.WriteElementString("verProc", "EMIPLUS");
+
+                SetNFref(xml, Pedido, tipo);
             }
 
             xml.WriteEndElement();
@@ -1411,7 +1407,16 @@ namespace Emiplus.Controller
 
         private void SetNFref(XmlTextWriter xml, int Pedido, string tipo)
         {
-
+            var notas = new Model.Nota().Query().Select("chavedeacesso").Where("Nota.id_pedido", Pedido).Where("Nota.excluir", 0).Where("Nota.tipo", "Documento").OrderBy("Nota.id").Get();
+            if(notas != null)
+            {
+                foreach (var data in notas)
+                {
+                    xml.WriteStartElement("NFref");
+                    xml.WriteElementString("refNFe", data.CHAVEDEACESSO);
+                    xml.WriteEndElement();
+                }
+            }
         }
 
         private void SetEmit(XmlTextWriter xml, int Pedido, string tipo)

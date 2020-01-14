@@ -40,6 +40,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.assinatura = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.codigoativacao = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.base64 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SuspendLayout();
             // 
             // serie
@@ -377,7 +378,6 @@
             this.assinatura.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.assinatura.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.assinatura.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.assinatura.Visible = false;
             // 
             // codigoativacao
             // 
@@ -411,7 +411,39 @@
             this.codigoativacao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.codigoativacao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.codigoativacao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.codigoativacao.Visible = false;
+            // 
+            // base64
+            // 
+            this.base64.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.base64.BackColorState.Enabled = System.Drawing.Color.White;
+            this.base64.BackColorState.Hover = System.Drawing.Color.White;
+            this.base64.BackColorState.Pressed = System.Drawing.Color.White;
+            this.base64.Border.Color = System.Drawing.Color.Silver;
+            this.base64.Border.HoverColor = System.Drawing.Color.Silver;
+            this.base64.Border.HoverVisible = true;
+            this.base64.Border.Rounding = 6;
+            this.base64.Border.Thickness = 1;
+            this.base64.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.base64.Border.Visible = true;
+            this.base64.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.base64.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.base64.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.base64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.base64.Image = null;
+            this.base64.Location = new System.Drawing.Point(332, 275);
+            this.base64.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.base64.Name = "base64";
+            this.base64.Size = new System.Drawing.Size(154, 78);
+            this.base64.TabIndex = 512;
+            this.base64.Text = "Base64";
+            this.base64.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.base64.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.base64.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.base64.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.base64.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.base64.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.base64.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.base64.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Cfesat
             // 
@@ -419,6 +451,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(493, 481);
+            this.Controls.Add(this.base64);
             this.Controls.Add(this.codigoativacao);
             this.Controls.Add(this.assinatura);
             this.Controls.Add(this.servidor);
@@ -451,5 +484,6 @@
         private System.Windows.Forms.Label label15;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton assinatura;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton codigoativacao;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton base64;
     }
 }

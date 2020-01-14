@@ -565,6 +565,12 @@
     <Compile Include="View\Configuracoes\Cfesat.Designer.cs">
       <DependentUpon>Cfesat.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\Cfesat_base64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Cfesat_base64.Designer.cs">
+      <DependentUpon>Cfesat_base64.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Cfesat_logs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1051,6 +1057,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Cfesat.resx">
       <DependentUpon>Cfesat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Cfesat_base64.resx">
+      <DependentUpon>Cfesat_base64.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Cfesat_logs.resx">
       <DependentUpon>Cfesat_logs.cs</DependentUpon>

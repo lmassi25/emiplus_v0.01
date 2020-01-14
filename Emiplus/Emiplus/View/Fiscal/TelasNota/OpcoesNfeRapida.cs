@@ -75,6 +75,12 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 if (checkNota.Status == "Cancelada")
                 {
+                    if (Home.pedidoPage == "Notas")
+                    {
+                        Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
+                        return;
+                    }
+
                     var result = AlertOptions.Message("Atenção!", "Existem registro(s) de nota(s) cancelada(s) a partir desta venda. Deseja gerar um nova nota?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
