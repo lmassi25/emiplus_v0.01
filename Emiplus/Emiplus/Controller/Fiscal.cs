@@ -1078,6 +1078,9 @@ namespace Emiplus.Controller
                     {
                         if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
                             Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+
+                        if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
+                            Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
                         
                         XmlDocument oXML = new XmlDocument();
                         oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, _msg)));
