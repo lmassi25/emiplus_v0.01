@@ -542,7 +542,7 @@ namespace Emiplus.View.Comercial
             if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
             {
                 var itemId = collection.Lookup(BuscarProduto.Text);
-                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
+                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").FirstOrDefault<Model.Item>();
 
                 double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
                 double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
@@ -740,7 +740,7 @@ namespace Emiplus.View.Comercial
                     }
                 }
 
-                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };                
+                Medidas.DataSource = Support.GetUnidades();                
             };
 
             btnConcluir.Click += (s, e) =>
@@ -779,7 +779,12 @@ namespace Emiplus.View.Comercial
             BuscarProduto.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
-                    LoadItens();
+                {
+                    if (string.IsNullOrEmpty(BuscarProduto.Text))
+                        BuscarProduto.Focus();
+                    else
+                        Quantidade.Focus();
+                }
             };
 
             Preco.TextChanged += (s, e) =>

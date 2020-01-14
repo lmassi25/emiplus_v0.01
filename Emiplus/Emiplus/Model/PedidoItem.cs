@@ -293,7 +293,7 @@
                     return this;
                 }
 
-                DescontoItem = (valor / 100 * (TotalVenda));
+                DescontoItem = (valor / 100 * (ValorVenda));
             }
 
             return this;
