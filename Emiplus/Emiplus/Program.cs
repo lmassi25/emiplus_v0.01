@@ -87,47 +87,28 @@ namespace Emiplus
 
     internal class CustomExceptionHandler
     {
-        // Handle the exception event
         public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
         {
             Exception e = t.Exception;
-            object obj = new
+
+            if (Support.CheckForInternetConnection())
             {
-                token = Program.TOKEN,
-                usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
-                empresa = Settings.Default.empresa_razao_social,
-                name = e.GetType().Name.ToString(),
-                error = e.StackTrace.ToString(),
-                message = e.Message.ToString()
-            };
-            new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
+                object obj = new
+                {
+                    token = Program.TOKEN,
+                    usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
+                    empresa = Settings.Default.empresa_razao_social,
+                    name = e.GetType().Name.ToString(),
+                    error = e.StackTrace.ToString(),
+                    message = e.Message.ToString()
+                };
+                new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
+            }
 
             Error result = new Error();
-
             // Exit the program when the user clicks Abort.
             if (result.ShowDialog() == DialogResult.OK)
                 Application.Exit();
-        }
-
-        // Create and display the error message.
-        private static DialogResult ShowThreadExceptionDialog(Exception e)
-        {
-            object obj = new
-            {
-                token = Program.TOKEN,
-                usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
-                empresa = Settings.Default.empresa_razao_social,
-                name = e.GetType().Name.ToString(),
-                error = e.StackTrace.ToString(),
-                message = e.Message.ToString()
-            };
-            new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
-
-            string errorMsg = "Um erro ocorreu. Entre em contato com o administrador com as seguintes informações:\n\n";
-            errorMsg += String.Format("Exception Type: {0}\n\n {1}", e.GetType().Name, e.Message.ToString());
-            errorMsg += "\n\nStack Trace:\n" + e.StackTrace;
-            return MessageBox.Show(errorMsg, "Application Error",
-                MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
         }
     }
 }
