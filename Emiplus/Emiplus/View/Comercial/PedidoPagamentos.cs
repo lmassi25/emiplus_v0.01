@@ -218,10 +218,8 @@ namespace Emiplus.View.Comercial
         {
             Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
             Pedido.Id = IdPedido;
-            if (_mPedido.Total < _controllerTitulo.GetLancados(IdPedido))
+            if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)
             {
-                //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
-                //return;
                 Pedido.status = 2; //RECEBIMENTO PENDENTE
             }
             else
@@ -246,8 +244,6 @@ namespace Emiplus.View.Comercial
                 if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                 {
                     new Controller.Pedido().Imprimir(IdPedido);
-                    //PedidoImpressao print = new PedidoImpressao();
-                    //print.Print(IdPedido);
                 }
 
                 try
@@ -256,7 +252,6 @@ namespace Emiplus.View.Comercial
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
 
