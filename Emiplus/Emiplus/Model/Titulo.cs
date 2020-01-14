@@ -21,7 +21,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
 
         public string Nome { get; set; }
         public string Emissao { get; set; }
@@ -39,7 +39,7 @@
         public int Baixa_id_formapgto { get; set; }
         public int Id_Caixa_Mov { get; set; }
         public string Obs { get; set; }
-        public int id_usuario { get; set; } = Settings.Default.user_id;
+        public int id_usuario { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
         #endregion 
@@ -88,6 +88,9 @@
 
         public bool Save(Titulo data, bool message = true)
         {
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+            data.id_usuario = Settings.Default.user_id;
+
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();

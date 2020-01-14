@@ -164,22 +164,49 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += async (s, e) =>
             {
-                await RunSyncAsync("categoria");
-                await RunSyncAsync("caixa_mov");
-                await RunSyncAsync("categoria");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("categoria");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("caixa_mov");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("categoria");
+
                 // await RunSyncAsync("etiqueta");
                 // await RunSyncAsync("formapgto");
-                await RunSyncAsync("imposto");
-                await RunSyncAsync("item");
-                await RunSyncAsync("item_mov_estoque");
-                await RunSyncAsync("natureza");
-                await RunSyncAsync("pessoa");
-                await RunSyncAsync("pessoa_contato");
-                await RunSyncAsync("pessoa_endereco");
-                await RunSyncAsync("titulo");
-                await RunSyncAsync("nota");
-                await RunSyncAsync("pedido");
-                await RunSyncAsync("pedido_item");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("imposto");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("item");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("item_mov_estoque");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("natureza");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa_contato");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa_endereco");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("titulo");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("nota");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pedido");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pedido_item");
             };
 
             backWork.RunWorkerCompleted += (s, e) =>

@@ -783,7 +783,7 @@ namespace Emiplus.View.Comercial
                     if (string.IsNullOrEmpty(BuscarProduto.Text))
                         BuscarProduto.Focus();
                     else
-                        Quantidade.Focus();
+                        LoadItens();
                 }
             };
 

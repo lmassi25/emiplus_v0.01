@@ -220,13 +220,19 @@ namespace Emiplus.View.Comercial
                     Close();
                     break;
                 case Keys.F9:
-                    if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                    if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
                         return;
 
                     Cfe();
                     break;
                 case Keys.F10:
-                    if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
+                    if (!Support.CheckForInternetConnection())
+                    {
+                        Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
                         return;
 
                     Nfe();
@@ -312,6 +318,12 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
+                if (!Support.CheckForInternetConnection())
+                {
+                    Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                    return;
+                }
+
                 if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
                     return;
 

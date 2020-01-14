@@ -17,9 +17,9 @@
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public int id_caixa { get; set; }
-        public int id_user { get; set; } = Settings.Default.user_id;
+        public int id_user { get; set; }
         public int Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -37,6 +37,9 @@
 
         public bool Save(CaixaMovimentacao data)
         {
+            data.id_user = Settings.Default.user_id;
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();

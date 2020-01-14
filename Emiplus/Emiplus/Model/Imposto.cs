@@ -25,7 +25,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
 
         public string Nome { get; set; }
 
@@ -55,6 +55,8 @@
 
         public bool Save(Imposto data)
         {
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
             if (ValidarDados(data))            
                 return false;
 

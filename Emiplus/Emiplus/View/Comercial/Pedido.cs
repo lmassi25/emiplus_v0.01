@@ -126,24 +126,7 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void AutoCompleteUsers()
         {
-            var users = new ArrayList();
-            
-            //var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
-            //var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
-
-            //users.Add(new { Id = "0", Nome = "Todos" });
-            //foreach (var item in dataUser)
-            //{
-            //    var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
-            //    users.Add(new { Id = item.Value["id"].ToString(), Nome = nameComplete });
-            //}
-
-            var usuarios = new Model.Usuarios().FindAll().Get();
-            if (usuarios != null)
-                foreach (dynamic item in usuarios)
-                    users.Add(new { Id = item.ID_USER, Nome = item.NOME });
-
-            Usuarios.DataSource = users;
+            Usuarios.DataSource = (new Model.Usuarios()).GetAllUsers();
             Usuarios.DisplayMember = "Nome";
             Usuarios.ValueMember = "Id";
         }

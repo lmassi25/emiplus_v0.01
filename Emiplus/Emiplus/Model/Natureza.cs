@@ -17,7 +17,7 @@ namespace Emiplus.Model
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public string Nome { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
@@ -26,6 +26,8 @@ namespace Emiplus.Model
 
         public bool Save(Natureza data)
         {
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();

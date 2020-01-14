@@ -21,7 +21,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public int Usuario { get; set; }
         public double Saldo_Inicial { get; set; }
         public double Saldo_Final { get; set; }
@@ -35,6 +35,8 @@
 
         public bool Save(Caixa data, bool message = true)
         {
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();

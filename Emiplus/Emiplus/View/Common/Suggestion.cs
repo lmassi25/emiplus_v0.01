@@ -156,6 +156,12 @@ namespace Emiplus.View.Common
 
             btnSend.Click += (s, e) =>
             {
+                if (!Support.CheckForInternetConnection())
+                {
+                    Alert.Message("Oppss", "Você parece estar sem internet no momento e não conseguimos receber sua sugestão :(", Alert.AlertType.error);
+                    return;
+                }
+
                 if (Sugestao.Text.Length < 15)
                 {
                     Alert.Message("Oppss", "Sua sugestão é muito curta, escreva em mais detalhes.", Alert.AlertType.error);
