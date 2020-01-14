@@ -77,6 +77,21 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("Servidor", "SAT"))
                 IniFile.Write("Servidor", "", "SAT");
+
+            if (!IniFile.KeyExists("Layout", "SAT"))
+                IniFile.Write("Layout", "", "SAT");
+
+            if (!IniFile.KeyExists("Maximizar", "TELAS"))
+                IniFile.Write("Maximizar", "false", "TELAS");
+
+            if (!IniFile.KeyExists("Maximizar", "TELAS"))
+                IniFile.Write("Maximizar", "false", "TELAS");
+
+            if (!IniFile.KeyExists("PrinterName", "Comercial"))
+                IniFile.Write("PrinterName", "", "Comercial");
+
+            if (!IniFile.KeyExists("Printer", "Comercial"))
+                IniFile.Write("Printer", "false", "Comercial");
         }
     }
 }
