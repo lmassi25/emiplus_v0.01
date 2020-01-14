@@ -25,7 +25,9 @@ namespace Emiplus.View.Common
         public Sync()
         {
             InitializeComponent();
-            Eventos();
+
+            if (Support.CheckForInternetConnection())
+                Eventos();
         }
 
         private async Task RunSyncAsync(string table)
@@ -146,8 +148,11 @@ namespace Emiplus.View.Common
         {
             Load += (s, e) =>
             {
-                if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
-                    timer1.Start();
+                if (Support.CheckForInternetConnection())
+                {
+                    if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
+                        timer1.Start();
+                }
             };
 
             timer1.Tick += (s, e) =>
