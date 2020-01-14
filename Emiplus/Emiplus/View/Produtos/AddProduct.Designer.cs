@@ -1861,7 +1861,7 @@
             this.chkImpostoCFE.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkImpostoCFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chkImpostoCFE.IsBoxLarger = false;
-            this.chkImpostoCFE.Location = new System.Drawing.Point(17, 76);
+            this.chkImpostoCFE.Location = new System.Drawing.Point(17, 79);
             this.chkImpostoCFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.chkImpostoCFE.Name = "chkImpostoCFE";
             this.chkImpostoCFE.Size = new System.Drawing.Size(272, 23);
@@ -1880,7 +1880,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.White;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(295, 80);
+            this.pictureBox9.Location = new System.Drawing.Point(289, 83);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1971,7 +1971,7 @@
             this.chkImpostoNFE.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkImpostoNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chkImpostoNFE.IsBoxLarger = false;
-            this.chkImpostoNFE.Location = new System.Drawing.Point(17, 12);
+            this.chkImpostoNFE.Location = new System.Drawing.Point(17, 15);
             this.chkImpostoNFE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.chkImpostoNFE.Name = "chkImpostoNFE";
             this.chkImpostoNFE.Size = new System.Drawing.Size(240, 23);
@@ -2046,7 +2046,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.White;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(265, 16);
+            this.pictureBox6.Location = new System.Drawing.Point(260, 21);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(15, 15);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

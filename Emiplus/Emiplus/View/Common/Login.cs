@@ -274,7 +274,7 @@ namespace Emiplus.View.Common
 
             btnUpdate.Click += (s, e) =>
             {
-                if (Support.CheckForInternetConnection())
+                if (!Support.CheckForInternetConnection())
                 {
                     AlertOptions.Message("Atenção!", "Você precisa estar conectado a internet para atualizar.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     return;
