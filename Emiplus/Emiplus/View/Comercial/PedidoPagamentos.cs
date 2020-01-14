@@ -381,6 +381,13 @@ namespace Emiplus.View.Comercial
                     Cfe();
                     break;
                 case Keys.F10:
+
+                    if (!Support.CheckForInternetConnection())
+                    {
+                        Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                        return;
+                    }
+
                     Nfe();
                     e.SuppressKeyPress = true;
                     break;
@@ -435,6 +442,12 @@ namespace Emiplus.View.Comercial
 
             btnNfe.KeyDown += (s, e) =>
             {
+                if (!Support.CheckForInternetConnection())
+                {
+                    Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                    return;
+                }
+
                 if (UserPermission.SetControl(btnNfe, pictureBox6, "fiscal_emissaonfe"))
                     return;
 
@@ -515,6 +528,12 @@ namespace Emiplus.View.Comercial
 
             btnNfe.Click += (s, e) =>
             {
+                if (!Support.CheckForInternetConnection())
+                {
+                    Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                    return;
+                }
+
                 if (UserPermission.SetControl(btnNfe, pictureBox6, "fiscal_emissaonfe"))
                     return;
 

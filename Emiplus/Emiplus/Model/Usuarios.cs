@@ -2,7 +2,10 @@
 {
     using Data.Database;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
     internal class Usuarios : Model
     {
@@ -32,6 +35,22 @@
         public SqlKata.Query FindByUserId(int id)
         {
             return Query().Where("id_user", id);
+        }
+
+        /// <summary>
+        /// Retorna todos usuarios em um ArrayList
+        /// </summary>
+        public List<Usuarios> GetAllUsers()
+        {
+            List<Usuarios> users = new List<Usuarios>();
+            users.Add(new Usuarios() { Id = 0, Nome = "Todos" });
+
+            var usuarios = FindAll().Where("excluir", 0).Get();
+            if (usuarios != null)
+                foreach (var item in usuarios)
+                    users.Add(new Usuarios() { Id = item.ID_USER, Nome = item.NOME });
+
+            return users;
         }
 
         public bool Save(Usuarios data)

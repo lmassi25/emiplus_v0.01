@@ -18,7 +18,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public string Cep { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
@@ -93,6 +93,8 @@
         {
             if (ValidarDados(data))
                 return false;
+
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
 
             if (data.Id == 0)
             {

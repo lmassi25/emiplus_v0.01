@@ -18,7 +18,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public string Nome { get; set; }
         public string Fantasia { get; set; }
         public string RG { get; set; }
@@ -54,7 +54,9 @@
 
         public bool Save(Pessoa data, bool message = true)
         {
-            if(String.IsNullOrEmpty(data.Aniversario))
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
+            if (String.IsNullOrEmpty(data.Aniversario))
                 data.Aniversario = null;
 
             if (data.Id == 0)

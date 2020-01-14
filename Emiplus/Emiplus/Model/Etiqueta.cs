@@ -21,7 +21,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
         public int id_item { get; set; }
         public int quantidade { get; set; }
         public int id_sync { get; set; }
@@ -36,6 +36,8 @@
 
         public bool Save(Etiqueta data)
         {
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+
             if (data.Id == 0)
             {
                 data.status_sync = "CREATE";

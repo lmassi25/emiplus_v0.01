@@ -159,7 +159,7 @@ namespace Emiplus.View.Produtos
         {
             if (!string.IsNullOrEmpty(nome.Text))
             {
-                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("nome", nome.Text).FirstOrDefault();
+                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("nome", nome.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse NOME.", Alert.AlertType.error);
@@ -169,7 +169,7 @@ namespace Emiplus.View.Produtos
 
             if (!string.IsNullOrEmpty(codebarras.Text))
             {
-                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("codebarras", codebarras.Text).FirstOrDefault();
+                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("codebarras", codebarras.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse código de barras.", Alert.AlertType.error);

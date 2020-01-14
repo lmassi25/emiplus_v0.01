@@ -23,7 +23,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
 
         // referencia com a tabela Pedido
         public int Pedido { get; set; } // pedido id
@@ -352,8 +352,7 @@
 
         public bool Save(PedidoItem data, bool message = true)
         {
-
-            //var imposto = new Imposto().FindById();
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
 
             if (data.Id == 0)
             {

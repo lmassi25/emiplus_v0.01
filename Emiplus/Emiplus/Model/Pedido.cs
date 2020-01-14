@@ -23,7 +23,7 @@
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
-        public string id_empresa { get; private set; } = Program.UNIQUE_ID_EMPRESA;
+        public string id_empresa { get; private set; }
 
         public string Voucher { get; set; }
 
@@ -66,8 +66,8 @@
         public string Especie_Frete { get; set; }
         public string Marca_Frete { get; set; }
         public int Id_Transportadora { get; set; }
-        public int Id_Caixa { get; set; } = Home.idCaixa;
-        public int id_usuario { get; set; } = Settings.Default.user_id;
+        public int Id_Caixa { get; set; }
+        public int id_usuario { get; set; }
         public string cfe_nome { get; set; }
         public string cfe_cpf { get; set; }
         public string Chavedeacesso { get; set; }
@@ -134,6 +134,10 @@
 
         public bool Save(Pedido data)
         {
+            data.Id_Caixa = Home.idCaixa;
+            data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+            data.id_usuario = Settings.Default.user_id;
+
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
