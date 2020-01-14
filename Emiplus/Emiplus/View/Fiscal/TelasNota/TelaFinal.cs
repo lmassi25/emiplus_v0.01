@@ -19,7 +19,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             InitializeComponent();
             Id = Nota.Id;
-            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
+            _mNota = new Model.Nota().FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
 
             Eventos();
         }
@@ -30,6 +30,13 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Emitir.Click += (s, e) =>
             {
+                _mNota = new Model.Nota().FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
+                if (_mNota.Status != "Pendente")
+                {
+                    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
+                    return;
+                }
+
                 retorno.Text = "Emitindo NF-e .......................................... (1/2)";
                 Emitir.Enabled = false;
                 WorkerBackground.RunWorkerAsync();

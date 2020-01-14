@@ -15,6 +15,8 @@ namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
+        #region V 
+
         public static int idPdtSelecionado { get; set; }
         private Item _modelItem = new Item();
         private Controller.Item _controllerItem = new Controller.Item();
@@ -24,6 +26,8 @@ namespace Emiplus.View.Produtos
         private IEnumerable<dynamic> fornecedores { get; set;}
         private IEnumerable<dynamic> impostos { get; set;}
         private IEnumerable<dynamic> impostos2 { get; set;}
+
+        #endregion
 
         public AddProduct()
         {
@@ -204,9 +208,13 @@ namespace Emiplus.View.Produtos
 
             if (ImpostoNFE.SelectedValue != null)
                 _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
+            else
+                _modelItem.Impostoid = 0;
 
             if (ImpostoCFE.SelectedValue != null)
                 _modelItem.Impostoidcfe = (int)ImpostoCFE.SelectedValue;
+            else
+                _modelItem.Impostoidcfe = 0;
 
             if (Origens.SelectedValue != null)
                 _modelItem.Origem = Origens.SelectedValue.ToString();

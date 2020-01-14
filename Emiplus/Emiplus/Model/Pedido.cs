@@ -141,6 +141,7 @@
                 data.Id_Caixa = Home.idCaixa;
                 data.Criado = DateTime.Now;
                 data.Emissao = DateTime.Now;
+                data.Colaborador = Settings.Default.user_id;
                 if (Data(data).Create() != 1)
                     return false;
             }

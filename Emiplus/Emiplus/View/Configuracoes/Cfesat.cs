@@ -54,6 +54,12 @@ namespace Emiplus.View.Configuracoes
                 f.ShowDialog();
             };
 
+            base64.Click += (s, e) =>
+            {
+                Cfesat_base64 f = new Cfesat_base64();
+                f.ShowDialog();
+            };
+
             servidor.Leave += (s, e) =>
             {
                 IniFile.Write("Servidor", servidor.Text, "SAT");

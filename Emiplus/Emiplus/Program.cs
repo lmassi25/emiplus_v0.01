@@ -10,6 +10,7 @@ using System.Diagnostics;
 using RestSharp;
 using Newtonsoft.Json;
 using System.Text;
+using Emiplus.View.Testes;
 
 namespace Emiplus
 {
@@ -39,7 +40,7 @@ namespace Emiplus
         [STAThread]
         static void Main()
         {
-            userPermissions.Clear();   
+            userPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");
 
             Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
