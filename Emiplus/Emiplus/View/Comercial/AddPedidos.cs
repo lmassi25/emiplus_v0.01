@@ -809,7 +809,7 @@ namespace Emiplus.View.Comercial
                     else
                     {
                         LoadItens();
-                        ClearForms();
+                       // ClearForms();
                     }
                 }
             };
