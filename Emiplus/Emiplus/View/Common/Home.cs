@@ -203,7 +203,7 @@ namespace Emiplus.View.Common
             chatOnline.Click += (s, e) =>
             {
                 Suporte f = new Suporte();
-                f.Show();
+                f.ShowDialog();
             };
 
             developer.Click += (s, e) =>
