@@ -23,10 +23,10 @@ namespace Emiplus.View.Produtos
 
         private void LoadData()
         {
-            _modelImposto = _modelImposto.FindById(idImpSelected).First<Model.Imposto>();
+            _modelImposto = _modelImposto.FindById(idImpSelected).FirstOrDefault<Model.Imposto>();
 
-            nome.Text = _modelImposto.Nome;
-            cfop.Text = _modelImposto.Cfop;
+            nome.Text = _modelImposto.Nome ?? "";
+            cfop.Text = _modelImposto.Cfop ?? "";
 
             GetImpostos(1);
         }

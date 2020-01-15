@@ -34,17 +34,17 @@ namespace Emiplus.View.Comercial
 
             if (IdAddress > 0)
             {
-                _modelAddress = _modelAddress.FindById(IdAddress).First<PessoaEndereco>();
+                _modelAddress = _modelAddress.FindById(IdAddress).FirstOrDefault<PessoaEndereco>();
 
-                cep.Text = _modelAddress.Cep;
-                rua.Text = _modelAddress.Rua;
-                bairro.Text = _modelAddress.Bairro;
-                cidade.Text = _modelAddress.Cidade;
-                nr.Text = _modelAddress.Nr;
-                complemento.Text = _modelAddress.Complemento;
-                estado.Text = _modelAddress.Estado;
-                pais.Text = _modelAddress.Pais;
-                ibge.Text = _modelAddress.IBGE;
+                cep.Text = _modelAddress.Cep ?? "";
+                rua.Text = _modelAddress.Rua ?? "";
+                bairro.Text = _modelAddress.Bairro ?? "";
+                cidade.Text = _modelAddress.Cidade ?? "";
+                nr.Text = _modelAddress.Nr ?? "";
+                complemento.Text = _modelAddress.Complemento ?? "";
+                estado.Text = _modelAddress.Estado ?? "";
+                pais.Text = _modelAddress.Pais ?? "";
+                ibge.Text = _modelAddress.IBGE ?? "";
             }
         }
         private void KeyDowns(object sender, KeyEventArgs e)

@@ -20,7 +20,7 @@ namespace Emiplus.View.Produtos
             if (idCatSelected > 0)
             {
                 _modelCategoria = _modelCategoria.FindById(idCatSelected).First<Categoria>();
-                nome.Text = _modelCategoria.Nome;
+                nome.Text = _modelCategoria.Nome ?? "";
             }
 
             if (Home.CategoriaPage == "Produtos")
