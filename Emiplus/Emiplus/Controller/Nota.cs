@@ -179,18 +179,18 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            foreach (var item in GetDataTableInutilizar(status, dataInicial, dataFinal))
-            {
-                Table.Rows.Add(
-                    item.ID,
-                    Validation.ConvertDateToForm(item.EMISSAO),
-                    item.NOME,
-                    item.FORMAPGTO,
-                    Validation.ConvertDateToForm(item.VENCIMENTO),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
-                );
-            }
+            //foreach (var item in GetDataTableInutilizar(status, dataInicial, dataFinal))
+            //{
+            //    Table.Rows.Add(
+            //        item.ID,
+            //        Validation.ConvertDateToForm(item.EMISSAO),
+            //        item.NOME,
+            //        item.FORMAPGTO,
+            //        Validation.ConvertDateToForm(item.VENCIMENTO),
+            //        Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+            //        Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
+            //    );
+            //}
 
             Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

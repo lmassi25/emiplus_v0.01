@@ -54,7 +54,7 @@ namespace Emiplus.View.Fiscal
             GridLista.DoubleClick += (s, e) => Edit();
             btnExit.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            //btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
             //imprimir.Click += async (s, e) => await RenderizarAsync();
         }
