@@ -101,12 +101,14 @@ namespace Emiplus.View.Produtos
 
         private void LoadEstoque()
         {
-            //_modelItem = _modelItem.FindById(idPdtSelecionado).First<Item>();
+            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
             estoqueatual.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueAtual);
         }
 
         private void LoadData()
         {
+            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
+
             nome.Text = _modelItem?.Nome ?? "";
             codebarras.Text = _modelItem?.CodeBarras ?? "";
             referencia.Text = _modelItem?.Referencia ?? "";

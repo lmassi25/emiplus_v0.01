@@ -124,7 +124,7 @@ namespace Emiplus.View.Common
                 status_sync = "CREATED"
             };
 
-            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table}/update/{id}").Content(obj, Method.POST).Response();
+            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/update/{id}").Content(obj, Method.POST).Response();
             if (response["status"] == "OK")
                 return true;
 
@@ -136,7 +136,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private bool CheckCreated(string table, int id)
         {
-            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}").Content().Response();
+            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}").Content().Response();
             if (response["status"].ToString() == "FAIL")
                 return true;
 
@@ -181,6 +181,7 @@ namespace Emiplus.View.Common
 
                 if (Support.CheckForInternetConnection())
                     await RunSyncAsync("item");
+
                 if (Support.CheckForInternetConnection())
                     await RunSyncAsync("item_mov_estoque");
 
@@ -211,7 +212,6 @@ namespace Emiplus.View.Common
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
-
                 new Log().Add("SYNC", "Sincronização", Log.LogType.fatal);
 
                 timer1.Enabled = true;
