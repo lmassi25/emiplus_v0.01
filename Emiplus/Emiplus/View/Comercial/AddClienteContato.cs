@@ -28,10 +28,10 @@ namespace Emiplus.View.Comercial
             {
                 _modelContato = _modelContato.FindById(IdContact).First<PessoaContato>();
 
-                contato.Text = _modelContato.Contato;
-                celular.Text = _modelContato.Celular;
-                telefone.Text = _modelContato.Telefone;
-                email.Text = _modelContato.Email;
+                contato.Text = _modelContato.Contato ?? "";
+                celular.Text = _modelContato.Celular ?? "";
+                telefone.Text = _modelContato.Telefone ?? "";
+                email.Text = _modelContato.Email ?? "";
             }
         }
 

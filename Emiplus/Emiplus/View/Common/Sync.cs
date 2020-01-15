@@ -89,7 +89,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
         {
-            var baseQuery = connect.Query().Where("status_sync", "CREATE").OrWhereNull("status_sync").OrWhere("status_sync", string.Empty).WhereNotNull("id_sync");
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATE");
 
             return await baseQuery.Clone().From(Table).GetAsync();
         }
@@ -100,7 +100,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string Table)
         {
-            var baseQuery = connect.Query().Where("status_sync", "UPDATE").WhereNotNull("id_sync");
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "UPDATE");
 
             return await baseQuery.Clone().From(Table).GetAsync();
         }
@@ -157,8 +157,15 @@ namespace Emiplus.View.Common
 
             timer1.Tick += (s, e) =>
             {
-                backWork.RunWorkerAsync();
-                Home.syncActive = true;
+                if (Support.CheckForInternetConnection())
+                {
+                    if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
+                    {
+                        backWork.RunWorkerAsync();
+                        Home.syncActive = true;
+                    }
+                }
+
                 timer1.Stop();
             };
 

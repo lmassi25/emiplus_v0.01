@@ -61,6 +61,7 @@ namespace Emiplus.Controller
 
             Table.Columns[4].Name = "Descrição";
             Table.Columns[4].Width = 120;
+            Table.Columns[4].MinimumWidth = 120;
 
             Table.Columns[5].Name = "Custo";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

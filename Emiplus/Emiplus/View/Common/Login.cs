@@ -82,7 +82,7 @@ namespace Emiplus.View.Common
 
         private void LoginAsync()
         {
-            if (string.IsNullOrEmpty(email.Text) && string.IsNullOrEmpty(password.Text))
+            if (string.IsNullOrEmpty(email.Text) || string.IsNullOrEmpty(password.Text))
             {
                 Alert.Message("Opps", "Preencha todos os campos.", Alert.AlertType.error);
                 return;
