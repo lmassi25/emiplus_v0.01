@@ -114,7 +114,8 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(_path))
                 _path = @"C:\Emiplus";
 
-            _servidorNFE = Settings.Default.empresa_nfe_servidornfe;
+            //_servidorNFE = Settings.Default.empresa_nfe_servidornfe;
+            _servidorNFE = 1;
 
             if (IniFile.Read("Servidor", "SAT") == "Producao")
                 _servidorCFE = 1;
@@ -554,7 +555,7 @@ namespace Emiplus.Controller
                         printer.NewLines(2);
 
                         string cfeid = _nota.ChaveDeAcesso.Replace("CFe", "");
-                        cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
+                        //cfeid = cfeid.Substring(0, 4) + " " + cfeid.Substring(4, 4) + " " + cfeid.Substring(8, 4) + " " + cfeid.Substring(12, 4) + " " + cfeid.Substring(17, 4) + " " + cfeid.Substring(21, 4) + " " + cfeid.Substring(25, 4) + " " + cfeid.Substring(29, 4) + " " + cfeid.Substring(33, 4) + " " + cfeid.Substring(37, 4) + " " + cfeid.Substring(40, 4);
 
                         printer.CondensedMode(cfeid);
 
@@ -1389,7 +1390,7 @@ namespace Emiplus.Controller
                 
                 xml.WriteElementString("tpEmis", "1");
                 xml.WriteElementString("cDV", cDV);
-                xml.WriteElementString("tpAmb", Settings.Default.empresa_nfe_servidornfe.ToString());
+                xml.WriteElementString("tpAmb", _servidorNFE.ToString());
                 xml.WriteElementString("finNFe", _pedido.Finalidade > 0 ? _pedido.Finalidade.ToString() : "1");
                 xml.WriteElementString("indFinal", "1");
                 xml.WriteElementString("indPres", "1");
