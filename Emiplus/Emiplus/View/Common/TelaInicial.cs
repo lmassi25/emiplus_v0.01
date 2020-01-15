@@ -204,14 +204,13 @@ namespace Emiplus.View.Common
                 LoadGrafico();
 
                 timer1.Start();
-                WorkerBackground.RunWorkerAsync();
             };
 
             timer1.Tick += (s, e) =>
             {
                 WorkerBackground.RunWorkerAsync();
                 timer1.Enabled = true;
-                timer1.Start();
+                timer1.Stop();
             };
 
             btnTodosAreceber.Click += (s, e) =>
@@ -257,6 +256,7 @@ namespace Emiplus.View.Common
 
             WorkerBackground.RunWorkerCompleted += (s, e) =>
             {
+                timer1.Start();
                 LoadData();
                 LoadSeriesGrafico();
             };
