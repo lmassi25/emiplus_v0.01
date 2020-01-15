@@ -202,9 +202,11 @@ namespace Emiplus.Controller
                 //.Where("nota.excluir", excluir)
                 //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
                 //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
-                .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (tipo != "Cupons")
+                query.Where("pedido.excluir", excluir);
 
             if (tipo == "Notas")            
                 query.Where("nota.tipo", "NFe");
@@ -236,10 +238,8 @@ namespace Emiplus.Controller
                             break;
                     }
                 }
-                else
-                {
+                else                
                     query.Where("pedido.status", status);
-                }
             }
 
             if (idPedido != 0)
@@ -282,7 +282,7 @@ namespace Emiplus.Controller
 
             return query.GetAsync<dynamic>();
         }
-
+        
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
             Table.ColumnCount = 13;
