@@ -644,6 +644,12 @@
     <Compile Include="View\Fiscal\InutilizarNotas.Designer.cs">
       <DependentUpon>InutilizarNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Fiscal\InutilizarNotasAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Fiscal\InutilizarNotasAdd.Designer.cs">
+      <DependentUpon>InutilizarNotasAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Fiscal\Natureza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1103,6 +1109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\InutilizarNotas.resx">
       <DependentUpon>InutilizarNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Fiscal\InutilizarNotasAdd.resx">
+      <DependentUpon>InutilizarNotasAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\Natureza.resx">
       <DependentUpon>Natureza.cs</DependentUpon>
