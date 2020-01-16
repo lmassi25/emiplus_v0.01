@@ -1536,8 +1536,14 @@ namespace Emiplus.Controller
 
                 xml.WriteEndElement();
 
-                xml.WriteElementString("indIEDest", _destinatario.Isento == 1 || _destinatario.Pessoatipo == "Física" ? "9" : "1");
-                if (_destinatario.Pessoatipo != "Física")
+                if(_destinatario.Isento == 1)
+                    xml.WriteElementString("indIEDest", "2");
+                else if(_destinatario.Pessoatipo == "Física")
+                    xml.WriteElementString("indIEDest", "9");
+                else
+                    xml.WriteElementString("indIEDest", "1");
+
+                if(_destinatario.Isento != 1)
                     xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
 

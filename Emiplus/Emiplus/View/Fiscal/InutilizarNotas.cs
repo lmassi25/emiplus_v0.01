@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal
 {
@@ -9,6 +11,10 @@ namespace Emiplus.View.Fiscal
         public InutilizarNotas()
         {
             InitializeComponent();
+
+            status.DataSource = new List<String> { "Todos", "Pendente", "Autorizada" };
+
+            Eventos();
         }
         
         private void Filter()
@@ -53,6 +59,10 @@ namespace Emiplus.View.Fiscal
             btnEditar.Click += (s, e) => Edit();
             GridLista.DoubleClick += (s, e) => Edit();
             btnExit.Click += (s, e) => Close();
+
+            dataInicial.ValueChanged += (s, e) => Filter();
+            dataFinal.ValueChanged += (s, e) => Filter();
+            status.SelectionChangeCommitted += (s, e) => Filter();
 
             //btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 

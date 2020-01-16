@@ -129,15 +129,13 @@ namespace Emiplus.Controller
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-
-        //GetDataTableInutilizar(GridLista, status.Text, dataInicial.Text, dataFinal.Text);
-
+        
         public IEnumerable<dynamic> GetDataTableInutilizar(string status, string dataInicial, string dataFinal)
         {
             var notas = new Model.Nota();
 
             var data = notas.Query()
-                .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio", "nota.assinatura_qrcode as final", "nota.serie", "nota.status as statusnfe")
+                .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio", "nota.assinatura_qrcode as final", "nota.serie as serie", "nota.status as status")
                 .Where("nota.excluir", 0)
                 .Where("nota.tipo", "Inutiliza")
                 .Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
@@ -151,7 +149,7 @@ namespace Emiplus.Controller
 
         public void GetDataTableInutilizar(DataGridView Table, string status, string dataInicial, string dataFinal)
         {
-            Table.ColumnCount = 7;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -179,19 +177,22 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            //foreach (var item in GetDataTableInutilizar(status, dataInicial, dataFinal))
-            //{
-            //    Table.Rows.Add(
-            //        item.ID,
-            //        Validation.ConvertDateToForm(item.EMISSAO),
-            //        item.NOME,
-            //        item.FORMAPGTO,
-            //        Validation.ConvertDateToForm(item.VENCIMENTO),
-            //        Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-            //        Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true)
-            //    );
-            //}
+            foreach (var item in GetDataTableInutilizar(status, dataInicial, dataFinal))
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    item.INICIO,
+                    item.FINAL,
+                    item.SERIE,
+                    item.CRIADO,
+                    item.STATUS
+                );
+            }
 
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
