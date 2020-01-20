@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Etiquetas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Etiquetas));
             this.panel5 = new System.Windows.Forms.Panel();
             this.hideCode = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.hideRef = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
@@ -68,6 +68,7 @@
             this.colunas = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnVideoAjuda = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -86,6 +87,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.btnVideoAjuda);
             this.panel5.Controls.Add(this.hideCode);
             this.panel5.Controls.Add(this.hideRef);
             this.panel5.Controls.Add(this.hideLogo);
@@ -869,6 +871,27 @@
             this.label11.TabIndex = 93;
             this.label11.Text = "Pular Itens";
             // 
+            // btnVideoAjuda
+            // 
+            this.btnVideoAjuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVideoAjuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnVideoAjuda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVideoAjuda.FlatAppearance.BorderSize = 0;
+            this.btnVideoAjuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnVideoAjuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnVideoAjuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVideoAjuda.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVideoAjuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnVideoAjuda.Image = ((System.Drawing.Image)(resources.GetObject("btnVideoAjuda.Image")));
+            this.btnVideoAjuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVideoAjuda.Location = new System.Drawing.Point(223, 4);
+            this.btnVideoAjuda.Name = "btnVideoAjuda";
+            this.btnVideoAjuda.Size = new System.Drawing.Size(108, 90);
+            this.btnVideoAjuda.TabIndex = 84;
+            this.btnVideoAjuda.Text = "Vídeo Tutorial";
+            this.btnVideoAjuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVideoAjuda.UseVisualStyleBackColor = true;
+            // 
             // Etiquetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -952,5 +975,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox hideLogo;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox hideCode;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button btnVideoAjuda;
     }
 }

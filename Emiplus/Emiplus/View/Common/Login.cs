@@ -21,17 +21,8 @@ namespace Emiplus.View.Common
         public Login()
         {
             InitializeComponent();
-
-            var emial = "curruwilla@gmail.com";
-            var senha = "4586928w";
-
-            string encryptedstring = StringCipher.Encrypt(senha, senha);
-            Console.WriteLine(encryptedstring);
-
-            string decryptedstring = StringCipher.Decrypt(encryptedstring, senha);
-            Console.WriteLine(decryptedstring);
-            
             Eventos();
+            Console.WriteLine("Tela de login");
 
             version.Text = "Versão " + IniFile.Read("Version", "APP");
 

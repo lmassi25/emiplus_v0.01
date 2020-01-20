@@ -350,7 +350,7 @@ namespace Emiplus.View.Comercial
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=cliGo_X51Uo");
+            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=6o9mR7oNp70");
         }
     }
 }

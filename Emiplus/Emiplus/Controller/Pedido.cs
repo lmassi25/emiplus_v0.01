@@ -119,7 +119,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -130,8 +130,9 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
+                .LeftJoin("pedido_item", "pedido_item.pedido", "pedido.id")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")                
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido_item.item", "pedido_item.pedido")
                 .Where("pedido.excluir", excluir)
                 .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
@@ -176,6 +177,9 @@ namespace Emiplus.Controller
             if (idPedido != 0)
                 query.Where("pedido.id", idPedido);
 
+            if (idProduto != 0)
+               query.Where("pedido_item.item", idProduto);
+
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
                 (
@@ -208,7 +212,7 @@ namespace Emiplus.Controller
             if (tipo != "Cupons")
                 query.Where("pedido.excluir", excluir);
 
-            if (tipo == "Notas")            
+            if (tipo == "Notas")
                 query.Where("nota.tipo", "NFe");
 
             if (tipo == "Cupons")
@@ -283,7 +287,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
         
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             Table.ColumnCount = 13;
 
@@ -371,7 +375,7 @@ namespace Emiplus.Controller
                         dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
                         break;
                     default:
-                        dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
+                        dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario, idProduto);
                         break;
                 }
                 

@@ -297,6 +297,8 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
+
+            btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=_ybEHAVTXUA");
         }
     }
 }
