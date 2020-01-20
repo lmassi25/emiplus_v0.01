@@ -30,13 +30,15 @@ namespace Emiplus.View.Comercial
 
         private Controller.Pedido _cPedido = new Controller.Pedido();
         private Model.Pessoa _mPessoa = new Model.Pessoa();
-
+        private Model.Item _mItem = new Model.Item();
+        
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         Timer timer = new Timer(Configs.TimeLoading);
 
         KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
 
         private string controle;
 
@@ -131,6 +133,19 @@ namespace Emiplus.View.Comercial
             Usuarios.ValueMember = "Id";
         }
 
+        private void AutoCompleteItens()
+        {
+            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
+
+            foreach (var itens in item)
+            {
+                if (!String.IsNullOrEmpty(itens.NOME))
+                    collectionItem.Add(itens.NOME, itens.ID);
+            }
+
+            produtoId.AutoCompleteCustomSource = collectionItem;
+        }
+
         private void DataTableStart()
         {
             BuscarPessoa.Select();
@@ -148,7 +163,7 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
         }   
 
         private void EditPedido(bool create = false)
@@ -260,9 +275,7 @@ namespace Emiplus.View.Comercial
                     e.Handled = true;
                     break;
                 case Keys.Enter:
-                    if (controle.Equals("BuscarPessoa"))
-                        return;
-                    EditPedido();
+                    Filter();
                     break;
                 case Keys.Escape:
                     Close();
@@ -282,6 +295,7 @@ namespace Emiplus.View.Comercial
                 BuscarPessoa.Select();
                 AutoCompletePessoas();
                 AutoCompleteUsers();
+                AutoCompleteItens();
 
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
@@ -411,7 +425,13 @@ namespace Emiplus.View.Comercial
                 }
 
                 await RenderizarAsync();
-            };            
+            };
+
+            if (Home.pedidoPage == "Vendas")
+                btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=Z2pkMEAAk4Q");
+            if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                btnVideoAjuda.Visible = false;
+
         }
 
         private async Task RenderizarAsync()
