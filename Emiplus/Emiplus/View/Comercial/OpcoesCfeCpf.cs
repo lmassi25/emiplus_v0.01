@@ -45,10 +45,9 @@ namespace Emiplus.View.Comercial
 
         private void Continuar()
         {
-            if (!String.IsNullOrEmpty(nomeRS.Text) && nomeRS.Text != "Consumidor Final")
+            if (nomeRS.Text != "Consumidor Final")
                 _mPedido.cfe_nome = Validation.CleanStringForFiscal(nomeRS.Text);
 
-            if (!String.IsNullOrEmpty(cpfCnpj.Text))
                 _mPedido.cfe_cpf = Validation.CleanStringForFiscal(cpfCnpj.Text.Replace(".", "").Replace(" ", ""));
 
             _mPedido.Save(_mPedido);
@@ -93,7 +92,13 @@ namespace Emiplus.View.Comercial
                 if (!String.IsNullOrEmpty(_mPedido.cfe_cpf))
                 {
                     cpfCnpj.Text = _mPedido.cfe_cpf;
-                }                    
+
+                    if (_mPedido.cfe_cpf.Length == 11)
+                        pessoaJF.SelectedItem = "Física";
+                    else
+                        pessoaJF.SelectedItem = "Jurídica";
+                }               
+                
             };
 
             cpfCnpj.KeyPress += (s, e) =>

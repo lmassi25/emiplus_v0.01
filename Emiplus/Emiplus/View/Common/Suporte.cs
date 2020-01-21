@@ -16,7 +16,6 @@ namespace Emiplus.View.Common
 {
     public partial class Suporte : Form
     {
-
         #region DLL SHADOW
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
