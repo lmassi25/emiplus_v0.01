@@ -38,7 +38,7 @@ namespace Emiplus
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             userPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");

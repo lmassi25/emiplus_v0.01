@@ -1510,7 +1510,7 @@ namespace Emiplus.Controller
             {
                 if(!String.IsNullOrEmpty(_pedido.cfe_cpf))
                 {
-                    if(_pedido.cfe_cpf.Length >= 9)
+                    if(_pedido.cfe_cpf.Length == 11)
                     {
                         xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
                     }
@@ -1522,6 +1522,7 @@ namespace Emiplus.Controller
             }
             else
             {
+                
                 if (_destinatario.Pessoatipo == "Física")
                 {
                     if(_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")

@@ -6,7 +6,7 @@ namespace Emiplus.Controller
 {
     public class Sat
     {
-        public const string DLL = "C:\\Emiplus\\SAT.dll";
+        public const string DLL = @"C:\Emiplus\SAT.dll";
 
         [DllImport(DLL, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr ConsultarStatusOperacional(int sessao, string cod);
