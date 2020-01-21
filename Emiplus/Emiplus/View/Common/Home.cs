@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Linq;
+using RestSharp;
 
 namespace Emiplus.View.Common
 {
@@ -171,6 +172,32 @@ namespace Emiplus.View.Common
                 Sync f = new Sync();
                 f.Show();
                 f.Hide();
+
+                // Realiza o cadastro no nota segura da empresa
+                if (string.IsNullOrEmpty(IniFile.Read("encodeNS", "DEV")))
+                {
+                    string cnpjLimpo = Settings.Default.empresa_cnpj.Replace("-", "").Replace(".", "").Replace("/", "");
+
+                    dynamic obj = new
+                    {
+                        corporate_name = Settings.Default.empresa_razao_social,
+                        name = Settings.Default.empresa_nome_fantasia,
+                        cnpj = cnpjLimpo,
+                        email = Settings.Default.user_email,
+                        password = "123@emiplus"
+                    };
+
+                    if (cnpjLimpo != "00000000000000")
+                    {
+                        var json = new RequestApi().URL("https://app.notasegura.com.br/api/users/?softwarehouse=f278b338e853ed759383cca7da6dcf22e1c61301")
+                            .Content(obj, Method.POST)
+                            .AddHeader("Accept", "application/json")
+                            .AddHeader("Content-Type", "application/x-www-form-urlencoded")
+                            .Response();
+
+                        IniFile.Write("encodeNS", Validation.Base64Encode($"{Settings.Default.empresa_email}:123@emiplus"), "DEV");
+                    }
+                }
             }
 
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");

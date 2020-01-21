@@ -502,5 +502,17 @@ namespace Emiplus.Properties {
                 this["user_dbhost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_email {
+            get {
+                return ((string)(this["empresa_email"]));
+            }
+            set {
+                this["empresa_email"] = value;
+            }
+        }
     }
 }

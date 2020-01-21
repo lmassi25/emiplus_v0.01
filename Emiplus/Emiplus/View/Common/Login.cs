@@ -142,6 +142,7 @@ namespace Emiplus.View.Common
                 Settings.Default.empresa_razao_social = jo["empresa"]["razao_social"].ToString();
                 Settings.Default.empresa_nome_fantasia = jo["empresa"]["nome_fantasia"].ToString();
                 Settings.Default.empresa_cnpj = jo["empresa"]["cnpj"].ToString();
+                Settings.Default.empresa_email = jo["empresa"]["email"].ToString();
                 Settings.Default.empresa_inscricao_estadual = jo["empresa"]["inscricao_estadual"].ToString();
                 Settings.Default.empresa_inscricao_municipal = jo["empresa"]["inscricao_municipal"].ToString();
                 Settings.Default.empresa_telefone = jo["empresa"]["telefone"].ToString();
@@ -157,7 +158,7 @@ namespace Emiplus.View.Common
                 Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
                 Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
                 Settings.Default.Save();
-
+                Console.WriteLine(Settings.Default.empresa_email);
                 Model.Usuarios usuarios = new Model.Usuarios();
                 var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
                 var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();

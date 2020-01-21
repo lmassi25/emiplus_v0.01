@@ -25,6 +25,12 @@ namespace Emiplus.Data.Core
             return this;
         }
 
+        public RequestApi AddHeader(string name, string value)
+        {
+            request.AddHeader(name, value);
+            return this;
+        }
+
         public JObject Response()
         {
             IRestResponse response = client.Execute(request);

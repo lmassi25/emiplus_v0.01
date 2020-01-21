@@ -144,7 +144,8 @@ namespace Emiplus.View.Common
                 new CreateTables().CheckTables();
 
                 // Atualiza a versão no INI
-                IniFile.Write("Version", new Update().GetVersionWebTxt(), "APP");
+                string version = new Update().GetVersionWebTxt();
+                IniFile.Write("Version", version, "APP");
 
                 Thread.Sleep(5000);
             }
