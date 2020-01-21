@@ -137,12 +137,18 @@ namespace Emiplus.Controller
             var data = notas.Query()
                 .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio", "nota.assinatura_qrcode as final", "nota.serie as serie", "nota.status as status")
                 .Where("nota.excluir", 0)
-                .Where("nota.tipo", "Inutiliza")
-                .Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
-                .Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
+                .Where("nota.tipo", "Inutiliza");
+                //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
+                //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
 
             if (!string.IsNullOrEmpty(status) && status != "Todos")
-                data.Where("nota.status", status);
+            {
+                if(status == "Transmitidos")
+                    data.Where("nota.status", "Transmitindo...");
+                else
+                    data.Where("nota.status", "Autorizada");
+            }
+
 
             return data.Get();
         }
@@ -160,16 +166,16 @@ namespace Emiplus.Controller
             Table.Columns[0].Visible = false;
 
             Table.Columns[1].Name = "N° Inicial";
-            Table.Columns[1].Width = 120;
+            Table.Columns[1].MinimumWidth = 120;
 
             Table.Columns[2].Name = "N° Final";
-            Table.Columns[2].Width = 120;
+            Table.Columns[2].MinimumWidth = 120;
 
             Table.Columns[3].Name = "Série";
-            Table.Columns[3].Width = 120;
+            Table.Columns[3].MinimumWidth = 120;
 
             Table.Columns[4].Name = "Criado em";
-            Table.Columns[4].Width = 120;
+            Table.Columns[4].MinimumWidth = 120;
 
             Table.Columns[5].Name = "Status";
             Table.Columns[5].MinimumWidth = 150;
@@ -185,7 +191,7 @@ namespace Emiplus.Controller
                     item.FINAL,
                     item.SERIE,
                     item.CRIADO,
-                    item.STATUS
+                    item.STATUS == "Autorizada" ? "Inutilização de número homologado" : item.STATUS
                 );
             }
 

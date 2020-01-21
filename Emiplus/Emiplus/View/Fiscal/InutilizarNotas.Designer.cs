@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InutilizarNotas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,10 +53,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.imprimir = new System.Windows.Forms.Button();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnRetransmitir = new System.Windows.Forms.Button();
+            this.imprimir = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -180,7 +180,7 @@
             this.status.IntegralHeight = false;
             this.status.ItemHeight = 20;
             this.status.ItemImageVisible = true;
-            this.status.Location = new System.Drawing.Point(346, 42);
+            this.status.Location = new System.Drawing.Point(401, 42);
             this.status.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.status.MenuItemNormal = System.Drawing.Color.White;
             this.status.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -215,7 +215,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(343, 20);
+            this.label7.Location = new System.Drawing.Point(398, 20);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 17);
             this.label7.TabIndex = 97;
@@ -250,6 +250,7 @@
             this.dataInicial.Size = new System.Drawing.Size(98, 27);
             this.dataInicial.TabIndex = 95;
             this.dataInicial.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.dataInicial.Visible = false;
             // 
             // dataFinal
             // 
@@ -280,6 +281,7 @@
             this.dataFinal.Size = new System.Drawing.Size(98, 27);
             this.dataFinal.TabIndex = 94;
             this.dataFinal.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.dataFinal.Visible = false;
             // 
             // label4
             // 
@@ -293,6 +295,7 @@
             this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 93;
             this.label4.Text = "Final";
+            this.label4.Visible = false;
             // 
             // label23
             // 
@@ -306,6 +309,7 @@
             this.label23.Size = new System.Drawing.Size(40, 17);
             this.label23.TabIndex = 92;
             this.label23.Text = "Inicial";
+            this.label23.Visible = false;
             // 
             // btnExit
             // 
@@ -410,23 +414,23 @@
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle8;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -453,48 +457,6 @@
             this.panel5.Size = new System.Drawing.Size(733, 97);
             this.panel5.TabIndex = 90;
             // 
-            // imprimir
-            // 
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.FlatAppearance.BorderSize = 0;
-            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
-            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.imprimir.Location = new System.Drawing.Point(509, 4);
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(116, 90);
-            this.imprimir.TabIndex = 103;
-            this.imprimir.Text = "Gerar Relatório";
-            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.imprimir.UseVisualStyleBackColor = true;
-            this.imprimir.Visible = false;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.FlatAppearance.BorderSize = 0;
-            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(631, 4);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(85, 90);
-            this.btnHelp.TabIndex = 4;
-            this.btnHelp.Text = "Ajuda";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            // 
             // btnRemover
             // 
             this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -518,7 +480,7 @@
             // 
             // btnRetransmitir
             // 
-            this.btnRetransmitir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRetransmitir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRetransmitir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRetransmitir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRetransmitir.FlatAppearance.BorderSize = 0;
@@ -536,6 +498,49 @@
             this.btnRetransmitir.Text = "Retransmitir";
             this.btnRetransmitir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRetransmitir.UseVisualStyleBackColor = true;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.FlatAppearance.BorderSize = 0;
+            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
+            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.imprimir.Location = new System.Drawing.Point(509, 4);
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(116, 90);
+            this.imprimir.TabIndex = 103;
+            this.imprimir.Text = "Gerar Relatório";
+            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.imprimir.UseVisualStyleBackColor = true;
+            this.imprimir.Visible = false;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHelp.Location = new System.Drawing.Point(631, 4);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(85, 90);
+            this.btnHelp.TabIndex = 4;
+            this.btnHelp.Text = "Ajuda";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // InutilizarNotas
             // 

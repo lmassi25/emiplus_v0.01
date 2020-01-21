@@ -30,25 +30,27 @@ namespace Emiplus.View.Fiscal
                     serie.Text = _nota.Serie.ToString();
                     justificativa.Text = _nota.correcao.ToString();
                 }
+
+                inicio.Select();
             };
 
             btnSalvar.Click += (s, e) =>
             {
                 if (justificativa.Text.Length < 15)
                 {
-                    Alert.Message("Ação não permitida", "Correção deve conter 15 caracteres", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida", "Justificativa deve conter 15 caracteres", Alert.AlertType.warning);
                     return;
                 }
 
-                //_nota.Id = idNota;
-                //_nota.Tipo = "Inutiliza";
-                //_nota.Status = "Transmitindo...";
-                //_nota.nr_Nota = inicio.Text;
-                //_nota.assinatura_qrcode = final.Text;
-                //_nota.Serie = serie.Text;
-                //_nota.correcao = justificativa.Text;
-                //_nota.correcao = Validation.CleanStringForFiscal(Validation.OneSpaceString(_nota.correcao);
-                //_nota.Save(_nota, true);
+                _nota.Id = idNota;
+                _nota.Tipo = "Inutiliza";
+                _nota.Status = "Transmitindo...";
+                _nota.nr_Nota = inicio.Text;
+                _nota.assinatura_qrcode = final.Text;
+                _nota.Serie = serie.Text;
+                _nota.correcao = justificativa.Text;
+                _nota.correcao = Validation.CleanStringForFiscal(Validation.OneSpaceString(_nota.correcao));
+                _nota.Save(_nota, true);
 
                 DialogResult = DialogResult.OK;
                 Close();
