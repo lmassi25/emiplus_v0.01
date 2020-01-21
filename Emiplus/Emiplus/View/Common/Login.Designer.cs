@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.version = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,14 +48,20 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.linkSupport = new System.Windows.Forms.Label();
-            this.version = new System.Windows.Forms.Label();
             this.btnUpdate = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.remember = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
+            this.panelEmpresa = new System.Windows.Forms.Panel();
+            this.i = new System.Windows.Forms.Label();
+            this.idEmpresa = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.btnConfirmar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             this.panel2.SuspendLayout();
             this.visualPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelEmpresa.SuspendLayout();
             this.SuspendLayout();
             // 
             // BarraTitulo
@@ -104,6 +111,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(370, 486);
             this.panel2.TabIndex = 1;
+            // 
+            // version
+            // 
+            this.version.BackColor = System.Drawing.Color.Transparent;
+            this.version.Cursor = System.Windows.Forms.Cursors.Default;
+            this.version.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.version.ForeColor = System.Drawing.Color.White;
+            this.version.Location = new System.Drawing.Point(6, 463);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(359, 15);
+            this.version.TabIndex = 161;
+            this.version.Text = "Versão 1.0.0";
+            this.version.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // visualPanel1
             // 
@@ -396,19 +416,6 @@
             this.linkSupport.TabIndex = 160;
             this.linkSupport.Text = "nosso site, clicando aqui!";
             // 
-            // version
-            // 
-            this.version.BackColor = System.Drawing.Color.Transparent;
-            this.version.Cursor = System.Windows.Forms.Cursors.Default;
-            this.version.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.version.ForeColor = System.Drawing.Color.White;
-            this.version.Location = new System.Drawing.Point(6, 463);
-            this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(359, 15);
-            this.version.TabIndex = 161;
-            this.version.Text = "Versão 1.0.0";
-            this.version.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btnUpdate
             // 
             this.btnUpdate.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -487,12 +494,161 @@
             this.remember.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.remember.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // panelEmpresa
+            // 
+            this.panelEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
+            this.panelEmpresa.Controls.Add(this.label9);
+            this.panelEmpresa.Controls.Add(this.label2);
+            this.panelEmpresa.Controls.Add(this.btnConfirmar);
+            this.panelEmpresa.Controls.Add(this.i);
+            this.panelEmpresa.Controls.Add(this.idEmpresa);
+            this.panelEmpresa.Location = new System.Drawing.Point(376, 41);
+            this.panelEmpresa.Name = "panelEmpresa";
+            this.panelEmpresa.Size = new System.Drawing.Size(353, 186);
+            this.panelEmpresa.TabIndex = 162;
+            this.panelEmpresa.Visible = false;
+            // 
+            // i
+            // 
+            this.i.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.i.AutoSize = true;
+            this.i.BackColor = System.Drawing.Color.Transparent;
+            this.i.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(176)))));
+            this.i.Location = new System.Drawing.Point(106, 2);
+            this.i.Name = "i";
+            this.i.Size = new System.Drawing.Size(139, 25);
+            this.i.TabIndex = 164;
+            this.i.Text = "ID da empresa";
+            // 
+            // idEmpresa
+            // 
+            this.idEmpresa.AlphaNumeric = false;
+            this.idEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.idEmpresa.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.idEmpresa.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(48)))), ((int)(((byte)(67)))));
+            this.idEmpresa.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.idEmpresa.Border.HoverVisible = true;
+            this.idEmpresa.Border.Rounding = 8;
+            this.idEmpresa.Border.Thickness = 1;
+            this.idEmpresa.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rectangle;
+            this.idEmpresa.Border.Visible = true;
+            this.idEmpresa.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.ButtonBorder.HoverVisible = true;
+            this.idEmpresa.ButtonBorder.Rounding = 6;
+            this.idEmpresa.ButtonBorder.Thickness = 1;
+            this.idEmpresa.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.idEmpresa.ButtonBorder.Visible = false;
+            this.idEmpresa.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.idEmpresa.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(80)))));
+            this.idEmpresa.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idEmpresa.ButtonIndent = 3;
+            this.idEmpresa.ButtonText = "visualButton";
+            this.idEmpresa.ButtonVisible = false;
+            this.idEmpresa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idEmpresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(176)))));
+            this.idEmpresa.Image = null;
+            this.idEmpresa.ImageSize = new System.Drawing.Size(16, 16);
+            this.idEmpresa.ImageVisible = false;
+            this.idEmpresa.ImageWidth = 35;
+            this.idEmpresa.Location = new System.Drawing.Point(23, 68);
+            this.idEmpresa.MaxLength = 200;
+            this.idEmpresa.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.idEmpresa.Name = "idEmpresa";
+            this.idEmpresa.PasswordChar = '\0';
+            this.idEmpresa.ReadOnly = false;
+            this.idEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.idEmpresa.Size = new System.Drawing.Size(314, 34);
+            this.idEmpresa.TabIndex = 163;
+            this.idEmpresa.TextBoxWidth = 302;
+            this.idEmpresa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.idEmpresa.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.idEmpresa.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.idEmpresa.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.idEmpresa.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.idEmpresa.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.idEmpresa.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.idEmpresa.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.idEmpresa.Watermark.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idEmpresa.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.idEmpresa.Watermark.Text = "Seu E-mail";
+            this.idEmpresa.Watermark.Visible = false;
+            this.idEmpresa.WordWrap = true;
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConfirmar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnConfirmar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.btnConfirmar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(102)))), ((int)(((byte)(98)))));
+            this.btnConfirmar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(102)))), ((int)(((byte)(98)))));
+            this.btnConfirmar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.btnConfirmar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
+            this.btnConfirmar.Border.HoverVisible = true;
+            this.btnConfirmar.Border.Rounding = 6;
+            this.btnConfirmar.Border.Thickness = 1;
+            this.btnConfirmar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnConfirmar.Border.Visible = true;
+            this.btnConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnConfirmar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmar.ForeColor = System.Drawing.Color.White;
+            this.btnConfirmar.Image = null;
+            this.btnConfirmar.Location = new System.Drawing.Point(96, 164);
+            this.btnConfirmar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(151, 36);
+            this.btnConfirmar.TabIndex = 163;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConfirmar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnConfirmar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnConfirmar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnConfirmar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnConfirmar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnConfirmar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnConfirmar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(176)))));
+            this.label2.Location = new System.Drawing.Point(49, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(258, 34);
+            this.label2.TabIndex = 165;
+            this.label2.Text = "É muito importante que você copie e cole o \r\n\'ID da empresa\' correto nesse campo!" +
+    "";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(176)))));
+            this.label9.Location = new System.Drawing.Point(34, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(296, 17);
+            this.label9.TabIndex = 166;
+            this.label9.Text = "Exemplo: a22ae07e-0e64-4cff-8c01-f1b8690a0e75";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(722, 521);
+            this.Controls.Add(this.panelEmpresa);
             this.Controls.Add(this.remember);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.linkSupport);
@@ -522,6 +678,8 @@
             this.panel2.PerformLayout();
             this.visualPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelEmpresa.ResumeLayout(false);
+            this.panelEmpresa.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,5 +707,11 @@
         private System.Windows.Forms.Label version;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnUpdate;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox remember;
+        private System.Windows.Forms.Panel panelEmpresa;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnConfirmar;
+        private System.Windows.Forms.Label i;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox idEmpresa;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label9;
     }
 }

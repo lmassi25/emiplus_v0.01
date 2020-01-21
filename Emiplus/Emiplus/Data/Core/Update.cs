@@ -54,6 +54,9 @@ namespace Emiplus.Data.Core
             if (!IniFile.KeyExists("Update", "APP"))
                 IniFile.Write("Update", "true", "APP");
 
+            if (!IniFile.KeyExists("idEmpresa", "APP"))
+                IniFile.Write("idEmpresa", "", "APP");
+
             if (!IniFile.KeyExists("Path", "LOCAL"))
                 IniFile.Write("Path", @"C:\Emiplus", "LOCAL");
 
