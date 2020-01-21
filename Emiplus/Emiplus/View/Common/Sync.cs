@@ -10,6 +10,8 @@ using Emiplus.Properties;
 using Newtonsoft.Json;
 using Emiplus.Data.Helpers;
 using System.Threading;
+using System;
+using System.IO;
 
 namespace Emiplus.View.Common
 {
@@ -144,12 +146,43 @@ namespace Emiplus.View.Common
         }
         #endregion
 
+        private void SendNota()
+        {
+            if (string.IsNullOrEmpty(IniFile.Read("encodeNS", "DEV")))
+                return;
+
+            if (!Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Autorizadas\\temp"))
+                return;
+
+            DirectoryInfo d = new DirectoryInfo(IniFile.Read("Path", "LOCAL") + "\\Autorizadas\\temp");
+
+            foreach (var file in d.GetFiles("*.xml"))
+            {
+                var contentXml = File.ReadAllLines(file.FullName);
+
+                dynamic obj = new
+                {
+                    xml = contentXml[0]
+                };
+
+                var json = new RequestApi().URL("https://app.notasegura.com.br/api/invoices?token=f278b338e853ed759383cca7da6dcf22e1c61301")
+                    .Content(obj, Method.POST)
+                    .AddHeader("Authorization", $"Basic {IniFile.Read("encodeNS", "DEV")}")
+                    .AddHeader("Content-Type", "application/x-www-form-urlencoded")
+                    .Response();
+
+                File.Delete(file.FullName);
+            }
+        }
+
         private void Eventos()
         {
             Load += (s, e) =>
             {
                 if (Support.CheckForInternetConnection())
                 {
+                    SendNota();
+
                     if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
                         timer1.Start();
                 }

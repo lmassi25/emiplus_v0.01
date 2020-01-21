@@ -63,6 +63,9 @@ namespace Emiplus.Data.Core
             if (!IniFile.KeyExists("dev", "DEV"))
                 IniFile.Write("dev", "false", "DEV");
 
+            if (!IniFile.KeyExists("encodeNS", "DEV"))
+                IniFile.Write("encodeNS", "", "DEV");
+
             if (!IniFile.KeyExists("Printer", "SAT"))
                 IniFile.Write("Printer", "", "SAT");
 
