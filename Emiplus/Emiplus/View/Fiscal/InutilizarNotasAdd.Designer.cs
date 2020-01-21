@@ -271,7 +271,6 @@
             // inicio
             // 
             this.inicio.AlphaNumeric = false;
-            this.inicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.inicio.BackColor = System.Drawing.Color.White;
             this.inicio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.inicio.BackColorState.Enabled = System.Drawing.Color.White;
@@ -330,7 +329,6 @@
             // final
             // 
             this.final.AlphaNumeric = false;
-            this.final.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.final.BackColor = System.Drawing.Color.White;
             this.final.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.final.BackColorState.Enabled = System.Drawing.Color.White;
@@ -389,7 +387,6 @@
             // serie
             // 
             this.serie.AlphaNumeric = false;
-            this.serie.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.serie.BackColor = System.Drawing.Color.White;
             this.serie.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.serie.BackColorState.Enabled = System.Drawing.Color.White;

@@ -115,6 +115,7 @@ namespace Emiplus.Controller
                 _path = @"C:\Emiplus";
 
             //_servidorNFE = Settings.Default.empresa_nfe_servidornfe;
+            _servidorNFE = 2;
             _servidorNFE = 1;
 
             if (IniFile.Read("Servidor", "SAT") == "Producao")
@@ -1236,6 +1237,30 @@ namespace Emiplus.Controller
             }
         }
 
+        /// <summary> 
+        /// Emitir Inutiliza
+        /// </summary>
+        public string EmitirInutiliza(int Nota = 0)
+        {
+            Model.Nota _inutiliza = new Model.Nota();
+            _inutiliza = _inutiliza.Query().Where("status", "Transmitindo...").Where("tipo", "Inutiliza").Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+            if (_inutiliza == null)
+                return "";
+
+            Start(0, "NFe");
+
+            _msg = RequestSendInutiliza("&Ano=" + _inutiliza.Criado.ToString("yy") + "&Serie=" + _inutiliza.Serie + "&NFIni=" + _inutiliza.nr_Nota + "&NFFin=" + _inutiliza.assinatura_qrcode + "&Justificativa=" + _inutiliza.correcao);
+
+            if(_msg.Contains("Inutilização de número homologado"))
+            {
+                _inutiliza.Status = "Autorizada";
+                _inutiliza.Save(_inutiliza, false);
+            }
+
+            return _msg;
+        }
+
         #region XML 
 
         private int getLastNFeNr()
@@ -2265,7 +2290,13 @@ namespace Emiplus.Controller
         /// <param name="tipo">envia</param>        
         /// <param name="xml">conteúdo xml</param>    
         /// <param name="documento">NFe</param>    
-        
+
+        private string RequestSendInutiliza(string tx2)
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + tx2;
+            return request(requestData, "NFe", "inutiliza", "POST");
+        }
+
         private string RequestSendCCe(string tx2)
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + tx2;
