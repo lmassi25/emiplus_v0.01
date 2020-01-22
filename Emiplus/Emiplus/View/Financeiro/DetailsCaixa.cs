@@ -38,11 +38,11 @@ namespace Emiplus.View.Financeiro
             if (user != null)
                 colaborador.Text = user.NOME;
         }
-        
+
         private void LoadData()
         {
             _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
-            
+
             caixa.Text = _modelCaixa.Id.ToString();
             nrCaixa.Text = _modelCaixa.Id.ToString();
             terminal.Text = _modelCaixa.Terminal;
@@ -55,12 +55,12 @@ namespace Emiplus.View.Financeiro
                 txtFechado.Text = Validation.ConvertDateToForm(_modelCaixa.Fechado, true);
                 FecharCaixa.Enabled = false;
             }
-            
+
             LoadUsuario(_modelCaixa.Usuario);
 
             txtSaldoInicial.Text = Validation.FormatPrice(_modelCaixa.Saldo_Inicial, true);
             txtEntradas.Text = Validation.FormatPrice(_controllerCaixa.SumEntradas(idCaixa), true);
-            txtSaidas.Text = Validation.FormatPrice(_controllerCaixa.SumSaidas(idCaixa), true);            
+            txtSaidas.Text = Validation.FormatPrice(_controllerCaixa.SumSaidas(idCaixa), true);
             txtSaldoFinal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
 
             txtVendasTotal.Text = Validation.FormatPrice(_controllerCaixa.SumVendasTotal(idCaixa), true);
@@ -72,6 +72,7 @@ namespace Emiplus.View.Financeiro
             txtVendasCanceladasTotal.Text = Validation.FormatPrice(_controllerCaixa.SumVendasCanceladasTotal(idCaixa), true);
             txtVendasCanceladas.Text = _controllerCaixa.SumVendasCanceladasGeradas(idCaixa).ToString();
 
+            txtTotalRecebimento.Text = Validation.FormatPrice(_controllerCaixa.SumPagamentoTodos(idCaixa), true);
             txtDinheiro.Text = Validation.FormatPrice(_controllerCaixa.SumPagamento(idCaixa, 1), true);
             txtCheque.Text = Validation.FormatPrice(_controllerCaixa.SumPagamento(idCaixa, 2), true);
             txtCarDeb.Text = Validation.FormatPrice(_controllerCaixa.SumPagamento(idCaixa, 3), true);
@@ -86,7 +87,11 @@ namespace Emiplus.View.Financeiro
             DataTableAsync();
         }
 
-        private async Task DataTableAsync() => await SetTable(GridLista);
+        private async Task DataTableAsync()
+        {
+            await SetTable(GridLista);
+            await SetTable2(GridLista2);
+        }            
 
         public Task<IEnumerable<dynamic>> GetDataTableCaixa()
         {
@@ -100,15 +105,31 @@ namespace Emiplus.View.Financeiro
             return model.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedido()
+        public Task<IEnumerable<dynamic>> GetDataTableTitulo()
         {
             var model = new Model.Titulo().Query();
             model.Where("id_caixa", idCaixa);
+            model.Where("TITULO.excluir", 0);
             model.LeftJoin("FORMAPGTO", "FORMAPGTO.id", "TITULO.ID_FORMAPGTO");
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "TITULO.id_usuario");
             model.Select("FORMAPGTO.nome as nome_pgto", "TITULO.*", "USUARIOS.NOME as USER_NAME");
             model.OrderByDesc("TITULO.criado");
             return model.GetAsync<dynamic>();
+        }
+
+        public Task<IEnumerable<dynamic>> GetDataTablePedido()
+        {
+            var model = new Model.Pedido().Query();
+            model.Where("id_caixa", idCaixa);
+            model.Where("pedido.excluir", 0);
+            model.OrderByDesc("pedido.id");
+            return model.GetAsync<dynamic>();
+        }
+        
+        private double GetDataTitulo(int id_pedido)
+        {
+            var sum = new Model.Titulo().Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_pedido", id_pedido).WhereFalse("excluir").FirstOrDefault();
+            return Validation.ConvertToDouble(sum.TOTAL);
         }
 
         public async Task<dynamic> GetDataMovAsync()
@@ -119,7 +140,7 @@ namespace Emiplus.View.Financeiro
             IEnumerable<dynamic> dados = await GetDataTableCaixa();
             DataCaixaMov = dados;
 
-            IEnumerable<dynamic> dadosTitulo = await GetDataTablePedido();
+            IEnumerable<dynamic> dadosTitulo = await GetDataTableTitulo();
             DataTitulo = dadosTitulo;
 
             ArrayList objeto = new ArrayList();
@@ -154,6 +175,33 @@ namespace Emiplus.View.Financeiro
 
             return objeto;
         }
+        
+        public async Task<dynamic> GetDataMovPedidosAsync()
+        {
+            IEnumerable<dynamic> DataPedido = null;            
+
+            IEnumerable<dynamic> dataPedido = await GetDataTablePedido();
+            DataPedido = dataPedido;
+
+            ArrayList objeto = new ArrayList();
+
+            // Loop titulos de vendas
+            foreach (var item in DataPedido)
+            {
+                var vendido = item.TOTAL;
+                var recebido = GetDataTitulo(item.ID);
+                
+                objeto.Add(new
+                {
+                    ID = item.ID,
+                    CRIADO = item.CRIADO,
+                    VENDIDO = vendido,
+                    RECEBIDO = recebido
+                });
+            }
+
+            return objeto;
+        }
 
         public async Task SetTable(DataGridView Table)
         {
@@ -171,16 +219,16 @@ namespace Emiplus.View.Financeiro
             Table.Columns[1].Width = 100;
         
             Table.Columns[2].Name = "Descrição";
-            Table.Columns[2].MinimumWidth = 230;
+            Table.Columns[2].MinimumWidth = 120;
 
             Table.Columns[3].Name = "Valor";
             Table.Columns[3].Width = 80;
 
             Table.Columns[4].Name = "Forma Pagto.";
-            Table.Columns[4].Width = 100;
+            Table.Columns[4].Width = 140;
 
             Table.Columns[5].Name = "Usuário";
-            Table.Columns[5].Width = 150;
+            Table.Columns[5].Width = 100;
 
             Table.Rows.Clear();
 
@@ -196,6 +244,46 @@ namespace Emiplus.View.Financeiro
                     valor,
                     item.NOME_PGTO,
                     item.USER_NAME
+                );
+            }
+
+            Table.Sort(Table.Columns[1], System.ComponentModel.ListSortDirection.Descending);
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        
+        public async Task SetTable2(DataGridView Table)
+        {
+            Table.ColumnCount = 4;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "N° Venda";
+            Table.Columns[0].Visible = true;
+
+            Table.Columns[1].Name = "Data/Hora";
+            Table.Columns[1].Width = 100;
+
+            Table.Columns[2].Name = "Total Vendido";
+            Table.Columns[2].MinimumWidth = 120;
+
+            Table.Columns[3].Name = "Total Recebido";
+            Table.Columns[3].MinimumWidth = 120;
+
+            Table.Rows.Clear();
+
+            foreach (var item in GetDataMovPedidosAsync().Result)
+            {
+                var valor = Validation.FormatPrice(Validation.ConvertToDouble(item.VENDIDO), true);
+                var valor2 = Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true);
+
+                Table.Rows.Add(
+                    item.ID,
+                    Validation.ConvertDateToForm(item.CRIADO, true),
+                    valor,
+                    valor2
                 );
             }
 
@@ -264,6 +352,14 @@ namespace Emiplus.View.Financeiro
             };
 
             GridLista.CellDoubleClick += (s, e) => EditMovimentacao();
+            
+            GridLista2.CellDoubleClick += (s, e) =>
+            {
+                DetailsPedido.idPedido = Convert.ToInt32(GridLista2.SelectedRows[0].Cells["N° Venda"].Value);
+                DetailsPedido detailsPedido = new DetailsPedido();
+                detailsPedido.ShowDialog();
+            };
+
             btnEditar.Click += (s, e) => EditMovimentacao();
 
             btnLancamentos.Click += (s, e) =>
@@ -301,6 +397,25 @@ namespace Emiplus.View.Financeiro
                 }
             };
 
+            GridLista2.CellFormatting += (s, e) =>
+            {
+                foreach (DataGridViewRow row in GridLista2.Rows)
+                {
+                    if (Validation.ConvertToDouble(row.Cells[3].Value) < Validation.ConvertToDouble(row.Cells[2].Value))
+                    {
+                        row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[3].Style.ForeColor = Color.White;
+                        row.Cells[3].Style.BackColor = Color.FromArgb(255, 89, 89);
+                    }
+                    else
+                    {
+                        row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[3].Style.ForeColor = Color.White;
+                        row.Cells[3].Style.BackColor = Color.FromArgb(139, 215, 146); 
+                    }
+                }
+            };
+
             GridLista.CellFormatting += (s, e) =>
             {
                 foreach (DataGridViewRow row in GridLista.Rows)
@@ -309,13 +424,13 @@ namespace Emiplus.View.Financeiro
                     {
                         row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                         row.Cells[3].Style.ForeColor = Color.White;
-                        row.Cells[3].Style.BackColor = Color.FromArgb(139,215,146);
+                        row.Cells[3].Style.BackColor = Color.FromArgb(139, 215, 146);
                     }
                     else
                     {
                         row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                         row.Cells[3].Style.ForeColor = Color.White;
-                        row.Cells[3].Style.BackColor = Color.FromArgb(255,89,89);
+                        row.Cells[3].Style.BackColor = Color.FromArgb(255, 89, 89);
                     }
                 }
             };
