@@ -40,8 +40,6 @@
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
-            this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,6 +53,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.panel5.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -155,10 +155,10 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.barraTitulo.Controls.Add(this.Usuarios);
-            this.barraTitulo.Controls.Add(this.label12);
             this.barraTitulo.Controls.Add(this.dataFinal);
             this.barraTitulo.Controls.Add(this.dataInicial);
+            this.barraTitulo.Controls.Add(this.Usuarios);
+            this.barraTitulo.Controls.Add(this.label12);
             this.barraTitulo.Controls.Add(this.label10);
             this.barraTitulo.Controls.Add(this.label6);
             this.barraTitulo.Controls.Add(this.label8);
@@ -235,62 +235,6 @@
             this.label12.Size = new System.Drawing.Size(83, 17);
             this.label12.TabIndex = 198;
             this.label12.Text = "Colaborador";
-            // 
-            // dataFinal
-            // 
-            this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataFinal.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataFinal.ArrowSize = new System.Drawing.Size(10, 5);
-            this.dataFinal.BackColor = System.Drawing.Color.White;
-            this.dataFinal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataFinal.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataFinal.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataFinal.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.dataFinal.Border.HoverVisible = true;
-            this.dataFinal.Border.Rounding = 6;
-            this.dataFinal.Border.Thickness = 1;
-            this.dataFinal.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.dataFinal.Border.Visible = true;
-            this.dataFinal.DropDownImage = null;
-            this.dataFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataFinal.Image = null;
-            this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataFinal.Location = new System.Drawing.Point(48, 198);
-            this.dataFinal.MinimumSize = new System.Drawing.Size(0, 23);
-            this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.dataFinal.Name = "dataFinal";
-            this.dataFinal.Size = new System.Drawing.Size(173, 23);
-            this.dataFinal.TabIndex = 195;
-            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
-            // 
-            // dataInicial
-            // 
-            this.dataInicial.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataInicial.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataInicial.ArrowSize = new System.Drawing.Size(10, 5);
-            this.dataInicial.BackColor = System.Drawing.Color.White;
-            this.dataInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataInicial.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataInicial.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.dataInicial.Border.HoverVisible = true;
-            this.dataInicial.Border.Rounding = 6;
-            this.dataInicial.Border.Thickness = 1;
-            this.dataInicial.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.dataInicial.Border.Visible = true;
-            this.dataInicial.DropDownImage = null;
-            this.dataInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataInicial.Image = null;
-            this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataInicial.Location = new System.Drawing.Point(48, 168);
-            this.dataInicial.MinimumSize = new System.Drawing.Size(0, 23);
-            this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.dataInicial.Name = "dataInicial";
-            this.dataInicial.Size = new System.Drawing.Size(173, 23);
-            this.dataInicial.TabIndex = 194;
-            this.dataInicial.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // label10
             // 
@@ -471,6 +415,62 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // dataFinal
+            // 
+            this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataFinal.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataFinal.ArrowSize = new System.Drawing.Size(10, 5);
+            this.dataFinal.BackColor = System.Drawing.Color.White;
+            this.dataFinal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataFinal.BackColorState.Enabled = System.Drawing.Color.White;
+            this.dataFinal.Border.Color = System.Drawing.Color.Gainsboro;
+            this.dataFinal.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataFinal.Border.HoverVisible = true;
+            this.dataFinal.Border.Rounding = 6;
+            this.dataFinal.Border.Thickness = 1;
+            this.dataFinal.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.dataFinal.Border.Visible = true;
+            this.dataFinal.DropDownImage = null;
+            this.dataFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dataFinal.Image = null;
+            this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
+            this.dataFinal.Location = new System.Drawing.Point(53, 194);
+            this.dataFinal.MinimumSize = new System.Drawing.Size(0, 23);
+            this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.dataFinal.Name = "dataFinal";
+            this.dataFinal.Size = new System.Drawing.Size(173, 25);
+            this.dataFinal.TabIndex = 201;
+            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
+            // 
+            // dataInicial
+            // 
+            this.dataInicial.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataInicial.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataInicial.ArrowSize = new System.Drawing.Size(10, 5);
+            this.dataInicial.BackColor = System.Drawing.Color.White;
+            this.dataInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataInicial.BackColorState.Enabled = System.Drawing.Color.White;
+            this.dataInicial.Border.Color = System.Drawing.Color.Gainsboro;
+            this.dataInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataInicial.Border.HoverVisible = true;
+            this.dataInicial.Border.Rounding = 6;
+            this.dataInicial.Border.Thickness = 1;
+            this.dataInicial.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.dataInicial.Border.Visible = true;
+            this.dataInicial.DropDownImage = null;
+            this.dataInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dataInicial.Image = null;
+            this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
+            this.dataInicial.Location = new System.Drawing.Point(53, 164);
+            this.dataInicial.MinimumSize = new System.Drawing.Size(0, 23);
+            this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.dataInicial.Name = "dataInicial";
+            this.dataInicial.Size = new System.Drawing.Size(173, 25);
+            this.dataInicial.TabIndex = 200;
+            this.dataInicial.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +483,7 @@
             this.Controls.Add(this.barraTitulo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Caixa";
             this.ShowIcon = false;
@@ -519,12 +520,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
-        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Usuarios;
         private System.Windows.Forms.Label label12;
+        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
+        private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
     }
 }

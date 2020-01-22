@@ -85,6 +85,12 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(sum.TOTAL);
         }
 
+        public double SumPagamentoTodos(int idCaixa)
+        {
+            var sum = _modelTitulo.Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_caixa", idCaixa).WhereFalse("excluir").FirstOrDefault();
+            return Validation.ConvertToDouble(sum.TOTAL);
+        }
+
         public void CheckCaixaDate()
         {
             CheckCaixa();

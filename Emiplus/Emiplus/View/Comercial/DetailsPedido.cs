@@ -262,10 +262,15 @@ namespace Emiplus.View.Comercial
                     Pedido.status = 2; //RECEBIMENTO PENDENTE
                 }
                 else
-                {
                     Pedido.status = 1; //FINALIZADO\RECEBIDO
-                }
+
                 Pedido.Save(Pedido);
+            };
+
+            Activated += (s, e) =>
+            {
+                Console.WriteLine("DetailsPedido: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
+                LoadData();
             };
 
             btnPgtosLancado.Click += (s, e) =>
