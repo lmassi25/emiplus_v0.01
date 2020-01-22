@@ -37,6 +37,7 @@ namespace Emiplus.Data.Core
             smtpClient = new SmtpClient();
             smtpCredentials = new NetworkCredential("suporte@emiplus.com.br", "4586928wW#0");
         }
+
         public EmailSMTP SetEmailFrom(string from)
         {
             From = validMail(from) ? from : "";

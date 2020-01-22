@@ -449,8 +449,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(493, 481);
+            this.ClientSize = new System.Drawing.Size(517, 481);
             this.Controls.Add(this.base64);
             this.Controls.Add(this.codigoativacao);
             this.Controls.Add(this.assinatura);

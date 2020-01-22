@@ -13,18 +13,25 @@ namespace Emiplus.View.Common
 
         public void Eventos()
         {
-            menu.NodeMouseClick += (s, e) =>
+            //menu.NodeMouseClick += (s, e) =>
+            //{
+            //    switch (e.Node.Name)
+            //    {
+            //        case "comercial":
+            //            OpenForm.ShowInPanel<Configuracoes.Comercial>(tela);
+            //            break;
+            //        case "cfesat":
+            //            OpenForm.ShowInPanel<Configuracoes.Cfesat>(tela);
+            //            break;
+            //    }
+            //};
+
+            comercial.Click += (s, e) =>
             {
-                switch (e.Node.Name)
-                {
-                    case "comercial":
-                        OpenForm.ShowInPanel<Configuracoes.Comercial>(tela);
-                        break;
-                    case "cfesat":
-                        OpenForm.ShowInPanel<Configuracoes.Cfesat>(tela);
-                        break;
-                }
+                OpenForm.ShowInPanel<Configuracoes.Comercial>(panel);
             };
+
+            impressao.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Impressao>(panel);
         }
     }
 }
