@@ -37,12 +37,11 @@ namespace Emiplus.View.Comercial
 
             for (int i = 0; i < quantidadeDias; i++)
             {
-                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas").Where("id_usuario", idUser)
+                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas").Where("colaborador", idUser)
                 .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
                 .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true)).FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToInt32(data.TOTAL) : "0");
             }
-            //values.Reverse();
 
             return values;
         }
@@ -54,7 +53,7 @@ namespace Emiplus.View.Comercial
 
         private void LoadDados()
         {
-            var Total = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas").WhereFalse("excluir").Where("id_usuario", idUser)
+            var Total = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas").WhereFalse("excluir").Where("colaborador", idUser)
                .Where("criado", ">=", Validation.ConvertDateToSql(dataInicial.Text, true))
                .Where("criado", "<=", Validation.ConvertDateToSql(dataFinal.Text, true)).FirstOrDefault();
             totalVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(Total.TOTAL), true);

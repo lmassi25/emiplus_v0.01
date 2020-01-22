@@ -6,7 +6,7 @@ namespace Emiplus.Data.Core
 {
     class EmailSMTP
     {
-        protected string _defaultHost = "mail.uilia.com.br";
+        protected string _defaultHost = "mail.emiplus.com.br";
         private string Host
         {
             get { return _defaultHost; }
@@ -35,7 +35,7 @@ namespace Emiplus.Data.Core
         public EmailSMTP()
         {
             smtpClient = new SmtpClient();
-            smtpCredentials = new NetworkCredential("contato@uilia.com.br", "4586928wW#0");
+            smtpCredentials = new NetworkCredential("suporte@emiplus.com.br", "4586928wW#0");
         }
         public EmailSMTP SetEmailFrom(string from)
         {

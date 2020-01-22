@@ -133,7 +133,7 @@ namespace Emiplus.Data.Helpers
         {
             string n = string.Empty;
             double v = 0;
-            
+
             n = Validation.OnlyNumbers(txt.Text.Replace(",", "").Replace(".", ""));
             if (n.Equals(""))
             {

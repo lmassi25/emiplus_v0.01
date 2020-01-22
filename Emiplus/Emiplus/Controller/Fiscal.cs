@@ -90,7 +90,8 @@ namespace Emiplus.Controller
             {
                 { "token", "f012622defec1e2bad3b8596e0642c" },
                 { "email", Settings.Default.user_email },
-                { "password", Settings.Default.user_password }
+                { "password", Settings.Default.user_password },
+                { "id_empresa", Settings.Default.empresa_unique_id }
             };
 
             var content = new FormUrlEncodedContent(values);

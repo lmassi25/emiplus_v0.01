@@ -261,7 +261,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableTotaisPedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0)
+        public Task<IEnumerable<dynamic>> GetDataTableTotaisPedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -275,9 +275,54 @@ namespace Emiplus.Controller
             .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
 
             .Where("pedido.excluir", excluir)
-            .Where("pedido.tipo", tipo)
             .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
             .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            if (!tipo.Contains("Notas"))
+                query.Where("pedido.tipo", tipo);
+
+            if (usuario != 0)
+                query.Where("pedido.colaborador", usuario);
+
+            if (usuario != 0)
+                query.Where("pedido.colaborador", usuario);
+
+            if (status != 99)
+            {
+                if (status != 0)
+                {
+                    if (tipo == "Notas")
+                    {
+                        //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
+                        switch (status)
+                        {
+                            case 1:
+                                query.Where("nota.status", null);
+                                break;
+                            case 2:
+                                query.Where("nota.status", "Autorizada");
+                                break;
+                            case 3:
+                                query.Where("nota.status", "Cancelada");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        query.Where("pedido.status", status);
+                    }
+                }
+                else
+                {
+                    query.Where("pedido.status", status);
+                }
+            }
+
+            if (idPedido != 0)
+                query.Where("pedido.id", idPedido);
+
+            if (idProduto != 0)
+                query.Where("pedido_item.item", idProduto);
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
