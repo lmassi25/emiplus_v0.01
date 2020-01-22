@@ -441,7 +441,7 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            IEnumerable<dynamic> dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir);
+            IEnumerable<dynamic> dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
 
             ArrayList data = new ArrayList();
             foreach (var item in dados)
@@ -458,7 +458,7 @@ namespace Emiplus.View.Comercial
                 });
             }
 
-            IEnumerable<dynamic> dados2 = await _cPedido.GetDataTableTotaisPedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir);
+            IEnumerable<dynamic> dados2 = await _cPedido.GetDataTableTotaisPedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
             ArrayList data2 = new ArrayList();
             foreach (var item in dados2)
             {
