@@ -66,6 +66,8 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.Servicos = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -81,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -172,7 +175,7 @@
             this.Impostos.ForeColor = System.Drawing.Color.DimGray;
             this.Impostos.Image = ((System.Drawing.Image)(resources.GetObject("Impostos.Image")));
             this.Impostos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Impostos.Location = new System.Drawing.Point(22, 229);
+            this.Impostos.Location = new System.Drawing.Point(22, 274);
             this.Impostos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Impostos.Name = "Impostos";
             this.Impostos.Size = new System.Drawing.Size(219, 41);
@@ -218,7 +221,7 @@
             this.Etiquetas.ForeColor = System.Drawing.Color.DimGray;
             this.Etiquetas.Image = ((System.Drawing.Image)(resources.GetObject("Etiquetas.Image")));
             this.Etiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Etiquetas.Location = new System.Drawing.Point(22, 184);
+            this.Etiquetas.Location = new System.Drawing.Point(22, 229);
             this.Etiquetas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Etiquetas.Name = "Etiquetas";
             this.Etiquetas.Size = new System.Drawing.Size(219, 41);
@@ -264,7 +267,7 @@
             this.transportadoras.ForeColor = System.Drawing.Color.DimGray;
             this.transportadoras.Image = ((System.Drawing.Image)(resources.GetObject("transportadoras.Image")));
             this.transportadoras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.transportadoras.Location = new System.Drawing.Point(22, 319);
+            this.transportadoras.Location = new System.Drawing.Point(22, 364);
             this.transportadoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.transportadoras.Name = "transportadoras";
             this.transportadoras.Size = new System.Drawing.Size(219, 41);
@@ -287,7 +290,7 @@
             this.fornecedores.ForeColor = System.Drawing.Color.DimGray;
             this.fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("fornecedores.Image")));
             this.fornecedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fornecedores.Location = new System.Drawing.Point(22, 274);
+            this.fornecedores.Location = new System.Drawing.Point(22, 319);
             this.fornecedores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fornecedores.Name = "fornecedores";
             this.fornecedores.Size = new System.Drawing.Size(219, 41);
@@ -379,7 +382,7 @@
             this.Categorias.ForeColor = System.Drawing.Color.DimGray;
             this.Categorias.Image = ((System.Drawing.Image)(resources.GetObject("Categorias.Image")));
             this.Categorias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Categorias.Location = new System.Drawing.Point(22, 139);
+            this.Categorias.Location = new System.Drawing.Point(22, 184);
             this.Categorias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Categorias.Name = "Categorias";
             this.Categorias.Size = new System.Drawing.Size(219, 41);
@@ -536,7 +539,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(227, 165);
+            this.pictureBox1.Location = new System.Drawing.Point(227, 210);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -547,7 +550,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(227, 210);
+            this.pictureBox2.Location = new System.Drawing.Point(227, 255);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(15, 15);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -558,7 +561,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(227, 255);
+            this.pictureBox3.Location = new System.Drawing.Point(227, 300);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(15, 15);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -569,7 +572,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(227, 300);
+            this.pictureBox5.Location = new System.Drawing.Point(227, 345);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(15, 15);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -580,7 +583,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(227, 345);
+            this.pictureBox6.Location = new System.Drawing.Point(227, 390);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(15, 15);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -665,12 +668,48 @@
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Visible = false;
             // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Location = new System.Drawing.Point(227, 165);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 123;
+            this.pictureBox15.TabStop = false;
+            this.pictureBox15.Visible = false;
+            // 
+            // Servicos
+            // 
+            this.Servicos.BackColor = System.Drawing.Color.Transparent;
+            this.Servicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Servicos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Servicos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Servicos.FlatAppearance.BorderSize = 0;
+            this.Servicos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Servicos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Servicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Servicos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Servicos.ForeColor = System.Drawing.Color.DimGray;
+            this.Servicos.Image = ((System.Drawing.Image)(resources.GetObject("Servicos.Image")));
+            this.Servicos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Servicos.Location = new System.Drawing.Point(22, 139);
+            this.Servicos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Servicos.Name = "Servicos";
+            this.Servicos.Size = new System.Drawing.Size(219, 41);
+            this.Servicos.TabIndex = 122;
+            this.Servicos.Text = "          Serviços";
+            this.Servicos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Servicos.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.pictureBox15);
+            this.Controls.Add(this.Servicos);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox12);
@@ -725,6 +764,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -767,5 +807,7 @@
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.Button Servicos;
     }
 }

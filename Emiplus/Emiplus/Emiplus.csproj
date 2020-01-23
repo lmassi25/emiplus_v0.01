@@ -776,6 +776,12 @@
     <Compile Include="View\Produtos\AddProduct.Designer.cs">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddServicos.Designer.cs">
+      <DependentUpon>AddServicos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -787,6 +793,12 @@
     </Compile>
     <Compile Include="View\Produtos\Etiquetas.Designer.cs">
       <DependentUpon>Etiquetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Servicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Servicos.Designer.cs">
+      <DependentUpon>Servicos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\TelasImportarNfe\ImportarCompraConcluido.cs">
       <SubType>Form</SubType>
@@ -1187,6 +1199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Etiquetas.resx">
       <DependentUpon>Etiquetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Servicos.resx">
+      <DependentUpon>Servicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarCompraConcluido.resx">
       <DependentUpon>ImportarCompraConcluido.cs</DependentUpon>

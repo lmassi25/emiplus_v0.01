@@ -599,7 +599,7 @@ namespace Emiplus.View.Common
             this.homeMenuProducts.Name = "homeMenuProducts";
             this.homeMenuProducts.Size = new System.Drawing.Size(275, 50);
             this.homeMenuProducts.TabIndex = 1;
-            this.homeMenuProducts.Text = "            Produtos";
+            this.homeMenuProducts.Text = "            Produtos e Serviços";
             this.homeMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuProducts.UseVisualStyleBackColor = false;
             // 

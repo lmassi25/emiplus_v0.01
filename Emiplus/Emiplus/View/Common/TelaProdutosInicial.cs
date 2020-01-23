@@ -27,6 +27,14 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Produtos.Produtos>(this);
             };
 
+            Servicos.Click += (s, e) =>
+            {
+                //if (UserPermission.SetControl(Produtos, pictureBox9, "pdt_pdt"))
+                //    return;
+
+                OpenForm.Show<Produtos.Servicos>(this);
+            };
+
             Etiquetas.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(Etiquetas, pictureBox2, "pdt_etiquetas"))
