@@ -47,6 +47,7 @@ namespace Emiplus.View.Configuracoes
                 IniFile.Write("PrinterName", impressora.Text, "Comercial");
             };
 
+            btnExit.Click += (s, e) => Close();
         }
     }
 }
