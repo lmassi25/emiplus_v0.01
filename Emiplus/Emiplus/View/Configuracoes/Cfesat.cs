@@ -42,10 +42,7 @@ namespace Emiplus.View.Configuracoes
                 f.ShowDialog();
             };
 
-            consultarsat.Click += (s, e) =>
-            {
-                AlertOptions.Message("Retorno", new Controller.Fiscal().Consulta(), Common.AlertBig.AlertType.info, Common.AlertBig.AlertBtn.OK);
-            };
+            consultarsat.Click += (s, e) => AlertOptions.Message("Retorno", new Controller.Fiscal().Consulta(), Common.AlertBig.AlertType.info, Common.AlertBig.AlertBtn.OK);
 
             consultarstatus.Click += (s, e) =>
             {
@@ -60,20 +57,9 @@ namespace Emiplus.View.Configuracoes
                 f.ShowDialog();
             };
 
-            servidor.Leave += (s, e) =>
-            {
-                IniFile.Write("Servidor", servidor.Text, "SAT");
-            };
-
-            impressora.Leave += (s, e) =>
-            {
-                IniFile.Write("Printer", impressora.Text, "SAT");
-            };
-
-            serie.Leave += (s, e) =>
-            {
-                IniFile.Write("N_Serie", serie.Text, "SAT");
-            };
+            servidor.Leave += (s, e) => IniFile.Write("Servidor", servidor.Text, "SAT");
+            impressora.Leave += (s, e) => IniFile.Write("Printer", impressora.Text, "SAT");
+            serie.Leave += (s, e) => IniFile.Write("N_Serie", serie.Text, "SAT");
         }
     }
 }

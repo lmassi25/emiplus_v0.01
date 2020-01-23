@@ -584,11 +584,23 @@
     <Compile Include="View\Configuracoes\Comercial.Designer.cs">
       <DependentUpon>Comercial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\Email.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Email.Designer.cs">
+      <DependentUpon>Email.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Impressao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Configuracoes\Impressao.Designer.cs">
       <DependentUpon>Impressao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Configuracoes\Preferencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Preferencias.Designer.cs">
+      <DependentUpon>Preferencias.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Exemplos.cs">
       <SubType>Form</SubType>
@@ -1098,8 +1110,14 @@
     <EmbeddedResource Include="View\Configuracoes\Comercial.resx">
       <DependentUpon>Comercial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Email.resx">
+      <DependentUpon>Email.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Impressao.resx">
       <DependentUpon>Impressao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Preferencias.resx">
+      <DependentUpon>Preferencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>
