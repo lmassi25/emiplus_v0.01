@@ -1,12 +1,8 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Emiplus.View.Reports;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -39,21 +35,21 @@ namespace Emiplus.View.Produtos
             WorkerBackground.RunWorkerAsync();
         }
 
-        private async void DataTable() => await _controller.SetTable(GridLista, null, search.Text);
+        private async void DataTable() => await _controller.SetTableServicos(GridLista, null, search.Text);
 
         private void EditProduct(bool create = false)
         {
             if (create)
             {
                 idPdtSelecionado = 0;
-                OpenForm.Show<AddProduct>(this);
+                OpenForm.Show<AddServicos>(this);
                 return;
             }
 
             if (GridLista.SelectedRows.Count > 0)
             {
                 idPdtSelecionado = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                OpenForm.Show<AddProduct>(this);
+                OpenForm.Show<AddServicos>(this);
             }
         }
 
@@ -118,12 +114,12 @@ namespace Emiplus.View.Produtos
             {
                 b.DoWork += async (s, e) =>
                 {
-                    dataTable = await _controller.GetDataTable();
+                    dataTable = await _controller.GetDataTableServicos();
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
-                    await _controller.SetTable(GridLista, dataTable);
+                    await _controller.SetTableServicos(GridLista, dataTable);
 
                     Loading.Visible = false;
                     GridLista.Visible = true;

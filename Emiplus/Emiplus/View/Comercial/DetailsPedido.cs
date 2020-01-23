@@ -275,28 +275,7 @@ namespace Emiplus.View.Comercial
 
             btnPgtosLancado.Click += (s, e) =>
             {
-                if (labelCfe.Text != "N/D" || labelNfe.Text != "N/D")
-                {
-                    Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
-                    return;
-                }
-
-                if (Home.idCaixa == 0 && Home.pedidoPage == "Vendas")
-                {
-                    var result = AlertOptions.Message("Atenção!", "É necessário ter o caixa aberto para lançar recebimentos. Deseja ABRIR o caixa?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
-                    if (result)
-                    {
-                        AbrirCaixa f = new AbrirCaixa();
-                        if (f.ShowDialog() == DialogResult.OK)
-                        {
-                            OpenPedidoPagamentos();
-                        }
-                    }
-                }
-                else
-                {
-                    OpenPedidoPagamentos();
-                }
+                OpenPedidoPagamentos();
             };
 
             btnRemove.Click += (s, e) =>

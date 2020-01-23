@@ -6,6 +6,7 @@ using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
 using System.Linq;
+using System.Drawing;
 
 namespace Emiplus.View.Comercial
 {
@@ -23,6 +24,8 @@ namespace Emiplus.View.Comercial
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
+
+        private int CaixaAnterior;
 
         public PedidoPagamentos()
         {
@@ -55,7 +58,8 @@ namespace Emiplus.View.Comercial
                 label13.Text = $"Dados da Compra: {IdPedido}";
                 label10.Text = "Siga as etapas abaixo para adicionar uma compra!";
 
-                label5.Text = "Pagamentos";
+                label15.Text = "Á Pagar";
+                label1.Text = "Pagamentos";
                 enviarEmail.Visible = false;
                 btnNfe.Visible = false;
                 button21.Visible = false;
@@ -88,6 +92,7 @@ namespace Emiplus.View.Comercial
 
         public void AtualizarDados()
         {
+            _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
             dynamic devolucoes = _mPedido.Query()
@@ -103,10 +108,31 @@ namespace Emiplus.View.Comercial
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
 
+            var aPagar = _controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido);
+
+            aPagartxt.Text = Validation.FormatPrice(aPagar, true);
+
             if (_controllerTitulo.GetLancados(IdPedido) > 0)
                 Desconto.Enabled = false;
             else
                 Desconto.Enabled = true;
+
+            if (aPagar == 0)
+            {
+                label15.BackColor = Color.FromArgb(46, 204, 113);
+                aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
+                visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
+                visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
+                this.Refresh();
+            }
+            else
+            {
+                label15.BackColor = Color.FromArgb(255, 40, 81);
+                aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
+                visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
+                visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
+                this.Refresh();
+            }
         }
 
         private void bSalvar()
@@ -134,6 +160,9 @@ namespace Emiplus.View.Comercial
             }
 
             TelaReceber.Visible = false;
+
+            if(CaixaAnterior > 0)
+                Home.idCaixa = CaixaAnterior;
 
             AtualizarDados();
         }
@@ -177,6 +206,9 @@ namespace Emiplus.View.Comercial
 
         private void JanelasRecebimento(string formaPgto)
         {
+            if (!CheckCaixa())
+                return;
+
             TelaReceber.Visible = true;
             lTipo.Text = formaPgto;
             valor.Select();
@@ -192,6 +224,9 @@ namespace Emiplus.View.Comercial
 
         private void JanelaDesconto()
         {
+            if (!CheckCaixa())
+                return;
+
             PedidoPayDesconto.idPedido = IdPedido;
             PedidoPayDesconto Desconto = new PedidoPayDesconto();
             if (Desconto.ShowDialog() == DialogResult.OK)
@@ -200,6 +235,9 @@ namespace Emiplus.View.Comercial
 
         private void JanelaAcrescimo()
         {
+            if (!CheckCaixa())
+                return;
+
             PedidoPayAcrescimo.idPedido = IdPedido;
             PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
             if (Acrescimo.ShowDialog() == DialogResult.OK)
@@ -208,24 +246,41 @@ namespace Emiplus.View.Comercial
 
         private void JanelaDevolucao()
         {
+            if (!CheckCaixa())
+                return;
+
             PedidoPayDevolucao.idPedido = IdPedido;
             PedidoPayDevolucao f = new PedidoPayDevolucao();
             if (f.ShowDialog() == DialogResult.OK)
                 AtualizarDados();
         }
 
+        private bool CheckCaixa()
+        {
+            if(Home.idCaixa == 0)
+            {
+                Alert.Message("Ação não permitida", "É necessário abrir ou vincular um caixa para continuar", Alert.AlertType.warning);
+                return false;
+            }
+            else
+            {
+                CaixaAnterior = Home.idCaixa;
+                if(_mPedido.Id_Caixa > 0)
+                    Home.idCaixa = _mPedido.Id_Caixa;
+            }
+
+            return true;
+        }
+
         public void Concluir(int imprimir = 1)
         {
             Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
             Pedido.Id = IdPedido;
-            if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)
-            {
-                Pedido.status = 2; //RECEBIMENTO PENDENTE
-            }
-            else
-            {
+            if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)            
+                Pedido.status = 2; //RECEBIMENTO PENDENTE            
+            else           
                 Pedido.status = 1; //FINALIZADO\RECEBIDO
-            }
+            
             Pedido.Save(Pedido);
 
             Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
@@ -335,6 +390,9 @@ namespace Emiplus.View.Comercial
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
+            if (!CheckCaixa())
+                return;
+
             switch (e.KeyCode)
             {
                 case Keys.Enter:
@@ -420,6 +478,32 @@ namespace Emiplus.View.Comercial
         /// </summary>
         public void Eventos()
         {
+            Load += (s, e) =>
+            {
+                AtualizarDados();
+
+                AddPedidos.btnFinalizado = false;
+
+                Dinheiro.Focus();
+                Dinheiro.Select();
+            };
+
+            FormClosing += (s, e) =>
+            {
+                if (AddPedidos.btnFinalizado)
+                {
+                    try
+                    {
+                        Application.OpenForms["AddPedidos"].Close();
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            };
+ 
             KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
             Cheque.KeyDown += KeyDowns;
@@ -460,17 +544,7 @@ namespace Emiplus.View.Comercial
             btnCancelar.KeyDown += KeyDowns;
             valor.KeyDown += KeyDowns;
             parcelas.KeyDown += KeyDowns;
-            iniciar.KeyDown += KeyDowns;
-
-            Load += (s, e) =>
-            {
-                AtualizarDados();
-
-                AddPedidos.btnFinalizado = false;
-
-                Dinheiro.Focus();
-                Dinheiro.Select();
-            };            
+            iniciar.KeyDown += KeyDowns;            
 
             btnImprimir.Click += (s, e) =>
             {
@@ -501,7 +575,7 @@ namespace Emiplus.View.Comercial
             {
                 Concluir();
             };
-            
+
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             valor.KeyPress += (s, e) => Masks.MaskDouble(s, e);
@@ -546,23 +620,8 @@ namespace Emiplus.View.Comercial
                     return;
 
                 Cfe();
-            };
-
-            FormClosing += (s, e) =>
-            {
-                if (AddPedidos.btnFinalizado)
-                {
-                    try
-                    {
-                        Application.OpenForms["AddPedidos"].Close();
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-                }
-            };
+            };                
+             
         }
 
         private void PedidoPagamentos_Activated(object sender, EventArgs e)

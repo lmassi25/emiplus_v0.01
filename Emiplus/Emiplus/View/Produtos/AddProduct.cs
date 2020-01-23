@@ -5,11 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
-using System.Collections;
 using System.ComponentModel;
 using Emiplus.View.Common;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Emiplus.View.Produtos
 {
@@ -161,7 +158,7 @@ namespace Emiplus.View.Produtos
         {
             if (!string.IsNullOrEmpty(nome.Text))
             {
-                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("nome", nome.Text).Where("excluir", 0).FirstOrDefault();
+                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("tipo", "Produtos").Where("nome", nome.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse NOME.", Alert.AlertType.error);
@@ -188,6 +185,7 @@ namespace Emiplus.View.Produtos
             }
 
             _modelItem.Id = idPdtSelecionado;
+            _modelItem.Tipo = "Produtos";
             _modelItem.Nome = nome.Text;
             _modelItem.CodeBarras = codebarras.Text;
             _modelItem.Referencia = referencia.Text;
@@ -393,6 +391,7 @@ namespace Emiplus.View.Produtos
                 else
                 {
                     _modelItem = new Model.Item();
+                    _modelItem.Tipo = "Produtos";
                     _modelItem.Id = idPdtSelecionado;
                     if (_modelItem.Save(_modelItem, false))
                     {
