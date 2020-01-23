@@ -103,6 +103,74 @@ namespace Emiplus.Controller
             Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        public Task<IEnumerable<dynamic>> GetDataTableServicos(string SearchText = null)
+        {
+            var search = "%" + SearchText + "%";
+
+            return new Model.Item().Query()
+                .Select("item.id", "item.nome", "item.referencia", "item.valorcompra", "item.valorvenda")
+                .Where("item.excluir", 0)
+                .Where("item.tipo", "Servicos")
+                .Where
+                (
+                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search)
+                )
+                .OrderByDesc("item.criado")
+                .Limit(50)
+                .GetAsync<dynamic>();
+        }
+
+        public async Task SetTableServicos(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
+        {
+            Table.ColumnCount = 5;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Referência";
+            Table.Columns[1].Width = 100;
+
+            Table.Columns[2].Name = "Descrição";
+            Table.Columns[2].Width = 120;
+            Table.Columns[2].MinimumWidth = 120;
+
+            Table.Columns[3].Name = "Custo";
+            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[3].Width = 100;
+
+            Table.Columns[4].Name = "Venda";
+            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[4].Width = 100;
+
+            Table.Rows.Clear();
+
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await GetDataTableServicos(SearchText);
+                Data = dados;
+            }
+
+            for (int i = 0; i < Data.Count(); i++)
+            {
+                var item = Data.ElementAt(i);
+
+                Table.Rows.Add(
+                    item.ID,
+                    item.REFERENCIA,
+                    item.NOME,
+                    FormatPrice(ConvertToDouble(item.VALORCOMPRA), false),
+                    FormatPrice(ConvertToDouble(item.VALORVENDA), true)
+                );
+            }
+
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         public void GetDataTableEstoque(DataGridView Table, int id, int limit = 0)
         {
             Table.ColumnCount = 8;

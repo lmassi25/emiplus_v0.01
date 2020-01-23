@@ -1194,6 +1194,9 @@
     <EmbeddedResource Include="View\Produtos\AddProduct.resx">
       <DependentUpon>AddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddServicos.resx">
+      <DependentUpon>AddServicos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>

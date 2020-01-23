@@ -56,8 +56,7 @@ namespace Emiplus.Model
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
-                data.status_sync = "CREATE";
-                data.Tipo = "Produtos";
+                data.status_sync = "CREATE";                
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
