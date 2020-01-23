@@ -1,6 +1,6 @@
 ﻿namespace Emiplus.View.Configuracoes
 {
-    partial class Comercial
+    partial class Preferencias
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comercial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Preferencias));
+            this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.btnExit = new System.Windows.Forms.Button();
@@ -38,12 +41,53 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // visualSeparator3
+            // 
+            this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator3.Location = new System.Drawing.Point(37, 137);
+            this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator3.Name = "visualSeparator3";
+            this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator3.ShadowVisible = true;
+            this.visualSeparator3.Size = new System.Drawing.Size(657, 4);
+            this.visualSeparator3.TabIndex = 532;
+            this.visualSeparator3.Text = "visualSeparator3";
+            this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(34, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(332, 15);
+            this.label2.TabIndex = 531;
+            this.label2.Text = "Configure algumas preferências suas para o sistema em geral.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(26, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 40);
+            this.label3.TabIndex = 530;
+            this.label3.Text = "Preferências";
             // 
             // panel4
             // 
@@ -58,8 +102,8 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(709, 40);
-            this.panel4.TabIndex = 514;
+            this.panel4.Size = new System.Drawing.Size(731, 40);
+            this.panel4.TabIndex = 529;
             // 
             // visualSeparator1
             // 
@@ -109,9 +153,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(365, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
+            this.label6.Size = new System.Drawing.Size(81, 17);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Comercial";
+            this.label6.Text = "Preferências";
             // 
             // pictureBox3
             // 
@@ -157,42 +201,20 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(34, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(267, 15);
-            this.label2.TabIndex = 516;
-            this.label2.Text = "Faça as configurações para a área comercial aqui.";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(26, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 40);
-            this.label3.TabIndex = 515;
-            this.label3.Text = "Comercial";
-            // 
-            // Comercial
+            // Preferencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(709, 533);
+            this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Comercial";
-            this.Text = "Comercial";
+            this.Name = "Preferencias";
+            this.Text = "Preferencias";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -203,15 +225,17 @@
         }
 
         #endregion
+
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnExit;
-        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
     }
 }

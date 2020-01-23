@@ -44,7 +44,7 @@
             this.visualPanel5 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.fiscal = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.sat = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel4 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -206,6 +206,7 @@
             this.visualPanel6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualPanel6.Visible = false;
             // 
             // label7
             // 
@@ -281,7 +282,7 @@
             this.visualPanel5.Border.Visible = true;
             this.visualPanel5.Controls.Add(this.label6);
             this.visualPanel5.Controls.Add(this.pictureBox6);
-            this.visualPanel5.Controls.Add(this.fiscal);
+            this.visualPanel5.Controls.Add(this.sat);
             this.visualPanel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.visualPanel5.Location = new System.Drawing.Point(12, 264);
             this.visualPanel5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
@@ -308,7 +309,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(127, 21);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Fiscal";
+            this.label6.Text = "S@T";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox6
@@ -323,39 +324,39 @@
             this.pictureBox6.TabIndex = 8;
             this.pictureBox6.TabStop = false;
             // 
-            // fiscal
+            // sat
             // 
-            this.fiscal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.fiscal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.fiscal.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.fiscal.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
-            this.fiscal.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
-            this.fiscal.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
-            this.fiscal.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
-            this.fiscal.Border.HoverVisible = true;
-            this.fiscal.Border.Rounding = 6;
-            this.fiscal.Border.Thickness = 1;
-            this.fiscal.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.fiscal.Border.Visible = true;
-            this.fiscal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fiscal.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.fiscal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fiscal.ForeColor = System.Drawing.Color.White;
-            this.fiscal.Image = null;
-            this.fiscal.Location = new System.Drawing.Point(45, 103);
-            this.fiscal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.fiscal.Name = "fiscal";
-            this.fiscal.Size = new System.Drawing.Size(131, 27);
-            this.fiscal.TabIndex = 1;
-            this.fiscal.Text = "Configurar";
-            this.fiscal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.fiscal.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.fiscal.TextStyle.Enabled = System.Drawing.Color.White;
-            this.fiscal.TextStyle.Hover = System.Drawing.Color.White;
-            this.fiscal.TextStyle.Pressed = System.Drawing.Color.White;
-            this.fiscal.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.fiscal.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.fiscal.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.sat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.sat.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.sat.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.sat.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.sat.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.sat.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.sat.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.sat.Border.HoverVisible = true;
+            this.sat.Border.Rounding = 6;
+            this.sat.Border.Thickness = 1;
+            this.sat.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.sat.Border.Visible = true;
+            this.sat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sat.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.sat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sat.ForeColor = System.Drawing.Color.White;
+            this.sat.Image = null;
+            this.sat.Location = new System.Drawing.Point(45, 103);
+            this.sat.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.sat.Name = "sat";
+            this.sat.Size = new System.Drawing.Size(131, 27);
+            this.sat.TabIndex = 1;
+            this.sat.Text = "Configurar";
+            this.sat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.sat.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.sat.TextStyle.Enabled = System.Drawing.Color.White;
+            this.sat.TextStyle.Hover = System.Drawing.Color.White;
+            this.sat.TextStyle.Pressed = System.Drawing.Color.White;
+            this.sat.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.sat.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.sat.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualPanel4
             // 
@@ -694,7 +695,7 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton fiscal;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton sat;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox5;
