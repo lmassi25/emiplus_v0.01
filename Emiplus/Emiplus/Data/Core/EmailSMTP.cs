@@ -1,27 +1,23 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.ComponentModel.DataAnnotations;
+using Emiplus.Data.Helpers;
+using System;
 
 namespace Emiplus.Data.Core
 {
     class EmailSMTP
     {
-        protected string _defaultHost = "mail.emiplus.com.br";
-        private string Host
-        {
-            get { return _defaultHost; }
-            set { _defaultHost = value; }
-        }
-
-        protected int _defaultPort = 587;
-        private int Port
-        {
-            get { return _defaultPort; }
-            set { _defaultPort = value; }
-        }
-
+        private string Host { get; set; }
+        private int Port { get; set; }
+        private string Mode { get; set; }
+        private string Smtp { get; set; }
+        private string Pass { get; set; }
+        private string Sender { get; set; }
+        private string User { get; set; }
         private string From { get; set; }
         private string To { get; set; }
+        private string ToName { get; set; }
         private string Subject { get; set; }
         private string Body { get; set; }
 
@@ -34,19 +30,43 @@ namespace Emiplus.Data.Core
 
         public EmailSMTP()
         {
+            if (IniFile.Read("MAIL_EMIPLUS", "EMAIL") == "True")
+            {
+                Host = "mail.emiplus.com.br";
+                Mode = "tls";
+                Port = 587;
+                User = "noresponse@emiplus.com.br";
+                Smtp = "noresponse@emiplus.com.br";
+                Pass = "123@emiplus";
+                Sender = "Emiplus";
+
+                //Host = "mail.uilia.com.br";
+                //Mode = "tls";
+                //Port = 587;
+                //User = "contato@uilia.com.br";
+                //Smtp = "contato@uilia.com.br";
+                //Pass = "4586928wW#0";
+                //Sender = "UILIA";
+            }
+            else
+            {
+                Host = IniFile.Read("MAIL_HOST", "EMAIL");
+                Mode = IniFile.Read("MAIL_MODE", "EMAIL");
+                Port = Validation.ConvertToInt32(IniFile.Read("MAIL_PORT", "EMAIL"));
+                User = IniFile.Read("MAIL_USER", "EMAIL");
+                Smtp = IniFile.Read("MAIL_SMTP", "EMAIL");
+                Pass = Validation.Decrypt(IniFile.Read("MAIL_PASS", "EMAIL"));
+                Sender = IniFile.Read("MAIL_SENDER", "EMAIL");
+            }
+
             smtpClient = new SmtpClient();
-            smtpCredentials = new NetworkCredential("suporte@emiplus.com.br", "4586928wW#0");
+            smtpCredentials = new NetworkCredential(Smtp, Pass);
         }
 
-        public EmailSMTP SetEmailFrom(string from)
+        public EmailSMTP SetEmailTo(string email, string name)
         {
-            From = validMail(from) ? from : "";
-            return this;
-        }
-
-        public EmailSMTP SetEmailTo(string to)
-        {
-            To = validMail(to) ? to : "";
+            To = validMail(email) ? email : "";
+            ToName = name ?? "";
             return this;
         }
 
@@ -62,35 +82,35 @@ namespace Emiplus.Data.Core
             return this;
         }
 
-        public EmailSMTP SetPort(int port = 587)
-        {
-            Port = port != 0 ? port : 587;
-            return this;
-        }
-
         public void Send()
         {
-
             message = new MailMessage();
-            fromAddress = new MailAddress(From);
-            toAddress = new MailAddress(To);
+            fromAddress = new MailAddress(User, Sender);
+            toAddress = new MailAddress(To, ToName);
 
-            smtpClient.Host = Host;
-            smtpClient.Port = Port;
-            smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = smtpCredentials;
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.Timeout = 20000;
+            try
+            {
+                smtpClient.Host = Host;
+                smtpClient.Port = Port;
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = smtpCredentials;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Timeout = 20000;
 
-            message.From = fromAddress;
-            message.To.Add(toAddress);
-            message.IsBodyHtml = true;
-            message.BodyEncoding = System.Text.Encoding.UTF8;
-            message.Subject = Subject;
-            message.Body = Body;
+                message.From = fromAddress;
+                message.To.Add(toAddress);
+                message.IsBodyHtml = true;
+                message.BodyEncoding = System.Text.Encoding.UTF8;
+                message.Subject = Subject;
+                message.Body = Body;
 
-            smtpClient.SendAsync(message, null);
+                smtpClient.SendAsync(message, null);
+            }
+            catch(Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
         }
 
         private bool validMail(string address)

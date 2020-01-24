@@ -98,6 +98,30 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("Printer", "Comercial"))
                 IniFile.Write("Printer", "false", "Comercial");
+
+            if (!IniFile.KeyExists("MAIL_HOST", "EMAIL"))
+                IniFile.Write("MAIL_HOST", "", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_MODE", "EMAIL"))
+                IniFile.Write("MAIL_MODE", "tls", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_PASS", "EMAIL"))
+                IniFile.Write("MAIL_PASS", "", "EMAIL");
+            
+            if (!IniFile.KeyExists("MAIL_PORT", "EMAIL"))
+                IniFile.Write("MAIL_PORT", "587", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_SENDER", "EMAIL"))
+                IniFile.Write("MAIL_SENDER", "", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_SMTP", "EMAIL"))
+                IniFile.Write("MAIL_SMTP", "", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_USER", "EMAIL"))
+                IniFile.Write("MAIL_USER", "", "EMAIL");
+
+            if (!IniFile.KeyExists("MAIL_EMIPLUS", "EMAIL"))
+                IniFile.Write("MAIL_EMIPLUS", "True", "EMAIL");
         }
     }
 }

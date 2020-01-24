@@ -202,6 +202,8 @@ namespace Emiplus.View.Common
 
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
+            
+            new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email").SetBody("Corpo da mensagem em <strong>html</strong>").Send();
         }
 
         /// <summary>
@@ -284,7 +286,7 @@ namespace Emiplus.View.Common
 
             homeMenuFinanceiro.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(homeMenuFinanceiro, pictureBox11, "all_comercial"))
+                if (UserPermission.SetControl(homeMenuFinanceiro, pictureBox11, "all_financeiro"))
                     return;
 
                 homeMenuFinanceiro.BackColor = Color.FromArgb(37, 48, 50);
@@ -301,7 +303,7 @@ namespace Emiplus.View.Common
 
             homeMenuFiscal.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(homeMenuFiscal, pictureBox12, "all_comercial"))
+                if (UserPermission.SetControl(homeMenuFiscal, pictureBox12, "all_fiscal"))
                     return;
 
                 homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);

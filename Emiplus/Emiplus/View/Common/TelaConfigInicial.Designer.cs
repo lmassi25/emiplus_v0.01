@@ -206,7 +206,6 @@
             this.visualPanel6.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel6.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel6.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualPanel6.Visible = false;
             // 
             // label7
             // 
