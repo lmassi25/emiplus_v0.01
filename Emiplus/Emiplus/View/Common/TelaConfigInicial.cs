@@ -13,6 +13,8 @@ namespace Emiplus.View.Common
 
         public void Eventos()
         {
+            preferencias.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Preferencias>(panel);
+            email.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Email>(panel);
             sat.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Cfesat>(panel);
             comercial.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Comercial>(panel);
             impressao.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Impressao>(panel);
