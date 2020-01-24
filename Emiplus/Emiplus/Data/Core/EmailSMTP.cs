@@ -39,14 +39,6 @@ namespace Emiplus.Data.Core
                 Smtp = "noresponse@emiplus.com.br";
                 Pass = "123@emiplus";
                 Sender = "Emiplus";
-
-                //Host = "mail.uilia.com.br";
-                //Mode = "tls";
-                //Port = 587;
-                //User = "contato@uilia.com.br";
-                //Smtp = "contato@uilia.com.br";
-                //Pass = "4586928wW#0";
-                //Sender = "UILIA";
             }
             else
             {
@@ -65,7 +57,7 @@ namespace Emiplus.Data.Core
 
         public EmailSMTP SetEmailTo(string email, string name)
         {
-            To = validMail(email) ? email : "";
+            To = Validation.validMail(email) ? email : "";
             ToName = name ?? "";
             return this;
         }
@@ -88,38 +80,22 @@ namespace Emiplus.Data.Core
             fromAddress = new MailAddress(User, Sender);
             toAddress = new MailAddress(To, ToName);
 
-            try
-            {
-                smtpClient.Host = Host;
-                smtpClient.Port = Port;
-                smtpClient.EnableSsl = true;
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = smtpCredentials;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.Timeout = 20000;
+            smtpClient.Host = Host;
+            smtpClient.Port = Port;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = smtpCredentials;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Timeout = 20000;
 
-                message.From = fromAddress;
-                message.To.Add(toAddress);
-                message.IsBodyHtml = true;
-                message.BodyEncoding = System.Text.Encoding.UTF8;
-                message.Subject = Subject;
-                message.Body = Body;
+            message.From = fromAddress;
+            message.To.Add(toAddress);
+            message.IsBodyHtml = true;
+            message.BodyEncoding = System.Text.Encoding.UTF8;
+            message.Subject = Subject;
+            message.Body = Body;
 
-                smtpClient.SendAsync(message, null);
-            }
-            catch(Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-        }
-
-        private bool validMail(string address)
-        {
-            EmailAddressAttribute e = new EmailAddressAttribute();
-            if (e.IsValid(address))
-                return true;
-
-            return false;
+            smtpClient.SendAsync(message, null);
         }
     }
 }

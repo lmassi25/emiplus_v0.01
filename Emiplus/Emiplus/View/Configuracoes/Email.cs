@@ -64,9 +64,9 @@ namespace Emiplus.View.Configuracoes
             servidorEmiplus.Click += (s, e) =>
             {
                 if (servidorEmiplus.Toggled)
-                    IniFile.Write("MAIL_EMIPLUS", "True", "EMAIL");
-                else
                     IniFile.Write("MAIL_EMIPLUS", "False", "EMAIL");
+                else
+                    IniFile.Write("MAIL_EMIPLUS", "True", "EMAIL");
             };
 
             mail_host.Leave += (s, e) => IniFile.Write("MAIL_HOST", mail_host.Text, "EMAIL");
