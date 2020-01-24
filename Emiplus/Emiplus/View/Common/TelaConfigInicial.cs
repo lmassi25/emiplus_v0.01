@@ -18,6 +18,7 @@ namespace Emiplus.View.Common
             sat.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Cfesat>(panel);
             comercial.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Comercial>(panel);
             impressao.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Impressao>(panel);
+            database.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Database>(panel);
         }
     }
 }

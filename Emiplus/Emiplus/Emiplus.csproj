@@ -584,6 +584,12 @@
     <Compile Include="View\Configuracoes\Comercial.Designer.cs">
       <DependentUpon>Comercial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\Database.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Database.Designer.cs">
+      <DependentUpon>Database.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Email.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1109,6 +1115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Comercial.resx">
       <DependentUpon>Comercial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Database.resx">
+      <DependentUpon>Database.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Email.resx">
       <DependentUpon>Email.cs</DependentUpon>
