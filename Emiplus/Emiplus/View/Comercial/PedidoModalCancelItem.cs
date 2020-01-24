@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -20,13 +21,16 @@ namespace Emiplus.View.Comercial
                 return;
 
             Model.PedidoItem item = new Model.PedidoItem();
+            item = item.FindById(IdPedidoItem).FirstOrDefault<Model.PedidoItem>();
             
-            if (Home.pedidoPage != "Compras")
-                new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Add().Item();
-            else
-                new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Remove().Item();
+            if(item.Tipo == "Produtos")
+            {
+                if (Home.pedidoPage != "Compras")
+                    new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Add().Item();
+                else
+                    new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Remove().Item();
+            }
 
-            item.Id = IdPedidoItem;
             item.Remove(IdPedidoItem);
 
             DialogResult = DialogResult.OK;

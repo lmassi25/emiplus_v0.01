@@ -30,10 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoPagamentos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label101 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,7 +44,6 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.enviarEmail = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnCFeSat = new System.Windows.Forms.Button();
             this.btnNfe = new System.Windows.Forms.Button();
@@ -61,6 +63,7 @@
             this.total = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pagamentos = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.TelaReceber = new System.Windows.Forms.Panel();
@@ -78,7 +81,6 @@
             this.lTipo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pagamentos = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.discount = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -108,6 +110,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
@@ -139,6 +142,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Controls.Add(this.button1);
@@ -146,7 +152,6 @@
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.button20);
             this.panel2.Controls.Add(this.button19);
-            this.panel2.Controls.Add(this.enviarEmail);
             this.panel2.Controls.Add(this.btnImprimir);
             this.panel2.Controls.Add(this.btnCFeSat);
             this.panel2.Controls.Add(this.btnNfe);
@@ -157,6 +162,52 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 73);
             this.panel2.TabIndex = 107;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(628, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 145245;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(493, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(35, 35);
+            this.button2.TabIndex = 145244;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(495, 4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(148, 65);
+            this.button3.TabIndex = 145243;
+            this.button3.Text = "NFS-e";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // pictureBox1
             // 
@@ -254,25 +305,6 @@
             this.button19.Size = new System.Drawing.Size(35, 35);
             this.button19.TabIndex = 147;
             this.button19.UseVisualStyleBackColor = false;
-            // 
-            // enviarEmail
-            // 
-            this.enviarEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.enviarEmail.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.enviarEmail.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.enviarEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enviarEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enviarEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.enviarEmail.Image = ((System.Drawing.Image)(resources.GetObject("enviarEmail.Image")));
-            this.enviarEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.enviarEmail.Location = new System.Drawing.Point(493, 4);
-            this.enviarEmail.Name = "enviarEmail";
-            this.enviarEmail.Size = new System.Drawing.Size(161, 65);
-            this.enviarEmail.TabIndex = 13;
-            this.enviarEmail.Text = "Enviar por E-mail";
-            this.enviarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.enviarEmail.UseVisualStyleBackColor = true;
-            this.enviarEmail.Visible = false;
             // 
             // btnImprimir
             // 
@@ -412,14 +444,14 @@
             this.GridListaFormaPgtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaFormaPgtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridListaFormaPgtos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaFormaPgtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaFormaPgtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridListaFormaPgtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaFormaPgtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
@@ -427,14 +459,14 @@
             this.Column1,
             this.Column3,
             this.colExcluir});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridListaFormaPgtos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridListaFormaPgtos.DefaultCellStyle = dataGridViewCellStyle4;
             this.GridListaFormaPgtos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaFormaPgtos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaFormaPgtos.Location = new System.Drawing.Point(0, 0);
@@ -540,6 +572,18 @@
             this.label1.Size = new System.Drawing.Size(142, 30);
             this.label1.TabIndex = 131;
             this.label1.Text = "Recebimentos";
+            // 
+            // pagamentos
+            // 
+            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pagamentos.Location = new System.Drawing.Point(305, 7);
+            this.pagamentos.Name = "pagamentos";
+            this.pagamentos.Size = new System.Drawing.Size(136, 25);
+            this.pagamentos.TabIndex = 151;
+            this.pagamentos.Text = "R$ 00.00";
+            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label3
             // 
@@ -897,18 +941,6 @@
             this.label7.TabIndex = 128;
             this.label7.Text = "Troco";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // pagamentos
-            // 
-            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(305, 7);
-            this.pagamentos.Name = "pagamentos";
-            this.pagamentos.Size = new System.Drawing.Size(136, 25);
-            this.pagamentos.TabIndex = 151;
-            this.pagamentos.Text = "R$ 00.00";
-            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel10
             // 
@@ -1296,7 +1328,7 @@
             // aPagartxt
             // 
             this.aPagartxt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.aPagartxt.BackColor = System.Drawing.Color.Transparent;
+            this.aPagartxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
             this.aPagartxt.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aPagartxt.ForeColor = System.Drawing.Color.White;
             this.aPagartxt.Location = new System.Drawing.Point(212, 6);
@@ -1309,7 +1341,7 @@
             // label15
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(11, 2);
@@ -1397,6 +1429,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.PedidoPagamentos_Activated);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -1441,7 +1474,6 @@
         private System.Windows.Forms.Button btnNfe;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnCFeSat;
-        private System.Windows.Forms.Button enviarEmail;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
@@ -1496,5 +1528,8 @@
         private System.Windows.Forms.Label aPagartxt;
         private System.Windows.Forms.Label label15;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

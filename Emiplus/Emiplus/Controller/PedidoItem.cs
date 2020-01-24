@@ -17,8 +17,8 @@ namespace Emiplus.Controller
                 .LeftJoin("item", "item.id", "pedido_item.item")
                 .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "item.nome", "item.referencia")
                 .Where("pedido_item.pedido", idPedido)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos");
+                .Where("pedido_item.excluir", 0);
+                //.Where("pedido_item.tipo", "Produtos");
 
             return itens.Get();
         }
@@ -41,7 +41,7 @@ namespace Emiplus.Controller
             Table.Columns[2].Width = 100;
             Table.Columns[2].Visible = false;
 
-            Table.Columns[3].Name = "Nome do Produto";
+            Table.Columns[3].Name = "Descrição";
             Table.Columns[3].MinimumWidth = 150;
 
             Table.Columns[4].Name = "Quantidade";
