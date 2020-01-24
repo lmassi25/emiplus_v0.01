@@ -405,6 +405,17 @@ namespace Emiplus.View.Produtos
                     }
                 }
             };
+
+            //foreach (VisualPlus.Toolkit.Controls.Editors.VisualTextBox tb in this.Controls.OfType<VisualPlus.Toolkit.Controls.Editors.VisualTextBox>())
+            //    tb.KeyPress += (s, e) => e.KeyChar = Char.ToUpper(e.KeyChar);
+
+            //foreach (Control x in this.VisualPlus.Toolkit.Controls.Editors.VisualTextBox)
+            //{
+            //    if (x is TextBox)
+            //    {
+            //        var s = ((TextBox)x).Text;
+            //    }
+            //}
         }
     }
 }
