@@ -58,6 +58,10 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.preferencias = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel = new System.Windows.Forms.Panel();
+            this.visualPanel7 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.database = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.visualPanel2.SuspendLayout();
@@ -73,6 +77,8 @@
             this.visualPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel.SuspendLayout();
+            this.visualPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -632,6 +638,7 @@
             // 
             // panel
             // 
+            this.panel.Controls.Add(this.visualPanel7);
             this.panel.Controls.Add(this.panel4);
             this.panel.Controls.Add(this.visualPanel6);
             this.panel.Controls.Add(this.visualPanel2);
@@ -644,6 +651,98 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(733, 649);
             this.panel.TabIndex = 92;
+            // 
+            // visualPanel7
+            // 
+            this.visualPanel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualPanel7.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel7.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel7.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualPanel7.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualPanel7.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualPanel7.Border.HoverVisible = true;
+            this.visualPanel7.Border.Rounding = 6;
+            this.visualPanel7.Border.Thickness = 1;
+            this.visualPanel7.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel7.Border.Visible = true;
+            this.visualPanel7.Controls.Add(this.label9);
+            this.visualPanel7.Controls.Add(this.pictureBox8);
+            this.visualPanel7.Controls.Add(this.database);
+            this.visualPanel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel7.Location = new System.Drawing.Point(487, 264);
+            this.visualPanel7.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel7.Name = "visualPanel7";
+            this.visualPanel7.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel7.Size = new System.Drawing.Size(231, 145);
+            this.visualPanel7.TabIndex = 92;
+            this.visualPanel7.Text = "visualPanel7";
+            this.visualPanel7.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel7.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel7.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel7.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel7.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel7.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel7.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(47, 70);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 21);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Banco de Dados";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 8;
+            this.pictureBox8.TabStop = false;
+            // 
+            // database
+            // 
+            this.database.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.database.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.database.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.database.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.database.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.database.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.database.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.database.Border.HoverVisible = true;
+            this.database.Border.Rounding = 6;
+            this.database.Border.Thickness = 1;
+            this.database.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.database.Border.Visible = true;
+            this.database.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.database.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.database.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.database.ForeColor = System.Drawing.Color.White;
+            this.database.Image = null;
+            this.database.Location = new System.Drawing.Point(45, 103);
+            this.database.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.database.Name = "database";
+            this.database.Size = new System.Drawing.Size(131, 27);
+            this.database.TabIndex = 1;
+            this.database.Text = "Configurar";
+            this.database.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.database.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.database.TextStyle.Enabled = System.Drawing.Color.White;
+            this.database.TextStyle.Hover = System.Drawing.Color.White;
+            this.database.TextStyle.Pressed = System.Drawing.Color.White;
+            this.database.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.database.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.database.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // TelaConfigInicial
             // 
@@ -675,6 +774,9 @@
             this.visualPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel.ResumeLayout(false);
+            this.visualPanel7.ResumeLayout(false);
+            this.visualPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -708,5 +810,9 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton preferencias;
         private System.Windows.Forms.Panel panel;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton database;
     }
 }

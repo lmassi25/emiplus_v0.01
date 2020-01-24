@@ -1625,14 +1625,15 @@ namespace Emiplus.Controller
             {
                 xml.WriteElementString("cProd", Validation.CleanStringForFiscal(_pedidoItem.CProd));
 
-                if (!String.IsNullOrEmpty(_pedidoItem.CEan))
-                {
-                    xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
-                }
-                else
-                {
-                    xml.WriteElementString("cEAN", "SEM GTIN");
-                }
+                //if (!String.IsNullOrEmpty(_pedidoItem.CEan))
+                //{
+                //    xml.WriteElementString("cEAN", Validation.CleanStringForFiscal(_pedidoItem.CEan));
+                //}
+                //else
+                //{
+                //    xml.WriteElementString("cEAN", "SEM GTIN");
+                //}
+                xml.WriteElementString("cEAN", "SEM GTIN");
 
                 xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
 
@@ -1647,14 +1648,15 @@ namespace Emiplus.Controller
 
                 xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedidoItem.Total));
 
-                if(!String.IsNullOrEmpty(_pedidoItem.CEan))
-                { 
-                    xml.WriteElementString("cEANTrib", Validation.CleanStringForFiscal(_pedidoItem.CEan));
-                }
-                else
-                {
-                    xml.WriteElementString("cEANTrib", "SEM GTIN");
-                }
+                //if(!String.IsNullOrEmpty(_pedidoItem.CEan))
+                //{ 
+                //    xml.WriteElementString("cEANTrib", Validation.CleanStringForFiscal(_pedidoItem.CEan));
+                //}
+                //else
+                //{
+                //    xml.WriteElementString("cEANTrib", "SEM GTIN");
+                //}
+                xml.WriteElementString("cEANTrib", "SEM GTIN");
 
                 xml.WriteElementString("uTrib", _pedidoItem.Medida);
                 xml.WriteElementString("qTrib", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));

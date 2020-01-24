@@ -60,6 +60,8 @@ namespace Emiplus.View.Configuracoes
             servidor.Leave += (s, e) => IniFile.Write("Servidor", servidor.Text, "SAT");
             impressora.Leave += (s, e) => IniFile.Write("Printer", impressora.Text, "SAT");
             serie.Leave += (s, e) => IniFile.Write("N_Serie", serie.Text, "SAT");
+
+            btnExit.Click += (s, e) => Close();
         }
     }
 }
