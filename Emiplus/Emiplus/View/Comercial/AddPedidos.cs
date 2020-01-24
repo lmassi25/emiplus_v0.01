@@ -246,17 +246,17 @@ namespace Emiplus.View.Comercial
         {
             if (BuscarProduto.Text.Length > 0)
             {
-                Model.Item item = _mItem.FindAll().Where("excluir", 0).Where("tipo", "Produtos").Where("codebarras", BuscarProduto.Text)
-                    .OrWhere("referencia", BuscarProduto.Text).FirstOrDefault<Model.Item>();
+                Model.Item item = _mItem.FindAll()
+                    .Where("excluir", 0)
+                    .Where("tipo", "Produtos")
+                    .Where("codebarras", BuscarProduto.Text)
+                    .OrWhere("referencia", BuscarProduto.Text)
+                    .FirstOrDefault<Model.Item>();
+                
                 if (item != null)
-                {
                     BuscarProduto.Text = item.Nome;
-                }
-                else
-                {
-                    // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
-                    ModalItens();
-                }
+                else                    
+                    ModalItens(); // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.            
             }
 
             // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
@@ -284,12 +284,12 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void AutoCompleteItens()
         {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
+            var item = _mItem.Query().Select("id", "nome", "tipo").Where("excluir", 0).Get();
 
             foreach (var itens in item)
             {
                 if (!String.IsNullOrEmpty(itens.NOME))
-                    collection.Add(itens.NOME, itens.ID);
+                    collection.Add(itens.NOME, itens.ID); //collection.Add(itens.TIPO == "Produtos" ? itens.NOME + " (Produto)" : itens.NOME + " (Serviço)", itens.ID);
             }
 
             BuscarProduto.AutoCompleteCustomSource = collection;
@@ -542,7 +542,7 @@ namespace Emiplus.View.Comercial
             if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
             {
                 var itemId = collection.Lookup(BuscarProduto.Text);
-                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").FirstOrDefault<Model.Item>();
+                Model.Item item = _mItem.FindById(itemId).FirstOrDefault<Model.Item>();
 
                 double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
                 double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
@@ -552,7 +552,7 @@ namespace Emiplus.View.Comercial
 
                 var pedidoItem = new Model.PedidoItem();
                 pedidoItem.SetId(0)
-                    .SetTipo("Produtos")
+                    .SetTipo(item.Tipo)
                     .SetPedidoId(Id)
                     .SetItem(item)
                     .SetQuantidade(QuantidadeTxt)
@@ -576,13 +576,16 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
-                new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
+                if(item.Tipo == "Produtos")
+                {
+                    new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
-                // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
-                if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
-                    new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
-                else
-                    new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                    // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                    if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
+                    else
+                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                }
 
                 // Carrega a Grid com o Item adicionado acima.
                 new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
@@ -641,35 +644,55 @@ namespace Emiplus.View.Comercial
                     break;
                 case Keys.F3:
 
-                    if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
+                    //if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
+                    //{
+                    //    Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
+                    //    return;
+                    //}
+
+                    //if (GridListaProdutos.SelectedRows.Count > 0)
+                    //{
+                    //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                    //    {
+                    //        var itemName = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value;
+
+                    //        var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    //        if (result)
+                    //        {
+                    //            var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                    //            _mPedidoItens.Remove(idPedidoItem);
+
+                    //            GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                    //            if (Home.pedidoPage != "Compras")
+                    //                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                    //            else
+                    //                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                    //            LoadTotais();
+                    //        }
+                    //    }
+                    //}
+
+                    if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
                     {
-                        Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
+                        Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
                         return;
                     }
 
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                        {
-                            var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
-
-                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                            if (result)
-                            {
-                                var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                                _mPedidoItens.Remove(idPedidoItem);
-
-                                GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-
-                                if (Home.pedidoPage != "Compras")
-                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar Produto").Add().Item();
-                                else
-                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar Produto").Remove().Item();
-
-                                LoadTotais();
-                            }
-                        }
+                            IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
                     }
+
+                    PedidoModalCancelItem cancel = new PedidoModalCancelItem();
+                    if (cancel.ShowDialog() == DialogResult.OK)
+                    {
+                        GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+                        LoadTotais();
+                    }
+
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F5:
@@ -834,7 +857,7 @@ namespace Emiplus.View.Comercial
             {
                 if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
                 {
-                    Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
                     return;
                 }
 
@@ -846,7 +869,10 @@ namespace Emiplus.View.Comercial
 
                 PedidoModalCancelItem cancel = new PedidoModalCancelItem();
                 if (cancel.ShowDialog() == DialogResult.OK)
+                {
                     GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+                    LoadTotais();
+                }
             };
 
             btnDelete.Click += (s, e) =>

@@ -312,7 +312,7 @@
 
             return TotalVenda;
         }
-
+        
         public double SomarTotal()
         {
             SomarDescontoTotal();
@@ -325,15 +325,44 @@
 
         public Dictionary<string, double> SumTotais(int id)
         {
-            var query = Query().SelectRaw("SUM(total) AS total, SUM(desconto) AS desconto, SUM(totalvenda) AS totalvenda, SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, SUM(icmsvlr) AS icmsvlr," +
-                " SUM(icmsstbase) AS icmsstbase, SUM(icmsstvlr) as icmsstvlr, SUM(ipivlr) AS ipivlr, SUM(pisvlr) AS pisvlr, SUM(cofinsvlr) AS cofinsvlr")
-                .Where("pedido", id).Where("excluir", 0).Get();
+            var queryP = Query().SelectRaw(
+                "SUM(total) AS total, " +
+                "SUM(desconto) AS desconto, " +
+                "SUM(totalvenda) AS totalvenda, " +
+                "SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, " +
+                "SUM(icmsvlr) AS icmsvlr, " +
+                "SUM(icmsstbase) AS icmsstbase, " +
+                "SUM(icmsstvlr) as icmsstvlr, " +
+                "SUM(ipivlr) AS ipivlr, " +
+                "SUM(pisvlr) AS pisvlr, " +
+                "SUM(cofinsvlr) AS cofinsvlr")
+                .Where("pedido", id)
+                .Where("tipo", "Produtos")
+                .Where("excluir", 0)
+                .Get();
 
+            var queryS = Query().SelectRaw(
+                "SUM(total) AS total, " +
+                "SUM(desconto) AS desconto, " +
+                "SUM(totalvenda) AS totalvenda, " +
+                "SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, " +
+                "SUM(icmsvlr) AS icmsvlr, " +
+                "SUM(icmsstbase) AS icmsstbase, " +
+                "SUM(icmsstvlr) as icmsstvlr, " +
+                "SUM(ipivlr) AS ipivlr, " +
+                "SUM(pisvlr) AS pisvlr, " +
+                "SUM(cofinsvlr) AS cofinsvlr")
+                .Where("pedido", id)
+                .Where("tipo", "Servicos")
+                .Where("excluir", 0)
+                .Get();
+            
             Dictionary<string, double> Somas = new Dictionary<string, double>();
             Somas.Add("Id", Validation.ConvertToDouble(id));
-            for (int i = 0; i < query.Count(); i++)
+
+            for (int i = 0; i < queryP.Count(); i++)
             {
-                var data = query.ElementAt(i);
+                var data = queryP.ElementAt(i);
                 
                 Somas.Add("Produtos", Validation.ConvertToDouble(data.TOTALVENDA));
                 Somas.Add("Frete", Validation.ConvertToDouble(data.FRETE));
@@ -345,6 +374,14 @@
                 Somas.Add("ICMSST", Validation.ConvertToDouble(data.ICMSSTVLR));
                 Somas.Add("COFINS", Validation.ConvertToDouble(data.COFINSVLR));
                 Somas.Add("PIS", Validation.ConvertToDouble(data.PISVLR));
+            }
+            
+            for (int i = 0; i < queryS.Count(); i++)
+            {
+                var data = queryS.ElementAt(i);
+
+                Somas.Add("Servicos", Validation.ConvertToDouble(data.TOTALVENDA));
+                Somas.Add("DescontoServicos", Validation.ConvertToDouble(data.DESCONTO));
             }
 
             return Somas;

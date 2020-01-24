@@ -60,7 +60,7 @@ namespace Emiplus.View.Comercial
 
                 label15.Text = "Á Pagar";
                 label1.Text = "Pagamentos";
-                enviarEmail.Visible = false;
+                //enviarEmail.Visible = false;
                 btnNfe.Visible = false;
                 button21.Visible = false;
                 btnCFeSat.Visible = false;
@@ -274,6 +274,12 @@ namespace Emiplus.View.Comercial
 
         public void Concluir(int imprimir = 1)
         {
+            if(Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            {
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.success);
+                return;
+            }
+
             Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
             Pedido.Id = IdPedido;
             if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)            
@@ -316,6 +322,12 @@ namespace Emiplus.View.Comercial
 
         public void Nfe()
         {
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            {
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.success);
+                return;
+            }
+
             Concluir(0);
 
             OpcoesNfeRapida.idPedido = IdPedido;
@@ -325,6 +337,12 @@ namespace Emiplus.View.Comercial
 
         public void Cfe()
         {
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            {
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para continuar", Alert.AlertType.warning);
+                return;
+            }
+
             Concluir(0);
 
             OpcoesCfe.idNota = 0;

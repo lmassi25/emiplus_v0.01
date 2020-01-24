@@ -14,14 +14,9 @@ using System.Xml;
 using System.Linq;
 using Emiplus.View.Fiscal;
 using System.Xml.Linq;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Microsoft.Win32;
 using System.Threading;
 using ESC_POS_USB_NET.Printer;
-using System.Drawing;
-using Emiplus.View.Comercial;
 
 namespace Emiplus.Controller
 {
@@ -973,8 +968,7 @@ namespace Emiplus.Controller
 
                     if (tipo != "CFe")
                         SetTransp(xml, Pedido, tipo);
-
-
+                    
                     SetPag(xml, Pedido, tipo);
 
                     SetInfAdic(xml, Pedido, tipo);
@@ -1622,8 +1616,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 4));
                 xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
                 xml.WriteElementString("indRegra", "A");
-                xml.WriteElementString("vDesc", "0.00");
-                xml.WriteElementString("vOutro", "0.00");                
+                xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto, 2));
+                xml.WriteElementString("vOutro", Validation.FormatPriceWithDot(_pedidoItem.Frete, 2));                
                 //if(_pedidoItem.Desconto > 0)
                 //    xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto));
             }
@@ -1698,6 +1692,8 @@ namespace Emiplus.Controller
             if (_pedidoItem.Icms.Length == 3)
             {
                 if(tipo == "CFe" && _pedidoItem.Icms == "500")
+                    xml.WriteStartElement("ICMSSN102");
+                else if (tipo == "NFe" && _pedidoItem.Icms == "400")
                     xml.WriteStartElement("ICMSSN102");
                 else
                     xml.WriteStartElement("ICMSSN" + _pedidoItem.Icms);
@@ -1797,6 +1793,13 @@ namespace Emiplus.Controller
                     xml.WriteElementString("vBCST", Validation.FormatPriceWithDot(0));
                     xml.WriteElementString("pICMSST", Validation.FormatPriceWithDot(0));
                     xml.WriteElementString("vICMSST", Validation.FormatPriceWithDot(0));
+                    break;
+                case "400":
+                    if (tipo == "NFe")
+                        xml.WriteElementString("orig", _pedidoItem.Origem);
+                    else
+                        xml.WriteElementString("Orig", _pedidoItem.Origem);
+                    xml.WriteElementString("CSOSN", "400");
                     break;
                 case "500":
                     if (tipo == "NFe")
@@ -2307,7 +2310,7 @@ namespace Emiplus.Controller
 
         private string RequestSend(string xml, string documento = "NFe")
         {
-            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
             return request(requestData, documento, "envia", "POST");
         }
 

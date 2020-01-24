@@ -41,6 +41,7 @@
         public double Desconto { get; set; }
         public double Frete { get; set; }
         public double Produtos { get; set; }
+        public double Servicos { get; set; }
         public double ICMS { get; set; }
         public double ICMSST { get; set; }
         public double IPI { get; set; }
@@ -103,8 +104,9 @@
         {
             Id = Validation.ConvertToInt32(data["Id"]);
             Produtos = data["Produtos"];
+            Servicos = data["Servicos"];
             Frete = data["Frete"];
-            Desconto = data["Desconto"];
+            Desconto = data["Desconto"] + data["DescontoServicos"];
             IPI = data["IPI"];
             ICMSBASE = data["ICMSBASE"];
             ICMS = data["ICMS"];
@@ -112,7 +114,7 @@
             ICMSST = data["ICMSST"];
             COFINS = data["COFINS"];
             PIS = data["PIS"];
-            Total = (Produtos + Frete + IPI + ICMSST) - Desconto;
+            Total = (Produtos + Servicos + Frete + IPI + ICMSST) - Desconto;
 
             return this;
         }
