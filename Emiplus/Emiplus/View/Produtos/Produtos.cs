@@ -110,6 +110,7 @@ namespace Emiplus.View.Produtos
                 Loading.Visible = true;
                 GridListaProdutos.Visible = false;
             };
+            search.KeyPress += (s, e) => e.KeyChar = Char.ToUpper(e.KeyChar);
             //search.KeyDown += KeyDowns;
             //GridListaProdutos.KeyDown += KeyDowns;
 
