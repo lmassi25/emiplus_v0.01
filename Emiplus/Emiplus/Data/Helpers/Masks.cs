@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.Data.Helpers
 {
-    class Masks
+    internal class Masks
     {
+        public static void MaskToUpper(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
         public static void MaskPriceEvent(object s, EventArgs e)
         {
             TextBox txt = (TextBox)s;
@@ -82,7 +86,7 @@ namespace Emiplus.Data.Helpers
                 t.SelectionStart = t.Text.Length + 1;
             }
         }
-        
+
         public static void MaskCNPJ(object sender, KeyPressEventArgs e)
         {
             // 95.703.437/0001-06 - 18 caracateres
@@ -220,6 +224,5 @@ namespace Emiplus.Data.Helpers
                 e.Handled = true;
             }
         }
-
     }
 }

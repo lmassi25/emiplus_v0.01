@@ -19,11 +19,26 @@ namespace Emiplus.View.Configuracoes
             Eventos();
         }
 
-        /// <summary>
-        /// Eventos do form
-        /// </summary>
         public void Eventos()
         {
+            Shown += (s, e) =>
+            {
+                if (!String.IsNullOrEmpty(IniFile.Read("RetomarVenda", "Comercial"))) {
+                    if (IniFile.Read("RetomarVenda", "Comercial") == "True")
+                        retomarVendaInicio.Toggled = true;
+                    else
+                        retomarVendaInicio.Toggled = false;
+                }
+            };
+
+            retomarVendaInicio.Click += (s, e) =>
+            {
+                if (retomarVendaInicio.Toggled)
+                    IniFile.Write("RetomarVenda", "False", "Comercial");
+                else
+                    IniFile.Write("RetomarVenda", "True", "Comercial");
+            };
+
             btnExit.Click += (s, e) => Close();
         }
     }

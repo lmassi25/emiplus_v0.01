@@ -86,7 +86,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(716, 40);
+            this.panel4.Size = new System.Drawing.Size(618, 40);
             this.panel4.TabIndex = 521;
             // 
             // visualSeparator1
@@ -219,7 +219,7 @@
             this.impressora.ImageSize = new System.Drawing.Size(16, 16);
             this.impressora.ImageVisible = false;
             this.impressora.ImageWidth = 35;
-            this.impressora.Location = new System.Drawing.Point(47, 271);
+            this.impressora.Location = new System.Drawing.Point(51, 271);
             this.impressora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.impressora.Name = "impressora";
             this.impressora.PasswordChar = '\0';
@@ -247,7 +247,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(47, 249);
+            this.label1.Location = new System.Drawing.Point(51, 249);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 17);
             this.label1.TabIndex = 520;
@@ -281,7 +281,7 @@
             this.tipoimpressora.IntegralHeight = false;
             this.tipoimpressora.ItemHeight = 26;
             this.tipoimpressora.ItemImageVisible = true;
-            this.tipoimpressora.Location = new System.Drawing.Point(47, 209);
+            this.tipoimpressora.Location = new System.Drawing.Point(51, 209);
             this.tipoimpressora.MaxDropDownItems = 10;
             this.tipoimpressora.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tipoimpressora.MenuItemNormal = System.Drawing.Color.White;
@@ -316,7 +316,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(47, 188);
+            this.label15.Location = new System.Drawing.Point(51, 188);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(123, 17);
             this.label15.TabIndex = 518;
@@ -327,7 +327,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(28, 149);
+            this.label4.Location = new System.Drawing.Point(32, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 25);
             this.label4.TabIndex = 516;
@@ -337,13 +337,13 @@
             // 
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(37, 137);
+            this.visualSeparator3.Location = new System.Drawing.Point(35, 131);
             this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator3.Name = "visualSeparator3";
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(657, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(558, 4);
             this.visualSeparator3.TabIndex = 524;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -360,7 +360,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(733, 649);
+            this.ClientSize = new System.Drawing.Size(635, 649);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);

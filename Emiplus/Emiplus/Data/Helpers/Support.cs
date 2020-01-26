@@ -10,7 +10,6 @@ namespace Emiplus.Data.Helpers
 {
     public class Support
     {
-     
         public static ArrayList GetOrigens()
         {
             var origens = new ArrayList();
@@ -59,7 +58,7 @@ namespace Emiplus.Data.Helpers
                 return;
             }
 
-            if (abaixo && data.CurrentRow.Index != data.Rows.Count - 1) //Verifica se é a prim
+            if (abaixo && data.CurrentRow.Index != data.Rows.Count - 1)
             {
                 data.CurrentCell = data[data.CurrentCell.ColumnIndex, data.CurrentCell.RowIndex + 1];
             }

@@ -40,6 +40,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.retomarVendaInicio = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -58,7 +62,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(709, 40);
+            this.panel4.Size = new System.Drawing.Size(635, 40);
             this.panel4.TabIndex = 514;
             // 
             // visualSeparator1
@@ -179,13 +183,105 @@
             this.label3.TabIndex = 515;
             this.label3.Text = "Comercial";
             // 
+            // visualSeparator3
+            // 
+            this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator3.Location = new System.Drawing.Point(35, 134);
+            this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator3.Name = "visualSeparator3";
+            this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator3.ShadowVisible = true;
+            this.visualSeparator3.Size = new System.Drawing.Size(558, 4);
+            this.visualSeparator3.TabIndex = 528;
+            this.visualSeparator3.Text = "visualSeparator3";
+            this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(32, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 25);
+            this.label4.TabIndex = 525;
+            this.label4.Text = "Vendas";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(51, 191);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(230, 17);
+            this.label15.TabIndex = 527;
+            this.label15.Text = "Retomar venda ao início ao finalizar?";
+            // 
+            // retomarVendaInicio
+            // 
+            this.retomarVendaInicio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.retomarVendaInicio.BackColorState.Enabled = System.Drawing.Color.White;
+            this.retomarVendaInicio.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.retomarVendaInicio.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.Border.HoverVisible = true;
+            this.retomarVendaInicio.Border.Rounding = 20;
+            this.retomarVendaInicio.Border.Thickness = 1;
+            this.retomarVendaInicio.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.retomarVendaInicio.Border.Visible = true;
+            this.retomarVendaInicio.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.ButtonBorder.HoverVisible = true;
+            this.retomarVendaInicio.ButtonBorder.Rounding = 18;
+            this.retomarVendaInicio.ButtonBorder.Thickness = 1;
+            this.retomarVendaInicio.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.retomarVendaInicio.ButtonBorder.Visible = true;
+            this.retomarVendaInicio.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.retomarVendaInicio.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.retomarVendaInicio.ButtonSize = new System.Drawing.Size(20, 20);
+            this.retomarVendaInicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.retomarVendaInicio.FalseTextToggle = "Não";
+            this.retomarVendaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.retomarVendaInicio.Location = new System.Drawing.Point(290, 189);
+            this.retomarVendaInicio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.retomarVendaInicio.Name = "retomarVendaInicio";
+            this.retomarVendaInicio.ProgressImage = null;
+            this.retomarVendaInicio.Size = new System.Drawing.Size(58, 25);
+            this.retomarVendaInicio.TabIndex = 550;
+            this.retomarVendaInicio.Text = "visualToggle1";
+            this.retomarVendaInicio.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.retomarVendaInicio.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.retomarVendaInicio.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.retomarVendaInicio.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.retomarVendaInicio.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.retomarVendaInicio.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.retomarVendaInicio.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.retomarVendaInicio.Toggled = true;
+            this.retomarVendaInicio.TrueTextToggle = "Sim";
+            this.retomarVendaInicio.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
             // Comercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(709, 533);
+            this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.retomarVendaInicio);
+            this.Controls.Add(this.visualSeparator3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel4);
@@ -213,5 +309,9 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label15;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle retomarVendaInicio;
     }
 }

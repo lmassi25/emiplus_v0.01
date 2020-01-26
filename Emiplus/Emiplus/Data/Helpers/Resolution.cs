@@ -1,17 +1,12 @@
 ﻿using Emiplus.Data.Core;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
-    class Resolution
+    internal class Resolution
     {
-        static Rectangle resolution = Screen.PrimaryScreen.Bounds;
+        private static Rectangle resolution = Screen.PrimaryScreen.Bounds;
 
         /// <summary>
         /// Valida a resolução do monitor

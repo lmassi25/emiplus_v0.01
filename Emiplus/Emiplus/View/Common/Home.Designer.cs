@@ -231,6 +231,7 @@ namespace Emiplus.View.Common
             this.visualPanel1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualPanel1.Visible = false;
             // 
             // fatura
             // 

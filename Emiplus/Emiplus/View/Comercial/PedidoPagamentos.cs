@@ -7,6 +7,7 @@ using System;
 using System.Windows.Forms;
 using System.Linq;
 using System.Drawing;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Comercial
 {
@@ -229,6 +230,7 @@ namespace Emiplus.View.Comercial
 
             PedidoPayDesconto.idPedido = IdPedido;
             PedidoPayDesconto Desconto = new PedidoPayDesconto();
+            Desconto.TopMost = true;
             if (Desconto.ShowDialog() == DialogResult.OK)
                 AtualizarDados();
         }
@@ -240,6 +242,7 @@ namespace Emiplus.View.Comercial
 
             PedidoPayAcrescimo.idPedido = IdPedido;
             PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
+            Acrescimo.TopMost = true;
             if (Acrescimo.ShowDialog() == DialogResult.OK)
                 AtualizarDados();
         }
@@ -251,6 +254,7 @@ namespace Emiplus.View.Comercial
 
             PedidoPayDevolucao.idPedido = IdPedido;
             PedidoPayDevolucao f = new PedidoPayDevolucao();
+            f.TopMost = true;
             if (f.ShowDialog() == DialogResult.OK)
                 AtualizarDados();
         }
@@ -272,7 +276,10 @@ namespace Emiplus.View.Comercial
             return true;
         }
 
-        public void Concluir(int imprimir = 1)
+        /// <summary>
+        /// True para imprimir, false para não imprimir
+        /// </summary>
+        public void Concluir(bool imprimir = true)
         {
             if(Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
             {
@@ -280,43 +287,52 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            Model.Pedido Pedido = _mPedido.FindById(IdPedido).First<Model.Pedido>();
-            Pedido.Id = IdPedido;
-            if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)            
-                Pedido.status = 2; //RECEBIMENTO PENDENTE            
-            else           
-                Pedido.status = 1; //FINALIZADO\RECEBIDO
+            Model.Pedido Pedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+            if (Pedido != null) {
+                Pedido.Id = IdPedido;
+
+                if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)            
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE            
+                else           
+                    Pedido.status = 1; //FINALIZADO\RECEBIDO
             
-            Pedido.Save(Pedido);
-
-            Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
-
-            AddPedidos.btnFinalizado = true;
+                if (Pedido.Save(Pedido))
+                {
+                    Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+                    AddPedidos.btnFinalizado = true;
+                }
+            }
 
             if (Home.pedidoPage == "Compras")
             {
-                imprimir = 0;
+                imprimir = false;
                 Application.OpenForms["AddPedidos"].Close();
                 Close();
             }
-                
-            if (imprimir == 1)
+
+            if (imprimir)
             {
-                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
-                {
+                if (AlertOptions.Message("Impressão!", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                     new Controller.Pedido().Imprimir(IdPedido);
-                }
 
                 try
                 {
                     Application.OpenForms["AddPedidos"].Close();
+
+                    if (IniFile.Read("RetomarVenda", "Comercial") == "True") {
+                        AddPedidos.Id = 0;
+                        AddPedidos reopen = new AddPedidos();
+                        reopen.TopMost = true;
+                        reopen.Show();
+                    }
                 }
                 catch (Exception)
                 {
                     throw;
                 }
 
-                Close();
+                DialogResult = DialogResult.OK;
+                Application.OpenForms["PedidoPagamentos"].Close();
             }
         }
 
@@ -328,7 +344,7 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            Concluir(0);
+            Concluir(false);
 
             OpcoesNfeRapida.idPedido = IdPedido;
             OpcoesNfeRapida f = new OpcoesNfeRapida();
@@ -343,7 +359,7 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            Concluir(0);
+            Concluir(false);
 
             OpcoesCfe.idNota = 0;
 
@@ -357,7 +373,6 @@ namespace Emiplus.View.Comercial
                 _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = IdPedido;
                 _modelNota.Save(_modelNota, false);
-
                 checkNota = _modelNota;
             }
 
@@ -468,7 +483,8 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
                 case Keys.F11:
-                    new PedidoImpressao().Print(IdPedido);
+                    new Controller.Pedido().Imprimir(IdPedido);
+                    //new PedidoImpressao().Print(IdPedido);
                     break;
                 case Keys.F12:
                     Concluir();
@@ -640,11 +656,6 @@ namespace Emiplus.View.Comercial
                 Cfe();
             };                
              
-        }
-
-        private void PedidoPagamentos_Activated(object sender, EventArgs e)
-        {
-            Console.WriteLine("Ativo: PedidoPagamentos");            
         }
     }
 }
