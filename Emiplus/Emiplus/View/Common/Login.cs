@@ -1,16 +1,15 @@
-﻿using System.Windows.Forms;
-using System.Runtime.InteropServices; // Biblioteca para mover tela
-using System.Net.Http;
+﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using Emiplus.Data.Core;
 using Emiplus.Properties;
-using System.IO;
-using System.Diagnostics;
-using System.Net;
 using RestSharp;
 using SqlKata.Execution;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System;
+using System.Net;
+using System.Net.Http;
+using System.Runtime.InteropServices; // Biblioteca para mover tela
+using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
@@ -18,60 +17,27 @@ namespace Emiplus.View.Common
     {
         private static readonly HttpClient client = new HttpClient();
 
-
         #region DLL
+
         // DLL que possibilita mover a janela pela barra de título: BarraTitulo_MouseDown
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
+
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
-        #endregion
 
+        #endregion DLL
 
         public Login()
         {
             InitializeComponent();
             Eventos();
-            Console.WriteLine("Tela de login");
-
-            version.Text = "Versão " + IniFile.Read("Version", "APP");
-
-
-            if (Support.CheckForInternetConnection())
-            {
-                Update update = new Update();
-                update.CheckUpdate();
-                update.CheckIni();
-
-                if (Data.Core.Update.AtualizacaoDisponivel)
-                {
-                    btnUpdate.Visible = true;
-                    btnUpdate.Text = "Atualizar Versão " + update.GetVersionWebTxt();
-                    label5.Visible = false;
-                    email.Visible = false;
-                    label6.Visible = false;
-                    password.Visible = false;
-                    btnEntrar.Visible = false;
-                    label1.Text = "Antes de continuar..";
-                }
-                else
-                {
-                    btnUpdate.Visible = false;
-                    label5.Visible = true;
-                    email.Visible = true;
-                    label6.Visible = true;
-                    password.Visible = true;
-                    btnEntrar.Visible = true;
-                    label1.Text = "Entre com sua conta";
-                }
-            }
-
-            InitData();
         }
 
         private void LoginAsync()
@@ -264,14 +230,48 @@ namespace Emiplus.View.Common
 
             Load += (s, e) =>
             {
+                version.Text = "Versão " + IniFile.Read("Version", "APP");
+
+                if (Support.CheckForInternetConnection())
+                {
+                    Update update = new Update();
+                    update.CheckUpdate();
+                    update.CheckIni();
+
+                    if (Data.Core.Update.AtualizacaoDisponivel)
+                    {
+                        btnUpdate.Visible = true;
+                        btnUpdate.Text = "Atualizar Versão " + update.GetVersionWebTxt();
+                        label5.Visible = false;
+                        email.Visible = false;
+                        label6.Visible = false;
+                        password.Visible = false;
+                        btnEntrar.Visible = false;
+                        label1.Text = "Antes de continuar..";
+                    }
+                    else
+                    {
+                        btnUpdate.Visible = false;
+                        label5.Visible = true;
+                        email.Visible = true;
+                        label6.Visible = true;
+                        password.Visible = true;
+                        btnEntrar.Visible = true;
+                        label1.Text = "Entre com sua conta";
+                    }
+                }
+
+                // Valida a resolução do monitor e exibe uma mensagem
                 Resolution.ValidateResolution();
 
+                // Verifica se existe uma empresa vinculada a instalação da aplicação
                 if (string.IsNullOrEmpty(IniFile.Read("idEmpresa", "APP")))
                 {
                     panelEmpresa.Visible = true;
                     panelEmpresa.Dock = DockStyle.Fill;
                 }
 
+                InitData();
             };
 
             btnEntrar.Click += (s, e) => LoginAsync();
@@ -329,7 +329,7 @@ namespace Emiplus.View.Common
                         token = Program.TOKEN,
                         id_empresa = id_empresa
                     };
-                    
+
                     var validar = new RequestApi().URL(Program.URL_BASE + "/api/validarempresa").Content(objt, Method.POST).Response();
 
                     if (validar["error"] == "true")
@@ -337,7 +337,7 @@ namespace Emiplus.View.Common
                         Alert.Message("Opps", "O ID da empresa informado não existe.", Alert.AlertType.error);
                         return;
                     }
-                    
+
                     IniFile.Write("idEmpresa", id_empresa, "APP");
                     panelEmpresa.Visible = false;
                 }

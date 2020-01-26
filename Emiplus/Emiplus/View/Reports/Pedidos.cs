@@ -1,5 +1,4 @@
 ﻿using DotLiquid;
-using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
@@ -8,13 +7,9 @@ using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,7 +22,7 @@ namespace Emiplus.View.Reports
         public string screen;
 
         // AutoComplete
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public Pedidos()
         {
@@ -52,20 +47,23 @@ namespace Emiplus.View.Reports
                 case "Compras":
                     data.Where("tipo", "Fornecedores");
                     break;
+
                 case "Consignações":
                     data.Where("tipo", "Clientes");
                     break;
+
                 case "Devoluções":
                     data.Where("tipo", "Clientes");
                     break;
+
                 default:
                     data.Where("tipo", "Clientes");
                     break;
             }
-            
+
             foreach (var itens in data.Get())
             {
-                if(itens.NOME != "Novo registro")
+                if (itens.NOME != "Novo registro")
                     collection.Add(itens.NOME, itens.ID);
             }
 
@@ -81,7 +79,7 @@ namespace Emiplus.View.Reports
             Usuarios.DisplayMember = "Nome";
             Usuarios.ValueMember = "Id";
         }
-        
+
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
             var model = new Model.Pedido().Query();
@@ -116,15 +114,19 @@ namespace Emiplus.View.Reports
                 case "Compras":
                     model.Where("PEDIDO.TIPO", "Compras");
                     break;
+
                 case "Orçamentos":
                     model.Where("PEDIDO.TIPO", "Orcamentos");
                     break;
+
                 case "Consignações":
                     model.Where("PEDIDO.TIPO", "Consignacoes");
                     break;
+
                 case "Devoluções":
                     model.Where("PEDIDO.TIPO", "Devolucoes");
                     break;
+
                 default:
                     model.Where("PEDIDO.TIPO", "Vendas");
                     break;
@@ -149,7 +151,7 @@ namespace Emiplus.View.Reports
 
             Table.Columns[0].Name = "#";
             Table.Columns[0].Width = 50;
-            
+
             Table.Columns[1].Name = "Emissão";
             Table.Columns[1].Width = 100;
 
@@ -158,10 +160,10 @@ namespace Emiplus.View.Reports
 
             Table.Columns[3].Name = "Total";
             Table.Columns[3].Width = 100;
-            
+
             Table.Columns[4].Name = "Usuário";
             Table.Columns[4].Width = 100;
-            
+
             Table.Rows.Clear();
 
             if (Data == null)
@@ -173,7 +175,7 @@ namespace Emiplus.View.Reports
             for (int i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
-                
+
                 Table.Rows.Add(
                     item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
@@ -201,7 +203,7 @@ namespace Emiplus.View.Reports
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => 
+            Load += (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
@@ -214,19 +216,22 @@ namespace Emiplus.View.Reports
                         t2.Text = "Procurar fornecedor";
                         t3.Text = "Histórico de Compras";
                         t4.Text = "Consulte o histórico de compras.";
-                        break;                    
+                        break;
+
                     case "Consignações":
                         t1.Text = "Consignações";
                         t2.Text = "Procurar cliente";
                         t3.Text = "Histórico de Consignações";
                         t4.Text = "Consulte o histórico de consignações.";
                         break;
+
                     case "Devoluções":
                         t1.Text = "Devoluções";
                         t2.Text = "Procurar cliente";
                         t3.Text = "Histórico de Devoluções";
                         t4.Text = "Consulte o histórico de devoluções.";
                         break;
+
                     default:
                         t1.Text = "Vendas";
                         t2.Text = "Procurar cliente";

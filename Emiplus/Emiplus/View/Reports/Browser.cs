@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using CefSharp;
+﻿using CefSharp;
 using CefSharp.WinForms;
 using Emiplus.Data.Helpers;
+using System;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Reports
 {
@@ -71,9 +71,7 @@ namespace Emiplus.View.Reports
                 }
                 catch (Exception)
                 {
-
                 }
-                
             };
 
             anterior.Click += (s, e) => chromeBrowser.Find(0, search.Text, false, false, false);

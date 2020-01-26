@@ -1,5 +1,4 @@
 ﻿using DotLiquid;
-using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
@@ -20,7 +19,7 @@ namespace Emiplus.View.Reports
         private Model.Item _mItem = new Model.Item();
 
         // AutoComplete
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public EstoqueEntradaSaida()
         {
@@ -58,7 +57,7 @@ namespace Emiplus.View.Reports
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
             var model = new Model.ItemEstoqueMovimentacao().Query();
-            
+
             if (!noFilterData.Checked)
             {
                 model.Where("ITEM_MOV_ESTOQUE.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
@@ -91,7 +90,8 @@ namespace Emiplus.View.Reports
                 model.Where("ITEM_MOV_ESTOQUE.id_usuario", Validation.ConvertToInt32(Usuarios.SelectedValue));
             }
 
-            if (!filterAll.Checked) {
+            if (!filterAll.Checked)
+            {
                 if (filterAdicionado.Checked)
                 {
                     model.Where("ITEM_MOV_ESTOQUE.TIPO", "A");
@@ -182,7 +182,8 @@ namespace Emiplus.View.Reports
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 Resolution.SetScreenMaximized(this);
 
                 BuscarProduto.Select();

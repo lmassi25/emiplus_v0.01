@@ -1,13 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
 {
     internal class Masks
     {
-        public static void MaskToUpper(object sender, KeyPressEventArgs e)
+        public static IEnumerable<Control> GetAllToUpper(Control control,Type type)
         {
-            e.KeyChar = Char.ToUpper(e.KeyChar);
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAllToUpper(ctrl,type)).Concat(controls).Where(c => c.GetType() == type);
+        }
+
+        public static void MaskToUpper(object sender, KeyPressEventArgs e) => e.KeyChar = Char.ToUpper(e.KeyChar);
+        
+        public static void SetToUpper(Control control)
+        {
+            var c = GetAllToUpper(control, typeof(VisualPlus.Toolkit.Controls.Editors.VisualTextBox));
+            foreach (VisualPlus.Toolkit.Controls.Editors.VisualTextBox item in c)
+                item.KeyPress += MaskToUpper;
         }
 
         public static void MaskPriceEvent(object s, EventArgs e)

@@ -1,16 +1,11 @@
 ﻿using Emiplus.Data.Core;
-using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
-using SqlKata.Execution;
+using RestSharp;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Linq;
-using RestSharp;
 
 namespace Emiplus.View.Common
 {
@@ -130,7 +125,7 @@ namespace Emiplus.View.Common
         {
             InitializeComponent();
             Eventos();
-            
+
             version.Text = "Versão " + IniFile.Read("Version", "APP");
             label1.Text = $"Olá, {Validation.FirstCharToUpper(Settings.Default.user_name)} {Validation.FirstCharToUpper(Settings.Default.user_lastname)}";
 
@@ -202,8 +197,8 @@ namespace Emiplus.View.Common
 
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
-            
-           // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
+
+            // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 
         /// <summary>
@@ -225,7 +220,8 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 new Controller.Caixa().CheckCaixaDate();
             };
 

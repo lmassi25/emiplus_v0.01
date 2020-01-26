@@ -18,7 +18,7 @@ namespace Emiplus.View.Reports
     public partial class ProdutosVendidos : Form
     {
         private Model.Item _mItem = new Model.Item();
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public ProdutosVendidos()
         {
@@ -42,7 +42,7 @@ namespace Emiplus.View.Reports
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
-        
+
         private void AutoCompleteFornecedorCategorias()
         {
             var cats = new ArrayList();
@@ -184,7 +184,7 @@ namespace Emiplus.View.Reports
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => 
+            Load += (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
@@ -197,6 +197,7 @@ namespace Emiplus.View.Reports
                         label2.Text = "Consulte os produtos consignados aqui.";
                         label3.Text = "Produtos Consignados";
                         break;
+
                     case "Devoluções":
                         maisVendidos.Text = "Mais Devolvido";
                         menosVendidos.Text = "Menos Devolvido";
@@ -204,6 +205,7 @@ namespace Emiplus.View.Reports
                         label2.Text = "Consulte os produtos devolvidos aqui.";
                         label3.Text = "Produtos Devolvidos";
                         break;
+
                     case "Orçamentos":
                         maisVendidos.Text = "Mais Orçado";
                         menosVendidos.Text = "Menos Orçado";
