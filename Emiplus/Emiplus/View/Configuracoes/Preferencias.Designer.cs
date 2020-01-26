@@ -50,13 +50,13 @@
             // 
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(37, 137);
+            this.visualSeparator3.Location = new System.Drawing.Point(37, 131);
             this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator3.Name = "visualSeparator3";
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(657, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(558, 4);
             this.visualSeparator3.TabIndex = 532;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -102,7 +102,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(731, 40);
+            this.panel4.Size = new System.Drawing.Size(633, 40);
             this.panel4.TabIndex = 529;
             // 
             // visualSeparator1
@@ -206,7 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(733, 649);
+            this.ClientSize = new System.Drawing.Size(635, 649);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);

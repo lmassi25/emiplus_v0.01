@@ -560,6 +560,12 @@
     <Compile Include="View\Common\VideoTutorial.Designer.cs">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\BancoDeDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\BancoDeDados.Designer.cs">
+      <DependentUpon>BancoDeDados.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Cfesat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,12 +590,6 @@
     <Compile Include="View\Configuracoes\Comercial.Designer.cs">
       <DependentUpon>Comercial.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Configuracoes\Database.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Configuracoes\Database.Designer.cs">
-      <DependentUpon>Database.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Configuracoes\Email.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,11 +602,23 @@
     <Compile Include="View\Configuracoes\Impressao.Designer.cs">
       <DependentUpon>Impressao.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\InformacaoGeral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\InformacaoGeral.Designer.cs">
+      <DependentUpon>InformacaoGeral.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Preferencias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Configuracoes\Preferencias.Designer.cs">
       <DependentUpon>Preferencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Configuracoes\Sistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Sistema.Designer.cs">
+      <DependentUpon>Sistema.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Exemplos.cs">
       <SubType>Form</SubType>
@@ -1104,6 +1116,9 @@
     <EmbeddedResource Include="View\Common\VideoTutorial.resx">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\BancoDeDados.resx">
+      <DependentUpon>BancoDeDados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Cfesat.resx">
       <DependentUpon>Cfesat.cs</DependentUpon>
     </EmbeddedResource>
@@ -1116,17 +1131,20 @@
     <EmbeddedResource Include="View\Configuracoes\Comercial.resx">
       <DependentUpon>Comercial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Configuracoes\Database.resx">
-      <DependentUpon>Database.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Email.resx">
       <DependentUpon>Email.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Impressao.resx">
       <DependentUpon>Impressao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\InformacaoGeral.resx">
+      <DependentUpon>InformacaoGeral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Preferencias.resx">
       <DependentUpon>Preferencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Sistema.resx">
+      <DependentUpon>Sistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Exemplos.resx">
       <DependentUpon>Exemplos.cs</DependentUpon>

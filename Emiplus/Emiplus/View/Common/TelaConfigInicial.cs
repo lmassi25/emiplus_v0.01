@@ -13,12 +13,12 @@ namespace Emiplus.View.Common
 
         public void Eventos()
         {
-            preferencias.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Preferencias>(panel);
-            email.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Email>(panel);
-            sat.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Cfesat>(panel);
-            comercial.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Comercial>(panel);
-            impressao.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Impressao>(panel);
-            database.Click += (s, e) => OpenForm.ShowInPanel<Configuracoes.Database>(panel);
+            dadosEmpresa.Click += (s, e) => OpenForm.Show<Configuracoes.InformacaoGeral>(this);
+            email.Click += (s, e) => OpenForm.Show<Configuracoes.Email>(this);
+            sat.Click += (s, e) => OpenForm.Show<Configuracoes.Cfesat>(this);
+            comercial.Click += (s, e) => OpenForm.Show<Configuracoes.Comercial>(this);
+            impressao.Click += (s, e) => OpenForm.Show<Configuracoes.Impressao>(this);
+            system.Click += (s, e) => OpenForm.Show<Configuracoes.Sistema>(this);
         }
     }
 }

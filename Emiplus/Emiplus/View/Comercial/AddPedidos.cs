@@ -308,7 +308,7 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            if(Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+            if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
             {
                 if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
                 {
@@ -335,39 +335,52 @@ namespace Emiplus.View.Comercial
 
                 _mPedido.Id = Id;
                 _mPedido.status = 0;
-                _mPedido.Save(_mPedido);
-
-                Alert.Message("Tudo certo!", "Reaberto com sucesso.", Alert.AlertType.success);
-                btnConcluir.Text = "Finalizar";
-
-                BuscarProduto.Select();
-
+                if (_mPedido.Save(_mPedido))
+                {
+                    Alert.Message("Tudo certo!", "Reaberto com sucesso.", Alert.AlertType.success);
+                    btnConcluir.Text = "Finalizar";
+                    BuscarProduto.Select();
+                }
+                else
+                {
+                    Alert.Message("Opps!", "Erro ao reabrir.", Alert.AlertType.error);
+                }
+                
                 return;
             }
 
             if (btnConcluir.Text == "Finalizar" && Home.idCaixa == 0 && Home.pedidoPage == "Vendas") //Necessário para vendas balcão
             {
                 btnFinalizado = true;
+
                 _mPedido.Id = Id;
                 _mPedido.Tipo = "Vendas";
                 _mPedido.status = 1; //RECEBIMENTO PENDENTE
-                _mPedido.Save(_mPedido);
-
-                Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
-
-                if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                if (_mPedido.Save(_mPedido)) 
                 {
-                    PedidoImpressao print = new PedidoImpressao();
-                    print.Print(Id);
+                    Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+
+                    if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                    {
+                        PedidoImpressao print = new PedidoImpressao();
+                        print.Print(Id);
+                    }
+
+                    Close();
+                }
+                else
+                {
+                    Alert.Message("Opps!", "Erro ao finalizar.", Alert.AlertType.error);
                 }
 
-                Close();
                 return;
             }
 
             PedidoPagamentos.hideFinalizar = false;
             PedidoPagamentos f = new PedidoPagamentos();
-            _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
+            f.TopMost = true;
+
+            _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
             _mPedido.Id = Id;
 
             switch (Home.pedidoPage)
@@ -407,15 +420,16 @@ namespace Emiplus.View.Comercial
                     if (_mPedido.Save(_mPedido))
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
-                        {
                             new Controller.Pedido().Imprimir(Id);
-                        }
 
                         Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
+                        
                         Close();
+
                         return;
                     }
+
                     Alert.Message("Opss", "Problema ao finalizar Consignação", Alert.AlertType.error);
                     break;
 
@@ -431,9 +445,12 @@ namespace Emiplus.View.Comercial
 
                         Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
+                        
                         Close();
+
                         return;
                     }
+
                     Alert.Message("Opss", "Problema ao finalizar Orçamento", Alert.AlertType.error);
                     break;
                 default:
@@ -469,6 +486,7 @@ namespace Emiplus.View.Comercial
         public void ModalClientes()
         {
             PedidoModalClientes form = new PedidoModalClientes();
+            form.TopMost = true;
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _mPedido.Id = Id;
@@ -486,6 +504,7 @@ namespace Emiplus.View.Comercial
         public void ModalColaborador()
         {
             PedidoModalVendedor form = new PedidoModalVendedor();
+            form.TopMost = true;
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _mPedido.Id = Id;
@@ -508,6 +527,7 @@ namespace Emiplus.View.Comercial
                 {
                     PedidoModalItens.txtSearch = BuscarProduto.Text;
                     PedidoModalItens form = new PedidoModalItens();
+                    form.TopMost = true;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         BuscarProduto.Text = PedidoModalItens.NomeProduto;
@@ -644,54 +664,55 @@ namespace Emiplus.View.Comercial
                     break;
                 case Keys.F3:
 
-                    //if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
-                    //{
-                    //    Alert.Message("Ação não permitida", "Não é permitido cancelar produto", Alert.AlertType.warning);
-                    //    return;
-                    //}
-
-                    //if (GridListaProdutos.SelectedRows.Count > 0)
-                    //{
-                    //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                    //    {
-                    //        var itemName = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value;
-
-                    //        var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                    //        if (result)
-                    //        {
-                    //            var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                    //            _mPedidoItens.Remove(idPedidoItem);
-
-                    //            GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-
-                    //            if (Home.pedidoPage != "Compras")
-                    //                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
-                    //            else
-                    //                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
-
-                    //            LoadTotais();
-                    //        }
-                    //    }
-                    //}
-
-                    if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
+                    if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
                     {
-                        Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
+                        Alert.Message("Ação não permitida", "Não é permitido cancelar o produto.", Alert.AlertType.warning);
                         return;
                     }
 
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                            IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                        {
+                            var itemName = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value;
+
+                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                            if (result)
+                            {
+                                var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                                _mPedidoItens.Remove(idPedidoItem);
+
+                                GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                                if (Home.pedidoPage != "Compras")
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                else
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                                LoadTotais();
+                            }
+                        }
                     }
 
-                    PedidoModalCancelItem cancel = new PedidoModalCancelItem();
-                    if (cancel.ShowDialog() == DialogResult.OK)
-                    {
-                        GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-                        LoadTotais();
-                    }
+                    //if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
+                    //{
+                    //    Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
+                    //    return;
+                    //}
+
+                    //if (GridListaProdutos.SelectedRows.Count > 0)
+                    //{
+                    //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                    //        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                    //}
+
+                    //PedidoModalCancelItem cancel = new PedidoModalCancelItem();
+                    //cancel.TopMost = true;
+                    //if (cancel.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+                    //    LoadTotais();
+                    //}
 
                     e.SuppressKeyPress = true;
                     break;
@@ -735,6 +756,7 @@ namespace Emiplus.View.Comercial
             SelecionarCliente.KeyDown += KeyDowns;
             SelecionarColaborador.KeyDown += KeyDowns;
             addProduto.KeyDown += KeyDowns;
+            GridListaProdutos.KeyDown += KeyDowns;
 
             Load += (s, e) =>
             {
@@ -774,6 +796,8 @@ namespace Emiplus.View.Comercial
             btnGerarVenda.Click += (s, e) =>
             {
                 PedidoPagamentos f = new PedidoPagamentos();
+                f.TopMost = true;
+
                 _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 _mPedido.Id = Id;
                 _mPedido.Tipo = "Vendas";
@@ -832,7 +856,6 @@ namespace Emiplus.View.Comercial
                     else
                     {
                         LoadItens();
-                       // ClearForms();
                     }
                 }
             };
@@ -855,24 +878,55 @@ namespace Emiplus.View.Comercial
 
             btnCancelarProduto.Click += (s, e) =>
             {
-                if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
                 {
-                    Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida", "Não é permitido cancelar o produto.", Alert.AlertType.warning);
                     return;
                 }
 
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
                     if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                    {
+                        var itemName = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value;
+
+                        var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                        if (result)
+                        {
+                            var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                            _mPedidoItens.Remove(idPedidoItem);
+
+                            GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                            if (Home.pedidoPage != "Compras")
+                                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                            else
+                                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                            LoadTotais();
+                        }
+                    }
                 }
 
-                PedidoModalCancelItem cancel = new PedidoModalCancelItem();
-                if (cancel.ShowDialog() == DialogResult.OK)
-                {
-                    GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-                    LoadTotais();
-                }
+                //if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
+                //{
+                //    Alert.Message("Ação não permitida", "Não é permitido cancelar o produto/serviço", Alert.AlertType.warning);
+                //    return;
+                //}
+
+                //if (GridListaProdutos.SelectedRows.Count > 0)
+                //{
+                //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
+                //        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
+                //}
+
+                //PedidoModalCancelItem cancel = new PedidoModalCancelItem();
+                //cancel.TopMost = true;
+                //if (cancel.ShowDialog() == DialogResult.OK)
+                //{
+                //    //GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+                //    LoadTotais();
+                //}
             };
 
             btnDelete.Click += (s, e) =>

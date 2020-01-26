@@ -65,7 +65,7 @@ namespace Emiplus.Data.Helpers
 
             StringBuilder str = new StringBuilder(CleanString(dirtyString));
 
-            if(str.ToString().Replace(" ", "").All(char.IsDigit))
+            if (str.ToString().Replace(" ", "").All(char.IsDigit))
             {
                 str = str.Replace(" ", "");
             }
@@ -77,7 +77,7 @@ namespace Emiplus.Data.Helpers
         {
             aux = aux.TrimStart();
             aux = aux.TrimEnd();
-            
+
             Regex regex = new Regex(@"\s{2,}");
             aux = regex.Replace(aux, " ");
 
@@ -92,15 +92,11 @@ namespace Emiplus.Data.Helpers
         public static string FormatPrice(double obj, bool cifrao = false)
         {
             string res;
-            
+
             if (cifrao)
-            {
                 res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
-            }
             else
-            {
                 res = string.Format("{0:N2}", obj);
-            }
 
             return res;
         }
@@ -110,13 +106,9 @@ namespace Emiplus.Data.Helpers
             string res;
 
             if (cifrao)
-            {
                 res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
-            }
             else
-            {
                 res = string.Format("{0:N2}", obj);
-            }
 
             return res;
         }
@@ -135,20 +127,24 @@ namespace Emiplus.Data.Helpers
                 case 3:
                     aux = string.Format("{0:N3}", Validation.ConvertToDouble(obj));
                     break;
+
                 case 4:
                     aux = string.Format("{0:N4}", Validation.ConvertToDouble(obj));
                     break;
+
                 case 5:
                     aux = string.Format("{0:N5}", Validation.ConvertToDouble(obj));
                     break;
+
                 case 6:
                     aux = string.Format("{0:N6}", Validation.ConvertToDouble(obj));
                     break;
+
                 default:
                     aux = string.Format("{0:N2}", Validation.ConvertToDouble(obj));
                     break;
             }
-            
+
             aux = aux.Replace(".", "");
             aux = aux.Replace(",", ".");
 
@@ -156,12 +152,12 @@ namespace Emiplus.Data.Helpers
         }
 
         public static double ConvertToDouble(object obj)
-        {                        
+        {
             if (obj == null)
                 return 0;
 
             if (obj.ToString() == string.Empty)
-                return 0;            
+                return 0;
 
             return Convert.ToDouble(obj.ToString().Replace("R$", "").Trim());
         }
@@ -240,9 +236,6 @@ namespace Emiplus.Data.Helpers
         /// <summary>
         /// Retorna o valor de acordo com a medida, Exemplo: UN retornará números inteiros (120), KG retornará número com 3 casas decimais
         /// </summary>
-        /// <param name="Medida"></param>
-        /// <param name="Valor"></param>
-        /// <returns></returns>
         public static string FormatMedidas(string Medida, double Valor)
         {
             switch (Medida)
@@ -260,13 +253,13 @@ namespace Emiplus.Data.Helpers
                 case "CNT":
                 case "PCT":
                     string result = Valor.ToString();
-                    
+
                     if (Valor.ToString().Contains(","))
                         result = Valor.ToString().Substring(0, Valor.ToString().IndexOf(","));
 
                     if (Valor.ToString().Contains("."))
                         result = Valor.ToString().Substring(0, Valor.ToString().IndexOf("."));
-                    
+
                     return result.ToString();
                     break;
 
@@ -306,33 +299,9 @@ namespace Emiplus.Data.Helpers
             }
         }
 
-        public static string FormatNumberKilo(double num)
-        {
-            //long i = (long)Math.Pow(10, (int)Math.Max(0, Math.Log10(num) - 2));
-
-            //if(i > 0)
-            //{
-            //    num = num / i * i;
-
-            //    if (num >= 1000000)
-            //        return (num / 1000000D).ToString("0.##") + " Ton";
-            //    if (num >= 1000)
-            //        return (num / 1000D).ToString("0.##") + " KG";
-            //}
-
-            //return num.ToString("#,0");
-            return num.ToString();
-        }
-
-        public static string FormatNumberUnidade(double num)
-        {
-            //return num.ToString() + " UN";
-            return num.ToString();
-        }
-
         public static string FirstCharToUpper(string input)
         {
-            if (String.IsNullOrEmpty(input))                
+            if (String.IsNullOrEmpty(input))
                 return "";
             return input.First().ToString().ToUpper() + input.Substring(1);
         }
@@ -400,10 +369,12 @@ namespace Emiplus.Data.Helpers
                     input.Border.Color = Color.FromArgb(255, 128, 128);
                     input.Border.HoverColor = Color.FromArgb(255, 128, 128);
                     break;
+
                 case BorderColor.Azul:
                     input.Border.Color = Color.FromArgb(128, 128, 255);
                     input.Border.HoverColor = Color.FromArgb(128, 128, 255);
                     break;
+
                 default:
                     input.Border.Color = Color.Gainsboro;
                     input.Border.HoverColor = Color.Gainsboro;
@@ -411,7 +382,8 @@ namespace Emiplus.Data.Helpers
             }
         }
 
-        public enum BorderColor {
+        public enum BorderColor
+        {
             Vermelho, Azul
         }
 
@@ -543,9 +515,9 @@ namespace Emiplus.Data.Helpers
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
-        static readonly string PasswordHash = "P@@Sw0rd";
-        static readonly string SaltKey = "S@LT&KEY";
-        static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+        private static readonly string PasswordHash = "P@@Sw0rd";
+        private static readonly string SaltKey = "S@LT&KEY";
+        private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
         public static string Encrypt(string plainText)
         {

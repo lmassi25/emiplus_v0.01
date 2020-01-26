@@ -90,7 +90,8 @@ namespace Emiplus
         public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
         {
             Exception e = t.Exception;
-
+            new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
+            
             if (Support.CheckForInternetConnection())
             {
                 object obj = new
@@ -99,7 +100,7 @@ namespace Emiplus
                     usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
                     empresa = Settings.Default.empresa_razao_social,
                     name = e.GetType().Name.ToString(),
-                    error = e.StackTrace.ToString(),
+                    error = e.ToString(),
                     message = e.Message.ToString()
                 };
                 new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();

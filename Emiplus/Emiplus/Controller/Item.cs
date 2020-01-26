@@ -11,14 +11,6 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        private string FormatMedida(string medida, double estoque)
-        {
-            if (medida == "KG")
-                return FormatNumberKilo(estoque);
-
-            return FormatNumberUnidade(estoque);
-        }
-
         public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
         {
             var search = "%" + SearchText + "%";
