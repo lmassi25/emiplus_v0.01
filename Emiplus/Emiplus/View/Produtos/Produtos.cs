@@ -53,7 +53,7 @@ namespace Emiplus.View.Produtos
 
             if (GridListaProdutos.SelectedRows.Count > 0)
             {
-                idPdtSelecionado = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                idPdtSelecionado = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
                 OpenForm.Show<AddProduct>(this);
             }
         }

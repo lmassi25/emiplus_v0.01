@@ -85,7 +85,7 @@ namespace Emiplus.View.Comercial
 
                 nomeRS.Text = _mCliente.Nome ?? "";
                 cpfCnpj.Text = _mCliente.CPF ?? "";
-                pessoaJF.SelectedValue = _mCliente.Pessoatipo ?? "Física";
+                pessoaJF.Text = _mCliente.Pessoatipo ?? "Física";
 
                 if (!string.IsNullOrEmpty(_mPedido.cfe_nome) && _mPedido.cfe_nome != "Consumidor Final")
                     nomeRS.Text = _mPedido.cfe_nome;

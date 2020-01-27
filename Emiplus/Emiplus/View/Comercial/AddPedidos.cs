@@ -1,4 +1,5 @@
 ﻿using Emiplus.Controller;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
@@ -571,7 +572,7 @@ namespace Emiplus.View.Comercial
                 double PriceTxt = Validation.ConvertToDouble(Preco.Text);
 
                 if (PriceTxt == 0) {
-                    if (DescontoReaisTxt > item.ValorVenda || DescontoPorcentagemTxt > 101)
+                    if (DescontoReaisTxt > item.ValorVenda || DescontoReaisTxt > item.Limite_Desconto || DescontoPorcentagemTxt > 101)
                     {
                         Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
                         return;
@@ -583,6 +584,70 @@ namespace Emiplus.View.Comercial
                     {
                         Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
                         return;
+                    }
+                }
+
+                double LimiteDescontoIni = 0;
+                if (!String.IsNullOrEmpty(IniFile.Read("LimiteDesconto", "Comercial")))
+                    LimiteDescontoIni = Validation.ConvertToDouble(IniFile.Read("LimiteDesconto", "Comercial"));
+
+                if (item.Limite_Desconto != 0)
+                {
+                    if (DescontoReaisTxt > item.Limite_Desconto)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (PriceTxt > 0)
+                    {
+                        var porcentagemValor = (PriceTxt / 100 * DescontoPorcentagemTxt);
+                        if (porcentagemValor > item.Limite_Desconto)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+                    }
+
+                    if (PriceTxt == 0)
+                    {
+                        var porcentagemValor = (item.ValorVenda / 100 * DescontoPorcentagemTxt);
+                        if (porcentagemValor > item.Limite_Desconto)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    if (LimiteDescontoIni != 0)
+                    {
+                        if (DescontoReaisTxt > LimiteDescontoIni)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+
+                        if (PriceTxt == 0)
+                        {
+                            var porcentagemValor = (item.ValorVenda / 100 * DescontoPorcentagemTxt);
+                            if (porcentagemValor > LimiteDescontoIni)
+                            {
+                                Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                                return;
+                            }
+                        }
+
+                        if (PriceTxt > 0)
+                        {
+                            var porcentagemValor = (PriceTxt / 100 * DescontoPorcentagemTxt);
+                            if (porcentagemValor > LimiteDescontoIni)
+                            {
+                                Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                                return;
+                            }
+                        }
                     }
                 }
 

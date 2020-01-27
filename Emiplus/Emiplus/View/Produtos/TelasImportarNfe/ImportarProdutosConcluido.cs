@@ -1,5 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
+using System.ComponentModel;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
@@ -7,6 +9,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
     public partial class ImportarProdutosConcluido : Form
     {
         private Model.Item _mItem = new Model.Item();
+
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         public ImportarProdutosConcluido()
         {
@@ -44,11 +48,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             }
         }
 
-        private void Importar()
+        private async Task Importar()
         {
-            btnImportar.Visible = false;
-
-            bool success = false;
             foreach (dynamic item in ImportarProdutos.produtos)
             {
                 _mItem.Id = item.Id;
@@ -63,10 +64,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.ValorCompra = item.ValorCompra;
                 _mItem.ValorVenda = item.ValorVenda;
                 _mItem.Fornecedor = Validation.ConvertToInt32(item.Fornecedor);
+                _mItem.id_sync = Validation.RandomSecurity();
+                _mItem.status_sync = "CREATE";
                 if (_mItem.Save(_mItem, false))
                 {
-                    success = true;
-
                     foreach (DataGridViewRow gridData in GridLista.Rows)
                     {
                         if ((int)gridData.Cells["Ordem"].Value == (int)item.Ordem)
@@ -75,15 +76,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                         }
                     }
                 }
-                else
-                    success = false;
-            }
-
-            if (success)
-            {
-                label1.Text = "Importação Concluída! :)";
-                btnImportar.Visible = false;
-                btnClose.Visible = true;
             }
         }
 
@@ -94,13 +86,24 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 SetTable();
             };
 
-            btnImportar.Click += (s, e) => Importar();
+            btnImportar.Click += (s, e) => WorkerBackground.RunWorkerAsync();
 
             btnClose.Click += (s, e) =>
             {
                 Application.OpenForms["ImportarNfe"].Close();
                 Application.OpenForms["ImportarProdutos"].Close();
                 Close();
+            };
+
+            WorkerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker) delegate {
+                Importar();
+            });
+
+            WorkerBackground.RunWorkerCompleted += async (s, e) =>
+            {
+                label1.Text = "Importação Concluída! :)";
+                btnImportar.Visible = false;
+                btnClose.Visible = true;
             };
         }
     }

@@ -167,6 +167,7 @@ namespace Emiplus.View.Comercial
             txtPagar.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
             txtAcrescimo.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(idPedido), true);
             txtRecebimento.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
+            caixa.Text = _modelPedido.Id_Caixa.ToString();
 
             if (_modelPedido.Cliente > 0)
             {

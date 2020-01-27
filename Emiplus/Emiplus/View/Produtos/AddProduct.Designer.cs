@@ -62,6 +62,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.nome = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtLimiteDesconto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.btnAddFornecedor = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -97,6 +100,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.chkImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.ImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
@@ -113,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -125,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
@@ -887,6 +895,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.pictureBox11);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.txtLimiteDesconto);
             this.tabPage3.Controls.Add(this.btnAddFornecedor);
             this.tabPage3.Controls.Add(this.pictureBox14);
             this.tabPage3.Controls.Add(this.pictureBox10);
@@ -900,6 +912,86 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Informações Adicionais";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.White;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(140, 125);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 44;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(17, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 17);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Limite de Desconto";
+            // 
+            // txtLimiteDesconto
+            // 
+            this.txtLimiteDesconto.AlphaNumeric = false;
+            this.txtLimiteDesconto.BackColor = System.Drawing.Color.White;
+            this.txtLimiteDesconto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtLimiteDesconto.BackColorState.Enabled = System.Drawing.Color.White;
+            this.txtLimiteDesconto.Border.Color = System.Drawing.Color.Gainsboro;
+            this.txtLimiteDesconto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.txtLimiteDesconto.Border.HoverVisible = true;
+            this.txtLimiteDesconto.Border.Rounding = 8;
+            this.txtLimiteDesconto.Border.Thickness = 1;
+            this.txtLimiteDesconto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtLimiteDesconto.Border.Visible = true;
+            this.txtLimiteDesconto.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtLimiteDesconto.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.txtLimiteDesconto.ButtonBorder.HoverVisible = true;
+            this.txtLimiteDesconto.ButtonBorder.Rounding = 6;
+            this.txtLimiteDesconto.ButtonBorder.Thickness = 1;
+            this.txtLimiteDesconto.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtLimiteDesconto.ButtonBorder.Visible = true;
+            this.txtLimiteDesconto.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtLimiteDesconto.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtLimiteDesconto.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtLimiteDesconto.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.txtLimiteDesconto.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.ButtonIndent = 3;
+            this.txtLimiteDesconto.ButtonText = "visualButton";
+            this.txtLimiteDesconto.ButtonVisible = false;
+            this.txtLimiteDesconto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.Image = null;
+            this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
+            this.txtLimiteDesconto.ImageVisible = false;
+            this.txtLimiteDesconto.ImageWidth = 35;
+            this.txtLimiteDesconto.Location = new System.Drawing.Point(20, 144);
+            this.txtLimiteDesconto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.txtLimiteDesconto.Name = "txtLimiteDesconto";
+            this.txtLimiteDesconto.PasswordChar = '\0';
+            this.txtLimiteDesconto.ReadOnly = false;
+            this.txtLimiteDesconto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 28);
+            this.txtLimiteDesconto.TabIndex = 42;
+            this.txtLimiteDesconto.TextBoxWidth = 118;
+            this.txtLimiteDesconto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.txtLimiteDesconto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.txtLimiteDesconto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.txtLimiteDesconto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtLimiteDesconto.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.txtLimiteDesconto.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.txtLimiteDesconto.Watermark.Text = "Watermark text";
+            this.txtLimiteDesconto.Watermark.Visible = false;
+            this.txtLimiteDesconto.WordWrap = true;
             // 
             // btnAddFornecedor
             // 
@@ -916,7 +1008,7 @@
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(92, 14);
+            this.pictureBox14.Location = new System.Drawing.Point(93, 14);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(15, 15);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -927,13 +1019,12 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.White;
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(85, 68);
+            this.pictureBox10.Location = new System.Drawing.Point(81, 70);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 40;
             this.pictureBox10.TabStop = false;
-            this.pictureBox10.Visible = false;
             // 
             // label21
             // 
@@ -953,12 +1044,11 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(17, 66);
+            this.label20.Location = new System.Drawing.Point(17, 67);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(65, 17);
             this.label20.TabIndex = 26;
             this.label20.Text = "Descrição";
-            this.label20.Visible = false;
             // 
             // Fornecedor
             // 
@@ -1050,7 +1140,7 @@
             this.inf_adicional.ImageSize = new System.Drawing.Size(16, 16);
             this.inf_adicional.ImageVisible = false;
             this.inf_adicional.ImageWidth = 35;
-            this.inf_adicional.Location = new System.Drawing.Point(20, 87);
+            this.inf_adicional.Location = new System.Drawing.Point(20, 88);
             this.inf_adicional.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.inf_adicional.Name = "inf_adicional";
             this.inf_adicional.PasswordChar = '\0';
@@ -1066,7 +1156,6 @@
             this.inf_adicional.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.inf_adicional.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.inf_adicional.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.inf_adicional.Visible = false;
             this.inf_adicional.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.inf_adicional.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inf_adicional.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
@@ -1820,6 +1909,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.pictureBox13);
+            this.tabPage5.Controls.Add(this.pictureBox12);
             this.tabPage5.Controls.Add(this.chkImpostoCFE);
             this.tabPage5.Controls.Add(this.pictureBox9);
             this.tabPage5.Controls.Add(this.ImpostoCFE);
@@ -1832,6 +1923,28 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Impostos";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(585, 105);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 181;
+            this.pictureBox13.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Location = new System.Drawing.Point(585, 41);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 180;
+            this.pictureBox12.TabStop = false;
             // 
             // chkImpostoCFE
             // 
@@ -1922,7 +2035,7 @@
             this.ImpostoCFE.Name = "ImpostoCFE";
             this.ImpostoCFE.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ImpostoCFE.SeparatorVisible = false;
-            this.ImpostoCFE.Size = new System.Drawing.Size(590, 29);
+            this.ImpostoCFE.Size = new System.Drawing.Size(562, 29);
             this.ImpostoCFE.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.ImpostoCFE.TabIndex = 177;
             this.ImpostoCFE.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -2021,7 +2134,7 @@
             this.ImpostoNFE.Name = "ImpostoNFE";
             this.ImpostoNFE.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ImpostoNFE.SeparatorVisible = false;
-            this.ImpostoNFE.Size = new System.Drawing.Size(590, 29);
+            this.ImpostoNFE.Size = new System.Drawing.Size(562, 29);
             this.ImpostoNFE.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.ImpostoNFE.TabIndex = 174;
             this.ImpostoNFE.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -2083,6 +2196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
@@ -2098,6 +2212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
@@ -2178,5 +2294,10 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.RadioButton filterMaisRecentes;
         private System.Windows.Forms.RadioButton filterTodos;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Label label3;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtLimiteDesconto;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox pictureBox12;
     }
 }

@@ -96,7 +96,7 @@ namespace Emiplus.View.Financeiro
         public Task<IEnumerable<dynamic>> GetDataTableCaixa()
         {
             var model = new Model.CaixaMovimentacao().Query();
-            model.Where("id_caixa", idCaixa);
+            model.Where("CAIXA_MOV.id_caixa", idCaixa);
             model.WhereFalse("CAIXA_MOV.excluir");
             model.LeftJoin("FORMAPGTO", "FORMAPGTO.id", "CAIXA_MOV.id_formapgto");
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "CAIXA_MOV.id_user");
@@ -108,11 +108,13 @@ namespace Emiplus.View.Financeiro
         public Task<IEnumerable<dynamic>> GetDataTableTitulo()
         {
             var model = new Model.Titulo().Query();
-            model.Where("id_caixa", idCaixa);
-            model.Where("TITULO.excluir", 0);
             model.LeftJoin("FORMAPGTO", "FORMAPGTO.id", "TITULO.ID_FORMAPGTO");
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "TITULO.id_usuario");
+            model.LeftJoin("PEDIDO", "PEDIDO.ID", "TITULO.ID_PEDIDO");
             model.Select("FORMAPGTO.nome as nome_pgto", "TITULO.*", "USUARIOS.NOME as USER_NAME");
+            model.Where("TITULO.id_caixa", idCaixa);
+            model.Where("TITULO.excluir", 0);
+            //model.Where("PEDIDO.TIPO", "Vendas");
             model.OrderByDesc("TITULO.criado");
             return model.GetAsync<dynamic>();
         }
@@ -120,8 +122,9 @@ namespace Emiplus.View.Financeiro
         public Task<IEnumerable<dynamic>> GetDataTablePedido()
         {
             var model = new Model.Pedido().Query();
+            model.Where("tipo", "Vendas");
             model.Where("id_caixa", idCaixa);
-            model.Where("pedido.excluir", 0);
+            model.Where("excluir", 0);
             model.OrderByDesc("pedido.id");
             return model.GetAsync<dynamic>();
         }

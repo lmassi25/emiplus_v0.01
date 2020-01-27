@@ -44,9 +44,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.retomarVendaInicio = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLimiteDesconto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -271,6 +275,86 @@
             this.retomarVendaInicio.TrueTextToggle = "Sim";
             this.retomarVendaInicio.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
             // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.White;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(174, 224);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 553;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(51, 222);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 17);
+            this.label1.TabIndex = 552;
+            this.label1.Text = "Limite de Desconto";
+            // 
+            // txtLimiteDesconto
+            // 
+            this.txtLimiteDesconto.AlphaNumeric = false;
+            this.txtLimiteDesconto.BackColor = System.Drawing.Color.White;
+            this.txtLimiteDesconto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtLimiteDesconto.BackColorState.Enabled = System.Drawing.Color.White;
+            this.txtLimiteDesconto.Border.Color = System.Drawing.Color.Gainsboro;
+            this.txtLimiteDesconto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.txtLimiteDesconto.Border.HoverVisible = true;
+            this.txtLimiteDesconto.Border.Rounding = 8;
+            this.txtLimiteDesconto.Border.Thickness = 1;
+            this.txtLimiteDesconto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtLimiteDesconto.Border.Visible = true;
+            this.txtLimiteDesconto.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtLimiteDesconto.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.txtLimiteDesconto.ButtonBorder.HoverVisible = true;
+            this.txtLimiteDesconto.ButtonBorder.Rounding = 6;
+            this.txtLimiteDesconto.ButtonBorder.Thickness = 1;
+            this.txtLimiteDesconto.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtLimiteDesconto.ButtonBorder.Visible = true;
+            this.txtLimiteDesconto.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtLimiteDesconto.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtLimiteDesconto.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtLimiteDesconto.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.txtLimiteDesconto.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.ButtonIndent = 3;
+            this.txtLimiteDesconto.ButtonText = "visualButton";
+            this.txtLimiteDesconto.ButtonVisible = false;
+            this.txtLimiteDesconto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.Image = null;
+            this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
+            this.txtLimiteDesconto.ImageVisible = false;
+            this.txtLimiteDesconto.ImageWidth = 35;
+            this.txtLimiteDesconto.Location = new System.Drawing.Point(54, 243);
+            this.txtLimiteDesconto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.txtLimiteDesconto.Name = "txtLimiteDesconto";
+            this.txtLimiteDesconto.PasswordChar = '\0';
+            this.txtLimiteDesconto.ReadOnly = false;
+            this.txtLimiteDesconto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 28);
+            this.txtLimiteDesconto.TabIndex = 551;
+            this.txtLimiteDesconto.TextBoxWidth = 118;
+            this.txtLimiteDesconto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.txtLimiteDesconto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtLimiteDesconto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.txtLimiteDesconto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.txtLimiteDesconto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtLimiteDesconto.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.txtLimiteDesconto.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.txtLimiteDesconto.Watermark.Text = "Watermark text";
+            this.txtLimiteDesconto.Watermark.Visible = false;
+            this.txtLimiteDesconto.WordWrap = true;
+            // 
             // Comercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +362,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtLimiteDesconto);
             this.Controls.Add(this.retomarVendaInicio);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.label4);
@@ -293,6 +380,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +401,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label15;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle retomarVendaInicio;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Label label1;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtLimiteDesconto;
     }
 }

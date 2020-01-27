@@ -186,7 +186,8 @@ namespace Emiplus.View.Produtos
                     Nome = item.NOME,
                     Ref = item.REFERENCIA,
                     Price = Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA)),
-                    Code = codeImageBar
+                    Code = codeImageBar,
+                    Nr = item.CODEBARRAS
                 });
             }
 

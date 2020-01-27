@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caixa));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caixa));
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnHelp = new System.Windows.Forms.Button();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.Usuarios = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -53,8 +55,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
-            this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
+            this.btnFinalizarImprimir = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,6 +125,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.btnFinalizarImprimir);
             this.panel5.Controls.Add(this.btnHelp);
             this.panel5.Location = new System.Drawing.Point(0, 632);
             this.panel5.Name = "panel5";
@@ -169,6 +171,62 @@
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(239, 596);
             this.barraTitulo.TabIndex = 171;
+            // 
+            // dataFinal
+            // 
+            this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataFinal.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataFinal.ArrowSize = new System.Drawing.Size(10, 5);
+            this.dataFinal.BackColor = System.Drawing.Color.White;
+            this.dataFinal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataFinal.BackColorState.Enabled = System.Drawing.Color.White;
+            this.dataFinal.Border.Color = System.Drawing.Color.Gainsboro;
+            this.dataFinal.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataFinal.Border.HoverVisible = true;
+            this.dataFinal.Border.Rounding = 6;
+            this.dataFinal.Border.Thickness = 1;
+            this.dataFinal.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.dataFinal.Border.Visible = true;
+            this.dataFinal.DropDownImage = null;
+            this.dataFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dataFinal.Image = null;
+            this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
+            this.dataFinal.Location = new System.Drawing.Point(53, 194);
+            this.dataFinal.MinimumSize = new System.Drawing.Size(0, 23);
+            this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.dataFinal.Name = "dataFinal";
+            this.dataFinal.Size = new System.Drawing.Size(173, 23);
+            this.dataFinal.TabIndex = 201;
+            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
+            // 
+            // dataInicial
+            // 
+            this.dataInicial.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataInicial.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.dataInicial.ArrowSize = new System.Drawing.Size(10, 5);
+            this.dataInicial.BackColor = System.Drawing.Color.White;
+            this.dataInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataInicial.BackColorState.Enabled = System.Drawing.Color.White;
+            this.dataInicial.Border.Color = System.Drawing.Color.Gainsboro;
+            this.dataInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataInicial.Border.HoverVisible = true;
+            this.dataInicial.Border.Rounding = 6;
+            this.dataInicial.Border.Thickness = 1;
+            this.dataInicial.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.dataInicial.Border.Visible = true;
+            this.dataInicial.DropDownImage = null;
+            this.dataInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dataInicial.Image = null;
+            this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
+            this.dataInicial.Location = new System.Drawing.Point(53, 164);
+            this.dataInicial.MinimumSize = new System.Drawing.Size(0, 23);
+            this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.dataInicial.Name = "dataInicial";
+            this.dataInicial.Size = new System.Drawing.Size(173, 23);
+            this.dataInicial.TabIndex = 200;
+            this.dataInicial.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
             // 
             // Usuarios
             // 
@@ -415,61 +473,27 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // dataFinal
+            // btnFinalizarImprimir
             // 
-            this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataFinal.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataFinal.ArrowSize = new System.Drawing.Size(10, 5);
-            this.dataFinal.BackColor = System.Drawing.Color.White;
-            this.dataFinal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataFinal.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataFinal.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataFinal.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.dataFinal.Border.HoverVisible = true;
-            this.dataFinal.Border.Rounding = 6;
-            this.dataFinal.Border.Thickness = 1;
-            this.dataFinal.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.dataFinal.Border.Visible = true;
-            this.dataFinal.DropDownImage = null;
-            this.dataFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataFinal.Image = null;
-            this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataFinal.Location = new System.Drawing.Point(53, 194);
-            this.dataFinal.MinimumSize = new System.Drawing.Size(0, 23);
-            this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.dataFinal.Name = "dataFinal";
-            this.dataFinal.Size = new System.Drawing.Size(173, 25);
-            this.dataFinal.TabIndex = 201;
-            this.dataFinal.Value = new System.DateTime(2019, 9, 24, 0, 0, 0, 0);
-            // 
-            // dataInicial
-            // 
-            this.dataInicial.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataInicial.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.dataInicial.ArrowSize = new System.Drawing.Size(10, 5);
-            this.dataInicial.BackColor = System.Drawing.Color.White;
-            this.dataInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataInicial.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataInicial.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.dataInicial.Border.HoverVisible = true;
-            this.dataInicial.Border.Rounding = 6;
-            this.dataInicial.Border.Thickness = 1;
-            this.dataInicial.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.dataInicial.Border.Visible = true;
-            this.dataInicial.DropDownImage = null;
-            this.dataInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataInicial.Image = null;
-            this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataInicial.Location = new System.Drawing.Point(53, 164);
-            this.dataInicial.MinimumSize = new System.Drawing.Size(0, 23);
-            this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.dataInicial.Name = "dataInicial";
-            this.dataInicial.Size = new System.Drawing.Size(173, 25);
-            this.dataInicial.TabIndex = 200;
-            this.dataInicial.Value = new System.DateTime(2019, 9, 8, 0, 0, 0, 0);
+            this.btnFinalizarImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFinalizarImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizarImprimir.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnFinalizarImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnFinalizarImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnFinalizarImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizarImprimir.Image")));
+            this.btnFinalizarImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFinalizarImprimir.Location = new System.Drawing.Point(911, 4);
+            this.btnFinalizarImprimir.Name = "btnFinalizarImprimir";
+            this.btnFinalizarImprimir.Size = new System.Drawing.Size(85, 90);
+            this.btnFinalizarImprimir.TabIndex = 101;
+            this.btnFinalizarImprimir.Text = "Imprimir";
+            this.btnFinalizarImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFinalizarImprimir.UseVisualStyleBackColor = true;
+            this.btnFinalizarImprimir.Visible = false;
             // 
             // Caixa
             // 
@@ -527,5 +551,6 @@
         private System.Windows.Forms.Label label12;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
+        private System.Windows.Forms.Button btnFinalizarImprimir;
     }
 }

@@ -1,12 +1,13 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using SqlKata.Execution;
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
@@ -23,6 +24,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         public static ArrayList fornecedores = new ArrayList();
 
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         public ImportarProdutos()
         {
@@ -424,9 +426,19 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
         private void Eventos()
         {
-            Load += (s, e) =>
-            {
+            WorkerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker)delegate {
                 LoadProdutos();
+            });
+
+            WorkerBackground.RunWorkerCompleted += (s, e) =>
+            {
+                label2.Visible = false;
+                GridLista.Visible = true;
+            };
+
+            Shown += (s, e) =>
+            {
+                Refresh();
                 AutoCompleteItens();
 
                 var cat = new Model.Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
@@ -447,6 +459,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     btnVincular.Visible = false;
                     label9.Text = "Edite o produto selecionado abaixo";
                 }
+
+                GridLista.Visible = false;
+                WorkerBackground.RunWorkerAsync();
             };
 
             btnVincular.Click += (s, e) => VincularProduto();

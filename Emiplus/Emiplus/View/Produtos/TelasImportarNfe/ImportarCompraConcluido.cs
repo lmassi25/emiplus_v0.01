@@ -144,6 +144,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.ValorCompra = item.ValorCompra;
                 _mItem.ValorVenda = item.ValorVenda;
                 _mItem.Fornecedor = Validation.ConvertToInt32(item.Fornecedor);
+                _mItem.id_sync = Validation.RandomSecurity();
+                _mItem.status_sync = "CREATE";
                 if (_mItem.Save(_mItem, false))
                 {
                     success = true;

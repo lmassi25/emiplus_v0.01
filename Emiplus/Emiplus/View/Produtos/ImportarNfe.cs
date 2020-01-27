@@ -59,6 +59,15 @@ namespace Emiplus.View.Produtos
                 optionSelected = 1;
             };
 
+            Shown += (s, e) =>
+            {
+                Refresh();
+
+                ToolHelp.Show("Opção para importar todos os produtos da nota.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show("Opção para manipular o estoque dos produtos contidos na nota que já estão cadastrado no sistema.", pictureBox2, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show("Opção para importar toda a nota.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            };
+
             btnSelecinarNfe.Click += (s, e) =>
             {
                 ofd.RestoreDirectory = true;
