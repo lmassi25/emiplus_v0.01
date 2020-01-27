@@ -55,16 +55,18 @@ namespace Emiplus.View.Comercial
             if (emitir)
             {
                 OpcoesCfeEmitir.idPedido = idPedido;
-                using(OpcoesCfeEmitir f = new OpcoesCfeEmitir())
-                    f.Show();
+                OpcoesCfeEmitir f = new OpcoesCfeEmitir();
+                f.TopMost = true;
+                f.Show();
 
                 Close();
             }
             else
             {
                 OpcoesCfe.idPedido = idPedido;
-                using(OpcoesCfe f = new OpcoesCfe())
-                    f.Show();
+                OpcoesCfe f = new OpcoesCfe();
+                f.TopMost = true;
+                f.Show();
 
                 Close();
             }

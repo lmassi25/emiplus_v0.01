@@ -110,9 +110,9 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(_path))
                 _path = @"C:\Emiplus";
 
-            //_servidorNFE = Settings.Default.empresa_nfe_servidornfe;
-            _servidorNFE = 2;
-            _servidorNFE = 1;
+            _servidorNFE = Settings.Default.empresa_nfe_servidornfe;
+            //_servidorNFE = 2;
+            //_servidorNFE = 1;
 
             if (IniFile.Read("Servidor", "SAT") == "Producao")
                 _servidorCFE = 1;
@@ -917,7 +917,6 @@ namespace Emiplus.Controller
                         cNF = "25" + getLastNFeNr().ToString("000000");
                         nNF = getLastNFeNr().ToString("000000000");
                         serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
-
                         chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
                         cDV = CalculoCDV(chvAcesso);
                         chvAcesso = chvAcesso + "" + cDV;
@@ -943,6 +942,8 @@ namespace Emiplus.Controller
                         chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
                         cDV = CalculoCDV(chvAcesso);
                         chvAcesso = chvAcesso + "" + cDV;
+
+                        _nota.ChaveDeAcesso = chvAcesso;
 
                         xml.WriteStartElement("NFe");
                         xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
@@ -1019,45 +1020,60 @@ namespace Emiplus.Controller
 
                 case "NFe":
 
-                    _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
-
-                    while (!String.IsNullOrEmpty(_msg) && done == false)
+                    if (IniFile.Read("NFe", "APP") == "Uninfe")
                     {
-                        if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
-                            _msg = RequestResolve();
+                        #region UNINFE
 
-                        if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                        uninfe_envia("envia", arqPath);
+
+                        #endregion
+                    }
+                    else
+                    {
+                        #region TECNOSPEED 
+
+                        _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
+
+                        while (!String.IsNullOrEmpty(_msg) && done == false)
                         {
-                            _msg = "Autorizado o uso da NF-e";
-                            _nota.Tipo = tipo;
-                            _nota.Status = "Autorizada";
-                            _nota.nr_Nota = nNF;
-                            _nota.Serie = serie;
-                            _nota.ChaveDeAcesso = chvAcesso;
-                            _nota.Save(_nota, false);
+                            if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                                _msg = RequestResolve();
 
-                            updateUltNfeAsync();
+                            if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                            {
+                                _msg = "Autorizado o uso da NF-e";
+                                _nota.Tipo = tipo;
+                                _nota.Status = "Autorizada";
+                                _nota.nr_Nota = nNF;
+                                _nota.Serie = serie;
+                                _nota.ChaveDeAcesso = chvAcesso;
+                                _nota.Save(_nota, false);
 
-                            done = true;
-                        }
+                                updateUltNfeAsync();
 
-                        switch (_msg)
-                        {
-                            case "":
-                                _msg = RequestConsult();
                                 done = true;
-                                break;
-                                /*default:
-                                    _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                            }
+
+                            switch (_msg)
+                            {
+                                case "":
+                                    _msg = RequestConsult();
                                     done = true;
-                                    break;*/
+                                    break;
+                                    /*default:
+                                        _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                                        done = true;
+                                        break;*/
+                            }
+
+                            if (!String.IsNullOrEmpty(_msg))
+                            {
+                                _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                                done = true;
+                            }
                         }
 
-                        if (!String.IsNullOrEmpty(_msg))
-                        {
-                            _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
-                            done = true;
-                        }
+                        #endregion
                     }
 
                     break;
@@ -1595,7 +1611,7 @@ namespace Emiplus.Controller
                 else
                     xml.WriteElementString("indIEDest", "1");
 
-                if (_destinatario.Isento != 1)
+                if (_destinatario.Isento != 1 && _destinatario.Pessoatipo == "Jurídica")
                     xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
 
@@ -2453,7 +2469,11 @@ namespace Emiplus.Controller
         private string RequestImport(string xml, string documento = "CFe")
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
-            return request(requestData, "cfesat", "importa", "POST");
+
+            if(documento == "CFe")
+                return request(requestData, "cfesat", "importa", "POST");
+            else
+                return request(requestData, "NFe", "importa", "POST");
         }
 
         private string request(string _requestData, string _documento, string _route, string _method)
@@ -2695,5 +2715,286 @@ namespace Emiplus.Controller
         }
 
         #endregion CODEBAR
+
+        #region UNINFE
+
+        private void uninfe_envia(string tipo = "envia", string arqPath = "")
+        {
+            Boolean encontrado = false;
+            string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""), _pathEnvio = _pathUninfe + @"\Envio", _pathRetorno = _pathUninfe + @"\Retorno";
+            int count = 0;
+
+            if (!Directory.Exists(_pathUninfe) || !Directory.Exists(_pathEnvio) || !Directory.Exists(_pathRetorno))
+            {
+                _msg = "Opss.. encontramos um erro: Diretórios Uninfe não encontrados.";
+                return;
+            }
+
+            if (_nota == null)
+            {
+                _msg = "Opss.. encontramos um erro: Chave de acesso não encontrada.";
+                return;
+            }
+
+            DirectoryInfo pastaRetorno = new DirectoryInfo(_pathRetorno);
+
+            switch (tipo)
+            {
+                case "envia":
+
+                    uninfe_limpa(_pathRetorno);
+                    File.Copy(arqPath, _pathEnvio + "\\" + _nota.ChaveDeAcesso + "-nfe.xml");
+                    _msg = "";
+                    Thread.Sleep(5000);
+
+                    break;
+
+                case "consulta":
+
+                    _msg = "";
+                    Thread.Sleep(5000);
+
+                    break;
+            }
+
+            while(!encontrado)
+            {
+                FileInfo[] findfiles = pastaRetorno.GetFiles("*");
+                foreach (FileInfo fileinfo in findfiles)
+                {
+                    switch (tipo)
+                    {
+                        default:
+
+                            if (fileinfo.Name.IndexOf("-pro-rec.xml") > 0)
+                            {
+                                encontrado = true;
+                            }
+                            else if (fileinfo.Name.IndexOf("-sit.xml") > 0)
+                            {
+                                encontrado = true;
+                            }
+                            else if (File.Exists(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err") == true)
+                            {
+                                _msg = System.IO.File.ReadAllText(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err");
+                                encontrado = true;
+                            }
+                            else if (fileinfo.Name.IndexOf("-rec.err") > 0)
+                            {
+                                _msg = System.IO.File.ReadAllText(_pathRetorno + "\\" + fileinfo.Name);
+                                encontrado = true;
+                            }
+
+                            break;
+                    }                    
+                }
+
+                count++;
+                Thread.Sleep(2000);
+
+                if (count == 1000)
+                    break;
+            }
+
+            if (encontrado == false)
+            {
+                _msg = "Opss.. encontramos um erro: Arquivo de retorno não encontrado.";
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(_msg))
+            {
+                return;
+            }
+
+            FileInfo[] files = pastaRetorno.GetFiles("*");
+            foreach (FileInfo fileinfo in files)
+            {
+                if (fileinfo.Name.IndexOf("-pro-rec.xml") > 0)
+                {
+                    #region AUTORIZA
+
+                    XmlDocument oXML = new XmlDocument();
+                    oXML.Load(_pathRetorno + "\\" + fileinfo.Name);
+
+                    XmlNodeList xnList = oXML.GetElementsByTagName("infProt");
+
+                    for (int i = 0; i < xnList.Count; i++)
+                    {
+                        if (xnList[i]["chNFe"].InnerText == _nota.ChaveDeAcesso)
+                        {
+                            if (xnList[i]["xMotivo"].InnerText == "Autorizado o uso da NF-e")
+                            {
+                                #region AUTORIZADA
+
+                                _msg = "Autorizado o uso da NF-e";
+                                _nota.Status = "Autorizada";
+                                _nota.Save(_nota, false);
+                                
+                                updateUltNfeAsync();
+
+                                uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
+
+                                #endregion
+                            }
+                            else if (xnList[i]["xMotivo"].InnerText.Contains("Duplicidade de NF-e"))
+                            {
+                                uninfe_consulta(_pathEnvio, _pathRetorno);
+                            }
+                            else
+                            {
+                                _msg = xnList[i]["xMotivo"].InnerText;
+                            }
+                        }
+                        else
+                        {
+                            _msg = "Opss.. encontramos um erro: Arquivo de retorno com Chave de Acesso diferente.";
+                        }
+                    }
+
+                    #endregion
+                }
+                else if (fileinfo.Name.IndexOf("-sit.xml") > 0)
+                {
+                    #region CONSULTA 
+
+                    XmlDocument oXML = new XmlDocument();
+                    oXML.Load(_pathRetorno + "\\" + fileinfo.Name);
+                    XmlNodeList xnList = oXML.GetElementsByTagName("infProt");
+
+                    for (int i = 0; i < xnList.Count; i++)
+                    {
+                        if (xnList[i]["chNFe"].InnerText == _nota.ChaveDeAcesso)
+                        {
+                            #region AUTORIZADA
+
+                            _msg = "Autorizado o uso da NF-e";                            
+                            _nota.Status = "Autorizada";
+                            _nota.Save(_nota, false);
+
+                            #endregion
+
+                            uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
+                        }
+                    }
+
+                    #endregion
+                }
+            } 
+        }      
+
+        private void uninfe_consulta(string _pathEnvio, string _pathRetorno)
+        {
+            #region DUPLICIDADE 
+
+            uninfe_limpa(_pathRetorno);
+
+            XmlTextWriter writer = new XmlTextWriter(_pathEnvio + "\\" + _nota.ChaveDeAcesso + "-ped-sit.xml", null);
+            writer.WriteStartElement("consSitNFe");
+            writer.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+            writer.WriteAttributeString("versao", "4.00");
+            writer.WriteElementString("tpAmb", _servidorNFE.ToString());
+            writer.WriteElementString("xServ", "CONSULTAR");
+            writer.WriteElementString("chNFe", _nota.ChaveDeAcesso);
+            writer.WriteEndElement();
+            writer.Close();
+
+            #endregion
+
+            uninfe_envia("consulta", _pathEnvio + "\\" + _nota.ChaveDeAcesso + "-ped-sit.xml");
+        }
+
+        private void uninfe_limpa(string _pathRetorno)
+        {
+            DirectoryInfo pastaRetorno = new DirectoryInfo(_pathRetorno);
+            FileInfo[] Arquivos = pastaRetorno.GetFiles("*");
+
+            #region Antes de tudo deleta os arquivos *-pro-rec.xml, *-nfe-ret.xml, *-num-lot.xml, *-rec.err, *-nfe.err
+
+            foreach (FileInfo del in Arquivos)
+            {
+                del.Delete();
+            }
+
+            #endregion
+        }
+
+        private void uninfe_xmlAutorizado(string chavedeacesso)
+        {
+            string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "\\Enviado\\Autorizados\\20" + chavedeacesso.Substring(2, 4);
+            string mensagem = "";
+
+            if (File.Exists(_pathUninfe + "\\" + chavedeacesso + "-procNFe.xml"))
+            {
+                XmlDocument oXML = new XmlDocument();
+                oXML.Load(_pathUninfe + "\\" + chavedeacesso + "-nfe.xml");
+
+                XmlNodeList xnList = oXML.GetElementsByTagName("ide");
+
+                for (int i = 0; i < xnList.Count; i++)
+                {
+                    _nota = new Model.Nota().Query().Where("CHAVEDEACESSO", chavedeacesso).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+                    if (_nota == null)
+                        return;
+
+                    _nota.nr_Nota = Validation.ConvertToInt32(xnList[i]["nNF"].InnerText).ToString("000000000");
+                    _nota.Serie = Validation.ConvertToInt32(xnList[i]["serie"].InnerText).ToString("000");
+                    _nota.Save(_nota, false);
+                }
+
+                try
+                {
+                    mensagem = RequestImport(oXML.OuterXml, "NFe");
+
+                    if (!mensagem.Contains("Importação realizada com sucesso"))
+                        new Log().Add("EXCEPTIONS", mensagem + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+                catch (Exception e)
+                {
+                    new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+
+                return;
+            }
+
+            if (File.Exists(_pathUninfe + "\\" + chavedeacesso + "-nfe.xml"))
+            {
+                XmlDocument oXML = new XmlDocument();
+                oXML.Load(_pathUninfe + "\\" + chavedeacesso + "-nfe.xml");
+
+                XmlNodeList xnList = oXML.GetElementsByTagName("ide");
+
+                for (int i = 0; i < xnList.Count; i++)
+                {
+                    _nota = new Model.Nota().Query().Where("CHAVEDEACESSO", chavedeacesso).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+                    if (_nota == null)
+                        return;
+
+                    _nota.nr_Nota = Validation.ConvertToInt32(xnList[i]["nNF"].InnerText).ToString("000000000");
+                    _nota.Serie = Validation.ConvertToInt32(xnList[i]["serie"].InnerText).ToString("000");
+                    _nota.Save(_nota, false);
+                }
+
+                try
+                {
+                    mensagem = RequestImport(oXML.OuterXml, "NFe");
+
+                    if (!mensagem.Contains("Importação realizada com sucesso"))
+                        new Log().Add("EXCEPTIONS", mensagem + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+                catch (Exception e)
+                {
+                    new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+                
+                return;
+            }
+
+            
+        }
+
+        #endregion
     }
 }
