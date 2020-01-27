@@ -49,6 +49,8 @@ namespace Emiplus.View.Produtos
             ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque.", pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Descrição adicional para o produto.", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             //ActiveControl = nome;
 
@@ -110,6 +112,9 @@ namespace Emiplus.View.Produtos
 
             LoadEstoque();
 
+            if (nome.Text.Length > 2)
+                btnEstoque.Enabled = true;
+
             if (_modelItem.Impostoid > 0)
             {
                 ImpostoNFE.SelectedValue = _modelItem.Impostoid;
@@ -147,6 +152,8 @@ namespace Emiplus.View.Produtos
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
             aliq_municipal.Text = Validation.Price(_modelItem.AliqMunicipal);
 
+            txtLimiteDesconto.Text = Validation.Price(_modelItem.Limite_Desconto);
+
             DataTableEstoque();
         }
 
@@ -162,8 +169,15 @@ namespace Emiplus.View.Produtos
                 }
             }
 
+            codebarras.Text = codebarras.Text.Trim();
             if (!string.IsNullOrEmpty(codebarras.Text))
             {
+                if (codebarras.Text.Length <= 3)
+                {
+                    Alert.Message("Oppss", "Código de barras é muito pequeno.", Alert.AlertType.error);
+                    return;
+                }
+
                 var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("codebarras", codebarras.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
@@ -195,7 +209,8 @@ namespace Emiplus.View.Produtos
             _modelItem.AliqFederal = Validation.ConvertToDouble(aliq_federal.Text);
             _modelItem.AliqEstadual = Validation.ConvertToDouble(aliq_estadual.Text);
             _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
-
+            _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
+            
             if (Categorias.SelectedValue != null)
                 _modelItem.Categoriaid = (int)Categorias.SelectedValue;
 
@@ -286,6 +301,9 @@ namespace Emiplus.View.Produtos
 
             btnEstoque.Click += (s, e) =>
             {
+                _modelItem.Nome = nome.Text;
+                _modelItem.Save(_modelItem, false);
+
                 AddEstoque f = new AddEstoque();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
@@ -303,6 +321,12 @@ namespace Emiplus.View.Produtos
             };
 
             valorvenda.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Masks.MaskPrice(ref txt);
+            };
+
+            txtLimiteDesconto.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
@@ -328,7 +352,18 @@ namespace Emiplus.View.Produtos
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
-            nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
+            nome.TextChanged += (s, e) =>
+            {
+                if (nome.Text.Length >= 2)
+                    btnEstoque.Visible = true;
+                else
+                    btnEstoque.Visible = false;
+            };
+
+            nome.KeyPress += (s, e) =>
+            {
+                Masks.MaskMaxLength(s, e, 100);
+            };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 

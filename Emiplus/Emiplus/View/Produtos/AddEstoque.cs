@@ -21,7 +21,7 @@ namespace Emiplus.View.Produtos
                 var item = _modelItem.FindById(IdItem).First<Item>();
 
                 tituloProduto.Text = item.Nome;
-                estoqueAtual.Text = item.EstoqueAtual.ToString();
+                estoqueAtual.Text = Validation.FormatMedidas(item.Medida, Validation.ConvertToDouble(item.EstoqueAtual));
                 custoAtual.Text = Validation.FormatPrice(item.ValorCompra);
             }
         }
@@ -46,23 +46,24 @@ namespace Emiplus.View.Produtos
 
             btnSalvar.Click += (s, e) =>
             {
-                var item = _modelItem.FindById(IdItem).First<Item>();
+                var item = _modelItem.FindById(IdItem).FirstOrDefault<Item>();
+                if (item != null) {
+                    var tipo = btnRadioAddItem.Checked ? "A" : btnRadioRemoveItem.Checked ? "R" : "A";
 
-                var tipo = btnRadioAddItem.Checked ? "A" : btnRadioRemoveItem.Checked ? "R" : "A";
+                    var data = _modelItemEstoque
+                        .SetUsuario(0)
+                        .SetQuantidade(Validation.ConvertToDouble(quantidade.Text))
+                        .SetTipo(tipo)
+                        .SetLocal("Cadastro de Produto")
+                        .SetObs(obs.Text)
+                        .SetItem(item)
+                        .Save(_modelItemEstoque);
 
-                var data = _modelItemEstoque
-                    .SetUsuario(0)
-                    .SetQuantidade(Validation.ConvertToDouble(quantidade.Text))
-                    .SetTipo(tipo)
-                    .SetLocal("Cadastro de Produto")
-                    .SetObs(obs.Text)
-                    .SetItem(item)
-                    .Save(_modelItemEstoque);
-
-                if (data)
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    if (data)
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
                 }
             };
 
@@ -73,24 +74,24 @@ namespace Emiplus.View.Produtos
             {
                 var item = _modelItem.FindById(IdItem).First<Item>();
                 if (btnRadioAddItem.Checked)
-                    novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
+                    novaQtd.Text = Validation.FormatMedidas(item.Medida, (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)));
 
                 if (btnRadioRemoveItem.Checked)
-                    novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
+                    novaQtd.Text = Validation.FormatMedidas(item.Medida, (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)));
             };
 
             btnRadioAddItem.Click += (s, e) =>
             {
                 var item = _modelItem.FindById(IdItem).First<Item>();
                 if (!string.IsNullOrEmpty(quantidade.Text))
-                    novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
+                    novaQtd.Text = Validation.FormatMedidas(item.Medida, (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)));
             };
 
             btnRadioRemoveItem.Click += (s, e) =>
             {
                 var item = _modelItem.FindById(IdItem).First<Item>();
                 if (!string.IsNullOrEmpty(quantidade.Text))
-                    novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
+                    novaQtd.Text = Validation.FormatMedidas(item.Medida, (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)));
             };
         }
     }

@@ -47,6 +47,8 @@ namespace Emiplus.Model
         public string CodeBarras { get; set; }
         public int Fornecedor { get; set; }
 
+        public double Limite_Desconto { get; set; }
+
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
