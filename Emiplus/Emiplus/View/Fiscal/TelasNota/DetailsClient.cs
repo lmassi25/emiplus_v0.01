@@ -85,10 +85,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                     Support.UpDownDataGrid(false, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     SelectAddr();
                     break;

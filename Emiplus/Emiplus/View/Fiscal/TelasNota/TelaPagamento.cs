@@ -15,6 +15,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         //private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         //private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Titulo _mTitulo = new Model.Titulo();
+
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Model.Nota _mNota = new Model.Nota();
 
@@ -64,18 +65,23 @@ namespace Emiplus.View.Fiscal.TelasNota
                 case "Dinheiro":
                     _controllerTitulo.AddPagamento(IdPedido, 1, valor.Text, iniciar.Text);
                     break;
+
                 case "Cheque":
                     _controllerTitulo.AddPagamento(IdPedido, 2, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Cartão de Débito":
                     _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text);
                     break;
+
                 case "Cartão de Crédito":
                     _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Crediário":
                     _controllerTitulo.AddPagamento(IdPedido, 5, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Boleto":
                     _controllerTitulo.AddPagamento(IdPedido, 6, valor.Text, iniciar.Text, parcelas.Text);
                     break;
@@ -140,6 +146,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 AtualizarDados();
             }
         }
+
         private void JanelaAcrescimo()
         {
             //PedidoPayAcrescimo.idPedido = IdPedido;
@@ -154,42 +161,55 @@ namespace Emiplus.View.Fiscal.TelasNota
                 case Keys.Enter:
                     bSalvar();
                     break;
+
                 case Keys.F1:
                     JanelasRecebimento("Dinheiro");
                     break;
+
                 case Keys.F2:
                     JanelasRecebimento("Cheque");
                     break;
+
                 case Keys.F3:
                     JanelasRecebimento("Cartão de Débito");
                     break;
+
                 case Keys.F4:
                     JanelasRecebimento("Cartão de Crédito");
                     break;
+
                 case Keys.F5:
                     JanelasRecebimento("Crediário");
                     break;
+
                 case Keys.F6:
                     JanelasRecebimento("Boleto");
                     break;
+
                 case Keys.F7:
                     JanelaDesconto();
                     break;
+
                 case Keys.F8:
                     JanelaAcrescimo();
                     break;
+
                 case Keys.F9:
                     //TelaPagamentos();
                     break;
+
                 case Keys.F10:
                     //TelaPagamentos();
                     break;
+
                 case Keys.F11:
                     //TelaPagamentos();
                     break;
+
                 case Keys.F12:
                     //TelaPagamentos();
                     break;
+
                 case Keys.Escape:
                     TelaReceber.Visible = false;
                     break;
@@ -271,9 +291,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 OpenForm.Show<TelaFinal>(this);
             };
-            
+
             Back.Click += (s, e) => Close();
         }
     }
 }
-

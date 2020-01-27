@@ -1,30 +1,26 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Linq;
 using System.ComponentModel;
-using Emiplus.View.Common;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
-        #region V 
-
         public static int idPdtSelecionado { get; set; }
         private Item _modelItem = new Item();
         private Controller.Item _controllerItem = new Controller.Item();
 
         private BackgroundWorker backOn = new BackgroundWorker();
-        private IEnumerable<dynamic> categorias { get; set;}
-        private IEnumerable<dynamic> fornecedores { get; set;}
-        private IEnumerable<dynamic> impostos { get; set;}
-        private IEnumerable<dynamic> impostos2 { get; set;}
-
-        #endregion
+        private IEnumerable<dynamic> categorias { get; set; }
+        private IEnumerable<dynamic> fornecedores { get; set; }
+        private IEnumerable<dynamic> impostos { get; set; }
+        private IEnumerable<dynamic> impostos2 { get; set; }
 
         public AddProduct()
         {
@@ -66,8 +62,8 @@ namespace Emiplus.View.Produtos
 
             LoadFornecedores();
 
-            Medidas.DataSource = Support.GetUnidades();
-            
+            Medidas.DataSource = Support.GetMedidas();
+
             //var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (impostos.Count() > 0)
             {
@@ -225,11 +221,11 @@ namespace Emiplus.View.Produtos
 
         private void DataTableEstoque()
         {
-            if(filterMaisRecentes.Checked == true)
+            if (filterMaisRecentes.Checked == true)
                 _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado, 10);
             else
                 _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
-        }   
+        }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
@@ -245,6 +241,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Shown += (s, e) =>
             {
@@ -276,7 +273,7 @@ namespace Emiplus.View.Produtos
             };
 
             btnSalvar.Click += (s, e) => Save();
-            btnRemover.Click += (s, e) => 
+            btnRemover.Click += (s, e) =>
             {
                 var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um produto, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
@@ -327,7 +324,7 @@ namespace Emiplus.View.Produtos
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
             referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-            
+
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
@@ -337,7 +334,7 @@ namespace Emiplus.View.Produtos
 
             chkImpostoNFE.Click += (s, e) =>
             {
-                if(chkImpostoNFE.Checked == true)
+                if (chkImpostoNFE.Checked == true)
                 {
                     ImpostoNFE.Enabled = true;
                 }
@@ -361,24 +358,18 @@ namespace Emiplus.View.Produtos
                 }
             };
 
-            filterTodos.Click += (s, e) =>
-            {
-                DataTableEstoque();
-            };
+            filterTodos.Click += (s, e) => DataTableEstoque();
 
-            filterMaisRecentes.Click += (s, e) =>
-            {
-                DataTableEstoque();
-            };
+            filterMaisRecentes.Click += (s, e) => DataTableEstoque();
 
-           backOn.DoWork += (s, e) =>
-            {
-                _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-                categorias = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
-                fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
-                impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-                impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            };
+            backOn.DoWork += (s, e) =>
+             {
+                 _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
+                 categorias = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
+                 fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+                 impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                 impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+             };
 
             backOn.RunWorkerCompleted += (s, e) =>
             {
@@ -405,17 +396,6 @@ namespace Emiplus.View.Produtos
                     }
                 }
             };
-
-            //foreach (VisualPlus.Toolkit.Controls.Editors.VisualTextBox tb in this.Controls.OfType<VisualPlus.Toolkit.Controls.Editors.VisualTextBox>())
-            //    tb.KeyPress += (s, e) => e.KeyChar = Char.ToUpper(e.KeyChar);
-
-            //foreach (Control x in this.VisualPlus.Toolkit.Controls.Editors.VisualTextBox)
-            //{
-            //    if (x is TextBox)
-            //    {
-            //        var s = ((TextBox)x).Text;
-            //    }
-            //}
         }
     }
 }

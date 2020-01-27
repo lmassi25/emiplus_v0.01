@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -16,9 +9,11 @@ namespace Emiplus.View.Common
         private string video { get; set; }
 
         #region DLL SHADOW
+
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
          ********************************************************************/
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
     (
@@ -101,9 +96,9 @@ namespace Emiplus.View.Common
                             topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
-
                     }
                     break;
+
                 default:
                     break;
             }
@@ -111,18 +106,20 @@ namespace Emiplus.View.Common
 
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
-
         }
+
         /********************************************************************
-         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\ 
+         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\
          ********************************************************************/
-        #endregion
+
+        #endregion DLL SHADOW
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 

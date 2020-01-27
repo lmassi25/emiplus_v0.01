@@ -1,7 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
-using Emiplus.Properties;
 using Emiplus.View.Financeiro;
-using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -89,7 +87,7 @@ namespace Emiplus.View.Common
                 Home.financeiroPage = "Pagar";
                 OpenForm.Show<EditarTitulo>(this);
             };
-            
+
             AbrirCaixa.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(AbrirCaixa, pictureBox6, "fin_abrircaixa"))

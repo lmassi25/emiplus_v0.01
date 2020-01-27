@@ -4,15 +4,18 @@ using System;
 
 namespace Emiplus.Model
 {
-    class Natureza : Data.Database.Model
+    internal class Natureza : Data.Database.Model
     {
-        public Natureza() : base("NATUREZA") { }
+        public Natureza() : base("NATUREZA")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
@@ -22,7 +25,9 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public bool Save(Natureza data)
         {

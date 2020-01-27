@@ -44,7 +44,8 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public SqlKata.Query FindAll(string[] columns = null)
         {
-            try {
+            try
+            {
                 columns = columns ?? new[] { "*" };
                 var data = db.Query(Entity).Select(columns);
                 return data;
@@ -104,7 +105,7 @@ namespace Emiplus.Data.Database
         /// <returns>Retorna objeto</returns>
         public SqlKata.Query FindById(int id)
         {
-            try 
+            try
             {
                 var data = db.Query(Entity).Where("ID", id);
                 return data;
@@ -119,7 +120,8 @@ namespace Emiplus.Data.Database
 
         public int GetLastId()
         {
-            try {
+            try
+            {
                 int id_num = 0;
                 foreach (var item in db.Select("select gen_id(GEN_" + Entity + "_ID, 0) as num from rdb$database;"))
                 {

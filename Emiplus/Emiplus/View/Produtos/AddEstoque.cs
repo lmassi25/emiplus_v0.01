@@ -10,7 +10,7 @@ namespace Emiplus.View.Produtos
         private ItemEstoqueMovimentacao _modelItemEstoque = new ItemEstoqueMovimentacao();
         private Item _modelItem = new Item();
         private int IdItem = AddProduct.idPdtSelecionado;
-        
+
         public AddEstoque()
         {
             InitializeComponent();
@@ -40,6 +40,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             btnCancelar.Click += (s, e) => Close();
 
@@ -73,7 +74,7 @@ namespace Emiplus.View.Produtos
                 var item = _modelItem.FindById(IdItem).First<Item>();
                 if (btnRadioAddItem.Checked)
                     novaQtd.Text = (item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text)).ToString();
-                
+
                 if (btnRadioRemoveItem.Checked)
                     novaQtd.Text = (item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text)).ToString();
             };

@@ -11,12 +11,15 @@ using RestSharp;
 using Newtonsoft.Json;
 using System.Text;
 using Emiplus.View.Testes;
+using System.Globalization;
 
 namespace Emiplus
 {
     static class Program
     {
         public static string URL_BASE = "https://www.emiplus.com.br";
+        
+        public static CultureInfo cultura = new CultureInfo("pt-BR");
 
         /// <summary>
         /// Caminho definido no Config.ini

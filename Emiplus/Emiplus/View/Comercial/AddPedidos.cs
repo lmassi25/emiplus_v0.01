@@ -5,7 +5,6 @@ using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -37,9 +36,9 @@ namespace Emiplus.View.Comercial
         private Model.Usuarios _mUsuario = new Model.Usuarios();
         private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
 
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
-        #endregion
+        #endregion V
 
         public AddPedidos()
         {
@@ -88,7 +87,7 @@ namespace Emiplus.View.Comercial
                     btnConcluir.Text = "Finalizar";
                     btnDelete.Visible = false;
                     btnGerarVenda.Visible = false;
-                }   
+                }
             }
             else if (Home.pedidoPage == "Consignações")
             {
@@ -137,7 +136,7 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados da Troca: {Id}";
                 label3.Text = "Siga as etapas abaixo para criar uma troca!";
                 btnConcluir.Text = "Finalizar";
-                
+
                 btnDelete.Visible = false;
                 btnGerarVenda.Visible = false;
 
@@ -146,8 +145,8 @@ namespace Emiplus.View.Comercial
                 label12.Visible = true;
                 label12.Text = "Voucher";
                 IDCaixa.Visible = true;
-                
-                if(String.IsNullOrEmpty(_mPedido.Voucher))
+
+                if (String.IsNullOrEmpty(_mPedido.Voucher))
                     _mPedido.Voucher = new Controller.Pedido().RandomString(4);
 
                 IDCaixa.Text = _mPedido.Voucher;
@@ -252,14 +251,14 @@ namespace Emiplus.View.Comercial
                     .Where("codebarras", BuscarProduto.Text)
                     .OrWhere("referencia", BuscarProduto.Text)
                     .FirstOrDefault<Model.Item>();
-                
+
                 if (item != null)
                     BuscarProduto.Text = item.Nome;
-                else                    
-                    ModalItens(); // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.            
+                else
+                    ModalItens(); // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
             }
 
-            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
+            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais
             AddItem();
 
             PedidoModalItens.NomeProduto = "";
@@ -312,7 +311,7 @@ namespace Emiplus.View.Comercial
             {
                 if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
                 {
-                    if(Home.pedidoPage == "Compras")
+                    if (Home.pedidoPage == "Compras")
                         AlertOptions.Message("Atenção!", "Sua compra não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     else if (Home.pedidoPage == "Devoluções")
                         AlertOptions.Message("Atenção!", "Sua troca não contém cliente! Adicione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
@@ -345,7 +344,7 @@ namespace Emiplus.View.Comercial
                 {
                     Alert.Message("Opps!", "Erro ao reabrir.", Alert.AlertType.error);
                 }
-                
+
                 return;
             }
 
@@ -356,7 +355,7 @@ namespace Emiplus.View.Comercial
                 _mPedido.Id = Id;
                 _mPedido.Tipo = "Vendas";
                 _mPedido.status = 1; //RECEBIMENTO PENDENTE
-                if (_mPedido.Save(_mPedido)) 
+                if (_mPedido.Save(_mPedido))
                 {
                     Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
@@ -389,7 +388,7 @@ namespace Emiplus.View.Comercial
                     _mPedido.Tipo = "Compras";
                     if (_mPedido.Save(_mPedido))
                     {
-                        btnFinalizado = true;                        
+                        btnFinalizado = true;
                         f.ShowDialog();
                         return;
                     }
@@ -424,7 +423,7 @@ namespace Emiplus.View.Comercial
 
                         Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
-                        
+
                         Close();
 
                         return;
@@ -445,7 +444,7 @@ namespace Emiplus.View.Comercial
 
                         Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
-                        
+
                         Close();
 
                         return;
@@ -453,6 +452,7 @@ namespace Emiplus.View.Comercial
 
                     Alert.Message("Opss", "Problema ao finalizar Orçamento", Alert.AlertType.error);
                     break;
+
                 default:
                     btnFinalizado = true;
                     f.Show();
@@ -461,7 +461,7 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
-        /// Altera o modo do pedido, para avançado e simples. 
+        /// Altera o modo do pedido, para avançado e simples.
         /// 1 = Avançado, 0 = Simples
         /// </summary>
         private void AlterarModo()
@@ -570,6 +570,22 @@ namespace Emiplus.View.Comercial
                 string MedidaTxt = Medidas.Text;
                 double PriceTxt = Validation.ConvertToDouble(Preco.Text);
 
+                if (PriceTxt == 0) {
+                    if (DescontoReaisTxt > item.ValorVenda || DescontoPorcentagemTxt > 101)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
+                if (PriceTxt > 0) {
+                    if (DescontoReaisTxt > PriceTxt || DescontoPorcentagemTxt >= 101)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
                 var pedidoItem = new Model.PedidoItem();
                 pedidoItem.SetId(0)
                     .SetTipo(item.Tipo)
@@ -596,7 +612,7 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
-                if(item.Tipo == "Produtos")
+                if (item.Tipo == "Produtos")
                 {
                     new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
@@ -644,24 +660,29 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     AlterarModo();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F2:
                     BuscarProduto.Focus();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F3:
 
                     if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
@@ -716,17 +737,21 @@ namespace Emiplus.View.Comercial
 
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F5:
                     new Controller.Pedido().Imprimir(Id);
                     break;
+
                 case Keys.F7:
                     ModalClientes();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F8:
                     ModalColaborador();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F10:
                     TelaPagamentos();
                     e.SuppressKeyPress = true;
@@ -757,6 +782,7 @@ namespace Emiplus.View.Comercial
             SelecionarColaborador.KeyDown += KeyDowns;
             addProduto.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -785,7 +811,7 @@ namespace Emiplus.View.Comercial
                     }
                 }
 
-                Medidas.DataSource = Support.GetUnidades();                
+                Medidas.DataSource = Support.GetMedidas();
             };
 
             btnConcluir.Click += (s, e) =>
@@ -948,7 +974,7 @@ namespace Emiplus.View.Comercial
                         btnFinalizado = true;
                 }
 
-                if(btnVoltar)
+                if (btnVoltar)
                 {
                     btnVoltar = false;
                     //return;

@@ -21,6 +21,7 @@ namespace Emiplus.View.Fiscal
                 btnSalvar.Text = value;
             }
         }
+
         public int btnSalvarWidth
         {
             get
@@ -32,6 +33,7 @@ namespace Emiplus.View.Fiscal
                 btnSalvar.Width = value;
             }
         }
+
         public int btnSalvarLocation
         {
             get
@@ -70,6 +72,7 @@ namespace Emiplus.View.Fiscal
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {

@@ -5,19 +5,21 @@
     using Emiplus.Properties;
     using Emiplus.View.Common;
     using SqlKata;
-    using SqlKata.Execution;
     using System;
     using System.Collections.Generic;
 
-    class Pedido : Model
+    internal class Pedido : Model
     {
-        public Pedido() : base("PEDIDO") {}
+        public Pedido() : base("PEDIDO")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -36,8 +38,9 @@
 
         //public Pessoa Colaborador { get; set; }
 
-        // totais 
+        // totais
         public double Total { get; set; }
+
         public double Desconto { get; set; }
         public double Frete { get; set; }
         public double Produtos { get; set; }
@@ -76,29 +79,7 @@
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion
-
-        #region Generator
-        //  CREATE GENERATOR GEN_PEDIDO_ID;
-
-        //  SET TERM !! ;
-        //  CREATE TRIGGER PEDIDO_BI FOR PEDIDO
-        //  ACTIVE BEFORE INSERT POSITION 0
-        //  AS
-        //  DECLARE VARIABLE tmp DECIMAL(18,0);
-        //  BEGIN
-        //    IF(NEW.ID IS NULL) THEN
-        //     NEW.ID = GEN_ID(GEN_PEDIDO_ID, 1);
-        //  ELSE
-        //  BEGIN
-        //      tmp = GEN_ID(GEN_PEDIDO_ID, 0);
-        //      if (tmp< new.ID) then
-        //       tmp = GEN_ID(GEN_PEDIDO_ID, new.ID - tmp);
-        //  END
-        //END!!
-        //  SET TERM; !!
-
-        #endregion
+        #endregion CAMPOS
 
         public Pedido SaveTotais(Dictionary<string, double> data)
         {

@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
     public partial class AlertBig : Form
     {
-
         #region DLL SHADOW
+
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
          ********************************************************************/
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
     (
@@ -100,9 +95,9 @@ namespace Emiplus.View.Common
                             topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
-
                     }
                     break;
+
                 default:
                     break;
             }
@@ -110,12 +105,13 @@ namespace Emiplus.View.Common
 
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
-
         }
+
         /********************************************************************
-         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\ 
+         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\
          ********************************************************************/
-        #endregion
+
+        #endregion DLL SHADOW
 
         public AlertBig(string _title, string _message, AlertType type, AlertBtn btn, bool focus = false)
         {
@@ -129,12 +125,15 @@ namespace Emiplus.View.Common
                 case AlertType.success:
                     icon.Image = Properties.Resources.success;
                     break;
+
                 case AlertType.info:
                     icon.Image = Properties.Resources.info;
                     break;
+
                 case AlertType.warning:
                     icon.Image = Properties.Resources.warning;
                     break;
+
                 case AlertType.error:
                     icon.Image = Properties.Resources.error;
                     break;
@@ -150,6 +149,7 @@ namespace Emiplus.View.Common
                     else
                         btnSim.Focus();
                     break;
+
                 case AlertBtn.OK:
                     btnOk.Visible = true;
                     btnOk.Focus();
@@ -205,7 +205,7 @@ namespace Emiplus.View.Common
                     break;
             }
         }
-        
+
         /// <summary>
         /// Eventos do form
         /// </summary>

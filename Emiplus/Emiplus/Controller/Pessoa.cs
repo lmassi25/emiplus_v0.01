@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    class Pessoa : Data.Core.Controller
+    internal class Pessoa : Data.Core.Controller
     {
         public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null)
         {

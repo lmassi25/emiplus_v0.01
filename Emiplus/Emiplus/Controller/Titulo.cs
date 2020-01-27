@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class Titulo : Data.Core.Controller
+    internal class Titulo : Data.Core.Controller
     {
         public static string status { get; set; }
 
@@ -19,9 +19,9 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido, SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).First();
-            var total = data.TOTAL;
-            var recebido = data.RECEBIDO;
+            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido, SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault();
+            var total = data.TOTAL ?? 0;
+            var recebido = data.RECEBIDO ?? 0;
 
             return Validation.ConvertToDouble(total - recebido);
         }
@@ -31,8 +31,8 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido").Where("id_pedido", idPedido).Where("excluir", 0).First();
-            return Validation.ConvertToDouble(data.RECEBIDO);
+            var data = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault();
+            return Validation.ConvertToDouble(data.RECEBIDO ?? 0);
         }
 
         public double GetRestante(int idPedido)
@@ -40,8 +40,8 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).First();
-            var lancado = Validation.ConvertToDouble(data.TOTAL);
+            var data = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault();
+            var lancado = Validation.ConvertToDouble(data.TOTAL ?? 0);
 
             double restante = 0;
             if (lancado < GetTotalPedido(idPedido))
@@ -58,7 +58,7 @@ namespace Emiplus.Controller
                 return 0;
 
             var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).FirstOrDefault();
-            return Validation.ConvertToDouble(data.TOTAL);
+            return Validation.ConvertToDouble(data.TOTAL ?? 0);
         }
 
         public double GetTotalProdutos(int idPedido)
@@ -67,7 +67,7 @@ namespace Emiplus.Controller
                 return 0;
 
             var data = new Model.Pedido().FindById(idPedido).Select("produtos").Where("excluir", 0).FirstOrDefault();
-            return Validation.ConvertToDouble(data.PRODUTOS);
+            return Validation.ConvertToDouble(data.PRODUTOS ?? 0);
         }
 
         public double GetTotalDesconto(int idPedido)
@@ -75,8 +75,8 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Pedido().FindById(idPedido).Select("desconto").Where("excluir", 0).First();
-            return Validation.ConvertToDouble(data.DESCONTO);
+            var data = new Model.Pedido().FindById(idPedido).Select("desconto").Where("excluir", 0).FirstOrDefault();
+            return Validation.ConvertToDouble(data.DESCONTO ?? 0);
         }
 
         public double GetTotalFrete(int idPedido)
@@ -84,8 +84,8 @@ namespace Emiplus.Controller
             if (String.IsNullOrEmpty(idPedido.ToString()))
                 return 0;
 
-            var data = new Model.Pedido().FindById(idPedido).Select("frete").Where("excluir", 0).First();
-            return Validation.ConvertToDouble(data.FRETE);
+            var data = new Model.Pedido().FindById(idPedido).Select("frete").Where("excluir", 0).FirstOrDefault();
+            return Validation.ConvertToDouble(data.FRETE ?? 0);
         }
 
         public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")
@@ -93,6 +93,12 @@ namespace Emiplus.Controller
             var data = new Model.Titulo();
             double valor = Validation.ConvertToDouble(valorS);
             DateTime vencimento = DateTime.Now;
+
+            if (Validation.ConvertToDouble(valorS) <= 0)
+            {
+                Alert.Message("Opss", "O valor informado é inválido!", Alert.AlertType.error);
+                return false;
+            }
 
             if (idPedido > 0)
             {
@@ -103,7 +109,9 @@ namespace Emiplus.Controller
                 }
 
                 data.Id_Pedido = idPedido;
-                data.Id_Pessoa = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).FirstOrDefault().CLIENTE;
+
+                var clienteId = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).FirstOrDefault();
+                data.Id_Pessoa = clienteId.CLIENTE ?? 0;
             }
             if (valor < 0)
             {
@@ -134,7 +142,7 @@ namespace Emiplus.Controller
                     data.Vencimento = Validation.ConvertDateToSql(vencimento);
                     data.Recebido = data.Total;
                     data.Id_Caixa = Home.idCaixa;
-                    data.Save(data);
+                    data.Save(data, false);
                 }
             }
             else if (Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3)
@@ -142,35 +150,31 @@ namespace Emiplus.Controller
                 data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela));
 
                 int count = 1;
-                while(count <= Validation.ConvertToInt32(parcela))
-                {    
+                while (count <= Validation.ConvertToInt32(parcela))
+                {
                     data.Id = 0;
                     data.Id_FormaPgto = formaPgto;
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSql(vencimento.AddMonths(count));
                     data.Recebido = data.Total;
                     data.Id_Caixa = Home.idCaixa;
-                    data.Save(data);
+                    data.Save(data, false);
                     count++;
                 }
             }
             else
             {
                 //1 DINHEIRO 3 CARTÃO DE DÉBITO
-                
+
                 data.Id = 0;
                 data.Id_FormaPgto = formaPgto;
                 data.Emissao = Validation.DateNowToSql();
 
                 if (!String.IsNullOrEmpty(inicio))
-                {
                     data.Vencimento = Validation.ConvertDateToSql(inicio);
-                }
                 else
-                {
                     data.Vencimento = Validation.DateNowToSql();
-                }
-                 
+
                 if (formaPgto == 1 && valor > GetRestante(idPedido))
                 {
                     data.Total = GetRestante(idPedido);
@@ -179,7 +183,7 @@ namespace Emiplus.Controller
                 else
                 {
                     data.Total = valor;
-                    data.Recebido = valor;                    
+                    data.Recebido = valor;
                 }
 
                 data.Id_Caixa = Home.idCaixa;
@@ -189,7 +193,7 @@ namespace Emiplus.Controller
                 else
                     data.Tipo = "Receber";
 
-                if (data.Save(data))
+                if (data.Save(data, false))
                     return true;
 
                 return false;
@@ -262,8 +266,7 @@ namespace Emiplus.Controller
         {
             Table.Rows.Clear();
 
-            var titulos = new Model.Titulo();
-
+            //var titulos = new Model.Titulo();
             //var data = titulos.Query()
             //    .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
             //    .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
@@ -279,7 +282,7 @@ namespace Emiplus.Controller
                 Table.Rows.Add(
                     item.ID,
                     item.FORMAPGTO,
-                    Validation.ConvertDateToForm(item.VENCIMENTO),  
+                    Validation.ConvertDateToForm(item.VENCIMENTO),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
                     new Bitmap(Properties.Resources.bin16x)
                 );

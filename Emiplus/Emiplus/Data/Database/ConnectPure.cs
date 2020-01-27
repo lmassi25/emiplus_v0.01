@@ -1,11 +1,11 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using Emiplus.Data.Core;
+using FirebirdSql.Data.FirebirdClient;
 using System;
 
 namespace Emiplus.Data.Database
 {
-    class ConnectPure
+    internal class ConnectPure
     {
         public static string _path { get; set; }
         private const string _user = "sysdba";
@@ -13,7 +13,9 @@ namespace Emiplus.Data.Database
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
-        protected ConnectPure() { }
+        protected ConnectPure()
+        {
+        }
 
         private static string GetDatabase()
         {

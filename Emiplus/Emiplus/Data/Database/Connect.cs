@@ -1,13 +1,13 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System.IO;
-using Emiplus.Data.Core;
 
 namespace Emiplus.Data.Database
 {
-    class Connect
+    internal class Connect
     {
         public string _path { get; set; }
         public bool update { get; set; }
@@ -28,7 +28,7 @@ namespace Emiplus.Data.Database
                 if (File.Exists(IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb"))
                 {
                     return _path = IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb";
-                }                
+                }
             }
 
             return _path = IniFile.Read("PathDatabase", "LOCAL") + "\\EMIPLUS.FDB";

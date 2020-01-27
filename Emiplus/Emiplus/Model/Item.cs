@@ -9,13 +9,16 @@ namespace Emiplus.Model
 
     internal class Item : Model
     {
-        public Item() : base("ITEM") { }
+        public Item() : base("ITEM")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -39,7 +42,7 @@ namespace Emiplus.Model
         public double AliqFederal { get; set; }
         public double AliqEstadual { get; set; }
         public double AliqMunicipal { get; set; }
-        
+
         public string InfAdicional { get; set; }
         public string CodeBarras { get; set; }
         public int Fornecedor { get; set; }
@@ -47,7 +50,7 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion
+        #endregion CAMPOS
 
         public bool Save(Item data, bool message = true)
         {
@@ -56,7 +59,7 @@ namespace Emiplus.Model
             if (data.Id == 0)
             {
                 data.id_sync = Validation.RandomSecurity();
-                data.status_sync = "CREATE";                
+                data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
@@ -80,7 +83,7 @@ namespace Emiplus.Model
                     if (message) Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
                     return true;
                 }
-                
+
                 Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
                 return false;
             }
@@ -117,8 +120,8 @@ namespace Emiplus.Model
                     .MinLength(2)
                     .WithMessage("Coloque um nome válido."))
                 //.Ensure(m => m.Ncm, _ => _
-                    //.MaxLength(8)
-                    //.WithMessage("O NCM não pode ser MAIOR que 8 caracateres."))
+                //.MaxLength(8)
+                //.WithMessage("O NCM não pode ser MAIOR que 8 caracateres."))
                 .For(data)
                 .Validate();
 

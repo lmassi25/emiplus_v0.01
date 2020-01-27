@@ -1,11 +1,10 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
 using SqlKata.Execution;
-using System.Collections;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Linq;
 using System;
+using System.Collections;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
 {
@@ -51,7 +50,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void DisableCampos()
         {
-            if (Nota.disableCampos) {
+            if (Nota.disableCampos)
+            {
                 emissao.Enabled = false;
                 saida.Enabled = false;
                 hora.Enabled = false;
@@ -117,8 +117,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             _mPedido.info_contribuinte = infoContribuinte.Text;
             _mPedido.info_fisco = infoFisco.Text;
             _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue) > 0 ? Validation.ConvertToInt32(naturezaOp.SelectedValue) : 0;
-            
-            if (PedidoModalClientes.Id > 0)            
+
+            if (PedidoModalClientes.Id > 0)
                 _mPedido.Cliente = PedidoModalClientes.Id;
 
             if (DetailsClient.IdAddress > 0)
@@ -129,7 +129,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             var tipos = new ArrayList();
             tipos.Add(new { Id = "1", Nome = "Saída" });
-            tipos.Add(new { Id = "0", Nome = "Entrada" });            
+            tipos.Add(new { Id = "0", Nome = "Entrada" });
             tipo.DataSource = tipos;
             tipo.DisplayMember = "Nome";
             tipo.ValueMember = "Id";
@@ -192,6 +192,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void Eventos()
         {
+            Masks.SetToUpper(this);
+
             Load += (s, e) =>
             {
                 if (Id > 0)
@@ -199,7 +201,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     LoadData();
                 }
 
-                if(_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
+                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
                 {
                     progress5.Visible = false;
                     step5.Visible = false;
@@ -282,7 +284,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             saida.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            hora.KeyPress += (s, e) => Masks.MaskHour(s, e);            
+            hora.KeyPress += (s, e) => Masks.MaskHour(s, e);
         }
     }
 }

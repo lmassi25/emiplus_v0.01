@@ -6,13 +6,16 @@
     using System;
     using Valit;
 
-    class Pessoa : Model
+    internal class Pessoa : Model
     {
-        public Pessoa() : base("PESSOA") { }
+        public Pessoa() : base("PESSOA")
+        {
+        }
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -33,6 +36,7 @@
         public string status_sync { get; set; }
 
         #region SQL Create
+
         //CREATE TABLE PESSOA
         //(
         //id integer not null primary key,
@@ -50,7 +54,8 @@
         //cpf varchar(50),
         //aniversario date
         //);
-        #endregion
+
+        #endregion SQL Create
 
         public bool Save(Pessoa data, bool message = true)
         {

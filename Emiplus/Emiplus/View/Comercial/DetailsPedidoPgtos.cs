@@ -1,5 +1,4 @@
 ﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -41,6 +40,7 @@ namespace Emiplus.View.Comercial
                 );
             }
         }
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)

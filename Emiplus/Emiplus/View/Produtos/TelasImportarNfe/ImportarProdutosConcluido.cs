@@ -1,22 +1,11 @@
 ﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarProdutosConcluido : Form
     {
-
         private Model.Item _mItem = new Model.Item();
 
         public ImportarProdutosConcluido()

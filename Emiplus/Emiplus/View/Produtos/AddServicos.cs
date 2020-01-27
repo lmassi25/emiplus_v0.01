@@ -1,28 +1,24 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
-using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Linq;
-using System.Collections;
-using System.ComponentModel;
 using Emiplus.View.Common;
-using System.Threading;
-using System.Threading.Tasks;
+using SqlKata.Execution;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddServicos : Form
     {
-        #region V 
+        #region V
+
         public static int idPdtSelecionado { get; set; }
         private Item _modelItem = new Item();
         private Controller.Item _controllerItem = new Controller.Item();
 
         private BackgroundWorker backOn = new BackgroundWorker();
 
-        #endregion
+        #endregion V
 
         public AddServicos()
         {
@@ -33,7 +29,7 @@ namespace Emiplus.View.Produtos
         }
 
         private void Start()
-        {            
+        {
             ToolHelp.Show("Descreva seu serviço... Lembre-se de utilizar as características do serviço.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
@@ -99,6 +95,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Shown += (s, e) =>
             {

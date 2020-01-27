@@ -9,7 +9,9 @@
     <section class="sheet padding-10mm">
         <article>
             <table>
-                <tr>{% if Colunas != 0 %}{% for c in (1..Colunas) %}<td></td>{% endfor %}{% endif %}{% for item in mitens %}
+                <tr>
+                    {% if Colunas != 0 %}{% for c in (1..Colunas) %}
+                    <td></td>{% endfor %}{% endif %}{% for item in mitens %}
                     <td>
                         <span class="title">{{item.Nome}}</span>
                         <span class="code_barras">{% if !codeHtml %}{% if item.Code != "" %}<img src="data:image/png;base64,{{item.Code}}">{% endif %}{% endif %}</span>

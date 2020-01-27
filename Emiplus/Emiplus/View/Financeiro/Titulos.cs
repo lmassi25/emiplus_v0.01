@@ -28,7 +28,7 @@ namespace Emiplus.View.Financeiro
                 label1.Text = "Recebimentos";
                 label6.Text = "Recebimentos";
                 label2.Text = "Confira aqui todas os títulos a Receber/Recebidos da sua empresa.";
-                status.DataSource = new List<String> { "Todos", "Pendentes", "Recebidos"};
+                status.DataSource = new List<String> { "Todos", "Pendentes", "Recebidos" };
             }
             else if (Home.financeiroPage == "Pagar")
             {
@@ -37,7 +37,7 @@ namespace Emiplus.View.Financeiro
                 label2.Text = "Confira aqui todas os títulos a Pagar/Pagos da sua empresa.";
                 status.DataSource = new List<String> { "Todos", "Pendentes", "Pagos" };
             }
-                
+
             data.DataSource = new List<String> { "Vencimento", "Emissão" };
 
             dataInicial.Text = Validation.DateNowToSql();
@@ -91,6 +91,7 @@ namespace Emiplus.View.Financeiro
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) => Filter();
             search.TextChanged += (s, e) => Filter();
@@ -105,7 +106,7 @@ namespace Emiplus.View.Financeiro
 
             imprimir.Click += async (s, e) => await RenderizarAsync();
         }
-        
+
         private async Task RenderizarAsync()
         {
             FilterTypes();
@@ -130,7 +131,7 @@ namespace Emiplus.View.Financeiro
             {
                 data.Add(new
                 {
-                    ID = item.ID,                    
+                    ID = item.ID,
                     FORMAPGTO = item.FORMAPGTO,
                     EMISSAO = Validation.ConvertDateToForm(item.EMISSAO),
                     VENCIMENTO = Validation.ConvertDateToForm(item.VENCIMENTO),

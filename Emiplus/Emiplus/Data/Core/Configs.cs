@@ -1,6 +1,6 @@
 ﻿namespace Emiplus.Data.Core
 {
-    class Configs
+    internal class Configs
     {
         public static double TimeLoading = 1000;
     }

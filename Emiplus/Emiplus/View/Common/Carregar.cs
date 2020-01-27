@@ -115,7 +115,7 @@ namespace Emiplus.View.Common
 
         #endregion Shadow box
 
-        int atualiza = 0;
+        private int atualiza = 0;
 
         public Carregar()
         {
@@ -157,6 +157,5 @@ namespace Emiplus.View.Common
             f.Show();
             Hide();
         }
-
     }
 }

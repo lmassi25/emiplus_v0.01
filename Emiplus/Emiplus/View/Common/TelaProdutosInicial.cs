@@ -1,10 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
-using Emiplus.View.Fiscal;
 using Emiplus.View.Reports;
-using System;
-using System.Dynamic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common

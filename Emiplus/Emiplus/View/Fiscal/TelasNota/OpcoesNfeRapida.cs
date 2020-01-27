@@ -2,14 +2,8 @@
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -56,7 +50,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             };
 
             Emitir.Click += (s, e) =>
-            {                
+            {
                 //var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
                 var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
 
@@ -144,7 +138,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _modelNota = checkNota;
 
                 CartaCorrecaoAdd.tela = "Cancelar";
-                CartaCorrecaoAdd f = new CartaCorrecaoAdd();                
+                CartaCorrecaoAdd f = new CartaCorrecaoAdd();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     CartaCorrecaoAdd.tela = "";
@@ -181,7 +175,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                     WorkerBackground.RunWorkerAsync();
                 }
             };
-
 
             Imprimir.Click += (s, e) =>
             {
@@ -230,7 +223,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                             break;
 
-                        case 3:                            
+                        case 3:
                             //_msg = new Controller.Fiscal().EmitirCCe(idPedido, "Nota gerada com informacoes incorretas, por gentileza verificar as corretas");
                             break;
 
@@ -241,7 +234,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                             _msg = new Controller.Fiscal().Cancelar(idPedido, "NFe", justificativa, _modelNota.Id);
                             break;
 
-                        case 5:                            
+                        case 5:
                             _msg = new Controller.Fiscal().EnviarEmail(idPedido, justificativa, "NFe", _modelNota.Id);
                             break;
                     }

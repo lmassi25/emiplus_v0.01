@@ -1,6 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
-using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -27,10 +26,12 @@ namespace Emiplus.View.Comercial
                 {
                     DialogResult = DialogResult.OK;
                     NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
-                    if(Home.pedidoPage == "Compras")
+
+                    if (Home.pedidoPage == "Compras")
                         ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Custo"].Value);
                     else
                         ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Venda"].Value);
+
                     Close();
                 }
             }
@@ -46,24 +47,29 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     //GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     buscarProduto.Focus();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F10:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Enter:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
@@ -75,14 +81,11 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
-            
-            //KeyDown += KeyDowns;
+
             buscarProduto.Text = txtSearch;
-            //buscarProduto.KeyDown += KeyDowns;
-            //Selecionar.KeyDown += KeyDowns;
-            //GridListaProdutos.KeyDown += KeyDowns;
 
             buscarProduto.TextChanged += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
 

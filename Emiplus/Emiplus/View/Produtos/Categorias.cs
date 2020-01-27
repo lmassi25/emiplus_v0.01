@@ -18,7 +18,7 @@ namespace Emiplus.View.Produtos
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(Configs.TimeLoading);
+        private Timer timer = new Timer(Configs.TimeLoading);
 
         public Categorias()
         {
@@ -86,13 +86,16 @@ namespace Emiplus.View.Produtos
                     Support.UpDownDataGrid(false, GridListaCategorias);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridListaCategorias);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     EditCategoria();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -103,8 +106,10 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 search.Select();
                 DataTableStart();
             };
@@ -145,7 +150,8 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate {
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
+            {
                 DataTable();
                 Loading.Visible = false;
                 GridListaCategorias.Visible = true;

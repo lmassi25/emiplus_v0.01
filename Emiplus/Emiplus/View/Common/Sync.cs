@@ -1,23 +1,21 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Database;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Newtonsoft.Json;
+using RestSharp;
 using SqlKata.Execution;
 using System.Collections.Generic;
 using System.ComponentModel;
-using RestSharp;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emiplus.Properties;
-using Newtonsoft.Json;
-using Emiplus.Data.Helpers;
-using System.Threading;
-using System;
-using System.IO;
 
 namespace Emiplus.View.Common
 {
     public partial class Sync : Form
     {
-        BackgroundWorker backWork = new BackgroundWorker();
+        private BackgroundWorker backWork = new BackgroundWorker();
 
         /// <summary>
         /// Acesso ao banco local
@@ -85,6 +83,7 @@ namespace Emiplus.View.Common
         }
 
         #region Metodos geral
+
         /// <summary>
         /// Recupera os dados das tabelas do sistema local para manipulação
         /// Função retorna os registros 'CREATE' ou 'NULL'
@@ -144,7 +143,8 @@ namespace Emiplus.View.Common
 
             return false;
         }
-        #endregion
+
+        #endregion Metodos geral
 
         private void SendNota()
         {

@@ -2,8 +2,8 @@
 
 namespace Emiplus.Data.Helpers
 {
-    class UserPermission
-    {   
+    internal class UserPermission
+    {
         public static bool SetControl(Button button, PictureBox img, string tela, bool message = true)
         {
             if (!GetPermission(tela))
@@ -51,7 +51,7 @@ namespace Emiplus.Data.Helpers
                     return false;
                 }
             }
-            
+
             return true;
         }
     }

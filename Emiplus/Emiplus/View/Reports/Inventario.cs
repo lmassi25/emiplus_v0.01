@@ -42,7 +42,7 @@ namespace Emiplus.View.Reports
 
             var fornecedores = new ArrayList();
             fornecedores.Add(new { Id = "0", Nome = "Todos" });
-            
+
             var fornecedor = new Model.Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
             foreach (var item in fornecedor)
             {
@@ -57,7 +57,7 @@ namespace Emiplus.View.Reports
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
             var model = new Model.Item().Query();
-        
+
             if (Validation.ConvertToInt32(Categorias.SelectedValue) >= 1)
             {
                 model.Where("ITEM.CATEGORIAID", Validation.ConvertToInt32(Categorias.SelectedValue));
@@ -99,7 +99,7 @@ namespace Emiplus.View.Reports
 
             Table.Columns[4].Name = "Revendedor";
             Table.Columns[4].Width = 150;
-            
+
             Table.Rows.Clear();
 
             if (Data == null)
@@ -139,7 +139,8 @@ namespace Emiplus.View.Reports
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 Resolution.SetScreenMaximized(this);
 
                 AutoCompleteFornecedorCategorias();

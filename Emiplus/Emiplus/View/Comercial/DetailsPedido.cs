@@ -1,17 +1,10 @@
-﻿using DotLiquid;
-using Emiplus.Controller;
+﻿using Emiplus.Controller;
 using Emiplus.Data.Helpers;
-using Emiplus.Properties;
 using Emiplus.View.Common;
-using Emiplus.View.Financeiro;
 using Emiplus.View.Fiscal.TelasNota;
-using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -32,7 +25,7 @@ namespace Emiplus.View.Comercial
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
-        #endregion
+        #endregion V
 
         public static int idPedido { get; set; }
 
@@ -69,6 +62,7 @@ namespace Emiplus.View.Comercial
                     panel8.Visible = false;
                     nrPedido.Left = 542;
                     break;
+
                 case "Compras":
                     label1.Text = "Detalhes da Compra:";
                     label2.Text = "Confira nessa tela todas as informações da sua compra.";
@@ -181,7 +175,7 @@ namespace Emiplus.View.Comercial
                 {
                     pessoaID = pessoa.Id;
                     cliente.Text = pessoa.Nome;
-                }   
+                }
             }
 
             if (_modelPedido.Colaborador > 0)
@@ -219,12 +213,14 @@ namespace Emiplus.View.Comercial
                 case Keys.Escape:
                     Close();
                     break;
+
                 case Keys.F9:
                     if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
                         return;
 
                     Cfe();
                     break;
+
                 case Keys.F10:
                     if (!Support.CheckForInternetConnection())
                     {
@@ -237,6 +233,7 @@ namespace Emiplus.View.Comercial
 
                     Nfe();
                     break;
+
                 case Keys.F11:
                     new PedidoImpressao().Print(idPedido);
                     e.SuppressKeyPress = true;
@@ -334,7 +331,6 @@ namespace Emiplus.View.Comercial
                         Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
                         return;
                     }
-                        
                 }
 
                 ModalClientes();
@@ -350,7 +346,6 @@ namespace Emiplus.View.Comercial
                         Alert.Message("Ação não permitida", "Existem documentos fiscais vinculados!", Alert.AlertType.warning);
                         return;
                     }
-
                 }
 
                 ModalColaborador();

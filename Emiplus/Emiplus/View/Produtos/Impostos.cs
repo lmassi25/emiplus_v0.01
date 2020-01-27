@@ -17,7 +17,7 @@ namespace Emiplus.View.Produtos
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(Configs.TimeLoading);
+        private Timer timer = new Timer(Configs.TimeLoading);
 
         public Impostos()
         {
@@ -59,13 +59,16 @@ namespace Emiplus.View.Produtos
                     Support.UpDownDataGrid(false, GridListaImpostos);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridListaImpostos);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     EditImposto();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -76,6 +79,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -119,7 +123,8 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate {
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
+            {
                 DataTable();
                 Loading.Visible = false;
                 GridListaImpostos.Visible = true;

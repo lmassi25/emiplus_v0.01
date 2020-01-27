@@ -697,10 +697,10 @@
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = null;
-            this.btnSearch.Location = new System.Drawing.Point(48, 534);
+            this.btnSearch.Location = new System.Drawing.Point(48, 531);
             this.btnSearch.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(140, 45);
+            this.btnSearch.Size = new System.Drawing.Size(140, 30);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Pesquisar";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;

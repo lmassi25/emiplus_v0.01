@@ -17,7 +17,7 @@ namespace Emiplus.View.Financeiro
         public EditarTitulo()
         {
             InitializeComponent();
-            Eventos();            
+            Eventos();
         }
 
         private void LoadData()
@@ -26,9 +26,9 @@ namespace Emiplus.View.Financeiro
 
             emissao.Text = _modelTitulo.Emissao == null ? Validation.ConvertDateToForm(Validation.DateNowToSql()) : Validation.ConvertDateToForm(_modelTitulo.Emissao);
             vencimento.Text = _modelTitulo.Vencimento == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Vencimento);
-            
+
             total.Text = _modelTitulo.Total == null ? "" : Validation.Price(_modelTitulo.Total);
-            
+
             dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = _modelTitulo.Recebido == null ? "" : Validation.Price(_modelTitulo.Recebido);
 
@@ -67,7 +67,7 @@ namespace Emiplus.View.Financeiro
 
             if (receita.SelectedValue != null)
                 _modelTitulo.Id_Categoria = (int)receita.SelectedValue;
-            
+
             if (_modelTitulo.Save(_modelTitulo))
                 Close();
         }
@@ -147,7 +147,7 @@ namespace Emiplus.View.Financeiro
                     receita.SelectedValue = _modelTitulo.Id_Categoria;
                 }
             };
-            
+
             btnSalvar.Click += (s, e) => Save();
             btnRemover.Click += (s, e) =>
             {

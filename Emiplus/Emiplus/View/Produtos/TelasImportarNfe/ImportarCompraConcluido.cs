@@ -2,13 +2,7 @@
 using Emiplus.Properties;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
@@ -101,7 +95,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridListaTitulos.Columns[2].Name = "Valor";
             GridListaTitulos.Columns[2].Width = 120;
             GridListaTitulos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            
+
             foreach (dynamic item in ImportarPagamentos.titulos)
             {
                 GridListaTitulos.Rows.Add(

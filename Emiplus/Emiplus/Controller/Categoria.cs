@@ -1,14 +1,14 @@
-﻿using SqlKata.Execution;
-using System.Windows.Forms;
-using System.Linq;
+﻿using Emiplus.View.Common;
+using SqlKata.Execution;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Reflection;
-using Emiplus.View.Common;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class Categoria
+    internal class Categoria
     {
         public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
         {
@@ -59,6 +59,5 @@ namespace Emiplus.Controller
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-
     }
 }

@@ -46,7 +46,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         }
 
         private bool Validate()
-        {            
+        {
             return false;
         }
 
@@ -56,7 +56,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             tipos.Add(new { Id = "9", Nome = "Sem frete" });
             tipos.Add(new { Id = "0", Nome = "Por conta do emitente" });
             tipos.Add(new { Id = "1", Nome = "Por conta do destinatário/remetente" });
-            tipos.Add(new { Id = "2", Nome = "Por conta de terceiros" });            
+            tipos.Add(new { Id = "2", Nome = "Por conta de terceiros" });
             tipo.DataSource = tipos;
             tipo.DisplayMember = "Nome";
             tipo.ValueMember = "Id";
@@ -86,7 +86,9 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void Eventos()
         {
-            Load += (s, e) => 
+            Masks.SetToUpper(this);
+
+            Load += (s, e) =>
             {
                 LoadData();
                 if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
@@ -108,7 +110,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     _mPedido.Id_Transportadora = PedidoModalTransportadora.Id;
                     _mPedido.Save(_mPedido);
                     LoadData();
-                }                
+                }
             };
 
             Next.Click += (s, e) =>
@@ -129,7 +131,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 if (_mPedido.Id_Transportadora > 0)
                 {
-                    _mTransportadora.Id =  _mPedido.Id_Transportadora;
+                    _mTransportadora.Id = _mPedido.Id_Transportadora;
                     _mTransportadora.Transporte_rntc = rntc.Text;
                     _mTransportadora.Transporte_uf = uf.Text;
                     _mTransportadora.Transporte_placa = placa.Text;
@@ -137,7 +139,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     if (!Nota.disableCampos)
                         _mTransportadora.Save(_mTransportadora, false);
                 }
-                
+
                 OpenForm.Show<TelaPagamento>(this);
             };
 

@@ -22,8 +22,8 @@ namespace Emiplus.View.Comercial
 
             Model.PedidoItem item = new Model.PedidoItem();
             item = item.FindById(IdPedidoItem).FirstOrDefault<Model.PedidoItem>();
-            
-            if(item.Tipo == "Produtos")
+
+            if (item.Tipo == "Produtos")
             {
                 if (Home.pedidoPage != "Compras")
                     new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Add().Item();
@@ -45,6 +45,7 @@ namespace Emiplus.View.Comercial
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Enter:
                     CancelItem();
                     e.SuppressKeyPress = true;

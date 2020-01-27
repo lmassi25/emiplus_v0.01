@@ -927,7 +927,7 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.White;
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(85, 66);
+            this.pictureBox10.Location = new System.Drawing.Point(85, 68);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -953,7 +953,7 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(17, 64);
+            this.label20.Location = new System.Drawing.Point(17, 66);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(65, 17);
             this.label20.TabIndex = 26;
@@ -1050,7 +1050,7 @@
             this.inf_adicional.ImageSize = new System.Drawing.Size(16, 16);
             this.inf_adicional.ImageVisible = false;
             this.inf_adicional.ImageWidth = 35;
-            this.inf_adicional.Location = new System.Drawing.Point(20, 84);
+            this.inf_adicional.Location = new System.Drawing.Point(20, 87);
             this.inf_adicional.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.inf_adicional.Name = "inf_adicional";
             this.inf_adicional.PasswordChar = '\0';

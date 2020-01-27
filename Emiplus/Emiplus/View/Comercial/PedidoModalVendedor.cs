@@ -23,11 +23,12 @@ namespace Emiplus.View.Comercial
             if (GridListaVendedores.SelectedRows.Count > 0)
             {
                 DialogResult = DialogResult.OK;
-                Id = Convert.ToInt32(GridListaVendedores.SelectedRows[0].Cells["ID"].Value);
+                Id = Validation.ConvertToInt32(GridListaVendedores.SelectedRows[0].Cells["ID"].Value);
+
                 Close();
             }
         }
-        
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -38,24 +39,29 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     GridListaVendedores.Focus();
                     Support.UpDownDataGrid(true, GridListaVendedores);
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     search.Focus();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F10:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Enter:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
@@ -67,13 +73,11 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns;
-            //search.KeyDown += KeyDowns;
-            //GridListaVendedores.KeyDown += KeyDowns;
+            Masks.SetToUpper(this);
 
             Load += (s, e) => search.Select();
             btnSelecionar.Click += (s, e) => SelectItemGrid();
-            
+
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();
 

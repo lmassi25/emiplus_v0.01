@@ -31,18 +31,18 @@ namespace Emiplus.View.Comercial
         private Controller.Pedido _cPedido = new Controller.Pedido();
         private Model.Pessoa _mPessoa = new Model.Pessoa();
         private Model.Item _mItem = new Model.Item();
-        
+
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(Configs.TimeLoading);
+        private Timer timer = new Timer(Configs.TimeLoading);
 
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-        KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
 
         private string controle;
 
-        #endregion
+        #endregion V
 
         public Pedido()
         {
@@ -59,26 +59,32 @@ namespace Emiplus.View.Comercial
                     label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
                     //label13.Visible = false;
                     break;
+
                 case "Consignações":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
                     //label13.Visible = false;
                     break;
+
                 case "Devoluções":
                     label2.Text = "Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
                     break;
+
                 case "Compras":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
                     label11.Text = "Procurar por fornecedor";
                     //label13.Visible = false;
                     break;
+
                 case "Notas":
                     label1.Text = "NF-e";
                     label2.Text = "Gerencie as NF-e aqui! Adicione, edite ou apague uma nota.";
                     break;
+
                 case "Cupons":
                     label1.Text = "CF-e S@T";
                     label2.Text = "Gerencie os CF-e S@T aqui! Adicione, edite ou apague um cupom.";
                     break;
+
                 case "Vendas":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
                     break;
@@ -103,12 +109,15 @@ namespace Emiplus.View.Comercial
                 case "Compras":
                     data.Where("tipo", "Fornecedores");
                     break;
+
                 case "Consignações":
                     data.Where("tipo", "Clientes");
                     break;
+
                 case "Devoluções":
                     data.Where("tipo", "Clientes");
                     break;
+
                 default:
                     data.Where("tipo", "Clientes");
                     break;
@@ -164,7 +173,7 @@ namespace Emiplus.View.Comercial
                 excluir = 1;
 
             await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
-        }   
+        }
 
         private void EditPedido(bool create = false)
         {
@@ -188,11 +197,11 @@ namespace Emiplus.View.Comercial
                     return;
                 }
             }
-            
+
             if (GridLista.SelectedRows.Count > 0)
             {
                 Model.Pedido dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Pedido>();
-                if(dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" && Home.pedidoPage != "Cupons")
+                if (dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" && Home.pedidoPage != "Cupons")
                 {
                     Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
                     return;
@@ -210,15 +219,15 @@ namespace Emiplus.View.Comercial
                 {
                     OpcoesCfe.tipoTela = 1;
                     OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    OpcoesCfe.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);                    
+                    OpcoesCfe.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
                     OpcoesCfe f = new OpcoesCfe();
                     f.Show();
                     return;
                 }
-                
+
                 if (Home.pedidoPage == "Notas")
                 {
-                    if(!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
+                    if (!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
                     {
                         OpcoesNfeRapida.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value); ;
                         OpcoesNfeRapida f = new OpcoesNfeRapida();
@@ -230,7 +239,7 @@ namespace Emiplus.View.Comercial
                         Nota nota = new Nota();
                         nota.ShowDialog();
                     }
-                }                
+                }
                 else
                 {
                     if (Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["EXCLUIR"].Value) > 0)
@@ -270,13 +279,16 @@ namespace Emiplus.View.Comercial
                     Support.UpDownDataGrid(false, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     Filter();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -288,9 +300,10 @@ namespace Emiplus.View.Comercial
             controle = "";
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
-            { 
+            {
                 DataTableStart();
                 BuscarPessoa.Select();
                 AutoCompletePessoas();
@@ -309,7 +322,7 @@ namespace Emiplus.View.Comercial
                     status.Add(new { ID = 2, NOME = "Autorizadas" });
                     status.Add(new { ID = 3, NOME = "Canceladas" });
                 }
-                else if(Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                else if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                 {
                     status.Add(new { ID = 0, NOME = "Pendente" });
                     status.Add(new { ID = 1, NOME = "Finalizado" });
@@ -326,7 +339,6 @@ namespace Emiplus.View.Comercial
                 Status.SelectedValue = 99;
 
                 filterTodos.Checked = true;
-                
             };
 
             BuscarPessoa.KeyDown += (s, e) =>
@@ -334,28 +346,16 @@ namespace Emiplus.View.Comercial
                 controle = "BuscarPessoa";
                 KeyDowns(s, e);
             };
-                
-            BuscarPessoa.TextChanged += (s, e) =>
-            {
-                //timer.Stop();
-                //timer.Start();
-                //Loading.Visible = true;
-                //GridLista.Visible = false;
-            };
 
             btnSearch.Click += (s, e) => Filter();
 
             btnAdicionar.Click += (s, e) =>
             {
-                //if (Home.pedidoPage == "Orçamentos")
-                //    Home.pedidoPage = "Orçamentos";
-                
                 EditPedido(true);
             };
 
             btnEditar.Click += (s, e) => EditPedido();
             GridLista.DoubleClick += (s, e) => EditPedido();
-            //GridLista.KeyDown += KeyDowns;
 
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();
@@ -404,7 +404,8 @@ namespace Emiplus.View.Comercial
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => BuscarPessoa.Invoke((MethodInvoker)delegate {
+            timer.Elapsed += (s, e) => BuscarPessoa.Invoke((MethodInvoker)delegate
+            {
                 Filter();
                 Loading.Visible = false;
                 GridLista.Visible = true;
@@ -418,7 +419,7 @@ namespace Emiplus.View.Comercial
 
             imprimir.Click += async (s, e) =>
             {
-                if(Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
+                if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
                 {
                     Alert.Message("Ação não permitida", "Relatório não disponível", Alert.AlertType.warning);
                     return;
@@ -431,7 +432,6 @@ namespace Emiplus.View.Comercial
                 btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=Z2pkMEAAk4Q");
             if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                 btnVideoAjuda.Visible = false;
-
         }
 
         private async Task RenderizarAsync()

@@ -1,16 +1,14 @@
 ﻿using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Emiplus.Data.Helpers.Validation;
 
 namespace Emiplus.Controller
 {
-    class Etiqueta
+    internal class Etiqueta
     {
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
@@ -39,7 +37,7 @@ namespace Emiplus.Controller
 
             Table.Columns[2].Name = "Referência";
             Table.Columns[2].Width = 100;
-            
+
             Table.Columns[3].Name = "Descrição";
 
             Table.Columns[4].Name = "Preço";

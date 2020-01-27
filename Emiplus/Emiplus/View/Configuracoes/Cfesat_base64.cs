@@ -1,13 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -16,7 +9,7 @@ namespace Emiplus.View.Configuracoes
 {
     public partial class Cfesat_base64 : Form
     {
-        OpenFileDialog ofd = new OpenFileDialog();
+        private OpenFileDialog ofd = new OpenFileDialog();
 
         public Cfesat_base64()
         {
@@ -25,7 +18,7 @@ namespace Emiplus.View.Configuracoes
 
             logs.Select();
         }
-        
+
         /// <summary>
         /// Eventos do form
         /// </summary>
@@ -47,7 +40,7 @@ namespace Emiplus.View.Configuracoes
                 }
 
                 //caminho.Text = @"D:\_CLIENTES\MIKE CENTER\3.txt";
-                
+
                 if (!File.Exists(caminho.Text))
                 {
                     Alert.Message("Ação não permitida", "Arquivo não encontrado!", Alert.AlertType.warning);

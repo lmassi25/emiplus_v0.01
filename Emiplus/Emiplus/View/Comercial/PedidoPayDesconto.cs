@@ -1,6 +1,6 @@
-﻿using SqlKata.Execution;
+﻿using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Comercial
 {
@@ -74,6 +74,7 @@ namespace Emiplus.View.Comercial
                 case Keys.Enter:
                     Save();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -84,7 +85,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns; 
+            //KeyDown += KeyDowns;
             //btnSalvar.KeyDown += KeyDowns;
             //btnCancelar.KeyDown += KeyDowns;
             //porcentagem.KeyDown += KeyDowns;
@@ -94,14 +95,13 @@ namespace Emiplus.View.Comercial
             {
                 Model.Pedido data = _mPedido.Query().Select("desconto").Where("id", idPedido).FirstOrDefault<Model.Pedido>();
 
-                if(data != null)
+                if (data != null)
                 {
                     if (data.Desconto > 0)
                     {
                         dinheiro.Text = Validation.FormatPrice(data.Desconto);
                     }
                 }
-
             };
 
             btnSalvar.Click += (s, e) => Save();

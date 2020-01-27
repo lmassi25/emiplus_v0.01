@@ -1,16 +1,11 @@
 ﻿using Emiplus.Data.Helpers;
-using Emiplus.Properties;
 using LiveCharts;
 using LiveCharts.Wpf;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -109,7 +104,7 @@ namespace Emiplus.View.Comercial
             {
                 dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
-                
+
                 Usuario = new Model.Usuarios().FindAll().Where("id_user", idUser).FirstOrDefault<Model.Usuarios>();
 
                 LoadDados();

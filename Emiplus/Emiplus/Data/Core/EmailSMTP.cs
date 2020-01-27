@@ -1,12 +1,10 @@
-﻿using System.Net;
+﻿using Emiplus.Data.Helpers;
+using System.Net;
 using System.Net.Mail;
-using System.ComponentModel.DataAnnotations;
-using Emiplus.Data.Helpers;
-using System;
 
 namespace Emiplus.Data.Core
 {
-    class EmailSMTP
+    internal class EmailSMTP
     {
         private string Host { get; set; }
         private int Port { get; set; }

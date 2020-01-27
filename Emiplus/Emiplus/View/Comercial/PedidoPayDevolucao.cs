@@ -1,13 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -15,7 +9,7 @@ namespace Emiplus.View.Comercial
     public partial class PedidoPayDevolucao : Form
     {
         public static int idPedido;
-        
+
         private Model.Pedido _mPedido = new Model.Pedido();
         private Controller.Pedido _controller = new Controller.Pedido();
 
@@ -27,7 +21,7 @@ namespace Emiplus.View.Comercial
 
         private void Save()
         {
-            if(String.IsNullOrEmpty(Voucher.Text))
+            if (String.IsNullOrEmpty(Voucher.Text))
             {
                 Alert.Message("Ação não permitida", "Voucher inválido!", Alert.AlertType.warning);
                 return;
@@ -46,7 +40,7 @@ namespace Emiplus.View.Comercial
                 Alert.Message("Ação não permitida", "Voucher inválido!", Alert.AlertType.warning);
                 return;
             }
-            
+
             _mPedido.Venda = idPedido;
             if (_mPedido.Save(_mPedido))
             {
@@ -67,6 +61,7 @@ namespace Emiplus.View.Comercial
                 case Keys.Enter:
                     Save();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -77,7 +72,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns; 
+            //KeyDown += KeyDowns;
             //btnSalvar.KeyDown += KeyDowns;
             //btnCancelar.KeyDown += KeyDowns;
             //porcentagem.KeyDown += KeyDowns;

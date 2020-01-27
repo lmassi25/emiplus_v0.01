@@ -1,13 +1,6 @@
-﻿using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -48,10 +41,10 @@ namespace Emiplus.View.Comercial
                     {
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
-                        
+
                         new Controller.Fiscal().Imprimir(idPedido, "CFe");
-                        
-                        if(fecharTelas)
+
+                        if (fecharTelas)
                         {
                             try
                             {
@@ -62,7 +55,7 @@ namespace Emiplus.View.Comercial
                             catch (Exception)
                             {
                                 throw;
-                            }                          
+                            }
                         }
 
                         Close();

@@ -2,13 +2,7 @@
 using SqlKata.Execution;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -228,7 +222,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 itemPedidoCompra.Text = itemPedido.Item_Pedido_Compra != null ? itemPedido.Item_Pedido_Compra : "";
             }
 
-            medida.DataSource = Support.GetUnidades();
+            medida.DataSource = Support.GetMedidas();
 
             origem.DataSource = Support.GetOrigens();
             origem.DisplayMember = "Nome";
@@ -297,6 +291,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void Eventos()
         {
+            Masks.SetToUpper(this);
+
             Shown += (s, e) =>
             {
                 Impostos();
@@ -305,11 +301,13 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             btnCancelar.Click += (s, e) => Close();
 
-            btnSalvar.Click += (s, e) => {
+            btnSalvar.Click += (s, e) =>
+            {
                 Save();
             };
 
-            btnExcluir.Click += (s, e) => {
+            btnExcluir.Click += (s, e) =>
+            {
                 itemPedido.Id = idPdt;
                 itemPedido.Excluir = 1;
                 if (itemPedido.Save(itemPedido))

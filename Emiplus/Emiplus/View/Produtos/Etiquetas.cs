@@ -21,16 +21,15 @@ namespace Emiplus.View.Produtos
 {
     public partial class Etiquetas : Form
     {
-
         private Model.Item _mItem = new Model.Item();
         private Controller.Etiqueta _controller = new Controller.Etiqueta();
 
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(Configs.TimeLoading);
+        private Timer timer = new Timer(Configs.TimeLoading);
 
         public Etiquetas()
         {
@@ -68,7 +67,7 @@ namespace Emiplus.View.Produtos
         {
             int count = new Model.Etiqueta().Count();
             qtdAdd.Text = count.ToString();
-            
+
             if (count <= 10)
                 modelos.SelectedValue = "10";
 
@@ -154,7 +153,7 @@ namespace Emiplus.View.Produtos
 
             string logoUrl = Settings.Default.empresa_logo;
             string aux_codbar = "";
-            
+
             ArrayList t = new ArrayList();
             foreach (var item in itens)
             {
@@ -182,7 +181,8 @@ namespace Emiplus.View.Produtos
                     codeImageBar = ImageToBase64(img, ImageFormat.Png);
                 }
 
-                t.Add(new {
+                t.Add(new
+                {
                     Nome = item.NOME,
                     Ref = item.REFERENCIA,
                     Price = Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA)),
@@ -237,6 +237,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {

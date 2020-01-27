@@ -1,6 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
-using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -24,6 +23,7 @@ namespace Emiplus.View.Comercial
                     NovoCliente.Text = "Fornecedor Novo ? (F9)";
                     label1.Text = "Fornecedores encontrados:";
                     break;
+
                 default:
                     label11.Text = "Selecione o Cliente!";
                     label2.Text = "Buscar cliente (F1):";
@@ -35,25 +35,27 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        private void DataTable() 
+        private void DataTable()
         {
             switch (Home.pedidoPage)
             {
                 case "Compras":
                     _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Fornecedores");
                     break;
+
                 default:
                     _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
                     break;
             }
-        } 
+        }
 
         private void SelectItemGrid()
         {
             if (GridListaClientes.SelectedRows.Count > 0)
             {
                 DialogResult = DialogResult.OK;
-                Id = Convert.ToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
+                Id = Validation.ConvertToInt32(GridListaClientes.SelectedRows[0].Cells["ID"].Value);
+
                 Close();
             }
         }
@@ -67,22 +69,26 @@ namespace Emiplus.View.Comercial
                 case "Compras":
                     Home.pessoaPage = "Fornecedores";
                     break;
+
                 default:
                     Home.pessoaPage = "Clientes";
                     break;
             }
-            
-            AddClientes f = new AddClientes();
-            f.btnSalvarText = "Salvar e Inserir";
-            f.btnSalvarWidth = 150;
-            f.btnSalvarLocation = 590;
-            f.FormBorderStyle = FormBorderStyle.FixedSingle;
-            f.StartPosition = FormStartPosition.CenterParent;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                DialogResult = DialogResult.OK;
-                Id = AddClientes.Id;
-                Close();
+
+            using (AddClientes f = new AddClientes()) {
+                f.btnSalvarText = "Salvar e Inserir";
+                f.btnSalvarWidth = 150;
+                f.btnSalvarLocation = 590;
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterParent;
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    DialogResult = DialogResult.OK;
+                    Id = AddClientes.Id;
+
+                    Close();
+                }
             }
         }
 
@@ -96,28 +102,34 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     GridListaClientes.Focus();
                     Support.UpDownDataGrid(true, GridListaClientes);
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     search.Focus();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F9:
                     FormNovoCliente();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F10:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Enter:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
@@ -129,11 +141,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns;
-            //search.KeyDown += KeyDowns;
-            //GridListaClientes.KeyDown += KeyDowns;
-            //btnSelecionar.KeyDown += KeyDowns;
-            //btnCancelar.KeyDown += KeyDowns;
+            Masks.SetToUpper(this);
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();

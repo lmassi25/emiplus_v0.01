@@ -1,15 +1,11 @@
-﻿using FirebirdSql.Data.FirebirdClient;
-using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Helpers;
+using MySql.Data.MySqlClient;
 using SqlKata.Compilers;
 using SqlKata.Execution;
-using System.IO;
-using Emiplus.Data.Core;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace Emiplus.Data.Database
 {
-    class ConnectOnline
+    internal class ConnectOnline
     {
         public string _path { get; set; }
         public bool update { get; set; }

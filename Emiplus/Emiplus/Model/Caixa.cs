@@ -11,11 +11,12 @@
         {
         }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -31,7 +32,9 @@
         public DateTime Fechado { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public bool Save(Caixa data, bool message = true)
         {
@@ -76,13 +79,13 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
+            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Caixa removido com sucesso.", Alert.AlertType.info);
                 return true;
             }
-            
+
             Alert.Message("Opss!", "Não foi possível remover o caixa.", Alert.AlertType.error);
             return false;
         }

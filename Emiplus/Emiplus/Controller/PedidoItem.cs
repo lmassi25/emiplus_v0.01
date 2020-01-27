@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class PedidoItem : Data.Core.Controller
+    internal class PedidoItem : Data.Core.Controller
     {
         public static bool impostos { get; set; }
 
@@ -18,7 +18,7 @@ namespace Emiplus.Controller
                 .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "item.nome", "item.referencia")
                 .Where("pedido_item.pedido", idPedido)
                 .Where("pedido_item.excluir", 0);
-                //.Where("pedido_item.tipo", "Produtos");
+            //.Where("pedido_item.tipo", "Produtos");
 
             return itens.Get();
         }
@@ -71,7 +71,7 @@ namespace Emiplus.Controller
             Table.Columns[10].Name = "Origem";
             Table.Columns[10].Width = 100;
             Table.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            
+
             Table.Columns[11].Name = "ICMS";
             Table.Columns[11].Width = 100;
             Table.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

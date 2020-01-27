@@ -6,20 +6,20 @@
     using System;
     using Valit;
 
-    class Imposto : Model
+    internal class Imposto : Model
     {
         public Imposto() : base("IMPOSTO")
         {
-
         }
-                
-        #region CAMPOS 
+
+        #region CAMPOS
 
         //campos obrigatorios para todas as tabelas
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -31,7 +31,7 @@
 
         public string Cfop { get; set; }
 
-        public string Icms { get; set; } // CST CSOSN   
+        public string Icms { get; set; } // CST CSOSN
         public double IcmsReducaoAliq { get; set; }
 
         public double IcmsIva { get; set; }
@@ -48,16 +48,17 @@
         public double PisAliq { get; set; }
         public string Cofins { get; set; } // CST
         public double CofinsAliq { get; set; }
-        
+
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion
+
+        #endregion CAMPOS
 
         public bool Save(Imposto data)
         {
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
 
-            if (ValidarDados(data))            
+            if (ValidarDados(data))
                 return false;
 
             if (data.Id == 0)
@@ -138,5 +139,3 @@
         }
     }
 }
-
-

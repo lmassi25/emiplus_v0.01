@@ -9,13 +9,16 @@ namespace Emiplus.Model
 
     internal class ItemEstoqueMovimentacao : Model
     {
-        public ItemEstoqueMovimentacao() : base("ITEM_MOV_ESTOQUE") { }
+        public ItemEstoqueMovimentacao() : base("ITEM_MOV_ESTOQUE")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public DateTime Criado { get; private set; }
         public string id_empresa { get; private set; }
         public int id_item { get; set; }
@@ -29,9 +32,11 @@ namespace Emiplus.Model
 
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion
+
+        #endregion CAMPOS
 
         #region SQL CREATE
+
         //CREATE TABLE ITEM_MOV_ESTOQUE
         //(
         //id integer not null primary key,
@@ -47,9 +52,11 @@ namespace Emiplus.Model
         //tipo varchar(10),
         //local varchar(255)
         //);
-        #endregion
+
+        #endregion SQL CREATE
 
         #region SQL AUTOINCREMENT
+
         //        CREATE GENERATOR GEN_ITEM_MOV_ESTOQUE_ID;
 
         //SET TERM !! ;
@@ -69,8 +76,7 @@ namespace Emiplus.Model
         //      END!!
         //SET TERM; !!
 
-        #endregion
-
+        #endregion SQL AUTOINCREMENT
 
         public ItemEstoqueMovimentacao SetQuantidade(double Quantidade)
         {
@@ -89,6 +95,7 @@ namespace Emiplus.Model
             this.local = local;
             return this;
         }
+
         public ItemEstoqueMovimentacao SetObs(string observacao)
         {
             this.observacao = observacao;
@@ -113,7 +120,7 @@ namespace Emiplus.Model
 
             id_item = item.Id;
             Anterior = item.EstoqueAtual;
-            
+
             if (tipo == "A")
             {
                 item.EstoqueAtual = EstoqueAtual + Quantidade;
