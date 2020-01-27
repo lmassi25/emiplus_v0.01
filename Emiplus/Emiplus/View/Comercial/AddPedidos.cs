@@ -571,6 +571,16 @@ namespace Emiplus.View.Comercial
                 string MedidaTxt = Medidas.Text;
                 double PriceTxt = Validation.ConvertToDouble(Preco.Text);
 
+                var controlarEstoque = IniFile.Read("ControlarEstoque", "Comercial");
+                if (!string.IsNullOrEmpty(controlarEstoque) && controlarEstoque == "True")
+                {
+                    if (item.EstoqueAtual <= 0)
+                    {
+                        Alert.Message("Opps", "Você está sem estoque desse produto.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
                 if (PriceTxt == 0) {
                     if (DescontoReaisTxt > item.ValorVenda || DescontoReaisTxt > item.Limite_Desconto || DescontoPorcentagemTxt > 101)
                     {
