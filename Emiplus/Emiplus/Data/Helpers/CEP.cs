@@ -1,9 +1,8 @@
-﻿using Emiplus.Model;
-using System.Collections.Generic;
-using System.Net;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Emiplus.Data.Helpers
 {
@@ -74,7 +73,7 @@ namespace Emiplus.Data.Helpers
             {
                 var download = json.DownloadString("https://www.emiplus.com.br/json/municipio");
                 JObject googleSearch = JObject.Parse(download);
-            
+
                 IList<JToken> results = googleSearch["municipios"].Children().ToList();
 
                 IList<MunicipioJson> searchResults = new List<MunicipioJson>();

@@ -18,6 +18,12 @@ namespace Emiplus.Data.Helpers
     {
         public static string AddSpaces(string valueF, string valueE)
         {
+            if (string.IsNullOrEmpty(valueE))
+                return "";
+
+            if (string.IsNullOrEmpty(valueF))
+                return "";
+
             if ((valueF + valueE).Length <= 48)
                 return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
             else
@@ -70,7 +76,7 @@ namespace Emiplus.Data.Helpers
                 str = str.Replace(" ", "");
             }
 
-            return (Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(str.ToString())).ToString().Trim()).ToUpper();
+            return (Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(str.ToString())).ToString(Program.cultura).Trim()).ToUpper(Program.cultura);
         }
 
         public static string OneSpaceString(string aux)
@@ -89,59 +95,59 @@ namespace Emiplus.Data.Helpers
         /// </summary>
         /// <param name="obj">1234.95</param>
         /// <returns>1.234,95</returns>
-        public static string FormatPrice(double obj, bool cifrao = false)
+        public static string FormatPrice(double value, bool cifrao = false)
         {
             string res;
 
             if (cifrao)
-                res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
+                res = value.ToString("C", Program.cultura);
             else
-                res = string.Format("{0:N2}", obj);
+                res = string.Format(Program.cultura, "{0:N2}", value);
 
             return res;
         }
 
-        public static string FormatDecimalPrice(decimal obj, bool cifrao = false)
+        public static string FormatDecimalPrice(decimal value, bool cifrao = false)
         {
             string res;
 
             if (cifrao)
-                res = obj.ToString("C", CultureInfo.GetCultureInfo("pt-br"));
+                res = value.ToString("C", Program.cultura);
             else
-                res = string.Format("{0:N2}", obj);
+                res = string.Format(Program.cultura, "{0:N2}", value);
 
             return res;
         }
 
         public static string Price(double price)
         {
-            return string.Format("{0:N2}", price);
+            return string.Format(Program.cultura, "{0:N2}", price);
         }
 
-        public static string FormatPriceWithDot(object obj, int decimais = 2)
+        public static string FormatPriceWithDot(object value, int decimais = 2)
         {
             string aux = "";
 
             switch (decimais)
             {
                 case 3:
-                    aux = string.Format("{0:N3}", Validation.ConvertToDouble(obj));
+                    aux = string.Format(Program.cultura, "{0:N3}", ConvertToDouble(value));
                     break;
 
                 case 4:
-                    aux = string.Format("{0:N4}", Validation.ConvertToDouble(obj));
+                    aux = string.Format(Program.cultura, "{0:N4}", ConvertToDouble(value));
                     break;
 
                 case 5:
-                    aux = string.Format("{0:N5}", Validation.ConvertToDouble(obj));
+                    aux = string.Format(Program.cultura, "{0:N5}", ConvertToDouble(value));
                     break;
 
                 case 6:
-                    aux = string.Format("{0:N6}", Validation.ConvertToDouble(obj));
+                    aux = string.Format(Program.cultura, "{0:N6}", ConvertToDouble(value));
                     break;
 
                 default:
-                    aux = string.Format("{0:N2}", Validation.ConvertToDouble(obj));
+                    aux = string.Format(Program.cultura, "{0:N2}", ConvertToDouble(value));
                     break;
             }
 
@@ -151,26 +157,26 @@ namespace Emiplus.Data.Helpers
             return aux;
         }
 
-        public static double ConvertToDouble(object obj)
+        public static double ConvertToDouble(object value)
         {
-            if (obj == null)
+            if (value == null)
                 return 0;
 
-            if (obj.ToString() == string.Empty)
+            if (string.IsNullOrEmpty(value.ToString()))
                 return 0;
 
-            return Convert.ToDouble(obj.ToString().Replace("R$", "").Trim());
+            return Convert.ToDouble(value.ToString().Replace("R$", "").Trim(), Program.cultura);
         }
 
-        public static int ConvertToInt32(object obj)
+        public static int ConvertToInt32(object value)
         {
-            if (obj == null)
+            if (value == null)
                 return 0;
 
-            if (obj.ToString() == string.Empty)
+            if (string.IsNullOrEmpty(value.ToString()))
                 return 0;
 
-            return Convert.ToInt32(obj);
+            return Convert.ToInt32(value, Program.cultura);
         }
 
         public static string ConvertDateToForm(object date, bool large = false)
@@ -187,9 +193,9 @@ namespace Emiplus.Data.Helpers
 
             string data;
             if (large)
-                data = Convert.ToDateTime(date).ToString("dd/MM/yyyy HH:mm");
+                data = Convert.ToDateTime(date, Program.cultura).ToString("dd/MM/yyyy HH:mm", Program.cultura);
             else
-                data = Convert.ToDateTime(date).ToString("dd/MM/yyyy");
+                data = Convert.ToDateTime(date, Program.cultura).ToString("dd/MM/yyyy", Program.cultura);
 
             if (data == "01/01/0001 00:00")
                 data = "";
@@ -211,26 +217,16 @@ namespace Emiplus.Data.Helpers
 
             string data;
             if (large)
-                data = Convert.ToDateTime(date).ToString("yyyy-MM-dd HH:mm");
+                data = Convert.ToDateTime(date, Program.cultura).ToString("yyyy-MM-dd HH:mm", Program.cultura);
             else
-                data = Convert.ToDateTime(date).ToString("yyyy-MM-dd");
+                data = Convert.ToDateTime(date, Program.cultura).ToString("yyyy-MM-dd", Program.cultura);
 
             return data;
         }
 
         public static string DateNowToSql()
         {
-            return DateTime.Now.ToString("yyyy-MM-dd");
-        }
-
-        public static bool Event(object sender, dynamic control)
-        {
-            if (((Control)sender).Name == control.Name)
-            {
-                return true;
-            }
-
-            return false;
+            return DateTime.Now.ToString("yyyy-MM-dd", Program.cultura);
         }
 
         /// <summary>
@@ -252,15 +248,15 @@ namespace Emiplus.Data.Helpers
                 case "KIT":
                 case "CNT":
                 case "PCT":
-                    string result = Valor.ToString();
+                    string result = Valor.ToString(Program.cultura);
 
-                    if (Valor.ToString().Contains(","))
-                        result = Valor.ToString().Substring(0, Valor.ToString().IndexOf(","));
+                    if (Valor.ToString(Program.cultura).Contains(","))
+                        result = Valor.ToString(Program.cultura).Substring(0, Valor.ToString(Program.cultura).IndexOf(",", StringComparison.OrdinalIgnoreCase));
 
-                    if (Valor.ToString().Contains("."))
-                        result = Valor.ToString().Substring(0, Valor.ToString().IndexOf("."));
+                    if (Valor.ToString(Program.cultura).Contains("."))
+                        result = Valor.ToString(Program.cultura).Substring(0, Valor.ToString(Program.cultura).IndexOf(".", StringComparison.OrdinalIgnoreCase));
 
-                    return result.ToString();
+                    return result.ToString(Program.cultura);
                     break;
 
                 case "KG":
@@ -268,7 +264,7 @@ namespace Emiplus.Data.Helpers
                 case "L":
                 case "ML":
                 case "M2":
-                    return Valor.ToString("0.000");
+                    return Valor.ToString("0.000", Program.cultura);
                     break;
             }
 
@@ -301,9 +297,10 @@ namespace Emiplus.Data.Helpers
 
         public static string FirstCharToUpper(string input)
         {
-            if (String.IsNullOrEmpty(input))
+            if (string.IsNullOrEmpty(input))
                 return "";
-            return input.First().ToString().ToUpper() + input.Substring(1);
+
+            return input.First().ToString(Program.cultura).ToUpper(Program.cultura) + input.Substring(1);
         }
 
         /// <summary>
@@ -395,7 +392,7 @@ namespace Emiplus.Data.Helpers
 
             int item = 0;
 
-            if (codbarras != "")
+            if (!string.IsNullOrEmpty(codbarras))
             {
                 if (codbarras.Length == 12)
                 {
@@ -404,7 +401,6 @@ namespace Emiplus.Data.Helpers
                     {
                         string auxNum = "";
                         auxNum = codbarras.Substring(item, 1);
-                        //MessageBox.Show(auxNum);
 
                         if ((ConvertToInt32(auxNum) % 2) == 0)
                             pares = pares + (ConvertToInt32(auxNum) * multiplicador);
@@ -452,7 +448,7 @@ namespace Emiplus.Data.Helpers
 
         public static string CodeBarrasRandom()
         {
-            return "789" + RandomNumeric(9) + digitoVerificador(RandomNumeric(9).ToString());
+            return "789" + RandomNumeric(9) + digitoVerificador(RandomNumeric(9).ToString(Program.cultura));
         }
 
         public static void KillEmiplus()

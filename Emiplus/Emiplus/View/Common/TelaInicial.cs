@@ -6,17 +6,15 @@ using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Windows.Forms;
-using System.Windows.Media;
 
 namespace Emiplus.View.Common
 {
     public partial class TelaInicial : Form
     {
-        Model.Titulo _mTitulo = new Model.Titulo();
+        private Model.Titulo _mTitulo = new Model.Titulo();
 
-        int Days = 6;
+        private int Days = 6;
 
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
@@ -45,7 +43,7 @@ namespace Emiplus.View.Common
             totalVendas.Text = Pedidos != null ? Pedidos.TOTAL.ToString() : "0";
             itensVendidos.Text = Pedidos_Itens.TOTAL != null ? Pedidos_Itens.TOTAL.ToString() : "0";
             valorTotalVendas.Text = GetTotalVendas == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
-            
+
             if (GetReceberHoje != null && Pedidos != null)
                 valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL / Pedidos.TOTAL), true);
             else
@@ -172,15 +170,17 @@ namespace Emiplus.View.Common
                 Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(51, 211, 74))
             });
 
-            series.Add(new LineSeries() { 
-                Title = "A Pagar", 
-                Values = new ChartValues<double>(aPagar), 
+            series.Add(new LineSeries()
+            {
+                Title = "A Pagar",
+                Values = new ChartValues<double>(aPagar),
                 PointGeometrySize = 15,
                 Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(243, 102, 36))
             });
 
-            series.Add(new LineSeries() { 
-                Title = "Vendas", 
+            series.Add(new LineSeries()
+            {
+                Title = "Vendas",
                 Values = new ChartValues<int>(Vendas),
                 Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(28, 142, 196)),
                 StrokeThickness = 1,
@@ -248,7 +248,7 @@ namespace Emiplus.View.Common
             WorkerBackground.DoWork += (s, e) =>
             {
                 GetDados();
-                
+
                 aReceber = GetValues("Receber");
                 aPagar = GetValues("Pagar");
                 Vendas = GetVendas();

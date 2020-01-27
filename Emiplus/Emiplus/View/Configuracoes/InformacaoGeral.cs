@@ -1,13 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Configuracoes
@@ -52,7 +44,7 @@ namespace Emiplus.View.Configuracoes
                     fatura.Text = Settings.Default.user_plan_fatura;
                 }
             };
-            
+
             btnTrocarPlano.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 
             btnExit.Click += (s, e) => Close();

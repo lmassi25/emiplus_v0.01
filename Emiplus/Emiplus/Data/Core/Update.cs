@@ -2,7 +2,7 @@
 
 namespace Emiplus.Data.Core
 {
-    class Update
+    internal class Update
     {
         public static bool AtualizacaoDisponivel { get; set; }
 
@@ -33,7 +33,7 @@ namespace Emiplus.Data.Core
             IniFile.Write("Update", "false", "APP");
             AtualizacaoDisponivel = false;
         }
-        
+
         /// <summary>
         /// Verifica se existe as KEYs principais de configuração no arquivo INI, e adiciona caso não exista
         /// </summary>
@@ -62,7 +62,7 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("PathDatabase", "LOCAL"))
                 IniFile.Write("PathDatabase", @"C:\Emiplus", "LOCAL");
-            
+
             if (!IniFile.KeyExists("dev", "DEV"))
                 IniFile.Write("dev", "false", "DEV");
 
@@ -110,7 +110,7 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("MAIL_PASS", "EMAIL"))
                 IniFile.Write("MAIL_PASS", "", "EMAIL");
-            
+
             if (!IniFile.KeyExists("MAIL_PORT", "EMAIL"))
                 IniFile.Write("MAIL_PORT", "587", "EMAIL");
 

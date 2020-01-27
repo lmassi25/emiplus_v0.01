@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class Imposto
+    internal class Imposto
     {
         private Model.PedidoItem _modelpedidoItem = new Model.PedidoItem();
         private Model.Item _modelItem = new Model.Item();
@@ -18,10 +18,10 @@ namespace Emiplus.Controller
             _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).First<Model.PedidoItem>();
             _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
 
-            #region IMPOSTO 
+            #region IMPOSTO
 
             if (idImposto == 0)
-            {                
+            {
                 if (_modelItem.Count() != 0)
                 {
                     switch (tipo)
@@ -33,13 +33,14 @@ namespace Emiplus.Controller
 
                             _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe).First<Model.Imposto>();
                             break;
+
                         default:
                             if (_modelItem.Impostoid == 0)
                                 break;
 
                             _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).First<Model.Imposto>();
                             break;
-                    }                    
+                    }
                 }
             }
             else
@@ -47,21 +48,21 @@ namespace Emiplus.Controller
                 _modelImposto = _modelImposto.FindById(idImposto).First<Model.Imposto>();
             }
 
-            #endregion
+            #endregion IMPOSTO
 
-            #region NCM | CEST | ORIGEM 
+            #region NCM | CEST | ORIGEM
 
             _modelpedidoItem.Ncm = _modelItem.Ncm;
             _modelpedidoItem.Cest = _modelItem.Cest;
             _modelpedidoItem.Origem = _modelItem.Origem;
 
-            #endregion
+            #endregion NCM | CEST | ORIGEM
 
             #region CFOP
 
             _modelpedidoItem.Cfop = _modelImposto.Cfop;
 
-            #endregion
+            #endregion CFOP
 
             #region ICMS
 
@@ -90,25 +91,26 @@ namespace Emiplus.Controller
                     _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
                     break;
 
-                #endregion
+                #endregion REGIME NORMAL
 
                 #region SIMPLES NACIONAL
 
-                //101 = Tributada pelo Simples Nacional com permissão de crédito                   
-                //102 = Tributada pelo Simples Nacional sem permissão de crédito                    
+                //101 = Tributada pelo Simples Nacional com permissão de crédito
+                //102 = Tributada pelo Simples Nacional sem permissão de crédito
                 //103 = Isenção do ICMS no Simples Nacional para faixa de receita bruta
-                //201 = Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por Substituição Tributária202 = Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por Substituição Tributária                    
-                //202 
+                //201 = Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por Substituição Tributária202 = Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por Substituição Tributária
+                //202
                 //203 = Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por Substituição Tributária
-                //300 = Imune                    
+                //300 = Imune
                 //400 = Não tributada pelo Simples Nacional
-                //500 = ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação                    
+                //500 = ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação
                 //900 = Outros
 
                 case "101":
                     _modelpedidoItem.Icms101Aliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
                     _modelpedidoItem.Icms101Vlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.Icms101Aliq);
                     break;
+
                 case "201":
                 case "202":
                     //---------------ICMS
@@ -118,23 +120,24 @@ namespace Emiplus.Controller
                     //---------------ICMS ST
                     _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsBase + (_modelpedidoItem.IcmsBase * (_modelImposto.IcmsStIva / 100)));
                     _modelpedidoItem.IcmsStAliq = Validation.RoundAliquotas(_modelImposto.IcmsStAliq / 100);
-                    if(_modelImposto.IcmsStReducaoAliq > 0)
+                    if (_modelImposto.IcmsStReducaoAliq > 0)
                     {
                         _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsStBase - (_modelpedidoItem.IcmsStBase * (_modelImposto.IcmsStReducaoAliq / 100)));
                     }
                     _modelpedidoItem.Icmsstvlr = Validation.Round(_modelpedidoItem.IcmsStBase * _modelpedidoItem.IcmsStAliq);
 
-                    //---------------ICMS ST - ICMS 
+                    //---------------ICMS ST - ICMS
                     _modelpedidoItem.Icmsstvlr = Validation.Round(_modelpedidoItem.Icmsstvlr - _modelpedidoItem.IcmsVlr);
 
                     _modelpedidoItem.IcmsBase = 0;
                     _modelpedidoItem.IcmsAliq = 0;
                     _modelpedidoItem.IcmsVlr = 0;
                     break;
+
                 case "900":
                     break;
 
-                #endregion
+                #endregion SIMPLES NACIONAL
 
                 default:
 
@@ -145,7 +148,7 @@ namespace Emiplus.Controller
                     _modelpedidoItem.IcmsStAliq = 0;
                     _modelpedidoItem.IcmsStBase = 0;
                     _modelpedidoItem.IcmsStBaseComReducao = 0;
-                    _modelpedidoItem.IcmsStReducaoAliq = 0;                   
+                    _modelpedidoItem.IcmsStReducaoAliq = 0;
 
                     break;
             }
@@ -160,10 +163,10 @@ namespace Emiplus.Controller
                 _modelpedidoItem.IcmsStAliq = (_modelpedidoItem.IcmsStAliq * 100);
             }
 
-            #endregion
+            #endregion ICMS
 
             #region IPI
-            
+
             _modelpedidoItem.Ipi = _modelImposto.Ipi;
 
             switch (_modelImposto.Ipi)
@@ -176,6 +179,7 @@ namespace Emiplus.Controller
                         _modelpedidoItem.IpiVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.IpiAliq);
                     }
                     break;
+
                 default:
                     _modelpedidoItem.Ipi = "0";
                     _modelpedidoItem.IpiAliq = 0;
@@ -183,10 +187,10 @@ namespace Emiplus.Controller
                     break;
             }
 
-            #endregion
+            #endregion IPI
 
             #region PIS
-            
+
             _modelpedidoItem.Pis = _modelImposto.Pis;
 
             switch (_modelImposto.Pis)
@@ -199,6 +203,7 @@ namespace Emiplus.Controller
                         _modelpedidoItem.PisVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.PisAliq);
                     }
                     break;
+
                 default:
                     _modelpedidoItem.Pis = "0";
                     _modelpedidoItem.PisAliq = 0;
@@ -211,7 +216,7 @@ namespace Emiplus.Controller
                 _modelpedidoItem.PisAliq = (_modelpedidoItem.PisAliq * 100);
             }
 
-            #endregion
+            #endregion PIS
 
             #region COFINS
 
@@ -227,6 +232,7 @@ namespace Emiplus.Controller
                         _modelpedidoItem.CofinsVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.CofinsAliq);
                     }
                     break;
+
                 default:
                     _modelpedidoItem.Cofins = "0";
                     _modelpedidoItem.CofinsAliq = 0;
@@ -239,7 +245,7 @@ namespace Emiplus.Controller
                 _modelpedidoItem.CofinsAliq = (_modelpedidoItem.CofinsAliq * 100);
             }
 
-            #endregion
+            #endregion COFINS
 
             #region vTotTrib
 
@@ -247,7 +253,7 @@ namespace Emiplus.Controller
             _modelpedidoItem.Estadual = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqEstadual / 100));
             _modelpedidoItem.Municipal = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqMunicipal / 100));
 
-            #endregion
+            #endregion vTotTrib
 
             _modelpedidoItem.Save(_modelpedidoItem);
         }

@@ -3,7 +3,6 @@ using Emiplus.View.Produtos.Imposto.CFOP;
 using SqlKata.Execution;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -35,7 +34,7 @@ namespace Emiplus.View.Produtos
         {
             nome.Select();
 
-            ToolHelp.Show("Digite um nome para o imposto que está cadastrando." + Environment.NewLine + "Utilize uma descrição para a finalidade do imposto. " , pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite um nome para o imposto que está cadastrando." + Environment.NewLine + "Utilize uma descrição para a finalidade do imposto. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             #region COMBOBOX
 
@@ -68,7 +67,7 @@ namespace Emiplus.View.Produtos
             Icms.DataSource = icms;
             Icms.DisplayMember = "Nome";
             Icms.ValueMember = "Id";
-            
+
             var ipi = new ArrayList();
 
             //IPITrib
@@ -147,7 +146,7 @@ namespace Emiplus.View.Produtos
             Pis.DataSource = pis;
             Pis.DisplayMember = "Nome";
             Pis.ValueMember = "Id";
-            
+
             var cofins = new ArrayList();
 
             //COFINSAliq
@@ -212,15 +211,15 @@ namespace Emiplus.View.Produtos
             icms_2.Size = new Size(474, 162);
             icms_3.Size = new Size(214, 117);
 
-            #endregion
+            #endregion COMBOBOX
 
             if (idImpSelected > 0)
                 LoadData();
         }
-        
+
         private void GetImpostos_ICMS1(int tipo)
         {
-            if(tipo == 0)
+            if (tipo == 0)
                 _modelImposto.IcmsAliq = Validation.ConvertToDouble(icms_1.Aliq_Value);
             else
                 icms_1.Aliq_Value = Validation.Price(_modelImposto.IcmsAliq);
@@ -245,7 +244,7 @@ namespace Emiplus.View.Produtos
                 icms_2.AliqICMS_Value = Validation.Price(_modelImposto.IcmsAliq);
                 icms_2.RedBaseST_Value = Validation.Price(_modelImposto.IcmsStReducaoAliq);
                 icms_2.AliqST_Value = Validation.Price(_modelImposto.IcmsStAliq);
-            }            
+            }
         }
 
         private void GetImpostos_ICMS3(int tipo)
@@ -259,7 +258,7 @@ namespace Emiplus.View.Produtos
             {
                 icms_3.Base_Value = Validation.Price(_modelImposto.IcmsIva);
                 icms_3.Aliq_Value = Validation.Price(_modelImposto.IcmsAliq);
-            }            
+            }
         }
 
         private void GetImpostos(int tipo)
@@ -303,8 +302,8 @@ namespace Emiplus.View.Produtos
                 //icms_2.Visible = true;
                 GetImpostos_ICMS2(tipo);
             }
-            
-            if(tipo == 0)
+
+            if (tipo == 0)
             {
                 _modelImposto.Ipi = Ipi.SelectedValue.ToString();
                 _modelImposto.IpiAliq = Validation.ConvertToDouble(Aliq_IPI.Text);
@@ -325,11 +324,11 @@ namespace Emiplus.View.Produtos
 
                 Cofins.SelectedValue = _modelImposto.Cofins;
                 Aliq_Cofins.Text = Validation.Price(_modelImposto.CofinsAliq);
-            }            
+            }
         }
 
         private void SetIcms()
-        {            
+        {
             icms_1.Visible = false;
             icms_2.Visible = false;
             icms_3.Visible = false;
@@ -374,6 +373,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) => Carregar();
 
@@ -406,10 +406,10 @@ namespace Emiplus.View.Produtos
                 Cfops form = new Cfops();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                //    _mPedido.Id = Id;
-                //    _mPedido.Colaborador = PedidoModalClientes.Id;
-                //    _mPedido.Save(_mPedido);
-                //    LoadData();
+                    //    _mPedido.Id = Id;
+                    //    _mPedido.Colaborador = PedidoModalClientes.Id;
+                    //    _mPedido.Save(_mPedido);
+                    //    LoadData();
                 }
             };
 
@@ -417,5 +417,5 @@ namespace Emiplus.View.Produtos
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
         }
-	}
+    }
 }

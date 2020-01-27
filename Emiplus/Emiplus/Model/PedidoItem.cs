@@ -9,15 +9,18 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    class PedidoItem : Model
+    internal class PedidoItem : Model
     {
-        public PedidoItem() : base("PEDIDO_ITEM") { }
+        public PedidoItem() : base("PEDIDO_ITEM")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -28,21 +31,24 @@
         // referencia com a tabela Pedido
         public int Pedido { get; set; } // pedido id
 
-        // referencia com a tabela Item 
+        // referencia com a tabela Item
         public int Item { get; set; } // item id
+
         [Ignore]
         public Item ItemObj { get; set; }
 
         // informações alteraveis na parte fiscal
         public string CProd { get; set; }
+
         public string CEan { get; set; }
         public string xProd { get; set; }
-        public string Ncm { get; set; } // 8 digitos 
+        public string Ncm { get; set; } // 8 digitos
         public string Cfop { get; set; } // 4 digitos
         public string Origem { get; set; } // 1 digitos
 
-        // totais 
+        // totais
         public double ValorCompra { get; set; }
+
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
         public string Medida { get; set; }
@@ -53,27 +59,29 @@
         public double Frete { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double TotalCompra { get; set; }
         public double TotalVenda { get; set; }
-        public string Icms { get; set; } // CST CSOSN                
+        public string Icms { get; set; } // CST CSOSN
         public double IcmsBase { get; set; }
         public double IcmsReducaoAliq { get; set; }
         public double IcmsBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsAliq { get; set; }
-        public double IcmsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE ICMS DO ITEM 
+        public double IcmsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE ICMS DO ITEM
         public double IcmsStBase { get; set; }
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsStAliq { get; set; }
+
         //public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
         public double Icmsstvlr { get; set; }
+
         public string Ipi { get; set; } // CST
         public double IpiAliq { get; set; }
-        public double IpiVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM         
+        public double IpiVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM
         public string Pis { get; set; } // CST
         public double PisAliq { get; set; }
-        public double PisVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE PIS DO ITEM                 
+        public double PisVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE PIS DO ITEM
         public string Cofins { get; set; } // CST
         public double CofinsAliq { get; set; }
-        public double CofinsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM  
+        public double CofinsVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE COFINS DO ITEM
         public string Cest { get; set; }
         public double Icms101Aliq { get; set; }
         public double Icms101Vlr { get; set; }
@@ -86,9 +94,10 @@
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion
+        #endregion CAMPOS
 
         #region SQL CREATE
+
         //CREATE TABLE PEDIDO_ITEM
         //(
         //id integer not null primary key,
@@ -137,9 +146,10 @@
         //        cofinsvlr numeric(18,4)
         //);
 
-        #endregion
+        #endregion SQL CREATE
 
         #region Generator
+
         //  CREATE GENERATOR GEN_PEDIDO_ITEM_ID;
 
         //          SET TERM !! ;
@@ -159,8 +169,7 @@
         //END!!
         //  SET TERM; !!
 
-
-        #endregion
+        #endregion Generator
 
         public PedidoItem SetTipo(string tipo)
         {
@@ -185,7 +194,7 @@
             ItemObj = item;
             Item = item.Id;
 
-            if(!String.IsNullOrEmpty(item.Referencia))
+            if (!String.IsNullOrEmpty(item.Referencia))
                 CProd = item.Referencia;
             else
                 CProd = item.Id.ToString();
@@ -312,7 +321,7 @@
 
             return TotalVenda;
         }
-        
+
         public double SomarTotal()
         {
             SomarDescontoTotal();
@@ -356,14 +365,14 @@
                 .Where("tipo", "Servicos")
                 .Where("excluir", 0)
                 .Get();
-            
+
             Dictionary<string, double> Somas = new Dictionary<string, double>();
             Somas.Add("Id", Validation.ConvertToDouble(id));
 
             for (int i = 0; i < queryP.Count(); i++)
             {
                 var data = queryP.ElementAt(i);
-                
+
                 Somas.Add("Produtos", Validation.ConvertToDouble(data.TOTALVENDA));
                 Somas.Add("Frete", Validation.ConvertToDouble(data.FRETE));
                 Somas.Add("Desconto", Validation.ConvertToDouble(data.DESCONTO));
@@ -375,7 +384,7 @@
                 Somas.Add("COFINS", Validation.ConvertToDouble(data.COFINSVLR));
                 Somas.Add("PIS", Validation.ConvertToDouble(data.PISVLR));
             }
-            
+
             for (int i = 0; i < queryS.Count(); i++)
             {
                 var data = queryS.ElementAt(i);

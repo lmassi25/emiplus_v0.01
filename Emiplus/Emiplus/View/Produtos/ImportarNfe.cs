@@ -1,14 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -25,9 +17,9 @@ namespace Emiplus.View.Produtos
         /// </summary>
         public static int optionSelected { get; set; }
 
-        OpenFileDialog ofd = new OpenFileDialog();
-        Controller.ImportarNfe dataNfe;
-        
+        private OpenFileDialog ofd = new OpenFileDialog();
+        private Controller.ImportarNfe dataNfe;
+
         public ImportarNfe()
         {
             InitializeComponent();

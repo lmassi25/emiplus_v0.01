@@ -62,7 +62,7 @@ namespace Emiplus.View.Produtos
 
             LoadFornecedores();
 
-            Medidas.DataSource = Support.GetUnidades();
+            Medidas.DataSource = Support.GetMedidas();
 
             //var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (impostos.Count() > 0)
@@ -241,6 +241,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Shown += (s, e) =>
             {
@@ -395,8 +396,6 @@ namespace Emiplus.View.Produtos
                     }
                 }
             };
-
-            Masks.SetToUpper(this);
         }
     }
 }

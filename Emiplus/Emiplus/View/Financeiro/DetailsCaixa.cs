@@ -43,8 +43,8 @@ namespace Emiplus.View.Financeiro
         {
             _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
 
-            caixa.Text = _modelCaixa.Id.ToString();
-            nrCaixa.Text = _modelCaixa.Id.ToString();
+            caixa.Text = _modelCaixa.Id.ToString(Program.cultura);
+            nrCaixa.Text = _modelCaixa.Id.ToString(Program.cultura);
             terminal.Text = _modelCaixa.Terminal;
             aberto.Text = Validation.ConvertDateToForm(_modelCaixa.Criado, true);
             label7.Text = _modelCaixa.Tipo == "Aberto" ? "Caixa Aberto" : "Caixa Fechado";
@@ -91,7 +91,7 @@ namespace Emiplus.View.Financeiro
         {
             await SetTable(GridLista);
             await SetTable2(GridLista2);
-        }            
+        }
 
         public Task<IEnumerable<dynamic>> GetDataTableCaixa()
         {
@@ -125,7 +125,7 @@ namespace Emiplus.View.Financeiro
             model.OrderByDesc("pedido.id");
             return model.GetAsync<dynamic>();
         }
-        
+
         private double GetDataTitulo(int id_pedido)
         {
             var sum = new Model.Titulo().Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_pedido", id_pedido).WhereFalse("excluir").FirstOrDefault();
@@ -136,7 +136,7 @@ namespace Emiplus.View.Financeiro
         {
             IEnumerable<dynamic> DataTitulo = null;
             IEnumerable<dynamic> DataCaixaMov = null;
-            
+
             IEnumerable<dynamic> dados = await GetDataTableCaixa();
             DataCaixaMov = dados;
 
@@ -175,10 +175,10 @@ namespace Emiplus.View.Financeiro
 
             return objeto;
         }
-        
+
         public async Task<dynamic> GetDataMovPedidosAsync()
         {
-            IEnumerable<dynamic> DataPedido = null;            
+            IEnumerable<dynamic> DataPedido = null;
 
             IEnumerable<dynamic> dataPedido = await GetDataTablePedido();
             DataPedido = dataPedido;
@@ -190,7 +190,7 @@ namespace Emiplus.View.Financeiro
             {
                 var vendido = item.TOTAL;
                 var recebido = GetDataTitulo(item.ID);
-                
+
                 objeto.Add(new
                 {
                     ID = item.ID,
@@ -209,15 +209,15 @@ namespace Emiplus.View.Financeiro
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            
+
             Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
-            
+
             Table.Columns[1].Name = "Data/Hora";
             Table.Columns[1].Width = 100;
-        
+
             Table.Columns[2].Name = "Descrição";
             Table.Columns[2].MinimumWidth = 120;
 
@@ -232,7 +232,6 @@ namespace Emiplus.View.Financeiro
 
             Table.Rows.Clear();
 
-            
             foreach (var item in GetDataMovAsync().Result)
             {
                 var valor = Validation.FormatPrice(Validation.ConvertToDouble(item.VALOR), true);
@@ -250,7 +249,7 @@ namespace Emiplus.View.Financeiro
             Table.Sort(Table.Columns[1], System.ComponentModel.ListSortDirection.Descending);
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-        
+
         public async Task SetTable2(DataGridView Table)
         {
             Table.ColumnCount = 4;
@@ -343,16 +342,19 @@ namespace Emiplus.View.Financeiro
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += async (s, e) =>
+            Load += (s, e) => {
+                LoadData();
+            };
+
+            Shown += async (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
-                LoadData();
                 await DataTableAsync();
             };
 
             GridLista.CellDoubleClick += (s, e) => EditMovimentacao();
-            
+
             GridLista2.CellDoubleClick += (s, e) =>
             {
                 DetailsPedido.idPedido = Convert.ToInt32(GridLista2.SelectedRows[0].Cells["N° Venda"].Value);
@@ -374,10 +376,9 @@ namespace Emiplus.View.Financeiro
 
                 AddCaixaMov.idCaixa = idCaixa;
                 AddCaixaMov.idMov = 0;
-                var f = new AddCaixaMov();
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    LoadTotais();
+                using(var f = new AddCaixaMov()) {
+                    if (f.ShowDialog() == DialogResult.OK)
+                        LoadTotais();
                 }
             };
 
@@ -389,7 +390,7 @@ namespace Emiplus.View.Financeiro
                 FecharCaixa f = new FecharCaixa();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    txtFechado.Text = DateTime.Now.ToString("dd/mm/YYYY HH:mm");
+                    txtFechado.Text = DateTime.Now.ToString("dd/mm/YYYY HH:mm", Program.cultura);
                     panel7.BackColor = Color.FromArgb(192, 0, 0);
                     label7.Text = "Caixa Fechado";
                     FecharCaixa.Enabled = false;
@@ -411,7 +412,7 @@ namespace Emiplus.View.Financeiro
                     {
                         row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                         row.Cells[3].Style.ForeColor = Color.White;
-                        row.Cells[3].Style.BackColor = Color.FromArgb(139, 215, 146); 
+                        row.Cells[3].Style.BackColor = Color.FromArgb(139, 215, 146);
                     }
                 }
             };
@@ -439,13 +440,11 @@ namespace Emiplus.View.Financeiro
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/ajuda");
 
-            btnFinalizarImprimir.Click += (s, e) => RenderizarAsync();
+            btnFinalizarImprimir.Click += async (s, e) => await RenderizarAsync();
         }
 
         private async Task RenderizarAsync()
         {
-            //if (Restrito()) return;
-
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\CupomCaixaConferencia.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
@@ -479,8 +478,8 @@ namespace Emiplus.View.Financeiro
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var f = new Browser())
+                f.ShowDialog();
         }
     }
 }

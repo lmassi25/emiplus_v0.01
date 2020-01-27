@@ -1,6 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -65,6 +64,7 @@ namespace Emiplus.View.Comercial
                 case Keys.Enter:
                     Save();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -84,10 +84,9 @@ namespace Emiplus.View.Comercial
                     if (data.Desconto > 0)
                         Frete.Text = Validation.FormatPrice(data.Frete);
                 }
-
             };
 
-            btnSalvar.Click += (s, e) => Save();            
+            btnSalvar.Click += (s, e) => Save();
             btnCancelar.Click += (s, e) => Close();
 
             Frete.KeyPress += (s, e) => Masks.MaskDouble(s, e);

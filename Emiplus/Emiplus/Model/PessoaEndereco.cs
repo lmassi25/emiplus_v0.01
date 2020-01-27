@@ -6,13 +6,16 @@
     using System;
     using Valit;
 
-    class PessoaEndereco : Model
+    internal class PessoaEndereco : Model
     {
-        public PessoaEndereco() : base("PESSOA_ENDERECO") { }
+        public PessoaEndereco() : base("PESSOA_ENDERECO")
+        {
+        }
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public int Id_pessoa { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -32,6 +35,7 @@
         public string status_sync { get; set; }
 
         #region SQL CREATE
+
         //CREATE TABLE PESSOA_ENDERECO
         //(
         //id integer not null primary key,
@@ -51,7 +55,8 @@
         //complemento varchar(255),
         //pais varchar(255)
         //);
-        #endregion
+
+        #endregion SQL CREATE
 
         public SqlKata.Query FindByIdUser(int id)
         {

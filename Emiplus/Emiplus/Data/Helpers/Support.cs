@@ -26,7 +26,7 @@ namespace Emiplus.Data.Helpers
             return origens;
         }
 
-        public static List<String> GetUnidades()
+        public static List<String> GetMedidas()
         {
             return new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
         }

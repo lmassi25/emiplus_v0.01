@@ -1,19 +1,21 @@
 ﻿namespace Emiplus.Model
 {
     using Data.Database;
-    using Emiplus.Data.Helpers;
     using SqlKata;
     using System;
 
-    class FormaPagamento : Model
+    internal class FormaPagamento : Model
     {
-        public FormaPagamento() : base("FORMAPGTO") {}
+        public FormaPagamento() : base("FORMAPGTO")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
@@ -22,6 +24,7 @@
         public string Nome { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion 
+        #endregion CAMPOS
+
     }
 }

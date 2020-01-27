@@ -1,13 +1,12 @@
-﻿using Emiplus.Controller;
+﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using Emiplus.View.Fiscal.TelasNota;
 using SqlKata.Execution;
 using System;
-using System.Windows.Forms;
-using System.Linq;
 using System.Drawing;
-using Emiplus.Data.Core;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
@@ -88,7 +87,7 @@ namespace Emiplus.View.Comercial
                 //button20.Left = 830;
                 btnImprimir.Visible = false;
                 button20.Visible = false;
-            }           
+            }
         }
 
         public void AtualizarDados()
@@ -104,7 +103,7 @@ namespace Emiplus.View.Comercial
                 .FirstOrDefault<Model.Pedido>();
 
             acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(IdPedido), true);
-            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);            
+            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
@@ -143,18 +142,23 @@ namespace Emiplus.View.Comercial
                 case "Dinheiro":
                     _controllerTitulo.AddPagamento(IdPedido, 1, valor.Text, iniciar.Text);
                     break;
+
                 case "Cheque":
                     _controllerTitulo.AddPagamento(IdPedido, 2, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Cartão de Débito":
                     _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text);
                     break;
+
                 case "Cartão de Crédito":
                     _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Crediário":
                     _controllerTitulo.AddPagamento(IdPedido, 5, valor.Text, iniciar.Text, parcelas.Text);
                     break;
+
                 case "Boleto":
                     _controllerTitulo.AddPagamento(IdPedido, 6, valor.Text, iniciar.Text, parcelas.Text);
                     break;
@@ -162,7 +166,7 @@ namespace Emiplus.View.Comercial
 
             TelaReceber.Visible = false;
 
-            if(CaixaAnterior > 0)
+            if (CaixaAnterior > 0)
                 Home.idCaixa = CaixaAnterior;
 
             AtualizarDados();
@@ -229,10 +233,11 @@ namespace Emiplus.View.Comercial
                 return;
 
             PedidoPayDesconto.idPedido = IdPedido;
-            PedidoPayDesconto Desconto = new PedidoPayDesconto();
-            Desconto.TopMost = true;
-            if (Desconto.ShowDialog() == DialogResult.OK)
-                AtualizarDados();
+            using (PedidoPayDesconto Desconto = new PedidoPayDesconto()) {
+                Desconto.TopMost = true;
+                if (Desconto.ShowDialog() == DialogResult.OK)
+                    AtualizarDados();
+            }
         }
 
         private void JanelaAcrescimo()
@@ -241,10 +246,11 @@ namespace Emiplus.View.Comercial
                 return;
 
             PedidoPayAcrescimo.idPedido = IdPedido;
-            PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
-            Acrescimo.TopMost = true;
-            if (Acrescimo.ShowDialog() == DialogResult.OK)
-                AtualizarDados();
+            using (PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo()) {
+                Acrescimo.TopMost = true;
+                if (Acrescimo.ShowDialog() == DialogResult.OK)
+                    AtualizarDados();
+            }
         }
 
         private void JanelaDevolucao()
@@ -253,15 +259,16 @@ namespace Emiplus.View.Comercial
                 return;
 
             PedidoPayDevolucao.idPedido = IdPedido;
-            PedidoPayDevolucao f = new PedidoPayDevolucao();
-            f.TopMost = true;
-            if (f.ShowDialog() == DialogResult.OK)
-                AtualizarDados();
+            using (PedidoPayDevolucao f = new PedidoPayDevolucao()) {
+                f.TopMost = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                    AtualizarDados();
+            }
         }
 
         private bool CheckCaixa()
         {
-            if(Home.idCaixa == 0)
+            if (Home.idCaixa == 0)
             {
                 Alert.Message("Ação não permitida", "É necessário abrir ou vincular um caixa para continuar", Alert.AlertType.warning);
                 return false;
@@ -269,7 +276,7 @@ namespace Emiplus.View.Comercial
             else
             {
                 CaixaAnterior = Home.idCaixa;
-                if(_mPedido.Id_Caixa > 0)
+                if (_mPedido.Id_Caixa > 0)
                     Home.idCaixa = _mPedido.Id_Caixa;
             }
 
@@ -281,21 +288,22 @@ namespace Emiplus.View.Comercial
         /// </summary>
         public void Concluir(bool imprimir = true)
         {
-            if(Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
             {
-                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.success);
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.warning);
                 return;
             }
 
             Model.Pedido Pedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
-            if (Pedido != null) {
+            if (Pedido != null)
+            {
                 Pedido.Id = IdPedido;
 
-                if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)            
-                    Pedido.status = 2; //RECEBIMENTO PENDENTE            
-                else           
+                if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)
+                    Pedido.status = 2; //RECEBIMENTO PENDENTE
+                else
                     Pedido.status = 1; //FINALIZADO\RECEBIDO
-            
+
                 if (Pedido.Save(Pedido))
                 {
                     Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
@@ -319,7 +327,8 @@ namespace Emiplus.View.Comercial
                 {
                     Application.OpenForms["AddPedidos"].Close();
 
-                    if (IniFile.Read("RetomarVenda", "Comercial") == "True") {
+                    if (IniFile.Read("RetomarVenda", "Comercial") == "True")
+                    {
                         AddPedidos.Id = 0;
                         AddPedidos reopen = new AddPedidos();
                         reopen.TopMost = true;
@@ -340,15 +349,15 @@ namespace Emiplus.View.Comercial
         {
             if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
             {
-                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.success);
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.warning);
                 return;
             }
 
             Concluir(false);
 
             OpcoesNfeRapida.idPedido = IdPedido;
-            OpcoesNfeRapida f = new OpcoesNfeRapida();
-            f.Show();
+            using (OpcoesNfeRapida f = new OpcoesNfeRapida())
+                f.Show();
         }
 
         public void Cfe()
@@ -384,8 +393,8 @@ namespace Emiplus.View.Comercial
             if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
             {
                 OpcoesCfe.idPedido = IdPedido;
-                OpcoesCfe f = new OpcoesCfe();
-                f.Show();
+                using (OpcoesCfe f = new OpcoesCfe())
+                    f.Show();
             }
             else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
             {
@@ -406,8 +415,8 @@ namespace Emiplus.View.Comercial
 
                     OpcoesCfeCpf.idPedido = IdPedido;
                     OpcoesCfeCpf.emitir = true;
-                    OpcoesCfeCpf f = new OpcoesCfeCpf();
-                    f.Show();
+                    using (OpcoesCfeCpf f = new OpcoesCfeCpf())
+                        f.Show();
                 }
             }
             else if (checkNota.Status == "Pendente")
@@ -416,8 +425,8 @@ namespace Emiplus.View.Comercial
 
                 OpcoesCfeCpf.idPedido = IdPedido;
                 OpcoesCfeCpf.emitir = true;
-                OpcoesCfeCpf f = new OpcoesCfeCpf();
-                f.Show();
+                using (OpcoesCfeCpf f = new OpcoesCfeCpf())
+                    f.Show();
             }
         }
 
@@ -432,45 +441,55 @@ namespace Emiplus.View.Comercial
                     bSalvar();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     TelaESC = true;
                     JanelasRecebimento("Dinheiro");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F2:
                     TelaESC = true;
                     JanelasRecebimento("Cheque");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F3:
                     TelaESC = true;
                     JanelasRecebimento("Cartão de Débito");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F4:
                     TelaESC = true;
                     JanelasRecebimento("Cartão de Crédito");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F5:
                     TelaESC = true;
                     JanelasRecebimento("Crediário");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F6:
                     TelaESC = true;
                     JanelasRecebimento("Boleto");
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F7:
 
                     break;
+
                 case Keys.F8:
 
                     break;
+
                 case Keys.F9:
                     Cfe();
                     break;
+
                 case Keys.F10:
 
                     if (!Support.CheckForInternetConnection())
@@ -482,14 +501,17 @@ namespace Emiplus.View.Comercial
                     Nfe();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F11:
                     new Controller.Pedido().Imprimir(IdPedido);
                     //new PedidoImpressao().Print(IdPedido);
                     break;
+
                 case Keys.F12:
                     Concluir();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Escape:
                     if (TelaESC)
                     {
@@ -502,7 +524,7 @@ namespace Emiplus.View.Comercial
                         e.SuppressKeyPress = true;
                         AddPedidos.btnVoltar = true;
                         Close();
-                    }                        
+                    }
                     break;
             }
         }
@@ -532,12 +554,11 @@ namespace Emiplus.View.Comercial
                     }
                     catch (Exception)
                     {
-
                         throw;
                     }
                 }
             };
- 
+
             KeyDown += KeyDowns;
             Dinheiro.KeyDown += KeyDowns;
             Cheque.KeyDown += KeyDowns;
@@ -547,8 +568,7 @@ namespace Emiplus.View.Comercial
             Boleto.KeyDown += KeyDowns;
             Desconto.KeyDown += KeyDowns;
             Acrescimo.KeyDown += KeyDowns;
-
-            //btnClose.KeyDown += KeyDowns;
+            GridListaFormaPgtos.KeyDown += KeyDowns;
 
             btnCFeSat.KeyDown += (s, e) =>
             {
@@ -578,7 +598,7 @@ namespace Emiplus.View.Comercial
             btnCancelar.KeyDown += KeyDowns;
             valor.KeyDown += KeyDowns;
             parcelas.KeyDown += KeyDowns;
-            iniciar.KeyDown += KeyDowns;            
+            iniciar.KeyDown += KeyDowns;
 
             btnImprimir.Click += (s, e) =>
             {
@@ -624,7 +644,6 @@ namespace Emiplus.View.Comercial
             {
                 if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
                 {
-                    Console.WriteLine(GridListaFormaPgtos.CurrentRow.Cells[4].Value);
                     if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[4].Value) != "")
                     {
                         int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
@@ -632,6 +651,19 @@ namespace Emiplus.View.Comercial
                         AtualizarDados();
                     }
                 }
+            };
+
+            btnClearRecebimentos.Click += (s, e) =>
+            {
+                foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                {
+                    if (Convert.ToString(row.Cells[0].Value) != "")
+                    {
+                        _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                    }
+                }
+
+                AtualizarDados();
             };
 
             btnNfe.Click += (s, e) =>
@@ -654,8 +686,7 @@ namespace Emiplus.View.Comercial
                     return;
 
                 Cfe();
-            };                
-             
+            };
         }
     }
 }

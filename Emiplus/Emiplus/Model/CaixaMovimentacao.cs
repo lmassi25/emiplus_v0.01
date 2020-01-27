@@ -12,11 +12,12 @@
         {
         }
 
-        #region CAMPOS 
-        
+        #region CAMPOS
+
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string id_empresa { get; private set; }
         public int id_caixa { get; set; }
         public int id_user { get; set; }
@@ -33,7 +34,9 @@
         public string Obs { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public bool Save(CaixaMovimentacao data)
         {

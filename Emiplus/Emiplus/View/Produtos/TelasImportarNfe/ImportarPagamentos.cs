@@ -1,20 +1,11 @@
 ﻿using Emiplus.Data.Helpers;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarPagamentos : Form
     {
-
         private ImportarNfe dataNfe = new ImportarNfe();
 
         public static ArrayList titulos = new ArrayList();

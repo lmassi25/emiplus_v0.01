@@ -1,16 +1,10 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
+﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -52,14 +46,14 @@ namespace Emiplus.View.Financeiro
             model.OrderByDesc("CAIXA.criado");
             return model.GetAsync<dynamic>();
         }
-        
+
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
             Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            
+
             Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
@@ -91,7 +85,7 @@ namespace Emiplus.View.Financeiro
             for (int i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
-                
+
                 Table.Rows.Add(
                     item.ID,
                     item.TERMINAL,
@@ -122,13 +116,16 @@ namespace Emiplus.View.Financeiro
                     Support.UpDownDataGrid(false, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     ShowDetailsCaixa();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;

@@ -1,7 +1,6 @@
 ﻿using DotLiquid;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
-using Emiplus.Properties;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
@@ -59,7 +58,7 @@ namespace Emiplus.View.Financeiro
 
                 if (_modelCaixaMov.id_formapgto == 2)
                     Cheque.Checked = true;
-                
+
                 switch (_modelCaixaMov.Tipo)
                 {
                     case 1:
@@ -74,9 +73,11 @@ namespace Emiplus.View.Financeiro
                         Obs.Enabled = false;
                         btnSalvar.Enabled = false;
                         break;
+
                     case 2:
                         Tipo2.Checked = true;
                         break;
+
                     case 3:
                         Tipo3.Checked = true;
                         break;
@@ -103,6 +104,7 @@ namespace Emiplus.View.Financeiro
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -141,7 +143,7 @@ namespace Emiplus.View.Financeiro
                     _modelCaixaMov.id_pessoa = (int)Fornecedor.SelectedValue;
 
                 _modelCaixaMov.Tipo = Tipo1.Checked ? 1 : Tipo2.Checked ? 2 : Tipo3.Checked ? 3 : 1;
-                
+
                 var tipo = "";
                 if (Tipo1.Checked)
                 {
@@ -237,6 +239,5 @@ namespace Emiplus.View.Financeiro
 
             btnCancelar.Click += (s, e) => Close();
         }
-
     }
 }

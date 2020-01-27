@@ -7,15 +7,18 @@
     using System;
     using Valit;
 
-    class Titulo : Model
+    internal class Titulo : Model
     {
-        public Titulo() : base("TITULO") {}
+        public Titulo() : base("TITULO")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -42,7 +45,9 @@
         public int id_usuario { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public Titulo SetTipo(string tipo)
         {
@@ -142,7 +147,7 @@
             Alert.Message("Opss!", "Não foi possível remover.", Alert.AlertType.error);
             return false;
         }
-        
+
         public bool Remove(int id, string column = "ID", bool message = true)
         {
             var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };

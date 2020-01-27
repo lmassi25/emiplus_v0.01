@@ -4,7 +4,6 @@
     using SqlKata;
     using SqlKata.Execution;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
 
     internal class Usuarios : Model
@@ -13,11 +12,12 @@
         {
         }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
@@ -30,7 +30,9 @@
         public string email { get; set; }
         public string senha { get; set; }
 
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public SqlKata.Query FindByUserId(int id)
         {

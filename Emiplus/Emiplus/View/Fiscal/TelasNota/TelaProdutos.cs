@@ -6,14 +6,13 @@ using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaProdutos : Form
     {
-        #region V 
+        #region V
 
         private int ModoRapAva { get; set; }
         private static int Id { get; set; }
@@ -26,9 +25,9 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         private Model.Nota _mNota = new Model.Nota();
 
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
-        #endregion
+        #endregion V
 
         public TelaProdutos()
         {
@@ -50,7 +49,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
             ModalItens();
 
-            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais 
+            // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais
             AddItem();
 
             PedidoModalItens.NomeProduto = "";
@@ -94,15 +93,16 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
                 {
                     PedidoModalItens.txtSearch = BuscarProduto.Text;
-                    PedidoModalItens form = new PedidoModalItens();
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
-
-                        if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
+                    using (PedidoModalItens form = new PedidoModalItens()) {
+                        if (form.ShowDialog() == DialogResult.OK)
                         {
-                            AlterarModo();
-                            ModoRapAvaConfig = 1;
+                            BuscarProduto.Text = PedidoModalItens.NomeProduto;
+
+                            if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
+                            {
+                                AlterarModo();
+                                ModoRapAvaConfig = 1;
+                            }
                         }
                     }
                 }
@@ -135,9 +135,9 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
-        
+
         /// <summary>
-        /// Altera o modo do pedido, para avançado e simples. 
+        /// Altera o modo do pedido, para avançado e simples.
         /// 1 = Avançado, 0 = Simples
         /// </summary>
         private void AlterarModo()
@@ -228,25 +228,30 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             switch (e.KeyCode)
             {
-                case Keys.Up:           
+                case Keys.Up:
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(false, GridListaProdutos);
                     e.Handled = true;
                     break;
-                case Keys.Down:                    
+
+                case Keys.Down:
                     GridListaProdutos.Focus();
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
+
                 case Keys.F1:
                     AlterarModo();
                     break;
+
                 case Keys.F2:
                     BuscarProduto.Focus();
                     break;
+
                 case Keys.F3:
                     if (GridListaProdutos.SelectedRows.Count > 0)
                     {
@@ -279,6 +284,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             BuscarProduto.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
             Quantidade.KeyDown += KeyDowns;
+
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -346,7 +353,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
-            
+
             Preco.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -381,7 +388,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     AlterarImposto f = new AlterarImposto();
                     if (f.ShowDialog() == DialogResult.OK)
                     {
-                        if(idImposto > 0)
+                        if (idImposto > 0)
                             new Controller.Imposto().SetImposto(Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value), idImposto, "NFe");
 
                         PedidoItem.impostos = true;

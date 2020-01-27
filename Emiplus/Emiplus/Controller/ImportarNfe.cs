@@ -1,15 +1,10 @@
 ﻿using ChoETL;
 using Emiplus.Data.Helpers;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emiplus.Controller
 {
-    class ImportarNfe
+    internal class ImportarNfe
     {
         private dynamic dataNota { get; set; }
 
@@ -244,7 +239,6 @@ namespace Emiplus.Controller
                         dateTime = dataCOBR.dVenc;
                         Valor = dataCOBR.vDup;
 
-
                         Pagamentos.Add(new
                         {
                             dateTime = dateTime,
@@ -253,7 +247,6 @@ namespace Emiplus.Controller
                         });
                     }
                 }
-
             }
 
             if (dataNota.ContainsKey("pag") == true)

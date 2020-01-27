@@ -14,7 +14,7 @@ namespace Emiplus.View.Comercial
         public static int tipoTela { get; set; } = 0;
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
-        int p1 = 0;
+        private int p1 = 0;
         private string _msg;
 
         public OpcoesCfe()
@@ -31,24 +31,24 @@ namespace Emiplus.View.Comercial
         {
             Model.Nota checkNota = new Model.Nota();
 
-            if(idNota > 0)
+            if (idNota > 0)
                 checkNota = _modelNota.FindById(idNota).FirstOrDefault<Model.Nota>();
             else
                 checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Model.Nota>();
-            
+
             if (checkNota == null)
                 return null;
 
-            if(checkNota.Status == null)
+            if (checkNota.Status == null)
                 return null;
 
             return checkNota.Status;
         }
-        
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
-            {                
+            {
                 //case Keys.Escape:
                 //    Close();
                 //    break;
@@ -65,7 +65,7 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                if (checkCupom() == null || checkCupom() == "Pendente")                
+                if (checkCupom() == null || checkCupom() == "Pendente")
                     Emitir.Text = "Emitir";
                 else if (checkCupom() == "Autorizada" || checkCupom() == "Autorizado")
                     Emitir.Text = "Cancelar";
@@ -81,7 +81,7 @@ namespace Emiplus.View.Comercial
 
             Emitir.Click += (s, e) =>
             {
-                if(Emitir.Text == "Cancelar")
+                if (Emitir.Text == "Cancelar")
                 {
                     retorno.Text = "Cancelando cupom...";
 
@@ -103,7 +103,7 @@ namespace Emiplus.View.Comercial
                     }
 
                     WorkerBackground.RunWorkerAsync();
-                }                
+                }
             };
 
             Imprimir.Click += (s, e) =>
@@ -130,10 +130,11 @@ namespace Emiplus.View.Comercial
                         case 1:
                             _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
                             break;
+
                         case 2:
                             _msg = new Controller.Fiscal().Cancelar(idPedido, "CFe");
                             break;
-                    }                    
+                    }
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>

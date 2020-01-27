@@ -3,7 +3,6 @@ using Emiplus.View.Common;
 using Emiplus.View.Fiscal.TelasNota;
 using SqlKata.Execution;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal
@@ -12,7 +11,7 @@ namespace Emiplus.View.Fiscal
     {
         public static int Id { get; set; } // id nota
         public static int IdDetailsNota { get; set; }
-        
+
         /// <summary>
         /// True - Desabilita os campos na tela da Nota
         /// </summary>
@@ -44,7 +43,7 @@ namespace Emiplus.View.Fiscal
 
             Load += (s, e) =>
             {
-                if(_mPedido.Cliente == 0)
+                if (_mPedido.Cliente == 0)
                     TelaDados.telaDados = false;
 
                 Resolution.SetScreenMaximized(this);
@@ -97,13 +96,13 @@ namespace Emiplus.View.Fiscal
                     var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        if(Id > 0)
+                        if (Id > 0)
                         {
                             _mPedido.Excluir = 1;
                             if (_mPedido.Save(_mPedido))
                             {
                                 _mNota.Excluir = 1;
-                                _mNota.Save(_mNota, false);                               
+                                _mNota.Save(_mNota, false);
                             }
 
                             TelaDados.telaDados = true;

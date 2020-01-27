@@ -4,7 +4,6 @@
     using Data.Helpers;
     using SqlKata;
     using System;
-    using System.Reflection;
     using Valit;
 
     internal class Categoria : Model
@@ -13,11 +12,12 @@
         {
         }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -28,7 +28,9 @@
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion 
+        #endregion CAMPOS
+
+
 
         public bool Save(Categoria data)
         {

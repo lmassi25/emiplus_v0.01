@@ -4,7 +4,6 @@ using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -30,7 +29,7 @@ namespace Emiplus.View.Comercial
             }
 
             pais.DataSource = new List<String> { "Brasil" };
-            estado.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR","SC", "SP", "SE", "TO"};
+            estado.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
 
             if (IdAddress > 0)
             {
@@ -47,6 +46,7 @@ namespace Emiplus.View.Comercial
                 ibge.Text = _modelAddress.IBGE ?? "";
             }
         }
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -61,6 +61,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             btnAddrSalvar.Click += (s, e) =>
             {

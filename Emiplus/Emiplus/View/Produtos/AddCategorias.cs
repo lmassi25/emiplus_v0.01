@@ -2,7 +2,6 @@
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -59,6 +58,7 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {

@@ -6,8 +6,8 @@ using System.Data;
 using System.Linq;
 
 namespace Emiplus.Data.Database
-{ 
-    class ModelPure
+{
+    internal class ModelPure
     {
         protected Log Log;
 
@@ -109,7 +109,7 @@ namespace Emiplus.Data.Database
         /// <param name="values">@tipo, @nome</param>
         /// <param name="param">tipo=Clientes&nome=Maria92</param>
         /// <returns>INT (ID)</returns>
-        /// <code>Create("@tipo, @nome", "tipo=Clientes&nome=Maria92").FetchScalar()</code> 
+        /// <code>Create("@tipo, @nome", "tipo=Clientes&nome=Maria92").FetchScalar()</code>
         public ModelPure Create(string values, string param)
         {
             try
@@ -133,7 +133,7 @@ namespace Emiplus.Data.Database
         /// <param name="values">tipo = @tipo, nome = @nome</param>
         /// <param name="param">id=26&tipo=Clientes&nome=Maria91</param>
         /// <returns></returns>
-        /// <code>Update("ID = @id", "tipo = @tipo, nome = @nome", "id=26&tipo=Clientes&nome=Maria91").FetchNonQuery()</code> 
+        /// <code>Update("ID = @id", "tipo = @tipo, nome = @nome", "id=26&tipo=Clientes&nome=Maria91").FetchNonQuery()</code>
         public ModelPure Update(string terms, string values, string param)
         {
             try
@@ -211,6 +211,5 @@ namespace Emiplus.Data.Database
                 .Select(p => p.Split('='))
                 .ToDictionary(p => p[0], p => p.Length > 1 ? Uri.UnescapeDataString(p[1]) : null);
         }
-
     }
 }

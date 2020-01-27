@@ -5,7 +5,7 @@
     using SqlKata.Execution;
     using System.Linq;
 
-    class Estoque
+    internal class Estoque
     {
         public int Id { get; set; }
         private int User { get; set; }
@@ -63,7 +63,6 @@
 
                 _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetIdPedido(Id).SetItem(item).Save(_mItemEstoque);
             }
-
         }
 
         public void Item()

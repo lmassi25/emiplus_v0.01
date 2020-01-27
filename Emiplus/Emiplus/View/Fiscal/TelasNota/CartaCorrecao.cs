@@ -1,14 +1,9 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -21,7 +16,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private int p1 = 0;
         private string _msg;
-        
+
         public static int idPedido { get; set; }
 
         private Model.Nota _mNota = new Model.Nota();
@@ -40,7 +35,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             WorkerBackground.RunWorkerAsync();
         }
-        
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -49,10 +44,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                     Support.UpDownDataGrid(false, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridLista);
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -70,7 +67,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             };
 
             //GridLista.DoubleClick += (s, e) => MessageBox.Show("");
-            
+
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
             btnAdicionar.Click += (s, e) =>
@@ -78,7 +75,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 Model.Nota _notaCCe = new Model.Nota();
                 _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
 
-                if(_notaCCe != null)
+                if (_notaCCe != null)
                 {
                     Alert.Message("Ação não permitida", "Existe outra CCe transmitindo", Alert.AlertType.warning);
                     return;
@@ -129,7 +126,6 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             GridLista.CellFormatting += (s, e) =>
             {
-                
             };
 
             using (var b = WorkerBackground)
@@ -154,6 +150,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                         case 1:
                             _msg = new Controller.Fiscal().EmitirCCe(idPedido);
                             break;
+
                         case 2:
                             var msg = new Controller.Fiscal().ImprimirCCe(idPedido);
                             if (!msg.Contains(".pdf"))
@@ -163,17 +160,18 @@ namespace Emiplus.View.Fiscal.TelasNota
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
-                {                    
+                {
                     switch (p1)
                     {
                         case 1:
-                            
+
                             if (_msg.Contains("AUTORIZADA"))
                                 Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
                             else
                                 Alert.Message("Opss", _msg, Alert.AlertType.error);//AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
 
-                            break;                            
+                            break;
+
                         case 2:
                             imprimir.Text = "Imprimir";
                             break;

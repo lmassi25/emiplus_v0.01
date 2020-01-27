@@ -1,16 +1,14 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class Nota
+    internal class Nota
     {
         public Task<IEnumerable<dynamic>> GetDataTable(int idPedido)
         {
@@ -46,7 +44,7 @@ namespace Emiplus.Controller
             Table.Columns[4].Width = 130;
 
             Table.Rows.Clear();
-            
+
             IEnumerable<dynamic> dados = await GetDataTable(idPedido);
 
             for (int i = 0; i < dados.Count(); i++)
@@ -110,7 +108,7 @@ namespace Emiplus.Controller
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
-            
+
             Table.Columns[1].Name = "Chave de Acesso";
 
             Table.Rows.Clear();
@@ -129,7 +127,7 @@ namespace Emiplus.Controller
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
-        
+
         public IEnumerable<dynamic> GetDataTableInutilizar(string status, string dataInicial, string dataFinal)
         {
             var notas = new Model.Nota();
@@ -138,17 +136,16 @@ namespace Emiplus.Controller
                 .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio", "nota.assinatura_qrcode as final", "nota.serie as serie", "nota.status as status")
                 .Where("nota.excluir", 0)
                 .Where("nota.tipo", "Inutiliza");
-                //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
-                //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
+            //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
+            //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
 
             if (!string.IsNullOrEmpty(status) && status != "Todos")
             {
-                if(status == "Transmitidos")
+                if (status == "Transmitidos")
                     data.Where("nota.status", "Transmitindo...");
                 else
                     data.Where("nota.status", "Autorizada");
             }
-
 
             return data.Get();
         }

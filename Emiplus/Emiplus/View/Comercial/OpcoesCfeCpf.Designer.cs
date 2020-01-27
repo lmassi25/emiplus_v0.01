@@ -131,7 +131,7 @@
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(12, 184);
+            this.label18.Location = new System.Drawing.Point(12, 187);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(50, 17);
             this.label18.TabIndex = 305;
@@ -164,7 +164,7 @@
             this.pessoaJF.IntegralHeight = false;
             this.pessoaJF.ItemHeight = 23;
             this.pessoaJF.ItemImageVisible = true;
-            this.pessoaJF.Location = new System.Drawing.Point(12, 203);
+            this.pessoaJF.Location = new System.Drawing.Point(12, 206);
             this.pessoaJF.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pessoaJF.MenuItemNormal = System.Drawing.Color.White;
             this.pessoaJF.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -198,7 +198,7 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(151, 184);
+            this.label20.Location = new System.Drawing.Point(151, 187);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 17);
             this.label20.TabIndex = 304;
@@ -238,7 +238,7 @@
             this.cpfCnpj.ImageSize = new System.Drawing.Size(16, 16);
             this.cpfCnpj.ImageVisible = false;
             this.cpfCnpj.ImageWidth = 35;
-            this.cpfCnpj.Location = new System.Drawing.Point(150, 203);
+            this.cpfCnpj.Location = new System.Drawing.Point(150, 206);
             this.cpfCnpj.MaxLength = 18;
             this.cpfCnpj.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cpfCnpj.Name = "cpfCnpj";

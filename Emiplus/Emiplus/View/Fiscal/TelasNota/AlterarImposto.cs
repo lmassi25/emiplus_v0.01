@@ -28,7 +28,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             ImpostoNFE.Select();
         }
-        
+
         private void KeyDowns(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -42,6 +42,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     }
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
@@ -54,9 +55,9 @@ namespace Emiplus.View.Fiscal.TelasNota
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            btnSelecionar.Click += (s, e) => 
-            { 
-                if(Validation.ConvertToInt32(ImpostoNFE.SelectedValue) > 0)
+            btnSelecionar.Click += (s, e) =>
+            {
+                if (Validation.ConvertToInt32(ImpostoNFE.SelectedValue) > 0)
                 {
                     TelaProdutos.idImposto = Validation.ConvertToInt32(ImpostoNFE.SelectedValue);
                     DialogResult = DialogResult.OK;

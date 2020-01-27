@@ -16,12 +16,12 @@ namespace Emiplus.View.Fiscal
             InitializeComponent();
             Eventos();
         }
-        
+
         public void Eventos()
         {
             Load += (s, e) =>
             {
-                if(idNota > 0)
+                if (idNota > 0)
                 {
                     _nota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
 

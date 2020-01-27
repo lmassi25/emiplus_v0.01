@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
-    class Natureza
+    internal class Natureza
     {
         public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
         {

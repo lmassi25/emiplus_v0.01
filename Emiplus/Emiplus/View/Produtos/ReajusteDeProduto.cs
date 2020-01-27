@@ -1,13 +1,10 @@
-﻿using DotLiquid;
-using Emiplus.Model;
-using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
-using Emiplus.Properties;
+using Emiplus.Model;
 using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -18,7 +15,7 @@ namespace Emiplus.View.Produtos
     public partial class ReajusteDeProduto : Form
     {
         private Model.Item _mItem = new Model.Item();
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public ReajusteDeProduto()
         {
@@ -37,7 +34,7 @@ namespace Emiplus.View.Produtos
 
             foreach (var itens in item)
             {
-                if(!String.IsNullOrEmpty(itens.NOME))
+                if (!String.IsNullOrEmpty(itens.NOME))
                     collection.Add(itens.NOME, itens.ID);
             }
 
@@ -181,8 +178,10 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
-            Load += async (s, e) => {
+            Load += async (s, e) =>
+            {
                 Resolution.SetScreenMaximized(this);
 
                 await DataTableAsync();
@@ -218,10 +217,10 @@ namespace Emiplus.View.Produtos
 
                 if (FORNECEDORES != 0)
                     _mItem.Fornecedor = FORNECEDORES;
-                
+
                 _mItem.ValorVenda = Validation.ConvertToDouble(VALORVENDA);
                 _mItem.EstoqueAtual = Validation.ConvertToDouble(ESTOQUEATUAL);
-                
+
                 if (_mItem.Save(_mItem, false))
                     Alert.Message("Pronto!", "Produto atualizado com sucesso.", Alert.AlertType.success);
                 else

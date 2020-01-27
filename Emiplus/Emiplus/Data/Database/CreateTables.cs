@@ -2,13 +2,12 @@
 using Emiplus.Data.Helpers;
 using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Execution;
-using System;
 using System.IO;
 using System.Linq;
 
 namespace Emiplus.Data.Database
 {
-    class CreateTables
+    internal class CreateTables
     {
         private QueryFactory dbLocal;
         private QueryFactory dbPdrao;
@@ -190,7 +189,6 @@ namespace Emiplus.Data.Database
                 InsertGenerator(itemP.GENERATOR.Trim(), trigger);
             }
 
-
             var consumidorFinal = dbLocal.Select(@"SELECT NOME FROM PESSOA WHERE NOME = 'Consumidor Final'");
             if (consumidorFinal.Count() == 0)
             {
@@ -264,7 +262,6 @@ namespace Emiplus.Data.Database
                     trigger = tabela + "_BI";
 
                     CreateGenerator(trigger, tabela, generator);
-
                 }
             }
         }

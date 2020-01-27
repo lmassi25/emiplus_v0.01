@@ -54,7 +54,6 @@ namespace Emiplus.Controller
         public static extern IntPtr AtualizarSoftwareSAT(int sessao, string cod_ativacao);
 
         [DllImport(DLL, CallingConvention = CallingConvention.StdCall)]
-        
         public static extern String Base64ToAscii(string dados);
 
         public static string StringFromNativeUtf8(IntPtr nativeUtf8)

@@ -25,8 +25,9 @@ namespace Emiplus.View.Comercial
             if (GridLista.SelectedRows.Count > 0)
             {
                 DialogResult = DialogResult.OK;
-                Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                this.Close();
+                Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+
+                Close();
             }
         }
 
@@ -34,17 +35,19 @@ namespace Emiplus.View.Comercial
         {
             Id = 0;
             Home.pessoaPage = "Transportadoras";
-            AddClientes f = new AddClientes();
-            f.btnSalvarText = "Salvar e Inserir";
-            f.btnSalvarWidth = 150;
-            f.btnSalvarLocation = 590;
-            f.FormBorderStyle = FormBorderStyle.FixedSingle;
-            f.StartPosition = FormStartPosition.CenterParent;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                DialogResult = DialogResult.OK;
-                Id = AddClientes.Id;
-                Close();
+            using (AddClientes f = new AddClientes()) {
+                f.btnSalvarText = "Salvar e Inserir";
+                f.btnSalvarWidth = 150;
+                f.btnSalvarLocation = 590;
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterParent;
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    DialogResult = DialogResult.OK;
+                    Id = AddClientes.Id;
+                    Close();
+                }
             }
         }
 
@@ -58,28 +61,34 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     GridLista.Focus();
                     Support.UpDownDataGrid(true, GridLista);
                     e.SuppressKeyPress = true;
                     e.Handled = true;
                     break;
+
                 case Keys.Escape:
                     Close();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F1:
                     search.Focus();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F9:
                     FormNovoCliente();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.F10:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
                     break;
+
                 case Keys.Enter:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
@@ -91,9 +100,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
-            //KeyDown += KeyDowns;
-            //search.KeyDown += KeyDowns;
-            //GridLista.KeyDown += KeyDowns;
+            Masks.SetToUpper(this);
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();

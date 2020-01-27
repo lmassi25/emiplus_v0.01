@@ -1,12 +1,5 @@
 ﻿using Emiplus.Data.Core;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Configuracoes
@@ -23,7 +16,8 @@ namespace Emiplus.View.Configuracoes
         {
             Shown += (s, e) =>
             {
-                if (!String.IsNullOrEmpty(IniFile.Read("RetomarVenda", "Comercial"))) {
+                if (!String.IsNullOrEmpty(IniFile.Read("RetomarVenda", "Comercial")))
+                {
                     if (IniFile.Read("RetomarVenda", "Comercial") == "True")
                         retomarVendaInicio.Toggled = true;
                     else

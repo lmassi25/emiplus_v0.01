@@ -183,6 +183,7 @@ namespace Emiplus.View.Reports
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -274,8 +275,8 @@ namespace Emiplus.View.Reports
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var f = new Browser())
+                f.ShowDialog();
         }
     }
 }

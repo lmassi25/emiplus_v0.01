@@ -1,9 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-
 
 namespace Emiplus.View.Fiscal.TelasNota
 {
@@ -76,8 +74,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 b.DoWork += async (s, e) =>
                 {
-                    if(p1 == 5)
-                        _msg = new Controller.Fiscal().EnviarEmail(Id, justificativa, "NFe", _mNota.Id); 
+                    if (p1 == 5)
+                        _msg = new Controller.Fiscal().EnviarEmail(Id, justificativa, "NFe", _mNota.Id);
                     else
                         _msg = new Controller.Fiscal().Emitir(Id, "NFe", _mNota.Id, false);
                 };

@@ -4,19 +4,18 @@ using System.Windows.Forms;
 
 namespace Emiplus.Data.SobreEscrever
 {
-    class KeyedAutoCompleteStringCollection : AutoCompleteStringCollection
+    internal class KeyedAutoCompleteStringCollection : AutoCompleteStringCollection
     {
-
         private readonly Dictionary<string, int> keyedValues =
             new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         public void Add(string value, int key)
         {
-            if(!String.IsNullOrEmpty(value))
+            if (!String.IsNullOrEmpty(value))
             {
                 base.Add(value);
                 keyedValues.Add(value, key); // intentionally backwards
-            }   
+            }
         }
 
         public int Lookup(string value)

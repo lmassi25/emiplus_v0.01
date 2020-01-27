@@ -9,12 +9,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Emiplus.Controller
 {
-    class PedidoImpressao
+    internal class PedidoImpressao
     {
         private Model.Pedido _modelPedido = new Model.Pedido();
         private Model.PessoaContato _modelPessoaContato = new Model.PessoaContato();
@@ -84,21 +82,25 @@ namespace Emiplus.Controller
                     titulo2 = "Cliente";
                     orcamento = true;
                     break;
+
                 case "Orçamentos":
                     titulo = "Orçamento";
                     titulo2 = "Cliente";
                     orcamento = false;
                     break;
+
                 case "Consignações":
                     titulo = "Consignação";
                     titulo2 = "Cliente";
                     orcamento = false;
                     break;
+
                 case "Devoluções":
                     titulo = "Devolução";
                     titulo2 = "Cliente";
                     orcamento = false;
                     break;
+
                 case "Compras":
                     titulo = "Compra";
                     titulo2 = "Fornecedor";

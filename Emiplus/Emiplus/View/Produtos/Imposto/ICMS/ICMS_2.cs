@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
@@ -35,7 +27,7 @@ namespace Emiplus.View.Produtos
                 RedBase.Text = value;
             }
         }
-        
+
         public string IVA_Value
         {
             get
@@ -47,7 +39,7 @@ namespace Emiplus.View.Produtos
                 IVA.Text = value;
             }
         }
-        
+
         public string AliqICMS_Value
         {
             get

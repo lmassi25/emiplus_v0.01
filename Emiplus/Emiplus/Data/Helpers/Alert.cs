@@ -17,9 +17,11 @@ namespace Emiplus.Data.Helpers
         }
 
         #region DLL SHADOW
+
         /********************************************************************
          * CÓDIGO ABAIXO ADICIONA SOMBRA NO WINDOWS FORM \/ \/ \/ \/
          ********************************************************************/
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
     (
@@ -102,9 +104,9 @@ namespace Emiplus.Data.Helpers
                             topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
-
                     }
                     break;
+
                 default:
                     break;
             }
@@ -112,12 +114,13 @@ namespace Emiplus.Data.Helpers
 
             if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
                 m.Result = (IntPtr)HTCAPTION;
-
         }
+
         /********************************************************************
-         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\ 
+         * CÓDIGO ACIMA, ADICIONA SOMBRA NO WINDOWS FORM /\ /\ /\ /\
          ********************************************************************/
-        #endregion
+
+        #endregion DLL SHADOW
 
         public Alert(string _title, string _message, AlertType type)
         {
@@ -132,14 +135,17 @@ namespace Emiplus.Data.Helpers
                     this.BackColor = Color.SeaGreen;
                     icon.Image = Properties.Resources.checkedBranco;
                     break;
+
                 case AlertType.info:
                     this.BackColor = Color.Gray;
                     icon.Image = Properties.Resources.infoBranco;
                     break;
+
                 case AlertType.warning:
                     this.BackColor = Color.FromArgb(255, 128, 0);
                     icon.Image = Properties.Resources.dangerBranco;
                     break;
+
                 case AlertType.error:
                     this.BackColor = Color.Crimson;
                     icon.Image = Properties.Resources.errorBranco;
@@ -175,7 +181,8 @@ namespace Emiplus.Data.Helpers
             CloseAlert.Start();
         }
 
-        int interval = 0;
+        private int interval = 0;
+
         private void Show_Tick(object sender, EventArgs e)
         {
             if (this.Top < 60)

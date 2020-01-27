@@ -3,12 +3,12 @@ using System.Data;
 
 namespace Emiplus.Data.Database
 {
-    class Transaction : ConnectPure
+    internal class Transaction : ConnectPure
     {
-        static FbConnection conn;
+        private static FbConnection conn;
 
         /// <summary>
-        /// Begin Transaction: esse comando, como o nome sugere, inicia a transação, abrindo o bloco de comandos a serem executados. 
+        /// Begin Transaction: esse comando, como o nome sugere, inicia a transação, abrindo o bloco de comandos a serem executados.
         /// Todas as instruções que precisem ser executadas devem estar após esse comando.
         /// </summary>
         public static void Open()
@@ -27,7 +27,7 @@ namespace Emiplus.Data.Database
         }
 
         /// <summary>
-        /// Commit Transaction: o comando commit efetiva a transação, ou seja, persiste no banco todas as alterações efetuadas no bloco. 
+        /// Commit Transaction: o comando commit efetiva a transação, ou seja, persiste no banco todas as alterações efetuadas no bloco.
         /// Após a execução do commit, não é possível reverter as modificações sofridas pelos dados na base.
         /// </summary>
         public static void Close()
@@ -39,8 +39,8 @@ namespace Emiplus.Data.Database
         }
 
         /// <summary>
-        /// Rollback Transaction: contrário ao commit, o rollback cancela a transação. 
-        /// Assim, todos os comandos executados no bloco da transação são descartados e a base de dados não sofre nenhuma alteração. 
+        /// Rollback Transaction: contrário ao commit, o rollback cancela a transação.
+        /// Assim, todos os comandos executados no bloco da transação são descartados e a base de dados não sofre nenhuma alteração.
         /// Esse comando é geralmente utilizado caso ocorra algum erro na execução de uma das instruções do bloco.
         /// </summary>
         public static void RollBack()

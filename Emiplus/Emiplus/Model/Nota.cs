@@ -5,15 +5,18 @@ using System;
 
 namespace Emiplus.Model
 {
-    class Nota : Data.Database.Model
+    internal class Nota : Data.Database.Model
     {
-        public Nota() : base("NOTA") { }
+        public Nota() : base("NOTA")
+        {
+        }
 
-        #region CAMPOS 
+        #region CAMPOS
 
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
+
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; set; }
@@ -30,7 +33,7 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion
+        #endregion CAMPOS
 
         public SqlKata.Query FindByIdPedido(int id)
         {
@@ -46,7 +49,7 @@ namespace Emiplus.Model
         {
             return Query().Where("tipo", tipo).Where("id_pedido", id).Where("excluir", 0);
         }
-        
+
         public SqlKata.Query FindByIdPedidoUltReg(int Pedido, string status = "", string tipo = "")
         {
             int id = 0;

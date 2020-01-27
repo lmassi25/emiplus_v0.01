@@ -1,11 +1,11 @@
 ﻿using SqlKata.Execution;
 using System;
-using System.Windows.Forms;
-using System.Linq;
-using static Emiplus.Data.Helpers.Validation;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static Emiplus.Data.Helpers.Validation;
 
 namespace Emiplus.Controller
 {
@@ -181,7 +181,7 @@ namespace Emiplus.Controller
 
             Table.Columns[4].Name = "Usuário";
             Table.Columns[4].Width = 120;
-            
+
             Table.Columns[5].Name = "Obs.";
             Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -189,7 +189,7 @@ namespace Emiplus.Controller
             Table.Columns[6].Width = 120;
 
             Table.Columns[7].Name = "Pedido";
-            Table.Columns[7].Width = 50;            
+            Table.Columns[7].Width = 50;
 
             Table.Rows.Clear();
 
@@ -198,8 +198,8 @@ namespace Emiplus.Controller
                  .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
                 .Where("id_item", id)
                 .OrderByDesc("criado");
-            
-            if(limit > 0)
+
+            if (limit > 0)
             {
                 lista.Limit(limit);
             }
@@ -218,7 +218,6 @@ namespace Emiplus.Controller
                     item.ID_PEDIDO
                 );
             }
-
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Emiplus.View.Comercial
                 btnSalvar.Text = value;
             }
         }
+
         public int btnSalvarWidth
         {
             get
@@ -46,6 +47,7 @@ namespace Emiplus.View.Comercial
                 btnSalvar.Width = value;
             }
         }
+
         public int btnSalvarLocation
         {
             get
@@ -186,20 +188,20 @@ namespace Emiplus.View.Comercial
             ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             switch (Home.pessoaPage)
-			{
-				default:
-					ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					break;
+            {
+                default:
+                    ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    break;
 
-				case "Fornecedores":
-					ToolHelp.Show("Caso o fornecedor seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					break;
+                case "Fornecedores":
+                    ToolHelp.Show("Caso o fornecedor seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    break;
 
-				case "Transportadoras":
-					ToolHelp.Show("Caso a transportadora seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-					break;
-			}
-		}
+                case "Transportadoras":
+                    ToolHelp.Show("Caso a transportadora seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    break;
+            }
+        }
 
         private void SetFocus() => nomeRS.Focus();
 
@@ -217,6 +219,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {

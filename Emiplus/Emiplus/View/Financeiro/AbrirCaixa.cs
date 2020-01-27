@@ -1,21 +1,21 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
-using System.Windows.Forms;
-using System.Linq;
 using SqlKata.Execution;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class AbrirCaixa : Form
     {
-        
         private Model.Caixa _modelCaixa = new Model.Caixa();
 
         public AbrirCaixa()
         {
             InitializeComponent();
             Eventos();
+
             ToolHelp.Show("Abre um novo caixa.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Utiliza um caixa existente aberto por outro usuário.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
@@ -34,6 +34,7 @@ namespace Emiplus.View.Financeiro
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
@@ -53,13 +54,13 @@ namespace Emiplus.View.Financeiro
                     Caixas.DataSource = caixas;
                     Caixas.DisplayMember = "NOME";
                     Caixas.ValueMember = "ID";
-                } else
+                }
+                else
                 {
                     OutroCaixa.Enabled = false;
                     Caixas.Enabled = false;
                     label3.Visible = true;
                 }
-
             };
 
             OutroCaixa.Click += (s, e) =>

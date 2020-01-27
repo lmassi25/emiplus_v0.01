@@ -23,7 +23,7 @@ namespace Emiplus.View.Fiscal
 
             Eventos();
         }
-        
+
         private void Filter()
         {
             _cNota.GetDataTableInutilizar(GridLista, status.Text, dataInicial.Text, dataFinal.Text);
@@ -35,7 +35,7 @@ namespace Emiplus.View.Fiscal
             {
                 var _nota = new Model.Nota().Query().Where("status", "Transmitindo...").Where("tipo", "Inutiliza").Where("excluir", 0).FirstOrDefault<Model.Nota>();
 
-                if(_nota != null)
+                if (_nota != null)
                 {
                     Alert.Message("Ação não permitida", "Existe um registro pendente para transmissão!", Alert.AlertType.warning);
                     return;
@@ -43,15 +43,15 @@ namespace Emiplus.View.Fiscal
 
                 InutilizarNotasAdd.idNota = 0;
                 InutilizarNotasAdd f = new InutilizarNotasAdd();
-                if(f.ShowDialog() == DialogResult.OK)
+                if (f.ShowDialog() == DialogResult.OK)
                 {
                     Filter();
 
-                    if(p1 == 0)
+                    if (p1 == 0)
                     {
                         p1 = 1;
                         WorkerBackground.RunWorkerAsync();
-                    }                    
+                    }
                 }
                 return;
             }
@@ -95,7 +95,7 @@ namespace Emiplus.View.Fiscal
                 dataInicial.Text = Validation.DateNowToSql();
                 dataFinal.Text = Validation.DateNowToSql();
             };
-            
+
             btnAdicionar.Click += (s, e) => Edit(true);
             btnEditar.Click += (s, e) => Edit();
             GridLista.DoubleClick += (s, e) => Edit();

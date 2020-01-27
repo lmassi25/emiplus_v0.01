@@ -89,7 +89,7 @@
             this.caminho.PasswordChar = '\0';
             this.caminho.ReadOnly = false;
             this.caminho.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.caminho.Size = new System.Drawing.Size(438, 32);
+            this.caminho.Size = new System.Drawing.Size(438, 28);
             this.caminho.TabIndex = 508;
             this.caminho.TextBoxWidth = 426;
             this.caminho.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -138,7 +138,7 @@
             this.logs.Location = new System.Drawing.Point(456, 144);
             this.logs.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.logs.Name = "logs";
-            this.logs.Size = new System.Drawing.Size(34, 34);
+            this.logs.Size = new System.Drawing.Size(34, 28);
             this.logs.TabIndex = 510;
             this.logs.Text = "...";
             this.logs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -190,7 +190,7 @@
             this.novoArquivo.PasswordChar = '\0';
             this.novoArquivo.ReadOnly = false;
             this.novoArquivo.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.novoArquivo.Size = new System.Drawing.Size(475, 32);
+            this.novoArquivo.Size = new System.Drawing.Size(475, 28);
             this.novoArquivo.TabIndex = 511;
             this.novoArquivo.TextBoxWidth = 463;
             this.novoArquivo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));

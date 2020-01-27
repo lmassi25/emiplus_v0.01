@@ -1,13 +1,6 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Configuracoes
@@ -45,7 +38,8 @@ namespace Emiplus.View.Configuracoes
             if (!String.IsNullOrEmpty(IniFile.Read("MAIL_USER", "EMAIL")))
                 mail_user.Text = IniFile.Read("MAIL_USER", "EMAIL");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("MAIL_EMIPLUS", "EMAIL"))) {
+            if (!String.IsNullOrEmpty(IniFile.Read("MAIL_EMIPLUS", "EMAIL")))
+            {
                 if (IniFile.Read("MAIL_EMIPLUS", "EMAIL") == "True")
                     servidorEmiplus.Toggled = true;
                 else
@@ -84,7 +78,7 @@ namespace Emiplus.View.Configuracoes
 
                 IniFile.Write("MAIL_SMTP", mail_smtp.Text, "EMAIL");
             };
-            
+
             mail_user.Leave += (s, e) =>
             {
                 if (!Validation.validMail(mail_user.Text))

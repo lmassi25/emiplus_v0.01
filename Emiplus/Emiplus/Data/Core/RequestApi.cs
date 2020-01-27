@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace Emiplus.Data.Core
 {
-    class RequestApi
+    internal class RequestApi
     {
         private RestClient client;
         private IRestRequest request;

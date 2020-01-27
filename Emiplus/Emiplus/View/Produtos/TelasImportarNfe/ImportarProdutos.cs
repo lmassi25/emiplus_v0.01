@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using SqlKata.Execution;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
@@ -26,7 +22,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         public static ArrayList produtos = new ArrayList();
         public static ArrayList fornecedores = new ArrayList();
 
-        KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         public ImportarProdutos()
         {
@@ -55,7 +51,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             string cnpj = item.GetFornecedor().CPFcnpj;
             var p = _mPessoa.Query().Select("*").Where("cpf", cnpj).FirstOrDefault<Model.Pessoa>();
             if (p != null)
-            { 
+            {
                 idFornecedor = p.Id;
                 return idFornecedor;
             }
@@ -283,7 +279,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             if (edit)
             {
                 Model.Item _mItem = new Model.Item();
-                
+
                 panelVinculacao.Visible = true;
                 panelVinculacao.Location = new Point(34, 453);
                 label10.Visible = false;
@@ -305,7 +301,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
                 string id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
                 string editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
-                
+
                 // TRÁS ALGUNS DADOS DO BANCO CASO EXISTA ALGUM REGISTRO, SE NÃO, PEGA OS DADOS DO DATAGRID "PARA EDITAR"
                 _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Model.Item>();
                 if (_mItem != null && editado == "0")
@@ -335,7 +331,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     valorvenda.Text = GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value.ToString();
                     valorCompraAtual.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
                     estoqueProduto.Text = "N/D";
-                    
+
                     Categorias.SelectedValue = GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value;
                     novoEstoque.Text = estoqueatual.Text;
                     Medidas.SelectedItem = GridLista.SelectedRows[0].Cells["Medida"].Value.ToString();
@@ -407,7 +403,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
             if (Categorias.SelectedValue != null)
                 GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value = (int)Categorias.SelectedValue;
-            
+
             GridLista.SelectedRows[0].Cells["EDITADO"].Value = "1";
             GridLista.SelectedRows[0].Cells["IDVINCULO"].Value = IDPDT.Text;
 
@@ -441,8 +437,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     Categorias.ValueMember = "ID";
                 }
 
-                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-
+                Medidas.DataSource = Support.GetMedidas();
 
                 if (ImportarNfe.optionSelected == 1)
                 {
@@ -525,7 +520,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                         int id = Validation.ConvertToInt32(item.Cells["IDVINCULO"].Value);
                         double estoque = 0;
                         string codeBarras = item.Cells["Cód. de Barras"].Value.ToString();
-                        
+
                         if (!string.IsNullOrEmpty(codeBarras))
                         {
                             Model.Item _mItem = new Model.Item();
@@ -566,7 +561,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     OpenForm.Show<ImportarPagamentos>(this);
                 else
                     OpenForm.Show<ImportarProdutosConcluido>(this);
-
             };
 
             valorcompra.TextChanged += (s, e) =>

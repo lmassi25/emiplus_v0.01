@@ -181,6 +181,7 @@ namespace Emiplus.View.Reports
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {

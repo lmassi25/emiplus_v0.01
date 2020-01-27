@@ -49,6 +49,7 @@ namespace Emiplus.View.Comercial
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
             btnContatoSalvar.Click += (s, e) =>
             {

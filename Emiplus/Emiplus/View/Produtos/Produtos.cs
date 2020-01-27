@@ -22,7 +22,7 @@ namespace Emiplus.View.Produtos
         private IEnumerable<dynamic> dataTable;
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        Timer timer = new Timer(Configs.TimeLoading);
+        private Timer timer = new Timer(Configs.TimeLoading);
 
         public Produtos()
         {
@@ -41,7 +41,7 @@ namespace Emiplus.View.Produtos
         }
 
         private async void DataTable() => await _controller.SetTable(GridListaProdutos, null, search.Text);
-        
+
         private void EditProduct(bool create = false)
         {
             if (create)
@@ -66,13 +66,16 @@ namespace Emiplus.View.Produtos
                     Support.UpDownDataGrid(false, GridListaProdutos);
                     e.Handled = true;
                     break;
+
                 case Keys.Down:
                     Support.UpDownDataGrid(true, GridListaProdutos);
                     e.Handled = true;
                     break;
+
                 case Keys.Enter:
                     EditProduct();
                     break;
+
                 case Keys.Escape:
                     Close();
                     break;
@@ -83,8 +86,10 @@ namespace Emiplus.View.Produtos
         {
             KeyDown += KeyDowns;
             KeyPreview = true;
+            Masks.SetToUpper(this);
 
-            Load += (s, e) => {
+            Load += (s, e) =>
+            {
                 search.Select();
                 DataTableStart();
             };
@@ -97,8 +102,8 @@ namespace Emiplus.View.Produtos
             {
                 Close();
             };
-            
-            btnExit.Click += (s, e) => 
+
+            btnExit.Click += (s, e) =>
             {
                 Close();
             };
@@ -133,7 +138,8 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker) delegate {
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
+            {
                 DataTable();
                 Loading.Visible = false;
                 GridListaProdutos.Visible = true;
@@ -147,7 +153,7 @@ namespace Emiplus.View.Produtos
 
             imprimir.Click += async (s, e) => await RenderizarAsync();
         }
-        
+
         private async Task RenderizarAsync()
         {
             IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text);

@@ -1,7 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Comercial;
-using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System.Windows.Forms;
 
@@ -70,7 +69,7 @@ namespace Emiplus.View.Common
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
             };
-            
+
             VendasRel.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(VendasRel, pictureBox12, "com_vendas"))
@@ -150,12 +149,12 @@ namespace Emiplus.View.Common
                 if (usuarios.Sub_user == 0)
                 {
                     OpenForm.Show<Comissão>(this);
-                } else
+                }
+                else
                 {
                     DetalhesComissao.idUser = Settings.Default.user_id;
                     OpenForm.Show<DetalhesComissao>(this);
                 }
-                
             };
         }
     }
