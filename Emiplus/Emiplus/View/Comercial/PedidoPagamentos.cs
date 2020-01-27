@@ -356,8 +356,9 @@ namespace Emiplus.View.Comercial
             Concluir(false);
 
             OpcoesNfeRapida.idPedido = IdPedido;
-            using (OpcoesNfeRapida f = new OpcoesNfeRapida())
-                f.Show();
+            OpcoesNfeRapida f = new OpcoesNfeRapida();
+            f.TopMost = true;
+            f.Show();
         }
 
         public void Cfe()
@@ -393,8 +394,10 @@ namespace Emiplus.View.Comercial
             if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
             {
                 OpcoesCfe.idPedido = IdPedido;
-                using (OpcoesCfe f = new OpcoesCfe())
-                    f.Show();
+                OpcoesCfe f = new OpcoesCfe();
+                f.TopMost = true;
+                f.Show();
+                
             }
             else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
             {
@@ -415,8 +418,9 @@ namespace Emiplus.View.Comercial
 
                     OpcoesCfeCpf.idPedido = IdPedido;
                     OpcoesCfeCpf.emitir = true;
-                    using (OpcoesCfeCpf f = new OpcoesCfeCpf())
-                        f.Show();
+                    OpcoesCfeCpf f = new OpcoesCfeCpf();
+                    f.TopMost = true;
+                    f.Show();
                 }
             }
             else if (checkNota.Status == "Pendente")
@@ -425,8 +429,9 @@ namespace Emiplus.View.Comercial
 
                 OpcoesCfeCpf.idPedido = IdPedido;
                 OpcoesCfeCpf.emitir = true;
-                using (OpcoesCfeCpf f = new OpcoesCfeCpf())
-                    f.Show();
+                OpcoesCfeCpf f = new OpcoesCfeCpf();
+                f.TopMost = true;
+                f.Show();
             }
         }
 

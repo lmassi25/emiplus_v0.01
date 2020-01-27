@@ -202,7 +202,8 @@ namespace Emiplus.View.Comercial
             var checkNota = new Model.Nota().Query().Where("nota.status", "Autorizada").Where("nota.id_pedido", idPedido).Where("nota.tipo", "NFe").FirstOrDefault();
             if (checkNota != null)
             {
-                labelNfe.Text = checkNota.NR_NOTA.ToString();
+                if(checkNota.NR_NOTA != null)
+                    labelNfe.Text = checkNota.NR_NOTA.ToString();
             }
         }
 

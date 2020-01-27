@@ -174,7 +174,7 @@
             this.retorno.Name = "retorno";
             this.retorno.PasswordChar = '\0';
             this.retorno.ReadOnly = true;
-            this.retorno.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.retorno.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.retorno.Size = new System.Drawing.Size(478, 153);
             this.retorno.TabIndex = 500;
             this.retorno.TabStop = false;

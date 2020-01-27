@@ -111,8 +111,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             CartaCorrecao.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-                if (checkNota.Status != "Autorizada")
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null || checkNota?.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível emitir uma Carta de Correção.", Alert.AlertType.warning);
                     return;
@@ -128,13 +128,13 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Cancelar.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-                if (checkNota.Status != "Autorizada")
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null || checkNota?.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível cancelar uma nota Pendente/Cancelada.", Alert.AlertType.warning);
                     return;
                 }
-
+                
                 _modelNota = checkNota;
 
                 CartaCorrecaoAdd.tela = "Cancelar";
@@ -153,8 +153,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             EnviarEmail.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-                if (checkNota.Status != "Autorizada")
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null || checkNota?.Status == "Pendente")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível enviar uma nota Pendente.", Alert.AlertType.warning);
                     return;
@@ -178,8 +178,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Imprimir.Click += (s, e) =>
             {
-                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-                if (checkNota.Status == "Pendente")
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                if (checkNota == null || checkNota?.Status == "Pendente")
                 {
                     Alert.Message("Opps!", "Emita a nota para imprimir.", Alert.AlertType.warning);
                     return;
