@@ -47,10 +47,14 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLimiteDesconto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.btnControlarEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -257,7 +261,7 @@
             this.retomarVendaInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.retomarVendaInicio.FalseTextToggle = "Não";
             this.retomarVendaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.retomarVendaInicio.Location = new System.Drawing.Point(290, 189);
+            this.retomarVendaInicio.Location = new System.Drawing.Point(287, 189);
             this.retomarVendaInicio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.retomarVendaInicio.Name = "retomarVendaInicio";
             this.retomarVendaInicio.ProgressImage = null;
@@ -279,7 +283,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.White;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(174, 224);
+            this.pictureBox11.Location = new System.Drawing.Point(174, 271);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(15, 15);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -292,7 +296,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(51, 222);
+            this.label1.Location = new System.Drawing.Point(51, 269);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 552;
@@ -332,7 +336,7 @@
             this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
             this.txtLimiteDesconto.ImageVisible = false;
             this.txtLimiteDesconto.ImageWidth = 35;
-            this.txtLimiteDesconto.Location = new System.Drawing.Point(54, 243);
+            this.txtLimiteDesconto.Location = new System.Drawing.Point(54, 290);
             this.txtLimiteDesconto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.txtLimiteDesconto.Name = "txtLimiteDesconto";
             this.txtLimiteDesconto.PasswordChar = '\0';
@@ -355,6 +359,72 @@
             this.txtLimiteDesconto.Watermark.Visible = false;
             this.txtLimiteDesconto.WordWrap = true;
             // 
+            // btnControlarEstoque
+            // 
+            this.btnControlarEstoque.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnControlarEstoque.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnControlarEstoque.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnControlarEstoque.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.Border.HoverVisible = true;
+            this.btnControlarEstoque.Border.Rounding = 20;
+            this.btnControlarEstoque.Border.Thickness = 1;
+            this.btnControlarEstoque.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnControlarEstoque.Border.Visible = true;
+            this.btnControlarEstoque.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.ButtonBorder.HoverVisible = true;
+            this.btnControlarEstoque.ButtonBorder.Rounding = 18;
+            this.btnControlarEstoque.ButtonBorder.Thickness = 1;
+            this.btnControlarEstoque.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnControlarEstoque.ButtonBorder.Visible = true;
+            this.btnControlarEstoque.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnControlarEstoque.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnControlarEstoque.ButtonSize = new System.Drawing.Size(20, 20);
+            this.btnControlarEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControlarEstoque.FalseTextToggle = "Não";
+            this.btnControlarEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnControlarEstoque.Location = new System.Drawing.Point(200, 229);
+            this.btnControlarEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnControlarEstoque.Name = "btnControlarEstoque";
+            this.btnControlarEstoque.ProgressImage = null;
+            this.btnControlarEstoque.Size = new System.Drawing.Size(58, 25);
+            this.btnControlarEstoque.TabIndex = 555;
+            this.btnControlarEstoque.Text = "visualToggle1";
+            this.btnControlarEstoque.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnControlarEstoque.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnControlarEstoque.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnControlarEstoque.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnControlarEstoque.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnControlarEstoque.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnControlarEstoque.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnControlarEstoque.TrueTextToggle = "Sim";
+            this.btnControlarEstoque.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(51, 231);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(124, 17);
+            this.label7.TabIndex = 554;
+            this.label7.Text = "Controlar estoque?";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(174, 234);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 556;
+            this.pictureBox1.TabStop = false;
+            // 
             // Comercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +432,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnControlarEstoque);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLimiteDesconto);
@@ -381,6 +454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +478,8 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtLimiteDesconto;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle btnControlarEstoque;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

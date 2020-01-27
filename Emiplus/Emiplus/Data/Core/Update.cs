@@ -105,6 +105,9 @@ namespace Emiplus.Data.Core
             if (!IniFile.KeyExists("LimiteDesconto", "Comercial"))
                 IniFile.Write("LimiteDesconto", "0", "Comercial");
 
+            if (!IniFile.KeyExists("ControlarEstoque", "Comercial"))
+                IniFile.Write("ControlarEstoque", "False", "Comercial");
+
             if (!IniFile.KeyExists("MAIL_HOST", "EMAIL"))
                 IniFile.Write("MAIL_HOST", "", "EMAIL");
 
