@@ -93,16 +93,20 @@ namespace Emiplus.Model
             return true;
         }
 
-        public bool Remove(int id)
+        public bool Remove(int id, bool message = true)
         {
             var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
             if (Data(data).Update("ID", id) == 1)
             {
-                Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+                if (message)
+                    Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
+
                 return true;
             }
 
-            Alert.Message("Opss!", "Não foi possível remover o produto.", Alert.AlertType.error);
+            if (message)
+                Alert.Message("Opss!", "Não foi possível remover o produto.", Alert.AlertType.error);
+
             return false;
         }
 

@@ -389,7 +389,10 @@ namespace Emiplus.View.Produtos
                 GetImpostos(0);
 
                 if (_modelImposto.Save(_modelImposto))
+                {
+                    DialogResult = DialogResult.OK;
                     Close();
+                }
             };
 
             btnRemover.Click += (s, e) =>

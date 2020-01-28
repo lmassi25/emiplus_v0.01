@@ -41,6 +41,30 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void LoadImpostoOne()
+        {
+            if (impostos.Count() > 0)
+            {
+                ImpostoNFE.DataSource = impostos;
+                ImpostoNFE.DisplayMember = "NOME";
+                ImpostoNFE.ValueMember = "ID";
+            }
+
+            ImpostoNFE.SelectedValue = 0;
+        }
+
+        private void LoadImpostoTwo()
+        {
+            if (impostos2.Count() > 0)
+            {
+                ImpostoCFE.DataSource = impostos2;
+                ImpostoCFE.DisplayMember = "NOME";
+                ImpostoCFE.ValueMember = "ID";
+            }
+
+            ImpostoCFE.SelectedValue = 0;
+        }
+
         private void Start()
         {
             ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
@@ -66,25 +90,8 @@ namespace Emiplus.View.Produtos
 
             Medidas.DataSource = Support.GetMedidas();
 
-            //var imposto = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos.Count() > 0)
-            {
-                ImpostoNFE.DataSource = impostos;
-                ImpostoNFE.DisplayMember = "NOME";
-                ImpostoNFE.ValueMember = "ID";
-            }
-
-            ImpostoNFE.SelectedValue = 0;
-
-            //var imposto2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos2.Count() > 0)
-            {
-                ImpostoCFE.DataSource = impostos2;
-                ImpostoCFE.DisplayMember = "NOME";
-                ImpostoCFE.ValueMember = "ID";
-            }
-
-            ImpostoCFE.SelectedValue = 0;
+            LoadImpostoOne();
+            LoadImpostoTwo();
 
             Origens.DataSource = Support.GetOrigens();
             Origens.DisplayMember = "Nome";
@@ -260,6 +267,8 @@ namespace Emiplus.View.Produtos
 
             Shown += (s, e) =>
             {
+                Refresh();
+
                 this.BeginInvoke((MethodInvoker)delegate
                 {
                     idPdtSelecionado = Produtos.idPdtSelecionado;
@@ -341,7 +350,34 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
+                    backOn.RunWorkerAsync();
                     LoadFornecedores();
+                }
+            };
+
+            btnAddImpostoOne.Click += (s, e) =>
+            {
+                Impostos.idImpSelected = 0;
+                AddImpostos f = new AddImpostos();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    backOn.RunWorkerAsync();
+                    LoadImpostoOne();
+                }
+            };
+
+            btnAddImpostoTwo.Click += (s, e) =>
+            {
+                Impostos.idImpSelected = 0;
+                AddImpostos f = new AddImpostos();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    backOn.RunWorkerAsync();
+                    LoadImpostoTwo();
                 }
             };
 

@@ -100,8 +100,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.btnAddImpostoTwo = new System.Windows.Forms.PictureBox();
+            this.btnAddImpostoOne = new System.Windows.Forms.PictureBox();
             this.chkImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.ImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
@@ -131,8 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoTwo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
@@ -1909,8 +1909,8 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.pictureBox13);
-            this.tabPage5.Controls.Add(this.pictureBox12);
+            this.tabPage5.Controls.Add(this.btnAddImpostoTwo);
+            this.tabPage5.Controls.Add(this.btnAddImpostoOne);
             this.tabPage5.Controls.Add(this.chkImpostoCFE);
             this.tabPage5.Controls.Add(this.pictureBox9);
             this.tabPage5.Controls.Add(this.ImpostoCFE);
@@ -1924,27 +1924,27 @@
             this.tabPage5.Text = "Impostos";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // pictureBox13
+            // btnAddImpostoTwo
             // 
-            this.pictureBox13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(585, 105);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 181;
-            this.pictureBox13.TabStop = false;
+            this.btnAddImpostoTwo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddImpostoTwo.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoTwo.Image")));
+            this.btnAddImpostoTwo.Location = new System.Drawing.Point(585, 105);
+            this.btnAddImpostoTwo.Name = "btnAddImpostoTwo";
+            this.btnAddImpostoTwo.Size = new System.Drawing.Size(27, 27);
+            this.btnAddImpostoTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddImpostoTwo.TabIndex = 181;
+            this.btnAddImpostoTwo.TabStop = false;
             // 
-            // pictureBox12
+            // btnAddImpostoOne
             // 
-            this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(585, 41);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox12.TabIndex = 180;
-            this.pictureBox12.TabStop = false;
+            this.btnAddImpostoOne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddImpostoOne.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoOne.Image")));
+            this.btnAddImpostoOne.Location = new System.Drawing.Point(585, 41);
+            this.btnAddImpostoOne.Name = "btnAddImpostoOne";
+            this.btnAddImpostoOne.Size = new System.Drawing.Size(27, 27);
+            this.btnAddImpostoOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddImpostoOne.TabIndex = 180;
+            this.btnAddImpostoOne.TabStop = false;
             // 
             // chkImpostoCFE
             // 
@@ -2212,8 +2212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoTwo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
@@ -2297,7 +2297,7 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label3;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtLimiteDesconto;
-        private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox btnAddImpostoTwo;
+        private System.Windows.Forms.PictureBox btnAddImpostoOne;
     }
 }

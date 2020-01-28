@@ -43,6 +43,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnMarcarCheckBox = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.btnEditAll = new System.Windows.Forms.Button();
             this.imprimir = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -53,6 +56,7 @@
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.Loading = new System.Windows.Forms.PictureBox();
+            this.nrRegistros = new System.Windows.Forms.Label();
             this.barraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panel2.SuspendLayout();
@@ -161,7 +165,7 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.Loading);
             this.panel2.Controls.Add(this.GridListaProdutos);
-            this.panel2.Location = new System.Drawing.Point(38, 243);
+            this.panel2.Location = new System.Drawing.Point(38, 253);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(659, 280);
             this.panel2.TabIndex = 6;
@@ -217,12 +221,91 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.btnRemover);
+            this.panel5.Controls.Add(this.btnEditAll);
             this.panel5.Controls.Add(this.imprimir);
             this.panel5.Controls.Add(this.btnHelp);
             this.panel5.Location = new System.Drawing.Point(0, 552);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(733, 97);
             this.panel5.TabIndex = 8;
+            // 
+            // btnMarcarCheckBox
+            // 
+            this.btnMarcarCheckBox.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMarcarCheckBox.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.BackColorState.Hover = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.BackColorState.Pressed = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.Border.HoverColor = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.HoverVisible = true;
+            this.btnMarcarCheckBox.Border.Rounding = 6;
+            this.btnMarcarCheckBox.Border.Thickness = 1;
+            this.btnMarcarCheckBox.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMarcarCheckBox.Border.Visible = true;
+            this.btnMarcarCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarCheckBox.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMarcarCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarCheckBox.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.Image = null;
+            this.btnMarcarCheckBox.Location = new System.Drawing.Point(41, 228);
+            this.btnMarcarCheckBox.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnMarcarCheckBox.Name = "btnMarcarCheckBox";
+            this.btnMarcarCheckBox.Size = new System.Drawing.Size(116, 18);
+            this.btnMarcarCheckBox.TabIndex = 40052;
+            this.btnMarcarCheckBox.Tag = " ";
+            this.btnMarcarCheckBox.Text = "Marcar Todos";
+            this.btnMarcarCheckBox.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMarcarCheckBox.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnMarcarCheckBox.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRemover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemover.FlatAppearance.BorderSize = 0;
+            this.btnRemover.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemover.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
+            this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRemover.Location = new System.Drawing.Point(540, 3);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(85, 90);
+            this.btnRemover.TabIndex = 106;
+            this.btnRemover.Text = "Apagar";
+            this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Visible = false;
+            // 
+            // btnEditAll
+            // 
+            this.btnEditAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditAll.FlatAppearance.BorderSize = 0;
+            this.btnEditAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditAll.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditAll.Image = ((System.Drawing.Image)(resources.GetObject("btnEditAll.Image")));
+            this.btnEditAll.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditAll.Location = new System.Drawing.Point(150, 3);
+            this.btnEditAll.Name = "btnEditAll";
+            this.btnEditAll.Size = new System.Drawing.Size(120, 90);
+            this.btnEditAll.TabIndex = 105;
+            this.btnEditAll.Text = "Edição em Massa";
+            this.btnEditAll.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditAll.UseVisualStyleBackColor = true;
+            this.btnEditAll.Visible = false;
             // 
             // imprimir
             // 
@@ -232,7 +315,7 @@
             this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
             this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -428,12 +511,26 @@
             this.Loading.TabStop = false;
             this.Loading.Visible = false;
             // 
+            // nrRegistros
+            // 
+            this.nrRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrRegistros.AutoSize = true;
+            this.nrRegistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nrRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nrRegistros.Location = new System.Drawing.Point(584, 231);
+            this.nrRegistros.Name = "nrRegistros";
+            this.nrRegistros.Size = new System.Drawing.Size(112, 13);
+            this.nrRegistros.TabIndex = 40053;
+            this.nrRegistros.Text = "Exibindo: 0 registros";
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.nrRegistros);
+            this.Controls.Add(this.btnMarcarCheckBox);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label2);
@@ -484,5 +581,9 @@
         private System.Windows.Forms.PictureBox Loading;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button imprimir;
+        private System.Windows.Forms.Button btnEditAll;
+        private System.Windows.Forms.Button btnRemover;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnMarcarCheckBox;
+        private System.Windows.Forms.Label nrRegistros;
     }
 }
