@@ -95,6 +95,7 @@ namespace Emiplus.Controller
             Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+
         public Task<IEnumerable<dynamic>> GetDataTableServicos(string SearchText = null)
         {
             var search = "%" + SearchText + "%";

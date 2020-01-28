@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -40,7 +41,7 @@ namespace Emiplus.View.Produtos
             WorkerBackground.RunWorkerAsync();
         }
 
-        private async void DataTable() => await _controller.SetTable(GridListaProdutos, null, search.Text);
+        private async void DataTable() => await SetContentTableAsync(GridListaProdutos, null, search.Text);
 
         private void EditProduct(bool create = false)
         {
@@ -82,6 +83,87 @@ namespace Emiplus.View.Produtos
             }
         }
 
+        private void SetHeadersTable(DataGridView Table)
+        {
+            Table.ColumnCount = 8;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            checkColumn.HeaderText = "Selecione";
+            checkColumn.Name = "Selecione";
+            checkColumn.FlatStyle = FlatStyle.Standard;
+            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
+            checkColumn.Width = 60;
+            Table.Columns.Insert(0, checkColumn);
+
+            Table.Columns[1].Name = "ID";
+            Table.Columns[1].Visible = false;
+
+            Table.Columns[2].Name = "Categoria";
+            Table.Columns[2].Width = 150;
+            Table.Columns[2].Visible = true;
+
+            Table.Columns[3].Name = "Cód. de Barras";
+            Table.Columns[3].Width = 130;
+            Table.Columns[3].Visible = true;
+
+            Table.Columns[4].Name = "Referência";
+            Table.Columns[4].Width = 100;
+            Table.Columns[4].Visible = true;
+
+            Table.Columns[5].Name = "Descrição";
+            Table.Columns[5].Width = 120;
+            Table.Columns[5].MinimumWidth = 120;
+            Table.Columns[5].Visible = true;
+
+            Table.Columns[6].Name = "Custo";
+            Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[6].Width = 100;
+            Table.Columns[6].Visible = true;
+
+            Table.Columns[7].Name = "Venda";
+            Table.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[7].Width = 100;
+            Table.Columns[7].Visible = true;
+
+            Table.Columns[8].Name = "Estoque Atual";
+            Table.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[8].Width = 120;
+            Table.Columns[8].Visible = true;
+        }
+
+        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
+        {
+            Table.Rows.Clear();
+
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await _controller.GetDataTable(SearchText);
+                Data = dados;
+            }
+
+            foreach (dynamic item in Data)
+            {
+                Table.Rows.Add(
+                    true,
+                    item.ID,
+                    item.CATEGORIA,
+                    item.CODEBARRAS,
+                    item.REFERENCIA,
+                    item.NOME,
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true),
+                    Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEATUAL))
+                );
+            }
+            
+            Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void Eventos()
         {
             KeyDown += KeyDowns;
@@ -92,21 +174,20 @@ namespace Emiplus.View.Produtos
             {
                 search.Select();
                 DataTableStart();
+                SetHeadersTable(GridListaProdutos);
+            };
+
+            btnEditAll.Click += (s, e) =>
+            {
+
             };
 
             btnAdicionar.Click += (s, e) => EditProduct(true);
             btnEditar.Click += (s, e) => EditProduct();
             GridListaProdutos.DoubleClick += (s, e) => EditProduct();
 
-            label5.Click += (s, e) =>
-            {
-                Close();
-            };
-
-            btnExit.Click += (s, e) =>
-            {
-                Close();
-            };
+            label5.Click += (s, e) => Close();
+            btnExit.Click += (s, e) => Close();
 
             search.TextChanged += (s, e) =>
             {
@@ -116,26 +197,21 @@ namespace Emiplus.View.Produtos
                 GridListaProdutos.Visible = false;
             };
             search.KeyPress += (s, e) => e.KeyChar = Char.ToUpper(e.KeyChar);
-            //search.KeyDown += KeyDowns;
-            //GridListaProdutos.KeyDown += KeyDowns;
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
-            using (var b = WorkerBackground)
+            WorkerBackground.DoWork += async (s, e) =>
             {
-                b.DoWork += async (s, e) =>
-                {
-                    dataTable = await _controller.GetDataTable();
-                };
+                dataTable = await _controller.GetDataTable();
+            };
 
-                b.RunWorkerCompleted += async (s, e) =>
-                {
-                    await _controller.SetTable(GridListaProdutos, dataTable);
+            WorkerBackground.RunWorkerCompleted += async (s, e) =>
+            {
+                await SetContentTableAsync(GridListaProdutos, dataTable);
 
-                    Loading.Visible = false;
-                    GridListaProdutos.Visible = true;
-                };
-            }
+                Loading.Visible = false;
+                GridListaProdutos.Visible = true;
+            };
 
             timer.AutoReset = false;
             timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
