@@ -260,6 +260,8 @@ namespace Emiplus.View.Produtos
 
             Shown += (s, e) =>
             {
+                Refresh();
+
                 this.BeginInvoke((MethodInvoker)delegate
                 {
                     idPdtSelecionado = Produtos.idPdtSelecionado;
