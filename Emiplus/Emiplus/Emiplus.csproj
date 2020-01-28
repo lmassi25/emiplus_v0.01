@@ -309,6 +309,7 @@
     <Compile Include="Model\Caixa.cs" />
     <Compile Include="Model\CaixaMovimentacao.cs" />
     <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\Estoque.cs" />
     <Compile Include="Model\Etiqueta.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />

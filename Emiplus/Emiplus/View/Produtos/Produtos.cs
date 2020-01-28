@@ -4,6 +4,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Reports;
+using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,7 +48,8 @@ namespace Emiplus.View.Produtos
         private async void DataTable()
         {
             await SetContentTableAsync(GridListaProdutos, null, search.Text);
-            nrRegistros.Text = $"Exibindo: {GridListaProdutos.Rows.Count} registros";
+            dynamic totalRegistros = new Model.Item().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("Tipo", "Produtos").FirstOrDefault();
+            nrRegistros.Text = $"Exibindo: {GridListaProdutos.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
         }
         private void EditProduct(bool create = false)
         {
