@@ -71,14 +71,16 @@ namespace Emiplus.View.Reports
             model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
             model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.fornecedor");
             model.Select("ITEM.*", "PESSOA.NOME AS FORNECEDOR_NAME", "CATEGORIA.NOME AS CAT_NAME");
-            model.Limit(200);
+            model.Where("ITEM.TIPO", "Produtos");
+            model.Where("ITEM.EXCLUIR", 0);
             model.OrderByDesc("ITEM.ID");
+
             return model.GetAsync<dynamic>();
         }
 
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
-            Table.ColumnCount = 5;
+            Table.ColumnCount = 7;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -87,18 +89,25 @@ namespace Emiplus.View.Reports
 
             Table.Columns[0].Name = "Descrição";
             Table.Columns[0].Width = 150;
+            Table.Columns[0].MinimumWidth = 150;
 
-            Table.Columns[1].Name = "Estoque";
-            Table.Columns[1].Width = 100;
+            Table.Columns[1].Name = "Valor Compra";
+            Table.Columns[1].Width = 80;
 
-            Table.Columns[2].Name = "Medida";
-            Table.Columns[2].Width = 100;
+            Table.Columns[2].Name = "Valor Venda";
+            Table.Columns[2].Width = 80;
 
-            Table.Columns[3].Name = "Categoria";
-            Table.Columns[3].Width = 150;
+            Table.Columns[3].Name = "Estoque";
+            Table.Columns[3].Width = 100;
 
-            Table.Columns[4].Name = "Revendedor";
-            Table.Columns[4].Width = 150;
+            Table.Columns[4].Name = "Medida";
+            Table.Columns[4].Width = 100;
+
+            Table.Columns[5].Name = "Categoria";
+            Table.Columns[5].Width = 150;
+
+            Table.Columns[6].Name = "Revendedor";
+            Table.Columns[6].Width = 150;
 
             Table.Rows.Clear();
 
@@ -114,6 +123,8 @@ namespace Emiplus.View.Reports
 
                 Table.Rows.Add(
                     item.NOME,
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPPRA), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true),
                     item.ESTOQUEATUAL,
                     item.MEDIDA,
                     item.CAT_NAME,
@@ -146,6 +157,12 @@ namespace Emiplus.View.Reports
                 AutoCompleteFornecedorCategorias();
             };
 
+            Shown += async (s, e) =>
+            {
+                label13.Visible = false;
+                await DataTableAsync();
+            };
+
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
@@ -170,6 +187,8 @@ namespace Emiplus.View.Reports
                 data.Add(new
                 {
                     Nome = item.NOME,
+                    ValorCompra = Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPPRA), true),
+                    ValorVenda = Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true),
                     Estoque = item.ESTOQUEATUAL,
                     Medida = item.MEDIDA,
                     Categoria = item.CAT_NAME,
@@ -189,8 +208,8 @@ namespace Emiplus.View.Reports
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var f = new Browser())
+                f.ShowDialog();
         }
     }
 }

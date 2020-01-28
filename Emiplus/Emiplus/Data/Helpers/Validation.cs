@@ -10,6 +10,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Emiplus.Data.Helpers
@@ -492,11 +493,13 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
+        private static Random rnd = new Random();
         public static int RandomSecurity()
         {
             DateTime foo = DateTime.UtcNow;
             long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
-            return (int)unixTime;
+            long random = rnd.Next(15, 999999);
+            return (int)unixTime + (int)random;
         }
 
         public static string Base64Encode(string plainText)
