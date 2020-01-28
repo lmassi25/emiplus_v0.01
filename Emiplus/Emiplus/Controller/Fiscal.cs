@@ -279,15 +279,29 @@ namespace Emiplus.Controller
 
                     case "NFe":
 
-                        _msg = RequestCancela(tipo, justificativa);
-
-                        if (_msg.Contains("Evento registrado e vinculado a NF-e"))
+                        if (IniFile.Read("NFe", "APP") == "Uninfe")
                         {
-                            _msg = "NF-e cancelada com sucesso.";
-                            _nota.Status = "Cancelada";
-                            _nota.Save(_nota, false);
-                        }
+                            #region UNINFE
 
+                            uninfe_envia("envia", arqPath);
+
+                            #endregion
+                        }
+                        else
+                        {
+                            #region TECNOSPEED 
+
+                            _msg = RequestCancela(tipo, justificativa);
+
+                            if (_msg.Contains("Evento registrado e vinculado a NF-e"))
+                            {
+                                _msg = "NF-e cancelada com sucesso.";
+                                _nota.Status = "Cancelada";
+                                _nota.Save(_nota, false);
+                            }
+
+                            #endregion
+                        }
                         break;
 
                     #endregion NFE
