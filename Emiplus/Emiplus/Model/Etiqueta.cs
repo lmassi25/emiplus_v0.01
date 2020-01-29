@@ -48,7 +48,7 @@
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Etiqueta salva com sucesso.", Alert.AlertType.success);
+                    return true;
                 }
                 else
                 {

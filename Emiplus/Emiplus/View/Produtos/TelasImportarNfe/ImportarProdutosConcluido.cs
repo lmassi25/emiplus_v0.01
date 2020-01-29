@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlKata.Execution;
+using System;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
@@ -52,7 +54,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         {
             foreach (dynamic item in ImportarProdutos.produtos)
             {
-                _mItem.Id = item.Id;
+                int id = item.Id;
+                if (id != 0)
+                    _mItem = _mItem.FindById(id).FirstOrDefault<Model.Item>();
+
+                _mItem.Id = id;
                 _mItem.Tipo = "Produtos";
                 _mItem.Excluir = 0;
                 _mItem.Referencia = item.Referencia;
@@ -64,8 +70,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.ValorCompra = item.ValorCompra;
                 _mItem.ValorVenda = item.ValorVenda;
                 _mItem.Fornecedor = Validation.ConvertToInt32(item.Fornecedor);
-                _mItem.id_sync = Validation.RandomSecurity();
-                _mItem.status_sync = "CREATE";
+                _mItem.id_sync = item.idSync == 0 ? Validation.RandomSecurity() : item.idSync;
                 if (_mItem.Save(_mItem, false))
                 {
                     foreach (DataGridViewRow gridData in GridLista.Rows)

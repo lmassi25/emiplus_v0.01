@@ -2,6 +2,7 @@
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using RestSharp;
+using SqlKata.Execution;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -123,6 +124,8 @@ namespace Emiplus.View.Common
         public static string CategoriaPage { get; set; }
         public static bool syncActive { get; set; }
 
+        private Model.Item _mItem = new Model.Item();
+
         public Home()
         {
             InitializeComponent();
@@ -200,6 +203,7 @@ namespace Emiplus.View.Common
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
 
+            _mItem = _mItem.FindById(8848).FirstOrDefault<Model.Item>();
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 

@@ -45,9 +45,7 @@ namespace Emiplus.View.Reports
 
             var fornecedor = new Model.Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
             foreach (var item in fornecedor)
-            {
                 fornecedores.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
-            }
 
             Fornecedor.DataSource = fornecedores;
             Fornecedor.DisplayMember = "Nome";
@@ -70,10 +68,13 @@ namespace Emiplus.View.Reports
 
             model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
             model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.fornecedor");
-            model.Select("ITEM.*", "PESSOA.NOME AS FORNECEDOR_NAME", "CATEGORIA.NOME AS CAT_NAME");
+            model.LeftJoin("ESTOQUE", "estoque.id_item", "ITEM.id");
+            model.Select("ITEM.*", "PESSOA.NOME AS FORNECEDOR_NAME", "CATEGORIA.NOME AS CAT_NAME", "ESTOQUE.estoque");
             model.Where("ITEM.TIPO", "Produtos");
             model.Where("ITEM.EXCLUIR", 0);
-            model.OrderByDesc("ITEM.ID");
+            model.WhereRaw($"CAST(ESTOQUE.criado as DATE) = '{Validation.ConvertDateToSql(dataInicial.Text)}'");
+
+            model.OrderBy("ITEM.NOME");
 
             return model.GetAsync<dynamic>();
         }
@@ -88,8 +89,8 @@ namespace Emiplus.View.Reports
             Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "Descrição";
-            Table.Columns[0].Width = 150;
-            Table.Columns[0].MinimumWidth = 150;
+            Table.Columns[0].Width = 200;
+            Table.Columns[0].MinimumWidth = 200;
 
             Table.Columns[1].Name = "Valor Compra";
             Table.Columns[1].Width = 80;
@@ -120,12 +121,12 @@ namespace Emiplus.View.Reports
             for (int i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
-
+                
                 Table.Rows.Add(
                     item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPPRA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true),
-                    item.ESTOQUEATUAL,
+                    dataInicial.Text != DateTime.Now.ToString("dd/MM/yyyy") ? Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUE)) : Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEATUAL)),
                     item.MEDIDA,
                     item.CAT_NAME,
                     item.FORNECEDOR_NAME
@@ -155,6 +156,8 @@ namespace Emiplus.View.Reports
                 Resolution.SetScreenMaximized(this);
 
                 AutoCompleteFornecedorCategorias();
+
+                dataInicial.Text = DateTime.Now.ToString();
             };
 
             Shown += async (s, e) =>

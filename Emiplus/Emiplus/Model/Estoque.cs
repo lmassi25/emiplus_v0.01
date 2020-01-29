@@ -30,7 +30,7 @@ namespace Emiplus.Model
                 foreach (dynamic data in items)
                 {
                     int id = data.ID;
-                    double estoque = data.ESTOQUEATUAL;
+                    double estoque = Validation.ConvertToDouble(data.ESTOQUEATUAL);
 
                     dynamic itemsCheck = FindAll().Where("id_item", id).Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Now)).FirstOrDefault<Estoque>();
                     if (itemsCheck == null)
