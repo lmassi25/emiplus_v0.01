@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using SqlKata.Execution;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -25,12 +26,17 @@ namespace Emiplus.View.Comercial
                 if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
                 {
                     DialogResult = DialogResult.OK;
-                    NomeProduto = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value.ToString();
 
-                    if (Home.pedidoPage == "Compras")
-                        ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Custo"].Value);
-                    else
-                        ValorVendaProduto = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Venda"].Value);
+                    Model.Item item = new Model.Item().FindById(Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Item>();
+                    if (item != null)
+                    {
+                        NomeProduto = item.Nome;
+
+                        if (Home.pedidoPage == "Compras")
+                            ValorVendaProduto = item.ValorCompra;
+                        else
+                            ValorVendaProduto = item.ValorVenda;
+                    }
 
                     Close();
                 }

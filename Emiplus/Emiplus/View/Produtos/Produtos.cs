@@ -51,6 +51,7 @@ namespace Emiplus.View.Produtos
             dynamic totalRegistros = new Model.Item().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("Tipo", "Produtos").FirstOrDefault();
             nrRegistros.Text = $"Exibindo: {GridListaProdutos.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
         }
+
         private void EditProduct(bool create = false)
         {
             if (create)
@@ -163,7 +164,7 @@ namespace Emiplus.View.Produtos
                     item.CODEBARRAS,
                     item.REFERENCIA,
                     item.NOME,
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true),
                     Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEATUAL))
                 );

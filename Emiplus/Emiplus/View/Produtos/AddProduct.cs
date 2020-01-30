@@ -32,7 +32,7 @@ namespace Emiplus.View.Produtos
         {
             Fornecedor.Refresh();
 
-            //var fornecedor = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+            var fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
             if (fornecedores.Count() > 0)
             {
                 Fornecedor.DataSource = fornecedores;
@@ -43,6 +43,7 @@ namespace Emiplus.View.Produtos
 
         private void LoadImpostoOne()
         {
+            impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (impostos.Count() > 0)
             {
                 ImpostoNFE.DataSource = impostos;
@@ -55,6 +56,7 @@ namespace Emiplus.View.Produtos
 
         private void LoadImpostoTwo()
         {
+            impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             if (impostos2.Count() > 0)
             {
                 ImpostoCFE.DataSource = impostos2;
@@ -285,12 +287,13 @@ namespace Emiplus.View.Produtos
                     var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        var data = _modelItem.Remove(idPdtSelecionado);
+                        var data = _modelItem.Remove(idPdtSelecionado, false);
                         if (data)
                             Close();
                     }
 
                     nome.Focus();
+                    return;
                 }
 
                 Close();
@@ -350,7 +353,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    backOn.RunWorkerAsync();
                     LoadFornecedores();
                 }
             };
@@ -363,7 +365,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    backOn.RunWorkerAsync();
                     LoadImpostoOne();
                 }
             };
@@ -376,7 +377,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    backOn.RunWorkerAsync();
                     LoadImpostoTwo();
                 }
             };

@@ -254,7 +254,9 @@ namespace Emiplus.View.Comercial
                     .FirstOrDefault<Model.Item>();
 
                 if (item != null)
+                {
                     BuscarProduto.Text = item.Nome;
+                }
                 else
                     ModalItens(); // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
             }
@@ -532,6 +534,7 @@ namespace Emiplus.View.Comercial
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         BuscarProduto.Text = PedidoModalItens.NomeProduto;
+                        Preco.Text = Validation.FormatPrice(PedidoModalItens.ValorVendaProduto);
 
                         if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
                         {
@@ -564,7 +567,7 @@ namespace Emiplus.View.Comercial
             {
                 var itemId = collection.Lookup(BuscarProduto.Text);
                 Model.Item item = _mItem.FindById(itemId).FirstOrDefault<Model.Item>();
-
+                
                 double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
                 double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
                 double DescontoPorcentagemTxt = Validation.ConvertToDouble(DescontoPorcentagem.Text);
@@ -924,10 +927,24 @@ namespace Emiplus.View.Comercial
             SelecionarColaborador.Click += (s, e) => ModalColaborador();
 
             addProduto.Click += (s, e) => LoadItens();
+
             BuscarProduto.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    if (ModoRapAva == 1)
+                    {
+                        if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                        {
+                            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                            if (item != null)
+                                Preco.Text = Validation.FormatPrice(item.ValorVenda);
+
+                            Quantidade.Focus();
+                            return;
+                        }
+                    }
+
                     if (string.IsNullOrEmpty(BuscarProduto.Text))
                         BuscarProduto.Focus();
                     else

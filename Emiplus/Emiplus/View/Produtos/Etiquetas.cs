@@ -135,6 +135,17 @@ namespace Emiplus.View.Produtos
             var Etiqueta = "etiqueta" + modelos.SelectedValue.ToString() + ".css";
             var Colunas = string.IsNullOrEmpty(colunas.Text) ? 0 : Validation.ConvertToInt32(colunas.Text);
 
+            string paddingEtiqueta = "";
+            if (modelos.SelectedValue.ToString() == "10")
+                paddingEtiqueta = $"{IniFile.Read("Pimaco10Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Left", "ETIQUETAS")}mm";
+
+            if (modelos.SelectedValue.ToString() == "30")
+                paddingEtiqueta = $"{IniFile.Read("Pimaco30Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Left", "ETIQUETAS")}mm";
+
+            if (modelos.SelectedValue.ToString() == "60")
+                paddingEtiqueta = $"{IniFile.Read("Pimaco60Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Left", "ETIQUETAS")}mm";
+
+
             bool logo = false;
             if (modelos.SelectedValue.ToString() == "10")
                 logo = true;
@@ -202,7 +213,8 @@ namespace Emiplus.View.Produtos
                 LogoUrl = logoUrl,
                 logoHtml = hideLogoHtml,
                 refHtml = hideRefHtml,
-                codeHtml = hideCodeHtml
+                codeHtml = hideCodeHtml,
+                padding = paddingEtiqueta
             }));
 
             Browser.htmlRender = render;

@@ -535,6 +535,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                         int id = Validation.ConvertToInt32(item.Cells["IDVINCULO"].Value);
                         double estoque = 0;
                         string codeBarras = item.Cells["Cód. de Barras"].Value.ToString();
+                        int id_sync = 0;
 
                         if (!string.IsNullOrEmpty(codeBarras))
                         {
@@ -544,6 +545,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             {
                                 id = _mItem.Id;
                                 estoque = _mItem.EstoqueAtual;
+                                id_sync = _mItem.id_sync;
                             }
                         }
 
@@ -567,7 +569,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             CategoriaId = Validation.ConvertToInt32(item.Cells["CATEGORIAID"].Value),
                             ValorCompra = Validation.ConvertToDouble(item.Cells["Vlr. Compra"].Value),
                             ValorVenda = Validation.ConvertToDouble(item.Cells["Vlr. Venda"].Value),
-                            Fornecedor = item.Cells["Fornecedor"].Value.ToString()
+                            Fornecedor = item.Cells["Fornecedor"].Value.ToString(),
+                            idSync = id_sync
                         });
                     }
                 }

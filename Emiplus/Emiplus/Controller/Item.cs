@@ -22,7 +22,7 @@ namespace Emiplus.Controller
                 .Where("item.tipo", "Produtos")
                 .Where
                 (
-                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
+                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
                 )
                 .OrderByDesc("item.criado")
                 .Limit(50)
@@ -58,7 +58,6 @@ namespace Emiplus.Controller
             Table.Columns[5].Name = "Custo";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[5].Width = 100;
-            //if (page == 1) Table.Columns[5].Visible = false;
 
             Table.Columns[6].Name = "Venda";
             Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -86,7 +85,7 @@ namespace Emiplus.Controller
                     item.CODEBARRAS,
                     item.REFERENCIA,
                     item.NOME,
-                    FormatPrice(ConvertToDouble(item.VALORCOMPRA), false),
+                    FormatPrice(ConvertToDouble(item.VALORCOMPRA), true),
                     FormatPrice(ConvertToDouble(item.VALORVENDA), true),
                     FormatMedidas(item.MEDIDA, ConvertToDouble(item.ESTOQUEATUAL))
                 );

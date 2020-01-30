@@ -131,6 +131,42 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("MAIL_EMIPLUS", "EMAIL"))
                 IniFile.Write("MAIL_EMIPLUS", "True", "EMAIL");
+
+            if (!IniFile.KeyExists("Pimaco10Top", "ETIQUETAS"))
+                IniFile.Write("Pimaco10Top", "15", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco10Right", "ETIQUETAS"))
+                IniFile.Write("Pimaco10Right", "5", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco10Bottom", "ETIQUETAS"))
+                IniFile.Write("Pimaco10Bottom", "10", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco10Left", "ETIQUETAS"))
+                IniFile.Write("Pimaco10Left", "0", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco30Top", "ETIQUETAS"))
+                IniFile.Write("Pimaco30Top", "13", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco30Right", "ETIQUETAS"))
+                IniFile.Write("Pimaco30Right", "5", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco30Bottom", "ETIQUETAS"))
+                IniFile.Write("Pimaco30Bottom", "10", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco30Left", "ETIQUETAS"))
+                IniFile.Write("Pimaco30Left", "0", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco60Top", "ETIQUETAS"))
+                IniFile.Write("Pimaco60Top", "14", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco60Right", "ETIQUETAS"))
+                IniFile.Write("Pimaco60Right", "13.5", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco60Bottom", "ETIQUETAS"))
+                IniFile.Write("Pimaco60Bottom", "13", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("Pimaco60Left", "ETIQUETAS"))
+                IniFile.Write("Pimaco60Left", "13", "ETIQUETAS");
         }
     }
 }

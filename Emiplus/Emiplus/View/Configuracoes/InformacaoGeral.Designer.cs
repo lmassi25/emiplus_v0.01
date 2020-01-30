@@ -274,7 +274,7 @@
             this.cnpj.ButtonText = "visualButton";
             this.cnpj.ButtonVisible = false;
             this.cnpj.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cnpj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cnpj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cnpj.Image = null;
             this.cnpj.ImageSize = new System.Drawing.Size(16, 16);
             this.cnpj.ImageVisible = false;
@@ -332,7 +332,7 @@
             this.razaosocial.ButtonText = "visualButton";
             this.razaosocial.ButtonVisible = false;
             this.razaosocial.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.razaosocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.razaosocial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.razaosocial.Image = null;
             this.razaosocial.ImageSize = new System.Drawing.Size(16, 16);
             this.razaosocial.ImageVisible = false;
@@ -401,7 +401,7 @@
             this.nomefantasia.ButtonText = "visualButton";
             this.nomefantasia.ButtonVisible = false;
             this.nomefantasia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomefantasia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nomefantasia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nomefantasia.Image = null;
             this.nomefantasia.ImageSize = new System.Drawing.Size(16, 16);
             this.nomefantasia.ImageVisible = false;
@@ -470,7 +470,7 @@
             this.inscricaoestadual.ButtonText = "visualButton";
             this.inscricaoestadual.ButtonVisible = false;
             this.inscricaoestadual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inscricaoestadual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.inscricaoestadual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inscricaoestadual.Image = null;
             this.inscricaoestadual.ImageSize = new System.Drawing.Size(16, 16);
             this.inscricaoestadual.ImageVisible = false;
@@ -539,7 +539,7 @@
             this.inscricaomunicipal.ButtonText = "visualButton";
             this.inscricaomunicipal.ButtonVisible = false;
             this.inscricaomunicipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inscricaomunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.inscricaomunicipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inscricaomunicipal.Image = null;
             this.inscricaomunicipal.ImageSize = new System.Drawing.Size(16, 16);
             this.inscricaomunicipal.ImageVisible = false;
@@ -619,7 +619,7 @@
             this.cep.ButtonText = "visualButton";
             this.cep.ButtonVisible = false;
             this.cep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cep.Image = null;
             this.cep.ImageSize = new System.Drawing.Size(16, 16);
             this.cep.ImageVisible = false;
@@ -688,7 +688,7 @@
             this.rua.ButtonText = "visualButton";
             this.rua.ButtonVisible = false;
             this.rua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rua.Image = null;
             this.rua.ImageSize = new System.Drawing.Size(16, 16);
             this.rua.ImageVisible = false;
@@ -757,7 +757,7 @@
             this.bairro.ButtonText = "visualButton";
             this.bairro.ButtonVisible = false;
             this.bairro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bairro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bairro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bairro.Image = null;
             this.bairro.ImageSize = new System.Drawing.Size(16, 16);
             this.bairro.ImageVisible = false;
@@ -826,7 +826,7 @@
             this.numero.ButtonText = "visualButton";
             this.numero.ButtonVisible = false;
             this.numero.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.numero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.numero.Image = null;
             this.numero.ImageSize = new System.Drawing.Size(16, 16);
             this.numero.ImageVisible = false;
@@ -895,7 +895,7 @@
             this.cidade.ButtonText = "visualButton";
             this.cidade.ButtonVisible = false;
             this.cidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cidade.Image = null;
             this.cidade.ImageSize = new System.Drawing.Size(16, 16);
             this.cidade.ImageVisible = false;
@@ -964,7 +964,7 @@
             this.uf.ButtonText = "visualButton";
             this.uf.ButtonVisible = false;
             this.uf.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.uf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.uf.Image = null;
             this.uf.ImageSize = new System.Drawing.Size(16, 16);
             this.uf.ImageVisible = false;
@@ -1033,7 +1033,7 @@
             this.ibge.ButtonText = "visualButton";
             this.ibge.ButtonVisible = false;
             this.ibge.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ibge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ibge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ibge.Image = null;
             this.ibge.ImageSize = new System.Drawing.Size(16, 16);
             this.ibge.ImageVisible = false;
@@ -1113,7 +1113,7 @@
             this.plano.ButtonText = "visualButton";
             this.plano.ButtonVisible = false;
             this.plano.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plano.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.plano.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.plano.Image = null;
             this.plano.ImageSize = new System.Drawing.Size(16, 16);
             this.plano.ImageVisible = false;
@@ -1182,7 +1182,7 @@
             this.recorrencia.ButtonText = "visualButton";
             this.recorrencia.ButtonVisible = false;
             this.recorrencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recorrencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.recorrencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.recorrencia.Image = null;
             this.recorrencia.ImageSize = new System.Drawing.Size(16, 16);
             this.recorrencia.ImageVisible = false;
@@ -1251,7 +1251,7 @@
             this.fatura.ButtonText = "visualButton";
             this.fatura.ButtonVisible = false;
             this.fatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.fatura.Image = null;
             this.fatura.ImageSize = new System.Drawing.Size(16, 16);
             this.fatura.ImageVisible = false;
