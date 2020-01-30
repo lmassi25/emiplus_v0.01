@@ -283,7 +283,57 @@ namespace Emiplus.Controller
                         {
                             #region UNINFE
 
-                            //uninfe_envia("envia", arqPath);
+                            #region XML
+
+                            string arqPath = _path_enviada + "\\Cancela" + Pedido + ".xml";
+
+                            XmlTextWriter writer = new XmlTextWriter(arqPath, null);
+
+                            writer.WriteStartElement("envEvento");
+                            writer.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+                            writer.WriteAttributeString("versao", "1.00");
+                            writer.WriteElementString("idLote", "0000000000" + DateTime.Now.Minute.ToString("00") + DateTime.Now.Second.ToString("00") + "5");
+
+                            writer.WriteStartElement("evento");
+                            writer.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+                            writer.WriteAttributeString("versao", "1.00");
+
+                            writer.WriteStartElement("infEvento");
+
+                            // ID + tpEvento + chave da NF-e + nSeqEvento
+                            // ID 110111 43100304678683000191550010000344924352121508 1
+                            writer.WriteAttributeString("Id", "ID110111" + _nota.ChaveDeAcesso + "01");
+
+                            writer.WriteElementString("cOrgao", "35");
+                            writer.WriteElementString("tpAmb", _servidorNFE.ToString());
+                            writer.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
+                            writer.WriteElementString("chNFe", _nota.ChaveDeAcesso);                            
+                            writer.WriteElementString("dhEvento", Validation.DateNowToSql() + "T" + DateTime.Now.ToString("HH:mm:ss") + DateTime.Now.ToString("zzz"));
+                            writer.WriteElementString("tpEvento", "110111");
+                            writer.WriteElementString("nSeqEvento", "1");
+                            writer.WriteElementString("verEvento", "1.00");
+
+                            writer.WriteStartElement("detEvento");
+
+                            writer.WriteAttributeString("versao", "1.00");
+
+                            writer.WriteElementString("descEvento", "Cancelamento");
+                            writer.WriteElementString("nProt", DateTime.Now.ToString("yyyymmdd") + DateTime.Now.ToString("HHmmss"));
+                            writer.WriteElementString("xJust", Validation.CleanStringForFiscal(justificativa));
+
+                            writer.WriteEndElement();
+
+                            writer.WriteEndElement();
+
+                            writer.WriteEndElement();
+
+                            writer.WriteEndElement();
+
+                            writer.Close();
+
+                            #endregion
+
+                            uninfe_envia("cancela", arqPath);
 
                             #endregion
                         }
@@ -2763,6 +2813,15 @@ namespace Emiplus.Controller
 
                     break;
 
+                case "cancela":
+
+                    uninfe_limpa(_pathRetorno);
+                    File.Copy(arqPath, _pathEnvio + "\\canc" + _nota.ChaveDeAcesso + "-ped-eve.xml");
+                    _msg = "";
+                    Thread.Sleep(5000);
+
+                    break;
+
                 case "consulta":
 
                     _msg = "";
@@ -2787,7 +2846,7 @@ namespace Emiplus.Controller
                             else if (fileinfo.Name.IndexOf("-sit.xml") > 0)
                             {
                                 encontrado = true;
-                            }
+                            }                            
                             else if (File.Exists(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err") == true)
                             {
                                 _msg = System.IO.File.ReadAllText(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err");
@@ -2796,6 +2855,11 @@ namespace Emiplus.Controller
                             else if (fileinfo.Name.IndexOf("-rec.err") > 0)
                             {
                                 _msg = System.IO.File.ReadAllText(_pathRetorno + "\\" + fileinfo.Name);
+                                encontrado = true;
+                            }
+                            else if (File.Exists(_pathRetorno + "\\canc" + _nota.ChaveDeAcesso + "-eve.err") == true)
+                            {
+                                _msg = System.IO.File.ReadAllText(_pathRetorno + "\\canc" + _nota.ChaveDeAcesso + "-eve.err");
                                 encontrado = true;
                             }
 
