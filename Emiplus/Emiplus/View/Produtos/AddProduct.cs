@@ -287,12 +287,13 @@ namespace Emiplus.View.Produtos
                     var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        var data = _modelItem.Remove(idPdtSelecionado);
+                        var data = _modelItem.Remove(idPdtSelecionado, false);
                         if (data)
                             Close();
                     }
 
                     nome.Focus();
+                    return;
                 }
 
                 Close();
@@ -352,7 +353,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    //backOn.RunWorkerAsync();
                     LoadFornecedores();
                 }
             };
@@ -365,7 +365,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    //backOn.RunWorkerAsync();
                     LoadImpostoOne();
                 }
             };
@@ -378,7 +377,6 @@ namespace Emiplus.View.Produtos
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    //backOn.RunWorkerAsync();
                     LoadImpostoTwo();
                 }
             };

@@ -927,25 +927,29 @@ namespace Emiplus.View.Comercial
             SelecionarColaborador.Click += (s, e) => ModalColaborador();
 
             addProduto.Click += (s, e) => LoadItens();
+
             BuscarProduto.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    if (ModoRapAva == 1)
+                    {
+                        if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                        {
+                            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                            if (item != null)
+                                Preco.Text = Validation.FormatPrice(item.ValorVenda);
+
+                            Quantidade.Focus();
+                            return;
+                        }
+                    }
+
                     if (string.IsNullOrEmpty(BuscarProduto.Text))
                         BuscarProduto.Focus();
                     else
                         LoadItens();
                 }
-
-                //if (e.KeyCode == Keys.Tab)
-                //{
-                //    if (!string.IsNullOrEmpty(BuscarProduto.Text))
-                //    {
-                //        var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
-                //        if (item != null)
-                //            Preco.Text = Validation.FormatPrice(item.ValorVenda);
-                //    }
-                //}
             };
 
             Preco.TextChanged += (s, e) =>

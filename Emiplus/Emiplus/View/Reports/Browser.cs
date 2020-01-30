@@ -84,8 +84,12 @@ namespace Emiplus.View.Reports
 
             pdf.Click += (s, e) =>
             {
-                using (var fileDialog = new OpenFileDialog())
+                using (var fileDialog = new SaveFileDialog())
                 {
+                    fileDialog.DefaultExt = "pdf";
+                    fileDialog.Filter = "PDF(*.pdf)|*.pdf";
+                    fileDialog.AddExtension = true;
+                    fileDialog.FileName = $"PDF-{Validation.RandomNumeric(15)}";
                     DialogResult res = fileDialog.ShowDialog();
                     if (res == DialogResult.OK)
                     {

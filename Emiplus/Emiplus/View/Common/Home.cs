@@ -4,7 +4,9 @@ using Emiplus.Properties;
 using RestSharp;
 using SqlKata.Execution;
 using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -124,7 +126,7 @@ namespace Emiplus.View.Common
         public static string CategoriaPage { get; set; }
         public static bool syncActive { get; set; }
 
-        private Model.Item _mItem = new Model.Item();
+        private BackgroundWorker backWork = new BackgroundWorker();
 
         public Home()
         {
@@ -203,7 +205,7 @@ namespace Emiplus.View.Common
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
 
-            _mItem = _mItem.FindById(8848).FirstOrDefault<Model.Item>();
+            Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 
@@ -229,6 +231,11 @@ namespace Emiplus.View.Common
             Load += (s, e) =>
             {
                 new Controller.Caixa().CheckCaixaDate();
+            };
+
+            Shown += (s, e) =>
+            {
+                backWork.RunWorkerAsync();
             };
 
             chatOnline.Click += (s, e) =>
@@ -358,6 +365,39 @@ namespace Emiplus.View.Common
                     barraTituloHome.Refresh();
                 }
             };
+
+            backWork.DoWork += (s, e) =>
+            {
+                BackupDB();
+            };
+        }
+
+        private void BackupDB()
+        {
+            string pathDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (!Directory.Exists(pathDocuments + "\\Emiplus"))
+                Directory.CreateDirectory(pathDocuments + "\\Emiplus");
+
+            if (Directory.Exists(pathDocuments + "\\Emiplus"))
+            {
+                string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
+                if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
+                    return;
+                else
+                {
+                    string getDB = IniFile.Read("PathDatabase", "LOCAL");
+                    if (File.Exists(getDB + $"\\EMIPLUS.FDB"))
+                    {
+                        if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
+                            return;
+                        else
+                        {
+                            File.Copy(getDB + "\\EMIPLUS.FDB", pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB");
+                        }
+                    }
+                }
+            }
         }
     }
 }
