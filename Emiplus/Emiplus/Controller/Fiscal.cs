@@ -287,6 +287,11 @@ namespace Emiplus.Controller
 
                             string arqPath = _path_enviada + "\\Cancela" + Pedido + ".xml";
 
+                            if (String.IsNullOrEmpty(_nota.protocolodeuso))
+                            {
+                                uninfe_consulta("", "");
+                            }
+
                             XmlTextWriter writer = new XmlTextWriter(arqPath, null);
 
                             writer.WriteStartElement("envEvento");
@@ -318,7 +323,7 @@ namespace Emiplus.Controller
                             writer.WriteAttributeString("versao", "1.00");
 
                             writer.WriteElementString("descEvento", "Cancelamento");
-                            writer.WriteElementString("nProt", DateTime.Now.ToString("yyyymmdd") + DateTime.Now.ToString("HHmmss"));
+                            writer.WriteElementString("nProt", _nota.protocolodeuso);
                             writer.WriteElementString("xJust", Validation.CleanStringForFiscal(justificativa));
 
                             writer.WriteEndElement();
@@ -2862,6 +2867,10 @@ namespace Emiplus.Controller
                                 _msg = System.IO.File.ReadAllText(_pathRetorno + "\\canc" + _nota.ChaveDeAcesso + "-eve.err");
                                 encontrado = true;
                             }
+                            else if (File.Exists(_pathRetorno + "\\canc" + _nota.ChaveDeAcesso + "-eve.xml") == true)
+                            {                                
+                                encontrado = true;
+                            }
 
                             break;
                     }                    
@@ -2906,6 +2915,7 @@ namespace Emiplus.Controller
                                 #region AUTORIZADA
 
                                 _msg = "Autorizado o uso da NF-e";
+                                _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
                                 _nota.Status = "Autorizada";
                                 _nota.Save(_nota, false);
                                 
@@ -2936,24 +2946,108 @@ namespace Emiplus.Controller
                 {
                     #region CONSULTA 
 
+                    Boolean fim = false;
+
                     XmlDocument oXML = new XmlDocument();
                     oXML.Load(_pathRetorno + "\\" + fileinfo.Name);
-                    XmlNodeList xnList = oXML.GetElementsByTagName("infProt");
+
+                    try
+                    {
+                        XmlNodeList xnList = oXML.GetElementsByTagName("infCanc");
+
+                        for (int i = 0; i < xnList.Count; i++)
+                        {
+                            if (xnList[i]["chNFe"].InnerText == _nota.ChaveDeAcesso)
+                            {
+                                if (xnList[i]["xMotivo"].InnerText.Contains("Cancelamento"))
+                                {
+                                    fim = true;
+
+                                    #region CANCELADA
+
+                                    _msg = xnList[i]["xMotivo"].InnerText;
+                                    _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
+                                    _nota.Status = "Cancelada";
+                                    _nota.Save(_nota, false);
+
+                                    #endregion
+
+                                    uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
+                                }
+                            }
+                        }                        
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    if (fim)
+                        return; 
+
+                    try
+                    {
+                        XmlNodeList xnList = oXML.GetElementsByTagName("infProt");
+
+                        for (int i = 0; i < xnList.Count; i++)
+                        {
+                            if (xnList[i]["chNFe"].InnerText == _nota.ChaveDeAcesso)
+                            {
+                                if (xnList[i]["xMotivo"].InnerText.Contains("Autorizado"))
+                                {
+                                    fim = true;
+
+                                    #region AUTORIZADA
+
+                                    _msg = "Autorizado o uso da NF-e";
+                                    _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
+                                    _nota.Status = "Autorizada";
+                                    _nota.Save(_nota, false);
+
+                                    #endregion
+
+                                    uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    #endregion
+                }
+                else if (fileinfo.Name.IndexOf("-eve.xml") > 0)
+                {
+                    #region CANCELADA 
+
+                    XmlDocument oXML = new XmlDocument();
+                    oXML.Load(_pathRetorno + "\\" + fileinfo.Name);
+                    XmlNodeList xnList = oXML.GetElementsByTagName("infEvento");
 
                     for (int i = 0; i < xnList.Count; i++)
                     {
                         if (xnList[i]["chNFe"].InnerText == _nota.ChaveDeAcesso)
                         {
-                            #region AUTORIZADA
+                            if (xnList[i]["xMotivo"].InnerText.Contains("Cancelamento"))
+                            {
+                                #region CANCELADA
 
-                            _msg = "Autorizado o uso da NF-e";                            
-                            _nota.Status = "Autorizada";
-                            _nota.Save(_nota, false);
+                                _msg = xnList[i]["xMotivo"].InnerText;
+                                _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
+                                _nota.Status = "Cancelada";
+                                _nota.Save(_nota, false);
 
-                            #endregion
+                                #endregion
 
-                            uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
-                        }
+                                uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
+                            }
+                            else if (xnList[i]["xMotivo"].InnerText.Contains("Duplicidade"))
+                            {
+                                uninfe_consulta(_pathEnvio, _pathRetorno);
+                            }
+                        }                        
                     }
 
                     #endregion
@@ -2961,8 +3055,16 @@ namespace Emiplus.Controller
             } 
         }      
 
-        private void uninfe_consulta(string _pathEnvio, string _pathRetorno)
+        private void uninfe_consulta(string _pathEnvio = "", string _pathRetorno = "")
         {
+            string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "");
+            
+            if(String.IsNullOrEmpty(_pathEnvio))
+                _pathEnvio = _pathUninfe + @"\Envio";
+
+            if (String.IsNullOrEmpty(_pathRetorno))
+                _pathRetorno = _pathUninfe + @"\Retorno";
+
             #region DUPLICIDADE 
 
             uninfe_limpa(_pathRetorno);
@@ -3001,6 +3103,40 @@ namespace Emiplus.Controller
         {
             string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "\\Enviado\\Autorizados\\20" + chavedeacesso.Substring(2, 4);
             string mensagem = "";
+
+            if (File.Exists(_pathUninfe + "\\" + chavedeacesso + "_110111_01-procEventoNFe.xml"))
+            {
+                XmlDocument oXML = new XmlDocument();
+                oXML.Load(_pathUninfe + "\\" + chavedeacesso + "_110111_01-procEventoNFe.xml");
+
+                //XmlNodeList xnList = oXML.GetElementsByTagName("infEvento");
+
+                //for (int i = 0; i < xnList.Count; i++)
+                //{
+                //    _nota = new Model.Nota().Query().Where("CHAVEDEACESSO", chavedeacesso).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+
+                //    if (_nota == null)
+                //        return;
+
+                //    _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
+                //    _nota.Status = "Cancelada";
+                //    _nota.Save(_nota, false);
+                //}
+
+                try
+                {
+                    mensagem = RequestImport(oXML.OuterXml, "NFe");
+
+                    if (!mensagem.Contains("Importação realizada com sucesso"))
+                        new Log().Add("EXCEPTIONS", mensagem + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+                catch (Exception e)
+                {
+                    new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
+                }
+
+                return;
+            }
 
             if (File.Exists(_pathUninfe + "\\" + chavedeacesso + "-procNFe.xml"))
             {
@@ -3069,8 +3205,6 @@ namespace Emiplus.Controller
                 
                 return;
             }
-
-            
         }
 
         #endregion

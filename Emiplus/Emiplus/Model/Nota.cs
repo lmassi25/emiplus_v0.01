@@ -32,6 +32,7 @@ namespace Emiplus.Model
         public string assinatura_qrcode { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
+        public string protocolodeuso { get; set; }
 
         #endregion CAMPOS
 
