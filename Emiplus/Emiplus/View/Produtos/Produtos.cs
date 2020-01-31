@@ -224,6 +224,8 @@ namespace Emiplus.View.Produtos
                         btnMarcarCheckBox.Text = "Marcar Todos";
                         btnRemover.Visible = false;
                         btnEditAll.Visible = false;
+                        btnEditar.Enabled = true;
+                        btnAdicionar.Enabled = true;
                     }
                     else
                     {
@@ -231,6 +233,8 @@ namespace Emiplus.View.Produtos
                         btnMarcarCheckBox.Text = "Desmarcar Todos";
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
                     }
                 }
             };
@@ -293,18 +297,26 @@ namespace Emiplus.View.Produtos
                         GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
                     }
                     else
                     {
                         GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = false;
 
                         bool hideBtns = false;
+                        bool hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridListaProdutos.Rows)
                             if ((bool)item.Cells["Selecione"].Value == true)
+                            {
                                 hideBtns = true;
+                                hideBtnsTop = false;
+                            }
 
                         btnRemover.Visible = hideBtns;
                         btnEditAll.Visible = hideBtns;
+                        btnEditar.Enabled = hideBtnsTop;
+                        btnAdicionar.Enabled = hideBtnsTop;
                     }
                 }
             };

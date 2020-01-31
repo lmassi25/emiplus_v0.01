@@ -277,6 +277,7 @@
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\Configs.cs" />
     <Compile Include="Data\Core\EmailSMTP.cs" />
+    <Compile Include="Data\Core\IBPT.cs" />
     <Compile Include="Data\Core\IniFile.cs" />
     <Compile Include="Data\Core\RequestApi.cs" />
     <Compile Include="Data\Core\Update.cs" />
@@ -831,6 +832,12 @@
     <Compile Include="View\Produtos\Etiquetas.Designer.cs">
       <DependentUpon>Etiquetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\ModalNCM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\ModalNCM.Designer.cs">
+      <DependentUpon>ModalNCM.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Servicos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1257,6 +1264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Etiquetas.resx">
       <DependentUpon>Etiquetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\ModalNCM.resx">
+      <DependentUpon>ModalNCM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Servicos.resx">
       <DependentUpon>Servicos.cs</DependentUpon>

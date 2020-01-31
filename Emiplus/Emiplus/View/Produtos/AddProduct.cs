@@ -1,6 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Common;
+using Newtonsoft.Json;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -215,6 +217,37 @@ namespace Emiplus.View.Produtos
 
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
+
+            if (_modelItem.Ncm != "0")
+            {
+                if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
+                {
+                    var data = new IBPT()
+                    .SetCodeBarras(_modelItem.CodeBarras)
+                    .SetDescricao(_modelItem.Nome)
+                    .SetMedida(_modelItem.Medida)
+                    .SetValor(_modelItem.ValorVenda)
+                    .SetCodigoNCM(_modelItem.Ncm)
+                    .GetDados();
+
+                    if (data != null)
+                    {
+                        var s = JsonConvert.DeserializeObject(data.ToString());
+
+                        aliq_federal.Text = Validation.Price(s.Nacional.Value);
+                        aliq_estadual.Text = Validation.Price(s.Estadual.Value);
+                        aliq_municipal.Text = Validation.Price(s.Municipal.Value);
+                    }
+                }
+            }
+
+            if (_modelItem.Ncm == "0")
+            {
+                aliq_federal.Text = "";
+                aliq_estadual.Text = "";
+                aliq_municipal.Text = "";
+            }
+
             _modelItem.AliqFederal = Validation.ConvertToDouble(aliq_federal.Text);
             _modelItem.AliqEstadual = Validation.ConvertToDouble(aliq_estadual.Text);
             _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
@@ -430,8 +463,16 @@ namespace Emiplus.View.Produtos
             };
 
             filterTodos.Click += (s, e) => DataTableEstoque();
-
             filterMaisRecentes.Click += (s, e) => DataTableEstoque();
+
+            selecionarNCM.Click += (s, e) =>
+            {
+                ModalNCM f = new ModalNCM();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    ncm.Text = ModalNCM.NCM;
+                }
+            };
 
             backOn.DoWork += (s, e) =>
              {

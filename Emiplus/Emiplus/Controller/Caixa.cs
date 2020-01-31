@@ -77,13 +77,15 @@ namespace Emiplus.Controller
 
         public double SumPagamento(int idCaixa, int formaPgto)
         {
-            var sum = _modelTitulo.Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_caixa", idCaixa).Where("id_formapgto", formaPgto).WhereFalse("excluir").FirstOrDefault();
+            var sum = _modelTitulo.Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_caixa", idCaixa).Where("id_formapgto", formaPgto).WhereFalse("excluir")
+                 .Where(q => q.Where("tipo", "Receber").OrWhere("tipo", null)).FirstOrDefault();
             return Validation.ConvertToDouble(sum.TOTAL) ?? 0;
         }
 
         public double SumPagamentoTodos(int idCaixa)
         {
-            var sum = _modelTitulo.Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_caixa", idCaixa).WhereFalse("excluir").FirstOrDefault();
+            var sum = _modelTitulo.Query().SelectRaw("SUM(TOTAL) as TOTAL").WhereFalse("excluir").Where("id_caixa", idCaixa)
+                .Where(q => q.Where("tipo", "Receber").OrWhere("tipo", null)).FirstOrDefault();
             return Validation.ConvertToDouble(sum.TOTAL) ?? 0;
         }
 

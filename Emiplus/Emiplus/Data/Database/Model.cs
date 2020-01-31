@@ -4,6 +4,7 @@ using System;
 namespace Emiplus.Data.Database
 {
     using Helpers;
+    using System.Reflection;
 
     internal abstract class Model
     {
@@ -35,6 +36,12 @@ namespace Emiplus.Data.Database
         public Model Data(object obj)
         {
             Objetos = obj;
+
+            //foreach (PropertyInfo propertyInfo in Objetos.GetType().GetProperties())
+            //{
+            //    Console.WriteLine(propertyInfo.GetValue(propertyInfo.PropertyType));
+            //}
+
             return this;
         }
 
