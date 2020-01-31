@@ -252,6 +252,15 @@ namespace Emiplus.Controller
                 if (!String.IsNullOrEmpty(_msg))
                     return _msg;
 
+                if (IniFile.Read("NFe", "APP") != "Uninfe")
+                {
+                    if(tipo == "NFe")
+                        ValidarXML(Pedido, tipo);
+
+                    if(!_msg.Contains("XML Válido"))
+                        return _msg;
+                }
+
                 TransmitirXML(Pedido, tipo);
             }
             catch (Exception ex)
@@ -1212,7 +1221,82 @@ namespace Emiplus.Controller
                     #endregion CFE
             }
         }
+        
+        /// <summary>
+        /// Validar XML
+        /// </summary>
+        /// <param name="tipo">NFe, NFCe, CFe</param>
+        private void ValidarXML(int Pedido, string tipo = "NFe")
+        {
+            //Boolean done = false;
+            var arq = new XmlDocument();
+            string arqPath = _path_enviada + "\\" + _pedido.Id + ".xml";
 
+            if (!File.Exists(arqPath))
+            {
+                _msg = "Opss.. encontramos um erro: XML não encontrado.";
+                return;
+            }
+
+            arq.Load(arqPath);
+
+            switch (tipo)
+            {
+                #region NFE
+
+                case "NFe":
+
+                    #region TECNOSPEED 
+
+                        _msg = RequestValidate("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
+
+                        //while (!String.IsNullOrEmpty(_msg) && done == false)
+                        //{
+                        //    if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                        //        _msg = RequestResolve();
+
+                        //    if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                        //    {
+                        //        _msg = "Autorizado o uso da NF-e";
+                        //        _nota.Tipo = tipo;
+                        //        _nota.Status = "Autorizada";
+                        //        _nota.nr_Nota = nNF;
+                        //        _nota.Serie = serie;
+                        //        _nota.ChaveDeAcesso = chvAcesso;
+                        //        _nota.Save(_nota, false);
+
+                        //        updateUltNfeAsync();
+
+                        //        done = true;
+                        //    }
+
+                        //    switch (_msg)
+                        //    {
+                        //        case "":
+                        //            _msg = RequestConsult();
+                        //            done = true;
+                        //            break;
+                        //            /*default:
+                        //                _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                        //                done = true;
+                        //                break;*/
+                        //    }
+
+                        //    if (!String.IsNullOrEmpty(_msg))
+                        //    {
+                        //        _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                        //        done = true;
+                        //    }
+                        //}
+
+                        #endregion
+
+                    break;
+
+                #endregion NFE
+            }
+        }
+        
         /// <summary>
         /// Emitir CCe
         /// </summary>
@@ -2451,6 +2535,12 @@ namespace Emiplus.Controller
             return request(requestData, documento, "envia", "POST");
         }
 
+        private string RequestValidate(string xml, string documento = "NFe")
+        {
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+            return request(requestData, documento, "valida", "POST");
+        }
+
         private string RequestCancela(string documento = "NFe", string justificativa = "")
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&ChaveNota=" + chvAcesso + "&Justificativa=" + justificativa;
@@ -2563,7 +2653,12 @@ namespace Emiplus.Controller
             {
                 string[] words = message.Split(',');
                 if (words.Length == 4)
-                    message = words[3];
+                {
+                    if(!String.IsNullOrEmpty(words[3]))
+                        message = words[3];
+                    else if (!String.IsNullOrEmpty(words[2]))
+                        message = words[2];
+                }                    
                 if (words.Length == 3)
                     message = words[2];
                 if (words.Length == 9)
