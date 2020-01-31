@@ -2199,6 +2199,11 @@ namespace Emiplus.Controller
 
             if (tipo != "CFe")
             {
+                var vNF = _pedido.Total;
+                var vServicos = _pedido.Servicos;
+
+                vNF = Validation.Round(vNF - vServicos);
+
                 xml.WriteStartElement("ICMSTot");
 
                 xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedido.ICMSBASE));
@@ -2219,7 +2224,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("vPIS", Validation.FormatPriceWithDot(_pedido.PIS));
                 xml.WriteElementString("vCOFINS", Validation.FormatPriceWithDot(_pedido.COFINS));
                 xml.WriteElementString("vOutro", Validation.FormatPriceWithDot(0));
-                xml.WriteElementString("vNF", Validation.FormatPriceWithDot(_pedido.Total));
+                xml.WriteElementString("vNF", Validation.FormatPriceWithDot(vNF));
 
                 var query = _pedidoItem
                     .Query()
