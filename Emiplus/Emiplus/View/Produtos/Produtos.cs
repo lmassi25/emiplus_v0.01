@@ -196,6 +196,12 @@ namespace Emiplus.View.Produtos
 
                 EditAllProducts.listProducts = listProdutos;
                 OpenForm.Show<EditAllProducts>(this);
+
+                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnRemover.Visible = false;
+                btnEditAll.Visible = false;
+                btnEditar.Enabled = true;
+                btnAdicionar.Enabled = true;
             };
 
             btnAdicionar.Click += (s, e) => EditProduct(true);
@@ -286,6 +292,12 @@ namespace Emiplus.View.Produtos
 
                     DataTable();
                 }
+
+                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnRemover.Visible = false;
+                btnEditAll.Visible = false;
+                btnEditar.Enabled = true;
+                btnAdicionar.Enabled = true;
             };
 
             GridListaProdutos.CellClick += (s, e) =>
@@ -344,7 +356,11 @@ namespace Emiplus.View.Produtos
 
         private async Task RenderizarAsync()
         {
-            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text);
+            var f = new OptionsReports();
+            if (f.ShowDialog() != DialogResult.OK)
+                return;
+                
+            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
 
             ArrayList data = new ArrayList();
             foreach (var item in dados)
@@ -374,8 +390,8 @@ namespace Emiplus.View.Produtos
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var browser = new Browser())
+                browser.ShowDialog();
         }
     }
 }

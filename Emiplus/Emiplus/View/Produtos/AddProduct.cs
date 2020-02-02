@@ -217,8 +217,8 @@ namespace Emiplus.View.Produtos
 
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
-
-            if (_modelItem.Ncm != "0")
+            
+            if (_modelItem.Ncm != "")
             {
                 if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
                 {
@@ -232,6 +232,12 @@ namespace Emiplus.View.Produtos
 
                     if (data != null)
                     {
+                        if (data.Message != null)
+                        {
+                            Alert.Message("Opps", data.Message.Value, Alert.AlertType.error);
+                            return;
+                        }
+
                         var s = JsonConvert.DeserializeObject(data.ToString());
 
                         aliq_federal.Text = Validation.Price(s.Nacional.Value);
