@@ -315,6 +315,8 @@ namespace Emiplus.View.Produtos
                     idPdtSelecionado = Produtos.idPdtSelecionado;
                     backOn.RunWorkerAsync();
                 });
+
+                nome.Focus();
             };
 
             label6.Click += (s, e) => Close();

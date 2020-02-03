@@ -44,7 +44,7 @@
 
         private Model.PedidoItem GetPedidoItem(int id)
         {
-            return new Model.PedidoItem().FindById(id).First<Model.PedidoItem>();
+            return new Model.PedidoItem().FindById(id).WhereFalse("excluir").FirstOrDefault<Model.PedidoItem>();
         }
 
         public void Pedido()
@@ -54,7 +54,7 @@
                 return;
             }
 
-            var itens = new Model.PedidoItem().FindAll().Where("pedido", Id).Get();
+            var itens = new Model.PedidoItem().FindAll().Where("pedido", Id).WhereFalse("excluir").Get();
 
             foreach (var data in itens)
             {

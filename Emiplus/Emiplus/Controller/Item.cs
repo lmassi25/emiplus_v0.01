@@ -25,9 +25,9 @@ namespace Emiplus.Controller
                     q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
                 );
 
-            if (Ordem == "Descendente")
+            if (Ordem == "Z-A")
                 query.OrderByDesc("item.nome");
-            if (Ordem == "Ascendente")
+            if (Ordem == "A-Z")
                 query.OrderByRaw("item.nome ASC");
             if (Ordem == "Aleatório")
                 query.OrderByRaw("RAND()");

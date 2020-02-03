@@ -31,7 +31,7 @@ namespace Emiplus.View.Reports
                 ToolHelp.Show("Defina um limite de registros a serem exibidos, é necessário desativar a opção acima.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             
                 nrRegistros.Text = "50";
-                Ordem.SelectedItem = "Descendente";
+                Ordem.SelectedItem = "Z-A";
             };
 
             btnGerar.Click += (s, e) =>
