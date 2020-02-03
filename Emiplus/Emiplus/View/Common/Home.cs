@@ -205,7 +205,7 @@ namespace Emiplus.View.Common
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
 
-            Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            //Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 

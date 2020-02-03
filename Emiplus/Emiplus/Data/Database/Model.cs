@@ -4,6 +4,8 @@ using System;
 namespace Emiplus.Data.Database
 {
     using Helpers;
+    using System.Linq;
+    using System.Reflection;
 
     internal abstract class Model
     {
@@ -34,7 +36,22 @@ namespace Emiplus.Data.Database
         /// <returns></returns>
         public Model Data(object obj)
         {
+            foreach (PropertyInfo propertyInfo in obj.GetType().GetProperties())
+            {
+                if (propertyInfo.PropertyType == typeof(string))
+                {
+                    string[] stringArray = { "Tipo", "tipo", "id_empresa", "Id_empresa", "correcao", "Status", "ChaveDeAcesso", "assinatura_qrcode", "senha", "email", "Nome", "Pessoatipo", "status_sync" };
+                    string stringToCheck = propertyInfo.Name;
+                    if (!stringArray.Any(s => stringToCheck.Contains(s))) {
+                        string currentValue = (string)propertyInfo.GetValue(obj, null);
+                        if (currentValue != null)
+                            propertyInfo.SetValue(obj, currentValue.Trim().ToUpper(), null);
+                    }
+                }
+            }
+
             Objetos = obj;
+
             return this;
         }
 

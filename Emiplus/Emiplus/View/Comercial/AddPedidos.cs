@@ -779,14 +779,15 @@ namespace Emiplus.View.Comercial
                             if (result)
                             {
                                 var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                                _mPedidoItens.Remove(idPedidoItem);
-
+                                
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
 
                                 if (Home.pedidoPage != "Compras")
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
                                 else
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                                _mPedidoItens.Remove(idPedidoItem);
 
                                 LoadTotais();
                             }
@@ -946,7 +947,7 @@ namespace Emiplus.View.Comercial
                     }
 
                     if (string.IsNullOrEmpty(BuscarProduto.Text))
-                        BuscarProduto.Focus();
+                        ModalItens();
                     else
                         LoadItens();
                 }
@@ -1012,7 +1013,6 @@ namespace Emiplus.View.Comercial
                         if (result)
                         {
                             var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                            _mPedidoItens.Remove(idPedidoItem);
 
                             GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
 
@@ -1020,6 +1020,8 @@ namespace Emiplus.View.Comercial
                                 new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
                             else
                                 new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                            _mPedidoItens.Remove(idPedidoItem);
 
                             LoadTotais();
                         }

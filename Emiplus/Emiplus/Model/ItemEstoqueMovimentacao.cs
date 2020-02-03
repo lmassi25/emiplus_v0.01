@@ -35,49 +35,6 @@ namespace Emiplus.Model
 
         #endregion CAMPOS
 
-        #region SQL CREATE
-
-        //CREATE TABLE ITEM_MOV_ESTOQUE
-        //(
-        //id integer not null primary key,
-        //id_item integer not null,
-        //id_empresa varchar(255),
-        //id_usuario integer,
-        //excluir integer,
-        //criado timestamp,
-        //atualizado timestamp,
-        //deletado timestamp,
-        //quantidade numeric(18,4),
-        //observacao varchar(255),
-        //tipo varchar(10),
-        //local varchar(255)
-        //);
-
-        #endregion SQL CREATE
-
-        #region SQL AUTOINCREMENT
-
-        //        CREATE GENERATOR GEN_ITEM_MOV_ESTOQUE_ID;
-
-        //SET TERM !! ;
-        //        CREATE TRIGGER ITEM_MOV_ESTOQUE_BI FOR ITEM_MOV_ESTOQUE
-        //        ACTIVE BEFORE INSERT POSITION 0
-        //AS
-        //DECLARE VARIABLE tmp DECIMAL(18,0);
-        //        BEGIN
-        //          IF(NEW.ID IS NULL) THEN
-        //           NEW.ID = GEN_ID(GEN_ITEM_MOV_ESTOQUE_ID, 1);
-        //        ELSE
-        //        BEGIN
-        //    tmp = GEN_ID(GEN_ITEM_MOV_ESTOQUE_ID, 0);
-        //    if (tmp< new.ID) then
-        //     tmp = GEN_ID(GEN_ITEM_MOV_ESTOQUE_ID, new.ID - tmp);
-        //        END
-        //      END!!
-        //SET TERM; !!
-
-        #endregion SQL AUTOINCREMENT
-
         public ItemEstoqueMovimentacao SetQuantidade(double Quantidade)
         {
             this.Quantidade = Quantidade;

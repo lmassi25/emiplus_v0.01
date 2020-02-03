@@ -109,8 +109,12 @@ namespace Emiplus.View.Comercial
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
 
             var aPagar = _controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido);
-
-            aPagartxt.Text = Validation.FormatPrice(aPagar, true);
+            if (_controllerTitulo.GetLancados(IdPedido) < _controllerTitulo.GetTotalPedido(IdPedido)) {
+                aPagartxt.Text = Validation.FormatPrice(aPagar, true);
+            } else
+            {
+                aPagartxt.Text = "R$ 0,00";
+            }
 
             if (_controllerTitulo.GetLancados(IdPedido) > 0)
                 Desconto.Enabled = false;

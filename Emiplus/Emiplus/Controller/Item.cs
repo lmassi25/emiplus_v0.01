@@ -11,22 +11,31 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50, string Ordem = "Ascendente")
         {
             var search = "%" + SearchText + "%";
 
-            return new Model.Item().Query()
-                .LeftJoin("categoria", "categoria.id", "item.categoriaid")
+            var query = new Model.Item().Query();
+               query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
                 .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
                 .Where("item.excluir", 0)
                 .Where("item.tipo", "Produtos")
                 .Where
                 (
                     q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
-                )
-                .OrderByDesc("item.criado")
-                .Limit(50)
-                .GetAsync<dynamic>();
+                );
+
+            if (Ordem == "Z-A")
+                query.OrderByDesc("item.nome");
+            if (Ordem == "A-Z")
+                query.OrderByRaw("item.nome ASC");
+            if (Ordem == "Aleatório")
+                query.OrderByRaw("RAND()");
+
+            if (!TodosRegistros)
+                query.Limit(NrRegistros);
+
+            return query.GetAsync<dynamic>();
         }
 
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)

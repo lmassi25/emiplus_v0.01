@@ -196,6 +196,12 @@ namespace Emiplus.View.Produtos
 
                 EditAllProducts.listProducts = listProdutos;
                 OpenForm.Show<EditAllProducts>(this);
+
+                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnRemover.Visible = false;
+                btnEditAll.Visible = false;
+                btnEditar.Enabled = true;
+                btnAdicionar.Enabled = true;
             };
 
             btnAdicionar.Click += (s, e) => EditProduct(true);
@@ -224,6 +230,8 @@ namespace Emiplus.View.Produtos
                         btnMarcarCheckBox.Text = "Marcar Todos";
                         btnRemover.Visible = false;
                         btnEditAll.Visible = false;
+                        btnEditar.Enabled = true;
+                        btnAdicionar.Enabled = true;
                     }
                     else
                     {
@@ -231,6 +239,8 @@ namespace Emiplus.View.Produtos
                         btnMarcarCheckBox.Text = "Desmarcar Todos";
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
                     }
                 }
             };
@@ -282,6 +292,12 @@ namespace Emiplus.View.Produtos
 
                     DataTable();
                 }
+
+                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnRemover.Visible = false;
+                btnEditAll.Visible = false;
+                btnEditar.Enabled = true;
+                btnAdicionar.Enabled = true;
             };
 
             GridListaProdutos.CellClick += (s, e) =>
@@ -293,18 +309,26 @@ namespace Emiplus.View.Produtos
                         GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
                     }
                     else
                     {
                         GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = false;
 
                         bool hideBtns = false;
+                        bool hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridListaProdutos.Rows)
                             if ((bool)item.Cells["Selecione"].Value == true)
+                            {
                                 hideBtns = true;
+                                hideBtnsTop = false;
+                            }
 
                         btnRemover.Visible = hideBtns;
                         btnEditAll.Visible = hideBtns;
+                        btnEditar.Enabled = hideBtnsTop;
+                        btnAdicionar.Enabled = hideBtnsTop;
                     }
                 }
             };
@@ -332,7 +356,11 @@ namespace Emiplus.View.Produtos
 
         private async Task RenderizarAsync()
         {
-            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text);
+            var f = new OptionsReports();
+            if (f.ShowDialog() != DialogResult.OK)
+                return;
+                
+            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
 
             ArrayList data = new ArrayList();
             foreach (var item in dados)
@@ -362,8 +390,8 @@ namespace Emiplus.View.Produtos
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var browser = new Browser())
+                browser.ShowDialog();
         }
     }
 }

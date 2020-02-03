@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.Properties;
 using SqlKata.Execution;
 using System.Windows.Forms;
 
@@ -51,7 +52,7 @@ namespace Emiplus.View.Produtos
                     var tipo = btnRadioAddItem.Checked ? "A" : btnRadioRemoveItem.Checked ? "R" : "A";
 
                     var data = _modelItemEstoque
-                        .SetUsuario(0)
+                        .SetUsuario(Settings.Default.user_id)
                         .SetQuantidade(Validation.ConvertToDouble(quantidade.Text))
                         .SetTipo(tipo)
                         .SetLocal("Cadastro de Produto")

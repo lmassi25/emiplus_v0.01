@@ -113,15 +113,12 @@ namespace Emiplus.Controller
                 var clienteId = new Model.Pedido().FindById(idPedido).Select("cliente").Where("excluir", 0).FirstOrDefault();
                 data.Id_Pessoa = clienteId.CLIENTE ?? 0;
             }
+
             if (valor < 0)
-            {
                 return false;
-            }
 
             if (!String.IsNullOrEmpty(inicio))
-            {
                 vencimento = Convert.ToDateTime(inicio);
-            }
 
             //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
             if (parcela.IndexOf("+") > 0)
@@ -142,6 +139,7 @@ namespace Emiplus.Controller
                     data.Vencimento = Validation.ConvertDateToSql(vencimento);
                     data.Recebido = data.Total;
                     data.Id_Caixa = Home.idCaixa;
+                    data.Tipo = "Receber";
                     data.Save(data, false);
                 }
             }
@@ -158,6 +156,7 @@ namespace Emiplus.Controller
                     data.Vencimento = Validation.ConvertDateToSql(vencimento.AddMonths(count));
                     data.Recebido = data.Total;
                     data.Id_Caixa = Home.idCaixa;
+                    data.Tipo = "Receber";
                     data.Save(data, false);
                     count++;
                 }

@@ -108,6 +108,7 @@
             this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.selecionarNCM = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -135,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -1392,6 +1394,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.selecionarNCM);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.Origens);
             this.tabPage2.Controls.Add(this.label7);
@@ -1481,7 +1484,7 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(122, 64);
+            this.label7.Location = new System.Drawing.Point(122, 67);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 17);
             this.label7.TabIndex = 177;
@@ -1491,7 +1494,7 @@
             // 
             this.ncm.AlphaNumeric = false;
             this.ncm.BackColor = System.Drawing.Color.White;
-            this.ncm.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.ncm.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.ncm.BackColorState.Enabled = System.Drawing.Color.White;
             this.ncm.Border.Color = System.Drawing.Color.Gainsboro;
             this.ncm.Border.HoverColor = System.Drawing.Color.Gainsboro;
@@ -1515,13 +1518,15 @@
             this.ncm.ButtonIndent = 3;
             this.ncm.ButtonText = "visualButton";
             this.ncm.ButtonVisible = false;
+            this.ncm.Cursor = System.Windows.Forms.Cursors.No;
+            this.ncm.Enabled = false;
             this.ncm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ncm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.ncm.Image = null;
             this.ncm.ImageSize = new System.Drawing.Size(16, 16);
             this.ncm.ImageVisible = false;
             this.ncm.ImageWidth = 35;
-            this.ncm.Location = new System.Drawing.Point(123, 82);
+            this.ncm.Location = new System.Drawing.Point(123, 85);
             this.ncm.MaxLength = 8;
             this.ncm.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.ncm.Name = "ncm";
@@ -1551,7 +1556,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(19, 64);
+            this.label2.Location = new System.Drawing.Point(19, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 175;
@@ -1591,7 +1596,7 @@
             this.cest.ImageSize = new System.Drawing.Size(16, 16);
             this.cest.ImageVisible = false;
             this.cest.ImageWidth = 35;
-            this.cest.Location = new System.Drawing.Point(20, 82);
+            this.cest.Location = new System.Drawing.Point(20, 85);
             this.cest.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cest.Name = "cest";
             this.cest.PasswordChar = '\0';
@@ -2166,6 +2171,17 @@
             this.pictureBox6.TabIndex = 175;
             this.pictureBox6.TabStop = false;
             // 
+            // selecionarNCM
+            // 
+            this.selecionarNCM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selecionarNCM.Image = ((System.Drawing.Image)(resources.GetObject("selecionarNCM.Image")));
+            this.selecionarNCM.Location = new System.Drawing.Point(239, 85);
+            this.selecionarNCM.Name = "selecionarNCM";
+            this.selecionarNCM.Size = new System.Drawing.Size(28, 28);
+            this.selecionarNCM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.selecionarNCM.TabIndex = 10;
+            this.selecionarNCM.TabStop = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2216,6 +2232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2299,5 +2316,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtLimiteDesconto;
         private System.Windows.Forms.PictureBox btnAddImpostoTwo;
         private System.Windows.Forms.PictureBox btnAddImpostoOne;
+        private System.Windows.Forms.PictureBox selecionarNCM;
     }
 }
