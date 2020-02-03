@@ -131,8 +131,11 @@ namespace Emiplus.View.Financeiro
 
         private double GetDataTitulo(int id_pedido)
         {
-            var sum = new Model.Titulo().Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_pedido", id_pedido).WhereFalse("excluir").FirstOrDefault();
-            return Validation.ConvertToDouble(sum.TOTAL);
+            var pedido = new Model.Pedido().Query().Select("id_caixa").Where("id", id_pedido).FirstOrDefault();
+            int id_caixa_pedido = pedido.ID_CAIXA ?? 0;
+
+            var sum = new Model.Titulo().Query().SelectRaw("SUM(TOTAL) as TOTAL").Where("id_pedido", id_pedido).Where("id_caixa", id_caixa_pedido).WhereFalse("excluir").FirstOrDefault();
+            return Validation.ConvertToDouble(sum.TOTAL ?? 0);
         }
 
         public async Task<dynamic> GetDataMovAsync()
