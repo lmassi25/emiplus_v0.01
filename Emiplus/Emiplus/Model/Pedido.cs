@@ -117,9 +117,7 @@
 
         public bool Save(Pedido data)
         {
-            data.Id_Caixa = Home.idCaixa;
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
-            data.id_usuario = Settings.Default.user_id;
 
             if (data.Id == 0)
             {
@@ -129,6 +127,7 @@
                 data.Criado = DateTime.Now;
                 data.Emissao = DateTime.Now;
                 data.Colaborador = Settings.Default.user_id;
+                data.id_usuario = Settings.Default.user_id;
                 if (Data(data).Create() != 1)
                     return false;
             }

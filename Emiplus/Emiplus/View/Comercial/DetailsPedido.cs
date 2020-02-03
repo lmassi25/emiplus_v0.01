@@ -268,7 +268,7 @@ namespace Emiplus.View.Comercial
 
             Activated += (s, e) =>
             {
-                Console.WriteLine("DetailsPedido: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
+                //Console.WriteLine("DetailsPedido: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
                 LoadData();
             };
 

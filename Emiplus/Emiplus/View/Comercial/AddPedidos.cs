@@ -763,10 +763,12 @@ namespace Emiplus.View.Comercial
 
                 case Keys.F3:
 
-                    if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
-                    {
-                        Alert.Message("Ação não permitida", "Não é permitido cancelar o produto.", Alert.AlertType.warning);
-                        return;
+                    if (_mPedido.status == 1) {
+                        if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                        {
+                            Alert.Message("Ação não permitida", "Não é permitido cancelar o produto.", Alert.AlertType.warning);
+                            return;
+                        }
                     }
 
                     if (GridListaProdutos.SelectedRows.Count > 0)
