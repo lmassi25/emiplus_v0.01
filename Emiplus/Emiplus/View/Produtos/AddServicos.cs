@@ -12,7 +12,7 @@ namespace Emiplus.View.Produtos
     {
         #region V
 
-        public static int idPdtSelecionado { get; set; }
+        public static int idSelecionado { get; set; }
         private Item _modelItem = new Item();
         private Controller.Item _controllerItem = new Controller.Item();
 
@@ -28,31 +28,22 @@ namespace Emiplus.View.Produtos
             nome.Select();
         }
 
-        private void Start()
-        {
-            ToolHelp.Show("Descreva seu serviço... Lembre-se de utilizar as características do serviço.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-        }
-
-        private void LoadEstoque()
-        {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-        }
-
         private void LoadData()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-
-            nome.Text = _modelItem?.Nome ?? "";
-            referencia.Text = _modelItem?.Referencia ?? "";
-            valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
-            valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+            _modelItem = _modelItem.FindById(idSelecionado).FirstOrDefault<Item>();
+            if (_modelItem != null) {
+                nome.Text = _modelItem?.Nome ?? "";
+                referencia.Text = _modelItem?.Referencia ?? "";
+                valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
+                valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+            }
         }
 
         private void Save()
         {
             if (!string.IsNullOrEmpty(nome.Text))
             {
-                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("tipo", "Servicos").Where("nome", nome.Text).Where("excluir", 0).FirstOrDefault();
+                var data = _modelItem.Query().Where("id", "!=", idSelecionado).Where("tipo", "Serviços").Where("nome", nome.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
                     Alert.Message("Oppss", "Já existe um serviço cadastrado com esse NOME.", Alert.AlertType.error);
@@ -62,7 +53,7 @@ namespace Emiplus.View.Produtos
 
             if (!string.IsNullOrEmpty(referencia.Text))
             {
-                var data = _modelItem.Query().Where("id", "!=", idPdtSelecionado).Where("referencia", referencia.Text).Where("excluir", 0).FirstOrDefault();
+                var data = _modelItem.Query().Where("id", "!=", idSelecionado).Where("referencia", referencia.Text).Where("excluir", 0).FirstOrDefault();
                 if (data != null)
                 {
                     Alert.Message("Oppss", "Já existe um serviço cadastrado com essa referência.", Alert.AlertType.error);
@@ -70,8 +61,8 @@ namespace Emiplus.View.Produtos
                 }
             }
 
-            _modelItem.Id = idPdtSelecionado;
-            _modelItem.Tipo = "Servicos";
+            _modelItem.Id = idSelecionado;
+            _modelItem.Tipo = "Serviços";
             _modelItem.Nome = nome.Text;
             _modelItem.Referencia = referencia.Text;
             _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
@@ -99,23 +90,42 @@ namespace Emiplus.View.Produtos
 
             Shown += (s, e) =>
             {
-                this.BeginInvoke((MethodInvoker)delegate
+                ToolHelp.Show("Descreva seu serviço... Lembre-se de utilizar as características do serviço.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+               
+                if (idSelecionado > 0)
                 {
-                    idPdtSelecionado = AddServicos.idPdtSelecionado;
-                    backOn.RunWorkerAsync();
-                });
+                    LoadData();
+                }
+                else
+                {
+                    _modelItem = new Item();
+                    _modelItem.Tipo = "Serviços";
+                    _modelItem.Id = 0;
+                    if (_modelItem.Save(_modelItem, false))
+                    {
+                        idSelecionado = _modelItem.GetLastId();
+                        LoadData();
+                    }
+                    else
+                    {
+                        Alert.Message("Opss", "Erro ao criar.", Alert.AlertType.error);
+                        Close();
+                    }
+                }
+
+                Refresh();
             };
 
             label6.Click += (s, e) => Close();
             btnExit.Click += (s, e) =>
             {
-                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
+                var dataProd = _modelItem.Query().Where("id", idSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
                 if (dataProd != null)
                 {
                     var result = AlertOptions.Message("Atenção!", "Esse serviço não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        var data = _modelItem.Remove(idPdtSelecionado);
+                        var data = _modelItem.Remove(idSelecionado);
                         if (data)
                             Close();
                     }
@@ -132,7 +142,7 @@ namespace Emiplus.View.Produtos
                 var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um serviço, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    var data = _modelItem.Remove(idPdtSelecionado);
+                    var data = _modelItem.Remove(idSelecionado);
                     if (data)
                         Close();
                 }
@@ -153,37 +163,6 @@ namespace Emiplus.View.Produtos
             nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
-
-            backOn.DoWork += (s, e) =>
-            {
-                _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-            };
-
-            backOn.RunWorkerCompleted += (s, e) =>
-            {
-                Start();
-
-                if (idPdtSelecionado > 0)
-                {
-                    LoadData();
-                }
-                else
-                {
-                    _modelItem = new Model.Item();
-                    _modelItem.Tipo = "Servicos";
-                    _modelItem.Id = idPdtSelecionado;
-                    if (_modelItem.Save(_modelItem, false))
-                    {
-                        idPdtSelecionado = _modelItem.GetLastId();
-                        LoadData();
-                    }
-                    else
-                    {
-                        Alert.Message("Opss", "Erro ao criar.", Alert.AlertType.error);
-                        Close();
-                    }
-                }
-            };
         }
     }
 }

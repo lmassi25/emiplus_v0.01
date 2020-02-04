@@ -103,7 +103,6 @@ namespace Emiplus.Controller
             Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-
         public Task<IEnumerable<dynamic>> GetDataTableServicos(string SearchText = null)
         {
             var search = "%" + SearchText + "%";
@@ -111,7 +110,7 @@ namespace Emiplus.Controller
             return new Model.Item().Query()
                 .Select("item.id", "item.nome", "item.referencia", "item.valorcompra", "item.valorvenda")
                 .Where("item.excluir", 0)
-                .Where("item.tipo", "Servicos")
+                .Where("item.tipo", "Serviços")
                 .Where
                 (
                     q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search)
