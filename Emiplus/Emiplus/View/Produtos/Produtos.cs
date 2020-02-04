@@ -218,7 +218,6 @@ namespace Emiplus.View.Produtos
                 Loading.Visible = true;
                 GridListaProdutos.Visible = false;
             };
-            search.KeyPress += (s, e) => e.KeyChar = Char.ToUpper(e.KeyChar);
 
             btnMarcarCheckBox.Click += (s, e) =>
             {
@@ -284,7 +283,7 @@ namespace Emiplus.View.Produtos
                     if ((bool)item.Cells["Selecione"].Value == true)
                         listProdutos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os produtos selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os PRODUTOS selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     foreach (var item in listProdutos)

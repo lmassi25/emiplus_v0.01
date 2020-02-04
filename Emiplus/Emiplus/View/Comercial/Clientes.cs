@@ -4,11 +4,13 @@ using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Reports;
+using SqlKata.Execution;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -27,6 +29,7 @@ namespace Emiplus.View.Comercial
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         private Timer timer = new Timer(Configs.TimeLoading);
+        public List<int> listProdutos = new List<int>();
 
         public Clientes()
         {
@@ -50,8 +53,12 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private async void DataTable() => await _controller.SetTableClientes(GridLista, null, search.Text);
-
+        private async void DataTable()
+        {
+            await SetContentTableAsync(GridLista, null, search.Text);
+            dynamic totalRegistros = new Model.Pessoa().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("Tipo", Home.pessoaPage).FirstOrDefault();
+            nrRegistros.Text = $"Exibindo: {GridLista.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
+        }
         private void EditClientes(bool create = false)
         {
             if (create)
@@ -62,7 +69,7 @@ namespace Emiplus.View.Comercial
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                 OpenForm.Show<AddClientes>(this);
             }
         }
@@ -91,6 +98,63 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void SetHeadersTable(DataGridView Table)
+        {
+            Table.ColumnCount = 6;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            
+            Table.RowHeadersVisible = false;
+
+            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            checkColumn.HeaderText = "Selecione";
+            checkColumn.Name = "Selecione";
+            checkColumn.FlatStyle = FlatStyle.Standard;
+            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
+            checkColumn.Width = 60;
+            Table.Columns.Insert(0, checkColumn);
+
+            Table.Columns[1].Name = "ID";
+            Table.Columns[1].Visible = false;
+
+            Table.Columns[2].Name = "Nome / Razão social";
+            Table.Columns[2].MinimumWidth = 150;
+
+            Table.Columns[3].Name = "Nome Fantasia";
+            Table.Columns[3].Width = 150;
+
+            Table.Columns[4].Name = "CPF / CNPJ";
+            Table.Columns[4].Width = 150;
+
+            Table.Columns[5].Name = "RG / IE";
+            Table.Columns[5].Width = 150;
+        }
+
+        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
+        {
+            Table.Rows.Clear();
+
+            if (Data == null)
+            {
+                IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(SearchText);
+                Data = dados;
+            }
+
+            foreach (dynamic item in Data)
+            {
+                Table.Rows.Add(
+                    false,
+                    item.ID,
+                    item.NOME,
+                    item.FANTASIA,
+                    item.CPF,
+                    item.RG
+                );
+            }
+
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void Eventos()
         {
             KeyDown += KeyDowns;
@@ -100,6 +164,8 @@ namespace Emiplus.View.Comercial
             Load += (s, e) =>
             {
                 search.Select();
+                SetHeadersTable(GridLista);
+
                 DataTable();
             };
 
@@ -133,7 +199,7 @@ namespace Emiplus.View.Comercial
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
-                    await _controller.SetTableClientes(GridLista, dataTable);
+                    await SetContentTableAsync(GridLista, dataTable);
 
                     Loading.Visible = false;
                     GridLista.Visible = true;
@@ -146,7 +212,104 @@ namespace Emiplus.View.Comercial
                 DataTable();
                 Loading.Visible = false;
                 GridLista.Visible = true;
+                Refresh();
             });
+
+            btnMarcarCheckBox.Click += (s, e) =>
+            {
+                foreach (DataGridViewRow item in GridLista.Rows)
+                {
+                    if ((bool)item.Cells["Selecione"].Value == true)
+                    {
+                        item.Cells["Selecione"].Value = false;
+                        btnMarcarCheckBox.Text = "Marcar Todos";
+                        btnRemover.Visible = false;
+                        btnEditar.Enabled = true;
+                        btnAdicionar.Enabled = true;
+                    }
+                    else
+                    {
+                        item.Cells["Selecione"].Value = true;
+                        btnMarcarCheckBox.Text = "Desmarcar Todos";
+                        btnRemover.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
+                    }
+                }
+            };
+
+            btnRemover.Click += (s, e) =>
+            {
+                listProdutos.Clear();
+                foreach (DataGridViewRow item in GridLista.Rows)
+                    if ((bool)item.Cells["Selecione"].Value == true)
+                        listProdutos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
+
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os CLIENTES selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    foreach (var item in listProdutos)
+                        new Model.Pessoa().Remove(item, false);
+
+                    DataTable();
+                }
+
+                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnRemover.Visible = false;
+                btnEditar.Enabled = true;
+                btnAdicionar.Enabled = true;
+            };
+
+            GridLista.CellClick += (s, e) =>
+            {
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
+                {
+                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    {
+                        GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
+                        btnRemover.Visible = true;
+                        btnEditar.Enabled = false;
+                        btnAdicionar.Enabled = false;
+                    }
+                    else
+                    {
+                        GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
+
+                        bool hideBtns = false;
+                        bool hideBtnsTop = true;
+                        foreach (DataGridViewRow item in GridLista.Rows)
+                            if ((bool)item.Cells["Selecione"].Value == true)
+                            {
+                                hideBtns = true;
+                                hideBtnsTop = false;
+                            }
+
+                        btnRemover.Visible = hideBtns;
+                        btnEditar.Enabled = hideBtnsTop;
+                        btnAdicionar.Enabled = hideBtnsTop;
+                    }
+                }
+            };
+
+            GridLista.CellMouseEnter += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Hand;
+            };
+
+            GridLista.CellMouseLeave += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Default;
+            };
 
             search.Enter += async (s, e) =>
             {

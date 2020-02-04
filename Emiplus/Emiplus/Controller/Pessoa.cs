@@ -27,7 +27,7 @@
                 .GetAsync<dynamic>();
         }
 
-        public async Task SetTableClientes(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
+        public async Task SetTableClientes(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
         {
             Table.ColumnCount = 5;
 

@@ -249,10 +249,20 @@ namespace Emiplus.View.Comercial
             {
                 if (!string.IsNullOrEmpty(cpfCnpj.Text))
                 {
-                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).FirstOrDefault();
+                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
                     if (data != null)
                     {
                         Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(nomeRS.Text))
+                {
+                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("NOME", nomeRS.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                    if (data != null)
+                    {
+                        Alert.Message("Oppss", "Já existe um registro cadastrado com esse NOME.", Alert.AlertType.error);
                         return;
                     }
                 }
