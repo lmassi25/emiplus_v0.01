@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Text;
 using Emiplus.View.Testes;
 using System.Globalization;
+using System.Net;
 
 namespace Emiplus
 {
@@ -45,6 +46,10 @@ namespace Emiplus
         {
             userPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
 
             Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
             Application.EnableVisualStyles();

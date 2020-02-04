@@ -87,7 +87,7 @@ namespace Emiplus.View.Produtos
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 6;
+            Table.ColumnCount = 5;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
 
@@ -134,11 +134,11 @@ namespace Emiplus.View.Produtos
             {
                 Table.Rows.Add(
                     false,
-                     item.ID,
-                     item.REFERENCIA,
-                     item.NOME,
-                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
-                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true)
+                    item.ID,
+                    item.REFERENCIA,
+                    item.NOME,
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORCOMPRA), false),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.VALORVENDA), true)
                  );
             }
 

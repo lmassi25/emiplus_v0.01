@@ -100,7 +100,7 @@ namespace Emiplus.View.Comercial
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 6;
+            Table.ColumnCount = 5;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             

@@ -80,6 +80,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.aliq_federal = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.selecionarNCM = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Origens = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -108,7 +109,6 @@
             this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.selecionarNCM = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -125,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -136,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -1409,6 +1409,17 @@
             this.tabPage2.Text = "Classificação Fiscal";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // selecionarNCM
+            // 
+            this.selecionarNCM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selecionarNCM.Image = ((System.Drawing.Image)(resources.GetObject("selecionarNCM.Image")));
+            this.selecionarNCM.Location = new System.Drawing.Point(239, 85);
+            this.selecionarNCM.Name = "selecionarNCM";
+            this.selecionarNCM.Size = new System.Drawing.Size(28, 28);
+            this.selecionarNCM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.selecionarNCM.TabIndex = 10;
+            this.selecionarNCM.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -2171,17 +2182,6 @@
             this.pictureBox6.TabIndex = 175;
             this.pictureBox6.TabStop = false;
             // 
-            // selecionarNCM
-            // 
-            this.selecionarNCM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.selecionarNCM.Image = ((System.Drawing.Image)(resources.GetObject("selecionarNCM.Image")));
-            this.selecionarNCM.Location = new System.Drawing.Point(239, 85);
-            this.selecionarNCM.Name = "selecionarNCM";
-            this.selecionarNCM.Size = new System.Drawing.Size(28, 28);
-            this.selecionarNCM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.selecionarNCM.TabIndex = 10;
-            this.selecionarNCM.TabStop = false;
-            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2220,6 +2220,7 @@
             this.tabPage4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -2232,7 +2233,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).EndInit();
             this.ResumeLayout(false);
 
         }
