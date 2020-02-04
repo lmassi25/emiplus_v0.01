@@ -235,7 +235,7 @@ namespace Emiplus.View.Comercial
                     }
                     else
                     {
-                        Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
                         Nota nota = new Nota();
                         nota.ShowDialog();
                     }

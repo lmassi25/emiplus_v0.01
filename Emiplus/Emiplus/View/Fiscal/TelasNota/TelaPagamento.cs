@@ -23,7 +23,15 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             InitializeComponent();
 
-            _mNota = new Model.Nota().FindByIdPedidoAndTipo(IdPedido, "NFe").FirstOrDefault<Model.Nota>();
+            _mNota = new Model.Nota().FindById(Nota.Id).FirstOrDefault<Model.Nota>();
+
+            if (_mNota == null)
+            {
+                Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
+                return;
+            }
+
+            IdPedido = _mNota.id_pedido;
 
             DisableCampos();
             Eventos();

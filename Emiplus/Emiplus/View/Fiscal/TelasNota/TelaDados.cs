@@ -25,9 +25,19 @@ namespace Emiplus.View.Fiscal.TelasNota
         public TelaDados()
         {
             InitializeComponent();
+
             Id = Nota.Id;
-            _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
-            _mNota = _mNota.FindByIdPedido(Id).FirstOrDefault<Model.Nota>();
+
+            _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
+
+            if (_mNota == null)
+            {
+                Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
+                return;                
+            }
+                
+            _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
+            
             IdNatureza = _mPedido.id_natureza;
 
             DisableCampos();
