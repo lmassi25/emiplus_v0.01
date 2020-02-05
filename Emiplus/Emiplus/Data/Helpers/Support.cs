@@ -10,6 +10,21 @@ namespace Emiplus.Data.Helpers
 {
     public class Support
     {
+        public static ArrayList GetTiposRecorrencia()
+        {
+            var tipoRecorrencia = new ArrayList();
+            tipoRecorrencia.Add(new { Id = "0", Nome = "Não se repete" });
+            tipoRecorrencia.Add(new { Id = "1", Nome = "Todos os dias" });
+            tipoRecorrencia.Add(new { Id = "2", Nome = "Toda semana" });
+            tipoRecorrencia.Add(new { Id = "3", Nome = "A cada duas semanas" });
+            tipoRecorrencia.Add(new { Id = "4", Nome = "Todo mês" });
+            tipoRecorrencia.Add(new { Id = "5", Nome = "A cada (3)três meses" });
+            tipoRecorrencia.Add(new { Id = "6", Nome = "A cada (6)seis meses" });
+            tipoRecorrencia.Add(new { Id = "7", Nome = "Todo ano" });
+            
+            return tipoRecorrencia;
+        }
+
         public static ArrayList GetOrigens()
         {
             var origens = new ArrayList();
