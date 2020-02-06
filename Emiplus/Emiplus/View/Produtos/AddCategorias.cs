@@ -74,8 +74,12 @@ namespace Emiplus.View.Produtos
                 _modelCategoria.Tipo = Home.CategoriaPage;
 
                 if (_modelCategoria.Save(_modelCategoria))
+                {
+                    DialogResult = DialogResult.OK;
                     Close();
+                }
             };
+
             btnRemover.Click += (s, e) =>
             {
                 var data = _modelCategoria.Remove(idCatSelected);

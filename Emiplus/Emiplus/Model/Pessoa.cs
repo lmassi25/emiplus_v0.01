@@ -3,7 +3,9 @@
     using Data.Database;
     using Data.Helpers;
     using SqlKata;
+    using SqlKata.Execution;
     using System;
+    using System.Collections;
     using Valit;
 
     internal class Pessoa : Model
@@ -56,6 +58,21 @@
         //);
 
         #endregion SQL Create
+
+        public ArrayList GetAll()
+        {
+            var data = new ArrayList();
+            data.Add(new { Id = "0", Nome = "SELECIONE" });
+
+            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").OrderByDesc("nome").Get();
+            if (findDB != null)
+            {
+                foreach (var item in findDB)
+                    data.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
+            }
+
+            return data;
+        }
 
         public bool Save(Pessoa data, bool message = true)
         {

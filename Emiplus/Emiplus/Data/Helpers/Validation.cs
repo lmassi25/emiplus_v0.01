@@ -276,6 +276,9 @@ namespace Emiplus.Data.Helpers
         {
             string p1 = "", p2 = ",00";
 
+            if (!value.Contains("."))
+                return value + ",00";
+
             p1 = value.Substring(0, value.IndexOf('.'));
 
             if (value.Substring(value.IndexOf('.'), (value.Length - value.IndexOf('.'))).Length >= 3)

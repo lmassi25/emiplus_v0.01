@@ -238,24 +238,34 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 bool goBack = false;
                 int rowIndex = -1;
                 foreach (DataGridViewRow row in Table.Rows)
-                    if (row.Cells["Cód. de Barras"].Value.ToString().Equals(item.pdt.CodeBarras))
-                    {
-                        rowIndex = row.Index;
-                        goBack = true;
-                        var getQtd = GridLista.Rows[rowIndex].Cells[6].Value;
-                        var getValorCompra = GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value;
-                        //GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value = Validation.FormatPrice(Validation.ConvertToDouble(getValorCompra) + Validation.ConvertToDouble(FormatPriceXml(item.pdt.VlrCompra)));
-                        GridLista.Rows[rowIndex].Cells[6].Value = Validation.ConvertToDouble(getQtd) + Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade));
+                {
+                    if (row.Cells["Cód. de Barras"].Value.ToString() != "SEM GTIN") {
+                        if (row.Cells["Cód. de Barras"].Value.ToString().Equals(item.pdt.CodeBarras))
+                        {
+                            rowIndex = row.Index;
+                            goBack = true;
+                            var getQtd = GridLista.Rows[rowIndex].Cells[6].Value;
+                            var getValorCompra = GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value;
+                            //GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value = Validation.FormatPrice(Validation.ConvertToDouble(getValorCompra) + Validation.ConvertToDouble(FormatPriceXml(item.pdt.VlrCompra)));
+                            GridLista.Rows[rowIndex].Cells[6].Value = Validation.ConvertToDouble(getQtd) + Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade));
+                        }
                     }
+                }
 
                 if (goBack)
                     continue;
+
+                string CodeBarrasUniq = "";
+                if (item.pdt.CodeBarras == "SEM GTIN")
+                    CodeBarrasUniq = Validation.CodeBarrasRandom();
+                else
+                    CodeBarrasUniq = item.pdt.CodeBarra;
 
                 Table.Rows.Add(
                     true,
                     findItem != null ? new Bitmap(Properties.Resources.success16x) : new Bitmap(Properties.Resources.error16x),
                     item.pdt.Referencia,
-                    item.pdt.CodeBarras,
+                    CodeBarrasUniq,
                     item.pdt.Descricao,
                     item.pdt.Medida,
                     Validation.FormatMedidas(item.pdt.Medida, Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade))),

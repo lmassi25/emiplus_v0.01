@@ -652,6 +652,12 @@
     <Compile Include="View\Financeiro\DetailsCaixa.Designer.cs">
       <DependentUpon>DetailsCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Financeiro\EditAllTitulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\EditAllTitulos.Designer.cs">
+      <DependentUpon>EditAllTitulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Financeiro\EditarTitulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1180,6 +1186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\DetailsCaixa.resx">
       <DependentUpon>DetailsCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\EditAllTitulos.resx">
+      <DependentUpon>EditAllTitulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\EditarTitulo.resx">
       <DependentUpon>EditarTitulo.cs</DependentUpon>

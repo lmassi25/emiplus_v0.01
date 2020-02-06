@@ -102,7 +102,7 @@ namespace Emiplus.View.Comercial
             {
                 _modelPessoa.Id = Id;
                 _modelPessoa.Tipo = Home.pessoaPage;
-                _modelPessoa.Nome = "Novo registro";
+                _modelPessoa.Nome = "NOVO REGISTRO";
                 if (_modelPessoa.Save(_modelPessoa))
                     Id = _modelPessoa.GetLastId();
             }
