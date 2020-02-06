@@ -14,7 +14,8 @@ namespace Emiplus.Data.SobreEscrever
             if (!String.IsNullOrEmpty(value))
             {
                 base.Add(value);
-                keyedValues.Add(value, key); // intentionally backwards
+                if (!keyedValues.ContainsKey(value))
+                    keyedValues.Add(value, key); // intentionally backwards
             }
         }
 

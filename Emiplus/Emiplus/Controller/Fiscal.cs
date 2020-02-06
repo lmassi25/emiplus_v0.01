@@ -255,10 +255,12 @@ namespace Emiplus.Controller
                 if (IniFile.Read("NFe", "APP") != "Uninfe")
                 {
                     if(tipo == "NFe")
+                    {
                         ValidarXML(Pedido, tipo);
 
-                    if(!_msg.Contains("XML Válido"))
-                        return _msg;
+                        if (!_msg.Contains("XML Válido"))
+                            return _msg;
+                    }
                 }
 
                 TransmitirXML(Pedido, tipo);
@@ -2347,7 +2349,7 @@ namespace Emiplus.Controller
 
                 #region FATURA + PARCELAS
 
-                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).OrderBy("titulo.vencimento").Get();
                 if (pagamentos.Count() > 0)
                 {
                     countFat = 1;
@@ -2356,7 +2358,7 @@ namespace Emiplus.Controller
                 }
 
                 int count = 1;
-                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).OrderBy("titulo.vencimento").Get();
                 if (pagamentos.Count() > 0)
                 {
                     if (countFat == 0)

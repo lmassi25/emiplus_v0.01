@@ -60,7 +60,7 @@
 
         public SqlKata.Query FindByIdUser(int id)
         {
-            return Query().Where("id_pessoa", id);
+            return Query().Where("id_pessoa", id).Where("excluir", 0);
         }
 
         public PessoaEndereco GetAddr(string cep)

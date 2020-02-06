@@ -69,7 +69,8 @@ namespace Emiplus.View.Fiscal
                         _mNota.Status = "Pendente";
                         _mNota.Save(_mNota, false);
 
-                        IdDetailsNota = _mNota.GetLastId();
+                        //IdDetailsNota = _mNota.GetLastId();
+                        Id = _mNota.GetLastId();
                     }
                     else
                     {
@@ -83,9 +84,9 @@ namespace Emiplus.View.Fiscal
 
             FormClosing += (s, e) =>
             {
-                _mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
-                _mNota = _mNota.FindByIdPedidoAndTipo(Id, "NFe").FirstOrDefault<Model.Nota>();
-
+                _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
+                _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
+                
                 if (_mPedido.Cliente == 0 && TelaDados.telaDados != true)
                     TelaDados.telaDados = false;
                 else
@@ -105,8 +106,8 @@ namespace Emiplus.View.Fiscal
                                 _mNota.Save(_mNota, false);
                             }
 
-                            TelaDados.telaDados = true;
-                            Close();
+                            TelaDados.telaDados = true;                            
+                            Application.OpenForms["Nota"].Close();
                         }
                     }
                 }

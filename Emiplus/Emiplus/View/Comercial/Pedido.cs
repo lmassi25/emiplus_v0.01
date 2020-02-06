@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -229,7 +230,8 @@ namespace Emiplus.View.Comercial
                 {
                     if (!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
                     {
-                        OpcoesNfeRapida.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value); ;
+                        OpcoesNfeRapida.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
+                        OpcoesNfeRapida.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
                         OpcoesNfeRapida f = new OpcoesNfeRapida();
                         f.Show();
                     }

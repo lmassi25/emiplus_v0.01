@@ -209,7 +209,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 // Carrega a Grid com o Item adicionado acima.
                 PedidoItem.impostos = true;
-                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
 
                 // Atualiza o total do pedido, e os totais da tela
                 LoadTotais();
@@ -301,7 +301,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
 
                 PedidoItem.impostos = true;
-                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                 LoadTotais();
                 ClearForms();
                 BuscarProduto.Select();
@@ -341,7 +341,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         PedidoItem.impostos = true;
-                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                     }
                 }
             };
@@ -399,7 +399,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                             new Controller.Imposto().SetImposto(Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value), idImposto, "NFe");
 
                         PedidoItem.impostos = true;
-                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                     }
                 }
 
