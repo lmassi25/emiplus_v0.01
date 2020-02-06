@@ -16,7 +16,7 @@ namespace Emiplus.Data.Database
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
-        private string GetDatabase()
+        public string GetDatabase()
         {
             if (update)
             {

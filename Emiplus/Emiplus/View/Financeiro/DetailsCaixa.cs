@@ -113,6 +113,7 @@ namespace Emiplus.View.Financeiro
             model.LeftJoin("PEDIDO", "PEDIDO.ID", "TITULO.ID_PEDIDO");
             model.Select("FORMAPGTO.nome as nome_pgto", "TITULO.*", "USUARIOS.NOME as USER_NAME");
             model.Where("TITULO.id_caixa", idCaixa);
+            model.Where("TITULO.id_caixa_mov", 0);
             model.Where("TITULO.excluir", 0);
             //model.Where("PEDIDO.TIPO", "Vendas");
             model.OrderByDesc("TITULO.criado");
@@ -427,7 +428,7 @@ namespace Emiplus.View.Financeiro
             {
                 foreach (DataGridViewRow row in GridLista.Rows)
                 {
-                    if (row.Cells[2].Value.ToString().Contains("Entrada") || row.Cells[2].Value.ToString().Contains("Venda"))
+                    if (row.Cells[2].Value.ToString().Contains("ENTRADA") || row.Cells[2].Value.ToString().Contains("Venda"))
                     {
                         row.Cells[3].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                         row.Cells[3].Style.ForeColor = Color.White;

@@ -367,7 +367,10 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += (s, e) =>
             {
-                BackupDB();
+                BackupAutomatico backup = new BackupAutomatico();
+                backup.StartBackup();
+                backup.BackupLocalDocuments();
+
                 GerarTitulosRecorrentes();
             };
         }
@@ -434,44 +437,6 @@ namespace Emiplus.View.Common
                         gerarTitulo.Save(gerarTitulo, false);
                     }
                 }
-            }
-        }
-
-        private void BackupDB()
-        {
-            string pathDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            if (!Directory.Exists(pathDocuments + "\\Emiplus"))
-                Directory.CreateDirectory(pathDocuments + "\\Emiplus");
-
-            if (Directory.Exists(pathDocuments + "\\Emiplus"))
-            {
-                string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-                if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
-                    return;
-                else
-                {
-                    string getDB = IniFile.Read("PathDatabase", "LOCAL");
-                    if (File.Exists(getDB + $"\\EMIPLUS.FDB"))
-                    {
-                        if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
-                            return;
-                        else
-                        {
-                            File.Copy(getDB + "\\EMIPLUS.FDB", pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB");
-                        }
-                    }
-                }
-
-                foreach (var file in Directory.GetFiles(pathDocuments + $"\\Emiplus"))
-                {
-                    string data = file.Replace(pathDocuments + "\\Emiplus\\EMIPLUS-", "").Replace(".FDB", "");
-                    string dateOld = DateTime.Now.AddDays(-7).ToString("dd-MM-yyyy");
-
-                    if (dateOld == data)
-                        File.Delete(file);
-                }
-
             }
         }
     }
