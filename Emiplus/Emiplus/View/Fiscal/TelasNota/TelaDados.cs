@@ -37,8 +37,14 @@ namespace Emiplus.View.Fiscal.TelasNota
                 return;                
             }
                 
-            _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
-            
+            _mPedido = new Model.Pedido().FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
+
+            if (_mPedido == null)
+            {
+                Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
+                return;
+            }
+
             IdNatureza = _mPedido.id_natureza;
 
             DisableCampos();
@@ -185,6 +191,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                 return true;
             }
 
+            if (IdCliente == 1)
+            {
+                Alert.Message("Opss", "Selecione um Destinatário.", Alert.AlertType.info);
+                return true;
+            }
+
             if (IdAddr <= 0)
             {
                 Alert.Message("Opss", "Selecione um endereço.", Alert.AlertType.info);
@@ -212,11 +224,15 @@ namespace Emiplus.View.Fiscal.TelasNota
                     LoadData();
                 }
 
-                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
+                if (_mNota.Status != "Pendente")
                 {
+                    Nota.disableCampos = true;
+                    DisableCampos();
+
                     progress5.Visible = false;
                     step5.Visible = false;
                     label16.Visible = false;
+                    Apagar.Visible = false;
                 }
             };
 
@@ -304,18 +320,23 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     if (_mPedido != null)
                     {
-                        _mPedido.Excluir = 1;
-                        _mPedido.Save(_mPedido);
+                        if(_mPedido.Tipo == "NFe")
+                        {
+                            _mPedido.Excluir = 1;
+                            _mPedido.Save(_mPedido);
+                        }
                     }
 
                     if (_mNota != null)
                     {
                         _mNota.Excluir = 1;
+                        _mNota.id_pedido = 0;
                         _mNota.Save(_mNota, false);
                     }
 
                     telaDados = true;
                     Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
+                    Application.OpenForms["Nota"].Close();
                     Close();
                 }
             };

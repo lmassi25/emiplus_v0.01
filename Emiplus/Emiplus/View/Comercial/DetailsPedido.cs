@@ -86,6 +86,7 @@ namespace Emiplus.View.Comercial
         public void Nfe()
         {
             OpcoesNfeRapida.idPedido = idPedido;
+            OpcoesNfeRapida.idNota = 0;
             OpcoesNfeRapida f = new OpcoesNfeRapida();
             f.Show();
         }

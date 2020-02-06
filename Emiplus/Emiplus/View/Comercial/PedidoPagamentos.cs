@@ -360,6 +360,7 @@ namespace Emiplus.View.Comercial
             Concluir(false);
 
             OpcoesNfeRapida.idPedido = IdPedido;
+            OpcoesNfeRapida.idNota = 0;
             OpcoesNfeRapida f = new OpcoesNfeRapida();
             f.TopMost = true;
             f.Show();
