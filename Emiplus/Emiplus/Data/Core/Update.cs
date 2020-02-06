@@ -167,6 +167,9 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("Pimaco60Left", "ETIQUETAS"))
                 IniFile.Write("Pimaco60Left", "13", "ETIQUETAS");
+
+            if (!IniFile.KeyExists("GerarRecDiasAntecipado", "FINANCEIRO"))
+                IniFile.Write("GerarRecDiasAntecipado", "7", "FINANCEIRO");
         }
     }
 }

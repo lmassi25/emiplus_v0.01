@@ -205,7 +205,6 @@ namespace Emiplus.View.Common
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
 
-            //Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 
@@ -369,7 +368,73 @@ namespace Emiplus.View.Common
             backWork.DoWork += (s, e) =>
             {
                 BackupDB();
+                GerarTitulosRecorrentes();
             };
+        }
+
+        private void GerarTitulosRecorrentes()
+        {
+            var dias = Validation.ConvertToInt32(IniFile.Read("GerarRecDiasAntecipado", "FINANCEIRO"));
+            string dataAtual = DateTime.Now.AddDays(-dias).ToString("dd.MM.yyyy");
+
+            var titulo = new Model.Titulo().Query().Where("excluir", 0).Where("vencimento", "<=", dataAtual).Where("tipo_recorrencia", "!=", "0").Where("qtd_recorrencia", "0").Get();
+            if (titulo != null)
+            {
+                foreach (var item in titulo)
+                {
+                    DateTime dataVencimento = Convert.ToDateTime(item.VENCIMENTO);
+                    switch (item.TIPO_RECORRENCIA)
+                    {
+                        case 1:
+                            dataVencimento = dataVencimento.AddDays(1);
+                            break;
+                        case 2:
+                            dataVencimento = dataVencimento.AddDays(1 * 7);
+                            break;
+                        case 3:
+                            dataVencimento = dataVencimento.AddDays(1 * 14);
+                            break;
+                        case 4:
+                            dataVencimento = dataVencimento.AddMonths(1);
+                            break;
+                        case 5:
+                            dataVencimento = dataVencimento.AddMonths(1 * 3);
+                            break;
+                        case 6:
+                            dataVencimento = dataVencimento.AddMonths(1 * 6);
+                            break;
+                        case 7:
+                            dataVencimento = dataVencimento.AddYears(1);
+                            break;
+                    }
+
+                    int idPai = item.ID_RECORRENCIA_PAI;
+                    int NrParcela = item.NR_RECORRENCIA + 1;
+
+                    Model.Titulo checkTitulo = new Model.Titulo().Query().Where("id_recorrencia_pai", idPai).Where("nr_recorrencia", NrParcela).FirstOrDefault<Model.Titulo>();
+                    if (checkTitulo == null) {
+                        Model.Titulo gerarTitulo = new Model.Titulo();
+                        gerarTitulo.Id = 0;
+                        gerarTitulo.Tipo = item.TIPO;
+                        gerarTitulo.Emissao = item.EMISSAO.ToString();
+                        gerarTitulo.Nome = item.NOME;
+                        gerarTitulo.Id_Categoria = item.ID_CATEGORIA;
+                        gerarTitulo.Id_Caixa = item.ID_CAIXA;
+                        gerarTitulo.Id_FormaPgto = item.ID_FORMAPGTO;
+                        gerarTitulo.Id_Pedido = item.ID_PEDIDO;
+                        gerarTitulo.Vencimento = dataVencimento.ToString("dd.MM.yyyy");
+                        gerarTitulo.Total = Validation.ConvertToDouble(item.TOTAL);
+                        gerarTitulo.Id_Pessoa = item.ID_PESSOA;
+                        gerarTitulo.Obs = item.OBS;
+                        gerarTitulo.id_usuario = item.ID_USUARIO;
+                        gerarTitulo.ID_Recorrencia_Pai = item.ID_RECORRENCIA_PAI;
+                        gerarTitulo.Tipo_Recorrencia = item.TIPO_RECORRENCIA;
+                        gerarTitulo.Qtd_Recorrencia = item.QTD_RECORRENCIA;
+                        gerarTitulo.Nr_Recorrencia = item.NR_RECORRENCIA + 1;
+                        gerarTitulo.Save(gerarTitulo, false);
+                    }
+                }
+            }
         }
 
         private void BackupDB()
@@ -397,6 +462,16 @@ namespace Emiplus.View.Common
                         }
                     }
                 }
+
+                foreach (var file in Directory.GetFiles(pathDocuments + $"\\Emiplus"))
+                {
+                    string data = file.Replace(pathDocuments + "\\Emiplus\\EMIPLUS-", "").Replace(".FDB", "");
+                    string dateOld = DateTime.Now.AddDays(-7).ToString("dd-MM-yyyy");
+
+                    if (dateOld == data)
+                        File.Delete(file);
+                }
+
             }
         }
     }

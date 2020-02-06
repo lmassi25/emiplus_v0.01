@@ -76,8 +76,8 @@ namespace Emiplus.View.Financeiro
                 var DB = mTitulo.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
                 .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf");
-                //DB.Get();
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Where("titulo.excluir", 0).Where("titulo.id", item);
 
                 foreach (dynamic data in DB.Get())
                 {
@@ -92,7 +92,7 @@ namespace Emiplus.View.Financeiro
                 }
             }
 
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadFornecedores()
@@ -120,14 +120,22 @@ namespace Emiplus.View.Financeiro
             foreach (var item in listTitulos)
             {
                 _modelTitulo = _modelTitulo.FindById(item).FirstOrDefault<Model.Titulo>();
-                _modelTitulo.Id = item;
                 _modelTitulo.Tipo = Home.financeiroPage;
-                _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text) ? null : Validation.ConvertDateToSql(dataRecebido.Text);
-                _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
 
-                _modelTitulo.Id_Pessoa = Validation.ConvertToInt32(cliente.SelectedValue);
-                _modelTitulo.Id_FormaPgto = Validation.ConvertToInt32(formaPgto.SelectedValue);
-                _modelTitulo.Id_Categoria = Validation.ConvertToInt32(receita.SelectedValue);
+                if (!string.IsNullOrEmpty(dataRecebido.Text))
+                    _modelTitulo.Baixa_data = Validation.ConvertDateToSql(dataRecebido.Text);
+
+                if (!string.IsNullOrEmpty(recebido.Text))
+                    _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
+
+                if (Validation.ConvertToInt32(cliente.SelectedValue) != 0)
+                    _modelTitulo.Id_Pessoa = Validation.ConvertToInt32(cliente.SelectedValue);
+
+                if (Validation.ConvertToInt32(receita.SelectedValue) != 0)
+                    _modelTitulo.Id_Categoria = Validation.ConvertToInt32(receita.SelectedValue);
+
+                if (Validation.ConvertToInt32(formaPgto.SelectedValue) != 0)
+                    _modelTitulo.Id_FormaPgto = Validation.ConvertToInt32(formaPgto.SelectedValue);
 
                 _modelTitulo.Save(_modelTitulo, false);
             }

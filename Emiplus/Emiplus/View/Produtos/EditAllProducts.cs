@@ -152,17 +152,32 @@ namespace Emiplus.View.Produtos
             foreach (var item in listProducts)
             {
                 _modelItem = _modelItem.FindById(item).FirstOrDefault<Model.Item>();
-                _modelItem.Id = item;
-                _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
-                _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
-                _modelItem.Medida = Medidas.Text;
+                if (!string.IsNullOrEmpty(valorcompra.Text))
+                    _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
 
-                _modelItem.Cest = cest.Text;
-                _modelItem.Ncm = ncm.Text;
-                _modelItem.AliqFederal = Validation.ConvertToDouble(aliq_federal.Text);
-                _modelItem.AliqEstadual = Validation.ConvertToDouble(aliq_estadual.Text);
-                _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
-                _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
+                if (!string.IsNullOrEmpty(valorvenda.Text))
+                    _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
+
+                if (!string.IsNullOrEmpty(Medidas.Text))
+                    _modelItem.Medida = Medidas.Text;
+
+                if (!string.IsNullOrEmpty(cest.Text))
+                    _modelItem.Cest = cest.Text;
+
+                if (!string.IsNullOrEmpty(ncm.Text))
+                    _modelItem.Ncm = ncm.Text;
+
+                if (!string.IsNullOrEmpty(aliq_federal.Text))
+                    _modelItem.AliqFederal = Validation.ConvertToDouble(aliq_federal.Text);
+
+                if (!string.IsNullOrEmpty(aliq_estadual.Text))
+                    _modelItem.AliqEstadual = Validation.ConvertToDouble(aliq_estadual.Text);
+
+                if (!string.IsNullOrEmpty(aliq_municipal.Text))
+                    _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
+
+                if (!string.IsNullOrEmpty(txtLimiteDesconto.Text))
+                    _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
 
                 if (Categorias.SelectedValue != null)
                     _modelItem.Categoriaid = (int)Categorias.SelectedValue;
