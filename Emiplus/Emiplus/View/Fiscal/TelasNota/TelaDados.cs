@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections;
@@ -28,7 +29,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Id = Nota.Id;
 
-            _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
+            _mNota = new Model.Nota().FindById(Id).FirstOrDefault<Model.Nota>();
 
             if (_mNota == null)
             {
@@ -295,6 +296,29 @@ namespace Emiplus.View.Fiscal.TelasNota
             emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             saida.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
             hora.KeyPress += (s, e) => Masks.MaskHour(s, e);
+
+            Apagar.Click += (s, e) =>
+            {
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    if (_mPedido != null)
+                    {
+                        _mPedido.Excluir = 1;
+                        _mPedido.Save(_mPedido);
+                    }
+
+                    if (_mNota != null)
+                    {
+                        _mNota.Excluir = 1;
+                        _mNota.Save(_mNota, false);
+                    }
+
+                    telaDados = true;
+                    Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
+                    Close();
+                }
+            };
         }
     }
 }

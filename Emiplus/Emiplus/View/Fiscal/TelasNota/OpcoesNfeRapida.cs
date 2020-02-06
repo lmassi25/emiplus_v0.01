@@ -11,6 +11,7 @@ namespace Emiplus.View.Fiscal.TelasNota
     public partial class OpcoesNfeRapida : Form
     {
         public static int idPedido { get; set; }
+        public static int idNota { get; set; }
 
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
@@ -20,6 +21,16 @@ namespace Emiplus.View.Fiscal.TelasNota
         public OpcoesNfeRapida()
         {
             InitializeComponent();
+
+            if(idNota == 0)
+            {
+                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+
+                if(checkNota != null)
+                {
+                    idNota = checkNota.Id;
+                }
+            }
 
             Eventos();
         }
@@ -44,7 +55,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnDetalhes.Click += (s, e) =>
             {
                 Nota.disableCampos = true;
-                Nota.Id = idPedido;
+                Nota.Id = idNota;
                 Nota nota = new Nota();
                 nota.ShowDialog();
             };
