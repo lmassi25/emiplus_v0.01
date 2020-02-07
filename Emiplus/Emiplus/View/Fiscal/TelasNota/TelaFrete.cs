@@ -60,10 +60,18 @@ namespace Emiplus.View.Fiscal.TelasNota
         private void LoadData()
         {
             var tipos = new ArrayList();
-            tipos.Add(new { Id = "9", Nome = "Sem frete" });
-            tipos.Add(new { Id = "0", Nome = "Por conta do emitente" });
-            tipos.Add(new { Id = "1", Nome = "Por conta do destinatário/remetente" });
-            tipos.Add(new { Id = "2", Nome = "Por conta de terceiros" });
+            //tipos.Add(new { Id = "9", Nome = "Sem frete" });
+            //tipos.Add(new { Id = "0", Nome = "Por conta do emitente" });
+            //tipos.Add(new { Id = "1", Nome = "Por conta do destinatário/remetente" });
+            //tipos.Add(new { Id = "2", Nome = "Por conta de terceiros" });
+
+            tipos.Add(new { Id = "0", Nome = "Contratação do Frete por conta do Remetente" });
+            tipos.Add(new { Id = "1", Nome = "Contratação do Frete por conta do Destinatário" });
+            tipos.Add(new { Id = "2", Nome = "Contratação do Frete por conta de Terceiros" });
+            tipos.Add(new { Id = "3", Nome = "Transporte Próprio por conta do Remetente" });
+            tipos.Add(new { Id = "4", Nome = "Transporte Próprio por conta do Destinatário" });
+            tipos.Add(new { Id = "9", Nome = "Sem Ocorrência de Transporte" });
+
             tipo.DataSource = tipos;
             tipo.DisplayMember = "Nome";
             tipo.ValueMember = "Id";
@@ -80,7 +88,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void LoadTransportadora()
         {
-            _mTransportadora = _mTransportadora.FindById(_mPedido.Id_Transportadora).FirstOrDefault<Model.Pessoa>();
+            _mTransportadora = new Model.Pessoa().FindById(_mPedido.Id_Transportadora).FirstOrDefault<Model.Pessoa>();
             if (_mTransportadora != null)
             {
                 transportadoraSelecionada.Text = _mTransportadora.Nome;
@@ -98,7 +106,9 @@ namespace Emiplus.View.Fiscal.TelasNota
             Load += (s, e) =>
             {
                 LoadData();
-                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
+                LoadTransportadora();
+
+                if (_mNota.Status != "Pendente")
                 {
                     progress5.Visible = false;
                     pictureBox1.Visible = false;
@@ -113,10 +123,18 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     IdTransportadora = PedidoModalTransportadora.Id;
 
-                    _mPedido.Id = Id;
+                    _mPedido.Id = _mNota.id_pedido;
                     _mPedido.Id_Transportadora = PedidoModalTransportadora.Id;
+                    _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedIndex);
+                    _mPedido.Volumes_Frete = volumes.Text;
+                    _mPedido.PesoLiq_Frete = pesoLiquido.Text;
+                    _mPedido.PesoBruto_Frete = pesoBruto.Text;
+                    _mPedido.Especie_Frete = especie.Text;
+                    _mPedido.Marca_Frete = marca.Text;
                     _mPedido.Save(_mPedido);
+
                     LoadData();
+                    LoadTransportadora();
                 }
             };
 
@@ -125,8 +143,8 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if (Validate())
                     return;
 
-                _mPedido.Id = Id;
-                _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedValue);
+                _mPedido.Id = _mNota.id_pedido;
+                _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedIndex);
                 _mPedido.Volumes_Frete = volumes.Text;
                 _mPedido.PesoLiq_Frete = pesoLiquido.Text;
                 _mPedido.PesoBruto_Frete = pesoBruto.Text;

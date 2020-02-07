@@ -28,6 +28,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             InitializeComponent();
 
             Id = Nota.Id;
+            PedidoModalClientes.Id = 0;
 
             _mNota = new Model.Nota().FindById(Id).FirstOrDefault<Model.Nota>();
 
@@ -99,13 +100,24 @@ namespace Emiplus.View.Fiscal.TelasNota
         private void LoadAddress()
         {
             var dataAddrFirst = _mClienteAddr.Query().Where("id_pessoa", IdCliente).FirstOrDefault<Model.PessoaEndereco>();
+
+            if (_mPedido.id_useraddress > 0)
+            {
+                dataAddrFirst = new Model.PessoaEndereco().Query().Where("id", _mPedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
+            }
+
+            if (DetailsClient.IdAddress > 0)
+            {
+                dataAddrFirst = new Model.PessoaEndereco().Query().Where("id", DetailsClient.IdAddress).FirstOrDefault<Model.PessoaEndereco>();
+            }
+
             if (dataAddrFirst != null)
             {
                 AddrInfo.Visible = true;
                 AddrInfo.Text = $"Rua: {dataAddrFirst.Rua}, {dataAddrFirst.Cep} - {dataAddrFirst.Bairro} - {dataAddrFirst.Cidade}/{dataAddrFirst.Estado} - {dataAddrFirst.Pais}";
                 IdAddr = dataAddrFirst.Id;
 
-                _mPedido.Id = Id;
+                _mPedido.Id = _mNota.id_pedido;
                 _mPedido.id_useraddress = IdAddr;
                 _mPedido.Save(_mPedido);
 
@@ -123,7 +135,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void GetData()
         {
-            _mPedido.Id = Id;
+            _mPedido.Id = _mNota.id_pedido;
             _mPedido.Emissao = emissao.Text != "" ? DateTime.Parse(emissao.Text) : DateTime.Now;
             _mPedido.Saida = saida.Text != "" ? DateTime.Parse(saida.Text) : DateTime.Now;
             _mPedido.HoraSaida = hora.Text;
@@ -134,12 +146,13 @@ namespace Emiplus.View.Fiscal.TelasNota
             _mPedido.info_contribuinte = infoContribuinte.Text;
             _mPedido.info_fisco = infoFisco.Text;
             _mPedido.id_natureza = Validation.ConvertToInt32(naturezaOp.SelectedValue) > 0 ? Validation.ConvertToInt32(naturezaOp.SelectedValue) : 0;
+            _mPedido.id_useraddress = IdAddr;
 
             if (PedidoModalClientes.Id > 0)
                 _mPedido.Cliente = PedidoModalClientes.Id;
 
-            if (DetailsClient.IdAddress > 0)
-                _mPedido.id_useraddress = DetailsClient.IdAddress;
+            //if (DetailsClient.IdAddress > 0)
+            //    _mPedido.id_useraddress = DetailsClient.IdAddress;
         }
 
         private void LoadData()

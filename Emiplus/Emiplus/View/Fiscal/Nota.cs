@@ -66,8 +66,16 @@ namespace Emiplus.View.Fiscal
                     }
                     else
                     {
-                        Alert.Message("Opss", "Erro ao criar Nota.", Alert.AlertType.error);
-                        Close();
+                        _mPedido.Id = 0;
+                        _mPedido.Tipo = "NFe";
+                        _mPedido.Save(_mPedido);
+
+                        _mNota.Id = 0;
+                        _mNota.id_pedido = _mPedido.GetLastId();
+                        _mNota.Tipo = "NFe";
+                        _mNota.Status = "Pendente";
+                        _mNota.Save(_mNota, false);
+                        Id = _mNota.GetLastId();
                     }
                 }
 
@@ -76,7 +84,9 @@ namespace Emiplus.View.Fiscal
 
             FormClosing += (s, e) =>
             {
-                _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
+                OpcoesNfeRapida.idPedido = 0;
+
+                _mNota = new Model.Nota().FindById(Id).FirstOrDefault<Model.Nota>();
 
                 if (_mNota == null)
                     Close();

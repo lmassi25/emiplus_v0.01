@@ -83,7 +83,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             label44.Text = GridListaProdutos.RowCount.ToString();
 
-            var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(Id));
+            var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(_mNota.id_pedido));
             _mPedido.Save(data);
 
             label35.Text = Validation.FormatPrice(_mPedido.GetTotal(), false);
@@ -182,7 +182,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 var pedidoItem = new Model.PedidoItem();
                 pedidoItem.SetId(0)
                     .SetTipo("Produtos")
-                    .SetPedidoId(Id)
+                    .SetPedidoId(_mNota.id_pedido)
                     .SetItem(item)
                     .SetQuantidade(QuantidadeTxt)
                     .SetMedida(MedidaTxt)

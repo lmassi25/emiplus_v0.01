@@ -234,15 +234,18 @@ namespace Emiplus.View.Produtos
                     {
                         if (data.Message != null)
                         {
-                            Alert.Message("Opps", data.Message.Value, Alert.AlertType.error);
-                            return;
+                            aliq_federal.Text = "0";
+                            aliq_estadual.Text = "0";
+                            aliq_municipal.Text = "0";
                         }
+                        else
+                        {
+                            var s = JsonConvert.DeserializeObject(data.ToString());
 
-                        var s = JsonConvert.DeserializeObject(data.ToString());
-
-                        aliq_federal.Text = Validation.Price(s.Nacional.Value);
-                        aliq_estadual.Text = Validation.Price(s.Estadual.Value);
-                        aliq_municipal.Text = Validation.Price(s.Municipal.Value);
+                            aliq_federal.Text = Validation.Price(s.Nacional.Value);
+                            aliq_estadual.Text = Validation.Price(s.Estadual.Value);
+                            aliq_municipal.Text = Validation.Price(s.Municipal.Value);
+                        }
                     }
                 }
             }

@@ -186,6 +186,7 @@ namespace Emiplus.View.Comercial
                 {
                     Nota.disableCampos = false;
                     Nota.Id = 0;
+                    //OpcoesNfeRapida.idPedido = 0;
                     Nota nota = new Nota();
                     nota.ShowDialog();
                     return;
