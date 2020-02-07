@@ -10,17 +10,18 @@ namespace Emiplus.Controller
 {
     internal class Nota
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(int idPedido)
+        public Task<IEnumerable<dynamic>> GetDataTable(int idPedido, int idNota = 0)
         {
             return new Model.Nota().Query()
                 .Where("EXCLUIR", 0)
+                //.Where("id", idNota)
                 .Where("id_pedido", idPedido)
                 .Where("tipo", "CCe")
                 .OrderByDesc("criado")
                 .GetAsync<dynamic>();
         }
 
-        public async Task SetTable(DataGridView Table, int idPedido)
+        public async Task SetTable(DataGridView Table, int idPedido, int idNota = 0)
         {
             Table.ColumnCount = 5;
 
@@ -45,7 +46,7 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            IEnumerable<dynamic> dados = await GetDataTable(idPedido);
+            IEnumerable<dynamic> dados = await GetDataTable(idPedido, idNota);
 
             for (int i = 0; i < dados.Count(); i++)
             {
@@ -63,13 +64,14 @@ namespace Emiplus.Controller
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public string GetSeqCCe(int idPedido)
+        public string GetSeqCCe(int idPedido, int idNota = 0)
         {
             var query = new Model.Nota().Query();
 
             query
             .SelectRaw("MAX(serie) as serie")
             .Where("excluir", 0)
+            //.Where("id", idNota)
             .Where("id_pedido", idPedido)
             .Where("tipo", "CCe");
 
