@@ -9,6 +9,7 @@ using System.IO;
 using Emiplus.Data.Helpers;
 using FirebirdSql.Data.Services;
 using Emiplus.Data.Database;
+using RestSharp;
 
 namespace Emiplus.Data.Core
 {
@@ -40,18 +41,48 @@ namespace Emiplus.Data.Core
         public BackupAutomatico StartBackup()
         {
             string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-            if (!File.Exists($"{PathDB}\\BACKUP-{dateNow}.fbk")) {
+            string filePath = $"{PathDB}\\{dateNow}.fbk";
+
+            if (!File.Exists(filePath)) {
                 FbBackup backupSvc = new FbBackup();
                 backupSvc.ConnectionString = $"character set=NONE;initial catalog={new Connect().GetDatabase()};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3";
 
-                string filePath = $"{PathDB}\\BACKUP-{dateNow}.fbk";
                 backupSvc.BackupFiles.Add(new FbBackupFile(filePath, 8192));
                 backupSvc.Verbose = true;
                 backupSvc.Options = FbBackupFlags.IgnoreLimbo;
                 backupSvc.Execute();
             }
 
+            object obj = new
+            {
+                token = Program.TOKEN,
+                id_empresa = IniFile.Read("idEmpresa", "APP"),
+                id_backup = "N9TT-9G0A-B7FQ-RANC"
+            };
+            
+            var jo = new RequestApi().URL(Program.URL_BASE + "/api/backup").Content(obj, Method.POST).AddFile("arquivo", filePath).Response();
+            
+            if (jo["error"].ToString() == "False")
+            {
+                new Log().Add("BACKUPS", "Backup realizado com sucesso", Log.LogType.info);
+                CleanBackups(PathDB);
+            }
+            else
+                new Log().Add("BACKUPS", "Falha no backup", Log.LogType.info);
+
             return this;
+        }
+
+        private void CleanBackups(string path, int days = 1)
+        {
+            DateTime date = DateTime.Now.AddDays(-days);
+            
+            System.IO.DirectoryInfo di = new DirectoryInfo(path);
+            foreach (FileInfo file in di.GetFiles("*.fbk"))
+            {
+                if (date >= file.CreationTime)
+                    file.Delete();
+            }
         }
 
         public void BackupLocalDocuments()
@@ -64,31 +95,19 @@ namespace Emiplus.Data.Core
             if (Directory.Exists(pathDocuments + "\\Emiplus"))
             {
                 string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
-                if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
-                    return;
-                else
+
+                if (!File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.fbk"))
                 {
-                    string getDB = IniFile.Read("PathDatabase", "LOCAL");
-                    if (File.Exists(getDB + $"\\EMIPLUS.FDB"))
-                    {
-                        if (File.Exists(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB"))
-                            return;
-                        else
-                        {
-                            File.Copy(getDB + "\\EMIPLUS.FDB", pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.FDB");
-                        }
-                    }
+                    FbBackup backupSvc = new FbBackup();
+                    backupSvc.ConnectionString = $"character set=NONE;initial catalog={new Connect().GetDatabase()};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3";
+
+                    backupSvc.BackupFiles.Add(new FbBackupFile(pathDocuments + $"\\Emiplus\\EMIPLUS-{dateNow}.fbk", 8192));
+                    backupSvc.Verbose = true;
+                    backupSvc.Options = FbBackupFlags.IgnoreLimbo;
+                    backupSvc.Execute();
                 }
 
-                foreach (var file in Directory.GetFiles(pathDocuments + $"\\Emiplus"))
-                {
-                    string data = file.Replace(pathDocuments + "\\Emiplus\\EMIPLUS-", "").Replace(".FDB", "");
-                    string dateOld = DateTime.Now.AddDays(-7).ToString("dd-MM-yyyy");
-
-                    if (dateOld == data)
-                        File.Delete(file);
-                }
-
+                CleanBackups(pathDocuments + $"\\Emiplus", 5);
             }
         }
     }
