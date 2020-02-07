@@ -63,8 +63,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             Emitir.Click += (s, e) =>
             {
                 //var checkNota = _modelNota.FindByIdPedido(idPedido).WhereNotNull("status").Where("nota.tipo", "NFe").FirstOrDefault();
-                var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
-
+                //var checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                var checkNota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
                 if (checkNota == null)
                 {
                     Model.Nota _modelNotaNova = new Model.Nota();
@@ -122,7 +122,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             CartaCorrecao.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                //var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                var checkNota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
                 if (checkNota == null || checkNota?.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível emitir uma Carta de Correção.", Alert.AlertType.warning);
@@ -139,7 +140,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Cancelar.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                //var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                var checkNota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
                 if (checkNota == null || checkNota?.Status != "Autorizada")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível cancelar uma nota Pendente/Cancelada.", Alert.AlertType.warning);
@@ -164,7 +166,8 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             EnviarEmail.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                //var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFe").FirstOrDefault<Model.Nota>();
+                var checkNota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
                 if (checkNota == null || checkNota?.Status == "Pendente")
                 {
                     Alert.Message("Ação não permitida!", "Não é possível enviar uma nota Pendente.", Alert.AlertType.warning);
@@ -257,6 +260,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                     retorno.Text = _msg;
                 };
             }
+
+            FormClosing += (s, e) =>
+            {
+                OpcoesNfeRapida.idPedido = 0;
+                OpcoesNfeRapida.idNota = 0;
+            };
         }
     }
 }

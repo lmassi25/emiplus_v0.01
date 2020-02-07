@@ -16,7 +16,6 @@ namespace Emiplus.Model
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; set; }
@@ -33,6 +32,7 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
         public string protocolodeuso { get; set; }
+        public int id_nota { get; set; }
 
         #endregion CAMPOS
 

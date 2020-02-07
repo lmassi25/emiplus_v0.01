@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         private string _msg;
 
         public static int idPedido { get; set; }
+        public static int idNota { get; set; }
 
         private Model.Nota _mNota = new Model.Nota();
         private Controller.Nota _cNota = new Controller.Nota();
@@ -27,6 +29,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             InitializeComponent();
 
             idPedido = OpcoesNfeRapida.idPedido;
+            idNota = OpcoesNfeRapida.idNota;
 
             Eventos();
         }
@@ -73,6 +76,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnAdicionar.Click += (s, e) =>
             {
                 Model.Nota _notaCCe = new Model.Nota();
+                //_notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id", idNota).Where("excluir", 0).FirstOrDefault<Model.Nota>();
                 _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
 
                 if (_notaCCe != null)
@@ -106,9 +110,9 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnRemover.Click += (s, e) =>
             {
                 Model.Nota _notaCCe = new Model.Nota();
-                _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", idPedido).Where("excluir", 0).First<Model.Nota>();
+                _notaCCe = _notaCCe.Query().Where("id", Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).Where("excluir", 0).First<Model.Nota>();
 
-                if (_notaCCe != null)
+                if (_notaCCe.Status != "Transmitindo...")
                 {
                     Alert.Message("Ação não permitida", "Exclusão não realizada", Alert.AlertType.warning);
                     return;
@@ -132,12 +136,12 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 b.DoWork += async (s, e) =>
                 {
-                    dataTable = await _cNota.GetDataTable(idPedido);
+                    dataTable = await _cNota.GetDataTable(idPedido, idNota);
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
-                    await _cNota.SetTable(GridLista, idPedido);
+                    await _cNota.SetTable(GridLista, idPedido, idNota);
                 };
             }
 
@@ -148,11 +152,11 @@ namespace Emiplus.View.Fiscal.TelasNota
                     switch (p1)
                     {
                         case 1:
-                            _msg = new Controller.Fiscal().EmitirCCe(idPedido);
+                            _msg = new Controller.Fiscal().EmitirCCe(idPedido, idNota);
                             break;
 
                         case 2:
-                            var msg = new Controller.Fiscal().ImprimirCCe(idPedido);
+                            var msg = new Controller.Fiscal().ImprimirCCe(idPedido, idNota);
                             if (!msg.Contains(".pdf"))
                                 _msg = msg;
                             break;
@@ -168,7 +172,8 @@ namespace Emiplus.View.Fiscal.TelasNota
                             if (_msg.Contains("AUTORIZADA"))
                                 Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
                             else
-                                Alert.Message("Opss", _msg, Alert.AlertType.error);//AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
+                                //Alert.Message("Opss", _msg, Alert.AlertType.error);
+                                AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
 
                             break;
 

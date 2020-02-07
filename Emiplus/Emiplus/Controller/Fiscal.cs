@@ -103,7 +103,7 @@ namespace Emiplus.Controller
         /// <summary>
         /// Atualiza os Config
         /// </summary>
-        private void Start(int Pedido = 0, string tipo = "NFe")
+        private void Start(int Pedido = 0, string tipo = "NFe", int Nota = 0)
         {
             _path = IniFile.Read("Path", "LOCAL");
 
@@ -131,7 +131,14 @@ namespace Emiplus.Controller
                     if (!Directory.Exists(_path_autorizada))
                         Directory.CreateDirectory(_path_autorizada);
 
-                    if (_id_nota > 0)
+                    if (Nota > 0)
+                    {
+                        _nota = new Model.Nota().FindById(Nota).First<Model.Nota>();
+
+                        if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                            chvAcesso = _nota.ChaveDeAcesso;
+                    }
+                    else if (_id_nota > 0)
                     {
                         _nota = new Model.Nota().FindById(_id_nota).First<Model.Nota>();
 
@@ -1306,19 +1313,19 @@ namespace Emiplus.Controller
         /// <summary>
         /// Emitir CCe
         /// </summary>
-        public string EmitirCCe(int Pedido)
+        public string EmitirCCe(int Pedido, int Nota = 0)
         {
             Model.Nota _notaCCe = new Model.Nota();
-
             _notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", Pedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
+            //_notaCCe = _notaCCe.Query().Where("id", Nota).FirstOrDefault<Model.Nota>();
 
-            Start(Pedido, "NFe");
+            Start(_notaCCe.id_pedido, "NFe", Nota);
 
             string SeqEvento = "";
 
             if (_notaCCe.Serie == null)
             {
-                SeqEvento = new Controller.Nota().GetSeqCCe(Pedido);
+                SeqEvento = new Controller.Nota().GetSeqCCe(Pedido, Nota);
                 _notaCCe.Serie = SeqEvento;
             }
 
@@ -1371,9 +1378,15 @@ namespace Emiplus.Controller
         /// <summary>
         /// Imprimir XML
         /// </summary>
-        public string ImprimirCCe(int Pedido)
+        public string ImprimirCCe(int Pedido, int Nota)
         {
-            Start(Pedido);
+            //Start(Pedido);
+
+            Model.Nota _notaCCe = new Model.Nota();            
+            _notaCCe = _notaCCe.Query().Where("id", Nota).FirstOrDefault<Model.Nota>();
+
+            Start(_notaCCe.id_pedido, "NFe", Nota);
+
 
             //Model.Nota _notaCCe = new Model.Nota();
             //_notaCCe = _notaCCe.Query().Where("status", "Transmitindo...").Where("id_pedido", Pedido).Where("excluir", 0).FirstOrDefault<Model.Nota>();
