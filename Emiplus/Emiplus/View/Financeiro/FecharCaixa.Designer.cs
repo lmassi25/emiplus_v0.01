@@ -34,9 +34,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tituloProduto = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnFinalizarImprimir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
-            this.btnFinalizarImprimir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.txtSaldoDinheiro = new System.Windows.Forms.Label();
@@ -45,6 +45,7 @@
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.txtSaldoTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -96,6 +97,27 @@
             this.panel3.Size = new System.Drawing.Size(369, 68);
             this.panel3.TabIndex = 23;
             // 
+            // btnFinalizarImprimir
+            // 
+            this.btnFinalizarImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFinalizarImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizarImprimir.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnFinalizarImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnFinalizarImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnFinalizarImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizarImprimir.Image")));
+            this.btnFinalizarImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFinalizarImprimir.Location = new System.Drawing.Point(239, 5);
+            this.btnFinalizarImprimir.Name = "btnFinalizarImprimir";
+            this.btnFinalizarImprimir.Size = new System.Drawing.Size(126, 60);
+            this.btnFinalizarImprimir.TabIndex = 6;
+            this.btnFinalizarImprimir.Text = "Fechar e Imprimir";
+            this.btnFinalizarImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFinalizarImprimir.UseVisualStyleBackColor = true;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -138,27 +160,6 @@
             this.btnFinalizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // btnFinalizarImprimir
-            // 
-            this.btnFinalizarImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnFinalizarImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizarImprimir.FlatAppearance.BorderSize = 0;
-            this.btnFinalizarImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizarImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizarImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizarImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnFinalizarImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizarImprimir.Image")));
-            this.btnFinalizarImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFinalizarImprimir.Location = new System.Drawing.Point(239, 5);
-            this.btnFinalizarImprimir.Name = "btnFinalizarImprimir";
-            this.btnFinalizarImprimir.Size = new System.Drawing.Size(126, 60);
-            this.btnFinalizarImprimir.TabIndex = 6;
-            this.btnFinalizarImprimir.Text = "Fechar e Imprimir";
-            this.btnFinalizarImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFinalizarImprimir.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,7 +186,7 @@
             this.visualPanel2.Border.Visible = true;
             this.visualPanel2.Controls.Add(this.txtSaldoDinheiro);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(81, 181);
+            this.visualPanel2.Location = new System.Drawing.Point(81, 187);
             this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel2.Name = "visualPanel2";
             this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
@@ -218,7 +219,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(104, 159);
+            this.label2.Location = new System.Drawing.Point(104, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 41;
@@ -289,12 +290,25 @@
             this.label6.TabIndex = 106;
             this.label6.Text = "(Dinheiro + cheques + recibos de cartão - saídas)";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(3, 165);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(364, 15);
+            this.label4.TabIndex = 107;
+            this.label4.Text = "(Vendas em dinheiro + Entradas em dinheiro + saldo inicial - saídas)";
+            // 
             // FecharCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(369, 428);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.visualPanel1);
@@ -341,5 +355,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
         private System.Windows.Forms.Label txtSaldoTotal;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

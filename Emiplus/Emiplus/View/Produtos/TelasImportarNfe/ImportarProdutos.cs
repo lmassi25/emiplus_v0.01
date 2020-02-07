@@ -229,12 +229,6 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
             foreach (dynamic item in dataProdutos)
             {
-                dynamic findItem = null;
-                if (FindItem(item.pdt.CodeBarras) != null)
-                {
-                    findItem = FindItem(item.pdt.CodeBarras);
-                }
-
                 bool goBack = false;
                 int rowIndex = -1;
                 foreach (DataGridViewRow row in Table.Rows)
@@ -259,13 +253,19 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 if (item.pdt.CodeBarras == "SEM GTIN")
                     CodeBarrasUniq = Validation.CodeBarrasRandom();
                 else
-                    CodeBarrasUniq = item.pdt.CodeBarra;
+                    CodeBarrasUniq = item.pdt.CodeBarras;
+
+                dynamic findItem = null;
+                if (FindItem(CodeBarrasUniq, item.pdt.Descricao) != null)
+                {
+                    findItem = FindItem(CodeBarrasUniq, item.pdt.Descricao);
+                }
 
                 Table.Rows.Add(
                     true,
                     findItem != null ? new Bitmap(Properties.Resources.success16x) : new Bitmap(Properties.Resources.error16x),
                     item.pdt.Referencia,
-                    CodeBarrasUniq,
+                    findItem != null ? findItem.CODEBARRAS : CodeBarrasUniq,
                     item.pdt.Descricao,
                     item.pdt.Medida,
                     Validation.FormatMedidas(item.pdt.Medida, Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade))),
@@ -425,9 +425,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Enabled = true;
         }
 
-        private dynamic FindItem(string codeBarras)
+        private dynamic FindItem(string codeBarras, string nome)
         {
-            var findItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).Where("excluir", 0).FirstOrDefault();
+            var findItem = _mItem.Query().Select("*").Where(q => q.Where("nome", nome).OrWhere("codebarras", codeBarras)).Where("excluir", 0).FirstOrDefault();
             if (findItem != null)
                 return findItem;
 

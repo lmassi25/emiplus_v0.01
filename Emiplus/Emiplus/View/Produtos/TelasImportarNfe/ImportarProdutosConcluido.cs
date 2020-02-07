@@ -55,10 +55,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             foreach (dynamic item in ImportarProdutos.produtos)
             {
                 int id = item.Id;
-                if (id != 0)
-                    _mItem = _mItem.FindById(id).FirstOrDefault<Model.Item>();
+                string nome = item.Nome;
+                string codeBarras = item.CodeBarras;
+                
+                _mItem = _mItem.Query().Where(q => q.Where("id", id).OrWhere("nome", nome).OrWhere("codebarras", codeBarras)).FirstOrDefault<Model.Item>();
 
-                _mItem.Id = id;
                 _mItem.Tipo = "Produtos";
                 _mItem.Excluir = 0;
                 _mItem.Referencia = item.Referencia;

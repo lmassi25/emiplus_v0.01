@@ -59,11 +59,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAddFornecedor = new System.Windows.Forms.PictureBox();
+            this.btnAddCategoria = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.visualPanel2.SuspendLayout();
             this.visualPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -737,14 +741,14 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(42, 386);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 159;
-            this.label4.Text = "Categoria:";
+            this.label4.Text = "Despesa:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label5
             // 
@@ -825,12 +829,38 @@
             this.label6.TabIndex = 162;
             this.label6.Text = "Observação:";
             // 
+            // btnAddFornecedor
+            // 
+            this.btnAddFornecedor.BackColor = System.Drawing.Color.White;
+            this.btnAddFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFornecedor.Image")));
+            this.btnAddFornecedor.Location = new System.Drawing.Point(357, 417);
+            this.btnAddFornecedor.Name = "btnAddFornecedor";
+            this.btnAddFornecedor.Size = new System.Drawing.Size(28, 28);
+            this.btnAddFornecedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddFornecedor.TabIndex = 163;
+            this.btnAddFornecedor.TabStop = false;
+            // 
+            // btnAddCategoria
+            // 
+            this.btnAddCategoria.BackColor = System.Drawing.Color.White;
+            this.btnAddCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCategoria.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCategoria.Image")));
+            this.btnAddCategoria.Location = new System.Drawing.Point(357, 382);
+            this.btnAddCategoria.Name = "btnAddCategoria";
+            this.btnAddCategoria.Size = new System.Drawing.Size(28, 28);
+            this.btnAddCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddCategoria.TabIndex = 164;
+            this.btnAddCategoria.TabStop = false;
+            // 
             // AddCaixaMov
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(429, 564);
+            this.Controls.Add(this.btnAddCategoria);
+            this.Controls.Add(this.btnAddFornecedor);
             this.Controls.Add(this.Obs);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -860,6 +890,8 @@
             this.visualPanel2.ResumeLayout(false);
             this.visualPanel1.ResumeLayout(false);
             this.visualPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddFornecedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -896,5 +928,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnApagar;
         private System.Windows.Forms.Button imprimir;
+        private System.Windows.Forms.PictureBox btnAddFornecedor;
+        private System.Windows.Forms.PictureBox btnAddCategoria;
     }
 }
