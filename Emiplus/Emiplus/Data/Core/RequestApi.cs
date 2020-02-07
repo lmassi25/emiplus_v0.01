@@ -31,6 +31,13 @@ namespace Emiplus.Data.Core
             return this;
         }
 
+        public RequestApi AddFile(string name, string path)
+        {
+            request.AddFile(name, path);
+            request.AlwaysMultipartFormData = true;
+            return this;
+        }
+
         public JObject Response()
         {
             IRestResponse response = client.Execute(request);
