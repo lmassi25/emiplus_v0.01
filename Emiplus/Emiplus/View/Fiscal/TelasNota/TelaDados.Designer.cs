@@ -865,8 +865,8 @@
             this.Apagar.BackColorState.Enabled = System.Drawing.Color.IndianRed;
             this.Apagar.BackColorState.Hover = System.Drawing.Color.IndianRed;
             this.Apagar.BackColorState.Pressed = System.Drawing.Color.IndianRed;
-            this.Apagar.Border.Color = System.Drawing.Color.Silver;
-            this.Apagar.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Apagar.Border.Color = System.Drawing.Color.IndianRed;
+            this.Apagar.Border.HoverColor = System.Drawing.Color.IndianRed;
             this.Apagar.Border.HoverVisible = true;
             this.Apagar.Border.Rounding = 6;
             this.Apagar.Border.Thickness = 1;
