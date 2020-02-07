@@ -55,27 +55,27 @@ namespace Emiplus.View.Fiscal
                 }
                 else
                 {
-                    _mPedido.Id = Id;
-                    _mPedido.Tipo = "NFe";
-                    _mPedido.Emissao = DateTime.Now;
-                    _mPedido.Saida = DateTime.Now;
-                    if (_mPedido.Save(_mPedido))
+                    if(OpcoesNfeRapida.idPedido > 0)
                     {
-                        Id = _mPedido.GetLastId();
-
                         _mNota.Id = 0;
-                        _mNota.id_pedido = Id;
+                        _mNota.id_pedido = OpcoesNfeRapida.idPedido;
                         _mNota.Tipo = "NFe";
                         _mNota.Status = "Pendente";
                         _mNota.Save(_mNota, false);
-
-                        //IdDetailsNota = _mNota.GetLastId();
                         Id = _mNota.GetLastId();
                     }
                     else
                     {
-                        Alert.Message("Opss", "Erro ao criar Nota.", Alert.AlertType.error);
-                        Close();
+                        _mPedido.Id = 0;
+                        _mPedido.Tipo = "NFe";
+                        _mPedido.Save(_mPedido);
+
+                        _mNota.Id = 0;
+                        _mNota.id_pedido = _mPedido.GetLastId();
+                        _mNota.Tipo = "NFe";
+                        _mNota.Status = "Pendente";
+                        _mNota.Save(_mNota, false);
+                        Id = _mNota.GetLastId();
                     }
                 }
 
@@ -84,30 +84,54 @@ namespace Emiplus.View.Fiscal
 
             FormClosing += (s, e) =>
             {
-                _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
-                _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
-                
-                if (_mPedido.Cliente == 0 && TelaDados.telaDados != true)
-                    TelaDados.telaDados = false;
-                else
-                    TelaDados.telaDados = true;
+                OpcoesNfeRapida.idPedido = 0;
 
+                _mNota = new Model.Nota().FindById(Id).FirstOrDefault<Model.Nota>();
+
+                if (_mNota == null)
+                    Close();
+
+                if (_mPedido != null)
+                {
+                    if (_mNota.id_pedido > 0)
+                    {
+                        _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
+                        
+                    }
+                }
+                    
                 if (!TelaDados.telaDados)
                 {
                     var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        if (Id > 0)
-                        {
-                            _mPedido.Excluir = 1;
-                            if (_mPedido.Save(_mPedido))
-                            {
-                                _mNota.Excluir = 1;
-                                _mNota.Save(_mNota, false);
-                            }
+                        //if (Id > 0)
+                        //{
+                        //    _mPedido.Excluir = 1;
+                        //    if (_mPedido.Save(_mPedido))
+                        //    {
+                        //        _mNota.Excluir = 1;
+                        //        _mNota.Save(_mNota, false);
+                        //    }
 
-                            TelaDados.telaDados = true;                            
-                            Application.OpenForms["Nota"].Close();
+                        //    TelaDados.telaDados = true;                            
+                        //    Close();
+                        //}
+
+                        if (_mPedido != null)
+                        {
+                            if (_mPedido.Tipo == "NFe")
+                            {
+                                _mPedido.Excluir = 1;
+                                _mPedido.Save(_mPedido);
+                            }
+                        }
+
+                        if (_mNota != null)
+                        {
+                            _mNota.Excluir = 1;
+                            _mNota.id_pedido = 0;
+                            _mNota.Save(_mNota, false);
                         }
                     }
                 }

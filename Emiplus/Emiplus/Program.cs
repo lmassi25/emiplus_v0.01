@@ -41,7 +41,28 @@ namespace Emiplus
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
-        [STAThread]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       [STAThread]
         public static void Main()
         {
             userPermissions.Clear();

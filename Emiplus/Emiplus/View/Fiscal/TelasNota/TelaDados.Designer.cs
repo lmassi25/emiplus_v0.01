@@ -55,6 +55,7 @@
             this.NomeCliente = new System.Windows.Forms.Label();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Apagar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.step5 = new System.Windows.Forms.PictureBox();
             this.step3 = new System.Windows.Forms.PictureBox();
@@ -76,7 +77,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addNatureza = new System.Windows.Forms.Button();
-            this.Apagar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.step5)).BeginInit();
@@ -857,6 +857,41 @@
             this.panel1.Size = new System.Drawing.Size(1008, 58);
             this.panel1.TabIndex = 177;
             // 
+            // Apagar
+            // 
+            this.Apagar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Apagar.BackColor = System.Drawing.Color.Transparent;
+            this.Apagar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Apagar.BackColorState.Enabled = System.Drawing.Color.IndianRed;
+            this.Apagar.BackColorState.Hover = System.Drawing.Color.IndianRed;
+            this.Apagar.BackColorState.Pressed = System.Drawing.Color.IndianRed;
+            this.Apagar.Border.Color = System.Drawing.Color.Silver;
+            this.Apagar.Border.HoverColor = System.Drawing.Color.Silver;
+            this.Apagar.Border.HoverVisible = true;
+            this.Apagar.Border.Rounding = 6;
+            this.Apagar.Border.Thickness = 1;
+            this.Apagar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Apagar.Border.Visible = true;
+            this.Apagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Apagar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Apagar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Apagar.ForeColor = System.Drawing.Color.White;
+            this.Apagar.Image = null;
+            this.Apagar.Location = new System.Drawing.Point(29, 12);
+            this.Apagar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Apagar.Name = "Apagar";
+            this.Apagar.Size = new System.Drawing.Size(116, 34);
+            this.Apagar.TabIndex = 219;
+            this.Apagar.Text = "Apagar NF-e";
+            this.Apagar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.Apagar.TextStyle.Disabled = System.Drawing.Color.White;
+            this.Apagar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.Apagar.TextStyle.Hover = System.Drawing.Color.White;
+            this.Apagar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.Apagar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Apagar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Apagar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1146,41 +1181,6 @@
             this.addNatureza.Size = new System.Drawing.Size(29, 29);
             this.addNatureza.TabIndex = 127;
             this.addNatureza.UseVisualStyleBackColor = false;
-            // 
-            // Apagar
-            // 
-            this.Apagar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Apagar.BackColor = System.Drawing.Color.Transparent;
-            this.Apagar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Apagar.BackColorState.Enabled = System.Drawing.Color.IndianRed;
-            this.Apagar.BackColorState.Hover = System.Drawing.Color.IndianRed;
-            this.Apagar.BackColorState.Pressed = System.Drawing.Color.IndianRed;
-            this.Apagar.Border.Color = System.Drawing.Color.Silver;
-            this.Apagar.Border.HoverColor = System.Drawing.Color.Silver;
-            this.Apagar.Border.HoverVisible = true;
-            this.Apagar.Border.Rounding = 6;
-            this.Apagar.Border.Thickness = 1;
-            this.Apagar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Apagar.Border.Visible = true;
-            this.Apagar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Apagar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Apagar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Apagar.ForeColor = System.Drawing.Color.White;
-            this.Apagar.Image = null;
-            this.Apagar.Location = new System.Drawing.Point(29, 12);
-            this.Apagar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Apagar.Name = "Apagar";
-            this.Apagar.Size = new System.Drawing.Size(116, 34);
-            this.Apagar.TabIndex = 219;
-            this.Apagar.Text = "Apagar";
-            this.Apagar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.Apagar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Apagar.TextStyle.Enabled = System.Drawing.Color.White;
-            this.Apagar.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Apagar.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Apagar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Apagar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Apagar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // TelaDados
             // 

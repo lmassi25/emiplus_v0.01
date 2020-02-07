@@ -865,7 +865,11 @@ namespace Emiplus.Controller
                     return;
                 }
 
-                _destinatarioEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Cliente).FirstOrDefault<Model.PessoaEndereco>();
+                if(_pedido.id_useraddress > 0)
+                    _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
+                else
+                    _destinatarioEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Cliente).FirstOrDefault<Model.PessoaEndereco>();
+
                 //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
                 if (_destinatarioEndereco == null)
                 {
@@ -2254,8 +2258,8 @@ namespace Emiplus.Controller
 
             if (_pedido.Id_Transportadora > 0)
             {
-                _transportadora = new Model.Pessoa().FindById(_pedido.Id_Transportadora).First<Model.Pessoa>();
-                _transportadoraEndereco = new Model.PessoaEndereco().FindById(_pedido.Id_Transportadora).First<Model.PessoaEndereco>();
+                _transportadora = new Model.Pessoa().FindById(_pedido.Id_Transportadora).FirstOrDefault<Model.Pessoa>();
+                _transportadoraEndereco = new Model.PessoaEndereco().FindById(_pedido.Id_Transportadora).FirstOrDefault<Model.PessoaEndereco>();
 
                 xml.WriteStartElement("transporta");
 
@@ -2273,19 +2277,22 @@ namespace Emiplus.Controller
                     xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_transportadora.Nome));
                 }
 
-                if (!String.IsNullOrEmpty(_transportadoraEndereco.Rua))
+                if (_transportadoraEndereco != null)
                 {
-                    xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
-                }
+                    if (!String.IsNullOrEmpty(_transportadoraEndereco.Rua))
+                    {
+                        xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
+                    }
 
-                if (!String.IsNullOrEmpty(_transportadoraEndereco.Cidade))
-                {
-                    xml.WriteElementString("xMun", Validation.CleanStringForFiscal(_transportadoraEndereco.Cidade));
-                }
+                    if (!String.IsNullOrEmpty(_transportadoraEndereco.Cidade))
+                    {
+                        xml.WriteElementString("xMun", Validation.CleanStringForFiscal(_transportadoraEndereco.Cidade));
+                    }
 
-                if (!String.IsNullOrEmpty(_transportadoraEndereco.Estado))
-                {
-                    xml.WriteElementString("UF", _transportadoraEndereco.Estado);
+                    if (!String.IsNullOrEmpty(_transportadoraEndereco.Estado))
+                    {
+                        xml.WriteElementString("UF", _transportadoraEndereco.Estado);
+                    }
                 }
 
                 xml.WriteEndElement();//transporta
