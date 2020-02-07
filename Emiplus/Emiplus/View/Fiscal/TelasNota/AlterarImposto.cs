@@ -34,12 +34,18 @@ namespace Emiplus.View.Fiscal.TelasNota
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    if (Validation.ConvertToInt32(ImpostoNFE.SelectedValue) > 0)
+                    if (Validation.ConvertToInt32(ImpostoNFE.SelectedValue) <= 0)
                     {
-                        TelaProdutos.idImposto = Validation.ConvertToInt32(ImpostoNFE.SelectedValue);
-                        DialogResult = DialogResult.OK;
-                        Close();
+                        Alert.Message("Opps", "Selecione um imposto!", Alert.AlertType.warning);
+                        return;
                     }
+
+                    TelaProdutos.idImposto = Validation.ConvertToInt32(ImpostoNFE.SelectedValue);
+                    TelaProdutos.NCM = ncm.Text;
+
+                    DialogResult = DialogResult.OK;
+                    Close();
+                
                     e.SuppressKeyPress = true;
                     break;
 
@@ -57,12 +63,17 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             btnSelecionar.Click += (s, e) =>
             {
-                if (Validation.ConvertToInt32(ImpostoNFE.SelectedValue) > 0)
+                if (Validation.ConvertToInt32(ImpostoNFE.SelectedValue) <= 0)
                 {
-                    TelaProdutos.idImposto = Validation.ConvertToInt32(ImpostoNFE.SelectedValue);
-                    DialogResult = DialogResult.OK;
-                    Close();
+                    Alert.Message("Opps", "Selecione um imposto!", Alert.AlertType.warning);
+                    return;
                 }
+
+                TelaProdutos.idImposto = Validation.ConvertToInt32(ImpostoNFE.SelectedValue);
+                TelaProdutos.NCM = ncm.Text;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnCancelar.Click += (s, e) =>

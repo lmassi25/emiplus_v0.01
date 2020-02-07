@@ -72,11 +72,11 @@
             this.progress5 = new System.Windows.Forms.Panel();
             this.progress3 = new System.Windows.Forms.Panel();
             this.AddrInfo = new System.Windows.Forms.Label();
-            this.addAddr = new System.Windows.Forms.Label();
             this.Documentos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.addNatureza = new System.Windows.Forms.Button();
+            this.btnAddAddr = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.step5)).BeginInit();
@@ -767,11 +767,11 @@
             // 
             this.SelecionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.SelecionarCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.SelecionarCliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.SelecionarCliente.BackColorState.Enabled = System.Drawing.Color.DodgerBlue;
+            this.SelecionarCliente.BackColorState.Hover = System.Drawing.Color.DodgerBlue;
+            this.SelecionarCliente.BackColorState.Pressed = System.Drawing.Color.DodgerBlue;
+            this.SelecionarCliente.Border.Color = System.Drawing.Color.DodgerBlue;
+            this.SelecionarCliente.Border.HoverColor = System.Drawing.Color.DodgerBlue;
             this.SelecionarCliente.Border.HoverVisible = true;
             this.SelecionarCliente.Border.Rounding = 6;
             this.SelecionarCliente.Border.Thickness = 1;
@@ -1082,21 +1082,6 @@
             this.AddrInfo.Text = "N/D";
             this.AddrInfo.Visible = false;
             // 
-            // addAddr
-            // 
-            this.addAddr.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.addAddr.AutoSize = true;
-            this.addAddr.BackColor = System.Drawing.Color.White;
-            this.addAddr.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addAddr.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addAddr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.addAddr.Location = new System.Drawing.Point(35, 580);
-            this.addAddr.Name = "addAddr";
-            this.addAddr.Size = new System.Drawing.Size(129, 17);
-            this.addAddr.TabIndex = 182;
-            this.addAddr.Text = "Adicionar Endereço!";
-            this.addAddr.Visible = false;
-            // 
             // Documentos
             // 
             this.Documentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1182,14 +1167,49 @@
             this.addNatureza.TabIndex = 127;
             this.addNatureza.UseVisualStyleBackColor = false;
             // 
+            // btnAddAddr
+            // 
+            this.btnAddAddr.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAddAddr.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnAddAddr.BackColorState.Enabled = System.Drawing.Color.LightSlateGray;
+            this.btnAddAddr.BackColorState.Hover = System.Drawing.Color.LightSlateGray;
+            this.btnAddAddr.BackColorState.Pressed = System.Drawing.Color.LightSlateGray;
+            this.btnAddAddr.Border.Color = System.Drawing.Color.LightSlateGray;
+            this.btnAddAddr.Border.HoverColor = System.Drawing.Color.LightSlateGray;
+            this.btnAddAddr.Border.HoverVisible = true;
+            this.btnAddAddr.Border.Rounding = 6;
+            this.btnAddAddr.Border.Thickness = 1;
+            this.btnAddAddr.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddAddr.Border.Visible = true;
+            this.btnAddAddr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddAddr.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddAddr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAddr.ForeColor = System.Drawing.Color.White;
+            this.btnAddAddr.Image = null;
+            this.btnAddAddr.Location = new System.Drawing.Point(226, 513);
+            this.btnAddAddr.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddAddr.Name = "btnAddAddr";
+            this.btnAddAddr.Size = new System.Drawing.Size(190, 34);
+            this.btnAddAddr.TabIndex = 184;
+            this.btnAddAddr.Text = "Adicionar Endereço!";
+            this.btnAddAddr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddAddr.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddAddr.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnAddAddr.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddAddr.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddAddr.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddAddr.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddAddr.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnAddAddr.Visible = false;
+            // 
             // TelaDados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
+            this.Controls.Add(this.btnAddAddr);
             this.Controls.Add(this.Documentos);
-            this.Controls.Add(this.addAddr);
             this.Controls.Add(this.AddrInfo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button2);
@@ -1283,8 +1303,8 @@
         private System.Windows.Forms.Panel progress5;
         private System.Windows.Forms.Panel progress3;
         private System.Windows.Forms.Label AddrInfo;
-        private System.Windows.Forms.Label addAddr;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Documentos;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Apagar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddAddr;
     }
 }

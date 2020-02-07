@@ -1,4 +1,5 @@
 ﻿using Emiplus.Controller;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.View.Comercial;
@@ -6,6 +7,7 @@ using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -19,6 +21,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         private int ModoRapAvaConfig { get; set; }
 
         public static int idImposto { get; set; }
+        public static string NCM { get; set; }
 
         private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
@@ -135,9 +138,11 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
 
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
+            if (item != null) {
+                foreach (var itens in item)
+                {
+                    collection.Add(itens.NOME, itens.ID);
+                }
             }
 
             BuscarProduto.AutoCompleteCustomSource = collection;
@@ -179,6 +184,98 @@ namespace Emiplus.View.Fiscal.TelasNota
                 string MedidaTxt = Medidas.Text;
                 double PriceTxt = Validation.ConvertToDouble(Preco.Text);
 
+                var controlarEstoque = IniFile.Read("ControlarEstoque", "Comercial");
+                if (!string.IsNullOrEmpty(controlarEstoque) && controlarEstoque == "True")
+                {
+                    if (item.EstoqueAtual <= 0)
+                    {
+                        Alert.Message("Opps", "Você está sem estoque desse produto.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
+                if (PriceTxt == 0)
+                {
+                    if (DescontoReaisTxt > item.ValorVenda || DescontoReaisTxt > item.Limite_Desconto || DescontoPorcentagemTxt > 101)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
+                if (PriceTxt > 0)
+                {
+                    if (DescontoReaisTxt > PriceTxt || DescontoPorcentagemTxt >= 101)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o valor do item.", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
+                double LimiteDescontoIni = 0;
+                if (!String.IsNullOrEmpty(IniFile.Read("LimiteDesconto", "Comercial")))
+                    LimiteDescontoIni = Validation.ConvertToDouble(IniFile.Read("LimiteDesconto", "Comercial"));
+
+                if (item.Limite_Desconto != 0)
+                {
+                    if (DescontoReaisTxt > item.Limite_Desconto)
+                    {
+                        Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (PriceTxt > 0)
+                    {
+                        var porcentagemValor = (PriceTxt / 100 * DescontoPorcentagemTxt);
+                        if (porcentagemValor > item.Limite_Desconto)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+                    }
+
+                    if (PriceTxt == 0)
+                    {
+                        var porcentagemValor = (item.ValorVenda / 100 * DescontoPorcentagemTxt);
+                        if (porcentagemValor > item.Limite_Desconto)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    if (LimiteDescontoIni != 0)
+                    {
+                        if (DescontoReaisTxt > LimiteDescontoIni)
+                        {
+                            Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                            return;
+                        }
+
+                        if (PriceTxt == 0)
+                        {
+                            var porcentagemValor = (item.ValorVenda / 100 * DescontoPorcentagemTxt);
+                            if (porcentagemValor > LimiteDescontoIni)
+                            {
+                                Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                                return;
+                            }
+                        }
+
+                        if (PriceTxt > 0)
+                        {
+                            var porcentagemValor = (PriceTxt / 100 * DescontoPorcentagemTxt);
+                            if (porcentagemValor > LimiteDescontoIni)
+                            {
+                                Alert.Message("Opps", "Não é permitido dar um desconto maior que o permitido.", Alert.AlertType.warning);
+                                return;
+                            }
+                        }
+                    }
+                }
+
                 var pedidoItem = new Model.PedidoItem();
                 pedidoItem.SetId(0)
                     .SetTipo("Produtos")
@@ -205,11 +302,21 @@ namespace Emiplus.View.Fiscal.TelasNota
                 pedidoItem.SomarTotal();
                 pedidoItem.Save(pedidoItem);
 
+                if (item.Tipo == "Produtos")
+                {
+                    new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
+
+                    // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                    if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
+                    else
+                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                }
+
                 new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
                 // Carrega a Grid com o Item adicionado acima.
-                PedidoItem.impostos = true;
-                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
+                GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
 
                 // Atualiza o total do pedido, e os totais da tela
                 LoadTotais();
@@ -264,15 +371,21 @@ namespace Emiplus.View.Fiscal.TelasNota
                     {
                         if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
                         {
-                            var itemName = GridListaProdutos.SelectedRows[0].Cells["Nome do Produto"].Value;
+                            var itemName = GridListaProdutos.SelectedRows[0].Cells["Descrição"].Value;
 
-                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                            var result = AlertOptions.Message("Atenção!", $"Cancelar o item ('{itemName}') no pedido?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                             if (result)
                             {
                                 var idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                                _mPedidoItens.Remove(idPedidoItem);
 
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
+
+                                if (Home.pedidoPage != "Compras")
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                else
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+
+                                _mPedidoItens.Remove(idPedidoItem);
 
                                 LoadTotais();
                             }
@@ -291,17 +404,15 @@ namespace Emiplus.View.Fiscal.TelasNota
             BuscarProduto.KeyDown += KeyDowns;
             GridListaProdutos.KeyDown += KeyDowns;
             Quantidade.KeyDown += KeyDowns;
-
             Masks.SetToUpper(this);
 
             Load += (s, e) =>
             {
                 AutoCompleteItens();
+                Medidas.DataSource = Support.GetMedidas();
 
-                Medidas.DataSource = new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
-
-                PedidoItem.impostos = true;
-                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
+                SetHeadersTable(GridListaProdutos);
+                GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                 LoadTotais();
                 ClearForms();
                 BuscarProduto.Select();
@@ -316,10 +427,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             ModoRapido.Click += (s, e) => AlterarModo();
 
-            Next.Click += (s, e) =>
-            {
-                OpenForm.Show<TelaFrete>(this);
-            };
+            Next.Click += (s, e) => OpenForm.Show<TelaFrete>(this);
 
             Back.Click += (s, e) => Close();
 
@@ -328,32 +436,49 @@ namespace Emiplus.View.Fiscal.TelasNota
             BuscarProduto.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
-                    LoadItens();
+                {
+                    if (ModoRapAva == 1)
+                    {
+                        if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                        {
+                            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                            if (item != null)
+                                Preco.Text = Validation.FormatPrice(item.ValorVenda);
+
+                            Quantidade.Focus();
+                            return;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(BuscarProduto.Text))
+                        ModalItens();
+                    else
+                        LoadItens();
+                }
             };
 
             GridListaProdutos.DoubleClick += (s, e) =>
             {
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
-                    EditProduct.idPdt = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                    EditProduct.nrItem = Convert.ToInt32(GridListaProdutos.SelectedRows[0].Cells["#"].Value);
+                    EditProduct.idPdt = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                    EditProduct.nrItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["#"].Value);
                     EditProduct f = new EditProduct();
                     if (f.ShowDialog() == DialogResult.OK)
                     {
-                        PedidoItem.impostos = true;
-                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
+                        GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                     }
                 }
             };
 
-            GridListaProdutos.SelectionChanged += (s, e) =>
-            {
-                if (GridListaProdutos.SelectedRows.Count > 0)
-                {
-                    AlterarImposto.Text = "Alterar Imposto (Item: " + GridListaProdutos.SelectedRows[0].Cells["#"].Value + ")";
-                    AlterarImposto.Refresh();
-                }
-            };
+            //GridListaProdutos.SelectionChanged += (s, e) =>
+            //{
+            //    if (GridListaProdutos.SelectedRows.Count > 0)
+            //    {
+            //        AlterarImposto.Text = "Alterar Imposto (Item: " + GridListaProdutos.SelectedRows[0].Cells["#"].Value + ")";
+            //        AlterarImposto.Refresh();
+            //    }
+            //};
 
             Preco.TextChanged += (s, e) =>
             {
@@ -371,9 +496,14 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (String.IsNullOrEmpty(BuscarProduto.Text)) BuscarProduto.Focus();
-                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text)) Preco.Focus();
-                    else { LoadItens(); ClearForms(); }
+                    if (String.IsNullOrEmpty(BuscarProduto.Text))
+                        BuscarProduto.Focus();
+                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text))
+                        Preco.Focus();
+                    else
+                    {
+                        LoadItens();
+                    }
                 }
             };
 
@@ -396,15 +526,219 @@ namespace Emiplus.View.Fiscal.TelasNota
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         if (idImposto > 0)
-                            new Controller.Imposto().SetImposto(Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value), idImposto, "NFe");
+                        {
+                            foreach (DataGridViewRow item in GridListaProdutos.Rows)
+                                if ((bool)item.Cells["Selecione"].Value == true)
+                                    new Controller.Imposto().SetImposto(Validation.ConvertToInt32(item.Cells["ID"].Value), idImposto, "NFe", NCM);
+                        }
 
-                        PedidoItem.impostos = true;
-                        new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
+                        GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
                     }
+
+                    NCM = "";
+                    idImposto = 0;
                 }
 
                 BuscarProduto.Select();
             };
+
+            btnMarcarCheckBox.Click += (s, e) =>
+            {
+                foreach (DataGridViewRow item in GridListaProdutos.Rows)
+                {
+                    if ((bool)item.Cells["Selecione"].Value == true)
+                    {
+                        item.Cells["Selecione"].Value = false;
+                        btnMarcarCheckBox.Text = "Marcar Todos";
+                        AlterarImposto.Visible = false;
+                    }
+                    else
+                    {
+                        item.Cells["Selecione"].Value = true;
+                        btnMarcarCheckBox.Text = "Desmarcar Todos";
+                        AlterarImposto.Visible = true;
+                    }
+                }
+            };
+
+            GridListaProdutos.CellClick += (s, e) =>
+            {
+                if (GridListaProdutos.Columns[e.ColumnIndex].Name == "Selecione")
+                {
+                    if ((bool)GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value == false)
+                    {
+                        GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = true;
+                        AlterarImposto.Visible = true;
+                    }
+                    else
+                    {
+                        GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = false;
+
+                        bool hideBtns = false;
+                        foreach (DataGridViewRow item in GridListaProdutos.Rows)
+                            if ((bool)item.Cells["Selecione"].Value == true)
+                            {
+                                hideBtns = true;
+                            }
+
+                        AlterarImposto.Visible = hideBtns;
+                    }
+                }
+            };
+
+            GridListaProdutos.CellMouseEnter += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridListaProdutos.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Hand;
+            };
+
+            GridListaProdutos.CellMouseLeave += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridListaProdutos.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Default;
+            };
+        }
+
+        private void SetHeadersTable(DataGridView Table)
+        {
+            Table.ColumnCount = 18;
+
+            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            checkColumn.HeaderText = "Selecione";
+            checkColumn.Name = "Selecione";
+            checkColumn.FlatStyle = FlatStyle.Standard;
+            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
+            checkColumn.Width = 60;
+            Table.Columns.Insert(0, checkColumn);
+
+            Table.Columns[1].Name = "ID";
+            Table.Columns[1].Visible = false;
+
+            Table.Columns[2].Name = "#";
+            Table.Columns[2].Width = 50;
+            Table.Columns[2].MinimumWidth = 50;
+            Table.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            Table.Columns[3].Name = "Código";
+            Table.Columns[3].Width = 100;
+            Table.Columns[3].Visible = false;
+
+            Table.Columns[4].Name = "Descrição";
+            Table.Columns[4].MinimumWidth = 150;
+
+            Table.Columns[5].Name = "Quantidade";
+            Table.Columns[5].Width = 100;
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[6].Name = "Unitário";
+            Table.Columns[6].Width = 100;
+            Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[7].Name = "Desconto";
+            Table.Columns[7].Width = 100;
+            Table.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[8].Name = "Frete";
+            Table.Columns[8].Width = 100;
+            Table.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[9].Name = "NCM";
+            Table.Columns[9].Width = 100;
+            Table.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[10].Name = "CFOP";
+            Table.Columns[10].Width = 100;
+            Table.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[11].Name = "Origem";
+            Table.Columns[11].Width = 100;
+            Table.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[12].Name = "ICMS";
+            Table.Columns[12].Width = 100;
+            Table.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[13].Name = "IPI";
+            Table.Columns[13].Width = 100;
+            Table.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[14].Name = "PIS";
+            Table.Columns[14].Width = 100;
+            Table.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[15].Name = "COFINS";
+            Table.Columns[15].Width = 100;
+            Table.Columns[15].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            Table.Columns[16].Name = "Federal";
+            Table.Columns[16].Width = 100;
+            Table.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[17].Name = "Estadual";
+            Table.Columns[17].Width = 100;
+            Table.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            Table.Columns[18].Name = "Total";
+            Table.Columns[18].Width = 100;
+            Table.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            bool impostos = true;
+            Table.Columns[9].Visible = impostos;
+            Table.Columns[10].Visible = impostos;
+            Table.Columns[11].Visible = impostos;
+            Table.Columns[12].Visible = impostos;
+            Table.Columns[13].Visible = impostos;
+            Table.Columns[14].Visible = impostos;
+            Table.Columns[15].Visible = impostos;
+            Table.Columns[16].Visible = impostos;
+            Table.Columns[17].Visible = impostos;
+        }
+
+        public void GetDataTableItens(DataGridView Table, int idPedido)
+        {
+            Table.Rows.Clear();
+
+            if (idPedido <= 0)
+                return;
+
+            var itens = new Controller.PedidoItem().GetDataItens(idPedido);
+
+            int count = 1;
+            foreach (var data in itens)
+            {
+                Table.Rows.Add(
+                    false,
+                    data.ID,
+                    count++,
+                    data.REFERENCIA,
+                    data.NOME,
+                    data.QUANTIDADE + " " + data.MEDIDA,
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.FRETE), true),
+                    String.IsNullOrEmpty(data.NCM) ? "0" : data.NCM,
+                    String.IsNullOrEmpty(data.CFOP) ? "0" : data.CFOP,
+                    String.IsNullOrEmpty(data.ORIGEM) ? "N/D" : data.ORIGEM,
+                    String.IsNullOrEmpty(data.ICMS) ? "0" : data.ICMS,
+                    String.IsNullOrEmpty(data.IPI) ? "0" : data.IPI,
+                    String.IsNullOrEmpty(data.PIS) ? "0" : data.PIS,
+                    String.IsNullOrEmpty(data.COFINS) ? "0" : data.COFINS,
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.FEDERAL), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.ESTADUAL), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL), true)
+                );
+            }
+
+            Table.Sort(Table.Columns[2], ListSortDirection.Descending);
+            Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

@@ -148,6 +148,7 @@ namespace Emiplus.View.Comercial
 
             NovoCliente.Click += (s, e) => FormNovoCliente();
             btnSelecionar.Click += (s, e) => SelectItemGrid();
+            GridListaClientes.CellDoubleClick += (s, e) => SelectItemGrid();
 
             btnCancelar.Click += (s, e) => Close();
 

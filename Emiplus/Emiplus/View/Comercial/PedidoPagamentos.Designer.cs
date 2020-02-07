@@ -532,7 +532,7 @@
             this.troco.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.troco.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.troco.Location = new System.Drawing.Point(790, 601);
+            this.troco.Location = new System.Drawing.Point(796, 601);
             this.troco.Name = "troco";
             this.troco.Size = new System.Drawing.Size(184, 25);
             this.troco.TabIndex = 131;
@@ -1367,7 +1367,7 @@
             this.visualPanel1.Controls.Add(this.aPagartxt);
             this.visualPanel1.Controls.Add(this.label15);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.Location = new System.Drawing.Point(578, 552);
+            this.visualPanel1.Location = new System.Drawing.Point(585, 552);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel1.Name = "visualPanel1";
             this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);

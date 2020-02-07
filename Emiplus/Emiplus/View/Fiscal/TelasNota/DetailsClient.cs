@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Comercial;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         private void LoadData()
         {
-            _modelPessoa = _modelPessoa.FindById(IdClient).First<Pessoa>();
+            _modelPessoa = _modelPessoa.FindById(IdClient).FirstOrDefault<Pessoa>();
 
             label3.Text = _modelPessoa?.Nome ?? "";
             label4.Text = _modelPessoa?.Fantasia ?? "";
@@ -109,12 +110,23 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             newAddr.Click += (s, e) => GetEndereco(true);
 
-            Selecionar.Click += (s, e) =>
+            btnEditCliente.Click += (s, e) =>
             {
-                SelectAddr();
+                Home.pessoaPage = "Clientes";
+                Clientes.Id = IdClient;
+                Comercial.AddClientes f = new Comercial.AddClientes();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData();
+                    DataTableAddress();
+                }
             };
 
+            Selecionar.Click += (s, e) => SelectAddr();
             Selecionar.Enter += (s, e) => DataTableAddress();
+            GridLista.CellDoubleClick += (s, e) => SelectAddr();
         }
     }
 }
