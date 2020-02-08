@@ -2,6 +2,7 @@
 using Emiplus.View.Comercial;
 using SqlKata.Execution;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -11,10 +12,10 @@ namespace Emiplus.View.Fiscal.TelasNota
         private int IdPedido = Nota.Id;
 
         //private Model.Item _mItem = new Model.Item();
-        //private Model.Pedido _mPedido = new Model.Pedido();
         //private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
         //private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Titulo _mTitulo = new Model.Titulo();
+        private Model.Pedido _mPedido = new Model.Pedido();
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Model.Nota _mNota = new Model.Nota();
@@ -58,12 +59,53 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             Dinheiro.Select();
 
+            _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
             _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
-            discount.Text = Validation.FormatPrice(_controllerTitulo.GetTotalDesconto(IdPedido), true);
+            dynamic devolucoes = _mPedido.Query()
+                .SelectRaw("SUM(total) as total")
+                .Where("excluir", 0)
+                .Where("tipo", "Devoluções")
+                .Where("Venda", IdPedido)
+                .FirstOrDefault<Model.Pedido>();
+
+            acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(IdPedido), true);
+            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
+
+            var aPagar = _controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido);
+            if (_controllerTitulo.GetLancados(IdPedido) < _controllerTitulo.GetTotalPedido(IdPedido))
+            {
+                aPagartxt.Text = Validation.FormatPrice(aPagar, true);
+            }
+            else
+            {
+                aPagartxt.Text = "R$ 0,00";
+            }
+
+            if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                Desconto.Enabled = false;
+            else
+                Desconto.Enabled = true;
+
+            if (aPagar == 0)
+            {
+                label15.BackColor = Color.FromArgb(46, 204, 113);
+                aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
+                visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
+                visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
+                this.Refresh();
+            }
+            else
+            {
+                label15.BackColor = Color.FromArgb(255, 40, 81);
+                aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
+                visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
+                visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
+                this.Refresh();
+            }
         }
 
         private void bSalvar()
@@ -148,18 +190,23 @@ namespace Emiplus.View.Fiscal.TelasNota
         private void JanelaDesconto()
         {
             PedidoPayDesconto.idPedido = IdPedido;
-            PedidoPayDesconto Desconto = new PedidoPayDesconto();
-            if (Desconto.ShowDialog() == DialogResult.OK)
+            using (PedidoPayDesconto Desconto = new PedidoPayDesconto())
             {
-                AtualizarDados();
+                Desconto.TopMost = true;
+                if (Desconto.ShowDialog() == DialogResult.OK)
+                    AtualizarDados();
             }
         }
 
         private void JanelaAcrescimo()
         {
-            //PedidoPayAcrescimo.idPedido = IdPedido;
-            PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo();
-            Acrescimo.ShowDialog();
+            PedidoPayAcrescimo.idPedido = IdPedido;
+            using (PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo())
+            {
+                Acrescimo.TopMost = true;
+                if (Acrescimo.ShowDialog() == DialogResult.OK)
+                    AtualizarDados();
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -293,6 +340,19 @@ namespace Emiplus.View.Fiscal.TelasNota
                         AtualizarDados();
                     }
                 }
+            };
+
+            btnClearRecebimentos.Click += (s, e) =>
+            {
+                foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                {
+                    if (Convert.ToString(row.Cells[0].Value) != "")
+                    {
+                        _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                    }
+                }
+
+                AtualizarDados();
             };
 
             Next.Click += (s, e) =>

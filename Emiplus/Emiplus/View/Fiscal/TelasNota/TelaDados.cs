@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using SqlKata.Execution;
@@ -31,7 +32,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             PedidoModalClientes.Id = 0;
 
             _mNota = new Model.Nota().FindById(Id).FirstOrDefault<Model.Nota>();
-
             if (_mNota == null)
             {
                 Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
@@ -39,7 +39,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             }
                 
             _mPedido = new Model.Pedido().FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
-
             if (_mPedido == null)
             {
                 Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
@@ -90,7 +89,7 @@ namespace Emiplus.View.Fiscal.TelasNota
         {
             if (_mPedido.Cliente > 0)
             {
-                var data = _mCliente.FindById(_mPedido.Cliente).First<Model.Pessoa>();
+                var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
                 NomeCliente.Text = data.Nome;
                 IdCliente = data.Id;
                 LoadAddress();
@@ -113,6 +112,11 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             if (dataAddrFirst != null)
             {
+                if (dataAddrFirst.Estado != Settings.Default.empresa_estado)
+                    localDestino.SelectedValue = "2";
+                else
+                    localDestino.SelectedValue = "1";
+
                 AddrInfo.Visible = true;
                 AddrInfo.Text = $"Rua: {dataAddrFirst.Rua}, {dataAddrFirst.Cep} - {dataAddrFirst.Bairro} - {dataAddrFirst.Cidade}/{dataAddrFirst.Estado} - {dataAddrFirst.Pais}";
                 IdAddr = dataAddrFirst.Id;
@@ -121,15 +125,15 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _mPedido.id_useraddress = IdAddr;
                 _mPedido.Save(_mPedido);
 
-                addAddr.Visible = true;
-                addAddr.Text = "Alterar Endereço.";
+                btnAddAddr.Visible = true;
+                btnAddAddr.Text = "Selecionar outro Endereço!";
             }
             else
             {
                 AddrInfo.Visible = true;
-                addAddr.Visible = true;
+                btnAddAddr.Visible = true;
                 AddrInfo.Text = "Esse destinatário não possui um endereço cadastrado!";
-                addAddr.Text = "Adicionar Endereço!";
+                btnAddAddr.Text = "Adicionar Endereço!";
             }
         }
 
@@ -174,15 +178,15 @@ namespace Emiplus.View.Fiscal.TelasNota
             finalidade.ValueMember = "Id";
 
             var localDestinos = new ArrayList();
-            localDestinos.Add(new { Id = "1", Nome = "Operação Interna" });
-            localDestinos.Add(new { Id = "2", Nome = "Operação Interestadual" });
+            localDestinos.Add(new { Id = "1", Nome = "Operação dentro do estado" });
+            localDestinos.Add(new { Id = "2", Nome = "Operação fora do estado" });
             localDestinos.Add(new { Id = "3", Nome = "Operação com exterior" });
             localDestino.DataSource = localDestinos;
             localDestino.DisplayMember = "Nome";
             localDestino.ValueMember = "Id";
 
             emissao.Text = Validation.ConvertDateToForm(_mPedido.Emissao);
-            saida.Text = Validation.ConvertDateToForm(_mPedido.Saida);
+            saida.Text = _mPedido.Saida.ToString() == "01/01/0001 00:00:00" ? "" : Validation.ConvertDateToForm(_mPedido.Saida);
             hora.Text = String.IsNullOrEmpty(_mPedido.HoraSaida) ? "" : _mPedido.HoraSaida;
             finalidade.SelectedItem = _mPedido.Finalidade;
             localDestino.SelectedItem = _mPedido.Destino;
@@ -261,7 +265,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     DialogResult = DialogResult.OK;
                     IdNatureza = AddNatureza.idSelected;
-                    LoadData();
+                    LoadNatureza();
                 }
             };
 
@@ -287,11 +291,11 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     GetData();
                     _mPedido.Save(_mPedido);
-                    LoadData();
+                    LoadCliente();
                 }
             };
 
-            addAddr.Click += (s, e) =>
+            btnAddAddr.Click += (s, e) =>
             {
                 if (_mPedido.Cliente > 0)
                 {
@@ -301,18 +305,20 @@ namespace Emiplus.View.Fiscal.TelasNota
                     {
                         GetData();
                         _mPedido.Save(_mPedido);
-                        LoadData();
+                        LoadCliente();
 
-                        var dataAddr = _mClienteAddr.FindById(_mPedido.id_useraddress).First<Model.PessoaEndereco>();
-                        AddrInfo.Text = $"Rua: {dataAddr.Rua}, {dataAddr.Cep} - {dataAddr.Bairro} - {dataAddr.Cidade}/{dataAddr.Estado} - {dataAddr.Pais}";
-                        IdAddr = dataAddr.Id;
+                        var dataAddr = _mClienteAddr.FindById(_mPedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
+                        if (dataAddr != null) {
+                            AddrInfo.Text = $"Rua: {dataAddr.Rua}, {dataAddr.Cep} - {dataAddr.Bairro} - {dataAddr.Cidade}/{dataAddr.Estado} - {dataAddr.Pais}";
+                            IdAddr = dataAddr.Id;
+                        }
 
-                        addAddr.Text = "Alterar Endereço.";
+                        btnAddAddr.Text = "Selecionar outro Endereço.";
                     }
                 }
                 else
                 {
-                    Alert.Message("Opps", "Selecione um destinatário...", Alert.AlertType.info);
+                    Alert.Message("Opps", "Selecione um destinatário..", Alert.AlertType.info);
                 }
             };
 

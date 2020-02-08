@@ -13,10 +13,10 @@ namespace Emiplus.Controller
         private Model.Item _modelItem = new Model.Item();
         private Model.Imposto _modelImposto = new Model.Imposto();
 
-        public void SetImposto(int idPedidoItem, int idImposto = 0, string tipo = "")
+        public void SetImposto(int idPedidoItem, int idImposto = 0, string tipo = "", string NCM = "")
         {
-            _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).First<Model.PedidoItem>();
-            _modelItem = _modelItem.FindById(_modelpedidoItem.Item).First<Model.Item>();
+            _modelpedidoItem = _modelpedidoItem.FindById(idPedidoItem).FirstOrDefault<Model.PedidoItem>();
+            _modelItem = _modelItem.FindById(_modelpedidoItem.Item).FirstOrDefault<Model.Item>();
 
             #region IMPOSTO
 
@@ -31,28 +31,28 @@ namespace Emiplus.Controller
                             if (_modelItem.Impostoidcfe == 0)
                                 break;
 
-                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe).First<Model.Imposto>();
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe).FirstOrDefault<Model.Imposto>();
                             break;
 
                         default:
                             if (_modelItem.Impostoid == 0)
                                 break;
 
-                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).First<Model.Imposto>();
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).FirstOrDefault<Model.Imposto>();
                             break;
                     }
                 }
             }
             else
             {
-                _modelImposto = _modelImposto.FindById(idImposto).First<Model.Imposto>();
+                _modelImposto = _modelImposto.FindById(idImposto).FirstOrDefault<Model.Imposto>();
             }
 
             #endregion IMPOSTO
 
             #region NCM | CEST | ORIGEM
 
-            _modelpedidoItem.Ncm = _modelItem.Ncm;
+            _modelpedidoItem.Ncm = string.IsNullOrEmpty(NCM) ? _modelItem.Ncm : NCM;
             _modelpedidoItem.Cest = _modelItem.Cest;
             _modelpedidoItem.Origem = _modelItem.Origem;
 

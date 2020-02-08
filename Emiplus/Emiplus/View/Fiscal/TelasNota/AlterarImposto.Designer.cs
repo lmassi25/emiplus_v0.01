@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlterarImposto));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSelecionar = new System.Windows.Forms.Button();
@@ -37,6 +38,8 @@
             this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ncm = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,7 +51,7 @@
             this.panel1.Controls.Add(this.btnSelecionar);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 183);
+            this.panel1.Location = new System.Drawing.Point(0, 229);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(490, 63);
             this.panel1.TabIndex = 47;
@@ -193,12 +196,85 @@
             this.pictureBox1.TabIndex = 177;
             this.pictureBox1.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(92, 153);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 17);
+            this.label7.TabIndex = 180;
+            this.label7.Text = "NCM";
+            // 
+            // ncm
+            // 
+            this.ncm.AlphaNumeric = false;
+            this.ncm.BackColor = System.Drawing.Color.White;
+            this.ncm.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.ncm.BackColorState.Enabled = System.Drawing.Color.White;
+            this.ncm.Border.Color = System.Drawing.Color.Gainsboro;
+            this.ncm.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.ncm.Border.HoverVisible = true;
+            this.ncm.Border.Rounding = 8;
+            this.ncm.Border.Thickness = 1;
+            this.ncm.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.ncm.Border.Visible = true;
+            this.ncm.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.ncm.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.ncm.ButtonBorder.HoverVisible = true;
+            this.ncm.ButtonBorder.Rounding = 6;
+            this.ncm.ButtonBorder.Thickness = 1;
+            this.ncm.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.ncm.ButtonBorder.Visible = true;
+            this.ncm.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ncm.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.ncm.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ncm.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.ncm.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ncm.ButtonIndent = 3;
+            this.ncm.ButtonText = "visualButton";
+            this.ncm.ButtonVisible = false;
+            this.ncm.Cursor = System.Windows.Forms.Cursors.No;
+            this.ncm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ncm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ncm.Image = null;
+            this.ncm.ImageSize = new System.Drawing.Size(16, 16);
+            this.ncm.ImageVisible = false;
+            this.ncm.ImageWidth = 35;
+            this.ncm.Location = new System.Drawing.Point(93, 173);
+            this.ncm.MaxLength = 8;
+            this.ncm.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.ncm.Name = "ncm";
+            this.ncm.PasswordChar = '\0';
+            this.ncm.ReadOnly = false;
+            this.ncm.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ncm.Size = new System.Drawing.Size(346, 28);
+            this.ncm.TabIndex = 179;
+            this.ncm.TextBoxWidth = 334;
+            this.ncm.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.ncm.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ncm.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ncm.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ncm.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.ncm.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.ncm.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.ncm.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ncm.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ncm.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.ncm.Watermark.Text = "Watermark text";
+            this.ncm.Watermark.Visible = false;
+            this.ncm.WordWrap = true;
+            // 
             // AlterarImposto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(490, 246);
+            this.ClientSize = new System.Drawing.Size(490, 292);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.ncm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ImpostoNFE);
@@ -228,5 +304,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox ImpostoNFE;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox ncm;
     }
 }

@@ -47,6 +47,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Selecionar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.newAddr = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnEditCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel2.SuspendLayout();
@@ -289,12 +290,47 @@
             this.newAddr.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.newAddr.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // btnEditCliente
+            // 
+            this.btnEditCliente.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEditCliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEditCliente.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
+            this.btnEditCliente.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEditCliente.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEditCliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEditCliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnEditCliente.Border.HoverVisible = true;
+            this.btnEditCliente.Border.Rounding = 6;
+            this.btnEditCliente.Border.Thickness = 1;
+            this.btnEditCliente.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnEditCliente.Border.Visible = true;
+            this.btnEditCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditCliente.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEditCliente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditCliente.ForeColor = System.Drawing.Color.White;
+            this.btnEditCliente.Image = null;
+            this.btnEditCliente.Location = new System.Drawing.Point(265, 249);
+            this.btnEditCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnEditCliente.Name = "btnEditCliente";
+            this.btnEditCliente.Size = new System.Drawing.Size(139, 19);
+            this.btnEditCliente.TabIndex = 177;
+            this.btnEditCliente.Text = "Editar cliente";
+            this.btnEditCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnEditCliente.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnEditCliente.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnEditCliente.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnEditCliente.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEditCliente.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEditCliente.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // DetailsClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(709, 512);
+            this.Controls.Add(this.btnEditCliente);
             this.Controls.Add(this.newAddr);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.GridLista);
@@ -347,5 +383,6 @@
         private System.Windows.Forms.Panel panel2;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Selecionar;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton newAddr;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEditCliente;
     }
 }

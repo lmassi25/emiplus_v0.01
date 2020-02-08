@@ -203,12 +203,12 @@ namespace Emiplus.View.Comercial
                 iniciar.Visible = true;
             }
 
-            dynamic devolucoes = _mPedido.Query()
-                .SelectRaw("SUM(total) as total")
-                .Where("excluir", 0)
-                .Where("tipo", "Devoluções")
-                .Where("Venda", IdPedido)
-                .FirstOrDefault<Model.Pedido>();
+            //dynamic devolucoes = _mPedido.Query()
+            //    .SelectRaw("SUM(total) as total")
+            //    .Where("excluir", 0)
+            //    .Where("tipo", "Devoluções")
+            //    .Where("Venda", IdPedido)
+            //    .FirstOrDefault<Model.Pedido>();
 
             valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
         }

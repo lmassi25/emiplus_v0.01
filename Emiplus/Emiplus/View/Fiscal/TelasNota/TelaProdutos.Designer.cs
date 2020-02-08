@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -103,6 +103,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
             this.AlterarImposto = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnMarcarCheckBox = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1193,9 +1194,9 @@
             this.addProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.addProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.addProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addProduto.Location = new System.Drawing.Point(433, 15);
+            this.addProduto.Location = new System.Drawing.Point(426, 26);
             this.addProduto.Name = "addProduto";
-            this.addProduto.Size = new System.Drawing.Size(42, 41);
+            this.addProduto.Size = new System.Drawing.Size(29, 25);
             this.addProduto.TabIndex = 4;
             this.addProduto.UseVisualStyleBackColor = false;
             // 
@@ -1320,7 +1321,9 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.GridListaProdutos);
             this.panel4.Location = new System.Drawing.Point(29, 215);
             this.panel4.Name = "panel4";
@@ -1333,20 +1336,22 @@
             this.GridListaProdutos.AllowUserToDeleteRows = false;
             this.GridListaProdutos.AllowUserToResizeColumns = false;
             this.GridListaProdutos.AllowUserToResizeRows = false;
+            this.GridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GridListaProdutos.BackgroundColor = System.Drawing.Color.White;
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
             this.GridListaProdutos.MultiSelect = false;
@@ -1387,7 +1392,7 @@
             this.AlterarImposto.Name = "AlterarImposto";
             this.AlterarImposto.Size = new System.Drawing.Size(173, 20);
             this.AlterarImposto.TabIndex = 290;
-            this.AlterarImposto.Text = "Alterar Imposto (Item: 1)";
+            this.AlterarImposto.Text = "Editar Selecionados";
             this.AlterarImposto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AlterarImposto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.AlterarImposto.TextStyle.Enabled = System.Drawing.Color.White;
@@ -1396,6 +1401,41 @@
             this.AlterarImposto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.AlterarImposto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.AlterarImposto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.AlterarImposto.Visible = false;
+            // 
+            // btnMarcarCheckBox
+            // 
+            this.btnMarcarCheckBox.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMarcarCheckBox.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.BackColorState.Hover = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.BackColorState.Pressed = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnMarcarCheckBox.Border.HoverColor = System.Drawing.Color.DimGray;
+            this.btnMarcarCheckBox.Border.HoverVisible = true;
+            this.btnMarcarCheckBox.Border.Rounding = 6;
+            this.btnMarcarCheckBox.Border.Thickness = 1;
+            this.btnMarcarCheckBox.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMarcarCheckBox.Border.Visible = true;
+            this.btnMarcarCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcarCheckBox.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMarcarCheckBox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarCheckBox.ForeColor = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.Image = null;
+            this.btnMarcarCheckBox.Location = new System.Drawing.Point(28, 443);
+            this.btnMarcarCheckBox.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnMarcarCheckBox.Name = "btnMarcarCheckBox";
+            this.btnMarcarCheckBox.Size = new System.Drawing.Size(116, 18);
+            this.btnMarcarCheckBox.TabIndex = 40053;
+            this.btnMarcarCheckBox.Tag = " ";
+            this.btnMarcarCheckBox.Text = "Marcar Todos";
+            this.btnMarcarCheckBox.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMarcarCheckBox.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnMarcarCheckBox.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnMarcarCheckBox.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMarcarCheckBox.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // TelaProdutos
             // 
@@ -1403,6 +1443,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
+            this.Controls.Add(this.btnMarcarCheckBox);
             this.Controls.Add(this.AlterarImposto);
             this.Controls.Add(this.BuscarProduto);
             this.Controls.Add(this.label44);
@@ -1545,5 +1586,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView GridListaProdutos;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton AlterarImposto;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnMarcarCheckBox;
     }
 }

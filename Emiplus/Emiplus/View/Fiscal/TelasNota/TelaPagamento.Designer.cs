@@ -30,15 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPagamento));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.discount = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.pagamentos = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.TelaReceber = new System.Windows.Forms.Panel();
             this.valor = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -55,22 +51,8 @@
             this.lTipo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.total = new System.Windows.Forms.Label();
-            this.troco = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.GridListaFormaPgtos = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExcluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -103,6 +85,30 @@
             this.progress4 = new System.Windows.Forms.Panel();
             this.progress5 = new System.Windows.Forms.Panel();
             this.progress3 = new System.Windows.Forms.Panel();
+            this.btnClearRecebimentos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.aPagartxt = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.acrescimos = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.discount = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.total = new System.Windows.Forms.Label();
+            this.troco = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GridListaFormaPgtos = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExcluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pagamentos = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.TelaReceber.SuspendLayout();
@@ -110,15 +116,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.Info2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Info1)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.step1)).BeginInit();
+            this.visualPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -200,72 +207,6 @@
             this.Next.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.Next.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.Next.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel10.Location = new System.Drawing.Point(573, 470);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(400, 1);
-            this.panel10.TabIndex = 211;
-            // 
-            // discount
-            // 
-            this.discount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.discount.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.discount.Location = new System.Drawing.Point(788, 435);
-            this.discount.Name = "discount";
-            this.discount.Size = new System.Drawing.Size(184, 25);
-            this.discount.TabIndex = 212;
-            this.discount.Text = "R$ 00.00";
-            this.discount.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(679, 431);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 30);
-            this.label12.TabIndex = 210;
-            this.label12.Text = "Desconto";
-            // 
-            // panel9
-            // 
-            this.panel9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel9.Location = new System.Drawing.Point(573, 517);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(400, 1);
-            this.panel9.TabIndex = 198;
-            // 
-            // pagamentos
-            // 
-            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(788, 482);
-            this.pagamentos.Name = "pagamentos";
-            this.pagamentos.Size = new System.Drawing.Size(184, 25);
-            this.pagamentos.TabIndex = 209;
-            this.pagamentos.Text = "R$ 00.00";
-            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(718, 524);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 30);
-            this.label7.TabIndex = 191;
-            this.label7.Text = "Troco";
             // 
             // panel6
             // 
@@ -612,85 +553,6 @@
             this.label3.Text = "Selecione uma das opções acima para\r\nlançar um recebimento.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.panel5.Location = new System.Drawing.Point(573, 566);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(400, 1);
-            this.panel5.TabIndex = 197;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(713, 570);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 32);
-            this.label4.TabIndex = 192;
-            this.label4.Text = "Total";
-            // 
-            // total
-            // 
-            this.total.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.total.Location = new System.Drawing.Point(784, 576);
-            this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(191, 25);
-            this.total.TabIndex = 193;
-            this.total.Text = "R$ 00.00";
-            this.total.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // troco
-            // 
-            this.troco.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.troco.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.troco.Location = new System.Drawing.Point(789, 528);
-            this.troco.Name = "troco";
-            this.troco.Size = new System.Drawing.Size(184, 25);
-            this.troco.TabIndex = 194;
-            this.troco.Text = "R$ 00.00";
-            this.troco.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(638, 478);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 30);
-            this.label5.TabIndex = 195;
-            this.label5.Text = "Recebimentos";
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Location = new System.Drawing.Point(546, 243);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(448, 40);
-            this.panel4.TabIndex = 207;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(-4, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 30);
-            this.label1.TabIndex = 131;
-            this.label1.Text = "Lançamentos";
-            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -711,77 +573,6 @@
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 190;
             this.label2.Text = "Opções";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel2.Controls.Add(this.GridListaFormaPgtos);
-            this.panel2.Location = new System.Drawing.Point(546, 282);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(448, 144);
-            this.panel2.TabIndex = 189;
-            // 
-            // GridListaFormaPgtos
-            // 
-            this.GridListaFormaPgtos.AllowUserToAddRows = false;
-            this.GridListaFormaPgtos.AllowUserToDeleteRows = false;
-            this.GridListaFormaPgtos.BackgroundColor = System.Drawing.Color.White;
-            this.GridListaFormaPgtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridListaFormaPgtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.GridListaFormaPgtos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridListaFormaPgtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridListaFormaPgtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.Column2,
-            this.Column1,
-            this.Column3,
-            this.colExcluir});
-            this.GridListaFormaPgtos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridListaFormaPgtos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridListaFormaPgtos.Location = new System.Drawing.Point(0, 0);
-            this.GridListaFormaPgtos.MultiSelect = false;
-            this.GridListaFormaPgtos.Name = "GridListaFormaPgtos";
-            this.GridListaFormaPgtos.ReadOnly = true;
-            this.GridListaFormaPgtos.RowHeadersVisible = false;
-            this.GridListaFormaPgtos.RowTemplate.Height = 30;
-            this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 144);
-            this.GridListaFormaPgtos.TabIndex = 7;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "Id";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Forma de pagamento";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Vencimento";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Valor";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // colExcluir
-            // 
-            this.colExcluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colExcluir.HeaderText = "";
-            this.colExcluir.Name = "colExcluir";
-            this.colExcluir.ReadOnly = true;
-            this.colExcluir.ToolTipText = "Remover";
-            this.colExcluir.Width = 30;
             // 
             // label10
             // 
@@ -1251,26 +1042,356 @@
             this.progress3.Size = new System.Drawing.Size(158, 14);
             this.progress3.TabIndex = 12;
             // 
+            // btnClearRecebimentos
+            // 
+            this.btnClearRecebimentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearRecebimentos.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClearRecebimentos.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnClearRecebimentos.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.btnClearRecebimentos.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.btnClearRecebimentos.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnClearRecebimentos.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.btnClearRecebimentos.Border.HoverVisible = true;
+            this.btnClearRecebimentos.Border.Rounding = 6;
+            this.btnClearRecebimentos.Border.Thickness = 1;
+            this.btnClearRecebimentos.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnClearRecebimentos.Border.Visible = true;
+            this.btnClearRecebimentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearRecebimentos.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnClearRecebimentos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearRecebimentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnClearRecebimentos.Image = null;
+            this.btnClearRecebimentos.Location = new System.Drawing.Point(856, 389);
+            this.btnClearRecebimentos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnClearRecebimentos.Name = "btnClearRecebimentos";
+            this.btnClearRecebimentos.Size = new System.Drawing.Size(138, 19);
+            this.btnClearRecebimentos.TabIndex = 145261;
+            this.btnClearRecebimentos.Text = "Limpar Recebimentos";
+            this.btnClearRecebimentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnClearRecebimentos.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnClearRecebimentos.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnClearRecebimentos.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnClearRecebimentos.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnClearRecebimentos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnClearRecebimentos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnClearRecebimentos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // visualPanel1
+            // 
+            this.visualPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.visualPanel1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel1.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.visualPanel1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(33)))), ((int)(((byte)(73)))));
+            this.visualPanel1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(33)))), ((int)(((byte)(73)))));
+            this.visualPanel1.Border.HoverVisible = true;
+            this.visualPanel1.Border.Rounding = 6;
+            this.visualPanel1.Border.Thickness = 1;
+            this.visualPanel1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel1.Border.Visible = true;
+            this.visualPanel1.Controls.Add(this.aPagartxt);
+            this.visualPanel1.Controls.Add(this.label15);
+            this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.Location = new System.Drawing.Point(582, 536);
+            this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel1.Name = "visualPanel1";
+            this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel1.Size = new System.Drawing.Size(400, 36);
+            this.visualPanel1.TabIndex = 145260;
+            this.visualPanel1.Text = "visualPanel1";
+            this.visualPanel1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // aPagartxt
+            // 
+            this.aPagartxt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.aPagartxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.aPagartxt.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aPagartxt.ForeColor = System.Drawing.Color.White;
+            this.aPagartxt.Location = new System.Drawing.Point(212, 6);
+            this.aPagartxt.Name = "aPagartxt";
+            this.aPagartxt.Size = new System.Drawing.Size(184, 25);
+            this.aPagartxt.TabIndex = 145248;
+            this.aPagartxt.Text = "R$ 00.00";
+            this.aPagartxt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(11, 4);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(196, 30);
+            this.label15.TabIndex = 145246;
+            this.label15.Text = "Á Receber";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel12.Location = new System.Drawing.Point(573, 450);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(400, 1);
+            this.panel12.TabIndex = 145258;
+            // 
+            // acrescimos
+            // 
+            this.acrescimos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.acrescimos.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acrescimos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.acrescimos.Location = new System.Drawing.Point(792, 414);
+            this.acrescimos.Name = "acrescimos";
+            this.acrescimos.Size = new System.Drawing.Size(184, 25);
+            this.acrescimos.TabIndex = 145259;
+            this.acrescimos.Text = "R$ 00.00";
+            this.acrescimos.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(585, 411);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 30);
+            this.label1.TabIndex = 145257;
+            this.label1.Text = "Acréscimos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.panel10.Location = new System.Drawing.Point(573, 488);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(400, 1);
+            this.panel10.TabIndex = 145255;
+            // 
+            // discount
+            // 
+            this.discount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.discount.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.discount.Location = new System.Drawing.Point(792, 456);
+            this.discount.Name = "discount";
+            this.discount.Size = new System.Drawing.Size(184, 25);
+            this.discount.TabIndex = 145256;
+            this.discount.Text = "R$ 00.00";
+            this.discount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label12.Location = new System.Drawing.Point(585, 453);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(196, 30);
+            this.label12.TabIndex = 145254;
+            this.label12.Text = "Descontos";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(585, 576);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(196, 30);
+            this.label7.TabIndex = 145249;
+            this.label7.Text = "Troco";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(585, 492);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(196, 30);
+            this.label4.TabIndex = 145250;
+            this.label4.Text = "Total";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // total
+            // 
+            this.total.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.total.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.total.Location = new System.Drawing.Point(792, 496);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(184, 25);
+            this.total.TabIndex = 145251;
+            this.total.Text = "R$ 00.00";
+            this.total.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // troco
+            // 
+            this.troco.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.troco.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.troco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.troco.Location = new System.Drawing.Point(792, 580);
+            this.troco.Name = "troco";
+            this.troco.Size = new System.Drawing.Size(184, 25);
+            this.troco.TabIndex = 145252;
+            this.troco.Text = "R$ 0.00";
+            this.troco.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.Controls.Add(this.GridListaFormaPgtos);
+            this.panel2.Location = new System.Drawing.Point(546, 278);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(448, 105);
+            this.panel2.TabIndex = 145248;
+            // 
+            // GridListaFormaPgtos
+            // 
+            this.GridListaFormaPgtos.AllowUserToAddRows = false;
+            this.GridListaFormaPgtos.AllowUserToDeleteRows = false;
+            this.GridListaFormaPgtos.AllowUserToResizeColumns = false;
+            this.GridListaFormaPgtos.AllowUserToResizeRows = false;
+            this.GridListaFormaPgtos.BackgroundColor = System.Drawing.Color.White;
+            this.GridListaFormaPgtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridListaFormaPgtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridListaFormaPgtos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaFormaPgtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.GridListaFormaPgtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridListaFormaPgtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colID,
+            this.Column2,
+            this.Column1,
+            this.Column3,
+            this.colExcluir});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridListaFormaPgtos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.GridListaFormaPgtos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridListaFormaPgtos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridListaFormaPgtos.Location = new System.Drawing.Point(0, 0);
+            this.GridListaFormaPgtos.MultiSelect = false;
+            this.GridListaFormaPgtos.Name = "GridListaFormaPgtos";
+            this.GridListaFormaPgtos.ReadOnly = true;
+            this.GridListaFormaPgtos.RowHeadersVisible = false;
+            this.GridListaFormaPgtos.RowTemplate.Height = 30;
+            this.GridListaFormaPgtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 105);
+            this.GridListaFormaPgtos.TabIndex = 7;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "Id";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Forma de pagamento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Vencimento";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Valor";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // colExcluir
+            // 
+            this.colExcluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colExcluir.HeaderText = "";
+            this.colExcluir.Name = "colExcluir";
+            this.colExcluir.ReadOnly = true;
+            this.colExcluir.ToolTipText = "Remover";
+            this.colExcluir.Width = 30;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.pagamentos);
+            this.panel4.Location = new System.Drawing.Point(546, 237);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(448, 40);
+            this.panel4.TabIndex = 145253;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(-4, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(142, 30);
+            this.label5.TabIndex = 131;
+            this.label5.Text = "Recebimentos";
+            // 
+            // pagamentos
+            // 
+            this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pagamentos.Location = new System.Drawing.Point(305, 7);
+            this.pagamentos.Name = "pagamentos";
+            this.pagamentos.Size = new System.Drawing.Size(136, 25);
+            this.pagamentos.TabIndex = 151;
+            this.pagamentos.Text = "R$ 00.00";
+            this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // TelaPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 671);
-            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.btnClearRecebimentos);
+            this.Controls.Add(this.visualPanel1);
+            this.Controls.Add(this.panel12);
+            this.Controls.Add(this.acrescimos);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.discount);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.pagamentos);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.total);
             this.Controls.Add(this.troco);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button18);
@@ -1283,7 +1404,6 @@
             this.Controls.Add(this.Acrescimo);
             this.Controls.Add(this.Desconto);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.Cheque);
             this.Controls.Add(this.Dinheiro);
             this.Controls.Add(this.Credito);
@@ -1306,10 +1426,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Info2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Info1)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1317,6 +1433,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.step4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.step1)).EndInit();
+            this.visualPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridListaFormaPgtos)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1327,12 +1448,6 @@
         private System.Windows.Forms.Panel panel1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Back;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Next;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label discount;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label pagamentos;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel TelaReceber;
         public VisualPlus.Toolkit.Controls.Editors.VisualTextBox valor;
@@ -1349,13 +1464,6 @@
         private System.Windows.Forms.Label lTipo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label total;
-        private System.Windows.Forms.Label troco;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button18;
@@ -1368,13 +1476,6 @@
         private System.Windows.Forms.Button Acrescimo;
         private System.Windows.Forms.Button Desconto;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView GridListaFormaPgtos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewImageColumn colExcluir;
         private System.Windows.Forms.Button Cheque;
         private System.Windows.Forms.Button Dinheiro;
         private System.Windows.Forms.Button Credito;
@@ -1397,5 +1498,29 @@
         private System.Windows.Forms.Panel progress4;
         private System.Windows.Forms.Panel progress5;
         private System.Windows.Forms.Panel progress3;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnClearRecebimentos;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel1;
+        private System.Windows.Forms.Label aPagartxt;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label acrescimos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label discount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label total;
+        private System.Windows.Forms.Label troco;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView GridListaFormaPgtos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewImageColumn colExcluir;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label pagamentos;
     }
 }
