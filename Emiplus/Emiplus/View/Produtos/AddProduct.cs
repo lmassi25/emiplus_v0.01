@@ -5,6 +5,7 @@ using Emiplus.View.Common;
 using Newtonsoft.Json;
 using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace Emiplus.View.Produtos
         private Controller.Item _controllerItem = new Controller.Item();
 
         private BackgroundWorker backOn = new BackgroundWorker();
-        private IEnumerable<dynamic> categorias { get; set; }
-        private IEnumerable<dynamic> fornecedores { get; set; }
+        private ArrayList categorias { get; set; }
         private IEnumerable<dynamic> impostos { get; set; }
         private IEnumerable<dynamic> impostos2 { get; set; }
 
@@ -32,15 +32,10 @@ namespace Emiplus.View.Produtos
 
         private void LoadFornecedores()
         {
+            Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
+            Fornecedor.DisplayMember = "Nome";
+            Fornecedor.ValueMember = "Id";
             Fornecedor.Refresh();
-
-            var fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (fornecedores.Count() > 0)
-            {
-                Fornecedor.DataSource = fornecedores;
-                Fornecedor.DisplayMember = "NOME";
-                Fornecedor.ValueMember = "ID";
-            }
         }
 
         private void LoadImpostoOne()
@@ -80,16 +75,10 @@ namespace Emiplus.View.Produtos
             ToolHelp.Show("Descrição adicional para o produto.", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-            //ActiveControl = nome;
-
-            //var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (categorias.Count() > 0)
-            {
-                Categorias.DataSource = categorias;
-                Categorias.DisplayMember = "NOME";
-                Categorias.ValueMember = "ID";
-            }
-
+            Categorias.DataSource = categorias;
+            Categorias.DisplayMember = "Nome";
+            Categorias.ValueMember = "Id";
+          
             LoadFornecedores();
 
             Medidas.DataSource = Support.GetMedidas();
@@ -155,9 +144,8 @@ namespace Emiplus.View.Produtos
             if (_modelItem.Medida != null)
                 Medidas.SelectedItem = _modelItem.Medida;
 
-            Categorias.SelectedValue = _modelItem.Categoriaid;
-
-            Fornecedor.SelectedValue = _modelItem.Fornecedor;
+            Categorias.SelectedValue = _modelItem.Categoriaid.ToString();
+            Fornecedor.SelectedValue = _modelItem.Fornecedor.ToString();
 
             aliq_federal.Text = Validation.Price(_modelItem.AliqFederal);
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
@@ -262,11 +250,9 @@ namespace Emiplus.View.Produtos
             _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
             _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
             
-            if (Categorias.SelectedValue != null)
-                _modelItem.Categoriaid = (int)Categorias.SelectedValue;
-
-            if (Fornecedor.SelectedValue != null)
-                _modelItem.Fornecedor = (int)Fornecedor.SelectedValue;
+            _modelItem.Categoriaid = Validation.ConvertToInt32(Categorias.SelectedValue);
+            
+            _modelItem.Fornecedor = Validation.ConvertToInt32(Fornecedor.SelectedValue);
 
             if (ImpostoNFE.SelectedValue != null)
                 _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
@@ -396,9 +382,7 @@ namespace Emiplus.View.Produtos
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
-                {
                     LoadFornecedores();
-                }
             };
 
             btnAddImpostoOne.Click += (s, e) =>
@@ -408,9 +392,7 @@ namespace Emiplus.View.Produtos
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
-                {
                     LoadImpostoOne();
-                }
             };
 
             btnAddImpostoTwo.Click += (s, e) =>
@@ -420,9 +402,7 @@ namespace Emiplus.View.Produtos
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
-                {
                     LoadImpostoTwo();
-                }
             };
 
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
@@ -488,8 +468,7 @@ namespace Emiplus.View.Produtos
             backOn.DoWork += (s, e) =>
              {
                  _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-                 categorias = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
-                 fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+                 categorias = new Categoria().GetAll("Produtos");
                  impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                  impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
              };

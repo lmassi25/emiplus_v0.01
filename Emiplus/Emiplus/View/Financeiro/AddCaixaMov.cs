@@ -29,7 +29,7 @@ namespace Emiplus.View.Financeiro
 
         private void LoadFornecedores()
         {
-            Fornecedor.DataSource = new Pessoa().GetAll();
+            Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
             Fornecedor.ValueMember = "Id";
             Fornecedor.DisplayMember = "Nome";
         }
