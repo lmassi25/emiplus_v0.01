@@ -20,8 +20,41 @@ namespace Emiplus.Data.Core
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
+        private string Path = IniFile.Read("Path", "LOCAL");
         private string PathDB = IniFile.Read("PathDatabase", "LOCAL");
         
+        public BackupAutomatico StartBackupCupom()
+        {
+            string filePath = $"{Path}\\CFe\\Autorizadas\\bkp";
+
+            if (Directory.Exists(filePath))
+            {
+                System.IO.DirectoryInfo di = new DirectoryInfo(filePath);
+                foreach (FileInfo file in di.GetFiles("*.xml"))
+                {
+                    object obj = new
+                    {
+                        token = Program.TOKEN,
+                        id_empresa = IniFile.Read("idEmpresa", "APP"),
+                        id_backup = "N9TT-9G0A-B7FQ-RANC"
+                    };
+                    
+                    var jo = new RequestApi().URL(Program.URL_BASE + "/backup/cupom").Content(obj, Method.POST).AddFile("arquivo", file.FullName).Response();
+                    
+                    if (jo["error"].ToString() == "False")
+                    {
+                        new Log().Add("BACKUPS", "[CUPOM] Backup realizado com sucesso", Log.LogType.info);
+                        file.Delete();
+                    }
+                    else
+                        new Log().Add("BACKUPS", "[CUPOM] Falha no backup", Log.LogType.info);
+
+                }
+            }
+
+            return this;
+        }
+
         public BackupAutomatico StartBackup()
         {
             string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
@@ -51,11 +84,11 @@ namespace Emiplus.Data.Core
             
             if (jo["error"].ToString() == "False")
             {
-                new Log().Add("BACKUPS", "Backup realizado com sucesso", Log.LogType.info);
+                new Log().Add("BACKUPS", "[DB] Backup realizado com sucesso", Log.LogType.info);
                 CleanBackups(PathDB);
             }
             else
-                new Log().Add("BACKUPS", "Falha no backup", Log.LogType.info);
+                new Log().Add("BACKUPS", "[DB] Falha no backup", Log.LogType.info);
 
             return this;
         }
