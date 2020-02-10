@@ -1202,23 +1202,6 @@ namespace Emiplus.Controller
                         var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
                         doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
 
-                        try
-                        {
-                            ////------------------------nota salva
-                            //if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
-                            //    Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
-
-                            //doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            //doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
-                            ////------------------------nota salva
-
-                            //////------------------------
-                            //_msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                            //////------------------------
-                        }
-                        catch (Exception ex)
-                        { }
-
                         _msg = "Emitido com sucesso + conteudo notas";
                         _nota.Tipo = tipo;
                         _nota.Criado = DateTime.Now;
@@ -1227,6 +1210,23 @@ namespace Emiplus.Controller
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
                         _nota.assinatura_qrcode = assinatura_qrcode;
                         _nota.Save(_nota, false);
+
+                        if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                            Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
+
+                        doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                        doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+
+                        //try
+                        //{
+                            
+
+                        //    //////------------------------
+                        //    //_msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                        //    //////------------------------
+                        //}
+                        //catch (Exception ex)
+                        //{ }                       
                     }
 
                     break;
