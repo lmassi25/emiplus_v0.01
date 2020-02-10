@@ -18,8 +18,8 @@ namespace Emiplus
 {
     static class Program
     {
-        public static string URL_BASE = "https://www.emiplus.com.br";
-        
+        //public static string URL_BASE = "https://www.emiplus.com.br";
+        public static string URL_BASE = "http://localhost/app";
         public static CultureInfo cultura = new CultureInfo("pt-BR");
 
         /// <summary>
@@ -41,27 +41,6 @@ namespace Emiplus
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
        [STAThread]
         public static void Main()
         {
