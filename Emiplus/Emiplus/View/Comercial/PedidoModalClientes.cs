@@ -75,6 +75,7 @@ namespace Emiplus.View.Comercial
                     break;
             }
 
+            Clientes.Id = 0;
             using (AddClientes f = new AddClientes()) {
                 f.btnSalvarText = "Salvar e Inserir";
                 f.btnSalvarWidth = 150;
