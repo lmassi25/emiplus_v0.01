@@ -355,34 +355,36 @@ namespace Emiplus.View.Comercial
             };
 
             nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 12);
+            rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 13);
             nomeRS.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
             nomeFantasia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-
-            btnExit.Click += (s, e) =>
-            {
-                var dataProd = _modelPessoa.Query().Where("id", Id).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
-                if (dataProd != null)
-                {
-                    var result = AlertOptions.Message("Atenção!", "Você não salvou esse registro, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
-                    if (result)
-                    {
-                        var data = _modelPessoa.Remove(Id);
-                        if (data)
-                            Close();
-                    }
-
-                    nomeRS.Focus();
-                    return;
-                }
-
-                Close();
-            };
+            
+            btnExit.Click += (s, e) => CloseForm();
 
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
             btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=6o9mR7oNp70");
+        }
+
+        private void CloseForm()
+        {
+            var dataProd = _modelPessoa.Query().Where("id", Id).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
+            if (dataProd != null)
+            {
+                var result = AlertOptions.Message("Atenção!", "Você não salvou esse registro, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                if (result)
+                {
+                    var data = _modelPessoa.Remove(Id);
+                    if (data)
+                        Close();
+                }
+
+                nomeRS.Focus();
+                return;
+            }
+
+            Close();
         }
     }
 }

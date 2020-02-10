@@ -1237,7 +1237,7 @@ namespace Emiplus.View.Comercial
             this.rgIE.ImageVisible = false;
             this.rgIE.ImageWidth = 35;
             this.rgIE.Location = new System.Drawing.Point(361, 43);
-            this.rgIE.MaxLength = 12;
+            this.rgIE.MaxLength = 13;
             this.rgIE.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.rgIE.Name = "rgIE";
             this.rgIE.PasswordChar = '\0';

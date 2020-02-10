@@ -58,13 +58,13 @@
         //);
 
         #endregion SQL Create
-
-        public ArrayList GetAll()
+        
+        public ArrayList GetAll(string tipo = "Clientes")
         {
             var data = new ArrayList();
             data.Add(new { Id = "0", Nome = "SELECIONE" });
 
-            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").OrderByDesc("nome").Get();
+            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").Where("tipo", tipo).OrderByDesc("nome").Get();
             if (findDB != null)
             {
                 foreach (var item in findDB)
