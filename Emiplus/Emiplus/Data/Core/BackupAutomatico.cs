@@ -20,28 +20,15 @@ namespace Emiplus.Data.Core
         private const string _db = "sysdba";
         private const string _host = "localhost";
 
-        private string ServiceFireBird = "FirebirdServerDefaultInstance";
-        private string PathFirebird { get; set; }
         private string PathDB = IniFile.Read("PathDatabase", "LOCAL");
-
-        public BackupAutomatico()
-        {
-            using (ManagementObject wmiService = new ManagementObject("Win32_Service.Name='" + ServiceFireBird + "'"))
-            {
-                wmiService.Get();
-                string currentserviceExePath = wmiService["PathName"].ToString();
-
-                int pFrom = currentserviceExePath.IndexOf("\"") + "\"".Length;
-                int pTo = currentserviceExePath.LastIndexOf("\"");
-
-                PathFirebird = currentserviceExePath.Substring(pFrom, pTo - pFrom).Replace("firebird.exe", "");
-            }
-        }
         
         public BackupAutomatico StartBackup()
         {
             string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
             string filePath = $"{PathDB}\\{dateNow}.fbk";
+
+            if (Validation.ConvertToInt32(PathDB.Substring(0, 1)) > 0)
+                return this;
 
             if (!File.Exists(filePath)) {
                 FbBackup backupSvc = new FbBackup();
