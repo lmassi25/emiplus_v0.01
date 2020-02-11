@@ -108,10 +108,11 @@ namespace Emiplus.View.Comercial
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
 
-            var aPagar = _controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido);
+            var aPagar = Validation.RoundTwo(_controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido));
             if (_controllerTitulo.GetLancados(IdPedido) < _controllerTitulo.GetTotalPedido(IdPedido)) {
                 aPagartxt.Text = Validation.FormatPrice(aPagar, true);
-            } else
+            } 
+            else
             {
                 aPagartxt.Text = "R$ 0,00";
             }
@@ -121,13 +122,13 @@ namespace Emiplus.View.Comercial
             else
                 Desconto.Enabled = true;
 
-            if (aPagar == 0)
+            if (aPagar <= 0)
             {
                 label15.BackColor = Color.FromArgb(46, 204, 113);
                 aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
                 visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
-                this.Refresh();
+                Refresh();
             }
             else
             {
@@ -135,7 +136,7 @@ namespace Emiplus.View.Comercial
                 aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
                 visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
-                this.Refresh();
+                Refresh();
             }
         }
 
