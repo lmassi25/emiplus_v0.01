@@ -60,7 +60,8 @@ namespace Emiplus.Data.Core
             string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
             string filePath = $"{PathDB}\\{dateNow}.fbk";
 
-            if (Validation.ConvertToInt32(PathDB.Substring(0, 1)) > 0)
+            var isNumeric = int.TryParse(PathDB.Substring(0, 1), out int n);
+            if (isNumeric)
                 return this;
 
             if (!File.Exists(filePath)) {

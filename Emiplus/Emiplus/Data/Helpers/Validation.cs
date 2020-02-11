@@ -177,14 +177,7 @@ namespace Emiplus.Data.Helpers
             if (string.IsNullOrEmpty(value.ToString()))
                 return 0;
             
-            try
-            {
-                return Convert.ToInt32(value, Program.cultura);
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return Convert.ToInt32(value, Program.cultura);
         }
 
         public static string ConvertDateToForm(object date, bool large = false)
