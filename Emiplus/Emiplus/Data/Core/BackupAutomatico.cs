@@ -113,6 +113,10 @@ namespace Emiplus.Data.Core
             if (!Directory.Exists(pathDocuments + "\\Emiplus"))
                 Directory.CreateDirectory(pathDocuments + "\\Emiplus");
 
+            var isNumeric = int.TryParse(PathDB.Substring(0, 1), out int n);
+            if (isNumeric)
+                return;
+
             if (Directory.Exists(pathDocuments + "\\Emiplus"))
             {
                 string dateNow = DateTime.Now.ToString("dd-MM-yyyy");
