@@ -40,22 +40,6 @@ namespace Emiplus.View.Configuracoes
                 }
             };
 
-            visualButton1.Click += (s, e) =>
-            {
-                var itens = new Model.PedidoItem().Query()
-                        .LeftJoin("item", "item.id", "pedido_item.item")
-                        .Select("pedido_item.id")
-                        .Where("pedido_item.pedido", Validation.ConvertToInt32(pedido.Text))
-                        .Where("pedido_item.excluir", 0)
-                        .Where("pedido_item.tipo", "Produtos");
-
-                foreach (var item in itens.Get())
-                {
-                    new Controller.Imposto().SetImposto(item.ID, 4, "NFe");
-                }
-            };
-
-
             btnExit.Click += (s, e) => Close();
         }
     }

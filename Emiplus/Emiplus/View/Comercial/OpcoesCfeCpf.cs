@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,13 @@ namespace Emiplus.View.Comercial
         public OpcoesCfeCpf()
         {
             InitializeComponent();
+
+            if (OpcoesCfe.tipo == "NFCe")
+            {
+                pictureBox1.Image = Resources.nfce;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                label10.Text = "Confirme as informações do cliente que serão enviadas ao NFCe";
+            }
 
             _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
 

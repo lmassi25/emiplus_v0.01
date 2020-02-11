@@ -91,17 +91,22 @@ namespace Emiplus.View.Comercial
             f.Show();
         }
 
-        public void Cfe()
+        public void Cfe(int tipo = 0)
         {
             OpcoesCfe.idNota = 0;
 
-            var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Model.Nota>();
+            if (tipo == 1)
+                OpcoesCfe.tipo = "NFCe";
+            else
+                OpcoesCfe.tipo = "";
+
+            var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", tipo == 1 ? "NFCe" : "CFe").FirstOrDefault<Model.Nota>();
             if (checkNota == null)
             {
                 Model.Nota _modelNota = new Model.Nota();
 
                 _modelNota.Id = 0;
-                _modelNota.Tipo = "CFe";
+                _modelNota.Tipo = tipo == 1 ? "NFCe" : "CFe";
                 _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = idPedido;
                 _modelNota.Save(_modelNota, false);
@@ -128,7 +133,7 @@ namespace Emiplus.View.Comercial
                     Model.Nota _modelNota = new Model.Nota();
 
                     _modelNota.Id = 0;
-                    _modelNota.Tipo = "CFe";
+                    _modelNota.Tipo = tipo == 1 ? "NFCe" : "CFe";
                     _modelNota.Status = "Pendente";
                     _modelNota.id_pedido = idPedido;
                     _modelNota.Save(_modelNota, false);
@@ -320,6 +325,7 @@ namespace Emiplus.View.Comercial
                     return;
 
                 Cfe();
+                //Cfe(1);
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");

@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using SqlKata.Execution;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,6 +13,8 @@ namespace Emiplus.View.Comercial
         public static int idPedido { get; set; } // id pedido
         public static int idNota { get; set; } // id nota
         public static int tipoTela { get; set; } = 0;
+        public static string tipo { get; set; } //CFe NFCe
+
         private Model.Nota _modelNota = new Model.Nota();
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
         private int p1 = 0;
@@ -20,7 +23,13 @@ namespace Emiplus.View.Comercial
         public OpcoesCfe()
         {
             InitializeComponent();
-
+            
+            if (OpcoesCfe.tipo == "NFCe")
+            {
+                pictureBox1.Image = Resources.nfce;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            
             if (OpcoesCfe.tipoTela == 0)
                 btnDetalhes.Visible = false;
 
@@ -93,11 +102,11 @@ namespace Emiplus.View.Comercial
                     retorno.Text = "Emitindo cupom...";
 
                     p1 = 1;
-                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, "CFe").FirstOrDefault<Model.Nota>();
+                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe").FirstOrDefault<Model.Nota>();
                     if (checkNota == null)
                     {
                         _modelNota.Id = 0;
-                        _modelNota.Tipo = "CFe";
+                        _modelNota.Tipo = OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe";
                         _modelNota.id_pedido = idPedido;
                         _modelNota.Save(_modelNota, false);
                     }
@@ -128,11 +137,11 @@ namespace Emiplus.View.Comercial
                     switch (p1)
                     {
                         case 1:
-                            _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
+                            _msg = new Controller.Fiscal().Emitir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
                             break;
 
                         case 2:
-                            _msg = new Controller.Fiscal().Cancelar(idPedido, "CFe");
+                            _msg = new Controller.Fiscal().Cancelar(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
                             break;
                     }
                 };
@@ -152,6 +161,11 @@ namespace Emiplus.View.Comercial
                 detailsPedido.Show();
 
                 Close();
+            };
+
+            FormClosing += (s, e) =>
+            {
+                OpcoesCfe.tipo = "";
             };
         }
     }

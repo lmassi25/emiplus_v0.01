@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpcoesCfeCpf));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nomeRS = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -38,22 +37,13 @@
             this.label20 = new System.Windows.Forms.Label();
             this.cpfCnpj = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(11, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(478, 109);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 299;
-            this.pictureBox1.TabStop = false;
             // 
             // nomeRS
             // 
@@ -89,7 +79,7 @@
             this.nomeRS.ImageSize = new System.Drawing.Size(16, 16);
             this.nomeRS.ImageVisible = false;
             this.nomeRS.ImageWidth = 35;
-            this.nomeRS.Location = new System.Drawing.Point(12, 152);
+            this.nomeRS.Location = new System.Drawing.Point(12, 161);
             this.nomeRS.MaxLength = 255;
             this.nomeRS.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nomeRS.Name = "nomeRS";
@@ -119,7 +109,7 @@
             this.label23.BackColor = System.Drawing.Color.White;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(12, 133);
+            this.label23.Location = new System.Drawing.Point(12, 142);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(132, 17);
             this.label23.TabIndex = 301;
@@ -131,7 +121,7 @@
             this.label18.BackColor = System.Drawing.Color.White;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(12, 187);
+            this.label18.Location = new System.Drawing.Point(12, 196);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(50, 17);
             this.label18.TabIndex = 305;
@@ -164,7 +154,7 @@
             this.pessoaJF.IntegralHeight = false;
             this.pessoaJF.ItemHeight = 23;
             this.pessoaJF.ItemImageVisible = true;
-            this.pessoaJF.Location = new System.Drawing.Point(12, 206);
+            this.pessoaJF.Location = new System.Drawing.Point(12, 215);
             this.pessoaJF.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pessoaJF.MenuItemNormal = System.Drawing.Color.White;
             this.pessoaJF.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -198,7 +188,7 @@
             this.label20.BackColor = System.Drawing.Color.White;
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(151, 187);
+            this.label20.Location = new System.Drawing.Point(151, 196);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 17);
             this.label20.TabIndex = 304;
@@ -238,7 +228,7 @@
             this.cpfCnpj.ImageSize = new System.Drawing.Size(16, 16);
             this.cpfCnpj.ImageVisible = false;
             this.cpfCnpj.ImageWidth = 35;
-            this.cpfCnpj.Location = new System.Drawing.Point(150, 206);
+            this.cpfCnpj.Location = new System.Drawing.Point(150, 215);
             this.cpfCnpj.MaxLength = 18;
             this.cpfCnpj.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.cpfCnpj.Name = "cpfCnpj";
@@ -268,10 +258,21 @@
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 251);
+            this.panel1.Location = new System.Drawing.Point(0, 255);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 63);
             this.panel1.TabIndex = 306;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.ForeColor = System.Drawing.Color.DimGray;
+            this.label10.Location = new System.Drawing.Point(12, 126);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(476, 13);
+            this.label10.TabIndex = 10002;
+            this.label10.Text = "Confirme as informações do cliente que serão enviadas ao CF-e S@T";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSalvar
             // 
@@ -315,23 +316,22 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // pictureBox1
             // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(12, 103);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(476, 13);
-            this.label10.TabIndex = 10002;
-            this.label10.Text = "Confirme as informações do cliente que serão enviadas ao CF-e S@T";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(11, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(478, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 299;
+            this.pictureBox1.TabStop = false;
             // 
             // OpcoesCfeCpf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(500, 314);
+            this.ClientSize = new System.Drawing.Size(500, 318);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label18);
@@ -346,8 +346,8 @@
             this.Name = "OpcoesCfeCpf";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
