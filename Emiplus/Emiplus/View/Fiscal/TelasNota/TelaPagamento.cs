@@ -9,7 +9,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 {
     public partial class TelaPagamento : Form
     {
-        private int IdPedido = Nota.Id;
+        private int IdPedido { get; set; }
 
         //private Model.Item _mItem = new Model.Item();
         //private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
@@ -23,9 +23,8 @@ namespace Emiplus.View.Fiscal.TelasNota
         public TelaPagamento()
         {
             InitializeComponent();
-
+            
             _mNota = new Model.Nota().FindById(Nota.Id).FirstOrDefault<Model.Nota>();
-
             if (_mNota == null)
             {
                 Alert.Message("Ação não permitida", "Referência de Pedido não identificada", Alert.AlertType.warning);
@@ -70,12 +69,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                 .FirstOrDefault<Model.Pedido>();
 
             acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(IdPedido), true);
-            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);
+            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total ?? 0)), true);
             troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
             pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
             total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
 
-            var aPagar = _controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido);
+            var aPagar = Validation.RoundTwo(_controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido));
             if (_controllerTitulo.GetLancados(IdPedido) < _controllerTitulo.GetTotalPedido(IdPedido))
             {
                 aPagartxt.Text = Validation.FormatPrice(aPagar, true);
@@ -90,13 +89,13 @@ namespace Emiplus.View.Fiscal.TelasNota
             else
                 Desconto.Enabled = true;
 
-            if (aPagar == 0)
+            if (aPagar <= 0)
             {
                 label15.BackColor = Color.FromArgb(46, 204, 113);
                 aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
                 visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
-                this.Refresh();
+                Refresh();
             }
             else
             {
@@ -104,7 +103,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
                 visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
-                this.Refresh();
+                Refresh();
             }
         }
 
@@ -345,20 +344,13 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnClearRecebimentos.Click += (s, e) =>
             {
                 foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
-                {
                     if (Convert.ToString(row.Cells[0].Value) != "")
-                    {
                         _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
-                    }
-                }
 
                 AtualizarDados();
             };
 
-            Next.Click += (s, e) =>
-            {
-                OpenForm.Show<TelaFinal>(this);
-            };
+            Next.Click += (s, e) => OpenForm.Show<TelaFinal>(this);
 
             Back.Click += (s, e) => Close();
         }

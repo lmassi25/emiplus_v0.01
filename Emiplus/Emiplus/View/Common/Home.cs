@@ -240,7 +240,8 @@ namespace Emiplus.View.Common
             chatOnline.Click += (s, e) =>
             {
                 Suporte f = new Suporte();
-                f.ShowDialog();
+                f.TopMost = true;
+                f.Show();
             };
 
             developer.Click += (s, e) =>
@@ -370,6 +371,7 @@ namespace Emiplus.View.Common
                 BackupAutomatico backup = new BackupAutomatico();
                 backup.StartBackup();
                 backup.BackupLocalDocuments();
+                backup.StartBackupCupom();
 
                 GerarTitulosRecorrentes();
             };

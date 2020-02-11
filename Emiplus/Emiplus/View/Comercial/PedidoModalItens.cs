@@ -95,6 +95,7 @@ namespace Emiplus.View.Comercial
 
             buscarProduto.TextChanged += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
 
+            GridListaProdutos.CellDoubleClick += (s, e) => SelectItemGrid();
             Selecionar.Click += (s, e) => SelectItemGrid();
             btnCancelar.Click += (s, e) => Close();
         }

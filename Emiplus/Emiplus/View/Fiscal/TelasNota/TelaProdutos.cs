@@ -471,15 +471,6 @@ namespace Emiplus.View.Fiscal.TelasNota
                 }
             };
 
-            //GridListaProdutos.SelectionChanged += (s, e) =>
-            //{
-            //    if (GridListaProdutos.SelectedRows.Count > 0)
-            //    {
-            //        AlterarImposto.Text = "Alterar Imposto (Item: " + GridListaProdutos.SelectedRows[0].Cells["#"].Value + ")";
-            //        AlterarImposto.Refresh();
-            //    }
-            //};
-
             Preco.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
@@ -492,6 +483,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     LoadItens();
             };
 
+            Quantidade.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             Quantidade.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)

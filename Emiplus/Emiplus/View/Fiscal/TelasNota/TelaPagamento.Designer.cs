@@ -1010,36 +1010,36 @@
             // 
             this.progress2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress2.Location = new System.Drawing.Point(175, 50);
+            this.progress2.Location = new System.Drawing.Point(175, 55);
             this.progress2.Name = "progress2";
-            this.progress2.Size = new System.Drawing.Size(158, 14);
+            this.progress2.Size = new System.Drawing.Size(158, 7);
             this.progress2.TabIndex = 4;
             // 
             // progress4
             // 
             this.progress4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress4.Location = new System.Drawing.Point(505, 50);
+            this.progress4.Location = new System.Drawing.Point(505, 55);
             this.progress4.Name = "progress4";
-            this.progress4.Size = new System.Drawing.Size(158, 14);
+            this.progress4.Size = new System.Drawing.Size(158, 7);
             this.progress4.TabIndex = 5;
             // 
             // progress5
             // 
             this.progress5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(211)))));
-            this.progress5.Location = new System.Drawing.Point(679, 50);
+            this.progress5.Location = new System.Drawing.Point(679, 55);
             this.progress5.Name = "progress5";
-            this.progress5.Size = new System.Drawing.Size(158, 14);
+            this.progress5.Size = new System.Drawing.Size(158, 7);
             this.progress5.TabIndex = 5;
             // 
             // progress3
             // 
             this.progress3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress3.Location = new System.Drawing.Point(340, 50);
+            this.progress3.Location = new System.Drawing.Point(340, 55);
             this.progress3.Name = "progress3";
-            this.progress3.Size = new System.Drawing.Size(158, 14);
+            this.progress3.Size = new System.Drawing.Size(158, 7);
             this.progress3.TabIndex = 12;
             // 
             // btnClearRecebimentos
@@ -1112,7 +1112,7 @@
             this.aPagartxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
             this.aPagartxt.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aPagartxt.ForeColor = System.Drawing.Color.White;
-            this.aPagartxt.Location = new System.Drawing.Point(212, 6);
+            this.aPagartxt.Location = new System.Drawing.Point(212, 5);
             this.aPagartxt.Name = "aPagartxt";
             this.aPagartxt.Size = new System.Drawing.Size(184, 25);
             this.aPagartxt.TabIndex = 145248;
@@ -1125,7 +1125,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(11, 4);
+            this.label15.Location = new System.Drawing.Point(11, 3);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(196, 30);
             this.label15.TabIndex = 145246;
