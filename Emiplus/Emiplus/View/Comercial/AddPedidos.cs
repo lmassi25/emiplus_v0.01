@@ -955,6 +955,7 @@ namespace Emiplus.View.Comercial
                 }
             };
 
+            Quantidade.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             Preco.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;

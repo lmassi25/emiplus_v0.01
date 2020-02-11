@@ -146,6 +146,7 @@ namespace Emiplus.Controller
             else if (Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3)
             {
                 data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela));
+                //data.Total = valor / Validation.ConvertToInt32(parcela);
 
                 int count = 1;
                 while (count <= Validation.ConvertToInt32(parcela))

@@ -219,7 +219,7 @@
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(181, 153);
+            this.pictureBox2.Location = new System.Drawing.Point(177, 153);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(15, 15);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -370,36 +370,36 @@
             // 
             this.progress2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress2.Location = new System.Drawing.Point(175, 50);
+            this.progress2.Location = new System.Drawing.Point(175, 55);
             this.progress2.Name = "progress2";
-            this.progress2.Size = new System.Drawing.Size(158, 14);
+            this.progress2.Size = new System.Drawing.Size(158, 7);
             this.progress2.TabIndex = 4;
             // 
             // progress4
             // 
             this.progress4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress4.Location = new System.Drawing.Point(505, 50);
+            this.progress4.Location = new System.Drawing.Point(505, 55);
             this.progress4.Name = "progress4";
-            this.progress4.Size = new System.Drawing.Size(158, 14);
+            this.progress4.Size = new System.Drawing.Size(158, 7);
             this.progress4.TabIndex = 5;
             // 
             // progress5
             // 
             this.progress5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress5.Location = new System.Drawing.Point(679, 50);
+            this.progress5.Location = new System.Drawing.Point(679, 55);
             this.progress5.Name = "progress5";
-            this.progress5.Size = new System.Drawing.Size(158, 14);
+            this.progress5.Size = new System.Drawing.Size(158, 7);
             this.progress5.TabIndex = 5;
             // 
             // progress3
             // 
             this.progress3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress3.Location = new System.Drawing.Point(340, 50);
+            this.progress3.Location = new System.Drawing.Point(340, 55);
             this.progress3.Name = "progress3";
-            this.progress3.Size = new System.Drawing.Size(158, 14);
+            this.progress3.Size = new System.Drawing.Size(158, 7);
             this.progress3.TabIndex = 12;
             // 
             // Emitir

@@ -31,9 +31,19 @@ namespace Emiplus.Data.Helpers
                 return valueF + " " + valueE;
         }
 
+        /// <summary>
+        /// Arredondamento para 3 casas decimais
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static double Round(double value)
         {
-            return Math.Round(value, 2);
+            return Math.Round(value, 3, MidpointRounding.AwayFromZero);
+        }
+
+        public static double RoundTwo(double value)
+        {
+            return Math.Round(value, 2, MidpointRounding.AwayFromZero);
         }
 
         public static double RoundAliquotas(double value)

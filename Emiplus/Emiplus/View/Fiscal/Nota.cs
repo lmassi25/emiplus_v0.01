@@ -50,12 +50,12 @@ namespace Emiplus.View.Fiscal
 
                 if (Id > 0)
                 {
-                    //_mPedido = _mPedido.FindById(Id).FirstOrDefault<Model.Pedido>();
-                    //_mNota = _mNota.FindByIdPedidoAndTipo(Id, "NFe").FirstOrDefault<Model.Nota>();
+                    _mNota = _mNota.FindById(Id).FirstOrDefault<Model.Nota>();
+                    _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
                 }
                 else
                 {
-                    if(OpcoesNfeRapida.idPedido > 0)
+                    if (OpcoesNfeRapida.idPedido > 0)
                     {
                         _mNota.Id = 0;
                         _mNota.id_pedido = OpcoesNfeRapida.idPedido;
@@ -96,7 +96,6 @@ namespace Emiplus.View.Fiscal
                     if (_mNota.id_pedido > 0)
                     {
                         _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
-                        
                     }
                 }
                     

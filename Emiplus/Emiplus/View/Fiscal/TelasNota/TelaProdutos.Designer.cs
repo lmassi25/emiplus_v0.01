@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -795,36 +795,36 @@
             // 
             this.progress2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(194)))), ((int)(((byte)(89)))));
-            this.progress2.Location = new System.Drawing.Point(175, 50);
+            this.progress2.Location = new System.Drawing.Point(175, 55);
             this.progress2.Name = "progress2";
-            this.progress2.Size = new System.Drawing.Size(158, 14);
+            this.progress2.Size = new System.Drawing.Size(158, 7);
             this.progress2.TabIndex = 4;
             // 
             // progress4
             // 
             this.progress4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(211)))));
-            this.progress4.Location = new System.Drawing.Point(505, 50);
+            this.progress4.Location = new System.Drawing.Point(505, 55);
             this.progress4.Name = "progress4";
-            this.progress4.Size = new System.Drawing.Size(158, 14);
+            this.progress4.Size = new System.Drawing.Size(158, 7);
             this.progress4.TabIndex = 5;
             // 
             // progress5
             // 
             this.progress5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(211)))));
-            this.progress5.Location = new System.Drawing.Point(679, 50);
+            this.progress5.Location = new System.Drawing.Point(679, 55);
             this.progress5.Name = "progress5";
-            this.progress5.Size = new System.Drawing.Size(158, 14);
+            this.progress5.Size = new System.Drawing.Size(158, 7);
             this.progress5.TabIndex = 5;
             // 
             // progress3
             // 
             this.progress3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progress3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(183)))), ((int)(((byte)(211)))));
-            this.progress3.Location = new System.Drawing.Point(340, 50);
+            this.progress3.Location = new System.Drawing.Point(340, 55);
             this.progress3.Name = "progress3";
-            this.progress3.Size = new System.Drawing.Size(158, 14);
+            this.progress3.Size = new System.Drawing.Size(158, 7);
             this.progress3.TabIndex = 12;
             // 
             // Quantidade
@@ -1343,14 +1343,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);

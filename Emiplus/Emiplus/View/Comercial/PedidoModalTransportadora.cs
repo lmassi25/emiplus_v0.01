@@ -41,7 +41,7 @@ namespace Emiplus.View.Comercial
                 f.btnSalvarLocation = 590;
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterParent;
-
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult = DialogResult.OK;
