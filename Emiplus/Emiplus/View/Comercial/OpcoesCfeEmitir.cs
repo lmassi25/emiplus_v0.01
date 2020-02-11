@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emiplus.Properties;
+using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +17,13 @@ namespace Emiplus.View.Comercial
         public OpcoesCfeEmitir()
         {
             InitializeComponent();
+
+            if (OpcoesCfe.tipo == "NFCe")
+            {
+                pictureBox1.Image = Resources.nfce;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;                
+            }
+
             Eventos();
 
             WorkerBackground.RunWorkerAsync();
@@ -30,7 +38,7 @@ namespace Emiplus.View.Comercial
             {
                 b.DoWork += async (s, e) =>
                 {
-                    _msg = new Controller.Fiscal().Emitir(idPedido, "CFe");
+                    _msg = new Controller.Fiscal().Emitir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
@@ -42,7 +50,7 @@ namespace Emiplus.View.Comercial
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
 
-                        new Controller.Fiscal().Imprimir(idPedido, "CFe");
+                        new Controller.Fiscal().Imprimir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
 
                         if (fecharTelas)
                         {

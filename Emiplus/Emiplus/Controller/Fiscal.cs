@@ -56,6 +56,7 @@ namespace Emiplus.Controller
         private string _path_autorizada;
 
         private int _servidorNFE = 2;
+        private int _servidorNFCE = 2;
         private int _servidorCFE = 2;
 
         private string TECNOSPEED_GRUPO = "Destech";
@@ -128,6 +129,35 @@ namespace Emiplus.Controller
                         Directory.CreateDirectory(_path_enviada);
 
                     _path_autorizada = _path + "\\NFe\\Autorizadas";
+                    if (!Directory.Exists(_path_autorizada))
+                        Directory.CreateDirectory(_path_autorizada);
+
+                    if (Nota > 0)
+                    {
+                        _nota = new Model.Nota().FindById(Nota).First<Model.Nota>();
+
+                        if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                            chvAcesso = _nota.ChaveDeAcesso;
+                    }
+                    else if (_id_nota > 0)
+                    {
+                        _nota = new Model.Nota().FindById(_id_nota).First<Model.Nota>();
+
+                        if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                            chvAcesso = _nota.ChaveDeAcesso;
+                    }
+
+                    break;
+
+                case "NFCe":
+                    if (!Directory.Exists(_path + "\\NFCe"))
+                        Directory.CreateDirectory(_path + "\\NFCe");
+
+                    _path_enviada = _path + "\\NFCe\\Enviadas";
+                    if (!Directory.Exists(_path_enviada))
+                        Directory.CreateDirectory(_path_enviada);
+
+                    _path_autorizada = _path + "\\NFCe\\Autorizadas";
                     if (!Directory.Exists(_path_autorizada))
                         Directory.CreateDirectory(_path_autorizada);
 
@@ -233,7 +263,7 @@ namespace Emiplus.Controller
 
             try
             {
-                if (tipo == "CFe")
+                if (tipo == "CFe" || tipo == "NFCe")
                     _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
 
                 //if (tipo == "NFe")
@@ -856,38 +886,39 @@ namespace Emiplus.Controller
                 _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
                 if (_destinatario == null)
                 {
-                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir.";
                     return;
                 }
 
-                if (_destinatario.Nome == "Consumidor Final")
+                if (_destinatario.Nome == "Consumidor Final" && tipo != "NFCe")
                 {
-                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
+                    _msg = "Destinatário não encontrado. É necessário informar o destinatário para emitir.";
                     return;
                 }
 
-                if (Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                if (Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "" && tipo == "NFe")
                 {
-                    _msg = "CPF/CNPJ do Destinatário não encontrado. É necessário informar o destinatário para emitir uma NFe.";
+                    _msg = "CPF/CNPJ do Destinatário não encontrado. É necessário informar o destinatário para emitir.";
                     return;
                 }
 
                 if(_pedido.id_useraddress > 0)
                     _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
-                else
+                else if (_pedido.Cliente > 1)
+                {
                     _destinatarioEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Cliente).FirstOrDefault<Model.PessoaEndereco>();
 
-                //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
-                if (_destinatarioEndereco == null)
-                {
-                    _msg = "Endereço do destinátário não encontrado. É necessário informar o endereço do destinatário para emitir uma NFe. Clique no botão 'Ver Detalhes' para alterar.";
-                    return;
+                    //_destinatarioContato = new Model.PessoaContato().FindById(_pedido.Cliente).First<Model.PessoaContato>();
+                    if (_destinatarioEndereco == null)
+                    {
+                        _msg = "Endereço do destinátário não encontrado. É necessário informar o endereço do destinatário para emitir. Clique no botão 'Ver Detalhes' para alterar.";
+                        return;
+                    }
                 }
+                    
 
-                if (_pedido.id_natureza > 0)
-                {
+                if (_pedido.id_natureza > 0)                
                     _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
-                }
                 else
                 {
                     var checkNatureza = new Model.Natureza().Query().Where("NOME", "VENDA").FirstOrDefault<Model.Natureza>();
@@ -1008,7 +1039,7 @@ namespace Emiplus.Controller
                         cNF = "25" + getLastNFeNr().ToString("000000");
                         nNF = getLastNFeNr().ToString("000000000");
                         serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
-                        chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF;
+                        chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "65" + serie + nNF + "1" + cNF;
                         cDV = CalculoCDV(chvAcesso);
                         chvAcesso = chvAcesso + "" + cDV;
 
@@ -1171,6 +1202,59 @@ namespace Emiplus.Controller
 
                 #endregion NFE
 
+                #region NFCE
+
+                case "NFCe":
+                                        
+                    #region TECNOSPEED 
+
+                        _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml, "NFCe");
+
+                        while (!String.IsNullOrEmpty(_msg) && done == false)
+                        {
+                            if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                                _msg = RequestResolve();
+
+                            if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                            {
+                                _msg = "Autorizado o uso da NF-e";
+                                _nota.Tipo = tipo;
+                                _nota.Status = "Autorizada";
+                                _nota.nr_Nota = nNF;
+                                _nota.Serie = serie;
+                                _nota.ChaveDeAcesso = chvAcesso;
+                                _nota.Save(_nota, false);
+
+                                updateUltNfeAsync();
+
+                                done = true;
+                            }
+
+                            switch (_msg)
+                            {
+                                case "":
+                                    _msg = RequestConsult();
+                                    done = true;
+                                    break;
+                                    /*default:
+                                        _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                                        done = true;
+                                        break;*/
+                            }
+
+                            if (!String.IsNullOrEmpty(_msg))
+                            {
+                                _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                                done = true;
+                            }
+                        }
+
+                        #endregion
+                    
+                    break;
+
+                #endregion NFCE
+
                 #region CFE
 
                 case "CFe":
@@ -1202,6 +1286,12 @@ namespace Emiplus.Controller
                         var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
                         doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
 
+                        if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
+                            Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
+
+                        doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
+                        doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
+
                         _msg = "Emitido com sucesso + conteudo notas";
                         _nota.Tipo = tipo;
                         _nota.Criado = DateTime.Now;
@@ -1211,16 +1301,8 @@ namespace Emiplus.Controller
                         _nota.assinatura_qrcode = assinatura_qrcode;
                         _nota.Save(_nota, false);
 
-                        if (!Directory.Exists(_path_autorizada + "\\bkp\\"))
-                            Directory.CreateDirectory(_path_autorizada + "\\bkp\\");
-
-                        doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                        doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
-
                         //try
                         //{
-                            
-
                         //    //////------------------------
                         //    //_msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
                         //    //////------------------------
@@ -1257,11 +1339,12 @@ namespace Emiplus.Controller
             {
                 #region NFE
 
+                case "NFCe":
                 case "NFe":
 
                     #region TECNOSPEED 
 
-                        _msg = RequestValidate("FORMATO=XML" + Environment.NewLine + arq.OuterXml);
+                        _msg = RequestValidate("FORMATO=XML" + Environment.NewLine + arq.OuterXml, tipo);
 
                         //while (!String.IsNullOrEmpty(_msg) && done == false)
                         //{
@@ -1596,13 +1679,9 @@ namespace Emiplus.Controller
                 xml.WriteElementString("natOp", _natureza.Nome);
 
                 if (tipo == "NFe")
-                {
                     xml.WriteElementString("mod", "55");
-                }
                 else if (tipo == "NFCe")
-                {
                     xml.WriteElementString("mod", "65");
-                }
 
                 //2019-10-08T08:52:34-03:00
                 string horaSaida = "";
@@ -1618,7 +1697,10 @@ namespace Emiplus.Controller
                 xml.WriteElementString("serie", string.IsNullOrEmpty(Settings.Default.empresa_nfe_serienfe) ? "0" : Settings.Default.empresa_nfe_serienfe);
                 xml.WriteElementString("nNF", getLastNFeNr().ToString());
                 xml.WriteElementString("dhEmi", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + DateTime.Now.ToString("zzz"));
-                xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
+
+                if (tipo != "NFCe")                    
+                    xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
+                
                 xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
                 xml.WriteElementString("idDest", _pedido.Destino > 0 ? _pedido.Destino.ToString() : "1");
                 xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
@@ -1632,7 +1714,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("cDV", cDV);
                 xml.WriteElementString("tpAmb", _servidorNFE.ToString());
                 xml.WriteElementString("finNFe", _pedido.Finalidade > 0 ? _pedido.Finalidade.ToString() : "1");
-                xml.WriteElementString("indFinal", "1");
+                xml.WriteElementString("indFinal", "1");               
                 xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
                 xml.WriteElementString("verProc", "EMIPLUS");
@@ -1705,11 +1787,11 @@ namespace Emiplus.Controller
 
                 xml.WriteElementString("IE", Validation.CleanStringForFiscal(_emitente.RG).Replace(".", ""));
 
-                if (tipo == "NFCe")
-                {
-                    xml.WriteElementString("IM", "");
-                    xml.WriteElementString("CNAE", "");
-                }
+                //if (tipo == "NFCe")
+                //{
+                //    xml.WriteElementString("IM", "");
+                //    xml.WriteElementString("CNAE", "");
+                //}
 
                 xml.WriteElementString("CRT", Settings.Default.empresa_crt);
             }
@@ -1719,7 +1801,10 @@ namespace Emiplus.Controller
 
         private void SetDest(XmlTextWriter xml, int Pedido, string tipo)
         {
-            xml.WriteStartElement("dest");
+            if (tipo != "NFCe")
+            {
+            
+                xml.WriteStartElement("dest");
 
             if (tipo == "CFe")
             {
@@ -1787,7 +1872,9 @@ namespace Emiplus.Controller
                     xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
             }
 
-            xml.WriteEndElement();
+                xml.WriteEndElement();
+
+            }
         }
 
         private void SetRetirada(XmlTextWriter xml, int Pedido, string tipo)
@@ -1851,8 +1938,11 @@ namespace Emiplus.Controller
                 //    xml.WriteElementString("cEAN", "SEM GTIN");
                 //}
                 xml.WriteElementString("cEAN", "SEM GTIN");
-
-                xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
+                
+                if (tipo == "NFCe" && _servidorNFCE == 2)
+                    xml.WriteElementString("xProd", "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL");
+                else
+                    xml.WriteElementString("xProd", Validation.CleanStringForFiscal(_pedidoItem.xProd));
 
                 xml.WriteElementString("NCM", Validation.CleanStringForFiscal(_pedidoItem.Ncm));
                 if (!String.IsNullOrEmpty(_pedidoItem.Cest))
@@ -1920,13 +2010,14 @@ namespace Emiplus.Controller
             else
                 xml.WriteStartElement("ICMS" + _pedidoItem.Icms);
 
+            if (tipo == "NFe" || tipo == "NFCe")
+                xml.WriteElementString("orig", _pedidoItem.Origem);
+            else
+                xml.WriteElementString("Orig", _pedidoItem.Origem);
+
             switch (_pedidoItem.Icms)
             {
-                case "00":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
+                case "00":                    
                     xml.WriteElementString("CST", "00");
                     xml.WriteElementString("modBC", "0");
                     xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
@@ -1935,69 +2026,36 @@ namespace Emiplus.Controller
                     break;
 
                 case "40":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "40");
                     break;
 
                 case "41":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "41");
                     break;
 
                 case "50":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "50");
                     break;
 
                 case "60":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "60");
                     break;
 
                 case "90":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CST", "90");
                     break;
 
                 case "101":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "101");
                     xml.WriteElementString("pCredSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Aliq));
                     xml.WriteElementString("vCredICMSSN", Validation.FormatPriceWithDot(_pedidoItem.Icms101Vlr));
                     break;
 
                 case "102":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "102");
                     break;
 
                 case "201":
-
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "201");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -2010,10 +2068,6 @@ namespace Emiplus.Controller
                     break;
 
                 case "202":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "202");
                     xml.WriteElementString("modBCST", "0");
                     xml.WriteElementString("pMVAST", Validation.FormatPriceWithDot(0));
@@ -2024,18 +2078,10 @@ namespace Emiplus.Controller
                     break;
 
                 case "400":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "400");
                     break;
 
                 case "500":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "500");
                     if (tipo != "CFe")
                     {
@@ -2045,10 +2091,6 @@ namespace Emiplus.Controller
                     break;
 
                 case "900":
-                    if (tipo == "NFe")
-                        xml.WriteElementString("orig", _pedidoItem.Origem);
-                    else
-                        xml.WriteElementString("Orig", _pedidoItem.Origem);
                     xml.WriteElementString("CSOSN", "900");
                     break;
             }
@@ -2267,7 +2309,10 @@ namespace Emiplus.Controller
         {
             xml.WriteStartElement("transp");
 
-            xml.WriteElementString("modFrete", _pedido.TipoFrete.ToString());
+            if (tipo != "NFCe")            
+                xml.WriteElementString("modFrete", _pedido.TipoFrete.ToString());
+            else
+                xml.WriteElementString("modFrete", "9");
 
             if (_pedido.Id_Transportadora > 0)
             {

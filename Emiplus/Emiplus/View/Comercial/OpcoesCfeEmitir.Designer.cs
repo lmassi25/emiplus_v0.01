@@ -53,7 +53,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(476, 181);
             this.label10.TabIndex = 10003;
-            this.label10.Text = "Emitindo cupom fiscal...";
+            this.label10.Text = "Emitindo...";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OpcoesCfeEmitir

@@ -49,8 +49,6 @@
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.erros = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.btnClearErroLog = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.pedido = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.visualButton1 = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -409,104 +407,12 @@
             this.btnClearErroLog.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnClearErroLog.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // pedido
-            // 
-            this.pedido.AlphaNumeric = false;
-            this.pedido.BackColor = System.Drawing.Color.White;
-            this.pedido.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.pedido.BackColorState.Enabled = System.Drawing.Color.White;
-            this.pedido.Border.Color = System.Drawing.Color.Gainsboro;
-            this.pedido.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.pedido.Border.HoverVisible = true;
-            this.pedido.Border.Rounding = 8;
-            this.pedido.Border.Thickness = 1;
-            this.pedido.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pedido.Border.Visible = true;
-            this.pedido.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.pedido.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.pedido.ButtonBorder.HoverVisible = true;
-            this.pedido.ButtonBorder.Rounding = 6;
-            this.pedido.ButtonBorder.Thickness = 1;
-            this.pedido.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pedido.ButtonBorder.Visible = true;
-            this.pedido.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedido.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.pedido.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pedido.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pedido.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pedido.ButtonIndent = 3;
-            this.pedido.ButtonText = "visualButton";
-            this.pedido.ButtonVisible = false;
-            this.pedido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pedido.Image = null;
-            this.pedido.ImageSize = new System.Drawing.Size(16, 16);
-            this.pedido.ImageVisible = false;
-            this.pedido.ImageWidth = 35;
-            this.pedido.Location = new System.Drawing.Point(567, 205);
-            this.pedido.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.pedido.Name = "pedido";
-            this.pedido.PasswordChar = '\0';
-            this.pedido.ReadOnly = false;
-            this.pedido.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pedido.Size = new System.Drawing.Size(113, 28);
-            this.pedido.TabIndex = 550;
-            this.pedido.TextBoxWidth = 101;
-            this.pedido.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.pedido.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pedido.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pedido.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pedido.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.pedido.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.pedido.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.pedido.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.pedido.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pedido.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.pedido.Watermark.Text = "Watermark text";
-            this.pedido.Watermark.Visible = false;
-            this.pedido.WordWrap = true;
-            // 
-            // visualButton1
-            // 
-            this.visualButton1.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualButton1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualButton1.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
-            this.visualButton1.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
-            this.visualButton1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.visualButton1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
-            this.visualButton1.Border.HoverVisible = true;
-            this.visualButton1.Border.Rounding = 6;
-            this.visualButton1.Border.Thickness = 1;
-            this.visualButton1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualButton1.Border.Visible = true;
-            this.visualButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.visualButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.visualButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.visualButton1.Image = null;
-            this.visualButton1.Location = new System.Drawing.Point(433, 203);
-            this.visualButton1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualButton1.Name = "visualButton1";
-            this.visualButton1.Size = new System.Drawing.Size(128, 32);
-            this.visualButton1.TabIndex = 549;
-            this.visualButton1.Text = "Calcula imposto";
-            this.visualButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.visualButton1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualButton1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.visualButton1.TextStyle.Hover = System.Drawing.Color.White;
-            this.visualButton1.TextStyle.Pressed = System.Drawing.Color.White;
-            this.visualButton1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualButton1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // Sistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.pedido);
-            this.Controls.Add(this.visualButton1);
             this.Controls.Add(this.btnClearErroLog);
             this.Controls.Add(this.erros);
             this.Controls.Add(this.label9);
@@ -553,7 +459,5 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox erros;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnClearErroLog;
-        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox pedido;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton visualButton1;
     }
 }
