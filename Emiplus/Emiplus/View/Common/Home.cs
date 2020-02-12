@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace Emiplus.View.Common
 {
@@ -207,6 +208,7 @@ namespace Emiplus.View.Common
 
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
+
 
         /// <summary>
         /// Inicia a tela inicial ao abrir o programa

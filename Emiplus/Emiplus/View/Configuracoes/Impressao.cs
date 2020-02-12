@@ -22,11 +22,13 @@ namespace Emiplus.View.Configuracoes
             tipoimpressora.Items.Add("Folha A4");
             tipoimpressora.Items.Add("Bobina 80mm");
 
+            impressora.DataSource = Support.GetImpressoras();
+             
             if (!String.IsNullOrEmpty(IniFile.Read("Printer", "Comercial")))
                 tipoimpressora.SelectedItem = IniFile.Read("Printer", "Comercial");
 
             if (!String.IsNullOrEmpty(IniFile.Read("PrinterName", "Comercial")))
-                impressora.Text = IniFile.Read("PrinterName", "Comercial");
+                impressora.SelectedItem = IniFile.Read("PrinterName", "Comercial");
 
             // Pimaco 10
             if (!String.IsNullOrEmpty(IniFile.Read("Pimaco10Top", "ETIQUETAS")))
@@ -71,7 +73,7 @@ namespace Emiplus.View.Configuracoes
         private void Eventos()
         {
             tipoimpressora.Leave += (s, e) => IniFile.Write("Printer", tipoimpressora.Text, "Comercial");
-            impressora.Leave += (s, e) => IniFile.Write("PrinterName", impressora.Text, "Comercial");
+            impressora.SelectedIndexChanged += (s, e) => IniFile.Write("PrinterName", impressora.SelectedItem.ToString(), "Comercial");
 
             pi10Top.Leave += (s, e) => IniFile.Write("Pimaco10Top", pi10Top.Text, "ETIQUETAS");
             pi10Right.Leave += (s, e) => IniFile.Write("Pimaco10Right", pi10Right.Text, "ETIQUETAS");
