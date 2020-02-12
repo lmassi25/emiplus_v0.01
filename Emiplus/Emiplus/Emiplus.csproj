@@ -277,6 +277,7 @@
     <Compile Include="Controller\Sat.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\BackupAutomatico.cs" />
+    <Compile Include="Data\Core\ChatSupport.cs" />
     <Compile Include="Data\Core\Configs.cs" />
     <Compile Include="Data\Core\EmailSMTP.cs" />
     <Compile Include="Data\Core\IBPT.cs" />
