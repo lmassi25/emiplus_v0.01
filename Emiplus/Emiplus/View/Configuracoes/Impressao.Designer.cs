@@ -40,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.impressora = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoimpressora = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.impressora = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -218,63 +218,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // impressora
-            // 
-            this.impressora.AlphaNumeric = false;
-            this.impressora.BackColor = System.Drawing.Color.White;
-            this.impressora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.impressora.BackColorState.Enabled = System.Drawing.Color.White;
-            this.impressora.Border.Color = System.Drawing.Color.Gainsboro;
-            this.impressora.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.impressora.Border.HoverVisible = true;
-            this.impressora.Border.Rounding = 8;
-            this.impressora.Border.Thickness = 1;
-            this.impressora.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.impressora.Border.Visible = true;
-            this.impressora.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.impressora.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.impressora.ButtonBorder.HoverVisible = true;
-            this.impressora.ButtonBorder.Rounding = 6;
-            this.impressora.ButtonBorder.Thickness = 1;
-            this.impressora.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.impressora.ButtonBorder.Visible = true;
-            this.impressora.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.impressora.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.impressora.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.impressora.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.impressora.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.impressora.ButtonIndent = 3;
-            this.impressora.ButtonText = "visualButton";
-            this.impressora.ButtonVisible = false;
-            this.impressora.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.impressora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.impressora.Image = null;
-            this.impressora.ImageSize = new System.Drawing.Size(16, 16);
-            this.impressora.ImageVisible = false;
-            this.impressora.ImageWidth = 35;
-            this.impressora.Location = new System.Drawing.Point(51, 271);
-            this.impressora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.impressora.Name = "impressora";
-            this.impressora.PasswordChar = '\0';
-            this.impressora.ReadOnly = false;
-            this.impressora.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.impressora.Size = new System.Drawing.Size(247, 32);
-            this.impressora.TabIndex = 519;
-            this.impressora.TextBoxWidth = 235;
-            this.impressora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.impressora.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impressora.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impressora.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.impressora.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.impressora.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.impressora.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.impressora.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.impressora.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.impressora.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.impressora.Watermark.Text = "Watermark text";
-            this.impressora.Watermark.Visible = false;
-            this.impressora.WordWrap = true;
             // 
             // label1
             // 
@@ -1335,6 +1278,64 @@
             this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // impressora
+            // 
+            this.impressora.BackColor = System.Drawing.Color.White;
+            this.impressora.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.impressora.BackColorState.Enabled = System.Drawing.Color.White;
+            this.impressora.Border.Color = System.Drawing.Color.Gainsboro;
+            this.impressora.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.impressora.Border.HoverVisible = true;
+            this.impressora.Border.Rounding = 6;
+            this.impressora.Border.Thickness = 1;
+            this.impressora.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.impressora.Border.Visible = true;
+            this.impressora.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.impressora.ButtonImage = null;
+            this.impressora.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.impressora.ButtonWidth = 30;
+            this.impressora.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.impressora.DropDownHeight = 150;
+            this.impressora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.impressora.DropDownWidth = 120;
+            this.impressora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.impressora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.impressora.FormattingEnabled = true;
+            this.impressora.ImageList = null;
+            this.impressora.ImageVisible = false;
+            this.impressora.Index = 0;
+            this.impressora.IntegralHeight = false;
+            this.impressora.ItemHeight = 26;
+            this.impressora.ItemImageVisible = true;
+            this.impressora.Location = new System.Drawing.Point(51, 269);
+            this.impressora.MaxDropDownItems = 10;
+            this.impressora.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.impressora.MenuItemNormal = System.Drawing.Color.White;
+            this.impressora.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.impressora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.impressora.Name = "impressora";
+            this.impressora.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.impressora.Size = new System.Drawing.Size(247, 32);
+            this.impressora.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.impressora.TabIndex = 561;
+            this.impressora.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.impressora.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.impressora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.impressora.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.impressora.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.impressora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.impressora.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.impressora.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.impressora.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.impressora.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.impressora.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.impressora.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.impressora.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.impressora.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.impressora.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.impressora.Watermark.Text = "Watermark text";
+            this.impressora.Watermark.Visible = false;
+            // 
             // Impressao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1342,6 +1343,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.impressora);
             this.Controls.Add(this.visualSeparator5);
             this.Controls.Add(this.visualSeparator4);
             this.Controls.Add(this.visualSeparator2);
@@ -1380,7 +1382,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.impressora);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tipoimpressora);
             this.Controls.Add(this.label15);
@@ -1411,7 +1412,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
-        public VisualPlus.Toolkit.Controls.Editors.VisualTextBox impressora;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox tipoimpressora;
         private System.Windows.Forms.Label label15;
@@ -1450,5 +1450,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox impressora;
     }
 }

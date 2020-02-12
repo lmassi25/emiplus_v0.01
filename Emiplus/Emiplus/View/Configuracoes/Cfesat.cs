@@ -19,12 +19,13 @@ namespace Emiplus.View.Configuracoes
         {
             servidor.Items.Add("Homologacao");
             servidor.Items.Add("Producao");
+            impressora.DataSource = Support.GetImpressoras();
 
             if (!String.IsNullOrEmpty(IniFile.Read("Servidor", "SAT")))
                 servidor.SelectedItem = IniFile.Read("Servidor", "SAT");
 
             if (!String.IsNullOrEmpty(IniFile.Read("Printer", "SAT")))
-                impressora.Text = IniFile.Read("Printer", "SAT");
+                impressora.SelectedItem = IniFile.Read("Printer", "SAT");
 
             if (!String.IsNullOrEmpty(IniFile.Read("N_Serie", "SAT")))
                 serie.Text = IniFile.Read("N_Serie", "SAT");
@@ -58,7 +59,7 @@ namespace Emiplus.View.Configuracoes
             };
 
             servidor.Leave += (s, e) => IniFile.Write("Servidor", servidor.Text, "SAT");
-            impressora.Leave += (s, e) => IniFile.Write("Printer", impressora.Text, "SAT");
+            impressora.SelectedIndexChanged += (s, e) => IniFile.Write("Printer", impressora.SelectedItem.ToString(), "SAT");
             serie.Leave += (s, e) => IniFile.Write("N_Serie", serie.Text, "SAT");
 
             btnExit.Click += (s, e) => Close();

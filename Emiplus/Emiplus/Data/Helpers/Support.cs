@@ -3,6 +3,7 @@ using Emiplus.View.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Net;
 using System.Windows.Forms;
 
@@ -10,6 +11,16 @@ namespace Emiplus.Data.Helpers
 {
     public class Support
     {
+        public static ArrayList GetImpressoras()
+        {
+            var impressoras = new ArrayList();
+            impressoras.Add("Selecione");
+            foreach (string impressora in PrinterSettings.InstalledPrinters)
+                impressoras.Add(impressora);
+
+            return impressoras;
+        }
+
         public static ArrayList GetTiposRecorrencia()
         {
             var tipoRecorrencia = new ArrayList();
