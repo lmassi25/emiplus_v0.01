@@ -309,6 +309,7 @@ namespace Emiplus.View.Produtos
             };
 
             label6.Click += (s, e) => Close();
+
             btnExit.Click += (s, e) =>
             {
                 var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
@@ -330,6 +331,7 @@ namespace Emiplus.View.Produtos
             };
 
             btnSalvar.Click += (s, e) => Save();
+
             btnRemover.Click += (s, e) =>
             {
                 var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um produto, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
@@ -344,7 +346,11 @@ namespace Emiplus.View.Produtos
             btnEstoque.Click += (s, e) =>
             {
                 _modelItem.Nome = nome.Text;
-                _modelItem.Save(_modelItem, false);
+                if (new Model.Item().ValidarDados(_modelItem))
+                    return;
+
+                //_modelItem.Nome = nome.Text;
+                //_modelItem.Save(_modelItem, false);
 
                 AddEstoque f = new AddEstoque();
                 if (f.ShowDialog() == DialogResult.OK)
@@ -392,7 +398,10 @@ namespace Emiplus.View.Produtos
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
+                {
                     LoadImpostoOne();
+                    LoadImpostoTwo();
+                }
             };
 
             btnAddImpostoTwo.Click += (s, e) =>
@@ -402,14 +411,20 @@ namespace Emiplus.View.Produtos
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadImpostoOne();
                     LoadImpostoTwo();
+                }
             };
 
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+
             codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
+
             referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
 
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
+
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
             nome.TextChanged += (s, e) =>
@@ -454,6 +469,7 @@ namespace Emiplus.View.Produtos
             };
 
             filterTodos.Click += (s, e) => DataTableEstoque();
+
             filterMaisRecentes.Click += (s, e) => DataTableEstoque();
 
             selecionarNCM.Click += (s, e) =>

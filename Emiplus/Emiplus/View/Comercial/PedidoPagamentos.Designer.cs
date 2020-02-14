@@ -1384,7 +1384,7 @@
             // 
             // btnClearRecebimentos
             // 
-            this.btnClearRecebimentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearRecebimentos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnClearRecebimentos.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnClearRecebimentos.BackColorState.Enabled = System.Drawing.Color.White;
             this.btnClearRecebimentos.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(81)))));

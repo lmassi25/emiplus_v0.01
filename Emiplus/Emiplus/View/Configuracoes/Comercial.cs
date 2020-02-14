@@ -38,6 +38,14 @@ namespace Emiplus.View.Configuracoes
 
                 if (!String.IsNullOrEmpty(IniFile.Read("LimiteDesconto", "Comercial")))
                     txtLimiteDesconto.Text = Validation.Price(Validation.ConvertToDouble(IniFile.Read("LimiteDesconto", "Comercial")));
+
+                if (!String.IsNullOrEmpty(IniFile.Read("TrocasCliente", "Comercial")))
+                {
+                    if (IniFile.Read("TrocasCliente", "Comercial") == "True")
+                        Trocas_01.Toggled = true;
+                    else
+                        Trocas_01.Toggled = false;
+                }
             };
 
             retomarVendaInicio.Click += (s, e) =>
@@ -56,7 +64,13 @@ namespace Emiplus.View.Configuracoes
                     IniFile.Write("ControlarEstoque", "True", "Comercial");
             };
 
-
+            Trocas_01.Click += (s, e) =>
+            {
+                if (Trocas_01.Toggled)
+                    IniFile.Write("TrocasCliente", "False", "Comercial");
+                else
+                    IniFile.Write("TrocasCliente", "True", "Comercial");
+            };
 
             txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto", Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");
             txtLimiteDesconto.TextChanged += (s, e) =>

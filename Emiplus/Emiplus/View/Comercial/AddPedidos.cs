@@ -310,14 +310,26 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
-            if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+            if (!String.IsNullOrEmpty(IniFile.Read("TrocasCliente", "Comercial")))
+            {
+                if (IniFile.Read("TrocasCliente", "Comercial") == "False")                
+                {
+                    if (Home.pedidoPage == "Devoluções")
+                    {
+                        if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
+                        {
+                            AlertOptions.Message("Atenção!", "Sua troca não contém cliente! Adicione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (Home.pedidoPage == "Compras")
             {
                 if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
                 {
-                    if (Home.pedidoPage == "Compras")
-                        AlertOptions.Message("Atenção!", "Sua compra não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
-                    else if (Home.pedidoPage == "Devoluções")
-                        AlertOptions.Message("Atenção!", "Sua troca não contém cliente! Adicione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    AlertOptions.Message("Atenção!", "Sua compra não contém fornecedor! Adicione um fornecedor para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     return;
                 }
             }

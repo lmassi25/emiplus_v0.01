@@ -38,6 +38,26 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
+        public Task<IEnumerable<dynamic>> GetDataTableTotal(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50)
+        {
+            var search = "%" + SearchText + "%";
+
+            var query = new Model.Item().Query();
+            query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
+             .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
+             .Where("item.excluir", 0)
+             .Where("item.tipo", "Produtos")
+             .Where
+             (
+                 q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
+             );
+
+            if (!TodosRegistros)
+                query.Limit(NrRegistros);
+
+            return query.GetAsync<dynamic>();
+        }
+
         public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
         {
             Table.ColumnCount = 8;
@@ -191,10 +211,12 @@ namespace Emiplus.Controller
             Table.Columns[4].Width = 120;
 
             Table.Columns[5].Name = "Obs.";
+            Table.Columns[5].MinimumWidth = 120;
             Table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[6].Name = "Tela";
-            Table.Columns[6].Width = 120;
+            Table.Columns[6].MinimumWidth = 120;
+            Table.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Columns[7].Name = "Pedido";
             Table.Columns[7].Width = 50;

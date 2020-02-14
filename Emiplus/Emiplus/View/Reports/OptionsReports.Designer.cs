@@ -188,7 +188,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 17);
             this.label2.TabIndex = 559;
-            this.label2.Text = "Nr de registros";
+            this.label2.Text = "N° de registros";
             // 
             // nrRegistros
             // 
