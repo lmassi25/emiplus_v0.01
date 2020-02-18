@@ -50,6 +50,8 @@ namespace Emiplus.View.Common
                     var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
                     if (response["status"] == "OK")
                         await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+                    else
+                        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
                 }
             }
 
@@ -73,6 +75,8 @@ namespace Emiplus.View.Common
                         var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
                         if (response["status"] == "OK")
                             await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+                        else
+                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
                     }
 
                     // atualiza online (UPDATE -> CREATED)
@@ -129,6 +133,7 @@ namespace Emiplus.View.Common
             if (response["status"] == "OK")
                 return true;
 
+            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
             return false;
         }
 

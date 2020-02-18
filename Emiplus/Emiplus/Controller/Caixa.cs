@@ -63,7 +63,7 @@ namespace Emiplus.Controller
 
         public double SumVendasMedia(int idCaixa)
         {
-            if (SumVendasTotal(idCaixa) == 0 || SumVendasTotal(idCaixa) == 0)
+            if (SumVendasTotal(idCaixa) == 0)
                 return 0;
 
             return Validation.Round(SumVendasTotal(idCaixa) / SumVendasGeradas(idCaixa));
