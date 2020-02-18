@@ -235,6 +235,27 @@ namespace Emiplus.Data.Helpers
             return data;
         }
 
+        public static DateTime ConvertStringDateTime(object date)
+        {
+            if (date == null)
+                return Convert.ToDateTime("01/01/0001");
+
+            if (String.IsNullOrEmpty(date.ToString()))
+                return Convert.ToDateTime("01/01/0001");
+
+            if (date.ToString().IndexOf("/") > 0)
+                try
+                {
+                    return Convert.ToDateTime(date);
+                }
+                catch (Exception)
+                {
+                    return Convert.ToDateTime("01/01/0001");
+                }
+            else
+                return Convert.ToDateTime("01/01/0001");
+        }
+
         public static string DateNowToSql()
         {
             return DateTime.Now.ToString("yyyy-MM-dd", Program.cultura);

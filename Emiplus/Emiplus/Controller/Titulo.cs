@@ -118,7 +118,13 @@ namespace Emiplus.Controller
                 return false;
 
             if (!String.IsNullOrEmpty(inicio))
-                vencimento = Convert.ToDateTime(inicio);
+                vencimento = Validation.ConvertStringDateTime(inicio);
+
+            if (vencimento.ToString().Contains("01/01/0001"))
+            {
+                Alert.Message("Opss", "Data inválida", Alert.AlertType.error);
+                return false;
+            }   
 
             //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
             if (parcela.IndexOf("+") > 0)

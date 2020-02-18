@@ -417,7 +417,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 ClearForms();
                 BuscarProduto.Select();
 
-                if (_mNota != null && !String.IsNullOrEmpty(_mNota.Status))
+                if (_mNota.Status != "Pendente")
                 {
                     progress5.Visible = false;
                     pictureBox1.Visible = false;

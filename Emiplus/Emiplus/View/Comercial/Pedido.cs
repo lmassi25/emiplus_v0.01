@@ -66,7 +66,7 @@ namespace Emiplus.View.Comercial
                     //label13.Visible = false;
                     break;
 
-                case "Devoluções":
+                case "Trocas":
                     label2.Text = "Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
                     break;
 
