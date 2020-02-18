@@ -226,25 +226,31 @@ namespace Emiplus.View.Produtos
             {
                 foreach (DataGridViewRow item in GridListaProdutos.Rows)
                 {
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    {
+                        if ((bool)item.Cells["Selecione"].Value == false)
+                        {
+                            item.Cells["Selecione"].Value = true;
+                            btnRemover.Visible = true;
+                            btnEditAll.Visible = true;
+                            btnEditar.Enabled = false;
+                            btnAdicionar.Enabled = false;
+                        }
+                    }
+                    else
                     {
                         item.Cells["Selecione"].Value = false;
-                        btnMarcarCheckBox.Text = "Marcar Todos";
                         btnRemover.Visible = false;
                         btnEditAll.Visible = false;
                         btnEditar.Enabled = true;
                         btnAdicionar.Enabled = true;
                     }
-                    else
-                    {
-                        item.Cells["Selecione"].Value = true;
-                        btnMarcarCheckBox.Text = "Desmarcar Todos";
-                        btnRemover.Visible = true;
-                        btnEditAll.Visible = true;
-                        btnEditar.Enabled = false;
-                        btnAdicionar.Enabled = false;
-                    }
                 }
+
+                if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    btnMarcarCheckBox.Text = "Desmarcar Todos";
+                else
+                    btnMarcarCheckBox.Text = "Marcar Todos";
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");

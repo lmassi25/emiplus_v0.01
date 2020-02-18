@@ -219,23 +219,29 @@ namespace Emiplus.View.Comercial
             {
                 foreach (DataGridViewRow item in GridLista.Rows)
                 {
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    {
+                        if ((bool)item.Cells["Selecione"].Value == false)
+                        {
+                            item.Cells["Selecione"].Value = true;
+                            btnRemover.Visible = true;
+                            btnEditar.Enabled = false;
+                            btnAdicionar.Enabled = false;
+                        }
+                    }
+                    else
                     {
                         item.Cells["Selecione"].Value = false;
-                        btnMarcarCheckBox.Text = "Marcar Todos";
                         btnRemover.Visible = false;
                         btnEditar.Enabled = true;
                         btnAdicionar.Enabled = true;
                     }
-                    else
-                    {
-                        item.Cells["Selecione"].Value = true;
-                        btnMarcarCheckBox.Text = "Desmarcar Todos";
-                        btnRemover.Visible = true;
-                        btnEditar.Enabled = false;
-                        btnAdicionar.Enabled = false;
-                    }
                 }
+
+                if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    btnMarcarCheckBox.Text = "Desmarcar Todos";
+                else
+                    btnMarcarCheckBox.Text = "Marcar Todos";
             };
 
             btnRemover.Click += (s, e) =>
