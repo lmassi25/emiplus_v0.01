@@ -1283,6 +1283,14 @@ namespace Emiplus.Controller
                         nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
                         assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
 
+                        _nota.Tipo = tipo;
+                        _nota.Criado = DateTime.Now;
+                        _nota.Status = "Autorizada";
+                        _nota.nr_Nota = nr_Nota;
+                        _nota.ChaveDeAcesso = ChaveDeAcesso;
+                        _nota.assinatura_qrcode = assinatura_qrcode;
+                        _nota.Save(_nota, false);
+
                         var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
                         doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
 
@@ -1293,22 +1301,6 @@ namespace Emiplus.Controller
                         doc.Save(_path_autorizada + "\\bkp\\" + ChaveDeAcesso + ".xml");
 
                         _msg = "Emitido com sucesso + conteudo notas";
-                        _nota.Tipo = tipo;
-                        _nota.Criado = DateTime.Now;
-                        _nota.Status = "Autorizada";
-                        _nota.nr_Nota = nr_Nota;
-                        _nota.ChaveDeAcesso = ChaveDeAcesso;
-                        _nota.assinatura_qrcode = assinatura_qrcode;
-                        _nota.Save(_nota, false);
-
-                        //try
-                        //{
-                        //    //////------------------------
-                        //    //_msg = RequestImport(Base64ToString(Sep_Delimitador('|', 6, _msg)));
-                        //    //////------------------------
-                        //}
-                        //catch (Exception ex)
-                        //{ }                       
                     }
 
                     break;

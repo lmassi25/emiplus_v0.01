@@ -50,6 +50,9 @@
             this.btnControlarEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Trocas_01 = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -217,7 +220,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(32, 152);
+            this.label4.Location = new System.Drawing.Point(32, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 25);
             this.label4.TabIndex = 525;
@@ -229,7 +232,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(51, 191);
+            this.label15.Location = new System.Drawing.Point(51, 256);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(230, 17);
             this.label15.TabIndex = 527;
@@ -261,7 +264,7 @@
             this.retomarVendaInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.retomarVendaInicio.FalseTextToggle = "Não";
             this.retomarVendaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.retomarVendaInicio.Location = new System.Drawing.Point(287, 189);
+            this.retomarVendaInicio.Location = new System.Drawing.Point(287, 252);
             this.retomarVendaInicio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.retomarVendaInicio.Name = "retomarVendaInicio";
             this.retomarVendaInicio.ProgressImage = null;
@@ -283,7 +286,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.White;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(174, 271);
+            this.pictureBox11.Location = new System.Drawing.Point(174, 336);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(15, 15);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -296,7 +299,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(51, 269);
+            this.label1.Location = new System.Drawing.Point(51, 334);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 552;
@@ -336,7 +339,7 @@
             this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
             this.txtLimiteDesconto.ImageVisible = false;
             this.txtLimiteDesconto.ImageWidth = 35;
-            this.txtLimiteDesconto.Location = new System.Drawing.Point(54, 290);
+            this.txtLimiteDesconto.Location = new System.Drawing.Point(54, 355);
             this.txtLimiteDesconto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.txtLimiteDesconto.Name = "txtLimiteDesconto";
             this.txtLimiteDesconto.PasswordChar = '\0';
@@ -385,7 +388,7 @@
             this.btnControlarEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnControlarEstoque.FalseTextToggle = "Não";
             this.btnControlarEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnControlarEstoque.Location = new System.Drawing.Point(200, 229);
+            this.btnControlarEstoque.Location = new System.Drawing.Point(200, 294);
             this.btnControlarEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnControlarEstoque.Name = "btnControlarEstoque";
             this.btnControlarEstoque.ProgressImage = null;
@@ -408,7 +411,7 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(51, 231);
+            this.label7.Location = new System.Drawing.Point(51, 296);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(124, 17);
             this.label7.TabIndex = 554;
@@ -418,12 +421,79 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(174, 234);
+            this.pictureBox1.Location = new System.Drawing.Point(174, 299);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 556;
             this.pictureBox1.TabStop = false;
+            // 
+            // Trocas_01
+            // 
+            this.Trocas_01.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Trocas_01.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Trocas_01.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Trocas_01.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.Border.HoverVisible = true;
+            this.Trocas_01.Border.Rounding = 20;
+            this.Trocas_01.Border.Thickness = 1;
+            this.Trocas_01.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Trocas_01.Border.Visible = true;
+            this.Trocas_01.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.ButtonBorder.HoverVisible = true;
+            this.Trocas_01.ButtonBorder.Rounding = 18;
+            this.Trocas_01.ButtonBorder.Thickness = 1;
+            this.Trocas_01.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Trocas_01.ButtonBorder.Visible = true;
+            this.Trocas_01.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Trocas_01.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Trocas_01.ButtonSize = new System.Drawing.Size(20, 20);
+            this.Trocas_01.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Trocas_01.FalseTextToggle = "Não";
+            this.Trocas_01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.Trocas_01.Location = new System.Drawing.Point(229, 187);
+            this.Trocas_01.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Trocas_01.Name = "Trocas_01";
+            this.Trocas_01.ProgressImage = null;
+            this.Trocas_01.Size = new System.Drawing.Size(58, 25);
+            this.Trocas_01.TabIndex = 559;
+            this.Trocas_01.Text = "visualToggle1";
+            this.Trocas_01.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Trocas_01.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Trocas_01.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Trocas_01.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Trocas_01.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Trocas_01.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Trocas_01.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Trocas_01.Toggled = true;
+            this.Trocas_01.TrueTextToggle = "Sim";
+            this.Trocas_01.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label9.Location = new System.Drawing.Point(32, 152);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 25);
+            this.label9.TabIndex = 557;
+            this.label9.Text = "Trocas";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(51, 191);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(172, 17);
+            this.label10.TabIndex = 558;
+            this.label10.Text = "Permitir Trocas sem Cliente";
             // 
             // Comercial
             // 
@@ -432,6 +502,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.Trocas_01);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnControlarEstoque);
             this.Controls.Add(this.label7);
@@ -481,5 +554,8 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle btnControlarEstoque;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle Trocas_01;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

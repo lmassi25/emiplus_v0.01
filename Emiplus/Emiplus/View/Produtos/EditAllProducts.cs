@@ -28,11 +28,17 @@ namespace Emiplus.View.Produtos
 
         public static List<int> listProducts = new List<int>();
 
+        public static bool FormOpen { get; set; }
+
         public EditAllProducts()
         {
             InitializeComponent();
+
+            FormOpen = true;
+
             Eventos();
         }
+
         private void SetHeadersTable(DataGridView Table)
         {
             Table.ColumnCount = 6;
@@ -103,6 +109,32 @@ namespace Emiplus.View.Produtos
                 Fornecedor.DisplayMember = "NOME";
                 Fornecedor.ValueMember = "ID";
             }
+        }
+        
+        private void LoadImpostoOne()
+        {
+            impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (impostos.Count() > 0)
+            {
+                ImpostoNFE.DataSource = impostos;
+                ImpostoNFE.DisplayMember = "NOME";
+                ImpostoNFE.ValueMember = "ID";
+            }
+
+            ImpostoNFE.SelectedValue = 0;
+        }
+
+        private void LoadImpostoTwo()
+        {
+            impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (impostos2.Count() > 0)
+            {
+                ImpostoCFE.DataSource = impostos2;
+                ImpostoCFE.DisplayMember = "NOME";
+                ImpostoCFE.ValueMember = "ID";
+            }
+
+            ImpostoCFE.SelectedValue = 0;
         }
 
         private void Start()
@@ -211,7 +243,7 @@ namespace Emiplus.View.Produtos
             {
                 case Keys.Escape:
                     Close();
-                    break;
+                    break;                
             }
         }
 
@@ -316,6 +348,37 @@ namespace Emiplus.View.Produtos
                 Start();
 
                 await SetContentTableAsync(GridListaProdutos);
+            };
+            
+            btnAddImpostoOne.Click += (s, e) =>
+            {
+                Impostos.idImpSelected = 0;
+                AddImpostos f = new AddImpostos();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadImpostoOne();
+                    LoadImpostoTwo();
+                }                    
+            };
+
+            btnAddImpostoTwo.Click += (s, e) =>
+            {
+                Impostos.idImpSelected = 0;
+                AddImpostos f = new AddImpostos();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadImpostoOne();
+                    LoadImpostoTwo();
+                }
+            };
+
+            FormClosing += (s, e) =>
+            {
+                FormOpen = false;
             };
         }
     }

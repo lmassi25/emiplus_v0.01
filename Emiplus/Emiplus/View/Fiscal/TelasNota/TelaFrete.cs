@@ -125,7 +125,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                     _mPedido.Id = _mNota.id_pedido;
                     _mPedido.Id_Transportadora = PedidoModalTransportadora.Id;
-                    _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedIndex);
+                    _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedValue);
                     _mPedido.Volumes_Frete = volumes.Text;
                     _mPedido.PesoLiq_Frete = pesoLiquido.Text;
                     _mPedido.PesoBruto_Frete = pesoBruto.Text;
@@ -144,7 +144,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     return;
 
                 _mPedido.Id = _mNota.id_pedido;
-                _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedIndex);
+                _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedValue);
                 _mPedido.Volumes_Frete = volumes.Text;
                 _mPedido.PesoLiq_Frete = pesoLiquido.Text;
                 _mPedido.PesoBruto_Frete = pesoBruto.Text;

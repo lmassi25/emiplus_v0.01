@@ -21,6 +21,7 @@ namespace Emiplus.View.Comercial
         private Model.Pessoa _mCliente = new Model.Pessoa();
         private Model.Titulo _mTitulo = new Model.Titulo();
         private bool TelaESC { get; set; }
+        private bool recebimentos { get; set; }
 
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
@@ -118,9 +119,17 @@ namespace Emiplus.View.Comercial
             }
 
             if (_controllerTitulo.GetLancados(IdPedido) > 0)
+            {
                 Desconto.Enabled = false;
+                Acrescimo.Enabled = false;
+                Devolucao.Enabled = false;
+            }
             else
+            {
                 Desconto.Enabled = true;
+                Acrescimo.Enabled = true;
+                Devolucao.Enabled = true;
+            }
 
             if (aPagar <= 0)
             {
@@ -128,6 +137,14 @@ namespace Emiplus.View.Comercial
                 aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
                 visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
+                recebimentos = false;
+                Dinheiro.Enabled = false;
+                Cheque.Enabled = false;
+                Debito.Enabled = false;
+                Credito.Enabled = false;
+                Crediario.Enabled = false;
+                Boleto.Enabled = false;
+
                 Refresh();
             }
             else
@@ -136,6 +153,14 @@ namespace Emiplus.View.Comercial
                 aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
                 visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
+                recebimentos = true;
+                Dinheiro.Enabled = true;
+                Cheque.Enabled = true;
+                Debito.Enabled = true;
+                Credito.Enabled = true;
+                Crediario.Enabled = true;
+                Boleto.Enabled = true;
+
                 Refresh();
             }
         }
@@ -216,6 +241,9 @@ namespace Emiplus.View.Comercial
 
         private void JanelasRecebimento(string formaPgto)
         {
+            if (!recebimentos)
+                return;
+
             if (!CheckCaixa())
                 return;
 

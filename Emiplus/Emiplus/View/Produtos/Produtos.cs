@@ -54,6 +54,9 @@ namespace Emiplus.View.Produtos
 
         private void EditProduct(bool create = false)
         {
+            if (EditAllProducts.FormOpen)
+                return;
+
             if (create)
             {
                 idPdtSelecionado = 0;
@@ -358,12 +361,16 @@ namespace Emiplus.View.Produtos
             var f = new OptionsReports();
             if (f.ShowDialog() != DialogResult.OK)
                 return;
-                
-            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
 
+            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
+            double totalcompras = 0, totalvendas = 0, totalestoque = 0;
             ArrayList data = new ArrayList();
             foreach (var item in dados)
             {
+                totalcompras = totalcompras + (Validation.ConvertToDouble(item.VALORCOMPRA) * Validation.ConvertToDouble(item.ESTOQUEATUAL));
+                totalvendas = totalvendas + (Validation.ConvertToDouble(item.VALORVENDA) * Validation.ConvertToDouble(item.ESTOQUEATUAL));
+                totalestoque = totalestoque + (Validation.ConvertToDouble(item.ESTOQUEATUAL));
+
                 data.Add(new
                 {
                     ID = item.ID,
@@ -385,7 +392,10 @@ namespace Emiplus.View.Produtos
                 Data = data,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
                 Logo = Settings.Default.empresa_logo,
-                Emissao = DateTime.Now.ToString("dd/MM/yyyy")
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                CUSTO = Validation.FormatPrice(totalcompras),
+                VENDA = Validation.FormatPrice(totalvendas),
+                ESTOQUE = totalestoque
             }));
 
             Browser.htmlRender = render;
