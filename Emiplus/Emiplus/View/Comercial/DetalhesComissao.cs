@@ -53,7 +53,7 @@ namespace Emiplus.View.Comercial
                .Where("criado", "<=", Validation.ConvertDateToSql(dataFinal.Text, true)).FirstOrDefault();
             totalVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(Total.TOTAL), true);
 
-            double VlrComissao = Usuario.Comissao / 100.0 * Validation.ConvertToDouble(Total.TOTAL);
+            double VlrComissao = Validation.ConvertToDouble(Total.TOTAL) * (Usuario.Comissao / 100.0);
             totalComissao.Text = Validation.FormatPrice(VlrComissao, true);
         }
 
