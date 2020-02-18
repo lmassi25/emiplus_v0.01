@@ -609,17 +609,23 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 foreach (DataGridViewRow item in GridLista.Rows)
                 {
-                    if ((bool)item.Cells["Importar"].Value == true)
+                    if (btnMarcarCheckBox.Text == "Marcar Todos")
                     {
-                        item.Cells["Importar"].Value = false;
-                        btnMarcarCheckBox.Text = "Marcar Todos";
+                        if ((bool)item.Cells["Selecione"].Value == false)
+                        {
+                            item.Cells["Selecione"].Value = true;
+                        }
                     }
                     else
                     {
-                        item.Cells["Importar"].Value = true;
-                        btnMarcarCheckBox.Text = "Desmarcar Todos";
+                        item.Cells["Selecione"].Value = false;
                     }
                 }
+
+                if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    btnMarcarCheckBox.Text = "Desmarcar Todos";
+                else
+                    btnMarcarCheckBox.Text = "Marcar Todos";
             };
 
             Back.Click += (s, e) => Close();
