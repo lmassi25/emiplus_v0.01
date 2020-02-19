@@ -373,7 +373,7 @@ namespace Emiplus.View.Common
                 BackupAutomatico backup = new BackupAutomatico();
                 backup.StartBackup();
                 backup.BackupLocalDocuments();
-                //backup.StartBackupCupom();
+                backup.StartBackupCupom();
 
                 GerarTitulosRecorrentes();
             };
