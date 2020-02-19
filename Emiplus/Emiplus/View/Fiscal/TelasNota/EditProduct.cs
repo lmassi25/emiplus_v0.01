@@ -189,6 +189,8 @@ namespace Emiplus.View.Fiscal.TelasNota
                 valorUnitario.Text = Validation.FormatPrice(itemPedido.ValorVenda);
                 valorDesconto.Text = Validation.FormatPrice(itemPedido.DescontoItem);
                 valorFrete.Text = Validation.FormatPrice(itemPedido.Frete);
+                valorSeguro.Text = Validation.FormatPrice(itemPedido.Seguro);
+                vlrDespesa.Text = Validation.FormatPrice(itemPedido.Despesa);
                 valorTotal.Text = Validation.FormatPrice(itemPedido.Total);
 
                 Icms.SelectedValue = itemPedido.Icms != null ? itemPedido.Icms : "";
@@ -250,6 +252,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             itemPedido.ValorCompra = Validation.ConvertToDouble(valorUnitario.Text);
             itemPedido.DescontoItem = Validation.ConvertToDouble(valorDesconto.Text);
             itemPedido.Frete = Validation.ConvertToDouble(valorFrete.Text);
+            itemPedido.Seguro = Validation.ConvertToDouble(valorSeguro.Text);
+            itemPedido.Despesa = Validation.ConvertToDouble(vlrDespesa.Text);
             itemPedido.Total = Validation.ConvertToDouble(valorTotal.Text);
 
             itemPedido.Icms = Icms.SelectedValue != null ? Icms.SelectedValue.ToString() : "";
@@ -320,6 +324,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             valorUnitario.TextChanged += new EventHandler(Masks.MaskPriceEvent);
             valorDesconto.TextChanged += new EventHandler(Masks.MaskPriceEvent);
             valorFrete.TextChanged += new EventHandler(Masks.MaskPriceEvent);
+            valorSeguro.TextChanged += new EventHandler(Masks.MaskPriceEvent);
+            vlrDespesa.TextChanged += new EventHandler(Masks.MaskPriceEvent);
             valorTotal.TextChanged += new EventHandler(Masks.MaskPriceEvent);
 
             icmsaliq.TextChanged += new EventHandler(Masks.MaskPriceEvent);

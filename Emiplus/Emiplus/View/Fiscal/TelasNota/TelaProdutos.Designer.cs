@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -38,36 +38,36 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.totalNfe = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.vlrICMSST = new System.Windows.Forms.Label();
+            this.baseICMS = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ICMSST = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.vlrIPI = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.vlrICMS = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.vlrTributos = new System.Windows.Forms.Label();
+            this.vlrPIS = new System.Windows.Forms.Label();
+            this.vlrCOFINS = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.descontoNfe = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.vlrProdutos = new System.Windows.Forms.Label();
+            this.vlrSeguro = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.freteNfe = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.label7 = new System.Windows.Forms.Label();
+            this.vlrDespesas = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.step3 = new System.Windows.Forms.PictureBox();
@@ -98,7 +98,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
+            this.qtdItens = new System.Windows.Forms.Label();
             this.BuscarProduto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
@@ -254,17 +254,17 @@
             this.label36.TabIndex = 250;
             this.label36.Text = "Valor Total NF-e:";
             // 
-            // label35
+            // totalNfe
             // 
-            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label35.Location = new System.Drawing.Point(897, 548);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(85, 19);
-            this.label35.TabIndex = 251;
-            this.label35.Text = "0,00";
+            this.totalNfe.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.totalNfe.BackColor = System.Drawing.Color.Transparent;
+            this.totalNfe.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalNfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.totalNfe.Location = new System.Drawing.Point(897, 548);
+            this.totalNfe.Name = "totalNfe";
+            this.totalNfe.Size = new System.Drawing.Size(85, 19);
+            this.totalNfe.TabIndex = 251;
+            this.totalNfe.Text = "0,00";
             // 
             // label12
             // 
@@ -279,31 +279,31 @@
             this.label12.TabIndex = 254;
             this.label12.Text = "Base cálc ICMS:";
             // 
-            // label17
+            // vlrICMSST
             // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(150, 556);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(85, 17);
-            this.label17.TabIndex = 261;
-            this.label17.Text = "0,00";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrICMSST.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrICMSST.BackColor = System.Drawing.Color.Transparent;
+            this.vlrICMSST.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrICMSST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrICMSST.Location = new System.Drawing.Point(150, 556);
+            this.vlrICMSST.Name = "vlrICMSST";
+            this.vlrICMSST.Size = new System.Drawing.Size(85, 17);
+            this.vlrICMSST.TabIndex = 261;
+            this.vlrICMSST.Text = "0,00";
+            this.vlrICMSST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // baseICMS
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(150, 481);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 17);
-            this.label11.TabIndex = 255;
-            this.label11.Text = "0,00";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.baseICMS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.baseICMS.BackColor = System.Drawing.Color.Transparent;
+            this.baseICMS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseICMS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.baseICMS.Location = new System.Drawing.Point(150, 481);
+            this.baseICMS.Name = "baseICMS";
+            this.baseICMS.Size = new System.Drawing.Size(85, 17);
+            this.baseICMS.TabIndex = 255;
+            this.baseICMS.Text = "0,00";
+            this.baseICMS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
             // 
@@ -331,18 +331,18 @@
             this.label14.TabIndex = 256;
             this.label14.Text = "Valor ICMS:";
             // 
-            // label15
+            // ICMSST
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(150, 531);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(85, 17);
-            this.label15.TabIndex = 259;
-            this.label15.Text = "0,00";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ICMSST.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ICMSST.BackColor = System.Drawing.Color.Transparent;
+            this.ICMSST.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ICMSST.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ICMSST.Location = new System.Drawing.Point(150, 531);
+            this.ICMSST.Name = "ICMSST";
+            this.ICMSST.Size = new System.Drawing.Size(85, 17);
+            this.ICMSST.TabIndex = 259;
+            this.ICMSST.Text = "0,00";
+            this.ICMSST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label16
             // 
@@ -371,18 +371,18 @@
             this.label20.Text = "Valor IPI:";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label19
+            // vlrIPI
             // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(391, 481);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 17);
-            this.label19.TabIndex = 263;
-            this.label19.Text = "0,00";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrIPI.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrIPI.BackColor = System.Drawing.Color.Transparent;
+            this.vlrIPI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrIPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrIPI.Location = new System.Drawing.Point(391, 481);
+            this.vlrIPI.Name = "vlrIPI";
+            this.vlrIPI.Size = new System.Drawing.Size(68, 17);
+            this.vlrIPI.TabIndex = 263;
+            this.vlrIPI.Text = "0,00";
+            this.vlrIPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label22
             // 
@@ -398,18 +398,18 @@
             this.label22.Text = "Valor PIS:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label13
+            // vlrICMS
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(150, 506);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 17);
-            this.label13.TabIndex = 257;
-            this.label13.Text = "0,00";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrICMS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrICMS.BackColor = System.Drawing.Color.Transparent;
+            this.vlrICMS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrICMS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrICMS.Location = new System.Drawing.Point(150, 506);
+            this.vlrICMS.Name = "vlrICMS";
+            this.vlrICMS.Size = new System.Drawing.Size(85, 17);
+            this.vlrICMS.TabIndex = 257;
+            this.vlrICMS.Text = "0,00";
+            this.vlrICMS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label24
             // 
@@ -425,44 +425,44 @@
             this.label24.Text = "Valor COFINS:";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
+            // vlrTributos
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(391, 556);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 253;
-            this.label2.Text = "0,00";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrTributos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrTributos.BackColor = System.Drawing.Color.Transparent;
+            this.vlrTributos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrTributos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrTributos.Location = new System.Drawing.Point(391, 556);
+            this.vlrTributos.Name = "vlrTributos";
+            this.vlrTributos.Size = new System.Drawing.Size(68, 17);
+            this.vlrTributos.TabIndex = 253;
+            this.vlrTributos.Text = "0,00";
+            this.vlrTributos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label21
+            // vlrPIS
             // 
-            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label21.Location = new System.Drawing.Point(391, 506);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(68, 17);
-            this.label21.TabIndex = 265;
-            this.label21.Text = "0,00";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrPIS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrPIS.BackColor = System.Drawing.Color.Transparent;
+            this.vlrPIS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrPIS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrPIS.Location = new System.Drawing.Point(391, 506);
+            this.vlrPIS.Name = "vlrPIS";
+            this.vlrPIS.Size = new System.Drawing.Size(68, 17);
+            this.vlrPIS.TabIndex = 265;
+            this.vlrPIS.Text = "0,00";
+            this.vlrPIS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label23
+            // vlrCOFINS
             // 
-            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(391, 531);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(68, 17);
-            this.label23.TabIndex = 267;
-            this.label23.Text = "0,00";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.vlrCOFINS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrCOFINS.BackColor = System.Drawing.Color.Transparent;
+            this.vlrCOFINS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrCOFINS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrCOFINS.Location = new System.Drawing.Point(391, 531);
+            this.vlrCOFINS.Name = "vlrCOFINS";
+            this.vlrCOFINS.Size = new System.Drawing.Size(68, 17);
+            this.vlrCOFINS.TabIndex = 267;
+            this.vlrCOFINS.Text = "0,00";
+            this.vlrCOFINS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -504,17 +504,17 @@
             this.label30.TabIndex = 273;
             this.label30.Text = "Valor Desconto:";
             // 
-            // label29
+            // descontoNfe
             // 
-            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label29.Location = new System.Drawing.Point(621, 505);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(85, 17);
-            this.label29.TabIndex = 274;
-            this.label29.Text = "0,00";
+            this.descontoNfe.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.descontoNfe.BackColor = System.Drawing.Color.Transparent;
+            this.descontoNfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descontoNfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.descontoNfe.Location = new System.Drawing.Point(621, 505);
+            this.descontoNfe.Name = "descontoNfe";
+            this.descontoNfe.Size = new System.Drawing.Size(85, 17);
+            this.descontoNfe.TabIndex = 274;
+            this.descontoNfe.Text = "0,00";
             // 
             // label28
             // 
@@ -529,29 +529,29 @@
             this.label28.TabIndex = 271;
             this.label28.Text = "Valor Seguro:";
             // 
-            // label33
+            // vlrProdutos
             // 
-            this.label33.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label33.Location = new System.Drawing.Point(898, 522);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(85, 19);
-            this.label33.TabIndex = 278;
-            this.label33.Text = "0,00";
+            this.vlrProdutos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrProdutos.BackColor = System.Drawing.Color.Transparent;
+            this.vlrProdutos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.vlrProdutos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrProdutos.Location = new System.Drawing.Point(898, 522);
+            this.vlrProdutos.Name = "vlrProdutos";
+            this.vlrProdutos.Size = new System.Drawing.Size(85, 19);
+            this.vlrProdutos.TabIndex = 278;
+            this.vlrProdutos.Text = "0,00";
             // 
-            // label27
+            // vlrSeguro
             // 
-            this.label27.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label27.Location = new System.Drawing.Point(621, 530);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(85, 17);
-            this.label27.TabIndex = 272;
-            this.label27.Text = "0,00";
+            this.vlrSeguro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrSeguro.BackColor = System.Drawing.Color.Transparent;
+            this.vlrSeguro.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vlrSeguro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrSeguro.Location = new System.Drawing.Point(621, 530);
+            this.vlrSeguro.Name = "vlrSeguro";
+            this.vlrSeguro.Size = new System.Drawing.Size(85, 17);
+            this.vlrSeguro.TabIndex = 272;
+            this.vlrSeguro.Text = "0,00";
             // 
             // label34
             // 
@@ -579,17 +579,17 @@
             this.label26.TabIndex = 269;
             this.label26.Text = "Valor Frete:";
             // 
-            // label25
+            // freteNfe
             // 
-            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label25.Location = new System.Drawing.Point(621, 555);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(85, 17);
-            this.label25.TabIndex = 270;
-            this.label25.Text = "0,00";
+            this.freteNfe.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.freteNfe.BackColor = System.Drawing.Color.Transparent;
+            this.freteNfe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.freteNfe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.freteNfe.Location = new System.Drawing.Point(621, 555);
+            this.freteNfe.Name = "freteNfe";
+            this.freteNfe.Size = new System.Drawing.Size(85, 17);
+            this.freteNfe.TabIndex = 270;
+            this.freteNfe.Text = "0,00";
             // 
             // label32
             // 
@@ -639,17 +639,17 @@
             this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label7
+            // vlrDespesas
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(898, 496);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 19);
-            this.label7.TabIndex = 281;
-            this.label7.Text = "0,00";
+            this.vlrDespesas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.vlrDespesas.BackColor = System.Drawing.Color.Transparent;
+            this.vlrDespesas.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.vlrDespesas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.vlrDespesas.Location = new System.Drawing.Point(898, 496);
+            this.vlrDespesas.Name = "vlrDespesas";
+            this.vlrDespesas.Size = new System.Drawing.Size(85, 19);
+            this.vlrDespesas.TabIndex = 281;
+            this.vlrDespesas.Text = "0,00";
             // 
             // panel2
             // 
@@ -1248,17 +1248,17 @@
             this.label43.Text = "Itens:";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label44
+            // qtdItens
             // 
-            this.label44.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label44.BackColor = System.Drawing.Color.Transparent;
-            this.label44.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label44.Location = new System.Drawing.Point(621, 482);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(85, 17);
-            this.label44.TabIndex = 288;
-            this.label44.Text = "0,00";
+            this.qtdItens.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.qtdItens.BackColor = System.Drawing.Color.Transparent;
+            this.qtdItens.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qtdItens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.qtdItens.Location = new System.Drawing.Point(621, 482);
+            this.qtdItens.Name = "qtdItens";
+            this.qtdItens.Size = new System.Drawing.Size(85, 17);
+            this.qtdItens.TabIndex = 288;
+            this.qtdItens.Text = "0,00";
             // 
             // BuscarProduto
             // 
@@ -1343,14 +1343,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
@@ -1446,43 +1446,43 @@
             this.Controls.Add(this.btnMarcarCheckBox);
             this.Controls.Add(this.AlterarImposto);
             this.Controls.Add(this.BuscarProduto);
-            this.Controls.Add(this.label44);
+            this.Controls.Add(this.qtdItens);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.panelAvancado);
             this.Controls.Add(this.ModoRapido);
             this.Controls.Add(this.Quantidade);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.vlrDespesas);
             this.Controls.Add(this.visualSeparator1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label30);
-            this.Controls.Add(this.label29);
+            this.Controls.Add(this.descontoNfe);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.label27);
+            this.Controls.Add(this.vlrProdutos);
+            this.Controls.Add(this.vlrSeguro);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.label25);
+            this.Controls.Add(this.freteNfe);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.vlrICMSST);
+            this.Controls.Add(this.baseICMS);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.ICMSST);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.label19);
+            this.Controls.Add(this.vlrIPI);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.vlrICMS);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label23);
+            this.Controls.Add(this.vlrTributos);
+            this.Controls.Add(this.vlrPIS);
+            this.Controls.Add(this.vlrCOFINS);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label35);
+            this.Controls.Add(this.totalNfe);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label4);
@@ -1521,36 +1521,36 @@
         private System.Windows.Forms.Label label4;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Back;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label totalNfe;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label vlrICMSST;
+        private System.Windows.Forms.Label baseICMS;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label ICMSST;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label vlrIPI;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label vlrICMS;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label vlrTributos;
+        private System.Windows.Forms.Label vlrPIS;
+        private System.Windows.Forms.Label vlrCOFINS;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label descontoNfe;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label vlrProdutos;
+        private System.Windows.Forms.Label vlrSeguro;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label freteNfe;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label5;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label vlrDespesas;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox step3;
@@ -1581,7 +1581,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label qtdItens;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox BuscarProduto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView GridListaProdutos;

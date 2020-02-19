@@ -71,6 +71,8 @@
         public int id_sync { get; set; }
         public string status_sync { get; set; }
         public double Devolucao { get; set; }
+        public double Seguro { get; set; }
+        public double Despesa { get; set; }
 
         #endregion CAMPOS
 
@@ -89,7 +91,9 @@
             ICMSST = data["ICMSST"];
             COFINS = data["COFINS"];
             PIS = data["PIS"];
-            Total = (Produtos + Servicos + Frete + IPI + ICMSST) - (Desconto + Devolucao);
+            Seguro = data["SEGURO"];
+            Despesa = data["DESPESA"];
+            Total = (Produtos + Servicos + Frete + IPI + ICMSST + Seguro + Despesa) - (Desconto + Devolucao);
 
             return this;
         }
