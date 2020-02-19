@@ -45,10 +45,8 @@
         public string Ncm { get; set; } // 8 digitos
         public string Cfop { get; set; } // 4 digitos
         public string Origem { get; set; } // 1 digitos
-
         // totais
         public double ValorCompra { get; set; }
-
         public double ValorVenda { get; set; }
         public double Quantidade { get; set; }
         public string Medida { get; set; }
@@ -69,10 +67,8 @@
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStBaseComReducao { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double IcmsStAliq { get; set; }
-
         //public double IcmsSt { get; set; } // VALOR DE ICMSST DO ITEM
         public double Icmsstvlr { get; set; }
-
         public string Ipi { get; set; } // CST
         public double IpiAliq { get; set; }
         public double IpiVlr { get; set; }  // SOMA AO RESPECTIVO TOTAL // VALOR DE IPI DO ITEM
@@ -93,6 +89,8 @@
         public string Item_Pedido_Compra { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
+        public double Devolucao { get; set; } // É o resultado de DevolucaoItem
+        public double DevolucaoPedido { get; set; } // valor informado no item
 
         #endregion CAMPOS
 
@@ -315,6 +313,13 @@
             return this;
         }
 
+        public PedidoItem SomarDevolucaoTotal()
+        {
+            Devolucao = DevolucaoPedido;
+
+            return this;
+        }
+
         public double SomarProdutosTotal()
         {
             TotalVenda = Quantidade * ValorVenda;
@@ -325,9 +330,10 @@
         public double SomarTotal()
         {
             SomarDescontoTotal();
+            SomarDevolucaoTotal();
             SomarProdutosTotal();
 
-            Total = (TotalVenda + Frete) - Desconto;
+            Total = (TotalVenda + Frete) - (Desconto + Devolucao);
 
             return Total;
         }
@@ -337,6 +343,7 @@
             var queryP = Query().SelectRaw(
                 "SUM(total) AS total, " +
                 "SUM(desconto) AS desconto, " +
+                "SUM(devolucao) AS devolucao, " +
                 "SUM(totalvenda) AS totalvenda, " +
                 "SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, " +
                 "SUM(icmsvlr) AS icmsvlr, " +
@@ -353,6 +360,7 @@
             var queryS = Query().SelectRaw(
                 "SUM(total) AS total, " +
                 "SUM(desconto) AS desconto, " +
+                "SUM(devolucao) AS devolucao, " +
                 "SUM(totalvenda) AS totalvenda, " +
                 "SUM(frete) AS frete, SUM(icmsbase) AS icmsbase, " +
                 "SUM(icmsvlr) AS icmsvlr, " +
@@ -376,6 +384,7 @@
                 Somas.Add("Produtos", Validation.ConvertToDouble(data.TOTALVENDA));
                 Somas.Add("Frete", Validation.ConvertToDouble(data.FRETE));
                 Somas.Add("Desconto", Validation.ConvertToDouble(data.DESCONTO));
+                Somas.Add("Devolucao", Validation.ConvertToDouble(data.DEVOLUCAO));
                 Somas.Add("IPI", Validation.ConvertToDouble(data.IPIVLR));
                 Somas.Add("ICMSBASE", Validation.ConvertToDouble(data.ICMSBASE));
                 Somas.Add("ICMS", Validation.ConvertToDouble(data.ICMSVLR));

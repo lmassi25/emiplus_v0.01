@@ -40,7 +40,7 @@ namespace Emiplus.View.Comercial
         {
             if (idPedido > 0)
             {
-                var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
+                var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Where("excluir", "0").Get();
                 _mPedido = _mPedido.Query().Where("id", idPedido).FirstOrDefault<Model.Pedido>();
 
                 string descontoValor = string.Empty;
