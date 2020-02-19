@@ -19,28 +19,20 @@
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
-
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; }
-
         public string Voucher { get; set; }
-
         // referencia com a tabela Pessoa
         public int Cliente { get; set; }
-
         //public Pessoa Cliente { get; set; }
-
         public int Colaborador { get; set; }
-
         //public Pessoa Colaborador { get; set; }
-
         // totais
         public double Total { get; set; }
-
         public double Desconto { get; set; }
         public double Frete { get; set; }
         public double Produtos { get; set; }
@@ -78,6 +70,7 @@
         public int Venda { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
+        public double Devolucao { get; set; }
 
         #endregion CAMPOS
 
@@ -88,6 +81,7 @@
             Servicos = data["Servicos"];
             Frete = data["Frete"];
             Desconto = data["Desconto"] + data["DescontoServicos"];
+            Devolucao = data["Devolucao"];
             IPI = data["IPI"];
             ICMSBASE = data["ICMSBASE"];
             ICMS = data["ICMS"];
@@ -95,7 +89,7 @@
             ICMSST = data["ICMSST"];
             COFINS = data["COFINS"];
             PIS = data["PIS"];
-            Total = (Produtos + Servicos + Frete + IPI + ICMSST) - Desconto;
+            Total = (Produtos + Servicos + Frete + IPI + ICMSST) - (Desconto + Devolucao);
 
             return this;
         }
