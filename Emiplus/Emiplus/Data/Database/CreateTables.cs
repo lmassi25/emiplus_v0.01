@@ -14,6 +14,7 @@ namespace Emiplus.Data.Database
 
         private string _PathPadrao { get; set; }
         private string _PathLocal { get; set; }
+        private string _PathDB { get; set; }
 
         private const string _user = "sysdba";
         private const string _pass = "masterkey";
@@ -24,6 +25,7 @@ namespace Emiplus.Data.Database
         {
             _PathPadrao = IniFile.Read("Path", "LOCAL") + @"\Update\PADRAO.fdb";
             _PathLocal = IniFile.Read("Path", "LOCAL") + @"\EMIPLUS.fdb";
+            _PathDB = IniFile.Read("PathDatabase", "LOCAL") + @"\EMIPLUS.fdb";
 
             var connectPadrao = new Connect();
             connectPadrao.update = true;
@@ -37,7 +39,7 @@ namespace Emiplus.Data.Database
         private void CreateGenerator(string trigger, string tabela, string generator)
         {
             FbConnection SQLCon = new FbConnection(
-                $"character set=NONE;initial catalog=C:\\Emiplus\\EMIPLUS.fdb;user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
+                $"character set=NONE;initial catalog={_PathDB};user id={_user};data source={_host};user id={_db};Password={_pass};Pooling=true;Dialect=3"
             );
 
             FbCommand cmd;
@@ -249,7 +251,7 @@ namespace Emiplus.Data.Database
             var localGenerators = dbLocal.Select(@"SELECT RDB$GENERATOR_NAME as generator FROM Rdb$Generators WHERE RDB$GENERATOR_NAME like '" + generatorName + "%';");
             if (localGenerators.Count() == 0)
             {
-                var triggers = dbLocal.Select(@"select * from RDB$TRIGGERS where RDB$trigger_name like '%" + triggerName + "%'");
+                var triggers = dbLocal.Select(@"select * from RDB$TRIGGERS where RDB$trigger_name like '" + triggerName + "%'");
 
                 if (triggers.Count() == 0)
                 {

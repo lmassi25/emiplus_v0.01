@@ -538,19 +538,25 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 foreach (DataGridViewRow item in GridListaProdutos.Rows)
                 {
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if (btnMarcarCheckBox.Text == "Marcar Todos")
                     {
-                        item.Cells["Selecione"].Value = false;
-                        btnMarcarCheckBox.Text = "Marcar Todos";
-                        AlterarImposto.Visible = false;
+                        if ((bool)item.Cells["Selecione"].Value == false)
+                        {
+                            item.Cells["Selecione"].Value = true;
+                            AlterarImposto.Visible = true;
+                        }
                     }
                     else
                     {
-                        item.Cells["Selecione"].Value = true;
-                        btnMarcarCheckBox.Text = "Desmarcar Todos";
-                        AlterarImposto.Visible = true;
+                        item.Cells["Selecione"].Value = false;
+                        AlterarImposto.Visible = false;
                     }
                 }
+
+                if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    btnMarcarCheckBox.Text = "Desmarcar Todos";
+                else
+                    btnMarcarCheckBox.Text = "Marcar Todos";
             };
 
             GridListaProdutos.CellClick += (s, e) =>
