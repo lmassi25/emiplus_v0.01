@@ -79,10 +79,12 @@
             this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.impressora = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.btnRefreshImpressoras = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshImpressoras)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -1336,6 +1338,18 @@
             this.impressora.Watermark.Text = "Watermark text";
             this.impressora.Watermark.Visible = false;
             // 
+            // btnRefreshImpressoras
+            // 
+            this.btnRefreshImpressoras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefreshImpressoras.Image = ((System.Drawing.Image)(resources.GetObject("btnRefreshImpressoras.Image")));
+            this.btnRefreshImpressoras.Location = new System.Drawing.Point(304, 269);
+            this.btnRefreshImpressoras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRefreshImpressoras.Name = "btnRefreshImpressoras";
+            this.btnRefreshImpressoras.Size = new System.Drawing.Size(31, 32);
+            this.btnRefreshImpressoras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRefreshImpressoras.TabIndex = 516;
+            this.btnRefreshImpressoras.TabStop = false;
+            // 
             // Impressao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1343,6 +1357,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.btnRefreshImpressoras);
             this.Controls.Add(this.impressora);
             this.Controls.Add(this.visualSeparator5);
             this.Controls.Add(this.visualSeparator4);
@@ -1395,6 +1410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefreshImpressoras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1451,5 +1467,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox impressora;
+        private System.Windows.Forms.PictureBox btnRefreshImpressoras;
     }
 }

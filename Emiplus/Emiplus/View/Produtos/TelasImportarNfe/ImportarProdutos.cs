@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using Emiplus.View.Comercial;
 using SqlKata.Execution;
 using System.Collections;
 using System.ComponentModel;
@@ -395,6 +396,26 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         }
 
         /// <summary>
+        /// Janela para selecionar itens não encontrados.
+        /// </summary>
+        private void ModalItens()
+        {
+            if (collection.Lookup(BuscarProduto.Text) == 0)
+            {
+                if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
+                {
+                    PedidoModalItens.txtSearch = BuscarProduto.Text;
+                    PedidoModalItens form = new PedidoModalItens();
+                    form.TopMost = true;
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Salva os dados na datagrid
         /// </summary>
         private void SalvarProduto()
@@ -626,6 +647,28 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     btnMarcarCheckBox.Text = "Desmarcar Todos";
                 else
                     btnMarcarCheckBox.Text = "Marcar Todos";
+            };
+
+            BuscarProduto.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                    {
+                        var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                        if (item != null)
+                            BuscarProduto.Text = item.Nome;
+
+                        ModalItens();
+
+                        return;
+                    }
+
+                    if (string.IsNullOrEmpty(BuscarProduto.Text))
+                        ModalItens();
+                    else
+                        VincularProduto();
+                }
             };
 
             Back.Click += (s, e) => Close();
