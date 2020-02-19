@@ -91,6 +91,8 @@
         public string status_sync { get; set; }
         public double Devolucao { get; set; } // É o resultado de DevolucaoItem
         public double DevolucaoPedido { get; set; } // valor informado no item
+        public double Seguro { get; set; }
+        public double Despesa { get; set; }
 
         #endregion CAMPOS
 
@@ -333,7 +335,7 @@
             SomarDevolucaoTotal();
             SomarProdutosTotal();
 
-            Total = (TotalVenda + Frete) - (Desconto + Devolucao);
+            Total = (TotalVenda + Frete + Seguro) - (Desconto + Devolucao);
 
             return Total;
         }
@@ -351,6 +353,11 @@
                 "SUM(icmsstvlr) as icmsstvlr, " +
                 "SUM(ipivlr) AS ipivlr, " +
                 "SUM(pisvlr) AS pisvlr, " +
+                "SUM(seguro) AS seguro, " +
+                "SUM(despesa) AS despesa, " +
+                "SUM(federal) AS federal, " +
+                "SUM(estadual) AS estadual, " +
+                "SUM(municipal) AS municipal, " +
                 "SUM(cofinsvlr) AS cofinsvlr")
                 .Where("pedido", id)
                 .Where("tipo", "Produtos")
@@ -392,6 +399,11 @@
                 Somas.Add("ICMSST", Validation.ConvertToDouble(data.ICMSSTVLR));
                 Somas.Add("COFINS", Validation.ConvertToDouble(data.COFINSVLR));
                 Somas.Add("PIS", Validation.ConvertToDouble(data.PISVLR));
+                Somas.Add("SEGURO", Validation.ConvertToDouble(data.SEGURO));
+                Somas.Add("DESPESA", Validation.ConvertToDouble(data.DESPESA));
+                Somas.Add("FEDERAL", Validation.ConvertToDouble(data.FEDERAL));
+                Somas.Add("ESTADUAL", Validation.ConvertToDouble(data.ESTADUAL));
+                Somas.Add("MUNICIPAL", Validation.ConvertToDouble(data.MUNICIPAL));
             }
 
             for (int i = 0; i < queryS.Count(); i++)

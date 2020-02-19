@@ -84,13 +84,28 @@ namespace Emiplus.View.Fiscal.TelasNota
         /// </summary>
         private void LoadTotais()
         {
-            label44.Text = GridListaProdutos.RowCount.ToString();
+            qtdItens.Text = GridListaProdutos.RowCount.ToString();
 
-            var data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(_mNota.id_pedido));
+            Model.Pedido data = _mPedido.SaveTotais(_mPedidoItens.SumTotais(_mNota.id_pedido));
             _mPedido.Save(data);
 
-            label35.Text = Validation.FormatPrice(_mPedido.GetTotal(), false);
-            label29.Text = Validation.FormatPrice(_mPedido.GetDesconto(), false);
+            totalNfe.Text = Validation.FormatPrice(_mPedido.Total);
+            descontoNfe.Text = Validation.FormatPrice(_mPedido.Desconto);
+            freteNfe.Text = Validation.FormatPrice(_mPedido.Frete);
+            vlrSeguro.Text = Validation.FormatPrice(_mPedido.Seguro);
+            vlrProdutos.Text = Validation.FormatPrice(_mPedido.Produtos);
+
+            baseICMS.Text = Validation.FormatPrice(_mPedido.ICMSBASE);
+            vlrICMS.Text = Validation.FormatPrice(_mPedido.ICMS);
+            ICMSST.Text = Validation.FormatPrice(_mPedido.ICMSSTBASE);
+            vlrICMSST.Text = Validation.FormatPrice(_mPedido.ICMSST);
+            vlrIPI.Text = Validation.FormatPrice(_mPedido.IPI);
+            vlrPIS.Text = Validation.FormatPrice(_mPedido.PIS);
+            vlrCOFINS.Text = Validation.FormatPrice(_mPedido.COFINS);
+            vlrDespesas.Text = Validation.FormatPrice(_mPedido.Despesa);
+
+            var tributos = _mPedidoItens.SumTotais(_mNota.id_pedido);
+            vlrTributos.Text = Validation.FormatPrice(tributos["FEDERAL"] + tributos["ESTADUAL"] + tributos["MUNICIPAL"]);
         }
 
         /// <summary>
@@ -467,6 +482,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
+                        LoadTotais();
                     }
                 }
             };

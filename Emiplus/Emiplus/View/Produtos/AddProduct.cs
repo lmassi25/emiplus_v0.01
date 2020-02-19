@@ -380,6 +380,19 @@ namespace Emiplus.View.Produtos
                 Masks.MaskPrice(ref txt);
             };
 
+            btnAddCategoria.Click += (s, e) =>
+            {
+                Home.CategoriaPage = "Produtos";
+                AddCategorias f = new AddCategorias();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Categorias.DataSource = new Categoria().GetAll("Produtos");
+                    Categorias.Refresh();
+                }
+            };
+
             btnAddFornecedor.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";
@@ -482,12 +495,12 @@ namespace Emiplus.View.Produtos
             };
 
             backOn.DoWork += (s, e) =>
-             {
+            {
                  _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
                  categorias = new Categoria().GetAll("Produtos");
                  impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                  impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-             };
+            };
 
             backOn.RunWorkerCompleted += (s, e) =>
             {

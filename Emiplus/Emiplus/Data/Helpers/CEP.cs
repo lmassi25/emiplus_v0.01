@@ -30,6 +30,9 @@ namespace Emiplus.Data.Helpers
                 using (var ws = new WSCorreios.AtendeClienteClient())
                 {
                     var resposta = ws.consultaCEP(cep);
+
+                    if (resposta == null)
+                        return false;
                 }
 
                 return true;
@@ -41,13 +44,13 @@ namespace Emiplus.Data.Helpers
                     return false;
                 }
 
-                if (ex.ToString() == "CEP INVÁLIDO")
+                if (ex.ToString().Contains("CEP INVÁLIDO"))
                 {
                     Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
                     return false;
                 }
 
-                if (ex.ToString() == "CEP NAO ENCONTRADO")
+                if (ex.ToString().Contains("CEP NAO ENCONTRADO"))
                 {
                     Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
                     return false;

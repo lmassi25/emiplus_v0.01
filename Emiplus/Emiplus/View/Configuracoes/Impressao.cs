@@ -90,6 +90,12 @@ namespace Emiplus.View.Configuracoes
             pi60Bottom.Leave += (s, e) => IniFile.Write("Pimaco60Bottom", pi60Bottom.Text, "ETIQUETAS");
             pi60Left.Leave += (s, e) => IniFile.Write("Pimaco60Left", pi60Left.Text, "ETIQUETAS");
 
+            btnRefreshImpressoras.Click += (s, e) =>
+            {
+                impressora.DataSource = Support.GetImpressoras();
+                impressora.Refresh();
+            };
+
             btnExit.Click += (s, e) => Close();
         }
     }

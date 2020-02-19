@@ -109,6 +109,7 @@
             this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.ImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.btnAddCategoria = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -137,6 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -349,6 +351,7 @@
             this.visualGroupBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
+            this.visualGroupBox1.Controls.Add(this.btnAddCategoria);
             this.visualGroupBox1.Controls.Add(this.pictureBox5);
             this.visualGroupBox1.Controls.Add(this.label22);
             this.visualGroupBox1.Controls.Add(this.Medidas);
@@ -594,7 +597,7 @@
             this.Categorias.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Categorias.Name = "Categorias";
             this.Categorias.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Categorias.Size = new System.Drawing.Size(268, 29);
+            this.Categorias.Size = new System.Drawing.Size(235, 29);
             this.Categorias.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.Categorias.TabIndex = 3;
             this.Categorias.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -2182,6 +2185,18 @@
             this.pictureBox6.TabIndex = 175;
             this.pictureBox6.TabStop = false;
             // 
+            // btnAddCategoria
+            // 
+            this.btnAddCategoria.BackColor = System.Drawing.Color.White;
+            this.btnAddCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCategoria.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCategoria.Image")));
+            this.btnAddCategoria.Location = new System.Drawing.Point(257, 105);
+            this.btnAddCategoria.Name = "btnAddCategoria";
+            this.btnAddCategoria.Size = new System.Drawing.Size(27, 27);
+            this.btnAddCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddCategoria.TabIndex = 45;
+            this.btnAddCategoria.TabStop = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2233,6 +2248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddImpostoOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategoria)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2317,5 +2333,6 @@
         private System.Windows.Forms.PictureBox btnAddImpostoTwo;
         private System.Windows.Forms.PictureBox btnAddImpostoOne;
         private System.Windows.Forms.PictureBox selecionarNCM;
+        private System.Windows.Forms.PictureBox btnAddCategoria;
     }
 }

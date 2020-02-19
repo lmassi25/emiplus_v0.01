@@ -1095,13 +1095,18 @@ namespace Emiplus.View.Comercial
                     var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir!" + Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
+                        if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                            new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Remove().Pedido();
+                        else
+                            new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
+
                         _mPedido.Remove(Id);
                         return;
                     }
 
                     e.Cancel = true;
                 }
+
                 btnFinalizado = false;
             };
         }
