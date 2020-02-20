@@ -155,7 +155,9 @@ namespace Emiplus.Data.Helpers
 
         public static void Message(string _title, string _message, AlertType type)
         {
-            new Alert(_title, _message, type).Show();
+            var message = new Alert(_title, _message, type);
+            message.TopMost = true;
+            message.Show();
         }
 
         public enum AlertType

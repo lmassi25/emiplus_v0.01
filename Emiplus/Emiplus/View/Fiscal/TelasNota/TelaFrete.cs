@@ -119,6 +119,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             SelecionarTransportadora.Click += (s, e) =>
             {
                 PedidoModalTransportadora form = new PedidoModalTransportadora();
+                form.TopMost = true;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     IdTransportadora = PedidoModalTransportadora.Id;
@@ -168,7 +169,32 @@ namespace Emiplus.View.Fiscal.TelasNota
                 OpenForm.Show<TelaPagamento>(this);
             };
 
-            Back.Click += (s, e) => Close();
+            Back.Click += (s, e) =>
+            {
+                _mPedido.Id = _mNota.id_pedido;
+                _mPedido.TipoFrete = Validation.ConvertToInt32(tipo.SelectedValue);
+                _mPedido.Volumes_Frete = volumes.Text;
+                _mPedido.PesoLiq_Frete = pesoLiquido.Text;
+                _mPedido.PesoBruto_Frete = pesoBruto.Text;
+                _mPedido.Especie_Frete = especie.Text;
+                _mPedido.Marca_Frete = marca.Text;
+
+                if (!Nota.disableCampos)
+                    _mPedido.Save(_mPedido);
+
+                if (_mPedido.Id_Transportadora > 0)
+                {
+                    _mTransportadora.Id = _mPedido.Id_Transportadora;
+                    _mTransportadora.Transporte_rntc = rntc.Text;
+                    _mTransportadora.Transporte_uf = uf.Text;
+                    _mTransportadora.Transporte_placa = placa.Text;
+
+                    if (!Nota.disableCampos)
+                        _mTransportadora.Save(_mTransportadora, false);
+                }
+
+                Close();
+            };
         }
     }
 }

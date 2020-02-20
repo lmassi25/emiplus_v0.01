@@ -261,6 +261,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 f.btnSalvarLocation = 590;
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterParent;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult = DialogResult.OK;
@@ -287,6 +288,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             SelecionarCliente.Click += (s, e) =>
             {
                 PedidoModalClientes form = new PedidoModalClientes();
+                form.TopMost = true;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     GetData();
@@ -301,6 +303,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     DetailsClient.IdClient = _mPedido.Cliente;
                     DetailsClient form = new DetailsClient();
+                    form.TopMost = true;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         GetData();
@@ -325,6 +328,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             Documentos.Click += (s, e) =>
             {
                 DocumentosReferenciados form = new DocumentosReferenciados();
+                form.TopMost = true;
                 form.Show();
             };
 

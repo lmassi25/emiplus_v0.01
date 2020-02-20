@@ -627,6 +627,7 @@ namespace Emiplus.Controller
                 else
                     printer.Append("Cliente: " + _destinatario.Nome);
 
+                printer.Append("Data: " + _pedido.Criado.ToString("dd/MM/yyyy HH:mm"));
                 printer.Separator();
 
                 printer.AlignCenter();

@@ -84,6 +84,29 @@ namespace Emiplus.View.Common
                         await UpdateAsync(table, item.ID_SYNC);  // atualiza local (UPDATE -> CREATED)
                 }
             }
+
+            var dataCreated = await GetCreatedDataAsync(table);
+            if (dataCreated != null)
+            {
+                foreach (dynamic item in dataCreated)
+                {
+                    if (CheckCreated(table, item.ID_SYNC))
+                    {
+                        // inserie no banco online
+                        dynamic obj = new
+                        {
+                            token = Program.TOKEN,
+                            id_empresa = Settings.Default.empresa_unique_id,
+                            data = JsonConvert.SerializeObject(item),
+                            status_sync = "CREATED"
+                        };
+
+                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
+                        if (response["status"] == "FAIL")
+                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+                    }
+                }
+            }
         }
 
         #region Metodos geral
@@ -95,6 +118,17 @@ namespace Emiplus.View.Common
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
         {
             var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATE");
+
+            return await baseQuery.Clone().From(Table).GetAsync();
+        }
+
+        /// <summary>
+        /// Recupera os dados das tabelas do sistema local para manipulação
+        /// Função retorna os registros 'CREATED' ou 'NULL'
+        /// </summary>
+        private async Task<IEnumerable<dynamic>> GetCreatedDataAsync(string Table)
+        {
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATED");
 
             return await baseQuery.Clone().From(Table).GetAsync();
         }
@@ -180,6 +214,17 @@ namespace Emiplus.View.Common
             }
         }
 
+        private void LastSync()
+        {
+            dynamic obj = new
+            {
+                token = Program.TOKEN,
+                id_empresa = Settings.Default.empresa_unique_id
+            };
+
+            new RequestApi().URL(Program.URL_BASE + $"/api/lastsync").Content(obj, Method.POST).Response();
+        }
+
         private void Eventos()
         {
             Load += (s, e) =>
@@ -211,6 +256,9 @@ namespace Emiplus.View.Common
             {
                 if (Support.CheckForInternetConnection())
                     await RunSyncAsync("categoria");
+
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("caixa");
 
                 if (Support.CheckForInternetConnection())
                     await RunSyncAsync("caixa_mov");
@@ -253,6 +301,8 @@ namespace Emiplus.View.Common
 
                 if (Support.CheckForInternetConnection())
                     await RunSyncAsync("pedido_item");
+
+                LastSync();
             };
 
             backWork.RunWorkerCompleted += (s, e) =>

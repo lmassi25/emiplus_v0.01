@@ -66,6 +66,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 CartaCorrecaoAdd.tela = "Email";
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     CartaCorrecaoAdd.tela = "";

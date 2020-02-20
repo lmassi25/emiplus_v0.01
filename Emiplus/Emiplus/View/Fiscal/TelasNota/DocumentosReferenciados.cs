@@ -68,6 +68,7 @@ namespace Emiplus.View.Fiscal.TelasNota
             btnAdicionar.Click += (s, e) =>
             {
                 DocumentosReferenciadosAdd f = new DocumentosReferenciadosAdd();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     DataTableStart();
@@ -79,11 +80,14 @@ namespace Emiplus.View.Fiscal.TelasNota
                 var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar uma chave de acesso, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    _mNota = _mNota.FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Nota>();
-                    _mNota.Excluir = 1;
-                    _mNota.Save(_mNota, false);
+                    if (GridLista.SelectedRows.Count > 0)
+                    {
+                        _mNota = _mNota.FindById(Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Nota>();
+                        _mNota.Excluir = 1;
+                        _mNota.Save(_mNota, false);
 
-                    DataTableStart();
+                        DataTableStart();
+                    }
                 }
             };
 
