@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaProdutos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Back = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Next = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -127,7 +127,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 613);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 58);
-            this.panel1.TabIndex = 178;
+            this.panel1.TabIndex = 1;
             // 
             // Back
             // 
@@ -152,7 +152,7 @@
             this.Back.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(116, 34);
-            this.Back.TabIndex = 218;
+            this.Back.TabIndex = 1;
             this.Back.Text = "Voltar";
             this.Back.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Back.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -186,7 +186,7 @@
             this.Next.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(147, 40);
-            this.Next.TabIndex = 176;
+            this.Next.TabIndex = 0;
             this.Next.Text = "Avançar";
             this.Next.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Next.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -869,7 +869,7 @@
             this.Quantidade.ReadOnly = false;
             this.Quantidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Quantidade.Size = new System.Drawing.Size(91, 34);
-            this.Quantidade.TabIndex = 283;
+            this.Quantidade.TabIndex = 1;
             this.Quantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Quantidade.TextBoxWidth = 79;
             this.Quantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -1303,7 +1303,7 @@
             this.BuscarProduto.ReadOnly = false;
             this.BuscarProduto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.BuscarProduto.Size = new System.Drawing.Size(344, 34);
-            this.BuscarProduto.TabIndex = 289;
+            this.BuscarProduto.TabIndex = 0;
             this.BuscarProduto.TextBoxWidth = 240;
             this.BuscarProduto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.BuscarProduto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1343,14 +1343,14 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);

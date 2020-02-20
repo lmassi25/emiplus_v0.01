@@ -155,7 +155,7 @@
             this.pesoBruto.ReadOnly = false;
             this.pesoBruto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pesoBruto.Size = new System.Drawing.Size(126, 28);
-            this.pesoBruto.TabIndex = 200;
+            this.pesoBruto.TabIndex = 3;
             this.pesoBruto.TextBoxWidth = 114;
             this.pesoBruto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.pesoBruto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -227,7 +227,7 @@
             this.pesoLiquido.ReadOnly = false;
             this.pesoLiquido.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pesoLiquido.Size = new System.Drawing.Size(126, 28);
-            this.pesoLiquido.TabIndex = 198;
+            this.pesoLiquido.TabIndex = 2;
             this.pesoLiquido.TextBoxWidth = 114;
             this.pesoLiquido.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.pesoLiquido.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -299,7 +299,7 @@
             this.marca.ReadOnly = false;
             this.marca.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.marca.Size = new System.Drawing.Size(163, 28);
-            this.marca.TabIndex = 196;
+            this.marca.TabIndex = 5;
             this.marca.TextBoxWidth = 151;
             this.marca.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.marca.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -371,7 +371,7 @@
             this.especie.ReadOnly = false;
             this.especie.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.especie.Size = new System.Drawing.Size(154, 28);
-            this.especie.TabIndex = 194;
+            this.especie.TabIndex = 4;
             this.especie.TextBoxWidth = 142;
             this.especie.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.especie.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -443,7 +443,7 @@
             this.volumes.ReadOnly = false;
             this.volumes.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.volumes.Size = new System.Drawing.Size(125, 28);
-            this.volumes.TabIndex = 192;
+            this.volumes.TabIndex = 1;
             this.volumes.TextBoxWidth = 113;
             this.volumes.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.volumes.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -515,7 +515,7 @@
             this.rntc.ReadOnly = false;
             this.rntc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.rntc.Size = new System.Drawing.Size(114, 28);
-            this.rntc.TabIndex = 190;
+            this.rntc.TabIndex = 9;
             this.rntc.TextBoxWidth = 102;
             this.rntc.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.rntc.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -587,7 +587,7 @@
             this.uf.ReadOnly = false;
             this.uf.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.uf.Size = new System.Drawing.Size(89, 28);
-            this.uf.TabIndex = 188;
+            this.uf.TabIndex = 8;
             this.uf.TextBoxWidth = 77;
             this.uf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.uf.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -659,7 +659,7 @@
             this.placa.ReadOnly = false;
             this.placa.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.placa.Size = new System.Drawing.Size(126, 28);
-            this.placa.TabIndex = 186;
+            this.placa.TabIndex = 7;
             this.placa.TextBoxWidth = 114;
             this.placa.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.placa.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -712,7 +712,7 @@
             this.tipo.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tipo.Size = new System.Drawing.Size(222, 29);
             this.tipo.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.tipo.TabIndex = 183;
+            this.tipo.TabIndex = 0;
             this.tipo.TextAlignment = System.Drawing.StringAlignment.Center;
             this.tipo.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.tipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -792,7 +792,7 @@
             this.Back.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(116, 34);
-            this.Back.TabIndex = 219;
+            this.Back.TabIndex = 0;
             this.Back.Text = "Voltar";
             this.Back.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Back.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -826,7 +826,7 @@
             this.Next.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(147, 40);
-            this.Next.TabIndex = 176;
+            this.Next.TabIndex = 1;
             this.Next.Text = "Avançar";
             this.Next.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Next.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -890,7 +890,7 @@
             this.SelecionarTransportadora.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarTransportadora.Name = "SelecionarTransportadora";
             this.SelecionarTransportadora.Size = new System.Drawing.Size(222, 34);
-            this.SelecionarTransportadora.TabIndex = 208;
+            this.SelecionarTransportadora.TabIndex = 6;
             this.SelecionarTransportadora.Text = "Selecione a Transportadora";
             this.SelecionarTransportadora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SelecionarTransportadora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
