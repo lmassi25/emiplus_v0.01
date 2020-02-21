@@ -353,6 +353,7 @@ namespace Emiplus.View.Produtos
                 //_modelItem.Save(_modelItem, false);
 
                 AddEstoque f = new AddEstoque();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadEstoque();
@@ -386,6 +387,7 @@ namespace Emiplus.View.Produtos
                 AddCategorias f = new AddCategorias();
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     Categorias.DataSource = new Categoria().GetAll("Produtos");
@@ -400,6 +402,7 @@ namespace Emiplus.View.Produtos
                 Comercial.AddClientes f = new Comercial.AddClientes();
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadFornecedores();
             };
@@ -410,6 +413,7 @@ namespace Emiplus.View.Produtos
                 AddImpostos f = new AddImpostos();
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadImpostoOne();
@@ -423,6 +427,7 @@ namespace Emiplus.View.Produtos
                 AddImpostos f = new AddImpostos();
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadImpostoOne();
@@ -488,6 +493,7 @@ namespace Emiplus.View.Produtos
             selecionarNCM.Click += (s, e) =>
             {
                 ModalNCM f = new ModalNCM();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     ncm.Text = ModalNCM.NCM;

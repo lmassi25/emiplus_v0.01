@@ -159,6 +159,7 @@ namespace Emiplus.View.Comercial
             {
                 OpcoesNfeRapida.idPedido = idPedido;
                 OpcoesNfeRapida f = new OpcoesNfeRapida();
+                f.TopMost = true;
                 f.Show();
                 Hide();
             };
@@ -167,6 +168,7 @@ namespace Emiplus.View.Comercial
             {
                 Nota.Id = idPedido;
                 Nota nota = new Nota();
+                nota.TopMost = true;
                 nota.Show();
                 Hide();
             };

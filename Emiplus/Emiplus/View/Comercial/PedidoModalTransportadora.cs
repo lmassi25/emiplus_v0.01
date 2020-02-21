@@ -33,7 +33,7 @@ namespace Emiplus.View.Comercial
 
         private void FormNovoCliente()
         {
-            Id = 0;
+            Clientes.Id = 0;
             Home.pessoaPage = "Transportadoras";
             using (AddClientes f = new AddClientes()) {
                 f.btnSalvarText = "Salvar e Inserir";
@@ -46,6 +46,7 @@ namespace Emiplus.View.Comercial
                 {
                     DialogResult = DialogResult.OK;
                     Id = AddClientes.Id;
+                    Clientes.Id = 0;
                     Close();
                 }
             }

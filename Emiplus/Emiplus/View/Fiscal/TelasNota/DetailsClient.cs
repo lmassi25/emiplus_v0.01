@@ -44,6 +44,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 AddClientes.Id = IdClient;
                 IdAddress = 0;
                 AddClienteEndereco addAddr = new AddClienteEndereco();
+                addAddr.TopMost = true;
                 if (addAddr.ShowDialog() == DialogResult.OK)
                 {
                     SetFocus();
@@ -60,6 +61,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             IdAddress = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
             AddClienteEndereco form = new AddClienteEndereco();
+            form.TopMost = true;
             if (form.ShowDialog() == DialogResult.OK)
                 SetFocus();
         }
@@ -117,6 +119,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 Comercial.AddClientes f = new Comercial.AddClientes();
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();

@@ -118,6 +118,7 @@ namespace Emiplus.View.Comercial
             {
                 IdContact = 0;
                 AddClienteContato addContact = new AddClienteContato();
+                addContact.TopMost = true;
                 if (addContact.ShowDialog() == DialogResult.OK)
                 {
                     SetFocus();
@@ -134,6 +135,7 @@ namespace Emiplus.View.Comercial
 
             IdContact = Convert.ToInt32(ListaContatos.SelectedRows[0].Cells["ID"].Value);
             AddClienteContato form = new AddClienteContato();
+            form.TopMost = true;
             if (form.ShowDialog() == DialogResult.OK)
                 SetFocus();
         }
@@ -144,6 +146,7 @@ namespace Emiplus.View.Comercial
             {
                 IdAddress = 0;
                 AddClienteEndereco addAddr = new AddClienteEndereco();
+                addAddr.TopMost = true;
                 if (addAddr.ShowDialog() == DialogResult.OK)
                 {
                     SetFocus();
@@ -160,6 +163,7 @@ namespace Emiplus.View.Comercial
 
             IdAddress = Convert.ToInt32(ListaEnderecos.SelectedRows[0].Cells["ID"].Value);
             AddClienteEndereco form = new AddClienteEndereco();
+            form.TopMost = true;
             if (form.ShowDialog() == DialogResult.OK)
                 SetFocus();
         }

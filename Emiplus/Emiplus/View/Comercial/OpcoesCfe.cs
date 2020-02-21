@@ -158,6 +158,7 @@ namespace Emiplus.View.Comercial
             {
                 DetailsPedido.idPedido = idPedido;
                 DetailsPedido detailsPedido = new DetailsPedido();
+                detailsPedido.TopMost = true;
                 detailsPedido.Show();
 
                 Close();

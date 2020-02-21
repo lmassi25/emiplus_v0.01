@@ -57,6 +57,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 //Nota.disableCampos = true;
                 Nota.Id = idNota;
                 Nota nota = new Nota();
+                nota.TopMost = true;
                 nota.ShowDialog();
             };
 
@@ -133,6 +134,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _modelNota = checkNota;
 
                 CartaCorrecao cce = new CartaCorrecao();
+                cce.TopMost = true;
                 cce.Show();
 
                 Application.OpenForms["OpcoesNfeRapida"].Close();
@@ -152,6 +154,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 CartaCorrecaoAdd.tela = "Cancelar";
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     CartaCorrecaoAdd.tela = "";
@@ -178,6 +181,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 CartaCorrecaoAdd.tela = "Email";
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     CartaCorrecaoAdd.tela = "";

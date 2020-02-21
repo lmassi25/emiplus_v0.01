@@ -21,13 +21,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             var dadosTitulos = dataNfe.GetNotas();
             foreach (dynamic item in dadosTitulos)
             {
-                SetTable(item.GetPagamentos());
+                SetTable(item.GetPagamentos(), item.GetDados().Id, item.GetDados().Nr);
             }
         }
 
-        private void SetTable(dynamic dataTitulos)
+        private void SetTable(dynamic dataTitulos, string id = "", string nr = "")
         {
-            GridLista.ColumnCount = 3;
+            GridLista.ColumnCount = 5;
 
             DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
             {
@@ -49,13 +49,21 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[3].Width = 120;
             GridLista.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            GridLista.Columns[4].Name = "id";
+            GridLista.Columns[4].Visible = false;
+
+            GridLista.Columns[5].Name = "nr";
+            GridLista.Columns[5].Visible = false;
+
             foreach (dynamic item in dataTitulos)
             {
                 GridLista.Rows.Add(
                     true,
                     item.Tipo,
                     Validation.ConvertDateToForm(item.dateTime),
-                    item.Valor
+                    item.Valor,
+                    id,
+                    nr
                 );
             }
 
@@ -84,7 +92,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             Ordem = i,
                             FormaPgto = item.Cells["Forma de Pagamento"].Value.ToString(),
                             Data = item.Cells["Data"].Value.ToString(),
-                            Valor = item.Cells["Valor"].Value.ToString()
+                            Valor = item.Cells["Valor"].Value.ToString(),
+                            id = item.Cells["id"].Value.ToString(),
+                            nr = item.Cells["nr"].Value.ToString()
                         });
                     }
                 }

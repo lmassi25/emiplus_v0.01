@@ -119,6 +119,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     PedidoModalItens.txtSearch = BuscarProduto.Text;
                     using (PedidoModalItens form = new PedidoModalItens()) {
+                        form.TopMost = true;
                         if (form.ShowDialog() == DialogResult.OK)
                         {
                             BuscarProduto.Text = PedidoModalItens.NomeProduto;
@@ -479,6 +480,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     EditProduct.idPdt = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
                     EditProduct.nrItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["#"].Value);
                     EditProduct f = new EditProduct();
+                    f.TopMost = true;
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         GetDataTableItens(GridListaProdutos, _mNota.id_pedido);
@@ -531,6 +533,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if (GridListaProdutos.SelectedRows.Count > 0)
                 {
                     AlterarImposto f = new AlterarImposto();
+                    f.TopMost = true;
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         if (idImposto > 0)

@@ -147,7 +147,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         /// <param name="dataProdutos">array dos produtos</param>
         private void SetDataTable(DataGridView Table, ArrayList dataProdutos)
         {
-            Table.ColumnCount = 12;
+            Table.ColumnCount = 13;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -226,6 +226,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Table.Columns[14].Name = "Fornecedor";
             Table.Columns[14].Visible = false;
 
+            Table.Columns[15].Name = "NCM";
+            Table.Columns[15].Visible = false;
+
             Table.Rows.Clear();
 
             foreach (dynamic item in dataProdutos)
@@ -277,7 +280,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     findItem != null ? findItem.CATEGORIAID : "",
                     "0",
                     "0",
-                    item.Fornecedor
+                    item.Fornecedor,
+                    item.pdt.NCM
                 );
             }
 
@@ -464,6 +468,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             WorkerBackground.RunWorkerCompleted += (s, e) =>
             {
                 label2.Visible = false;
+                pictureBox2.Visible = false;
                 GridLista.Visible = true;
             };
 
@@ -471,6 +476,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 Refresh();
                 AutoCompleteItens();
+                pictureBox2.Visible = true;
 
                 var cat = new Model.Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
                 if (cat.Count() > 0)
@@ -491,6 +497,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     label9.Text = "Edite o produto selecionado abaixo";
                 }
 
+
+                pictureBox2.Visible = true;
                 GridLista.Visible = false;
                 WorkerBackground.RunWorkerAsync();
             };
@@ -601,6 +609,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             ValorCompra = Validation.ConvertToDouble(item.Cells["Vlr. Compra"].Value),
                             ValorVenda = Validation.ConvertToDouble(item.Cells["Vlr. Venda"].Value),
                             Fornecedor = item.Cells["Fornecedor"].Value.ToString(),
+                            NCM = item.Cells["NCM"].Value.ToString(),
                             idSync = id_sync
                         });
                     }
@@ -632,14 +641,14 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 {
                     if (btnMarcarCheckBox.Text == "Marcar Todos")
                     {
-                        if ((bool)item.Cells["Selecione"].Value == false)
+                        if ((bool)item.Cells["Importar"].Value == false)
                         {
-                            item.Cells["Selecione"].Value = true;
+                            item.Cells["Importar"].Value = true;
                         }
                     }
                     else
                     {
-                        item.Cells["Selecione"].Value = false;
+                        item.Cells["Importar"].Value = false;
                     }
                 }
 

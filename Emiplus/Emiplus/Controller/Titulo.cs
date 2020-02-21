@@ -212,7 +212,7 @@ namespace Emiplus.Controller
         {
             var data = new Model.Titulo().Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
+                .Select("titulo.id", "titulo.total", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
                 .Where("titulo.excluir", 0)
                 .Where("titulo.id_pedido", idPedido)
                 .OrderByDesc("titulo.id");
@@ -289,7 +289,7 @@ namespace Emiplus.Controller
                     item.ID,
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     new Bitmap(Properties.Resources.bin16x)
                 );
             }

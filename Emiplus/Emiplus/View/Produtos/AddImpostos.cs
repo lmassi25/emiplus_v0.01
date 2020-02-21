@@ -407,6 +407,7 @@ namespace Emiplus.View.Produtos
             addCfop.Click += (s, e) =>
             {
                 Cfops form = new Cfops();
+                form.TopMost = true;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     //    _mPedido.Id = Id;

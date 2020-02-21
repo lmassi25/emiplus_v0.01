@@ -119,11 +119,6 @@ namespace Emiplus.Controller
                         VlrCompra = item.prod.vUnCom
                     };
 
-                    //if (Produtos.Contains(obj))
-                    //{
-                    //    Produtos.
-                    //}
-
                     Produtos.Add(obj);
                 }
             }

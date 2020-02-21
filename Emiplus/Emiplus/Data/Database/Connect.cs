@@ -20,14 +20,14 @@ namespace Emiplus.Data.Database
         {
             if (update)
             {
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb"))
-                {
-                    return _path = Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb";
-                }
-
                 if (File.Exists(IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb"))
                 {
                     return _path = IniFile.Read("Path", "LOCAL") + "\\Update\\PADRAO.fdb";
+                }
+
+                if (File.Exists(Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb"))
+                {
+                    return _path = Directory.GetCurrentDirectory() + @"\Update\PADRAO.fdb";
                 }
             }
 

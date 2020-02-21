@@ -86,6 +86,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 }
 
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
+                f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     p1 = 1;

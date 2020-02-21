@@ -806,6 +806,9 @@ namespace Emiplus.Controller
 
                     #region NFE
 
+                    if (_nota.ChaveDeAcesso == null)
+                        return "";
+
                     var pdfNFE = RequestPrint(_nota.ChaveDeAcesso.Replace("CFe", ""), tipo);
                     new Log().Add("PRINTER", pdfNFE, Log.LogType.info);
 

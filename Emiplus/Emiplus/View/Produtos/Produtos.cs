@@ -369,7 +369,7 @@ namespace Emiplus.View.Produtos
                 return;
 
             IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
-            double totalcompras = 0, totalvendas = 0, totalestoque = 0;
+            double totalcompras = 0, totalvendas = 0, totalestoque = 0, sumColCusto = 0, sumVendas = 0;
             ArrayList data = new ArrayList();
             foreach (var item in dados)
             {

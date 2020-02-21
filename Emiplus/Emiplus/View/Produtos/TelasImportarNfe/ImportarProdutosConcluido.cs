@@ -71,6 +71,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.ValorCompra = item.ValorCompra;
                 _mItem.ValorVenda = item.ValorVenda;
                 _mItem.Fornecedor = Validation.ConvertToInt32(item.Fornecedor);
+                _mItem.Ncm = item.NCM ?? "";
                 _mItem.id_sync = item.idSync == 0 ? Validation.RandomSecurity() : item.idSync;
                 if (_mItem.Save(_mItem, false))
                 {

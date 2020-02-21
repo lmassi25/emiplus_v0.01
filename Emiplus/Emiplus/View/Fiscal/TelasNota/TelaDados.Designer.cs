@@ -168,7 +168,7 @@
             this.emissao.ReadOnly = false;
             this.emissao.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.emissao.Size = new System.Drawing.Size(112, 28);
-            this.emissao.TabIndex = 103;
+            this.emissao.TabIndex = 0;
             this.emissao.TextBoxWidth = 100;
             this.emissao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.emissao.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -240,7 +240,7 @@
             this.saida.ReadOnly = false;
             this.saida.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.saida.Size = new System.Drawing.Size(115, 28);
-            this.saida.TabIndex = 105;
+            this.saida.TabIndex = 1;
             this.saida.TextBoxWidth = 103;
             this.saida.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.saida.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -312,7 +312,7 @@
             this.hora.ReadOnly = false;
             this.hora.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.hora.Size = new System.Drawing.Size(89, 28);
-            this.hora.TabIndex = 107;
+            this.hora.TabIndex = 2;
             this.hora.TextBoxWidth = 77;
             this.hora.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.hora.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -365,7 +365,7 @@
             this.tipo.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.tipo.Size = new System.Drawing.Size(162, 29);
             this.tipo.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.tipo.TabIndex = 116;
+            this.tipo.TabIndex = 3;
             this.tipo.TextAlignment = System.Drawing.StringAlignment.Center;
             this.tipo.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.tipo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -434,7 +434,7 @@
             this.localDestino.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.localDestino.Size = new System.Drawing.Size(162, 29);
             this.localDestino.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.localDestino.TabIndex = 118;
+            this.localDestino.TabIndex = 5;
             this.localDestino.TextAlignment = System.Drawing.StringAlignment.Center;
             this.localDestino.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.localDestino.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -503,7 +503,7 @@
             this.finalidade.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.finalidade.Size = new System.Drawing.Size(267, 29);
             this.finalidade.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.finalidade.TabIndex = 120;
+            this.finalidade.TabIndex = 4;
             this.finalidade.TextAlignment = System.Drawing.StringAlignment.Center;
             this.finalidade.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.finalidade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -572,7 +572,7 @@
             this.naturezaOp.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.naturezaOp.Size = new System.Drawing.Size(302, 29);
             this.naturezaOp.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.naturezaOp.TabIndex = 122;
+            this.naturezaOp.TabIndex = 6;
             this.naturezaOp.TextAlignment = System.Drawing.StringAlignment.Center;
             this.naturezaOp.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.naturezaOp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -661,7 +661,7 @@
             this.infoFisco.ReadOnly = false;
             this.infoFisco.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.infoFisco.Size = new System.Drawing.Size(460, 135);
-            this.infoFisco.TabIndex = 123;
+            this.infoFisco.TabIndex = 8;
             this.infoFisco.TextBoxWidth = 448;
             this.infoFisco.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.infoFisco.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -734,7 +734,7 @@
             this.infoContribuinte.ReadOnly = false;
             this.infoContribuinte.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.infoContribuinte.Size = new System.Drawing.Size(470, 135);
-            this.infoContribuinte.TabIndex = 125;
+            this.infoContribuinte.TabIndex = 7;
             this.infoContribuinte.TextBoxWidth = 458;
             this.infoContribuinte.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.infoContribuinte.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -786,7 +786,7 @@
             this.SelecionarCliente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.SelecionarCliente.Name = "SelecionarCliente";
             this.SelecionarCliente.Size = new System.Drawing.Size(190, 34);
-            this.SelecionarCliente.TabIndex = 152;
+            this.SelecionarCliente.TabIndex = 9;
             this.SelecionarCliente.Text = "Selecione o Destinatário";
             this.SelecionarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SelecionarCliente.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -834,7 +834,7 @@
             this.Next.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(147, 40);
-            this.Next.TabIndex = 176;
+            this.Next.TabIndex = 0;
             this.Next.Text = "Avançar";
             this.Next.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Next.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -881,7 +881,7 @@
             this.Apagar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Apagar.Name = "Apagar";
             this.Apagar.Size = new System.Drawing.Size(116, 34);
-            this.Apagar.TabIndex = 219;
+            this.Apagar.TabIndex = 1;
             this.Apagar.Text = "Apagar NF-e";
             this.Apagar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.Apagar.TextStyle.Disabled = System.Drawing.Color.White;
@@ -1190,7 +1190,7 @@
             this.btnAddAddr.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnAddAddr.Name = "btnAddAddr";
             this.btnAddAddr.Size = new System.Drawing.Size(190, 34);
-            this.btnAddAddr.TabIndex = 184;
+            this.btnAddAddr.TabIndex = 10;
             this.btnAddAddr.Text = "Adicionar Endereço!";
             this.btnAddAddr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddAddr.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
