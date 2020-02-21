@@ -188,14 +188,14 @@ namespace Emiplus.View.Fiscal.TelasNota
             emissao.Text = Validation.ConvertDateToForm(_mPedido.Emissao);
             saida.Text = _mPedido.Saida.ToString() == "01/01/0001 00:00:00" ? "" : Validation.ConvertDateToForm(_mPedido.Saida);
             hora.Text = String.IsNullOrEmpty(_mPedido.HoraSaida) ? "" : _mPedido.HoraSaida;
-            finalidade.SelectedItem = _mPedido.Finalidade;
-            localDestino.SelectedItem = _mPedido.Destino;
-            tipo.SelectedItem = _mPedido.TipoNFe;
+            finalidade.SelectedValue = _mPedido.Finalidade != 0 ? _mPedido.Finalidade.ToString() : "1";
+            localDestino.SelectedValue = _mPedido.Destino != 0 ? _mPedido.Destino.ToString() : "1";
+            tipo.SelectedValue = _mPedido.TipoNFe.ToString();
             naturezaOp.SelectedItem = _mPedido.id_natureza;
             infoContribuinte.Text = _mPedido.info_contribuinte;
             infoFisco.Text = _mPedido.info_fisco;
             IdNatureza = _mPedido.id_natureza;
-
+            
             LoadNatureza();
             LoadCliente();
         }

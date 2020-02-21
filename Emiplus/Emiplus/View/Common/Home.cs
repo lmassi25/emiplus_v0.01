@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
+using Emiplus.Model;
 
 namespace Emiplus.View.Common
 {
@@ -376,7 +377,20 @@ namespace Emiplus.View.Common
                 backup.StartBackupCupom();
 
                 GerarTitulosRecorrentes();
+                LimparRegistros();
             };
+        }
+
+        private void LimparRegistros()
+        {
+            var result = new Pessoa().FindAll().Where("nome", "NOVO REGISTRO").Get<Model.Pessoa>();
+            if (result != null)
+            {
+                foreach (dynamic item in result)
+                {
+                    new Pessoa().Delete("id", item.Id);
+                }
+            }
         }
 
         private void GerarTitulosRecorrentes()
