@@ -48,7 +48,7 @@ namespace Emiplus.View.Reports
             var cats = new ArrayList();
             cats.Add(new { Id = "0", Nome = "Todas" });
 
-            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").Where("tipo", "Produtos").OrderByDesc("nome").Get();
             foreach (var item in cat)
             {
                 cats.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });

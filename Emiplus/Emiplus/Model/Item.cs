@@ -5,6 +5,7 @@ using System;
 namespace Emiplus.Model
 {
     using Data.Database;
+    using SqlKata.Execution;
     using Valit;
 
     internal class Item : Model
@@ -53,6 +54,80 @@ namespace Emiplus.Model
         public string status_sync { get; set; }
 
         #endregion CAMPOS
+        
+        public Item FromCsv(string csvLine, string tipo = "Produtos")
+        {
+            string[] values = csvLine.Split(';');
+
+            Id = 0;
+            Tipo = tipo;
+            Excluir = 0;
+            Nome = values[0];
+
+            Random rnd = new Random();
+            if (ExistsName(Nome))
+            {
+                Nome = Nome + " " + rnd.Next(1, 10);
+
+                if (ExistsName(Nome))
+                    Nome = Nome + " " + rnd.Next(1, 10);
+            }
+
+            Referencia = values[1];
+
+            if (string.IsNullOrEmpty(values[2]))
+                CodeBarras = Validation.CodeBarrasRandom();
+            else
+                CodeBarras = values[2];
+
+            if (ExistsCodeBarras(CodeBarras))
+                CodeBarras = Validation.CodeBarrasRandom();
+
+            ValorCompra = Validation.ConvertToDouble(values[3]);
+            ValorVenda = Validation.ConvertToDouble(values[4]);
+            EstoqueMinimo = Validation.ConvertToDouble(values[5]);
+            EstoqueAtual = Validation.ConvertToDouble(values[6]);
+            Medida = values[7] ?? "UN";
+            Ncm = values[8];
+            Cest = values[9];
+            Origem = values[10];
+            AliqFederal = Validation.ConvertToDouble(values[11]);
+            AliqEstadual = Validation.ConvertToDouble(values[12]);
+            AliqMunicipal = Validation.ConvertToDouble(values[13]);
+            Limite_Desconto = Validation.ConvertToDouble(values[14]);
+
+            Save(this, false);
+
+            return this;
+        }
+
+        public bool ExistsCodeBarras(string codebarras, bool importacao = true, int idItem = 0)
+        {
+            dynamic data;
+            if (importacao)
+                data = Query().Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault();
+            else
+                data = Query().Where("id", "!=", idItem).Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault();
+            
+            if (data != null)
+                return true;
+            
+            return false;
+        }
+
+        public bool ExistsName(string name, bool importacao = true, int idItem = 0)
+        {
+            dynamic data;
+            if (importacao)
+                data = Query().Where("nome", name).Where("excluir", 0).FirstOrDefault();
+            else
+                data = Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
+
+            if (data != null)
+                return true;
+
+            return false;
+        }
 
         public bool Save(Item data, bool message = true)
         {

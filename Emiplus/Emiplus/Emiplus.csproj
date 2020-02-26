@@ -502,6 +502,12 @@
     <Compile Include="View\Common\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Common\ImportarDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\ImportarDados.Designer.cs">
+      <DependentUpon>ImportarDados.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Common\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1114,6 +1120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\ImportarDados.resx">
+      <DependentUpon>ImportarDados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
