@@ -372,15 +372,14 @@ namespace Emiplus.View.Comercial
                 _mPedido.status = 1; //RECEBIMENTO PENDENTE
                 if (_mPedido.Save(_mPedido))
                 {
-                    Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+                    //Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
 
                     if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                     {
                         PedidoImpressao print = new PedidoImpressao();
-                        print.Print(Id);
+                        if (print.Print(Id))
+                            Close();
                     }
-
-                    Close();
                 }
                 else
                 {

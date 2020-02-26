@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Emiplus.Controller
 {
@@ -24,7 +25,7 @@ namespace Emiplus.Controller
         private Controller.PedidoItem _controllerPedidoItem = new Controller.PedidoItem();
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
-        public void Print(int idPedido)
+        public bool Print(int idPedido)
         {
             _modelPedido = _modelPedido.FindById(idPedido).First<Model.Pedido>();
 
@@ -138,7 +139,14 @@ namespace Emiplus.Controller
 
             Browser.htmlRender = render;
             var f = new Browser();
-            f.ShowDialog();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

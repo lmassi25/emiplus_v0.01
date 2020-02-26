@@ -44,6 +44,7 @@ namespace Emiplus.View.Reports
             {
                 case Keys.Escape:
                     Close();
+                    DialogResult = DialogResult.OK;
                     break;
             }
         }
@@ -58,6 +59,11 @@ namespace Emiplus.View.Reports
                 Resolution.SetScreenMaximized(this);
 
                 search.Select();
+            };
+
+            FormClosed += (s, e) =>
+            {
+                DialogResult = DialogResult.OK;
             };
 
             search.KeyUp += (s, e) =>
