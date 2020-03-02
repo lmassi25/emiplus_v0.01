@@ -260,7 +260,9 @@ namespace Emiplus.View.Comercial
             {
                 Model.Pedido Pedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                 Pedido.Id = idPedido;
-                if (_modelPedido.Total < _controllerTitulo.GetLancados(idPedido))
+                Console.WriteLine(_modelPedido.Total);
+                Console.WriteLine(_controllerTitulo.GetLancados(idPedido));
+                if (_controllerTitulo.GetLancados(idPedido) < _modelPedido.Total)
                 {
                     //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     //return;

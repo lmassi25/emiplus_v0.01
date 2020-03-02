@@ -176,7 +176,7 @@ namespace Emiplus.Data.Helpers
             if (string.IsNullOrEmpty(value.ToString()))
                 return 0;
 
-            return Convert.ToDouble(value.ToString().Replace("R$", "").Trim(), Program.cultura);
+            return Convert.ToDouble(value.ToString().Replace("R$", "").Replace(" ", "").Trim(), Program.cultura);
         }
 
         public static int ConvertToInt32(object value)
