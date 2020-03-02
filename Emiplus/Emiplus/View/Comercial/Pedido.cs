@@ -472,6 +472,28 @@ namespace Emiplus.View.Comercial
                 });
             }
 
+            IEnumerable<dynamic> dados3 = await _cPedido.GetDataTableTotaisPedidos("NFe", dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
+            ArrayList data3 = new ArrayList();
+            foreach (var item in dados3)
+            {
+                data3.Add(new
+                {
+                    ID = item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                });
+            }
+
+            IEnumerable<dynamic> dados4 = await _cPedido.GetDataTableTotaisPedidos("CFe", dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
+            ArrayList data4 = new ArrayList();
+            foreach (var item in dados4)
+            {
+                data4.Add(new
+                {
+                    ID = item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                });
+            }
+
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pedidos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
@@ -479,6 +501,8 @@ namespace Emiplus.View.Comercial
                 URL_BASE = Program.PATH_BASE,
                 Data = data,
                 Total = data2,
+                TotalNotas = data3,
+                TotalCupons = data4,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
                 Logo = Settings.Default.empresa_logo,
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
