@@ -336,7 +336,7 @@ namespace Emiplus.View.Comercial
 
                 if (Pedido.Save(Pedido))
                 {
-                    Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
+                    //Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
                     AddPedidos.btnFinalizado = true;
                 }
             }

@@ -139,6 +139,7 @@ namespace Emiplus.Controller
 
             Browser.htmlRender = render;
             var f = new Browser();
+            f.TopMost = true;
             if (f.ShowDialog() == DialogResult.OK)
             {
                 return true;

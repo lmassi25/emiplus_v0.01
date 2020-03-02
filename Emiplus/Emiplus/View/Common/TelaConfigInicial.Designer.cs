@@ -61,6 +61,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.email = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.visualPanel8 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.btnImportar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel4.SuspendLayout();
@@ -77,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.visualPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.visualPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // visualPanel7
@@ -725,6 +731,97 @@
             this.email.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.email.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // visualPanel8
+            // 
+            this.visualPanel8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualPanel8.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel8.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel8.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualPanel8.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualPanel8.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualPanel8.Border.HoverVisible = true;
+            this.visualPanel8.Border.Rounding = 6;
+            this.visualPanel8.Border.Thickness = 1;
+            this.visualPanel8.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel8.Border.Visible = true;
+            this.visualPanel8.Controls.Add(this.label10);
+            this.visualPanel8.Controls.Add(this.pictureBox9);
+            this.visualPanel8.Controls.Add(this.btnImportar);
+            this.visualPanel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel8.Location = new System.Drawing.Point(13, 415);
+            this.visualPanel8.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel8.Name = "visualPanel8";
+            this.visualPanel8.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel8.Size = new System.Drawing.Size(232, 145);
+            this.visualPanel8.TabIndex = 99;
+            this.visualPanel8.Text = "visualPanel8";
+            this.visualPanel8.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel8.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel8.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel8.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel8.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel8.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel8.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(20, 69);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(180, 21);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Importação de Dados";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 8;
+            this.pictureBox9.TabStop = false;
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnImportar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImportar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnImportar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportar.Border.HoverVisible = true;
+            this.btnImportar.Border.Rounding = 6;
+            this.btnImportar.Border.Thickness = 1;
+            this.btnImportar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnImportar.Border.Visible = true;
+            this.btnImportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImportar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnImportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.ForeColor = System.Drawing.Color.White;
+            this.btnImportar.Image = null;
+            this.btnImportar.Location = new System.Drawing.Point(45, 103);
+            this.btnImportar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(131, 27);
+            this.btnImportar.TabIndex = 1;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnImportar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnImportar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnImportar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnImportar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImportar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImportar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // TelaConfigInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -732,6 +829,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualPanel8);
             this.Controls.Add(this.visualPanel7);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.visualPanel6);
@@ -763,6 +861,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.visualPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.visualPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -800,5 +900,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton email;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImportar;
     }
 }

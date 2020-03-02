@@ -58,7 +58,83 @@
         //);
 
         #endregion SQL Create
-        
+
+        public Pessoa FromCsv(string csvLine, string tipo = "Clientes")
+        {
+            string[] values = csvLine.Split(';');
+
+            Id = 0;
+            Tipo = tipo;
+            Excluir = 0;
+            Nome = values[0];
+
+            Random rnd = new Random();
+            if (ExistsName(Nome))
+            {
+                Nome = Nome + " " + rnd.Next(1, 10);
+
+                if (ExistsName(Nome))
+                    Nome = Nome + " " + rnd.Next(1, 10);
+            }
+
+            Fantasia = values[1];
+            RG = values[2];
+            CPF = values[3];
+            Aniversario = values[4];
+            Isento = Validation.ConvertToInt32(values[5]);
+            Transporte_placa = values[6];
+            Transporte_uf = values[7];
+            Transporte_rntc = values[8];
+
+            if (Save(this, false))
+            {
+                if (!string.IsNullOrEmpty(values[9]))
+                {
+                    PessoaContato contato = new PessoaContato();
+                    contato.Id_pessoa = this.GetLastId();
+                    contato.Excluir = 0;
+                    contato.Contato = values[9];
+                    contato.Telefone = values[10];
+                    contato.Celular = values[11];
+                    contato.Email = values[12];
+                    contato.Save(contato, false);
+                }
+
+                if (!string.IsNullOrEmpty(values[13]))
+                {
+                    PessoaEndereco addr = new PessoaEndereco();
+                    addr.Id_pessoa = this.GetLastId();
+                    addr.Excluir = 0;
+                    addr.Cep = values[13];
+                    addr.Estado = values[14];
+                    addr.Cidade = values[15];
+                    addr.Rua = values[16];
+                    addr.Nr = values[17];
+                    addr.Complemento = values[18];
+                    addr.Bairro = values[19];
+                    addr.Pais = values[20];
+                    addr.IBGE = values[21];
+                    addr.Save(addr, false);
+                }
+            }
+
+            return this;
+        }
+
+        public bool ExistsName(string name, bool importacao = true, int idItem = 0)
+        {
+            dynamic data;
+            if (importacao)
+                data = Query().Where("nome", name).Where("excluir", 0).FirstOrDefault();
+            else
+                data = Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
+
+            if (data != null)
+                return true;
+
+            return false;
+        }
+
         public ArrayList GetAll(string tipo = "Clientes")
         {
             var data = new ArrayList();

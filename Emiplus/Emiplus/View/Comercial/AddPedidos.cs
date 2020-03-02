@@ -369,7 +369,7 @@ namespace Emiplus.View.Comercial
 
                 _mPedido.Id = Id;
                 _mPedido.Tipo = "Vendas";
-                _mPedido.status = 1; //RECEBIMENTO PENDENTE
+                _mPedido.status = 2; //RECEBIMENTO PENDENTE
                 if (_mPedido.Save(_mPedido))
                 {
                     //Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
@@ -379,6 +379,10 @@ namespace Emiplus.View.Comercial
                         PedidoImpressao print = new PedidoImpressao();
                         if (print.Print(Id))
                             Close();
+                    } 
+                    else
+                    {
+                        Close();
                     }
                 }
                 else

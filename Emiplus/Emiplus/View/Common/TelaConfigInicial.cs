@@ -19,6 +19,12 @@ namespace Emiplus.View.Common
             comercial.Click += (s, e) => OpenForm.Show<Configuracoes.Comercial>(this);
             impressao.Click += (s, e) => OpenForm.Show<Configuracoes.Impressao>(this);
             system.Click += (s, e) => OpenForm.Show<Configuracoes.Sistema>(this);
+
+            btnImportar.Click += (s, e) =>
+            {
+                ImportarDados f = new ImportarDados();
+                f.ShowDialog();
+            };
         }
     }
 }
