@@ -56,6 +56,7 @@ namespace Emiplus.Controller
         private string _path_autorizada;
 
         private int _servidorNFE = 2;
+        private int _servidorNFSE = 2;
         private int _servidorNFCE = 2;
         private int _servidorCFE = 2;
 
@@ -201,6 +202,35 @@ namespace Emiplus.Controller
                     assinaturaCFE = IniFile.Read("Assinatura", "SAT");
 
                     break;
+
+                case "NFSe":
+                    if (!Directory.Exists(_path + "\\NFSe"))
+                        Directory.CreateDirectory(_path + "\\NFSe");
+
+                    _path_enviada = _path + "\\NFSe\\Enviadas";
+                    if (!Directory.Exists(_path_enviada))
+                        Directory.CreateDirectory(_path_enviada);
+
+                    _path_autorizada = _path + "\\NFSe\\Autorizadas";
+                    if (!Directory.Exists(_path_autorizada))
+                        Directory.CreateDirectory(_path_autorizada);
+
+                    //if (Nota > 0)
+                    //{
+                    //    _nota = new Model.Nota().FindById(Nota).First<Model.Nota>();
+
+                    //    if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                    //        chvAcesso = _nota.ChaveDeAcesso;
+                    //}
+                    //else if (_id_nota > 0)
+                    //{
+                    //    _nota = new Model.Nota().FindById(_id_nota).First<Model.Nota>();
+
+                    //    if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
+                    //        chvAcesso = _nota.ChaveDeAcesso;
+                    //}
+
+                    break;
             }
 
             if (_servidorNFE == 1)
@@ -291,7 +321,7 @@ namespace Emiplus.Controller
 
                 if (IniFile.Read("NFe", "APP") != "Uninfe")
                 {
-                    if(tipo == "NFe")
+                    if (tipo == "NFe")
                     {
                         ValidarXML(Pedido, tipo);
 
@@ -360,7 +390,7 @@ namespace Emiplus.Controller
                             writer.WriteElementString("cOrgao", "35");
                             writer.WriteElementString("tpAmb", _servidorNFE.ToString());
                             writer.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", ""));
-                            writer.WriteElementString("chNFe", _nota.ChaveDeAcesso);                            
+                            writer.WriteElementString("chNFe", _nota.ChaveDeAcesso);
                             writer.WriteElementString("dhEvento", Validation.DateNowToSql() + "T" + DateTime.Now.ToString("HH:mm:ss") + DateTime.Now.ToString("zzz"));
                             writer.WriteElementString("tpEvento", "110111");
                             writer.WriteElementString("nSeqEvento", "1");
@@ -905,7 +935,7 @@ namespace Emiplus.Controller
                     return;
                 }
 
-                if(_pedido.id_useraddress > 0)
+                if (_pedido.id_useraddress > 0)
                     _destinatarioEndereco = new Model.PessoaEndereco().FindById(_pedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
                 else if (_pedido.Cliente > 1)
                 {
@@ -918,9 +948,9 @@ namespace Emiplus.Controller
                         return;
                     }
                 }
-                    
 
-                if (_pedido.id_natureza > 0)                
+
+                if (_pedido.id_natureza > 0)
                     _natureza = new Model.Natureza().FindById(_pedido.id_natureza).FirstOrDefault<Model.Natureza>();
                 else
                 {
@@ -1024,96 +1054,231 @@ namespace Emiplus.Controller
 
                     #region XML EMISSÃO
 
-                    #region PATH
-
-                    strFilePath = _path_enviada + "\\" + Pedido + ".xml";
-
-                    #endregion PATH
-
-                    #region XML
-
-                    var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
-                    xml.Formatting = Formatting.Indented;
-
-                    xml.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
-
-                    if (tipo == "NFCe")
+                    if (tipo == "NFSe")
                     {
-                        cNF = "25" + getLastNFeNr().ToString("000000");
-                        nNF = getLastNFeNr().ToString("000000000");
-                        serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
-                        chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "65" + serie + nNF + "1" + cNF;
-                        cDV = CalculoCDV(chvAcesso);
-                        chvAcesso = chvAcesso + "" + cDV;
+                        #region PATH
 
-                        xml.WriteStartElement("NFe");
+                        strFilePath = _path_enviada + "\\NFSe" + Pedido + ".tx2";
 
-                        xml.WriteStartElement("infNFe");
-                        xml.WriteAttributeString("versao", "4.00");
-                        xml.WriteAttributeString("Id", "NFe" + chvAcesso);
-                    }
-                    else if (tipo == "CFe")
-                    {
-                        xml.WriteStartElement("CFe");
-                        xml.WriteStartElement("infCFe");
-                        xml.WriteAttributeString("versaoDadosEnt", layoutCFE);
+                        #endregion PATH
+
+                        #region TX2
+
+                        StreamWriter txt = new StreamWriter(_path_enviada, true, Encoding.UTF8);
+
+                        txt.Write("formato=tx2" + Environment.NewLine);
+                        txt.Write("padrao=TecnoNFSe" + Environment.NewLine);
+                        txt.Write("NomeCidade=SAOJOSEDORIOPRETOSP" + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("INCLUIR" + Environment.NewLine);
+                        txt.Write("NumeroLote=1" + Environment.NewLine);
+                        txt.Write("CPFCNPJRemetente=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalRemetente=" + Environment.NewLine);
+                        txt.Write("ValorTotalServicos=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
+                        txt.Write("ValorTotalDeducoes=0.00" + Environment.NewLine);
+                        txt.Write("ValorTotalBaseCalculo=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
+                        txt.Write("SALVAR" + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("INCLUIRRPS" + Environment.NewLine);
+                        txt.Write("SituacaoNota=1" + Environment.NewLine);
+                        txt.Write("TipoRps=1" + Environment.NewLine);
+                        txt.Write("SerieRps=1" + Environment.NewLine);
+                        txt.Write("NumeroRps=1" + Environment.NewLine);
+                        txt.Write("DataEmissao=" + Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00")+ Environment.NewLine);
+                        txt.Write("Competencia=" + Validation.ConvertDateToSql(_pedido.Emissao)+ Environment.NewLine);
+                        
+                        txt.Write("CpfCnpjPrestador=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalPrestador=" + Environment.NewLine);
+                        txt.Write("RazaoSocialPrestador=" + Validation.CleanStringForFiscal(_emitente.Nome) + Environment.NewLine);
+                        txt.Write("InscricaoEstadualPrestador=" + Validation.CleanStringForFiscal(_emitente.RG) + Environment.NewLine);
+                        txt.Write("TipoLogradouroPrestador=Rua" + Environment.NewLine);
+                        txt.Write("EnderecoPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + Environment.NewLine);
+                        txt.Write("NumeroPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + Environment.NewLine);
+                        //txt.Write("ComplementoPrestador=Complemento teste sem acento" + Environment.NewLine);
+                        txt.Write("TipoBairroPrestador=Bairro" + Environment.NewLine);
+                        txt.Write("BairroPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Bairro) + Environment.NewLine);
+                        txt.Write("CodigoCidadePrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.IBGE) + Environment.NewLine);
+                        txt.Write("DescricaoCidadePrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + Environment.NewLine);
+                        txt.Write("TelefonePrestador=" + Validation.CleanStringForFiscal(_emitenteContato.Telefone) + Environment.NewLine);
+                        txt.Write("EmailPrestador=" + Validation.CleanStringForFiscal(_emitenteContato.Email) + Environment.NewLine);
+                        txt.Write("CepPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Cep) + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("OptanteSimplesNacional=1" + Environment.NewLine);
+                        txt.Write("IncentivadorCultural=2" + Environment.NewLine);
+                        txt.Write("RegimeEspecialTributacao=0" + Environment.NewLine);
+                        txt.Write("NaturezaTributacao=0" + Environment.NewLine);
+                        txt.Write("IncentivoFiscal=2" + Environment.NewLine);
+                        txt.Write("TipoTributacao=6" + Environment.NewLine);
+                        txt.Write("ExigibilidadeISS=1" + Environment.NewLine);
+                        txt.Write("Operacao=A" + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("CodigoItemListaServico=" + Environment.NewLine);
+                        txt.Write("CodigoTributacaoMunicipio=" + Environment.NewLine);
+                        txt.Write("CodigoCnae=" + Environment.NewLine);
+
+                        int count = 1; string linha = "";
+                        itens = new Model.PedidoItem().Query()
+                            .Where("pedido_item.pedido", Pedido)
+                            .Where("pedido_item.excluir", 0)
+                            .Where("pedido_item.tipo", "Servicos")
+                            .Get();
+                        foreach (var data in itens)
+                        {
+                            linha = linha + count + "-" + Validation.CleanStringForFiscal(data.NOME) + " ";
+                            count++;
+                        }
+
+                        txt.Write("DiscriminacaoServico=" + linha + Environment.NewLine);
+                        txt.Write("MunicipioIncidencia=" + Validation.CleanStringForFiscal(_emitenteEndereco.IBGE) + Environment.NewLine);
+                        txt.Write("CodigoCidadePrestacao=" + Validation.CleanStringForFiscal(_emitenteEndereco.IBGE) + Environment.NewLine);
+                        txt.Write("DescricaoCidadePrestacao=" + Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("CpfCnpjTomador=" + Validation.CleanStringForFiscal(_destinatario.CPF) + Environment.NewLine);
+                        txt.Write("RazaoSocialTomador=" + Validation.CleanStringForFiscal(_destinatario.Nome) + Environment.NewLine);
+                        txt.Write("InscricaoEstadualTomador=" + Validation.CleanStringForFiscal(_destinatario.RG) + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalTomador=" + Environment.NewLine);
+                        txt.Write("TipoLogradouroTomador=RUA" + Environment.NewLine);
+                        txt.Write("EnderecoTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Rua) + Environment.NewLine);
+                        txt.Write("NumeroTomador=" + _destinatarioEndereco.Nr + Environment.NewLine);
+                        //txt.Write("ComplementoTomador=SALA 909" + Environment.NewLine);
+                        txt.Write("BairroTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Bairro) + Environment.NewLine);
+                        txt.Write("CodigoCidadeTomador=" + _destinatarioEndereco.IBGE + Environment.NewLine);
+                        txt.Write("DescricaoCidadeTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cidade) + Environment.NewLine);
+                        txt.Write("UfTomador=" + _destinatarioEndereco.Estado + Environment.NewLine);
+                        txt.Write("CepTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cep) + Environment.NewLine);
+                        txt.Write("PaisTomador=1058" + Environment.NewLine);
+                        //txt.Write("DDDTomador=044" + Environment.NewLine);
+                        txt.Write("TelefoneTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Telefone) + Environment.NewLine);
+                        txt.Write("EmailTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Email) + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("AliquotaPIS=0.00" + Environment.NewLine);
+                        txt.Write("AliquotaCOFINS=0.00" + Environment.NewLine);
+                        txt.Write("AliquotaINSS=0.00" + Environment.NewLine);
+                        txt.Write("AliquotaIR=0.00" + Environment.NewLine);
+                        txt.Write("AliquotaCSLL=0.00" + Environment.NewLine);
+                        txt.Write("ValorPIS=0.00" + Environment.NewLine);
+                        txt.Write("ValorCOFINS=0.00" + Environment.NewLine);
+                        txt.Write("ValorINSS=0.00" + Environment.NewLine);
+                        txt.Write("ValorIR=0.00" + Environment.NewLine);
+                        txt.Write("ValorCSLL=0.00" + Environment.NewLine);
+                        txt.Write("OutrasRetencoes=0.00" + Environment.NewLine);
+                        txt.Write("DescontoIncondicionado=0.00" + Environment.NewLine);
+                        txt.Write("DescontoCondicionado=0.00" + Environment.NewLine);
+                        txt.Write("ValorDeducoes=0.00" + Environment.NewLine);
+                        txt.Write(Environment.NewLine);
+
+                        txt.Write("ValorServicos=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
+                        txt.Write("BaseCalculo=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
+                        txt.Write("AliquotaISS=0.00" + Environment.NewLine);
+                        txt.Write("ValorIss=0.00" + Environment.NewLine);
+                        txt.Write("IssRetido=2" + Environment.NewLine);
+                        txt.Write("ValorISSRetido=0.00" + Environment.NewLine);
+                        txt.Write("ValorLiquidoNfse=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
+                        txt.Write("SALVARRPS" + Environment.NewLine);
+
+                        txt.Close();
+
+                        #endregion
                     }
                     else
                     {
-                        cNF = "25" + getLastNFeNr().ToString("000000");
-                        nNF = getLastNFeNr().ToString("000000000");
-                        serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+                        #region PATH
 
-                        chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
-                        cDV = CalculoCDV(chvAcesso);
-                        chvAcesso = chvAcesso + "" + cDV;
+                        strFilePath = _path_enviada + "\\" + Pedido + ".xml";
 
-                        _nota.ChaveDeAcesso = chvAcesso;
+                        #endregion PATH
 
-                        xml.WriteStartElement("NFe");
-                        xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+                        #region XML
 
-                        xml.WriteStartElement("infNFe");
-                        xml.WriteAttributeString("versao", "4.00");
-                        xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                        var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
+                        xml.Formatting = Formatting.Indented;
+
+                        xml.WriteStartDocument(); //Escreve a declaração do documento <?xml version="1.0" encoding="utf-8"?>
+
+                        if (tipo == "NFCe")
+                        {
+                            cNF = "25" + getLastNFeNr().ToString("000000");
+                            nNF = getLastNFeNr().ToString("000000000");
+                            serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+                            chvAcesso = codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "65" + serie + nNF + "1" + cNF;
+                            cDV = CalculoCDV(chvAcesso);
+                            chvAcesso = chvAcesso + "" + cDV;
+
+                            xml.WriteStartElement("NFe");
+
+                            xml.WriteStartElement("infNFe");
+                            xml.WriteAttributeString("versao", "4.00");
+                            xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                        }
+                        else if (tipo == "CFe")
+                        {
+                            xml.WriteStartElement("CFe");
+                            xml.WriteStartElement("infCFe");
+                            xml.WriteAttributeString("versaoDadosEnt", layoutCFE);
+                        }
+                        else
+                        {
+                            cNF = "25" + getLastNFeNr().ToString("000000");
+                            nNF = getLastNFeNr().ToString("000000000");
+                            serie = Validation.ConvertToInt32(Settings.Default.empresa_nfe_serienfe).ToString("000");
+
+                            chvAcesso = (codUF(_emitenteEndereco.Estado) + _pedido.Emissao.ToString("yy") + _pedido.Emissao.ToString("MM") + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "55" + serie + nNF + "1" + cNF).Replace(" ", "");
+                            cDV = CalculoCDV(chvAcesso);
+                            chvAcesso = chvAcesso + "" + cDV;
+
+                            _nota.ChaveDeAcesso = chvAcesso;
+
+                            xml.WriteStartElement("NFe");
+                            xml.WriteAttributeString("xmlns", "http://www.portalfiscal.inf.br/nfe");
+
+                            xml.WriteStartElement("infNFe");
+                            xml.WriteAttributeString("versao", "4.00");
+                            xml.WriteAttributeString("Id", "NFe" + chvAcesso);
+                        }
+
+                        SetIde(xml, Pedido, tipo);
+
+                        SetEmit(xml, Pedido, tipo);
+
+                        SetDest(xml, Pedido, tipo);
+
+                        int count = 1;
+                        itens = new Model.PedidoItem().Query()
+                            .Where("pedido_item.pedido", Pedido)
+                            .Where("pedido_item.excluir", 0)
+                            .Where("pedido_item.tipo", "Produtos")
+                            .Get();
+                        foreach (var data in itens)
+                        {
+                            SetDet(xml, Pedido, tipo, count, data.ID);
+                            count++;
+                        }
+
+                        SetTotal(xml, Pedido, tipo);
+
+                        if (tipo != "CFe")
+                            SetTransp(xml, Pedido, tipo);
+
+                        SetPag(xml, Pedido, tipo);
+
+                        SetInfAdic(xml, Pedido, tipo);
+
+                        xml.WriteEndElement();
+                        xml.WriteEndElement();
+
+                        xml.WriteEndDocument();
+
+                        xml.Flush();
+                        xml.Close();
+
+                        #endregion XML
                     }
-
-                    SetIde(xml, Pedido, tipo);
-
-                    SetEmit(xml, Pedido, tipo);
-
-                    SetDest(xml, Pedido, tipo);
-
-                    int count = 1;
-                    itens = new Model.PedidoItem().Query()
-                        .Where("pedido_item.pedido", Pedido)
-                        .Where("pedido_item.excluir", 0)
-                        .Where("pedido_item.tipo", "Produtos")
-                        .Get();
-                    foreach (var data in itens)
-                    {
-                        SetDet(xml, Pedido, tipo, count, data.ID);
-                        count++;
-                    }
-
-                    SetTotal(xml, Pedido, tipo);
-
-                    if (tipo != "CFe")
-                        SetTransp(xml, Pedido, tipo);
-
-                    SetPag(xml, Pedido, tipo);
-
-                    SetInfAdic(xml, Pedido, tipo);
-
-                    xml.WriteEndElement();
-                    xml.WriteEndElement();
-
-                    xml.WriteEndDocument();
-
-                    xml.Flush();
-                    xml.Close();
-
-                    #endregion XML
 
                     #endregion XML EMISSÃO
 
@@ -1208,52 +1373,52 @@ namespace Emiplus.Controller
                 #region NFCE
 
                 case "NFCe":
-                                        
+
                     #region TECNOSPEED 
 
-                        _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml, "NFCe");
+                    _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml, "NFCe");
 
-                        while (!String.IsNullOrEmpty(_msg) && done == false)
+                    while (!String.IsNullOrEmpty(_msg) && done == false)
+                    {
+                        if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                            _msg = RequestResolve();
+
+                        if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
                         {
-                            if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
-                                _msg = RequestResolve();
+                            _msg = "Autorizado o uso da NF-e";
+                            _nota.Tipo = tipo;
+                            _nota.Status = "Autorizada";
+                            _nota.nr_Nota = nNF;
+                            _nota.Serie = serie;
+                            _nota.ChaveDeAcesso = chvAcesso;
+                            _nota.Save(_nota, false);
 
-                            if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
-                            {
-                                _msg = "Autorizado o uso da NF-e";
-                                _nota.Tipo = tipo;
-                                _nota.Status = "Autorizada";
-                                _nota.nr_Nota = nNF;
-                                _nota.Serie = serie;
-                                _nota.ChaveDeAcesso = chvAcesso;
-                                _nota.Save(_nota, false);
+                            updateUltNfeAsync();
 
-                                updateUltNfeAsync();
-
-                                done = true;
-                            }
-
-                            switch (_msg)
-                            {
-                                case "":
-                                    _msg = RequestConsult();
-                                    done = true;
-                                    break;
-                                    /*default:
-                                        _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
-                                        done = true;
-                                        break;*/
-                            }
-
-                            if (!String.IsNullOrEmpty(_msg))
-                            {
-                                _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
-                                done = true;
-                            }
+                            done = true;
                         }
 
-                        #endregion
-                    
+                        switch (_msg)
+                        {
+                            case "":
+                                _msg = RequestConsult();
+                                done = true;
+                                break;
+                                /*default:
+                                    _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                                    done = true;
+                                    break;*/
+                        }
+
+                        if (!String.IsNullOrEmpty(_msg))
+                        {
+                            _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                            done = true;
+                        }
+                    }
+
+                    #endregion
+
                     break;
 
                 #endregion NFCE
@@ -1311,7 +1476,7 @@ namespace Emiplus.Controller
                     #endregion CFE
             }
         }
-        
+
         /// <summary>
         /// Validar XML
         /// </summary>
@@ -1339,55 +1504,55 @@ namespace Emiplus.Controller
 
                     #region TECNOSPEED 
 
-                        _msg = RequestValidate("FORMATO=XML" + Environment.NewLine + arq.OuterXml, tipo);
+                    _msg = RequestValidate("FORMATO=XML" + Environment.NewLine + arq.OuterXml, tipo);
 
-                        //while (!String.IsNullOrEmpty(_msg) && done == false)
-                        //{
-                        //    if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
-                        //        _msg = RequestResolve();
+                    //while (!String.IsNullOrEmpty(_msg) && done == false)
+                    //{
+                    //    if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
+                    //        _msg = RequestResolve();
 
-                        //    if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
-                        //    {
-                        //        _msg = "Autorizado o uso da NF-e";
-                        //        _nota.Tipo = tipo;
-                        //        _nota.Status = "Autorizada";
-                        //        _nota.nr_Nota = nNF;
-                        //        _nota.Serie = serie;
-                        //        _nota.ChaveDeAcesso = chvAcesso;
-                        //        _nota.Save(_nota, false);
+                    //    if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                    //    {
+                    //        _msg = "Autorizado o uso da NF-e";
+                    //        _nota.Tipo = tipo;
+                    //        _nota.Status = "Autorizada";
+                    //        _nota.nr_Nota = nNF;
+                    //        _nota.Serie = serie;
+                    //        _nota.ChaveDeAcesso = chvAcesso;
+                    //        _nota.Save(_nota, false);
 
-                        //        updateUltNfeAsync();
+                    //        updateUltNfeAsync();
 
-                        //        done = true;
-                        //    }
+                    //        done = true;
+                    //    }
 
-                        //    switch (_msg)
-                        //    {
-                        //        case "":
-                        //            _msg = RequestConsult();
-                        //            done = true;
-                        //            break;
-                        //            /*default:
-                        //                _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
-                        //                done = true;
-                        //                break;*/
-                        //    }
+                    //    switch (_msg)
+                    //    {
+                    //        case "":
+                    //            _msg = RequestConsult();
+                    //            done = true;
+                    //            break;
+                    //            /*default:
+                    //                _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
+                    //                done = true;
+                    //                break;*/
+                    //    }
 
-                        //    if (!String.IsNullOrEmpty(_msg))
-                        //    {
-                        //        _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
-                        //        done = true;
-                        //    }
-                        //}
+                    //    if (!String.IsNullOrEmpty(_msg))
+                    //    {
+                    //        _msg = _msg.Replace("EXCEPTION,EspdCertStoreException,", "").Replace(@"\delimiter", "");
+                    //        done = true;
+                    //    }
+                    //}
 
-                        #endregion
+                    #endregion
 
                     break;
 
-                #endregion NFE
+                    #endregion NFE
             }
         }
-        
+
         /// <summary>
         /// Emitir CCe
         /// </summary>
@@ -1460,7 +1625,7 @@ namespace Emiplus.Controller
         {
             //Start(Pedido);
 
-            Model.Nota _notaCCe = new Model.Nota();            
+            Model.Nota _notaCCe = new Model.Nota();
             _notaCCe = _notaCCe.Query().Where("id", Nota).FirstOrDefault<Model.Nota>();
 
             Start(_notaCCe.id_pedido, "NFe", Nota);
@@ -1693,9 +1858,9 @@ namespace Emiplus.Controller
                 xml.WriteElementString("nNF", getLastNFeNr().ToString());
                 xml.WriteElementString("dhEmi", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + DateTime.Now.ToString("zzz"));
 
-                if (tipo != "NFCe")                    
+                if (tipo != "NFCe")
                     xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
-                
+
                 xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
                 xml.WriteElementString("idDest", _pedido.Destino > 0 ? _pedido.Destino.ToString() : "1");
                 xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
@@ -1709,7 +1874,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("cDV", cDV);
                 xml.WriteElementString("tpAmb", _servidorNFE.ToString());
                 xml.WriteElementString("finNFe", _pedido.Finalidade > 0 ? _pedido.Finalidade.ToString() : "1");
-                xml.WriteElementString("indFinal", "1");               
+                xml.WriteElementString("indFinal", "1");
                 xml.WriteElementString("indPres", "1");
                 xml.WriteElementString("procEmi", "0");
                 xml.WriteElementString("verProc", "EMIPLUS");
@@ -1798,74 +1963,74 @@ namespace Emiplus.Controller
         {
             if (tipo != "NFCe")
             {
-            
+
                 xml.WriteStartElement("dest");
 
-            if (tipo == "CFe")
-            {
-                if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
+                if (tipo == "CFe")
                 {
-                    if (_pedido.cfe_cpf.Length == 11)
+                    if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
                     {
-                        xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                        if (_pedido.cfe_cpf.Length == 11)
+                        {
+                            xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                        }
+                        else
+                        {
+                            xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                        }
+                    }
+                }
+                else
+                {
+                    if (_destinatario.Pessoatipo == "Física")
+                    {
+                        if (_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                            xml.WriteElementString("CPF", "00000000000");
+                        else
+                            xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
                     }
                     else
                     {
-                        xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_pedido.cfe_cpf).Replace(".", "").Replace(" ", ""));
+                        if (_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
+                            xml.WriteElementString("CNPJ", "00000000000000");
+                        else
+                            xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
                     }
-                }
-            }
-            else
-            {
-                if (_destinatario.Pessoatipo == "Física")
-                {
-                    if (_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
-                        xml.WriteElementString("CPF", "00000000000");
+
+                    if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2")
+                    {
+                        xml.WriteElementString("xNome", "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL");
+                    }
                     else
-                        xml.WriteElementString("CPF", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
-                }
-                else
-                {
-                    if (_destinatario.CPF == null || Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", "") == "")
-                        xml.WriteElementString("CNPJ", "00000000000000");
+                    {
+                        xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_destinatario.Nome));
+                    }
+
+                    xml.WriteStartElement("enderDest");
+
+                    xml.WriteElementString("xLgr", Validation.CleanStringForFiscal(_destinatarioEndereco.Rua));
+                    xml.WriteElementString("nro", Validation.CleanStringForFiscal(_destinatarioEndereco.Nr));
+                    xml.WriteElementString("xBairro", Validation.CleanStringForFiscal(_destinatarioEndereco.Bairro));
+                    xml.WriteElementString("cMun", Validation.CleanStringForFiscal(_destinatarioEndereco.IBGE));
+                    xml.WriteElementString("xMun", Validation.CleanStringForFiscal(_destinatarioEndereco.Cidade));
+                    xml.WriteElementString("UF", Validation.CleanStringForFiscal(_destinatarioEndereco.Estado));
+                    xml.WriteElementString("CEP", Validation.CleanStringForFiscal(_destinatarioEndereco.Cep));
+                    xml.WriteElementString("cPais", "1058");
+                    xml.WriteElementString("xPais", "BRASIL");
+                    //xml.WriteElementString("fone", "");
+
+                    xml.WriteEndElement();
+
+                    if (_destinatario.Isento == 1)
+                        xml.WriteElementString("indIEDest", "2");
+                    else if (_destinatario.Pessoatipo == "Física")
+                        xml.WriteElementString("indIEDest", "9");
                     else
-                        xml.WriteElementString("CNPJ", Validation.CleanStringForFiscal(_destinatario.CPF).Replace(".", "").Replace(" ", ""));
+                        xml.WriteElementString("indIEDest", "1");
+
+                    if (_destinatario.Isento != 1 && _destinatario.Pessoatipo == "Jurídica")
+                        xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
                 }
-
-                if (Settings.Default.empresa_nfe_servidornfe.ToString() == "2")
-                {
-                    xml.WriteElementString("xNome", "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL");
-                }
-                else
-                {
-                    xml.WriteElementString("xNome", Validation.CleanStringForFiscal(_destinatario.Nome));
-                }
-
-                xml.WriteStartElement("enderDest");
-
-                xml.WriteElementString("xLgr", Validation.CleanStringForFiscal(_destinatarioEndereco.Rua));
-                xml.WriteElementString("nro", Validation.CleanStringForFiscal(_destinatarioEndereco.Nr));
-                xml.WriteElementString("xBairro", Validation.CleanStringForFiscal(_destinatarioEndereco.Bairro));
-                xml.WriteElementString("cMun", Validation.CleanStringForFiscal(_destinatarioEndereco.IBGE));
-                xml.WriteElementString("xMun", Validation.CleanStringForFiscal(_destinatarioEndereco.Cidade));
-                xml.WriteElementString("UF", Validation.CleanStringForFiscal(_destinatarioEndereco.Estado));
-                xml.WriteElementString("CEP", Validation.CleanStringForFiscal(_destinatarioEndereco.Cep));
-                xml.WriteElementString("cPais", "1058");
-                xml.WriteElementString("xPais", "BRASIL");
-                //xml.WriteElementString("fone", "");
-
-                xml.WriteEndElement();
-
-                if (_destinatario.Isento == 1)
-                    xml.WriteElementString("indIEDest", "2");
-                else if (_destinatario.Pessoatipo == "Física")
-                    xml.WriteElementString("indIEDest", "9");
-                else
-                    xml.WriteElementString("indIEDest", "1");
-
-                if (_destinatario.Isento != 1 && _destinatario.Pessoatipo == "Jurídica")
-                    xml.WriteElementString("IE", Validation.CleanStringForFiscal(_destinatario.RG));
-            }
 
                 xml.WriteEndElement();
 
@@ -1933,7 +2098,7 @@ namespace Emiplus.Controller
                 //    xml.WriteElementString("cEAN", "SEM GTIN");
                 //}
                 xml.WriteElementString("cEAN", "SEM GTIN");
-                
+
                 if (tipo == "NFCe" && _servidorNFCE == 2)
                     xml.WriteElementString("xProd", "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL");
                 else
@@ -2012,7 +2177,7 @@ namespace Emiplus.Controller
 
             switch (_pedidoItem.Icms)
             {
-                case "00":                    
+                case "00":
                     xml.WriteElementString("CST", "00");
                     xml.WriteElementString("modBC", "0");
                     xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
@@ -2304,7 +2469,7 @@ namespace Emiplus.Controller
         {
             xml.WriteStartElement("transp");
 
-            if (tipo != "NFCe")            
+            if (tipo != "NFCe")
                 xml.WriteElementString("modFrete", _pedido.TipoFrete.ToString());
             else
                 xml.WriteElementString("modFrete", "9");
@@ -2696,7 +2861,7 @@ namespace Emiplus.Controller
         {
             requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
 
-            if(documento == "CFe")
+            if (documento == "CFe")
                 return request(requestData, "cfesat", "importa", "POST");
             else
                 return request(requestData, "NFe", "importa", "POST");
@@ -2721,11 +2886,11 @@ namespace Emiplus.Controller
                 string[] words = message.Split(',');
                 if (words.Length == 4)
                 {
-                    if(!String.IsNullOrEmpty(words[3]))
+                    if (!String.IsNullOrEmpty(words[3]))
                         message = words[3];
                     else if (!String.IsNullOrEmpty(words[2]))
                         message = words[2];
-                }                    
+                }
                 if (words.Length == 3)
                     message = words[2];
                 if (words.Length == 9)
@@ -2997,7 +3162,7 @@ namespace Emiplus.Controller
                     break;
             }
 
-            while(!encontrado)
+            while (!encontrado)
             {
                 FileInfo[] findfiles = pastaRetorno.GetFiles("*");
                 foreach (FileInfo fileinfo in findfiles)
@@ -3013,7 +3178,7 @@ namespace Emiplus.Controller
                             else if (fileinfo.Name.IndexOf("-sit.xml") > 0)
                             {
                                 encontrado = true;
-                            }                            
+                            }
                             else if (File.Exists(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err") == true)
                             {
                                 _msg = System.IO.File.ReadAllText(_pathRetorno + "\\" + _nota.ChaveDeAcesso + "-nfe.err");
@@ -3030,12 +3195,12 @@ namespace Emiplus.Controller
                                 encontrado = true;
                             }
                             else if (File.Exists(_pathRetorno + "\\canc" + _nota.ChaveDeAcesso + "-eve.xml") == true)
-                            {                                
+                            {
                                 encontrado = true;
                             }
 
                             break;
-                    }                    
+                    }
                 }
 
                 count++;
@@ -3080,7 +3245,7 @@ namespace Emiplus.Controller
                                 _nota.protocolodeuso = xnList[i]["nProt"].InnerText;
                                 _nota.Status = "Autorizada";
                                 _nota.Save(_nota, false);
-                                
+
                                 updateUltNfeAsync();
 
                                 uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
@@ -3137,7 +3302,7 @@ namespace Emiplus.Controller
                                     uninfe_xmlAutorizado(_nota.ChaveDeAcesso);
                                 }
                             }
-                        }                        
+                        }
                     }
                     catch (Exception)
                     {
@@ -3145,7 +3310,7 @@ namespace Emiplus.Controller
                     }
 
                     if (fim)
-                        return; 
+                        return;
 
                     try
                     {
@@ -3209,19 +3374,19 @@ namespace Emiplus.Controller
                             {
                                 uninfe_consulta(_pathEnvio, _pathRetorno);
                             }
-                        }                        
+                        }
                     }
 
                     #endregion
                 }
-            } 
-        }      
+            }
+        }
 
         private void uninfe_consulta(string _pathEnvio = "", string _pathRetorno = "")
         {
             string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "");
-            
-            if(String.IsNullOrEmpty(_pathEnvio))
+
+            if (String.IsNullOrEmpty(_pathEnvio))
                 _pathEnvio = _pathUninfe + @"\Envio";
 
             if (String.IsNullOrEmpty(_pathRetorno))
@@ -3364,7 +3529,7 @@ namespace Emiplus.Controller
                 {
                     new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
                 }
-                
+
                 return;
             }
         }

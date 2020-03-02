@@ -128,6 +128,17 @@ namespace Emiplus.View.Common
                 Settings.Default.empresa_nfe_serienfe = jo["empresa"]["serienfe"].ToString();
                 Settings.Default.empresa_nfe_servidornfe = Validation.ConvertToInt32(jo["empresa"]["servidornfe"]);
                 Settings.Default.empresa_crt = jo["empresa"]["crt"].ToString();
+
+                Settings.Default.empresa_servidornfse = Validation.ConvertToInt32(jo["empresa"]["servidornfse"]);
+                Settings.Default.empresa_rps = jo["empresa"]["rps"].ToString();
+                Settings.Default.empresa_serienfse = jo["empresa"]["serienfse"].ToString();
+                Settings.Default.empresa_codigoitemnfse = jo["empresa"]["codigoitemnfse"].ToString();
+                Settings.Default.empresa_codigotributacaonfse = jo["empresa"]["codigotributacaonfse"].ToString();
+                Settings.Default.empresa_aliquotanfse = Validation.ConvertToDouble(jo["empresa"]["aliquotanfse"]);
+                Settings.Default.empresa_calculanfse = Validation.ConvertToInt32(jo["empresa"]["calculanfse"]);
+                Settings.Default.empresa_issretido = Validation.ConvertToInt32(jo["empresa"]["issretido"]);
+                Settings.Default.empresa_infadnfse = jo["empresa"]["infadnfse"].ToString();
+
                 Settings.Default.Save();
 
                 Model.Usuarios usuarios = new Model.Usuarios();

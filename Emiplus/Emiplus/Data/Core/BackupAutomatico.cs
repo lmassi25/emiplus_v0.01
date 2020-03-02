@@ -39,7 +39,7 @@ namespace Emiplus.Data.Core
                         id_backup = "N9TT-9G0A-B7FQ-RANC"
                     };
                     
-                    var jo = new RequestApi().URL(Program.URL_BASE + "/backup/cupom").Content(obj, Method.POST).AddFile("arquivo", file.FullName).Response();
+                    var jo = new RequestApi().URL(Program.URL_BASE + "/api/backup/cupom").Content(obj, Method.POST).AddFile("arquivo", file.FullName).Response();
                     
                     if (jo["error"].ToString() == "False")
                     {

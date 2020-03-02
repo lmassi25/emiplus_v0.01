@@ -12,7 +12,7 @@ namespace Emiplus.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -512,6 +512,114 @@ namespace Emiplus.Properties {
             }
             set {
                 this["empresa_email"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int empresa_servidornfse {
+            get {
+                return ((int)(this["empresa_servidornfse"]));
+            }
+            set {
+                this["empresa_servidornfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_rps {
+            get {
+                return ((string)(this["empresa_rps"]));
+            }
+            set {
+                this["empresa_rps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_serienfse {
+            get {
+                return ((string)(this["empresa_serienfse"]));
+            }
+            set {
+                this["empresa_serienfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_codigoitemnfse {
+            get {
+                return ((string)(this["empresa_codigoitemnfse"]));
+            }
+            set {
+                this["empresa_codigoitemnfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_codigotributacaonfse {
+            get {
+                return ((string)(this["empresa_codigotributacaonfse"]));
+            }
+            set {
+                this["empresa_codigotributacaonfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double empresa_aliquotanfse {
+            get {
+                return ((double)(this["empresa_aliquotanfse"]));
+            }
+            set {
+                this["empresa_aliquotanfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int empresa_calculanfse {
+            get {
+                return ((int)(this["empresa_calculanfse"]));
+            }
+            set {
+                this["empresa_calculanfse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int empresa_issretido {
+            get {
+                return ((int)(this["empresa_issretido"]));
+            }
+            set {
+                this["empresa_issretido"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string empresa_infadnfse {
+            get {
+                return ((string)(this["empresa_infadnfse"]));
+            }
+            set {
+                this["empresa_infadnfse"] = value;
             }
         }
     }
