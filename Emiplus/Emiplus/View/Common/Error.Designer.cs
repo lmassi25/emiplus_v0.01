@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnFechar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnContinuar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.message = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,12 +95,12 @@
             this.btnFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnFechar.Image = null;
-            this.btnFechar.Location = new System.Drawing.Point(135, 402);
+            this.btnFechar.Location = new System.Drawing.Point(135, 505);
             this.btnFechar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(121, 28);
             this.btnFechar.TabIndex = 156;
-            this.btnFechar.Text = "Fechar";
+            this.btnFechar.Text = "Fechar Programa";
             this.btnFechar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFechar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.btnFechar.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -128,7 +129,7 @@
             this.btnContinuar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnContinuar.Image = null;
-            this.btnContinuar.Location = new System.Drawing.Point(262, 402);
+            this.btnContinuar.Location = new System.Drawing.Point(262, 505);
             this.btnContinuar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnContinuar.Name = "btnContinuar";
             this.btnContinuar.Size = new System.Drawing.Size(121, 28);
@@ -143,12 +144,71 @@
             this.btnContinuar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnContinuar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // message
+            // 
+            this.message.AlphaNumeric = false;
+            this.message.BackColor = System.Drawing.Color.Transparent;
+            this.message.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.message.BackColorState.Enabled = System.Drawing.Color.White;
+            this.message.Border.Color = System.Drawing.Color.Gainsboro;
+            this.message.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.message.Border.HoverVisible = true;
+            this.message.Border.Rounding = 8;
+            this.message.Border.Thickness = 1;
+            this.message.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.message.Border.Visible = true;
+            this.message.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.message.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.message.ButtonBorder.HoverVisible = true;
+            this.message.ButtonBorder.Rounding = 6;
+            this.message.ButtonBorder.Thickness = 1;
+            this.message.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.message.ButtonBorder.Visible = true;
+            this.message.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.message.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.message.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.message.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.message.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.ButtonIndent = 3;
+            this.message.ButtonText = "KG";
+            this.message.ButtonVisible = false;
+            this.message.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.message.Image = null;
+            this.message.ImageSize = new System.Drawing.Size(16, 16);
+            this.message.ImageVisible = false;
+            this.message.ImageWidth = 35;
+            this.message.Location = new System.Drawing.Point(19, 393);
+            this.message.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.message.MultiLine = true;
+            this.message.Name = "message";
+            this.message.PasswordChar = '\0';
+            this.message.ReadOnly = true;
+            this.message.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.message.Size = new System.Drawing.Size(480, 89);
+            this.message.TabIndex = 158;
+            this.message.TextBoxWidth = 468;
+            this.message.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.message.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.message.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.message.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.message.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.message.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.message.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.message.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.message.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.message.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.message.Watermark.Text = "Watermark text";
+            this.message.Watermark.Visible = false;
+            this.message.WordWrap = true;
+            // 
             // Error
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(522, 453);
+            this.ClientSize = new System.Drawing.Size(522, 552);
+            this.Controls.Add(this.message);
             this.Controls.Add(this.btnContinuar);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.label1);
@@ -156,8 +216,8 @@
             this.Controls.Add(this.pictureBox2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(522, 453);
-            this.MinimumSize = new System.Drawing.Size(522, 453);
+            this.MaximumSize = new System.Drawing.Size(522, 552);
+            this.MinimumSize = new System.Drawing.Size(522, 552);
             this.Name = "Error";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -176,5 +236,6 @@
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnFechar;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnContinuar;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox message;
     }
 }

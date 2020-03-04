@@ -339,6 +339,24 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
+        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal)
+        {
+            var query = new Model.Nota().Query();
+
+            query
+                .LeftJoin("pedido", "pedido.id", "nota.id_pedido")
+                .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
+                .Where("nota.excluir", 0)
+                .Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            query.Where("nota.tipo", tipo);
+            query.Where("nota.status", "Autorizada");
+            query.Where("pedido.tipo", "Vendas");
+
+            return query.Get();
+        }
+
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             Table.ColumnCount = 13;
@@ -504,7 +522,7 @@ namespace Emiplus.Controller
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private IEnumerable<dynamic> GetDadosNota(int idpedido = 0, int idnota = 0)
+        public IEnumerable<dynamic> GetDadosNota(int idpedido = 0, int idnota = 0)
         {
             var query = new Model.Nota().Query();
 

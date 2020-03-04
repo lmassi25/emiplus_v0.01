@@ -240,13 +240,6 @@ namespace Emiplus.View.Common
                 backWork.RunWorkerAsync();
             };
 
-            chatOnline.Click += (s, e) =>
-            {
-                Suporte f = new Suporte();
-                f.TopMost = true;
-                f.Show();
-            };
-
             developer.Click += (s, e) =>
             {
                 OpenForm.ShowInPanel<Developer>(panelFormularios);

@@ -1551,6 +1551,7 @@
     <None Include="Assets\Images\icons\warning16x.png" />
     <None Include="Resources\voucher.png" />
     <None Include="Assets\Images\nfce.png" />
+    <None Include="Assets\Images\icons\refresh.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

@@ -65,6 +65,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.btnImportar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.visualPanel9 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.btnSincronizar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.visualPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel4.SuspendLayout();
@@ -83,6 +88,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.visualPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.visualPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // visualPanel7
@@ -822,6 +830,109 @@
             this.btnImportar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnImportar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // visualPanel9
+            // 
+            this.visualPanel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualPanel9.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel9.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel9.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualPanel9.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualPanel9.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualPanel9.Border.HoverVisible = true;
+            this.visualPanel9.Border.Rounding = 6;
+            this.visualPanel9.Border.Thickness = 1;
+            this.visualPanel9.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel9.Border.Visible = true;
+            this.visualPanel9.Controls.Add(this.pictureBox11);
+            this.visualPanel9.Controls.Add(this.label11);
+            this.visualPanel9.Controls.Add(this.pictureBox10);
+            this.visualPanel9.Controls.Add(this.btnSincronizar);
+            this.visualPanel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel9.Location = new System.Drawing.Point(251, 415);
+            this.visualPanel9.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel9.Name = "visualPanel9";
+            this.visualPanel9.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel9.Size = new System.Drawing.Size(231, 145);
+            this.visualPanel9.TabIndex = 100;
+            this.visualPanel9.Text = "visualPanel9";
+            this.visualPanel9.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel9.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel9.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel9.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel9.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel9.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel9.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(47, 70);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(127, 21);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Sincronizar";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 8;
+            this.pictureBox10.TabStop = false;
+            // 
+            // btnSincronizar
+            // 
+            this.btnSincronizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSincronizar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSincronizar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnSincronizar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnSincronizar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnSincronizar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnSincronizar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnSincronizar.Border.HoverVisible = true;
+            this.btnSincronizar.Border.Rounding = 6;
+            this.btnSincronizar.Border.Thickness = 1;
+            this.btnSincronizar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSincronizar.Border.Visible = true;
+            this.btnSincronizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSincronizar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSincronizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSincronizar.ForeColor = System.Drawing.Color.White;
+            this.btnSincronizar.Image = null;
+            this.btnSincronizar.Location = new System.Drawing.Point(45, 103);
+            this.btnSincronizar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnSincronizar.Name = "btnSincronizar";
+            this.btnSincronizar.Size = new System.Drawing.Size(131, 27);
+            this.btnSincronizar.TabIndex = 1;
+            this.btnSincronizar.Text = "Sincronizar";
+            this.btnSincronizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSincronizar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSincronizar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSincronizar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSincronizar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSincronizar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSincronizar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSincronizar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(154, 75);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 157;
+            this.pictureBox11.TabStop = false;
+            // 
             // TelaConfigInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -829,6 +940,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualPanel9);
             this.Controls.Add(this.visualPanel8);
             this.Controls.Add(this.visualPanel7);
             this.Controls.Add(this.panel4);
@@ -863,6 +975,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.visualPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.visualPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,5 +1019,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox9;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImportar;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSincronizar;
+        private System.Windows.Forms.PictureBox pictureBox11;
     }
 }

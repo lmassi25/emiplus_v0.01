@@ -109,7 +109,7 @@ namespace Emiplus.View.Produtos
             referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
-
+            estoqueminimo.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueMinimo);
             LoadEstoque();
 
             if (nome.Text.Length > 2)
@@ -204,7 +204,7 @@ namespace Emiplus.View.Produtos
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
             
-            if (_modelItem.Ncm != "")
+            if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
             {
                 if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
                 {
