@@ -4,6 +4,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
 using Emiplus.View.Common;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
 using System.Linq;
@@ -420,10 +421,10 @@ namespace Emiplus.View.Comercial
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                         {
+                            Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
                         }
 
-                        Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
                         Close();
                         return;
@@ -437,11 +438,12 @@ namespace Emiplus.View.Comercial
                     if (_mPedido.Save(_mPedido))
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                        {
+                            Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
+                        }
 
-                        Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
-
                         Close();
 
                         return;
@@ -457,10 +459,10 @@ namespace Emiplus.View.Comercial
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                         {
+                            Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
                         }
 
-                        Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
 
                         Close();
@@ -985,7 +987,15 @@ namespace Emiplus.View.Comercial
 
             imprimir.Click += (s, e) =>
             {
-                new Controller.Pedido().Imprimir(Id);
+                OptionBobinaA4 f = new OptionBobinaA4();
+                string tipo = "";
+                f.TopMost = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                    tipo = "Folha A4";
+                else
+                    tipo = "Bobina 80mm";
+                
+                new Controller.Pedido().Imprimir(Id, tipo);
             };
 
             DescontoPorcentagem.KeyDown += (s, e) =>

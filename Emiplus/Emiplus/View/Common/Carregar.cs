@@ -145,10 +145,10 @@ namespace Emiplus.View.Common
             {
                 if (RunUpdate)
                 {
-                    new CreateTables().CheckTables(); // Atualiza o banco de dados
-                    
                     string version = new Update().GetVersionWebTxt();
                     IniFile.Write("Version", version, "APP"); // Atualiza a versão no INI
+
+                    new CreateTables().CheckTables(); // Atualiza o banco de dados
                 }
             };
 

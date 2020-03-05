@@ -71,10 +71,10 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(15, 335);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(498, 42);
+            this.label1.Size = new System.Drawing.Size(491, 42);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Alguma coisa deu errado... mas não se preocupe, já capturamos o erro \r\ne vamos ma" +
-    "ndar uma atualização em breve com o erro corrigido!";
+            this.label1.Text = "Alguma coisa deu errado... mas não se preocupe, se desejar contate o \r\nsuporte e " +
+    "informe o erro abaixo.";
             // 
             // btnFechar
             // 

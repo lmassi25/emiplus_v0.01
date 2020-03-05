@@ -554,9 +554,15 @@ namespace Emiplus.Controller
             Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
         }
 
-        public void Imprimir(int idPedido)
+        public void Imprimir(int idPedido, string tipo = "Bobina 80mm")
         {
-            if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm")
+            if (tipo == "Folha A4")
+            {
+                PedidoImpressao print = new PedidoImpressao();
+                print.Print(idPedido);
+            }
+            
+            if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
             {
                 #region IMPRESSAO
 
@@ -589,6 +595,12 @@ namespace Emiplus.Controller
 
                 if (printername == null)
                     return;
+
+                if (printername == "Selecione")
+                {
+                    Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                    return;
+                }
 
                 Printer printer = new Printer(printername);
 
@@ -744,9 +756,6 @@ namespace Emiplus.Controller
 
                 return;
             }
-
-            PedidoImpressao print = new PedidoImpressao();
-            print.Print(idPedido);
         }
 
         /// <summary>

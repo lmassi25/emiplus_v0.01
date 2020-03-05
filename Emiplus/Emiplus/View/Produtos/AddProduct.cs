@@ -306,8 +306,6 @@ namespace Emiplus.View.Produtos
                 nome.Focus();
             };
 
-            label6.Click += (s, e) => Close();
-
             btnExit.Click += (s, e) =>
             {
                 var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
@@ -433,14 +431,22 @@ namespace Emiplus.View.Produtos
                 }
             };
 
+            valorvenda.TextChanged += (s, e) =>
+            {
+                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                precoMedio.Text = $"{Validation.ConvertToDouble(Validation.RoundTwo(media))}%";
+            };
+
+            valorcompra.TextChanged += (s, e) =>
+            {
+                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                precoMedio.Text = Validation.Price(media);
+            };
+
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
-
             codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
-
             referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
-
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
             nome.TextChanged += (s, e) =>

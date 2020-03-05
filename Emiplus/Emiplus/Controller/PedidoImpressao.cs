@@ -27,7 +27,7 @@ namespace Emiplus.Controller
 
         public bool Print(int idPedido)
         {
-            _modelPedido = _modelPedido.FindById(idPedido).First<Model.Pedido>();
+            _modelPedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
 
             IEnumerable<dynamic> dados = new Controller.PedidoItem().GetDataItens(idPedido);
 
@@ -126,10 +126,10 @@ namespace Emiplus.Controller
                 Data = data,
                 Troco = Validation.FormatPrice(_controllerTitulo.GetTroco(idPedido), true).Replace("-", ""),
                 Pagamentos = newDataPgtos,
-                subTotal = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true),
+                subTotal = Validation.FormatPrice(_modelPedido.Produtos, true),
                 Descontos = Validation.FormatPrice(_modelPedido.Desconto, true),
                 Acrescimo = Validation.FormatPrice(0, true),
-                Total = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true),
+                Total = Validation.FormatPrice(_modelPedido.Total, true),
                 NrVenda = idPedido,
                 titulo = titulo,
                 titulo2 = titulo2,
