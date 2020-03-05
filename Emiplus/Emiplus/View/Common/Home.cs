@@ -215,9 +215,9 @@ namespace Emiplus.View.Common
         /// </summary>
         private void StartInicio()
         {
-            homeMenuInicio.BackColor = Color.FromArgb(37, 48, 50);
+            homeMenuInicio.BackColor = Color.FromArgb(26, 32, 44);
             homeMenuInicio.ForeColor = Color.WhiteSmoke;
-            pictureBox2.BackColor = Color.FromArgb(37, 48, 50);
+            pictureBox2.BackColor = Color.FromArgb(26, 32, 44);
             OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
 
             homeMenuFiscal.BackColor = Color.Transparent;
@@ -259,9 +259,9 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(homeMenuProducts, pictureBox9, "all_produtos"))
                     return;
 
-                homeMenuProducts.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuProducts.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuProducts.ForeColor = Color.WhiteSmoke;
-                pictureBox3.BackColor = Color.FromArgb(37, 48, 50);
+                pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;
@@ -276,9 +276,9 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(homeMenuComercial, pictureBox10, "all_comercial"))
                     return;
 
-                homeMenuComercial.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuComercial.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuComercial.ForeColor = Color.WhiteSmoke;
-                pictureBox4.BackColor = Color.FromArgb(37, 48, 50);
+                pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;
@@ -293,9 +293,9 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(homeMenuFinanceiro, pictureBox11, "all_financeiro"))
                     return;
 
-                homeMenuFinanceiro.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuFinanceiro.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuFinanceiro.ForeColor = Color.WhiteSmoke;
-                pictureBox5.BackColor = Color.FromArgb(37, 48, 50);
+                pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaFinanceiroInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;
@@ -310,9 +310,9 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(homeMenuFiscal, pictureBox12, "all_fiscal"))
                     return;
 
-                homeMenuFiscal.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuFiscal.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuFiscal.ForeColor = Color.WhiteSmoke;
-                pictureBox6.BackColor = Color.FromArgb(37, 48, 50);
+                pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaFiscalInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;
@@ -324,9 +324,9 @@ namespace Emiplus.View.Common
 
             homeMenuSettings.Click += (s, e) =>
             {
-                homeMenuSettings.BackColor = Color.FromArgb(37, 48, 50);
+                homeMenuSettings.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuSettings.ForeColor = Color.WhiteSmoke;
-                pictureBox7.BackColor = Color.FromArgb(37, 48, 50);
+                pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaConfigInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.Transparent;

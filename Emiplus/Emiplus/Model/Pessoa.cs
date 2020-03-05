@@ -80,7 +80,7 @@
             Fantasia = values[1];
             RG = values[2];
             CPF = values[3];
-            Aniversario = values[4];
+            Aniversario = values[4] == "0000-00-00" ? null : values[4];
             Isento = Validation.ConvertToInt32(values[5]);
             Transporte_placa = values[6];
             Transporte_uf = values[7];
