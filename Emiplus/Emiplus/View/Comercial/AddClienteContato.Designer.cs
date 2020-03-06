@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClienteContato));
             this.label11 = new System.Windows.Forms.Label();
-            this.btnContatoSalvar = new System.Windows.Forms.Button();
-            this.btnContatoDelete = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.contato = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -43,6 +40,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.email = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnContatoDelete = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnContatoSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,53 +50,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(10, 20);
+            this.label11.Location = new System.Drawing.Point(13, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 25);
             this.label11.TabIndex = 5;
             this.label11.Text = "Novo contato:";
-            // 
-            // btnContatoSalvar
-            // 
-            this.btnContatoSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContatoSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnContatoSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContatoSalvar.FlatAppearance.BorderSize = 0;
-            this.btnContatoSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContatoSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContatoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoSalvar.Image")));
-            this.btnContatoSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoSalvar.Location = new System.Drawing.Point(590, 3);
-            this.btnContatoSalvar.Name = "btnContatoSalvar";
-            this.btnContatoSalvar.Size = new System.Drawing.Size(65, 60);
-            this.btnContatoSalvar.TabIndex = 4;
-            this.btnContatoSalvar.Text = "Salvar";
-            this.btnContatoSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContatoSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnContatoDelete
-            // 
-            this.btnContatoDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContatoDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnContatoDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContatoDelete.FlatAppearance.BorderSize = 0;
-            this.btnContatoDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContatoDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContatoDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContatoDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContatoDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnContatoDelete.Image")));
-            this.btnContatoDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContatoDelete.Location = new System.Drawing.Point(16, 5);
-            this.btnContatoDelete.Name = "btnContatoDelete";
-            this.btnContatoDelete.Size = new System.Drawing.Size(69, 60);
-            this.btnContatoDelete.TabIndex = 5;
-            this.btnContatoDelete.Text = "Excluir";
-            this.btnContatoDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContatoDelete.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -128,8 +85,8 @@
             this.contato.BackColor = System.Drawing.Color.White;
             this.contato.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.contato.BackColorState.Enabled = System.Drawing.Color.White;
-            this.contato.Border.Color = System.Drawing.Color.Gainsboro;
-            this.contato.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.contato.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.contato.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.contato.Border.HoverVisible = true;
             this.contato.Border.Rounding = 8;
             this.contato.Border.Thickness = 1;
@@ -156,7 +113,7 @@
             this.contato.ImageSize = new System.Drawing.Size(16, 16);
             this.contato.ImageVisible = false;
             this.contato.ImageWidth = 35;
-            this.contato.Location = new System.Drawing.Point(15, 97);
+            this.contato.Location = new System.Drawing.Point(15, 98);
             this.contato.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.contato.Name = "contato";
             this.contato.PasswordChar = '\0';
@@ -197,8 +154,8 @@
             this.telefone.BackColor = System.Drawing.Color.White;
             this.telefone.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.telefone.BackColorState.Enabled = System.Drawing.Color.White;
-            this.telefone.Border.Color = System.Drawing.Color.Gainsboro;
-            this.telefone.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.telefone.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.telefone.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.telefone.Border.HoverVisible = true;
             this.telefone.Border.Rounding = 8;
             this.telefone.Border.Thickness = 1;
@@ -225,7 +182,7 @@
             this.telefone.ImageSize = new System.Drawing.Size(16, 16);
             this.telefone.ImageVisible = false;
             this.telefone.ImageWidth = 35;
-            this.telefone.Location = new System.Drawing.Point(257, 97);
+            this.telefone.Location = new System.Drawing.Point(257, 98);
             this.telefone.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.telefone.Name = "telefone";
             this.telefone.PasswordChar = '\0';
@@ -266,8 +223,8 @@
             this.celular.BackColor = System.Drawing.Color.White;
             this.celular.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.celular.BackColorState.Enabled = System.Drawing.Color.White;
-            this.celular.Border.Color = System.Drawing.Color.Gainsboro;
-            this.celular.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.celular.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.celular.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.celular.Border.HoverVisible = true;
             this.celular.Border.Rounding = 8;
             this.celular.Border.Thickness = 1;
@@ -294,7 +251,7 @@
             this.celular.ImageSize = new System.Drawing.Size(16, 16);
             this.celular.ImageVisible = false;
             this.celular.ImageWidth = 35;
-            this.celular.Location = new System.Drawing.Point(460, 97);
+            this.celular.Location = new System.Drawing.Point(460, 98);
             this.celular.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.celular.Name = "celular";
             this.celular.PasswordChar = '\0';
@@ -335,8 +292,8 @@
             this.email.BackColor = System.Drawing.Color.White;
             this.email.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.email.BackColorState.Enabled = System.Drawing.Color.White;
-            this.email.Border.Color = System.Drawing.Color.Gainsboro;
-            this.email.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.email.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.email.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.email.Border.HoverVisible = true;
             this.email.Border.Rounding = 8;
             this.email.Border.Thickness = 1;
@@ -363,7 +320,7 @@
             this.email.ImageSize = new System.Drawing.Size(16, 16);
             this.email.ImageVisible = false;
             this.email.ImageWidth = 35;
-            this.email.Location = new System.Drawing.Point(17, 152);
+            this.email.Location = new System.Drawing.Point(17, 153);
             this.email.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.email.Name = "email";
             this.email.PasswordChar = '\0';
@@ -393,18 +350,86 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel2.Controls.Add(this.btnContatoSalvar);
             this.panel2.Controls.Add(this.btnContatoDelete);
-            this.panel2.Location = new System.Drawing.Point(0, 199);
+            this.panel2.Location = new System.Drawing.Point(0, 197);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 68);
+            this.panel2.Size = new System.Drawing.Size(670, 40);
             this.panel2.TabIndex = 4;
             this.panel2.TabStop = true;
+            // 
+            // btnContatoDelete
+            // 
+            this.btnContatoDelete.BackColor = System.Drawing.Color.White;
+            this.btnContatoDelete.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnContatoDelete.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnContatoDelete.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnContatoDelete.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnContatoDelete.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnContatoDelete.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnContatoDelete.Border.HoverVisible = true;
+            this.btnContatoDelete.Border.Rounding = 6;
+            this.btnContatoDelete.Border.Thickness = 1;
+            this.btnContatoDelete.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnContatoDelete.Border.Visible = true;
+            this.btnContatoDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContatoDelete.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnContatoDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContatoDelete.ForeColor = System.Drawing.Color.White;
+            this.btnContatoDelete.Image = null;
+            this.btnContatoDelete.Location = new System.Drawing.Point(17, 5);
+            this.btnContatoDelete.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnContatoDelete.Name = "btnContatoDelete";
+            this.btnContatoDelete.Size = new System.Drawing.Size(96, 30);
+            this.btnContatoDelete.TabIndex = 553;
+            this.btnContatoDelete.Text = "Excluir";
+            this.btnContatoDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnContatoDelete.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnContatoDelete.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnContatoDelete.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnContatoDelete.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnContatoDelete.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContatoDelete.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContatoDelete.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnContatoSalvar
+            // 
+            this.btnContatoSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContatoSalvar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnContatoSalvar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnContatoSalvar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContatoSalvar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContatoSalvar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnContatoSalvar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContatoSalvar.Border.HoverVisible = true;
+            this.btnContatoSalvar.Border.Rounding = 6;
+            this.btnContatoSalvar.Border.Thickness = 1;
+            this.btnContatoSalvar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnContatoSalvar.Border.Visible = true;
+            this.btnContatoSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContatoSalvar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnContatoSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContatoSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnContatoSalvar.Image = null;
+            this.btnContatoSalvar.Location = new System.Drawing.Point(555, 5);
+            this.btnContatoSalvar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnContatoSalvar.Name = "btnContatoSalvar";
+            this.btnContatoSalvar.Size = new System.Drawing.Size(96, 30);
+            this.btnContatoSalvar.TabIndex = 554;
+            this.btnContatoSalvar.Text = "Salvar";
+            this.btnContatoSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnContatoSalvar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnContatoSalvar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnContatoSalvar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnContatoSalvar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnContatoSalvar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContatoSalvar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContatoSalvar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // AddClienteContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 266);
+            this.ClientSize = new System.Drawing.Size(670, 238);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.email);
@@ -419,9 +444,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(686, 305);
+            this.MaximumSize = new System.Drawing.Size(686, 277);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(686, 305);
+            this.MinimumSize = new System.Drawing.Size(686, 277);
             this.Name = "AddClienteContato";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -436,8 +461,6 @@
 
         #endregion
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnContatoSalvar;
-        private System.Windows.Forms.Button btnContatoDelete;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label23;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox contato;
@@ -448,5 +471,7 @@
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox email;
         private System.Windows.Forms.Panel panel2;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnContatoDelete;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnContatoSalvar;
     }
 }

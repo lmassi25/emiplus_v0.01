@@ -7,7 +7,7 @@ namespace Emiplus.Data.Core
     {
         private string URL = "https://apidoni.ibpt.org.br/api/v1/produtos";
         private string TOKEN = "XuQDaelCK27pcQRu0H8yvl4ZJj19W-xVsSSVG2I9KyC4ZuJ2D0rx7huWS7PeST01";
-        private string CNPJ = "05681389000100";
+        private string CNPJ = Settings.Default.empresa_cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
         private string UF = Settings.Default.empresa_estado;
 
         private dynamic content { get; set; }

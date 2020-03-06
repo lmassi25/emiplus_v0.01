@@ -30,11 +30,6 @@ namespace Emiplus.View.Produtos.Imposto.CFOP
             DataTable();
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void BtnSelecionar_Click(object sender, EventArgs e)
         {
             if (GridListaCfops.SelectedRows.Count > 0)

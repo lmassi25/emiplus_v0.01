@@ -225,16 +225,16 @@ namespace Emiplus.View.Comercial
                         {
                             item.Cells["Selecione"].Value = true;
                             btnRemover.Visible = true;
-                            btnEditar.Enabled = false;
-                            btnAdicionar.Enabled = false;
+                            btnEditar.Visible = false;
+                            btnAdicionar.Visible = false;
                         }
                     }
                     else
                     {
                         item.Cells["Selecione"].Value = false;
                         btnRemover.Visible = false;
-                        btnEditar.Enabled = true;
-                        btnAdicionar.Enabled = true;
+                        btnEditar.Visible = true;
+                        btnAdicionar.Visible = true;
                     }
                 }
 
@@ -262,8 +262,8 @@ namespace Emiplus.View.Comercial
 
                 btnMarcarCheckBox.Text = "Marcar Todos";
                 btnRemover.Visible = false;
-                btnEditar.Enabled = true;
-                btnAdicionar.Enabled = true;
+                btnEditar.Visible = true;
+                btnAdicionar.Visible = true;
             };
 
             GridLista.CellClick += (s, e) =>
@@ -274,8 +274,8 @@ namespace Emiplus.View.Comercial
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
-                        btnEditar.Enabled = false;
-                        btnAdicionar.Enabled = false;
+                        btnEditar.Visible = false;
+                        btnAdicionar.Visible = false;
                     }
                     else
                     {
@@ -291,8 +291,8 @@ namespace Emiplus.View.Comercial
                             }
 
                         btnRemover.Visible = hideBtns;
-                        btnEditar.Enabled = hideBtnsTop;
-                        btnAdicionar.Enabled = hideBtnsTop;
+                        btnEditar.Visible = hideBtnsTop;
+                        btnAdicionar.Visible = hideBtnsTop;
                     }
                 }
             };

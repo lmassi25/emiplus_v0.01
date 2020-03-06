@@ -211,16 +211,12 @@ namespace Emiplus.View.Common
 
         private void InitData()
         {
-            if (Settings.Default.login_email != string.Empty)
+            if (!string.IsNullOrEmpty(Settings.Default.login_email))
             {
                 if (Settings.Default.login_remember)
                 {
                     email.Text = Settings.Default.login_email;
-                    remember.CheckState = CheckState.Checked;
-                }
-                else
-                {
-                    email.Text = Settings.Default.login_email;
+                    remember.Checked = true;
                 }
             }
         }

@@ -272,6 +272,10 @@ namespace Emiplus.View.Comercial
                     detailsPedido.ShowDialog();
                 }
             }
+            else
+            {
+                Alert.Message("Opps", "Selecione um item na tabela.", Alert.AlertType.info);
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)

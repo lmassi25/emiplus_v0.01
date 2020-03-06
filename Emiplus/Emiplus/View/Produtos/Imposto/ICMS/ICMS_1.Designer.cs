@@ -52,7 +52,7 @@
             this.Aliq.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Aliq.BackColorState.Enabled = System.Drawing.Color.White;
             this.Aliq.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Aliq.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Aliq.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Aliq.Border.HoverVisible = true;
             this.Aliq.Border.Rounding = 8;
             this.Aliq.Border.Thickness = 1;
@@ -74,12 +74,12 @@
             this.Aliq.ButtonText = "visualButton";
             this.Aliq.ButtonVisible = false;
             this.Aliq.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Aliq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Aliq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Aliq.Image = null;
             this.Aliq.ImageSize = new System.Drawing.Size(16, 16);
             this.Aliq.ImageVisible = false;
             this.Aliq.ImageWidth = 35;
-            this.Aliq.Location = new System.Drawing.Point(6, 23);
+            this.Aliq.Location = new System.Drawing.Point(6, 24);
             this.Aliq.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Aliq.Name = "Aliq";
             this.Aliq.PasswordChar = '\0';

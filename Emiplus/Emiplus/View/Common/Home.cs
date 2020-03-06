@@ -220,11 +220,18 @@ namespace Emiplus.View.Common
             pictureBox2.BackColor = Color.FromArgb(26, 32, 44);
             OpenForm.ShowInPanel<TelaInicial>(panelFormularios);
 
-            homeMenuFiscal.BackColor = Color.Transparent;
-            homeMenuProducts.BackColor = Color.Transparent;
-            homeMenuComercial.BackColor = Color.Transparent;
-            homeMenuFinanceiro.BackColor = Color.Transparent;
-            homeMenuSettings.BackColor = Color.Transparent;
+            homeMenuFiscal.BackColor = Color.FromArgb(46, 55, 72);
+            homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
+            homeMenuComercial.BackColor = Color.FromArgb(46, 55, 72);
+            homeMenuFinanceiro.BackColor = Color.FromArgb(46, 55, 72);
+            homeMenuSettings.BackColor = Color.FromArgb(46, 55, 72);
+            //pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+            pictureBox3.BackColor = Color.FromArgb(46, 55, 72);
+            pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
+            pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
+            pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+            pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+            panel3.Refresh();
         }
 
         private void Eventos()
@@ -254,6 +261,11 @@ namespace Emiplus.View.Common
                 StartInicio();
             };
 
+            homeMenuInicio.MouseHover += (s, e) =>
+            {
+                pictureBox2.BackColor = Color.FromArgb(26, 32, 44);
+            };
+
             homeMenuProducts.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(homeMenuProducts, pictureBox9, "all_produtos"))
@@ -264,11 +276,22 @@ namespace Emiplus.View.Common
                 pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaProdutosInicial>(panelFormularios);
 
-                homeMenuInicio.BackColor = Color.Transparent;
-                homeMenuComercial.BackColor = Color.Transparent;
-                homeMenuFinanceiro.BackColor = Color.Transparent;
-                homeMenuFiscal.BackColor = Color.Transparent;
-                homeMenuSettings.BackColor = Color.Transparent;
+                homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuComercial.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFinanceiro.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFiscal.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuSettings.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+                panel3.Refresh();
+            };
+
+            homeMenuProducts.MouseHover += (s, e) =>
+            {
+                pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
             };
 
             homeMenuComercial.Click += (s, e) =>
@@ -281,11 +304,24 @@ namespace Emiplus.View.Common
                 pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
 
-                homeMenuInicio.BackColor = Color.Transparent;
-                homeMenuProducts.BackColor = Color.Transparent;
-                homeMenuFinanceiro.BackColor = Color.Transparent;
-                homeMenuFiscal.BackColor = Color.Transparent;
-                homeMenuSettings.BackColor = Color.Transparent;
+                homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFinanceiro.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFiscal.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuSettings.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox3.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+
+                panel3.Refresh();
+            };
+
+            homeMenuComercial.MouseHover += (s, e) =>
+            {
+                pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
+                pictureBox4.Refresh();
             };
 
             homeMenuFinanceiro.Click += (s, e) =>
@@ -298,11 +334,24 @@ namespace Emiplus.View.Common
                 pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaFinanceiroInicial>(panelFormularios);
 
-                homeMenuInicio.BackColor = Color.Transparent;
-                homeMenuProducts.BackColor = Color.Transparent;
-                homeMenuComercial.BackColor = Color.Transparent;
-                homeMenuFiscal.BackColor = Color.Transparent;
-                homeMenuSettings.BackColor = Color.Transparent;
+                homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuComercial.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFiscal.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuSettings.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox3.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+
+                panel3.Refresh();
+            };
+
+            homeMenuFinanceiro.MouseHover += (s, e) =>
+            {
+                pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
+                pictureBox5.Refresh();
             };
 
             homeMenuFiscal.Click += (s, e) =>
@@ -315,11 +364,24 @@ namespace Emiplus.View.Common
                 pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaFiscalInicial>(panelFormularios);
 
-                homeMenuInicio.BackColor = Color.Transparent;
-                homeMenuProducts.BackColor = Color.Transparent;
-                homeMenuComercial.BackColor = Color.Transparent;
-                homeMenuFinanceiro.BackColor = Color.Transparent;
-                homeMenuSettings.BackColor = Color.Transparent;
+                homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuComercial.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFinanceiro.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuSettings.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox3.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+
+                panel3.Refresh();
+            };
+
+            homeMenuFiscal.MouseHover += (s, e) =>
+            {
+                pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
+                pictureBox6.Refresh();
             };
 
             homeMenuSettings.Click += (s, e) =>
@@ -329,11 +391,23 @@ namespace Emiplus.View.Common
                 pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
                 OpenForm.ShowInPanel<TelaConfigInicial>(panelFormularios);
 
-                homeMenuInicio.BackColor = Color.Transparent;
-                homeMenuFiscal.BackColor = Color.Transparent;
-                homeMenuProducts.BackColor = Color.Transparent;
-                homeMenuComercial.BackColor = Color.Transparent;
-                homeMenuFinanceiro.BackColor = Color.Transparent;
+                homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFiscal.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuComercial.BackColor = Color.FromArgb(46, 55, 72);
+                homeMenuFinanceiro.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox2.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox3.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
+                pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+                panel3.Refresh();
+            };
+
+            homeMenuSettings.MouseHover += (s, e) =>
+            {
+                pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
+                pictureBox7.Refresh();
             };
 
             btnSendSugesttion.Click += (s, e) =>

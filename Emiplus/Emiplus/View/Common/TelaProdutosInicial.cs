@@ -79,8 +79,10 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(ReajusteProduto, pictureBox7, "pdt_reajuste"))
                     return;
 
-                Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
-                Reajuste.ShowDialog();
+                OpenForm.Show<Produtos.ReajusteDeProduto>(this);
+
+                //Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
+                //Reajuste.ShowDialog();
             };
 
             Compras.Click += (s, e) =>
@@ -98,8 +100,10 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(HistoricoEntradaSaida, pictureBox11, "pdt_entradassaidas"))
                     return;
 
-                EstoqueEntradaSaida formEntradaeSaida = new EstoqueEntradaSaida();
-                formEntradaeSaida.ShowDialog();
+                OpenForm.Show<EstoqueEntradaSaida>(this);
+
+                //EstoqueEntradaSaida formEntradaeSaida = new EstoqueEntradaSaida();
+                //formEntradaeSaida.ShowDialog();
             };
 
             Estoque.Click += (s, e) =>

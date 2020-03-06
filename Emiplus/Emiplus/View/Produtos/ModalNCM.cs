@@ -131,8 +131,6 @@ namespace Emiplus.View.Produtos
                 backWork.RunWorkerAsync();
             };
 
-            btnCancelar.Click += (s, e) => Close();
-
             search.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
 
             backWork.DoWork += (s, e) =>
