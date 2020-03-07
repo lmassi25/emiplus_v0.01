@@ -133,7 +133,7 @@ namespace Emiplus.Controller
                     count++,
                     data.REFERENCIA,
                     data.NOME,
-                    data.QUANTIDADE + " " + data.MEDIDA,
+                    Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE)) + " " + data.MEDIDA,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.FRETE), true),

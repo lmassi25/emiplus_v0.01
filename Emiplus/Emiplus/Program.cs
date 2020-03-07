@@ -114,6 +114,7 @@ namespace Emiplus
                 new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
             }
 
+            Error.errorMessage = e.Message.ToString();
             Error result = new Error();
             // Exit the program when the user clicks Abort.
             if (result.ShowDialog() == DialogResult.OK)

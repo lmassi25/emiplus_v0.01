@@ -48,6 +48,13 @@ namespace Emiplus.View.Common
                 return;
             }
 
+            string localDB = IniFile.Read("PathDatabase", "LOCAL");
+            if (!File.Exists(localDB + "\\EMIPLUS.FDB"))
+            {
+                Alert.Message("Opps", "Não conseguimos localizar o banco de dados.", Alert.AlertType.error);
+                return;
+            }
+
             if (Support.CheckForInternetConnection())
             {
                 dynamic obj = new
@@ -59,7 +66,6 @@ namespace Emiplus.View.Common
                 };
 
                 var jo = new RequestApi().URL(Program.URL_BASE + "/api/user").Content(obj, Method.POST).Response();
-
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {
                     Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
@@ -211,16 +217,12 @@ namespace Emiplus.View.Common
 
         private void InitData()
         {
-            if (Settings.Default.login_email != string.Empty)
+            if (!string.IsNullOrEmpty(Settings.Default.login_email))
             {
                 if (Settings.Default.login_remember)
                 {
                     email.Text = Settings.Default.login_email;
-                    remember.CheckState = CheckState.Checked;
-                }
-                else
-                {
-                    email.Text = Settings.Default.login_email;
+                    remember.Checked = true;
                 }
             }
         }

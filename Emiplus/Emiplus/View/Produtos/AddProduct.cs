@@ -109,7 +109,7 @@ namespace Emiplus.View.Produtos
             referencia.Text = _modelItem?.Referencia ?? "";
             valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
-
+            estoqueminimo.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueMinimo);
             LoadEstoque();
 
             if (nome.Text.Length > 2)
@@ -204,7 +204,7 @@ namespace Emiplus.View.Produtos
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
             
-            if (_modelItem.Ncm != "")
+            if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
             {
                 if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
                 {
@@ -305,8 +305,6 @@ namespace Emiplus.View.Produtos
 
                 nome.Focus();
             };
-
-            label6.Click += (s, e) => Close();
 
             btnExit.Click += (s, e) =>
             {
@@ -433,14 +431,22 @@ namespace Emiplus.View.Produtos
                 }
             };
 
+            valorvenda.TextChanged += (s, e) =>
+            {
+                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                precoMedio.Text = $"{Validation.ConvertToDouble(Validation.RoundTwo(media))}%";
+            };
+
+            valorcompra.TextChanged += (s, e) =>
+            {
+                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                precoMedio.Text = Validation.Price(media);
+            };
+
             estoqueminimo.KeyPress += (s, e) => Masks.MaskDouble(s, e);
-
             codebarras.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 20);
-
             referencia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
-
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
             nome.TextChanged += (s, e) =>

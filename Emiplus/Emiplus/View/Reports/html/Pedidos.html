@@ -68,6 +68,32 @@
                         <td></td>
                     </tr>
                     {% endfor %}
+
+                    {% for itemTotal in TotalNotas %}
+                    <tr style="text-align: right;">
+                        <td>
+                            <strong>TOTAL NF-e {{itemTotal.TOTAL}}</strong>
+                            <br />
+                            <strong>Notas Fiscais: {{itemTotal.ID}} registro(s) encontrado(s).</strong>
+                        </td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+
+                    {% for itemTotal in TotalCupons %}
+                    <tr style="text-align: right;">
+                        <td>
+                            <strong>TOTAL CUPONS {{itemTotal.TOTAL}}</strong>
+                            <br />
+                            <strong>CUPONS: {{itemTotal.ID}} registro(s) encontrado(s).</strong>
+                        </td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td></td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

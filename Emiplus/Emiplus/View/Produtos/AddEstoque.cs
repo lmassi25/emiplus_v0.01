@@ -43,8 +43,6 @@ namespace Emiplus.View.Produtos
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            btnCancelar.Click += (s, e) => Close();
-
             btnSalvar.Click += (s, e) =>
             {
                 var item = _modelItem.FindById(IdItem).FirstOrDefault<Item>();

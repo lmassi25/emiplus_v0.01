@@ -34,6 +34,9 @@ namespace Emiplus.View.Common
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -52,9 +55,6 @@ namespace Emiplus.View.Common
             this.developer = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.homeMenuInicio = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.version = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.homeMenuSettings = new System.Windows.Forms.Button();
@@ -69,14 +69,15 @@ namespace Emiplus.View.Common
             this.barraTituloHome = new System.Windows.Forms.Panel();
             this.syncOn = new System.Windows.Forms.PictureBox();
             this.btnSendSugesttion = new System.Windows.Forms.Button();
-            this.chatOnline = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormularios = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -84,9 +85,6 @@ namespace Emiplus.View.Common
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.visualPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel5.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -100,18 +98,20 @@ namespace Emiplus.View.Common
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 12);
+            this.label1.Location = new System.Drawing.Point(1, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 21);
+            this.label1.Size = new System.Drawing.Size(235, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Olá, William Alvares";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.pictureBox13);
             this.panel3.Controls.Add(this.pictureBox12);
             this.panel3.Controls.Add(this.pictureBox11);
@@ -121,8 +121,6 @@ namespace Emiplus.View.Common
             this.panel3.Controls.Add(this.developer);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.homeMenuInicio);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.version);
             this.panel3.Controls.Add(this.pictureBox7);
             this.panel3.Controls.Add(this.homeMenuSettings);
@@ -137,13 +135,42 @@ namespace Emiplus.View.Common
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 729);
+            this.panel3.Size = new System.Drawing.Size(241, 729);
             this.panel3.TabIndex = 20;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(241, 40);
+            this.panel2.TabIndex = 162;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(241, 50);
+            this.panel1.TabIndex = 24;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(82, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 17);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // pictureBox13
             // 
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(257, 121);
+            this.pictureBox13.Location = new System.Drawing.Point(224, 125);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(15, 15);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -154,7 +181,7 @@ namespace Emiplus.View.Common
             // pictureBox12
             // 
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(257, 345);
+            this.pictureBox12.Location = new System.Drawing.Point(224, 341);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(15, 15);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -165,7 +192,7 @@ namespace Emiplus.View.Common
             // pictureBox11
             // 
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(257, 289);
+            this.pictureBox11.Location = new System.Drawing.Point(224, 287);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(15, 15);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,7 +203,7 @@ namespace Emiplus.View.Common
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(257, 233);
+            this.pictureBox10.Location = new System.Drawing.Point(224, 233);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,7 +214,7 @@ namespace Emiplus.View.Common
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(257, 177);
+            this.pictureBox9.Location = new System.Drawing.Point(224, 179);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(15, 15);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -217,7 +244,7 @@ namespace Emiplus.View.Common
             this.visualPanel1.Controls.Add(this.plano);
             this.visualPanel1.Controls.Add(this.label2);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.Location = new System.Drawing.Point(40, 549);
+            this.visualPanel1.Location = new System.Drawing.Point(23, 549);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel1.Name = "visualPanel1";
             this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
@@ -361,17 +388,17 @@ namespace Emiplus.View.Common
             // 
             // developer
             // 
-            this.developer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.developer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.developer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.developer.FlatAppearance.BorderSize = 0;
-            this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.developer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.developer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.developer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.developer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.developer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.developer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.developer.Location = new System.Drawing.Point(0, 422);
+            this.developer.Location = new System.Drawing.Point(1, 414);
             this.developer.Name = "developer";
-            this.developer.Size = new System.Drawing.Size(275, 50);
+            this.developer.Size = new System.Drawing.Size(238, 50);
             this.developer.TabIndex = 156;
             this.developer.Text = "            Desenvolvimento";
             this.developer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,10 +407,10 @@ namespace Emiplus.View.Common
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(26, 103);
+            this.pictureBox2.Location = new System.Drawing.Point(27, 107);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(18, 18);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -393,71 +420,42 @@ namespace Emiplus.View.Common
             // homeMenuInicio
             // 
             this.homeMenuInicio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.homeMenuInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuInicio.FlatAppearance.BorderSize = 0;
-            this.homeMenuInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuInicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuInicio.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.homeMenuInicio.Location = new System.Drawing.Point(0, 86);
+            this.homeMenuInicio.Location = new System.Drawing.Point(1, 90);
             this.homeMenuInicio.Name = "homeMenuInicio";
-            this.homeMenuInicio.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuInicio.Size = new System.Drawing.Size(238, 50);
             this.homeMenuInicio.TabIndex = 26;
             this.homeMenuInicio.Text = "            Início";
             this.homeMenuInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuInicio.UseVisualStyleBackColor = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 35);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(275, 45);
-            this.panel5.TabIndex = 25;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 35);
-            this.panel1.TabIndex = 24;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(93, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 19);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // version
             // 
             this.version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.version.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.version.Location = new System.Drawing.Point(100, 701);
+            this.version.Location = new System.Drawing.Point(62, 701);
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(111, 13);
             this.version.TabIndex = 23;
             this.version.Text = "Versão";
+            this.version.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(26, 383);
+            this.pictureBox7.Location = new System.Drawing.Point(27, 377);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(18, 18);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -466,17 +464,17 @@ namespace Emiplus.View.Common
             // 
             // homeMenuSettings
             // 
-            this.homeMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuSettings.FlatAppearance.BorderSize = 0;
-            this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.homeMenuSettings.Location = new System.Drawing.Point(0, 366);
+            this.homeMenuSettings.Location = new System.Drawing.Point(1, 360);
             this.homeMenuSettings.Name = "homeMenuSettings";
-            this.homeMenuSettings.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuSettings.Size = new System.Drawing.Size(238, 50);
             this.homeMenuSettings.TabIndex = 21;
             this.homeMenuSettings.Text = "            Configurações";
             this.homeMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -484,10 +482,10 @@ namespace Emiplus.View.Common
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(26, 326);
+            this.pictureBox6.Location = new System.Drawing.Point(27, 322);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(18, 18);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -496,10 +494,10 @@ namespace Emiplus.View.Common
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(26, 270);
+            this.pictureBox5.Location = new System.Drawing.Point(27, 268);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(18, 18);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -508,10 +506,10 @@ namespace Emiplus.View.Common
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(26, 214);
+            this.pictureBox4.Location = new System.Drawing.Point(27, 214);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(18, 18);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -520,10 +518,10 @@ namespace Emiplus.View.Common
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(26, 159);
+            this.pictureBox3.Location = new System.Drawing.Point(27, 161);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(18, 18);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -532,17 +530,17 @@ namespace Emiplus.View.Common
             // 
             // homeMenuFiscal
             // 
-            this.homeMenuFiscal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuFiscal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuFiscal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFiscal.FlatAppearance.BorderSize = 0;
-            this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFiscal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuFiscal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuFiscal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuFiscal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuFiscal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.homeMenuFiscal.Location = new System.Drawing.Point(0, 310);
+            this.homeMenuFiscal.Location = new System.Drawing.Point(1, 306);
             this.homeMenuFiscal.Name = "homeMenuFiscal";
-            this.homeMenuFiscal.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuFiscal.Size = new System.Drawing.Size(238, 50);
             this.homeMenuFiscal.TabIndex = 4;
             this.homeMenuFiscal.Text = "            Fiscal";
             this.homeMenuFiscal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -550,17 +548,17 @@ namespace Emiplus.View.Common
             // 
             // homeMenuFinanceiro
             // 
-            this.homeMenuFinanceiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuFinanceiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuFinanceiro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuFinanceiro.FlatAppearance.BorderSize = 0;
-            this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuFinanceiro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuFinanceiro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuFinanceiro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuFinanceiro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.homeMenuFinanceiro.Location = new System.Drawing.Point(0, 254);
+            this.homeMenuFinanceiro.Location = new System.Drawing.Point(1, 252);
             this.homeMenuFinanceiro.Name = "homeMenuFinanceiro";
-            this.homeMenuFinanceiro.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuFinanceiro.Size = new System.Drawing.Size(238, 50);
             this.homeMenuFinanceiro.TabIndex = 3;
             this.homeMenuFinanceiro.Text = "            Financeiro";
             this.homeMenuFinanceiro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -568,17 +566,17 @@ namespace Emiplus.View.Common
             // 
             // homeMenuComercial
             // 
-            this.homeMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuComercial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuComercial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuComercial.FlatAppearance.BorderSize = 0;
-            this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuComercial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuComercial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuComercial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuComercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuComercial.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuComercial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.homeMenuComercial.Location = new System.Drawing.Point(0, 198);
+            this.homeMenuComercial.Location = new System.Drawing.Point(1, 198);
             this.homeMenuComercial.Name = "homeMenuComercial";
-            this.homeMenuComercial.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuComercial.Size = new System.Drawing.Size(238, 50);
             this.homeMenuComercial.TabIndex = 2;
             this.homeMenuComercial.Text = "            Comercial";
             this.homeMenuComercial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -586,19 +584,19 @@ namespace Emiplus.View.Common
             // 
             // homeMenuProducts
             // 
-            this.homeMenuProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(57)))));
+            this.homeMenuProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.homeMenuProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.homeMenuProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeMenuProducts.FlatAppearance.BorderSize = 0;
-            this.homeMenuProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
-            this.homeMenuProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(48)))), ((int)(((byte)(50)))));
+            this.homeMenuProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.homeMenuProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.homeMenuProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeMenuProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeMenuProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.homeMenuProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.homeMenuProducts.Location = new System.Drawing.Point(0, 142);
+            this.homeMenuProducts.Location = new System.Drawing.Point(1, 144);
             this.homeMenuProducts.Name = "homeMenuProducts";
-            this.homeMenuProducts.Size = new System.Drawing.Size(275, 50);
+            this.homeMenuProducts.Size = new System.Drawing.Size(238, 50);
             this.homeMenuProducts.TabIndex = 1;
             this.homeMenuProducts.Text = "            Produtos e Serviços";
             this.homeMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -606,16 +604,15 @@ namespace Emiplus.View.Common
             // 
             // barraTituloHome
             // 
-            this.barraTituloHome.BackColor = System.Drawing.Color.White;
+            this.barraTituloHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.barraTituloHome.Controls.Add(this.syncOn);
             this.barraTituloHome.Controls.Add(this.btnSendSugesttion);
-            this.barraTituloHome.Controls.Add(this.chatOnline);
             this.barraTituloHome.Controls.Add(this.btnAccount);
             this.barraTituloHome.Controls.Add(this.btnHelp);
             this.barraTituloHome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barraTituloHome.Location = new System.Drawing.Point(275, 0);
+            this.barraTituloHome.Location = new System.Drawing.Point(241, 0);
             this.barraTituloHome.Name = "barraTituloHome";
-            this.barraTituloHome.Size = new System.Drawing.Size(733, 35);
+            this.barraTituloHome.Size = new System.Drawing.Size(767, 50);
             this.barraTituloHome.TabIndex = 2;
             // 
             // syncOn
@@ -623,9 +620,9 @@ namespace Emiplus.View.Common
             this.syncOn.BackColor = System.Drawing.Color.Transparent;
             this.syncOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.syncOn.Image = global::Emiplus.Properties.Resources.loader_page;
-            this.syncOn.Location = new System.Drawing.Point(6, 9);
+            this.syncOn.Location = new System.Drawing.Point(8, 15);
             this.syncOn.Name = "syncOn";
-            this.syncOn.Size = new System.Drawing.Size(18, 18);
+            this.syncOn.Size = new System.Drawing.Size(25, 25);
             this.syncOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.syncOn.TabIndex = 162;
             this.syncOn.TabStop = false;
@@ -643,33 +640,13 @@ namespace Emiplus.View.Common
             this.btnSendSugesttion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSendSugesttion.Image = ((System.Drawing.Image)(resources.GetObject("btnSendSugesttion.Image")));
             this.btnSendSugesttion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSendSugesttion.Location = new System.Drawing.Point(172, 4);
+            this.btnSendSugesttion.Location = new System.Drawing.Point(340, 12);
             this.btnSendSugesttion.Name = "btnSendSugesttion";
             this.btnSendSugesttion.Size = new System.Drawing.Size(137, 28);
             this.btnSendSugesttion.TabIndex = 34;
             this.btnSendSugesttion.Text = "Enviar Sugestão";
             this.btnSendSugesttion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSendSugesttion.UseVisualStyleBackColor = true;
-            // 
-            // chatOnline
-            // 
-            this.chatOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatOnline.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chatOnline.FlatAppearance.BorderSize = 0;
-            this.chatOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.chatOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.chatOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chatOnline.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chatOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.chatOnline.Image = ((System.Drawing.Image)(resources.GetObject("chatOnline.Image")));
-            this.chatOnline.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.chatOnline.Location = new System.Drawing.Point(315, 4);
-            this.chatOnline.Name = "chatOnline";
-            this.chatOnline.Size = new System.Drawing.Size(128, 28);
-            this.chatOnline.TabIndex = 33;
-            this.chatOnline.Text = "Suporte Online";
-            this.chatOnline.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chatOnline.UseVisualStyleBackColor = true;
             // 
             // btnAccount
             // 
@@ -683,7 +660,7 @@ namespace Emiplus.View.Common
             this.btnAccount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnAccount.Image")));
             this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAccount.Location = new System.Drawing.Point(598, 4);
+            this.btnAccount.Location = new System.Drawing.Point(632, 12);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(122, 28);
             this.btnAccount.TabIndex = 32;
@@ -703,32 +680,22 @@ namespace Emiplus.View.Common
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnHelp.Location = new System.Drawing.Point(449, 4);
+            this.btnHelp.Location = new System.Drawing.Point(483, 12);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(143, 28);
             this.btnHelp.TabIndex = 31;
-            this.btnHelp.Text = "Central de Ajuda";
+            this.btnHelp.Text = "Precisa de Ajuda?";
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHelp.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(0)))), ((int)(((byte)(35)))));
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(275, 35);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(733, 45);
-            this.panel2.TabIndex = 21;
             // 
             // panelFormularios
             // 
             this.panelFormularios.Controls.Add(this.pictureBox8);
             this.panelFormularios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFormularios.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelFormularios.Location = new System.Drawing.Point(275, 80);
+            this.panelFormularios.Location = new System.Drawing.Point(241, 50);
             this.panelFormularios.Name = "panelFormularios";
-            this.panelFormularios.Size = new System.Drawing.Size(733, 649);
+            this.panelFormularios.Size = new System.Drawing.Size(767, 679);
             this.panelFormularios.TabIndex = 22;
             // 
             // pictureBox8
@@ -739,7 +706,7 @@ namespace Emiplus.View.Common
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
             this.pictureBox8.Location = new System.Drawing.Point(194, 159);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(355, 284);
+            this.pictureBox8.Size = new System.Drawing.Size(389, 314);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
@@ -756,7 +723,6 @@ namespace Emiplus.View.Common
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panelFormularios);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.barraTituloHome);
             this.Controls.Add(this.panel3);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -767,6 +733,9 @@ namespace Emiplus.View.Common
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
@@ -775,9 +744,6 @@ namespace Emiplus.View.Common
             this.visualPanel1.ResumeLayout(false);
             this.visualPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -807,8 +773,6 @@ namespace Emiplus.View.Common
         private System.Windows.Forms.Label version;
         private System.Windows.Forms.Panel barraTituloHome;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private Panel panelFormularios;
@@ -831,10 +795,10 @@ namespace Emiplus.View.Common
         private PictureBox pictureBox12;
         private PictureBox pictureBox11;
         private PictureBox pictureBox10;
-        private Button chatOnline;
         private Button btnSendSugesttion;
         private PictureBox pictureBox13;
         public PictureBox syncOn;
         private Timer timer1;
+        private Panel panel2;
     }
 }

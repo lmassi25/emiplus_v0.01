@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClienteEndereco));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnAddrSalvar = new System.Windows.Forms.Button();
-            this.btnAddrDelete = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.rua = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -48,6 +45,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.ibge = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddrSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnAddrDelete = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.cep = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cidade = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -80,48 +79,6 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "Novo endereço:";
             // 
-            // btnAddrSalvar
-            // 
-            this.btnAddrSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddrSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddrSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddrSalvar.FlatAppearance.BorderSize = 0;
-            this.btnAddrSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddrSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddrSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAddrSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnAddrSalvar.Image")));
-            this.btnAddrSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddrSalvar.Location = new System.Drawing.Point(593, 5);
-            this.btnAddrSalvar.Name = "btnAddrSalvar";
-            this.btnAddrSalvar.Size = new System.Drawing.Size(65, 60);
-            this.btnAddrSalvar.TabIndex = 1;
-            this.btnAddrSalvar.Text = "Salvar";
-            this.btnAddrSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddrSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnAddrDelete
-            // 
-            this.btnAddrDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddrDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddrDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddrDelete.FlatAppearance.BorderSize = 0;
-            this.btnAddrDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAddrDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddrDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddrDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAddrDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnAddrDelete.Image")));
-            this.btnAddrDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAddrDelete.Location = new System.Drawing.Point(16, 3);
-            this.btnAddrDelete.Name = "btnAddrDelete";
-            this.btnAddrDelete.Size = new System.Drawing.Size(69, 60);
-            this.btnAddrDelete.TabIndex = 2;
-            this.btnAddrDelete.Text = "Excluir";
-            this.btnAddrDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddrDelete.UseVisualStyleBackColor = true;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -152,8 +109,8 @@
             this.rua.BackColor = System.Drawing.Color.White;
             this.rua.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rua.BackColorState.Enabled = System.Drawing.Color.White;
-            this.rua.Border.Color = System.Drawing.Color.Gainsboro;
-            this.rua.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.rua.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.rua.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.rua.Border.HoverVisible = true;
             this.rua.Border.Rounding = 8;
             this.rua.Border.Thickness = 1;
@@ -174,8 +131,8 @@
             this.rua.ButtonIndent = 3;
             this.rua.ButtonText = "visualButton";
             this.rua.ButtonVisible = false;
-            this.rua.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rua.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rua.Image = null;
             this.rua.ImageSize = new System.Drawing.Size(16, 16);
             this.rua.ImageVisible = false;
@@ -221,8 +178,8 @@
             this.bairro.BackColor = System.Drawing.Color.White;
             this.bairro.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.bairro.BackColorState.Enabled = System.Drawing.Color.White;
-            this.bairro.Border.Color = System.Drawing.Color.Gainsboro;
-            this.bairro.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.bairro.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.bairro.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.bairro.Border.HoverVisible = true;
             this.bairro.Border.Rounding = 8;
             this.bairro.Border.Thickness = 1;
@@ -243,8 +200,8 @@
             this.bairro.ButtonIndent = 3;
             this.bairro.ButtonText = "visualButton";
             this.bairro.ButtonVisible = false;
-            this.bairro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bairro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bairro.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bairro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bairro.Image = null;
             this.bairro.ImageSize = new System.Drawing.Size(16, 16);
             this.bairro.ImageVisible = false;
@@ -290,8 +247,8 @@
             this.nr.BackColor = System.Drawing.Color.White;
             this.nr.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nr.BackColorState.Enabled = System.Drawing.Color.White;
-            this.nr.Border.Color = System.Drawing.Color.Gainsboro;
-            this.nr.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.nr.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.nr.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.nr.Border.HoverVisible = true;
             this.nr.Border.Rounding = 8;
             this.nr.Border.Thickness = 1;
@@ -312,8 +269,8 @@
             this.nr.ButtonIndent = 3;
             this.nr.ButtonText = "visualButton";
             this.nr.ButtonVisible = false;
-            this.nr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nr.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nr.Image = null;
             this.nr.ImageSize = new System.Drawing.Size(16, 16);
             this.nr.ImageVisible = false;
@@ -359,8 +316,8 @@
             this.complemento.BackColor = System.Drawing.Color.White;
             this.complemento.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.complemento.BackColorState.Enabled = System.Drawing.Color.White;
-            this.complemento.Border.Color = System.Drawing.Color.Gainsboro;
-            this.complemento.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.complemento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.complemento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.complemento.Border.HoverVisible = true;
             this.complemento.Border.Rounding = 8;
             this.complemento.Border.Thickness = 1;
@@ -381,8 +338,8 @@
             this.complemento.ButtonIndent = 3;
             this.complemento.ButtonText = "visualButton";
             this.complemento.ButtonVisible = false;
-            this.complemento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.complemento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.complemento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.complemento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.complemento.Image = null;
             this.complemento.ImageSize = new System.Drawing.Size(16, 16);
             this.complemento.ImageVisible = false;
@@ -452,8 +409,8 @@
             this.ibge.BackColor = System.Drawing.Color.White;
             this.ibge.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.ibge.BackColorState.Enabled = System.Drawing.Color.White;
-            this.ibge.Border.Color = System.Drawing.Color.Gainsboro;
-            this.ibge.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.ibge.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.ibge.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.ibge.Border.HoverVisible = true;
             this.ibge.Border.Rounding = 8;
             this.ibge.Border.Thickness = 1;
@@ -474,8 +431,8 @@
             this.ibge.ButtonIndent = 3;
             this.ibge.ButtonText = "visualButton";
             this.ibge.ButtonVisible = false;
-            this.ibge.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ibge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ibge.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ibge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ibge.Image = null;
             this.ibge.ImageSize = new System.Drawing.Size(16, 16);
             this.ibge.ImageVisible = false;
@@ -509,10 +466,78 @@
             this.panel2.Controls.Add(this.btnAddrSalvar);
             this.panel2.Controls.Add(this.btnAddrDelete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 238);
+            this.panel2.Location = new System.Drawing.Point(0, 241);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 68);
+            this.panel2.Size = new System.Drawing.Size(670, 40);
             this.panel2.TabIndex = 10;
+            // 
+            // btnAddrSalvar
+            // 
+            this.btnAddrSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddrSalvar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddrSalvar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnAddrSalvar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAddrSalvar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAddrSalvar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnAddrSalvar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAddrSalvar.Border.HoverVisible = true;
+            this.btnAddrSalvar.Border.Rounding = 6;
+            this.btnAddrSalvar.Border.Thickness = 1;
+            this.btnAddrSalvar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddrSalvar.Border.Visible = true;
+            this.btnAddrSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddrSalvar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddrSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddrSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnAddrSalvar.Image = null;
+            this.btnAddrSalvar.Location = new System.Drawing.Point(562, 5);
+            this.btnAddrSalvar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddrSalvar.Name = "btnAddrSalvar";
+            this.btnAddrSalvar.Size = new System.Drawing.Size(96, 30);
+            this.btnAddrSalvar.TabIndex = 555;
+            this.btnAddrSalvar.Text = "Salvar";
+            this.btnAddrSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddrSalvar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddrSalvar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnAddrSalvar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddrSalvar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddrSalvar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddrSalvar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddrSalvar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnAddrDelete
+            // 
+            this.btnAddrDelete.BackColor = System.Drawing.Color.White;
+            this.btnAddrDelete.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddrDelete.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnAddrDelete.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnAddrDelete.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnAddrDelete.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnAddrDelete.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnAddrDelete.Border.HoverVisible = true;
+            this.btnAddrDelete.Border.Rounding = 6;
+            this.btnAddrDelete.Border.Thickness = 1;
+            this.btnAddrDelete.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddrDelete.Border.Visible = true;
+            this.btnAddrDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddrDelete.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddrDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddrDelete.ForeColor = System.Drawing.Color.White;
+            this.btnAddrDelete.Image = null;
+            this.btnAddrDelete.Location = new System.Drawing.Point(14, 5);
+            this.btnAddrDelete.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddrDelete.Name = "btnAddrDelete";
+            this.btnAddrDelete.Size = new System.Drawing.Size(96, 30);
+            this.btnAddrDelete.TabIndex = 554;
+            this.btnAddrDelete.Text = "Excluir";
+            this.btnAddrDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddrDelete.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddrDelete.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnAddrDelete.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddrDelete.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddrDelete.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddrDelete.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddrDelete.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // cep
             // 
@@ -520,8 +545,8 @@
             this.cep.BackColor = System.Drawing.Color.White;
             this.cep.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.cep.BackColorState.Enabled = System.Drawing.Color.White;
-            this.cep.Border.Color = System.Drawing.Color.Gainsboro;
-            this.cep.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.cep.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.cep.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.cep.Border.HoverVisible = true;
             this.cep.Border.Rounding = 8;
             this.cep.Border.Thickness = 1;
@@ -542,8 +567,8 @@
             this.cep.ButtonIndent = 3;
             this.cep.ButtonText = "visualButton";
             this.cep.ButtonVisible = false;
-            this.cep.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cep.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cep.Image = null;
             this.cep.ImageSize = new System.Drawing.Size(16, 16);
             this.cep.ImageVisible = false;
@@ -589,8 +614,8 @@
             this.cidade.BackColor = System.Drawing.Color.White;
             this.cidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.cidade.BackColorState.Enabled = System.Drawing.Color.White;
-            this.cidade.Border.Color = System.Drawing.Color.Gainsboro;
-            this.cidade.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.cidade.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.cidade.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.cidade.Border.HoverVisible = true;
             this.cidade.Border.Rounding = 8;
             this.cidade.Border.Thickness = 1;
@@ -611,8 +636,8 @@
             this.cidade.ButtonIndent = 3;
             this.cidade.ButtonText = "visualButton";
             this.cidade.ButtonVisible = false;
-            this.cidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cidade.Image = null;
             this.cidade.ImageSize = new System.Drawing.Size(16, 16);
             this.cidade.ImageVisible = false;
@@ -645,8 +670,8 @@
             this.estado.BackColor = System.Drawing.Color.White;
             this.estado.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.estado.BackColorState.Enabled = System.Drawing.Color.White;
-            this.estado.Border.Color = System.Drawing.Color.Gainsboro;
-            this.estado.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.estado.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.estado.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.estado.Border.HoverVisible = true;
             this.estado.Border.Rounding = 6;
             this.estado.Border.Thickness = 1;
@@ -660,7 +685,8 @@
             this.estado.DropDownHeight = 150;
             this.estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estado.DropDownWidth = 500;
-            this.estado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.estado.FormattingEnabled = true;
             this.estado.ImageList = null;
             this.estado.ImageVisible = false;
@@ -703,8 +729,8 @@
             this.pais.BackColor = System.Drawing.Color.White;
             this.pais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.pais.BackColorState.Enabled = System.Drawing.Color.White;
-            this.pais.Border.Color = System.Drawing.Color.Gainsboro;
-            this.pais.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.pais.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.pais.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.pais.Border.HoverVisible = true;
             this.pais.Border.Rounding = 6;
             this.pais.Border.Thickness = 1;
@@ -718,7 +744,8 @@
             this.pais.DropDownHeight = 50;
             this.pais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pais.DropDownWidth = 500;
-            this.pais.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pais.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pais.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pais.FormattingEnabled = true;
             this.pais.ImageList = null;
             this.pais.ImageVisible = false;
@@ -759,11 +786,11 @@
             // buscarEndereco
             // 
             this.buscarEndereco.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buscarEndereco.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.buscarEndereco.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.buscarEndereco.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.buscarEndereco.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.buscarEndereco.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.buscarEndereco.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.buscarEndereco.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.buscarEndereco.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.buscarEndereco.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.buscarEndereco.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
             this.buscarEndereco.Border.HoverVisible = true;
             this.buscarEndereco.Border.Rounding = 6;
             this.buscarEndereco.Border.Thickness = 1;
@@ -794,7 +821,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 306);
+            this.ClientSize = new System.Drawing.Size(670, 281);
             this.Controls.Add(this.buscarEndereco);
             this.Controls.Add(this.pais);
             this.Controls.Add(this.estado);
@@ -820,9 +847,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(686, 345);
+            this.MaximumSize = new System.Drawing.Size(686, 320);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(686, 305);
+            this.MinimumSize = new System.Drawing.Size(686, 320);
             this.Name = "AddClienteEndereco";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -839,8 +866,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnAddrSalvar;
-        private System.Windows.Forms.Button btnAddrDelete;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox rua;
@@ -862,5 +887,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox pais;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton buscarEndereco;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddrDelete;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddrSalvar;
     }
 }

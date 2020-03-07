@@ -189,6 +189,7 @@ namespace Emiplus.View.Comercial
                     //OpcoesNfeRapida.idPedido = 0;
                     Nota nota = new Nota();
                     nota.ShowDialog();
+                    Filter();
                     return;
                 }
                 else
@@ -196,6 +197,7 @@ namespace Emiplus.View.Comercial
                     AddPedidos.Id = 0;
                     AddPedidos NovoPedido = new AddPedidos();
                     NovoPedido.ShowDialog();
+                    Filter();
                     return;
                 }
             }
@@ -271,6 +273,12 @@ namespace Emiplus.View.Comercial
                     DetailsPedido detailsPedido = new DetailsPedido();
                     detailsPedido.ShowDialog();
                 }
+
+                Filter();
+            }
+            else
+            {
+                Alert.Message("Opps", "Selecione um item na tabela.", Alert.AlertType.info);
             }
         }
 
@@ -449,6 +457,52 @@ namespace Emiplus.View.Comercial
             ArrayList data = new ArrayList();
             foreach (var item in dados)
             {
+                var statusNfePedido = "";
+
+                if (Home.pedidoPage == "Compras")
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Pago" : item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
+
+                if (Home.pedidoPage == "Vendas")
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
+
+                #region N° SEFAZ
+
+                string n_cfe = "", n_nfe = "";
+                var dataNota = Home.pedidoPage == "Cupons" ? _cPedido.GetDadosNota(0, item.IDNOTA) : Home.pedidoPage == "Notas" ? _cPedido.GetDadosNota(0, item.IDNOTA) : _cPedido.GetDadosNota(item.ID);
+
+                if (dataNota == null)
+                    return;
+
+                foreach (dynamic item2 in dataNota)
+                {
+                    if (item2.TIPONFE == "NFe")
+                    {
+                        if (Home.pedidoPage == "Vendas" && item2.STATUSNFE == "Cancelada")
+                            n_nfe = "";
+                        else
+                            n_nfe = item2.NFE;
+
+                        if (Home.pedidoPage == "Notas")
+                            statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
+                    }
+
+                    if (item2.TIPONFE == "CFe")
+                    {
+                        if (Home.pedidoPage == "Vendas" && item2.STATUSNFE == "Cancelado")
+                            n_cfe = "";
+                        else
+                            n_cfe = item2.NFE;
+
+                        if (Home.pedidoPage == "Cupons")
+                            statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
+                    }
+                }
+
+                #endregion N° SEFAZ
+
                 data.Add(new
                 {
                     //.Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
@@ -456,6 +510,8 @@ namespace Emiplus.View.Comercial
                     EMISSAO = Validation.ConvertDateToForm(item.EMISSAO),
                     CLIENTE = item.NOME,
                     TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                    n_nfe = n_nfe,
+                    n_cfe = n_cfe,
                     COLABORADOR = item.COLABORADOR,
                     CRIADO = item.CRIADO
                 });
@@ -472,6 +528,34 @@ namespace Emiplus.View.Comercial
                 });
             }
 
+            IEnumerable<dynamic> dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text);
+            ArrayList data3 = new ArrayList();
+            foreach (var item in dados3)
+            {
+                data3.Add(new
+                {
+                    ID = item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                });
+            }
+            
+            IEnumerable<dynamic> dados4 = _cPedido.GetTotaisNota("CFe", dataInicial.Text, dataFinal.Text);
+            ArrayList data4 = new ArrayList();
+            foreach (var item in dados4)
+            {
+                data4.Add(new
+                {
+                    ID = item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                });
+            }
+
+            if (!File.Exists($@"{Program.PATH_BASE}\html\Pedidos.html"))
+            {
+                Alert.Message("Opps", "Não encontramos os arquivos base de relatório", Alert.AlertType.warning);
+                return;
+            }
+
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pedidos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
@@ -479,6 +563,8 @@ namespace Emiplus.View.Comercial
                 URL_BASE = Program.PATH_BASE,
                 Data = data,
                 Total = data2,
+                TotalNotas = data3,
+                TotalCupons = data4,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
                 Logo = Settings.Default.empresa_logo,
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),

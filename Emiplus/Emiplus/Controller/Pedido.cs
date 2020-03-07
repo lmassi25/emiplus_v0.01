@@ -181,7 +181,9 @@ namespace Emiplus.Controller
                 query.Where("pedido.id", idPedido);
 
             if (idProduto != 0)
-                query.Where("pedido_item.item", idProduto);
+            {
+                query.WhereRaw($"EXISTS (SELECT FIRST 1 1 FROM \"PEDIDO_ITEM\" WHERE \"PEDIDO_ITEM\".\"ITEM\" = {idProduto} AND \"PEDIDO\".\"ID\" = \"PEDIDO_ITEM\".\"PEDIDO\" AND \"PEDIDO_ITEM\".\"EXCLUIR\" = 0)");
+            }
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
@@ -337,6 +339,24 @@ namespace Emiplus.Controller
                 );
 
             return query.GetAsync<dynamic>();
+        }
+
+        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal)
+        {
+            var query = new Model.Nota().Query();
+
+            query
+                .LeftJoin("pedido", "pedido.id", "nota.id_pedido")
+                .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
+                .Where("nota.excluir", 0)
+                .Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal));
+
+            query.Where("nota.tipo", tipo);
+            query.Where("nota.status", "Autorizada");
+            query.Where("pedido.tipo", "Vendas");
+
+            return query.Get();
         }
 
         public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
@@ -504,7 +524,7 @@ namespace Emiplus.Controller
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private IEnumerable<dynamic> GetDadosNota(int idpedido = 0, int idnota = 0)
+        public IEnumerable<dynamic> GetDadosNota(int idpedido = 0, int idnota = 0)
         {
             var query = new Model.Nota().Query();
 
@@ -536,9 +556,15 @@ namespace Emiplus.Controller
             Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
         }
 
-        public void Imprimir(int idPedido)
+        public void Imprimir(int idPedido, string tipo = "Bobina 80mm")
         {
-            if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm")
+            if (tipo == "Folha A4")
+            {
+                PedidoImpressao print = new PedidoImpressao();
+                print.Print(idPedido);
+            }
+            
+            if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
             {
                 #region IMPRESSAO
 
@@ -571,6 +597,12 @@ namespace Emiplus.Controller
 
                 if (printername == null)
                     return;
+
+                if (printername == "Selecione")
+                {
+                    Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                    return;
+                }
 
                 Printer printer = new Printer(printername);
 
@@ -726,9 +758,6 @@ namespace Emiplus.Controller
 
                 return;
             }
-
-            PedidoImpressao print = new PedidoImpressao();
-            print.Print(idPedido);
         }
 
         /// <summary>

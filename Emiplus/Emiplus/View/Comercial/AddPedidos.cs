@@ -4,6 +4,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
 using Emiplus.View.Common;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
 using System.Linq;
@@ -420,10 +421,10 @@ namespace Emiplus.View.Comercial
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                         {
+                            Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
                         }
 
-                        Alert.Message("Tudo certo!", "Devolução gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
                         Close();
                         return;
@@ -437,11 +438,12 @@ namespace Emiplus.View.Comercial
                     if (_mPedido.Save(_mPedido))
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
+                        {
+                            Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
+                        }
 
-                        Alert.Message("Tudo certo!", "Consignação gerada com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
-
                         Close();
 
                         return;
@@ -457,10 +459,10 @@ namespace Emiplus.View.Comercial
                     {
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                         {
+                            Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                             new Controller.Pedido().Imprimir(Id);
                         }
 
-                        Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
                         btnFinalizado = true;
 
                         Close();
@@ -582,7 +584,10 @@ namespace Emiplus.View.Comercial
             {
                 var itemId = collection.Lookup(BuscarProduto.Text);
                 Model.Item item = _mItem.FindById(itemId).FirstOrDefault<Model.Item>();
-                
+
+                if (ModoRapAva == 0)
+                    Medidas.SelectedItem = item.Medida;
+
                 double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
                 double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
                 double DescontoPorcentagemTxt = Validation.ConvertToDouble(DescontoPorcentagem.Text);
@@ -811,26 +816,6 @@ namespace Emiplus.View.Comercial
                         }
                     }
 
-                    //if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
-                    //{
-                    //    Alert.Message("Ação não permitida", "Não é permitido cancelar produto / serviço", Alert.AlertType.warning);
-                    //    return;
-                    //}
-
-                    //if (GridListaProdutos.SelectedRows.Count > 0)
-                    //{
-                    //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                    //        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
-                    //}
-
-                    //PedidoModalCancelItem cancel = new PedidoModalCancelItem();
-                    //cancel.TopMost = true;
-                    //if (cancel.ShowDialog() == DialogResult.OK)
-                    //{
-                    //    GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-                    //    LoadTotais();
-                    //}
-
                     e.SuppressKeyPress = true;
                     break;
 
@@ -956,7 +941,10 @@ namespace Emiplus.View.Comercial
                         {
                             var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
                             if (item != null)
+                            {
                                 Preco.Text = Validation.FormatPrice(item.ValorVenda);
+                                Medidas.SelectedItem = item.Medida;
+                            }
 
                             Quantidade.Focus();
                             return;
@@ -999,7 +987,15 @@ namespace Emiplus.View.Comercial
 
             imprimir.Click += (s, e) =>
             {
-                new Controller.Pedido().Imprimir(Id);
+                OptionBobinaA4 f = new OptionBobinaA4();
+                string tipo = "";
+                f.TopMost = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                    tipo = "Folha A4";
+                else
+                    tipo = "Bobina 80mm";
+                
+                new Controller.Pedido().Imprimir(Id, tipo);
             };
 
             DescontoPorcentagem.KeyDown += (s, e) =>
@@ -1045,26 +1041,6 @@ namespace Emiplus.View.Comercial
                         }
                     }
                 }
-
-                //if ((Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações") && _mPedido.status == 1)
-                //{
-                //    Alert.Message("Ação não permitida", "Não é permitido cancelar o produto/serviço", Alert.AlertType.warning);
-                //    return;
-                //}
-
-                //if (GridListaProdutos.SelectedRows.Count > 0)
-                //{
-                //    if (Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value) > 0)
-                //        IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value.ToString());
-                //}
-
-                //PedidoModalCancelItem cancel = new PedidoModalCancelItem();
-                //cancel.TopMost = true;
-                //if (cancel.ShowDialog() == DialogResult.OK)
-                //{
-                //    //GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
-                //    LoadTotais();
-                //}
             };
 
             btnDelete.Click += (s, e) =>

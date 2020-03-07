@@ -54,7 +54,7 @@ namespace Emiplus.Data.Helpers
 
         public static List<String> GetMedidas()
         {
-            return new List<String> { "UN", "KG", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
+            return new List<String> { "UN", "KG", "G", "PC", "MÇ", "BD", "DZ", "GR", "L", "ML", "M", "M2", "ROLO", "CJ", "SC", "CX", "FD", "PAR", "PR", "KIT", "CNT", "PCT" };
         }
 
         public static void Video(string videoUrl)

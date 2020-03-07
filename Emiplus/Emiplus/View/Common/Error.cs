@@ -112,6 +112,9 @@ namespace Emiplus.View.Common
 
         #endregion DLL SHADOW
 
+
+        public static string errorMessage { get; set; }
+
         public Error()
         {
             InitializeComponent();
@@ -120,6 +123,11 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
+            Shown += (s, e) =>
+            {
+                message.Text = errorMessage;
+            };
+
             btnFechar.Click += (s, e) =>
             {
                 DialogResult = DialogResult.OK;

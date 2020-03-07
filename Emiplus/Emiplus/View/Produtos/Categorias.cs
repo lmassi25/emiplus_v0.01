@@ -39,7 +39,6 @@ namespace Emiplus.View.Produtos
                 label5.Text = "Financeiro";
                 label1.Text = "Nova Receita";
                 label2.Text = "Se organize melhor criando os tipos de receitas para lançar no financeiro.";
-                label3.Text = "Busque por uma receita:";
             }
 
             if (Home.CategoriaPage == "Despesas")
@@ -48,7 +47,6 @@ namespace Emiplus.View.Produtos
                 label5.Text = "Financeiro";
                 label1.Text = "Nova Despesa";
                 label2.Text = "Se organize melhor criando os tipos de despesas para lançar no financeiro.";
-                label3.Text = "Busque por uma despesa:";
             }
         }
 

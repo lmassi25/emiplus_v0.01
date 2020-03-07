@@ -203,8 +203,8 @@ namespace Emiplus.View.Produtos
                 btnMarcarCheckBox.Text = "Marcar Todos";
                 btnRemover.Visible = false;
                 btnEditAll.Visible = false;
-                btnEditar.Enabled = true;
-                btnAdicionar.Enabled = true;
+                btnEditar.Visible = true;
+                btnAdicionar.Visible = true;
             };
 
             btnAdicionar.Click += (s, e) => EditProduct(true);
@@ -233,8 +233,8 @@ namespace Emiplus.View.Produtos
                             item.Cells["Selecione"].Value = true;
                             btnRemover.Visible = true;
                             btnEditAll.Visible = true;
-                            btnEditar.Enabled = false;
-                            btnAdicionar.Enabled = false;
+                            btnEditar.Visible = false;
+                            btnAdicionar.Visible = false;
                         }
                     }
                     else
@@ -242,8 +242,8 @@ namespace Emiplus.View.Produtos
                         item.Cells["Selecione"].Value = false;
                         btnRemover.Visible = false;
                         btnEditAll.Visible = false;
-                        btnEditar.Enabled = true;
-                        btnAdicionar.Enabled = true;
+                        btnEditar.Visible = true;
+                        btnAdicionar.Visible = true;
                     }
                 }
 
@@ -304,8 +304,8 @@ namespace Emiplus.View.Produtos
                 btnMarcarCheckBox.Text = "Marcar Todos";
                 btnRemover.Visible = false;
                 btnEditAll.Visible = false;
-                btnEditar.Enabled = true;
-                btnAdicionar.Enabled = true;
+                btnEditar.Visible = true;
+                btnAdicionar.Visible = true;
             };
 
             GridListaProdutos.CellClick += (s, e) =>
@@ -317,8 +317,8 @@ namespace Emiplus.View.Produtos
                         GridListaProdutos.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
-                        btnEditar.Enabled = false;
-                        btnAdicionar.Enabled = false;
+                        btnEditar.Visible = false;
+                        btnAdicionar.Visible = false;
                     }
                     else
                     {
@@ -335,8 +335,8 @@ namespace Emiplus.View.Produtos
 
                         btnRemover.Visible = hideBtns;
                         btnEditAll.Visible = hideBtns;
-                        btnEditar.Enabled = hideBtnsTop;
-                        btnAdicionar.Enabled = hideBtnsTop;
+                        btnEditar.Visible = hideBtnsTop;
+                        btnAdicionar.Visible = hideBtnsTop;
                     }
                 }
             };

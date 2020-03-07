@@ -115,47 +115,49 @@ namespace Emiplus.View.Common
 
         #endregion Shadow box
 
-        private int atualiza = 0;
+        private bool RunUpdate { get; set; } = false;
 
+        BackgroundWorker backWorker = new BackgroundWorker();
+        
         public Carregar()
         {
             InitializeComponent();
-            Atualizar();
+            Eventos();
         }
-
-        public void Atualizar()
+        
+        private void Eventos()
         {
-            if (Support.CheckForInternetConnection())
+            Load += (s, e) =>
             {
-                if (IniFile.Read("Update", "APP") == "true" && Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+                if (Support.CheckForInternetConnection())
                 {
-                    atualiza = 1;
-                    WindowState = FormWindowState.Normal;
+                    if (IniFile.Read("Update", "APP") == "true" && Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))
+                    {
+                        RunUpdate = true;
+                        WindowState = FormWindowState.Normal;
+                    }
                 }
-            }
 
-            backgroundWorker1.RunWorkerAsync();
-        }
+                backWorker.RunWorkerAsync();
+            };
 
-        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (atualiza == 1)
+            backWorker.DoWork += (s, e) =>
             {
-                new CreateTables().CheckTables();
+                if (RunUpdate)
+                {
+                    string version = new Update().GetVersionWebTxt();
+                    IniFile.Write("Version", version, "APP"); // Atualiza a versão no INI
 
-                // Atualiza a versão no INI
-                string version = new Update().GetVersionWebTxt();
-                IniFile.Write("Version", version, "APP");
+                    new CreateTables().CheckTables(); // Atualiza o banco de dados
+                }
+            };
 
-                Thread.Sleep(5000);
-            }
-        }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Login f = new Login();
-            f.Show();
-            Hide();
+            backWorker.RunWorkerCompleted += (s, e) =>
+            {
+                Login f = new Login();
+                f.Show();
+                Hide();
+            };
         }
     }
 }

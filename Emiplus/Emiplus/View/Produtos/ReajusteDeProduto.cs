@@ -180,11 +180,12 @@ namespace Emiplus.View.Produtos
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += async (s, e) =>
+            Shown += async (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
                 await DataTableAsync();
+                Refresh();
                 AutoCompleteItens();
                 AutoCompleteFornecedorCategorias();
             };

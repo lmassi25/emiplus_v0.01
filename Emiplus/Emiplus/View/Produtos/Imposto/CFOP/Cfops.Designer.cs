@@ -37,15 +37,12 @@
             this.GridListaCfops = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSelecionar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSelecionar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaCfops)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -77,7 +74,7 @@
             this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.search.BackColorState.Enabled = System.Drawing.Color.White;
             this.search.Border.Color = System.Drawing.Color.Gainsboro;
-            this.search.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.search.Border.HoverColor = System.Drawing.Color.DarkGray;
             this.search.Border.HoverVisible = true;
             this.search.Border.Rounding = 8;
             this.search.Border.Thickness = 1;
@@ -104,13 +101,13 @@
             this.search.ImageSize = new System.Drawing.Size(16, 16);
             this.search.ImageVisible = true;
             this.search.ImageWidth = 35;
-            this.search.Location = new System.Drawing.Point(94, 111);
+            this.search.Location = new System.Drawing.Point(28, 118);
             this.search.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.search.Name = "search";
             this.search.PasswordChar = '\0';
             this.search.ReadOnly = false;
             this.search.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.search.Size = new System.Drawing.Size(376, 34);
+            this.search.Size = new System.Drawing.Size(443, 34);
             this.search.TabIndex = 53;
             this.search.TextBoxWidth = 225;
             this.search.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -136,7 +133,7 @@
             this.panel3.Controls.Add(this.GridListaCfops);
             this.panel3.Location = new System.Drawing.Point(28, 192);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(443, 218);
+            this.panel3.Size = new System.Drawing.Size(443, 246);
             this.panel3.TabIndex = 59;
             // 
             // GridListaCfops
@@ -155,7 +152,7 @@
             this.GridListaCfops.Name = "GridListaCfops";
             this.GridListaCfops.RowTemplate.Height = 30;
             this.GridListaCfops.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaCfops.Size = new System.Drawing.Size(443, 218);
+            this.GridListaCfops.Size = new System.Drawing.Size(443, 246);
             this.GridListaCfops.TabIndex = 2;
             // 
             // label1
@@ -163,7 +160,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(25, 172);
+            this.label1.Location = new System.Drawing.Point(25, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 58;
@@ -173,77 +170,57 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel1.Controls.Add(this.btnSelecionar);
-            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 439);
+            this.panel1.Location = new System.Drawing.Point(0, 462);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 63);
+            this.panel1.Size = new System.Drawing.Size(490, 40);
             this.panel1.TabIndex = 55;
-            // 
-            // btnSelecionar
-            // 
-            this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionar.FlatAppearance.BorderSize = 0;
-            this.btnSelecionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelecionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSelecionar.Image = ((System.Drawing.Image)(resources.GetObject("btnSelecionar.Image")));
-            this.btnSelecionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSelecionar.Location = new System.Drawing.Point(239, 2);
-            this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(119, 60);
-            this.btnSelecionar.TabIndex = 4;
-            this.btnSelecionar.Text = "Selecionar (F10)";
-            this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSelecionar.UseVisualStyleBackColor = true;
-            this.btnSelecionar.Click += new System.EventHandler(this.BtnSelecionar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(360, 2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(118, 60);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "Cancelar (ESC)";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(90, 91);
+            this.label2.Location = new System.Drawing.Point(24, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 17);
             this.label2.TabIndex = 57;
             this.label2.Text = "Buscar CFOP:";
             // 
-            // pictureBox1
+            // btnSelecionar
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(28, 96);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 56;
-            this.pictureBox1.TabStop = false;
+            this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSelecionar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.HoverVisible = true;
+            this.btnSelecionar.Border.Rounding = 6;
+            this.btnSelecionar.Border.Thickness = 1;
+            this.btnSelecionar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSelecionar.Border.Visible = true;
+            this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSelecionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelecionar.ForeColor = System.Drawing.Color.White;
+            this.btnSelecionar.Image = null;
+            this.btnSelecionar.Location = new System.Drawing.Point(341, 5);
+            this.btnSelecionar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnSelecionar.Name = "btnSelecionar";
+            this.btnSelecionar.Size = new System.Drawing.Size(130, 30);
+            this.btnSelecionar.TabIndex = 554;
+            this.btnSelecionar.Text = "Selecionar (F10)";
+            this.btnSelecionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSelecionar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSelecionar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnSelecionar.Click += new System.EventHandler(this.BtnSelecionar_Click);
             // 
             // Cfops
             // 
@@ -256,7 +233,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.MaximizeBox = false;
@@ -270,7 +246,6 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridListaCfops)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,9 +260,7 @@
         private System.Windows.Forms.DataGridView GridListaCfops;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSelecionar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSelecionar;
     }
 }
