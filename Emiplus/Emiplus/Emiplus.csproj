@@ -406,6 +406,12 @@
     <Compile Include="View\Comercial\OpcoesNfe.Designer.cs">
       <DependentUpon>OpcoesNfe.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\OpcoesNfse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\OpcoesNfse.Designer.cs">
+      <DependentUpon>OpcoesNfse.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1072,6 +1078,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesNfe.resx">
       <DependentUpon>OpcoesNfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\OpcoesNfse.resx">
+      <DependentUpon>OpcoesNfse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
