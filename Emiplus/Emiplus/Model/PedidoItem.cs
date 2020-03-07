@@ -377,7 +377,8 @@
                 "SUM(pisvlr) AS pisvlr, " +
                 "SUM(cofinsvlr) AS cofinsvlr")
                 .Where("pedido", id)
-                .Where("tipo", "Servicos")
+                //.Where("tipo", "Servicos")
+                .Where("tipo", "Serviços")
                 .Where("excluir", 0)
                 .Get();
 

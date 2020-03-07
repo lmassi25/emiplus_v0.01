@@ -228,7 +228,7 @@ namespace Emiplus.Controller
 
                     //    if (!String.IsNullOrEmpty(_nota.ChaveDeAcesso))
                     //        chvAcesso = _nota.ChaveDeAcesso;
-                    //}
+                    //}                    
 
                     break;
             }
@@ -260,6 +260,13 @@ namespace Emiplus.Controller
             //{
             //    _emitente.RG = "647429018110";
             //    _emitente.CPF = "05681389000100";
+            //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            //}
+
+            //if (Settings.Default.empresa_servidornfse.ToString() == "2" && tipo == "NFSe")
+            //{
+            //    _emitente.CPF = "08187168000160";
             //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             //}
@@ -1064,7 +1071,10 @@ namespace Emiplus.Controller
 
                         #region TX2
 
-                        StreamWriter txt = new StreamWriter(_path_enviada, true, Encoding.UTF8);
+                        if (File.Exists(strFilePath))
+                            File.Delete(strFilePath);
+
+                        StreamWriter txt = new StreamWriter(strFilePath, true, Encoding.UTF8);
 
                         txt.Write("formato=tx2" + Environment.NewLine);
                         txt.Write("padrao=TecnoNFSe" + Environment.NewLine);
@@ -1074,7 +1084,7 @@ namespace Emiplus.Controller
                         txt.Write("INCLUIR" + Environment.NewLine);
                         txt.Write("NumeroLote=1" + Environment.NewLine);
                         txt.Write("CPFCNPJRemetente=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + Environment.NewLine);
-                        txt.Write("InscricaoMunicipalRemetente=" + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalRemetente=" + Validation.CleanStringForFiscal(Settings.Default.empresa_inscricao_municipal) + Environment.NewLine);
                         txt.Write("ValorTotalServicos=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
                         txt.Write("ValorTotalDeducoes=0.00" + Environment.NewLine);
                         txt.Write("ValorTotalBaseCalculo=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
@@ -1084,15 +1094,16 @@ namespace Emiplus.Controller
                         txt.Write("INCLUIRRPS" + Environment.NewLine);
                         txt.Write("SituacaoNota=1" + Environment.NewLine);
                         txt.Write("TipoRps=1" + Environment.NewLine);
-                        txt.Write("SerieRps=1" + Environment.NewLine);
-                        txt.Write("NumeroRps=1" + Environment.NewLine);
+                        txt.Write("SerieRps=" + Settings.Default.empresa_serienfse + Environment.NewLine);
+                        txt.Write("NumeroRps=" + getLastNFSeNr() + Environment.NewLine);
                         txt.Write("DataEmissao=" + Validation.ConvertDateToSql(_pedido.Emissao) + "T" + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00")+ Environment.NewLine);
                         txt.Write("Competencia=" + Validation.ConvertDateToSql(_pedido.Emissao)+ Environment.NewLine);
                         
                         txt.Write("CpfCnpjPrestador=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + Environment.NewLine);
-                        txt.Write("InscricaoMunicipalPrestador=" + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalPrestador=" + Validation.CleanStringForFiscal(Settings.Default.empresa_inscricao_municipal) + Environment.NewLine);
                         txt.Write("RazaoSocialPrestador=" + Validation.CleanStringForFiscal(_emitente.Nome) + Environment.NewLine);
                         txt.Write("InscricaoEstadualPrestador=" + Validation.CleanStringForFiscal(_emitente.RG) + Environment.NewLine);
+                        txt.Write("InscricaoMunicipalPrestador=" + Validation.CleanStringForFiscal(Settings.Default.empresa_inscricao_municipal) + Environment.NewLine);                        
                         txt.Write("TipoLogradouroPrestador=Rua" + Environment.NewLine);
                         txt.Write("EnderecoPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + Environment.NewLine);
                         txt.Write("NumeroPrestador=" + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + Environment.NewLine);
@@ -1116,45 +1127,54 @@ namespace Emiplus.Controller
                         txt.Write("Operacao=A" + Environment.NewLine);
                         txt.Write(Environment.NewLine);
 
-                        txt.Write("CodigoItemListaServico=" + Environment.NewLine);
-                        txt.Write("CodigoTributacaoMunicipio=" + Environment.NewLine);
-                        txt.Write("CodigoCnae=" + Environment.NewLine);
+                        txt.Write("CodigoItemListaServico=" + Settings.Default.empresa_codigoitemnfse + Environment.NewLine);
+                        txt.Write("CodigoTributacaoMunicipio=" + Settings.Default.empresa_codigotributacaonfse + Environment.NewLine);
+                        //txt.Write("CodigoCnae=" + Environment.NewLine);
 
                         int count = 1; string linha = "";
                         itens = new Model.PedidoItem().Query()
                             .Where("pedido_item.pedido", Pedido)
                             .Where("pedido_item.excluir", 0)
-                            .Where("pedido_item.tipo", "Servicos")
+                            .Where("pedido_item.tipo", "Serviços")
                             .Get();
                         foreach (var data in itens)
                         {
-                            linha = linha + count + "-" + Validation.CleanStringForFiscal(data.NOME) + " ";
+                            linha = linha + count + "-" + Validation.CleanStringForFiscal(data.XPROD) + " ";
                             count++;
                         }
 
-                        txt.Write("DiscriminacaoServico=" + linha + Environment.NewLine);
+                        txt.Write("DiscriminacaoServico=" + linha.TrimEnd() + Environment.NewLine);
                         txt.Write("MunicipioIncidencia=" + Validation.CleanStringForFiscal(_emitenteEndereco.IBGE) + Environment.NewLine);
                         txt.Write("CodigoCidadePrestacao=" + Validation.CleanStringForFiscal(_emitenteEndereco.IBGE) + Environment.NewLine);
                         txt.Write("DescricaoCidadePrestacao=" + Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + Environment.NewLine);
                         txt.Write(Environment.NewLine);
 
-                        txt.Write("CpfCnpjTomador=" + Validation.CleanStringForFiscal(_destinatario.CPF) + Environment.NewLine);
+                        txt.Write("CpfCnpjTomador=" + Validation.CleanStringForFiscal(_destinatario.CPF.Replace(".", "").Replace(" ", "")) + Environment.NewLine);
                         txt.Write("RazaoSocialTomador=" + Validation.CleanStringForFiscal(_destinatario.Nome) + Environment.NewLine);
-                        txt.Write("InscricaoEstadualTomador=" + Validation.CleanStringForFiscal(_destinatario.RG) + Environment.NewLine);
-                        txt.Write("InscricaoMunicipalTomador=" + Environment.NewLine);
-                        txt.Write("TipoLogradouroTomador=RUA" + Environment.NewLine);
-                        txt.Write("EnderecoTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Rua) + Environment.NewLine);
-                        txt.Write("NumeroTomador=" + _destinatarioEndereco.Nr + Environment.NewLine);
-                        //txt.Write("ComplementoTomador=SALA 909" + Environment.NewLine);
-                        txt.Write("BairroTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Bairro) + Environment.NewLine);
-                        txt.Write("CodigoCidadeTomador=" + _destinatarioEndereco.IBGE + Environment.NewLine);
-                        txt.Write("DescricaoCidadeTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cidade) + Environment.NewLine);
-                        txt.Write("UfTomador=" + _destinatarioEndereco.Estado + Environment.NewLine);
-                        txt.Write("CepTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cep) + Environment.NewLine);
-                        txt.Write("PaisTomador=1058" + Environment.NewLine);
-                        //txt.Write("DDDTomador=044" + Environment.NewLine);
-                        txt.Write("TelefoneTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Telefone) + Environment.NewLine);
-                        txt.Write("EmailTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Email) + Environment.NewLine);
+                        //txt.Write("InscricaoEstadualTomador=" + Validation.CleanStringForFiscal(_destinatario.RG) + Environment.NewLine);
+                        //txt.Write("InscricaoMunicipalTomador=" + Environment.NewLine);
+
+                        if (_destinatarioEndereco != null)
+                        {
+                            txt.Write("TipoLogradouroTomador=RUA" + Environment.NewLine);
+                            txt.Write("EnderecoTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Rua) + Environment.NewLine);
+                            txt.Write("NumeroTomador=" + _destinatarioEndereco.Nr + Environment.NewLine);
+                            //txt.Write("ComplementoTomador=SALA 909" + Environment.NewLine);
+                            txt.Write("BairroTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Bairro) + Environment.NewLine);
+                            txt.Write("CodigoCidadeTomador=" + _destinatarioEndereco.IBGE + Environment.NewLine);
+                            txt.Write("DescricaoCidadeTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cidade) + Environment.NewLine);
+                            txt.Write("UfTomador=" + _destinatarioEndereco.Estado + Environment.NewLine);
+                            txt.Write("CepTomador=" + Validation.CleanStringForFiscal(_destinatarioEndereco.Cep) + Environment.NewLine);
+                            txt.Write("PaisTomador=1058" + Environment.NewLine);
+                        }
+
+                        if(_destinatarioContato != null)
+                        {
+                            //txt.Write("DDDTomador=044" + Environment.NewLine);
+                            txt.Write("TelefoneTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Telefone) + Environment.NewLine);
+                            txt.Write("EmailTomador=" + Validation.CleanStringForFiscal(_destinatarioContato.Email) + Environment.NewLine);
+                        }
+                                                
                         txt.Write(Environment.NewLine);
 
                         txt.Write("AliquotaPIS=0.00" + Environment.NewLine);
@@ -1292,9 +1312,14 @@ namespace Emiplus.Controller
         /// <param name="tipo">NFe, NFCe, CFe</param>
         private void TransmitirXML(int Pedido, string tipo = "NFe")
         {
-            Boolean done = false;
-            var arq = new XmlDocument();
-            string arqPath = _path_enviada + "\\" + _pedido.Id + ".xml";
+            Boolean done = false;            
+            string arqPath = "";
+            XmlDocument arq = new XmlDocument();
+
+            if (tipo == "NFSe")
+                arqPath = _path_enviada + "\\NFSe" + _pedido.Id + ".tx2";
+            else
+                arqPath = _path_enviada + "\\" + _pedido.Id + ".xml";
 
             if (!File.Exists(arqPath))
             {
@@ -1302,13 +1327,23 @@ namespace Emiplus.Controller
                 return;
             }
 
-            arq.Load(arqPath);
-
             switch (tipo)
             {
+                #region NFSE
+
+                case "NFSe":
+                    
+                    _msg = RequestSend(File.ReadAllText(arqPath), "NFSe");
+
+                    break;
+
+                #endregion
+
                 #region NFE
 
                 case "NFe":
+
+                    arq.Load(arqPath);
 
                     if (IniFile.Read("NFe", "APP") == "Uninfe")
                     {
@@ -1374,6 +1409,8 @@ namespace Emiplus.Controller
 
                 case "NFCe":
 
+                    arq.Load(arqPath);
+
                     #region TECNOSPEED 
 
                     _msg = RequestSend("FORMATO=XML" + Environment.NewLine + arq.OuterXml, "NFCe");
@@ -1426,6 +1463,8 @@ namespace Emiplus.Controller
                 #region CFE
 
                 case "CFe":
+
+                    arq.Load(arqPath);
 
                     string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
 
@@ -1698,6 +1737,11 @@ namespace Emiplus.Controller
         private int getLastNFeNr()
         {
             return Validation.ConvertToInt32(Settings.Default.empresa_nfe_ultnfe) + 1;
+        }
+
+        private int getLastNFSeNr()
+        {
+            return Validation.ConvertToInt32(Settings.Default.empresa_rps) + 1;
         }
 
         private string codUF(string Estado)
@@ -2113,7 +2157,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
                 xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
 
-                xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedidoItem.Total));
+                xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedidoItem.Total + _pedidoItem.Desconto));
 
                 //if(!String.IsNullOrEmpty(_pedidoItem.CEan))
                 //{
@@ -2128,6 +2172,9 @@ namespace Emiplus.Controller
                 xml.WriteElementString("uTrib", _pedidoItem.Medida);
                 xml.WriteElementString("qTrib", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
                 xml.WriteElementString("vUnTrib", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
+
+                if(_pedidoItem.Desconto > 0)
+                    xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto, 2));
 
                 xml.WriteElementString("indTot", "1");
 
@@ -2477,7 +2524,7 @@ namespace Emiplus.Controller
             if (_pedido.Id_Transportadora > 0)
             {
                 _transportadora = new Model.Pessoa().FindById(_pedido.Id_Transportadora).FirstOrDefault<Model.Pessoa>();
-                _transportadoraEndereco = new Model.PessoaEndereco().FindById(_pedido.Id_Transportadora).FirstOrDefault<Model.PessoaEndereco>();
+                _transportadoraEndereco = new Model.PessoaEndereco().FindByIdUser(_pedido.Id_Transportadora).FirstOrDefault<Model.PessoaEndereco>();
 
                 xml.WriteStartElement("transporta");
 
@@ -2499,6 +2546,7 @@ namespace Emiplus.Controller
                 {
                     if (!String.IsNullOrEmpty(_transportadoraEndereco.Rua))
                     {
+                        //xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
                         xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
                     }
 
@@ -2763,8 +2811,12 @@ namespace Emiplus.Controller
 
         private string RequestSend(string xml, string documento = "NFe")
         {
-            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
-            return request(requestData, documento, "envia", "POST");
+            if(documento == "NFSe")
+                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&nomecidade=SAOJOSEDORIOPRETOSP&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+            else
+                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+
+            return request(requestData, documento.ToLower(), "envia", "POST");
         }
 
         private string RequestValidate(string xml, string documento = "NFe")

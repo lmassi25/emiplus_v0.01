@@ -159,6 +159,14 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        public void Nfse()
+        {
+            OpcoesNfse.idPedido = idPedido;
+            OpcoesNfse.idNota = 0;
+            OpcoesNfse f = new OpcoesNfse();
+            f.Show();
+        }
+
         private void LoadData()
         {
             _modelPedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
@@ -328,6 +336,20 @@ namespace Emiplus.View.Comercial
 
                 Cfe();
                 //Cfe(1);
+            };
+
+            btnNfse.Click += (s, e) =>
+            {
+                if (!Support.CheckForInternetConnection())
+                {
+                    Alert.Message("Opps", "Você está sem conexão com a internet.", Alert.AlertType.warning);
+                    return;
+                }
+
+                //if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                //    return;
+
+                Nfse();
             };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("http://ajuda.emiplus.com.br/");
