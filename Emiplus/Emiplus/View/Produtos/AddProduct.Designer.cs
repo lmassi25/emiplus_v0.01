@@ -262,6 +262,7 @@
             this.Medidas.DropDownHeight = 150;
             this.Medidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Medidas.DropDownWidth = 120;
+            this.Medidas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Medidas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Medidas.FormattingEnabled = true;
             this.Medidas.ImageList = null;
@@ -339,7 +340,7 @@
             this.codebarras.ButtonIndent = 3;
             this.codebarras.ButtonText = "visualButton";
             this.codebarras.ButtonVisible = false;
-            this.codebarras.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codebarras.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codebarras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.codebarras.Image = null;
             this.codebarras.ImageSize = new System.Drawing.Size(16, 16);
@@ -411,6 +412,7 @@
             this.Categorias.DropDownHeight = 100;
             this.Categorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Categorias.DropDownWidth = 250;
+            this.Categorias.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Categorias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Categorias.FormattingEnabled = true;
             this.Categorias.ImageList = null;
@@ -487,7 +489,7 @@
             this.valorvenda.ButtonIndent = 3;
             this.valorvenda.ButtonText = "visualButton";
             this.valorvenda.ButtonVisible = false;
-            this.valorvenda.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorvenda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valorvenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.valorvenda.Image = null;
             this.valorvenda.ImageSize = new System.Drawing.Size(16, 16);
@@ -557,7 +559,7 @@
             this.valorcompra.ButtonIndent = 3;
             this.valorcompra.ButtonText = "visualButton";
             this.valorcompra.ButtonVisible = false;
-            this.valorcompra.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorcompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valorcompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.valorcompra.Image = null;
             this.valorcompra.ImageSize = new System.Drawing.Size(16, 16);
@@ -627,7 +629,7 @@
             this.referencia.ButtonIndent = 3;
             this.referencia.ButtonText = "visualButton";
             this.referencia.ButtonVisible = false;
-            this.referencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.referencia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.referencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.referencia.Image = null;
             this.referencia.ImageSize = new System.Drawing.Size(16, 16);
@@ -697,7 +699,7 @@
             this.nome.ButtonIndent = 3;
             this.nome.ButtonText = "visualButton";
             this.nome.ButtonVisible = false;
-            this.nome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nome.Image = null;
             this.nome.ImageSize = new System.Drawing.Size(16, 16);
@@ -791,7 +793,7 @@
             this.inf_adicional.ButtonIndent = 3;
             this.inf_adicional.ButtonText = "visualButton";
             this.inf_adicional.ButtonVisible = false;
-            this.inf_adicional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inf_adicional.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inf_adicional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inf_adicional.Image = null;
             this.inf_adicional.ImageSize = new System.Drawing.Size(16, 16);
@@ -872,7 +874,7 @@
             this.txtLimiteDesconto.ButtonIndent = 3;
             this.txtLimiteDesconto.ButtonText = "visualButton";
             this.txtLimiteDesconto.ButtonVisible = false;
-            this.txtLimiteDesconto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteDesconto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLimiteDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtLimiteDesconto.Image = null;
             this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
@@ -946,6 +948,7 @@
             this.Fornecedor.DropDownHeight = 100;
             this.Fornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Fornecedor.DropDownWidth = 250;
+            this.Fornecedor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Fornecedor.FormattingEnabled = true;
             this.Fornecedor.ImageList = null;
@@ -1039,7 +1042,7 @@
             this.aliq_municipal.ButtonIndent = 3;
             this.aliq_municipal.ButtonText = "visualButton";
             this.aliq_municipal.ButtonVisible = false;
-            this.aliq_municipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aliq_municipal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aliq_municipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.aliq_municipal.Image = null;
             this.aliq_municipal.ImageSize = new System.Drawing.Size(16, 16);
@@ -1110,7 +1113,7 @@
             this.aliq_estadual.ButtonIndent = 3;
             this.aliq_estadual.ButtonText = "visualButton";
             this.aliq_estadual.ButtonVisible = false;
-            this.aliq_estadual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aliq_estadual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aliq_estadual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.aliq_estadual.Image = null;
             this.aliq_estadual.ImageSize = new System.Drawing.Size(16, 16);
@@ -1180,7 +1183,7 @@
             this.aliq_federal.ButtonIndent = 3;
             this.aliq_federal.ButtonText = "visualButton";
             this.aliq_federal.ButtonVisible = false;
-            this.aliq_federal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aliq_federal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aliq_federal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.aliq_federal.Image = null;
             this.aliq_federal.ImageSize = new System.Drawing.Size(16, 16);
@@ -1270,7 +1273,7 @@
             this.Origens.DropDownHeight = 400;
             this.Origens.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Origens.DropDownWidth = 900;
-            this.Origens.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Origens.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Origens.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Origens.FormattingEnabled = true;
             this.Origens.ImageList = null;
@@ -1350,7 +1353,7 @@
             this.ncm.ButtonVisible = false;
             this.ncm.Cursor = System.Windows.Forms.Cursors.No;
             this.ncm.Enabled = false;
-            this.ncm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ncm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ncm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ncm.Image = null;
             this.ncm.ImageSize = new System.Drawing.Size(16, 16);
@@ -1420,7 +1423,7 @@
             this.cest.ButtonIndent = 3;
             this.cest.ButtonText = "visualButton";
             this.cest.ButtonVisible = false;
-            this.cest.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cest.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cest.Image = null;
             this.cest.ImageSize = new System.Drawing.Size(16, 16);
@@ -1625,7 +1628,7 @@
             this.estoqueminimo.ButtonIndent = 3;
             this.estoqueminimo.ButtonText = "KG";
             this.estoqueminimo.ButtonVisible = false;
-            this.estoqueminimo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueminimo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueminimo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.estoqueminimo.Image = null;
             this.estoqueminimo.ImageSize = new System.Drawing.Size(16, 16);
@@ -1684,7 +1687,7 @@
             this.estoqueatual.ButtonText = "ROLO";
             this.estoqueatual.ButtonVisible = false;
             this.estoqueatual.Enabled = false;
-            this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estoqueatual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.estoqueatual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.estoqueatual.Image = null;
             this.estoqueatual.ImageSize = new System.Drawing.Size(16, 16);
@@ -1910,6 +1913,7 @@
             this.ImpostoCFE.DropDownHeight = 100;
             this.ImpostoCFE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ImpostoCFE.DropDownWidth = 300;
+            this.ImpostoCFE.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImpostoCFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ImpostoCFE.FormattingEnabled = true;
             this.ImpostoCFE.ImageList = null;
@@ -2010,6 +2014,7 @@
             this.ImpostoNFE.DropDownHeight = 100;
             this.ImpostoNFE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ImpostoNFE.DropDownWidth = 300;
+            this.ImpostoNFE.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImpostoNFE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ImpostoNFE.FormattingEnabled = true;
             this.ImpostoNFE.ImageList = null;
@@ -2308,7 +2313,7 @@
             this.precoMedio.ButtonText = "visualButton";
             this.precoMedio.ButtonVisible = false;
             this.precoMedio.Enabled = false;
-            this.precoMedio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precoMedio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.precoMedio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.precoMedio.Image = null;
             this.precoMedio.ImageSize = new System.Drawing.Size(16, 16);

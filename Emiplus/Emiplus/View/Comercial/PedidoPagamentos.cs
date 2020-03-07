@@ -1,6 +1,7 @@
 ﻿using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
+using Emiplus.View.Financeiro;
 using Emiplus.View.Fiscal.TelasNota;
 using SqlKata.Execution;
 using System;
@@ -301,6 +302,11 @@ namespace Emiplus.View.Comercial
             if (Home.idCaixa == 0)
             {
                 Alert.Message("Ação não permitida", "É necessário abrir ou vincular um caixa para continuar", Alert.AlertType.warning);
+
+                AbrirCaixa f = new AbrirCaixa();
+                f.TopMost = true;
+                f.ShowDialog();
+
                 return false;
             }
             else

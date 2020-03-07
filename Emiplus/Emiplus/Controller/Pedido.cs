@@ -181,7 +181,9 @@ namespace Emiplus.Controller
                 query.Where("pedido.id", idPedido);
 
             if (idProduto != 0)
-                query.Where("pedido_item.item", idProduto);
+            {
+                query.WhereRaw($"EXISTS (SELECT FIRST 1 1 FROM \"PEDIDO_ITEM\" WHERE \"PEDIDO_ITEM\".\"ITEM\" = {idProduto} AND \"PEDIDO\".\"ID\" = \"PEDIDO_ITEM\".\"PEDIDO\" AND \"PEDIDO_ITEM\".\"EXCLUIR\" = 0)");
+            }
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where

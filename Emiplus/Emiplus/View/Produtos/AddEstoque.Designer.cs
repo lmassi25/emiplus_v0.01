@@ -213,8 +213,8 @@
             this.quantidade.ButtonIndent = 3;
             this.quantidade.ButtonText = "visualButton";
             this.quantidade.ButtonVisible = false;
-            this.quantidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.quantidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.quantidade.Image = null;
             this.quantidade.ImageSize = new System.Drawing.Size(16, 16);
             this.quantidade.ImageVisible = false;
@@ -270,8 +270,8 @@
             this.obs.ButtonIndent = 3;
             this.obs.ButtonText = "visualButton";
             this.obs.ButtonVisible = false;
-            this.obs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.obs.Image = null;
             this.obs.ImageSize = new System.Drawing.Size(16, 16);
             this.obs.ImageVisible = false;

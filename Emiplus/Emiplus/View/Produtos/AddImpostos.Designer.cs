@@ -270,7 +270,7 @@
             this.nome.ButtonIndent = 3;
             this.nome.ButtonText = "visualButton";
             this.nome.ButtonVisible = false;
-            this.nome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nome.Image = null;
             this.nome.ImageSize = new System.Drawing.Size(16, 16);
@@ -438,8 +438,7 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -449,7 +448,7 @@
             this.tabControl1.Location = new System.Drawing.Point(41, 165);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(652, 354);
+            this.tabControl1.Size = new System.Drawing.Size(652, 273);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -462,7 +461,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(644, 328);
+            this.tabPage1.Size = new System.Drawing.Size(644, 247);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CFOP";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -601,7 +600,7 @@
             this.cfop.ButtonIndent = 3;
             this.cfop.ButtonText = "visualButton";
             this.cfop.ButtonVisible = false;
-            this.cfop.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cfop.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cfop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cfop.Image = null;
             this.cfop.ImageSize = new System.Drawing.Size(16, 16);
@@ -652,7 +651,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(644, 328);
+            this.tabPage2.Size = new System.Drawing.Size(644, 247);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ICMS";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -678,7 +677,7 @@
             this.icms_2.Name = "icms_2";
             this.icms_2.RedBase_Value = "";
             this.icms_2.RedBaseST_Value = "";
-            this.icms_2.Size = new System.Drawing.Size(279, 158);
+            this.icms_2.Size = new System.Drawing.Size(311, 179);
             this.icms_2.TabIndex = 43;
             // 
             // icms_1
@@ -770,7 +769,7 @@
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(644, 328);
+            this.tabPage3.Size = new System.Drawing.Size(644, 247);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "IPI";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -815,7 +814,7 @@
             this.Aliq_IPI.ButtonIndent = 3;
             this.Aliq_IPI.ButtonText = "visualButton";
             this.Aliq_IPI.ButtonVisible = false;
-            this.Aliq_IPI.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Aliq_IPI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aliq_IPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Aliq_IPI.Image = null;
             this.Aliq_IPI.ImageSize = new System.Drawing.Size(16, 16);
@@ -924,7 +923,7 @@
             this.tabPage4.Controls.Add(this.label7);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(644, 328);
+            this.tabPage4.Size = new System.Drawing.Size(644, 247);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "PIS";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -969,7 +968,7 @@
             this.Aliq_Pis.ButtonIndent = 3;
             this.Aliq_Pis.ButtonText = "visualButton";
             this.Aliq_Pis.ButtonVisible = false;
-            this.Aliq_Pis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Aliq_Pis.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aliq_Pis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Aliq_Pis.Image = null;
             this.Aliq_Pis.ImageSize = new System.Drawing.Size(16, 16);
@@ -1078,7 +1077,7 @@
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(644, 328);
+            this.tabPage5.Size = new System.Drawing.Size(644, 247);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "COFINS";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1123,7 +1122,7 @@
             this.Aliq_Cofins.ButtonIndent = 3;
             this.Aliq_Cofins.ButtonText = "visualButton";
             this.Aliq_Cofins.ButtonVisible = false;
-            this.Aliq_Cofins.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Aliq_Cofins.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aliq_Cofins.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Aliq_Cofins.Image = null;
             this.Aliq_Cofins.ImageSize = new System.Drawing.Size(16, 16);

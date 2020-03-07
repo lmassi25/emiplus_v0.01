@@ -222,10 +222,10 @@ namespace Emiplus.View.Comercial
             this.credencial.Controls.Add(this.tabPage3);
             this.credencial.Controls.Add(this.tabTransporte);
             this.credencial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.credencial.Location = new System.Drawing.Point(31, 220);
+            this.credencial.Location = new System.Drawing.Point(31, 227);
             this.credencial.Name = "credencial";
             this.credencial.SelectedIndex = 0;
-            this.credencial.Size = new System.Drawing.Size(668, 372);
+            this.credencial.Size = new System.Drawing.Size(668, 365);
             this.credencial.TabIndex = 22;
             // 
             // tabPage2
@@ -235,7 +235,7 @@ namespace Emiplus.View.Comercial
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(660, 342);
+            this.tabPage2.Size = new System.Drawing.Size(660, 335);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereços";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -249,7 +249,7 @@ namespace Emiplus.View.Comercial
             this.panelEnderecos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelEnderecos.Location = new System.Drawing.Point(3, 3);
             this.panelEnderecos.Name = "panelEnderecos";
-            this.panelEnderecos.Size = new System.Drawing.Size(654, 336);
+            this.panelEnderecos.Size = new System.Drawing.Size(654, 329);
             this.panelEnderecos.TabIndex = 5;
             // 
             // ListaEnderecos
@@ -287,7 +287,7 @@ namespace Emiplus.View.Comercial
             this.ListaEnderecos.ReadOnly = true;
             this.ListaEnderecos.RowHeadersVisible = false;
             this.ListaEnderecos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ListaEnderecos.Size = new System.Drawing.Size(653, 267);
+            this.ListaEnderecos.Size = new System.Drawing.Size(653, 260);
             this.ListaEnderecos.TabIndex = 4;
             this.ListaEnderecos.TabStop = false;
             // 
@@ -911,8 +911,8 @@ namespace Emiplus.View.Comercial
             this.nascimento.ButtonIndent = 3;
             this.nascimento.ButtonText = "visualButton";
             this.nascimento.ButtonVisible = false;
-            this.nascimento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nascimento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nascimento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nascimento.Image = null;
             this.nascimento.ImageSize = new System.Drawing.Size(16, 16);
             this.nascimento.ImageVisible = false;
@@ -945,7 +945,7 @@ namespace Emiplus.View.Comercial
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(587, 119);
+            this.pictureBox13.Location = new System.Drawing.Point(587, 124);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(15, 15);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -992,8 +992,8 @@ namespace Emiplus.View.Comercial
             this.nomeFantasia.ButtonIndent = 3;
             this.nomeFantasia.ButtonText = "visualButton";
             this.nomeFantasia.ButtonVisible = false;
-            this.nomeFantasia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomeFantasia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nomeFantasia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeFantasia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nomeFantasia.Image = null;
             this.nomeFantasia.ImageSize = new System.Drawing.Size(16, 16);
             this.nomeFantasia.ImageVisible = false;
@@ -1050,8 +1050,8 @@ namespace Emiplus.View.Comercial
             this.nomeRS.ButtonIndent = 3;
             this.nomeRS.ButtonText = "visualButton";
             this.nomeRS.ButtonVisible = false;
-            this.nomeRS.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomeRS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nomeRS.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeRS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nomeRS.Image = null;
             this.nomeRS.ImageSize = new System.Drawing.Size(16, 16);
             this.nomeRS.ImageVisible = false;
@@ -1082,7 +1082,7 @@ namespace Emiplus.View.Comercial
             // 
             // pessoaJF
             // 
-            this.pessoaJF.BackColor = System.Drawing.Color.Transparent;
+            this.pessoaJF.BackColor = System.Drawing.Color.White;
             this.pessoaJF.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.pessoaJF.BackColorState.Enabled = System.Drawing.Color.White;
             this.pessoaJF.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
@@ -1100,6 +1100,8 @@ namespace Emiplus.View.Comercial
             this.pessoaJF.DropDownHeight = 100;
             this.pessoaJF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pessoaJF.DropDownWidth = 250;
+            this.pessoaJF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pessoaJF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pessoaJF.FormattingEnabled = true;
             this.pessoaJF.ImageList = null;
             this.pessoaJF.ImageVisible = false;
@@ -1198,8 +1200,8 @@ namespace Emiplus.View.Comercial
             this.rgIE.ButtonIndent = 3;
             this.rgIE.ButtonText = "visualButton";
             this.rgIE.ButtonVisible = false;
-            this.rgIE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rgIE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rgIE.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rgIE.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rgIE.Image = null;
             this.rgIE.ImageSize = new System.Drawing.Size(16, 16);
             this.rgIE.ImageVisible = false;
@@ -1292,8 +1294,8 @@ namespace Emiplus.View.Comercial
             this.cpfCnpj.ButtonIndent = 3;
             this.cpfCnpj.ButtonText = "visualButton";
             this.cpfCnpj.ButtonVisible = false;
-            this.cpfCnpj.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpfCnpj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cpfCnpj.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpfCnpj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cpfCnpj.Image = null;
             this.cpfCnpj.ImageSize = new System.Drawing.Size(16, 16);
             this.cpfCnpj.ImageVisible = false;
@@ -1351,7 +1353,7 @@ namespace Emiplus.View.Comercial
             this.Isento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Isento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Isento.IsBoxLarger = false;
-            this.Isento.Location = new System.Drawing.Point(532, 115);
+            this.Isento.Location = new System.Drawing.Point(532, 119);
             this.Isento.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Isento.Name = "Isento";
             this.Isento.Size = new System.Drawing.Size(56, 23);

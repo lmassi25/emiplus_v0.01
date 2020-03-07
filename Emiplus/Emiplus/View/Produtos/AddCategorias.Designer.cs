@@ -235,7 +235,7 @@
             this.nome.ButtonIndent = 3;
             this.nome.ButtonText = "visualButton";
             this.nome.ButtonVisible = false;
-            this.nome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nome.Image = null;
             this.nome.ImageSize = new System.Drawing.Size(16, 16);

@@ -208,7 +208,7 @@ namespace Emiplus.View.Produtos
             icms_3.Location = new Point(9, 62);
 
             icms_1.Size = new Size(196, 67);
-            icms_2.Size = new Size(474, 162);
+            icms_2.Size = new Size(474, 172);
             icms_3.Size = new Size(214, 117);
 
             #endregion COMBOBOX

@@ -189,6 +189,7 @@ namespace Emiplus.View.Comercial
                     //OpcoesNfeRapida.idPedido = 0;
                     Nota nota = new Nota();
                     nota.ShowDialog();
+                    Filter();
                     return;
                 }
                 else
@@ -196,6 +197,7 @@ namespace Emiplus.View.Comercial
                     AddPedidos.Id = 0;
                     AddPedidos NovoPedido = new AddPedidos();
                     NovoPedido.ShowDialog();
+                    Filter();
                     return;
                 }
             }
@@ -271,6 +273,8 @@ namespace Emiplus.View.Comercial
                     DetailsPedido detailsPedido = new DetailsPedido();
                     detailsPedido.ShowDialog();
                 }
+
+                Filter();
             }
             else
             {
@@ -544,6 +548,12 @@ namespace Emiplus.View.Comercial
                     ID = item.ID,
                     TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
                 });
+            }
+
+            if (!File.Exists($@"{Program.PATH_BASE}\html\Pedidos.html"))
+            {
+                Alert.Message("Opps", "Não encontramos os arquivos base de relatório", Alert.AlertType.warning);
+                return;
             }
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pedidos.html"));
