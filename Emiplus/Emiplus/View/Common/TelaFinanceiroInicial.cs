@@ -109,8 +109,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(Caixa, pictureBox12, "fin_caixa"))
                     return;
 
-                Caixa f = new Caixa();
-                f.ShowDialog();
+                OpenForm.Show<Caixa>(this);
             };
 
             EntradaSaidaCaixa.Click += (s, e) =>

@@ -76,8 +76,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Vendas";
-                Pedido Pedido = new Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Pedido>(this);
             };
 
             ProdutosVendidos.Click += (s, e) =>
@@ -97,8 +96,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Consignações";
-                Pedido Pedido = new Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Pedido>(this);
             };
 
             ProdutosConsignados.Click += (s, e) =>
@@ -117,8 +115,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Devoluções";
-                Pedido Pedido = new Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Pedido>(this);
             };
 
             OrcamentosRel.Click += (s, e) =>
@@ -127,8 +124,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Orçamentos";
-                Pedido Pedido = new Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Pedido>(this);
             };
 
             ProdutosOrcados.Click += (s, e) =>

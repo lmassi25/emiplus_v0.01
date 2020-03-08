@@ -31,8 +31,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Notas";
-                Comercial.Pedido Pedido = new Comercial.Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Comercial.Pedido>(this);
             };
 
             naturezaOP.Click += (s, e) =>
@@ -108,8 +107,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Cupons";
-                Comercial.Pedido Pedido = new Comercial.Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Comercial.Pedido>(this);
             };
         }
     }

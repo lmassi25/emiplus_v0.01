@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FecharCaixa));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tituloProduto = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnFinalizarImprimir = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.btnCancelar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnFinalizarImprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnFinalizar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label1 = new System.Windows.Forms.Label();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.txtSaldoDinheiro = new System.Windows.Forms.Label();
@@ -47,7 +45,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             this.visualPanel2.SuspendLayout();
             this.visualPanel1.SuspendLayout();
@@ -55,8 +52,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel4.Controls.Add(this.tituloProduto);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -64,101 +60,130 @@
             this.panel4.Size = new System.Drawing.Size(369, 68);
             this.panel4.TabIndex = 22;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(41, 27);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 101;
-            this.pictureBox2.TabStop = false;
-            // 
             // tituloProduto
             // 
             this.tituloProduto.AutoSize = true;
-            this.tituloProduto.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tituloProduto.Location = new System.Drawing.Point(67, 27);
+            this.tituloProduto.Font = new System.Drawing.Font("Segoe UI Semilight", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tituloProduto.ForeColor = System.Drawing.Color.White;
+            this.tituloProduto.Location = new System.Drawing.Point(86, 23);
             this.tituloProduto.Name = "tituloProduto";
-            this.tituloProduto.Size = new System.Drawing.Size(156, 20);
+            this.tituloProduto.Size = new System.Drawing.Size(194, 28);
             this.tituloProduto.TabIndex = 100;
             this.tituloProduto.Text = "Fechamento do Caixa";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel3.Controls.Add(this.btnFinalizarImprimir);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel3.Controls.Add(this.btnCancelar);
+            this.panel3.Controls.Add(this.btnFinalizarImprimir);
             this.panel3.Controls.Add(this.btnFinalizar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 360);
+            this.panel3.Location = new System.Drawing.Point(0, 388);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(369, 68);
+            this.panel3.Size = new System.Drawing.Size(369, 40);
             this.panel3.TabIndex = 23;
-            // 
-            // btnFinalizarImprimir
-            // 
-            this.btnFinalizarImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnFinalizarImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizarImprimir.FlatAppearance.BorderSize = 0;
-            this.btnFinalizarImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizarImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizarImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizarImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnFinalizarImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizarImprimir.Image")));
-            this.btnFinalizarImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFinalizarImprimir.Location = new System.Drawing.Point(239, 5);
-            this.btnFinalizarImprimir.Name = "btnFinalizarImprimir";
-            this.btnFinalizarImprimir.Size = new System.Drawing.Size(126, 60);
-            this.btnFinalizarImprimir.TabIndex = 6;
-            this.btnFinalizarImprimir.Text = "Fechar e Imprimir";
-            this.btnFinalizarImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFinalizarImprimir.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnCancelar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnCancelar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.Border.HoverVisible = true;
+            this.btnCancelar.Border.Rounding = 6;
+            this.btnCancelar.Border.Thickness = 1;
+            this.btnCancelar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnCancelar.Border.Visible = true;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(3, 4);
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Image = null;
+            this.btnCancelar.Location = new System.Drawing.Point(9, 5);
+            this.btnCancelar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(69, 60);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.Size = new System.Drawing.Size(96, 30);
+            this.btnCancelar.TabIndex = 559;
             this.btnCancelar.Text = "Voltar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnCancelar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCancelar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCancelar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnFinalizarImprimir
+            // 
+            this.btnFinalizarImprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnFinalizarImprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnFinalizarImprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnFinalizarImprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnFinalizarImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnFinalizarImprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnFinalizarImprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnFinalizarImprimir.Border.HoverVisible = true;
+            this.btnFinalizarImprimir.Border.Rounding = 6;
+            this.btnFinalizarImprimir.Border.Thickness = 1;
+            this.btnFinalizarImprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnFinalizarImprimir.Border.Visible = true;
+            this.btnFinalizarImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizarImprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFinalizarImprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizarImprimir.Image = null;
+            this.btnFinalizarImprimir.Location = new System.Drawing.Point(225, 5);
+            this.btnFinalizarImprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnFinalizarImprimir.Name = "btnFinalizarImprimir";
+            this.btnFinalizarImprimir.Size = new System.Drawing.Size(135, 30);
+            this.btnFinalizarImprimir.TabIndex = 558;
+            this.btnFinalizarImprimir.Text = "Fechar e Imprimir";
+            this.btnFinalizarImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFinalizarImprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnFinalizarImprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnFinalizarImprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnFinalizarImprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnFinalizarImprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnFinalizarImprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnFinalizarImprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnFinalizar
             // 
             this.btnFinalizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFinalizar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnFinalizar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnFinalizar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnFinalizar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnFinalizar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnFinalizar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnFinalizar.Border.HoverVisible = true;
+            this.btnFinalizar.Border.Rounding = 6;
+            this.btnFinalizar.Border.Thickness = 1;
+            this.btnFinalizar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnFinalizar.Border.Visible = true;
             this.btnFinalizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizar.FlatAppearance.BorderSize = 0;
-            this.btnFinalizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnFinalizar.Image = ((System.Drawing.Image)(resources.GetObject("btnFinalizar.Image")));
-            this.btnFinalizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFinalizar.Location = new System.Drawing.Point(168, 4);
+            this.btnFinalizar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFinalizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.ForeColor = System.Drawing.Color.White;
+            this.btnFinalizar.Image = null;
+            this.btnFinalizar.Location = new System.Drawing.Point(139, 5);
+            this.btnFinalizar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(65, 60);
-            this.btnFinalizar.TabIndex = 4;
+            this.btnFinalizar.Size = new System.Drawing.Size(80, 30);
+            this.btnFinalizar.TabIndex = 555;
             this.btnFinalizar.Text = "Fechar";
-            this.btnFinalizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFinalizar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnFinalizar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnFinalizar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnFinalizar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnFinalizar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnFinalizar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnFinalizar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // label1
             // 
@@ -186,7 +211,7 @@
             this.visualPanel2.Border.Visible = true;
             this.visualPanel2.Controls.Add(this.txtSaldoDinheiro);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(81, 187);
+            this.visualPanel2.Location = new System.Drawing.Point(81, 206);
             this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel2.Name = "visualPanel2";
             this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
@@ -219,7 +244,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(104, 144);
+            this.label2.Location = new System.Drawing.Point(104, 163);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 41;
@@ -231,7 +256,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(136, 250);
+            this.label3.Location = new System.Drawing.Point(136, 269);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 104;
@@ -251,7 +276,7 @@
             this.visualPanel1.Border.Visible = true;
             this.visualPanel1.Controls.Add(this.txtSaldoTotal);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.Location = new System.Drawing.Point(81, 290);
+            this.visualPanel1.Location = new System.Drawing.Point(81, 309);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel1.Name = "visualPanel1";
             this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
@@ -284,7 +309,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(53, 269);
+            this.label6.Location = new System.Drawing.Point(53, 288);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(265, 15);
             this.label6.TabIndex = 106;
@@ -296,7 +321,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(3, 165);
+            this.label4.Location = new System.Drawing.Point(3, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(364, 15);
             this.label4.TabIndex = 107;
@@ -329,7 +354,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.visualPanel2.ResumeLayout(false);
             this.visualPanel1.ResumeLayout(false);
@@ -341,12 +365,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label tituloProduto;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnFinalizar;
-        private System.Windows.Forms.Button btnFinalizarImprimir;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel2;
         private System.Windows.Forms.Label txtSaldoDinheiro;
@@ -356,5 +376,8 @@
         private System.Windows.Forms.Label txtSaldoTotal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnFinalizar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnFinalizarImprimir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnCancelar;
     }
 }

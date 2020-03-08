@@ -88,8 +88,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Compras";
-                Comercial.Pedido Pedido = new Comercial.Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Comercial.Pedido>(this);
             };
 
             HistoricoEntradaSaida.Click += (s, e) =>

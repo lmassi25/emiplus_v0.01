@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCaixaMov));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnApagar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tituloProduto = new System.Windows.Forms.Label();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
@@ -56,9 +59,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnAddCategoria = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnAddFornecedor = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnApagar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.visualPanel2.SuspendLayout();
@@ -76,6 +76,110 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(429, 40);
             this.panel3.TabIndex = 20;
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApagar.BackColor = System.Drawing.Color.White;
+            this.btnApagar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnApagar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnApagar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnApagar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnApagar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnApagar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnApagar.Border.HoverVisible = true;
+            this.btnApagar.Border.Rounding = 6;
+            this.btnApagar.Border.Thickness = 1;
+            this.btnApagar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnApagar.Border.Visible = true;
+            this.btnApagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnApagar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.ForeColor = System.Drawing.Color.White;
+            this.btnApagar.Image = null;
+            this.btnApagar.Location = new System.Drawing.Point(15, 5);
+            this.btnApagar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(96, 30);
+            this.btnApagar.TabIndex = 558;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnApagar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnApagar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnApagar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnApagar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnApagar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnApagar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnApagar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnApagar.Visible = false;
+            // 
+            // imprimir
+            // 
+            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.Border.HoverVisible = true;
+            this.imprimir.Border.Rounding = 6;
+            this.imprimir.Border.Thickness = 1;
+            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imprimir.Border.Visible = true;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = null;
+            this.imprimir.Location = new System.Drawing.Point(222, 5);
+            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(80, 30);
+            this.imprimir.TabIndex = 557;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSalvar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSalvar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSalvar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.Border.HoverVisible = true;
+            this.btnSalvar.Border.Rounding = 6;
+            this.btnSalvar.Border.Thickness = 1;
+            this.btnSalvar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSalvar.Border.Visible = true;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnSalvar.Image = null;
+            this.btnSalvar.Location = new System.Drawing.Point(308, 5);
+            this.btnSalvar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(96, 30);
+            this.btnSalvar.TabIndex = 554;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalvar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSalvar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSalvar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSalvar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel4
             // 
@@ -453,8 +557,8 @@
             this.Valor.BackColor = System.Drawing.Color.White;
             this.Valor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Valor.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Valor.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Valor.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Valor.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Valor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Valor.Border.HoverVisible = true;
             this.Valor.Border.Rounding = 8;
             this.Valor.Border.Thickness = 1;
@@ -487,7 +591,7 @@
             this.Valor.PasswordChar = '\0';
             this.Valor.ReadOnly = false;
             this.Valor.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Valor.Size = new System.Drawing.Size(137, 28);
+            this.Valor.Size = new System.Drawing.Size(137, 30);
             this.Valor.TabIndex = 32;
             this.Valor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Valor.TextBoxWidth = 125;
@@ -531,8 +635,8 @@
             this.Categorias.BackColor = System.Drawing.Color.White;
             this.Categorias.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Categorias.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Categorias.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Categorias.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Categorias.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Categorias.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Categorias.Border.HoverVisible = true;
             this.Categorias.Border.Rounding = 6;
             this.Categorias.Border.Thickness = 1;
@@ -587,8 +691,8 @@
             this.Fornecedor.BackColor = System.Drawing.Color.White;
             this.Fornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Fornecedor.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Fornecedor.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Fornecedor.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Fornecedor.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Fornecedor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Fornecedor.Border.HoverVisible = true;
             this.Fornecedor.Border.Rounding = 6;
             this.Fornecedor.Border.Thickness = 1;
@@ -666,8 +770,8 @@
             this.Obs.BackColor = System.Drawing.Color.White;
             this.Obs.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.Obs.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Obs.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Obs.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Obs.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Obs.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Obs.Border.HoverVisible = true;
             this.Obs.Border.Rounding = 8;
             this.Obs.Border.Thickness = 1;
@@ -700,7 +804,7 @@
             this.Obs.PasswordChar = '\0';
             this.Obs.ReadOnly = false;
             this.Obs.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Obs.Size = new System.Drawing.Size(234, 28);
+            this.Obs.Size = new System.Drawing.Size(234, 30);
             this.Obs.TabIndex = 161;
             this.Obs.TextBoxWidth = 222;
             this.Obs.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -736,7 +840,7 @@
             this.btnAddCategoria.BackColorState.Pressed = System.Drawing.Color.White;
             this.btnAddCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddCategoria.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddCategoria.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddCategoria.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.btnAddCategoria.Border.HoverVisible = true;
             this.btnAddCategoria.Border.Rounding = 6;
             this.btnAddCategoria.Border.Thickness = 1;
@@ -769,7 +873,7 @@
             this.btnAddFornecedor.BackColorState.Pressed = System.Drawing.Color.White;
             this.btnAddFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddFornecedor.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddFornecedor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddFornecedor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.btnAddFornecedor.Border.HoverVisible = true;
             this.btnAddFornecedor.Border.Rounding = 6;
             this.btnAddFornecedor.Border.Thickness = 1;
@@ -793,110 +897,6 @@
             this.btnAddFornecedor.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnAddFornecedor.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnAddFornecedor.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSalvar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
-            this.btnSalvar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
-            this.btnSalvar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
-            this.btnSalvar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
-            this.btnSalvar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
-            this.btnSalvar.Border.HoverVisible = true;
-            this.btnSalvar.Border.Rounding = 6;
-            this.btnSalvar.Border.Thickness = 1;
-            this.btnSalvar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnSalvar.Border.Visible = true;
-            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Image = null;
-            this.btnSalvar.Location = new System.Drawing.Point(308, 5);
-            this.btnSalvar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(96, 30);
-            this.btnSalvar.TabIndex = 554;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSalvar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnSalvar.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnSalvar.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnSalvar.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnSalvar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnSalvar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnSalvar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // imprimir
-            // 
-            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.Border.HoverVisible = true;
-            this.imprimir.Border.Rounding = 6;
-            this.imprimir.Border.Thickness = 1;
-            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.imprimir.Border.Visible = true;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.White;
-            this.imprimir.Image = null;
-            this.imprimir.Location = new System.Drawing.Point(222, 5);
-            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(80, 30);
-            this.imprimir.TabIndex = 557;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
-            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnApagar
-            // 
-            this.btnApagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApagar.BackColor = System.Drawing.Color.White;
-            this.btnApagar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnApagar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
-            this.btnApagar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
-            this.btnApagar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
-            this.btnApagar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
-            this.btnApagar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
-            this.btnApagar.Border.HoverVisible = true;
-            this.btnApagar.Border.Rounding = 6;
-            this.btnApagar.Border.Thickness = 1;
-            this.btnApagar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnApagar.Border.Visible = true;
-            this.btnApagar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnApagar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApagar.ForeColor = System.Drawing.Color.White;
-            this.btnApagar.Image = null;
-            this.btnApagar.Location = new System.Drawing.Point(15, 5);
-            this.btnApagar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnApagar.Name = "btnApagar";
-            this.btnApagar.Size = new System.Drawing.Size(96, 30);
-            this.btnApagar.TabIndex = 558;
-            this.btnApagar.Text = "Apagar";
-            this.btnApagar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnApagar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnApagar.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnApagar.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnApagar.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnApagar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnApagar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnApagar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnApagar.Visible = false;
             // 
             // AddCaixaMov
             // 

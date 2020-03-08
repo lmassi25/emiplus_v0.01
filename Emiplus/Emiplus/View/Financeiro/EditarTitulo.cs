@@ -33,6 +33,14 @@ namespace Emiplus.View.Financeiro
             dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = _modelTitulo.Recebido == 0 ? "" : Validation.Price(_modelTitulo.Recebido);
 
+            if (_modelTitulo.Recebido > 0)
+            {
+                btnRecebidoPago.Checked = true;
+                dataRecebido.Enabled = true;
+                formaPgto.Enabled = true;
+                recebido.Enabled = true;
+            }
+
             cliente.SelectedValue = _modelTitulo.Id_Pessoa.ToString();
             formaPgto.SelectedValue = _modelTitulo.Id_FormaPgto.ToString();
             receita.SelectedValue = _modelTitulo.Id_Categoria.ToString();
@@ -41,7 +49,7 @@ namespace Emiplus.View.Financeiro
             xRecorrente.Text = _modelTitulo.Qtd_Recorrencia.ToString();
 
             if (_modelTitulo.Id == 0)
-                btnRemover.Visible = false;
+                btnCancelar.Visible = false;
         }
 
         private void Save()
@@ -170,6 +178,9 @@ namespace Emiplus.View.Financeiro
             Titulo dadosRecorrencia = _modelTitulo.FindById(IdTitulo).Where("tipo_recorrencia" , "!=", "0").FirstOrDefault<Titulo>();
             if (dadosRecorrencia != null)
             {
+                checkRepetir.Checked = true;
+                recorrente.Enabled = true;
+                xRecorrente.Enabled = true;
                 panel1.Visible = true;
 
                 if (dadosRecorrencia.ID_Recorrencia_Pai != 0)
@@ -216,9 +227,9 @@ namespace Emiplus.View.Financeiro
                     label3.Text = "Forma Pagar";
                     label12.Text = "Esse pagamento se repete?";
 
-                    visualGroupBox2.Text = "Pagamento";
                     label9.Text = "Data Pagamento";
                     label10.Text = "Valor Pagamento";
+                    btnRecebidoPago.Text = "Pago";
                 }
 
                 formaPgto.ValueMember = "Id";
@@ -245,7 +256,7 @@ namespace Emiplus.View.Financeiro
             };
 
             btnSalvar.Click += (s, e) => Save();
-            btnRemover.Click += (s, e) =>
+            btnCancelar.Click += (s, e) =>
             {
                 var data = _modelTitulo.Remove(IdTitulo);
                 if (data)
@@ -301,6 +312,36 @@ namespace Emiplus.View.Financeiro
                 f.StartPosition = FormStartPosition.CenterScreen;
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadCategorias();
+            };
+
+            checkRepetir.CheckStateChanged += (s, e) =>
+            {
+                if (checkRepetir.Checked)
+                {
+                    recorrente.Enabled = true;
+                    xRecorrente.Enabled = true;
+                }
+                else
+                {
+                    recorrente.Enabled = false;
+                    xRecorrente.Enabled = false;
+                }
+            };
+
+            btnRecebidoPago.CheckStateChanged += (s, e) =>
+            {
+                if (btnRecebidoPago.Checked)
+                {
+                     dataRecebido.Enabled = true;
+                    formaPgto.Enabled = true;
+                    recebido.Enabled = true;
+                }
+                else
+                {
+                     dataRecebido.Enabled = false;
+                    formaPgto.Enabled = false;
+                    recebido.Enabled = false;
+                }
             };
 
             btnExit.Click += (s, e) => Close();

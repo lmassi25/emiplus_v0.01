@@ -352,7 +352,7 @@
             this.codebarras.PasswordChar = '\0';
             this.codebarras.ReadOnly = false;
             this.codebarras.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.codebarras.Size = new System.Drawing.Size(215, 28);
+            this.codebarras.Size = new System.Drawing.Size(215, 30);
             this.codebarras.TabIndex = 1;
             this.codebarras.TextBoxWidth = 203;
             this.codebarras.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -501,7 +501,7 @@
             this.valorvenda.PasswordChar = '\0';
             this.valorvenda.ReadOnly = false;
             this.valorvenda.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.valorvenda.Size = new System.Drawing.Size(118, 28);
+            this.valorvenda.Size = new System.Drawing.Size(118, 30);
             this.valorvenda.TabIndex = 6;
             this.valorvenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.valorvenda.TextBoxWidth = 106;
@@ -571,7 +571,7 @@
             this.valorcompra.PasswordChar = '\0';
             this.valorcompra.ReadOnly = false;
             this.valorcompra.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.valorcompra.Size = new System.Drawing.Size(118, 28);
+            this.valorcompra.Size = new System.Drawing.Size(118, 30);
             this.valorcompra.TabIndex = 5;
             this.valorcompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.valorcompra.TextBoxWidth = 106;
@@ -642,7 +642,7 @@
             this.referencia.PasswordChar = '\0';
             this.referencia.ReadOnly = false;
             this.referencia.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.referencia.Size = new System.Drawing.Size(110, 28);
+            this.referencia.Size = new System.Drawing.Size(110, 30);
             this.referencia.TabIndex = 2;
             this.referencia.TextBoxWidth = 98;
             this.referencia.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -712,7 +712,7 @@
             this.nome.PasswordChar = '\0';
             this.nome.ReadOnly = false;
             this.nome.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nome.Size = new System.Drawing.Size(331, 28);
+            this.nome.Size = new System.Drawing.Size(331, 30);
             this.nome.TabIndex = 0;
             this.nome.TextBoxWidth = 319;
             this.nome.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -805,7 +805,7 @@
             this.inf_adicional.PasswordChar = '\0';
             this.inf_adicional.ReadOnly = false;
             this.inf_adicional.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.inf_adicional.Size = new System.Drawing.Size(557, 28);
+            this.inf_adicional.Size = new System.Drawing.Size(557, 30);
             this.inf_adicional.TabIndex = 1;
             this.inf_adicional.TextBoxWidth = 545;
             this.inf_adicional.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -886,7 +886,7 @@
             this.txtLimiteDesconto.PasswordChar = '\0';
             this.txtLimiteDesconto.ReadOnly = false;
             this.txtLimiteDesconto.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 28);
+            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 30);
             this.txtLimiteDesconto.TabIndex = 42;
             this.txtLimiteDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtLimiteDesconto.TextBoxWidth = 118;
@@ -1054,7 +1054,7 @@
             this.aliq_municipal.PasswordChar = '\0';
             this.aliq_municipal.ReadOnly = false;
             this.aliq_municipal.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.aliq_municipal.Size = new System.Drawing.Size(150, 28);
+            this.aliq_municipal.Size = new System.Drawing.Size(150, 30);
             this.aliq_municipal.TabIndex = 2;
             this.aliq_municipal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.aliq_municipal.TextBoxWidth = 138;
@@ -1125,7 +1125,7 @@
             this.aliq_estadual.PasswordChar = '\0';
             this.aliq_estadual.ReadOnly = false;
             this.aliq_estadual.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.aliq_estadual.Size = new System.Drawing.Size(150, 28);
+            this.aliq_estadual.Size = new System.Drawing.Size(150, 30);
             this.aliq_estadual.TabIndex = 1;
             this.aliq_estadual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.aliq_estadual.TextBoxWidth = 138;
@@ -1195,7 +1195,7 @@
             this.aliq_federal.PasswordChar = '\0';
             this.aliq_federal.ReadOnly = false;
             this.aliq_federal.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.aliq_federal.Size = new System.Drawing.Size(150, 28);
+            this.aliq_federal.Size = new System.Drawing.Size(150, 30);
             this.aliq_federal.TabIndex = 0;
             this.aliq_federal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.aliq_federal.TextBoxWidth = 138;
@@ -1366,7 +1366,7 @@
             this.ncm.PasswordChar = '\0';
             this.ncm.ReadOnly = false;
             this.ncm.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ncm.Size = new System.Drawing.Size(111, 28);
+            this.ncm.Size = new System.Drawing.Size(111, 30);
             this.ncm.TabIndex = 2;
             this.ncm.TextBoxWidth = 99;
             this.ncm.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -1435,7 +1435,7 @@
             this.cest.PasswordChar = '\0';
             this.cest.ReadOnly = false;
             this.cest.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cest.Size = new System.Drawing.Size(97, 28);
+            this.cest.Size = new System.Drawing.Size(97, 30);
             this.cest.TabIndex = 1;
             this.cest.TextBoxWidth = 85;
             this.cest.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -1640,7 +1640,7 @@
             this.estoqueminimo.PasswordChar = '\0';
             this.estoqueminimo.ReadOnly = false;
             this.estoqueminimo.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.estoqueminimo.Size = new System.Drawing.Size(139, 28);
+            this.estoqueminimo.Size = new System.Drawing.Size(139, 30);
             this.estoqueminimo.TabIndex = 0;
             this.estoqueminimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.estoqueminimo.TextBoxWidth = 127;
@@ -1699,7 +1699,7 @@
             this.estoqueatual.PasswordChar = '\0';
             this.estoqueatual.ReadOnly = false;
             this.estoqueatual.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.estoqueatual.Size = new System.Drawing.Size(140, 28);
+            this.estoqueatual.Size = new System.Drawing.Size(140, 30);
             this.estoqueatual.TabIndex = 1;
             this.estoqueatual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.estoqueatual.TextBoxWidth = 125;
@@ -1852,8 +1852,8 @@
             // 
             // chkImpostoCFE
             // 
-            this.chkImpostoCFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.chkImpostoCFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.chkImpostoCFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.chkImpostoCFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.chkImpostoCFE.Border.HoverVisible = true;
             this.chkImpostoCFE.Border.Rounding = 3;
             this.chkImpostoCFE.Border.Thickness = 1;
@@ -1861,9 +1861,9 @@
             this.chkImpostoCFE.Border.Visible = true;
             this.chkImpostoCFE.Box = new System.Drawing.Size(14, 14);
             this.chkImpostoCFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoCFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.chkImpostoCFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoCFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chkImpostoCFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chkImpostoCFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chkImpostoCFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.chkImpostoCFE.BoxSpacing = 2;
             this.chkImpostoCFE.CheckStyle.AutoSize = true;
             this.chkImpostoCFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
@@ -1953,8 +1953,8 @@
             // 
             // chkImpostoNFE
             // 
-            this.chkImpostoNFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.chkImpostoNFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.chkImpostoNFE.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.chkImpostoNFE.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.chkImpostoNFE.Border.HoverVisible = true;
             this.chkImpostoNFE.Border.Rounding = 3;
             this.chkImpostoNFE.Border.Thickness = 1;
@@ -1962,9 +1962,9 @@
             this.chkImpostoNFE.Border.Visible = true;
             this.chkImpostoNFE.Box = new System.Drawing.Size(14, 14);
             this.chkImpostoNFE.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoNFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.chkImpostoNFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chkImpostoNFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chkImpostoNFE.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chkImpostoNFE.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.chkImpostoNFE.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.chkImpostoNFE.BoxSpacing = 2;
             this.chkImpostoNFE.CheckStyle.AutoSize = true;
             this.chkImpostoNFE.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
@@ -2325,7 +2325,7 @@
             this.precoMedio.PasswordChar = '\0';
             this.precoMedio.ReadOnly = false;
             this.precoMedio.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.precoMedio.Size = new System.Drawing.Size(118, 28);
+            this.precoMedio.Size = new System.Drawing.Size(118, 30);
             this.precoMedio.TabIndex = 46;
             this.precoMedio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.precoMedio.TextBoxWidth = 106;
