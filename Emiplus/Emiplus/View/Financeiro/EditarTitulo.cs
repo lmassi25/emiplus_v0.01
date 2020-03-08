@@ -182,17 +182,20 @@ namespace Emiplus.View.Financeiro
                 recorrente.Enabled = true;
                 xRecorrente.Enabled = true;
                 panel1.Visible = true;
+                int qtdTitulo = 0;
 
                 if (dadosRecorrencia.ID_Recorrencia_Pai != 0)
                 {
                     var qtdTitulos = _modelTitulo.Query().SelectRaw("COUNT (id) AS TOTAL").Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai).WhereNotNull("id_recorrencia_pai").FirstOrDefault();
-                    label19.Text = Validation.ConvertToInt32(qtdTitulos.TOTAL).ToString();
+                    qtdTitulo = Validation.ConvertToInt32(qtdTitulos.TOTAL);
 
                     var ValorTitulos = _modelTitulo.Query().SelectRaw("SUM (total) AS TOTAL").Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai).WhereNotNull("id_recorrencia_pai").FirstOrDefault();
                     label22.Text = Validation.FormatPrice(Validation.ConvertToDouble(ValorTitulos.TOTAL), true);
                 }
 
-                label18.Text = dadosRecorrencia.Nr_Recorrencia.ToString();
+                string nrParcela = $"{dadosRecorrencia.Nr_Recorrencia.ToString()} de {qtdTitulo}";
+                label18.Text = nrParcela;
+
                 xRecorrente.Enabled = false;
             }
         }

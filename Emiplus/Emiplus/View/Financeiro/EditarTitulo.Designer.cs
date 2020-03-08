@@ -54,10 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -197,7 +194,7 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(290, 301);
+            this.pictureBox7.Location = new System.Drawing.Point(290, 304);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(15, 15);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -208,7 +205,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(217, 254);
+            this.pictureBox6.Location = new System.Drawing.Point(217, 257);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(15, 15);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -221,7 +218,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(306, 301);
+            this.label14.Location = new System.Drawing.Point(306, 304);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 13);
             this.label14.TabIndex = 105;
@@ -233,7 +230,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(288, 252);
+            this.label13.Location = new System.Drawing.Point(288, 255);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(118, 17);
             this.label13.TabIndex = 103;
@@ -243,7 +240,7 @@
             // 
             this.xRecorrente.AlphaNumeric = false;
             this.xRecorrente.BackColor = System.Drawing.Color.White;
-            this.xRecorrente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.xRecorrente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.xRecorrente.BackColorState.Enabled = System.Drawing.Color.White;
             this.xRecorrente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
             this.xRecorrente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
@@ -274,7 +271,7 @@
             this.xRecorrente.ImageSize = new System.Drawing.Size(16, 16);
             this.xRecorrente.ImageVisible = false;
             this.xRecorrente.ImageWidth = 35;
-            this.xRecorrente.Location = new System.Drawing.Point(289, 271);
+            this.xRecorrente.Location = new System.Drawing.Point(289, 274);
             this.xRecorrente.MaxLength = 10;
             this.xRecorrente.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.xRecorrente.Name = "xRecorrente";
@@ -305,7 +302,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(39, 251);
+            this.label12.Location = new System.Drawing.Point(39, 254);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(180, 17);
             this.label12.TabIndex = 101;
@@ -314,7 +311,7 @@
             // recorrente
             // 
             this.recorrente.BackColor = System.Drawing.Color.White;
-            this.recorrente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.recorrente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.recorrente.BackColorState.Enabled = System.Drawing.Color.White;
             this.recorrente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
             this.recorrente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
@@ -340,7 +337,7 @@
             this.recorrente.IntegralHeight = false;
             this.recorrente.ItemHeight = 23;
             this.recorrente.ItemImageVisible = true;
-            this.recorrente.Location = new System.Drawing.Point(41, 270);
+            this.recorrente.Location = new System.Drawing.Point(41, 273);
             this.recorrente.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.recorrente.MenuItemNormal = System.Drawing.Color.White;
             this.recorrente.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -673,7 +670,7 @@
             this.formaPgto.IntegralHeight = false;
             this.formaPgto.ItemHeight = 23;
             this.formaPgto.ItemImageVisible = true;
-            this.formaPgto.Location = new System.Drawing.Point(229, 427);
+            this.formaPgto.Location = new System.Drawing.Point(229, 400);
             this.formaPgto.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.formaPgto.MenuItemNormal = System.Drawing.Color.White;
             this.formaPgto.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -707,7 +704,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(226, 407);
+            this.label3.Location = new System.Drawing.Point(226, 380);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 17);
             this.label3.TabIndex = 92;
@@ -717,14 +714,11 @@
             // 
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Location = new System.Drawing.Point(40, 322);
+            this.panel1.Location = new System.Drawing.Point(115, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(683, 29);
+            this.panel1.Size = new System.Drawing.Size(608, 29);
             this.panel1.TabIndex = 115;
             this.panel1.Visible = false;
             // 
@@ -734,7 +728,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(275, 7);
+            this.label17.Location = new System.Drawing.Point(2, 8);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 15);
             this.label17.TabIndex = 110;
@@ -745,23 +739,11 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(569, 7);
+            this.label22.Location = new System.Drawing.Point(497, 8);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(105, 15);
             this.label22.TabIndex = 114;
             this.label22.Text = "R$ 9100.000,00";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(3, 5);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(262, 17);
-            this.label15.TabIndex = 108;
-            this.label15.Text = "Esta parcela faz parte de uma recorrência!";
             // 
             // label20
             // 
@@ -769,46 +751,22 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(437, 7);
+            this.label20.Location = new System.Drawing.Point(360, 8);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(141, 15);
             this.label20.TabIndex = 113;
             this.label20.Text = "Valor total todas Parcelas:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(377, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(20, 15);
-            this.label16.TabIndex = 109;
-            this.label16.Text = "de";
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(396, 7);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(28, 15);
-            this.label19.TabIndex = 112;
-            this.label19.Text = "10";
             // 
             // label18
             // 
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Location = new System.Drawing.Point(349, 7);
+            this.label18.Location = new System.Drawing.Point(76, 8);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(28, 15);
+            this.label18.Size = new System.Drawing.Size(70, 15);
             this.label18.TabIndex = 111;
-            this.label18.Text = "1";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label18.Text = "1 de 1000";
             // 
             // panel4
             // 
@@ -909,7 +867,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(38, 407);
+            this.label9.Location = new System.Drawing.Point(38, 380);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 17);
             this.label9.TabIndex = 100;
@@ -950,7 +908,7 @@
             this.dataRecebido.ImageSize = new System.Drawing.Size(16, 16);
             this.dataRecebido.ImageVisible = false;
             this.dataRecebido.ImageWidth = 35;
-            this.dataRecebido.Location = new System.Drawing.Point(41, 427);
+            this.dataRecebido.Location = new System.Drawing.Point(41, 400);
             this.dataRecebido.MaxLength = 10;
             this.dataRecebido.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataRecebido.Name = "dataRecebido";
@@ -980,7 +938,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(365, 408);
+            this.label10.Location = new System.Drawing.Point(365, 381);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(94, 17);
             this.label10.TabIndex = 103;
@@ -1021,7 +979,7 @@
             this.recebido.ImageSize = new System.Drawing.Size(16, 16);
             this.recebido.ImageVisible = false;
             this.recebido.ImageWidth = 35;
-            this.recebido.Location = new System.Drawing.Point(368, 428);
+            this.recebido.Location = new System.Drawing.Point(368, 401);
             this.recebido.MaxLength = 10;
             this.recebido.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.recebido.Name = "recebido";
@@ -1052,7 +1010,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(39, 487);
+            this.label11.Location = new System.Drawing.Point(39, 460);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 17);
             this.label11.TabIndex = 105;
@@ -1092,7 +1050,7 @@
             this.Obs.ImageSize = new System.Drawing.Size(16, 16);
             this.Obs.ImageVisible = false;
             this.Obs.ImageWidth = 35;
-            this.Obs.Location = new System.Drawing.Point(42, 508);
+            this.Obs.Location = new System.Drawing.Point(42, 481);
             this.Obs.MaxLength = 10;
             this.Obs.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Obs.MultiLine = true;
@@ -1237,6 +1195,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel2.Controls.Add(this.btnExit);
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(0, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 40);
@@ -1395,7 +1354,7 @@
             this.checkRepetir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkRepetir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.checkRepetir.IsBoxLarger = false;
-            this.checkRepetir.Location = new System.Drawing.Point(41, 222);
+            this.checkRepetir.Location = new System.Drawing.Point(41, 225);
             this.checkRepetir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.checkRepetir.Name = "checkRepetir";
             this.checkRepetir.Size = new System.Drawing.Size(89, 23);
@@ -1416,7 +1375,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator2.Location = new System.Drawing.Point(40, 360);
+            this.visualSeparator2.Location = new System.Drawing.Point(40, 333);
             this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator2.Name = "visualSeparator2";
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1462,7 +1421,7 @@
             this.btnRecebidoPago.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecebidoPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnRecebidoPago.IsBoxLarger = false;
-            this.btnRecebidoPago.Location = new System.Drawing.Point(41, 374);
+            this.btnRecebidoPago.Location = new System.Drawing.Point(41, 347);
             this.btnRecebidoPago.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnRecebidoPago.Name = "btnRecebidoPago";
             this.btnRecebidoPago.Size = new System.Drawing.Size(89, 23);
@@ -1495,7 +1454,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.Image = null;
-            this.btnImprimir.Location = new System.Drawing.Point(528, 427);
+            this.btnImprimir.Location = new System.Drawing.Point(528, 400);
             this.btnImprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(164, 28);
@@ -1516,7 +1475,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(40, 469);
+            this.visualSeparator3.Location = new System.Drawing.Point(40, 442);
             this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator3.Name = "visualSeparator3";
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1558,7 +1517,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.recebido);
             this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.barraTitulo);
             this.Controls.Add(this.label13);
@@ -1637,10 +1595,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;

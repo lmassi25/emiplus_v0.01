@@ -545,6 +545,7 @@ namespace Emiplus.View.Comercial
             this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.uf.DropDownWidth = 500;
             this.uf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.uf.FormattingEnabled = true;
             this.uf.ImageList = null;
             this.uf.ImageVisible = false;
@@ -623,7 +624,7 @@ namespace Emiplus.View.Comercial
             this.rntc.ButtonText = "visualButton";
             this.rntc.ButtonVisible = false;
             this.rntc.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rntc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rntc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rntc.Image = null;
             this.rntc.ImageSize = new System.Drawing.Size(16, 16);
             this.rntc.ImageVisible = false;
@@ -714,7 +715,7 @@ namespace Emiplus.View.Comercial
             this.placa.ButtonText = "visualButton";
             this.placa.ButtonVisible = false;
             this.placa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.placa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.placa.Image = null;
             this.placa.ImageSize = new System.Drawing.Size(16, 16);
             this.placa.ImageVisible = false;
@@ -1327,8 +1328,8 @@ namespace Emiplus.View.Comercial
             // Isento
             // 
             this.Isento.BackColor = System.Drawing.Color.Transparent;
-            this.Isento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Isento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.Isento.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.Isento.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Isento.Border.HoverVisible = true;
             this.Isento.Border.Rounding = 3;
             this.Isento.Border.Thickness = 1;
@@ -1336,9 +1337,9 @@ namespace Emiplus.View.Comercial
             this.Isento.Border.Visible = true;
             this.Isento.Box = new System.Drawing.Size(14, 14);
             this.Isento.BoxColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Isento.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Isento.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Isento.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Isento.BoxColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Isento.BoxColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Isento.BoxColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.Isento.BoxSpacing = 2;
             this.Isento.CheckStyle.AutoSize = true;
             this.Isento.CheckStyle.Bounds = new System.Drawing.Rectangle(0, 0, 125, 23);
