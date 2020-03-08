@@ -112,7 +112,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel3.Controls.Add(this.btnSalvar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 349);
@@ -225,7 +225,7 @@
             this.quantidade.PasswordChar = '\0';
             this.quantidade.ReadOnly = false;
             this.quantidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.quantidade.Size = new System.Drawing.Size(223, 28);
+            this.quantidade.Size = new System.Drawing.Size(223, 30);
             this.quantidade.TabIndex = 2;
             this.quantidade.TextBoxWidth = 211;
             this.quantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));

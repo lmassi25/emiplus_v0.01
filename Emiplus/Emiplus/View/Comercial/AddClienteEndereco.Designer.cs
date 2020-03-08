@@ -62,7 +62,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel1.Controls.Add(this.label11);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
@@ -71,13 +71,14 @@
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(10, 20);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(3, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(141, 25);
+            this.label11.Size = new System.Drawing.Size(663, 25);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Novo endereço:";
+            this.label11.Text = "Novo Endereço";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label10
             // 
@@ -143,7 +144,7 @@
             this.rua.PasswordChar = '\0';
             this.rua.ReadOnly = false;
             this.rua.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.rua.Size = new System.Drawing.Size(359, 28);
+            this.rua.Size = new System.Drawing.Size(359, 30);
             this.rua.TabIndex = 2;
             this.rua.TextBoxWidth = 347;
             this.rua.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -212,7 +213,7 @@
             this.bairro.PasswordChar = '\0';
             this.bairro.ReadOnly = false;
             this.bairro.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.bairro.Size = new System.Drawing.Size(175, 28);
+            this.bairro.Size = new System.Drawing.Size(175, 30);
             this.bairro.TabIndex = 4;
             this.bairro.TextBoxWidth = 163;
             this.bairro.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -281,7 +282,7 @@
             this.nr.PasswordChar = '\0';
             this.nr.ReadOnly = false;
             this.nr.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nr.Size = new System.Drawing.Size(98, 28);
+            this.nr.Size = new System.Drawing.Size(98, 30);
             this.nr.TabIndex = 3;
             this.nr.TextBoxWidth = 86;
             this.nr.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -350,7 +351,7 @@
             this.complemento.PasswordChar = '\0';
             this.complemento.ReadOnly = false;
             this.complemento.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.complemento.Size = new System.Drawing.Size(463, 28);
+            this.complemento.Size = new System.Drawing.Size(463, 30);
             this.complemento.TabIndex = 5;
             this.complemento.TextBoxWidth = 451;
             this.complemento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -443,7 +444,7 @@
             this.ibge.PasswordChar = '\0';
             this.ibge.ReadOnly = false;
             this.ibge.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ibge.Size = new System.Drawing.Size(98, 28);
+            this.ibge.Size = new System.Drawing.Size(98, 30);
             this.ibge.TabIndex = 9;
             this.ibge.TextBoxWidth = 86;
             this.ibge.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -462,7 +463,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel2.Controls.Add(this.btnAddrSalvar);
             this.panel2.Controls.Add(this.btnAddrDelete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -579,7 +580,7 @@
             this.cep.PasswordChar = '\0';
             this.cep.ReadOnly = false;
             this.cep.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cep.Size = new System.Drawing.Size(104, 28);
+            this.cep.Size = new System.Drawing.Size(104, 30);
             this.cep.TabIndex = 0;
             this.cep.TextBoxWidth = 92;
             this.cep.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -648,7 +649,7 @@
             this.cidade.PasswordChar = '\0';
             this.cidade.ReadOnly = false;
             this.cidade.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cidade.Size = new System.Drawing.Size(320, 28);
+            this.cidade.Size = new System.Drawing.Size(320, 30);
             this.cidade.TabIndex = 6;
             this.cidade.TextBoxWidth = 308;
             this.cidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -855,7 +856,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -151,18 +151,14 @@ namespace Emiplus.View.Reports
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) =>
+            Shown += async (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
                 AutoCompleteFornecedorCategorias();
 
                 dataInicial.Text = DateTime.Now.ToString();
-            };
 
-            Shown += async (s, e) =>
-            {
-                label13.Visible = false;
                 await DataTableAsync();
             };
 
@@ -171,7 +167,6 @@ namespace Emiplus.View.Reports
 
             btnSearch.Click += async (s, e) =>
             {
-                label13.Visible = false;
                 await DataTableAsync();
             };
 

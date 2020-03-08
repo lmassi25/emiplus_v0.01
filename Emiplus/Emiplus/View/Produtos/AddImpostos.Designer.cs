@@ -282,7 +282,7 @@
             this.nome.PasswordChar = '\0';
             this.nome.ReadOnly = false;
             this.nome.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nome.Size = new System.Drawing.Size(648, 28);
+            this.nome.Size = new System.Drawing.Size(648, 30);
             this.nome.TabIndex = 0;
             this.nome.TextBoxWidth = 636;
             this.nome.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -303,7 +303,7 @@
             // 
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.barraTitulo.Controls.Add(this.btnRemover);
             this.barraTitulo.Controls.Add(this.btnSalvar);
             this.barraTitulo.Location = new System.Drawing.Point(0, 540);
@@ -612,7 +612,7 @@
             this.cfop.PasswordChar = '\0';
             this.cfop.ReadOnly = false;
             this.cfop.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.cfop.Size = new System.Drawing.Size(91, 28);
+            this.cfop.Size = new System.Drawing.Size(91, 30);
             this.cfop.TabIndex = 0;
             this.cfop.TextBoxWidth = 79;
             this.cfop.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -826,7 +826,7 @@
             this.Aliq_IPI.PasswordChar = '\0';
             this.Aliq_IPI.ReadOnly = false;
             this.Aliq_IPI.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Aliq_IPI.Size = new System.Drawing.Size(150, 28);
+            this.Aliq_IPI.Size = new System.Drawing.Size(150, 30);
             this.Aliq_IPI.TabIndex = 44;
             this.Aliq_IPI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Aliq_IPI.TextBoxWidth = 118;
@@ -980,7 +980,7 @@
             this.Aliq_Pis.PasswordChar = '\0';
             this.Aliq_Pis.ReadOnly = false;
             this.Aliq_Pis.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Aliq_Pis.Size = new System.Drawing.Size(150, 28);
+            this.Aliq_Pis.Size = new System.Drawing.Size(150, 30);
             this.Aliq_Pis.TabIndex = 46;
             this.Aliq_Pis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Aliq_Pis.TextBoxWidth = 118;
@@ -1134,7 +1134,7 @@
             this.Aliq_Cofins.PasswordChar = '\0';
             this.Aliq_Cofins.ReadOnly = false;
             this.Aliq_Cofins.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Aliq_Cofins.Size = new System.Drawing.Size(150, 28);
+            this.Aliq_Cofins.Size = new System.Drawing.Size(150, 30);
             this.Aliq_Cofins.TabIndex = 46;
             this.Aliq_Cofins.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Aliq_Cofins.TextBoxWidth = 118;

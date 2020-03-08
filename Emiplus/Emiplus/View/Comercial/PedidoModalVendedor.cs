@@ -81,8 +81,6 @@ namespace Emiplus.View.Comercial
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();
 
-            btnCancelar.Click += (s, e) => Close();
-
             search.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
         }
     }

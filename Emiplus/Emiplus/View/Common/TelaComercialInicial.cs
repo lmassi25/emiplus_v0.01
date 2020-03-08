@@ -86,8 +86,9 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Vendas";
-                Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
-                ProdVendidos.ShowDialog();
+                OpenForm.Show<Reports.ProdutosVendidos>(this);
+                //Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
+                //ProdVendidos.ShowDialog();
             };
 
             ConsignacoesRel.Click += (s, e) =>
