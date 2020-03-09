@@ -5,6 +5,7 @@ using System;
 namespace Emiplus.Model
 {
     using Data.Database;
+    using Emiplus.Properties;
     using SqlKata.Execution;
     using Valit;
 
@@ -47,7 +48,8 @@ namespace Emiplus.Model
         public string InfAdicional { get; set; }
         public string CodeBarras { get; set; }
         public int Fornecedor { get; set; }
-
+        public int Criado_por { get; set; }
+        public int Atualizado_por { get; set; }
         public double Limite_Desconto { get; set; }
 
         public int id_sync { get; set; }
@@ -135,6 +137,7 @@ namespace Emiplus.Model
 
             if (data.Id == 0)
             {
+                data.Criado_por = Settings.Default.user_id;
                 data.id_sync = Validation.RandomSecurity();
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
@@ -152,7 +155,8 @@ namespace Emiplus.Model
             {
                 if (ValidarDados(data))
                     return false;
-
+                
+                data.Atualizado_por = Settings.Default.user_id;
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)

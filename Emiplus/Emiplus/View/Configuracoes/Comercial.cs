@@ -46,6 +46,14 @@ namespace Emiplus.View.Configuracoes
                     else
                         Trocas_01.Toggled = false;
                 }
+
+                if (!String.IsNullOrEmpty(IniFile.Read("UserNoDocument", "Comercial")))
+                {
+                    if (IniFile.Read("UserNoDocument", "Comercial") == "True")
+                        UserNoDocument.Toggled = true;
+                    else
+                        UserNoDocument.Toggled = false;
+                }
             };
 
             retomarVendaInicio.Click += (s, e) =>
@@ -70,6 +78,14 @@ namespace Emiplus.View.Configuracoes
                     IniFile.Write("TrocasCliente", "False", "Comercial");
                 else
                     IniFile.Write("TrocasCliente", "True", "Comercial");
+            };
+
+            UserNoDocument.Click += (s, e) =>
+            {
+                if (UserNoDocument.Toggled)
+                    IniFile.Write("UserNoDocument", "False", "Comercial");
+                else
+                    IniFile.Write("UserNoDocument", "True", "Comercial");
             };
 
             txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto", Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");

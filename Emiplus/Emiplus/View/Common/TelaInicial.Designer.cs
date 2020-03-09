@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnTodosAreceber = new System.Windows.Forms.Label();
             this.btnNovoRecebimento = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -71,6 +73,12 @@
             this.dataSemana = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GridLista = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.visualPanel2.SuspendLayout();
             this.visualPanel3.SuspendLayout();
             this.visualPanel4.SuspendLayout();
@@ -81,6 +89,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.SuspendLayout();
             // 
             // visualPanel2
@@ -104,7 +115,7 @@
             this.visualPanel2.Controls.Add(this.aReceberHoje);
             this.visualPanel2.Controls.Add(this.label1);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(12, 47);
+            this.visualPanel2.Location = new System.Drawing.Point(4, 18);
             this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel2.Name = "visualPanel2";
             this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
@@ -233,7 +244,7 @@
             this.visualPanel3.Controls.Add(this.aPagarHoje);
             this.visualPanel3.Controls.Add(this.label2);
             this.visualPanel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel3.Location = new System.Drawing.Point(253, 47);
+            this.visualPanel3.Location = new System.Drawing.Point(245, 18);
             this.visualPanel3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel3.Name = "visualPanel3";
             this.visualPanel3.Padding = new System.Windows.Forms.Padding(5);
@@ -366,7 +377,7 @@
             this.visualPanel4.Controls.Add(this.totalVendas);
             this.visualPanel4.Controls.Add(this.label15);
             this.visualPanel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel4.Location = new System.Drawing.Point(494, 47);
+            this.visualPanel4.Location = new System.Drawing.Point(486, 18);
             this.visualPanel4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel4.Name = "visualPanel4";
             this.visualPanel4.Padding = new System.Windows.Forms.Padding(5);
@@ -510,7 +521,7 @@
             this.visualPanel5.Controls.Add(this.aReceberAtrasado);
             this.visualPanel5.Controls.Add(this.label9);
             this.visualPanel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel5.Location = new System.Drawing.Point(12, 201);
+            this.visualPanel5.Location = new System.Drawing.Point(4, 172);
             this.visualPanel5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel5.Name = "visualPanel5";
             this.visualPanel5.Padding = new System.Windows.Forms.Padding(5);
@@ -543,7 +554,7 @@
             this.aReceberAtrasado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(211)))), ((int)(((byte)(74)))));
             this.aReceberAtrasado.Location = new System.Drawing.Point(53, 38);
             this.aReceberAtrasado.Name = "aReceberAtrasado";
-            this.aReceberAtrasado.Size = new System.Drawing.Size(149, 30);
+            this.aReceberAtrasado.Size = new System.Drawing.Size(171, 30);
             this.aReceberAtrasado.TabIndex = 157;
             this.aReceberAtrasado.Text = "R$ N/D";
             // 
@@ -577,7 +588,7 @@
             this.visualPanel6.Controls.Add(this.aPagarAtrasado);
             this.visualPanel6.Controls.Add(this.label10);
             this.visualPanel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel6.Location = new System.Drawing.Point(253, 201);
+            this.visualPanel6.Location = new System.Drawing.Point(245, 172);
             this.visualPanel6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel6.Name = "visualPanel6";
             this.visualPanel6.Padding = new System.Windows.Forms.Padding(5);
@@ -610,7 +621,7 @@
             this.aPagarAtrasado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(102)))), ((int)(((byte)(36)))));
             this.aPagarAtrasado.Location = new System.Drawing.Point(53, 38);
             this.aPagarAtrasado.Name = "aPagarAtrasado";
-            this.aPagarAtrasado.Size = new System.Drawing.Size(137, 30);
+            this.aPagarAtrasado.Size = new System.Drawing.Size(168, 30);
             this.aPagarAtrasado.TabIndex = 158;
             this.aPagarAtrasado.Text = "R$ N/D";
             // 
@@ -678,39 +689,166 @@
             // dataSemana
             // 
             this.dataSemana.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dataSemana.AutoSize = true;
             this.dataSemana.BackColor = System.Drawing.Color.Transparent;
             this.dataSemana.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataSemana.ForeColor = System.Drawing.Color.Silver;
-            this.dataSemana.Location = new System.Drawing.Point(410, 326);
+            this.dataSemana.Location = new System.Drawing.Point(492, 304);
             this.dataSemana.Name = "dataSemana";
-            this.dataSemana.Size = new System.Drawing.Size(159, 15);
+            this.dataSemana.Size = new System.Drawing.Size(215, 15);
             this.dataSemana.TabIndex = 168;
             this.dataSemana.Text = "(00/00/0000 á 00/00/0000)";
+            this.dataSemana.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(195, 321);
+            this.label6.Location = new System.Drawing.Point(4, 289);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 21);
+            this.label6.Size = new System.Drawing.Size(268, 30);
             this.label6.TabIndex = 169;
             this.label6.Text = "Movimentações da Semana";
             // 
             // cartesianChart1
             // 
-            this.cartesianChart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cartesianChart1.Location = new System.Drawing.Point(12, 348);
+            this.cartesianChart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cartesianChart1.Location = new System.Drawing.Point(12, 332);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(708, 274);
+            this.cartesianChart1.Size = new System.Drawing.Size(691, 271);
             this.cartesianChart1.TabIndex = 170;
             this.cartesianChart1.Text = "cartesianChart1";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.AutoScrollMargin = new System.Drawing.Size(5, 15);
+            this.panel1.Controls.Add(this.visualSeparator2);
+            this.panel1.Controls.Add(this.visualSeparator1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.visualPanel2);
+            this.panel1.Controls.Add(this.cartesianChart1);
+            this.panel1.Controls.Add(this.visualPanel3);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.dataSemana);
+            this.panel1.Controls.Add(this.visualPanel4);
+            this.panel1.Controls.Add(this.visualPanel5);
+            this.panel1.Controls.Add(this.visualPanel6);
+            this.panel1.Location = new System.Drawing.Point(0, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(733, 607);
+            this.panel1.TabIndex = 171;
+            // 
+            // visualSeparator2
+            // 
+            this.visualSeparator2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator2.Location = new System.Drawing.Point(6, 623);
+            this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator2.Name = "visualSeparator2";
+            this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator2.ShadowVisible = true;
+            this.visualSeparator2.Size = new System.Drawing.Size(701, 4);
+            this.visualSeparator2.TabIndex = 174;
+            this.visualSeparator2.Text = "visualSeparator2";
+            this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // visualSeparator1
+            // 
+            this.visualSeparator1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator1.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator1.Location = new System.Drawing.Point(6, 280);
+            this.visualSeparator1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator1.Name = "visualSeparator1";
+            this.visualSeparator1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator1.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator1.ShadowVisible = true;
+            this.visualSeparator1.Size = new System.Drawing.Size(701, 4);
+            this.visualSeparator1.TabIndex = 173;
+            this.visualSeparator1.Text = "visualSeparator1";
+            this.visualSeparator1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.Controls.Add(this.GridLista);
+            this.panel2.Location = new System.Drawing.Point(8, 684);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(699, 216);
+            this.panel2.TabIndex = 172;
+            // 
+            // GridLista
+            // 
+            this.GridLista.AllowUserToAddRows = false;
+            this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
+            this.GridLista.BackgroundColor = System.Drawing.Color.White;
+            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridLista.Location = new System.Drawing.Point(0, 0);
+            this.GridLista.MultiSelect = false;
+            this.GridLista.Name = "GridLista";
+            this.GridLista.ReadOnly = true;
+            this.GridLista.RowHeadersVisible = false;
+            this.GridLista.RowTemplate.Height = 30;
+            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridLista.Size = new System.Drawing.Size(699, 216);
+            this.GridLista.TabIndex = 6;
+            this.GridLista.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(4, 642);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(163, 30);
+            this.label3.TabIndex = 171;
+            this.label3.Text = "Estoque Mínimo";
             // 
             // TelaInicial
             // 
@@ -718,15 +856,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.cartesianChart1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dataSemana);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.visualPanel6);
-            this.Controls.Add(this.visualPanel5);
-            this.Controls.Add(this.visualPanel4);
-            this.Controls.Add(this.visualPanel3);
-            this.Controls.Add(this.visualPanel2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -750,8 +881,11 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -797,5 +931,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox4;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView GridLista;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
     }
 }

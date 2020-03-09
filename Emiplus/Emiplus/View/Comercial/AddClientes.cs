@@ -251,13 +251,28 @@ namespace Emiplus.View.Comercial
 
             btnSalvar.Click += (s, e) =>
             {
-                if (!string.IsNullOrEmpty(cpfCnpj.Text))
-                {
-                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
-                    if (data != null)
+                if (Data.Core.IniFile.Read("UserNoDocument", "Comercial") == "False" && Home.pessoaPage == "Clientes") {
+                    if (!string.IsNullOrEmpty(cpfCnpj.Text))
                     {
-                        Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
-                        return;
+                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                        if (data != null)
+                        {
+                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                            return;
+                        }
+                    }
+                }
+
+                if (Home.pessoaPage != "Clientes")
+                {
+                    if (!string.IsNullOrEmpty(cpfCnpj.Text))
+                    {
+                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                        if (data != null)
+                        {
+                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                            return;
+                        }
                     }
                 }
 

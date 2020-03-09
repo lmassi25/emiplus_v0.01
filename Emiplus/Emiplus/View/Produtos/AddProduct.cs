@@ -35,7 +35,6 @@ namespace Emiplus.View.Produtos
             Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
             Fornecedor.DisplayMember = "Nome";
             Fornecedor.ValueMember = "Id";
-            Fornecedor.Refresh();
         }
 
         private void LoadImpostoOne()
@@ -344,9 +343,6 @@ namespace Emiplus.View.Produtos
                 _modelItem.Nome = nome.Text;
                 if (new Model.Item().ValidarDados(_modelItem))
                     return;
-
-                //_modelItem.Nome = nome.Text;
-                //_modelItem.Save(_modelItem, false);
 
                 AddEstoque f = new AddEstoque();
                 f.TopMost = true;

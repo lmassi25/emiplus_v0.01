@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comercial));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -52,7 +53,9 @@
             this.Trocas_01 = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label11 = new System.Windows.Forms.Label();
+            this.UserNoDocument = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -75,6 +78,39 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(635, 40);
             this.panel4.TabIndex = 514;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(5, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 551;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualSeparator1
             // 
@@ -325,7 +361,7 @@
             this.txtLimiteDesconto.PasswordChar = '\0';
             this.txtLimiteDesconto.ReadOnly = false;
             this.txtLimiteDesconto.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 28);
+            this.txtLimiteDesconto.Size = new System.Drawing.Size(130, 30);
             this.txtLimiteDesconto.TabIndex = 551;
             this.txtLimiteDesconto.TextBoxWidth = 118;
             this.txtLimiteDesconto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -368,7 +404,7 @@
             this.btnControlarEstoque.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnControlarEstoque.FalseTextToggle = "Não";
             this.btnControlarEstoque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnControlarEstoque.Location = new System.Drawing.Point(200, 294);
+            this.btnControlarEstoque.Location = new System.Drawing.Point(200, 292);
             this.btnControlarEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnControlarEstoque.Name = "btnControlarEstoque";
             this.btnControlarEstoque.ProgressImage = null;
@@ -401,7 +437,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(174, 299);
+            this.pictureBox1.Location = new System.Drawing.Point(174, 297);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -475,38 +511,72 @@
             this.label10.TabIndex = 558;
             this.label10.Text = "Permitir Trocas sem Cliente";
             // 
-            // btnExit
+            // label11
             // 
-            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.HoverVisible = true;
-            this.btnExit.Border.Rounding = 6;
-            this.btnExit.Border.Thickness = 1;
-            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnExit.Border.Visible = true;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Image = null;
-            this.btnExit.Location = new System.Drawing.Point(5, 5);
-            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 30);
-            this.btnExit.TabIndex = 551;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label11.Location = new System.Drawing.Point(30, 403);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 25);
+            this.label11.TabIndex = 560;
+            this.label11.Text = "Clientes";
+            // 
+            // UserNoDocument
+            // 
+            this.UserNoDocument.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.UserNoDocument.BackColorState.Enabled = System.Drawing.Color.White;
+            this.UserNoDocument.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.UserNoDocument.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.Border.HoverVisible = true;
+            this.UserNoDocument.Border.Rounding = 20;
+            this.UserNoDocument.Border.Thickness = 1;
+            this.UserNoDocument.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.UserNoDocument.Border.Visible = true;
+            this.UserNoDocument.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.ButtonBorder.HoverVisible = true;
+            this.UserNoDocument.ButtonBorder.Rounding = 18;
+            this.UserNoDocument.ButtonBorder.Thickness = 1;
+            this.UserNoDocument.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.UserNoDocument.ButtonBorder.Visible = true;
+            this.UserNoDocument.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.UserNoDocument.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.UserNoDocument.ButtonSize = new System.Drawing.Size(20, 20);
+            this.UserNoDocument.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UserNoDocument.FalseTextToggle = "Não";
+            this.UserNoDocument.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.UserNoDocument.Location = new System.Drawing.Point(260, 439);
+            this.UserNoDocument.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.UserNoDocument.Name = "UserNoDocument";
+            this.UserNoDocument.ProgressImage = null;
+            this.UserNoDocument.Size = new System.Drawing.Size(58, 25);
+            this.UserNoDocument.TabIndex = 562;
+            this.UserNoDocument.Text = "visualToggle1";
+            this.UserNoDocument.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.UserNoDocument.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.UserNoDocument.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.UserNoDocument.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.UserNoDocument.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.UserNoDocument.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.UserNoDocument.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.UserNoDocument.Toggled = true;
+            this.UserNoDocument.TrueTextToggle = "Sim";
+            this.UserNoDocument.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label12.Location = new System.Drawing.Point(51, 443);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(203, 17);
+            this.label12.TabIndex = 561;
+            this.label12.Text = "Permitir cadastro sem CPF/CNPJ";
             // 
             // Comercial
             // 
@@ -515,6 +585,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.UserNoDocument);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.Trocas_01);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -570,5 +643,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnExit;
+        private System.Windows.Forms.Label label11;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle UserNoDocument;
+        private System.Windows.Forms.Label label12;
     }
 }
