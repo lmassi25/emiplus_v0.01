@@ -48,13 +48,6 @@ namespace Emiplus.View.Common
                 return;
             }
 
-            string localDB = IniFile.Read("PathDatabase", "LOCAL");
-            if (!File.Exists(localDB + "\\EMIPLUS.FDB"))
-            {
-                Alert.Message("Opps", "Não conseguimos localizar o banco de dados.", Alert.AlertType.error);
-                return;
-            }
-
             if (Support.CheckForInternetConnection())
             {
                 dynamic obj = new
