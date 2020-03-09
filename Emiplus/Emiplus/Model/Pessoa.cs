@@ -222,7 +222,10 @@
         /// <returns>Retorna booleano e Mensagem</returns>
         public bool ValidarDados(Pessoa data)
         {
-            var result = ValitRules<Pessoa>
+            if (Emiplus.Data.Core.IniFile.Read("UserNoDocument", "Comercial") == "True" && View.Common.Home.pessoaPage == "Clientes")
+                return false;
+
+            IValitResult result = ValitRules<Pessoa>
                 .Create()
                 .Ensure(m => m.CPF, _ => _
                     .Required()
@@ -239,6 +242,7 @@
                     Alert.Message("Opss!", message, Alert.AlertType.error);
                     return true;
                 }
+
                 return true;
             }
 

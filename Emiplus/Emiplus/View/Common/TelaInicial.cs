@@ -6,6 +6,8 @@ using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Common
@@ -31,6 +33,8 @@ namespace Emiplus.View.Common
         private List<double> aReceber = new List<double>();
         private List<double> aPagar = new List<double>();
         private List<int> Vendas = new List<int>();
+
+        private IEnumerable<dynamic> dataProductsEstoque;
 
         public TelaInicial()
         {
@@ -192,6 +196,61 @@ namespace Emiplus.View.Common
             cartesianChart1.Series = series;
         }
 
+        private void SetHeadersTable(DataGridView Table)
+        {
+            Table.ColumnCount = 6;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "Cód. de Barras";
+            Table.Columns[1].Width = 130;
+            Table.Columns[1].Visible = true;
+
+            Table.Columns[2].Name = "Referência";
+            Table.Columns[2].Width = 100;
+            Table.Columns[2].Visible = true;
+
+            Table.Columns[3].Name = "Descrição";
+            Table.Columns[3].Width = 120;
+            Table.Columns[3].MinimumWidth = 120;
+            Table.Columns[3].Visible = true;
+
+            Table.Columns[4].Name = "Estoque Mínimo";
+            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[4].Width = 130;
+            Table.Columns[4].Visible = true;
+
+            Table.Columns[5].Name = "Estoque Atual";
+            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[5].Width = 130;
+            Table.Columns[5].Visible = true;
+        }
+
+        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null)
+        {
+            Table.Rows.Clear();
+
+            foreach (dynamic item in Data)
+            {
+                Table.Rows.Add(
+                    item.ID,
+                    item.CODEBARRAS,
+                    item.REFERENCIA,
+                    item.NOME,
+                    Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEMINIMO)),
+                    Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEATUAL))
+                );
+            }
+
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void Eventos()
         {
             Shown += (s, e) =>
@@ -203,7 +262,8 @@ namespace Emiplus.View.Common
                 dataSemana.Text = $"{DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})";
                 LoadGrafico();
 
-                timer1.Start();
+                WorkerBackground.RunWorkerAsync();
+                SetHeadersTable(GridLista);
             };
 
             timer1.Tick += (s, e) =>
@@ -253,13 +313,21 @@ namespace Emiplus.View.Common
                 aReceber = GetValues("Receber");
                 aPagar = GetValues("Pagar");
                 Vendas = GetVendas();
+
+                dataProductsEstoque = (new Model.Item()).FindAll()
+                .WhereRaw("estoqueminimo >= estoqueatual")
+                .Where("estoqueminimo", "!=", "0")
+                .WhereFalse("excluir")
+                .Get();
             };
 
-            WorkerBackground.RunWorkerCompleted += (s, e) =>
+            WorkerBackground.RunWorkerCompleted += async (s, e) =>
             {
                 timer1.Start();
                 LoadData();
                 LoadSeriesGrafico();
+
+                await SetContentTableAsync(GridLista, dataProductsEstoque);
             };
         }
     }
