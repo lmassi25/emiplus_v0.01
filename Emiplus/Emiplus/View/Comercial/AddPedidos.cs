@@ -820,7 +820,21 @@ namespace Emiplus.View.Comercial
                     break;
 
                 case Keys.F5:
-                    new Controller.Pedido().Imprimir(Id);
+                    OptionBobinaA4 f = new OptionBobinaA4();
+                    string tipo = "";
+                    f.TopMost = true;
+                    DialogResult formResult = f.ShowDialog();
+
+                    if (formResult == DialogResult.OK)
+                    {
+                        tipo = "Folha A4";
+                        new Controller.Pedido().Imprimir(Id, tipo);
+                    }
+                    else if (formResult == DialogResult.Cancel)
+                    {
+                        tipo = "Bobina 80mm";
+                        new Controller.Pedido().Imprimir(Id, tipo);
+                    }
                     break;
 
                 case Keys.F7:
@@ -990,12 +1004,18 @@ namespace Emiplus.View.Comercial
                 OptionBobinaA4 f = new OptionBobinaA4();
                 string tipo = "";
                 f.TopMost = true;
-                if (f.ShowDialog() == DialogResult.OK)
+                DialogResult formResult = f.ShowDialog();
+
+                if (formResult == DialogResult.OK)
+                {
                     tipo = "Folha A4";
-                else
+                    new Controller.Pedido().Imprimir(Id, tipo);
+                }
+                else if (formResult == DialogResult.Cancel)
+                {
                     tipo = "Bobina 80mm";
-                
-                new Controller.Pedido().Imprimir(Id, tipo);
+                    new Controller.Pedido().Imprimir(Id, tipo);
+                }
             };
 
             DescontoPorcentagem.KeyDown += (s, e) =>

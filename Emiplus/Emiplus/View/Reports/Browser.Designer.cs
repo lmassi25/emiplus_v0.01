@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pdf = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.anterior = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.proximo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label6 = new System.Windows.Forms.Label();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pdf = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,75 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 52);
             this.panel2.TabIndex = 1;
+            // 
+            // imprimir
+            // 
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.Border.HoverVisible = true;
+            this.imprimir.Border.Rounding = 6;
+            this.imprimir.Border.Thickness = 1;
+            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imprimir.Border.Visible = true;
+            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = null;
+            this.imprimir.Location = new System.Drawing.Point(739, 10);
+            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.imprimir.Name = "imprimir";
+            this.imprimir.Size = new System.Drawing.Size(108, 34);
+            this.imprimir.TabIndex = 557;
+            this.imprimir.Text = "Imprimir";
+            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pdf
+            // 
+            this.pdf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pdf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pdf.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.pdf.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.pdf.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.pdf.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.pdf.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.pdf.Border.HoverVisible = true;
+            this.pdf.Border.Rounding = 6;
+            this.pdf.Border.Thickness = 1;
+            this.pdf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.pdf.Border.Visible = true;
+            this.pdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pdf.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pdf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdf.ForeColor = System.Drawing.Color.White;
+            this.pdf.Image = null;
+            this.pdf.Location = new System.Drawing.Point(853, 10);
+            this.pdf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.pdf.Name = "pdf";
+            this.pdf.Size = new System.Drawing.Size(102, 34);
+            this.pdf.TabIndex = 551;
+            this.pdf.Text = "Gerar PDF";
+            this.pdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.pdf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.pdf.TextStyle.Enabled = System.Drawing.Color.White;
+            this.pdf.TextStyle.Hover = System.Drawing.Color.White;
+            this.pdf.TextStyle.Pressed = System.Drawing.Color.White;
+            this.pdf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.pdf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // anterior
             // 
@@ -151,7 +220,7 @@
             // 
             this.search.AlphaNumeric = false;
             this.search.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.search.BackColor = System.Drawing.Color.White;
+            this.search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.search.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.search.BackColorState.Enabled = System.Drawing.Color.White;
             this.search.Border.Color = System.Drawing.Color.Gainsboro;
@@ -204,73 +273,6 @@
             this.search.Watermark.Text = "Watermark text";
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
-            // 
-            // pdf
-            // 
-            this.pdf.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pdf.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.pdf.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.pdf.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.pdf.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.pdf.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.pdf.Border.HoverVisible = true;
-            this.pdf.Border.Rounding = 6;
-            this.pdf.Border.Thickness = 1;
-            this.pdf.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pdf.Border.Visible = true;
-            this.pdf.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pdf.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.pdf.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pdf.ForeColor = System.Drawing.Color.White;
-            this.pdf.Image = null;
-            this.pdf.Location = new System.Drawing.Point(853, 10);
-            this.pdf.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(102, 34);
-            this.pdf.TabIndex = 551;
-            this.pdf.Text = "Gerar PDF";
-            this.pdf.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.pdf.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.pdf.TextStyle.Enabled = System.Drawing.Color.White;
-            this.pdf.TextStyle.Hover = System.Drawing.Color.White;
-            this.pdf.TextStyle.Pressed = System.Drawing.Color.White;
-            this.pdf.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.pdf.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.pdf.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // imprimir
-            // 
-            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.imprimir.Border.HoverVisible = true;
-            this.imprimir.Border.Rounding = 6;
-            this.imprimir.Border.Thickness = 1;
-            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.imprimir.Border.Visible = true;
-            this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.White;
-            this.imprimir.Image = null;
-            this.imprimir.Location = new System.Drawing.Point(739, 10);
-            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(108, 34);
-            this.imprimir.TabIndex = 557;
-            this.imprimir.Text = "Imprimir";
-            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
-            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
-            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Browser
             // 

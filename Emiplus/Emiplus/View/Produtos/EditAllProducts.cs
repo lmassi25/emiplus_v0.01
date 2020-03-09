@@ -1,7 +1,9 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +24,7 @@ namespace Emiplus.View.Produtos
         private BackgroundWorker backOn = new BackgroundWorker();
 
         private IEnumerable<dynamic> fornecedores { get; set; }
-        private IEnumerable<dynamic> categorias { get; set; }
+        private ArrayList categorias { get; set; }
         private IEnumerable<dynamic> impostos { get; set; }
         private IEnumerable<dynamic> impostos2 { get; set; }
 
@@ -101,14 +103,10 @@ namespace Emiplus.View.Produtos
 
         private void LoadFornecedores()
         {
+            Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
+            Fornecedor.DisplayMember = "Nome";
+            Fornecedor.ValueMember = "Id";
             Fornecedor.Refresh();
-
-            if (fornecedores.Count() > 0)
-            {
-                Fornecedor.DataSource = fornecedores;
-                Fornecedor.DisplayMember = "NOME";
-                Fornecedor.ValueMember = "ID";
-            }
         }
         
         private void LoadImpostoOne()
@@ -145,12 +143,9 @@ namespace Emiplus.View.Produtos
             ToolHelp.Show("Descrição adicional para o produto.", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-            if (categorias.Count() > 0)
-            {
-                Categorias.DataSource = categorias;
-                Categorias.DisplayMember = "NOME";
-                Categorias.ValueMember = "ID";
-            }
+            Categorias.DataSource = categorias;
+            Categorias.DisplayMember = "Nome";
+            Categorias.ValueMember = "Id";
 
             LoadFornecedores();
 
@@ -211,11 +206,8 @@ namespace Emiplus.View.Produtos
                 if (!string.IsNullOrEmpty(txtLimiteDesconto.Text))
                     _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
 
-                if (Categorias.SelectedValue != null)
-                    _modelItem.Categoriaid = (int)Categorias.SelectedValue;
-
-                if (Fornecedor.SelectedValue != null)
-                    _modelItem.Fornecedor = (int)Fornecedor.SelectedValue;
+                _modelItem.Categoriaid = Validation.ConvertToInt32(Categorias.SelectedValue);
+                _modelItem.Fornecedor = Validation.ConvertToInt32(Fornecedor.SelectedValue);
 
                 if (ImpostoNFE.SelectedValue != null)
                     _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
@@ -337,7 +329,7 @@ namespace Emiplus.View.Produtos
 
             backOn.DoWork += (s, e) =>
             {
-                categorias = new Model.Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
+                categorias = new Categoria().GetAll("Produtos");
                 fornecedores = new Model.Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
                 impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                 impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
@@ -373,6 +365,20 @@ namespace Emiplus.View.Produtos
                 {
                     LoadImpostoOne();
                     LoadImpostoTwo();
+                }
+            };
+
+            btnAddCategoria.Click += (s, e) =>
+            {
+                Home.CategoriaPage = "Produtos";
+                AddCategorias f = new AddCategorias();
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.StartPosition = FormStartPosition.CenterScreen;
+                f.TopMost = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    Categorias.DataSource = new Categoria().GetAll("Produtos");
+                    Categorias.Refresh();
                 }
             };
 

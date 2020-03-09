@@ -29,10 +29,15 @@ namespace Emiplus.View.Reports
             {
                 if (Tipo.SelectedItem == "Folha A4")
                     DialogResult = DialogResult.OK;
-                else
+                else if (Tipo.SelectedItem == "Bobina")
                     DialogResult = DialogResult.Cancel;
-
+                    
                 Close();
+            };
+
+            btnCancelar.Click += (s, e) =>
+            {
+                DialogResult = DialogResult.Abort;
             };
         }
     }

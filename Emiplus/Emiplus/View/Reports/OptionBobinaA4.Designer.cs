@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.barraTitulo = new System.Windows.Forms.Panel();
+            this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.Tipo = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnCancelar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.barraTitulo.SuspendLayout();
             this.visualGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -41,12 +42,46 @@
             // barraTitulo
             // 
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.barraTitulo.Controls.Add(this.btnCancelar);
             this.barraTitulo.Controls.Add(this.btnGerar);
             this.barraTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barraTitulo.Location = new System.Drawing.Point(0, 133);
             this.barraTitulo.Name = "barraTitulo";
             this.barraTitulo.Size = new System.Drawing.Size(413, 40);
             this.barraTitulo.TabIndex = 12;
+            // 
+            // btnGerar
+            // 
+            this.btnGerar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGerar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnGerar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnGerar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.Border.HoverVisible = true;
+            this.btnGerar.Border.Rounding = 6;
+            this.btnGerar.Border.Thickness = 1;
+            this.btnGerar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnGerar.Border.Visible = true;
+            this.btnGerar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGerar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerar.ForeColor = System.Drawing.Color.White;
+            this.btnGerar.Image = null;
+            this.btnGerar.Location = new System.Drawing.Point(304, 4);
+            this.btnGerar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnGerar.Name = "btnGerar";
+            this.btnGerar.Size = new System.Drawing.Size(96, 30);
+            this.btnGerar.TabIndex = 40054;
+            this.btnGerar.Text = "Gerar";
+            this.btnGerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGerar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnGerar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualGroupBox1
             // 
@@ -160,38 +195,39 @@
             this.label1.TabIndex = 557;
             this.label1.Text = "Tipo de impressão";
             // 
-            // btnGerar
+            // btnCancelar
             // 
-            this.btnGerar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnGerar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnGerar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnGerar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnGerar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnGerar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnGerar.Border.HoverVisible = true;
-            this.btnGerar.Border.Rounding = 6;
-            this.btnGerar.Border.Thickness = 1;
-            this.btnGerar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnGerar.Border.Visible = true;
-            this.btnGerar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGerar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerar.ForeColor = System.Drawing.Color.White;
-            this.btnGerar.Image = null;
-            this.btnGerar.Location = new System.Drawing.Point(158, 5);
-            this.btnGerar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(96, 30);
-            this.btnGerar.TabIndex = 40054;
-            this.btnGerar.Text = "Gerar";
-            this.btnGerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGerar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnGerar.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancelar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnCancelar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnCancelar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnCancelar.Border.HoverVisible = true;
+            this.btnCancelar.Border.Rounding = 6;
+            this.btnCancelar.Border.Thickness = 1;
+            this.btnCancelar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnCancelar.Border.Visible = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Image = null;
+            this.btnCancelar.Location = new System.Drawing.Point(12, 4);
+            this.btnCancelar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(96, 30);
+            this.btnCancelar.TabIndex = 40055;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnCancelar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnCancelar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCancelar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCancelar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // OptionBobinaA4
             // 
@@ -224,5 +260,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Tipo;
         private System.Windows.Forms.Label label1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnGerar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnCancelar;
     }
 }

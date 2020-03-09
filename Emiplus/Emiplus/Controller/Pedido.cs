@@ -119,7 +119,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -134,9 +134,13 @@ namespace Emiplus.Controller
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido_item.item", "pedido_item.pedido")
                 .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
-                .Where("pedido.excluir", excluir)
-                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                .Where("pedido.excluir", excluir);
+
+            if (!noFilterData)
+            {
+                query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                     .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+            }
 
             if (!tipo.Contains("Notas"))
                 query.Where("pedido.tipo", tipo);
@@ -196,7 +200,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableNotas(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
+        public Task<IEnumerable<dynamic>> GetDataTableNotas(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -207,12 +211,15 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota")
-                //.Where("nota.excluir", excluir)
-                //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
-                //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
-                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota");
+            //.Where("nota.excluir", excluir)
+            //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
+            //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
+
+            if (!noFilterData) {
+                query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                    .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+            }
 
             if (tipo != "Cupons")
                 query.Where("pedido.excluir", excluir);
@@ -359,7 +366,7 @@ namespace Emiplus.Controller
             return query.Get();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, bool noFilterData, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
         {
             Table.ColumnCount = 13;
 
@@ -444,11 +451,11 @@ namespace Emiplus.Controller
             {
                 case "Cupons":
                 case "Notas":
-                    dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario);
+                    dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario);
                     break;
 
                 default:
-                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, SearchText, excluir, idPedido, status, usuario, idProduto);
+                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario, idProduto);
                     break;
             }
 

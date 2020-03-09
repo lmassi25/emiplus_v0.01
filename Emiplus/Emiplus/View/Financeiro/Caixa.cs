@@ -40,8 +40,11 @@ namespace Emiplus.View.Financeiro
         {
             var model = new Model.Caixa().Query();
 
-            model.Where("CAIXA.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
-                .Where("CAIXA.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
+            if (!noFilterData.Checked)
+            {
+                model.Where("CAIXA.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
+                    .Where("CAIXA.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
+            }
 
             if (Validation.ConvertToInt32(Usuarios.SelectedValue) >= 1)
             {
