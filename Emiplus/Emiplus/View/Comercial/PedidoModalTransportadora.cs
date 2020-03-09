@@ -109,8 +109,6 @@ namespace Emiplus.View.Comercial
             Novo.Click += (s, e) => FormNovoCliente();
             btnSelecionar.Click += (s, e) => SelectItemGrid();
 
-            btnCancelar.Click += (s, e) => Close();
-
             search.KeyPress += (s, e) => Masks.MaskOnlyNumberAndCharAndMore(s, e);
         }
     }

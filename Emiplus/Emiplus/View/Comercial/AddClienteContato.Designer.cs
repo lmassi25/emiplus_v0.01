@@ -48,19 +48,20 @@
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(13, 21);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(4, 24);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(126, 25);
+            this.label11.Size = new System.Drawing.Size(663, 25);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Novo contato:";
+            this.label11.Text = "Novo Contato";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel1.Controls.Add(this.label11);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -73,7 +74,7 @@
             this.label23.BackColor = System.Drawing.Color.White;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(14, 78);
+            this.label23.Location = new System.Drawing.Point(14, 80);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(57, 17);
             this.label23.TabIndex = 32;
@@ -113,13 +114,13 @@
             this.contato.ImageSize = new System.Drawing.Size(16, 16);
             this.contato.ImageVisible = false;
             this.contato.ImageWidth = 35;
-            this.contato.Location = new System.Drawing.Point(15, 98);
+            this.contato.Location = new System.Drawing.Point(15, 100);
             this.contato.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.contato.Name = "contato";
             this.contato.PasswordChar = '\0';
             this.contato.ReadOnly = false;
             this.contato.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.contato.Size = new System.Drawing.Size(236, 28);
+            this.contato.Size = new System.Drawing.Size(236, 30);
             this.contato.TabIndex = 0;
             this.contato.TextBoxWidth = 224;
             this.contato.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -142,7 +143,7 @@
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(256, 78);
+            this.label5.Location = new System.Drawing.Point(256, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 17);
             this.label5.TabIndex = 34;
@@ -182,13 +183,13 @@
             this.telefone.ImageSize = new System.Drawing.Size(16, 16);
             this.telefone.ImageVisible = false;
             this.telefone.ImageWidth = 35;
-            this.telefone.Location = new System.Drawing.Point(257, 98);
+            this.telefone.Location = new System.Drawing.Point(257, 100);
             this.telefone.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.telefone.Name = "telefone";
             this.telefone.PasswordChar = '\0';
             this.telefone.ReadOnly = false;
             this.telefone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.telefone.Size = new System.Drawing.Size(197, 28);
+            this.telefone.Size = new System.Drawing.Size(197, 30);
             this.telefone.TabIndex = 1;
             this.telefone.TextBoxWidth = 185;
             this.telefone.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -211,7 +212,7 @@
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(459, 78);
+            this.label6.Location = new System.Drawing.Point(459, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 17);
             this.label6.TabIndex = 36;
@@ -251,13 +252,13 @@
             this.celular.ImageSize = new System.Drawing.Size(16, 16);
             this.celular.ImageVisible = false;
             this.celular.ImageWidth = 35;
-            this.celular.Location = new System.Drawing.Point(460, 98);
+            this.celular.Location = new System.Drawing.Point(460, 100);
             this.celular.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.celular.Name = "celular";
             this.celular.PasswordChar = '\0';
             this.celular.ReadOnly = false;
             this.celular.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.celular.Size = new System.Drawing.Size(191, 28);
+            this.celular.Size = new System.Drawing.Size(191, 30);
             this.celular.TabIndex = 2;
             this.celular.TextBoxWidth = 179;
             this.celular.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -280,7 +281,7 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(16, 133);
+            this.label7.Location = new System.Drawing.Point(16, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 17);
             this.label7.TabIndex = 38;
@@ -320,13 +321,13 @@
             this.email.ImageSize = new System.Drawing.Size(16, 16);
             this.email.ImageVisible = false;
             this.email.ImageWidth = 35;
-            this.email.Location = new System.Drawing.Point(17, 153);
+            this.email.Location = new System.Drawing.Point(17, 155);
             this.email.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.email.Name = "email";
             this.email.PasswordChar = '\0';
             this.email.ReadOnly = false;
             this.email.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.email.Size = new System.Drawing.Size(234, 28);
+            this.email.Size = new System.Drawing.Size(234, 30);
             this.email.TabIndex = 3;
             this.email.TextBoxWidth = 222;
             this.email.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -347,7 +348,7 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel2.Controls.Add(this.btnContatoSalvar);
             this.panel2.Controls.Add(this.btnContatoDelete);
             this.panel2.Location = new System.Drawing.Point(0, 197);
@@ -452,7 +453,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

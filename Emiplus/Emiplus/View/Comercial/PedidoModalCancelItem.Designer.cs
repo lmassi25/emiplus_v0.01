@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalCancelItem));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnContinuar = new System.Windows.Forms.Button();
+            this.btnContinuar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.nr = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -44,38 +44,51 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel1.Controls.Add(this.btnContinuar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 187);
+            this.panel1.Location = new System.Drawing.Point(0, 210);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(457, 63);
+            this.panel1.Size = new System.Drawing.Size(457, 40);
             this.panel1.TabIndex = 39;
             // 
             // btnContinuar
             // 
             this.btnContinuar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContinuar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnContinuar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnContinuar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnContinuar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContinuar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContinuar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnContinuar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnContinuar.Border.HoverVisible = true;
+            this.btnContinuar.Border.Rounding = 6;
+            this.btnContinuar.Border.Thickness = 1;
+            this.btnContinuar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnContinuar.Border.Visible = true;
             this.btnContinuar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContinuar.FlatAppearance.BorderSize = 0;
-            this.btnContinuar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnContinuar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnContinuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContinuar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnContinuar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnContinuar.Image = ((System.Drawing.Image)(resources.GetObject("btnContinuar.Image")));
-            this.btnContinuar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnContinuar.Location = new System.Drawing.Point(319, 1);
+            this.btnContinuar.ForeColor = System.Drawing.Color.White;
+            this.btnContinuar.Image = null;
+            this.btnContinuar.Location = new System.Drawing.Point(306, 5);
+            this.btnContinuar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnContinuar.Name = "btnContinuar";
-            this.btnContinuar.Size = new System.Drawing.Size(126, 61);
-            this.btnContinuar.TabIndex = 1;
+            this.btnContinuar.Size = new System.Drawing.Size(139, 30);
+            this.btnContinuar.TabIndex = 554;
             this.btnContinuar.Text = "Continuar (ENTER)";
-            this.btnContinuar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnContinuar.UseVisualStyleBackColor = true;
+            this.btnContinuar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnContinuar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnContinuar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnContinuar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnContinuar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnContinuar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContinuar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnContinuar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel2.Controls.Add(this.label11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -85,14 +98,14 @@
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(164, 21);
+            this.label11.Location = new System.Drawing.Point(3, 21);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 30);
+            this.label11.Size = new System.Drawing.Size(451, 30);
             this.label11.TabIndex = 5;
             this.label11.Text = "Cancelar Item";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // nr
             // 
@@ -123,12 +136,12 @@
             this.nr.ButtonText = "visualButton";
             this.nr.ButtonVisible = false;
             this.nr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.nr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nr.Image = null;
             this.nr.ImageSize = new System.Drawing.Size(16, 16);
             this.nr.ImageVisible = false;
             this.nr.ImageWidth = 35;
-            this.nr.Location = new System.Drawing.Point(152, 114);
+            this.nr.Location = new System.Drawing.Point(146, 129);
             this.nr.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nr.Name = "nr";
             this.nr.PasswordChar = '\0';
@@ -156,7 +169,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(153, 94);
+            this.label2.Location = new System.Drawing.Point(147, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 17);
             this.label2.TabIndex = 156;
@@ -165,7 +178,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(87, 98);
+            this.pictureBox1.Location = new System.Drawing.Point(81, 113);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(58, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -195,7 +208,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -205,11 +217,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnContinuar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox nr;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnContinuar;
     }
 }

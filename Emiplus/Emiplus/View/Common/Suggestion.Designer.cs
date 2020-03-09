@@ -36,8 +36,8 @@
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.Sugestao = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnSend = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.loading = new System.Windows.Forms.PictureBox();
+            this.btnSend = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
@@ -115,8 +115,8 @@
             this.Sugestao.ButtonIndent = 3;
             this.Sugestao.ButtonText = "visualButton";
             this.Sugestao.ButtonVisible = false;
-            this.Sugestao.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sugestao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Sugestao.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sugestao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Sugestao.Image = null;
             this.Sugestao.ImageSize = new System.Drawing.Size(16, 16);
             this.Sugestao.ImageVisible = false;
@@ -152,20 +152,31 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(16, 246);
+            this.label6.Location = new System.Drawing.Point(16, 245);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(277, 17);
             this.label6.TabIndex = 158;
             this.label6.Text = "Escreva abaixo sua sugestão para a Emiplus:";
             // 
+            // loading
+            // 
+            this.loading.Image = ((System.Drawing.Image)(resources.GetObject("loading.Image")));
+            this.loading.Location = new System.Drawing.Point(284, 431);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(37, 34);
+            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loading.TabIndex = 162;
+            this.loading.TabStop = false;
+            this.loading.Visible = false;
+            // 
             // btnSend
             // 
             this.btnSend.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSend.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(160)))), ((int)(((byte)(220)))));
-            this.btnSend.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnSend.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnSend.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
-            this.btnSend.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(135)))), ((int)(((byte)(194)))));
+            this.btnSend.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.btnSend.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.btnSend.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.btnSend.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.btnSend.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
             this.btnSend.Border.HoverVisible = true;
             this.btnSend.Border.Rounding = 6;
             this.btnSend.Border.Thickness = 1;
@@ -180,7 +191,7 @@
             this.btnSend.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(144, 34);
-            this.btnSend.TabIndex = 161;
+            this.btnSend.TabIndex = 163;
             this.btnSend.Text = "Enviar";
             this.btnSend.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSend.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -191,25 +202,14 @@
             this.btnSend.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnSend.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // loading
-            // 
-            this.loading.Image = ((System.Drawing.Image)(resources.GetObject("loading.Image")));
-            this.loading.Location = new System.Drawing.Point(284, 431);
-            this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(37, 34);
-            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.loading.TabIndex = 162;
-            this.loading.TabStop = false;
-            this.loading.Visible = false;
-            // 
             // Suggestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(493, 477);
-            this.Controls.Add(this.loading);
             this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.loading);
             this.Controls.Add(this.Sugestao);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
@@ -238,7 +238,7 @@
         private System.Windows.Forms.PictureBox btnFechar;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox Sugestao;
         private System.Windows.Forms.Label label6;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSend;
         private System.Windows.Forms.PictureBox loading;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSend;
     }
 }

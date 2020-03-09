@@ -346,7 +346,7 @@
             // 
             this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
-            this.Loading.Location = new System.Drawing.Point(3, 61);
+            this.Loading.Location = new System.Drawing.Point(3, 3);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(259, 159);
             this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -461,7 +461,7 @@
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel5.Controls.Add(this.imprimir);
             this.panel5.Controls.Add(this.btnEditAll);
             this.panel5.Controls.Add(this.btnRemover);

@@ -87,7 +87,6 @@ namespace Emiplus.View.Comercial
             };
 
             btnSalvar.Click += (s, e) => Save();
-            btnCancelar.Click += (s, e) => Close();
 
             Frete.KeyPress += (s, e) => Masks.MaskDouble(s, e);
         }

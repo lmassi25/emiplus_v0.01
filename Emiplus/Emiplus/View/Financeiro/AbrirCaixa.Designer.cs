@@ -33,7 +33,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.ValorInicial = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCriar = new System.Windows.Forms.Button();
+            this.btnCriar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -62,7 +62,7 @@
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(21, 247);
+            this.label13.Location = new System.Drawing.Point(21, 263);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(96, 17);
             this.label13.TabIndex = 26;
@@ -74,8 +74,8 @@
             this.ValorInicial.BackColor = System.Drawing.Color.White;
             this.ValorInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.ValorInicial.BackColorState.Enabled = System.Drawing.Color.White;
-            this.ValorInicial.Border.Color = System.Drawing.Color.Gainsboro;
-            this.ValorInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.ValorInicial.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.ValorInicial.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.ValorInicial.Border.HoverVisible = true;
             this.ValorInicial.Border.Rounding = 8;
             this.ValorInicial.Border.Thickness = 1;
@@ -96,20 +96,20 @@
             this.ValorInicial.ButtonIndent = 3;
             this.ValorInicial.ButtonText = "visualButton";
             this.ValorInicial.ButtonVisible = false;
-            this.ValorInicial.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValorInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ValorInicial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ValorInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ValorInicial.Image = null;
             this.ValorInicial.ImageSize = new System.Drawing.Size(16, 16);
             this.ValorInicial.ImageVisible = false;
             this.ValorInicial.ImageWidth = 35;
-            this.ValorInicial.Location = new System.Drawing.Point(21, 267);
+            this.ValorInicial.Location = new System.Drawing.Point(21, 283);
             this.ValorInicial.MaxLength = 255;
             this.ValorInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.ValorInicial.Name = "ValorInicial";
             this.ValorInicial.PasswordChar = '\0';
             this.ValorInicial.ReadOnly = false;
             this.ValorInicial.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ValorInicial.Size = new System.Drawing.Size(118, 28);
+            this.ValorInicial.Size = new System.Drawing.Size(118, 30);
             this.ValorInicial.TabIndex = 3;
             this.ValorInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ValorInicial.TextBoxWidth = 106;
@@ -129,38 +129,51 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel1.Controls.Add(this.btnCriar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 419);
+            this.panel1.Location = new System.Drawing.Point(0, 442);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(365, 63);
+            this.panel1.Size = new System.Drawing.Size(365, 40);
             this.panel1.TabIndex = 46;
             // 
             // btnCriar
             // 
             this.btnCriar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCriar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCriar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCriar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnCriar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnCriar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnCriar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnCriar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnCriar.Border.HoverVisible = true;
+            this.btnCriar.Border.Rounding = 6;
+            this.btnCriar.Border.Thickness = 1;
+            this.btnCriar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnCriar.Border.Visible = true;
             this.btnCriar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCriar.FlatAppearance.BorderSize = 0;
-            this.btnCriar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCriar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCriar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCriar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCriar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCriar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCriar.Image = ((System.Drawing.Image)(resources.GetObject("btnCriar.Image")));
-            this.btnCriar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCriar.Location = new System.Drawing.Point(227, 1);
+            this.btnCriar.ForeColor = System.Drawing.Color.White;
+            this.btnCriar.Image = null;
+            this.btnCriar.Location = new System.Drawing.Point(121, 5);
+            this.btnCriar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnCriar.Name = "btnCriar";
-            this.btnCriar.Size = new System.Drawing.Size(119, 60);
-            this.btnCriar.TabIndex = 6;
+            this.btnCriar.Size = new System.Drawing.Size(123, 30);
+            this.btnCriar.TabIndex = 554;
             this.btnCriar.Text = "Abrir Caixa";
-            this.btnCriar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCriar.UseVisualStyleBackColor = true;
+            this.btnCriar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCriar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnCriar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnCriar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnCriar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnCriar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCriar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnCriar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel2.Controls.Add(this.label11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -185,8 +198,8 @@
             this.Obs.BackColor = System.Drawing.Color.White;
             this.Obs.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Obs.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Obs.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Obs.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Obs.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Obs.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Obs.Border.HoverVisible = true;
             this.Obs.Border.Rounding = 8;
             this.Obs.Border.Thickness = 1;
@@ -207,13 +220,13 @@
             this.Obs.ButtonIndent = 3;
             this.Obs.ButtonText = "visualButton";
             this.Obs.ButtonVisible = false;
-            this.Obs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Obs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Obs.Image = null;
             this.Obs.ImageSize = new System.Drawing.Size(16, 16);
             this.Obs.ImageVisible = false;
             this.Obs.ImageWidth = 35;
-            this.Obs.Location = new System.Drawing.Point(21, 333);
+            this.Obs.Location = new System.Drawing.Point(21, 349);
             this.Obs.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Obs.MultiLine = true;
             this.Obs.Name = "Obs";
@@ -242,7 +255,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(21, 313);
+            this.label14.Location = new System.Drawing.Point(21, 329);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(80, 17);
             this.label14.TabIndex = 49;
@@ -253,8 +266,8 @@
             this.Terminal.BackColor = System.Drawing.Color.White;
             this.Terminal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Terminal.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Terminal.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Terminal.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Terminal.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Terminal.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Terminal.Border.HoverVisible = true;
             this.Terminal.Border.Rounding = 6;
             this.Terminal.Border.Thickness = 1;
@@ -269,6 +282,7 @@
             this.Terminal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Terminal.DropDownWidth = 35;
             this.Terminal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Terminal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Terminal.FormattingEnabled = true;
             this.Terminal.ImageList = null;
             this.Terminal.ImageVisible = false;
@@ -317,7 +331,7 @@
             "38",
             "39",
             "40"});
-            this.Terminal.Location = new System.Drawing.Point(145, 266);
+            this.Terminal.Location = new System.Drawing.Point(145, 282);
             this.Terminal.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Terminal.MenuItemNormal = System.Drawing.Color.White;
             this.Terminal.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -351,7 +365,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(142, 247);
+            this.label1.Location = new System.Drawing.Point(142, 263);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 157;
@@ -519,7 +533,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(18, 186);
+            this.label2.Location = new System.Drawing.Point(18, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 17);
             this.label2.TabIndex = 161;
@@ -530,8 +544,8 @@
             this.Caixas.BackColor = System.Drawing.Color.White;
             this.Caixas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Caixas.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Caixas.Border.Color = System.Drawing.Color.Gainsboro;
-            this.Caixas.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.Caixas.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Caixas.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.Caixas.Border.HoverVisible = true;
             this.Caixas.Border.Rounding = 6;
             this.Caixas.Border.Thickness = 1;
@@ -546,6 +560,7 @@
             this.Caixas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Caixas.DropDownWidth = 250;
             this.Caixas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Caixas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Caixas.FormattingEnabled = true;
             this.Caixas.ImageList = null;
             this.Caixas.ImageVisible = false;
@@ -553,7 +568,7 @@
             this.Caixas.IntegralHeight = false;
             this.Caixas.ItemHeight = 23;
             this.Caixas.ItemImageVisible = true;
-            this.Caixas.Location = new System.Drawing.Point(21, 205);
+            this.Caixas.Location = new System.Drawing.Point(21, 215);
             this.Caixas.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Caixas.MenuItemNormal = System.Drawing.Color.White;
             this.Caixas.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -587,7 +602,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(129, 186);
+            this.label3.Location = new System.Drawing.Point(129, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(185, 17);
             this.label3.TabIndex = 162;
@@ -614,7 +629,9 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.ValorInicial);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(381, 521);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(381, 521);
             this.Name = "AbrirCaixa";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -634,7 +651,6 @@
         private System.Windows.Forms.Label label13;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox ValorInicial;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCriar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox Obs;
@@ -650,5 +666,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label3;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnCriar;
     }
 }

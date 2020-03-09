@@ -80,9 +80,6 @@ namespace Emiplus.View.Common
                     return;
 
                 OpenForm.Show<Produtos.ReajusteDeProduto>(this);
-
-                //Produtos.ReajusteDeProduto Reajuste = new Produtos.ReajusteDeProduto();
-                //Reajuste.ShowDialog();
             };
 
             Compras.Click += (s, e) =>
@@ -91,8 +88,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Compras";
-                Comercial.Pedido Pedido = new Comercial.Pedido();
-                Pedido.ShowDialog();
+                OpenForm.Show<Comercial.Pedido>(this);
             };
 
             HistoricoEntradaSaida.Click += (s, e) =>
@@ -101,9 +97,6 @@ namespace Emiplus.View.Common
                     return;
 
                 OpenForm.Show<EstoqueEntradaSaida>(this);
-
-                //EstoqueEntradaSaida formEntradaeSaida = new EstoqueEntradaSaida();
-                //formEntradaeSaida.ShowDialog();
             };
 
             Estoque.Click += (s, e) =>
@@ -111,8 +104,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(this.Estoque, pictureBox12, "pdt_inventario"))
                     return;
 
-                Inventario Estoque = new Inventario();
-                Estoque.ShowDialog();
+                OpenForm.Show<Inventario>(this);
             };
 
             CompraNova.Click += (s, e) =>

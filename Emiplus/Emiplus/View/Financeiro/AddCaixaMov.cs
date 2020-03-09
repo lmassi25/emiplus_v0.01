@@ -285,8 +285,6 @@ namespace Emiplus.View.Financeiro
                 var f = new Browser();
                 f.ShowDialog();
             };
-
-            btnCancelar.Click += (s, e) => Close();
         }
     }
 }

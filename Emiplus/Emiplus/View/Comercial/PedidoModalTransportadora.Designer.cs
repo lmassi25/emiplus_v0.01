@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalTransportadora));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSelecionar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.Novo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnSelecionar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -43,7 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.search = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.Novo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -53,60 +52,85 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.panel1.Controls.Add(this.Novo);
             this.panel1.Controls.Add(this.btnSelecionar);
-            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 439);
+            this.panel1.Location = new System.Drawing.Point(0, 462);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 63);
+            this.panel1.Size = new System.Drawing.Size(490, 40);
             this.panel1.TabIndex = 56;
+            // 
+            // Novo
+            // 
+            this.Novo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Novo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.Novo.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.Novo.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.Novo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(178)))), ((int)(((byte)(255)))));
+            this.Novo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(153)))), ((int)(((byte)(225)))));
+            this.Novo.Border.HoverVisible = true;
+            this.Novo.Border.Rounding = 6;
+            this.Novo.Border.Thickness = 1;
+            this.Novo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Novo.Border.Visible = true;
+            this.Novo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Novo.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Novo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Novo.ForeColor = System.Drawing.Color.White;
+            this.Novo.Image = null;
+            this.Novo.Location = new System.Drawing.Point(28, 5);
+            this.Novo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Novo.Name = "Novo";
+            this.Novo.Size = new System.Drawing.Size(172, 30);
+            this.Novo.TabIndex = 558;
+            this.Novo.Text = "Nova Transportadora (F9)";
+            this.Novo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Novo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Novo.TextStyle.Enabled = System.Drawing.Color.White;
+            this.Novo.TextStyle.Hover = System.Drawing.Color.White;
+            this.Novo.TextStyle.Pressed = System.Drawing.Color.White;
+            this.Novo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Novo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Novo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnSelecionar
             // 
             this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSelecionar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSelecionar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.HoverVisible = true;
+            this.btnSelecionar.Border.Rounding = 6;
+            this.btnSelecionar.Border.Thickness = 1;
+            this.btnSelecionar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSelecionar.Border.Visible = true;
             this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionar.FlatAppearance.BorderSize = 0;
-            this.btnSelecionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSelecionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSelecionar.Image = ((System.Drawing.Image)(resources.GetObject("btnSelecionar.Image")));
-            this.btnSelecionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSelecionar.Location = new System.Drawing.Point(239, 2);
+            this.btnSelecionar.ForeColor = System.Drawing.Color.White;
+            this.btnSelecionar.Image = null;
+            this.btnSelecionar.Location = new System.Drawing.Point(332, 5);
+            this.btnSelecionar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(119, 60);
-            this.btnSelecionar.TabIndex = 3;
+            this.btnSelecionar.Size = new System.Drawing.Size(139, 30);
+            this.btnSelecionar.TabIndex = 557;
             this.btnSelecionar.Text = "Selecionar (F10)";
-            this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSelecionar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(360, 2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(118, 60);
-            this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Text = "Cancelar (ESC)";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSelecionar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSelecionar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel2.Controls.Add(this.label11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -122,7 +146,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(487, 30);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Selecione a Transportadora!";
+            this.label11.Text = "Selecione a Transportadora";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel3
@@ -132,7 +156,7 @@
             this.panel3.Controls.Add(this.GridLista);
             this.panel3.Location = new System.Drawing.Point(28, 192);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(443, 218);
+            this.panel3.Size = new System.Drawing.Size(443, 246);
             this.panel3.TabIndex = 60;
             // 
             // GridLista
@@ -145,23 +169,23 @@
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle4;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -171,7 +195,7 @@
             this.GridLista.RowHeadersVisible = false;
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(443, 218);
+            this.GridLista.Size = new System.Drawing.Size(443, 246);
             this.GridLista.TabIndex = 1;
             // 
             // label1
@@ -236,7 +260,7 @@
             this.search.ButtonText = "visualButton";
             this.search.ButtonVisible = false;
             this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
             this.search.ImageSize = new System.Drawing.Size(16, 16);
             this.search.ImageVisible = true;
@@ -264,18 +288,6 @@
             this.search.Watermark.Visible = false;
             this.search.WordWrap = true;
             // 
-            // Novo
-            // 
-            this.Novo.AutoSize = true;
-            this.Novo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Novo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Novo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Novo.Location = new System.Drawing.Point(306, 91);
-            this.Novo.Name = "Novo";
-            this.Novo.Size = new System.Drawing.Size(169, 17);
-            this.Novo.TabIndex = 54;
-            this.Novo.Text = "Transportadora Nova ? (F9)";
-            // 
             // PedidoModalTransportadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +301,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.search);
-            this.Controls.Add(this.Novo);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(506, 541);
@@ -311,8 +322,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSelecionar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
@@ -321,6 +330,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
-        private System.Windows.Forms.Label Novo;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSelecionar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton Novo;
     }
 }

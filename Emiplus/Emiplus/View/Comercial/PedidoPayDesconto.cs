@@ -115,8 +115,6 @@ namespace Emiplus.View.Comercial
                 }
             };
 
-            btnCancelar.Click += (s, e) => Close();
-
             porcentagem.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             dinheiro.KeyPress += (s, e) => Masks.MaskDouble(s, e);
         }

@@ -185,7 +185,7 @@ namespace Emiplus.View.Reports
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
+            Shown += async (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
@@ -220,9 +220,10 @@ namespace Emiplus.View.Reports
                 AutoCompleteItens();
                 AutoCompleteFornecedorCategorias();
 
-                //dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
+
+                await DataTableAsync();
             };
 
             label5.Click += (s, e) => Close();
@@ -230,7 +231,6 @@ namespace Emiplus.View.Reports
 
             btnSearch.Click += async (s, e) =>
             {
-                label13.Visible = false;
                 await DataTableAsync();
             };
 

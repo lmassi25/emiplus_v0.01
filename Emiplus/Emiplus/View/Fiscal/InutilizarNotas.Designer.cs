@@ -33,41 +33,44 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.barraTitulo = new System.Windows.Forms.Panel();
             this.status = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataInicial = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.dataFinal = new VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnAdicionar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnRemover = new System.Windows.Forms.Button();
-            this.btnRetransmitir = new System.Windows.Forms.Button();
-            this.imprimir = new System.Windows.Forms.Button();
-            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnRetransmitir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnRemover = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.barraTitulo = new System.Windows.Forms.Panel();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnEditar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnAdicionar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.barraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel5.SuspendLayout();
+            this.barraTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.btnHelp);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.pictureBox2);
@@ -77,6 +80,40 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 85;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.Border.HoverVisible = true;
+            this.btnHelp.Border.Rounding = 6;
+            this.btnHelp.Border.Thickness = 1;
+            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnHelp.Border.Visible = true;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.Location = new System.Drawing.Point(684, 6);
+            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(37, 30);
+            this.btnHelp.TabIndex = 552;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // label5
             // 
@@ -133,33 +170,13 @@
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 
-            // barraTitulo
-            // 
-            this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.barraTitulo.Controls.Add(this.status);
-            this.barraTitulo.Controls.Add(this.label7);
-            this.barraTitulo.Controls.Add(this.dataInicial);
-            this.barraTitulo.Controls.Add(this.dataFinal);
-            this.barraTitulo.Controls.Add(this.label4);
-            this.barraTitulo.Controls.Add(this.label23);
-            this.barraTitulo.Controls.Add(this.btnExit);
-            this.barraTitulo.Controls.Add(this.btnAdicionar);
-            this.barraTitulo.Controls.Add(this.btnEditar);
-            this.barraTitulo.Location = new System.Drawing.Point(0, 41);
-            this.barraTitulo.Name = "barraTitulo";
-            this.barraTitulo.Size = new System.Drawing.Size(733, 97);
-            this.barraTitulo.TabIndex = 86;
-            // 
             // status
             // 
-            this.status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.status.BackColor = System.Drawing.Color.White;
             this.status.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.status.BackColorState.Enabled = System.Drawing.Color.White;
-            this.status.Border.Color = System.Drawing.Color.Gainsboro;
-            this.status.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.status.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.status.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.status.Border.HoverVisible = true;
             this.status.Border.Rounding = 6;
             this.status.Border.Thickness = 1;
@@ -173,6 +190,7 @@
             this.status.DropDownHeight = 100;
             this.status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.status.DropDownWidth = 150;
+            this.status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.status.FormattingEnabled = true;
             this.status.ImageList = null;
             this.status.ImageVisible = false;
@@ -180,7 +198,7 @@
             this.status.IntegralHeight = false;
             this.status.ItemHeight = 20;
             this.status.ItemImageVisible = true;
-            this.status.Location = new System.Drawing.Point(401, 42);
+            this.status.Location = new System.Drawing.Point(36, 183);
             this.status.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.status.MenuItemNormal = System.Drawing.Color.White;
             this.status.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -210,28 +228,26 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(398, 20);
+            this.label7.Location = new System.Drawing.Point(33, 163);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 17);
+            this.label7.Size = new System.Drawing.Size(46, 17);
             this.label7.TabIndex = 97;
             this.label7.Text = "Status";
             // 
             // dataInicial
             // 
-            this.dataInicial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataInicial.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
             this.dataInicial.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
             this.dataInicial.ArrowSize = new System.Drawing.Size(10, 5);
             this.dataInicial.BackColor = System.Drawing.Color.White;
             this.dataInicial.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataInicial.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataInicial.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataInicial.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataInicial.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.dataInicial.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.dataInicial.Border.HoverVisible = true;
             this.dataInicial.Border.Rounding = 6;
             this.dataInicial.Border.Thickness = 1;
@@ -243,7 +259,7 @@
             this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataInicial.Image = null;
             this.dataInicial.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataInicial.Location = new System.Drawing.Point(137, 41);
+            this.dataInicial.Location = new System.Drawing.Point(153, 182);
             this.dataInicial.MinimumSize = new System.Drawing.Size(0, 27);
             this.dataInicial.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataInicial.Name = "dataInicial";
@@ -254,15 +270,14 @@
             // 
             // dataFinal
             // 
-            this.dataFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataFinal.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
             this.dataFinal.ArrowDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
             this.dataFinal.ArrowSize = new System.Drawing.Size(10, 5);
             this.dataFinal.BackColor = System.Drawing.Color.White;
             this.dataFinal.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataFinal.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataFinal.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataFinal.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataFinal.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.dataFinal.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.dataFinal.Border.HoverVisible = true;
             this.dataFinal.Border.Rounding = 6;
             this.dataFinal.Border.Thickness = 1;
@@ -274,7 +289,7 @@
             this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dataFinal.Image = null;
             this.dataFinal.ImageSize = new System.Drawing.Size(16, 16);
-            this.dataFinal.Location = new System.Drawing.Point(242, 41);
+            this.dataFinal.Location = new System.Drawing.Point(258, 182);
             this.dataFinal.MinimumSize = new System.Drawing.Size(0, 27);
             this.dataFinal.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.dataFinal.Name = "dataFinal";
@@ -285,100 +300,36 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(241, 19);
+            this.label4.Location = new System.Drawing.Point(257, 162);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 17);
+            this.label4.Size = new System.Drawing.Size(36, 17);
             this.label4.TabIndex = 93;
             this.label4.Text = "Final";
             this.label4.Visible = false;
             // 
             // label23
             // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(134, 19);
+            this.label23.Location = new System.Drawing.Point(150, 162);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(40, 17);
+            this.label23.Size = new System.Drawing.Size(42, 17);
             this.label23.TabIndex = 92;
             this.label23.Text = "Inicial";
             this.label23.Visible = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(28, 4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(85, 90);
-            this.btnExit.TabIndex = 11;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.FlatAppearance.BorderSize = 0;
-            this.btnAdicionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
-            this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(631, 3);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(85, 90);
-            this.btnAdicionar.TabIndex = 3;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(540, 4);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(85, 90);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(38, 203);
+            this.label2.Location = new System.Drawing.Point(33, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(319, 15);
             this.label2.TabIndex = 88;
@@ -389,7 +340,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(30, 157);
+            this.label1.Location = new System.Drawing.Point(25, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 40);
             this.label1.TabIndex = 87;
@@ -402,9 +353,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.GridLista);
-            this.panel2.Location = new System.Drawing.Point(38, 243);
+            this.panel2.Location = new System.Drawing.Point(38, 224);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(659, 280);
+            this.panel2.Size = new System.Drawing.Size(659, 364);
             this.panel2.TabIndex = 89;
             // 
             // GridLista
@@ -440,107 +391,241 @@
             this.GridLista.RowHeadersVisible = false;
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(659, 280);
+            this.GridLista.Size = new System.Drawing.Size(659, 364);
             this.GridLista.TabIndex = 5;
             this.GridLista.TabStop = false;
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel5.Controls.Add(this.btnRemover);
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel5.Controls.Add(this.btnRetransmitir);
             this.panel5.Controls.Add(this.imprimir);
-            this.panel5.Controls.Add(this.btnHelp);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 552);
+            this.panel5.Controls.Add(this.btnRemover);
+            this.panel5.Location = new System.Drawing.Point(0, 609);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(733, 97);
+            this.panel5.Size = new System.Drawing.Size(733, 40);
             this.panel5.TabIndex = 90;
-            // 
-            // btnRemover
-            // 
-            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRemover.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemover.FlatAppearance.BorderSize = 0;
-            this.btnRemover.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemover.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
-            this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRemover.Location = new System.Drawing.Point(28, 4);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(85, 90);
-            this.btnRemover.TabIndex = 109;
-            this.btnRemover.Text = "Apagar";
-            this.btnRemover.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRemover.UseVisualStyleBackColor = true;
             // 
             // btnRetransmitir
             // 
-            this.btnRetransmitir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRetransmitir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRetransmitir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRetransmitir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnRetransmitir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnRetransmitir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnRetransmitir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRetransmitir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnRetransmitir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnRetransmitir.Border.HoverVisible = true;
+            this.btnRetransmitir.Border.Rounding = 6;
+            this.btnRetransmitir.Border.Thickness = 1;
+            this.btnRetransmitir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRetransmitir.Border.Visible = true;
             this.btnRetransmitir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRetransmitir.FlatAppearance.BorderSize = 0;
-            this.btnRetransmitir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRetransmitir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRetransmitir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetransmitir.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRetransmitir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetransmitir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRetransmitir.Image = ((System.Drawing.Image)(resources.GetObject("btnRetransmitir.Image")));
-            this.btnRetransmitir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRetransmitir.Location = new System.Drawing.Point(119, 4);
+            this.btnRetransmitir.ForeColor = System.Drawing.Color.White;
+            this.btnRetransmitir.Image = null;
+            this.btnRetransmitir.Location = new System.Drawing.Point(113, 5);
+            this.btnRetransmitir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnRetransmitir.Name = "btnRetransmitir";
-            this.btnRetransmitir.Size = new System.Drawing.Size(94, 90);
-            this.btnRetransmitir.TabIndex = 108;
+            this.btnRetransmitir.Size = new System.Drawing.Size(138, 30);
+            this.btnRetransmitir.TabIndex = 558;
             this.btnRetransmitir.Text = "Retransmitir";
-            this.btnRetransmitir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRetransmitir.UseVisualStyleBackColor = true;
+            this.btnRetransmitir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRetransmitir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRetransmitir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnRetransmitir.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnRetransmitir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnRetransmitir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRetransmitir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRetransmitir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // imprimir
             // 
-            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imprimir.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imprimir.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imprimir.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.imprimir.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.imprimir.Border.HoverVisible = true;
+            this.imprimir.Border.Rounding = 6;
+            this.imprimir.Border.Thickness = 1;
+            this.imprimir.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imprimir.Border.Visible = true;
             this.imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imprimir.FlatAppearance.BorderSize = 0;
-            this.imprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimir.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.imprimir.Image = ((System.Drawing.Image)(resources.GetObject("imprimir.Image")));
-            this.imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.imprimir.Location = new System.Drawing.Point(509, 4);
+            this.imprimir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.imprimir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imprimir.ForeColor = System.Drawing.Color.White;
+            this.imprimir.Image = null;
+            this.imprimir.Location = new System.Drawing.Point(614, 5);
+            this.imprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.imprimir.Name = "imprimir";
-            this.imprimir.Size = new System.Drawing.Size(116, 90);
-            this.imprimir.TabIndex = 103;
-            this.imprimir.Text = "Gerar Relatório";
-            this.imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.imprimir.UseVisualStyleBackColor = true;
-            this.imprimir.Visible = false;
+            this.imprimir.Size = new System.Drawing.Size(108, 30);
+            this.imprimir.TabIndex = 557;
+            this.imprimir.Text = "Relatório";
+            this.imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.imprimir.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.imprimir.TextStyle.Enabled = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Hover = System.Drawing.Color.White;
+            this.imprimir.TextStyle.Pressed = System.Drawing.Color.White;
+            this.imprimir.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // btnHelp
+            // btnRemover
             // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.FlatAppearance.BorderSize = 0;
-            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHelp.Location = new System.Drawing.Point(631, 4);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(85, 90);
-            this.btnHelp.TabIndex = 4;
-            this.btnHelp.Text = "Ajuda";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnRemover.BackColor = System.Drawing.Color.White;
+            this.btnRemover.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRemover.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnRemover.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnRemover.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnRemover.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.btnRemover.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
+            this.btnRemover.Border.HoverVisible = true;
+            this.btnRemover.Border.Rounding = 6;
+            this.btnRemover.Border.Thickness = 1;
+            this.btnRemover.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRemover.Border.Visible = true;
+            this.btnRemover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemover.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRemover.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemover.ForeColor = System.Drawing.Color.White;
+            this.btnRemover.Image = null;
+            this.btnRemover.Location = new System.Drawing.Point(11, 5);
+            this.btnRemover.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(96, 30);
+            this.btnRemover.TabIndex = 553;
+            this.btnRemover.Text = "Apagar";
+            this.btnRemover.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRemover.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRemover.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnRemover.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnRemover.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnRemover.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemover.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemover.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // barraTitulo
+            // 
+            this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.Controls.Add(this.btnExit);
+            this.barraTitulo.Controls.Add(this.btnEditar);
+            this.barraTitulo.Controls.Add(this.btnAdicionar);
+            this.barraTitulo.Location = new System.Drawing.Point(0, 41);
+            this.barraTitulo.Name = "barraTitulo";
+            this.barraTitulo.Size = new System.Drawing.Size(733, 40);
+            this.barraTitulo.TabIndex = 99;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(11, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 40054;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnEditar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnEditar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnEditar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnEditar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnEditar.Border.HoverVisible = true;
+            this.btnEditar.Border.Rounding = 6;
+            this.btnEditar.Border.Thickness = 1;
+            this.btnEditar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnEditar.Border.Visible = true;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.Image = null;
+            this.btnEditar.Location = new System.Drawing.Point(524, 5);
+            this.btnEditar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(96, 30);
+            this.btnEditar.TabIndex = 554;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnEditar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnEditar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnEditar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnEditar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEditar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnEditar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnAdicionar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnAdicionar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAdicionar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAdicionar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnAdicionar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnAdicionar.Border.HoverVisible = true;
+            this.btnAdicionar.Border.Rounding = 6;
+            this.btnAdicionar.Border.Thickness = 1;
+            this.btnAdicionar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAdicionar.Border.Visible = true;
+            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionar.Image = null;
+            this.btnAdicionar.Location = new System.Drawing.Point(626, 5);
+            this.btnAdicionar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(96, 30);
+            this.btnAdicionar.TabIndex = 40054;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdicionar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAdicionar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnAdicionar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAdicionar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAdicionar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAdicionar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAdicionar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // InutilizarNotas
             // 
@@ -548,11 +633,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.barraTitulo);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dataInicial);
+            this.Controls.Add(this.dataFinal);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -561,11 +652,10 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.barraTitulo.ResumeLayout(false);
-            this.barraTitulo.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
             this.panel5.ResumeLayout(false);
+            this.barraTitulo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,10 +669,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel barraTitulo;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Button btnEditar;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataInicial;
         private VisualPlus.Toolkit.Controls.Editors.VisualDateTimePicker dataFinal;
         private System.Windows.Forms.Label label4;
@@ -594,9 +680,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView GridLista;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button imprimir;
-        private System.Windows.Forms.Button btnHelp;
-        private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.Button btnRetransmitir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnHelp;
+        private System.Windows.Forms.Panel barraTitulo;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnExit;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnEditar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAdicionar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRemover;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton imprimir;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRetransmitir;
     }
 }

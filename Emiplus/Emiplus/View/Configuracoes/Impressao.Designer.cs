@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.btnExit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,6 +79,7 @@
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.impressora = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.btnRefreshImpressoras = new System.Windows.Forms.PictureBox();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -113,8 +113,8 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.visualSeparator1);
             this.panel4.Controls.Add(this.btnExit);
+            this.panel4.Controls.Add(this.visualSeparator1);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.label5);
@@ -129,7 +129,7 @@
             // 
             this.visualSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator1.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator1.Location = new System.Drawing.Point(104, 12);
+            this.visualSeparator1.Location = new System.Drawing.Point(111, 12);
             this.visualSeparator1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator1.Name = "visualSeparator1";
             this.visualSeparator1.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -145,26 +145,6 @@
             this.visualSeparator1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnExit.Location = new System.Drawing.Point(11, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(87, 34);
-            this.btnExit.TabIndex = 515;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -252,7 +232,7 @@
             this.tipoimpressora.DropDownHeight = 150;
             this.tipoimpressora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoimpressora.DropDownWidth = 120;
-            this.tipoimpressora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoimpressora.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipoimpressora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tipoimpressora.FormattingEnabled = true;
             this.tipoimpressora.ImageList = null;
@@ -384,7 +364,7 @@
             this.pi10Top.ButtonIndent = 3;
             this.pi10Top.ButtonText = "visualButton";
             this.pi10Top.ButtonVisible = false;
-            this.pi10Top.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi10Top.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi10Top.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi10Top.Image = null;
             this.pi10Top.ImageSize = new System.Drawing.Size(16, 16);
@@ -464,7 +444,7 @@
             this.pi10Right.ButtonIndent = 3;
             this.pi10Right.ButtonText = "visualButton";
             this.pi10Right.ButtonVisible = false;
-            this.pi10Right.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi10Right.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi10Right.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi10Right.Image = null;
             this.pi10Right.ImageSize = new System.Drawing.Size(16, 16);
@@ -521,7 +501,7 @@
             this.pi10Bottom.ButtonIndent = 3;
             this.pi10Bottom.ButtonText = "visualButton";
             this.pi10Bottom.ButtonVisible = false;
-            this.pi10Bottom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi10Bottom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi10Bottom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi10Bottom.Image = null;
             this.pi10Bottom.ImageSize = new System.Drawing.Size(16, 16);
@@ -578,7 +558,7 @@
             this.pi10Left.ButtonIndent = 3;
             this.pi10Left.ButtonText = "visualButton";
             this.pi10Left.ButtonVisible = false;
-            this.pi10Left.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi10Left.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi10Left.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi10Left.Image = null;
             this.pi10Left.ImageSize = new System.Drawing.Size(16, 16);
@@ -668,7 +648,7 @@
             this.pi30Left.ButtonIndent = 3;
             this.pi30Left.ButtonText = "visualButton";
             this.pi30Left.ButtonVisible = false;
-            this.pi30Left.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi30Left.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi30Left.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi30Left.Image = null;
             this.pi30Left.ImageSize = new System.Drawing.Size(16, 16);
@@ -725,7 +705,7 @@
             this.pi30Bottom.ButtonIndent = 3;
             this.pi30Bottom.ButtonText = "visualButton";
             this.pi30Bottom.ButtonVisible = false;
-            this.pi30Bottom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi30Bottom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi30Bottom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi30Bottom.Image = null;
             this.pi30Bottom.ImageSize = new System.Drawing.Size(16, 16);
@@ -782,7 +762,7 @@
             this.pi30Right.ButtonIndent = 3;
             this.pi30Right.ButtonText = "visualButton";
             this.pi30Right.ButtonVisible = false;
-            this.pi30Right.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi30Right.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi30Right.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi30Right.Image = null;
             this.pi30Right.ImageSize = new System.Drawing.Size(16, 16);
@@ -839,7 +819,7 @@
             this.pi30Top.ButtonIndent = 3;
             this.pi30Top.ButtonText = "visualButton";
             this.pi30Top.ButtonVisible = false;
-            this.pi30Top.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi30Top.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi30Top.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi30Top.Image = null;
             this.pi30Top.ImageSize = new System.Drawing.Size(16, 16);
@@ -907,7 +887,7 @@
             this.pi60Left.ButtonIndent = 3;
             this.pi60Left.ButtonText = "visualButton";
             this.pi60Left.ButtonVisible = false;
-            this.pi60Left.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi60Left.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi60Left.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi60Left.Image = null;
             this.pi60Left.ImageSize = new System.Drawing.Size(16, 16);
@@ -964,7 +944,7 @@
             this.pi60Bottom.ButtonIndent = 3;
             this.pi60Bottom.ButtonText = "visualButton";
             this.pi60Bottom.ButtonVisible = false;
-            this.pi60Bottom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi60Bottom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi60Bottom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi60Bottom.Image = null;
             this.pi60Bottom.ImageSize = new System.Drawing.Size(16, 16);
@@ -1021,7 +1001,7 @@
             this.pi60Right.ButtonIndent = 3;
             this.pi60Right.ButtonText = "visualButton";
             this.pi60Right.ButtonVisible = false;
-            this.pi60Right.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi60Right.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi60Right.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi60Right.Image = null;
             this.pi60Right.ImageSize = new System.Drawing.Size(16, 16);
@@ -1078,7 +1058,7 @@
             this.pi60Top.ButtonIndent = 3;
             this.pi60Top.ButtonText = "visualButton";
             this.pi60Top.ButtonVisible = false;
-            this.pi60Top.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pi60Top.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pi60Top.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pi60Top.Image = null;
             this.pi60Top.ImageSize = new System.Drawing.Size(16, 16);
@@ -1300,7 +1280,7 @@
             this.impressora.DropDownHeight = 150;
             this.impressora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.impressora.DropDownWidth = 120;
-            this.impressora.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.impressora.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.impressora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.impressora.FormattingEnabled = true;
             this.impressora.ImageList = null;
@@ -1349,6 +1329,39 @@
             this.btnRefreshImpressoras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRefreshImpressoras.TabIndex = 516;
             this.btnRefreshImpressoras.TabStop = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(5, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 553;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Impressao
             // 
@@ -1422,7 +1435,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label5;
@@ -1468,5 +1480,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox impressora;
         private System.Windows.Forms.PictureBox btnRefreshImpressoras;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnExit;
     }
 }

@@ -97,7 +97,6 @@ namespace Emiplus.View.Comercial
 
             GridListaProdutos.CellDoubleClick += (s, e) => SelectItemGrid();
             Selecionar.Click += (s, e) => SelectItemGrid();
-            btnCancelar.Click += (s, e) => Close();
         }
     }
 }

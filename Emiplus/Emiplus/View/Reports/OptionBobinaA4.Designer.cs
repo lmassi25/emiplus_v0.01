@@ -30,57 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.barraTitulo = new System.Windows.Forms.Panel();
-            this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.Tipo = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.barraTitulo.SuspendLayout();
             this.visualGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barraTitulo
             // 
-            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.barraTitulo.Controls.Add(this.btnGerar);
             this.barraTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barraTitulo.Location = new System.Drawing.Point(0, 115);
+            this.barraTitulo.Location = new System.Drawing.Point(0, 133);
             this.barraTitulo.Name = "barraTitulo";
-            this.barraTitulo.Size = new System.Drawing.Size(413, 58);
+            this.barraTitulo.Size = new System.Drawing.Size(413, 40);
             this.barraTitulo.TabIndex = 12;
-            // 
-            // btnGerar
-            // 
-            this.btnGerar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnGerar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGerar.BackColorState.Hover = System.Drawing.Color.DimGray;
-            this.btnGerar.BackColorState.Pressed = System.Drawing.Color.DimGray;
-            this.btnGerar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGerar.Border.HoverColor = System.Drawing.Color.DimGray;
-            this.btnGerar.Border.HoverVisible = true;
-            this.btnGerar.Border.Rounding = 6;
-            this.btnGerar.Border.Thickness = 1;
-            this.btnGerar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnGerar.Border.Visible = true;
-            this.btnGerar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGerar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerar.ForeColor = System.Drawing.Color.White;
-            this.btnGerar.Image = null;
-            this.btnGerar.Location = new System.Drawing.Point(141, 13);
-            this.btnGerar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(116, 33);
-            this.btnGerar.TabIndex = 40053;
-            this.btnGerar.Tag = " ";
-            this.btnGerar.Text = "Gerar";
-            this.btnGerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGerar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnGerar.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnGerar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualGroupBox1
             // 
@@ -101,7 +67,7 @@
             this.visualGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visualGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.visualGroupBox1.Image = null;
-            this.visualGroupBox1.Location = new System.Drawing.Point(12, 6);
+            this.visualGroupBox1.Location = new System.Drawing.Point(12, 18);
             this.visualGroupBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualGroupBox1.Name = "visualGroupBox1";
             this.visualGroupBox1.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
@@ -142,6 +108,8 @@
             this.Tipo.DropDownHeight = 100;
             this.Tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Tipo.DropDownWidth = 250;
+            this.Tipo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Tipo.FormattingEnabled = true;
             this.Tipo.ImageList = null;
             this.Tipo.ImageVisible = false;
@@ -192,6 +160,39 @@
             this.label1.TabIndex = 557;
             this.label1.Text = "Tipo de impressão";
             // 
+            // btnGerar
+            // 
+            this.btnGerar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGerar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnGerar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnGerar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnGerar.Border.HoverVisible = true;
+            this.btnGerar.Border.Rounding = 6;
+            this.btnGerar.Border.Thickness = 1;
+            this.btnGerar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnGerar.Border.Visible = true;
+            this.btnGerar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGerar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerar.ForeColor = System.Drawing.Color.White;
+            this.btnGerar.Image = null;
+            this.btnGerar.Location = new System.Drawing.Point(158, 5);
+            this.btnGerar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnGerar.Name = "btnGerar";
+            this.btnGerar.Size = new System.Drawing.Size(96, 30);
+            this.btnGerar.TabIndex = 40054;
+            this.btnGerar.Text = "Gerar";
+            this.btnGerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGerar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnGerar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // OptionBobinaA4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,9 +220,9 @@
         #endregion
 
         private System.Windows.Forms.Panel barraTitulo;
-        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnGerar;
         private VisualPlus.Toolkit.Controls.Layout.VisualGroupBox visualGroupBox1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Tipo;
         private System.Windows.Forms.Label label1;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnGerar;
     }
 }

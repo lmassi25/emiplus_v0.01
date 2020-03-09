@@ -348,8 +348,6 @@ namespace Emiplus.View.Comercial
                 Status.DisplayMember = "NOME";
                 Status.ValueMember = "ID";
                 Status.SelectedValue = 99;
-
-                filterTodos.Checked = true;
             };
 
             BuscarPessoa.KeyDown += (s, e) =>

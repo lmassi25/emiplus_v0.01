@@ -29,29 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAllTitulos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.GridLista = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.cliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.visualGroupBox1 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.receita = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.cliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GridLista = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.visualGroupBox2 = new VisualPlus.Toolkit.Controls.Layout.VisualGroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,15 +56,18 @@
             this.formaPgto = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.recebido = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.visualGroupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.visualGroupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.visualGroupBox2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
@@ -85,184 +85,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 32;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(9, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Você está em:";
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel5.Controls.Add(this.btnSalvar);
-            this.panel5.Controls.Add(this.btnExit);
-            this.panel5.Location = new System.Drawing.Point(0, 41);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(731, 97);
-            this.panel5.TabIndex = 31;
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalvar.FlatAppearance.BorderSize = 0;
-            this.btnSalvar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
-            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalvar.Location = new System.Drawing.Point(626, 4);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(85, 90);
-            this.btnSalvar.TabIndex = 8;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(28, 4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(85, 90);
-            this.btnExit.TabIndex = 11;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // visualGroupBox1
-            // 
-            this.visualGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualGroupBox1.BackColorState.Disabled = System.Drawing.Color.White;
-            this.visualGroupBox1.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualGroupBox1.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualGroupBox1.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.visualGroupBox1.Border.HoverVisible = true;
-            this.visualGroupBox1.Border.Rounding = 6;
-            this.visualGroupBox1.Border.Thickness = 1;
-            this.visualGroupBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualGroupBox1.Border.Visible = true;
-            this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
-            this.visualGroupBox1.Controls.Add(this.label8);
-            this.visualGroupBox1.Controls.Add(this.receita);
-            this.visualGroupBox1.Controls.Add(this.cliente);
-            this.visualGroupBox1.Controls.Add(this.label23);
-            this.visualGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visualGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.visualGroupBox1.Image = null;
-            this.visualGroupBox1.Location = new System.Drawing.Point(42, 321);
-            this.visualGroupBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualGroupBox1.Name = "visualGroupBox1";
-            this.visualGroupBox1.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
-            this.visualGroupBox1.Separator = false;
-            this.visualGroupBox1.SeparatorColor = System.Drawing.Color.White;
-            this.visualGroupBox1.Size = new System.Drawing.Size(652, 153);
-            this.visualGroupBox1.TabIndex = 33;
-            this.visualGroupBox1.Text = "Informações";
-            this.visualGroupBox1.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualGroupBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.visualGroupBox1.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualGroupBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualGroupBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualGroupBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualGroupBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualGroupBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualGroupBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualGroupBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualGroupBox1.TitleBoxHeight = 25;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.GridLista);
-            this.panel2.Location = new System.Drawing.Point(42, 185);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(652, 91);
-            this.panel2.TabIndex = 34;
-            // 
-            // GridLista
-            // 
-            this.GridLista.AllowUserToAddRows = false;
-            this.GridLista.AllowUserToDeleteRows = false;
-            this.GridLista.AllowUserToResizeColumns = false;
-            this.GridLista.AllowUserToResizeRows = false;
-            this.GridLista.BackgroundColor = System.Drawing.Color.White;
-            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle4;
-            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridLista.Location = new System.Drawing.Point(0, 0);
-            this.GridLista.MultiSelect = false;
-            this.GridLista.Name = "GridLista";
-            this.GridLista.ReadOnly = true;
-            this.GridLista.RowHeadersVisible = false;
-            this.GridLista.RowTemplate.Height = 30;
-            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(652, 91);
-            this.GridLista.TabIndex = 5;
-            this.GridLista.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(38, 289);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(464, 20);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "As alterações abaixo, será aplicado a todos os recebimentos listado acima.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(38, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 20);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Recebimentos a serem editados:";
             // 
             // label1
             // 
@@ -329,13 +151,133 @@
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(9, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Você está em:";
+            // 
+            // visualGroupBox1
+            // 
+            this.visualGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualGroupBox1.BackColorState.Disabled = System.Drawing.Color.White;
+            this.visualGroupBox1.BackColorState.Enabled = System.Drawing.Color.White;
+            this.visualGroupBox1.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.visualGroupBox1.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.visualGroupBox1.Border.HoverVisible = true;
+            this.visualGroupBox1.Border.Rounding = 6;
+            this.visualGroupBox1.Border.Thickness = 1;
+            this.visualGroupBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualGroupBox1.Border.Visible = true;
+            this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
+            this.visualGroupBox1.Controls.Add(this.label8);
+            this.visualGroupBox1.Controls.Add(this.receita);
+            this.visualGroupBox1.Controls.Add(this.cliente);
+            this.visualGroupBox1.Controls.Add(this.label23);
+            this.visualGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.visualGroupBox1.Image = null;
+            this.visualGroupBox1.Location = new System.Drawing.Point(42, 321);
+            this.visualGroupBox1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualGroupBox1.Name = "visualGroupBox1";
+            this.visualGroupBox1.Padding = new System.Windows.Forms.Padding(5, 26, 5, 5);
+            this.visualGroupBox1.Separator = false;
+            this.visualGroupBox1.SeparatorColor = System.Drawing.Color.White;
+            this.visualGroupBox1.Size = new System.Drawing.Size(652, 153);
+            this.visualGroupBox1.TabIndex = 33;
+            this.visualGroupBox1.Text = "Informações";
+            this.visualGroupBox1.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualGroupBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.visualGroupBox1.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualGroupBox1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualGroupBox1.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualGroupBox1.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualGroupBox1.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualGroupBox1.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualGroupBox1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualGroupBox1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualGroupBox1.TitleBoxHeight = 25;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label8.Location = new System.Drawing.Point(18, 88);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 17);
+            this.label8.TabIndex = 100;
+            this.label8.Text = "Receita";
+            // 
+            // receita
+            // 
+            this.receita.BackColor = System.Drawing.Color.White;
+            this.receita.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.receita.BackColorState.Enabled = System.Drawing.Color.White;
+            this.receita.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.receita.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.receita.Border.HoverVisible = true;
+            this.receita.Border.Rounding = 6;
+            this.receita.Border.Thickness = 1;
+            this.receita.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.receita.Border.Visible = true;
+            this.receita.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.receita.ButtonImage = null;
+            this.receita.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
+            this.receita.ButtonWidth = 30;
+            this.receita.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.receita.DropDownHeight = 100;
+            this.receita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.receita.DropDownWidth = 500;
+            this.receita.FormattingEnabled = true;
+            this.receita.ImageList = null;
+            this.receita.ImageVisible = false;
+            this.receita.Index = 0;
+            this.receita.IntegralHeight = false;
+            this.receita.ItemHeight = 23;
+            this.receita.ItemImageVisible = true;
+            this.receita.Location = new System.Drawing.Point(20, 107);
+            this.receita.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.receita.MenuItemNormal = System.Drawing.Color.White;
+            this.receita.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.receita.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.receita.Name = "receita";
+            this.receita.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.receita.Size = new System.Drawing.Size(607, 29);
+            this.receita.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.receita.TabIndex = 99;
+            this.receita.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.receita.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.receita.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.receita.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.receita.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.receita.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.receita.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.receita.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.receita.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.receita.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.receita.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.receita.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.receita.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.receita.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.receita.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.receita.Watermark.Text = "Watermark text";
+            this.receita.Watermark.Visible = false;
+            // 
             // cliente
             // 
             this.cliente.BackColor = System.Drawing.Color.White;
             this.cliente.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.cliente.BackColorState.Enabled = System.Drawing.Color.White;
-            this.cliente.Border.Color = System.Drawing.Color.Gainsboro;
-            this.cliente.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.cliente.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.cliente.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.cliente.Border.HoverVisible = true;
             this.cliente.Border.Rounding = 6;
             this.cliente.Border.Thickness = 1;
@@ -396,72 +338,77 @@
             this.label23.TabIndex = 26;
             this.label23.Text = "Receber de";
             // 
-            // label8
+            // panel2
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Location = new System.Drawing.Point(18, 88);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 17);
-            this.label8.TabIndex = 100;
-            this.label8.Text = "Receita";
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.GridLista);
+            this.panel2.Location = new System.Drawing.Point(42, 124);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(652, 152);
+            this.panel2.TabIndex = 34;
             // 
-            // receita
+            // GridLista
             // 
-            this.receita.BackColor = System.Drawing.Color.White;
-            this.receita.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.receita.BackColorState.Enabled = System.Drawing.Color.White;
-            this.receita.Border.Color = System.Drawing.Color.Gainsboro;
-            this.receita.Border.HoverColor = System.Drawing.Color.Gainsboro;
-            this.receita.Border.HoverVisible = true;
-            this.receita.Border.Rounding = 6;
-            this.receita.Border.Thickness = 1;
-            this.receita.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.receita.Border.Visible = true;
-            this.receita.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
-            this.receita.ButtonImage = null;
-            this.receita.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Arrow;
-            this.receita.ButtonWidth = 30;
-            this.receita.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.receita.DropDownHeight = 100;
-            this.receita.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.receita.DropDownWidth = 500;
-            this.receita.FormattingEnabled = true;
-            this.receita.ImageList = null;
-            this.receita.ImageVisible = false;
-            this.receita.Index = 0;
-            this.receita.IntegralHeight = false;
-            this.receita.ItemHeight = 23;
-            this.receita.ItemImageVisible = true;
-            this.receita.Location = new System.Drawing.Point(20, 107);
-            this.receita.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.receita.MenuItemNormal = System.Drawing.Color.White;
-            this.receita.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.receita.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.receita.Name = "receita";
-            this.receita.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.receita.Size = new System.Drawing.Size(607, 29);
-            this.receita.State = VisualPlus.Enumerators.MouseStates.Normal;
-            this.receita.TabIndex = 99;
-            this.receita.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.receita.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.receita.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.receita.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.receita.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.receita.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.receita.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.receita.TextStyle.Hover = System.Drawing.Color.Empty;
-            this.receita.TextStyle.Pressed = System.Drawing.Color.Empty;
-            this.receita.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.receita.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.receita.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.receita.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.receita.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.receita.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.receita.Watermark.Text = "Watermark text";
-            this.receita.Watermark.Visible = false;
+            this.GridLista.AllowUserToAddRows = false;
+            this.GridLista.AllowUserToDeleteRows = false;
+            this.GridLista.AllowUserToResizeColumns = false;
+            this.GridLista.AllowUserToResizeRows = false;
+            this.GridLista.BackgroundColor = System.Drawing.Color.White;
+            this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
+            this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridLista.Location = new System.Drawing.Point(0, 0);
+            this.GridLista.MultiSelect = false;
+            this.GridLista.Name = "GridLista";
+            this.GridLista.ReadOnly = true;
+            this.GridLista.RowHeadersVisible = false;
+            this.GridLista.RowTemplate.Height = 30;
+            this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridLista.Size = new System.Drawing.Size(652, 152);
+            this.GridLista.TabIndex = 5;
+            this.GridLista.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(38, 289);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(464, 20);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "As alterações abaixo, será aplicado a todos os recebimentos listado acima.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(38, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(210, 20);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Recebimentos a serem editados:";
             // 
             // visualGroupBox2
             // 
@@ -469,8 +416,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualGroupBox2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.visualGroupBox2.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualGroupBox2.Border.Color = System.Drawing.Color.Gainsboro;
-            this.visualGroupBox2.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualGroupBox2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.visualGroupBox2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
             this.visualGroupBox2.Border.HoverVisible = true;
             this.visualGroupBox2.Border.Rounding = 6;
             this.visualGroupBox2.Border.Thickness = 1;
@@ -537,8 +484,8 @@
             this.dataRecebido.BackColor = System.Drawing.Color.White;
             this.dataRecebido.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.dataRecebido.BackColorState.Enabled = System.Drawing.Color.White;
-            this.dataRecebido.Border.Color = System.Drawing.Color.Gainsboro;
-            this.dataRecebido.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.dataRecebido.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.dataRecebido.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.dataRecebido.Border.HoverVisible = true;
             this.dataRecebido.Border.Rounding = 8;
             this.dataRecebido.Border.Thickness = 1;
@@ -594,8 +541,8 @@
             this.formaPgto.BackColor = System.Drawing.Color.White;
             this.formaPgto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.formaPgto.BackColorState.Enabled = System.Drawing.Color.White;
-            this.formaPgto.Border.Color = System.Drawing.Color.Gainsboro;
-            this.formaPgto.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.formaPgto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.formaPgto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.formaPgto.Border.HoverVisible = true;
             this.formaPgto.Border.Rounding = 6;
             this.formaPgto.Border.Thickness = 1;
@@ -663,8 +610,8 @@
             this.recebido.BackColor = System.Drawing.Color.White;
             this.recebido.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.recebido.BackColorState.Enabled = System.Drawing.Color.White;
-            this.recebido.Border.Color = System.Drawing.Color.Gainsboro;
-            this.recebido.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.recebido.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.recebido.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.recebido.Border.HoverVisible = true;
             this.recebido.Border.Rounding = 8;
             this.recebido.Border.Thickness = 1;
@@ -716,15 +663,94 @@
             this.recebido.Watermark.Visible = false;
             this.recebido.WordWrap = true;
             // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.Controls.Add(this.btnSalvar);
+            this.panel5.Controls.Add(this.btnExit);
+            this.panel5.Location = new System.Drawing.Point(0, 41);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(733, 40);
+            this.panel5.TabIndex = 38;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSalvar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSalvar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSalvar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSalvar.Border.HoverVisible = true;
+            this.btnSalvar.Border.Rounding = 6;
+            this.btnSalvar.Border.Thickness = 1;
+            this.btnSalvar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSalvar.Border.Visible = true;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnSalvar.Image = null;
+            this.btnSalvar.Location = new System.Drawing.Point(627, 5);
+            this.btnSalvar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(96, 30);
+            this.btnSalvar.TabIndex = 554;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalvar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSalvar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSalvar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSalvar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSalvar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(12, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 550;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // EditAllTitulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.visualGroupBox2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.visualGroupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
@@ -735,16 +761,16 @@
             this.Text = "EditAllTitulos";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.visualGroupBox1.ResumeLayout(false);
             this.visualGroupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.visualGroupBox2.ResumeLayout(false);
             this.visualGroupBox2.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -753,9 +779,6 @@
         #endregion
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnExit;
         private VisualPlus.Toolkit.Controls.Layout.VisualGroupBox visualGroupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView GridLista;
@@ -778,5 +801,8 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox formaPgto;
         private System.Windows.Forms.Label label7;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox recebido;
+        private System.Windows.Forms.Panel panel5;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSalvar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnExit;
     }
 }

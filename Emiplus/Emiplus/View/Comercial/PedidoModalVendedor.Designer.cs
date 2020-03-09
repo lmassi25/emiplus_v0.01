@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalVendedor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoModalVendedor));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSelecionar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSelecionar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -52,60 +51,51 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
             this.panel1.Controls.Add(this.btnSelecionar);
-            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 439);
+            this.panel1.Location = new System.Drawing.Point(0, 462);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 63);
+            this.panel1.Size = new System.Drawing.Size(490, 40);
             this.panel1.TabIndex = 56;
             // 
             // btnSelecionar
             // 
             this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSelecionar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSelecionar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(166)))), ((int)(((byte)(155)))));
+            this.btnSelecionar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(158)))), ((int)(((byte)(147)))));
+            this.btnSelecionar.Border.HoverVisible = true;
+            this.btnSelecionar.Border.Rounding = 6;
+            this.btnSelecionar.Border.Thickness = 1;
+            this.btnSelecionar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnSelecionar.Border.Visible = true;
             this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelecionar.FlatAppearance.BorderSize = 0;
-            this.btnSelecionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelecionar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSelecionar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSelecionar.Image = ((System.Drawing.Image)(resources.GetObject("btnSelecionar.Image")));
-            this.btnSelecionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSelecionar.Location = new System.Drawing.Point(239, 2);
+            this.btnSelecionar.ForeColor = System.Drawing.Color.White;
+            this.btnSelecionar.Image = null;
+            this.btnSelecionar.Location = new System.Drawing.Point(331, 5);
+            this.btnSelecionar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(119, 60);
-            this.btnSelecionar.TabIndex = 2;
+            this.btnSelecionar.Size = new System.Drawing.Size(139, 30);
+            this.btnSelecionar.TabIndex = 558;
             this.btnSelecionar.Text = "Selecionar (F10)";
-            this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSelecionar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(360, 2);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(118, 60);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "Cancelar (ESC)";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSelecionar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnSelecionar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnSelecionar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnSelecionar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(59)))), ((int)(((byte)(78)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(51)))));
             this.panel2.Controls.Add(this.label11);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -129,7 +119,7 @@
             this.panel3.Controls.Add(this.GridListaVendedores);
             this.panel3.Location = new System.Drawing.Point(28, 192);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(443, 218);
+            this.panel3.Size = new System.Drawing.Size(443, 244);
             this.panel3.TabIndex = 60;
             // 
             // GridListaVendedores
@@ -168,7 +158,7 @@
             this.GridListaVendedores.RowHeadersVisible = false;
             this.GridListaVendedores.RowTemplate.Height = 30;
             this.GridListaVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridListaVendedores.Size = new System.Drawing.Size(443, 218);
+            this.GridListaVendedores.Size = new System.Drawing.Size(443, 244);
             this.GridListaVendedores.TabIndex = 1;
             // 
             // label1
@@ -233,7 +223,7 @@
             this.search.ButtonText = "visualButton";
             this.search.ButtonVisible = false;
             this.search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.search.Image = ((System.Drawing.Image)(resources.GetObject("search.Image")));
             this.search.ImageSize = new System.Drawing.Size(16, 16);
             this.search.ImageVisible = true;
@@ -294,8 +284,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSelecionar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
@@ -304,5 +292,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox search;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnSelecionar;
     }
 }
