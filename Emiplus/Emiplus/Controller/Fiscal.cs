@@ -63,6 +63,7 @@ namespace Emiplus.Controller
         private string TECNOSPEED_GRUPO = "Destech";
         private string TECNOSPEED_USUARIO = "admin";
         private string TECNOSPEED_SENHA = "LE25an10na";
+        private string TECNOSPEED_CIDADEUF = "SAOJOSEDORIOPRETOSP";
         private string TECNOSPEED_SERVIDOR;
 
         private string _msg;
@@ -70,7 +71,7 @@ namespace Emiplus.Controller
         public string requestData;
         public System.Timers.Timer aTimer = new System.Timers.Timer();
 
-        private string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "", layoutCFE = "", assinaturaCFE = "", layoutNFE = "";
+        private string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "", layoutCFE = "", assinaturaCFE = "", layoutNFE = "", loteNFSE = "1";
 
         private Random rdn = new Random();
 
@@ -263,14 +264,7 @@ namespace Emiplus.Controller
             //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
             //}
-
-            //if (Settings.Default.empresa_servidornfse.ToString() == "2" && tipo == "NFSe")
-            //{
-            //    _emitente.CPF = "08187168000160";
-            //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
-            //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
-            //}
-
+                        
             if (IniFile.Read("Servidor", "SAT") == "Homologacao" && tipo == "CFe")
             {
                 _emitente.CPF = "08723218000186";
@@ -286,6 +280,28 @@ namespace Emiplus.Controller
             _emitenteEndereco.Cep = Settings.Default.empresa_cep;
             _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
             _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+            //if (Settings.Default.empresa_servidornfse.ToString() == "2" && tipo == "NFSe")
+            //{
+            //    Settings.Default.empresa_rps = "0";
+            //    Settings.Default.empresa_serienfse = "100";
+
+            //    loteNFSE = "12345678999";
+
+            //    TECNOSPEED_SERVIDOR = "https://managersaashom.tecnospeed.com.br:7071/";
+            //    TECNOSPEED_GRUPO = "edoc";
+            //    TECNOSPEED_USUARIO = "admin";
+            //    TECNOSPEED_SENHA = "123mudar";
+            //    TECNOSPEED_CIDADEUF = "MARINGAPR";
+
+            //    _emitente.CPF = "08187168000160";
+            //    _emitente.Nome = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+            //    _emitente.Fantasia = "DESTECH DESENVOLVIMENTO E TECNOLOGIA";
+
+            //    _emitenteEndereco.Cep = "87020025";
+            //    _emitenteEndereco.Cidade = "MARINGA";
+            //    _emitenteEndereco.Estado = "PR";
+            //}
         }
 
         /// <summary>
@@ -1078,11 +1094,11 @@ namespace Emiplus.Controller
 
                         txt.Write("formato=tx2" + Environment.NewLine);
                         txt.Write("padrao=TecnoNFSe" + Environment.NewLine);
-                        txt.Write("NomeCidade=SAOJOSEDORIOPRETOSP" + Environment.NewLine);
+                        txt.Write("NomeCidade=" + TECNOSPEED_CIDADEUF + Environment.NewLine);
                         txt.Write(Environment.NewLine);
 
                         txt.Write("INCLUIR" + Environment.NewLine);
-                        txt.Write("NumeroLote=1" + Environment.NewLine);
+                        txt.Write("NumeroLote=" + loteNFSE + Environment.NewLine);
                         txt.Write("CPFCNPJRemetente=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + Environment.NewLine);
                         txt.Write("InscricaoMunicipalRemetente=" + Validation.CleanStringForFiscal(Settings.Default.empresa_inscricao_municipal) + Environment.NewLine);
                         txt.Write("ValorTotalServicos=" + Validation.FormatPriceWithDot(_pedido.Servicos) + Environment.NewLine);
@@ -2812,16 +2828,16 @@ namespace Emiplus.Controller
         private string RequestSend(string xml, string documento = "NFe")
         {
             if(documento == "NFSe")
-                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&nomecidade=SAOJOSEDORIOPRETOSP&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&nomecidade=" + TECNOSPEED_CIDADEUF + "&grupo="+ TECNOSPEED_GRUPO +"&arquivo=" + HttpUtility.UrlEncode(xml);
             else
-                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+                requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&arquivo=" + HttpUtility.UrlEncode(xml);
 
             return request(requestData, documento.ToLower(), "envia", "POST");
         }
 
         private string RequestValidate(string xml, string documento = "NFe")
         {
-            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=Destech&arquivo=" + HttpUtility.UrlEncode(xml);
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo="+ TECNOSPEED_GRUPO +"&arquivo=" + HttpUtility.UrlEncode(xml);
             return request(requestData, documento, "valida", "POST");
         }
 
