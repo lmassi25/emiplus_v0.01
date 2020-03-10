@@ -7,12 +7,17 @@ using SqlKata.Execution;
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoPagamentos : Form
     {
+        #region V 
+        
+        MaskedTextBox mtxt;
+
         private int IdPedido = AddPedidos.Id;
         public static bool hideFinalizar { get; set; } = false;
 
@@ -27,7 +32,9 @@ namespace Emiplus.View.Comercial
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
 
-        private int CaixaAnterior;
+        private int CaixaAnterior, cellSave = 0;
+
+        #endregion
 
         public PedidoPagamentos()
         {
@@ -92,10 +99,12 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        public void AtualizarDados()
+        public void AtualizarDados(Boolean grid = true)
         {
             _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
-            _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
+
+            if(grid)
+                _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
             dynamic devolucoes = _mPedido.Query()
                 .SelectRaw("SUM(total) as total")
@@ -578,6 +587,10 @@ namespace Emiplus.View.Comercial
         {
             Load += (s, e) =>
             {
+                mtxt = new MaskedTextBox();
+                mtxt.Visible = false;
+                GridListaFormaPgtos.Controls.Add(mtxt);
+
                 AtualizarDados();
 
                 AddPedidos.btnFinalizado = false;
@@ -681,7 +694,7 @@ namespace Emiplus.View.Comercial
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
-
+            
             GridListaFormaPgtos.CellDoubleClick += (s, e) =>
             {
                 if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
@@ -692,6 +705,66 @@ namespace Emiplus.View.Comercial
                         _mTitulo.Remove(id);
                         AtualizarDados();
                     }
+                }
+            };
+
+            GridListaFormaPgtos.CellBeginEdit += (s, e) =>
+            {
+                if (e.ColumnIndex != 2)
+                    return;
+
+                mtxt.Mask = "##/##/####";
+
+                Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                mtxt.Location = rec.Location;
+                mtxt.Size = rec.Size;
+                mtxt.Text = "";
+
+                if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
+                    mtxt.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
+
+                mtxt.Visible = true;
+            };
+
+            GridListaFormaPgtos.CellEndEdit += (s, e) =>
+            {
+                if (mtxt.Visible)
+                {
+                    GridListaFormaPgtos.CurrentCell.Value = mtxt.Text;
+                    mtxt.Visible = false;
+                }
+
+                int ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
+
+                if (ID == 0)
+                    return;
+
+                var titulo = new Model.Titulo().FindById(ID).FirstOrDefault<Model.Titulo>();
+
+                if (titulo == null)
+                    return;
+
+                titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                titulo.Id_FormaPgto = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column2"].Selected);                
+                titulo.Total = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
+                titulo.Recebido = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
+
+                if (titulo.Save(titulo, false))
+                {
+                    //_controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido); 
+                    Alert.Message("Pronto!", "Recebimento atualizado com sucesso.", Alert.AlertType.success);
+                    AtualizarDados(false);
+                }
+                else
+                    Alert.Message("Opsss!", "Algo deu errado ao atualizar o recebimento.", Alert.AlertType.error);
+            };
+
+            GridListaFormaPgtos.Scroll += (s, e) =>
+            {
+                if (mtxt.Visible)
+                {
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    mtxt.Location = rec.Location;
                 }
             };
 
@@ -707,7 +780,7 @@ namespace Emiplus.View.Comercial
 
                 AtualizarDados();
             };
-
+            
             btnNfe.Click += (s, e) =>
             {
                 if (!Support.CheckForInternetConnection())

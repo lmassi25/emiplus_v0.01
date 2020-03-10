@@ -52,6 +52,19 @@ namespace Emiplus.View.Fiscal.TelasNota
 
         public void Eventos()
         {
+            Load += (s, e) =>
+            {
+                var nota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
+
+                if (nota == null)
+                    return;
+
+                nsefaz.Text = nota.nr_Nota;
+                serie.Text = nota.Serie;
+                status.Text = nota.Status;
+                chavedeacesso.Text = nota.ChaveDeAcesso;
+            };
+
             btnDetalhes.Click += (s, e) =>
             {
                 //Nota.disableCampos = true;
@@ -180,6 +193,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 _modelNota = checkNota;
 
                 CartaCorrecaoAdd.tela = "Email";
+                CartaCorrecaoAdd.idNota = idNota;
                 CartaCorrecaoAdd f = new CartaCorrecaoAdd();
                 f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)

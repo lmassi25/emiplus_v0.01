@@ -2,6 +2,7 @@
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -212,7 +213,7 @@ namespace Emiplus.Controller
         {
             var data = new Model.Titulo().Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .Select("titulo.id", "titulo.total", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto")
+                .Select("titulo.id", "titulo.total", "titulo.recebido", "titulo.vencimento", "formapgto.nome as formapgto", "formapgto.id as formapgtoid")
                 .Where("titulo.excluir", 0)
                 .Where("titulo.id_pedido", idPedido)
                 .OrderByDesc("titulo.id");
@@ -272,6 +273,11 @@ namespace Emiplus.Controller
         {
             Table.Rows.Clear();
 
+            var fpgtos = new ArrayList();
+            var fpgto = new Model.FormaPagamento().FindAll().WhereFalse("excluir").OrderByDesc("id").Get();
+            foreach (var item in fpgto)
+                fpgtos.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
+
             //var titulos = new Model.Titulo();
             //var data = titulos.Query()
             //    .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
@@ -283,15 +289,36 @@ namespace Emiplus.Controller
 
             var data = GetDataPgtosLancados(idPedido);
 
-            foreach (var item in data)
+            //foreach (var item in data)
+            //{
+            //    Table.Rows.Add(
+            //        item.ID,
+            //        item.FORMAPGTO,
+            //        Validation.ConvertDateToForm(item.VENCIMENTO),
+            //        Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+            //        new Bitmap(Properties.Resources.bin16x)
+            //    );
+            //}
+
+            for (int i = 0; i < data.Count(); i++)
             {
-                Table.Rows.Add(
-                    item.ID,
-                    item.FORMAPGTO,
-                    Validation.ConvertDateToForm(item.VENCIMENTO),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-                    new Bitmap(Properties.Resources.bin16x)
-                );
+                var item = data.ElementAt(i);
+                int n = Table.Rows.Add();
+
+                DataGridViewComboBoxCell cellFPGTOS = new DataGridViewComboBoxCell();
+                if (fpgtos.Count > 0)
+                {
+                    cellFPGTOS.ValueMember = "Id";
+                    cellFPGTOS.DisplayMember = "Nome";
+                    cellFPGTOS.Style.NullValue = item.FORMAPGTO;
+                    cellFPGTOS.DataSource = fpgtos;
+                }
+
+                Table.Rows[n].Cells[0].Value = item.ID;
+                Table.Rows[n].Cells[1] = cellFPGTOS;
+                Table.Rows[n].Cells[2].Value = Validation.ConvertDateToForm(item.VENCIMENTO);
+                Table.Rows[n].Cells[3].Value = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), false);
+                Table.Rows[n].Cells[4].Value = new Bitmap(Properties.Resources.bin16x);
             }
         }
 
