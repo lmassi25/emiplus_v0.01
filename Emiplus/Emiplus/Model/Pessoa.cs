@@ -66,6 +66,7 @@
             Id = 0;
             Tipo = tipo;
             Excluir = 0;
+            Atualizado = DateTime.Now;
             Nome = values[0];
 
             Random rnd = new Random();
