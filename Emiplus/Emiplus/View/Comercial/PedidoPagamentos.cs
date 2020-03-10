@@ -15,8 +15,9 @@ namespace Emiplus.View.Comercial
     public partial class PedidoPagamentos : Form
     {
         #region V 
-        
-        MaskedTextBox mtxt;
+
+        MaskedTextBox mtxt = new MaskedTextBox();
+        TextBox mtxt2 = new TextBox();
 
         private int IdPedido = AddPedidos.Id;
         public static bool hideFinalizar { get; set; } = false;
@@ -437,13 +438,18 @@ namespace Emiplus.View.Comercial
             else
                 return;
 
-            if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
+            if (checkNota.Status == "Falha")
+            {
+                Alert.Message("Ação não permitida", "Entre em contato com o suporte técnico", Alert.AlertType.warning);
+                return;
+            }
+            else if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
             {
                 OpcoesCfe.idPedido = IdPedido;
                 OpcoesCfe f = new OpcoesCfe();
                 f.TopMost = true;
                 f.Show();
-                
+
             }
             else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
             {
@@ -586,10 +592,12 @@ namespace Emiplus.View.Comercial
         public void Eventos()
         {
             Load += (s, e) =>
-            {
-                mtxt = new MaskedTextBox();
+            {                
                 mtxt.Visible = false;
+                mtxt2.Visible = false;
+
                 GridListaFormaPgtos.Controls.Add(mtxt);
+                GridListaFormaPgtos.Controls.Add(mtxt2);
 
                 AtualizarDados();
 
@@ -694,7 +702,13 @@ namespace Emiplus.View.Comercial
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
-            
+
+            mtxt2.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Masks.MaskPrice(ref txt);
+            };
+
             GridListaFormaPgtos.CellDoubleClick += (s, e) =>
             {
                 if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
@@ -710,20 +724,42 @@ namespace Emiplus.View.Comercial
 
             GridListaFormaPgtos.CellBeginEdit += (s, e) =>
             {
-                if (e.ColumnIndex != 2)
-                    return;
+                if (e.ColumnIndex == 2)
+                {
+                    //-----mtxt
 
-                mtxt.Mask = "##/##/####";
+                    mtxt.Mask = "##/##/####";
 
-                Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                mtxt.Location = rec.Location;
-                mtxt.Size = rec.Size;
-                mtxt.Text = "";
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    mtxt.Location = rec.Location;
+                    mtxt.Size = rec.Size;
+                    mtxt.Text = "";
 
-                if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
-                    mtxt.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
+                    if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
+                        mtxt.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
 
-                mtxt.Visible = true;
+                    mtxt.Visible = true;
+                }
+
+                if (e.ColumnIndex == 3)
+                {
+                    //-----mtxt2
+
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    mtxt2.Location = rec.Location;
+                    mtxt2.Size = rec.Size;
+                    mtxt2.Text = "";
+
+                    if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
+                        mtxt2.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
+
+                    mtxt2.Visible = true;
+                }
+            };
+
+            GridListaFormaPgtos.CellValidating += (s, e) =>
+            {
+                
             };
 
             GridListaFormaPgtos.CellEndEdit += (s, e) =>
@@ -733,6 +769,19 @@ namespace Emiplus.View.Comercial
                     GridListaFormaPgtos.CurrentCell.Value = mtxt.Text;
                     mtxt.Visible = false;
                 }
+
+                if (mtxt2.Visible)
+                {
+                    GridListaFormaPgtos.CurrentCell.Value = mtxt2.Text;
+                    mtxt2.Visible = false;
+                }
+
+                //DateTime parsed;
+                //if (!DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
+                //{
+                //    GridListaFormaPgtos.CancelEdit();
+                //    return;
+                //}
 
                 int ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
 
@@ -744,7 +793,11 @@ namespace Emiplus.View.Comercial
                 if (titulo == null)
                     return;
 
-                titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                //if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
+                //{
+                //    titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                //}
+
                 titulo.Id_FormaPgto = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column2"].Selected);                
                 titulo.Total = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
                 titulo.Recebido = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
@@ -765,6 +818,12 @@ namespace Emiplus.View.Comercial
                 {
                     Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
                     mtxt.Location = rec.Location;
+                }
+
+                if (mtxt2.Visible)
+                {
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    mtxt2.Location = rec.Location;
                 }
             };
 

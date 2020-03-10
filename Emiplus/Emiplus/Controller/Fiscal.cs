@@ -1486,10 +1486,20 @@ namespace Emiplus.Controller
 
                     Random rdn = new Random();
                     _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), arq.OuterXml));
-
+                    
                     StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + "_" + Validation.RandomSecurity() + ".txt", false, Encoding.UTF8);
                     txt.Write(_msg);
                     txt.Close();
+
+                    if(String.IsNullOrEmpty(_msg))
+                    {                        
+                        _nota.Status = "Falha";
+                        _nota.Save(_nota, false);
+
+                        _msg = "SAT não retornou mensagem. É possível que este cupom esteja autorizado ou não. Entre em contato com o suporte técnico!";
+
+                        break;
+                    }
 
                     if (_msg.Contains("Emitido com sucesso"))
                     {
