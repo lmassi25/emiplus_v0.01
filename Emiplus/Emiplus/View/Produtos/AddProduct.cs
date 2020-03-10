@@ -429,12 +429,24 @@ namespace Emiplus.View.Produtos
 
             valorvenda.TextChanged += (s, e) =>
             {
+                if (Validation.ConvertToDouble(valorcompra.Text) == 0)
+                    return;
+
+                if (Validation.ConvertToDouble(valorvenda.Text) == 0)
+                    return;
+
                 var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
                 precoMedio.Text = $"{Validation.ConvertToDouble(Validation.RoundTwo(media))}%";
             };
 
             valorcompra.TextChanged += (s, e) =>
             {
+                if (Validation.ConvertToDouble(valorcompra.Text) == 0)
+                    return;
+
+                if (Validation.ConvertToDouble(valorvenda.Text) == 0)
+                    return;
+
                 var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
                 precoMedio.Text = Validation.Price(media);
             };

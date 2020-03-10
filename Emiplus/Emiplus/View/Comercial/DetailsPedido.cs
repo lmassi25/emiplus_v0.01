@@ -119,7 +119,12 @@ namespace Emiplus.View.Comercial
             else
                 return;
 
-            if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
+            if (checkNota.Status == "Falha")
+            {
+                Alert.Message("Ação não permitida", "Entre em contato com o suporte técnico", Alert.AlertType.warning);
+                return;
+            }
+            else if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
             {
                 OpcoesCfe.idPedido = idPedido;
                 OpcoesCfe f = new OpcoesCfe();
