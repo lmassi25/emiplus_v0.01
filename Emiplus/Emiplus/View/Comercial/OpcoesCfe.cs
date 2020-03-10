@@ -84,6 +84,15 @@ namespace Emiplus.View.Comercial
                     btnDetalhes.Visible = false;
                     Imprimir.Location = new Point(330, 303);
                 }
+
+                var nota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
+
+                if (nota == null)
+                    return;
+
+                nsefaz.Text = nota.nr_Nota;
+                status.Text = nota.Status;
+                chavedeacesso.Text = nota.ChaveDeAcesso;
             };
 
             //Emitir.KeyDown += KeyDowns;

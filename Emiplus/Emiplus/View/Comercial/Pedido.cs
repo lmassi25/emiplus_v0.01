@@ -189,7 +189,7 @@ namespace Emiplus.View.Comercial
                     //OpcoesNfeRapida.idPedido = 0;
                     Nota nota = new Nota();
                     nota.ShowDialog();
-                    Filter();
+                    //Filter();
                     return;
                 }
                 else
@@ -197,7 +197,7 @@ namespace Emiplus.View.Comercial
                     AddPedidos.Id = 0;
                     AddPedidos NovoPedido = new AddPedidos();
                     NovoPedido.ShowDialog();
-                    Filter();
+                    //Filter();
                     return;
                 }
             }
@@ -274,7 +274,7 @@ namespace Emiplus.View.Comercial
                     detailsPedido.ShowDialog();
                 }
 
-                Filter();
+                //Filter();
             }
             else
             {
@@ -481,7 +481,7 @@ namespace Emiplus.View.Comercial
                         if (Home.pedidoPage == "Vendas" && item2.STATUSNFE == "Cancelada")
                             n_nfe = "";
                         else
-                            n_nfe = item2.NFE;
+                            n_nfe = item2.NFE + " / " + item2.SERIE;
 
                         if (Home.pedidoPage == "Notas")
                             statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
