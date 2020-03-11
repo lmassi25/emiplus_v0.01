@@ -757,11 +757,6 @@ namespace Emiplus.View.Comercial
                 }
             };
 
-            GridListaFormaPgtos.CellValidating += (s, e) =>
-            {
-                
-            };
-
             GridListaFormaPgtos.CellEndEdit += (s, e) =>
             {
                 if (mtxt.Visible)
@@ -776,13 +771,6 @@ namespace Emiplus.View.Comercial
                     mtxt2.Visible = false;
                 }
 
-                //DateTime parsed;
-                //if (!DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
-                //{
-                //    GridListaFormaPgtos.CancelEdit();
-                //    return;
-                //}
-
                 int ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
 
                 if (ID == 0)
@@ -793,12 +781,12 @@ namespace Emiplus.View.Comercial
                 if (titulo == null)
                     return;
 
-                //if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
-                //{
-                //    titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
-                //}
-
-                titulo.Id_FormaPgto = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column2"].Selected);                
+                DateTime parsed;
+                if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
+                    titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                else
+                    GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value = Validation.ConvertDateToForm(titulo.Vencimento);
+              
                 titulo.Total = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
                 titulo.Recebido = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
 

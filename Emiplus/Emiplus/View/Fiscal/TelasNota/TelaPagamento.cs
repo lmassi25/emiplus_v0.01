@@ -20,6 +20,9 @@ namespace Emiplus.View.Fiscal.TelasNota
         private Controller.Titulo _controllerTitulo = new Controller.Titulo();
         private Model.Nota _mNota = new Model.Nota();
 
+        MaskedTextBox mtxt = new MaskedTextBox();
+        TextBox mtxt2 = new TextBox();
+
         public TelaPagamento()
         {
             InitializeComponent();
@@ -54,12 +57,14 @@ namespace Emiplus.View.Fiscal.TelasNota
             }
         }
 
-        public void AtualizarDados()
+        public void AtualizarDados(Boolean grid = true)
         {
             Dinheiro.Select();
 
             _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
-            _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
+
+            if (grid)
+                _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
 
             dynamic devolucoes = _mPedido.Query()
                 .SelectRaw("SUM(total) as total")
@@ -293,6 +298,12 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             Load += (s, e) =>
             {
+                mtxt.Visible = false;
+                mtxt2.Visible = false;
+
+                GridListaFormaPgtos.Controls.Add(mtxt);
+                GridListaFormaPgtos.Controls.Add(mtxt2);
+
                 AtualizarDados();
 
                 if (_mNota.Status != "Pendente")
@@ -353,6 +364,105 @@ namespace Emiplus.View.Fiscal.TelasNota
             Next.Click += (s, e) => OpenForm.Show<TelaFinal>(this);
 
             Back.Click += (s, e) => Close();
+            
+            mtxt2.TextChanged += (s, e) =>
+            {
+                TextBox txt = (TextBox)s;
+                Masks.MaskPrice(ref txt);
+            };
+
+            GridListaFormaPgtos.CellBeginEdit += (s, e) =>
+            {
+                if (e.ColumnIndex == 2)
+                {
+                    //-----mtxt
+
+                    mtxt.Mask = "##/##/####";
+
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    mtxt.Location = rec.Location;
+                    mtxt.Size = rec.Size;
+                    mtxt.Text = "";
+
+                    if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
+                        mtxt.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
+
+                    mtxt.Visible = true;
+                }
+
+                if (e.ColumnIndex == 3)
+                {
+                    //-----mtxt2
+
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    mtxt2.Location = rec.Location;
+                    mtxt2.Size = rec.Size;
+                    mtxt2.Text = "";
+
+                    if (GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value != null)
+                        mtxt2.Text = GridListaFormaPgtos[e.ColumnIndex, e.RowIndex].Value.ToString();
+
+                    mtxt2.Visible = true;
+                }
+            };
+
+            GridListaFormaPgtos.CellEndEdit += (s, e) =>
+            {
+                if (mtxt.Visible)
+                {
+                    GridListaFormaPgtos.CurrentCell.Value = mtxt.Text;
+                    mtxt.Visible = false;
+                }
+
+                if (mtxt2.Visible)
+                {
+                    GridListaFormaPgtos.CurrentCell.Value = mtxt2.Text;
+                    mtxt2.Visible = false;
+                }
+
+                int ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
+
+                if (ID == 0)
+                    return;
+
+                var titulo = new Model.Titulo().FindById(ID).FirstOrDefault<Model.Titulo>();
+
+                if (titulo == null)
+                    return;
+
+                DateTime parsed;
+                if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
+                    titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                else
+                    GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value = Validation.ConvertDateToForm(titulo.Vencimento);
+
+                titulo.Total = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
+                titulo.Recebido = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
+
+                if (titulo.Save(titulo, false))
+                {
+                    //_controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido); 
+                    Alert.Message("Pronto!", "Recebimento atualizado com sucesso.", Alert.AlertType.success);
+                    AtualizarDados(false);
+                }
+                else
+                    Alert.Message("Opsss!", "Algo deu errado ao atualizar o recebimento.", Alert.AlertType.error);
+            };
+
+            GridListaFormaPgtos.Scroll += (s, e) =>
+            {
+                if (mtxt.Visible)
+                {
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    mtxt.Location = rec.Location;
+                }
+
+                if (mtxt2.Visible)
+                {
+                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    mtxt2.Location = rec.Location;
+                }
+            };
         }
     }
 }
