@@ -54,6 +54,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GridListaFormaPgtos = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExcluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.troco = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
@@ -106,11 +111,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnClearRecebimentos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExcluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -480,6 +480,39 @@
             this.GridListaFormaPgtos.Size = new System.Drawing.Size(448, 105);
             this.GridListaFormaPgtos.TabIndex = 7;
             // 
+            // colID
+            // 
+            this.colID.HeaderText = "Id";
+            this.colID.Name = "colID";
+            this.colID.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "Forma de pagamento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column1.HeaderText = "Vencimento";
+            this.Column1.Name = "Column1";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Valor";
+            this.Column3.Name = "Column3";
+            // 
+            // colExcluir
+            // 
+            this.colExcluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colExcluir.HeaderText = "";
+            this.colExcluir.Name = "colExcluir";
+            this.colExcluir.ToolTipText = "Remover";
+            this.colExcluir.Width = 30;
+            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -544,9 +577,9 @@
             this.pagamentos.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pagamentos.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pagamentos.Location = new System.Drawing.Point(305, 7);
+            this.pagamentos.Location = new System.Drawing.Point(211, 7);
             this.pagamentos.Name = "pagamentos";
-            this.pagamentos.Size = new System.Drawing.Size(136, 25);
+            this.pagamentos.Size = new System.Drawing.Size(230, 25);
             this.pagamentos.TabIndex = 151;
             this.pagamentos.Text = "R$ 00.00";
             this.pagamentos.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1380,39 +1413,6 @@
             this.btnClearRecebimentos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnClearRecebimentos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnClearRecebimentos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "Id";
-            this.colID.Name = "colID";
-            this.colID.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Forma de pagamento";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.HeaderText = "Vencimento";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Valor";
-            this.Column3.Name = "Column3";
-            // 
-            // colExcluir
-            // 
-            this.colExcluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colExcluir.HeaderText = "";
-            this.colExcluir.Name = "colExcluir";
-            this.colExcluir.ToolTipText = "Remover";
-            this.colExcluir.Width = 30;
             // 
             // PedidoPagamentos
             // 

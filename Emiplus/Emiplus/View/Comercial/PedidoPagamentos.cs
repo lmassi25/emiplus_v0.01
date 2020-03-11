@@ -207,6 +207,18 @@ namespace Emiplus.View.Comercial
             if (CaixaAnterior > 0)
                 Home.idCaixa = CaixaAnterior;
 
+            _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+            if (_mPedido != null)
+            {
+                Console.WriteLine(_controllerTitulo.GetLancados(IdPedido));
+                if (_controllerTitulo.GetLancados(IdPedido) < Validation.Round(_mPedido.Total))
+                    _mPedido.status = 2; //RECEBIMENTO PENDENTE
+                else
+                    _mPedido.status = 1; //FINALIZADO\RECEBIDO
+
+                _mPedido.Save(_mPedido);
+            }
+
             AtualizarDados();
         }
 
@@ -826,6 +838,10 @@ namespace Emiplus.View.Comercial
                 }
 
                 AtualizarDados();
+
+                _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                _mPedido.status = 2;
+                _mPedido.Save(_mPedido);
             };
             
             btnNfe.Click += (s, e) =>

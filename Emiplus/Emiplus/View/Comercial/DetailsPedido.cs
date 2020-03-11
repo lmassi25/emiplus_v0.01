@@ -275,10 +275,8 @@ namespace Emiplus.View.Comercial
                 Pedido.Id = idPedido;
                 Console.WriteLine(_modelPedido.Total);
                 Console.WriteLine(_controllerTitulo.GetLancados(idPedido));
-                if (_controllerTitulo.GetLancados(idPedido) < _modelPedido.Total)
+                if (_controllerTitulo.GetLancados(idPedido) < Validation.Round(_modelPedido.Total))
                 {
-                    //AlertOptions.Message("Atenção!", "Total da venda é diferente do total recebido. Verifique os lançamentos.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
-                    //return;
                     Pedido.status = 2; //RECEBIMENTO PENDENTE
                 }
                 else
@@ -289,7 +287,6 @@ namespace Emiplus.View.Comercial
 
             Activated += (s, e) =>
             {
-                //Console.WriteLine("DetailsPedido: " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
                 LoadData();
             };
 
