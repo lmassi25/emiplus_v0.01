@@ -552,6 +552,7 @@ namespace Emiplus.View.Comercial
                     {
                         BuscarProduto.Text = PedidoModalItens.NomeProduto;
                         Preco.Text = Validation.FormatPrice(PedidoModalItens.ValorVendaProduto);
+                        PedidoModalItens.NomeProduto = "";
 
                         if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
                         {
@@ -750,6 +751,7 @@ namespace Emiplus.View.Comercial
             //{
             //}));
             //e.SuppressKeyPress = true;
+            
             switch (e.KeyCode)
             {
                 case Keys.Up:
@@ -973,11 +975,13 @@ namespace Emiplus.View.Comercial
             };
 
             Quantidade.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+            
             Preco.TextChanged += (s, e) =>
             {
                 TextBox txt = (TextBox)s;
                 Masks.MaskPrice(ref txt);
             };
+
             Preco.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -993,9 +997,7 @@ namespace Emiplus.View.Comercial
                     else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text))
                         Preco.Focus();
                     else
-                    {
                         LoadItens();
-                    }
                 }
             };
 
