@@ -230,7 +230,10 @@ namespace Emiplus.Controller
             if (tipo == "Cupons")
             {
                 query.Where("nota.tipo", "CFe");
-                query.Where("nota.status", "<>", "Pendente");
+                query.Where(
+                    q => q.Where("nota.status", "<>", "Pendente").Where("nota.status", "<>", "Falha")
+                );
+                //query.Where("nota.status", "<>", "Pendente");
             }
 
             if (usuario != 0)
@@ -246,11 +249,9 @@ namespace Emiplus.Controller
                         case 1:
                             query.Where("nota.status", null);
                             break;
-
                         case 2:
                             query.Where("nota.status", "Autorizada");
                             break;
-
                         case 3:
                             query.Where("nota.status", "Cancelada");
                             break;
@@ -348,7 +349,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal)
+        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal, bool noFilterData, int status = 2)
         {
             var query = new Model.Nota().Query();
 
@@ -356,12 +357,37 @@ namespace Emiplus.Controller
                 .LeftJoin("pedido", "pedido.id", "nota.id_pedido")
                 .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
                 .Where("nota.excluir", 0)
-                .Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial))
-                .Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal));
+                .Where("pedido.excluir", 0);
+
+            if (!noFilterData)
+            {
+                query.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial));
+                query.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal));
+            }
 
             query.Where("nota.tipo", tipo);
-            query.Where("nota.status", "Autorizada");
-            query.Where("pedido.tipo", "Vendas");
+
+            if (status != 0)
+            {
+                switch (status)
+                {
+                    case 1:
+                        query.Where("nota.status", "Pendente");
+                        break;
+
+                    case 2:
+                        query.Where("nota.status", "Autorizada");
+                        break;
+
+                    case 3:
+                        query.Where("nota.status", "Cancelada");
+                        break;
+                    case 99:
+                        if (tipo == "CFe")
+                            query.Where("nota.status", "<>", "Pendente");
+                        break;
+                }
+            }
 
             return query.Get();
         }

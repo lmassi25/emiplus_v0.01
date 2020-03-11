@@ -327,9 +327,10 @@ namespace Emiplus.View.Comercial
                 var status = new ArrayList();
                 status.Add(new { ID = 99, NOME = "Todos" });
 
-                if (Home.pedidoPage == "Notas")
+                if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
                 {
-                    status.Add(new { ID = 1, NOME = "Pendentes" });
+                    if (Home.pedidoPage == "Notas")
+                        status.Add(new { ID = 1, NOME = "Pendentes" });
                     status.Add(new { ID = 2, NOME = "Autorizadas" });
                     status.Add(new { ID = 3, NOME = "Canceladas" });
                 }
@@ -426,16 +427,7 @@ namespace Emiplus.View.Comercial
                 Filter();
             };
 
-            imprimir.Click += async (s, e) =>
-            {
-                if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
-                {
-                    Alert.Message("Ação não permitida", "Relatório não disponível", Alert.AlertType.warning);
-                    return;
-                }
-
-                await RenderizarAsync();
-            };
+            imprimir.Click += async (s, e) => await RenderizarAsync();
 
             if (Home.pedidoPage == "Vendas")
                 btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=Z2pkMEAAk4Q");
@@ -450,9 +442,23 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            IEnumerable<dynamic> dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
+            //IEnumerable<dynamic> dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
+
+            IEnumerable<dynamic> dados;
+            switch (Home.pedidoPage)
+            {
+                case "Cupons":
+                case "Notas":
+                    dados = await _cPedido.GetDataTableNotas(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
+                    break;
+
+                default:
+                    dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
+                    break;
+            }
 
             ArrayList data = new ArrayList();
+            double total = 0;
             foreach (var item in dados)
             {
                 var statusNfePedido = "";
@@ -501,6 +507,8 @@ namespace Emiplus.View.Comercial
 
                 #endregion N° SEFAZ
 
+
+                total = Validation.ConvertToDouble(item.TOTAL) + Validation.ConvertToDouble(item.TOTAL);
                 data.Add(new
                 {
                     //.Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
@@ -511,7 +519,9 @@ namespace Emiplus.View.Comercial
                     n_nfe = n_nfe,
                     n_cfe = n_cfe,
                     COLABORADOR = item.COLABORADOR,
-                    CRIADO = item.CRIADO
+                    CRIADO = item.CRIADO,
+                    STATUS = statusNfePedido,
+                    CHAVEDEACESSO = item.CHAVEDEACESSO
                 });
             }
 
@@ -526,7 +536,7 @@ namespace Emiplus.View.Comercial
                 });
             }
 
-            IEnumerable<dynamic> dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text);
+            IEnumerable<dynamic> dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked, Validation.ConvertToInt32(Status.SelectedValue));
             ArrayList data3 = new ArrayList();
             foreach (var item in dados3)
             {
@@ -537,7 +547,7 @@ namespace Emiplus.View.Comercial
                 });
             }
             
-            IEnumerable<dynamic> dados4 = _cPedido.GetTotaisNota("CFe", dataInicial.Text, dataFinal.Text);
+            IEnumerable<dynamic> dados4 = _cPedido.GetTotaisNota("CFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked, Validation.ConvertToInt32(Status.SelectedValue));
             ArrayList data4 = new ArrayList();
             foreach (var item in dados4)
             {
@@ -553,8 +563,13 @@ namespace Emiplus.View.Comercial
                 Alert.Message("Opps", "Não encontramos os arquivos base de relatório", Alert.AlertType.warning);
                 return;
             }
+            
+            Template html;
+            if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
+                html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Notas.html"));
+            else
+                html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pedidos.html"));
 
-            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pedidos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new
             {
                 INCLUDE_PATH = Program.PATH_BASE,

@@ -1535,9 +1535,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\Relatorios\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Assets\Images\icons\info %281%29.png" />
     <None Include="Assets\Images\icons\success.png" />
