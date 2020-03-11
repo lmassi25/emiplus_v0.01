@@ -134,7 +134,11 @@ namespace Emiplus.Controller
 
                 int[] numeros = parcela.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
 
-                data.Total = Validation.Round(valor / numeros.Count());
+                int qtdDecimall = Validation.GetNumberOfDigits((decimal)valor);
+                int qtdD = qtdDecimall + 1;
+                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), qtdD);
+
+                //data.Total = Validation.Round(valor / numeros.Count());
 
                 for (int i = 0; i < numeros.Length; i++)
                 {
@@ -152,7 +156,10 @@ namespace Emiplus.Controller
             }
             else if (Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3)
             {
-                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela));
+                int qtdDecimall = Validation.GetNumberOfDigits((decimal)valor);
+                int qtdD = qtdDecimall + 1;
+                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), qtdD);
+
                 //data.Total = valor / Validation.ConvertToInt32(parcela);
 
                 int count = 1;

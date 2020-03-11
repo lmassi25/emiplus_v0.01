@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
+using System;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
@@ -24,9 +25,14 @@ namespace Emiplus.View.Comercial
             _mPedido = _mPedido.Query().Where("id", idPedido).FirstOrDefault<Model.Pedido>();
             _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<Model.PedidoItem>();
 
-            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / _mPedido.Total);
-            var soma2 = Validation.Round(soma1 / 100);
-            var soma3 = Validation.Round(Validation.ConvertToDouble(total) * soma2);
+            //decimal argument = (decimal)_mPedido.Total;
+            //int qtdDecimal = BitConverter.GetBytes(decimal.GetBits(argument)[3])[2];
+            int qtdDecimall = Validation.GetNumberOfDigits((decimal)_mPedido.Total);
+            int qtdD = qtdDecimall + 1;
+            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / _mPedido.Total, qtdD);
+            var soma2 = Validation.Round(soma1 / 100, qtdD);
+            var soma3 = Validation.Round(Validation.ConvertToDouble(total) * soma2, qtdD);
+            var soma4 = Validation.Round(soma3);
 
             _mPedidoItens.Id = idItem;
             _mPedidoItens.Tipo = "Produtos";

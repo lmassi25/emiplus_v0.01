@@ -31,14 +31,21 @@ namespace Emiplus.Data.Helpers
                 return valueF + " " + valueE;
         }
 
+        public static int GetNumberOfDigits(decimal d)
+        {
+            decimal abs = Math.Abs(d);
+
+            return abs < 1 ? 0 : (int)(Math.Log10(decimal.ToDouble(abs)) + 1);
+        }
+
         /// <summary>
         /// Arredondamento para 3 casas decimais
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static double Round(double value)
+        public static double Round(double value, int casasDecimais = 2)
         {
-            return Math.Round(value, 3, MidpointRounding.AwayFromZero);
+            return Math.Round(value, casasDecimais, MidpointRounding.AwayFromZero);
         }
 
         public static double RoundTwo(double value)
