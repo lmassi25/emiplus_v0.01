@@ -740,14 +740,10 @@ namespace Emiplus.Controller
                         string qrcode = "", total_qrcode = "";
                         total_qrcode = Validation.FormatPriceWithDot(_pedido.Total);
 
-                        if (!String.IsNullOrEmpty(_pedido.cfe_cpf))
-                        {
+                        if (!String.IsNullOrEmpty(_pedido.cfe_cpf))                        
                             qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + _pedido.cfe_cpf + "|" + _nota.assinatura_qrcode;
-                        }
-                        else
-                        {
+                        else                        
                             qrcode = _nota.ChaveDeAcesso.Replace("CFe", "") + "|" + _nota.Criado.Year.ToString("0000") + _nota.Criado.Month.ToString("00") + _nota.Criado.Day.ToString("00") + _nota.Criado.Hour.ToString("00") + _nota.Criado.Minute.ToString("00") + _nota.Criado.Second.ToString("00") + "|" + total_qrcode + "|" + "" + "|" + _nota.assinatura_qrcode;
-                        }
 
                         //"|20191203095133||iat1ELc5/DZYefmF7Qpb/a9rtAzGynVaLhSAhzkjv4OdqUliAro2e4u9Ep3QlploQWQMJ4dYmEDRM5TeRJ8GY5HoKmIRyQKQ/CEVN53nD5vJ3KBFmLl33n3cXRXJaRxDC6l5GBmUZx1VFBgP82FdM16V2a5CBS8bWP5etbbgsnR08t7Wf3P+R9ORVPV+Lpj2n1FQSahyyBUGGpGAES69EU5sKHVSKDfxEWsuyWm8/LnX6t/12lqYsHiAEZoDjIcYVXlbSDza2tq2mG3TRQ9AXVyxu6BT+3kATuTvMzH/9W9PkYsipu5+OShW7y88K0u5eDmMXW9+NPE2ieuLdWDG0Q=="
                         printer.QrCode(qrcode);
