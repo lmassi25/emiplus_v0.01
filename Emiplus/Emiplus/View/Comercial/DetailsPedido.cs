@@ -59,7 +59,6 @@ namespace Emiplus.View.Comercial
                     txtTroco.Visible = false;
                     txtRecebimento.Visible = false;
                     txtAcrescimo.Visible = false;
-                    panel8.Visible = false;
                     nrPedido.Left = 542;
                     break;
 
@@ -236,7 +235,7 @@ namespace Emiplus.View.Comercial
                     break;
 
                 case Keys.F9:
-                    if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
+                    if (UserPermission.SetControlVisual(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
                         return;
 
                     Cfe();
@@ -249,7 +248,7 @@ namespace Emiplus.View.Comercial
                         return;
                     }
 
-                    if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                    if (UserPermission.SetControlVisual(btnNfe, pictureBox4, "fiscal_emissaonfe"))
                         return;
 
                     Nfe();
@@ -325,7 +324,7 @@ namespace Emiplus.View.Comercial
                     return;
                 }
 
-                if (UserPermission.SetControl(btnNfe, pictureBox4, "fiscal_emissaonfe"))
+                if (UserPermission.SetControlVisual(btnNfe, pictureBox4, "fiscal_emissaonfe"))
                     return;
 
                 Nfe();
@@ -333,7 +332,7 @@ namespace Emiplus.View.Comercial
 
             btnCFeSat.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
+                if (UserPermission.SetControlVisual(btnCFeSat, pictureBox6, "fiscal_emissaocfe"))
                     return;
 
                 Cfe();

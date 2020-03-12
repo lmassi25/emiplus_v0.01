@@ -14,6 +14,8 @@ namespace Emiplus.View.Financeiro
         private Model.Caixa _modelCaixa = new Model.Caixa();
         private Model.CaixaMovimentacao _modelCaixaMov = new Model.CaixaMovimentacao();
 
+        public static bool fecharImprimir { get; set; }
+
         public FecharCaixa()
         {
             InitializeComponent();
@@ -47,6 +49,9 @@ namespace Emiplus.View.Financeiro
             Load += (s, e) =>
             {
                 LoadData();
+
+                // Valor padrão 'false'
+                fecharImprimir = false;
             };
 
             btnFinalizar.Click += (s, e) =>
@@ -63,6 +68,14 @@ namespace Emiplus.View.Financeiro
 
             btnFinalizarImprimir.Click += (s, e) =>
             {
+                _modelCaixa.Tipo = "Fechado";
+                _modelCaixa.Fechado = DateTime.Now;
+                if (_modelCaixa.Save(_modelCaixa, false))
+                {
+                    DialogResult = DialogResult.OK;
+                    fecharImprimir = true;
+                    Close();
+                }
             };
 
             btnCancelar.Click += (s, e) => Close();
