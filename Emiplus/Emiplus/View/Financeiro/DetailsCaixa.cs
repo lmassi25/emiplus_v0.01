@@ -53,7 +53,9 @@ namespace Emiplus.View.Financeiro
             {
                 panel7.BackColor = Color.FromArgb(192, 0, 0);
                 txtFechado.Text = Validation.ConvertDateToForm(_modelCaixa.Fechado, true);
-                FecharCaixa.Enabled = false;
+                FecharCaixa.Visible = false;
+                btnLancamentos.Visible = false;
+                btnEditar.Visible = false;
             }
 
             LoadUsuario(_modelCaixa.Usuario);
@@ -309,8 +311,7 @@ namespace Emiplus.View.Financeiro
                 if (GridLista.SelectedRows[0].Cells["Descrição"].Value.ToString().Contains("Venda"))
                 {
                     DetailsPedido.idPedido = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    DetailsPedido detailsPedido = new DetailsPedido();
-                    detailsPedido.ShowDialog();
+                    OpenForm.Show<DetailsPedido>(this);
                     return;
                 }
 
@@ -349,25 +350,26 @@ namespace Emiplus.View.Financeiro
             KeyDown += KeyDowns;
             KeyPreview = true;
 
-            Load += (s, e) => {
-                LoadData();
-            };
-
             Shown += async (s, e) =>
             {
                 Resolution.SetScreenMaximized(this);
 
+                Refresh();
+                LoadData();
+                
                 await DataTableAsync();
             };
 
-            GridLista.CellDoubleClick += (s, e) => EditMovimentacao();
-
-            GridLista2.CellDoubleClick += (s, e) =>
+            if (_modelCaixa.Tipo != "Fechado")
             {
-                DetailsPedido.idPedido = Convert.ToInt32(GridLista2.SelectedRows[0].Cells["N° Venda"].Value);
-                DetailsPedido detailsPedido = new DetailsPedido();
-                detailsPedido.ShowDialog();
-            };
+                GridLista.CellDoubleClick += (s, e) => EditMovimentacao();
+
+                GridLista2.CellDoubleClick += (s, e) =>
+                {
+                    DetailsPedido.idPedido = Convert.ToInt32(GridLista2.SelectedRows[0].Cells["N° Venda"].Value);
+                    OpenForm.Show<DetailsPedido>(this);
+                };
+            }
 
             btnEditar.Click += (s, e) => EditMovimentacao();
 
@@ -389,7 +391,7 @@ namespace Emiplus.View.Financeiro
                 }
             };
 
-            FecharCaixa.Click += (s, e) =>
+            FecharCaixa.Click += async (s, e) =>
             {
                 if (Restrito()) return;
 
@@ -402,6 +404,9 @@ namespace Emiplus.View.Financeiro
                     label7.Text = "Caixa Fechado";
                     FecharCaixa.Enabled = false;
                     btnLancamentos.Enabled = false;
+
+                    if (Financeiro.FecharCaixa.fecharImprimir)
+                        await RenderizarAsync();
                 }
             };
 

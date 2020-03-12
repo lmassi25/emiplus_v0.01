@@ -21,6 +21,23 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
+        public static bool SetControlVisual(VisualPlus.Toolkit.Controls.Interactivity.VisualButton button, PictureBox img, string tela, bool message = true)
+        {
+            if (!GetPermission(tela))
+            {
+                img.Visible = true;
+
+                button.Cursor = Cursors.No;
+
+                if (message)
+                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool SetControlLabel(Label button, PictureBox img, string tela)
         {
             if (!GetPermission(tela))

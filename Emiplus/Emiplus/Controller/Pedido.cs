@@ -429,7 +429,8 @@ namespace Emiplus.Controller
                 Table.Columns[3].Name = "Cliente";
 
             Table.Columns[3].Width = 150;
-            
+            Table.Columns[3].MinimumWidth = 150;
+
             Table.Columns[4].Name = "Total";
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 70;
@@ -443,9 +444,6 @@ namespace Emiplus.Controller
             Table.Columns[7].Name = "Status";
             Table.Columns[7].MinimumWidth = 150;
             Table.Columns[7].Visible = true;
-
-            //if (tipo == "Vendas" || tipo == "Notas")
-            //    Table.Columns[7].Visible = true;
 
             Table.Columns[8].Name = "EXCLUIR";
             Table.Columns[8].Visible = false;

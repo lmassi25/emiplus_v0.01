@@ -270,8 +270,9 @@ namespace Emiplus.View.Comercial
                     }
 
                     DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    DetailsPedido detailsPedido = new DetailsPedido();
-                    detailsPedido.ShowDialog();
+                    //DetailsPedido detailsPedido = new DetailsPedido();
+                    //detailsPedido.ShowDialog();
+                    OpenForm.Show<DetailsPedido>(this);
                 }
 
                 //Filter();
