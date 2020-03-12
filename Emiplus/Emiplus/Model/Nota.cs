@@ -33,7 +33,8 @@ namespace Emiplus.Model
         public string status_sync { get; set; }
         public string protocolodeuso { get; set; }
         public int id_nota { get; set; }
-
+        public string nr_serie_sat { get; set; }
+        
         #endregion CAMPOS
 
         public SqlKata.Query FindByIdPedido(int id)
