@@ -22,7 +22,7 @@ namespace Emiplus.Controller
 {
     public class Fiscal
     {
-        #region V
+        #region VARIAVEIS
 
         private int _id_empresa = 1;
         private int _id_nota;
@@ -74,7 +74,7 @@ namespace Emiplus.Controller
         private string chvAcesso = "", cDV = "", cNF = "", nNF = "", serie = "", layoutCFE = "", assinaturaCFE = "", layoutNFE = "", loteNFSE = "1";
 
         private Random rdn = new Random();
-
+       
         #endregion V
 
         private JObject userData { get; set; }
@@ -1375,8 +1375,7 @@ namespace Emiplus.Controller
                         {
                             if (_msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está REGISTRADA."))
                                 _msg = RequestResolve();
-
-                            if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
+                            else if (_msg.Contains("Autorizado o uso") || _msg.Contains("já existe no banco de dados. E não pode ser alterada pois ela está AUTORIZADA."))
                             {
                                 _msg = "Autorizado o uso da NF-e";
                                 _nota.Tipo = tipo;
@@ -1390,17 +1389,15 @@ namespace Emiplus.Controller
 
                                 done = true;
                             }
-
-                            switch (_msg)
+                            else if(String.IsNullOrEmpty(_msg))
                             {
-                                case "":
-                                    _msg = RequestConsult();
-                                    done = true;
-                                    break;
-                                    /*default:
-                                        _msg = "Opss..encontramos um erro: Sua requisição não foi processada.";
-                                        done = true;
-                                        break;*/
+                                _msg = RequestConsult();
+                                done = true;
+                            }
+                            else if (_msg.Contains("Duplicidade"))
+                            {
+                                _msg = RequestConsult();
+                                done = true;
                             }
 
                             if (!String.IsNullOrEmpty(_msg))
@@ -1480,14 +1477,18 @@ namespace Emiplus.Controller
 
                     string ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
 
+                    new Log().Add("SAT", "| Pedido " + _pedido.Id + " | Tentativa de emissão |", Log.LogType.info);
+
                     Random rdn = new Random();
                     _msg = Sat.StringFromNativeUtf8(Sat.EnviarDadosVenda(rdn.Next(999999), GetCodAtivacao(), arq.OuterXml));
                     
                     StreamWriter txt = new StreamWriter(_path_enviada + "\\" + _pedido.Id + "_" + Validation.RandomSecurity() + ".txt", false, Encoding.UTF8);
                     txt.Write(_msg);
                     txt.Close();
+                    
+                    new Log().Add("SAT", "| Pedido " + _pedido.Id + " | Retorno | " + _msg, Log.LogType.info);
 
-                    if(String.IsNullOrEmpty(_msg))
+                    if (String.IsNullOrEmpty(_msg))
                     {                        
                         _nota.Status = "Falha";
                         _nota.Save(_nota, false);
@@ -2856,7 +2857,7 @@ namespace Emiplus.Controller
 
         private string RequestConsult(string documento = "NFe")
         {
-            requestData = "encode=true&cnpj=" + _emitente.CPF + "&grupo=" + TECNOSPEED_GRUPO + "&Campos=situacao&Filtro=" + chvAcesso;
+            requestData = "encode=true&cnpj=" + Validation.CleanStringForFiscal(_emitente.CPF).Replace(".", "") + "&grupo=" + TECNOSPEED_GRUPO + "&Campos=situacao&Filtro=" + chvAcesso;
             return request(requestData, documento, "consulta", "GET");
         }
 
