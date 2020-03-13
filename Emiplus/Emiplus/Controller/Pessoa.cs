@@ -9,11 +9,11 @@
 
     internal class Pessoa : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null, int nrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true)
         {
             var search = "%" + SearchText + "%";
 
-            return new Model.Pessoa().Query()
+            var query = new Model.Pessoa().Query()
                 .Where("EXCLUIR", 0)
                 .Where("TIPO", Home.pessoaPage)
                 .Where("ID", "!=", 1)
@@ -21,10 +21,27 @@
                     q.Where("nome", "like", search)
                         .OrWhere("fantasia", "like", search)
                         .OrWhere("rg", "like", search)
-                        .OrWhere("cpf", "like", search))
-                .OrderByDesc("criado")
-                .Limit(50)
-                .GetAsync<dynamic>();
+                        .OrWhere("cpf", "like", search));
+
+            if (Ordem == "Z-A")
+                query.OrderByDesc("nome");
+            if (Ordem == "A-Z")
+                query.OrderByRaw("nome ASC");
+            if (Ordem == "Aleatório")
+                query.OrderByRaw("RAND()");
+
+            if (!TodosRegistros)
+                query.Limit(nrRegistros);
+
+            if (!Inativos)
+            {
+                query.Where
+                (
+                    q => q.Where("ativo", "<>", "1").OrWhereNull("ativo")
+                );
+            }
+
+            return query.GetAsync<dynamic>();
         }
 
         public async Task SetTableClientes(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")

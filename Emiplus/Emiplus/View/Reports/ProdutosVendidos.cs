@@ -1,6 +1,7 @@
 ﻿using DotLiquid;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
+using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata.Execution;
@@ -28,46 +29,13 @@ namespace Emiplus.View.Reports
 
         private async Task DataTableAsync() => await SetTable(GridLista);
 
-        /// <summary>
-        /// Autocomplete do campo de busca de produtos.
-        /// </summary>
-        private void AutoCompleteItens()
-        {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
-
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
-            }
-
-            BuscarProduto.AutoCompleteCustomSource = collection;
-        }
-
         private void AutoCompleteFornecedorCategorias()
         {
-            var cats = new ArrayList();
-            cats.Add(new { Id = "0", Nome = "Todas" });
-
-            var cat = new Model.Categoria().FindAll().WhereFalse("excluir").Where("tipo", "Produtos").OrderByDesc("nome").Get();
-            foreach (var item in cat)
-            {
-                cats.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
-            }
-
-            Categorias.DataSource = cats;
+            Categorias.DataSource = new Categoria().GetAll("Produtos");
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
 
-            var fornecedores = new ArrayList();
-            fornecedores.Add(new { Id = "0", Nome = "Todos" });
-
-            var fornecedor = new Model.Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
-            foreach (var item in fornecedor)
-            {
-                fornecedores.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
-            }
-
-            Fornecedor.DataSource = fornecedores;
+            Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
             Fornecedor.DisplayMember = "Nome";
             Fornecedor.ValueMember = "Id";
         }
@@ -217,7 +185,11 @@ namespace Emiplus.View.Reports
                 }
 
                 filterAll.Checked = true;
-                AutoCompleteItens();
+
+                // Autocomplete de produtos
+                collection = _mItem.AutoComplete("Produtos");
+                BuscarProduto.AutoCompleteCustomSource = collection;
+
                 AutoCompleteFornecedorCategorias();
 
                 dataInicial.Text = DateTime.Now.ToString();

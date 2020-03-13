@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProduct));
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -114,7 +115,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label1 = new System.Windows.Forms.Label();
+            this.custoMedio = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -147,7 +149,6 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel4.Controls.Add(this.Ativo);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(0, 41);
             this.panel4.Name = "panel4";
@@ -186,6 +187,52 @@
             this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // Ativo
+            // 
+            this.Ativo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Ativo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Ativo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Ativo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Ativo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.Border.HoverVisible = true;
+            this.Ativo.Border.Rounding = 20;
+            this.Ativo.Border.Thickness = 1;
+            this.Ativo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.Border.Visible = true;
+            this.Ativo.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverVisible = true;
+            this.Ativo.ButtonBorder.Rounding = 18;
+            this.Ativo.ButtonBorder.Thickness = 1;
+            this.Ativo.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.ButtonBorder.Visible = true;
+            this.Ativo.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Ativo.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonSize = new System.Drawing.Size(20, 20);
+            this.Ativo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Ativo.FalseTextToggle = "Inativo";
+            this.Ativo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ativo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.Ativo.Location = new System.Drawing.Point(549, 8);
+            this.Ativo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ProgressImage = null;
+            this.Ativo.Size = new System.Drawing.Size(67, 25);
+            this.Ativo.TabIndex = 554;
+            this.Ativo.Text = "visualToggle1";
+            this.Ativo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Ativo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Ativo.Toggled = true;
+            this.Ativo.TrueTextToggle = "Ativo";
+            this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
             // 
             // btnHelp
             // 
@@ -457,7 +504,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label17.Location = new System.Drawing.Point(128, 154);
+            this.label17.Location = new System.Drawing.Point(252, 154);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(102, 17);
             this.label17.TabIndex = 32;
@@ -497,7 +544,7 @@
             this.valorvenda.ImageSize = new System.Drawing.Size(16, 16);
             this.valorvenda.ImageVisible = false;
             this.valorvenda.ImageWidth = 35;
-            this.valorvenda.Location = new System.Drawing.Point(131, 174);
+            this.valorvenda.Location = new System.Drawing.Point(255, 174);
             this.valorvenda.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.valorvenda.Name = "valorvenda";
             this.valorvenda.PasswordChar = '\0';
@@ -829,7 +876,7 @@
             this.pictureBox11.BackColor = System.Drawing.Color.White;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
             this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
-            this.pictureBox11.Location = new System.Drawing.Point(499, 156);
+            this.pictureBox11.Location = new System.Drawing.Point(623, 155);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(15, 15);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -842,7 +889,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(376, 154);
+            this.label3.Location = new System.Drawing.Point(500, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 17);
             this.label3.TabIndex = 43;
@@ -882,7 +929,7 @@
             this.txtLimiteDesconto.ImageSize = new System.Drawing.Size(16, 16);
             this.txtLimiteDesconto.ImageVisible = false;
             this.txtLimiteDesconto.ImageWidth = 35;
-            this.txtLimiteDesconto.Location = new System.Drawing.Point(379, 174);
+            this.txtLimiteDesconto.Location = new System.Drawing.Point(503, 174);
             this.txtLimiteDesconto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.txtLimiteDesconto.Name = "txtLimiteDesconto";
             this.txtLimiteDesconto.PasswordChar = '\0';
@@ -2128,6 +2175,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.custoMedio);
             this.panel2.Controls.Add(this.btnAddCategoria);
             this.panel2.Controls.Add(this.btnAddFornecedor);
             this.panel2.Controls.Add(this.visualSeparator2);
@@ -2280,7 +2329,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(254, 154);
+            this.label4.Location = new System.Drawing.Point(378, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 17);
             this.label4.TabIndex = 47;
@@ -2321,7 +2370,7 @@
             this.precoMedio.ImageSize = new System.Drawing.Size(16, 16);
             this.precoMedio.ImageVisible = false;
             this.precoMedio.ImageWidth = 35;
-            this.precoMedio.Location = new System.Drawing.Point(255, 174);
+            this.precoMedio.Location = new System.Drawing.Point(379, 174);
             this.precoMedio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.precoMedio.Name = "precoMedio";
             this.precoMedio.PasswordChar = '\0';
@@ -2350,6 +2399,7 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.barraTitulo.Controls.Add(this.Ativo);
             this.barraTitulo.Controls.Add(this.btnSalvar);
             this.barraTitulo.Controls.Add(this.btnRemover);
             this.barraTitulo.Location = new System.Drawing.Point(0, 658);
@@ -2449,49 +2499,76 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Ativo
+            // label1
             // 
-            this.Ativo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.Ativo.BackColorState.Enabled = System.Drawing.Color.White;
-            this.Ativo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.Ativo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.Border.HoverVisible = true;
-            this.Ativo.Border.Rounding = 20;
-            this.Ativo.Border.Thickness = 1;
-            this.Ativo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Ativo.Border.Visible = true;
-            this.Ativo.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.ButtonBorder.HoverVisible = true;
-            this.Ativo.ButtonBorder.Rounding = 18;
-            this.Ativo.ButtonBorder.Thickness = 1;
-            this.Ativo.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.Ativo.ButtonBorder.Visible = true;
-            this.Ativo.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Ativo.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
-            this.Ativo.ButtonSize = new System.Drawing.Size(20, 20);
-            this.Ativo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Ativo.FalseTextToggle = "Inativo";
-            this.Ativo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.Ativo.Location = new System.Drawing.Point(642, 8);
-            this.Ativo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.Ativo.Name = "Ativo";
-            this.Ativo.ProgressImage = null;
-            this.Ativo.Size = new System.Drawing.Size(67, 25);
-            this.Ativo.TabIndex = 554;
-            this.Ativo.Text = "visualToggle1";
-            this.Ativo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.Ativo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Ativo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Ativo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Ativo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Ativo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.Ativo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Ativo.Toggled = true;
-            this.Ativo.TrueTextToggle = "Ativo";
-            this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(130, 154);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 17);
+            this.label1.TabIndex = 555;
+            this.label1.Text = "Custo Médio";
+            // 
+            // custoMedio
+            // 
+            this.custoMedio.AlphaNumeric = false;
+            this.custoMedio.BackColor = System.Drawing.Color.White;
+            this.custoMedio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.custoMedio.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.custoMedio.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.custoMedio.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.custoMedio.Border.HoverVisible = true;
+            this.custoMedio.Border.Rounding = 8;
+            this.custoMedio.Border.Thickness = 1;
+            this.custoMedio.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.custoMedio.Border.Visible = true;
+            this.custoMedio.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.custoMedio.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.custoMedio.ButtonBorder.HoverVisible = true;
+            this.custoMedio.ButtonBorder.Rounding = 6;
+            this.custoMedio.ButtonBorder.Thickness = 1;
+            this.custoMedio.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.custoMedio.ButtonBorder.Visible = true;
+            this.custoMedio.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.custoMedio.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.custoMedio.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.custoMedio.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.custoMedio.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custoMedio.ButtonIndent = 3;
+            this.custoMedio.ButtonText = "visualButton";
+            this.custoMedio.ButtonVisible = false;
+            this.custoMedio.Enabled = false;
+            this.custoMedio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custoMedio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.custoMedio.Image = null;
+            this.custoMedio.ImageSize = new System.Drawing.Size(16, 16);
+            this.custoMedio.ImageVisible = false;
+            this.custoMedio.ImageWidth = 35;
+            this.custoMedio.Location = new System.Drawing.Point(131, 174);
+            this.custoMedio.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.custoMedio.Name = "custoMedio";
+            this.custoMedio.PasswordChar = '\0';
+            this.custoMedio.ReadOnly = false;
+            this.custoMedio.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.custoMedio.Size = new System.Drawing.Size(118, 30);
+            this.custoMedio.TabIndex = 554;
+            this.custoMedio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.custoMedio.TextBoxWidth = 106;
+            this.custoMedio.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.custoMedio.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.custoMedio.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.custoMedio.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.custoMedio.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.custoMedio.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.custoMedio.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.custoMedio.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.custoMedio.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custoMedio.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.custoMedio.Watermark.Text = "Watermark text";
+            this.custoMedio.Watermark.Visible = false;
+            this.custoMedio.WordWrap = true;
             // 
             // AddProduct
             // 
@@ -2631,5 +2708,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddImpostoTwo;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddImpostoOne;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle Ativo;
+        private System.Windows.Forms.Label label1;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox custoMedio;
     }
 }

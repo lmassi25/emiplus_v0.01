@@ -93,6 +93,8 @@
         public double DevolucaoPedido { get; set; } // valor informado no item
         public double Seguro { get; set; }
         public double Despesa { get; set; }
+        [Ignore]
+        public string NomeAdicional { get; set; }
 
         #endregion CAMPOS
 
@@ -200,7 +202,7 @@
                 CProd = item.Id.ToString();
 
             CEan = item.CodeBarras;
-            xProd = item.Nome;
+            xProd = item.Nome + " " + NomeAdicional;
 
             ValorCompra = item.ValorCompra;
 
@@ -208,6 +210,13 @@
             Ncm = item.Ncm;
             Cest = item.Cest;
             Origem = item.Origem;
+
+            return this;
+        }
+
+        public PedidoItem SetAdicionalNomePdt(string nome_adicional)
+        {
+            NomeAdicional = nome_adicional;
 
             return this;
         }

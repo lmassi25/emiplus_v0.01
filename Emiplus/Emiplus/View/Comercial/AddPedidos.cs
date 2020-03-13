@@ -283,22 +283,6 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de produtos.
-        /// </summary>
-        private void AutoCompleteItens()
-        {
-            var item = _mItem.Query().Select("id", "nome", "tipo").Where("excluir", 0).Get();
-
-            foreach (var itens in item)
-            {
-                if (!String.IsNullOrEmpty(itens.NOME))
-                    collection.Add(itens.NOME, itens.ID); //collection.Add(itens.TIPO == "Produtos" ? itens.NOME + " (Produto)" : itens.NOME + " (Serviço)", itens.ID);
-            }
-
-            BuscarProduto.AutoCompleteCustomSource = collection;
-        }
-
-        /// <summary>
         /// Validação para tela de Pagamentos.
         /// </summary>
         private void TelaPagamentos()
@@ -541,11 +525,11 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void ModalItens()
         {
-            if (collection.Lookup(BuscarProduto.Text) == 0)
+            if (collection.Lookup(nomeProduto()[0]) == 0)
             {
                 if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
                 {
-                    PedidoModalItens.txtSearch = BuscarProduto.Text;
+                    PedidoModalItens.txtSearch = nomeProduto()[0];
                     PedidoModalItens form = new PedidoModalItens();
                     form.TopMost = true;
                     if (form.ShowDialog() == DialogResult.OK)
@@ -576,14 +560,29 @@ namespace Emiplus.View.Comercial
             DescontoReais.Clear();
         }
 
+        public string[] nomeProduto()
+        {
+            string[] nomeProduto = new string[2];
+            
+            string[] checkNome = BuscarProduto.Text.Split(new string[] { " + ", "+" }, StringSplitOptions.None);
+
+            nomeProduto[0] = checkNome[0];
+            if (checkNome.Length == 1)
+                nomeProduto[1] = "";
+            else
+                nomeProduto[1] = checkNome[1];
+
+            return nomeProduto;
+        }
+
         /// <summary>
         /// Adiciona item ao pedido, controla o estoque e atualiza os totais.
         /// </summary>
         private void AddItem()
         {
-            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            if (collection.Lookup(nomeProduto()[0]) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
             {
-                var itemId = collection.Lookup(BuscarProduto.Text);
+                var itemId = collection.Lookup(nomeProduto()[0]);
                 Model.Item item = _mItem.FindById(itemId).FirstOrDefault<Model.Item>();
 
                 if (ModoRapAva == 0)
@@ -689,6 +688,7 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SetId(0)
                     .SetTipo(item.Tipo)
                     .SetPedidoId(Id)
+                    .SetAdicionalNomePdt(nomeProduto()[1])
                     .SetItem(item)
                     .SetQuantidade(QuantidadeTxt)
                     .SetMedida(MedidaTxt)
@@ -881,9 +881,13 @@ namespace Emiplus.View.Comercial
             GridListaProdutos.KeyDown += KeyDowns;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
-                AutoCompleteItens();
+                Refresh();
+
+                // Autocomplete de produtos
+                collection = _mItem.AutoComplete();
+                BuscarProduto.AutoCompleteCustomSource = collection;
 
                 if (Id > 0)
                 {
@@ -953,9 +957,9 @@ namespace Emiplus.View.Comercial
                 {
                     if (ModoRapAva == 1)
                     {
-                        if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                        if (!string.IsNullOrEmpty(nomeProduto()[0]))
                         {
-                            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                            var item = _mItem.FindById(collection.Lookup(nomeProduto()[0])).FirstOrDefault<Model.Item>();
                             if (item != null)
                             {
                                 Preco.Text = Validation.FormatPrice(item.ValorVenda);
@@ -967,7 +971,7 @@ namespace Emiplus.View.Comercial
                         }
                     }
 
-                    if (string.IsNullOrEmpty(BuscarProduto.Text))
+                    if (string.IsNullOrEmpty(nomeProduto()[0]))
                         ModalItens();
                     else
                         LoadItens();
@@ -992,9 +996,9 @@ namespace Emiplus.View.Comercial
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (String.IsNullOrEmpty(BuscarProduto.Text))
+                    if (String.IsNullOrEmpty(nomeProduto()[0]))
                         BuscarProduto.Focus();
-                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text))
+                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(nomeProduto()[0]))
                         Preco.Focus();
                     else
                         LoadItens();

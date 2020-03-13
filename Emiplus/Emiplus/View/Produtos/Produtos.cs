@@ -47,7 +47,8 @@ namespace Emiplus.View.Produtos
 
         private async void DataTable()
         {
-            await SetContentTableAsync(GridListaProdutos, null, search.Text);
+            await SetContentTableAsync(GridListaProdutos, null, search.Text, Validation.ConvertToInt32(resultadosPorPage.SelectedItem));
+
             dynamic totalRegistros = new Model.Item().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("Tipo", "Produtos").FirstOrDefault();
             nrRegistros.Text = $"Exibindo: {GridListaProdutos.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
         }
@@ -148,13 +149,13 @@ namespace Emiplus.View.Produtos
             Table.Columns[8].Visible = true;
         }
 
-        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
+        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int nrRegistros = 50)
         {
             Table.Rows.Clear();
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await _controller.GetDataTable(SearchText);
+                IEnumerable<dynamic> dados = await _controller.GetDataTable(SearchText, nrRegistros);
                 Data = dados;
             }
 
@@ -184,6 +185,12 @@ namespace Emiplus.View.Produtos
 
             Load += (s, e) =>
             {
+                Refresh();
+            };
+
+            Shown += (s, e) =>
+            {
+                resultadosPorPage.SelectedItem = "50";
                 search.Select();
                 DataTableStart();
                 SetHeadersTable(GridListaProdutos);
@@ -283,6 +290,12 @@ namespace Emiplus.View.Produtos
                 DataTable();
             };
 
+            resultadosPorPage.SelectedValueChanged += async (s, e) =>
+            {
+                await Task.Delay(100);
+                DataTable();
+            };
+
             imprimir.Click += async (s, e) => await RenderizarAsync();
 
             btnRemover.Click += (s, e) =>
@@ -368,7 +381,7 @@ namespace Emiplus.View.Produtos
             if (f.ShowDialog() != DialogResult.OK)
                 return;
 
-            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy, f.Inativos);
+            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.NrRegistros, f.TodosRegistros, f.OrdemBy, f.Inativos);
             double totalcompras = 0, totalvendas = 0, totalestoque = 0, sumColCusto = 0, sumVendas = 0;
             ArrayList data = new ArrayList();
             foreach (var item in dados)

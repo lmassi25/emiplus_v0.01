@@ -590,6 +590,34 @@ namespace Emiplus.View.Comercial
                     }
                     else
                     {
+                        if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                        {
+                            var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
+                            var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                            if (message)
+                            {
+                                foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                                {
+                                    if (Convert.ToString(row.Cells[0].Value) != "")
+                                    {
+                                        _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                                    }
+                                }
+
+                                AtualizarDados();
+
+                                _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                                _mPedido.status = 2;
+                                _mPedido.Save(_mPedido);
+
+                                Close();
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+
                         e.SuppressKeyPress = true;
                         AddPedidos.btnVoltar = true;
                         Close();
@@ -696,6 +724,34 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
+                if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                {
+                    var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
+                    var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if (message)
+                    {
+                        foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                        {
+                            if (Convert.ToString(row.Cells[0].Value) != "")
+                            {
+                                _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                            }
+                        }
+
+                        AtualizarDados();
+
+                        _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                        _mPedido.status = 2;
+                        _mPedido.Save(_mPedido);
+
+                        Close();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                
                 AddPedidos.btnVoltar = true;
                 Close();
             };

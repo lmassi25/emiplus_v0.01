@@ -55,6 +55,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnRemover = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.resultadosPorPage = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
@@ -111,7 +113,7 @@
             this.GridLista.RowHeadersVisible = false;
             this.GridLista.RowTemplate.Height = 30;
             this.GridLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridLista.Size = new System.Drawing.Size(659, 406);
+            this.GridLista.Size = new System.Drawing.Size(659, 398);
             this.GridLista.TabIndex = 5;
             this.GridLista.TabStop = false;
             // 
@@ -148,14 +150,16 @@
             this.panel2.Controls.Add(this.GridLista);
             this.panel2.Location = new System.Drawing.Point(38, 185);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(659, 406);
+            this.panel2.Size = new System.Drawing.Size(659, 398);
             this.panel2.TabIndex = 12;
             // 
             // Loading
             // 
-            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Loading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
-            this.Loading.Location = new System.Drawing.Point(3, 66);
+            this.Loading.Location = new System.Drawing.Point(3, 62);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(259, 159);
             this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -258,10 +262,10 @@
             // 
             // nrRegistros
             // 
-            this.nrRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nrRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nrRegistros.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nrRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nrRegistros.Location = new System.Drawing.Point(533, 165);
+            this.nrRegistros.Location = new System.Drawing.Point(533, 587);
             this.nrRegistros.Name = "nrRegistros";
             this.nrRegistros.Size = new System.Drawing.Size(164, 13);
             this.nrRegistros.TabIndex = 40054;
@@ -571,12 +575,96 @@
             this.btnRemover.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnRemover.Visible = false;
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(575, 161);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 13);
+            this.label7.TabIndex = 40058;
+            this.label7.Text = "resultados por página";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // resultadosPorPage
+            // 
+            this.resultadosPorPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.resultadosPorPage.BackColor = System.Drawing.Color.White;
+            this.resultadosPorPage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.resultadosPorPage.BackColorState.Enabled = System.Drawing.Color.White;
+            this.resultadosPorPage.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.resultadosPorPage.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.resultadosPorPage.Border.HoverVisible = true;
+            this.resultadosPorPage.Border.Rounding = 6;
+            this.resultadosPorPage.Border.Thickness = 1;
+            this.resultadosPorPage.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.resultadosPorPage.Border.Visible = true;
+            this.resultadosPorPage.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(118)))));
+            this.resultadosPorPage.ButtonImage = null;
+            this.resultadosPorPage.ButtonStyle = VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox.ButtonStyles.Bars;
+            this.resultadosPorPage.ButtonWidth = 30;
+            this.resultadosPorPage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.resultadosPorPage.DropDownHeight = 185;
+            this.resultadosPorPage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.resultadosPorPage.DropDownWidth = 48;
+            this.resultadosPorPage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultadosPorPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.resultadosPorPage.FormattingEnabled = true;
+            this.resultadosPorPage.ImageList = null;
+            this.resultadosPorPage.ImageVisible = false;
+            this.resultadosPorPage.Index = 0;
+            this.resultadosPorPage.IntegralHeight = false;
+            this.resultadosPorPage.ItemHeight = 18;
+            this.resultadosPorPage.ItemImageVisible = true;
+            this.resultadosPorPage.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "20",
+            "50",
+            "100",
+            "200",
+            "500",
+            "1000",
+            "2000",
+            "5000"});
+            this.resultadosPorPage.Location = new System.Drawing.Point(500, 155);
+            this.resultadosPorPage.MaxDropDownItems = 10;
+            this.resultadosPorPage.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.resultadosPorPage.MenuItemNormal = System.Drawing.Color.White;
+            this.resultadosPorPage.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.resultadosPorPage.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.resultadosPorPage.Name = "resultadosPorPage";
+            this.resultadosPorPage.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.resultadosPorPage.Size = new System.Drawing.Size(73, 24);
+            this.resultadosPorPage.State = VisualPlus.Enumerators.MouseStates.Normal;
+            this.resultadosPorPage.TabIndex = 40057;
+            this.resultadosPorPage.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.resultadosPorPage.TextDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.resultadosPorPage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.resultadosPorPage.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.resultadosPorPage.TextRendering = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.resultadosPorPage.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.resultadosPorPage.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.resultadosPorPage.TextStyle.Hover = System.Drawing.Color.Empty;
+            this.resultadosPorPage.TextStyle.Pressed = System.Drawing.Color.Empty;
+            this.resultadosPorPage.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.resultadosPorPage.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.resultadosPorPage.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.resultadosPorPage.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.resultadosPorPage.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultadosPorPage.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.resultadosPorPage.Watermark.Text = "Watermark text";
+            this.resultadosPorPage.Watermark.Visible = false;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.resultadosPorPage);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnMarcarCheckBox);
@@ -629,5 +717,7 @@
         private System.Windows.Forms.Panel panel3;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton imprimir;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRemover;
+        private System.Windows.Forms.Label label7;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox resultadosPorPage;
     }
 }

@@ -110,6 +110,7 @@ namespace Emiplus.View.Produtos
             valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
             estoqueminimo.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueMinimo);
             LoadEstoque();
+            CustoMedio();
 
             if (nome.Text.Length > 2)
                 btnEstoque.Enabled = true;
@@ -146,6 +147,8 @@ namespace Emiplus.View.Produtos
             Categorias.SelectedValue = _modelItem.Categoriaid.ToString();
             Fornecedor.SelectedValue = _modelItem.Fornecedor.ToString();
 
+            Ativo.Toggled = _modelItem.ativo == 1 ? false : true;
+
             aliq_federal.Text = Validation.Price(_modelItem.AliqFederal);
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
             aliq_municipal.Text = Validation.Price(_modelItem.AliqMunicipal);
@@ -155,6 +158,27 @@ namespace Emiplus.View.Produtos
             DataTableEstoque();
         }
 
+        private void CustoMedio()
+        {
+            var data = DateTime.Today.AddMonths(-3).ToString();
+
+            dynamic dados = new PedidoItem()
+                .Query()
+                .Join("pedido", "pedido.id", "pedido_item.pedido")
+                .SelectRaw("SUM(pedido_item.valorvenda) as valorvenda, COUNT(pedido_item.ID) as ID")
+                .Where("pedido.tipo", "Compras")
+                .Where("pedido_item.item", _modelItem.Id)
+                .WhereFalse("pedido_item.excluir")
+                .WhereFalse("pedido.excluir")
+                .Where("pedido_item.criado", ">", Validation.ConvertDateToSql(data) + " 00:00:00")
+                .FirstOrDefault();
+
+            if (dados.ID != 0)
+                custoMedio.Text = Validation.Price(Validation.ConvertToDouble(dados.ID) / Validation.ConvertToDouble(dados.VALORVENDA));
+            else
+                custoMedio.Text = "0,00";
+        }
+        
         private void Save()
         {
             if (!string.IsNullOrEmpty(nome.Text))

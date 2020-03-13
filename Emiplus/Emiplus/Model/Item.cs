@@ -5,6 +5,7 @@ using System;
 namespace Emiplus.Model
 {
     using Data.Database;
+    using Emiplus.Data.SobreEscrever;
     using Emiplus.Properties;
     using SqlKata.Execution;
     using Valit;
@@ -104,6 +105,25 @@ namespace Emiplus.Model
             Save(this, false);
 
             return this;
+        }
+
+        public KeyedAutoCompleteStringCollection AutoComplete(string tipo = "")
+        {
+            KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+
+            var item = Query().Select("id", "nome", "tipo").Where("excluir", 0);
+            item.Where(q => q.Where("item.ativo", "0").OrWhereNull("item.ativo"));
+
+            if (!string.IsNullOrEmpty(tipo))
+                item.Where("tipo", tipo);
+
+            foreach (var itens in item.Get())
+            {
+                if (!String.IsNullOrEmpty(itens.NOME))
+                    collection.Add(itens.NOME, itens.ID);
+            }
+            
+            return collection;
         }
 
         public bool ExistsCodeBarras(string codebarras, bool importacao = true, int idItem = 0)
