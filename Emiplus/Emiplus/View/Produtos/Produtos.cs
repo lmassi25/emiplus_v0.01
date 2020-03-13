@@ -368,7 +368,7 @@ namespace Emiplus.View.Produtos
             if (f.ShowDialog() != DialogResult.OK)
                 return;
 
-            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy);
+            IEnumerable<dynamic> dados = await _controller.GetDataTable(search.Text, f.TodosRegistros, f.NrRegistros, f.OrdemBy, f.Inativos);
             double totalcompras = 0, totalvendas = 0, totalestoque = 0, sumColCusto = 0, sumVendas = 0;
             ArrayList data = new ArrayList();
             foreach (var item in dados)

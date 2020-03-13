@@ -11,7 +11,7 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50, string Ordem = "Ascendente")
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50, string Ordem = "Ascendente", bool Inativos = true)
         {
             var search = "%" + SearchText + "%";
 
@@ -34,6 +34,9 @@ namespace Emiplus.Controller
 
             if (!TodosRegistros)
                 query.Limit(NrRegistros);
+
+            if (!Inativos)
+                query.Where("item.ativo", "<>", "1");
 
             return query.GetAsync<dynamic>();
         }

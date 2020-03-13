@@ -264,6 +264,11 @@ namespace Emiplus.View.Produtos
             if (Origens.SelectedValue != null)
                 _modelItem.Origem = Origens.SelectedValue.ToString();
 
+            if (Ativo.Toggled)
+                _modelItem.ativo = 0;
+            else
+                _modelItem.ativo = 1;
+
             if (_modelItem.Save(_modelItem))
                 Close();
         }

@@ -1518,6 +1518,7 @@ namespace Emiplus.Controller
                         _nota.nr_Nota = nr_Nota;
                         _nota.ChaveDeAcesso = ChaveDeAcesso;
                         _nota.assinatura_qrcode = assinatura_qrcode;
+                        _nota.nr_serie_sat = IniFile.Read("N_Serie", "SAT");
                         _nota.Save(_nota, false);
 
                         var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, _msg)));
@@ -2401,7 +2402,7 @@ namespace Emiplus.Controller
 
                 default:
                     xml.WriteStartElement("PISNT");
-                    xml.WriteElementString("CST", "07");
+                    xml.WriteElementString("CST", "08");
                     xml.WriteEndElement(); //PISNT
                     break;
             }
@@ -2454,7 +2455,7 @@ namespace Emiplus.Controller
 
                 default:
                     xml.WriteStartElement("COFINSNT");
-                    xml.WriteElementString("CST", "07");
+                    xml.WriteElementString("CST", "08");
                     xml.WriteEndElement(); //COFINSNT
                     break;
             }

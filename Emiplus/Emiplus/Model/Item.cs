@@ -55,8 +55,10 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
+        public int ativo { get; set; }
+
         #endregion CAMPOS
-        
+
         public Item FromCsv(string csvLine, string tipo = "Produtos")
         {
             string[] values = csvLine.Split(';');

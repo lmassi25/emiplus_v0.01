@@ -114,6 +114,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -146,6 +147,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel4.Controls.Add(this.Ativo);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(0, 41);
             this.panel4.Name = "panel4";
@@ -2447,6 +2449,50 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // Ativo
+            // 
+            this.Ativo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Ativo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Ativo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Ativo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.Border.HoverVisible = true;
+            this.Ativo.Border.Rounding = 20;
+            this.Ativo.Border.Thickness = 1;
+            this.Ativo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.Border.Visible = true;
+            this.Ativo.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverVisible = true;
+            this.Ativo.ButtonBorder.Rounding = 18;
+            this.Ativo.ButtonBorder.Thickness = 1;
+            this.Ativo.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.ButtonBorder.Visible = true;
+            this.Ativo.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Ativo.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonSize = new System.Drawing.Size(20, 20);
+            this.Ativo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Ativo.FalseTextToggle = "Inativo";
+            this.Ativo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.Ativo.Location = new System.Drawing.Point(642, 8);
+            this.Ativo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ProgressImage = null;
+            this.Ativo.Size = new System.Drawing.Size(67, 25);
+            this.Ativo.TabIndex = 554;
+            this.Ativo.Text = "visualToggle1";
+            this.Ativo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Ativo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Ativo.Toggled = true;
+            this.Ativo.TrueTextToggle = "Ativo";
+            this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2584,5 +2630,6 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddCategoria;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddImpostoTwo;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnAddImpostoOne;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle Ativo;
     }
 }

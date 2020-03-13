@@ -312,6 +312,11 @@ namespace Emiplus.View.Comercial
                     _modelPessoa.Transporte_rntc = rntc.Text;
                 }
 
+                if (Ativo.Toggled)
+                    _modelPessoa.ativo = 0;
+                else
+                    _modelPessoa.ativo = 1;
+
                 if (_modelPessoa.Save(_modelPessoa))
                 {
                     Id = _modelPessoa.GetLastId();

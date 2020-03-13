@@ -13,6 +13,7 @@ namespace Emiplus.View.Reports
 {
     public partial class OptionsReports : Form
     {
+        public bool Inativos { get; set; }
         public bool TodosRegistros { get; set; }
         public int NrRegistros { get; set; }
         public string OrdemBy { get; set; }
@@ -44,6 +45,7 @@ namespace Emiplus.View.Reports
                     }
                 }
 
+                Inativos = Ativo.Toggled;
                 TodosRegistros = btnExibirTodos.Toggled;
                 NrRegistros = Validation.ConvertToInt32(nrRegistros.Text);
                 OrdemBy = Ordem.Text;
