@@ -36,6 +36,7 @@
         public string Transporte_rntc { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
+        public int ativo { get; set; }
 
         #region SQL Create
 

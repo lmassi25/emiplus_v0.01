@@ -42,10 +42,14 @@
             this.label13 = new System.Windows.Forms.Label();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.visualGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.barraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // visualGroupBox1
@@ -62,6 +66,9 @@
             this.visualGroupBox1.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.visualGroupBox1.Border.Visible = true;
             this.visualGroupBox1.BoxStyle = VisualPlus.Toolkit.Controls.Layout.VisualGroupBox.GroupBoxStyle.Classic;
+            this.visualGroupBox1.Controls.Add(this.Ativo);
+            this.visualGroupBox1.Controls.Add(this.pictureBox2);
+            this.visualGroupBox1.Controls.Add(this.label4);
             this.visualGroupBox1.Controls.Add(this.pictureBox1);
             this.visualGroupBox1.Controls.Add(this.Ordem);
             this.visualGroupBox1.Controls.Add(this.label3);
@@ -99,7 +106,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(114, 69);
+            this.pictureBox1.Location = new System.Drawing.Point(114, 110);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -139,7 +146,7 @@
             "A-Z",
             "Z-A",
             "Aleatório"});
-            this.Ordem.Location = new System.Drawing.Point(16, 168);
+            this.Ordem.Location = new System.Drawing.Point(16, 209);
             this.Ordem.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Ordem.MenuItemNormal = System.Drawing.Color.White;
             this.Ordem.MenuTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -173,7 +180,7 @@
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(13, 120);
+            this.label3.Location = new System.Drawing.Point(13, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(371, 13);
             this.label3.TabIndex = 560;
@@ -186,7 +193,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(13, 67);
+            this.label2.Location = new System.Drawing.Point(13, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 17);
             this.label2.TabIndex = 559;
@@ -226,14 +233,14 @@
             this.nrRegistros.ImageSize = new System.Drawing.Size(16, 16);
             this.nrRegistros.ImageVisible = false;
             this.nrRegistros.ImageWidth = 35;
-            this.nrRegistros.Location = new System.Drawing.Point(16, 89);
+            this.nrRegistros.Location = new System.Drawing.Point(16, 130);
             this.nrRegistros.MaxLength = 255;
             this.nrRegistros.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.nrRegistros.Name = "nrRegistros";
             this.nrRegistros.PasswordChar = '\0';
             this.nrRegistros.ReadOnly = false;
             this.nrRegistros.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.nrRegistros.Size = new System.Drawing.Size(226, 28);
+            this.nrRegistros.Size = new System.Drawing.Size(226, 30);
             this.nrRegistros.TabIndex = 558;
             this.nrRegistros.TextBoxWidth = 214;
             this.nrRegistros.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -256,7 +263,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(13, 148);
+            this.label1.Location = new System.Drawing.Point(13, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 17);
             this.label1.TabIndex = 557;
@@ -289,7 +296,7 @@
             this.btnExibirTodos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExibirTodos.FalseTextToggle = "Não";
             this.btnExibirTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnExibirTodos.Location = new System.Drawing.Point(184, 27);
+            this.btnExibirTodos.Location = new System.Drawing.Point(184, 68);
             this.btnExibirTodos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnExibirTodos.Name = "btnExibirTodos";
             this.btnExibirTodos.ProgressImage = null;
@@ -310,7 +317,7 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(157, 32);
+            this.pictureBox5.Location = new System.Drawing.Point(157, 73);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(15, 15);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -323,7 +330,7 @@
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(13, 30);
+            this.label13.Location = new System.Drawing.Point(13, 71);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(143, 17);
             this.label13.TabIndex = 24;
@@ -372,6 +379,73 @@
             this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // Ativo
+            // 
+            this.Ativo.BackColor = System.Drawing.Color.White;
+            this.Ativo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.Ativo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.Ativo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.Ativo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.Border.HoverVisible = true;
+            this.Ativo.Border.Rounding = 20;
+            this.Ativo.Border.Thickness = 1;
+            this.Ativo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.Border.Visible = true;
+            this.Ativo.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonBorder.HoverVisible = true;
+            this.Ativo.ButtonBorder.Rounding = 18;
+            this.Ativo.ButtonBorder.Thickness = 1;
+            this.Ativo.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.Ativo.ButtonBorder.Visible = true;
+            this.Ativo.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Ativo.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.Ativo.ButtonSize = new System.Drawing.Size(20, 20);
+            this.Ativo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Ativo.FalseTextToggle = "Não";
+            this.Ativo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.Ativo.Location = new System.Drawing.Point(144, 34);
+            this.Ativo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.Ativo.Name = "Ativo";
+            this.Ativo.ProgressImage = null;
+            this.Ativo.Size = new System.Drawing.Size(58, 25);
+            this.Ativo.TabIndex = 565;
+            this.Ativo.Text = "visualToggle1";
+            this.Ativo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.Ativo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Ativo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.Ativo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.Ativo.TrueTextToggle = "Sim";
+            this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(117, 39);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 564;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(13, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 17);
+            this.label4.TabIndex = 563;
+            this.label4.Text = "Exibir inativos?";
+            // 
             // OptionsReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +469,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.barraTitulo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,5 +488,8 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox Ordem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnGerar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle Ativo;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label4;
     }
 }
