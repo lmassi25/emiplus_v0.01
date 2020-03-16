@@ -8,6 +8,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -23,6 +25,8 @@ namespace Emiplus.View.Produtos
         private ArrayList categorias { get; set; }
         private IEnumerable<dynamic> impostos { get; set; }
         private IEnumerable<dynamic> impostos2 { get; set; }
+
+        private OpenFileDialog ofd = new OpenFileDialog();
 
         public AddProduct()
         {
@@ -155,7 +159,22 @@ namespace Emiplus.View.Produtos
 
             txtLimiteDesconto.Text = Validation.Price(_modelItem.Limite_Desconto);
 
+            if (File.Exists($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}"))
+            {
+                var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}");
+                imageProduct.Image = byteArrayToImage(imageAsByteArray);
+                pathImage.Text = Program.PATH_BASE + $@"\Imagens\{_modelItem.Image}";
+                btnRemoverImage.Visible = true;
+            }
+
             DataTableEstoque();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
 
         private void CustoMedio()
@@ -527,8 +546,76 @@ namespace Emiplus.View.Produtos
                 }
             };
 
-            filterTodos.Click += (s, e) => DataTableEstoque();
+            btnRemoverImage.Click += (s, e) =>
+            {
+                _modelItem.Id = idPdtSelecionado;
 
+                if (File.Exists($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}"))
+                    File.Delete($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}");
+
+                _modelItem.Image = "";
+                _modelItem.Save(_modelItem, false);
+
+                imageProduct.Image = Properties.Resources.sem_imagem;
+                pathImage.Text = "";
+                btnRemoverImage.Visible = false;
+                Alert.Message("Pronto!", "Imagem removida com sucesso.", Alert.AlertType.success);
+            };
+
+            btnImage.Click += (s, e) =>
+            {
+                ofd.RestoreDirectory = true;
+                ofd.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                ofd.CheckFileExists = true;
+                ofd.CheckPathExists = true;
+                ofd.Multiselect = false;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    if (!ofd.CheckFileExists)
+                    {
+                        Alert.Message("Opps", "Não encontramos a imagem selecionada. Tente Novamente!", Alert.AlertType.error);
+                        return;
+                    }
+
+                    var path = ofd.InitialDirectory + ofd.FileName;
+                    string ext = Path.GetExtension(ofd.FileName);
+
+                    if (File.Exists(path))
+                    {
+                        if (!Directory.Exists(Program.PATH_BASE + @"\Imagens"))
+                            Directory.CreateDirectory(Program.PATH_BASE + @"\Imagens");
+                        
+                        string nameImage = $"{Validation.CleanString(nome.Text).Replace(" ", "-")}{ext}";
+
+                        if (File.Exists($@"{Program.PATH_BASE}\Imagens\{nameImage}"))
+                            File.Delete($@"{Program.PATH_BASE}\Imagens\{nameImage}");
+                        
+                        File.Copy(path, $@"{Program.PATH_BASE}\Imagens\{nameImage}");
+
+                        _modelItem.Id = idPdtSelecionado;
+                        _modelItem.Image = nameImage;
+                        _modelItem.Save(_modelItem, false);
+
+                        var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_BASE}\Imagens\{nameImage}");
+                        imageProduct.Image = byteArrayToImage(imageAsByteArray);
+                        pathImage.Text = Program.PATH_BASE + $@"\Imagens\{nameImage}";
+                        btnRemoverImage.Visible = true;
+                        Alert.Message("Pronto!", "Imagem atualizada com sucesso.", Alert.AlertType.success);
+                    }
+                    else
+                    {
+                        Alert.Message("Opps", "Não foi possível copiar a imagem. Tente novamente.", Alert.AlertType.error);
+                        return;
+                    }
+                }
+                else
+                {
+                    Alert.Message("Opps", "Erro ao selecionar imagem.", Alert.AlertType.error);
+                    return;
+                }
+            };
+
+            filterTodos.Click += (s, e) => DataTableEstoque();
             filterMaisRecentes.Click += (s, e) => DataTableEstoque();
 
             selecionarNCM.Click += (s, e) =>

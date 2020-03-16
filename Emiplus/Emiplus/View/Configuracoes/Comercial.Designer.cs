@@ -56,6 +56,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.UserNoDocument = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.label12 = new System.Windows.Forms.Label();
+            this.imgPDV = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -516,7 +518,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(30, 403);
+            this.label11.Location = new System.Drawing.Point(30, 437);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 25);
             this.label11.TabIndex = 560;
@@ -548,7 +550,7 @@
             this.UserNoDocument.Cursor = System.Windows.Forms.Cursors.Hand;
             this.UserNoDocument.FalseTextToggle = "Não";
             this.UserNoDocument.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.UserNoDocument.Location = new System.Drawing.Point(260, 439);
+            this.UserNoDocument.Location = new System.Drawing.Point(260, 473);
             this.UserNoDocument.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.UserNoDocument.Name = "UserNoDocument";
             this.UserNoDocument.ProgressImage = null;
@@ -572,11 +574,66 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(51, 443);
+            this.label12.Location = new System.Drawing.Point(51, 477);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(203, 17);
             this.label12.TabIndex = 561;
             this.label12.Text = "Permitir cadastro sem CPF/CNPJ";
+            // 
+            // imgPDV
+            // 
+            this.imgPDV.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.imgPDV.BackColorState.Enabled = System.Drawing.Color.White;
+            this.imgPDV.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.imgPDV.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.Border.HoverVisible = true;
+            this.imgPDV.Border.Rounding = 20;
+            this.imgPDV.Border.Thickness = 1;
+            this.imgPDV.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imgPDV.Border.Visible = true;
+            this.imgPDV.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.ButtonBorder.HoverVisible = true;
+            this.imgPDV.ButtonBorder.Rounding = 18;
+            this.imgPDV.ButtonBorder.Thickness = 1;
+            this.imgPDV.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.imgPDV.ButtonBorder.Visible = true;
+            this.imgPDV.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.imgPDV.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.imgPDV.ButtonSize = new System.Drawing.Size(20, 20);
+            this.imgPDV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgPDV.FalseTextToggle = "Não";
+            this.imgPDV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.imgPDV.Location = new System.Drawing.Point(257, 397);
+            this.imgPDV.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.imgPDV.Name = "imgPDV";
+            this.imgPDV.ProgressImage = null;
+            this.imgPDV.Size = new System.Drawing.Size(58, 25);
+            this.imgPDV.TabIndex = 564;
+            this.imgPDV.Text = "visualToggle1";
+            this.imgPDV.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.imgPDV.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imgPDV.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imgPDV.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imgPDV.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.imgPDV.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.imgPDV.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.imgPDV.TrueTextToggle = "Sim";
+            this.imgPDV.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.White;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(51, 400);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(201, 17);
+            this.label13.TabIndex = 563;
+            this.label13.Text = "Exibir imagens na tela de \'PDV\'?";
             // 
             // Comercial
             // 
@@ -585,6 +642,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 649);
+            this.Controls.Add(this.imgPDV);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.UserNoDocument);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -646,5 +705,7 @@
         private System.Windows.Forms.Label label11;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle UserNoDocument;
         private System.Windows.Forms.Label label12;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle imgPDV;
+        private System.Windows.Forms.Label label13;
     }
 }

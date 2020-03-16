@@ -55,7 +55,13 @@ namespace Emiplus.View.Comercial
 
         private async void DataTable()
         {
-            await SetContentTableAsync(GridLista, null, search.Text, Validation.ConvertToInt32(resultadosPorPage.SelectedItem));
+            int ShownrRegistros = 50;
+            if (resultadosPorPage.SelectedItem.ToString() == "Todos")
+                ShownrRegistros = 99999999;
+            else
+                ShownrRegistros = Validation.ConvertToInt32(resultadosPorPage.SelectedItem);
+
+            await SetContentTableAsync(GridLista, null, search.Text, ShownrRegistros);
 
             dynamic totalRegistros = new Model.Pessoa().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("ID", "!=", 1).Where("Tipo", Home.pessoaPage).FirstOrDefault();
             nrRegistros.Text = $"Exibindo: {GridLista.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";

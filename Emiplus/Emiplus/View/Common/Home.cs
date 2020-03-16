@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using Emiplus.Model;
+using System.Diagnostics;
 
 namespace Emiplus.View.Common
 {
@@ -444,6 +445,11 @@ namespace Emiplus.View.Common
 
                 GerarTitulosRecorrentes();
                 LimparRegistros();
+            };
+
+            btnSuporteOnline.Click += (s, e) =>
+            {
+                Process.Start("C:\\Emiplus\\Suporte Emiplus.exe");
             };
         }
 

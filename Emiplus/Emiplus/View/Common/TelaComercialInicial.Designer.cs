@@ -68,6 +68,7 @@
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.btnPdv = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -472,7 +473,7 @@
             this.Devolucoes.ForeColor = System.Drawing.Color.DimGray;
             this.Devolucoes.Image = ((System.Drawing.Image)(resources.GetObject("Devolucoes.Image")));
             this.Devolucoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Devolucoes.Location = new System.Drawing.Point(256, 227);
+            this.Devolucoes.Location = new System.Drawing.Point(256, 229);
             this.Devolucoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Devolucoes.Name = "Devolucoes";
             this.Devolucoes.Size = new System.Drawing.Size(219, 41);
@@ -705,12 +706,36 @@
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Visible = false;
             // 
+            // btnPdv
+            // 
+            this.btnPdv.BackColor = System.Drawing.Color.Transparent;
+            this.btnPdv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPdv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPdv.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPdv.FlatAppearance.BorderSize = 0;
+            this.btnPdv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPdv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnPdv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPdv.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdv.ForeColor = System.Drawing.Color.DimGray;
+            this.btnPdv.Image = ((System.Drawing.Image)(resources.GetObject("btnPdv.Image")));
+            this.btnPdv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPdv.Location = new System.Drawing.Point(256, 274);
+            this.btnPdv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPdv.Name = "btnPdv";
+            this.btnPdv.Size = new System.Drawing.Size(219, 41);
+            this.btnPdv.TabIndex = 133;
+            this.btnPdv.Text = "          Abrir PDV";
+            this.btnPdv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPdv.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnPdv);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox13);
@@ -812,5 +837,6 @@
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.Button btnPdv;
     }
 }
