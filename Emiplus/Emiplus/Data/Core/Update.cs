@@ -63,6 +63,9 @@ namespace Emiplus.Data.Core
             if (!IniFile.KeyExists("PathDatabase", "LOCAL"))
                 IniFile.Write("PathDatabase", @"C:\Emiplus", "LOCAL");
 
+            if (!IniFile.KeyExists("Remoto", "LOCAL"))
+                IniFile.Write("Remoto", "", "LOCAL");
+
             if (!IniFile.KeyExists("dev", "DEV"))
                 IniFile.Write("dev", "false", "DEV");
 
@@ -112,7 +115,7 @@ namespace Emiplus.Data.Core
                 IniFile.Write("UserNoDocument", "False", "Comercial");
 
             if (!IniFile.KeyExists("ShowImagePDV", "Comercial"))
-                IniFile.Write("ShowImagePDV", "False", "Comercial");
+                IniFile.Write("ShowImagePDV", "True", "Comercial");
 
             if (!IniFile.KeyExists("MAIL_HOST", "EMAIL"))
                 IniFile.Write("MAIL_HOST", "", "EMAIL");

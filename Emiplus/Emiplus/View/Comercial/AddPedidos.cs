@@ -44,6 +44,8 @@ namespace Emiplus.View.Comercial
 
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
+        FullScreenMode fullScreenMode;
+
         #endregion V
 
         public AddPedidos()
@@ -863,7 +865,27 @@ namespace Emiplus.View.Comercial
                     TelaPagamentos();
                     e.SuppressKeyPress = true;
                     break;
+
+                case Keys.F11:
+                    FullScreen fullScreen = new FullScreen();
+
+                    if (fullScreenMode == FullScreenMode.No)
+                    {
+                        fullScreen.EnterFullScreenMode(this);
+                        fullScreenMode = FullScreenMode.Yes;
+                    }
+                    else
+                    {
+                        fullScreen.LeaveFullScreenMode(this);
+                        fullScreenMode = FullScreenMode.No;
+                    }
+                    break;
             }
+        }
+
+        enum FullScreenMode
+        {
+            Yes, No
         }
 
         /// <summary>
@@ -1142,8 +1164,8 @@ namespace Emiplus.View.Comercial
                                 Model.Item dataItem = _mItem.FindById(idItem.Item).FirstOrDefault<Model.Item>();
                                 if (dataItem != null)
                                 {
-                                    if (File.Exists($@"{Program.PATH_BASE}\Imagens\{dataItem.Image}"))
-                                        imgProduct.Image = Image.FromFile($@"{Program.PATH_BASE}\Imagens\{dataItem.Image}");
+                                    if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{dataItem.Image}"))
+                                        imgProduct.Image = Image.FromFile($@"{Program.PATH_IMAGE}\Imagens\{dataItem.Image}");
                                     else
                                         imgProduct.Image = Properties.Resources.sem_imagem;
 
