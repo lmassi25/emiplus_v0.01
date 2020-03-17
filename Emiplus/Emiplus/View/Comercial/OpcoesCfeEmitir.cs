@@ -50,8 +50,15 @@ namespace Emiplus.View.Comercial
                         label10.Text = "Enviando impressão...";
                         Thread.Sleep(3000);
 
-                        new Controller.Fiscal().Imprimir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
-
+                        try
+                        {
+                            new Controller.Fiscal().Imprimir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
+                        }
+                        catch (Exception)
+                        {
+                            //throw;
+                        }
+                        
                         if (fecharTelas)
                         {
                             try
@@ -62,7 +69,7 @@ namespace Emiplus.View.Comercial
                             }
                             catch (Exception)
                             {
-                                throw;
+                                //throw;
                             }
                         }
 
