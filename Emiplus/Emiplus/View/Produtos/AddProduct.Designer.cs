@@ -33,13 +33,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
-            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
             this.Medidas = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.codebarras = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.Categorias = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -51,13 +48,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.nome = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label20 = new System.Windows.Forms.Label();
             this.inf_adicional = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLimiteDesconto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.Fornecedor = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -68,7 +62,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.aliq_federal = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.selecionarNCM = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Origens = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -78,8 +71,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.filterMaisRecentes = new System.Windows.Forms.RadioButton();
             this.filterTodos = new System.Windows.Forms.RadioButton();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnEstoque = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -89,10 +80,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnAddImpostoTwo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnAddImpostoOne = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.chkImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.ImpostoCFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.chkImpostoNFE = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
@@ -100,10 +87,13 @@
             this.btnRemover = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnRemoverImage = new System.Windows.Forms.Label();
+            this.btnImage = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label25 = new System.Windows.Forms.Label();
+            this.pathImage = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label1 = new System.Windows.Forms.Label();
             this.custoMedio = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.btnAddCategoria = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnAddFornecedor = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label4 = new System.Windows.Forms.Label();
@@ -111,37 +101,37 @@
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imageProduct = new System.Windows.Forms.PictureBox();
-            this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.pathImage = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.btnImage = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnRemoverImage = new System.Windows.Forms.Label();
+            this.btnAddCategoria = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnAddFornecedor = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.selecionarNCM = new System.Windows.Forms.PictureBox();
+            this.btnAddImpostoTwo = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnAddImpostoOne = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel2.SuspendLayout();
             this.barraTitulo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -149,6 +139,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -156,6 +156,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel4.Controls.Add(this.Ativo);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(0, 41);
             this.panel4.Name = "panel4";
@@ -223,7 +224,7 @@
             this.Ativo.FalseTextToggle = "Inativo";
             this.Ativo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ativo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.Ativo.Location = new System.Drawing.Point(549, 8);
+            this.Ativo.Location = new System.Drawing.Point(654, 8);
             this.Ativo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Ativo.Name = "Ativo";
             this.Ativo.ProgressImage = null;
@@ -240,51 +241,6 @@
             this.Ativo.Toggled = true;
             this.Ativo.TrueTextToggle = "Ativo";
             this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.Border.HoverVisible = true;
-            this.btnHelp.Border.Rounding = 6;
-            this.btnHelp.Border.Thickness = 1;
-            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnHelp.Border.Visible = true;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.Location = new System.Drawing.Point(684, 6);
-            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(37, 30);
-            this.btnHelp.TabIndex = 551;
-            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(83, 118);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 40;
-            this.pictureBox5.TabStop = false;
             // 
             // label22
             // 
@@ -424,17 +380,6 @@
             this.codebarras.Watermark.Text = "Watermark text";
             this.codebarras.Watermark.Visible = false;
             this.codebarras.WordWrap = true;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(85, 180);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 24;
-            this.pictureBox4.TabStop = false;
             // 
             // label18
             // 
@@ -793,21 +738,10 @@
             this.tabPage3.Controls.Add(this.inf_adicional);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(702, 298);
+            this.tabPage3.Size = new System.Drawing.Size(702, 260);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Informações Adicionais";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.White;
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(135, 17);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 40;
-            this.pictureBox10.TabStop = false;
             // 
             // label20
             // 
@@ -878,18 +812,6 @@
             this.inf_adicional.Watermark.Visible = false;
             this.inf_adicional.WordWrap = true;
             // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BackColor = System.Drawing.Color.White;
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
-            this.pictureBox11.Location = new System.Drawing.Point(634, 263);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 44;
-            this.pictureBox11.TabStop = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -959,18 +881,6 @@
             this.txtLimiteDesconto.Watermark.Text = "Watermark text";
             this.txtLimiteDesconto.Watermark.Visible = false;
             this.txtLimiteDesconto.WordWrap = true;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox14.InitialImage")));
-            this.pictureBox14.Location = new System.Drawing.Point(395, 180);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox14.TabIndex = 40;
-            this.pictureBox14.TabStop = false;
             // 
             // label21
             // 
@@ -1052,7 +962,7 @@
             this.tabPage4.Controls.Add(this.aliq_federal);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(702, 298);
+            this.tabPage4.Size = new System.Drawing.Size(702, 260);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Lei de Transparência";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1281,21 +1191,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 298);
+            this.tabPage2.Size = new System.Drawing.Size(702, 260);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Classificação Fiscal";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // selecionarNCM
-            // 
-            this.selecionarNCM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.selecionarNCM.Image = ((System.Drawing.Image)(resources.GetObject("selecionarNCM.Image")));
-            this.selecionarNCM.Location = new System.Drawing.Point(239, 86);
-            this.selecionarNCM.Name = "selecionarNCM";
-            this.selecionarNCM.Size = new System.Drawing.Size(28, 28);
-            this.selecionarNCM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.selecionarNCM.TabIndex = 10;
-            this.selecionarNCM.TabStop = false;
             // 
             // label8
             // 
@@ -1554,28 +1453,6 @@
             this.filterTodos.Text = "Todos";
             this.filterTodos.UseVisualStyleBackColor = true;
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(258, 13);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 156;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(124, 13);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 41;
-            this.pictureBox7.TabStop = false;
-            // 
             // btnEstoque
             // 
             this.btnEstoque.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1630,7 +1507,7 @@
             this.panel1.Controls.Add(this.listaEstoque);
             this.panel1.Location = new System.Drawing.Point(6, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(693, 189);
+            this.panel1.Size = new System.Drawing.Size(693, 187);
             this.panel1.TabIndex = 28;
             // 
             // listaEstoque
@@ -1652,7 +1529,7 @@
             this.listaEstoque.RowHeadersVisible = false;
             this.listaEstoque.RowTemplate.Height = 30;
             this.listaEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaEstoque.Size = new System.Drawing.Size(693, 189);
+            this.listaEstoque.Size = new System.Drawing.Size(693, 187);
             this.listaEstoque.TabIndex = 6;
             this.listaEstoque.TabStop = false;
             // 
@@ -1812,98 +1689,10 @@
             this.tabPage5.Controls.Add(this.ImpostoNFE);
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(702, 298);
+            this.tabPage5.Size = new System.Drawing.Size(702, 260);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Impostos";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // btnAddImpostoTwo
-            // 
-            this.btnAddImpostoTwo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddImpostoTwo.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnAddImpostoTwo.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnAddImpostoTwo.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnAddImpostoTwo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddImpostoTwo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddImpostoTwo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddImpostoTwo.Border.HoverVisible = true;
-            this.btnAddImpostoTwo.Border.Rounding = 6;
-            this.btnAddImpostoTwo.Border.Thickness = 1;
-            this.btnAddImpostoTwo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnAddImpostoTwo.Border.Visible = true;
-            this.btnAddImpostoTwo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddImpostoTwo.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddImpostoTwo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddImpostoTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddImpostoTwo.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoTwo.Image")));
-            this.btnAddImpostoTwo.Location = new System.Drawing.Point(581, 105);
-            this.btnAddImpostoTwo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnAddImpostoTwo.Name = "btnAddImpostoTwo";
-            this.btnAddImpostoTwo.Size = new System.Drawing.Size(37, 29);
-            this.btnAddImpostoTwo.TabIndex = 555;
-            this.btnAddImpostoTwo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddImpostoTwo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnAddImpostoTwo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddImpostoTwo.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnAddImpostoTwo.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnAddImpostoTwo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddImpostoTwo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddImpostoTwo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnAddImpostoOne
-            // 
-            this.btnAddImpostoOne.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddImpostoOne.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnAddImpostoOne.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnAddImpostoOne.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnAddImpostoOne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddImpostoOne.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddImpostoOne.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddImpostoOne.Border.HoverVisible = true;
-            this.btnAddImpostoOne.Border.Rounding = 6;
-            this.btnAddImpostoOne.Border.Thickness = 1;
-            this.btnAddImpostoOne.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnAddImpostoOne.Border.Visible = true;
-            this.btnAddImpostoOne.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddImpostoOne.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddImpostoOne.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddImpostoOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddImpostoOne.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoOne.Image")));
-            this.btnAddImpostoOne.Location = new System.Drawing.Point(581, 41);
-            this.btnAddImpostoOne.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnAddImpostoOne.Name = "btnAddImpostoOne";
-            this.btnAddImpostoOne.Size = new System.Drawing.Size(37, 29);
-            this.btnAddImpostoOne.TabIndex = 554;
-            this.btnAddImpostoOne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddImpostoOne.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnAddImpostoOne.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddImpostoOne.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnAddImpostoOne.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnAddImpostoOne.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddImpostoOne.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddImpostoOne.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.White;
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(286, 84);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 178;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(257, 20);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 175;
-            this.pictureBox6.TabStop = false;
             // 
             // chkImpostoCFE
             // 
@@ -2223,6 +2012,147 @@
             this.panel2.Size = new System.Drawing.Size(733, 575);
             this.panel2.TabIndex = 30;
             // 
+            // btnRemoverImage
+            // 
+            this.btnRemoverImage.AutoSize = true;
+            this.btnRemoverImage.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoverImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverImage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRemoverImage.Location = new System.Drawing.Point(111, 78);
+            this.btnRemoverImage.Name = "btnRemoverImage";
+            this.btnRemoverImage.Size = new System.Drawing.Size(94, 13);
+            this.btnRemoverImage.TabIndex = 15122;
+            this.btnRemoverImage.Text = "Remover Imagem";
+            this.btnRemoverImage.Visible = false;
+            // 
+            // btnImage
+            // 
+            this.btnImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImage.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnImage.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnImage.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnImage.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnImage.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnImage.Border.HoverVisible = true;
+            this.btnImage.Border.Rounding = 6;
+            this.btnImage.Border.Thickness = 1;
+            this.btnImage.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnImage.Border.Visible = true;
+            this.btnImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImage.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnImage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImage.ForeColor = System.Drawing.Color.White;
+            this.btnImage.Image = null;
+            this.btnImage.Location = new System.Drawing.Point(562, 45);
+            this.btnImage.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(108, 30);
+            this.btnImage.TabIndex = 15121;
+            this.btnImage.Text = "Selecionar";
+            this.btnImage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImage.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnImage.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnImage.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnImage.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnImage.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImage.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImage.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label25.Location = new System.Drawing.Point(109, 25);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(58, 17);
+            this.label25.TabIndex = 559;
+            this.label25.Text = "Imagem";
+            // 
+            // pathImage
+            // 
+            this.pathImage.AlphaNumeric = false;
+            this.pathImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pathImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.pathImage.BackColorState.Enabled = System.Drawing.Color.White;
+            this.pathImage.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.pathImage.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.pathImage.Border.HoverVisible = true;
+            this.pathImage.Border.Rounding = 8;
+            this.pathImage.Border.Thickness = 1;
+            this.pathImage.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.pathImage.Border.Visible = true;
+            this.pathImage.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.pathImage.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.pathImage.ButtonBorder.HoverVisible = true;
+            this.pathImage.ButtonBorder.Rounding = 6;
+            this.pathImage.ButtonBorder.Thickness = 1;
+            this.pathImage.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.pathImage.ButtonBorder.Visible = true;
+            this.pathImage.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pathImage.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.pathImage.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pathImage.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pathImage.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pathImage.ButtonIndent = 3;
+            this.pathImage.ButtonText = "visualButton";
+            this.pathImage.ButtonVisible = false;
+            this.pathImage.Enabled = false;
+            this.pathImage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pathImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathImage.Image = null;
+            this.pathImage.ImageSize = new System.Drawing.Size(16, 16);
+            this.pathImage.ImageVisible = false;
+            this.pathImage.ImageWidth = 35;
+            this.pathImage.Location = new System.Drawing.Point(111, 45);
+            this.pathImage.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.pathImage.Name = "pathImage";
+            this.pathImage.PasswordChar = '\0';
+            this.pathImage.ReadOnly = false;
+            this.pathImage.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.pathImage.Size = new System.Drawing.Size(445, 30);
+            this.pathImage.TabIndex = 558;
+            this.pathImage.TextBoxWidth = 433;
+            this.pathImage.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.pathImage.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathImage.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathImage.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pathImage.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.pathImage.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.pathImage.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.pathImage.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.pathImage.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pathImage.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.pathImage.Watermark.Text = "Watermark text";
+            this.pathImage.Watermark.Visible = false;
+            this.pathImage.WordWrap = true;
+            // 
+            // visualSeparator3
+            // 
+            this.visualSeparator3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator3.Location = new System.Drawing.Point(18, 103);
+            this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator3.Name = "visualSeparator3";
+            this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator3.ShadowVisible = true;
+            this.visualSeparator3.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator3.TabIndex = 557;
+            this.visualSeparator3.Text = "visualSeparator3";
+            this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -2293,72 +2223,6 @@
             this.custoMedio.Watermark.Text = "Watermark text";
             this.custoMedio.Watermark.Visible = false;
             this.custoMedio.WordWrap = true;
-            // 
-            // btnAddCategoria
-            // 
-            this.btnAddCategoria.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddCategoria.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnAddCategoria.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnAddCategoria.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnAddCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddCategoria.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddCategoria.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddCategoria.Border.HoverVisible = true;
-            this.btnAddCategoria.Border.Rounding = 6;
-            this.btnAddCategoria.Border.Thickness = 1;
-            this.btnAddCategoria.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnAddCategoria.Border.Visible = true;
-            this.btnAddCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCategoria.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddCategoria.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddCategoria.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCategoria.Image")));
-            this.btnAddCategoria.Location = new System.Drawing.Point(275, 198);
-            this.btnAddCategoria.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnAddCategoria.Name = "btnAddCategoria";
-            this.btnAddCategoria.Size = new System.Drawing.Size(37, 29);
-            this.btnAddCategoria.TabIndex = 553;
-            this.btnAddCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddCategoria.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnAddCategoria.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddCategoria.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnAddCategoria.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnAddCategoria.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddCategoria.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddCategoria.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnAddFornecedor
-            // 
-            this.btnAddFornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddFornecedor.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnAddFornecedor.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnAddFornecedor.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnAddFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddFornecedor.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnAddFornecedor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddFornecedor.Border.HoverVisible = true;
-            this.btnAddFornecedor.Border.Rounding = 6;
-            this.btnAddFornecedor.Border.Thickness = 1;
-            this.btnAddFornecedor.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnAddFornecedor.Border.Visible = true;
-            this.btnAddFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddFornecedor.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAddFornecedor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFornecedor.Image")));
-            this.btnAddFornecedor.Location = new System.Drawing.Point(516, 198);
-            this.btnAddFornecedor.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnAddFornecedor.Name = "btnAddFornecedor";
-            this.btnAddFornecedor.Size = new System.Drawing.Size(37, 29);
-            this.btnAddFornecedor.TabIndex = 552;
-            this.btnAddFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddFornecedor.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnAddFornecedor.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnAddFornecedor.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnAddFornecedor.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnAddFornecedor.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddFornecedor.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAddFornecedor.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualSeparator2
             // 
@@ -2482,7 +2346,6 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.barraTitulo.Controls.Add(this.Ativo);
             this.barraTitulo.Controls.Add(this.btnSalvar);
             this.barraTitulo.Controls.Add(this.btnRemover);
             this.barraTitulo.Location = new System.Drawing.Point(0, 658);
@@ -2518,16 +2381,6 @@
             this.label24.TabIndex = 8;
             this.label24.Text = "Novo Produto";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(287, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -2550,16 +2403,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Produtos";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(197, 11);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -2571,6 +2414,60 @@
             this.label23.Size = new System.Drawing.Size(61, 17);
             this.label23.TabIndex = 3;
             this.label23.Text = "Produtos";
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.Border.HoverVisible = true;
+            this.btnHelp.Border.Rounding = 6;
+            this.btnHelp.Border.Thickness = 1;
+            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnHelp.Border.Visible = true;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.Location = new System.Drawing.Point(684, 6);
+            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(37, 30);
+            this.btnHelp.TabIndex = 551;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(287, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(197, 11);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -2593,146 +2490,249 @@
             this.imageProduct.TabIndex = 556;
             this.imageProduct.TabStop = false;
             // 
-            // visualSeparator3
+            // btnAddCategoria
             // 
-            this.visualSeparator3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator3.Location = new System.Drawing.Point(18, 103);
-            this.visualSeparator3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator3.Name = "visualSeparator3";
-            this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(675, 4);
-            this.visualSeparator3.TabIndex = 557;
-            this.visualSeparator3.Text = "visualSeparator3";
-            this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator3.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator3.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnAddCategoria.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddCategoria.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnAddCategoria.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnAddCategoria.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnAddCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddCategoria.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnAddCategoria.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddCategoria.Border.HoverVisible = true;
+            this.btnAddCategoria.Border.Rounding = 6;
+            this.btnAddCategoria.Border.Thickness = 1;
+            this.btnAddCategoria.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddCategoria.Border.Visible = true;
+            this.btnAddCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCategoria.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddCategoria.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddCategoria.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCategoria.Image")));
+            this.btnAddCategoria.Location = new System.Drawing.Point(275, 198);
+            this.btnAddCategoria.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddCategoria.Name = "btnAddCategoria";
+            this.btnAddCategoria.Size = new System.Drawing.Size(37, 29);
+            this.btnAddCategoria.TabIndex = 553;
+            this.btnAddCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddCategoria.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddCategoria.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddCategoria.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddCategoria.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddCategoria.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddCategoria.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddCategoria.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // pathImage
+            // btnAddFornecedor
             // 
-            this.pathImage.AlphaNumeric = false;
-            this.pathImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pathImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.pathImage.BackColorState.Enabled = System.Drawing.Color.White;
-            this.pathImage.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.pathImage.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.pathImage.Border.HoverVisible = true;
-            this.pathImage.Border.Rounding = 8;
-            this.pathImage.Border.Thickness = 1;
-            this.pathImage.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pathImage.Border.Visible = true;
-            this.pathImage.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.pathImage.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.pathImage.ButtonBorder.HoverVisible = true;
-            this.pathImage.ButtonBorder.Rounding = 6;
-            this.pathImage.ButtonBorder.Thickness = 1;
-            this.pathImage.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.pathImage.ButtonBorder.Visible = true;
-            this.pathImage.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pathImage.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.pathImage.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pathImage.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pathImage.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathImage.ButtonIndent = 3;
-            this.pathImage.ButtonText = "visualButton";
-            this.pathImage.ButtonVisible = false;
-            this.pathImage.Enabled = false;
-            this.pathImage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pathImage.Image = null;
-            this.pathImage.ImageSize = new System.Drawing.Size(16, 16);
-            this.pathImage.ImageVisible = false;
-            this.pathImage.ImageWidth = 35;
-            this.pathImage.Location = new System.Drawing.Point(111, 45);
-            this.pathImage.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.pathImage.Name = "pathImage";
-            this.pathImage.PasswordChar = '\0';
-            this.pathImage.ReadOnly = false;
-            this.pathImage.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pathImage.Size = new System.Drawing.Size(445, 30);
-            this.pathImage.TabIndex = 558;
-            this.pathImage.TextBoxWidth = 433;
-            this.pathImage.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.pathImage.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pathImage.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pathImage.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pathImage.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.pathImage.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.pathImage.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.pathImage.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.pathImage.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathImage.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.pathImage.Watermark.Text = "Watermark text";
-            this.pathImage.Watermark.Visible = false;
-            this.pathImage.WordWrap = true;
+            this.btnAddFornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddFornecedor.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnAddFornecedor.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnAddFornecedor.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnAddFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddFornecedor.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnAddFornecedor.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddFornecedor.Border.HoverVisible = true;
+            this.btnAddFornecedor.Border.Rounding = 6;
+            this.btnAddFornecedor.Border.Thickness = 1;
+            this.btnAddFornecedor.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddFornecedor.Border.Visible = true;
+            this.btnAddFornecedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddFornecedor.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddFornecedor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFornecedor.Image")));
+            this.btnAddFornecedor.Location = new System.Drawing.Point(516, 198);
+            this.btnAddFornecedor.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddFornecedor.Name = "btnAddFornecedor";
+            this.btnAddFornecedor.Size = new System.Drawing.Size(37, 29);
+            this.btnAddFornecedor.TabIndex = 552;
+            this.btnAddFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddFornecedor.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddFornecedor.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddFornecedor.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddFornecedor.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddFornecedor.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddFornecedor.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddFornecedor.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label25
+            // pictureBox11
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label25.Location = new System.Drawing.Point(109, 25);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(58, 17);
-            this.label25.TabIndex = 559;
-            this.label25.Text = "Imagem";
+            this.pictureBox11.BackColor = System.Drawing.Color.White;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
+            this.pictureBox11.Location = new System.Drawing.Point(634, 263);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 44;
+            this.pictureBox11.TabStop = false;
             // 
-            // btnImage
+            // pictureBox8
             // 
-            this.btnImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnImage.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnImage.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnImage.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnImage.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnImage.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnImage.Border.HoverVisible = true;
-            this.btnImage.Border.Rounding = 6;
-            this.btnImage.Border.Thickness = 1;
-            this.btnImage.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnImage.Border.Visible = true;
-            this.btnImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImage.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnImage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImage.ForeColor = System.Drawing.Color.White;
-            this.btnImage.Image = null;
-            this.btnImage.Location = new System.Drawing.Point(562, 45);
-            this.btnImage.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnImage.Name = "btnImage";
-            this.btnImage.Size = new System.Drawing.Size(108, 30);
-            this.btnImage.TabIndex = 15121;
-            this.btnImage.Text = "Selecionar";
-            this.btnImage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnImage.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnImage.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnImage.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnImage.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnImage.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnImage.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnImage.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(258, 13);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 156;
+            this.pictureBox8.TabStop = false;
             // 
-            // btnRemoverImage
+            // pictureBox7
             // 
-            this.btnRemoverImage.AutoSize = true;
-            this.btnRemoverImage.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemoverImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemoverImage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRemoverImage.Location = new System.Drawing.Point(111, 78);
-            this.btnRemoverImage.Name = "btnRemoverImage";
-            this.btnRemoverImage.Size = new System.Drawing.Size(94, 13);
-            this.btnRemoverImage.TabIndex = 15122;
-            this.btnRemoverImage.Text = "Remover Imagem";
-            this.btnRemoverImage.Visible = false;
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(124, 13);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 41;
+            this.pictureBox7.TabStop = false;
+            // 
+            // selecionarNCM
+            // 
+            this.selecionarNCM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.selecionarNCM.Image = ((System.Drawing.Image)(resources.GetObject("selecionarNCM.Image")));
+            this.selecionarNCM.Location = new System.Drawing.Point(239, 86);
+            this.selecionarNCM.Name = "selecionarNCM";
+            this.selecionarNCM.Size = new System.Drawing.Size(28, 28);
+            this.selecionarNCM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.selecionarNCM.TabIndex = 10;
+            this.selecionarNCM.TabStop = false;
+            // 
+            // btnAddImpostoTwo
+            // 
+            this.btnAddImpostoTwo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddImpostoTwo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnAddImpostoTwo.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnAddImpostoTwo.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnAddImpostoTwo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddImpostoTwo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnAddImpostoTwo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddImpostoTwo.Border.HoverVisible = true;
+            this.btnAddImpostoTwo.Border.Rounding = 6;
+            this.btnAddImpostoTwo.Border.Thickness = 1;
+            this.btnAddImpostoTwo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddImpostoTwo.Border.Visible = true;
+            this.btnAddImpostoTwo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddImpostoTwo.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddImpostoTwo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddImpostoTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddImpostoTwo.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoTwo.Image")));
+            this.btnAddImpostoTwo.Location = new System.Drawing.Point(581, 105);
+            this.btnAddImpostoTwo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddImpostoTwo.Name = "btnAddImpostoTwo";
+            this.btnAddImpostoTwo.Size = new System.Drawing.Size(37, 29);
+            this.btnAddImpostoTwo.TabIndex = 555;
+            this.btnAddImpostoTwo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddImpostoTwo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddImpostoTwo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddImpostoTwo.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddImpostoTwo.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddImpostoTwo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddImpostoTwo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddImpostoTwo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnAddImpostoOne
+            // 
+            this.btnAddImpostoOne.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddImpostoOne.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnAddImpostoOne.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnAddImpostoOne.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnAddImpostoOne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddImpostoOne.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnAddImpostoOne.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddImpostoOne.Border.HoverVisible = true;
+            this.btnAddImpostoOne.Border.Rounding = 6;
+            this.btnAddImpostoOne.Border.Thickness = 1;
+            this.btnAddImpostoOne.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnAddImpostoOne.Border.Visible = true;
+            this.btnAddImpostoOne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddImpostoOne.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddImpostoOne.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddImpostoOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddImpostoOne.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImpostoOne.Image")));
+            this.btnAddImpostoOne.Location = new System.Drawing.Point(581, 41);
+            this.btnAddImpostoOne.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnAddImpostoOne.Name = "btnAddImpostoOne";
+            this.btnAddImpostoOne.Size = new System.Drawing.Size(37, 29);
+            this.btnAddImpostoOne.TabIndex = 554;
+            this.btnAddImpostoOne.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddImpostoOne.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnAddImpostoOne.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnAddImpostoOne.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnAddImpostoOne.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnAddImpostoOne.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddImpostoOne.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnAddImpostoOne.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.White;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(286, 84);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 178;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(257, 20);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 175;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.White;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(135, 17);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 40;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+            this.pictureBox14.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox14.InitialImage")));
+            this.pictureBox14.Location = new System.Drawing.Point(395, 180);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 40;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(83, 118);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 40;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(85, 180);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 24;
+            this.pictureBox4.TabStop = false;
             // 
             // AddProduct
             // 
@@ -2752,28 +2752,18 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "AddProduct";
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaEstoque)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.barraTitulo.ResumeLayout(false);
@@ -2783,6 +2773,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.selecionarNCM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
