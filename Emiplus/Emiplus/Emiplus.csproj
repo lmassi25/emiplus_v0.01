@@ -358,6 +358,11 @@
     </Compile>
     <Compile Include="View\Comercial\AddOS.Designer.cs">
       <DependentUpon>AddOS.cs</DependentUpon>
+    <Compile Include="View\Comercial\AddObservacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddObservacao.Designer.cs">
+      <DependentUpon>AddObservacao.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\Clientes.cs">
       <SubType>Form</SubType>
@@ -1055,6 +1060,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddOS.resx">
       <DependentUpon>AddOS.cs</DependentUpon>
+    <EmbeddedResource Include="View\Comercial\AddObservacao.resx">
+      <DependentUpon>AddObservacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
