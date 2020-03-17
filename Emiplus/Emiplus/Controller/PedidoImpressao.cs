@@ -120,6 +120,7 @@ namespace Emiplus.Controller
                 Cliente = dataCliente?.Nome ?? "",
                 Vendedor = dataVendedor?.Nome ?? "",
                 Caixa = _modelPedido.Id_Caixa,
+                Obs = _modelPedido.Observacao,
                 Endereco = Addr,
                 Telefone = _modelPessoaContato != null ? _modelPessoaContato.Telefone : "",
                 Celular = _modelPessoaContato != null ? _modelPessoaContato.Celular : "",

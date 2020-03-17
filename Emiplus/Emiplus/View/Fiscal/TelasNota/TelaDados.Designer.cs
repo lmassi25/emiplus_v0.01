@@ -155,7 +155,7 @@
             this.emissao.ButtonText = "visualButton";
             this.emissao.ButtonVisible = false;
             this.emissao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.emissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.emissao.Image = null;
             this.emissao.ImageSize = new System.Drawing.Size(16, 16);
             this.emissao.ImageVisible = false;
@@ -227,7 +227,7 @@
             this.saida.ButtonText = "visualButton";
             this.saida.ButtonVisible = false;
             this.saida.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.saida.Image = null;
             this.saida.ImageSize = new System.Drawing.Size(16, 16);
             this.saida.ImageVisible = false;
@@ -299,7 +299,7 @@
             this.hora.ButtonText = "visualButton";
             this.hora.ButtonVisible = false;
             this.hora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.hora.Image = null;
             this.hora.ImageSize = new System.Drawing.Size(16, 16);
             this.hora.ImageVisible = false;
@@ -349,6 +349,7 @@
             this.tipo.DropDownHeight = 100;
             this.tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipo.DropDownWidth = 250;
+            this.tipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tipo.FormattingEnabled = true;
             this.tipo.ImageList = null;
             this.tipo.ImageVisible = false;
@@ -418,6 +419,7 @@
             this.localDestino.DropDownHeight = 100;
             this.localDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.localDestino.DropDownWidth = 250;
+            this.localDestino.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.localDestino.FormattingEnabled = true;
             this.localDestino.ImageList = null;
             this.localDestino.ImageVisible = false;
@@ -487,6 +489,7 @@
             this.finalidade.DropDownHeight = 100;
             this.finalidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.finalidade.DropDownWidth = 250;
+            this.finalidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.finalidade.FormattingEnabled = true;
             this.finalidade.ImageList = null;
             this.finalidade.ImageVisible = false;
@@ -556,6 +559,7 @@
             this.naturezaOp.DropDownHeight = 100;
             this.naturezaOp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.naturezaOp.DropDownWidth = 250;
+            this.naturezaOp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.naturezaOp.FormattingEnabled = true;
             this.naturezaOp.ImageList = null;
             this.naturezaOp.ImageVisible = false;
@@ -647,7 +651,7 @@
             this.infoFisco.ButtonText = "visualButton";
             this.infoFisco.ButtonVisible = false;
             this.infoFisco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoFisco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoFisco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.infoFisco.Image = null;
             this.infoFisco.ImageSize = new System.Drawing.Size(16, 16);
             this.infoFisco.ImageVisible = false;
@@ -684,7 +688,7 @@
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(28, 276);
+            this.label13.Location = new System.Drawing.Point(28, 275);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(228, 17);
             this.label13.TabIndex = 126;
@@ -720,7 +724,7 @@
             this.infoContribuinte.ButtonText = "visualButton";
             this.infoContribuinte.ButtonVisible = false;
             this.infoContribuinte.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoContribuinte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.infoContribuinte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.infoContribuinte.Image = null;
             this.infoContribuinte.ImageSize = new System.Drawing.Size(16, 16);
             this.infoContribuinte.ImageVisible = false;

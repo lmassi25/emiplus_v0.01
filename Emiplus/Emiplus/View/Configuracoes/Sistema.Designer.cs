@@ -54,6 +54,7 @@
             this.ip = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -189,7 +190,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(54, 389);
+            this.label1.Location = new System.Drawing.Point(54, 395);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(371, 15);
             this.label1.TabIndex = 541;
@@ -200,7 +201,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(39, 325);
+            this.label2.Location = new System.Drawing.Point(39, 331);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(402, 15);
             this.label2.TabIndex = 540;
@@ -224,7 +225,7 @@
             this.AtualizaDb.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AtualizaDb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.AtualizaDb.Image = null;
-            this.AtualizaDb.Location = new System.Drawing.Point(52, 352);
+            this.AtualizaDb.Location = new System.Drawing.Point(52, 358);
             this.AtualizaDb.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.AtualizaDb.Name = "AtualizaDb";
             this.AtualizaDb.Size = new System.Drawing.Size(265, 32);
@@ -278,7 +279,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(36, 297);
+            this.label4.Location = new System.Drawing.Point(36, 303);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 25);
             this.label4.TabIndex = 543;
@@ -301,7 +302,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(37, 440);
+            this.label9.Location = new System.Drawing.Point(37, 446);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 25);
             this.label9.TabIndex = 546;
@@ -313,7 +314,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Location = new System.Drawing.Point(32, 424);
+            this.visualSeparator2.Location = new System.Drawing.Point(32, 430);
             this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator2.Name = "visualSeparator2";
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -366,7 +367,7 @@
             this.erros.ImageSize = new System.Drawing.Size(16, 16);
             this.erros.ImageVisible = false;
             this.erros.ImageWidth = 35;
-            this.erros.Location = new System.Drawing.Point(52, 477);
+            this.erros.Location = new System.Drawing.Point(52, 483);
             this.erros.MaxLength = 255;
             this.erros.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.erros.MultiLine = true;
@@ -410,7 +411,7 @@
             this.btnClearErroLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearErroLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnClearErroLog.Image = null;
-            this.btnClearErroLog.Location = new System.Drawing.Point(512, 629);
+            this.btnClearErroLog.Location = new System.Drawing.Point(512, 635);
             this.btnClearErroLog.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnClearErroLog.Name = "btnClearErroLog";
             this.btnClearErroLog.Size = new System.Drawing.Size(154, 27);
@@ -431,7 +432,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator4.Location = new System.Drawing.Point(31, 281);
+            this.visualSeparator4.Location = new System.Drawing.Point(31, 287);
             this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator4.Name = "visualSeparator4";
             this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -541,6 +542,17 @@
             this.label11.Text = "Configure o IP do computador remoto que contém o banco de dados principal do sist" +
     "ema.";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(53, 263);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(342, 15);
+            this.label12.TabIndex = 555;
+            this.label12.Text = "Observação: Compartilhe em Rede a pasta principal do sistema.";
+            // 
             // Sistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +560,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label13);
@@ -604,5 +617,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox ip;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

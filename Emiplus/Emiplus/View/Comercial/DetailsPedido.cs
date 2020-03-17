@@ -2,6 +2,7 @@
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using Emiplus.View.Fiscal.TelasNota;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
 using System.Drawing;
@@ -214,6 +215,13 @@ namespace Emiplus.View.Comercial
                 label7.Text = "Fechado";
             }
 
+            if (!string.IsNullOrEmpty(_modelPedido.Observacao))
+            {
+                label14.Visible = true;
+                obs.Visible = true;
+                obs.Text = _modelPedido.Observacao;
+            }
+
             _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
 
             var checkCupom = new Model.Nota().Query().Where("nota.status", "Autorizada").Where("nota.id_pedido", idPedido).Where("nota.tipo", "CFe").FirstOrDefault();
@@ -317,7 +325,21 @@ namespace Emiplus.View.Comercial
 
             btnImprimir.Click += (s, e) =>
             {
-                new Controller.Pedido().Imprimir(idPedido);
+                OptionBobinaA4 f = new OptionBobinaA4();
+                string tipo = "";
+                f.TopMost = true;
+                DialogResult formResult = f.ShowDialog();
+
+                if (formResult == DialogResult.OK)
+                {
+                    tipo = "Folha A4";
+                    new Controller.Pedido().Imprimir(idPedido, tipo);
+                }
+                else if (formResult == DialogResult.Cancel)
+                {
+                    tipo = "Bobina 80mm";
+                    new Controller.Pedido().Imprimir(idPedido, tipo);
+                }
             };
 
             btnNfe.Click += (s, e) =>
