@@ -915,6 +915,8 @@ namespace Emiplus.View.Comercial
             {
                 if (PDV)
                 {
+                    btnObs.Visible = false;
+
                     if (IniFile.Read("ShowImagePDV", "Comercial") == "True")
                     {
                         // panel Imagem do produto
@@ -1191,6 +1193,14 @@ namespace Emiplus.View.Comercial
                     remove.Remove(Id);
                     Close();
                 }
+            };
+
+            btnObs.Click += (s, e) =>
+            {
+                AddObservacao.idPedido = Id;
+                AddObservacao f = new AddObservacao();
+                f.TopMost = true;
+                f.Show();
             };
 
             FormClosing += (s, e) =>

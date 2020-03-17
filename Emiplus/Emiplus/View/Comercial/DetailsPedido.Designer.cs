@@ -85,6 +85,9 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnPgtosLancado = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SelecionarColaborador = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.SelecionarCliente = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnRemove = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -99,7 +102,6 @@
             this.btnCFeSat = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnNfe = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.btnPgtosLancado = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -824,6 +826,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.AutoScroll = true;
             this.panel3.AutoScrollMargin = new System.Drawing.Size(10, 25);
+            this.panel3.Controls.Add(this.obs);
+            this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.btnPgtosLancado);
             this.panel3.Controls.Add(this.SelecionarColaborador);
             this.panel3.Controls.Add(this.SelecionarCliente);
@@ -881,6 +885,115 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(731, 477);
             this.panel3.TabIndex = 15108;
+            // 
+            // obs
+            // 
+            this.obs.AlphaNumeric = false;
+            this.obs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.obs.BackColor = System.Drawing.Color.White;
+            this.obs.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.obs.BackColorState.Enabled = System.Drawing.Color.White;
+            this.obs.Border.Color = System.Drawing.Color.Gainsboro;
+            this.obs.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.obs.Border.HoverVisible = true;
+            this.obs.Border.Rounding = 8;
+            this.obs.Border.Thickness = 1;
+            this.obs.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.obs.Border.Visible = true;
+            this.obs.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.obs.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.obs.ButtonBorder.HoverVisible = true;
+            this.obs.ButtonBorder.Rounding = 6;
+            this.obs.ButtonBorder.Thickness = 1;
+            this.obs.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.obs.ButtonBorder.Visible = true;
+            this.obs.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.obs.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.obs.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.obs.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.obs.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.ButtonIndent = 3;
+            this.obs.ButtonText = "visualButton";
+            this.obs.ButtonVisible = false;
+            this.obs.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.obs.Image = null;
+            this.obs.ImageSize = new System.Drawing.Size(16, 16);
+            this.obs.ImageVisible = false;
+            this.obs.ImageWidth = 35;
+            this.obs.Location = new System.Drawing.Point(332, 137);
+            this.obs.MaxLength = 1000;
+            this.obs.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.obs.MultiLine = true;
+            this.obs.Name = "obs";
+            this.obs.PasswordChar = '\0';
+            this.obs.ReadOnly = false;
+            this.obs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.obs.Size = new System.Drawing.Size(345, 43);
+            this.obs.TabIndex = 145253;
+            this.obs.TextBoxWidth = 333;
+            this.obs.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.obs.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.obs.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.obs.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.obs.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.obs.Visible = false;
+            this.obs.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.obs.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obs.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.obs.Watermark.Text = "Watermark text";
+            this.obs.Watermark.Visible = false;
+            this.obs.WordWrap = true;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Gray;
+            this.label14.Location = new System.Drawing.Point(241, 137);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 17);
+            this.label14.TabIndex = 145252;
+            this.label14.Text = "Observação:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label14.Visible = false;
+            // 
+            // btnPgtosLancado
+            // 
+            this.btnPgtosLancado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnPgtosLancado.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPgtosLancado.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnPgtosLancado.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnPgtosLancado.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnPgtosLancado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPgtosLancado.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnPgtosLancado.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnPgtosLancado.Border.HoverVisible = true;
+            this.btnPgtosLancado.Border.Rounding = 6;
+            this.btnPgtosLancado.Border.Thickness = 1;
+            this.btnPgtosLancado.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnPgtosLancado.Border.Visible = true;
+            this.btnPgtosLancado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPgtosLancado.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPgtosLancado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPgtosLancado.ForeColor = System.Drawing.Color.White;
+            this.btnPgtosLancado.Image = null;
+            this.btnPgtosLancado.Location = new System.Drawing.Point(373, 689);
+            this.btnPgtosLancado.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnPgtosLancado.Name = "btnPgtosLancado";
+            this.btnPgtosLancado.Size = new System.Drawing.Size(219, 30);
+            this.btnPgtosLancado.TabIndex = 145251;
+            this.btnPgtosLancado.Text = "Ver Recebimentos Lançados";
+            this.btnPgtosLancado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPgtosLancado.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnPgtosLancado.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnPgtosLancado.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnPgtosLancado.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnPgtosLancado.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPgtosLancado.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnPgtosLancado.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // SelecionarColaborador
             // 
@@ -1253,41 +1366,6 @@
             this.visualSeparator1.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator1.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // btnPgtosLancado
-            // 
-            this.btnPgtosLancado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPgtosLancado.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnPgtosLancado.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnPgtosLancado.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnPgtosLancado.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnPgtosLancado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPgtosLancado.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnPgtosLancado.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnPgtosLancado.Border.HoverVisible = true;
-            this.btnPgtosLancado.Border.Rounding = 6;
-            this.btnPgtosLancado.Border.Thickness = 1;
-            this.btnPgtosLancado.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnPgtosLancado.Border.Visible = true;
-            this.btnPgtosLancado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPgtosLancado.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPgtosLancado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPgtosLancado.ForeColor = System.Drawing.Color.White;
-            this.btnPgtosLancado.Image = null;
-            this.btnPgtosLancado.Location = new System.Drawing.Point(373, 689);
-            this.btnPgtosLancado.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnPgtosLancado.Name = "btnPgtosLancado";
-            this.btnPgtosLancado.Size = new System.Drawing.Size(219, 30);
-            this.btnPgtosLancado.TabIndex = 145251;
-            this.btnPgtosLancado.Text = "Ver Recebimentos Lançados";
-            this.btnPgtosLancado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPgtosLancado.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnPgtosLancado.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnPgtosLancado.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnPgtosLancado.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnPgtosLancado.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnPgtosLancado.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnPgtosLancado.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // DetailsPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1393,5 +1471,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarColaborador;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton SelecionarCliente;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnPgtosLancado;
+        private System.Windows.Forms.Label label14;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox obs;
     }
 }
