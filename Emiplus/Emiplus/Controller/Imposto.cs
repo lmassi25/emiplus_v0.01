@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -205,16 +206,16 @@ namespace Emiplus.Controller
                     break;
 
                 default:
-                    _modelpedidoItem.Pis = "0";
                     _modelpedidoItem.PisAliq = 0;
                     _modelpedidoItem.PisVlr = 0;
                     break;
             }
 
-            if (_modelpedidoItem.PisAliq > 0)
-            {
+            if (_modelpedidoItem.PisAliq > 0)            
                 _modelpedidoItem.PisAliq = (_modelpedidoItem.PisAliq * 100);
-            }
+
+            if (String.IsNullOrEmpty(_modelpedidoItem.Pis))
+                _modelpedidoItem.Pis = "0";
 
             #endregion PIS
 
@@ -234,16 +235,16 @@ namespace Emiplus.Controller
                     break;
 
                 default:
-                    _modelpedidoItem.Cofins = "0";
                     _modelpedidoItem.CofinsAliq = 0;
                     _modelpedidoItem.CofinsVlr = 0;
                     break;
             }
 
-            if (_modelpedidoItem.CofinsAliq > 0)
-            {
+            if (_modelpedidoItem.CofinsAliq > 0)            
                 _modelpedidoItem.CofinsAliq = (_modelpedidoItem.CofinsAliq * 100);
-            }
+
+            if (String.IsNullOrEmpty(_modelpedidoItem.Cofins))
+                _modelpedidoItem.Cofins = "0";
 
             #endregion COFINS
 
