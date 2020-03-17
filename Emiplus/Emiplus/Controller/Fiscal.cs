@@ -317,7 +317,34 @@ namespace Emiplus.Controller
             try
             {
                 if (tipo == "CFe" || tipo == "NFCe")
+                {
                     _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
+
+                    if (_nota == null)
+                    {
+                        if (Nota > 0)
+                            _nota = new Model.Nota().FindById(Nota).First<Model.Nota>();
+                        else if (_id_nota > 0)
+                            _nota = new Model.Nota().FindById(_id_nota).First<Model.Nota>();
+                    }
+
+                    if (_nota == null)
+                    {
+                        //return "Não foi possível acessar a Nota/Cupom solicitado. Entre em contato com o suporte técnico.";
+                        Model.Nota _modelNota = new Model.Nota();
+                        _modelNota.Id = 0;
+                        _modelNota.Tipo = "CFe";
+                        _modelNota.Status = "Pendente";
+                        _modelNota.id_pedido = Pedido;
+                        if (!_modelNota.Save(_modelNota, false))
+                        {
+                            _msg = "Problema com tabela Notas. Entre em contato com o suporte técnico!";
+                            return _msg;
+                        }
+                            
+                        _nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
+                    }
+                }
 
                 //if (tipo == "NFe")
                 //_nota = new Model.Nota().FindByIdPedidoUltReg(Pedido, "Pendente").FirstOrDefault<Model.Nota>();
@@ -571,8 +598,6 @@ namespace Emiplus.Controller
         {
             _id_nota = Nota;
             Start(Pedido, tipo);
-
-            BrowserNfe browser = new BrowserNfe();
 
             switch (tipo)
             {
@@ -852,6 +877,8 @@ namespace Emiplus.Controller
                     break;
 
                 case "NFe":
+                    
+                    BrowserNfe browser = new BrowserNfe();
 
                     #region NFE
 

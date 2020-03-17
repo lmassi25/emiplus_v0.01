@@ -441,7 +441,11 @@ namespace Emiplus.View.Comercial
                 _modelNota.Tipo = "CFe";
                 _modelNota.Status = "Pendente";
                 _modelNota.id_pedido = IdPedido;
-                _modelNota.Save(_modelNota, false);
+                if (!_modelNota.Save(_modelNota, false))
+                {
+                    Alert.Message("Ação não permitida", "Problema com tabela Notas. Entre em contato com o suporte técnico!", Alert.AlertType.warning);
+                    return;
+                }                    
                 checkNota = _modelNota;
             }
 
