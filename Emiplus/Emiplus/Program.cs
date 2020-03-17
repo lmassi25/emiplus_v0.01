@@ -49,7 +49,7 @@ namespace Emiplus
             userPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");
             IP_REMOTO = IniFile.Read("Remoto", "LOCAL");
-            PATH_IMAGE = $@"{IP_REMOTO}{PATH_BASE}";
+            PATH_IMAGE = string.IsNullOrEmpty(IP_REMOTO) ? $"{PATH_BASE}" : $@"{IP_REMOTO}\Emiplus";
             
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
