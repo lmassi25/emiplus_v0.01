@@ -73,6 +73,7 @@
         public double Devolucao { get; set; }
         public double Seguro { get; set; }
         public double Despesa { get; set; }
+        public string Observacao { get; set; }
 
         #endregion CAMPOS
 
