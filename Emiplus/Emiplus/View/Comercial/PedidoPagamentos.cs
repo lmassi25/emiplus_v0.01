@@ -40,64 +40,7 @@ namespace Emiplus.View.Comercial
         public PedidoPagamentos()
         {
             InitializeComponent();
-
             Eventos();
-
-            Resolution.SetScreenMaximized(this);
-
-            AddPedidos.btnFinalizado = false;
-            TelaReceber.Visible = false;
-
-            if (Home.pedidoPage == "Orçamentos")
-            {
-                label13.Text = $"Dados do Orçamento: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para criar um orçamento!";
-            }
-            else if (Home.pedidoPage == "Consignações")
-            {
-                label13.Text = $"Dados da Consignação: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para criar uma consignãção!";
-            }
-            else if (Home.pedidoPage == "Devoluções")
-            {
-                label13.Text = $"Dados da Devolução: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para criar uma devolução!";
-            }
-            else if (Home.pedidoPage == "Compras")
-            {
-                label13.Text = $"Dados da Compra: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para adicionar uma compra!";
-
-                label15.Text = "Á Pagar";
-                label1.Text = "Pagamentos";
-                //enviarEmail.Visible = false;
-                btnNfe.Visible = false;
-                button21.Visible = false;
-                btnCFeSat.Visible = false;
-                button22.Visible = false;
-            }
-            else
-            {
-                label13.Text = $"Dados da Venda: {IdPedido}";
-                label10.Text = "Siga as etapas abaixo para adicionar uma venda!";
-            }
-
-            if (hideFinalizar)
-            {
-                btnCFeSat.Visible = false;
-                button22.Visible = false;
-
-                btnNfe.Visible = false;
-                button21.Visible = false;
-
-                btnConcluir.Visible = false;
-                button19.Visible = false;
-
-                //btnImprimir.Left = 835;
-                //button20.Left = 830;
-                btnImprimir.Visible = false;
-                button20.Visible = false;
-            }
         }
 
         public void AtualizarDados(Boolean grid = true)
@@ -590,6 +533,34 @@ namespace Emiplus.View.Comercial
                     }
                     else
                     {
+                        if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                        {
+                            var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
+                            var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                            if (message)
+                            {
+                                foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                                {
+                                    if (Convert.ToString(row.Cells[0].Value) != "")
+                                    {
+                                        _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                                    }
+                                }
+
+                                AtualizarDados();
+
+                                _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                                _mPedido.status = 2;
+                                _mPedido.Save(_mPedido);
+
+                                Close();
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+
                         e.SuppressKeyPress = true;
                         AddPedidos.btnVoltar = true;
                         Close();
@@ -604,7 +575,74 @@ namespace Emiplus.View.Comercial
         public void Eventos()
         {
             Load += (s, e) =>
-            {                
+            {
+                if (AddPedidos.PDV)
+                {
+                    // btn NF-e
+                    btnNfe.Visible = false;
+                    button21.Visible = false;
+                    pictureBox6.Visible = false;
+                }
+            };
+
+            Shown += (s, e) =>
+            {
+                Resolution.SetScreenMaximized(this);
+
+                AddPedidos.btnFinalizado = false;
+                TelaReceber.Visible = false;
+
+                if (Home.pedidoPage == "Orçamentos")
+                {
+                    label13.Text = $"Dados do Orçamento: {IdPedido}";
+                    label10.Text = "Siga as etapas abaixo para criar um orçamento!";
+                }
+                else if (Home.pedidoPage == "Consignações")
+                {
+                    label13.Text = $"Dados da Consignação: {IdPedido}";
+                    label10.Text = "Siga as etapas abaixo para criar uma consignãção!";
+                }
+                else if (Home.pedidoPage == "Devoluções")
+                {
+                    label13.Text = $"Dados da Devolução: {IdPedido}";
+                    label10.Text = "Siga as etapas abaixo para criar uma devolução!";
+                }
+                else if (Home.pedidoPage == "Compras")
+                {
+                    label13.Text = $"Dados da Compra: {IdPedido}";
+                    label10.Text = "Siga as etapas abaixo para adicionar uma compra!";
+
+                    label15.Text = "Á Pagar";
+                    label1.Text = "Pagamentos";
+                    //enviarEmail.Visible = false;
+                    btnNfe.Visible = false;
+                    button21.Visible = false;
+                    btnCFeSat.Visible = false;
+                    button22.Visible = false;
+                }
+                else
+                {
+                    label13.Text = $"Dados da Venda: {IdPedido}";
+                    label10.Text = "Siga as etapas abaixo para adicionar uma venda!";
+                }
+
+                if (hideFinalizar)
+                {
+                    btnCFeSat.Visible = false;
+                    button22.Visible = false;
+
+                    btnNfe.Visible = false;
+                    button21.Visible = false;
+
+                    btnConcluir.Visible = false;
+                    button19.Visible = false;
+
+                    //btnImprimir.Left = 835;
+                    //button20.Left = 830;
+                    btnImprimir.Visible = false;
+                    button20.Visible = false;
+                }
+
                 mtxt.Visible = false;
                 mtxt2.Visible = false;
 
@@ -696,6 +734,34 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
+                if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                {
+                    var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
+                    var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if (message)
+                    {
+                        foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
+                        {
+                            if (Convert.ToString(row.Cells[0].Value) != "")
+                            {
+                                _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
+                            }
+                        }
+
+                        AtualizarDados();
+
+                        _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                        _mPedido.status = 2;
+                        _mPedido.Save(_mPedido);
+
+                        Close();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                
                 AddPedidos.btnVoltar = true;
                 Close();
             };

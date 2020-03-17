@@ -3,6 +3,7 @@ using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Emiplus.Controller
@@ -15,7 +16,7 @@ namespace Emiplus.Controller
         {
             var itens = new Model.PedidoItem().Query()
                 .LeftJoin("item", "item.id", "pedido_item.item")
-                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "item.nome", "item.referencia")
+                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.xprod", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "item.nome", "item.referencia")
                 .Where("pedido_item.pedido", idPedido)
                 .Where("pedido_item.excluir", 0);
             //.Where("pedido_item.tipo", "Produtos");
@@ -115,14 +116,6 @@ namespace Emiplus.Controller
             if (idPedido <= 0)
                 return;
 
-            //var itens = new Model.PedidoItem().Query()
-            //    .LeftJoin("item", "item.id", "pedido_item.item")
-            //    .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.total", "item.nome", "item.referencia")
-            //    .Where("pedido_item.pedido", idPedido)
-            //    .Where("pedido_item.excluir", 0)
-            //    .Where("pedido_item.tipo", "Produtos")
-            //    .Get();
-
             var itens = GetDataItens(idPedido);
 
             int count = 1;
@@ -132,7 +125,7 @@ namespace Emiplus.Controller
                     data.ID,
                     count++,
                     data.REFERENCIA,
-                    data.NOME,
+                    data.XPROD,
                     Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE)) + " " + data.MEDIDA,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO), true),
@@ -148,6 +141,57 @@ namespace Emiplus.Controller
                     Validation.FormatPrice(Validation.ConvertToDouble(data.ESTADUAL), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL), true)
                 );
+
+                Table.Rows[count - 2].Selected = true;
+            }
+
+            Table.Sort(Table.Columns[1], ListSortDirection.Descending);
+            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        public void GetDataTableItensCompact(DataGridView Table, int idPedido)
+        {
+            Table.ColumnCount = 4;
+
+            Table.Columns[0].Name = "ID";
+            Table.Columns[0].Visible = false;
+
+            Table.Columns[1].Name = "#";
+            Table.Columns[1].Width = 45;
+            Table.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            Table.Columns[2].Name = "Código";
+            Table.Columns[2].Width = 100;
+            Table.Columns[2].Visible = false;
+
+            Table.Columns[3].Name = "Descrição";
+            Table.Columns[3].MinimumWidth = 150;
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Padding = new Padding(5, 5, 0, 5);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+
+            Table.Columns[3].DefaultCellStyle = dataGridViewCellStyle1;
+
+            Table.Rows.Clear();
+
+            if (idPedido <= 0)
+                return;
+
+            var itens = GetDataItens(idPedido);
+
+            int count = 1;
+            foreach (var data in itens)
+            {
+                Table.Rows.Add(
+                    data.ID,
+                    count++,
+                    data.REFERENCIA,
+                    $"{data.XPROD} {Environment.NewLine}" +
+                    $"{Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE))} {data.MEDIDA} x {Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA))} (-{Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO))}) = {Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL))}"
+                    );
+
+                Table.Rows[count - 2].Selected = true;
             }
 
             Table.Sort(Table.Columns[1], ListSortDirection.Descending);

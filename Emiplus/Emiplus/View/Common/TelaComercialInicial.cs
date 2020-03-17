@@ -17,6 +17,15 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
+            btnPdv.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Vendas";
+                AddPedidos.Id = 0;
+                AddPedidos.PDV = true;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+
             Clientes.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(Clientes, pictureBox11, "com_clientes"))
@@ -33,6 +42,7 @@ namespace Emiplus.View.Common
 
                 Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
+                AddPedidos.PDV = false;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
             };

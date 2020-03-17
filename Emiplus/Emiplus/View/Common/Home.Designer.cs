@@ -67,6 +67,7 @@ namespace Emiplus.View.Common
             this.homeMenuComercial = new System.Windows.Forms.Button();
             this.homeMenuProducts = new System.Windows.Forms.Button();
             this.barraTituloHome = new System.Windows.Forms.Panel();
+            this.btnSuporteOnline = new System.Windows.Forms.Button();
             this.syncOn = new System.Windows.Forms.PictureBox();
             this.btnSendSugesttion = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
@@ -605,6 +606,7 @@ namespace Emiplus.View.Common
             // barraTituloHome
             // 
             this.barraTituloHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.barraTituloHome.Controls.Add(this.btnSuporteOnline);
             this.barraTituloHome.Controls.Add(this.syncOn);
             this.barraTituloHome.Controls.Add(this.btnSendSugesttion);
             this.barraTituloHome.Controls.Add(this.btnAccount);
@@ -614,6 +616,26 @@ namespace Emiplus.View.Common
             this.barraTituloHome.Name = "barraTituloHome";
             this.barraTituloHome.Size = new System.Drawing.Size(767, 50);
             this.barraTituloHome.TabIndex = 2;
+            // 
+            // btnSuporteOnline
+            // 
+            this.btnSuporteOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSuporteOnline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSuporteOnline.FlatAppearance.BorderSize = 0;
+            this.btnSuporteOnline.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSuporteOnline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnSuporteOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuporteOnline.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuporteOnline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSuporteOnline.Image = ((System.Drawing.Image)(resources.GetObject("btnSuporteOnline.Image")));
+            this.btnSuporteOnline.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnSuporteOnline.Location = new System.Drawing.Point(197, 12);
+            this.btnSuporteOnline.Name = "btnSuporteOnline";
+            this.btnSuporteOnline.Size = new System.Drawing.Size(137, 28);
+            this.btnSuporteOnline.TabIndex = 163;
+            this.btnSuporteOnline.Text = "Suporte Online!";
+            this.btnSuporteOnline.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSuporteOnline.UseVisualStyleBackColor = true;
             // 
             // syncOn
             // 
@@ -800,5 +822,6 @@ namespace Emiplus.View.Common
         public PictureBox syncOn;
         private Timer timer1;
         private Panel panel2;
+        private Button btnSuporteOnline;
     }
 }

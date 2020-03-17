@@ -89,11 +89,11 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
+            Load += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1, false);
 
             buscarProduto.Text = txtSearch;
 
-            buscarProduto.TextChanged += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1);
+            buscarProduto.TextChanged += async (s, e) => await _controllerItem.SetTable(GridListaProdutos, null, buscarProduto.Text, 1, false);
 
             GridListaProdutos.CellDoubleClick += (s, e) => SelectItemGrid();
             Selecionar.Click += (s, e) => SelectItemGrid();

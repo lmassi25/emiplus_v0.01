@@ -55,8 +55,15 @@ namespace Emiplus.View.Comercial
 
         private async void DataTable()
         {
-            await SetContentTableAsync(GridLista, null, search.Text);
-            dynamic totalRegistros = new Model.Pessoa().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("Tipo", Home.pessoaPage).FirstOrDefault();
+            int ShownrRegistros = 50;
+            if (resultadosPorPage.SelectedItem.ToString() == "Todos")
+                ShownrRegistros = 99999999;
+            else
+                ShownrRegistros = Validation.ConvertToInt32(resultadosPorPage.SelectedItem);
+
+            await SetContentTableAsync(GridLista, null, search.Text, ShownrRegistros);
+
+            dynamic totalRegistros = new Model.Pessoa().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0).Where("ID", "!=", 1).Where("Tipo", Home.pessoaPage).FirstOrDefault();
             nrRegistros.Text = $"Exibindo: {GridLista.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
         }
         private void EditClientes(bool create = false)
@@ -130,13 +137,13 @@ namespace Emiplus.View.Comercial
             Table.Columns[5].Width = 150;
         }
 
-        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "")
+        private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int nrRegistros = 50)
         {
             Table.Rows.Clear();
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(SearchText);
+                IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(SearchText, nrRegistros);
                 Data = dados;
             }
 
@@ -163,6 +170,12 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
+                Refresh();
+            };
+
+            Shown += (s, e) =>
+            {
+                resultadosPorPage.SelectedItem = "50";
                 search.Select();
                 SetHeadersTable(GridLista);
 
@@ -214,6 +227,12 @@ namespace Emiplus.View.Comercial
                 GridLista.Visible = true;
                 Refresh();
             });
+
+            resultadosPorPage.SelectedValueChanged += async (s, e) =>
+            {
+                await Task.Delay(100);
+                DataTable();
+            };
 
             btnMarcarCheckBox.Click += (s, e) =>
             {
@@ -328,7 +347,11 @@ namespace Emiplus.View.Comercial
 
         private async Task RenderizarAsync()
         {
-            IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(search.Text);
+            var f = new OptionsReports();
+            if (f.ShowDialog() != DialogResult.OK)
+                return;
+
+            IEnumerable<dynamic> dados = await _controller.GetDataTableClientes(search.Text, f.NrRegistros, f.TodosRegistros, f.OrdemBy, f.Inativos);
 
             ArrayList data = new ArrayList();
             foreach (var item in dados)
@@ -356,8 +379,8 @@ namespace Emiplus.View.Comercial
             }));
 
             Browser.htmlRender = render;
-            var f = new Browser();
-            f.ShowDialog();
+            using (var browser = new Browser())
+                browser.ShowDialog();
         }
     }
 }

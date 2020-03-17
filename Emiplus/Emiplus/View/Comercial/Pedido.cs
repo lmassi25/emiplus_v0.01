@@ -143,19 +143,6 @@ namespace Emiplus.View.Comercial
             Usuarios.ValueMember = "Id";
         }
 
-        private void AutoCompleteItens()
-        {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
-
-            foreach (var itens in item)
-            {
-                if (!String.IsNullOrEmpty(itens.NOME))
-                    collectionItem.Add(itens.NOME, itens.ID);
-            }
-
-            produtoId.AutoCompleteCustomSource = collectionItem;
-        }
-
         private void DataTableStart()
         {
             BuscarPessoa.Select();
@@ -314,13 +301,17 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
+                Refresh();
+
                 DataTableStart();
                 BuscarPessoa.Select();
                 AutoCompletePessoas();
                 AutoCompleteUsers();
-                AutoCompleteItens();
+
+
+                produtoId.AutoCompleteCustomSource = _mItem.AutoComplete();
 
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();

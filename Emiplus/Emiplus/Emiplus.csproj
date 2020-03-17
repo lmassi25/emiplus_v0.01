@@ -1535,7 +1535,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Assets\Images\icons\info %281%29.png" />
     <None Include="Assets\Images\icons\success.png" />
@@ -1550,6 +1549,7 @@
     <None Include="Resources\voucher.png" />
     <None Include="Assets\Images\nfce.png" />
     <None Include="Assets\Images\icons\refresh.png" />
+    <None Include="Assets\Images\sem-imagem.jpg" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

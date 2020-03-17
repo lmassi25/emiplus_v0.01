@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using Emiplus.Model;
+using System.Diagnostics;
+using System.Net;
 
 namespace Emiplus.View.Common
 {
@@ -207,7 +209,6 @@ namespace Emiplus.View.Common
             ToolHelp.Show("Sistema de sincronização em andamento.", syncOn, ToolHelp.ToolTipIcon.Info, "Sincronização!");
             timer1.Start();
 
-            Console.WriteLine(Validation.RoundTwo(2.9500));
             // new EmailSMTP().SetEmailTo("curruwilla@gmail.com", "William alvares").SetSubject("Teste de email2").SetBody("Corpo da mensagem em <strong>htmssl</strong>").Send();
         }
 
@@ -438,6 +439,12 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += (s, e) =>
             {
+                if (File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
+                {
+                    using (var client = new WebClient()) { client.DownloadFileAsync(new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe"), "Suporte Emiplus.exe"); }
+                    using (var client = new WebClient()) { client.DownloadFileAsync(new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe.config"), "Suporte Emiplus.exe.config"); }
+                }
+
                 BackupAutomatico backup = new BackupAutomatico();
                 backup.StartBackup();
                 backup.BackupLocalDocuments();
@@ -445,6 +452,11 @@ namespace Emiplus.View.Common
 
                 GerarTitulosRecorrentes();
                 LimparRegistros();
+            };
+
+            btnSuporteOnline.Click += (s, e) =>
+            {
+                Process.Start("C:\\Emiplus\\Suporte Emiplus.exe");
             };
         }
 

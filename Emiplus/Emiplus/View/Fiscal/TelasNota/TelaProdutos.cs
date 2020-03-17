@@ -56,8 +56,22 @@ namespace Emiplus.View.Fiscal.TelasNota
         /// </summary>
         private void LoadItens()
         {
-            // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
-            ModalItens();
+            if (BuscarProduto.Text.Length > 0)
+            {
+                Model.Item item = _mItem.FindAll()
+                    .Where("excluir", 0)
+                    .Where("tipo", "Produtos")
+                    .Where("codebarras", BuscarProduto.Text)
+                    .OrWhere("referencia", BuscarProduto.Text)
+                    .FirstOrDefault<Model.Item>();
+
+                if (item != null)
+                {
+                    BuscarProduto.Text = item.Nome;
+                }
+                else
+                    ModalItens(); // Abre modal de Itens caso não encontre nenhum item no autocomplete, ou pressionando Enter.
+            }
 
             // Valida a busca pelo produto e faz o INSERT, gerencia também o estoque e atualiza os totais
             AddItem();
@@ -113,22 +127,23 @@ namespace Emiplus.View.Fiscal.TelasNota
         /// </summary>
         private void ModalItens()
         {
-            if (collection.Lookup(BuscarProduto.Text) == 0)
+            if (collection.Lookup(nomeProduto()[0]) == 0)
             {
                 if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
                 {
-                    PedidoModalItens.txtSearch = BuscarProduto.Text;
-                    using (PedidoModalItens form = new PedidoModalItens()) {
-                        form.TopMost = true;
-                        if (form.ShowDialog() == DialogResult.OK)
-                        {
-                            BuscarProduto.Text = PedidoModalItens.NomeProduto;
+                    PedidoModalItens.txtSearch = nomeProduto()[0];
+                    PedidoModalItens form = new PedidoModalItens();
+                    form.TopMost = true;
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
+                        Preco.Text = Validation.FormatPrice(PedidoModalItens.ValorVendaProduto);
+                        PedidoModalItens.NomeProduto = "";
 
-                            if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
-                            {
-                                AlterarModo();
-                                ModoRapAvaConfig = 1;
-                            }
+                        if (PedidoModalItens.ValorVendaProduto == 0 && ModoRapAva == 0)
+                        {
+                            AlterarModo();
+                            ModoRapAvaConfig = 1;
                         }
                     }
                 }
@@ -145,23 +160,6 @@ namespace Emiplus.View.Fiscal.TelasNota
             Preco.Clear();
             DescontoPorcentagem.Clear();
             DescontoReais.Clear();
-        }
-
-        /// <summary>
-        /// Autocomplete do campo de busca de produtos.
-        /// </summary>
-        private void AutoCompleteItens()
-        {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
-
-            if (item != null) {
-                foreach (var itens in item)
-                {
-                    collection.Add(itens.NOME, itens.ID);
-                }
-            }
-
-            BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
         /// <summary>
@@ -184,15 +182,33 @@ namespace Emiplus.View.Fiscal.TelasNota
             }
         }
 
+        public string[] nomeProduto()
+        {
+            string[] nomeProduto = new string[2];
+
+            string[] checkNome = BuscarProduto.Text.Split(new string[] { " + ", "+" }, StringSplitOptions.None);
+
+            nomeProduto[0] = checkNome[0];
+            if (checkNome.Length == 1)
+                nomeProduto[1] = "";
+            else
+                nomeProduto[1] = checkNome[1];
+
+            return nomeProduto;
+        }
+
         /// <summary>
         /// Adiciona item ao pedido, controla o estoque e atualiza os totais.
         /// </summary>
         private void AddItem()
         {
-            if (collection.Lookup(BuscarProduto.Text) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            if (collection.Lookup(nomeProduto()[0]) > 0 && String.IsNullOrEmpty(PedidoModalItens.NomeProduto))
             {
-                var itemId = collection.Lookup(BuscarProduto.Text);
-                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
+                var itemId = collection.Lookup(nomeProduto()[0]);
+                Model.Item item = _mItem.FindById(itemId).WhereFalse("excluir").Where("tipo", "Produtos").FirstOrDefault<Model.Item>();
+
+                if (ModoRapAva == 0)
+                    Medidas.SelectedItem = item.Medida;
 
                 double QuantidadeTxt = Validation.ConvertToDouble(Quantidade.Text);
                 double DescontoReaisTxt = Validation.ConvertToDouble(DescontoReais.Text);
@@ -200,6 +216,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                 string MedidaTxt = Medidas.Text;
                 double PriceTxt = Validation.ConvertToDouble(Preco.Text);
 
+                #region Controle de estoque
                 var controlarEstoque = IniFile.Read("ControlarEstoque", "Comercial");
                 if (!string.IsNullOrEmpty(controlarEstoque) && controlarEstoque == "True")
                 {
@@ -291,11 +308,13 @@ namespace Emiplus.View.Fiscal.TelasNota
                         }
                     }
                 }
+                #endregion
 
                 var pedidoItem = new Model.PedidoItem();
                 pedidoItem.SetId(0)
                     .SetTipo("Produtos")
                     .SetPedidoId(_mNota.id_pedido)
+                    .SetAdicionalNomePdt(nomeProduto()[1])
                     .SetItem(item)
                     .SetQuantidade(QuantidadeTxt)
                     .SetMedida(MedidaTxt)
@@ -422,9 +441,12 @@ namespace Emiplus.View.Fiscal.TelasNota
             Quantidade.KeyDown += KeyDowns;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
-                AutoCompleteItens();
+                // Autocomplete de produtos
+                collection = _mItem.AutoComplete("Produtos");
+                BuscarProduto.AutoCompleteCustomSource = collection;
+
                 Medidas.DataSource = Support.GetMedidas();
 
                 SetHeadersTable(GridListaProdutos);
@@ -455,18 +477,21 @@ namespace Emiplus.View.Fiscal.TelasNota
                 {
                     if (ModoRapAva == 1)
                     {
-                        if (!string.IsNullOrEmpty(BuscarProduto.Text))
+                        if (!string.IsNullOrEmpty(nomeProduto()[0]))
                         {
-                            var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
+                            var item = _mItem.FindById(collection.Lookup(nomeProduto()[0])).FirstOrDefault<Model.Item>();
                             if (item != null)
+                            {
                                 Preco.Text = Validation.FormatPrice(item.ValorVenda);
+                                Medidas.SelectedItem = item.Medida;
+                            }
 
                             Quantidade.Focus();
                             return;
                         }
                     }
 
-                    if (string.IsNullOrEmpty(BuscarProduto.Text))
+                    if (string.IsNullOrEmpty(nomeProduto()[0]))
                         ModalItens();
                     else
                         LoadItens();
@@ -506,14 +531,12 @@ namespace Emiplus.View.Fiscal.TelasNota
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (String.IsNullOrEmpty(BuscarProduto.Text))
+                    if (String.IsNullOrEmpty(nomeProduto()[0]))
                         BuscarProduto.Focus();
-                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(BuscarProduto.Text))
+                    else if (ModoRapAva == 1 && !String.IsNullOrEmpty(nomeProduto()[0]))
                         Preco.Focus();
                     else
-                    {
                         LoadItens();
-                    }
                 }
             };
 
@@ -736,7 +759,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     data.ID,
                     count++,
                     data.REFERENCIA,
-                    data.NOME,
+                    data.XPROD,
                     data.QUANTIDADE + " " + data.MEDIDA,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO), true),

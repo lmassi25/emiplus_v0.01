@@ -11,19 +11,19 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50, string Ordem = "Ascendente", bool Inativos = true)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, int NrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true)
         {
             var search = "%" + SearchText + "%";
 
             var query = new Model.Item().Query();
-               query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
-                .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
-                .Where("item.excluir", 0)
-                .Where("item.tipo", "Produtos")
-                .Where
-                (
-                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
-                );
+            query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
+             .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
+             .Where("item.excluir", 0)
+             .Where("item.tipo", "Produtos")
+             .Where
+             (
+                 q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
+             );
 
             if (Ordem == "Z-A")
                 query.OrderByDesc("item.nome");
@@ -36,7 +36,13 @@ namespace Emiplus.Controller
                 query.Limit(NrRegistros);
 
             if (!Inativos)
-                query.Where("item.ativo", "<>", "1");
+            {
+                query.Where
+                (
+                    q => q.Where("item.ativo", "0").OrWhereNull("item.ativo")
+                );
+            }
+
 
             return query.GetAsync<dynamic>();
         }
@@ -61,7 +67,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
+        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0, bool ativo = true)
         {
             Table.ColumnCount = 8;
 
@@ -103,7 +109,7 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable(SearchText);
+                IEnumerable<dynamic> dados = await GetDataTable(SearchText, 50, false, "Ascendente", ativo);
                 Data = dados;
             }
 
