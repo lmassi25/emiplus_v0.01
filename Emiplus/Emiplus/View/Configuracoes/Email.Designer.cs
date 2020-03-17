@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -60,7 +61,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -126,6 +126,39 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(633, 40);
             this.panel4.TabIndex = 529;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(5, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 552;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // visualSeparator1
             // 
@@ -209,8 +242,8 @@
             this.mail_host.BackColor = System.Drawing.Color.White;
             this.mail_host.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_host.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_host.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_host.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_host.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_host.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_host.Border.HoverVisible = true;
             this.mail_host.Border.Rounding = 8;
             this.mail_host.Border.Thickness = 1;
@@ -243,7 +276,7 @@
             this.mail_host.PasswordChar = '\0';
             this.mail_host.ReadOnly = false;
             this.mail_host.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_host.Size = new System.Drawing.Size(327, 32);
+            this.mail_host.Size = new System.Drawing.Size(327, 30);
             this.mail_host.TabIndex = 533;
             this.mail_host.TextBoxWidth = 315;
             this.mail_host.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -277,8 +310,8 @@
             this.mail_port.BackColor = System.Drawing.Color.White;
             this.mail_port.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_port.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_port.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_port.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_port.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_port.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_port.Border.HoverVisible = true;
             this.mail_port.Border.Rounding = 8;
             this.mail_port.Border.Thickness = 1;
@@ -311,7 +344,7 @@
             this.mail_port.PasswordChar = '\0';
             this.mail_port.ReadOnly = false;
             this.mail_port.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_port.Size = new System.Drawing.Size(49, 32);
+            this.mail_port.Size = new System.Drawing.Size(49, 30);
             this.mail_port.TabIndex = 535;
             this.mail_port.TextBoxWidth = 37;
             this.mail_port.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -345,8 +378,8 @@
             this.mail_user.BackColor = System.Drawing.Color.White;
             this.mail_user.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_user.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_user.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_user.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_user.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_user.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_user.Border.HoverVisible = true;
             this.mail_user.Border.Rounding = 8;
             this.mail_user.Border.Thickness = 1;
@@ -379,7 +412,7 @@
             this.mail_user.PasswordChar = '\0';
             this.mail_user.ReadOnly = false;
             this.mail_user.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_user.Size = new System.Drawing.Size(327, 32);
+            this.mail_user.Size = new System.Drawing.Size(327, 30);
             this.mail_user.TabIndex = 537;
             this.mail_user.TextBoxWidth = 315;
             this.mail_user.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -413,8 +446,8 @@
             this.mail_smtp.BackColor = System.Drawing.Color.White;
             this.mail_smtp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_smtp.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_smtp.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_smtp.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_smtp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_smtp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_smtp.Border.HoverVisible = true;
             this.mail_smtp.Border.Rounding = 8;
             this.mail_smtp.Border.Thickness = 1;
@@ -447,7 +480,7 @@
             this.mail_smtp.PasswordChar = '\0';
             this.mail_smtp.ReadOnly = false;
             this.mail_smtp.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_smtp.Size = new System.Drawing.Size(327, 32);
+            this.mail_smtp.Size = new System.Drawing.Size(327, 30);
             this.mail_smtp.TabIndex = 539;
             this.mail_smtp.TextBoxWidth = 315;
             this.mail_smtp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -493,8 +526,8 @@
             this.mail_pass.BackColor = System.Drawing.Color.White;
             this.mail_pass.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_pass.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_pass.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_pass.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_pass.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_pass.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_pass.Border.HoverVisible = true;
             this.mail_pass.Border.Rounding = 8;
             this.mail_pass.Border.Thickness = 1;
@@ -527,7 +560,7 @@
             this.mail_pass.PasswordChar = '●';
             this.mail_pass.ReadOnly = false;
             this.mail_pass.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_pass.Size = new System.Drawing.Size(151, 32);
+            this.mail_pass.Size = new System.Drawing.Size(151, 30);
             this.mail_pass.TabIndex = 542;
             this.mail_pass.TextBoxWidth = 139;
             this.mail_pass.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -562,8 +595,8 @@
             this.mail_sender.BackColor = System.Drawing.Color.White;
             this.mail_sender.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_sender.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_sender.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_sender.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_sender.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_sender.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_sender.Border.HoverVisible = true;
             this.mail_sender.Border.Rounding = 8;
             this.mail_sender.Border.Thickness = 1;
@@ -596,7 +629,7 @@
             this.mail_sender.PasswordChar = '\0';
             this.mail_sender.ReadOnly = false;
             this.mail_sender.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_sender.Size = new System.Drawing.Size(327, 32);
+            this.mail_sender.Size = new System.Drawing.Size(327, 30);
             this.mail_sender.TabIndex = 544;
             this.mail_sender.TextBoxWidth = 315;
             this.mail_sender.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -630,8 +663,8 @@
             this.mail_mode.BackColor = System.Drawing.Color.White;
             this.mail_mode.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.mail_mode.BackColorState.Enabled = System.Drawing.Color.White;
-            this.mail_mode.Border.Color = System.Drawing.Color.Gainsboro;
-            this.mail_mode.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.mail_mode.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.mail_mode.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.mail_mode.Border.HoverVisible = true;
             this.mail_mode.Border.Rounding = 8;
             this.mail_mode.Border.Thickness = 1;
@@ -664,7 +697,7 @@
             this.mail_mode.PasswordChar = '\0';
             this.mail_mode.ReadOnly = false;
             this.mail_mode.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mail_mode.Size = new System.Drawing.Size(206, 32);
+            this.mail_mode.Size = new System.Drawing.Size(206, 30);
             this.mail_mode.TabIndex = 546;
             this.mail_mode.TextBoxWidth = 194;
             this.mail_mode.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -789,39 +822,6 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 552;
             this.pictureBox6.TabStop = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.HoverVisible = true;
-            this.btnExit.Border.Rounding = 6;
-            this.btnExit.Border.Thickness = 1;
-            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnExit.Border.Visible = true;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Image = null;
-            this.btnExit.Location = new System.Drawing.Point(5, 5);
-            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 30);
-            this.btnExit.TabIndex = 552;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Email
             // 

@@ -159,11 +159,11 @@ namespace Emiplus.View.Produtos
 
             txtLimiteDesconto.Text = Validation.Price(_modelItem.Limite_Desconto);
 
-            if (File.Exists($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}"))
+            if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}"))
             {
-                var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}");
+                var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}");
                 imageProduct.Image = byteArrayToImage(imageAsByteArray);
-                pathImage.Text = Program.PATH_BASE + $@"\Imagens\{_modelItem.Image}";
+                pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}";
                 btnRemoverImage.Visible = true;
             }
 
@@ -550,8 +550,8 @@ namespace Emiplus.View.Produtos
             {
                 _modelItem.Id = idPdtSelecionado;
 
-                if (File.Exists($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}"))
-                    File.Delete($@"{Program.PATH_BASE}\Imagens\{_modelItem.Image}");
+                if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}"))
+                    File.Delete($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}");
 
                 _modelItem.Image = "";
                 _modelItem.Save(_modelItem, false);
@@ -577,28 +577,28 @@ namespace Emiplus.View.Produtos
                         return;
                     }
 
-                    var path = ofd.InitialDirectory + ofd.FileName;
+                    string path = ofd.InitialDirectory + ofd.FileName;
                     string ext = Path.GetExtension(ofd.FileName);
 
                     if (File.Exists(path))
                     {
-                        if (!Directory.Exists(Program.PATH_BASE + @"\Imagens"))
-                            Directory.CreateDirectory(Program.PATH_BASE + @"\Imagens");
+                        if (!Directory.Exists(Program.PATH_IMAGE + @"\Imagens"))
+                            Directory.CreateDirectory(Program.PATH_IMAGE + @"\Imagens");
                         
                         string nameImage = $"{Validation.CleanString(nome.Text).Replace(" ", "-")}{ext}";
 
-                        if (File.Exists($@"{Program.PATH_BASE}\Imagens\{nameImage}"))
-                            File.Delete($@"{Program.PATH_BASE}\Imagens\{nameImage}");
+                        if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{nameImage}"))
+                            File.Delete($@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
                         
-                        File.Copy(path, $@"{Program.PATH_BASE}\Imagens\{nameImage}");
+                        File.Copy(path, $@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
 
                         _modelItem.Id = idPdtSelecionado;
                         _modelItem.Image = nameImage;
                         _modelItem.Save(_modelItem, false);
 
-                        var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_BASE}\Imagens\{nameImage}");
+                        var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
                         imageProduct.Image = byteArrayToImage(imageAsByteArray);
-                        pathImage.Text = Program.PATH_BASE + $@"\Imagens\{nameImage}";
+                        pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{nameImage}";
                         btnRemoverImage.Visible = true;
                         Alert.Message("Pronto!", "Imagem atualizada com sucesso.", Alert.AlertType.success);
                     }
@@ -607,11 +607,6 @@ namespace Emiplus.View.Produtos
                         Alert.Message("Opps", "Não foi possível copiar a imagem. Tente novamente.", Alert.AlertType.error);
                         return;
                     }
-                }
-                else
-                {
-                    Alert.Message("Opps", "Erro ao selecionar imagem.", Alert.AlertType.error);
-                    return;
                 }
             };
 

@@ -1,4 +1,5 @@
-﻿using Emiplus.Data.Database;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 using System;
@@ -21,6 +22,9 @@ namespace Emiplus.View.Configuracoes
             {
                 if (File.Exists(Program.PATH_BASE + "\\logs\\EXCEPTIONS.txt"))
                     erros.Text = File.ReadAllText(Program.PATH_BASE + "\\logs\\EXCEPTIONS.txt");
+
+                if (!String.IsNullOrEmpty(IniFile.Read("Remoto", "LOCAL")))
+                    ip.Text = IniFile.Read("Remoto", "LOCAL");
             };
 
             AtualizaDb.Click += (s, e) =>
@@ -39,6 +43,8 @@ namespace Emiplus.View.Configuracoes
                     erros.Text = "";
                 }
             };
+
+            ip.Leave += (s, e) => IniFile.Write("Remoto", ip.Text, "LOCAL");
 
             btnExit.Click += (s, e) => Close();
         }

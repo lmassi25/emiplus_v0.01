@@ -303,6 +303,7 @@
     </Compile>
     <Compile Include="Data\Helpers\AlertOptions.cs" />
     <Compile Include="Data\Helpers\CEP.cs" />
+    <Compile Include="Data\Helpers\FullScreen.cs" />
     <Compile Include="Data\Helpers\Masks.cs" />
     <Compile Include="Data\Helpers\Log.cs" />
     <Compile Include="Data\Helpers\OpenForm.cs" />

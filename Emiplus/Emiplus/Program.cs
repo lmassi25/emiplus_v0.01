@@ -26,6 +26,8 @@ namespace Emiplus
         /// Caminho definido no Config.ini
         /// </summary>
         public static string PATH_BASE { get; set; }
+        public static string IP_REMOTO { get; set; }
+        public static string PATH_IMAGE { get; set; }
 
         /// <summary>
         /// ID unico para cada CNPJ
@@ -41,12 +43,14 @@ namespace Emiplus
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
-       [STAThread]
+        [STAThread]
         public static void Main()
         {
             userPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");
-
+            IP_REMOTO = IniFile.Read("Remoto", "LOCAL");
+            PATH_IMAGE = $@"{IP_REMOTO}{PATH_BASE}";
+            
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
