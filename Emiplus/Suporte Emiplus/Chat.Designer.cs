@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chat));
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             this.ClientSize = new System.Drawing.Size(428, 591);
             this.Controls.Add(this.panelBrowser);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(444, 630);
             this.MinimumSize = new System.Drawing.Size(444, 630);
             this.Name = "Chat";

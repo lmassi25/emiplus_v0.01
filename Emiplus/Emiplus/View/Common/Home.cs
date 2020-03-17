@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Drawing.Printing;
 using Emiplus.Model;
 using System.Diagnostics;
+using System.Net;
 
 namespace Emiplus.View.Common
 {
@@ -438,6 +439,12 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += (s, e) =>
             {
+                if (File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
+                {
+                    using (var client = new WebClient()) { client.DownloadFileAsync(new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe"), "Suporte Emiplus.exe"); }
+                    using (var client = new WebClient()) { client.DownloadFileAsync(new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe.config"), "Suporte Emiplus.exe.config"); }
+                }
+
                 BackupAutomatico backup = new BackupAutomatico();
                 backup.StartBackup();
                 backup.BackupLocalDocuments();
