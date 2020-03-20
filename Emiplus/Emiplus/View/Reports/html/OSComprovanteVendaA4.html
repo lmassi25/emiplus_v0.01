@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+
+    <link href="https://www.emiplus.com.br/razor/css/invoice-2.css?v=3" rel="stylesheet">
+    <link href="https://www.emiplus.com.br/razor/css/style.bundle.css?v=2" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="kt-invoice-2">
+        <div class="kt-invoice__head">
+            <div class="kt-invoice__container">
+
+                <div class="kt-invoice__brand">
+                    <h1 class="kt-invoice__title">COMPROVANTE DE {{titulo}}</h1>
+                    <div href="#" class="kt-invoice__logo">
+                        <a href="#"><img src="https://www.emiplus.com.br/{{Logo}}" width="70px"></a>
+                        <span class="kt-invoice__desc">
+                            <span>{{NomeFantasia}} CNPJ: {{CNPJ}}</span>
+                            <span>Endereço: {{AddressEmpresa}}</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="kt-invoice__items">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">Emissão</span>
+                        <span class="kt-invoice__text">{{Emissao}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">N°</span>
+                        <span class="kt-invoice__text">{{NrVenda}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">{{titulo2}}</span>
+                        <span class="kt-invoice__text">{{Cliente}}<br /> Endereço: {{Endereco}}<br />{{Telefone}}</span>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="kt-invoice__items">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{astyle}}>{{alabel}}</span>
+                        <span class="kt-invoice__text" {{astyle}}>{{atext}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{bstyle}}>{{blabel}}</span>
+                        <span class="kt-invoice__text" {{bstyle}}>{{btext}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{cstyle}}>{{clabel}}</span>
+                        <span class="kt-invoice__text" {{cstyle}}>{{ctext}}</span>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="kt-invoice__items" style="border-top: 0px" {{gridstyle}}>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{dstyle}}>{{dlabel}}</span>
+                        <span class="kt-invoice__text" {{dstyle}}>{{dtext}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{estyle}}>{{elabel}}</span>
+                        <span class="kt-invoice__text" {{estyle}}>{{etext}}</span>
+                    </div>
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" {{fstyle}}>{{flabel}}</span>
+                        <span class="kt-invoice__text" {{fstyle}}>{{ftext}}</span>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="kt-invoice__items">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">{{problemalabel}}</span>
+                        <span class="kt-invoice__text">{{problematext}}</span>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="kt-invoice__items" style="border-top: 0px">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle">{{solucaolabel}}</span>
+                        <span class="kt-invoice__text">{{solucaotext}}</span>
+                    </div>
+                </div>
+
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                
+                <!---->
+                <div class="kt-invoice__items" style="border-top: 0px">
+                    <div class="kt-invoice__item">
+                        <span class="kt-invoice__subtitle" style="text-align: center;">____________________________________</span>
+                        <span class="kt-invoice__text" style="text-align: center;">{{Cliente}}</span>
+                    </div>
+                    <div class="kt-invoice__item" style="text-align: right;">
+                        <span class="kt-invoice__subtitle" style="text-align: center;">____________________________________</span>
+                        <span class="kt-invoice__text" style="text-align: center;">{{NomeFantasia}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

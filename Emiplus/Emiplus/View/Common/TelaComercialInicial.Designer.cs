@@ -69,6 +69,10 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.btnPdv = new System.Windows.Forms.Button();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.OS = new System.Windows.Forms.Button();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.OSRel = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -85,6 +89,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -265,7 +271,7 @@
             this.ConsignacoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.ConsignacoesRel.Image = ((System.Drawing.Image)(resources.GetObject("ConsignacoesRel.Image")));
             this.ConsignacoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ConsignacoesRel.Location = new System.Drawing.Point(491, 139);
+            this.ConsignacoesRel.Location = new System.Drawing.Point(492, 139);
             this.ConsignacoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConsignacoesRel.Name = "ConsignacoesRel";
             this.ConsignacoesRel.Size = new System.Drawing.Size(219, 41);
@@ -311,7 +317,7 @@
             this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
             this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
             this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.VendasRel.Location = new System.Drawing.Point(491, 184);
+            this.VendasRel.Location = new System.Drawing.Point(492, 184);
             this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VendasRel.Name = "VendasRel";
             this.VendasRel.Size = new System.Drawing.Size(219, 41);
@@ -334,7 +340,7 @@
             this.ProdutosVendidos.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosVendidos.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosVendidos.Image")));
             this.ProdutosVendidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosVendidos.Location = new System.Drawing.Point(491, 227);
+            this.ProdutosVendidos.Location = new System.Drawing.Point(492, 227);
             this.ProdutosVendidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosVendidos.Name = "ProdutosVendidos";
             this.ProdutosVendidos.Size = new System.Drawing.Size(219, 41);
@@ -687,7 +693,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(697, 301);
+            this.pictureBox14.Location = new System.Drawing.Point(696, 301);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(15, 15);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -698,7 +704,7 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(697, 346);
+            this.pictureBox15.Location = new System.Drawing.Point(696, 346);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(15, 15);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -729,12 +735,84 @@
             this.btnPdv.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPdv.UseVisualStyleBackColor = false;
             // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
+            this.pictureBox16.Location = new System.Drawing.Point(461, 346);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 135;
+            this.pictureBox16.TabStop = false;
+            this.pictureBox16.Visible = false;
+            // 
+            // OS
+            // 
+            this.OS.BackColor = System.Drawing.Color.Transparent;
+            this.OS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.OS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OS.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.OS.FlatAppearance.BorderSize = 0;
+            this.OS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.OS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.OS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OS.ForeColor = System.Drawing.Color.DimGray;
+            this.OS.Image = ((System.Drawing.Image)(resources.GetObject("OS.Image")));
+            this.OS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OS.Location = new System.Drawing.Point(256, 320);
+            this.OS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OS.Name = "OS";
+            this.OS.Size = new System.Drawing.Size(219, 41);
+            this.OS.TabIndex = 134;
+            this.OS.Text = "          Nova O.S.";
+            this.OS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OS.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
+            this.pictureBox17.Location = new System.Drawing.Point(696, 394);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 137;
+            this.pictureBox17.TabStop = false;
+            this.pictureBox17.Visible = false;
+            // 
+            // OSRel
+            // 
+            this.OSRel.BackColor = System.Drawing.Color.Transparent;
+            this.OSRel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.OSRel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OSRel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.OSRel.FlatAppearance.BorderSize = 0;
+            this.OSRel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.OSRel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.OSRel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OSRel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OSRel.ForeColor = System.Drawing.Color.DimGray;
+            this.OSRel.Image = ((System.Drawing.Image)(resources.GetObject("OSRel.Image")));
+            this.OSRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OSRel.Location = new System.Drawing.Point(492, 368);
+            this.OSRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OSRel.Name = "OSRel";
+            this.OSRel.Size = new System.Drawing.Size(219, 41);
+            this.OSRel.TabIndex = 136;
+            this.OSRel.Text = "          O.S.";
+            this.OSRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OSRel.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.pictureBox17);
+            this.Controls.Add(this.OSRel);
+            this.Controls.Add(this.pictureBox16);
+            this.Controls.Add(this.OS);
             this.Controls.Add(this.btnPdv);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox14);
@@ -793,6 +871,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -838,5 +918,9 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Button btnPdv;
+        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.Button OS;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Button OSRel;
     }
 }

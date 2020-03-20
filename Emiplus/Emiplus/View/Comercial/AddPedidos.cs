@@ -1111,6 +1111,7 @@ namespace Emiplus.View.Comercial
                 if (e.KeyCode == Keys.Enter)
                     LoadItens();
             };
+
             DescontoReais.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
