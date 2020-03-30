@@ -74,30 +74,39 @@
         public double Seguro { get; set; }
         public double Despesa { get; set; }
         public string Observacao { get; set; }
+        public string campoa { get; set; }
+        public string campob { get; set; }
+        public string campoc { get; set; }
+        public string campod { get; set; }
+        public string campoe { get; set; }
+        public string campof { get; set; }
+        public string problema  { get; set; }
+        public string solucao { get; set; }
+        public int os { get; set; }
 
         #endregion CAMPOS
 
         public Pedido SaveTotais(Dictionary<string, double> data)
-        {
-            Id = Validation.ConvertToInt32(data["Id"]);
-            Produtos = data["Produtos"];
-            Servicos = data["Servicos"];
-            Frete = data["Frete"];
-            Desconto = data["Desconto"] + data["DescontoServicos"];
-            Devolucao = data["Devolucao"];
-            IPI = data["IPI"];
-            ICMSBASE = data["ICMSBASE"];
-            ICMS = data["ICMS"];
-            ICMSSTBASE = data["ICMSSTBASE"];
-            ICMSST = data["ICMSST"];
-            COFINS = data["COFINS"];
-            PIS = data["PIS"];
-            Seguro = data["SEGURO"];
-            Despesa = data["DESPESA"];
-            Total = (Produtos + Servicos + Frete + IPI + ICMSST + Seguro + Despesa) - (Desconto + Devolucao);
+            {
+                Id = Validation.ConvertToInt32(data["Id"]);
+                Produtos = data["Produtos"];
+                Servicos = data["Servicos"];
+                Frete = data["Frete"];
+                Desconto = data["Desconto"] + data["DescontoServicos"];
+                Devolucao = data["Devolucao"];
+                IPI = data["IPI"];
+                ICMSBASE = data["ICMSBASE"];
+                ICMS = data["ICMS"];
+                ICMSSTBASE = data["ICMSSTBASE"];
+                ICMSST = data["ICMSST"];
+                COFINS = data["COFINS"];
+                PIS = data["PIS"];
+                Seguro = data["SEGURO"];
+                Despesa = data["DESPESA"];
+                Total = (Produtos + Servicos + Frete + IPI + ICMSST + Seguro + Despesa) - (Desconto + Devolucao);
 
-            return this;
-        }
+                return this;
+            }
 
         public double GetDesconto()
         {

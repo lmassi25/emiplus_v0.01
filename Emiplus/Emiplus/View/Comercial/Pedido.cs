@@ -41,6 +41,13 @@ namespace Emiplus.View.Comercial
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
         private KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
 
+        private KeyedAutoCompleteStringCollection collectionA = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionB = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionC = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionD = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionE = new KeyedAutoCompleteStringCollection();
+        private KeyedAutoCompleteStringCollection collectionF = new KeyedAutoCompleteStringCollection();
+
         private string controle;
 
         #endregion V
@@ -88,6 +95,12 @@ namespace Emiplus.View.Comercial
 
                 case "Vendas":
                     label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
+                    break;
+
+                case "Ordens de Servico":
+                    label2.Text = "Gerencie as O.S. aqui! Adicione, edite ou apague uma o.s.";
+                    label14.Visible = false;
+                    produtoId.Visible = false;
                     break;
             }
 
@@ -143,6 +156,80 @@ namespace Emiplus.View.Comercial
             Usuarios.ValueMember = "Id";
         }
 
+        /// <summary>
+        /// Autocomplete do campo de busca de os.
+        /// </summary>
+        private void AutoCompleteOS()
+        {
+            var data = new Model.Pedido().Query();
+
+            data.Select("campoa");
+            data.Where("campoa", "<>", "");
+            data.WhereNotNull("campoa");
+
+            foreach (var itens in data.Get())
+            {
+                collectionA.Add(itens.CAMPOA);
+            }
+
+            aText.AutoCompleteCustomSource = collectionA;
+
+            data.Select("campob");
+            data.Where("campob", "<>", "");
+            data.WhereNotNull("campob");
+
+            foreach (var itens in data.Get())
+            {
+                collectionB.Add(itens.CAMPOB);
+            }
+
+            bText.AutoCompleteCustomSource = collectionB;
+
+            data.Select("campoc");
+            data.Where("campoc", "<>", "");
+            data.WhereNotNull("campoc");
+
+            foreach (var itens in data.Get())
+            {
+                collectionC.Add(itens.CAMPOC);
+            }
+
+            cText.AutoCompleteCustomSource = collectionC;
+
+            data.Select("campod");
+            data.Where("campod", "<>", "");
+            data.WhereNotNull("campod");
+
+            foreach (var itens in data.Get())
+            {
+                collectionD.Add(itens.CAMPOD);
+            }
+
+            dText.AutoCompleteCustomSource = collectionD;
+
+            data.Select("campoe");
+            data.Where("campoe", "<>", "");
+            data.WhereNotNull("campoe");
+
+            foreach (var itens in data.Get())
+            {
+                collectionE.Add(itens.CAMPOE);
+            }
+
+            eText.AutoCompleteCustomSource = collectionE;
+
+            data.Select("campof");
+            data.Where("campof", "<>", "");
+            data.WhereNotNull("campof");
+
+            foreach (var itens in data.Get())
+            {
+                collectionF.Add(itens.CAMPOF);
+            }
+
+            fText.AutoCompleteCustomSource = collectionF;
+        }
+
         private void DataTableStart()
         {
             BuscarPessoa.Select();
@@ -157,10 +244,22 @@ namespace Emiplus.View.Comercial
         {
             int excluir = 0;
 
+            Dictionary<string, string> dataFilters = new Dictionary<string, string>();
+
+            if (Home.pedidoPage == "Ordens de Servico")
+            {
+                dataFilters["campoa"] = aText.Text;
+                dataFilters["campob"] = bText.Text;
+                dataFilters["campoc"] = cText.Text;
+                dataFilters["campod"] = dText.Text;
+                dataFilters["campoe"] = eText.Text;
+                dataFilters["campof"] = fText.Text;
+            }
+
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text), dataFilters);
         }
 
         private void EditPedido(bool create = false)
@@ -179,6 +278,12 @@ namespace Emiplus.View.Comercial
                     //Filter();
                     return;
                 }
+                else if (Home.pedidoPage == "Ordens de Servico")
+                {
+                    AddOs.Id = 0;
+                    OpenForm.Show<Comercial.AddOs>(this);
+                    return;
+                }
                 else
                 {
                     AddPedidos.Id = 0;
@@ -195,6 +300,13 @@ namespace Emiplus.View.Comercial
                 if (dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" && Home.pedidoPage != "Cupons")
                 {
                     Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
+                    return;
+                }
+
+                if (Home.pedidoPage == "Ordens de Servico")
+                {
+                    AddOs.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    OpenForm.Show<Comercial.AddOs>(this);
                     return;
                 }
 
@@ -301,6 +413,80 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
+            Load += (s, e) =>
+            {
+                int diff = 0;
+
+                if(Home.pedidoPage != "Ordens de Servico")
+                {
+                    aLabel.Visible = false;
+                    aText.Visible = false;
+                    bLabel.Visible = false;
+                    bText.Visible = false;
+                    cLabel.Visible = false;
+                    cText.Visible = false;
+                    dLabel.Visible = false;
+                    dText.Visible = false;
+                    eLabel.Visible = false;
+                    eText.Visible = false;
+                    fLabel.Visible = false;
+                    fText.Visible = false;
+
+                    diff = 112;
+                    visualSeparator1.Location = new Point(visualSeparator1.Location.X, visualSeparator1.Location.Y - diff);
+                    label8.Location = new Point(label8.Location.X, label8.Location.Y - diff);
+                    label9.Location = new Point(label9.Location.X, label9.Location.Y - diff);
+                    dataInicial.Location = new Point(dataInicial.Location.X, dataInicial.Location.Y - diff);
+                    label10.Location = new Point(label10.Location.X, label10.Location.Y - diff);
+                    dataFinal.Location = new Point(dataFinal.Location.X, dataFinal.Location.Y - diff);
+                    noFilterData.Location = new Point(noFilterData.Location.X, noFilterData.Location.Y - diff);
+                    btnSearch.Location = new Point(btnSearch.Location.X, btnSearch.Location.Y - diff);
+                    panel2.Location = new Point(panel2.Location.X, panel2.Location.Y - diff);
+                    panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + diff);
+
+                    return;
+                }
+
+                aLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_1_Pesquisa", "OS")) : false;
+                aText.Visible = aLabel.Visible;
+                aLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Descr", "OS")) ? IniFile.Read("Campo_1_Descr", "OS") : "";
+
+                bLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_2_Pesquisa", "OS")) : false;
+                bText.Visible = bLabel.Visible;
+                bLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Descr", "OS")) ? IniFile.Read("Campo_2_Descr", "OS") : "";
+
+                cLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_3_Pesquisa", "OS")) : false;
+                cText.Visible = cLabel.Visible;
+                cLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Descr", "OS")) ? IniFile.Read("Campo_3_Descr", "OS") : "";
+
+                dLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_4_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_4_Pesquisa", "OS")) : false;
+                dText.Visible = dLabel.Visible;
+                dLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_4_Descr", "OS")) ? IniFile.Read("Campo_4_Descr", "OS") : "";
+
+                eLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_5_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_5_Pesquisa", "OS")) : false;
+                eText.Visible = eLabel.Visible;
+                eLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_5_Descr", "OS")) ? IniFile.Read("Campo_5_Descr", "OS") : "";
+
+                fLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_6_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_6_Pesquisa", "OS")) : false;
+                fText.Visible = fLabel.Visible;
+                fLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_6_Descr", "OS")) ? IniFile.Read("Campo_6_Descr", "OS") : "";
+
+                if (!dLabel.Visible && !eLabel.Visible && !eLabel.Visible)
+                {
+                    diff = 59;
+                    visualSeparator1.Location = new Point(visualSeparator1.Location.X, visualSeparator1.Location.Y - diff);
+                    label8.Location = new Point(label8.Location.X, label8.Location.Y - diff);
+                    label9.Location = new Point(label9.Location.X, label9.Location.Y - diff);
+                    dataInicial.Location = new Point(dataInicial.Location.X, dataInicial.Location.Y - diff);
+                    label10.Location = new Point(label10.Location.X, label10.Location.Y - diff);
+                    dataFinal.Location = new Point(dataFinal.Location.X, dataFinal.Location.Y - diff);
+                    noFilterData.Location = new Point(noFilterData.Location.X, noFilterData.Location.Y - diff);
+                    btnSearch.Location = new Point(btnSearch.Location.X, btnSearch.Location.Y - diff);
+                    panel2.Location = new Point(panel2.Location.X, panel2.Location.Y - diff);
+                    panel2.Size = new Size(panel2.Size.Width, panel2.Size.Height + diff);
+                }
+            };
+
             Shown += (s, e) =>
             {
                 Refresh();
@@ -310,6 +496,8 @@ namespace Emiplus.View.Comercial
                 AutoCompletePessoas();
                 AutoCompleteUsers();
 
+                if (Home.pedidoPage == "Ordens de Servico")
+                    AutoCompleteOS();
 
                 produtoId.AutoCompleteCustomSource = _mItem.AutoComplete();
 
@@ -326,7 +514,7 @@ namespace Emiplus.View.Comercial
                     status.Add(new { ID = 2, NOME = "Autorizadas" });
                     status.Add(new { ID = 3, NOME = "Canceladas" });
                 }
-                else if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                else if (Home.pedidoPage == "Ordens de Servico" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                 {
                     status.Add(new { ID = 0, NOME = "Pendente" });
                     status.Add(new { ID = 1, NOME = "Finalizado" });
@@ -340,7 +528,7 @@ namespace Emiplus.View.Comercial
                 Status.DataSource = status;
                 Status.DisplayMember = "NOME";
                 Status.ValueMember = "ID";
-                Status.SelectedValue = 99;
+                Status.SelectedValue = 99;                
             };
 
             BuscarPessoa.KeyDown += (s, e) =>

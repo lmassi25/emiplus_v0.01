@@ -17,6 +17,24 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
+            OS.Click += (s, e) =>
+            {
+                //if (UserPermission.SetControl(Clientes, pictureBox11, "com_clientes"))
+                //    return;
+
+                AddOs.Id = 0;
+                OpenForm.Show<AddOs>(this);
+            };
+
+            OSRel.Click += (s, e) =>
+            {
+                //if (UserPermission.SetControl(Pedidos, pictureBox5, "com_novavenda"))
+                //    return;
+
+                Home.pedidoPage = "Ordens de Servico";
+                OpenForm.Show<Pedido>(this);
+            };
+
             btnPdv.Click += (s, e) =>
             {
                 Home.pedidoPage = "Vendas";

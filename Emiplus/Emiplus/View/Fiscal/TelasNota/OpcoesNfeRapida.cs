@@ -206,6 +206,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     p1 = 5;
                     WorkerBackground.RunWorkerAsync();
                 }
+
             };
 
             Imprimir.Click += (s, e) =>
