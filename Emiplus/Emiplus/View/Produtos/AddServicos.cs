@@ -36,6 +36,7 @@ namespace Emiplus.View.Produtos
                 referencia.Text = _modelItem?.Referencia ?? "";
                 valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
                 valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
+                Ativo.Toggled = _modelItem.ativo == 1 ? false : true;
             }
         }
 
@@ -67,6 +68,11 @@ namespace Emiplus.View.Produtos
             _modelItem.Referencia = referencia.Text;
             _modelItem.ValorCompra = Validation.ConvertToDouble(valorcompra.Text);
             _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
+
+            if (Ativo.Toggled)
+                _modelItem.ativo = 0;
+            else
+                _modelItem.ativo = 1;
 
             if (_modelItem.Save(_modelItem))
                 Close();

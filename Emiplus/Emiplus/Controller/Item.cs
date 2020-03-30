@@ -11,7 +11,7 @@ namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, int NrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, int NrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true, bool Servicos = false)
         {
             var search = "%" + SearchText + "%";
 
@@ -19,11 +19,14 @@ namespace Emiplus.Controller
             query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
              .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
              .Where("item.excluir", 0)
-             .Where("item.tipo", "Produtos")
+             //.Where("item.tipo", "Produtos")
              .Where
              (
                  q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
              );
+
+            if (!Servicos)
+                query.Where("item.tipo", "Produtos");
 
             if (Ordem == "Z-A")
                 query.OrderByDesc("item.nome");
@@ -67,7 +70,7 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0, bool ativo = true)
+        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0, bool ativo = true, bool Servicos = false)
         {
             Table.ColumnCount = 8;
 
@@ -109,7 +112,7 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable(SearchText, 50, false, "Ascendente", ativo);
+                IEnumerable<dynamic> dados = await GetDataTable(SearchText, 50, false, "Ascendente", ativo, Servicos);
                 Data = dados;
             }
 
