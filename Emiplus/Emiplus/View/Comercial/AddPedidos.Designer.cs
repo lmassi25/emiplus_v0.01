@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnQuantidade = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnObs = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button21 = new System.Windows.Forms.Button();
             this.btnConcluir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -93,7 +94,6 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.btnQuantidade = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -416,20 +416,56 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.panel2.Controls.Add(this.btnQuantidade);
             this.panel2.Controls.Add(this.btnObs);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.btnConcluir);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.imprimir);
-            this.panel2.Controls.Add(this.btnGerarVenda);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnCancelarProduto);
             this.panel2.Controls.Add(this.btnDelete);
+            this.panel2.Controls.Add(this.btnGerarVenda);
+            this.panel2.Controls.Add(this.btnQuantidade);
             this.panel2.Location = new System.Drawing.Point(0, 689);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 40);
             this.panel2.TabIndex = 2;
+            // 
+            // btnQuantidade
+            // 
+            this.btnQuantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnQuantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnQuantidade.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnQuantidade.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantidade.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnQuantidade.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.Border.HoverVisible = true;
+            this.btnQuantidade.Border.Rounding = 6;
+            this.btnQuantidade.Border.Thickness = 1;
+            this.btnQuantidade.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnQuantidade.Border.Visible = true;
+            this.btnQuantidade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuantidade.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnQuantidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuantidade.ForeColor = System.Drawing.Color.White;
+            this.btnQuantidade.Image = null;
+            this.btnQuantidade.Location = new System.Drawing.Point(338, 5);
+            this.btnQuantidade.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnQuantidade.Name = "btnQuantidade";
+            this.btnQuantidade.Size = new System.Drawing.Size(163, 30);
+            this.btnQuantidade.TabIndex = 15123;
+            this.btnQuantidade.Text = "Alterar Quantidade";
+            this.btnQuantidade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQuantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnQuantidade.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnQuantidade.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnQuantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnQuantidade.Visible = false;
             // 
             // btnObs
             // 
@@ -722,23 +758,23 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridListaProdutos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
@@ -1418,42 +1454,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
-            // 
-            // btnQuantidade
-            // 
-            this.btnQuantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnQuantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnQuantidade.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnQuantidade.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantidade.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnQuantidade.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.Border.HoverVisible = true;
-            this.btnQuantidade.Border.Rounding = 6;
-            this.btnQuantidade.Border.Thickness = 1;
-            this.btnQuantidade.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnQuantidade.Border.Visible = true;
-            this.btnQuantidade.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQuantidade.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnQuantidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuantidade.ForeColor = System.Drawing.Color.White;
-            this.btnQuantidade.Image = null;
-            this.btnQuantidade.Location = new System.Drawing.Point(338, 5);
-            this.btnQuantidade.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnQuantidade.Name = "btnQuantidade";
-            this.btnQuantidade.Size = new System.Drawing.Size(163, 30);
-            this.btnQuantidade.TabIndex = 15123;
-            this.btnQuantidade.Text = "Alterar Quantidade";
-            this.btnQuantidade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQuantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnQuantidade.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnQuantidade.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnQuantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnQuantidade.Visible = false;
             // 
             // AddPedidos
             // 

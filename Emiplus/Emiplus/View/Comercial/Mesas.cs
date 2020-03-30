@@ -77,7 +77,6 @@ namespace Emiplus.View.Comercial
                     _mPedido.Save(_mPedido);
                     int idPedido = _mPedido.GetLastId();
 
-                    double valorTotal = 0;
                     foreach (int mesa in checks)
                     {
                         var dataMesa = _mPedidoItem.FindAll().Where("mesa", mesa).WhereFalse("excluir").Where("pedido", 0).Get();
@@ -85,8 +84,6 @@ namespace Emiplus.View.Comercial
                         {
                             foreach (dynamic item in dataMesa)
                             {
-                                valorTotal += Validation.ConvertToDouble(item.TOTAL);
-
                                 int ID = item.ID;
                                 Model.PedidoItem update = _mPedidoItem.FindById(ID).FirstOrDefault<Model.PedidoItem>();
                                 update.Pedido = idPedido;
@@ -94,11 +91,6 @@ namespace Emiplus.View.Comercial
                             }
                         }
                     }
-
-                    Model.Pedido updatePedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
-                    updatePedido.Produtos = valorTotal;
-                    updatePedido.Total = valorTotal;
-                    updatePedido.Save(updatePedido);
 
                     Home.pedidoPage = "Vendas";
                     AddPedidos.Id = idPedido;

@@ -241,6 +241,13 @@ namespace Emiplus.View.Common
             Load += (s, e) =>
             {
                 new Controller.Caixa().CheckCaixaDate();
+
+                var Alimentacao = IniFile.Read("Alimentacao", "Comercial");
+                if (Alimentacao == "True")
+                {
+                    homeMenuComercial.Text = "            Alimentação";
+                    pictureBox4.Image = Properties.Resources.waiter;
+                }
             };
 
             Shown += (s, e) =>
@@ -304,7 +311,12 @@ namespace Emiplus.View.Common
                 homeMenuComercial.BackColor = Color.FromArgb(26, 32, 44);
                 homeMenuComercial.ForeColor = Color.WhiteSmoke;
                 pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
-                OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
+
+                var Alimentacao = IniFile.Read("Alimentacao", "Comercial");
+                if (Alimentacao == "True")
+                    OpenForm.ShowInPanel<TelaFood>(panelFormularios);
+                else
+                    OpenForm.ShowInPanel<TelaComercialInicial>(panelFormularios);
 
                 homeMenuInicio.BackColor = Color.FromArgb(46, 55, 72);
                 homeMenuProducts.BackColor = Color.FromArgb(46, 55, 72);
