@@ -73,6 +73,7 @@
             this.OS = new System.Windows.Forms.Button();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.OSRel = new System.Windows.Forms.Button();
+            this.Mesas = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -247,7 +248,7 @@
             this.ProdutosConsignados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosConsignados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosConsignados.Image")));
             this.ProdutosConsignados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 514);
+            this.ProdutosConsignados.Location = new System.Drawing.Point(491, 604);
             this.ProdutosConsignados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosConsignados.Name = "ProdutosConsignados";
             this.ProdutosConsignados.Size = new System.Drawing.Size(219, 41);
@@ -294,7 +295,7 @@
             this.DevolucoesRel.ForeColor = System.Drawing.Color.DimGray;
             this.DevolucoesRel.Image = ((System.Drawing.Image)(resources.GetObject("DevolucoesRel.Image")));
             this.DevolucoesRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DevolucoesRel.Location = new System.Drawing.Point(492, 320);
+            this.DevolucoesRel.Location = new System.Drawing.Point(492, 318);
             this.DevolucoesRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DevolucoesRel.Name = "DevolucoesRel";
             this.DevolucoesRel.Size = new System.Drawing.Size(219, 41);
@@ -387,7 +388,7 @@
             this.Comissoes.ForeColor = System.Drawing.Color.DimGray;
             this.Comissoes.Image = ((System.Drawing.Image)(resources.GetObject("Comissoes.Image")));
             this.Comissoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Comissoes.Location = new System.Drawing.Point(492, 275);
+            this.Comissoes.Location = new System.Drawing.Point(492, 273);
             this.Comissoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Comissoes.Name = "Comissoes";
             this.Comissoes.Size = new System.Drawing.Size(219, 41);
@@ -525,7 +526,7 @@
             this.ProdutosOrcados.ForeColor = System.Drawing.Color.DimGray;
             this.ProdutosOrcados.Image = ((System.Drawing.Image)(resources.GetObject("ProdutosOrcados.Image")));
             this.ProdutosOrcados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProdutosOrcados.Location = new System.Drawing.Point(492, 465);
+            this.ProdutosOrcados.Location = new System.Drawing.Point(492, 555);
             this.ProdutosOrcados.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProdutosOrcados.Name = "ProdutosOrcados";
             this.ProdutosOrcados.Size = new System.Drawing.Size(219, 41);
@@ -638,7 +639,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(696, 491);
+            this.pictureBox8.Location = new System.Drawing.Point(696, 581);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(15, 15);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -660,7 +661,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(696, 540);
+            this.pictureBox10.Location = new System.Drawing.Point(696, 630);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(15, 15);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -693,7 +694,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(696, 301);
+            this.pictureBox14.Location = new System.Drawing.Point(696, 300);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(15, 15);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -704,7 +705,7 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(696, 346);
+            this.pictureBox15.Location = new System.Drawing.Point(696, 344);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(15, 15);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -738,7 +739,7 @@
             // pictureBox16
             // 
             this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
-            this.pictureBox16.Location = new System.Drawing.Point(461, 346);
+            this.pictureBox16.Location = new System.Drawing.Point(461, 345);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(15, 15);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -760,7 +761,7 @@
             this.OS.ForeColor = System.Drawing.Color.DimGray;
             this.OS.Image = ((System.Drawing.Image)(resources.GetObject("OS.Image")));
             this.OS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OS.Location = new System.Drawing.Point(256, 320);
+            this.OS.Location = new System.Drawing.Point(256, 319);
             this.OS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OS.Name = "OS";
             this.OS.Size = new System.Drawing.Size(219, 41);
@@ -772,7 +773,7 @@
             // pictureBox17
             // 
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(696, 394);
+            this.pictureBox17.Location = new System.Drawing.Point(696, 389);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(15, 15);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -794,7 +795,7 @@
             this.OSRel.ForeColor = System.Drawing.Color.DimGray;
             this.OSRel.Image = ((System.Drawing.Image)(resources.GetObject("OSRel.Image")));
             this.OSRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OSRel.Location = new System.Drawing.Point(492, 368);
+            this.OSRel.Location = new System.Drawing.Point(492, 363);
             this.OSRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OSRel.Name = "OSRel";
             this.OSRel.Size = new System.Drawing.Size(219, 41);
@@ -803,12 +804,36 @@
             this.OSRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.OSRel.UseVisualStyleBackColor = false;
             // 
+            // Mesas
+            // 
+            this.Mesas.BackColor = System.Drawing.Color.Transparent;
+            this.Mesas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Mesas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Mesas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mesas.FlatAppearance.BorderSize = 0;
+            this.Mesas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Mesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Mesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Mesas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mesas.ForeColor = System.Drawing.Color.DimGray;
+            this.Mesas.Image = ((System.Drawing.Image)(resources.GetObject("Mesas.Image")));
+            this.Mesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Mesas.Location = new System.Drawing.Point(491, 408);
+            this.Mesas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Mesas.Name = "Mesas";
+            this.Mesas.Size = new System.Drawing.Size(219, 41);
+            this.Mesas.TabIndex = 138;
+            this.Mesas.Text = "          Mesas";
+            this.Mesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Mesas.UseVisualStyleBackColor = false;
+            // 
             // TelaComercialInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.Mesas);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.OSRel);
             this.Controls.Add(this.pictureBox16);
@@ -922,5 +947,6 @@
         private System.Windows.Forms.Button OS;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.Button OSRel;
+        private System.Windows.Forms.Button Mesas;
     }
 }
