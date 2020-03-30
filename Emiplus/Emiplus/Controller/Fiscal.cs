@@ -1956,7 +1956,8 @@ namespace Emiplus.Controller
                 if (tipo != "NFCe")
                     xml.WriteElementString("dhSaiEnt", Validation.ConvertDateToSql(_pedido.Emissao) + "T" + horaSaida + DateTime.Now.ToString("zzz"));
 
-                xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
+                //xml.WriteElementString("tpNF", _pedido.TipoNFe > 0 ? _pedido.TipoNFe.ToString() : "1");
+                xml.WriteElementString("tpNF", _pedido.TipoNFe.ToString());
                 xml.WriteElementString("idDest", _pedido.Destino > 0 ? _pedido.Destino.ToString() : "1");
                 xml.WriteElementString("cMunFG", Settings.Default.empresa_ibge);
 

@@ -22,6 +22,7 @@ namespace Emiplus.View.Common
             email.Click += (s, e) => OpenForm.Show<Configuracoes.Email>(this);
             sat.Click += (s, e) => OpenForm.Show<Configuracoes.Cfesat>(this);
             comercial.Click += (s, e) => OpenForm.Show<Configuracoes.Comercial>(this);
+            os.Click += (s, e) => OpenForm.Show<Configuracoes.OS>(this);
             impressao.Click += (s, e) => OpenForm.Show<Configuracoes.Impressao>(this);
             system.Click += (s, e) => OpenForm.Show<Configuracoes.Sistema>(this);
 

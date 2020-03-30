@@ -635,6 +635,12 @@
     <Compile Include="View\Configuracoes\InformacaoGeral.Designer.cs">
       <DependentUpon>InformacaoGeral.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Configuracoes\OS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\OS.Designer.cs">
+      <DependentUpon>OS.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Configuracoes\Preferencias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1200,6 +1206,9 @@
     <EmbeddedResource Include="View\Configuracoes\InformacaoGeral.resx">
       <DependentUpon>InformacaoGeral.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\OS.resx">
+      <DependentUpon>OS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Preferencias.resx">
       <DependentUpon>Preferencias.cs</DependentUpon>
     </EmbeddedResource>
@@ -1583,6 +1592,7 @@
     <Content Include="View\Reports\html\CupomAssinaturaCaixaMov.html" />
     <Content Include="View\Reports\html\CupomCaixaConferencia.html" />
     <Content Include="View\Reports\html\CupomComprovanteVenda.html" />
+    <Content Include="View\Reports\html\OSComprovanteVendaA4.html" />
     <Content Include="View\Reports\html\CupomComprovanteVendaA4.html" />
     <Content Include="View\Reports\html\EstoqueEntradaSaida.html" />
     <Content Include="View\Reports\html\Etiqueta.html" />

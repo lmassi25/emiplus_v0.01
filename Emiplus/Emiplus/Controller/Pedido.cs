@@ -5,6 +5,7 @@ using Emiplus.View.Common;
 using ESC_POS_USB_NET.Printer;
 using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -119,7 +120,7 @@ namespace Emiplus.Controller
             }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0, Dictionary<string, string> dataFilter = null)
         {
             var search = "%" + SearchText + "%";
 
@@ -187,6 +188,23 @@ namespace Emiplus.Controller
             if (idProduto != 0)
             {
                 query.WhereRaw($"EXISTS (SELECT FIRST 1 1 FROM \"PEDIDO_ITEM\" WHERE \"PEDIDO_ITEM\".\"ITEM\" = {idProduto} AND \"PEDIDO\".\"ID\" = \"PEDIDO_ITEM\".\"PEDIDO\" AND \"PEDIDO_ITEM\".\"EXCLUIR\" = 0)");
+            }
+
+            if(tipo == "Ordens de Servico")
+            {
+                if(dataFilter != null)
+                {
+                    foreach (var item in dataFilter)
+                    {
+                        if (!String.IsNullOrEmpty(item.Value))
+                        {
+                            query.Where
+                            (
+                                q => q.WhereLike("pedido." + item.Key, item.Value)
+                            );
+                        }
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(SearchText))
@@ -392,7 +410,7 @@ namespace Emiplus.Controller
             return query.Get();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, bool noFilterData, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, bool noFilterData, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0, Dictionary<string, string> dataFilter = null)
         {
             Table.ColumnCount = 14;
 
@@ -464,6 +482,9 @@ namespace Emiplus.Controller
                 Table.Columns[10].Visible = true;
             }
 
+            if (tipo == "Ordens de Servico")
+                Table.Columns[4].Visible = false;
+
             Table.Columns[11].Name = "TIPO";
             Table.Columns[11].Visible = false;
 
@@ -491,7 +512,7 @@ namespace Emiplus.Controller
                     break;
 
                 default:
-                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario, idProduto);
+                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario, idProduto, dataFilter);
                     break;
             }
 
@@ -508,7 +529,7 @@ namespace Emiplus.Controller
                 if (tipo == "Vendas")
                     statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
 
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                if (Home.pedidoPage == "Ordens de Servico" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                     statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
 
                 #region N° SEFAZ
@@ -590,6 +611,13 @@ namespace Emiplus.Controller
         public void Remove(int idPedido)
         {
             _modelPedido.Remove(idPedido, "id", false);
+
+            if(Home.pedidoPage == "Ordens de Servico")
+            {
+                Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
+                return;
+            }
+
             _modelTitulo.Remove(idPedido, "id_pedido", false);
 
             if (Home.pedidoPage == "Vendas" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Orçamentos")
@@ -602,10 +630,18 @@ namespace Emiplus.Controller
 
         public void Imprimir(int idPedido, string tipo = "Bobina 80mm")
         {
+            if (tipo == "Ordens de Servico")
+            {
+                PedidoImpressao print = new PedidoImpressao();
+                print.PrintOS(idPedido);
+                return;
+            }
+
             if (tipo == "Folha A4")
             {
                 PedidoImpressao print = new PedidoImpressao();
                 print.Print(idPedido);
+                return;
             }
             
             if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
