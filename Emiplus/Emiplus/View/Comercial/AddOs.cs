@@ -364,16 +364,16 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {   
-                aLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_1_Visible", "OS")) : false;
-                aText.Visible = aLabel.Visible;
+                //aLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_1_Visible", "OS")) : false;
+                //aText.Visible = aLabel.Visible;
                 aLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Descr", "OS")) ? IniFile.Read("Campo_1_Descr", "OS") : "";
 
-                bLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_2_Visible", "OS")) : false;
-                bText.Visible = bLabel.Visible;
+                //bLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_2_Visible", "OS")) : false;
+                //bText.Visible = bLabel.Visible;
                 bLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Descr", "OS")) ? IniFile.Read("Campo_2_Descr", "OS") : "";
 
-                cLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_3_Visible", "OS")) : false;
-                cText.Visible = cLabel.Visible;
+                //cLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_3_Visible", "OS")) : false;
+                //cText.Visible = cLabel.Visible;
                 cLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Descr", "OS")) ? IniFile.Read("Campo_3_Descr", "OS") : "";
 
                 dLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_4_Visible", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_4_Visible", "OS")) : false;

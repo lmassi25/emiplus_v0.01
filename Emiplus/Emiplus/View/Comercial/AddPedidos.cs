@@ -67,6 +67,8 @@ namespace Emiplus.View.Comercial
 
             if (Home.pedidoPage == "Orçamentos")
             {
+                PDV = false;
+
                 label2.Text = $"Dados do Orçamento: {Id}";
                 //label3.Text = "Siga as etapas abaixo para criar um orçamento!";
                 btnConcluir.Text = "Finalizar";
@@ -74,7 +76,7 @@ namespace Emiplus.View.Comercial
                 pictureBox8.Visible = false;
                 label12.Visible = false;
                 IDCaixa.Visible = false;
-                btnDelete.Text = "Apagar Orçamento";
+                btnDelete.Text = "Apagar";
                 btnGerarVenda.Visible = true;
 
                 if (_mPedido.status == 1)
@@ -91,6 +93,8 @@ namespace Emiplus.View.Comercial
                 }
                 else
                 {
+                    btnQuantidade.Visible = true;
+                    btnQuantidade.Location = btnDelete.Location;
                     btnConcluir.Text = "Finalizar";
                     btnDelete.Visible = false;
                     btnGerarVenda.Visible = false;
@@ -98,13 +102,15 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Consignações")
             {
+                PDV = false;
+
                 label2.Text = $"Dados da Consignação: {Id}";
                 //label3.Text = "Siga as etapas abaixo para criar uma consignação!";
                 btnConcluir.Text = "Finalizar";
                 pictureBox8.Visible = false;
                 label12.Visible = false;
                 IDCaixa.Visible = false;
-                btnDelete.Text = "Apagar Consignação";
+                btnDelete.Text = "Apagar";
                 btnGerarVenda.Visible = true;
 
                 if (_mPedido.status == 1)
@@ -128,6 +134,8 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Compras")
             {
+                PDV = false;
+
                 label15.Text = "Fornecedor:";
 
                 pictureBox8.Visible = false;
@@ -140,6 +148,8 @@ namespace Emiplus.View.Comercial
             }
             else if (Home.pedidoPage == "Devoluções")
             {
+                PDV = false;
+
                 label2.Text = $"Dados da Troca: {Id}";
                 //label3.Text = "Siga as etapas abaixo para criar uma troca!";
                 btnConcluir.Text = "Finalizar";
@@ -206,7 +216,7 @@ namespace Emiplus.View.Comercial
             LoadColaboradorCaixa();
             LoadTotais();
 
-            ToolHelp.Show("Insira o código de barras ou descrição do produto.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Insira o código de barras ou descrição do produto. " + Environment.NewLine + " Para adicionar observações a descrição do item coloque um '+' e adicione as informações.", pictureBox3, ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         /// <summary>
@@ -449,6 +459,9 @@ namespace Emiplus.View.Comercial
                     _mPedido.status = 1; //FINALIZADO
                     if (_mPedido.Save(_mPedido))
                     {
+                        if (Home.pedidoPage == "Orçamentos")
+                            new Controller.Estoque(Id, Home.pedidoPage, "Finalizar").Remove().Pedido();
+
                         if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                         {
                             Alert.Message("Tudo certo!", "Orçamento gerado com sucesso.", Alert.AlertType.success);
@@ -723,13 +736,16 @@ namespace Emiplus.View.Comercial
 
                 if (item.Tipo == "Produtos")
                 {
-                    new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
+                    if(Home.pedidoPage != "Orçamentos")
+                    {
+                        new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
-                    // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
-                    if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
-                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
-                    else
-                        new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                        // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                        if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
+                        else
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                    }
                 }
 
                 // Carrega a Grid com o Item adicionado acima.
@@ -1208,6 +1224,8 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
+                PDV = false;
+
                 if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                 {
                     if (_mPedido.status == 1)
@@ -1226,10 +1244,13 @@ namespace Emiplus.View.Comercial
                     var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir!" + Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
-                            new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Remove().Pedido();
-                        else
-                            new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
+                        if (Home.pedidoPage != "Orçamentos")
+                        {
+                            if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                                new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Remove().Pedido();
+                            else
+                                new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();
+                        }
 
                         _mPedido.Remove(Id);
                         return;
