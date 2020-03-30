@@ -70,6 +70,7 @@ namespace Emiplus.View.Comercial
                 label2.Text = $"Dados do Orçamento: {Id}";
                 //label3.Text = "Siga as etapas abaixo para criar um orçamento!";
                 btnConcluir.Text = "Finalizar";
+                btnConcluir.Refresh();
                 pictureBox8.Visible = false;
                 label12.Visible = false;
                 IDCaixa.Visible = false;
@@ -1120,7 +1121,8 @@ namespace Emiplus.View.Comercial
 
             btnCancelarProduto.Click += (s, e) =>
             {
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
+                //if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" && _mPedido.status == 1)
+                if (_mPedido.status == 1)
                 {
                     Alert.Message("Ação não permitida", "Não é permitido cancelar o produto.", Alert.AlertType.warning);
                     return;
