@@ -165,6 +165,11 @@ namespace Emiplus.View.Common
                 //ProdVendidos.ShowDialog();
             };
 
+            Mesas.Click += (s, e) =>
+            {
+                OpenForm.Show<Mesas>(this);
+            };
+
             Comissoes.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(Comissoes, pictureBox14, "com_comissoes"))

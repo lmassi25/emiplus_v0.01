@@ -39,6 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Loading = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,15 +57,14 @@
             this.btnRemover = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label7 = new System.Windows.Forms.Label();
             this.resultadosPorPage = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -159,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Loading.Image = global::Emiplus.Properties.Resources.loader_page;
-            this.Loading.Location = new System.Drawing.Point(3, 62);
+            this.Loading.Location = new System.Drawing.Point(3, 34);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(259, 159);
             this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -181,6 +181,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 78;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 40056;
+            this.pictureBox2.TabStop = false;
             // 
             // btnHelp
             // 
@@ -647,17 +658,6 @@
             this.resultadosPorPage.Watermark.Text = "Watermark text";
             this.resultadosPorPage.Watermark.Visible = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 40056;
-            this.pictureBox2.TabStop = false;
-            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -684,11 +684,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

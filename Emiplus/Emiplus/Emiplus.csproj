@@ -395,6 +395,18 @@
     <Compile Include="View\Comercial\DetalhesComissao.Designer.cs">
       <DependentUpon>DetalhesComissao.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\Mesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Mesa.Designer.cs">
+      <DependentUpon>Mesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\Mesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\Mesas.Designer.cs">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\OpcoesCfe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1085,6 +1097,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\DetalhesComissao.resx">
       <DependentUpon>DetalhesComissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Mesa.resx">
+      <DependentUpon>Mesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\Mesas.resx">
+      <DependentUpon>Mesas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesCfe.resx">
       <DependentUpon>OpcoesCfe.cs</DependentUpon>
