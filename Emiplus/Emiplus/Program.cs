@@ -59,6 +59,7 @@ namespace Emiplus
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Carregar());
+            //Application.Run(new Form7());
         }
 
         public static void SetPermissions()

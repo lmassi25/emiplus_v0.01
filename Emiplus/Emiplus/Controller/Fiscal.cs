@@ -2351,6 +2351,10 @@ namespace Emiplus.Controller
 
                 case "900":
                     xml.WriteElementString("CSOSN", "900");
+                    xml.WriteElementString("modBC", "0");
+                    xml.WriteElementString("vBC", Validation.FormatPriceWithDot(_pedidoItem.IcmsBase));
+                    xml.WriteElementString("pICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsAliq));
+                    xml.WriteElementString("vICMS", Validation.FormatPriceWithDot(_pedidoItem.IcmsVlr));
                     break;
             }
 
@@ -2842,12 +2846,15 @@ namespace Emiplus.Controller
 
         #region Tecnospeed
 
-        /// <summary>
-        /// Envia requisição para a Tecnospeed
-        /// </summary>
-        /// <param name="tipo">envia</param>
-        /// <param name="xml">conteúdo xml</param>
-        /// <param name="documento">NFe</param>
+        public string RequestConsultCpf()
+        {            
+            requestData = "grupo=Destech&cnpj=05681389000100&CNPJConsCad=09461157000199&uf=SP";
+            string retorno = request(requestData, "nfe", "conscad", "GET");
+            
+            Console.WriteLine(retorno);
+
+            return retorno;
+        }
 
         private string RequestSendInutiliza(string tx2)
         {

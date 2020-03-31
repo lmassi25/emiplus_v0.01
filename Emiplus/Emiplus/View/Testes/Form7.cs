@@ -37,5 +37,10 @@ namespace Emiplus.View.Testes
             printer.FullPaperCut();
             printer.PrintDocument();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var fiscal = new Controller.Fiscal().RequestConsultCpf();
+        }
     }
 }
