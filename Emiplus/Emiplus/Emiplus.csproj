@@ -353,6 +353,12 @@
     <Compile Include="View\Comercial\AddClientes.Designer.cs">
       <DependentUpon>AddClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\AddItemMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddItemMesa.Designer.cs">
+      <DependentUpon>AddItemMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\AddObservacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -586,6 +592,12 @@
     </Compile>
     <Compile Include="View\Common\TelaFiscalInicial.Designer.cs">
       <DependentUpon>TelaFiscalInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\TelaFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Common\TelaFood.Designer.cs">
+      <DependentUpon>TelaFood.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Common\TelaInicial.cs">
       <SubType>Form</SubType>
@@ -1077,6 +1089,9 @@
     <EmbeddedResource Include="View\Comercial\AddClientes.resx">
       <DependentUpon>AddClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddItemMesa.resx">
+      <DependentUpon>AddItemMesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddObservacao.resx">
       <DependentUpon>AddObservacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -1193,6 +1208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaFiscalInicial.resx">
       <DependentUpon>TelaFiscalInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Common\TelaFood.resx">
+      <DependentUpon>TelaFood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>
@@ -1596,6 +1614,7 @@
     <None Include="Assets\Images\nfce.png" />
     <None Include="Assets\Images\icons\refresh.png" />
     <None Include="Assets\Images\sem-imagem.jpg" />
+    <None Include="Assets\Images\icons\waiter.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

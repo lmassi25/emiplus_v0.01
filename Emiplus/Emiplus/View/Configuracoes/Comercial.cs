@@ -62,6 +62,14 @@ namespace Emiplus.View.Configuracoes
                     else
                         imgPDV.Toggled = false;
                 }
+
+                if (!String.IsNullOrEmpty(IniFile.Read("Alimentacao", "Comercial")))
+                {
+                    if (IniFile.Read("Alimentacao", "Comercial") == "True")
+                        btnAlimentacao.Toggled = true;
+                    else
+                        btnAlimentacao.Toggled = false;
+                }
             };
 
             retomarVendaInicio.Click += (s, e) =>
@@ -102,6 +110,14 @@ namespace Emiplus.View.Configuracoes
                     IniFile.Write("ShowImagePDV", "False", "Comercial");
                 else
                     IniFile.Write("ShowImagePDV", "True", "Comercial");
+            };
+
+            btnAlimentacao.Click += (s, e) =>
+            {
+                if (btnAlimentacao.Toggled)
+                    IniFile.Write("Alimentacao", "False", "Comercial");
+                else
+                    IniFile.Write("Alimentacao", "True", "Comercial");
             };
 
             txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto", Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");
