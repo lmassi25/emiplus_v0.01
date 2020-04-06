@@ -72,6 +72,9 @@ namespace Emiplus.View.Comercial
             {
                 Id = 0;
                 OpenForm.Show<AddClientes>(this);
+                //AddClientesPesquisar f = new AddClientesPesquisar();
+                //f.Show();
+                //return;
             }
 
             if (GridLista.SelectedRows.Count > 0)

@@ -1931,7 +1931,7 @@ namespace Emiplus.Controller
                 xml.WriteElementString("cUF", codUF(_emitenteEndereco.Estado));
 
                 xml.WriteElementString("cNF", cNF);
-                xml.WriteElementString("natOp", _natureza.Nome);
+                xml.WriteElementString("natOp", Validation.CleanStringForFiscal(((_natureza.Nome).TrimEnd()).TrimStart()));
 
                 if (tipo == "NFe")
                     xml.WriteElementString("mod", "55");
@@ -1989,7 +1989,8 @@ namespace Emiplus.Controller
 
         private void SetNFref(XmlTextWriter xml, int Pedido, string tipo)
         {
-            var notas = new Model.Nota().Query().Select("chavedeacesso").Where("Nota.id_pedido", Pedido).Where("Nota.excluir", 0).Where("Nota.tipo", "Documento").OrderBy("Nota.id").Get();
+            //var notas = new Model.Nota().Query().Select("chavedeacesso").Where("Nota.id_pedido", Pedido).Where("Nota.excluir", 0).Where("Nota.tipo", "Documento").OrderBy("Nota.id").Get();
+            var notas = new Model.Nota().Query().Select("chavedeacesso").Where("Nota.id_pedido", _id_nota).Where("Nota.excluir", 0).Where("Nota.tipo", "Documento").OrderBy("Nota.id").Get();
             if (notas != null)
             {
                 foreach (var data in notas)
@@ -2603,7 +2604,14 @@ namespace Emiplus.Controller
                     if (!String.IsNullOrEmpty(_transportadoraEndereco.Rua))
                     {
                         //xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
-                        xml.WriteElementString("xEnder", Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro));
+
+                        string xEnder = Validation.CleanStringForFiscal(_transportadoraEndereco.Rua) + " - " + _transportadoraEndereco.Nr + " - " + Validation.CleanStringForFiscal(_transportadoraEndereco.Bairro);
+                        if(xEnder.Length > 60)
+                        {
+                            xEnder = xEnder.Substring(0, 60);
+                        }
+
+                        xml.WriteElementString("xEnder", xEnder);
                     }
 
                     if (!String.IsNullOrEmpty(_transportadoraEndereco.Cidade))
@@ -2778,7 +2786,7 @@ namespace Emiplus.Controller
             if (!String.IsNullOrEmpty(_pedido.info_fisco))
             {
                 xml.WriteStartElement("infAdic");
-                xml.WriteElementString("infAdFisco", Validation.OneSpaceString(Validation.CleanString(_pedido.info_fisco)));
+                xml.WriteElementString("infAdFisco", Validation.OneSpaceString(Validation.CleanStringForFiscal(_pedido.info_fisco)));
                 tag = true;
             }
 
@@ -2788,7 +2796,7 @@ namespace Emiplus.Controller
                 {
                     xml.WriteStartElement("infAdic");
                 }
-                xml.WriteElementString("infCpl", Validation.OneSpaceString(Validation.CleanString(_pedido.info_contribuinte)));
+                xml.WriteElementString("infCpl", Validation.OneSpaceString(Validation.CleanStringForFiscal(_pedido.info_contribuinte)));
                 tag = true;
             }
 

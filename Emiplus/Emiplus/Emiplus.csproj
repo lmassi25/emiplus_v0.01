@@ -353,6 +353,12 @@
     <Compile Include="View\Comercial\AddClientes.Designer.cs">
       <DependentUpon>AddClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\AddClientesPesquisar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddClientesPesquisar.Designer.cs">
+      <DependentUpon>AddClientesPesquisar.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\AddObservacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1076,6 +1082,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddClientes.resx">
       <DependentUpon>AddClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddClientesPesquisar.resx">
+      <DependentUpon>AddClientesPesquisar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddObservacao.resx">
       <DependentUpon>AddObservacao.cs</DependentUpon>

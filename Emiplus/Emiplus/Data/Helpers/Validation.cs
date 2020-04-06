@@ -308,6 +308,9 @@ namespace Emiplus.Data.Helpers
                 case "G":
                     return Valor.ToString("0.00", Program.cultura);
                     break;
+                default:
+                    return Valor.ToString("0.00", Program.cultura);
+                    break;
             }
 
             return "";
