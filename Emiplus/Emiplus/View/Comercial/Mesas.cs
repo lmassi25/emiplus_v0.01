@@ -22,48 +22,55 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
+        private void LoadMesas()
+        {
+            flowLayout.Controls.Clear();
+
+            var mesas = _mPedidoItem.FindAll(new[] { "mesa" }).Where("pedido", 0).GroupBy("mesa").Get();
+            if (mesas != null)
+            {
+                foreach (var mesa in mesas)
+                {
+                    VisualPanel panel = new VisualPanel();
+                    panel.Width = 140;
+                    panel.Height = 50;
+                    panel.BackColorState.Enabled = Color.FromArgb(255, 184, 34);
+                    panel.Border.Color = Color.FromArgb(228, 164, 28);
+                    panel.Border.HoverColor = Color.FromArgb(228, 164, 28);
+                    panel.Name = $"{mesa.MESA}mesa";
+                    panel.Cursor = Cursors.Hand;
+
+                    Label label = new Label();
+                    label.AutoSize = false;
+                    label.Text = mesa.MESA.ToString();
+                    label.Width = 110;
+                    label.Height = 48;
+                    label.Location = new Point(27, 1);
+                    label.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                    label.ForeColor = Color.White;
+                    label.TextAlign = ContentAlignment.MiddleCenter;
+                    label.Click += actionMesa;
+                    label.Name = $"{mesa.MESA}";
+                    panel.Controls.Add(label);
+
+                    CheckBox check = new CheckBox();
+                    check.Checked = false;
+                    check.Name = $"{mesa.MESA}check";
+                    check.Location = new Point(6, 15);
+                    check.Click += actionCheck;
+
+                    panel.Controls.Add(check);
+
+                    flowLayout.Controls.Add(panel);
+                }
+            }
+        }
+
         private  void Eventos()
         {
             Shown += (s, e) =>
             {
-                var mesas = _mPedidoItem.FindAll(new[] { "mesa" }).Where("pedido", 0).GroupBy("mesa").Get();
-                if (mesas != null)
-                {
-                    foreach (var mesa in mesas)
-                    {
-                        VisualPanel panel = new VisualPanel();
-                        panel.Width = 140;
-                        panel.Height = 50;
-                        panel.BackColorState.Enabled = Color.FromArgb(255, 184, 34);
-                        panel.Border.Color = Color.FromArgb(228, 164, 28);
-                        panel.Border.HoverColor = Color.FromArgb(228, 164, 28);
-                        panel.Name = $"{mesa.MESA}mesa";
-                        panel.Cursor = Cursors.Hand;
-
-                        Label label = new Label();
-                        label.AutoSize = false;
-                        label.Text = mesa.MESA.ToString();
-                        label.Width = 110;
-                        label.Height = 48;
-                        label.Location = new Point(27, 1);
-                        label.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                        label.ForeColor = Color.White;
-                        label.TextAlign = ContentAlignment.MiddleCenter;
-                        label.Click += actionMesa;
-                        label.Name = $"{mesa.MESA}";
-                        panel.Controls.Add(label);
-
-                        CheckBox check = new CheckBox();
-                        check.Checked = false;
-                        check.Name = $"{mesa.MESA}check";
-                        check.Location = new Point(6, 15);
-                        check.Click += actionCheck;
-
-                        panel.Controls.Add(check);
-
-                        flowLayout.Controls.Add(panel);
-                    }
-                }
+                LoadMesas();
             };
 
             btnFechar.Click += (s, e) =>
@@ -98,11 +105,19 @@ namespace Emiplus.View.Comercial
                     AddPedidos NovoPedido = new AddPedidos();
                     NovoPedido.TopMost = true;
                     NovoPedido.ShowDialog();
+                    LoadMesas();
                 }
                 else
                 {
                     Alert.Message("Oppss", "Selecione uma mesa!", Alert.AlertType.warning);
                 }
+            };
+
+            btnAdicionar.Click += (s, e) =>
+            {
+                AddItemMesa form = new AddItemMesa();
+                if (form.ShowDialog() == DialogResult.OK)
+                    LoadMesas();
             };
 
             btnExit.Click += (s, e) => Close();

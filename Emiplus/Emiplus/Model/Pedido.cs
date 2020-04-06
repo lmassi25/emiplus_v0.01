@@ -83,6 +83,7 @@
         public string problema  { get; set; }
         public string solucao { get; set; }
         public int os { get; set; }
+        public string empresa { get; set; }
 
         #endregion CAMPOS
 

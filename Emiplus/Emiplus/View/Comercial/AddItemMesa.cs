@@ -9,6 +9,7 @@ namespace Emiplus.View.Comercial
     public partial class AddItemMesa : Form
     {
         private Model.Item _mItem = new Model.Item();
+        private Model.PedidoItem _mPedidoItem = new Model.PedidoItem();
 
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
@@ -27,11 +28,44 @@ namespace Emiplus.View.Comercial
             }
 
             
+            if (GridLista.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in GridLista.Rows)
+                {
+                    int id = Validation.ConvertToInt32(row.Cells["ID"].Value);
+                    Model.Item dataItem = _mItem.FindById(id).WhereFalse("excluir").FirstOrDefault<Model.Item>();
+                    if (dataItem != null)
+                    {
+                        string obs = row.Cells["Observação"].Value.ToString();
+
+                        _mPedidoItem.Id = 0;
+                        _mPedidoItem.Tipo = "Produtos";
+                        _mPedidoItem.Excluir = 0;
+                        _mPedidoItem.Pedido = 0;
+                        _mPedidoItem.Item = dataItem.Id;
+                        _mPedidoItem.CEan = dataItem.CodeBarras;
+                        _mPedidoItem.CProd = dataItem.Referencia;
+                        _mPedidoItem.xProd = dataItem.Nome;
+                        _mPedidoItem.ValorVenda = dataItem.ValorVenda;
+                        _mPedidoItem.Total = dataItem.ValorVenda;
+                        _mPedidoItem.Quantidade = 1;
+                        _mPedidoItem.TotalVenda = dataItem.ValorVenda;
+                        _mPedidoItem.Info_Adicional = obs;
+                        _mPedidoItem.Mesa = nrMesa.Text;
+                        _mPedidoItem.Status = "FAZENDO";
+                        _mPedidoItem.Save(_mPedidoItem, false);
+                    }
+                }
+
+                Alert.Message("Pronto", "Pedido enviado com sucesso.", Alert.AlertType.success);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 3;
+            Table.ColumnCount = 4;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -44,11 +78,17 @@ namespace Emiplus.View.Comercial
             Table.Columns[1].Name = "Item";
             Table.Columns[1].Width = 150;
             Table.Columns[1].Visible = true;
+            Table.Columns[1].ReadOnly = true;
 
             Table.Columns[2].Name = "Valor";
             Table.Columns[2].Width = 80;
             Table.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[2].Visible = true;
+            Table.Columns[2].ReadOnly = true;
+
+            Table.Columns[3].Name = "Observação";
+            Table.Columns[3].Width = 100;
+            Table.Columns[3].Visible = true;
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -74,7 +114,8 @@ namespace Emiplus.View.Comercial
                         GridLista.Rows.Add(
                             item.Id,
                             item.Nome,
-                            Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda))
+                            Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
+                            ""
                         );
 
                         BuscarProduto.Text = "";

@@ -74,6 +74,15 @@
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.os = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.visualPanel11 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.btnRemessaReceber = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.btnRemessaEnviar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.visualPanel12 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.btnImportProdutos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel4.SuspendLayout();
@@ -97,6 +106,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.visualPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            this.visualPanel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            this.visualPanel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // visualPanel7
@@ -1030,13 +1043,233 @@
             this.os.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.os.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // visualPanel11
+            // 
+            this.visualPanel11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualPanel11.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel11.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel11.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualPanel11.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualPanel11.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualPanel11.Border.HoverVisible = true;
+            this.visualPanel11.Border.Rounding = 6;
+            this.visualPanel11.Border.Thickness = 1;
+            this.visualPanel11.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel11.Border.Visible = true;
+            this.visualPanel11.Controls.Add(this.btnRemessaReceber);
+            this.visualPanel11.Controls.Add(this.label13);
+            this.visualPanel11.Controls.Add(this.pictureBox14);
+            this.visualPanel11.Controls.Add(this.btnRemessaEnviar);
+            this.visualPanel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel11.Location = new System.Drawing.Point(13, 566);
+            this.visualPanel11.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel11.Name = "visualPanel11";
+            this.visualPanel11.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel11.Size = new System.Drawing.Size(231, 145);
+            this.visualPanel11.TabIndex = 158;
+            this.visualPanel11.Text = "visualPanel11";
+            this.visualPanel11.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel11.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel11.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel11.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel11.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel11.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel11.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnRemessaReceber
+            // 
+            this.btnRemessaReceber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnRemessaReceber.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRemessaReceber.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnRemessaReceber.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaReceber.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaReceber.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaReceber.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaReceber.Border.HoverVisible = true;
+            this.btnRemessaReceber.Border.Rounding = 6;
+            this.btnRemessaReceber.Border.Thickness = 1;
+            this.btnRemessaReceber.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRemessaReceber.Border.Visible = true;
+            this.btnRemessaReceber.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemessaReceber.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRemessaReceber.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemessaReceber.ForeColor = System.Drawing.Color.White;
+            this.btnRemessaReceber.Image = null;
+            this.btnRemessaReceber.Location = new System.Drawing.Point(114, 103);
+            this.btnRemessaReceber.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRemessaReceber.Name = "btnRemessaReceber";
+            this.btnRemessaReceber.Size = new System.Drawing.Size(84, 27);
+            this.btnRemessaReceber.TabIndex = 9;
+            this.btnRemessaReceber.Text = "Receber";
+            this.btnRemessaReceber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRemessaReceber.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRemessaReceber.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnRemessaReceber.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnRemessaReceber.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnRemessaReceber.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemessaReceber.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemessaReceber.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(47, 70);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(127, 21);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Remessas";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+            this.pictureBox14.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 8;
+            this.pictureBox14.TabStop = false;
+            // 
+            // btnRemessaEnviar
+            // 
+            this.btnRemessaEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnRemessaEnviar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRemessaEnviar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnRemessaEnviar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaEnviar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaEnviar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaEnviar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnRemessaEnviar.Border.HoverVisible = true;
+            this.btnRemessaEnviar.Border.Rounding = 6;
+            this.btnRemessaEnviar.Border.Thickness = 1;
+            this.btnRemessaEnviar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRemessaEnviar.Border.Visible = true;
+            this.btnRemessaEnviar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemessaEnviar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRemessaEnviar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemessaEnviar.ForeColor = System.Drawing.Color.White;
+            this.btnRemessaEnviar.Image = null;
+            this.btnRemessaEnviar.Location = new System.Drawing.Point(24, 103);
+            this.btnRemessaEnviar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRemessaEnviar.Name = "btnRemessaEnviar";
+            this.btnRemessaEnviar.Size = new System.Drawing.Size(84, 27);
+            this.btnRemessaEnviar.TabIndex = 1;
+            this.btnRemessaEnviar.Text = "Enviar";
+            this.btnRemessaEnviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRemessaEnviar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRemessaEnviar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnRemessaEnviar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnRemessaEnviar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnRemessaEnviar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemessaEnviar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRemessaEnviar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // visualPanel12
+            // 
+            this.visualPanel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.visualPanel12.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel12.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel12.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualPanel12.Border.Color = System.Drawing.Color.Gainsboro;
+            this.visualPanel12.Border.HoverColor = System.Drawing.Color.Gainsboro;
+            this.visualPanel12.Border.HoverVisible = true;
+            this.visualPanel12.Border.Rounding = 6;
+            this.visualPanel12.Border.Thickness = 1;
+            this.visualPanel12.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel12.Border.Visible = true;
+            this.visualPanel12.Controls.Add(this.btnImportProdutos);
+            this.visualPanel12.Controls.Add(this.label14);
+            this.visualPanel12.Controls.Add(this.pictureBox13);
+            this.visualPanel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel12.Location = new System.Drawing.Point(250, 566);
+            this.visualPanel12.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel12.Name = "visualPanel12";
+            this.visualPanel12.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel12.Size = new System.Drawing.Size(231, 145);
+            this.visualPanel12.TabIndex = 159;
+            this.visualPanel12.Text = "visualPanel12";
+            this.visualPanel12.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel12.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel12.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel12.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel12.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel12.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel12.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(23, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 21);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Importar Produtos";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 8;
+            this.pictureBox13.TabStop = false;
+            // 
+            // btnImportProdutos
+            // 
+            this.btnImportProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnImportProdutos.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImportProdutos.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnImportProdutos.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportProdutos.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportProdutos.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportProdutos.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(192)))), ((int)(((byte)(104)))));
+            this.btnImportProdutos.Border.HoverVisible = true;
+            this.btnImportProdutos.Border.Rounding = 6;
+            this.btnImportProdutos.Border.Thickness = 1;
+            this.btnImportProdutos.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnImportProdutos.Border.Visible = true;
+            this.btnImportProdutos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImportProdutos.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnImportProdutos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportProdutos.ForeColor = System.Drawing.Color.White;
+            this.btnImportProdutos.Image = null;
+            this.btnImportProdutos.Location = new System.Drawing.Point(45, 103);
+            this.btnImportProdutos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnImportProdutos.Name = "btnImportProdutos";
+            this.btnImportProdutos.Size = new System.Drawing.Size(131, 27);
+            this.btnImportProdutos.TabIndex = 9;
+            this.btnImportProdutos.Text = "Importar";
+            this.btnImportProdutos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportProdutos.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnImportProdutos.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnImportProdutos.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnImportProdutos.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnImportProdutos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImportProdutos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnImportProdutos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // TelaConfigInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.AutoScrollMargin = new System.Drawing.Size(0, 10);
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualPanel12);
+            this.Controls.Add(this.visualPanel11);
             this.Controls.Add(this.visualPanel10);
             this.Controls.Add(this.visualPanel9);
             this.Controls.Add(this.visualPanel8);
@@ -1078,6 +1311,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.visualPanel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            this.visualPanel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            this.visualPanel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1128,5 +1365,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox12;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton os;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel11;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRemessaEnviar;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRemessaReceber;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel12;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImportProdutos;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox13;
     }
 }

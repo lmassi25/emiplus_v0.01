@@ -93,6 +93,16 @@ namespace Emiplus.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap caja {
+            get {
+                object obj = ResourceManager.GetObject("caja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap checkedBranco {
             get {
                 object obj = ResourceManager.GetObject("checkedBranco", resourceCulture);
@@ -226,6 +236,16 @@ namespace Emiplus.Properties {
         internal static System.Drawing.Bitmap sem_imagem {
             get {
                 object obj = ResourceManager.GetObject("sem-imagem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap skyscrapper {
+            get {
+                object obj = ResourceManager.GetObject("skyscrapper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

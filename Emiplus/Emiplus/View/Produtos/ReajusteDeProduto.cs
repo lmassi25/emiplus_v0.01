@@ -93,6 +93,7 @@ namespace Emiplus.View.Produtos
             model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.FORNECEDOR");
             model.Where("ITEM.excluir", 0);
             model.Where("ITEM.nome", "<>", "");
+            model.Where("ITEM.tipo", "Produtos");
             model.SelectRaw("ITEM.id, ITEM.nome, ITEM.medida, ITEM.valorvenda, ITEM.estoqueatual, ITEM.CATEGORIAID, CATEGORIA.NOME as CAT_NAME, PESSOA.NOME as FORNECEDOR_NAME");
             return model.GetAsync<dynamic>();
         }

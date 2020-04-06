@@ -39,7 +39,7 @@
 
         private Model.Item GetItem(int id)
         {
-            return new Model.Item().FindById(id).First<Model.Item>();
+            return new Model.Item().FindById(id).FirstOrDefault<Model.Item>();
         }
 
         private Model.PedidoItem GetPedidoItem(int id)

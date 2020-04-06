@@ -7,6 +7,7 @@ namespace Emiplus.View.Common
     public partial class TelaConfigInicial : Form
     {
         private BackgroundWorker backWork = new BackgroundWorker();
+        private BackgroundWorker backWorkRemessa = new BackgroundWorker();
 
         public TelaConfigInicial()
         {
@@ -17,6 +18,8 @@ namespace Emiplus.View.Common
         public void Eventos()
         {
             ToolHelp.Show("Utilize essa função para sincronizar todos os dados do programa para consulta no sistema web do seus dados.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+            Load += (s, e) => Refresh();
 
             dadosEmpresa.Click += (s, e) => OpenForm.Show<Configuracoes.InformacaoGeral>(this);
             email.Click += (s, e) => OpenForm.Show<Configuracoes.Email>(this);
@@ -32,7 +35,7 @@ namespace Emiplus.View.Common
                 f.ShowDialog();
             };
 
-            btnSincronizar.Click += async (s, e) =>
+            btnSincronizar.Click += (s, e) =>
             {
                 if (Support.CheckForInternetConnection())
                 {
@@ -66,6 +69,50 @@ namespace Emiplus.View.Common
                 btnSincronizar.Text = "Sincronizar";
                 Home.syncActive = false;
             };
+
+            /*
+             *  Enviar Remessas
+             */
+            btnRemessaEnviar.Click += (s, e) =>
+            {
+                if (Support.CheckForInternetConnection())
+                {
+                    if (!Home.syncActive) {
+                        Home.syncActive = true;
+                        pictureBox14.Image = Properties.Resources.loader_page;
+                        label13.Text = "Enviando..";
+                        backWorkRemessa.RunWorkerAsync();
+                    }
+                    else
+                    {
+                        Alert.Message("Opps", "Sincronização já está rodando.", Alert.AlertType.info);
+                    }
+                }
+            };
+
+            backWorkRemessa.DoWork += async (s, e) =>
+            {
+                Sync f = new Sync();
+                Sync.Remessa = true;
+                await f.SendRemessa();
+                Sync.Remessa = false;
+            };
+
+            backWorkRemessa.RunWorkerCompleted += (s, e) =>
+            {
+                new Log().Add("SYNC", "Remessa enviada", Log.LogType.fatal);
+                pictureBox14.Image = Properties.Resources.caja;
+                label13.Text = "Remessas";
+                Home.syncActive = false;
+            };
+
+            btnRemessaReceber.Click += async (s, e) =>
+            {
+                Sync f = new Sync();
+                await f.ReceberRemessa();
+            };
+            
+            btnImportProdutos.Click += (s, e) => OpenForm.Show<Configuracoes.ImportProdutos>(this);
         }
     }
 }

@@ -146,6 +146,22 @@ namespace Emiplus.View.Comercial
                 btnConcluir.Text = "Pagamento";
                 btnDelete.Visible = false;
             }
+            else if (Home.pedidoPage == "Remessas")
+            {
+                PDV = false;
+
+                label15.Text = "Empresa:";
+                pictureBox8.Visible = false;
+                label12.Visible = false;
+                IDCaixa.Visible = false;
+                label2.Text = $"Dados da Remessa: {Id}";
+                label3.Text = "Siga as etapas abaixo para fazer uma remessa!";
+                btnConcluir.Text = "Finalizar";
+                btnDelete.Visible = false;
+                nomeCliente.Text = "Selecione uma empresa";
+                pictureBox9.Image = Properties.Resources.skyscrapper;
+                SelecionarCliente.Location = new Point(720, 15);
+            }
             else if (Home.pedidoPage == "Devoluções")
             {
                 PDV = false;
@@ -224,18 +240,20 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void LoadCliente()
         {
-            if (_mPedido.Cliente > 0)
-            {
-                _mPedido.Save(_mPedido);
-                var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
+            if (Home.pedidoPage != "Remessas") {
+                if (_mPedido.Cliente > 0)
+                {
+                    _mPedido.Save(_mPedido);
+                    var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
 
-                if (data == null)
-                    return;
+                    if (data == null)
+                        return;
 
-                if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
-                    return;
+                    if (Home.pedidoPage == "Compras" && data.Nome == "Consumidor Final")
+                        return;
 
-                nomeCliente.Text = data.Nome;
+                    nomeCliente.Text = data.Nome;
+                }
             }
         }
 
@@ -337,6 +355,28 @@ namespace Emiplus.View.Comercial
                 }
             }
 
+            if (Home.pedidoPage == "Remessas")
+            {
+                if (nomeCliente.Text == "Selecione uma empresa")
+                {
+                    AlertOptions.Message("Atenção!", "Sua remessa não contém uma empresa selecionada! Selecione uma empresa para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    return;
+                }
+
+                _mPedido.Tipo = "Remessas";
+                _mPedido.campoa = "Enviando";
+                _mPedido.campob = nomeCliente.Text;
+                if (_mPedido.Save(_mPedido))
+                {
+                    btnFinalizado = true;
+                    Close();
+                    return;
+                }
+
+                Alert.Message("Opss", "Problema ao finalizar remessa", Alert.AlertType.error);
+                return;
+            }
+
             if (btnConcluir.Text == "Reabrir")
             {
                 BuscarProduto.Enabled = true;
@@ -375,14 +415,12 @@ namespace Emiplus.View.Comercial
                 _mPedido.status = 2; //RECEBIMENTO PENDENTE
                 if (_mPedido.Save(_mPedido))
                 {
-                    //Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
-
                     if (AlertOptions.Message("Impressão?", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
                     {
                         PedidoImpressao print = new PedidoImpressao();
                         if (print.Print(Id))
                             Close();
-                    } 
+                    }
                     else
                     {
                         Close();
@@ -510,14 +548,25 @@ namespace Emiplus.View.Comercial
         /// </summary>
         public void ModalClientes()
         {
-            PedidoModalClientes form = new PedidoModalClientes();
-            form.TopMost = true;
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                _mPedido.Id = Id;
-                _mPedido.Cliente = PedidoModalClientes.Id;
-                _mPedido.Save(_mPedido);
-                LoadData();
+            if (Home.pedidoPage == "Remessas") {
+                ModalEmpresas form = new ModalEmpresas();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _mPedido.Id = Id;
+                    _mPedido.empresa = ModalEmpresas.Id;
+                    _mPedido.Save(_mPedido);
+                    nomeCliente.Text = ModalEmpresas.RazaoSocial;
+                }
+            } else {
+                PedidoModalClientes form = new PedidoModalClientes();
+                form.TopMost = true;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _mPedido.Id = Id;
+                    _mPedido.Cliente = PedidoModalClientes.Id;
+                    _mPedido.Save(_mPedido);
+                    LoadData();
+                }
             }
 
             BuscarProduto.Select();
@@ -732,6 +781,10 @@ namespace Emiplus.View.Comercial
 
                 pedidoItem.SetDescontoPorcentagens(DescontoPorcentagemTxt);
                 pedidoItem.SomarTotal();
+                
+                if (Home.pedidoPage == "Remessas")
+                    pedidoItem.Status = "Remessa";
+                
                 pedidoItem.Save(pedidoItem);
 
                 if (item.Tipo == "Produtos")
@@ -743,6 +796,8 @@ namespace Emiplus.View.Comercial
                         // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
                         if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
                             new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
+                        else if (Home.pedidoPage == "Remessas")
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Remessa do Produto").Remove().Item();
                         else
                             new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
                     }
@@ -836,6 +891,8 @@ namespace Emiplus.View.Comercial
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
 
                                 if (Home.pedidoPage != "Compras")
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                else if (Home.pedidoPage == "Remessas")
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
                                 else
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
@@ -1012,6 +1069,7 @@ namespace Emiplus.View.Comercial
                 }
 
                 Medidas.DataSource = Support.GetMedidas();
+                Refresh();
             };
 
             btnConcluir.Click += (s, e) =>
@@ -1158,6 +1216,8 @@ namespace Emiplus.View.Comercial
                             GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
 
                             if (Home.pedidoPage != "Compras")
+                                new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                            else if (Home.pedidoPage == "Remessas")
                                 new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
                             else
                                 new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();

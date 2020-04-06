@@ -277,6 +277,7 @@
     <Compile Include="Controller\PedidoImpressao.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
+    <Compile Include="Controller\Remessas.cs" />
     <Compile Include="Controller\Sat.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\BackupAutomatico.cs" />
@@ -412,6 +413,12 @@
     </Compile>
     <Compile Include="View\Comercial\Mesas.Designer.cs">
       <DependentUpon>Mesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\ModalEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\ModalEmpresas.Designer.cs">
+      <DependentUpon>ModalEmpresas.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\OpcoesCfe.cs">
       <SubType>Form</SubType>
@@ -646,6 +653,12 @@
     </Compile>
     <Compile Include="View\Configuracoes\Email.Designer.cs">
       <DependentUpon>Email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Configuracoes\ImportProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\ImportProdutos.Designer.cs">
+      <DependentUpon>ImportProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Configuracoes\Impressao.cs">
       <SubType>Form</SubType>
@@ -1119,6 +1132,9 @@
     <EmbeddedResource Include="View\Comercial\Mesas.resx">
       <DependentUpon>Mesas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\ModalEmpresas.resx">
+      <DependentUpon>ModalEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\OpcoesCfe.resx">
       <DependentUpon>OpcoesCfe.cs</DependentUpon>
     </EmbeddedResource>
@@ -1235,6 +1251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Email.resx">
       <DependentUpon>Email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\ImportProdutos.resx">
+      <DependentUpon>ImportProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Impressao.resx">
       <DependentUpon>Impressao.cs</DependentUpon>
@@ -1615,6 +1634,8 @@
     <None Include="Assets\Images\icons\refresh.png" />
     <None Include="Assets\Images\sem-imagem.jpg" />
     <None Include="Assets\Images\icons\waiter.png" />
+    <None Include="Assets\Images\icons\skyscrapper.png" />
+    <None Include="Assets\Images\icons\caja.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
