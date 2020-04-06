@@ -296,7 +296,6 @@ namespace Emiplus.Data.Helpers
                         result = Valor.ToString(Program.cultura).Substring(0, Valor.ToString(Program.cultura).IndexOf(".", StringComparison.OrdinalIgnoreCase));
 
                     return result.ToString(Program.cultura);
-                    break;
 
                 case "KG":
                 case "GR":
@@ -304,13 +303,11 @@ namespace Emiplus.Data.Helpers
                 case "ML":
                 case "M2":
                     return Valor.ToString("0.000", Program.cultura);
-                    break;
                 case "G":
                     return Valor.ToString("0.00", Program.cultura);
-                    break;
+                default:
+                    return Valor.ToString("0.00", Program.cultura);
             }
-
-            return "";
         }
 
         public static string FormatPriceXml(string value)
