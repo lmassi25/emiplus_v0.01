@@ -60,7 +60,7 @@ namespace Emiplus.View.Comercial
                     txtTroco.Visible = false;
                     txtRecebimento.Visible = false;
                     txtAcrescimo.Visible = false;
-                    nrPedido.Left = 542;
+                    nrPedido.Left = 320;
                     break;
 
                 case "Compras":
@@ -73,10 +73,35 @@ namespace Emiplus.View.Comercial
                     btnCFeSat.Visible = false;
                     label43.Text = "Total Pago:";
                     btnPgtosLancado.Text = "Ver Pagamentos Lançados!";
-                    nrPedido.Left = 510;
+                    nrPedido.Left = 315;
                     btnNfe.Visible = false;
                     button21.Visible = false;
                     SelecionarCliente.Text = "Alterar fornecedor";
+                    break;
+
+                case "Remessas":
+                    label1.Text = "Detalhes da Remessa:";
+                    label2.Text = "Confira nessa tela todas as informações da remessa.";
+                    label6.Text = "Detalhes da Remessa";
+                    label3.Text = "Remessas";
+                    label8.Text = "Empresa";
+                    button22.Visible = false;
+                    btnCFeSat.Visible = false;
+                    label43.Text = "Total Pago:";
+                    btnPgtosLancado.Visible = false;
+                    btnPgtosLancado.Text = "Ver Pagamentos Lançados!";
+                    nrPedido.Left = 315;
+                    btnNfe.Visible = false;
+                    button21.Visible = false;
+                    SelecionarCliente.Visible = false;
+                    SelecionarColaborador.Visible = false;
+                    SelecionarCliente.Text = "Alterar fornecedor";
+                    btnNfse.Visible = false;
+                    button2.Visible = false;
+                    pictureBox5.Visible = false;
+                    label12.Text = "Status:";
+                    label16.Visible = false;
+                    labelCfe.Visible = false;
                     break;
             }
 
@@ -192,13 +217,21 @@ namespace Emiplus.View.Comercial
             txtRecebimento.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
             caixa.Text = _modelPedido.Id_Caixa.ToString();
 
-            if (_modelPedido.Cliente > 0)
+            if (Home.pedidoPage == "Remessas")
             {
-                Model.Pessoa pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault<Model.Pessoa>();
-                if (pessoa != null)
+                labelNfe.Text = _modelPedido.campoa;
+                cliente.Text = _modelPedido.campob;
+            }
+            else 
+            {
+                if (_modelPedido.Cliente > 0)
                 {
-                    pessoaID = pessoa.Id;
-                    cliente.Text = pessoa.Nome;
+                    Model.Pessoa pessoa = _modelPessoa.FindById(_modelPedido.Cliente).Select("id", "nome").FirstOrDefault<Model.Pessoa>();
+                    if (pessoa != null)
+                    {
+                        pessoaID = pessoa.Id;
+                        cliente.Text = pessoa.Nome;
+                    }
                 }
             }
 

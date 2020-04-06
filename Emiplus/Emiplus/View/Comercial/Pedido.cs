@@ -554,25 +554,27 @@ namespace Emiplus.View.Comercial
 
             GridLista.CellFormatting += (s, e) =>
             {
-                foreach (DataGridViewRow row in GridLista.Rows)
-                {
-                    if (row.Cells[7].Value.ToString().Contains("Finalizado") || row.Cells[7].Value.ToString().Contains("Autorizada"))
+                if (Home.pedidoPage != "Remessas") {
+                    foreach (DataGridViewRow row in GridLista.Rows)
                     {
-                        row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                        row.Cells[7].Style.ForeColor = Color.White;
-                        row.Cells[7].Style.BackColor = Color.FromArgb(139, 215, 146);
-                    }
-                    else if (row.Cells[7].Value.ToString().Contains("Cancelada"))
-                    {
-                        row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                        row.Cells[7].Style.ForeColor = Color.White;
-                        row.Cells[7].Style.BackColor = Color.FromArgb(0, 150, 230);
-                    }
-                    else
-                    {
-                        row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-                        row.Cells[7].Style.ForeColor = Color.White;
-                        row.Cells[7].Style.BackColor = Color.FromArgb(255, 89, 89);
+                        if (row.Cells[7].Value.ToString().Contains("Finalizado") || row.Cells[7].Value.ToString().Contains("Autorizada"))
+                        {
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.ForeColor = Color.White;
+                            row.Cells[7].Style.BackColor = Color.FromArgb(139, 215, 146);
+                        }
+                        else if (row.Cells[7].Value.ToString().Contains("Cancelada"))
+                        {
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.ForeColor = Color.White;
+                            row.Cells[7].Style.BackColor = Color.FromArgb(0, 150, 230);
+                        }
+                        else
+                        {
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.ForeColor = Color.White;
+                            row.Cells[7].Style.BackColor = Color.FromArgb(255, 89, 89);
+                        }
                     }
                 }
             };

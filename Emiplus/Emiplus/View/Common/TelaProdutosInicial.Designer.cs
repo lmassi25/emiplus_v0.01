@@ -34,9 +34,32 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label2 = new System.Windows.Forms.Label();
+            this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRemessa = new System.Windows.Forms.Button();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.Servicos = new System.Windows.Forms.Button();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.importarNfe = new System.Windows.Forms.Button();
+            this.CompraNova = new System.Windows.Forms.Button();
+            this.novaNFE = new System.Windows.Forms.Button();
             this.Impostos = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.ReajusteProduto = new System.Windows.Forms.Button();
             this.Etiquetas = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
@@ -46,44 +69,23 @@
             this.HistoricoEntradaSaida = new System.Windows.Forms.Button();
             this.Produtos = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
-            this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.label2 = new System.Windows.Forms.Label();
-            this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
-            this.label4 = new System.Windows.Forms.Label();
-            this.novaNFE = new System.Windows.Forms.Button();
-            this.CompraNova = new System.Windows.Forms.Button();
-            this.importarNfe = new System.Windows.Forms.Button();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.Servicos = new System.Windows.Forms.Button();
+            this.btnRemessas = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -130,16 +132,6 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Produtos";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
             // visualSeparator2
             // 
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -160,6 +152,340 @@
             this.visualSeparator2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // visualSeparator4
+            // 
+            this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator4.Location = new System.Drawing.Point(256, 83);
+            this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator4.Name = "visualSeparator4";
+            this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.ShadowVisible = true;
+            this.visualSeparator4.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator4.TabIndex = 83;
+            this.visualSeparator4.Text = "visualSeparator4";
+            this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(252, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 25);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Movimentações";
+            // 
+            // visualSeparator5
+            // 
+            this.visualSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Location = new System.Drawing.Point(491, 83);
+            this.visualSeparator5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator5.Name = "visualSeparator5";
+            this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator5.ShadowVisible = true;
+            this.visualSeparator5.Size = new System.Drawing.Size(220, 4);
+            this.visualSeparator5.TabIndex = 85;
+            this.visualSeparator5.Text = "visualSeparator5";
+            this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(487, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 25);
+            this.label4.TabIndex = 84;
+            this.label4.Text = "Gerencial";
+            // 
+            // btnRemessa
+            // 
+            this.btnRemessa.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemessa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemessa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemessa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemessa.FlatAppearance.BorderSize = 0;
+            this.btnRemessa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRemessa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnRemessa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemessa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemessa.ForeColor = System.Drawing.Color.DimGray;
+            this.btnRemessa.Image = ((System.Drawing.Image)(resources.GetObject("btnRemessa.Image")));
+            this.btnRemessa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemessa.Location = new System.Drawing.Point(257, 139);
+            this.btnRemessa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemessa.Name = "btnRemessa";
+            this.btnRemessa.Size = new System.Drawing.Size(219, 41);
+            this.btnRemessa.TabIndex = 124;
+            this.btnRemessa.Text = "          Nova Remessa";
+            this.btnRemessa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemessa.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Location = new System.Drawing.Point(227, 165);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 123;
+            this.pictureBox15.TabStop = false;
+            this.pictureBox15.Visible = false;
+            // 
+            // Servicos
+            // 
+            this.Servicos.BackColor = System.Drawing.Color.Transparent;
+            this.Servicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Servicos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Servicos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Servicos.FlatAppearance.BorderSize = 0;
+            this.Servicos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Servicos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Servicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Servicos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Servicos.ForeColor = System.Drawing.Color.DimGray;
+            this.Servicos.Image = ((System.Drawing.Image)(resources.GetObject("Servicos.Image")));
+            this.Servicos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.Servicos.Location = new System.Drawing.Point(22, 139);
+            this.Servicos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Servicos.Name = "Servicos";
+            this.Servicos.Size = new System.Drawing.Size(219, 41);
+            this.Servicos.TabIndex = 122;
+            this.Servicos.Text = "          Serviços";
+            this.Servicos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Servicos.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
+            this.pictureBox14.Location = new System.Drawing.Point(696, 210);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 121;
+            this.pictureBox14.TabStop = false;
+            this.pictureBox14.Visible = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(697, 120);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 120;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Visible = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.Location = new System.Drawing.Point(698, 300);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 119;
+            this.pictureBox12.TabStop = false;
+            this.pictureBox12.Visible = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(697, 255);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 118;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(462, 255);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 117;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Visible = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(462, 120);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 116;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Visible = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(462, 210);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 115;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Visible = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(227, 390);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 114;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(227, 345);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 113;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(227, 300);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 112;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(227, 255);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 111;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(227, 210);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 110;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(227, 120);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 109;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Visible = false;
+            // 
+            // importarNfe
+            // 
+            this.importarNfe.BackColor = System.Drawing.Color.Transparent;
+            this.importarNfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.importarNfe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.importarNfe.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.importarNfe.FlatAppearance.BorderSize = 0;
+            this.importarNfe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.importarNfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.importarNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.importarNfe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.importarNfe.ForeColor = System.Drawing.Color.DimGray;
+            this.importarNfe.Image = ((System.Drawing.Image)(resources.GetObject("importarNfe.Image")));
+            this.importarNfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.importarNfe.Location = new System.Drawing.Point(491, 184);
+            this.importarNfe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.importarNfe.Name = "importarNfe";
+            this.importarNfe.Size = new System.Drawing.Size(219, 41);
+            this.importarNfe.TabIndex = 108;
+            this.importarNfe.Text = "          Importar NFe";
+            this.importarNfe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.importarNfe.UseVisualStyleBackColor = false;
+            // 
+            // CompraNova
+            // 
+            this.CompraNova.BackColor = System.Drawing.Color.Transparent;
+            this.CompraNova.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CompraNova.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CompraNova.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.CompraNova.FlatAppearance.BorderSize = 0;
+            this.CompraNova.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.CompraNova.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.CompraNova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CompraNova.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompraNova.ForeColor = System.Drawing.Color.DimGray;
+            this.CompraNova.Image = ((System.Drawing.Image)(resources.GetObject("CompraNova.Image")));
+            this.CompraNova.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CompraNova.Location = new System.Drawing.Point(257, 94);
+            this.CompraNova.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CompraNova.Name = "CompraNova";
+            this.CompraNova.Size = new System.Drawing.Size(219, 41);
+            this.CompraNova.TabIndex = 107;
+            this.CompraNova.Text = "          Nova Compra";
+            this.CompraNova.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CompraNova.UseVisualStyleBackColor = false;
+            // 
+            // novaNFE
+            // 
+            this.novaNFE.BackColor = System.Drawing.Color.Transparent;
+            this.novaNFE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.novaNFE.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.novaNFE.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.novaNFE.FlatAppearance.BorderSize = 0;
+            this.novaNFE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.novaNFE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.novaNFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.novaNFE.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.novaNFE.ForeColor = System.Drawing.Color.DimGray;
+            this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
+            this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.novaNFE.Location = new System.Drawing.Point(257, 229);
+            this.novaNFE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.novaNFE.Name = "novaNFE";
+            this.novaNFE.Size = new System.Drawing.Size(219, 41);
+            this.novaNFE.TabIndex = 106;
+            this.novaNFE.Text = "          Nova NF-e Devolução";
+            this.novaNFE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.novaNFE.UseVisualStyleBackColor = false;
+            this.novaNFE.Visible = false;
             // 
             // Impostos
             // 
@@ -184,6 +510,16 @@
             this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Impostos.UseVisualStyleBackColor = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
             // ReajusteProduto
             // 
             this.ReajusteProduto.BackColor = System.Drawing.Color.Transparent;
@@ -198,7 +534,7 @@
             this.ReajusteProduto.ForeColor = System.Drawing.Color.DimGray;
             this.ReajusteProduto.Image = ((System.Drawing.Image)(resources.GetObject("ReajusteProduto.Image")));
             this.ReajusteProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReajusteProduto.Location = new System.Drawing.Point(256, 94);
+            this.ReajusteProduto.Location = new System.Drawing.Point(257, 184);
             this.ReajusteProduto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ReajusteProduto.Name = "ReajusteProduto";
             this.ReajusteProduto.Size = new System.Drawing.Size(219, 41);
@@ -244,7 +580,7 @@
             this.Compras.ForeColor = System.Drawing.Color.DimGray;
             this.Compras.Image = ((System.Drawing.Image)(resources.GetObject("Compras.Image")));
             this.Compras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Compras.Location = new System.Drawing.Point(491, 184);
+            this.Compras.Location = new System.Drawing.Point(492, 94);
             this.Compras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Compras.Name = "Compras";
             this.Compras.Size = new System.Drawing.Size(219, 41);
@@ -313,7 +649,7 @@
             this.Estoque.ForeColor = System.Drawing.Color.DimGray;
             this.Estoque.Image = ((System.Drawing.Image)(resources.GetObject("Estoque.Image")));
             this.Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Estoque.Location = new System.Drawing.Point(491, 139);
+            this.Estoque.Location = new System.Drawing.Point(493, 274);
             this.Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Estoque.Name = "Estoque";
             this.Estoque.Size = new System.Drawing.Size(219, 41);
@@ -336,7 +672,7 @@
             this.HistoricoEntradaSaida.ForeColor = System.Drawing.Color.DimGray;
             this.HistoricoEntradaSaida.Image = ((System.Drawing.Image)(resources.GetObject("HistoricoEntradaSaida.Image")));
             this.HistoricoEntradaSaida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HistoricoEntradaSaida.Location = new System.Drawing.Point(491, 94);
+            this.HistoricoEntradaSaida.Location = new System.Drawing.Point(493, 229);
             this.HistoricoEntradaSaida.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.HistoricoEntradaSaida.Name = "HistoricoEntradaSaida";
             this.HistoricoEntradaSaida.Size = new System.Drawing.Size(219, 41);
@@ -391,316 +727,28 @@
             this.Categorias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Categorias.UseVisualStyleBackColor = false;
             // 
-            // visualSeparator4
+            // btnRemessas
             // 
-            this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator4.Location = new System.Drawing.Point(256, 83);
-            this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator4.Name = "visualSeparator4";
-            this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator4.ShadowVisible = true;
-            this.visualSeparator4.Size = new System.Drawing.Size(220, 4);
-            this.visualSeparator4.TabIndex = 83;
-            this.visualSeparator4.Text = "visualSeparator4";
-            this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(252, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 25);
-            this.label2.TabIndex = 82;
-            this.label2.Text = "Movimentações";
-            // 
-            // visualSeparator5
-            // 
-            this.visualSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.visualSeparator5.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator5.Location = new System.Drawing.Point(491, 83);
-            this.visualSeparator5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualSeparator5.Name = "visualSeparator5";
-            this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.visualSeparator5.ShadowVisible = true;
-            this.visualSeparator5.Size = new System.Drawing.Size(220, 4);
-            this.visualSeparator5.TabIndex = 85;
-            this.visualSeparator5.Text = "visualSeparator5";
-            this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualSeparator5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualSeparator5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(487, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 25);
-            this.label4.TabIndex = 84;
-            this.label4.Text = "Gerencial";
-            // 
-            // novaNFE
-            // 
-            this.novaNFE.BackColor = System.Drawing.Color.Transparent;
-            this.novaNFE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.novaNFE.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.novaNFE.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.novaNFE.FlatAppearance.BorderSize = 0;
-            this.novaNFE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.novaNFE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.novaNFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.novaNFE.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.novaNFE.ForeColor = System.Drawing.Color.DimGray;
-            this.novaNFE.Image = ((System.Drawing.Image)(resources.GetObject("novaNFE.Image")));
-            this.novaNFE.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.novaNFE.Location = new System.Drawing.Point(256, 184);
-            this.novaNFE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.novaNFE.Name = "novaNFE";
-            this.novaNFE.Size = new System.Drawing.Size(219, 41);
-            this.novaNFE.TabIndex = 106;
-            this.novaNFE.Text = "          Nova NF-e Devolução";
-            this.novaNFE.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.novaNFE.UseVisualStyleBackColor = false;
-            this.novaNFE.Visible = false;
-            // 
-            // CompraNova
-            // 
-            this.CompraNova.BackColor = System.Drawing.Color.Transparent;
-            this.CompraNova.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CompraNova.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CompraNova.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.CompraNova.FlatAppearance.BorderSize = 0;
-            this.CompraNova.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.CompraNova.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.CompraNova.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CompraNova.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CompraNova.ForeColor = System.Drawing.Color.DimGray;
-            this.CompraNova.Image = ((System.Drawing.Image)(resources.GetObject("CompraNova.Image")));
-            this.CompraNova.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CompraNova.Location = new System.Drawing.Point(256, 139);
-            this.CompraNova.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CompraNova.Name = "CompraNova";
-            this.CompraNova.Size = new System.Drawing.Size(219, 41);
-            this.CompraNova.TabIndex = 107;
-            this.CompraNova.Text = "          Nova Compra";
-            this.CompraNova.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CompraNova.UseVisualStyleBackColor = false;
-            // 
-            // importarNfe
-            // 
-            this.importarNfe.BackColor = System.Drawing.Color.Transparent;
-            this.importarNfe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.importarNfe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.importarNfe.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.importarNfe.FlatAppearance.BorderSize = 0;
-            this.importarNfe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.importarNfe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.importarNfe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.importarNfe.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importarNfe.ForeColor = System.Drawing.Color.DimGray;
-            this.importarNfe.Image = ((System.Drawing.Image)(resources.GetObject("importarNfe.Image")));
-            this.importarNfe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.importarNfe.Location = new System.Drawing.Point(491, 229);
-            this.importarNfe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.importarNfe.Name = "importarNfe";
-            this.importarNfe.Size = new System.Drawing.Size(219, 41);
-            this.importarNfe.TabIndex = 108;
-            this.importarNfe.Text = "          Importar NFe";
-            this.importarNfe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.importarNfe.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(227, 120);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 109;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(227, 210);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 110;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(227, 255);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 111;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(227, 300);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 112;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(227, 345);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 113;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Visible = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(227, 390);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 114;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Visible = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(461, 120);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 115;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Visible = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(461, 165);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 116;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Visible = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(461, 210);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 117;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Visible = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(695, 120);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 118;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Visible = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(696, 165);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox12.TabIndex = 119;
-            this.pictureBox12.TabStop = false;
-            this.pictureBox12.Visible = false;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(696, 210);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 120;
-            this.pictureBox13.TabStop = false;
-            this.pictureBox13.Visible = false;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(696, 255);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox14.TabIndex = 121;
-            this.pictureBox14.TabStop = false;
-            this.pictureBox14.Visible = false;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(227, 165);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 123;
-            this.pictureBox15.TabStop = false;
-            this.pictureBox15.Visible = false;
-            // 
-            // Servicos
-            // 
-            this.Servicos.BackColor = System.Drawing.Color.Transparent;
-            this.Servicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Servicos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Servicos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Servicos.FlatAppearance.BorderSize = 0;
-            this.Servicos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Servicos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Servicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Servicos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Servicos.ForeColor = System.Drawing.Color.DimGray;
-            this.Servicos.Image = ((System.Drawing.Image)(resources.GetObject("Servicos.Image")));
-            this.Servicos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Servicos.Location = new System.Drawing.Point(22, 139);
-            this.Servicos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Servicos.Name = "Servicos";
-            this.Servicos.Size = new System.Drawing.Size(219, 41);
-            this.Servicos.TabIndex = 122;
-            this.Servicos.Text = "          Serviços";
-            this.Servicos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Servicos.UseVisualStyleBackColor = false;
+            this.btnRemessas.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemessas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemessas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemessas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemessas.FlatAppearance.BorderSize = 0;
+            this.btnRemessas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRemessas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnRemessas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemessas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemessas.ForeColor = System.Drawing.Color.DimGray;
+            this.btnRemessas.Image = ((System.Drawing.Image)(resources.GetObject("btnRemessas.Image")));
+            this.btnRemessas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemessas.Location = new System.Drawing.Point(492, 139);
+            this.btnRemessas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemessas.Name = "btnRemessas";
+            this.btnRemessas.Size = new System.Drawing.Size(219, 41);
+            this.btnRemessas.TabIndex = 125;
+            this.btnRemessas.Text = "          Remessas de Estoque";
+            this.btnRemessas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemessas.UseVisualStyleBackColor = false;
             // 
             // TelaProdutosInicial
             // 
@@ -708,6 +756,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnRemessas);
+            this.Controls.Add(this.btnRemessa);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.Servicos);
             this.Controls.Add(this.pictureBox14);
@@ -750,21 +800,21 @@
             this.Text = "TelaProdutosInicial";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -809,5 +859,7 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Button Servicos;
+        private System.Windows.Forms.Button btnRemessa;
+        private System.Windows.Forms.Button btnRemessas;
     }
 }

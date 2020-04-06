@@ -134,7 +134,7 @@ namespace Emiplus.Controller
                 //.LeftJoin("pedido_item", "pedido_item.pedido", "pedido.id")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido_item.item", "pedido_item.pedido")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido.campoa", "pedido.campob")
                 .Where("pedido.excluir", excluir);
 
             if (!noFilterData)
@@ -443,9 +443,11 @@ namespace Emiplus.Controller
 
             if (tipo == "Compras")
                 Table.Columns[3].Name = "Fornecedor";
+            else if (tipo == "Remessas")
+                Table.Columns[3].Name = "Empresa";
             else
                 Table.Columns[3].Name = "Cliente";
-
+            
             Table.Columns[3].Width = 150;
             Table.Columns[3].MinimumWidth = 150;
 
@@ -526,6 +528,9 @@ namespace Emiplus.Controller
                 if (tipo == "Compras")
                     statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Pago" : item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
 
+                if (tipo == "Remessas")
+                    statusNfePedido = item.CAMPOA;
+
                 if (tipo == "Vendas")
                     statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
 
@@ -572,7 +577,7 @@ namespace Emiplus.Controller
                     item.ID,
                     tipo == "Notas" ? n_nfe : tipo == "Cupons" ? n_cfe : item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
-                    item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : item.NOME,
+                    item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : tipo == "Remessas" ? item.CAMPOB : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
                     tipo == "Notas" || tipo == "Cupons" ? item.CRIADONOTA : item.CRIADO,

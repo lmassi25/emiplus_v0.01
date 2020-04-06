@@ -91,6 +91,20 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Pedido>(this);
             };
 
+            btnRemessas.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Remessas";
+                OpenForm.Show<Comercial.Pedido>(this);
+            };
+
+            btnRemessa.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Remessas";
+                AddPedidos.Id = 0;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+
             HistoricoEntradaSaida.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(HistoricoEntradaSaida, pictureBox11, "pdt_entradassaidas"))

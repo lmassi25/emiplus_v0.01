@@ -53,16 +53,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnQuantidade = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnObs = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button21 = new System.Windows.Forms.Button();
             this.btnConcluir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button2 = new System.Windows.Forms.Button();
             this.imprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnGerarVenda = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCancelarProduto = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnDelete = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnGerarVenda = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnQuantidade = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
@@ -431,42 +431,6 @@
             this.panel2.Size = new System.Drawing.Size(1008, 40);
             this.panel2.TabIndex = 2;
             // 
-            // btnQuantidade
-            // 
-            this.btnQuantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnQuantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnQuantidade.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnQuantidade.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantidade.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.btnQuantidade.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
-            this.btnQuantidade.Border.HoverVisible = true;
-            this.btnQuantidade.Border.Rounding = 6;
-            this.btnQuantidade.Border.Thickness = 1;
-            this.btnQuantidade.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnQuantidade.Border.Visible = true;
-            this.btnQuantidade.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQuantidade.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnQuantidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuantidade.ForeColor = System.Drawing.Color.White;
-            this.btnQuantidade.Image = null;
-            this.btnQuantidade.Location = new System.Drawing.Point(338, 5);
-            this.btnQuantidade.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnQuantidade.Name = "btnQuantidade";
-            this.btnQuantidade.Size = new System.Drawing.Size(163, 30);
-            this.btnQuantidade.TabIndex = 15123;
-            this.btnQuantidade.Text = "Alterar Quantidade";
-            this.btnQuantidade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQuantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnQuantidade.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnQuantidade.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnQuantidade.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnQuantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnQuantidade.Visible = false;
-            // 
             // btnObs
             // 
             this.btnObs.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -603,42 +567,6 @@
             this.imprimir.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.imprimir.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // btnGerarVenda
-            // 
-            this.btnGerarVenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnGerarVenda.BackColor = System.Drawing.Color.White;
-            this.btnGerarVenda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
-            this.btnGerarVenda.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
-            this.btnGerarVenda.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
-            this.btnGerarVenda.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
-            this.btnGerarVenda.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
-            this.btnGerarVenda.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
-            this.btnGerarVenda.Border.HoverVisible = true;
-            this.btnGerarVenda.Border.Rounding = 6;
-            this.btnGerarVenda.Border.Thickness = 1;
-            this.btnGerarVenda.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnGerarVenda.Border.Visible = true;
-            this.btnGerarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerarVenda.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGerarVenda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarVenda.ForeColor = System.Drawing.Color.White;
-            this.btnGerarVenda.Image = null;
-            this.btnGerarVenda.Location = new System.Drawing.Point(426, 5);
-            this.btnGerarVenda.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnGerarVenda.Name = "btnGerarVenda";
-            this.btnGerarVenda.Size = new System.Drawing.Size(121, 30);
-            this.btnGerarVenda.TabIndex = 15119;
-            this.btnGerarVenda.Text = "Gerar Venda";
-            this.btnGerarVenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGerarVenda.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnGerarVenda.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnGerarVenda.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnGerarVenda.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnGerarVenda.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerarVenda.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnGerarVenda.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnGerarVenda.Visible = false;
-            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -724,6 +652,78 @@
             this.btnDelete.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnDelete.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnDelete.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnGerarVenda
+            // 
+            this.btnGerarVenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGerarVenda.BackColor = System.Drawing.Color.White;
+            this.btnGerarVenda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
+            this.btnGerarVenda.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
+            this.btnGerarVenda.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
+            this.btnGerarVenda.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
+            this.btnGerarVenda.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(30)))), ((int)(((byte)(64)))));
+            this.btnGerarVenda.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(23)))), ((int)(((byte)(49)))));
+            this.btnGerarVenda.Border.HoverVisible = true;
+            this.btnGerarVenda.Border.Rounding = 6;
+            this.btnGerarVenda.Border.Thickness = 1;
+            this.btnGerarVenda.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnGerarVenda.Border.Visible = true;
+            this.btnGerarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerarVenda.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGerarVenda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarVenda.ForeColor = System.Drawing.Color.White;
+            this.btnGerarVenda.Image = null;
+            this.btnGerarVenda.Location = new System.Drawing.Point(426, 5);
+            this.btnGerarVenda.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnGerarVenda.Name = "btnGerarVenda";
+            this.btnGerarVenda.Size = new System.Drawing.Size(121, 30);
+            this.btnGerarVenda.TabIndex = 15119;
+            this.btnGerarVenda.Text = "Gerar Venda";
+            this.btnGerarVenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGerarVenda.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnGerarVenda.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnGerarVenda.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnGerarVenda.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnGerarVenda.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerarVenda.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerarVenda.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnGerarVenda.Visible = false;
+            // 
+            // btnQuantidade
+            // 
+            this.btnQuantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnQuantidade.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnQuantidade.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnQuantidade.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantidade.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnQuantidade.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnQuantidade.Border.HoverVisible = true;
+            this.btnQuantidade.Border.Rounding = 6;
+            this.btnQuantidade.Border.Thickness = 1;
+            this.btnQuantidade.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnQuantidade.Border.Visible = true;
+            this.btnQuantidade.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuantidade.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnQuantidade.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuantidade.ForeColor = System.Drawing.Color.White;
+            this.btnQuantidade.Image = null;
+            this.btnQuantidade.Location = new System.Drawing.Point(338, 5);
+            this.btnQuantidade.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnQuantidade.Name = "btnQuantidade";
+            this.btnQuantidade.Size = new System.Drawing.Size(163, 30);
+            this.btnQuantidade.TabIndex = 15123;
+            this.btnQuantidade.Text = "Alterar Quantidade";
+            this.btnQuantidade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQuantidade.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnQuantidade.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnQuantidade.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnQuantidade.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnQuantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnQuantidade.Visible = false;
             // 
             // label4
             // 
@@ -1142,7 +1142,7 @@
             this.BuscarProduto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.BuscarProduto.Size = new System.Drawing.Size(398, 34);
             this.BuscarProduto.TabIndex = 1;
-            this.BuscarProduto.TextBoxWidth = 240;
+            this.BuscarProduto.TextBoxWidth = 300;
             this.BuscarProduto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
             this.BuscarProduto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BuscarProduto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

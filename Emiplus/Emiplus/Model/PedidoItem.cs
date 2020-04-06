@@ -93,6 +93,9 @@
         public double DevolucaoPedido { get; set; } // valor informado no item
         public double Seguro { get; set; }
         public double Despesa { get; set; }
+        public string Mesa { get; set; }
+        public string Status { get; set; }
+
         [Ignore]
         public string NomeAdicional { get; set; }
 

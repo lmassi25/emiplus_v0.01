@@ -253,6 +253,8 @@ namespace Emiplus.View.Common
 
         private void Eventos()
         {
+            Load += (s, e) => WorkerBackground.RunWorkerAsync();
+
             Shown += (s, e) =>
             {
                 this.Refresh();
@@ -262,7 +264,7 @@ namespace Emiplus.View.Common
                 dataSemana.Text = $"{DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})";
                 LoadGrafico();
 
-                WorkerBackground.RunWorkerAsync();
+                //WorkerBackground.RunWorkerAsync();
                 SetHeadersTable(GridLista);
             };
 
@@ -323,11 +325,16 @@ namespace Emiplus.View.Common
 
             WorkerBackground.RunWorkerCompleted += async (s, e) =>
             {
-                timer1.Start();
+                //timer1.Start();
                 LoadData();
                 LoadSeriesGrafico();
 
                 await SetContentTableAsync(GridLista, dataProductsEstoque);
+            };
+
+            btnRefresh.Click += (s, e) =>
+            {
+                WorkerBackground.RunWorkerAsync();
             };
         }
     }
