@@ -41,6 +41,7 @@ namespace Emiplus.View.Configuracoes
                 }
 
                 var data = new ArrayList();
+                data.Add(new {Id = "0", Nome = "SELECIONE A EMPRESA"});
                 foreach (dynamic item in jo)
                 {
                     if (item.Value.id_unique != Settings.Default.empresa_unique_id) {
@@ -78,7 +79,8 @@ namespace Emiplus.View.Configuracoes
 
                 idEmpresa = Empresas.SelectedValue.ToString();
 
-                backWorker.RunWorkerAsync();
+                if (Empresas.SelectedValue.ToString() != "0")
+                    backWorker.RunWorkerAsync();
             };
 
             backWorker.DoWork += (s, e) =>
