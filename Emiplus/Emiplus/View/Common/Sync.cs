@@ -318,18 +318,48 @@ namespace Emiplus.View.Common
                 if (string.IsNullOrEmpty(item.Value.ToString()))
                     return;
 
-                string idEmpresa = item.Value.id_empresa;
-                int idUsuario = item.Value.id_usuario;
-                int idPedido = item.Value.pedido;
-                int idSync = item.Value.id_sync;
+                string idEmpresa = item.Value.pedido.id_empresa;
+                int idUsuario = item.Value.pedido.id_usuario;
+                int idPedido = item.Value.pedido.id;
+                int idSync = item.Value.pedido.id_sync;
+
+                int lastId = 0;
+                if (item.Value.pedido != null)
+                {
+                    Model.Pedido createPedido = new Model.Pedido();
+                    createPedido.Id = 0;
+                    createPedido.Tipo = "Remessas";
+                    createPedido.Excluir = 0;
+                    createPedido.Emissao = item.Value.pedido.emissao;
+                    createPedido.Cliente = item.Value.pedido.cliente;
+                    createPedido.Colaborador = item.Value.pedido.colaborador;
+                    createPedido.Total = item.Value.pedido.total;
+                    createPedido.Desconto = item.Value.pedido.desconto;
+                    createPedido.Frete = item.Value.pedido.frete;
+                    createPedido.Produtos = item.Value.pedido.produtos;
+                    createPedido.id_usuario = item.Value.pedido.id_usuario;
+                    createPedido.campoa = "RECEBIDO";
+                    createPedido.campob = item.Value.pedido.campoc;
+                    createPedido.Observacao = $"Remessa da empresa: {idEmpresa}";
+                    createPedido.Save(createPedido);
+                    
+                    lastId = createPedido.GetLastId();
+                }
 
                 if (item.Value.itens != null)
                 {
                     foreach (dynamic data in item.Value.itens)
                     {
+                        Model.PedidoItem createPedidoItem = new Model.PedidoItem();
+                        createPedidoItem.Id = 0;
+                        createPedidoItem.Tipo = "Produtos";
+                        createPedidoItem.Excluir = 0;
+                        createPedidoItem.Pedido = lastId;
+
                         string codebarras = data.Value.cean;
                         double quantidade = data.Value.quantidade;
                         Model.Item dataItem = new Model.Item().FindAll().WhereFalse("excluir").Where("codebarras", codebarras).FirstOrDefault<Model.Item>();
+                        int idItem = 0;
                         if (dataItem != null)
                         {
                             Model.ItemEstoqueMovimentacao movEstoque = new Model.ItemEstoqueMovimentacao()
@@ -340,6 +370,8 @@ namespace Emiplus.View.Common
                                 .SetObs($"Enviado da empresa: {idEmpresa}")
                                 .SetIdPedido(idPedido)
                                 .SetItem(dataItem);
+
+                            idItem = dataItem.Id;
 
                             movEstoque.Save(movEstoque);
                         }
@@ -358,6 +390,8 @@ namespace Emiplus.View.Common
                             createItem.ativo = 0;
                             createItem.Save(createItem);
 
+                            idItem = createItem.GetLastId();
+
                              Model.ItemEstoqueMovimentacao movEstoque = new Model.ItemEstoqueMovimentacao()
                                 .SetUsuario(idUsuario)
                                 .SetQuantidade(quantidade)
@@ -369,6 +403,27 @@ namespace Emiplus.View.Common
 
                             movEstoque.Save(movEstoque);
                         }
+
+                        createPedidoItem.Item = idItem;
+                        createPedidoItem.CProd = data.Value.cprod;
+                        createPedidoItem.CEan = data.Value.cean;
+                        createPedidoItem.xProd = data.Value.xprod;
+                        createPedidoItem.Ncm = data.Value.ncm;
+                        createPedidoItem.Cfop = data.Value.cfop;
+                        createPedidoItem.ValorCompra = data.Value.valorcompra;
+                        createPedidoItem.ValorVenda = data.Value.valorvenda;
+                        createPedidoItem.Quantidade = data.Value.quantidade;
+                        createPedidoItem.Medida = data.Value.medida;
+                        createPedidoItem.Total = data.Value.total;
+                        createPedidoItem.Desconto = data.Value.desconto;
+                        createPedidoItem.DescontoItem = data.Value.descontoitem;
+                        createPedidoItem.DescontoPedido = data.Value.descontopedido;
+                        createPedidoItem.Frete = data.Value.frete;
+                        createPedidoItem.Icms = data.Value.icms;
+                        createPedidoItem.Federal = data.Value.federal;
+                        createPedidoItem.Estadual = data.Value.estadual;
+                        createPedidoItem.Status = data.Value.status;
+                        createPedidoItem.Save(createPedidoItem, false);
                     }
                 }
 

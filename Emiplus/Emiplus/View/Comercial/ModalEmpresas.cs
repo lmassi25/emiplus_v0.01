@@ -46,7 +46,8 @@ namespace Emiplus.View.Comercial
 
             if (Support.CheckForInternetConnection())
             {
-                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
+                int idUser = Settings.Default.user_sub_user != 0 ? Settings.Default.user_sub_user : Settings.Default.user_id;
+                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{idUser}").Content().Response();
 
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {

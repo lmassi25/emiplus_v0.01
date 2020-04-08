@@ -80,9 +80,9 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.btnRemessaEnviar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel12 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.btnImportProdutos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.btnImportProdutos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel4.SuspendLayout();
@@ -1201,31 +1201,6 @@
             this.visualPanel12.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualPanel12.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(23, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(174, 21);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Importar Produtos";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(90, 14);
-            this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox13.TabIndex = 8;
-            this.pictureBox13.TabStop = false;
-            // 
             // btnImportProdutos
             // 
             this.btnImportProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -1259,6 +1234,31 @@
             this.btnImportProdutos.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btnImportProdutos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnImportProdutos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(23, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 21);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Importar Produtos";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
+            this.pictureBox13.Location = new System.Drawing.Point(90, 14);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 8;
+            this.pictureBox13.TabStop = false;
             // 
             // TelaConfigInicial
             // 

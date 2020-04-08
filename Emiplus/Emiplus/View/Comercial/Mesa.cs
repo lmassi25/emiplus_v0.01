@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using SqlKata.Execution;
+using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace Emiplus.View.Comercial
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 3;
+            Table.ColumnCount = 4;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -36,6 +37,10 @@ namespace Emiplus.View.Comercial
             Table.Columns[2].Width = 80;
             Table.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[2].Visible = true;
+
+            Table.Columns[3].Name = "Garçom";
+            Table.Columns[3].Width = 100;
+            Table.Columns[3].Visible = true;
         }
 
         private async Task SetContentTableAsync(DataGridView Table)
@@ -48,10 +53,14 @@ namespace Emiplus.View.Comercial
             if (Data != null) {
                 foreach (dynamic item in Data)
                 {
+                    int user = item.USUARIO;
+                    Model.Usuarios garcom = new Model.Usuarios().FindAll().Where("id_user", user).WhereFalse("excluir").FirstOrDefault<Model.Usuarios>();
+
                     Table.Rows.Add(
                         item.ID,
                         item.XPROD,
-                        Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true)
+                        Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
+                        garcom.Nome
                     );
                 }
             }
@@ -67,9 +76,19 @@ namespace Emiplus.View.Comercial
 
                 await SetContentTableAsync(GridLista);
 
-
                 dynamic sumData = new Model.PedidoItem().Query().SelectRaw("sum(total) as total").Where("mesa", nrMesa).WhereFalse("excluir").Where("pedido", 0).FirstOrDefault();
                 double total = Validation.ConvertToDouble(sumData.TOTAL) ?? 0;
+
+                Model.PedidoItem tempoMesa = new Model.PedidoItem().Query().Where("mesa", nrMesa).WhereFalse("excluir").Where("pedido", 0).FirstOrDefault<Model.PedidoItem>();
+                if (tempoMesa != null)
+                {
+                    var dt1 = DateTime.Now;
+                    TimeSpan ts = dt1 - tempoMesa.Criado;
+
+                    //string time = string.Format("{0}:{1}", ((int)ts.TotalHours), ts.Minutes);
+
+                    tempo.Text = tempoMesa.Criado.ToString("HH:mm");
+                }
 
                 txtQtd.Text = GridLista.Rows.Count.ToString();
                 txtTotal.Text = $"Valor Total: {Validation.FormatPrice(total, true)}";

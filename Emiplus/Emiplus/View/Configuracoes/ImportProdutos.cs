@@ -32,7 +32,8 @@ namespace Emiplus.View.Configuracoes
         {
             if (Support.CheckForInternetConnection())
             {
-                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
+                int idUser = Settings.Default.user_sub_user != 0 ? Settings.Default.user_sub_user : Settings.Default.user_id;
+                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{idUser}").Content().Response();
 
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {
@@ -45,7 +46,9 @@ namespace Emiplus.View.Configuracoes
                 foreach (dynamic item in jo)
                 {
                     if (item.Value.id_unique != Settings.Default.empresa_unique_id) {
-                        data.Add(new { Id = item.Value.id_unique, Nome = item.Value.razao_social });
+                        string id = item.Value.id_unique.ToString();
+                        string nome = item.Value.razao_social.ToString();
+                        data.Add(new {Id = id, Nome = nome});
                     }
                 }
 

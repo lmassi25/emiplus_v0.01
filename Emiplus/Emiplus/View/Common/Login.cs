@@ -157,7 +157,7 @@ namespace Emiplus.View.Common
                         usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
                         usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
                         usuarios.email = item.Value["email"].ToString();
-                        usuarios.senha = StringCipher.Encrypt(password.Text, password.Text);
+                        usuarios.senha = item.Value["senha"].ToString();
                     }
                     else
                     {
@@ -168,11 +168,10 @@ namespace Emiplus.View.Common
                         usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
                         usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
                         usuarios.email = item.Value["email"].ToString();
-                        usuarios.senha = StringCipher.Encrypt(password.Text, password.Text);
+                        usuarios.senha = item.Value["senha"].ToString();
                     }
                     usuarios.Save(usuarios);
                 }
-
             }
             else
             {

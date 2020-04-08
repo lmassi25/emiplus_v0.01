@@ -1055,6 +1055,10 @@ namespace Emiplus.View.Comercial
                     _mPedido.Cliente = 1;
                     _mPedido.Colaborador = Settings.Default.user_id;
                     _mPedido.Tipo = Home.pedidoPage;
+
+                    if (Home.pedidoPage == "Remessas")
+                        _mPedido.campoc = Settings.Default.empresa_razao_social;
+
                     if (_mPedido.Save(_mPedido))
                     {
                         Id = _mPedido.GetLastId();

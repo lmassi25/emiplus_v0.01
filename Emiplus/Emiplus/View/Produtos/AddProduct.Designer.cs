@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProduct));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -123,6 +123,18 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtBuscarVariacao = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnGerar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.label30 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridVariacao = new System.Windows.Forms.DataGridView();
+            this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -149,6 +161,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.visualPanel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVariacao)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -162,39 +178,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 13;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.HoverVisible = true;
-            this.btnExit.Border.Rounding = 6;
-            this.btnExit.Border.Thickness = 1;
-            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnExit.Border.Visible = true;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Image = null;
-            this.btnExit.Location = new System.Drawing.Point(11, 5);
-            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 30);
-            this.btnExit.TabIndex = 549;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // Ativo
             // 
@@ -241,6 +224,39 @@
             this.Ativo.Toggled = true;
             this.Ativo.TrueTextToggle = "Ativo";
             this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(11, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 549;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnHelp
             // 
@@ -1791,14 +1807,15 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 349);
+            this.tabControl1.Location = new System.Drawing.Point(11, 349);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(710, 288);
+            this.tabControl1.Size = new System.Drawing.Size(693, 288);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage5
@@ -2182,6 +2199,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
+            this.panel2.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.panel2.Controls.Add(this.visualSeparator4);
             this.panel2.Controls.Add(this.btnRemoverImage);
             this.panel2.Controls.Add(this.btnImage);
             this.panel2.Controls.Add(this.label25);
@@ -2354,7 +2373,7 @@
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator3.TabIndex = 557;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2525,7 +2544,7 @@
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator2.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator2.TabIndex = 49;
             this.visualSeparator2.Text = "visualSeparator2";
             this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2548,7 +2567,7 @@
             this.visualSeparator1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator1.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.ShadowVisible = true;
-            this.visualSeparator1.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator1.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator1.TabIndex = 48;
             this.visualSeparator1.Text = "visualSeparator1";
             this.visualSeparator1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2734,6 +2753,267 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.AutoScroll = true;
+            this.tabPage6.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.tabPage6.Controls.Add(this.panel5);
+            this.tabPage6.Controls.Add(this.label30);
+            this.tabPage6.Controls.Add(this.btnGerar);
+            this.tabPage6.Controls.Add(this.label29);
+            this.tabPage6.Controls.Add(this.txtBuscarVariacao);
+            this.tabPage6.Controls.Add(this.label28);
+            this.tabPage6.Controls.Add(this.visualPanel2);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(685, 260);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Variações";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // visualPanel2
+            // 
+            this.visualPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.visualPanel2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel2.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.visualPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.visualPanel2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.visualPanel2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.visualPanel2.Border.HoverVisible = true;
+            this.visualPanel2.Border.Rounding = 6;
+            this.visualPanel2.Border.Thickness = 1;
+            this.visualPanel2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel2.Border.Visible = true;
+            this.visualPanel2.Controls.Add(this.label26);
+            this.visualPanel2.Controls.Add(this.label27);
+            this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.Location = new System.Drawing.Point(14, 16);
+            this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel2.Name = "visualPanel2";
+            this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel2.Size = new System.Drawing.Size(655, 62);
+            this.visualPanel2.TabIndex = 2;
+            this.visualPanel2.Text = "visualPanel2";
+            this.visualPanel2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(11, 34);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(362, 15);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Adicione abaixo a combinação de variações que seu produto possui.";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(11, 15);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(173, 15);
+            this.label27.TabIndex = 4;
+            this.label27.Text = "Seu produto possui variações?";
+            // 
+            // txtBuscarVariacao
+            // 
+            this.txtBuscarVariacao.AlphaNumeric = false;
+            this.txtBuscarVariacao.BackColor = System.Drawing.Color.White;
+            this.txtBuscarVariacao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtBuscarVariacao.BackColorState.Enabled = System.Drawing.Color.White;
+            this.txtBuscarVariacao.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.txtBuscarVariacao.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.txtBuscarVariacao.Border.HoverVisible = true;
+            this.txtBuscarVariacao.Border.Rounding = 8;
+            this.txtBuscarVariacao.Border.Thickness = 1;
+            this.txtBuscarVariacao.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtBuscarVariacao.Border.Visible = true;
+            this.txtBuscarVariacao.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtBuscarVariacao.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.txtBuscarVariacao.ButtonBorder.HoverVisible = true;
+            this.txtBuscarVariacao.ButtonBorder.Rounding = 6;
+            this.txtBuscarVariacao.ButtonBorder.Thickness = 1;
+            this.txtBuscarVariacao.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtBuscarVariacao.ButtonBorder.Visible = true;
+            this.txtBuscarVariacao.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtBuscarVariacao.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtBuscarVariacao.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtBuscarVariacao.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.txtBuscarVariacao.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarVariacao.ButtonIndent = 3;
+            this.txtBuscarVariacao.ButtonText = "visualButton";
+            this.txtBuscarVariacao.ButtonVisible = false;
+            this.txtBuscarVariacao.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarVariacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtBuscarVariacao.Image = null;
+            this.txtBuscarVariacao.ImageSize = new System.Drawing.Size(16, 16);
+            this.txtBuscarVariacao.ImageVisible = false;
+            this.txtBuscarVariacao.ImageWidth = 35;
+            this.txtBuscarVariacao.Location = new System.Drawing.Point(14, 116);
+            this.txtBuscarVariacao.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.txtBuscarVariacao.Name = "txtBuscarVariacao";
+            this.txtBuscarVariacao.PasswordChar = '\0';
+            this.txtBuscarVariacao.ReadOnly = false;
+            this.txtBuscarVariacao.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtBuscarVariacao.Size = new System.Drawing.Size(430, 30);
+            this.txtBuscarVariacao.TabIndex = 15123;
+            this.txtBuscarVariacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBuscarVariacao.TextBoxWidth = 418;
+            this.txtBuscarVariacao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.txtBuscarVariacao.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtBuscarVariacao.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtBuscarVariacao.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtBuscarVariacao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.txtBuscarVariacao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.txtBuscarVariacao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtBuscarVariacao.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.txtBuscarVariacao.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarVariacao.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.txtBuscarVariacao.Watermark.Text = "Watermark text";
+            this.txtBuscarVariacao.Watermark.Visible = false;
+            this.txtBuscarVariacao.WordWrap = true;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label28.Location = new System.Drawing.Point(11, 96);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(64, 17);
+            this.label28.TabIndex = 15124;
+            this.label28.Text = "Variações";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.White;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label29.Location = new System.Drawing.Point(15, 149);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(327, 13);
+            this.label29.TabIndex = 15123;
+            this.label29.Text = "Busque pelas variações que o produto possui e gere as combinações";
+            // 
+            // btnGerar
+            // 
+            this.btnGerar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGerar.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnGerar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnGerar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnGerar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGerar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnGerar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnGerar.Border.HoverVisible = true;
+            this.btnGerar.Border.Rounding = 6;
+            this.btnGerar.Border.Thickness = 1;
+            this.btnGerar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnGerar.Border.Visible = true;
+            this.btnGerar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGerar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerar.ForeColor = System.Drawing.Color.White;
+            this.btnGerar.Image = null;
+            this.btnGerar.Location = new System.Drawing.Point(450, 116);
+            this.btnGerar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnGerar.Name = "btnGerar";
+            this.btnGerar.Size = new System.Drawing.Size(108, 30);
+            this.btnGerar.TabIndex = 15123;
+            this.btnGerar.Text = "Gerar";
+            this.btnGerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGerar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnGerar.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnGerar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnGerar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label30.Location = new System.Drawing.Point(11, 184);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(89, 17);
+            this.label30.TabIndex = 15125;
+            this.label30.Text = "Combinações";
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.dataGridVariacao);
+            this.panel5.Location = new System.Drawing.Point(14, 206);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(655, 215);
+            this.panel5.TabIndex = 15126;
+            // 
+            // dataGridVariacao
+            // 
+            this.dataGridVariacao.AllowUserToAddRows = false;
+            this.dataGridVariacao.AllowUserToDeleteRows = false;
+            this.dataGridVariacao.AllowUserToResizeColumns = false;
+            this.dataGridVariacao.AllowUserToResizeRows = false;
+            this.dataGridVariacao.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridVariacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridVariacao.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridVariacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVariacao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridVariacao.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridVariacao.Location = new System.Drawing.Point(0, 0);
+            this.dataGridVariacao.MultiSelect = false;
+            this.dataGridVariacao.Name = "dataGridVariacao";
+            this.dataGridVariacao.ReadOnly = true;
+            this.dataGridVariacao.RowHeadersVisible = false;
+            this.dataGridVariacao.RowTemplate.Height = 30;
+            this.dataGridVariacao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridVariacao.Size = new System.Drawing.Size(655, 215);
+            this.dataGridVariacao.TabIndex = 6;
+            this.dataGridVariacao.TabStop = false;
+            // 
+            // visualSeparator4
+            // 
+            this.visualSeparator4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.Location = new System.Drawing.Point(23, 652);
+            this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator4.Name = "visualSeparator4";
+            this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.ShadowVisible = true;
+            this.visualSeparator4.Size = new System.Drawing.Size(658, 4);
+            this.visualSeparator4.TabIndex = 15123;
+            this.visualSeparator4.Text = "visualSeparator4";
+            this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2783,6 +3063,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.visualPanel2.ResumeLayout(false);
+            this.visualPanel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVariacao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2881,5 +3167,17 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox pathImage;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImage;
         private System.Windows.Forms.Label btnRemoverImage;
+        private System.Windows.Forms.TabPage tabPage6;
+        private VisualPlus.Toolkit.Controls.Layout.VisualPanel visualPanel2;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox txtBuscarVariacao;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnGerar;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridVariacao;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
     }
 }
