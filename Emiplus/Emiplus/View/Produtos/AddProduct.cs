@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -655,6 +656,13 @@ namespace Emiplus.View.Produtos
                         Close();
                     }
                 }
+            };
+
+            btnVariacao.Click += (s, e) =>
+            {
+                ModalVariacao.idProduto = idPdtSelecionado;
+                ModalVariacao form = new ModalVariacao();
+                form.ShowDialog();
             };
         }
     }

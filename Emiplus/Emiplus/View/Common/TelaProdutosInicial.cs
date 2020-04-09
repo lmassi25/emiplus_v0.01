@@ -1,5 +1,6 @@
 ﻿using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
+using Emiplus.View.Produtos;
 using Emiplus.View.Reports;
 using System.Windows.Forms;
 
@@ -140,6 +141,8 @@ namespace Emiplus.View.Common
                 Produtos.ImportarNfe f = new Produtos.ImportarNfe();
                 f.ShowDialog();
             };
+
+            btnVariation.Click += (s, e) => OpenForm.Show<Variacoes>(this);
         }
     }
 }
