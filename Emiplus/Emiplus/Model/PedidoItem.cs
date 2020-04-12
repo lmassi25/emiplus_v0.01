@@ -95,9 +95,12 @@
         public double Despesa { get; set; }
         public string Mesa { get; set; }
         public string Status { get; set; }
+        public int Atributo { get; set; }
 
         [Ignore]
         public string NomeAdicional { get; set; }
+        [Ignore]
+        public string TitleAtributo { get; set; }
 
         #endregion CAMPOS
 
@@ -205,7 +208,7 @@
                 CProd = item.Id.ToString();
 
             CEan = item.CodeBarras;
-            xProd = item.Nome + " " + NomeAdicional;
+            xProd = item.Nome + " " + NomeAdicional + " " + TitleAtributo;
 
             ValorCompra = item.ValorCompra;
 
@@ -220,6 +223,20 @@
         public PedidoItem SetAdicionalNomePdt(string nome_adicional)
         {
             NomeAdicional = nome_adicional;
+
+            return this;
+        }
+
+        public PedidoItem SetTitleAtributo(string atributoTitle)
+        {
+            TitleAtributo = atributoTitle;
+
+            return this;
+        }
+
+        public PedidoItem SetAtributo(int atributo)
+        {
+            Atributo = atributo;
 
             return this;
         }

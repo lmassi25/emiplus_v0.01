@@ -189,13 +189,10 @@ namespace Emiplus.View.Produtos
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
-            {
-                Refresh();
-            };
-
             Shown += (s, e) =>
             {
+                Refresh();
+
                 resultadosPorPage.SelectedItem = "50";
                 search.Select();
                 DataTableStart();

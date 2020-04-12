@@ -128,6 +128,14 @@ namespace Emiplus.View.Produtos
 
         private void AddCombination()
         {
+            string[] grupos = txtBuscarVariacao.Text.Split('+');
+            if (grupos.Count() == 3)
+            {
+                Alert.Message("Opps", "É permitido apenas 3 combinações diferente.", Alert.AlertType.error);
+                return;
+            }
+
+
             if (!string.IsNullOrEmpty(txtBuscarVariacao.Text) && txtBuscarVariacao.Text.Contains(txtGrupos.Text))
                 return;
 
@@ -187,7 +195,7 @@ namespace Emiplus.View.Produtos
 
             Load += (s, e) =>
             {
-                ToolHelp.Show("Com essa opção marcada o sistema irá dar uma leve travada para gerar\n cada código de barras diferente um do outro.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show("Com essa opção marcada é possível que o sistema dê uma travada para gerar\ncada código de barras diferente um do outro.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             };
 
             Shown += (s, e) =>
