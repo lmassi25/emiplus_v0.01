@@ -7,6 +7,7 @@ using Emiplus.View.Common;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -655,6 +656,27 @@ namespace Emiplus.View.Comercial
                 var itemId = collection.Lookup(nomeProduto()[0]);
                 Model.Item item = _mItem.FindById(itemId).WhereFalse("excluir").FirstOrDefault<Model.Item>();
                 
+                string titleAttr = "";
+                int idAttr = 0;
+                IEnumerable<Model.ItemEstoque> itemEstoque = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("item", itemId).Get<Model.ItemEstoque>();
+                if (itemEstoque.Count() > 0)
+                {
+                    AddAtributo.idProduto = itemId;
+                    AddAtributo form = new AddAtributo();
+                    form.TopMost = true;
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        idAttr = AddAtributo.idAttr;
+                        Model.ItemEstoque attrTitle = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("id", idAttr).FirstOrDefault<Model.ItemEstoque>();
+                        if (attrTitle != null)
+                            titleAttr = attrTitle.Title;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
                 if (ModoRapAva == 0)
                     Medidas.SelectedItem = item.Medida;
 
@@ -761,6 +783,8 @@ namespace Emiplus.View.Comercial
                     .SetTipo(item.Tipo)
                     .SetPedidoId(Id)
                     .SetAdicionalNomePdt(nomeProduto()[1])
+                    .SetTitleAtributo(titleAttr)
+                    .SetAtributo(idAttr)
                     .SetItem(item)
                     .SetQuantidade(QuantidadeTxt)
                     .SetMedida(MedidaTxt)
@@ -794,12 +818,14 @@ namespace Emiplus.View.Comercial
                         new Controller.Imposto().SetImposto(pedidoItem.GetLastId());
 
                         // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
-                        if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
-                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Add().Item();
+                        if (Home.pedidoPage == "Compras")
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add().Item();
+                        else if (Home.pedidoPage == "Devoluções")
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add().Item();
                         else if (Home.pedidoPage == "Remessas")
-                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Remessa do Produto").Remove().Item();
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}").Remove().Item();
                         else
-                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                            new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Remove().Item();
                     }
                 }
 
@@ -890,12 +916,14 @@ namespace Emiplus.View.Comercial
                                 
                                 GridListaProdutos.Rows.RemoveAt(GridListaProdutos.SelectedRows[0].Index);
 
-                                if (Home.pedidoPage != "Compras")
-                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                if (Home.pedidoPage == "Compras")
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
                                 else if (Home.pedidoPage == "Remessas")
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
-                                else
+                                else if (Home.pedidoPage == "Devoluções")
                                     new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
+                                else
+                                    new Controller.Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
 
                                 _mPedidoItens.Remove(idPedidoItem);
 
@@ -1055,6 +1083,10 @@ namespace Emiplus.View.Comercial
                     _mPedido.Cliente = 1;
                     _mPedido.Colaborador = Settings.Default.user_id;
                     _mPedido.Tipo = Home.pedidoPage;
+
+                    if (Home.pedidoPage == "Remessas")
+                        _mPedido.campoc = Settings.Default.empresa_razao_social;
+
                     if (_mPedido.Save(_mPedido))
                     {
                         Id = _mPedido.GetLastId();
@@ -1306,7 +1338,9 @@ namespace Emiplus.View.Comercial
                     {
                         if (Home.pedidoPage != "Orçamentos")
                         {
-                            if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
+                            if (Home.pedidoPage == "Compras")
+                                new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Remove().Pedido();
+                            else if (Home.pedidoPage == "Devoluções")
                                 new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Remove().Pedido();
                             else
                                 new Controller.Estoque(Id, Home.pedidoPage, "Fechamento de Tela").Add().Pedido();

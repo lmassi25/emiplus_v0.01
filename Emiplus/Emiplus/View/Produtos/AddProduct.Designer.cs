@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProduct));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -76,6 +76,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cest = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnVariacao = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.filterMaisRecentes = new System.Windows.Forms.RadioButton();
             this.filterTodos = new System.Windows.Forms.RadioButton();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -100,6 +101,7 @@
             this.btnRemover = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.btnRemoverImage = new System.Windows.Forms.Label();
             this.btnImage = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label25 = new System.Windows.Forms.Label();
@@ -163,39 +165,6 @@
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 13;
             // 
-            // btnExit
-            // 
-            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.btnExit.Border.HoverVisible = true;
-            this.btnExit.Border.Rounding = 6;
-            this.btnExit.Border.Thickness = 1;
-            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnExit.Border.Visible = true;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Image = null;
-            this.btnExit.Location = new System.Drawing.Point(11, 5);
-            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 30);
-            this.btnExit.TabIndex = 549;
-            this.btnExit.Text = "Voltar";
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // Ativo
             // 
             this.Ativo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -241,6 +210,39 @@
             this.Ativo.Toggled = true;
             this.Ativo.TrueTextToggle = "Ativo";
             this.Ativo.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExit.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnExit.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.btnExit.Border.HoverVisible = true;
+            this.btnExit.Border.Rounding = 6;
+            this.btnExit.Border.Thickness = 1;
+            this.btnExit.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnExit.Border.Visible = true;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = null;
+            this.btnExit.Location = new System.Drawing.Point(11, 5);
+            this.btnExit.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(96, 30);
+            this.btnExit.TabIndex = 549;
+            this.btnExit.Text = "Voltar";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExit.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnExit.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnExit.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnExit.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnExit.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnHelp
             // 
@@ -794,7 +796,7 @@
             this.tabPage3.Controls.Add(this.inf_adicional);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(702, 260);
+            this.tabPage3.Size = new System.Drawing.Size(685, 260);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Informações Adicionais";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1053,7 +1055,7 @@
             this.tabPage4.Controls.Add(this.aliq_federal);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(702, 260);
+            this.tabPage4.Size = new System.Drawing.Size(685, 260);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Lei de Transparência";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1282,7 +1284,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 260);
+            this.tabPage2.Size = new System.Drawing.Size(685, 260);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Classificação Fiscal";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1511,6 +1513,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnVariacao);
             this.tabPage1.Controls.Add(this.filterMaisRecentes);
             this.tabPage1.Controls.Add(this.filterTodos);
             this.tabPage1.Controls.Add(this.pictureBox8);
@@ -1524,10 +1527,43 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(702, 260);
+            this.tabPage1.Size = new System.Drawing.Size(685, 260);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Estoque";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnVariacao
+            // 
+            this.btnVariacao.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVariacao.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnVariacao.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnVariacao.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnVariacao.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnVariacao.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnVariacao.Border.HoverVisible = true;
+            this.btnVariacao.Border.Rounding = 6;
+            this.btnVariacao.Border.Thickness = 1;
+            this.btnVariacao.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnVariacao.Border.Visible = true;
+            this.btnVariacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVariacao.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnVariacao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVariacao.ForeColor = System.Drawing.Color.White;
+            this.btnVariacao.Image = null;
+            this.btnVariacao.Location = new System.Drawing.Point(417, 30);
+            this.btnVariacao.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnVariacao.Name = "btnVariacao";
+            this.btnVariacao.Size = new System.Drawing.Size(83, 28);
+            this.btnVariacao.TabIndex = 204;
+            this.btnVariacao.Text = "Variações";
+            this.btnVariacao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVariacao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnVariacao.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnVariacao.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnVariacao.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnVariacao.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnVariacao.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnVariacao.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // filterMaisRecentes
             // 
@@ -1598,7 +1634,7 @@
             this.btnEstoque.Location = new System.Drawing.Point(309, 30);
             this.btnEstoque.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnEstoque.Name = "btnEstoque";
-            this.btnEstoque.Size = new System.Drawing.Size(144, 28);
+            this.btnEstoque.Size = new System.Drawing.Size(102, 28);
             this.btnEstoque.TabIndex = 3;
             this.btnEstoque.Text = "Alterar Estoque";
             this.btnEstoque.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1795,10 +1831,10 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 349);
+            this.tabControl1.Location = new System.Drawing.Point(11, 349);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(710, 288);
+            this.tabControl1.Size = new System.Drawing.Size(693, 288);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage5
@@ -1813,7 +1849,7 @@
             this.tabPage5.Controls.Add(this.ImpostoNFE);
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(702, 260);
+            this.tabPage5.Size = new System.Drawing.Size(685, 260);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Impostos";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2182,6 +2218,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
+            this.panel2.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.panel2.Controls.Add(this.visualSeparator4);
             this.panel2.Controls.Add(this.btnRemoverImage);
             this.panel2.Controls.Add(this.btnImage);
             this.panel2.Controls.Add(this.label25);
@@ -2223,6 +2261,29 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 575);
             this.panel2.TabIndex = 30;
+            // 
+            // visualSeparator4
+            // 
+            this.visualSeparator4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.Location = new System.Drawing.Point(23, 652);
+            this.visualSeparator4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator4.Name = "visualSeparator4";
+            this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator4.ShadowVisible = true;
+            this.visualSeparator4.Size = new System.Drawing.Size(658, 4);
+            this.visualSeparator4.TabIndex = 15123;
+            this.visualSeparator4.Text = "visualSeparator4";
+            this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator4.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator4.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator4.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btnRemoverImage
             // 
@@ -2354,7 +2415,7 @@
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator3.TabIndex = 557;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2525,7 +2586,7 @@
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator2.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator2.TabIndex = 49;
             this.visualSeparator2.Text = "visualSeparator2";
             this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2548,7 +2609,7 @@
             this.visualSeparator1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator1.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.ShadowVisible = true;
-            this.visualSeparator1.Size = new System.Drawing.Size(675, 4);
+            this.visualSeparator1.Size = new System.Drawing.Size(658, 4);
             this.visualSeparator1.TabIndex = 48;
             this.visualSeparator1.Text = "visualSeparator1";
             this.visualSeparator1.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -2881,5 +2942,7 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox pathImage;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImage;
         private System.Windows.Forms.Label btnRemoverImage;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnVariacao;
     }
 }

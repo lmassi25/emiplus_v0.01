@@ -1,17 +1,17 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
+﻿using Emiplus.Data.Helpers;
+using SqlKata.Execution;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
-    public partial class ModalEmpresas : Form
+    public partial class AddAtributo : Form
     {
-        public static string Id { get; set; }
-        public static string RazaoSocial { get; set; }
+        public static int idProduto { get; set; }
+        public static int idAttr { get; set; }
 
-        public ModalEmpresas()
+        public AddAtributo()
         {
             InitializeComponent();
             Eventos();
@@ -19,69 +19,60 @@ namespace Emiplus.View.Comercial
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 3;
+            Table.ColumnCount = 5;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-
+            
             Table.RowHeadersVisible = false;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Razão Social";
+            Table.Columns[1].Name = "Atributo";
             Table.Columns[1].Width = 150;
             Table.Columns[1].Visible = true;
 
-            Table.Columns[2].Name = "CNPJ";
-            Table.Columns[2].Width = 130;
+            Table.Columns[2].Name = "Estoque";
+            Table.Columns[2].Width = 70;
             Table.Columns[2].Visible = true;
+
+            Table.Columns[3].Name = "Referencia";
+            Table.Columns[3].Width = 70;
+            Table.Columns[3].Visible = true;
+
+            Table.Columns[4].Name = "Código de Barras";
+            Table.Columns[4].Width = 130;
+            Table.Columns[4].Visible = true;
         }
 
-        private void LoadTable(DataGridView Table)
+        private void LoadAttr()
         {
             SetHeadersTable(GridLista);
 
-            Table.Rows.Clear();
-
-            if (Support.CheckForInternetConnection())
+            IEnumerable<Model.ItemEstoque> itemEstoque = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto).Get<Model.ItemEstoque>();
+            if (itemEstoque != null)
             {
-                int idUser = Settings.Default.user_sub_user != 0 ? Settings.Default.user_sub_user : Settings.Default.user_id;
-                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{idUser}").Content().Response();
-
-                if (jo["error"] != null && jo["error"].ToString() != "")
+                foreach (Model.ItemEstoque attr in itemEstoque)
                 {
-                    Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
-                    return;
-                }
-
-                foreach (dynamic item in jo)
-                {
-                    if (item.Value.id_unique != Settings.Default.empresa_unique_id) {
-                        Table.Rows.Add(
-                            item.Value.id_unique,
-                            item.Value.razao_social,
-                            item.Value.cnpj
-                            );
-                    }
+                    GridLista.Rows.Add(
+                        attr.Id,
+                        attr.Title,
+                        attr.Estoque,
+                        attr.Referencia,
+                        attr.Codebarras
+                        );
                 }
             }
-            else
-            {
-                Alert.Message("Opps", "Você precisa estar conectado a internet.", Alert.AlertType.error);
-            }
-            
-            Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void SelectItemGrid()
         {
             if (GridLista.SelectedRows.Count > 0)
             {
-                DialogResult = DialogResult.OK;
-                Id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
-                RazaoSocial = GridLista.SelectedRows[0].Cells["Razão Social"].Value.ToString();
+                idAttr = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
 
+                DialogResult = DialogResult.OK;
                 Close();
             }
         }
@@ -109,11 +100,6 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
 
-                case Keys.F10:
-                    SelectItemGrid();
-                    e.SuppressKeyPress = true;
-                    break;
-
                 case Keys.Enter:
                     SelectItemGrid();
                     e.SuppressKeyPress = true;
@@ -130,11 +116,19 @@ namespace Emiplus.View.Comercial
             Shown += (s, e) =>
             {
                 Refresh();
-                LoadTable(GridLista);
+
+                if (idProduto < 0)
+                {
+                    Alert.Message("Opps", "Não localizamos o produto.", Alert.AlertType.error);
+                    Close();
+                    return;
+                }
+                
+                GridLista.Focus();
+                LoadAttr();
             };
 
-            btnSelecionar.Click += (s, e) => SelectItemGrid();
-            GridLista.CellDoubleClick += (s, e) => SelectItemGrid();
+            btnContinuar.Click += (s, e) => SelectItemGrid();
         }
     }
 }

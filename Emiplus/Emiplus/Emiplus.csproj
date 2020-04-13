@@ -322,7 +322,10 @@
     <Compile Include="Model\Etiqueta.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
+    <Compile Include="Model\ItemAtributos.cs" />
+    <Compile Include="Model\ItemEstoque.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
+    <Compile Include="Model\ItemGrupo.cs" />
     <Compile Include="Model\Natureza.cs" />
     <Compile Include="Model\Nota.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -336,6 +339,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="View\Comercial\AddAtributo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddAtributo.Designer.cs">
+      <DependentUpon>AddAtributo.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\AddClienteContato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +362,12 @@
     </Compile>
     <Compile Include="View\Comercial\AddClientes.Designer.cs">
       <DependentUpon>AddClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\AddClientesPesquisar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\AddClientesPesquisar.Designer.cs">
+      <DependentUpon>AddClientesPesquisar.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\AddItemMesa.cs">
       <SubType>Form</SubType>
@@ -888,6 +903,12 @@
     <Compile Include="View\Produtos\AddServicos.Designer.cs">
       <DependentUpon>AddServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddVariacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddVariacao.Designer.cs">
+      <DependentUpon>AddVariacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\Categorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -911,6 +932,12 @@
     </Compile>
     <Compile Include="View\Produtos\ModalNCM.Designer.cs">
       <DependentUpon>ModalNCM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\ModalVariacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\ModalVariacao.Designer.cs">
+      <DependentUpon>ModalVariacao.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\Servicos.cs">
       <SubType>Form</SubType>
@@ -995,6 +1022,12 @@
     </Compile>
     <Compile Include="View\Produtos\TelasImportarNfe\ImportarProdutosConcluido.Designer.cs">
       <DependentUpon>ImportarProdutosConcluido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Variacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Variacoes.Designer.cs">
+      <DependentUpon>Variacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Reports\Browser.cs">
       <SubType>Form</SubType>
@@ -1093,6 +1126,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Comercial\AddAtributo.resx">
+      <DependentUpon>AddAtributo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddClienteContato.resx">
       <DependentUpon>AddClienteContato.cs</DependentUpon>
     </EmbeddedResource>
@@ -1101,6 +1137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddClientes.resx">
       <DependentUpon>AddClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\AddClientesPesquisar.resx">
+      <DependentUpon>AddClientesPesquisar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\AddItemMesa.resx">
       <DependentUpon>AddItemMesa.cs</DependentUpon>
@@ -1369,6 +1408,9 @@
     <EmbeddedResource Include="View\Produtos\AddServicos.resx">
       <DependentUpon>AddServicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddVariacao.resx">
+      <DependentUpon>AddVariacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -1380,6 +1422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\ModalNCM.resx">
       <DependentUpon>ModalNCM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\ModalVariacao.resx">
+      <DependentUpon>ModalVariacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Servicos.resx">
       <DependentUpon>Servicos.cs</DependentUpon>
@@ -1422,6 +1467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\TelasImportarNfe\ImportarProdutosConcluido.resx">
       <DependentUpon>ImportarProdutosConcluido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Variacoes.resx">
+      <DependentUpon>Variacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Reports\Browser.resx">
       <DependentUpon>Browser.cs</DependentUpon>

@@ -58,6 +58,7 @@ namespace Emiplus.Model
         public string status_sync { get; set; }
 
         public int ativo { get; set; }
+        public string Atributos { get; set; }
 
         #endregion CAMPOS
 

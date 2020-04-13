@@ -34,6 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.visualSeparator2 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.visualSeparator4 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.CompraNova = new System.Windows.Forms.Button();
             this.novaNFE = new System.Windows.Forms.Button();
             this.Impostos = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.ReajusteProduto = new System.Windows.Forms.Button();
             this.Etiquetas = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Button();
@@ -70,7 +70,9 @@
             this.Produtos = new System.Windows.Forms.Button();
             this.Categorias = new System.Windows.Forms.Button();
             this.btnRemessas = new System.Windows.Forms.Button();
+            this.btnVariation = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -85,7 +87,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -131,6 +132,16 @@
             this.label8.Size = new System.Drawing.Size(61, 17);
             this.label8.TabIndex = 3;
             this.label8.Text = "Produtos";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
             // 
             // visualSeparator2
             // 
@@ -510,16 +521,6 @@
             this.Impostos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Impostos.UseVisualStyleBackColor = false;
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
             // ReajusteProduto
             // 
             this.ReajusteProduto.BackColor = System.Drawing.Color.Transparent;
@@ -750,12 +751,36 @@
             this.btnRemessas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemessas.UseVisualStyleBackColor = false;
             // 
+            // btnVariation
+            // 
+            this.btnVariation.BackColor = System.Drawing.Color.Transparent;
+            this.btnVariation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVariation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVariation.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnVariation.FlatAppearance.BorderSize = 0;
+            this.btnVariation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnVariation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnVariation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVariation.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVariation.ForeColor = System.Drawing.Color.DimGray;
+            this.btnVariation.Image = ((System.Drawing.Image)(resources.GetObject("btnVariation.Image")));
+            this.btnVariation.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnVariation.Location = new System.Drawing.Point(22, 409);
+            this.btnVariation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnVariation.Name = "btnVariation";
+            this.btnVariation.Size = new System.Drawing.Size(219, 41);
+            this.btnVariation.TabIndex = 126;
+            this.btnVariation.Text = "          Variações";
+            this.btnVariation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVariation.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnVariation);
             this.Controls.Add(this.btnRemessas);
             this.Controls.Add(this.btnRemessa);
             this.Controls.Add(this.pictureBox15);
@@ -800,6 +825,7 @@
             this.Text = "TelaProdutosInicial";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
@@ -814,7 +840,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -861,5 +886,6 @@
         private System.Windows.Forms.Button Servicos;
         private System.Windows.Forms.Button btnRemessa;
         private System.Windows.Forms.Button btnRemessas;
+        private System.Windows.Forms.Button btnVariation;
     }
 }

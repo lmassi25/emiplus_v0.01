@@ -239,7 +239,7 @@
             this.btnImport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnImport.Image = null;
-            this.btnImport.Location = new System.Drawing.Point(401, 165);
+            this.btnImport.Location = new System.Drawing.Point(438, 165);
             this.btnImport.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(154, 29);
@@ -363,7 +363,7 @@
             this.Empresas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.Empresas.Name = "Empresas";
             this.Empresas.SeparatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Empresas.Size = new System.Drawing.Size(364, 29);
+            this.Empresas.Size = new System.Drawing.Size(401, 29);
             this.Empresas.State = VisualPlus.Enumerators.MouseStates.Normal;
             this.Empresas.TabIndex = 551;
             this.Empresas.TextAlignment = System.Drawing.StringAlignment.Center;
