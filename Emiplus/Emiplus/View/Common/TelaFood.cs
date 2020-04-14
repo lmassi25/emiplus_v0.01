@@ -41,6 +41,11 @@ namespace Emiplus.View.Common
                 NovoPedido.ShowDialog();
             };
 
+            btnCadastrarMesa.Click += (s, e) =>
+            {
+                OpenForm.Show<Food.Mesas>(this);
+            };
+
             Mesas.Click += (s, e) =>
             {
                 OpenForm.Show<Mesas>(this);

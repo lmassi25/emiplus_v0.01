@@ -326,6 +326,7 @@
     <Compile Include="Model\ItemEstoque.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
     <Compile Include="Model\ItemGrupo.cs" />
+    <Compile Include="Model\Mesas.cs" />
     <Compile Include="Model\Natureza.cs" />
     <Compile Include="Model\Nota.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -873,6 +874,18 @@
     <Compile Include="View\Financeiro\Titulos.Designer.cs">
       <DependentUpon>Titulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Food\CadastrarMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\CadastrarMesa.Designer.cs">
+      <DependentUpon>CadastrarMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Food\Mesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\Mesas.Designer.cs">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1393,6 +1406,12 @@
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
       <DependentUpon>Titulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\CadastrarMesa.resx">
+      <DependentUpon>CadastrarMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\Mesas.resx">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
       <DependentUpon>AddCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -1684,6 +1703,7 @@
     <None Include="Assets\Images\icons\waiter.png" />
     <None Include="Assets\Images\icons\skyscrapper.png" />
     <None Include="Assets\Images\icons\caja.png" />
+    <None Include="Assets\Images\icons\plus20x.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

@@ -39,17 +39,18 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.Mesas = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.Pedidos = new System.Windows.Forms.Button();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.Clientes = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Mesas = new System.Windows.Forms.Button();
+            this.Pedidos = new System.Windows.Forms.Button();
+            this.Clientes = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.btnCadastrarMesa = new System.Windows.Forms.Button();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // visualSeparator5
@@ -177,9 +178,20 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(133, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 17);
+            this.label8.Size = new System.Drawing.Size(79, 17);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Comercial";
+            this.label8.Text = "Alimentação";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // Mesas
             // 
@@ -204,17 +216,6 @@
             this.Mesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Mesas.UseVisualStyleBackColor = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(461, 165);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 125;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Visible = false;
-            // 
             // Pedidos
             // 
             this.Pedidos.BackColor = System.Drawing.Color.Transparent;
@@ -238,17 +239,6 @@
             this.Pedidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Pedidos.UseVisualStyleBackColor = false;
             // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(226, 121);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 121;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Visible = false;
-            // 
             // Clientes
             // 
             this.Clientes.BackColor = System.Drawing.Color.Transparent;
@@ -263,7 +253,7 @@
             this.Clientes.ForeColor = System.Drawing.Color.DimGray;
             this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
             this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(21, 94);
+            this.Clientes.Location = new System.Drawing.Point(22, 138);
             this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Clientes.Name = "Clientes";
             this.Clientes.Size = new System.Drawing.Size(219, 41);
@@ -271,17 +261,6 @@
             this.Clientes.Text = "          Clientes";
             this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Clientes.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // btnAddItem
             // 
@@ -302,9 +281,54 @@
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(219, 41);
             this.btnAddItem.TabIndex = 140;
-            this.btnAddItem.Text = "          Adicionar Item";
+            this.btnAddItem.Text = "          Novo Pedido";
             this.btnAddItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            // 
+            // btnCadastrarMesa
+            // 
+            this.btnCadastrarMesa.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarMesa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCadastrarMesa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastrarMesa.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCadastrarMesa.FlatAppearance.BorderSize = 0;
+            this.btnCadastrarMesa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarMesa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnCadastrarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastrarMesa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastrarMesa.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCadastrarMesa.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarMesa.Image")));
+            this.btnCadastrarMesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastrarMesa.Location = new System.Drawing.Point(22, 94);
+            this.btnCadastrarMesa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCadastrarMesa.Name = "btnCadastrarMesa";
+            this.btnCadastrarMesa.Size = new System.Drawing.Size(219, 41);
+            this.btnCadastrarMesa.TabIndex = 141;
+            this.btnCadastrarMesa.Text = "          Cadastrar Mesa";
+            this.btnCadastrarMesa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastrarMesa.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(226, 165);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 121;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(461, 165);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 125;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Visible = false;
             // 
             // TelaFood
             // 
@@ -312,6 +336,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnCadastrarMesa);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.Mesas);
             this.Controls.Add(this.pictureBox5);
@@ -331,9 +356,9 @@
             this.Text = "TelaFood";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,11 +376,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Button Clientes;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button Pedidos;
         private System.Windows.Forms.Button Mesas;
         private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.Button btnCadastrarMesa;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

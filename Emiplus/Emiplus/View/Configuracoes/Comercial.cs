@@ -17,6 +17,7 @@ namespace Emiplus.View.Configuracoes
         {
             ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Essa opção ativa o controle do estoque, não permitindo vender itens com o estoque zerado.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Ative essa opção para utilizar as mesas predefinidas no sistema.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             Shown += (s, e) =>
             {
@@ -70,6 +71,14 @@ namespace Emiplus.View.Configuracoes
                     else
                         btnAlimentacao.Toggled = false;
                 }
+
+                if (!String.IsNullOrEmpty(IniFile.Read("MesasPreCadastrada", "Comercial")))
+                {
+                    if (IniFile.Read("MesasPreCadastrada", "Comercial") == "True")
+                        btnMesasPreCadastrada.Toggled = true;
+                    else
+                        btnMesasPreCadastrada.Toggled = false;
+                }
             };
 
             retomarVendaInicio.Click += (s, e) =>
@@ -118,6 +127,14 @@ namespace Emiplus.View.Configuracoes
                     IniFile.Write("Alimentacao", "False", "Comercial");
                 else
                     IniFile.Write("Alimentacao", "True", "Comercial");
+            };
+
+            btnMesasPreCadastrada.Click += (s, e) =>
+            {
+                if (btnMesasPreCadastrada.Toggled)
+                    IniFile.Write("MesasPreCadastrada", "False", "Comercial");
+                else
+                    IniFile.Write("MesasPreCadastrada", "True", "Comercial");
             };
 
             txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto", Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");

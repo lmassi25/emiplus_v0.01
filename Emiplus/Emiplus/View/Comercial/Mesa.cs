@@ -53,14 +53,14 @@ namespace Emiplus.View.Comercial
             if (Data != null) {
                 foreach (dynamic item in Data)
                 {
-                    int user = item.USUARIO;
+                    int user = item.USUARIO ?? 0;
                     Model.Usuarios garcom = new Model.Usuarios().FindAll().Where("id_user", user).WhereFalse("excluir").FirstOrDefault<Model.Usuarios>();
 
                     Table.Rows.Add(
                         item.ID,
                         item.XPROD,
                         Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-                        garcom.Nome
+                        Validation.FirstCharToUpper(garcom.Nome)
                     );
                 }
             }
@@ -68,8 +68,22 @@ namespace Emiplus.View.Comercial
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+            Masks.SetToUpper(this);
+
             Shown += async (s, e) =>
             {
                 label1.Text = $"Mesa: {nrMesa}";
@@ -82,12 +96,11 @@ namespace Emiplus.View.Comercial
                 Model.PedidoItem tempoMesa = new Model.PedidoItem().Query().Where("mesa", nrMesa).WhereFalse("excluir").Where("pedido", 0).FirstOrDefault<Model.PedidoItem>();
                 if (tempoMesa != null)
                 {
-                    var dt1 = DateTime.Now;
-                    TimeSpan ts = dt1 - tempoMesa.Criado;
+                    var date = DateTime.Now;
+                    var hourMesa = date.AddHours(-tempoMesa.Criado.Hour);
+                    var minMesa = date.AddMinutes(-tempoMesa.Criado.Minute);
 
-                    //string time = string.Format("{0}:{1}", ((int)ts.TotalHours), ts.Minutes);
-
-                    tempo.Text = tempoMesa.Criado.ToString("HH:mm");
+                    tempo.Text = $"{hourMesa.Hour}h {minMesa.Minute}m";
                 }
 
                 txtQtd.Text = GridLista.Rows.Count.ToString();

@@ -1399,7 +1399,7 @@
             this.btnClearRecebimentos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearRecebimentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnClearRecebimentos.Image = null;
-            this.btnClearRecebimentos.Location = new System.Drawing.Point(860, 373);
+            this.btnClearRecebimentos.Location = new System.Drawing.Point(860, 371);
             this.btnClearRecebimentos.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnClearRecebimentos.Name = "btnClearRecebimentos";
             this.btnClearRecebimentos.Size = new System.Drawing.Size(138, 19);
