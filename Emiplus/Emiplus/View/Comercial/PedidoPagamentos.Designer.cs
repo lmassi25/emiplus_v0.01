@@ -111,6 +111,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.visualPanel1 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnClearRecebimentos = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnDividir = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1414,12 +1415,33 @@
             this.btnClearRecebimentos.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.btnClearRecebimentos.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // btnDividir
+            // 
+            this.btnDividir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnDividir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnDividir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDividir.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDividir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnDividir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnDividir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDividir.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDividir.Image = ((System.Drawing.Image)(resources.GetObject("btnDividir.Image")));
+            this.btnDividir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDividir.Location = new System.Drawing.Point(838, 122);
+            this.btnDividir.Name = "btnDividir";
+            this.btnDividir.Size = new System.Drawing.Size(90, 78);
+            this.btnDividir.TabIndex = 145248;
+            this.btnDividir.Text = "Dividir Conta";
+            this.btnDividir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDividir.UseVisualStyleBackColor = false;
+            // 
             // PedidoPagamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnDividir);
             this.Controls.Add(this.btnClearRecebimentos);
             this.Controls.Add(this.visualPanel1);
             this.Controls.Add(this.panel12);
@@ -1457,7 +1479,7 @@
             this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1024, 645);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "PedidoPagamentos";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1565,5 +1587,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn colExcluir;
+        private System.Windows.Forms.Button btnDividir;
     }
 }

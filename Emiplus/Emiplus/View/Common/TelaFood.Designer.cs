@@ -39,18 +39,21 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Mesas = new System.Windows.Forms.Button();
-            this.Pedidos = new System.Windows.Forms.Button();
-            this.Clientes = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
+            this.VendasRel = new System.Windows.Forms.Button();
+            this.btnDelivery = new System.Windows.Forms.Button();
             this.btnCadastrarMesa = new System.Windows.Forms.Button();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.btnAddItem = new System.Windows.Forms.Button();
+            this.Mesas = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Pedidos = new System.Windows.Forms.Button();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.Clientes = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnEntregadores = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // visualSeparator5
@@ -182,108 +185,51 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Alimentação";
             // 
-            // pictureBox2
+            // VendasRel
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.VendasRel.BackColor = System.Drawing.Color.Transparent;
+            this.VendasRel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.VendasRel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VendasRel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.VendasRel.FlatAppearance.BorderSize = 0;
+            this.VendasRel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.VendasRel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.VendasRel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VendasRel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VendasRel.ForeColor = System.Drawing.Color.DimGray;
+            this.VendasRel.Image = ((System.Drawing.Image)(resources.GetObject("VendasRel.Image")));
+            this.VendasRel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.VendasRel.Location = new System.Drawing.Point(492, 139);
+            this.VendasRel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.VendasRel.Name = "VendasRel";
+            this.VendasRel.Size = new System.Drawing.Size(219, 41);
+            this.VendasRel.TabIndex = 143;
+            this.VendasRel.Text = "          Vendas";
+            this.VendasRel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.VendasRel.UseVisualStyleBackColor = false;
             // 
-            // Mesas
+            // btnDelivery
             // 
-            this.Mesas.BackColor = System.Drawing.Color.Transparent;
-            this.Mesas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Mesas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Mesas.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mesas.FlatAppearance.BorderSize = 0;
-            this.Mesas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Mesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Mesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Mesas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mesas.ForeColor = System.Drawing.Color.DimGray;
-            this.Mesas.Image = ((System.Drawing.Image)(resources.GetObject("Mesas.Image")));
-            this.Mesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Mesas.Location = new System.Drawing.Point(492, 94);
-            this.Mesas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Mesas.Name = "Mesas";
-            this.Mesas.Size = new System.Drawing.Size(219, 41);
-            this.Mesas.TabIndex = 139;
-            this.Mesas.Text = "          Mesas";
-            this.Mesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Mesas.UseVisualStyleBackColor = false;
-            // 
-            // Pedidos
-            // 
-            this.Pedidos.BackColor = System.Drawing.Color.Transparent;
-            this.Pedidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Pedidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Pedidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Pedidos.FlatAppearance.BorderSize = 0;
-            this.Pedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Pedidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Pedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Pedidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pedidos.ForeColor = System.Drawing.Color.DimGray;
-            this.Pedidos.Image = ((System.Drawing.Image)(resources.GetObject("Pedidos.Image")));
-            this.Pedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Pedidos.Location = new System.Drawing.Point(257, 139);
-            this.Pedidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pedidos.Name = "Pedidos";
-            this.Pedidos.Size = new System.Drawing.Size(219, 41);
-            this.Pedidos.TabIndex = 124;
-            this.Pedidos.Text = "          Nova Venda Balcão";
-            this.Pedidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Pedidos.UseVisualStyleBackColor = false;
-            // 
-            // Clientes
-            // 
-            this.Clientes.BackColor = System.Drawing.Color.Transparent;
-            this.Clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Clientes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Clientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Clientes.FlatAppearance.BorderSize = 0;
-            this.Clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Clientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clientes.ForeColor = System.Drawing.Color.DimGray;
-            this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
-            this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.Location = new System.Drawing.Point(22, 138);
-            this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Clientes.Name = "Clientes";
-            this.Clientes.Size = new System.Drawing.Size(219, 41);
-            this.Clientes.TabIndex = 120;
-            this.Clientes.Text = "          Clientes";
-            this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Clientes.UseVisualStyleBackColor = false;
-            // 
-            // btnAddItem
-            // 
-            this.btnAddItem.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddItem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAddItem.FlatAppearance.BorderSize = 0;
-            this.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddItem.ForeColor = System.Drawing.Color.DimGray;
-            this.btnAddItem.Image = ((System.Drawing.Image)(resources.GetObject("btnAddItem.Image")));
-            this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddItem.Location = new System.Drawing.Point(257, 94);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(219, 41);
-            this.btnAddItem.TabIndex = 140;
-            this.btnAddItem.Text = "          Novo Pedido";
-            this.btnAddItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnDelivery.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelivery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelivery.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelivery.FlatAppearance.BorderSize = 0;
+            this.btnDelivery.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDelivery.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnDelivery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelivery.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelivery.ForeColor = System.Drawing.Color.DimGray;
+            this.btnDelivery.Image = ((System.Drawing.Image)(resources.GetObject("btnDelivery.Image")));
+            this.btnDelivery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelivery.Location = new System.Drawing.Point(257, 184);
+            this.btnDelivery.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDelivery.Name = "btnDelivery";
+            this.btnDelivery.Size = new System.Drawing.Size(219, 41);
+            this.btnDelivery.TabIndex = 142;
+            this.btnDelivery.Text = "          Novo Delivery";
+            this.btnDelivery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelivery.UseVisualStyleBackColor = false;
             // 
             // btnCadastrarMesa
             // 
@@ -308,16 +254,51 @@
             this.btnCadastrarMesa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCadastrarMesa.UseVisualStyleBackColor = false;
             // 
-            // pictureBox11
+            // btnAddItem
             // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(226, 165);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 121;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Visible = false;
+            this.btnAddItem.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddItem.FlatAppearance.BorderSize = 0;
+            this.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItem.ForeColor = System.Drawing.Color.DimGray;
+            this.btnAddItem.Image = ((System.Drawing.Image)(resources.GetObject("btnAddItem.Image")));
+            this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddItem.Location = new System.Drawing.Point(257, 94);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(219, 41);
+            this.btnAddItem.TabIndex = 140;
+            this.btnAddItem.Text = "          Novo Pedido";
+            this.btnAddItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddItem.UseVisualStyleBackColor = false;
+            // 
+            // Mesas
+            // 
+            this.Mesas.BackColor = System.Drawing.Color.Transparent;
+            this.Mesas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Mesas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Mesas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mesas.FlatAppearance.BorderSize = 0;
+            this.Mesas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Mesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Mesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Mesas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mesas.ForeColor = System.Drawing.Color.DimGray;
+            this.Mesas.Image = ((System.Drawing.Image)(resources.GetObject("Mesas.Image")));
+            this.Mesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Mesas.Location = new System.Drawing.Point(492, 94);
+            this.Mesas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Mesas.Name = "Mesas";
+            this.Mesas.Size = new System.Drawing.Size(219, 41);
+            this.Mesas.TabIndex = 139;
+            this.Mesas.Text = "          Mesas";
+            this.Mesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Mesas.UseVisualStyleBackColor = false;
             // 
             // pictureBox5
             // 
@@ -330,12 +311,106 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Visible = false;
             // 
+            // Pedidos
+            // 
+            this.Pedidos.BackColor = System.Drawing.Color.Transparent;
+            this.Pedidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Pedidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Pedidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Pedidos.FlatAppearance.BorderSize = 0;
+            this.Pedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Pedidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Pedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Pedidos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pedidos.ForeColor = System.Drawing.Color.DimGray;
+            this.Pedidos.Image = ((System.Drawing.Image)(resources.GetObject("Pedidos.Image")));
+            this.Pedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Pedidos.Location = new System.Drawing.Point(257, 139);
+            this.Pedidos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pedidos.Name = "Pedidos";
+            this.Pedidos.Size = new System.Drawing.Size(219, 41);
+            this.Pedidos.TabIndex = 124;
+            this.Pedidos.Text = "          Nova Venda Balcão";
+            this.Pedidos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Pedidos.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(226, 165);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 121;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
+            // 
+            // Clientes
+            // 
+            this.Clientes.BackColor = System.Drawing.Color.Transparent;
+            this.Clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Clientes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Clientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Clientes.FlatAppearance.BorderSize = 0;
+            this.Clientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Clientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Clientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clientes.ForeColor = System.Drawing.Color.DimGray;
+            this.Clientes.Image = ((System.Drawing.Image)(resources.GetObject("Clientes.Image")));
+            this.Clientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Clientes.Location = new System.Drawing.Point(22, 138);
+            this.Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Clientes.Name = "Clientes";
+            this.Clientes.Size = new System.Drawing.Size(219, 41);
+            this.Clientes.TabIndex = 120;
+            this.Clientes.Text = "          Clientes";
+            this.Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Clientes.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnEntregadores
+            // 
+            this.btnEntregadores.BackColor = System.Drawing.Color.Transparent;
+            this.btnEntregadores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEntregadores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntregadores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEntregadores.FlatAppearance.BorderSize = 0;
+            this.btnEntregadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEntregadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnEntregadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntregadores.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntregadores.ForeColor = System.Drawing.Color.DimGray;
+            this.btnEntregadores.Image = ((System.Drawing.Image)(resources.GetObject("btnEntregadores.Image")));
+            this.btnEntregadores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEntregadores.Location = new System.Drawing.Point(21, 183);
+            this.btnEntregadores.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEntregadores.Name = "btnEntregadores";
+            this.btnEntregadores.Size = new System.Drawing.Size(219, 41);
+            this.btnEntregadores.TabIndex = 144;
+            this.btnEntregadores.Text = "          Entregadores";
+            this.btnEntregadores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEntregadores.UseVisualStyleBackColor = false;
+            // 
             // TelaFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnEntregadores);
+            this.Controls.Add(this.VendasRel);
+            this.Controls.Add(this.btnDelivery);
             this.Controls.Add(this.btnCadastrarMesa);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.Mesas);
@@ -356,9 +431,9 @@
             this.Text = "TelaFood";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,5 +458,8 @@
         private System.Windows.Forms.Button btnCadastrarMesa;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button btnDelivery;
+        private System.Windows.Forms.Button VendasRel;
+        private System.Windows.Forms.Button btnEntregadores;
     }
 }

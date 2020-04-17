@@ -51,6 +51,12 @@ namespace Emiplus.View.Comercial
                 label8.Text = "Produtos";
                 label2.Text = "Gerencie as Transportadoras da sua empresa aqui! Adicione, edite ou delete uma Transportadora.";
             }
+            else if (Home.pessoaPage == "Entregadores")
+            {
+                pictureBox2.Image = Properties.Resources.waiter;
+                label8.Text = "Alimentação";
+                label2.Text = "Gerencie os Entregadores da sua empresa aqui! Adicione, edite ou delete um Entregador.";
+            }
         }
 
         private async void DataTable()
@@ -270,7 +276,7 @@ namespace Emiplus.View.Comercial
                     if ((bool)item.Cells["Selecione"].Value == true)
                         listProdutos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os CLIENTES selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", $"Você está prestes a deletar os {Home.pessoaPage} selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     foreach (var item in listProdutos)

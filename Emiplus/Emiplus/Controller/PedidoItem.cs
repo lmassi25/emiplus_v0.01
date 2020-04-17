@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Emiplus.Controller
         {
             var itens = new Model.PedidoItem().Query()
                 .LeftJoin("item", "item.id", "pedido_item.item")
-                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.xprod", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "item.nome", "item.referencia")
+                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.xprod", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "pedido_item.status", "item.nome", "item.referencia")
                 .Where("pedido_item.pedido", idPedido)
                 .Where("pedido_item.excluir", 0);
             //.Where("pedido_item.tipo", "Produtos");
@@ -29,7 +30,7 @@ namespace Emiplus.Controller
         /// </summary>
         public void GetDataTableItens(DataGridView Table, int idPedido)
         {
-            Table.ColumnCount = 18;
+            Table.ColumnCount = 19;
 
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
@@ -97,9 +98,14 @@ namespace Emiplus.Controller
             Table.Columns[16].Width = 100;
             Table.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            Table.Columns[17].Name = "Total";
+            Table.Columns[17].Name = "Status";
+            Table.Columns[18].Visible = false;
             Table.Columns[17].Width = 100;
-            Table.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            Table.Columns[18].Name = "Total";
+            Table.Columns[18].Width = 100;
+            Table.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             Table.Columns[8].Visible = impostos;
             Table.Columns[9].Visible = impostos;
@@ -110,6 +116,9 @@ namespace Emiplus.Controller
             Table.Columns[14].Visible = impostos;
             Table.Columns[15].Visible = impostos;
             Table.Columns[16].Visible = impostos;
+            
+            if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
+                Table.Columns[18].Visible = true;
 
             Table.Rows.Clear();
 
@@ -139,6 +148,7 @@ namespace Emiplus.Controller
                     String.IsNullOrEmpty(data.COFINS) ? "0" : data.COFINS,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.FEDERAL), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.ESTADUAL), true),
+                    data.STATUS,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL), true)
                 );
 

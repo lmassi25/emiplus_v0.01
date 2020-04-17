@@ -1,4 +1,5 @@
 ﻿using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using System.Windows.Forms;
 
@@ -17,6 +18,24 @@ namespace Emiplus.View.Comercial
 
             switch (Home.pedidoPage)
             {
+                case "Delivery":
+                    if (page == "Entregadores") 
+                    {
+                        label11.Text = "Selecione o Entregador!";
+                        label2.Text = "Buscar entregador (F1):";
+                        NovoCliente.Text = "Entregador Novo ? (F9)";
+                        label1.Text = "Entregadores encontrados:";
+                        pictureBox1.Image = Resources.deliveryman;
+                    }
+                    else
+                    {
+                        label11.Text = "Selecione o Cliente!";
+                        label2.Text = "Buscar cliente (F1):";
+                        NovoCliente.Text = "Cliente Novo ? (F9)";
+                        label1.Text = "Clientes encontrados:";
+                    }
+                    break;
+
                 case "Compras":
                     label11.Text = "Selecione o Fornecedor!";
                     label2.Text = "Buscar fornecedor (F1):";
@@ -39,6 +58,13 @@ namespace Emiplus.View.Comercial
         {
             switch (Home.pedidoPage)
             {
+                case "Delivery":
+                    if (page == "Entregadores") 
+                        _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Entregadores");
+                    else
+                        _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
+                    break;
+
                 case "Compras":
                     _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Fornecedores");
                     break;
@@ -66,6 +92,13 @@ namespace Emiplus.View.Comercial
 
             switch (Home.pedidoPage)
             {
+                case "Delivery":
+                    if (page == "Entregadores")
+                        Home.pessoaPage = "Entregadores";
+                    else
+                        Home.pessoaPage = "Clientes";
+                    break;
+
                 case "Compras":
                     Home.pessoaPage = "Fornecedores";
                     break;
@@ -82,6 +115,7 @@ namespace Emiplus.View.Comercial
                 f.btnSalvarLocation = 590;
                 f.FormBorderStyle = FormBorderStyle.FixedSingle;
                 f.StartPosition = FormStartPosition.CenterParent;
+                f.btnAtivoLocation = 500;
                 f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {

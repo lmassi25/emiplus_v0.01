@@ -5,6 +5,8 @@ using Emiplus.View.Financeiro;
 using Emiplus.View.Fiscal.TelasNota;
 using SqlKata.Execution;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
@@ -34,6 +36,8 @@ namespace Emiplus.View.Comercial
         private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
 
         private int CaixaAnterior, cellSave = 0;
+
+        private static bool PayVerify { get; set; }
 
         #endregion
 
@@ -145,6 +149,8 @@ namespace Emiplus.View.Comercial
                     break;
             }
 
+            PayVerify = false;
+
             TelaReceber.Visible = false;
 
             if (CaixaAnterior > 0)
@@ -199,7 +205,10 @@ namespace Emiplus.View.Comercial
             //    .Where("Venda", IdPedido)
             //    .FirstOrDefault<Model.Pedido>();
 
-            valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
+            if (PedidoModalDividirConta.ValorDividido <= 0)
+                valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
+            else
+                valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
         }
 
         private void JanelasRecebimento(string formaPgto)
@@ -580,6 +589,8 @@ namespace Emiplus.View.Comercial
         {
             Load += (s, e) =>
             {
+                PayVerify = true;
+
                 if (AddPedidos.PDV)
                 {
                     // btn NF-e
@@ -734,7 +745,11 @@ namespace Emiplus.View.Comercial
             Devolucao.Click += (s, e) => JanelaDevolucao();
 
             btnSalvar.Click += (s, e) => bSalvar();
-            btnCancelar.Click += (s, e) => TelaReceber.Visible = false;
+            btnCancelar.Click += (s, e) =>
+            {
+                PayVerify = true;
+                TelaReceber.Visible = false;
+            };
 
             btnClose.Click += (s, e) =>
             {
@@ -768,6 +783,38 @@ namespace Emiplus.View.Comercial
                 
                 AddPedidos.btnVoltar = true;
                 Close();
+            };
+
+            btnDividir.Click += (s, e) =>
+            {
+                ArrayList itens = new ArrayList();
+                if (PayVerify) {
+                    IEnumerable<Model.PedidoItem> dataItens = _mPedidoItens.FindAll().Where("pedido", IdPedido).WhereFalse("excluir").Get<Model.PedidoItem>(); 
+                    if (dataItens.Count() > 0)
+                    {
+                        foreach (Model.PedidoItem item in dataItens)
+                        {
+                            itens.Add(new {
+                                item.Id,
+                                item.Item,
+                                item.xProd,
+                                item.CEan,
+                                item.CProd,
+                                item.Quantidade,
+                                item.Total
+                                });
+                        }
+                    }
+
+                    PedidoModalDividirConta.itens = itens;
+                }
+
+                PedidoModalDividirConta form = new PedidoModalDividirConta();
+                form.TopMost = true;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
+                }
             };
 
             btnConcluir.Click += (s, e) =>

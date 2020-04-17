@@ -572,6 +572,7 @@ namespace Emiplus.View.Comercial
                     _mPedido.Id = 0;
                     _mPedido.Excluir = 0;
                     _mPedido.Tipo = "Vendas";
+                    _mPedido.campof = "MESA";
                     _mPedido.Cliente = 1;
                     _mPedido.Save(_mPedido);
                     int idPedido = _mPedido.GetLastId();
