@@ -1475,6 +1475,9 @@ namespace Emiplus.View.Comercial
 
                         return;
                     }
+
+                    e.Cancel = true;
+                    return;
                 }
 
                 if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Delivery")
