@@ -5,6 +5,8 @@ Emiplus/Suporte Emiplus/obj/
 Emiplus/Suporte Emiplus/bin/
 EMIPLUS.FDB
 
+*.fbk
+
 # Prerequisites
 *.d
 

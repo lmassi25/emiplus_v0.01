@@ -371,6 +371,15 @@ namespace Emiplus.View.Comercial
                 return;
             }
 
+            if (Home.pedidoPage == "Delivery")
+            {
+                if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
+                {
+                    AlertOptions.Message("Atenção!", "Selecione um cliente para prosseguir.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    return;
+                }
+            }
+
             if (!String.IsNullOrEmpty(IniFile.Read("TrocasCliente", "Comercial")))
             {
                 if (IniFile.Read("TrocasCliente", "Comercial") == "False")                
@@ -1449,7 +1458,26 @@ namespace Emiplus.View.Comercial
             {
                 PDV = false;
 
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                if (Home.pedidoPage == "Delivery")
+                {
+                    if (nomeCliente.Text == "Não informado" || nomeCliente.Text == "Consumidor Final" || nomeCliente.Text == "N/D")
+                    {
+                        bool valid = AlertOptions.Message("Atenção!", "Para prosseguir com o pedido, adicione um cliente ou o pedido será excluído.\nExcluir Pedido?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                        if (!valid)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+                        else
+                        {
+                            _mPedido.Remove(Id);
+                        }
+
+                        return;
+                    }
+                }
+
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Delivery")
                 {
                     if (_mPedido.status == 1)
                         btnFinalizado = true;
