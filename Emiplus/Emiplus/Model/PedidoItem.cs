@@ -95,6 +95,7 @@
         public double Despesa { get; set; }
         public string Mesa { get; set; }
         public string Status { get; set; }
+        public int Usuario { get; set; }
         public int Atributo { get; set; }
 
         [Ignore]

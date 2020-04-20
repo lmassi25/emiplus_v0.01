@@ -29,16 +29,42 @@ namespace Emiplus.View.Common
                 OpenForm.Show<Comercial.Clientes>(this);
             };
 
+            btnEntregadores.Click += (s, e) =>
+            {
+                Home.pessoaPage = "Entregadores";
+                OpenForm.Show<Comercial.Clientes>(this);
+            };
+
             Pedidos.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(Pedidos, pictureBox5, "com_novavenda"))
                     return;
 
-                Home.pedidoPage = "Vendas";
+                Home.pedidoPage = "Balcao";
                 AddPedidos.Id = 0;
                 AddPedidos.PDV = false;
                 AddPedidos NovoPedido = new AddPedidos();
                 NovoPedido.ShowDialog();
+            };
+
+            btnDelivery.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Delivery";
+                AddPedidos.Id = 0;
+                AddPedidos.PDV = false;
+                AddPedidos NovoPedido = new AddPedidos();
+                NovoPedido.ShowDialog();
+            };
+
+            VendasRel.Click += (s, e) =>
+            {
+                Home.pedidoPage = "Food";
+                OpenForm.Show<Food.Pedidos>(this);
+            };
+
+            btnCadastrarMesa.Click += (s, e) =>
+            {
+                OpenForm.Show<Food.Mesas>(this);
             };
 
             Mesas.Click += (s, e) =>

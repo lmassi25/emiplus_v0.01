@@ -62,12 +62,16 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnMesasPreCadastrada = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -718,6 +722,73 @@
             this.pictureBox4.TabIndex = 568;
             this.pictureBox4.TabStop = false;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(182, 598);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 571;
+            this.pictureBox5.TabStop = false;
+            // 
+            // btnMesasPreCadastrada
+            // 
+            this.btnMesasPreCadastrada.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnMesasPreCadastrada.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnMesasPreCadastrada.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnMesasPreCadastrada.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.Border.HoverVisible = true;
+            this.btnMesasPreCadastrada.Border.Rounding = 20;
+            this.btnMesasPreCadastrada.Border.Thickness = 1;
+            this.btnMesasPreCadastrada.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMesasPreCadastrada.Border.Visible = true;
+            this.btnMesasPreCadastrada.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.ButtonBorder.HoverVisible = true;
+            this.btnMesasPreCadastrada.ButtonBorder.Rounding = 18;
+            this.btnMesasPreCadastrada.ButtonBorder.Thickness = 1;
+            this.btnMesasPreCadastrada.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnMesasPreCadastrada.ButtonBorder.Visible = true;
+            this.btnMesasPreCadastrada.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMesasPreCadastrada.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnMesasPreCadastrada.ButtonSize = new System.Drawing.Size(20, 20);
+            this.btnMesasPreCadastrada.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMesasPreCadastrada.FalseTextToggle = "Não";
+            this.btnMesasPreCadastrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnMesasPreCadastrada.Location = new System.Drawing.Point(211, 593);
+            this.btnMesasPreCadastrada.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnMesasPreCadastrada.Name = "btnMesasPreCadastrada";
+            this.btnMesasPreCadastrada.ProgressImage = null;
+            this.btnMesasPreCadastrada.Size = new System.Drawing.Size(58, 25);
+            this.btnMesasPreCadastrada.TabIndex = 570;
+            this.btnMesasPreCadastrada.Text = "visualToggle1";
+            this.btnMesasPreCadastrada.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnMesasPreCadastrada.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMesasPreCadastrada.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMesasPreCadastrada.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMesasPreCadastrada.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMesasPreCadastrada.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnMesasPreCadastrada.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnMesasPreCadastrada.Toggled = true;
+            this.btnMesasPreCadastrada.TrueTextToggle = "Sim";
+            this.btnMesasPreCadastrada.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.White;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label17.Location = new System.Drawing.Point(53, 597);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(130, 17);
+            this.label17.TabIndex = 569;
+            this.label17.Text = "Mesas predefinidas?";
+            // 
             // Comercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,6 +796,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 779);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.btnMesasPreCadastrada);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.btnAlimentacao);
             this.Controls.Add(this.label14);
@@ -761,6 +835,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -799,5 +874,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle btnMesasPreCadastrada;
+        private System.Windows.Forms.Label label17;
     }
 }

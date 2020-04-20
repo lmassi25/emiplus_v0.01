@@ -5,6 +5,7 @@ using Emiplus.View.Fiscal.TelasNota;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -44,6 +45,25 @@ namespace Emiplus.View.Comercial
 
             switch (Home.pedidoPage)
             {
+                case "Balcao":
+                    label1.Text = "Detalhes do Pedido:";
+                    label2.Text = "Confira nessa tela todas as informações do pedido.";
+                    nrPedido.Left = 288;
+                    btnStatus.Visible = true;
+                    label7.Text = "Pedido Fechado";
+                    label19.Visible = true;
+                    break;
+
+                case "Delivery":
+                    label1.Text = "Detalhes do Pedido:";
+                    label2.Text = "Confira nessa tela todas as informações do pedido.";
+                    label10.Text = "Entregador";
+                    nrPedido.Left = 288;
+                    btnStatus.Visible = true;
+                    label7.Text = "Pedido Fechado";
+                    label19.Visible = true;
+                    break;
+
                 case "Devoluções":
                     label1.Text = "Detalhes da Devolução:";
                     label2.Text = "Confira nessa tela todas as informações da sua devolução.";
@@ -237,9 +257,18 @@ namespace Emiplus.View.Comercial
 
             if (_modelPedido.Colaborador > 0)
             {
-                Model.Usuarios data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
-                if (data != null)
-                    vendedor.Text = data.Nome;
+                if (Home.pedidoPage == "Delivery")
+                {
+                    Model.Pessoa pessoa = _modelPessoa.FindById(_modelPedido.Id_Transportadora).Select("id", "nome").FirstOrDefault<Model.Pessoa>();
+                    if (pessoa != null)
+                        vendedor.Text = pessoa.Nome;
+                }
+                else
+                {
+                    Model.Usuarios data = _modelUsuario.FindByUserId(_modelPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+                    if (data != null)
+                        vendedor.Text = data.Nome;
+                }
             }
 
             if (_modelPedido.status != 0)
@@ -306,6 +335,37 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        private void LoadStatus()
+        {
+            ArrayList status = new ArrayList();
+            status.Add(new { Id = "0", Nome = "Selecione" });
+            status.Add(new { Id = "FAZENDO", Nome = "Fazendo" });
+            status.Add(new { Id = "PRONTO", Nome = "Pronto / Para Retirar" });
+            status.Add(new { Id = "ENTREGANDO", Nome = "Saiu para Entrega" });
+            status.Add(new { Id = "FINALIZADO", Nome = "Finalizado / Entregue" });
+
+            Status.DataSource = status;
+            Status.DisplayMember = "Nome";
+            Status.ValueMember = "Id";
+        }
+
+        private string GetStatus(string status)
+        {
+            switch (status)
+            {
+                case "FAZENDO":
+                    return "Fazendo";
+                case "PRONTO":
+                    return "Pronto / Para Retirar";
+                case "ENTREGANDO":
+                    return "Saiu para Entrega";
+                case "FINALIZADO":
+                    return "Finalizado / Entregue";
+            }
+
+            return "";
+        }
+
         private void Eventos()
         {
             KeyDown += KeyDowns;
@@ -315,16 +375,19 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
+                LoadStatus();
+
                 Model.Pedido Pedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                 Pedido.Id = idPedido;
-                Console.WriteLine(_modelPedido.Total);
-                Console.WriteLine(_controllerTitulo.GetLancados(idPedido));
                 if (_controllerTitulo.GetLancados(idPedido) < Validation.Round(_modelPedido.Total))
-                {
                     Pedido.status = 2; //RECEBIMENTO PENDENTE
-                }
                 else
                     Pedido.status = 1; //FINALIZADO\RECEBIDO
+                
+                if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao") {
+                    Status.SelectedValue = Pedido.campoa;
+                    label19.Text = GetStatus(Pedido.campoa);
+                }
 
                 Pedido.Save(Pedido);
             };
@@ -453,6 +516,38 @@ namespace Emiplus.View.Comercial
 
                 _controllerPedidoItem.GetDataTableItens(GridLista, idPedido);
             };
+
+            btnStatus.Click += (s, e) =>
+            {
+                pictureBox7.Visible = true;
+                visualPanel1.Visible = true;
+            };
+
+            btnCancelStatus.Click += (s, e) =>
+            {
+                pictureBox7.Visible = false;
+                visualPanel1.Visible = false;
+            };
+
+            btnSaveStatus.Click += (s, e) =>
+            {
+                if (Status.SelectedValue.ToString() == "Selecione")
+                {
+                    Alert.Message("Opss", "Selecione um status.", Alert.AlertType.error);
+                    return;
+                }
+
+                Model.Pedido Pedido = _modelPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+                Pedido.Id = idPedido;
+                Pedido.campoa = Status.SelectedValue.ToString();
+                label19.Text = GetStatus(Pedido.campoa);
+                if (Pedido.Save(Pedido))
+                { 
+                    Alert.Message("Pronto", "Status atualizado.", Alert.AlertType.success);
+                    pictureBox7.Visible = false;
+                    visualPanel1.Visible = false;
+                }
+            };
         }
 
         private void OpenPedidoPagamentos()
@@ -467,6 +562,9 @@ namespace Emiplus.View.Comercial
 
         private void ModalClientes()
         {
+            if (Home.pedidoPage == "Delivery")
+                    PedidoModalClientes.page = "Clientes";
+
             PedidoModalClientes form = new PedidoModalClientes();
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -479,13 +577,29 @@ namespace Emiplus.View.Comercial
 
         public void ModalColaborador()
         {
-            PedidoModalVendedor form = new PedidoModalVendedor();
-            if (form.ShowDialog() == DialogResult.OK)
+            if (Home.pedidoPage == "Delivery") {
+
+                PedidoModalClientes.page = "Entregadores";
+                PedidoModalClientes form = new PedidoModalClientes();
+                form.TopMost = true;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _modelPedido.Id = idPedido;
+                    _modelPedido.Id_Transportadora = PedidoModalClientes.Id;
+                    _modelPedido.Save(_modelPedido);
+                    LoadData();
+                }
+            }
+            else
             {
-                _modelPedido.Id = idPedido;
-                _modelPedido.Colaborador = PedidoModalVendedor.Id;
-                _modelPedido.Save(_modelPedido);
-                LoadData();
+                PedidoModalVendedor form = new PedidoModalVendedor();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _modelPedido.Id = idPedido;
+                    _modelPedido.Colaborador = PedidoModalVendedor.Id;
+                    _modelPedido.Save(_modelPedido);
+                    LoadData();
+                }
             }
         }
     }

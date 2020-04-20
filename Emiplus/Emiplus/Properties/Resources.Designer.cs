@@ -123,6 +123,36 @@ namespace Emiplus.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deliveryman {
+            get {
+                object obj = ResourceManager.GetObject("deliveryman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap divide {
+            get {
+                object obj = ResourceManager.GetObject("divide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap divide20x {
+            get {
+                object obj = ResourceManager.GetObject("divide20x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit16x {
             get {
                 object obj = ResourceManager.GetObject("edit16x", resourceCulture);
@@ -146,6 +176,16 @@ namespace Emiplus.Properties {
         internal static System.Drawing.Bitmap error16x {
             get {
                 object obj = ResourceManager.GetObject("error16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap error20x {
+            get {
+                object obj = ResourceManager.GetObject("error20x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +246,16 @@ namespace Emiplus.Properties {
         internal static System.Drawing.Bitmap nfce {
             get {
                 object obj = ResourceManager.GetObject("nfce", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus20x {
+            get {
+                object obj = ResourceManager.GetObject("plus20x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

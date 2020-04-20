@@ -60,6 +60,18 @@ namespace Emiplus.View.Comercial
             }
         }
 
+        public int btnAtivoLocation
+        {
+            get
+            {
+                return Ativo.Left;
+            }
+            set
+            {
+                Ativo.Left = value;
+            }
+        }
+
         public AddClientes()
         {
             InitializeComponent();

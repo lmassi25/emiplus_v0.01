@@ -101,6 +101,30 @@ namespace Emiplus.View.Comercial
                     btnGerarVenda.Visible = false;
                 }
             }
+            else if (Home.pedidoPage == "Delivery")
+            {
+                PDV = false;
+
+                label17.Text = "Entregador";
+                pictureBox10.Image = Resources.deliveryman;
+
+                btnGerarVenda.Visible = false;
+                btnDelete.Visible = false;
+                label2.Text = $"Dados do Delivery: {Id}";
+                //label3.Text = "Siga as etapas abaixo para adicionar uma venda!";
+                btnConcluir.Text = "Receber";
+
+                if (Home.idCaixa == 0)
+                {
+                    btnConcluir.Text = "Finalizar";
+                }
+
+                if (Home.idCaixa != 0)
+                {
+                    imprimir.Visible = false;
+                    button2.Visible = false;
+                }
+            }
             else if (Home.pedidoPage == "Consignações")
             {
                 PDV = false;
@@ -246,7 +270,6 @@ namespace Emiplus.View.Comercial
                 {
                     _mPedido.Save(_mPedido);
                     var data = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
-
                     if (data == null)
                         return;
 
@@ -263,16 +286,32 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void LoadColaboradorCaixa()
         {
-            if (_mPedido.Colaborador > 0)
+            if (Home.pedidoPage == "Delivery")
             {
-                _mPedido.Save(_mPedido);
+                if (_mPedido.Id_Transportadora > 0)
+                {
+                    _mPedido.Save(_mPedido);
 
-                var data = _mUsuario.FindByUserId(_mPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+                    var data = _mCliente.FindById(_mPedido.Id_Transportadora).FirstOrDefault<Model.Usuarios>();
+                    if (data == null)
+                        return;
 
-                if (data == null)
-                    return;
+                    nomeVendedor.Text = data.Nome;
+                }
+            }
+            else
+            {
+                if (_mPedido.Colaborador > 0)
+                {
+                    _mPedido.Save(_mPedido);
 
-                nomeVendedor.Text = data.Nome;
+                    var data = _mUsuario.FindByUserId(_mPedido.Colaborador).FirstOrDefault<Model.Usuarios>();
+
+                    if (data == null)
+                        return;
+
+                    nomeVendedor.Text = data.Nome;
+                }
             }
         }
 
@@ -517,6 +556,28 @@ namespace Emiplus.View.Comercial
                     Alert.Message("Opss", "Problema ao finalizar Orçamento", Alert.AlertType.error);
                     break;
 
+                case "Delivery":
+                    _mPedido.Tipo = "Delivery";
+                    _mPedido.campoa = "FAZENDO";
+                    _mPedido.status = 1; //FINALIZADO
+                    if (_mPedido.Save(_mPedido))
+                    {
+                        btnFinalizado = true;
+                        f.Show();
+                    }
+                    break;
+
+                case "Balcao":
+                    _mPedido.Tipo = "Balcao";
+                    _mPedido.campoa = "FAZENDO";
+                    _mPedido.status = 1; //FINALIZADO
+                    if (_mPedido.Save(_mPedido))
+                    {
+                        btnFinalizado = true;
+                        f.Show();
+                    }
+                    break;
+
                 default:
                     btnFinalizado = true;
                     f.Show();
@@ -559,6 +620,10 @@ namespace Emiplus.View.Comercial
                     nomeCliente.Text = ModalEmpresas.RazaoSocial;
                 }
             } else {
+
+                if (Home.pedidoPage == "Delivery")
+                    PedidoModalClientes.page = "Clientes";
+
                 PedidoModalClientes form = new PedidoModalClientes();
                 form.TopMost = true;
                 if (form.ShowDialog() == DialogResult.OK)
@@ -578,14 +643,30 @@ namespace Emiplus.View.Comercial
         /// </summary>
         public void ModalColaborador()
         {
-            PedidoModalVendedor form = new PedidoModalVendedor();
-            form.TopMost = true;
-            if (form.ShowDialog() == DialogResult.OK)
+            if (Home.pedidoPage == "Delivery") {
+
+                PedidoModalClientes.page = "Entregadores";
+                PedidoModalClientes form = new PedidoModalClientes();
+                form.TopMost = true;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _mPedido.Id = Id;
+                    _mPedido.Id_Transportadora = PedidoModalClientes.Id;
+                    _mPedido.Save(_mPedido);
+                    LoadData();
+                }
+            }
+            else
             {
-                _mPedido.Id = Id;
-                _mPedido.Colaborador = PedidoModalVendedor.Id;
-                _mPedido.Save(_mPedido);
-                LoadData();
+                PedidoModalVendedor form = new PedidoModalVendedor();
+                form.TopMost = true;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _mPedido.Id = Id;
+                    _mPedido.Colaborador = PedidoModalVendedor.Id;
+                    _mPedido.Save(_mPedido);
+                    LoadData();
+                }
             }
 
             BuscarProduto.Select();
@@ -808,6 +889,9 @@ namespace Emiplus.View.Comercial
                 
                 if (Home.pedidoPage == "Remessas")
                     pedidoItem.Status = "Remessa";
+
+                if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
+                    pedidoItem.Status = "FAZENDO";
                 
                 pedidoItem.Save(pedidoItem);
 
@@ -1168,6 +1252,7 @@ namespace Emiplus.View.Comercial
             };
 
             Quantidade.KeyPress += (s, e) => Masks.MaskDouble(s, e);
+            txtQtd.KeyPress += (s, e) => Masks.MaskDouble(s, e);
             
             Preco.TextChanged += (s, e) =>
             {
@@ -1312,6 +1397,52 @@ namespace Emiplus.View.Comercial
                 AddObservacao f = new AddObservacao();
                 f.TopMost = true;
                 f.Show();
+            };
+
+            btnQuantidade.Click += (s, e) =>
+            {
+                visualPanel2.Visible = true;
+                pictureBox7.Visible = true;
+            };
+
+            btnSaveQtd.Click += (s, e) =>
+            {
+                if (string.IsNullOrEmpty(txtQtd.Text) || Validation.ConvertToDouble(txtQtd.Text) <= 0)
+                {
+                    Alert.Message("Opps", "Coloque uma quantidade válida.", Alert.AlertType.info);
+                    return;
+                }
+
+                if (GridListaProdutos.SelectedRows.Count <= 0)
+                {
+                    Alert.Message("Opps", "Selecione um item na tabela.", Alert.AlertType.info);
+                    return;
+                }
+
+                int idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                double ValorVenda = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Unitário"].Value.ToString().Replace("R$ ", ""));
+                Model.PedidoItem data = new Model.PedidoItem().FindAll().Where("id", idPedidoItem).FirstOrDefault<Model.PedidoItem>();
+                if (data != null)
+                {
+                    double Qtd = Validation.ConvertToDouble(txtQtd.Text);
+                    data.Quantidade = Qtd;
+                    data.Total = (ValorVenda * Qtd) - data.DescontoItem;
+                    data.TotalVenda = ValorVenda * Qtd;
+                    data.Save(data);
+                }
+
+                LoadTotais();
+                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
+
+                txtQtd.Text = "";
+                visualPanel2.Visible = false;
+                pictureBox7.Visible = false;
+            };
+
+            btnCancelQtd.Click += (s, e) =>
+            {
+                visualPanel2.Visible = false;
+                pictureBox7.Visible = false;
             };
 
             FormClosing += (s, e) =>

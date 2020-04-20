@@ -326,6 +326,7 @@
     <Compile Include="Model\ItemEstoque.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
     <Compile Include="Model\ItemGrupo.cs" />
+    <Compile Include="Model\Mesas.cs" />
     <Compile Include="Model\Natureza.cs" />
     <Compile Include="Model\Nota.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -429,6 +430,12 @@
     <Compile Include="View\Comercial\Mesas.Designer.cs">
       <DependentUpon>Mesas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comercial\ModalDividirValor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\ModalDividirValor.Designer.cs">
+      <DependentUpon>ModalDividirValor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Comercial\ModalEmpresas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -482,6 +489,12 @@
     </Compile>
     <Compile Include="View\Comercial\PedidoModalClientes.Designer.cs">
       <DependentUpon>PedidoModalClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalDividirConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Comercial\PedidoModalDividirConta.Designer.cs">
+      <DependentUpon>PedidoModalDividirConta.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Comercial\PedidoModalItens.cs">
       <SubType>Form</SubType>
@@ -873,6 +886,24 @@
     <Compile Include="View\Financeiro\Titulos.Designer.cs">
       <DependentUpon>Titulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Food\CadastrarMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\CadastrarMesa.Designer.cs">
+      <DependentUpon>CadastrarMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Food\Mesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\Mesas.Designer.cs">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Food\Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\Pedidos.Designer.cs">
+      <DependentUpon>Pedidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1171,6 +1202,9 @@
     <EmbeddedResource Include="View\Comercial\Mesas.resx">
       <DependentUpon>Mesas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\ModalDividirValor.resx">
+      <DependentUpon>ModalDividirValor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\ModalEmpresas.resx">
       <DependentUpon>ModalEmpresas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1197,6 +1231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalClientes.resx">
       <DependentUpon>PedidoModalClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Comercial\PedidoModalDividirConta.resx">
+      <DependentUpon>PedidoModalDividirConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Comercial\PedidoModalItens.resx">
       <DependentUpon>PedidoModalItens.cs</DependentUpon>
@@ -1392,6 +1429,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
       <DependentUpon>Titulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\CadastrarMesa.resx">
+      <DependentUpon>CadastrarMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\Mesas.resx">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\Pedidos.resx">
+      <DependentUpon>Pedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
       <DependentUpon>AddCategorias.cs</DependentUpon>
@@ -1684,6 +1730,11 @@
     <None Include="Assets\Images\icons\waiter.png" />
     <None Include="Assets\Images\icons\skyscrapper.png" />
     <None Include="Assets\Images\icons\caja.png" />
+    <None Include="Assets\Images\icons\plus20x.png" />
+    <None Include="Assets\Images\icons\divide %281%29.png" />
+    <None Include="Assets\Images\icons\divide20x.png" />
+    <None Include="Assets\Images\icons\error20x.png" />
+    <None Include="Assets\Images\icons\deliveryman.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

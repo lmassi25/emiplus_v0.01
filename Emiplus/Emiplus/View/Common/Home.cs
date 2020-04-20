@@ -129,6 +129,7 @@ namespace Emiplus.View.Common
         public static int idCaixa { get; set; }
         public static string CategoriaPage { get; set; }
         public static bool syncActive { get; set; }
+        private static string pageClicked { get; set; }
 
         private BackgroundWorker backWork = new BackgroundWorker();
 
@@ -295,12 +296,18 @@ namespace Emiplus.View.Common
                 pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
                 pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
                 pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+
                 panel3.Refresh();
+
+                pageClicked = "homeMenuProducts";
             };
 
             homeMenuProducts.MouseHover += (s, e) =>
             {
-                pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
+                if (pageClicked == "homeMenuProducts")
+                    pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
+
+                pictureBox3.Refresh();
             };
 
             homeMenuComercial.Click += (s, e) =>
@@ -330,11 +337,15 @@ namespace Emiplus.View.Common
                 pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
 
                 panel3.Refresh();
+
+                pageClicked = "homeMenuComercial";
             };
 
             homeMenuComercial.MouseHover += (s, e) =>
             {
-                pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
+                if (pageClicked == "homeMenuComercial")
+                    pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
+
                 pictureBox4.Refresh();
             };
 
@@ -360,11 +371,15 @@ namespace Emiplus.View.Common
                 pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
 
                 panel3.Refresh();
+
+                pageClicked = "homeMenuFinanceiro";
             };
 
             homeMenuFinanceiro.MouseHover += (s, e) =>
             {
-                pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
+                if (pageClicked == "homeMenuFinanceiro")
+                    pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
+
                 pictureBox5.Refresh();
             };
 
@@ -390,11 +405,15 @@ namespace Emiplus.View.Common
                 pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
 
                 panel3.Refresh();
+
+                pageClicked = "homeMenuFiscal";
             };
 
             homeMenuFiscal.MouseHover += (s, e) =>
             {
-                pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
+                if (pageClicked == "homeMenuFiscal")
+                    pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
+                
                 pictureBox6.Refresh();
             };
 
@@ -415,12 +434,17 @@ namespace Emiplus.View.Common
                 pictureBox4.BackColor = Color.FromArgb(46, 55, 72);
                 pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
                 pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
+
                 panel3.Refresh();
+
+                pageClicked = "homeMenuSettings";
             };
 
             homeMenuSettings.MouseHover += (s, e) =>
             {
-                pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
+                if (pageClicked == "homeMenuFiscal")
+                    pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
+
                 pictureBox7.Refresh();
             };
 
