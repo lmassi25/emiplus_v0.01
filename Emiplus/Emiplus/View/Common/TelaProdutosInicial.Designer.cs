@@ -71,6 +71,7 @@
             this.Categorias = new System.Windows.Forms.Button();
             this.btnRemessas = new System.Windows.Forms.Button();
             this.btnVariation = new System.Windows.Forms.Button();
+            this.btnAdicionais = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
@@ -774,12 +775,36 @@
             this.btnVariation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVariation.UseVisualStyleBackColor = false;
             // 
+            // btnAdicionais
+            // 
+            this.btnAdicionais.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionais.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdicionais.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionais.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdicionais.FlatAppearance.BorderSize = 0;
+            this.btnAdicionais.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnAdicionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionais.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionais.ForeColor = System.Drawing.Color.DimGray;
+            this.btnAdicionais.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionais.Image")));
+            this.btnAdicionais.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAdicionais.Location = new System.Drawing.Point(22, 454);
+            this.btnAdicionais.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAdicionais.Name = "btnAdicionais";
+            this.btnAdicionais.Size = new System.Drawing.Size(219, 41);
+            this.btnAdicionais.TabIndex = 127;
+            this.btnAdicionais.Text = "          Adicionais";
+            this.btnAdicionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdicionais.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnAdicionais);
             this.Controls.Add(this.btnVariation);
             this.Controls.Add(this.btnRemessas);
             this.Controls.Add(this.btnRemessa);
@@ -887,5 +912,6 @@
         private System.Windows.Forms.Button btnRemessa;
         private System.Windows.Forms.Button btnRemessas;
         private System.Windows.Forms.Button btnVariation;
+        private System.Windows.Forms.Button btnAdicionais;
     }
 }

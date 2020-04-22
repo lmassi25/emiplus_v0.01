@@ -125,6 +125,10 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label26 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.GridAdicionais = new System.Windows.Forms.DataGridView();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -151,6 +155,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAdicionais)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -1830,6 +1837,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(11, 349);
             this.tabControl1.Name = "tabControl1";
@@ -2795,6 +2803,65 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.panel5);
+            this.tabPage6.Controls.Add(this.label26);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(685, 260);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Adicionais";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.White;
+            this.label26.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label26.Location = new System.Drawing.Point(8, 11);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(140, 17);
+            this.label26.TabIndex = 27;
+            this.label26.Text = "Adicionais disponíveis";
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.GridAdicionais);
+            this.panel5.Location = new System.Drawing.Point(10, 32);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(661, 222);
+            this.panel5.TabIndex = 29;
+            // 
+            // GridAdicionais
+            // 
+            this.GridAdicionais.AllowUserToAddRows = false;
+            this.GridAdicionais.AllowUserToDeleteRows = false;
+            this.GridAdicionais.AllowUserToResizeColumns = false;
+            this.GridAdicionais.AllowUserToResizeRows = false;
+            this.GridAdicionais.BackgroundColor = System.Drawing.Color.White;
+            this.GridAdicionais.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridAdicionais.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridAdicionais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridAdicionais.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridAdicionais.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridAdicionais.Location = new System.Drawing.Point(0, 0);
+            this.GridAdicionais.MultiSelect = false;
+            this.GridAdicionais.Name = "GridAdicionais";
+            this.GridAdicionais.ReadOnly = true;
+            this.GridAdicionais.RowHeadersVisible = false;
+            this.GridAdicionais.RowTemplate.Height = 30;
+            this.GridAdicionais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridAdicionais.Size = new System.Drawing.Size(661, 222);
+            this.GridAdicionais.TabIndex = 6;
+            this.GridAdicionais.TabStop = false;
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2844,6 +2911,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridAdicionais)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2944,5 +3015,9 @@
         private System.Windows.Forms.Label btnRemoverImage;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator4;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnVariacao;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView GridAdicionais;
     }
 }

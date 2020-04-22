@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
@@ -98,6 +99,57 @@ namespace Emiplus.View.Produtos
             filterTodos.Checked = false;
         }
 
+        private void SetHeadersAdicionais(DataGridView Table)
+        {
+            Table.ColumnCount = 3;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            Table.RowHeadersVisible = false;
+
+            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            checkColumn.HeaderText = "Selecione";
+            checkColumn.Name = "Selecione";
+            checkColumn.FlatStyle = FlatStyle.Standard;
+            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
+            checkColumn.Width = 60;
+            Table.Columns.Insert(0, checkColumn);
+
+            Table.Columns[1].Name = "ID";
+            Table.Columns[1].Visible = false;
+
+            Table.Columns[2].Name = "Adicional";
+            Table.Columns[2].Width = 120;
+            Table.Columns[2].MinimumWidth = 120;
+            Table.Columns[2].Visible = true;
+
+            Table.Columns[3].Name = "Valor";
+            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Table.Columns[3].Width = 100;
+            Table.Columns[3].Visible = true;
+        }
+
+        private void SetContentTableAdicionais(DataGridView Table)
+        {
+            Table.Rows.Clear();
+
+            IEnumerable<Model.ItemAdicional> data = new Model.ItemAdicional().FindAll().WhereFalse("excluir").Get<Model.ItemAdicional>();
+            if (data.Count() > 0) {
+                foreach (Model.ItemAdicional item in data)
+                {
+                    Table.Rows.Add(
+                        false,
+                        item.Id,
+                        item.Title,
+                        Validation.FormatPrice(Validation.ConvertToDouble(item.Valor), true)
+                    );
+                }
+            }
+
+            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void LoadEstoque()
         {
             _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
@@ -169,6 +221,22 @@ namespace Emiplus.View.Produtos
             }
 
             DataTableEstoque();
+            SetContentTableAdicionais(GridAdicionais);
+
+            foreach (DataGridViewRow item in GridAdicionais.Rows)
+            {
+                if (!string.IsNullOrEmpty(_modelItem.Adicional))
+                {
+                    string[] addons = _modelItem.Adicional.Split(',');
+                    foreach (string id in addons)
+                    {
+                        if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
+                        {
+                            item.Cells["Selecione"].Value = true;
+                        }
+                    }
+                }
+            }
         }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
@@ -313,6 +381,23 @@ namespace Emiplus.View.Produtos
             else
                 _modelItem.ativo = 1;
 
+            StringBuilder Addon = new StringBuilder();
+            foreach (DataGridViewRow item in GridAdicionais.Rows)
+            {
+                if ((bool)item.Cells["Selecione"].Value == true)
+                {
+                    if (string.IsNullOrEmpty(Addon.ToString()))
+                    {
+                        Addon.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
+                        continue;
+                    }
+
+                    Addon.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
+                }
+            }
+
+            _modelItem.Adicional = Addon.ToString();
+
             if (_modelItem.Save(_modelItem))
                 Close();
         }
@@ -351,6 +436,7 @@ namespace Emiplus.View.Produtos
                     backOn.RunWorkerAsync();
                 });
 
+                SetHeadersAdicionais(GridAdicionais);
                 nome.Focus();
             };
 
@@ -663,6 +749,41 @@ namespace Emiplus.View.Produtos
                 ModalVariacao.idProduto = idPdtSelecionado;
                 ModalVariacao form = new ModalVariacao();
                 form.ShowDialog();
+            };
+
+            GridAdicionais.CellClick += (s, e) =>
+            {
+                if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
+                {
+                    if ((bool)GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false)
+                    {
+                        GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = true;
+                    }
+                    else
+                    {
+                        GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = false;
+                    }
+                }
+            };
+
+            GridAdicionais.CellMouseEnter += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Hand;
+            };
+
+            GridAdicionais.CellMouseLeave += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = (s as DataGridView);
+                if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Default;
             };
         }
     }

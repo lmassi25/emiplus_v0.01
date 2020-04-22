@@ -135,7 +135,6 @@ namespace Emiplus.View.Produtos
                 return;
             }
 
-
             if (!string.IsNullOrEmpty(txtBuscarVariacao.Text) && txtBuscarVariacao.Text.Contains(txtGrupos.Text))
                 return;
 
