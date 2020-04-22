@@ -59,6 +59,7 @@ namespace Emiplus.Model
 
         public int ativo { get; set; }
         public string Atributos { get; set; }
+        public string Adicional { get; set; }
 
         #endregion CAMPOS
 

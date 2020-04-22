@@ -322,6 +322,7 @@
     <Compile Include="Model\Etiqueta.cs" />
     <Compile Include="Model\FormaPagamento.cs" />
     <Compile Include="Model\Imposto.cs" />
+    <Compile Include="Model\ItemAdicional.cs" />
     <Compile Include="Model\ItemAtributos.cs" />
     <Compile Include="Model\ItemEstoque.cs" />
     <Compile Include="Model\ItemEstoqueMovimentacao.cs" />
@@ -904,6 +905,12 @@
     <Compile Include="View\Food\Pedidos.Designer.cs">
       <DependentUpon>Pedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Produtos\AddAdicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\AddAdicional.Designer.cs">
+      <DependentUpon>AddAdicional.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Produtos\AddCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -939,6 +946,12 @@
     </Compile>
     <Compile Include="View\Produtos\AddVariacao.Designer.cs">
       <DependentUpon>AddVariacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Produtos\Adicional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Produtos\Adicional.Designer.cs">
+      <DependentUpon>Adicional.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Produtos\Categorias.cs">
       <SubType>Form</SubType>
@@ -1439,6 +1452,9 @@
     <EmbeddedResource Include="View\Food\Pedidos.resx">
       <DependentUpon>Pedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\AddAdicional.resx">
+      <DependentUpon>AddAdicional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddCategorias.resx">
       <DependentUpon>AddCategorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -1456,6 +1472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\AddVariacao.resx">
       <DependentUpon>AddVariacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Produtos\Adicional.resx">
+      <DependentUpon>Adicional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Produtos\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>

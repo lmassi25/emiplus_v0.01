@@ -142,6 +142,11 @@ namespace Emiplus.View.Common
                 f.ShowDialog();
             };
 
+            btnAdicionais.Click += (s, e) =>
+            {
+                OpenForm.Show<Adicional>(this);
+            };
+
             btnVariation.Click += (s, e) => OpenForm.Show<Variacoes>(this);
         }
     }

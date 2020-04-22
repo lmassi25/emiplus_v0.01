@@ -97,6 +97,7 @@
         public string Status { get; set; }
         public int Usuario { get; set; }
         public int Atributo { get; set; }
+        public string Adicional { get; set; }
 
         [Ignore]
         public string NomeAdicional { get; set; }
