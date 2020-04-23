@@ -1028,6 +1028,10 @@ namespace Emiplus.View.Comercial
                     e.SuppressKeyPress = true;
                     break;
 
+                case Keys.F4:
+                    AddAdicionais();
+                    break;
+
                 case Keys.F5:
                     OptionBobinaA4 f = new OptionBobinaA4();
                     string tipo = "";
@@ -1081,6 +1085,36 @@ namespace Emiplus.View.Comercial
         enum FullScreenMode
         {
             Yes, No
+        }
+
+        private void AddAdicionais()
+        {
+            if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
+            {
+                Food.AdicionaisDispon.ValorAddon = 0;
+                Food.AdicionaisDispon.AddonSelected = "";
+                Food.AdicionaisDispon.IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                Food.AdicionaisDispon.IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["Item"].Value);
+                Food.AdicionaisDispon form = new  Food.AdicionaisDispon();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    double getValor = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Unitário"].Value.ToString().Replace("R$ ", ""));
+                    GridListaProdutos.SelectedRows[0].Cells["Total"].Value = Validation.FormatPrice(getValor + Food.AdicionaisDispon.ValorAddon, true);
+                        
+                    int idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
+                    Model.PedidoItem upAddon = _mPedidoItens.FindById(idPedidoItem).FirstOrDefault<Model.PedidoItem>();
+                    if (upAddon != null)
+                    {
+                        upAddon.ValorVenda = getValor +  Food.AdicionaisDispon.ValorAddon;
+                        upAddon.TotalVenda = getValor +  Food.AdicionaisDispon.ValorAddon;
+                        upAddon.Total = getValor +  Food.AdicionaisDispon.ValorAddon;
+                        upAddon.Adicional = Food.AdicionaisDispon.AddonSelected;
+                        upAddon.Save(upAddon, false);
+                    }
+
+                    LoadTotais();
+                }
+            }
         }
 
         /// <summary>
@@ -1391,32 +1425,7 @@ namespace Emiplus.View.Comercial
 
             GridListaProdutos.CellDoubleClick += (s, e) =>
             {
-                if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
-                {
-                    Food.AdicionaisDispon.ValorAddon = 0;
-                    Food.AdicionaisDispon.AddonSelected = "";
-                    Food.AdicionaisDispon.IdPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                    Food.AdicionaisDispon.IdItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["Item"].Value);
-                    Food.AdicionaisDispon form = new  Food.AdicionaisDispon();
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        double getValor = Validation.ConvertToDouble(GridListaProdutos.SelectedRows[0].Cells["Unitário"].Value.ToString().Replace("R$ ", ""));
-                        GridListaProdutos.SelectedRows[0].Cells["Total"].Value = Validation.FormatPrice(getValor + Food.AdicionaisDispon.ValorAddon);
-                        
-                        int idPedidoItem = Validation.ConvertToInt32(GridListaProdutos.SelectedRows[0].Cells["ID"].Value);
-                        Model.PedidoItem upAddon = _mPedidoItens.FindById(idPedidoItem).FirstOrDefault<Model.PedidoItem>();
-                        if (upAddon != null)
-                        {
-                            upAddon.ValorVenda = getValor +  Food.AdicionaisDispon.ValorAddon;
-                            upAddon.TotalVenda = getValor +  Food.AdicionaisDispon.ValorAddon;
-                            upAddon.Total = getValor +  Food.AdicionaisDispon.ValorAddon;
-                            upAddon.Adicional = Food.AdicionaisDispon.AddonSelected;
-                            upAddon.Save(upAddon, false);
-                        }
-
-                        LoadTotais();
-                    }
-                }
+                AddAdicionais();
             };
 
             btnDelete.Click += (s, e) =>

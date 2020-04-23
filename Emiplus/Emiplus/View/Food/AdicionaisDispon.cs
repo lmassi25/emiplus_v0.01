@@ -98,8 +98,32 @@ namespace Emiplus.View.Food
             }
         }
 
+        private void KeyDowns(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    Support.UpDownDataGrid(false, GridLista);
+                    e.Handled = true;
+                    break;
+
+                case Keys.Down:
+                    Support.UpDownDataGrid(true, GridLista);
+                    e.Handled = true;
+                    break;
+
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+
         private void Eventos()
         {
+            KeyDown += KeyDowns;
+            KeyPreview = true;
+
             Shown += (s, e) =>
             {
                 Refresh();
