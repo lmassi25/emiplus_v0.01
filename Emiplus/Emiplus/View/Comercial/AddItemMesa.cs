@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.View.Food;
 
 namespace Emiplus.View.Comercial
 {
@@ -72,11 +73,12 @@ namespace Emiplus.View.Comercial
                         _mPedidoItem.CEan = dataItem.CodeBarras;
                         _mPedidoItem.CProd = dataItem.Referencia;
                         _mPedidoItem.xProd = dataItem.Nome;
-                        _mPedidoItem.ValorVenda = dataItem.ValorVenda;
-                        _mPedidoItem.Total = dataItem.ValorVenda;
+                        _mPedidoItem.ValorVenda = Validation.ConvertToDouble(row.Cells["Valor"].Value);
+                        _mPedidoItem.Total = Validation.ConvertToDouble(row.Cells["Valor"].Value);
                         _mPedidoItem.Quantidade = 1;
-                        _mPedidoItem.TotalVenda = dataItem.ValorVenda;
+                        _mPedidoItem.TotalVenda = Validation.ConvertToDouble(row.Cells["Valor"].Value);
                         _mPedidoItem.Info_Adicional = obs;
+                        _mPedidoItem.Adicional = row.Cells["AddonSelected"].Value.ToString();
 
                         if (IniFile.Read("MesasPreCadastrada", "Comercial") == "True")
                             _mPedidoItem.Mesa = Mesas.Text;
@@ -99,7 +101,7 @@ namespace Emiplus.View.Comercial
 
         private void SetHeadersTable(DataGridView Table)
         {
-            Table.ColumnCount = 4;
+            Table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -131,6 +133,21 @@ namespace Emiplus.View.Comercial
             Table.Columns[4].Name = "Observação";
             Table.Columns[4].Width = 100;
             Table.Columns[4].Visible = true;
+
+            Table.Columns[5].Name = "AddonSelected";
+            Table.Columns[5].Width = 100;
+            Table.Columns[5].Visible = false;
+            
+            Table.Columns[6].Name = "Unitario";
+            Table.Columns[6].Width = 80;
+            Table.Columns[6].Visible = false;
+
+            DataGridViewImageColumn imgDividir = new DataGridViewImageColumn();
+            imgDividir.Image = Resources.menu20x;
+            imgDividir.Name = "Adicional";
+            imgDividir.Width = 60;
+            imgDividir.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Table.Columns.Add(imgDividir);
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -259,7 +276,10 @@ namespace Emiplus.View.Comercial
                             item.Id,
                             item.Nome,
                             Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
-                            ""
+                            "",
+                            "",
+                            Validation.ConvertToDouble(item.ValorVenda),
+                            Resources.menu20x
                         );
 
                         BuscarProduto.Text = "";
@@ -280,7 +300,10 @@ namespace Emiplus.View.Comercial
                         GridProdutos.SelectedRows[0].Cells["ID"].Value,
                         GridProdutos.SelectedRows[0].Cells["Item"].Value,
                         GridProdutos.SelectedRows[0].Cells["Valor"].Value,
-                        ""
+                        "",
+                        "",
+                        GridProdutos.SelectedRows[0].Cells["Valor"].Value,
+                        Resources.menu20x
                     );
 
                     Alert.Message("Pronto", "Item adicionado.", Alert.AlertType.success);
@@ -351,6 +374,21 @@ namespace Emiplus.View.Comercial
                         btnRemover.Visible = hideBtns;
                     }
                 }
+
+                if (GridLista.Columns[e.ColumnIndex].Name == "Adicional")
+                {
+                    AdicionaisDispon.ValorAddon = 0;
+                    AdicionaisDispon.AddonSelected = GridLista.SelectedRows[0].Cells["AddonSelected"].Value != null ? GridLista.SelectedRows[0].Cells["AddonSelected"].Value.ToString() : "";
+                    AdicionaisDispon.IdPedidoItem = 0;
+                    AdicionaisDispon.IdItem = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                    AdicionaisDispon form = new AdicionaisDispon();
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        double getValor = Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Unitario"].Value.ToString().Replace("R$ ", ""));
+                        GridLista.SelectedRows[0].Cells["Valor"].Value = Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
+                        GridLista.SelectedRows[0].Cells["AddonSelected"].Value = AdicionaisDispon.AddonSelected;
+                    }
+                }
             };
 
             GridLista.CellMouseEnter += (s, e) =>
@@ -359,7 +397,7 @@ namespace Emiplus.View.Comercial
                     return;
 
                 var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" || GridLista.Columns[e.ColumnIndex].Name == "Adicional")
                     dataGridView.Cursor = Cursors.Hand;
             };
 
@@ -369,7 +407,7 @@ namespace Emiplus.View.Comercial
                     return;
 
                 var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" || GridLista.Columns[e.ColumnIndex].Name == "Adicional")
                     dataGridView.Cursor = Cursors.Default;
             };
         }
