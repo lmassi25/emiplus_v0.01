@@ -887,6 +887,12 @@
     <Compile Include="View\Financeiro\Titulos.Designer.cs">
       <DependentUpon>Titulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Food\AdicionaisDispon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Food\AdicionaisDispon.Designer.cs">
+      <DependentUpon>AdicionaisDispon.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Food\CadastrarMesa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1443,6 +1449,9 @@
     <EmbeddedResource Include="View\Financeiro\Titulos.resx">
       <DependentUpon>Titulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Food\AdicionaisDispon.resx">
+      <DependentUpon>AdicionaisDispon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Food\CadastrarMesa.resx">
       <DependentUpon>CadastrarMesa.cs</DependentUpon>
     </EmbeddedResource>
@@ -1754,6 +1763,8 @@
     <None Include="Assets\Images\icons\divide20x.png" />
     <None Include="Assets\Images\icons\error20x.png" />
     <None Include="Assets\Images\icons\deliveryman.png" />
+    <None Include="Assets\Images\icons\menu30x.png" />
+    <None Include="Assets\Images\icons\menu20x.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

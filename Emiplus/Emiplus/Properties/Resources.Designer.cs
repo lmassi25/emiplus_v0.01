@@ -233,6 +233,26 @@ namespace Emiplus.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap menu20x {
+            get {
+                object obj = ResourceManager.GetObject("menu20x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu30x {
+            get {
+                object obj = ResourceManager.GetObject("menu30x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap money_bag__1_ {
             get {
                 object obj = ResourceManager.GetObject("money_bag__1_", resourceCulture);
