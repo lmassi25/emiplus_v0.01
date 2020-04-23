@@ -39,7 +39,15 @@ namespace Emiplus.View.Comercial
             }
             else
             {
-                if (Mesas.SelectedValue.ToString() == "0")
+                if(Mesas.SelectedValue == null)
+                {
+                    if(nrMesa.Text == "")
+                    {
+                        Alert.Message("Oppss", "É necessário informar uma mesa", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+                else if (Mesas.SelectedValue.ToString() == "0")
                 {
                     Alert.Message("Oppss", "É necessário informar uma mesa", Alert.AlertType.warning);
                     return;
@@ -78,6 +86,8 @@ namespace Emiplus.View.Comercial
                         _mPedidoItem.Status = "FAZENDO";
                         _mPedidoItem.Usuario = Settings.Default.user_id;
                         _mPedidoItem.Save(_mPedidoItem, false);
+
+                        new Controller.Pedido().ImprimirItens(0, _mPedidoItem.GetLastId());
                     }
                 }
 

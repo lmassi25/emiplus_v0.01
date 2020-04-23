@@ -845,6 +845,94 @@ namespace Emiplus.Controller
             }
         }
 
+        public void ImprimirItens(int idPedido = 0, int idPedidoItem = 0)
+        {
+            #region EMITENTE
+
+            var _emitente = new Model.Pessoa();
+            var _emitenteEndereco = new Model.PessoaEndereco();
+            var _emitenteContato = new Model.PessoaContato();
+
+            _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+            _emitente.CPF = Settings.Default.empresa_cnpj;
+
+            _emitente.Nome = Settings.Default.empresa_razao_social;
+            _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+            _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+            _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+            _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+            _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+            _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+            _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+            _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+            #endregion EMITENTE
+
+            var printername = IniFile.Read("PrinterName", "Comercial");
+
+            if (printername == null)
+                return;
+
+            if (printername == "Selecione")
+            {
+                Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                return;
+            }
+
+            var itens = new Model.PedidoItem().Query();
+
+            if (idPedido > 0)
+            {
+                itens
+                .LeftJoin("item", "pedido_item.item", "item.id")
+                .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
+                .Where("pedido_item.pedido", idPedido)
+                .Where("pedido_item.excluir", 0)
+                .Where("pedido_item.tipo", "Produtos")
+                .OrderBy("pedido_item.id");           
+            }
+            else
+            {
+                itens
+                .LeftJoin("item", "pedido_item.item", "item.id")
+                .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
+                .Where("pedido_item.id", idPedidoItem)
+                .Where("pedido_item.excluir", 0)
+                .Where("pedido_item.tipo", "Produtos")
+                .OrderBy("pedido_item.id");                
+            }
+                       
+            Printer printer = new Printer(printername);
+            
+            int count = 0;
+
+            foreach (var data in itens.Get())
+            {
+                printer.AlignCenter();
+                printer.BoldMode(_emitente.Fantasia);
+                //printer.Append(_emitente.Nome);
+                //printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                //printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                //printer.Append(_emitenteContato.Telefone);
+
+                //printer.NewLines(2);
+
+                //printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                printer.Separator();
+
+                printer.BoldMode("COZINHA");
+                printer.Separator();
+
+                printer.AlignCenter();
+                printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
+                printer.Separator();
+
+                count++;
+                printer.Append(Validation.AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
+            }
+        }
+
         /// <summary>
         /// Voucher
         /// </summary>
