@@ -89,8 +89,9 @@ namespace Emiplus.Controller
             return Validation.ConvertToDouble(data.FRETE ?? 0);
         }
 
-        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1")
+        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1", int idTaxa = 0)
         {
+            Model.Taxas _mTaxa = new Model.Taxas();
             var data = new Model.Titulo();
             double valor = Validation.ConvertToDouble(valorS);
             DateTime vencimento = DateTime.Now;
@@ -100,6 +101,9 @@ namespace Emiplus.Controller
                 Alert.Message("Opss", "O valor informado é inválido!", Alert.AlertType.error);
                 return false;
             }
+            
+            if (idTaxa > 0)
+                _mTaxa = _mTaxa.FindById(idTaxa).FirstOrDefault<Model.Taxas>();
 
             if (idPedido > 0)
             {
@@ -138,8 +142,6 @@ namespace Emiplus.Controller
                 int qtdD = qtdDecimall + 1;
                 data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), qtdD);
 
-                //data.Total = Validation.Round(valor / numeros.Count());
-
                 for (int i = 0; i < numeros.Length; i++)
                 {
                     vencimento = vencimento.AddDays(numeros[i]);
@@ -149,6 +151,13 @@ namespace Emiplus.Controller
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSql(vencimento);
                     data.Recebido = data.Total;
+
+                    if (formaPgto == 4)
+                    {
+                        double taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
+                        data.Valor_Bruto = (valor - taxacredito - _mTaxa.Taxa_Fixa) / Validation.ConvertToInt32(parcela);
+                    }
+
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -159,9 +168,7 @@ namespace Emiplus.Controller
                 int qtdDecimall = Validation.GetNumberOfDigits((decimal)valor);
                 int qtdD = qtdDecimall + 1;
                 data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), qtdD);
-
-                //data.Total = valor / Validation.ConvertToInt32(parcela);
-
+                
                 int count = 1;
                 while (count <= Validation.ConvertToInt32(parcela))
                 {
@@ -170,6 +177,13 @@ namespace Emiplus.Controller
                     data.Emissao = Validation.DateNowToSql();
                     data.Vencimento = Validation.ConvertDateToSql(vencimento.AddMonths(count));
                     data.Recebido = data.Total;
+
+                    if (formaPgto == 4)
+                    {
+                        double taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
+                        data.Valor_Bruto = (valor - taxacredito - _mTaxa.Taxa_Fixa) / Validation.ConvertToInt32(parcela);
+                    }
+
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -198,6 +212,9 @@ namespace Emiplus.Controller
                 {
                     data.Total = valor;
                     data.Recebido = valor;
+
+                    double taxadebito = valor / 100 * _mTaxa.Taxa_Debito;
+                    data.Valor_Bruto = valor - taxadebito - _mTaxa.Taxa_Fixa;
                 }
 
                 data.Id_Caixa = Home.idCaixa;
@@ -242,7 +259,7 @@ namespace Emiplus.Controller
             var data = titulos.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
                 .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "titulo.valor_bruto", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where(tipoPesquisa, ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where(tipoPesquisa, "<=", Validation.ConvertDateToSql(dataFinal))
                 .Where("titulo.excluir", 0)

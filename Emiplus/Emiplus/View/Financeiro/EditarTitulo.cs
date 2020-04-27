@@ -32,6 +32,7 @@ namespace Emiplus.View.Financeiro
 
             dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = _modelTitulo.Recebido == 0 ? "" : Validation.Price(_modelTitulo.Recebido);
+            valorBruto.Text = _modelTitulo.Valor_Bruto == 0 ? "" : Validation.Price(_modelTitulo.Valor_Bruto);
 
             if (_modelTitulo.Recebido > 0)
             {
@@ -74,6 +75,7 @@ namespace Emiplus.View.Financeiro
             _modelTitulo.Total = Validation.ConvertToDouble(total.Text);
             _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text) ? null : Validation.ConvertDateToSql(dataRecebido.Text);
             _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
+            _modelTitulo.Valor_Bruto = Validation.ConvertToDouble(valorBruto.Text);
             _modelTitulo.Qtd_Recorrencia = Validation.ConvertToInt32(xRecorrente.Text);
            
             _modelTitulo.Id_Pessoa = Validation.ConvertToInt32(cliente.SelectedValue);

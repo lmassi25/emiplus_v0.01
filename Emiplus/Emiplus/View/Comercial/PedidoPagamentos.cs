@@ -133,11 +133,11 @@ namespace Emiplus.View.Comercial
                     break;
 
                 case "Cartão de Débito":
-                    _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text);
+                    _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text, "1", Validation.ConvertToInt32(taxas.SelectedValue));
                     break;
 
                 case "Cartão de Crédito":
-                    _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text);
+                    _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text, Validation.ConvertToInt32(taxas.SelectedValue));
                     break;
 
                 case "Crediário":
@@ -159,7 +159,6 @@ namespace Emiplus.View.Comercial
             _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
             if (_mPedido != null)
             {
-                Console.WriteLine(_controllerTitulo.GetLancados(IdPedido));
                 if (_controllerTitulo.GetLancados(IdPedido) < Validation.Round(_mPedido.Total))
                     _mPedido.status = 2; //RECEBIMENTO PENDENTE
                 else
@@ -169,46 +168,6 @@ namespace Emiplus.View.Comercial
             }
 
             AtualizarDados();
-        }
-
-        private void Campos(int tipo = 0)
-        {
-            valor.Text = "";
-            parcelas.Text = "";
-            iniciar.Text = "";
-
-            if (tipo == 1)
-            {
-                label9.Visible = false;
-                Info1.Visible = false;
-                parcelas.Visible = false;
-
-                label8.Visible = false;
-                Info2.Visible = false;
-                iniciar.Visible = false;
-            }
-            else
-            {
-                label9.Visible = true;
-                Info1.Visible = true;
-                parcelas.Visible = true;
-
-                label8.Visible = true;
-                Info2.Visible = true;
-                iniciar.Visible = true;
-            }
-
-            //dynamic devolucoes = _mPedido.Query()
-            //    .SelectRaw("SUM(total) as total")
-            //    .Where("excluir", 0)
-            //    .Where("tipo", "Devoluções")
-            //    .Where("Venda", IdPedido)
-            //    .FirstOrDefault<Model.Pedido>();
-
-            if (PedidoModalDividirConta.ValorDividido <= 0)
-                valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
-            else
-                valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
         }
 
         private void JanelasRecebimento(string formaPgto)
@@ -223,13 +182,68 @@ namespace Emiplus.View.Comercial
             lTipo.Text = formaPgto;
             valor.Select();
 
-            if (formaPgto == "Cartão de Débito" || formaPgto == "Dinheiro")
+            valor.Text = "";
+            parcelas.Text = "";
+            iniciar.Text = "";
+
+            switch (formaPgto)
             {
-                Campos(1);
-                return;
+                case "Dinheiro":
+                    label5.Visible = false;
+                    taxas.Visible = false;
+
+                    label9.Visible = false;
+                    Info1.Visible = false;
+                    parcelas.Visible = false;
+
+                    label8.Visible = false;
+                    Info2.Visible = false;
+                    iniciar.Visible = false;
+                    break;
+                case "Cartão de Crédito":
+                    label5.Visible = true;
+                    taxas.Visible = true;
+
+                    label9.Visible = true;
+                    Info1.Visible = true;
+                    parcelas.Visible = true;
+
+                    label8.Visible = true;
+                    Info2.Visible = true;
+                    iniciar.Visible = true;
+                    break;
+                case "Cartão de Débito":
+                    label5.Visible = true;
+                    taxas.Visible = true;
+
+                    label9.Visible = false;
+                    Info1.Visible = false;
+                    parcelas.Visible = false;
+
+                    label8.Visible = false;
+                    Info2.Visible = false;
+                    iniciar.Visible = false;
+                    break;
+                case "Cheque":
+                case "Crediário":
+                case "Boleto":
+                    label5.Visible = false;
+                    taxas.Visible = false;
+
+                    label9.Visible = true;
+                    Info1.Visible = true;
+                    parcelas.Visible = true;
+
+                    label8.Visible = true;
+                    Info2.Visible = true;
+                    iniciar.Visible = true;
+                    break;
             }
 
-            Campos(0);
+            if (PedidoModalDividirConta.ValorDividido <= 0)
+                valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
+            else
+                valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
         }
 
         private void JanelaDesconto()
@@ -670,6 +684,17 @@ namespace Emiplus.View.Comercial
 
                 Dinheiro.Focus();
                 Dinheiro.Select();
+
+                ArrayList taxasSource = new ArrayList();
+                IEnumerable<Model.Taxas> dataTaxa = new Model.Taxas().FindAll(new[] { "id", "nome" }).WhereFalse("excluir").Get<Model.Taxas>();
+                taxasSource.Add(new {Id = 0, Nome = "SELECIONE"});
+                if (dataTaxa.Count() > 0)
+                    foreach (Model.Taxas item in dataTaxa)
+                        taxasSource.Add(new {Id = item.Id, Nome = item.Nome});
+
+                taxas.DataSource = taxasSource;
+                taxas.DisplayMember = "Nome";
+                taxas.ValueMember = "Id";
             };
 
             FormClosing += (s, e) =>

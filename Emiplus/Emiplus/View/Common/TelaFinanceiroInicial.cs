@@ -147,6 +147,11 @@ namespace Emiplus.View.Common
                     Alert.Message("Pronto!", "Caixa fechado com sucesso.", Alert.AlertType.success);
                 }
             };
+
+            btnTaxas.Click += (s, e) =>
+            {
+                OpenForm.Show<Taxas>(this);
+            };
         }
     }
 }
