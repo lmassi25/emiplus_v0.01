@@ -172,6 +172,8 @@ namespace Emiplus.View.Comercial
 
         private void JanelasRecebimento(string formaPgto)
         {
+            TelaReceber.Refresh();
+
             if (!recebimentos)
                 return;
 
@@ -203,6 +205,8 @@ namespace Emiplus.View.Comercial
                 case "Cartão de Crédito":
                     label5.Visible = true;
                     taxas.Visible = true;
+                    label5.Location = new Point(15, 262);
+                    taxas.Location = new Point(15, 281);
 
                     label9.Visible = true;
                     Info1.Visible = true;
@@ -215,6 +219,8 @@ namespace Emiplus.View.Comercial
                 case "Cartão de Débito":
                     label5.Visible = true;
                     taxas.Visible = true;
+                    label5.Location = label9.Location;
+                    taxas.Location = parcelas.Location;
 
                     label9.Visible = false;
                     Info1.Visible = false;
