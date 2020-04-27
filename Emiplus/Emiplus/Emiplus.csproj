@@ -336,6 +336,7 @@
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\PessoaContato.cs" />
     <Compile Include="Model\PessoaEndereco.cs" />
+    <Compile Include="Model\Taxas.cs" />
     <Compile Include="Model\Titulo.cs" />
     <Compile Include="Model\Usuarios.cs" />
     <Compile Include="Program.cs" />
@@ -737,6 +738,12 @@
     <Compile Include="View\Financeiro\AddCaixaMov.Designer.cs">
       <DependentUpon>AddCaixaMov.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Financeiro\AddTaxa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\AddTaxa.Designer.cs">
+      <DependentUpon>AddTaxa.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Financeiro\Caixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -766,6 +773,12 @@
     </Compile>
     <Compile Include="View\Financeiro\FecharCaixa.Designer.cs">
       <DependentUpon>FecharCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Financeiro\Taxas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Financeiro\Taxas.Designer.cs">
+      <DependentUpon>Taxas.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Fiscal\AddNatureza.cs">
       <SubType>Form</SubType>
@@ -1374,6 +1387,9 @@
     <EmbeddedResource Include="View\Financeiro\AddCaixaMov.resx">
       <DependentUpon>AddCaixaMov.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\AddTaxa.resx">
+      <DependentUpon>AddTaxa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\Caixa.resx">
       <DependentUpon>Caixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -1388,6 +1404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\FecharCaixa.resx">
       <DependentUpon>FecharCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Financeiro\Taxas.resx">
+      <DependentUpon>Taxas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Fiscal\AddNatureza.resx">
       <DependentUpon>AddNatureza.cs</DependentUpon>

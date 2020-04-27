@@ -127,7 +127,7 @@ namespace Emiplus.View.Configuracoes
                         createItem.Cest = item.Value.cest;
                         createItem.Ncm = item.Value.ncm;
                         createItem.CodeBarras = item.Value.codebarras;
-                        createItem.Limite_Desconto = item.Value.limite_desconto;
+                        createItem.Limite_Desconto = Validation.ConvertToDouble(item.Value.limite_desconto);
                         createItem.Criado_por = Validation.ConvertToInt32(item.Value.criado_por);
                         createItem.Atualizado_por = Validation.ConvertToInt32(item.Value.atualizado_por);
                         createItem.Save(createItem, false);

@@ -64,6 +64,8 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.Despesas = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnTaxas = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -161,7 +163,7 @@
             this.aPagar.ForeColor = System.Drawing.Color.DimGray;
             this.aPagar.Image = ((System.Drawing.Image)(resources.GetObject("aPagar.Image")));
             this.aPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.aPagar.Location = new System.Drawing.Point(491, 137);
+            this.aPagar.Location = new System.Drawing.Point(491, 138);
             this.aPagar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aPagar.Name = "aPagar";
             this.aPagar.Size = new System.Drawing.Size(219, 41);
@@ -487,7 +489,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(226, 215);
+            this.pictureBox1.Location = new System.Drawing.Point(226, 210);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(15, 15);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -498,7 +500,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(226, 259);
+            this.pictureBox3.Location = new System.Drawing.Point(226, 254);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(15, 15);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -628,12 +630,60 @@
             this.Despesas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Despesas.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(257, 314);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 41);
+            this.button1.TabIndex = 133;
+            this.button1.Text = "          Fornecedores";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnTaxas
+            // 
+            this.btnTaxas.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaxas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTaxas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTaxas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnTaxas.FlatAppearance.BorderSize = 0;
+            this.btnTaxas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTaxas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnTaxas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTaxas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaxas.ForeColor = System.Drawing.Color.DimGray;
+            this.btnTaxas.Image = ((System.Drawing.Image)(resources.GetObject("btnTaxas.Image")));
+            this.btnTaxas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTaxas.Location = new System.Drawing.Point(22, 270);
+            this.btnTaxas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTaxas.Name = "btnTaxas";
+            this.btnTaxas.Size = new System.Drawing.Size(219, 41);
+            this.btnTaxas.TabIndex = 134;
+            this.btnTaxas.Text = "          Taxas de Cartão";
+            this.btnTaxas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTaxas.UseVisualStyleBackColor = false;
+            // 
             // TelaFinanceiroInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnTaxas);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.Despesas);
             this.Controls.Add(this.pictureBox12);
@@ -724,5 +774,7 @@
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.Button Despesas;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTaxas;
     }
 }

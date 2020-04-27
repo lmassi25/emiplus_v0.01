@@ -57,6 +57,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.recebido = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Obs = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
-            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnCancelar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -84,6 +84,8 @@
             this.btnRecebidoPago = new VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox();
             this.btnImprimir = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.visualSeparator3 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label15 = new System.Windows.Forms.Label();
+            this.valorBruto = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -173,7 +175,7 @@
             this.emissao.PasswordChar = '\0';
             this.emissao.ReadOnly = false;
             this.emissao.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.emissao.Size = new System.Drawing.Size(112, 28);
+            this.emissao.Size = new System.Drawing.Size(112, 30);
             this.emissao.TabIndex = 2;
             this.emissao.TextBoxWidth = 100;
             this.emissao.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -542,7 +544,7 @@
             this.total.PasswordChar = '\0';
             this.total.ReadOnly = false;
             this.total.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.total.Size = new System.Drawing.Size(128, 28);
+            this.total.Size = new System.Drawing.Size(128, 30);
             this.total.TabIndex = 5;
             this.total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.total.TextBoxWidth = 116;
@@ -624,7 +626,7 @@
             this.vencimento.PasswordChar = '\0';
             this.vencimento.ReadOnly = false;
             this.vencimento.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.vencimento.Size = new System.Drawing.Size(128, 28);
+            this.vencimento.Size = new System.Drawing.Size(128, 30);
             this.vencimento.TabIndex = 1;
             this.vencimento.TextBoxWidth = 116;
             this.vencimento.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -785,6 +787,40 @@
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 87;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.Border.HoverVisible = true;
+            this.btnHelp.Border.Rounding = 6;
+            this.btnHelp.Border.Thickness = 1;
+            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnHelp.Border.Visible = true;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.Location = new System.Drawing.Point(686, 6);
+            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(37, 30);
+            this.btnHelp.TabIndex = 40055;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -915,7 +951,7 @@
             this.dataRecebido.PasswordChar = '\0';
             this.dataRecebido.ReadOnly = false;
             this.dataRecebido.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataRecebido.Size = new System.Drawing.Size(182, 28);
+            this.dataRecebido.Size = new System.Drawing.Size(182, 30);
             this.dataRecebido.TabIndex = 0;
             this.dataRecebido.TextBoxWidth = 170;
             this.dataRecebido.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -986,7 +1022,7 @@
             this.recebido.PasswordChar = '\0';
             this.recebido.ReadOnly = false;
             this.recebido.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.recebido.Size = new System.Drawing.Size(154, 28);
+            this.recebido.Size = new System.Drawing.Size(154, 30);
             this.recebido.TabIndex = 1;
             this.recebido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.recebido.TextBoxWidth = 142;
@@ -1074,40 +1110,6 @@
             this.Obs.Watermark.Text = "Watermark text";
             this.Obs.Watermark.Visible = false;
             this.Obs.WordWrap = true;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.Border.HoverVisible = true;
-            this.btnHelp.Border.Rounding = 6;
-            this.btnHelp.Border.Thickness = 1;
-            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnHelp.Border.Visible = true;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.Location = new System.Drawing.Point(686, 6);
-            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(37, 30);
-            this.btnHelp.TabIndex = 40055;
-            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // barraTitulo
             // 
@@ -1454,7 +1456,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.Image = null;
-            this.btnImprimir.Location = new System.Drawing.Point(528, 400);
+            this.btnImprimir.Location = new System.Drawing.Point(528, 347);
             this.btnImprimir.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(164, 28);
@@ -1492,12 +1494,85 @@
             this.visualSeparator3.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator3.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(525, 380);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 17);
+            this.label15.TabIndex = 562;
+            this.label15.Text = "Valor Bruto";
+            // 
+            // valorBruto
+            // 
+            this.valorBruto.AlphaNumeric = false;
+            this.valorBruto.BackColor = System.Drawing.Color.Transparent;
+            this.valorBruto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.valorBruto.BackColorState.Enabled = System.Drawing.Color.White;
+            this.valorBruto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.valorBruto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.valorBruto.Border.HoverVisible = true;
+            this.valorBruto.Border.Rounding = 8;
+            this.valorBruto.Border.Thickness = 1;
+            this.valorBruto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.valorBruto.Border.Visible = true;
+            this.valorBruto.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.valorBruto.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.valorBruto.ButtonBorder.HoverVisible = true;
+            this.valorBruto.ButtonBorder.Rounding = 6;
+            this.valorBruto.ButtonBorder.Thickness = 1;
+            this.valorBruto.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.valorBruto.ButtonBorder.Visible = true;
+            this.valorBruto.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.valorBruto.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.valorBruto.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.valorBruto.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.valorBruto.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorBruto.ButtonIndent = 3;
+            this.valorBruto.ButtonText = "visualButton";
+            this.valorBruto.ButtonVisible = false;
+            this.valorBruto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorBruto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.valorBruto.Image = null;
+            this.valorBruto.ImageSize = new System.Drawing.Size(16, 16);
+            this.valorBruto.ImageVisible = false;
+            this.valorBruto.ImageWidth = 35;
+            this.valorBruto.Location = new System.Drawing.Point(528, 400);
+            this.valorBruto.MaxLength = 10;
+            this.valorBruto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.valorBruto.Name = "valorBruto";
+            this.valorBruto.PasswordChar = '\0';
+            this.valorBruto.ReadOnly = false;
+            this.valorBruto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.valorBruto.Size = new System.Drawing.Size(154, 30);
+            this.valorBruto.TabIndex = 561;
+            this.valorBruto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.valorBruto.TextBoxWidth = 142;
+            this.valorBruto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.valorBruto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valorBruto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valorBruto.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.valorBruto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.valorBruto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.valorBruto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.valorBruto.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.valorBruto.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorBruto.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.valorBruto.Watermark.Text = "Watermark text";
+            this.valorBruto.Watermark.Visible = false;
+            this.valorBruto.WordWrap = true;
+            // 
             // EditarTitulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.valorBruto);
             this.Controls.Add(this.visualSeparator3);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnRecebidoPago);
@@ -1614,5 +1689,7 @@
         private VisualPlus.Toolkit.Controls.Interactivity.VisualCheckBox btnRecebidoPago;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnImprimir;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator3;
+        private System.Windows.Forms.Label label15;
+        private VisualPlus.Toolkit.Controls.Editors.VisualTextBox valorBruto;
     }
 }

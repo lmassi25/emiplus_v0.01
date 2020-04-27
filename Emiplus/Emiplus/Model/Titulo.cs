@@ -37,6 +37,7 @@
         public string Vencimento { get; set; }
         public double Total { get; set; }
         public double Recebido { get; set; }
+        public double Valor_Bruto { get; set; }
         public string Baixa_data { get; set; }
         public double Baixa_total { get; set; }
         public int Baixa_id_formapgto { get; set; }
