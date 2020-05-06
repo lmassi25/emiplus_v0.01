@@ -1,6 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Comercial;
 using Emiplus.View.Financeiro;
-using System.Windows.Forms;
+using Emiplus.View.Produtos;
 
 namespace Emiplus.View.Common
 {
@@ -20,7 +22,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             Receitas.Click += (s, e) =>
@@ -29,7 +31,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.CategoriaPage = "Receitas";
-                OpenForm.Show<Produtos.Categorias>(this);
+                OpenForm.Show<Categorias>(this);
             };
 
             Despesas.Click += (s, e) =>
@@ -38,7 +40,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.CategoriaPage = "Despesas";
-                OpenForm.Show<Produtos.Categorias>(this);
+                OpenForm.Show<Categorias>(this);
             };
 
             fornecedores.Click += (s, e) =>
@@ -47,7 +49,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Fornecedores";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             aReceber.Click += (s, e) =>
@@ -95,7 +97,7 @@ namespace Emiplus.View.Common
 
                 if (Home.idCaixa == 0)
                 {
-                    AbrirCaixa f = new AbrirCaixa();
+                    var f = new AbrirCaixa();
                     f.ShowDialog();
                 }
                 else
@@ -141,17 +143,12 @@ namespace Emiplus.View.Common
                 }
 
                 Financeiro.FecharCaixa.idCaixa = Home.idCaixa;
-                FecharCaixa f = new FecharCaixa();
+                var f = new FecharCaixa();
                 if (f.ShowDialog() == DialogResult.OK)
-                {
                     Alert.Message("Pronto!", "Caixa fechado com sucesso.", Alert.AlertType.success);
-                }
             };
 
-            btnTaxas.Click += (s, e) =>
-            {
-                OpenForm.Show<Taxas>(this);
-            };
+            btnTaxas.Click += (s, e) => { OpenForm.Show<Taxas>(this); };
         }
     }
 }

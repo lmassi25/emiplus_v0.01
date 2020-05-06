@@ -1,18 +1,17 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Emiplus.View.Produtos;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+using VisualPlus.Toolkit.Controls.Layout;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class EditarTitulo : Form
     {
-        public static int IdTitulo { get; set; }
         private Titulo _modelTitulo = new Titulo();
 
         public EditarTitulo()
@@ -21,18 +20,29 @@ namespace Emiplus.View.Financeiro
             Eventos();
         }
 
+        public static int IdTitulo { get; set; }
+
         private void LoadData()
         {
             _modelTitulo = _modelTitulo.FindById(IdTitulo).FirstOrDefault<Titulo>();
 
-            emissao.Text = _modelTitulo.Emissao == null ? Validation.ConvertDateToForm(Validation.DateNowToSql()) : Validation.ConvertDateToForm(_modelTitulo.Emissao);
-            vencimento.Text = _modelTitulo.Vencimento == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Vencimento);
+            emissao.Text = _modelTitulo.Emissao == null
+                ? Validation.ConvertDateToForm(Validation.DateNowToSql())
+                : Validation.ConvertDateToForm(_modelTitulo.Emissao);
+            vencimento.Text = _modelTitulo.Vencimento == null
+                ? ""
+                : Validation.ConvertDateToForm(_modelTitulo.Vencimento);
 
-            total.Text = _modelTitulo.Total == 0 ? "" : Validation.Price(_modelTitulo.Total);
+            total.Text = Math.Abs(_modelTitulo.Total) < 0 ? "" : Validation.Price(_modelTitulo.Total);
 
-            dataRecebido.Text = _modelTitulo.Baixa_data == null ? "" : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
-            recebido.Text = _modelTitulo.Recebido == 0 ? "" : Validation.Price(_modelTitulo.Recebido);
-            valorBruto.Text = _modelTitulo.Valor_Bruto == 0 ? "" : Validation.Price(_modelTitulo.Valor_Bruto);
+            dataRecebido.Text = _modelTitulo.Baixa_data == null
+                ? ""
+                : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
+            recebido.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? "" : Validation.Price(_modelTitulo.Recebido);
+            valorVenda.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? Validation.FormatPrice(0, true) : Validation.FormatPrice(_modelTitulo.Recebido, true);
+            valorLiquido.Text = Math.Abs(_modelTitulo.Valor_Liquido) < 0
+                ? Validation.FormatPrice(0, true)
+                : Validation.FormatPrice(_modelTitulo.Valor_Liquido, true);
 
             if (_modelTitulo.Recebido > 0)
             {
@@ -73,11 +83,13 @@ namespace Emiplus.View.Financeiro
             _modelTitulo.Vencimento = Validation.ConvertDateToSql(vencimento.Text);
             _modelTitulo.Emissao = Validation.ConvertDateToSql(emissao.Text);
             _modelTitulo.Total = Validation.ConvertToDouble(total.Text);
-            _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text) ? null : Validation.ConvertDateToSql(dataRecebido.Text);
+            _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text)
+                ? null
+                : Validation.ConvertDateToSql(dataRecebido.Text);
             _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
-            _modelTitulo.Valor_Bruto = Validation.ConvertToDouble(valorBruto.Text);
+            //_modelTitulo.Valor_Liquido = Validation.ConvertToDouble(valorBruto.Text);
             _modelTitulo.Qtd_Recorrencia = Validation.ConvertToInt32(xRecorrente.Text);
-           
+
             _modelTitulo.Id_Pessoa = Validation.ConvertToInt32(cliente.SelectedValue);
             _modelTitulo.Id_FormaPgto = Validation.ConvertToInt32(formaPgto.SelectedValue);
             _modelTitulo.Id_Categoria = Validation.ConvertToInt32(receita.SelectedValue);
@@ -85,9 +97,9 @@ namespace Emiplus.View.Financeiro
 
             if (_modelTitulo.Save(_modelTitulo))
             {
-                if (IdTitulo == 0) {
-
-                    int idTituloPai = _modelTitulo.GetLastId();
+                if (IdTitulo == 0)
+                {
+                    var idTituloPai = _modelTitulo.GetLastId();
                     _modelTitulo.Id = idTituloPai;
                     _modelTitulo.ID_Recorrencia_Pai = idTituloPai;
                     _modelTitulo.Nr_Recorrencia = 1;
@@ -95,9 +107,9 @@ namespace Emiplus.View.Financeiro
 
                     if (xRecorrente.Text != "0")
                     {
-                        int qtdRep = Validation.ConvertToInt32(xRecorrente.Text);
-                        int nr = 1;
-                        for (int i = 1; i < qtdRep; i++)
+                        var qtdRep = Validation.ConvertToInt32(xRecorrente.Text);
+                        var nr = 1;
+                        for (var i = 1; i < qtdRep; i++)
                         {
                             nr++;
 
@@ -105,7 +117,7 @@ namespace Emiplus.View.Financeiro
                             _modelTitulo.ID_Recorrencia_Pai = idTituloPai;
                             _modelTitulo.Tipo = Home.financeiroPage;
 
-                            DateTime dataVencimento = Convert.ToDateTime(vencimento.Text);
+                            var dataVencimento = Convert.ToDateTime(vencimento.Text);
                             switch (recorrente.SelectedIndex)
                             {
                                 case 1:
@@ -135,7 +147,9 @@ namespace Emiplus.View.Financeiro
 
                             _modelTitulo.Emissao = Validation.ConvertDateToSql(emissao.Text);
                             _modelTitulo.Total = Validation.ConvertToDouble(total.Text);
-                            _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text) ? null : Validation.ConvertDateToSql(dataRecebido.Text);
+                            _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text)
+                                ? null
+                                : Validation.ConvertDateToSql(dataRecebido.Text);
                             _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
                             _modelTitulo.Qtd_Recorrencia = Validation.ConvertToInt32(xRecorrente.Text);
 
@@ -164,38 +178,39 @@ namespace Emiplus.View.Financeiro
 
         private void LoadCategorias()
         {
-            var CategoriasdeContas = "";
-            if (Home.financeiroPage == "Pagar")
-                CategoriasdeContas = "Despesas";
-            else
-                CategoriasdeContas = "Receitas";
+            var categoriasdeContas = Home.financeiroPage == "Pagar" ? "Despesas" : "Receitas";
 
-            receita.DataSource = new Categoria().GetAll(CategoriasdeContas);
+            receita.DataSource = new Categoria().GetAll(categoriasdeContas);
             receita.ValueMember = "Id";
             receita.DisplayMember = "Nome";
         }
 
         private void LoadRecorrencia()
         {
-            Titulo dadosRecorrencia = _modelTitulo.FindById(IdTitulo).Where("tipo_recorrencia" , "!=", "0").FirstOrDefault<Titulo>();
+            var dadosRecorrencia = _modelTitulo.FindById(IdTitulo).Where("tipo_recorrencia", "!=", "0")
+                .FirstOrDefault<Titulo>();
             if (dadosRecorrencia != null)
             {
                 checkRepetir.Checked = true;
                 recorrente.Enabled = true;
                 xRecorrente.Enabled = true;
                 panel1.Visible = true;
-                int qtdTitulo = 0;
+                var qtdTitulo = 0;
 
                 if (dadosRecorrencia.ID_Recorrencia_Pai != 0)
                 {
-                    var qtdTitulos = _modelTitulo.Query().SelectRaw("COUNT (id) AS TOTAL").Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai).WhereNotNull("id_recorrencia_pai").FirstOrDefault();
+                    var qtdTitulos = _modelTitulo.Query().SelectRaw("COUNT (id) AS TOTAL")
+                        .Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai)
+                        .WhereNotNull("id_recorrencia_pai").FirstOrDefault();
                     qtdTitulo = Validation.ConvertToInt32(qtdTitulos.TOTAL);
 
-                    var ValorTitulos = _modelTitulo.Query().SelectRaw("SUM (total) AS TOTAL").Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai).WhereNotNull("id_recorrencia_pai").FirstOrDefault();
-                    label22.Text = Validation.FormatPrice(Validation.ConvertToDouble(ValorTitulos.TOTAL), true);
+                    var valorTitulos = _modelTitulo.Query().SelectRaw("SUM (total) AS TOTAL")
+                        .Where("id_recorrencia_pai", dadosRecorrencia.ID_Recorrencia_Pai)
+                        .WhereNotNull("id_recorrencia_pai").FirstOrDefault();
+                    label22.Text = Validation.FormatPrice(Validation.ConvertToDouble(valorTitulos.TOTAL), true);
                 }
 
-                string nrParcela = $"{dadosRecorrencia.Nr_Recorrencia.ToString()} de {qtdTitulo}";
+                var nrParcela = $"{dadosRecorrencia.Nr_Recorrencia.ToString()} de {qtdTitulo}";
                 label18.Text = nrParcela;
 
                 xRecorrente.Enabled = false;
@@ -220,21 +235,26 @@ namespace Emiplus.View.Financeiro
             Load += (s, e) =>
             {
                 ToolHelp.Show("Defina a data de emissão do título!", pictureBox12, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                ToolHelp.Show("Defina a data inicial do vencimento do título!", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                ToolHelp.Show("Escolha a recorrência para esse título.\nObservação: O campo 'Quantas parcelas' irá criar os titulos conforme o número preenchido no momento que salvar, caso fique em branco os título só será gerado no prazo definido de antecedência do vencimento.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-                ToolHelp.Show("Defina a quantidade de parcelas que deseja gerar com base no campo anterior, caso desejar 'deixe em branco' para o sistema gerar automaticamente as parcelas quando o prazo de vencimento estiver chegando.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show("Defina a data inicial do vencimento do título!", pictureBox4, ToolHelp.ToolTipIcon.Info,
+                    "Ajuda!");
+                ToolHelp.Show(
+                    "Escolha a recorrência para esse título.\nObservação: O campo 'Quantas parcelas' irá criar os titulos conforme o número preenchido no momento que salvar, caso fique em branco os título só será gerado no prazo definido de antecedência do vencimento.",
+                    pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show(
+                    "Defina a quantidade de parcelas que deseja gerar com base no campo anterior, caso desejar 'deixe em branco' para o sistema gerar automaticamente as parcelas quando o prazo de vencimento estiver chegando.",
+                    pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
                 if (Home.financeiroPage == "Pagar")
                 {
-                    label23.Text = "Pagar para";
-                    label6.Text = "Pagamentos";
-                    label8.Text = "Despesa";
-                    label3.Text = "Forma Pagar";
-                    label12.Text = "Esse pagamento se repete?";
+                    label23.Text = @"Pagar para";
+                    label6.Text = @"Pagamentos";
+                    label8.Text = @"Despesa";
+                    label3.Text = @"Forma Pagar";
+                    label12.Text = @"Esse pagamento se repete?";
 
-                    label9.Text = "Data Pagamento";
-                    label10.Text = "Valor Pagamento";
-                    btnRecebidoPago.Text = "Pago";
+                    label9.Text = @"Data Pagamento";
+                    label10.Text = @"Valor Pagamento";
+                    btnRecebidoPago.Text = @"Pago";
                 }
 
                 formaPgto.ValueMember = "Id";
@@ -267,54 +287,48 @@ namespace Emiplus.View.Financeiro
                 if (data)
                     Close();
             };
-            
+
             xRecorrente.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e);
-            emissao.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            dataRecebido.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            vencimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            emissao.KeyPress += Masks.MaskBirthday;
+            dataRecebido.KeyPress += Masks.MaskBirthday;
+            vencimento.KeyPress += Masks.MaskBirthday;
             total.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             recebido.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
-            recorrente.SelectedIndexChanged += (s, e) =>
-            {
-                if (recorrente.SelectedIndex == 0)
-                    xRecorrente.Enabled = false;
-                else
-                    xRecorrente.Enabled = true;
-            };
+            recorrente.SelectedIndexChanged += (s, e) => { xRecorrente.Enabled = recorrente.SelectedIndex != 0; };
 
             btnAddCliente.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";
-                Comercial.AddClientes.Id = 0;
-                Comercial.AddClientes f = new Comercial.AddClientes();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
+                AddClientes.Id = 0;
+                var f = new AddClientes
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadFornecedores();
             };
 
             btnAddCategoria.Click += (s, e) =>
             {
-                string CategoriasdeContas = "";
-                if (Home.financeiroPage == "Pagar")
-                    CategoriasdeContas = "Despesas";
-                else
-                    CategoriasdeContas = "Receitas";
+                var categoriasdeContas = Home.financeiroPage == "Pagar" ? "Despesas" : "Receitas";
 
-                Home.CategoriaPage = CategoriasdeContas;
-                AddCategorias f = new AddCategorias();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
+                Home.CategoriaPage = categoriasdeContas;
+                var f = new AddCategorias
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadCategorias();
             };
@@ -337,22 +351,39 @@ namespace Emiplus.View.Financeiro
             {
                 if (btnRecebidoPago.Checked)
                 {
-                     dataRecebido.Enabled = true;
+                    dataRecebido.Enabled = true;
                     formaPgto.Enabled = true;
                     recebido.Enabled = true;
                 }
                 else
                 {
-                     dataRecebido.Enabled = false;
+                    dataRecebido.Enabled = false;
                     formaPgto.Enabled = false;
                     recebido.Enabled = false;
                 }
             };
 
+            menuTaxas.Click += (s, e) => DynamicPanel(panelTaxas);
+            menuBoleto.Click += (s, e) => DynamicPanel(panelBoleto);
+
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+        }
+
+        private void DynamicPanel(VisualPanel panel)
+        {
+            if (panel.Visible == false)
+            {
+                flowLayoutPanel.Height = flowLayoutPanel.Height + panel.Height;
+                panel.Visible = true;
+            }
+            else
+            {
+                flowLayoutPanel.Height = flowLayoutPanel.Height - panel.Height;
+                panel.Visible = false;
+            }
         }
     }
 }

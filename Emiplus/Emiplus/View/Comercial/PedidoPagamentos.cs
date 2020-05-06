@@ -1,45 +1,34 @@
-﻿using Emiplus.Data.Core;
+﻿using System;
+using System.Collections;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using Emiplus.Controller;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using Emiplus.View.Financeiro;
 using Emiplus.View.Fiscal.TelasNota;
 using SqlKata.Execution;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
+using Nota = Emiplus.Model.Nota;
+using PedidoItem = Emiplus.Model.PedidoItem;
+using Taxas = Emiplus.Model.Taxas;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoPagamentos : Form
     {
-        #region V 
+        private readonly Titulo _controllerTitulo = new Titulo();
+        private readonly PedidoItem _mPedidoItens = new PedidoItem();
+        private readonly Model.Titulo _mTitulo = new Model.Titulo();
 
-        MaskedTextBox mtxt = new MaskedTextBox();
-        TextBox mtxt2 = new TextBox();
+        private readonly int idPedido = AddPedidos.Id;
+        private readonly MaskedTextBox mtxt = new MaskedTextBox();
+        private readonly TextBox mtxt2 = new TextBox();
 
-        private int IdPedido = AddPedidos.Id;
-        public static bool hideFinalizar { get; set; } = false;
-
-        private Model.Item _mItem = new Model.Item();
         private Model.Pedido _mPedido = new Model.Pedido();
-        private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
-        private Model.Pessoa _mCliente = new Model.Pessoa();
-        private Model.Titulo _mTitulo = new Model.Titulo();
-        private bool TelaESC { get; set; }
-        private bool recebimentos { get; set; }
 
-        private Controller.Titulo _controllerTitulo = new Controller.Titulo();
-        private Controller.Fiscal _controllerFiscal = new Controller.Fiscal();
-
-        private int CaixaAnterior, cellSave = 0;
-
-        private static bool PayVerify { get; set; }
-
-        #endregion
+        private int caixaAnterior;
 
         public PedidoPagamentos()
         {
@@ -47,33 +36,42 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        public void AtualizarDados(Boolean grid = true)
-        {
-            _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+        public static bool HideFinalizar { get; set; } = false;
+        private bool TelaEsc { get; set; }
+        private bool Recebimentos { get; set; }
 
-            if(grid)
-                _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, IdPedido);
+        private static bool PayVerify { get; set; }
+
+        public void AtualizarDados(bool grid = true)
+        {
+            _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+
+            if (grid)
+                _controllerTitulo.GetDataTableTitulos(GridListaFormaPgtos, idPedido);
 
             dynamic devolucoes = _mPedido.Query()
                 .SelectRaw("SUM(total) as total")
                 .Where("excluir", 0)
                 .Where("tipo", "Devoluções")
-                .Where("Venda", IdPedido)
+                .Where("Venda", idPedido)
                 .FirstOrDefault<Model.Pedido>();
 
-            acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(IdPedido), true);
-            discount.Text = Validation.FormatPrice((_controllerTitulo.GetTotalDesconto(IdPedido) + Validation.ConvertToDouble(devolucoes.Total)), true);
-            troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(IdPedido), true).Replace("-", "");
-            pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(IdPedido), true);
-            total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(IdPedido), true);
+            acrescimos.Text = Validation.FormatPrice(_controllerTitulo.GetTotalFrete(idPedido), true);
+            discount.Text =
+                Validation.FormatPrice(
+                    _controllerTitulo.GetTotalDesconto(idPedido) + Validation.ConvertToDouble(devolucoes.Total), true);
+            troco.Text = Validation.FormatPrice(_controllerTitulo.GetTroco(idPedido), true).Replace("-", "");
+            pagamentos.Text = Validation.FormatPrice(_controllerTitulo.GetLancados(idPedido), true);
+            total.Text = Validation.FormatPrice(_controllerTitulo.GetTotalPedido(idPedido), true);
 
-            var aPagar = Validation.RoundTwo(_controllerTitulo.GetTotalPedido(IdPedido) - _controllerTitulo.GetLancados(IdPedido));
-            if (_controllerTitulo.GetLancados(IdPedido) < _controllerTitulo.GetTotalPedido(IdPedido))             
-                aPagartxt.Text = Validation.FormatPrice(aPagar, true);
-            else
-                aPagartxt.Text = "R$ 0,00";
+            var aPagar = Validation.RoundTwo(_controllerTitulo.GetTotalPedido(idPedido) -
+                                             _controllerTitulo.GetLancados(idPedido));
 
-            if (_controllerTitulo.GetLancados(IdPedido) > 0)
+            aPagartxt.Text = _controllerTitulo.GetLancados(idPedido) < _controllerTitulo.GetTotalPedido(idPedido)
+                ? Validation.FormatPrice(aPagar, true)
+                : "R$ 0,00";
+
+            if (_controllerTitulo.GetLancados(idPedido) > 0)
             {
                 Desconto.Enabled = false;
                 Acrescimo.Enabled = false;
@@ -92,7 +90,7 @@ namespace Emiplus.View.Comercial
                 aPagartxt.BackColor = Color.FromArgb(46, 204, 113);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(46, 204, 113);
                 visualPanel1.Border.Color = Color.FromArgb(39, 192, 104);
-                recebimentos = false;
+                Recebimentos = false;
                 Dinheiro.Enabled = false;
                 Cheque.Enabled = false;
                 Debito.Enabled = false;
@@ -108,7 +106,7 @@ namespace Emiplus.View.Comercial
                 aPagartxt.BackColor = Color.FromArgb(255, 40, 81);
                 visualPanel1.BackColorState.Enabled = Color.FromArgb(255, 40, 81);
                 visualPanel1.Border.Color = Color.FromArgb(241, 33, 73);
-                recebimentos = true;
+                Recebimentos = true;
                 Dinheiro.Enabled = true;
                 Cheque.Enabled = true;
                 Debito.Enabled = true;
@@ -120,49 +118,49 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void bSalvar()
+        private void BSalvar()
         {
             switch (lTipo.Text)
             {
                 case "Dinheiro":
-                    _controllerTitulo.AddPagamento(IdPedido, 1, valor.Text, iniciar.Text);
+                    _controllerTitulo.AddPagamento(idPedido, 1, valor.Text, iniciar.Text);
                     break;
 
                 case "Cheque":
-                    _controllerTitulo.AddPagamento(IdPedido, 2, valor.Text, iniciar.Text, parcelas.Text);
+                    _controllerTitulo.AddPagamento(idPedido, 2, valor.Text, iniciar.Text, parcelas.Text);
                     break;
 
                 case "Cartão de Débito":
-                    _controllerTitulo.AddPagamento(IdPedido, 3, valor.Text, iniciar.Text, "1", Validation.ConvertToInt32(taxas.SelectedValue));
+                    _controllerTitulo.AddPagamento(idPedido, 3, valor.Text, iniciar.Text, "1",
+                        Validation.ConvertToInt32(taxas.SelectedValue));
                     break;
 
                 case "Cartão de Crédito":
-                    _controllerTitulo.AddPagamento(IdPedido, 4, valor.Text, iniciar.Text, parcelas.Text, Validation.ConvertToInt32(taxas.SelectedValue));
+                    _controllerTitulo.AddPagamento(idPedido, 4, valor.Text, iniciar.Text, parcelas.Text,
+                        Validation.ConvertToInt32(taxas.SelectedValue));
                     break;
 
                 case "Crediário":
-                    _controllerTitulo.AddPagamento(IdPedido, 5, valor.Text, iniciar.Text, parcelas.Text);
+                    _controllerTitulo.AddPagamento(idPedido, 5, valor.Text, iniciar.Text, parcelas.Text);
                     break;
 
                 case "Boleto":
-                    _controllerTitulo.AddPagamento(IdPedido, 6, valor.Text, iniciar.Text, parcelas.Text);
+                    _controllerTitulo.AddPagamento(idPedido, 6, valor.Text, iniciar.Text, parcelas.Text);
                     break;
             }
 
+            PedidoModalDividirConta.ValorDividido = 0;
             PayVerify = false;
 
             TelaReceber.Visible = false;
 
-            if (CaixaAnterior > 0)
-                Home.idCaixa = CaixaAnterior;
+            if (caixaAnterior > 0)
+                Home.idCaixa = caixaAnterior;
 
-            _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+            _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
             if (_mPedido != null)
             {
-                if (_controllerTitulo.GetLancados(IdPedido) < Validation.Round(_mPedido.Total))
-                    _mPedido.status = 2; //RECEBIMENTO PENDENTE
-                else
-                    _mPedido.status = 1; //FINALIZADO\RECEBIDO
+                _mPedido.status = _controllerTitulo.GetLancados(idPedido) < Validation.Round(_mPedido.Total) ? 2 : 1;
 
                 _mPedido.Save(_mPedido);
             }
@@ -174,7 +172,7 @@ namespace Emiplus.View.Comercial
         {
             TelaReceber.Refresh();
 
-            if (!recebimentos)
+            if (!Recebimentos)
                 return;
 
             if (!CheckCaixa())
@@ -246,10 +244,9 @@ namespace Emiplus.View.Comercial
                     break;
             }
 
-            if (PedidoModalDividirConta.ValorDividido <= 0)
-                valor.Text = Validation.FormatPrice(_controllerTitulo.GetRestante(IdPedido));
-            else
-                valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
+            valor.Text = PedidoModalDividirConta.ValorDividido <= 0
+                ? Validation.FormatPrice(_controllerTitulo.GetRestante(idPedido))
+                : Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
         }
 
         private void JanelaDesconto()
@@ -257,10 +254,11 @@ namespace Emiplus.View.Comercial
             if (!CheckCaixa())
                 return;
 
-            PedidoPayDesconto.idPedido = IdPedido;
-            using (PedidoPayDesconto Desconto = new PedidoPayDesconto()) {
-                Desconto.TopMost = true;
-                if (Desconto.ShowDialog() == DialogResult.OK)
+            PedidoPayDesconto.idPedido = idPedido;
+            using (var desconto = new PedidoPayDesconto())
+            {
+                desconto.TopMost = true;
+                if (desconto.ShowDialog() == DialogResult.OK)
                     AtualizarDados();
             }
         }
@@ -270,10 +268,11 @@ namespace Emiplus.View.Comercial
             if (!CheckCaixa())
                 return;
 
-            PedidoPayAcrescimo.idPedido = IdPedido;
-            using (PedidoPayAcrescimo Acrescimo = new PedidoPayAcrescimo()) {
-                Acrescimo.TopMost = true;
-                if (Acrescimo.ShowDialog() == DialogResult.OK)
+            PedidoPayAcrescimo.idPedido = idPedido;
+            using (var acrescimo = new PedidoPayAcrescimo())
+            {
+                acrescimo.TopMost = true;
+                if (acrescimo.ShowDialog() == DialogResult.OK)
                     AtualizarDados();
             }
         }
@@ -283,8 +282,9 @@ namespace Emiplus.View.Comercial
             if (!CheckCaixa())
                 return;
 
-            PedidoPayDevolucao.idPedido = IdPedido;
-            using (PedidoPayDevolucao f = new PedidoPayDevolucao()) {
+            PedidoPayDevolucao.idPedido = idPedido;
+            using (var f = new PedidoPayDevolucao())
+            {
                 f.TopMost = true;
                 if (f.ShowDialog() == DialogResult.OK)
                     AtualizarDados();
@@ -295,108 +295,94 @@ namespace Emiplus.View.Comercial
         {
             if (Home.idCaixa == 0)
             {
-                Alert.Message("Ação não permitida", "É necessário abrir ou vincular um caixa para continuar", Alert.AlertType.warning);
+                Alert.Message("Ação não permitida", "É necessário abrir ou vincular um caixa para continuar",
+                    Alert.AlertType.warning);
 
-                AbrirCaixa f = new AbrirCaixa();
-                f.TopMost = true;
+                var f = new AbrirCaixa {TopMost = true};
                 f.ShowDialog();
 
                 return false;
             }
-            else
-            {
-                CaixaAnterior = Home.idCaixa;
-                if (_mPedido.Id_Caixa > 0)
-                    Home.idCaixa = _mPedido.Id_Caixa;
-            }
+
+            caixaAnterior = Home.idCaixa;
+            if (_mPedido.Id_Caixa > 0)
+                Home.idCaixa = _mPedido.Id_Caixa;
 
             return true;
         }
 
         /// <summary>
-        /// True para imprimir, false para não imprimir
+        ///     True para imprimir, false para não imprimir
         /// </summary>
         public void Concluir(bool imprimir = true)
         {
-            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != @"R$ 0,00")
             {
-                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.warning);
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar",
+                    Alert.AlertType.warning);
+
                 return;
             }
 
-            Model.Pedido Pedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
-            if (Pedido != null)
+            var pedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+            if (pedido != null)
             {
-                Pedido.Id = IdPedido;
-
-                if (_controllerTitulo.GetLancados(IdPedido) < Pedido.Total)
-                    Pedido.status = 2; //RECEBIMENTO PENDENTE
-                else
-                    Pedido.status = 1; //FINALIZADO\RECEBIDO
-
-                if (Pedido.Save(Pedido))
-                {
-                    //Alert.Message("Pronto!", "Finalizado com sucesso.", Alert.AlertType.success);
-                    AddPedidos.btnFinalizado = true;
-                }
+                pedido.Id = idPedido;
+                pedido.status = _controllerTitulo.GetLancados(idPedido) < pedido.Total ? 2 : 1;
+                if (pedido.Save(pedido))
+                    AddPedidos.BtnFinalizado = true;
             }
 
             if (Home.pedidoPage == "Compras")
             {
                 imprimir = false;
-                Application.OpenForms["AddPedidos"].Close();
+                Application.OpenForms["AddPedidos"]?.Close();
                 Close();
             }
 
             if (imprimir)
             {
-                if (AlertOptions.Message("Impressão!", "Deseja imprimir?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo, true))
-                    new Controller.Pedido().Imprimir(IdPedido);
+                if (AlertOptions.Message("Impressão!", "Deseja imprimir?", AlertBig.AlertType.info,
+                    AlertBig.AlertBtn.YesNo, true))
+                    new Controller.Pedido().Imprimir(idPedido);
 
-                try
-                {
-                    Application.OpenForms["AddPedidos"].Close();
+                Application.OpenForms["AddPedidos"]?.Close();
 
-                    if (IniFile.Read("RetomarVenda", "Comercial") == "True")
-                    {
-                        AddPedidos.Id = 0;
-                        AddPedidos reopen = new AddPedidos();
-                        reopen.TopMost = true;
-                        reopen.Show();
-                    }
-                }
-                catch (Exception)
+                if (IniFile.Read("RetomarVenda", "Comercial") == "True")
                 {
-                    throw;
+                    AddPedidos.Id = 0;
+                    var reopen = new AddPedidos {TopMost = true};
+                    reopen.Show();
                 }
 
                 DialogResult = DialogResult.OK;
-                Application.OpenForms["PedidoPagamentos"].Close();
+                Application.OpenForms["PedidoPagamentos"]?.Close();
             }
         }
 
         public void Nfe()
         {
-            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != @"R$ 0,00")
             {
-                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar", Alert.AlertType.warning);
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para finalizar",
+                    Alert.AlertType.warning);
                 return;
             }
 
             Concluir(false);
 
-            OpcoesNfeRapida.idPedido = IdPedido;
+            OpcoesNfeRapida.idPedido = idPedido;
             OpcoesNfeRapida.idNota = 0;
-            OpcoesNfeRapida f = new OpcoesNfeRapida();
-            f.TopMost = true;
+            var f = new OpcoesNfeRapida {TopMost = true};
             f.Show();
         }
 
         public void Cfe()
         {
-            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != "R$ 0,00")
+            if (Home.pedidoPage == "Vendas" && aPagartxt.Text != @"R$ 0,00")
             {
-                Alert.Message("Ação não permitida", "É necessário informar recebimentos para continuar", Alert.AlertType.warning);
+                Alert.Message("Ação não permitida", "É necessário informar recebimentos para continuar",
+                    Alert.AlertType.warning);
                 return;
             }
 
@@ -404,20 +390,23 @@ namespace Emiplus.View.Comercial
 
             OpcoesCfe.idNota = 0;
 
-            var checkNota = new Model.Nota().FindByIdPedidoUltReg(IdPedido, "", "CFe").FirstOrDefault<Model.Nota>();
+            var checkNota = new Nota().FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Nota>();
             if (checkNota == null)
             {
-                Model.Nota _modelNota = new Model.Nota();
-
-                _modelNota.Id = 0;
-                _modelNota.Tipo = "CFe";
-                _modelNota.Status = "Pendente";
-                _modelNota.id_pedido = IdPedido;
+                var _modelNota = new Nota
+                {
+                    Id = 0, 
+                    Tipo = "CFe", 
+                    Status = "Pendente", 
+                    id_pedido = idPedido
+                };
                 if (!_modelNota.Save(_modelNota, false))
                 {
-                    Alert.Message("Ação não permitida", "Problema com tabela Notas. Entre em contato com o suporte técnico!", Alert.AlertType.warning);
+                    Alert.Message("Ação não permitida",
+                        "Problema com tabela Notas. Entre em contato com o suporte técnico!", Alert.AlertType.warning);
                     return;
-                }                    
+                }
+
                 checkNota = _modelNota;
             }
 
@@ -426,52 +415,58 @@ namespace Emiplus.View.Comercial
             else
                 return;
 
-            if (checkNota.Status == "Falha")
+            switch (checkNota.Status)
             {
-                Alert.Message("Ação não permitida", "Entre em contato com o suporte técnico", Alert.AlertType.warning);
-                return;
-            }
-            else if (checkNota.Status == "Autorizada" || checkNota.Status == "Autorizado")
-            {
-                OpcoesCfe.idPedido = IdPedido;
-                OpcoesCfe f = new OpcoesCfe();
-                f.TopMost = true;
-                f.Show();
-
-            }
-            else if (checkNota.Status == "Cancelada" || checkNota.Status == "Cancelado")
-            {
-                var result = AlertOptions.Message("Atenção!", "Existem registro(s) de cupon(s) cancelado(s) a partir desta venda. Deseja gerar um novo cupom?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                if (result)
+                case "Falha":
+                    Alert.Message("Ação não permitida", "Entre em contato com o suporte técnico", Alert.AlertType.warning);
+                    break;
+                case "Autorizada":
+                case "Autorizado":
                 {
-                    Model.Nota _modelNota = new Model.Nota();
+                    OpcoesCfe.idPedido = idPedido;
+                    var f = new OpcoesCfe {TopMost = true};
+                    f.Show();
+                    break;
+                }
+                case "Cancelada":
+                case "Cancelado":
+                {
+                    var result = AlertOptions.Message("Atenção!",
+                        "Existem registro(s) de cupon(s) cancelado(s) a partir desta venda. Deseja gerar um novo cupom?",
+                        AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if (result)
+                    {
+                        var _modelNota = new Nota
+                        {
+                            Id = 0,
+                            Tipo = "CFe", 
+                            Status = "Pendente", 
+                            id_pedido = idPedido
+                        };
+                        _modelNota.Save(_modelNota, false);
 
-                    _modelNota.Id = 0;
-                    _modelNota.Tipo = "CFe";
-                    _modelNota.Status = "Pendente";
-                    _modelNota.id_pedido = IdPedido;
-                    _modelNota.Save(_modelNota, false);
+                        checkNota = _modelNota;
 
-                    checkNota = _modelNota;
+                        OpcoesCfeEmitir.fecharTelas = true;
 
+                        OpcoesCfeCpf.idPedido = idPedido;
+                        OpcoesCfeCpf.emitir = true;
+                        var f = new OpcoesCfeCpf {TopMost = true};
+                        f.Show();
+                    }
+
+                    break;
+                }
+                case "Pendente":
+                {
                     OpcoesCfeEmitir.fecharTelas = true;
 
-                    OpcoesCfeCpf.idPedido = IdPedido;
+                    OpcoesCfeCpf.idPedido = idPedido;
                     OpcoesCfeCpf.emitir = true;
-                    OpcoesCfeCpf f = new OpcoesCfeCpf();
-                    f.TopMost = true;
+                    var f = new OpcoesCfeCpf {TopMost = true};
                     f.Show();
+                    break;
                 }
-            }
-            else if (checkNota.Status == "Pendente")
-            {
-                OpcoesCfeEmitir.fecharTelas = true;
-
-                OpcoesCfeCpf.idPedido = IdPedido;
-                OpcoesCfeCpf.emitir = true;
-                OpcoesCfeCpf f = new OpcoesCfeCpf();
-                f.TopMost = true;
-                f.Show();
             }
         }
 
@@ -483,42 +478,42 @@ namespace Emiplus.View.Comercial
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    bSalvar();
+                    BSalvar();
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F1:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Dinheiro");
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F2:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Cheque");
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F3:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Cartão de Débito");
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F4:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Cartão de Crédito");
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F5:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Crediário");
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.F6:
-                    TelaESC = true;
+                    TelaEsc = true;
                     JanelasRecebimento("Boleto");
                     e.SuppressKeyPress = true;
                     break;
@@ -548,7 +543,7 @@ namespace Emiplus.View.Comercial
                     break;
 
                 case Keys.F11:
-                    new Controller.Pedido().Imprimir(IdPedido);
+                    new Controller.Pedido().Imprimir(idPedido);
                     //new PedidoImpressao().Print(IdPedido);
                     break;
 
@@ -558,31 +553,29 @@ namespace Emiplus.View.Comercial
                     break;
 
                 case Keys.Escape:
-                    if (TelaESC)
+                    if (TelaEsc)
                     {
                         TelaReceber.Visible = false;
-                        TelaESC = false;
+                        TelaEsc = false;
                         e.SuppressKeyPress = true;
                     }
                     else
                     {
-                        if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                        if (_controllerTitulo.GetLancados(idPedido) > 0)
                         {
                             var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
-                            var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                            var message = AlertOptions.Message("Atenção",
+                                $"Os {text} lançados serão apagados,\ndeseja continuar?", AlertBig.AlertType.warning,
+                                AlertBig.AlertBtn.YesNo);
                             if (message)
                             {
                                 foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
-                                {
                                     if (Convert.ToString(row.Cells[0].Value) != "")
-                                    {
                                         _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
-                                    }
-                                }
 
                                 AtualizarDados();
 
-                                _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                                _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                                 _mPedido.status = 2;
                                 _mPedido.Save(_mPedido);
 
@@ -595,15 +588,16 @@ namespace Emiplus.View.Comercial
                         }
 
                         e.SuppressKeyPress = true;
-                        AddPedidos.btnVoltar = true;
+                        AddPedidos.BtnVoltar = true;
                         Close();
                     }
+
                     break;
             }
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
@@ -624,31 +618,31 @@ namespace Emiplus.View.Comercial
             {
                 Resolution.SetScreenMaximized(this);
 
-                AddPedidos.btnFinalizado = false;
+                AddPedidos.BtnFinalizado = false;
                 TelaReceber.Visible = false;
 
                 if (Home.pedidoPage == "Orçamentos")
                 {
-                    label13.Text = $"Dados do Orçamento: {IdPedido}";
-                    label10.Text = "Siga as etapas abaixo para criar um orçamento!";
+                    label13.Text = $@"Dados do Orçamento: {idPedido}";
+                    label10.Text = @"Siga as etapas abaixo para criar um orçamento!";
                 }
                 else if (Home.pedidoPage == "Consignações")
                 {
-                    label13.Text = $"Dados da Consignação: {IdPedido}";
-                    label10.Text = "Siga as etapas abaixo para criar uma consignãção!";
+                    label13.Text = $@"Dados da Consignação: {idPedido}";
+                    label10.Text = @"Siga as etapas abaixo para criar uma consignãção!";
                 }
                 else if (Home.pedidoPage == "Devoluções")
                 {
-                    label13.Text = $"Dados da Devolução: {IdPedido}";
-                    label10.Text = "Siga as etapas abaixo para criar uma devolução!";
+                    label13.Text = $@"Dados da Devolução: {idPedido}";
+                    label10.Text = @"Siga as etapas abaixo para criar uma devolução!";
                 }
                 else if (Home.pedidoPage == "Compras")
                 {
-                    label13.Text = $"Dados da Compra: {IdPedido}";
-                    label10.Text = "Siga as etapas abaixo para adicionar uma compra!";
+                    label13.Text = $@"Dados da Compra: {idPedido}";
+                    label10.Text = @"Siga as etapas abaixo para adicionar uma compra!";
 
-                    label15.Text = "Á Pagar";
-                    label1.Text = "Pagamentos";
+                    label15.Text = @"Á Pagar";
+                    label1.Text = @"Pagamentos";
                     //enviarEmail.Visible = false;
                     btnNfe.Visible = false;
                     button21.Visible = false;
@@ -657,11 +651,11 @@ namespace Emiplus.View.Comercial
                 }
                 else
                 {
-                    label13.Text = $"Dados da Venda: {IdPedido}";
-                    label10.Text = "Siga as etapas abaixo para adicionar uma venda!";
+                    label13.Text = $@"Dados da Venda: {idPedido}";
+                    label10.Text = @"Siga as etapas abaixo para adicionar uma venda!";
                 }
 
-                if (hideFinalizar)
+                if (HideFinalizar)
                 {
                     btnCFeSat.Visible = false;
                     button22.Visible = false;
@@ -686,17 +680,17 @@ namespace Emiplus.View.Comercial
 
                 AtualizarDados();
 
-                AddPedidos.btnFinalizado = false;
+                AddPedidos.BtnFinalizado = false;
 
                 Dinheiro.Focus();
                 Dinheiro.Select();
 
-                ArrayList taxasSource = new ArrayList();
-                IEnumerable<Model.Taxas> dataTaxa = new Model.Taxas().FindAll(new[] { "id", "nome" }).WhereFalse("excluir").Get<Model.Taxas>();
+                var taxasSource = new ArrayList();
+                var dataTaxa = new Taxas().FindAll(new[] {"id", "nome"}).WhereFalse("excluir").Get<Taxas>();
                 taxasSource.Add(new {Id = 0, Nome = "SELECIONE"});
-                if (dataTaxa.Count() > 0)
-                    foreach (Model.Taxas item in dataTaxa)
-                        taxasSource.Add(new {Id = item.Id, Nome = item.Nome});
+                if (dataTaxa.Any())
+                    foreach (var item in dataTaxa)
+                        taxasSource.Add(new {item.Id, item.Nome});
 
                 taxas.DataSource = taxasSource;
                 taxas.DisplayMember = "Nome";
@@ -705,17 +699,7 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                if (AddPedidos.btnFinalizado)
-                {
-                    try
-                    {
-                        Application.OpenForms["AddPedidos"].Close();
-                    }
-                    catch (Exception)
-                    {
-                        throw;
-                    }
-                }
+                if (AddPedidos.BtnFinalizado) Application.OpenForms["AddPedidos"]?.Close();
             };
 
             KeyDown += KeyDowns;
@@ -759,10 +743,7 @@ namespace Emiplus.View.Comercial
             parcelas.KeyDown += KeyDowns;
             iniciar.KeyDown += KeyDowns;
 
-            btnImprimir.Click += (s, e) =>
-            {
-                new Controller.Pedido().Imprimir(IdPedido);
-            };
+            btnImprimir.Click += (s, e) => { new Controller.Pedido().Imprimir(idPedido); };
 
             Debito.Click += (s, e) => JanelasRecebimento("Cartão de Débito");
             Credito.Click += (s, e) => JanelasRecebimento("Cartão de Crédito");
@@ -775,7 +756,7 @@ namespace Emiplus.View.Comercial
             Acrescimo.Click += (s, e) => JanelaAcrescimo();
             Devolucao.Click += (s, e) => JanelaDevolucao();
 
-            btnSalvar.Click += (s, e) => bSalvar();
+            btnSalvar.Click += (s, e) => BSalvar();
             btnCancelar.Click += (s, e) =>
             {
                 PayVerify = true;
@@ -784,23 +765,21 @@ namespace Emiplus.View.Comercial
 
             btnClose.Click += (s, e) =>
             {
-                if (_controllerTitulo.GetLancados(IdPedido) > 0)
+                if (_controllerTitulo.GetLancados(idPedido) > 0)
                 {
                     var text = Home.pedidoPage == "Compras" ? "pagamentos" : "recebimentos";
-                    var message = AlertOptions.Message("Atenção", $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    var message = AlertOptions.Message("Atenção",
+                        $"Os {text} lançados serão apagados,\n deseja continuar?", AlertBig.AlertType.warning,
+                        AlertBig.AlertBtn.YesNo);
                     if (message)
                     {
                         foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
-                        {
                             if (Convert.ToString(row.Cells[0].Value) != "")
-                            {
                                 _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
-                            }
-                        }
 
                         AtualizarDados();
 
-                        _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                        _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                         _mPedido.status = 2;
                         _mPedido.Save(_mPedido);
 
@@ -811,21 +790,22 @@ namespace Emiplus.View.Comercial
                         return;
                     }
                 }
-                
-                AddPedidos.btnVoltar = true;
+
+                AddPedidos.BtnVoltar = true;
                 Close();
             };
 
             btnDividir.Click += (s, e) =>
             {
-                ArrayList itens = new ArrayList();
-                if (PayVerify) {
-                    IEnumerable<Model.PedidoItem> dataItens = _mPedidoItens.FindAll().Where("pedido", IdPedido).WhereFalse("excluir").Get<Model.PedidoItem>(); 
-                    if (dataItens.Count() > 0)
-                    {
-                        foreach (Model.PedidoItem item in dataItens)
-                        {
-                            itens.Add(new {
+                var itens = new ArrayList();
+                if (PayVerify)
+                {
+                    var dataItens = _mPedidoItens.FindAll().Where("pedido", idPedido).WhereFalse("excluir")
+                        .Get<PedidoItem>();
+                    if (dataItens.Any())
+                        foreach (var item in dataItens)
+                            itens.Add(new
+                            {
                                 item.Id,
                                 item.Item,
                                 item.xProd,
@@ -833,53 +813,43 @@ namespace Emiplus.View.Comercial
                                 item.CProd,
                                 item.Quantidade,
                                 item.Total
-                                });
-                        }
-                    }
+                            });
 
                     PedidoModalDividirConta.itens = itens;
                 }
 
-                PedidoModalDividirConta form = new PedidoModalDividirConta();
-                form.TopMost = true;
+                var form = new PedidoModalDividirConta {TopMost = true};
                 if (form.ShowDialog() == DialogResult.OK)
-                {
                     valor.Text = Validation.FormatPrice(PedidoModalDividirConta.ValorDividido);
-                }
             };
 
-            btnConcluir.Click += (s, e) =>
-            {
-                Concluir();
-            };
+            btnConcluir.Click += (s, e) => { Concluir(); };
 
-            iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
-            iniciar.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            iniciar.KeyPress += Masks.MaskBirthday;
+            iniciar.KeyPress += Masks.MaskBirthday;
             valor.KeyPress += (s, e) => Masks.MaskDouble(s, e);
 
             valor.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             mtxt2.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             GridListaFormaPgtos.CellDoubleClick += (s, e) =>
             {
                 if (GridListaFormaPgtos.Columns[e.ColumnIndex].Name == "colExcluir")
-                {
                     if (Convert.ToString(GridListaFormaPgtos.CurrentRow.Cells[4].Value) != "")
                     {
-                        int id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
+                        var id = Validation.ConvertToInt32(GridListaFormaPgtos.CurrentRow.Cells[0].Value);
                         _mTitulo.Remove(id);
                         AtualizarDados();
                     }
-                }
             };
 
             GridListaFormaPgtos.CellBeginEdit += (s, e) =>
@@ -888,9 +858,9 @@ namespace Emiplus.View.Comercial
                 {
                     //-----mtxt
 
-                    mtxt.Mask = "##/##/####";
+                    mtxt.Mask = @"##/##/####";
 
-                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    var rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
                     mtxt.Location = rec.Location;
                     mtxt.Size = rec.Size;
                     mtxt.Text = "";
@@ -905,7 +875,7 @@ namespace Emiplus.View.Comercial
                 {
                     //-----mtxt2
 
-                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    var rec = GridListaFormaPgtos.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
                     mtxt2.Location = rec.Location;
                     mtxt2.Size = rec.Size;
                     mtxt2.Text = "";
@@ -931,8 +901,7 @@ namespace Emiplus.View.Comercial
                     mtxt2.Visible = false;
                 }
 
-                int ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
-
+                var ID = Validation.ConvertToInt32(GridListaFormaPgtos.Rows[e.RowIndex].Cells["colID"].Value);
                 if (ID == 0)
                     return;
 
@@ -942,13 +911,17 @@ namespace Emiplus.View.Comercial
                     return;
 
                 DateTime parsed;
-                if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(), out parsed))
-                    titulo.Vencimento = Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
+                if (DateTime.TryParse(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value.ToString(),
+                    out parsed))
+                    titulo.Vencimento =
+                        Validation.ConvertDateToSql(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value);
                 else
-                    GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value = Validation.ConvertDateToForm(titulo.Vencimento);
-              
+                    GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column1"].Value =
+                        Validation.ConvertDateToForm(titulo.Vencimento);
+
                 titulo.Total = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
-                titulo.Recebido = Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
+                titulo.Recebido =
+                    Validation.ConvertToDouble(GridListaFormaPgtos.Rows[e.RowIndex].Cells["Column3"].Value);
 
                 if (titulo.Save(titulo, false))
                 {
@@ -957,20 +930,24 @@ namespace Emiplus.View.Comercial
                     AtualizarDados(false);
                 }
                 else
+                {
                     Alert.Message("Opsss!", "Algo deu errado ao atualizar o recebimento.", Alert.AlertType.error);
+                }
             };
 
             GridListaFormaPgtos.Scroll += (s, e) =>
             {
                 if (mtxt.Visible)
                 {
-                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    var rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex,
+                        GridListaFormaPgtos.CurrentCell.RowIndex, true);
                     mtxt.Location = rec.Location;
                 }
 
                 if (mtxt2.Visible)
                 {
-                    Rectangle rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex, GridListaFormaPgtos.CurrentCell.RowIndex, true);
+                    var rec = GridListaFormaPgtos.GetCellDisplayRectangle(GridListaFormaPgtos.CurrentCell.ColumnIndex,
+                        GridListaFormaPgtos.CurrentCell.RowIndex, true);
                     mtxt2.Location = rec.Location;
                 }
             };
@@ -978,20 +955,16 @@ namespace Emiplus.View.Comercial
             btnClearRecebimentos.Click += (s, e) =>
             {
                 foreach (DataGridViewRow row in GridListaFormaPgtos.Rows)
-                {
                     if (Convert.ToString(row.Cells[0].Value) != "")
-                    {
                         _mTitulo.Remove(Validation.ConvertToInt32(row.Cells[0].Value), "ID", false);
-                    }
-                }
 
                 AtualizarDados();
 
-                _mPedido = _mPedido.FindById(IdPedido).FirstOrDefault<Model.Pedido>();
+                _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
                 _mPedido.status = 2;
                 _mPedido.Save(_mPedido);
             };
-            
+
             btnNfe.Click += (s, e) =>
             {
                 if (!Support.CheckForInternetConnection())

@@ -4,12 +4,16 @@ using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.View.Common;
 
 namespace Emiplus.View.Comercial
 {
     public partial class Mesa : Form
     {
         public static string nrMesa { get; set; }
+
+        private Model.Pedido _mPedido = new Model.Pedido();
+        private Model.PedidoItem _mPedidoItem = new Model.PedidoItem();
 
         public Mesa()
         {
@@ -105,6 +109,47 @@ namespace Emiplus.View.Comercial
 
                 txtQtd.Text = GridLista.Rows.Count.ToString();
                 txtTotal.Text = $"Valor Total: {Validation.FormatPrice(total, true)}";
+            };
+
+            btnFechar.Click += (s, e) =>
+            {
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a fechar uma mesa, ao continuar não será possível voltar!" + Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                if (!result)
+                    return;
+
+                if (nrMesa != "0")
+                {
+                    _mPedido.Id = 0;
+                    _mPedido.Excluir = 0;
+                    _mPedido.Tipo = "Vendas";
+                    _mPedido.campof = "MESA";
+                    _mPedido.Cliente = 1;
+                    _mPedido.Save(_mPedido);
+                    int idPedido = _mPedido.GetLastId();
+
+                    var dataMesa = _mPedidoItem.FindAll().Where("mesa", nrMesa).WhereFalse("excluir").Where("pedido", 0).Get();
+                    if (dataMesa != null)
+                    {
+                        foreach (dynamic item in dataMesa)
+                        {
+                            int ID = item.ID;
+                            Model.PedidoItem update = _mPedidoItem.FindById(ID).FirstOrDefault<Model.PedidoItem>();
+                            update.Pedido = idPedido;
+                            update.Save(update);
+                        }
+                    }
+
+                    Home.pedidoPage = "Vendas";
+                    AddPedidos.Id = idPedido;
+                    AddPedidos.PDV = false;
+                    AddPedidos NovoPedido = new AddPedidos();
+                    NovoPedido.TopMost = true;
+                    NovoPedido.ShowDialog();
+                }
+                else
+                {
+                    Alert.Message("Oppss", "Selecione uma mesa válida!", Alert.AlertType.warning);
+                }
             };
 
             btnExit.Click += (s, e) => Close();

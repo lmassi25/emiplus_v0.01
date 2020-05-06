@@ -1,6 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
-using System.Windows.Forms;
+using Emiplus.View.Food;
+using Mesas = Emiplus.View.Food.Mesas;
 
 namespace Emiplus.View.Common
 {
@@ -16,7 +18,7 @@ namespace Emiplus.View.Common
         {
             btnAddItem.Click += (s, e) =>
             {
-                AddItemMesa form = new AddItemMesa();
+                var form = new AddItemMesa();
                 form.ShowDialog();
             };
 
@@ -26,13 +28,13 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             btnEntregadores.Click += (s, e) =>
             {
                 Home.pessoaPage = "Entregadores";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             Pedidos.Click += (s, e) =>
@@ -43,8 +45,8 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Balcao";
                 AddPedidos.Id = 0;
                 AddPedidos.PDV = false;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             btnDelivery.Click += (s, e) =>
@@ -52,25 +54,19 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Delivery";
                 AddPedidos.Id = 0;
                 AddPedidos.PDV = false;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             VendasRel.Click += (s, e) =>
             {
                 Home.pedidoPage = "Food";
-                OpenForm.Show<Food.Pedidos>(this);
+                OpenForm.Show<Pedidos>(this);
             };
 
-            btnCadastrarMesa.Click += (s, e) =>
-            {
-                OpenForm.Show<Food.Mesas>(this);
-            };
+            btnCadastrarMesa.Click += (s, e) => { OpenForm.Show<Mesas>(this); };
 
-            Mesas.Click += (s, e) =>
-            {
-                OpenForm.Show<Mesas>(this);
-            };
+            Mesas.Click += (s, e) => { OpenForm.Show<Comercial.Mesas>(this); };
         }
     }
 }

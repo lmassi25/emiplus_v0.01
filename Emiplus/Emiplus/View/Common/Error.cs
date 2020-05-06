@@ -6,6 +6,27 @@ namespace Emiplus.View.Common
 {
     public partial class Error : Form
     {
+        public Error()
+        {
+            InitializeComponent();
+            Eventos();
+        }
+
+        public static string ErrorMessage { get; set; }
+
+        private void Eventos()
+        {
+            Shown += (s, e) => { message.Text = ErrorMessage; };
+
+            btnFechar.Click += (s, e) =>
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+
+            btnContinuar.Click += (s, e) => { Close(); };
+        }
+
         #region DLL SHADOW
 
         /********************************************************************
@@ -14,14 +35,14 @@ namespace Emiplus.View.Common
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
-    (
-        int nLeftRect,     // x-coordinate of upper-left corner
-        int nTopRect,      // y-coordinate of upper-left corner
-        int nRightRect,    // x-coordinate of lower-right corner
-        int nBottomRect,   // y-coordinate of lower-right corner
-        int nWidthEllipse, // height of ellipse
-        int nHeightEllipse // width of ellipse
-    );
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
         [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
@@ -32,13 +53,13 @@ namespace Emiplus.View.Common
         [DllImport("dwmapi.dll")]
         public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
 
-        private bool m_aeroEnabled;                     // variables for box shadow
+        private bool m_aeroEnabled; // variables for box shadow
         private const int CS_DROPSHADOW = 0x00020000;
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
         private const int WS_EX_TOPMOST = 0x00000008;
 
-        public struct MARGINS                           // struct for box shadow
+        public struct MARGINS // struct for box shadow
         {
             public int leftWidth;
             public int rightWidth;
@@ -46,7 +67,7 @@ namespace Emiplus.View.Common
             public int bottomHeight;
         }
 
-        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
+        private const int WM_NCHITTEST = 0x84; // variables for dragging the form
         private const int HTCLIENT = 0x1;
         private const int HTCAPTION = 0x2;
 
@@ -56,7 +77,7 @@ namespace Emiplus.View.Common
             {
                 m_aeroEnabled = CheckAeroEnabled();
 
-                CreateParams cp = base.CreateParams;
+                var cp = base.CreateParams;
                 if (!m_aeroEnabled)
                     cp.ClassStyle |= CS_DROPSHADOW;
 
@@ -70,10 +91,11 @@ namespace Emiplus.View.Common
         {
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                int enabled = 0;
+                var enabled = 0;
                 DwmIsCompositionEnabled(ref enabled);
-                return (enabled == 1) ? true : false;
+                return enabled == 1 ? true : false;
             }
+
             return false;
         }
 
@@ -81,29 +103,28 @@ namespace Emiplus.View.Common
         {
             switch (m.Msg)
             {
-                case WM_NCPAINT:                        // box shadow
+                case WM_NCPAINT: // box shadow
                     if (m_aeroEnabled)
                     {
                         var v = 2;
-                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
-                        MARGINS margins = new MARGINS()
+                        DwmSetWindowAttribute(Handle, 2, ref v, 4);
+                        var margins = new MARGINS
                         {
                             bottomHeight = 1,
                             leftWidth = 1,
                             rightWidth = 1,
                             topHeight = 1
                         };
-                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+                        DwmExtendFrameIntoClientArea(Handle, ref margins);
                     }
-                    break;
 
-                default:
                     break;
             }
+
             base.WndProc(ref m);
 
-            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
-                m.Result = (IntPtr)HTCAPTION;
+            if (m.Msg == WM_NCHITTEST && (int) m.Result == HTCLIENT) // drag the form
+                m.Result = (IntPtr) HTCAPTION;
         }
 
         /********************************************************************
@@ -111,33 +132,5 @@ namespace Emiplus.View.Common
          ********************************************************************/
 
         #endregion DLL SHADOW
-
-
-        public static string errorMessage { get; set; }
-
-        public Error()
-        {
-            InitializeComponent();
-            Eventos();
-        }
-
-        private void Eventos()
-        {
-            Shown += (s, e) =>
-            {
-                message.Text = errorMessage;
-            };
-
-            btnFechar.Click += (s, e) =>
-            {
-                DialogResult = DialogResult.OK;
-                Close();
-            };
-
-            btnContinuar.Click += (s, e) =>
-            {
-                Close();
-            };
-        }
     }
 }

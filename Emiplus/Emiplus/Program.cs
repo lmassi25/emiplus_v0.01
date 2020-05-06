@@ -1,47 +1,49 @@
 ﻿using System;
-using System.Windows.Forms;
-using Emiplus.View.Common;
-using Emiplus.Properties;
 using System.Collections;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using System.Threading;
-using System.Diagnostics;
-using RestSharp;
+using Emiplus.Properties;
+using Emiplus.View.Common;
 using Newtonsoft.Json;
-using System.Text;
-using Emiplus.View.Testes;
-using System.Globalization;
-using System.Net;
+using RestSharp;
 
 namespace Emiplus
 {
-    static class Program
+    internal static class Program
     {
         public static string URL_BASE = "https://www.emiplus.com.br";
+
         //public static string URL_BASE = "http://localhost/app";
         public static CultureInfo cultura = new CultureInfo("pt-BR");
 
         /// <summary>
-        /// Caminho definido no Config.ini
-        /// </summary>
-        public static string PATH_BASE { get; set; }
-        public static string IP_REMOTO { get; set; }
-        public static string PATH_IMAGE { get; set; }
-
-        /// <summary>
-        /// ID unico para cada CNPJ
+        ///     ID unico para cada CNPJ
         /// </summary>
         public static string UNIQUE_ID_EMPRESA = Settings.Default.empresa_unique_id;
 
         /// <summary>
-        /// Token de autenticação para API
+        ///     Token de autenticação para API
         /// </summary>
         public static string TOKEN = "f012622defec1e2bad3b8596e0642c";
+
         public static ArrayList userPermissions = new ArrayList();
 
         /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
+        ///     Caminho definido no Config.ini
+        /// </summary>
+        public static string PATH_BASE { get; set; }
+
+        public static string IP_REMOTO { get; set; }
+        public static string PATH_IMAGE { get; set; }
+
+        /// <summary>
+        ///     Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
         public static void Main()
@@ -50,23 +52,24 @@ namespace Emiplus
             PATH_BASE = IniFile.Read("Path", "LOCAL");
             IP_REMOTO = IniFile.Read("Remoto", "LOCAL");
             PATH_IMAGE = string.IsNullOrEmpty(IP_REMOTO) ? $"{PATH_BASE}" : $@"{IP_REMOTO}\Emiplus";
-            
+
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            ServicePointManager.ServerCertificateValidationCallback +=
+                (sender, certificate, chain, sslPolicyErrors) => true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
 
-            Application.ThreadException += new ThreadExceptionEventHandler(CustomExceptionHandler.OnThreadException);
+            Application.ThreadException += CustomExceptionHandler.OnThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Carregar());
-            //Application.Run(new Form7());
         }
 
         public static void SetPermissions()
         {
             if (Support.CheckForInternetConnection())
             {
-                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/permissions/{Program.TOKEN}/{Settings.Default.user_id}").Content().Response();
+                var jo = new RequestApi().URL($"{URL_BASE}/api/permissions/{TOKEN}/{Settings.Default.user_id}")
+                    .Content().Response();
 
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {
@@ -74,25 +77,23 @@ namespace Emiplus
                     return;
                 }
 
-                if (string.IsNullOrEmpty(jo["telas"].ToString()))
-                    Program.userPermissions.Add(new { all = 1 });
+                if (string.IsNullOrEmpty(jo["telas"]?.ToString()))
+                    userPermissions.Add(new {all = 1});
                 else
-                {
                     foreach (dynamic item in jo["telas"])
-                        Program.userPermissions.Add(new { Key = item.Name, Value = item.Value.ToString() });
-                }
+                        userPermissions.Add(new {Key = item.Name, Value = item.Value.ToString()});
 
                 var data = JsonConvert.SerializeObject(userPermissions);
 
                 //gravando informação em um arquivo na pasta raiz do executavel
-                System.IO.StreamWriter writerJson = System.IO.File.CreateText($".\\P{Settings.Default.user_id}.json");
+                var writerJson = File.CreateText($".\\P{Settings.Default.user_id}.json");
                 writerJson.Write(data);
                 writerJson.Flush();
                 writerJson.Dispose();
-            } 
+            }
             else
             {
-                String dataJson = System.IO.File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
+                var dataJson = File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
                 userPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
             }
         }
@@ -102,9 +103,11 @@ namespace Emiplus
     {
         public static void OnThreadException(object sender, ThreadExceptionEventArgs t)
         {
-            Exception e = t.Exception;
-            new Log().Add("EXCEPTIONS", e.GetBaseException().ToString() + Environment.NewLine + "######################################", Log.LogType.fatal);
-            
+            var e = t.Exception;
+            new Log().Add("EXCEPTIONS",
+                e.GetBaseException() + Environment.NewLine + "######################################",
+                Log.LogType.fatal);
+
             if (Support.CheckForInternetConnection())
             {
                 object obj = new
@@ -112,15 +115,15 @@ namespace Emiplus
                     token = Program.TOKEN,
                     usuario = Settings.Default.user_name + " " + Settings.Default.user_lastname,
                     empresa = Settings.Default.empresa_razao_social,
-                    name = e.GetType().Name.ToString(),
+                    name = e.GetType().Name,
                     error = e.ToString(),
-                    message = e.Message.ToString()
+                    message = e.Message
                 };
                 new RequestApi().URL(Program.URL_BASE + "/api/error").Content(obj, Method.POST).Response();
             }
 
-            Error.errorMessage = e.Message.ToString();
-            Error result = new Error();
+            Error.ErrorMessage = e.Message;
+            var result = new Error();
             // Exit the program when the user clicks Abort.
             if (result.ShowDialog() == DialogResult.OK)
                 Application.Exit();

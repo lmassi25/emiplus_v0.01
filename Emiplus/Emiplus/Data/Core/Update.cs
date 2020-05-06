@@ -179,6 +179,9 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("GerarRecDiasAntecipado", "FINANCEIRO"))
                 IniFile.Write("GerarRecDiasAntecipado", "7", "FINANCEIRO");
+
+            if (!IniFile.KeyExists("MENU_EXPANSIVE", "LAYOUT"))
+                IniFile.Write("MENU_EXPANSIVE", "false", "LAYOUT");
         }
     }
 }

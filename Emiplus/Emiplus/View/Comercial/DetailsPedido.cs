@@ -553,7 +553,7 @@ namespace Emiplus.View.Comercial
         private void OpenPedidoPagamentos()
         {
             AddPedidos.Id = idPedido;
-            PedidoPagamentos.hideFinalizar = true;
+            PedidoPagamentos.HideFinalizar = true;
             OpcoesCfeEmitir.fecharTelas = false;
             PedidoPagamentos pagamentos = new PedidoPagamentos();
             pagamentos.ShowDialog();

@@ -165,6 +165,8 @@ namespace Emiplus.View.Financeiro
                 btnAdicionar.Enabled = true;
             };
 
+            GridLista.DoubleClick += (s, e) => EditarTaxa();
+
             GridLista.CellClick += (s, e) =>
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")

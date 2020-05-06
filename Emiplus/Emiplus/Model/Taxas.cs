@@ -23,6 +23,9 @@ namespace Emiplus.Model
         public double Taxa_Debito { get; set; }
         public double Taxa_Parcela { get; set; }
         public int Parcela_Semjuros { get; set; }
+        public int Dias_Receber { get; set; }
+        public int Antecipacao_Auto { get; set; }
+        public double Taxa_Antecipacao { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 

@@ -154,8 +154,17 @@ namespace Emiplus.Controller
 
                     if (formaPgto == 4)
                     {
+                        double taxaAntecipacao = 0;
+                        if (_mTaxa.Antecipacao_Auto == 1)
+                            taxaAntecipacao = _mTaxa.Taxa_Antecipacao;
+                        
                         double taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
-                        data.Valor_Bruto = (valor - taxacredito - _mTaxa.Taxa_Fixa) / Validation.ConvertToInt32(parcela);
+                        double taxaparcelas = valor / 100 * _mTaxa.Taxa_Parcela;
+
+                        if (i > _mTaxa.Parcela_Semjuros)
+                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao - taxaparcelas) / Validation.ConvertToInt32(parcela); // com juros
+                        else
+                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao) / Validation.ConvertToInt32(parcela); // sem juros
                     }
 
                     data.Id_Caixa = Home.idCaixa;
@@ -180,8 +189,18 @@ namespace Emiplus.Controller
 
                     if (formaPgto == 4)
                     {
+                        double taxaAntecipacao = 0;
+                        if (_mTaxa.Antecipacao_Auto == 1)
+                            taxaAntecipacao = _mTaxa.Taxa_Antecipacao;
+                        
+                        // taxa de intermediação
                         double taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
-                        data.Valor_Bruto = (valor - taxacredito - _mTaxa.Taxa_Fixa) / Validation.ConvertToInt32(parcela);
+                        double taxaparcelas = valor / 100 * _mTaxa.Taxa_Parcela;
+
+                        if (count > _mTaxa.Parcela_Semjuros)
+                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao - taxaparcelas) / Validation.ConvertToInt32(parcela); // com juros
+                        else
+                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao) / Validation.ConvertToInt32(parcela); // sem juros
                     }
 
                     data.Id_Caixa = Home.idCaixa;
@@ -213,8 +232,12 @@ namespace Emiplus.Controller
                     data.Total = valor;
                     data.Recebido = valor;
 
+                    double taxaAntecipacao = 0;
+                    if (_mTaxa.Antecipacao_Auto == 1)
+                        taxaAntecipacao = _mTaxa.Taxa_Antecipacao;
+
                     double taxadebito = valor / 100 * _mTaxa.Taxa_Debito;
-                    data.Valor_Bruto = valor - taxadebito - _mTaxa.Taxa_Fixa;
+                    data.Valor_Liquido = valor - taxadebito - _mTaxa.Taxa_Fixa - taxaAntecipacao;
                 }
 
                 data.Id_Caixa = Home.idCaixa;
@@ -259,7 +282,7 @@ namespace Emiplus.Controller
             var data = titulos.Query()
                 .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
                 .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "titulo.valor_bruto", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "titulo.valor_liquido", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
                 .Where(tipoPesquisa, ">=", Validation.ConvertDateToSql(dataInicial))
                 .Where(tipoPesquisa, "<=", Validation.ConvertDateToSql(dataFinal))
                 .Where("titulo.excluir", 0)

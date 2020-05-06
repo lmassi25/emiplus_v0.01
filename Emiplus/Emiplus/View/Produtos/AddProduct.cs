@@ -1,10 +1,4 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Model;
-using Emiplus.View.Common;
-using Newtonsoft.Json;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,27 +8,38 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Comercial;
+using Emiplus.View.Common;
+using Newtonsoft.Json;
+using SqlKata.Execution;
+using Item = Emiplus.Controller.Item;
+using Pessoa = Emiplus.Model.Pessoa;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
-        public static int idPdtSelecionado { get; set; }
-        private Item _modelItem = new Item();
-        private Controller.Item _controllerItem = new Controller.Item();
+        private readonly Item _controllerItem = new Item();
+        private Model.Item _modelItem = new Model.Item();
 
-        private BackgroundWorker backOn = new BackgroundWorker();
-        private ArrayList categorias { get; set; }
-        private IEnumerable<dynamic> impostos { get; set; }
-        private IEnumerable<dynamic> impostos2 { get; set; }
+        private readonly BackgroundWorker backOn = new BackgroundWorker();
 
-        private OpenFileDialog ofd = new OpenFileDialog();
+        private readonly OpenFileDialog ofd = new OpenFileDialog();
 
         public AddProduct()
         {
             InitializeComponent();
             Eventos();
         }
+
+        public static int idPdtSelecionado { get; set; }
+        private ArrayList categorias { get; set; }
+        private IEnumerable<dynamic> Impostos { get; set; }
+        private IEnumerable<dynamic> Impostos2 { get; set; }
 
         private void LoadFornecedores()
         {
@@ -45,10 +50,10 @@ namespace Emiplus.View.Produtos
 
         private void LoadImpostoOne()
         {
-            impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos.Count() > 0)
+            Impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (Impostos.Any())
             {
-                ImpostoNFE.DataSource = impostos;
+                ImpostoNFE.DataSource = Impostos;
                 ImpostoNFE.DisplayMember = "NOME";
                 ImpostoNFE.ValueMember = "ID";
             }
@@ -58,10 +63,10 @@ namespace Emiplus.View.Produtos
 
         private void LoadImpostoTwo()
         {
-            impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos2.Count() > 0)
+            Impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+            if (Impostos2.Any())
             {
-                ImpostoCFE.DataSource = impostos2;
+                ImpostoCFE.DataSource = Impostos2;
                 ImpostoCFE.DisplayMember = "NOME";
                 ImpostoCFE.ValueMember = "ID";
             }
@@ -71,19 +76,35 @@ namespace Emiplus.View.Produtos
 
         private void Start()
         {
-            ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine + "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto.", pictureBox7, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine + "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque.", pictureBox8, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.",
+                pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Descreva seu produto... Lembre-se de utilizar as características do produto." + Environment.NewLine +
+                "Utilize informações como Marca, Tamanho, Cor etc. ", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." +
+                Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ",
+                pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." +
+                Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.",
+                pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite a quantidade mínima que você deve ter em estoque deste produto.", pictureBox7,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Digite a quantidade que você tem em estoque atualmente." + Environment.NewLine +
+                "Para inserir a quantidade atual em estoque clique no botao Alterar Estoque.", pictureBox8,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Descrição adicional para o produto.", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.",
+                pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             Categorias.DataSource = categorias;
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
-          
+
             LoadFornecedores();
 
             Medidas.DataSource = Support.GetMedidas();
@@ -99,66 +120,67 @@ namespace Emiplus.View.Produtos
             filterTodos.Checked = false;
         }
 
-        private void SetHeadersAdicionais(DataGridView Table)
+        private void SetHeadersAdicionais(DataGridView table)
         {
-            Table.ColumnCount = 3;
+            table.ColumnCount = 3;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Adicional";
-            Table.Columns[2].Width = 120;
-            Table.Columns[2].MinimumWidth = 120;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Adicional";
+            table.Columns[2].Width = 120;
+            table.Columns[2].MinimumWidth = 120;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[3].Width = 100;
+            table.Columns[3].Visible = true;
         }
 
-        private void SetContentTableAdicionais(DataGridView Table)
+        private void SetContentTableAdicionais(DataGridView table)
         {
-            Table.Rows.Clear();
+            table.Rows.Clear();
 
-            IEnumerable<Model.ItemAdicional> data = new Model.ItemAdicional().FindAll().WhereFalse("excluir").Get<Model.ItemAdicional>();
-            if (data.Count() > 0) {
-                foreach (Model.ItemAdicional item in data)
-                {
-                    Table.Rows.Add(
+            var data = new ItemAdicional().FindAll().WhereFalse("excluir").Get<ItemAdicional>();
+            if (data.Any())
+                foreach (var item in data)
+                    table.Rows.Add(
                         false,
                         item.Id,
                         item.Title,
                         Validation.FormatPrice(Validation.ConvertToDouble(item.Valor), true)
                     );
-                }
-            }
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadEstoque()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
+            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
             estoqueatual.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueAtual);
         }
 
         private void LoadData()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
+            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
 
             nome.Text = _modelItem?.Nome ?? "";
             codebarras.Text = _modelItem?.CodeBarras ?? "";
@@ -204,7 +226,7 @@ namespace Emiplus.View.Produtos
             Categorias.SelectedValue = _modelItem.Categoriaid.ToString();
             Fornecedor.SelectedValue = _modelItem.Fornecedor.ToString();
 
-            Ativo.Toggled = _modelItem.ativo == 1 ? false : true;
+            Ativo.Toggled = _modelItem.ativo != 1;
 
             aliq_federal.Text = Validation.Price(_modelItem.AliqFederal);
             aliq_estadual.Text = Validation.Price(_modelItem.AliqEstadual);
@@ -215,7 +237,7 @@ namespace Emiplus.View.Produtos
             if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}"))
             {
                 var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}");
-                imageProduct.Image = byteArrayToImage(imageAsByteArray);
+                imageProduct.Image = ByteArrayToImage(imageAsByteArray);
                 pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}";
                 btnRemoverImage.Visible = true;
             }
@@ -224,25 +246,19 @@ namespace Emiplus.View.Produtos
             SetContentTableAdicionais(GridAdicionais);
 
             foreach (DataGridViewRow item in GridAdicionais.Rows)
-            {
                 if (!string.IsNullOrEmpty(_modelItem.Adicional))
                 {
-                    string[] addons = _modelItem.Adicional.Split(',');
-                    foreach (string id in addons)
-                    {
+                    var addons = _modelItem.Adicional.Split(',');
+                    foreach (var id in addons)
                         if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
-                        {
                             item.Cells["Selecione"].Value = true;
-                        }
-                    }
                 }
-            }
         }
 
-        public Image byteArrayToImage(byte[] byteArrayIn)
+        public Image ByteArrayToImage(byte[] byteArrayIn)
         {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
+            var ms = new MemoryStream(byteArrayIn);
+            var returnImage = Image.FromStream(ms);
             return returnImage;
         }
 
@@ -250,7 +266,7 @@ namespace Emiplus.View.Produtos
         {
             var data = DateTime.Today.AddMonths(-3).ToString();
 
-            dynamic dados = new PedidoItem()
+            var dados = new PedidoItem()
                 .Query()
                 .Join("pedido", "pedido.id", "pedido_item.pedido")
                 .SelectRaw("SUM(pedido_item.valorvenda) as valorvenda, COUNT(pedido_item.ID) as ID")
@@ -262,21 +278,21 @@ namespace Emiplus.View.Produtos
                 .FirstOrDefault();
 
             if (dados.ID != 0)
-                custoMedio.Text = Validation.Price(Validation.ConvertToDouble(dados.ID) / Validation.ConvertToDouble(dados.VALORVENDA));
+                custoMedio.Text =
+                    Validation.Price(
+                        Validation.ConvertToDouble(dados.ID) / Validation.ConvertToDouble(dados.VALORVENDA));
             else
                 custoMedio.Text = "0,00";
         }
-        
+
         private void Save()
         {
             if (!string.IsNullOrEmpty(nome.Text))
-            {
                 if (_modelItem.ExistsName(nome.Text, false, idPdtSelecionado))
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse NOME.", Alert.AlertType.error);
                     return;
                 }
-            }
 
             codebarras.Text = codebarras.Text.Trim();
             if (!string.IsNullOrEmpty(codebarras.Text))
@@ -289,13 +305,16 @@ namespace Emiplus.View.Produtos
 
                 if (_modelItem.ExistsCodeBarras(codebarras.Text, false, idPdtSelecionado))
                 {
-                    Alert.Message("Oppss", "Já existe um produto cadastrado com esse código de barras.", Alert.AlertType.error);
+                    Alert.Message("Oppss", "Já existe um produto cadastrado com esse código de barras.",
+                        Alert.AlertType.error);
                     return;
                 }
             }
             else
             {
-                var result = AlertOptions.Message("Atenção!", "É necessário preencher o código de barras, deseja gerar um código automático?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    "É necessário preencher o código de barras, deseja gerar um código automático?",
+                    AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                     codebarras.Text = Validation.CodeBarrasRandom();
                 else
@@ -314,18 +333,17 @@ namespace Emiplus.View.Produtos
 
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
-            
+
             if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
-            {
                 if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
                 {
                     var data = new IBPT()
-                    .SetCodeBarras(_modelItem.CodeBarras)
-                    .SetDescricao(_modelItem.Nome)
-                    .SetMedida(_modelItem.Medida)
-                    .SetValor(_modelItem.ValorVenda)
-                    .SetCodigoNCM(_modelItem.Ncm)
-                    .GetDados();
+                        .SetCodeBarras(_modelItem.CodeBarras)
+                        .SetDescricao(_modelItem.Nome)
+                        .SetMedida(_modelItem.Medida)
+                        .SetValor(_modelItem.ValorVenda)
+                        .SetCodigoNCM(_modelItem.Ncm)
+                        .GetDados();
 
                     if (data != null)
                     {
@@ -339,13 +357,12 @@ namespace Emiplus.View.Produtos
                         {
                             var s = JsonConvert.DeserializeObject(data.ToString());
 
-                            aliq_federal.Text = Validation.Price(s.Nacional.Value);
-                            aliq_estadual.Text = Validation.Price(s.Estadual.Value);
-                            aliq_municipal.Text = Validation.Price(s.Municipal.Value);
+                            aliq_federal.Text = Validation.Price(s?.Nacional.Value);
+                            aliq_estadual.Text = Validation.Price(s?.Estadual.Value);
+                            aliq_municipal.Text = Validation.Price(s?.Municipal.Value);
                         }
                     }
                 }
-            }
 
             if (_modelItem.Ncm == "0")
             {
@@ -358,45 +375,40 @@ namespace Emiplus.View.Produtos
             _modelItem.AliqEstadual = Validation.ConvertToDouble(aliq_estadual.Text);
             _modelItem.AliqMunicipal = Validation.ConvertToDouble(aliq_municipal.Text);
             _modelItem.Limite_Desconto = Validation.ConvertToDouble(txtLimiteDesconto.Text);
-            
+
             _modelItem.Categoriaid = Validation.ConvertToInt32(Categorias.SelectedValue);
-            
+
             _modelItem.Fornecedor = Validation.ConvertToInt32(Fornecedor.SelectedValue);
 
             if (ImpostoNFE.SelectedValue != null)
-                _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
+                _modelItem.Impostoid = (int) ImpostoNFE.SelectedValue;
             else
                 _modelItem.Impostoid = 0;
 
             if (ImpostoCFE.SelectedValue != null)
-                _modelItem.Impostoidcfe = (int)ImpostoCFE.SelectedValue;
+                _modelItem.Impostoidcfe = (int) ImpostoCFE.SelectedValue;
             else
                 _modelItem.Impostoidcfe = 0;
 
             if (Origens.SelectedValue != null)
                 _modelItem.Origem = Origens.SelectedValue.ToString();
 
-            if (Ativo.Toggled)
-                _modelItem.ativo = 0;
-            else
-                _modelItem.ativo = 1;
+            _modelItem.ativo = Ativo.Toggled ? 0 : 1;
 
-            StringBuilder Addon = new StringBuilder();
+            var addon = new StringBuilder();
             foreach (DataGridViewRow item in GridAdicionais.Rows)
-            {
-                if ((bool)item.Cells["Selecione"].Value == true)
+                if ((bool) item.Cells["Selecione"].Value)
                 {
-                    if (string.IsNullOrEmpty(Addon.ToString()))
+                    if (string.IsNullOrEmpty(addon.ToString()))
                     {
-                        Addon.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
+                        addon.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
                         continue;
                     }
 
-                    Addon.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
+                    addon.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
                 }
-            }
 
-            _modelItem.Adicional = Addon.ToString();
+            _modelItem.Adicional = addon.ToString();
 
             if (_modelItem.Save(_modelItem))
                 Close();
@@ -404,7 +416,7 @@ namespace Emiplus.View.Produtos
 
         private void DataTableEstoque()
         {
-            if (filterMaisRecentes.Checked == true)
+            if (filterMaisRecentes.Checked)
                 _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado, 10);
             else
                 _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
@@ -430,9 +442,9 @@ namespace Emiplus.View.Produtos
             {
                 Refresh();
 
-                this.BeginInvoke((MethodInvoker)delegate
+                BeginInvoke((MethodInvoker) delegate
                 {
-                    idPdtSelecionado = Produtos.idPdtSelecionado;
+                    idPdtSelecionado = Produtos.IdPdtSelecionado;
                     backOn.RunWorkerAsync();
                 });
 
@@ -442,10 +454,12 @@ namespace Emiplus.View.Produtos
 
             btnExit.Click += (s, e) =>
             {
-                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado).Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
+                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado)
+                    .Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
                 if (dataProd != null)
                 {
-                    var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                    var result = AlertOptions.Message("Atenção!", "Esse produto não foi editado, deseja deletar?",
+                        AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
                         var data = _modelItem.Remove(idPdtSelecionado, false);
@@ -464,7 +478,8 @@ namespace Emiplus.View.Produtos
 
             btnRemover.Click += (s, e) =>
             {
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um produto, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar um produto, continuar?",
+                    AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     var data = _modelItem.Remove(idPdtSelecionado);
@@ -479,8 +494,7 @@ namespace Emiplus.View.Produtos
                 if (new Model.Item().ValidarDados(_modelItem))
                     return;
 
-                AddEstoque f = new AddEstoque();
-                f.TopMost = true;
+                var f = new AddEstoque {TopMost = true};
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadEstoque();
@@ -492,29 +506,31 @@ namespace Emiplus.View.Produtos
 
             valorcompra.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             valorvenda.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             txtLimiteDesconto.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             btnAddCategoria.Click += (s, e) =>
             {
                 Home.CategoriaPage = "Produtos";
-                AddCategorias f = new AddCategorias();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                f.TopMost = true;
+                var f = new AddCategorias
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     Categorias.DataSource = new Categoria().GetAll("Produtos");
@@ -525,22 +541,26 @@ namespace Emiplus.View.Produtos
             btnAddFornecedor.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";
-                Comercial.AddClientes.Id = 0;
-                Comercial.AddClientes f = new Comercial.AddClientes();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                f.TopMost = true;
+                AddClientes.Id = 0;
+                var f = new AddClientes
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadFornecedores();
             };
 
             btnAddImpostoOne.Click += (s, e) =>
             {
-                Impostos.idImpSelected = 0;
-                AddImpostos f = new AddImpostos();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                f.TopMost = true;
+                View.Produtos.Impostos.idImpSelected = 0;
+                var f = new AddImpostos
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadImpostoOne();
@@ -550,11 +570,13 @@ namespace Emiplus.View.Produtos
 
             btnAddImpostoTwo.Click += (s, e) =>
             {
-                Impostos.idImpSelected = 0;
-                AddImpostos f = new AddImpostos();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                f.TopMost = true;
+                View.Produtos.Impostos.idImpSelected = 0;
+                var f = new AddImpostos
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     LoadImpostoOne();
@@ -570,7 +592,9 @@ namespace Emiplus.View.Produtos
                 if (Validation.ConvertToDouble(valorvenda.Text) == 0)
                     return;
 
-                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                var media =
+                    (Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100 /
+                    Validation.ConvertToDouble(valorcompra.Text);
                 precoMedio.Text = $"{Validation.ConvertToDouble(Validation.RoundTwo(media))}%";
             };
 
@@ -582,7 +606,9 @@ namespace Emiplus.View.Produtos
                 if (Validation.ConvertToDouble(valorvenda.Text) == 0)
                     return;
 
-                var media = ((Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100) / Validation.ConvertToDouble(valorcompra.Text);
+                var media =
+                    (Validation.ConvertToDouble(valorvenda.Text) - Validation.ConvertToDouble(valorcompra.Text)) * 100 /
+                    Validation.ConvertToDouble(valorcompra.Text);
                 precoMedio.Text = Validation.Price(media);
             };
 
@@ -592,24 +618,15 @@ namespace Emiplus.View.Produtos
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
             cest.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 7);
 
-            nome.TextChanged += (s, e) =>
-            {
-                if (nome.Text.Length >= 2)
-                    btnEstoque.Visible = true;
-                else
-                    btnEstoque.Visible = false;
-            };
+            nome.TextChanged += (s, e) => { btnEstoque.Visible = nome.Text.Length >= 2; };
 
-            nome.KeyPress += (s, e) =>
-            {
-                Masks.MaskMaxLength(s, e, 100);
-            };
+            nome.KeyPress += (s, e) => { Masks.MaskMaxLength(s, e, 100); };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
 
             chkImpostoNFE.Click += (s, e) =>
             {
-                if (chkImpostoNFE.Checked == true)
+                if (chkImpostoNFE.Checked)
                 {
                     ImpostoNFE.Enabled = true;
                 }
@@ -622,7 +639,7 @@ namespace Emiplus.View.Produtos
 
             chkImpostoCFE.Click += (s, e) =>
             {
-                if (chkImpostoCFE.Checked == true)
+                if (chkImpostoCFE.Checked)
                 {
                     ImpostoCFE.Enabled = true;
                 }
@@ -643,7 +660,7 @@ namespace Emiplus.View.Produtos
                 _modelItem.Image = "";
                 _modelItem.Save(_modelItem, false);
 
-                imageProduct.Image = Properties.Resources.sem_imagem;
+                imageProduct.Image = Resources.sem_imagem;
                 pathImage.Text = "";
                 btnRemoverImage.Visible = false;
                 Alert.Message("Pronto!", "Imagem removida com sucesso.", Alert.AlertType.success);
@@ -652,7 +669,7 @@ namespace Emiplus.View.Produtos
             btnImage.Click += (s, e) =>
             {
                 ofd.RestoreDirectory = true;
-                ofd.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+                ofd.Filter = @"Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
                 ofd.CheckFileExists = true;
                 ofd.CheckPathExists = true;
                 ofd.Multiselect = false;
@@ -660,23 +677,24 @@ namespace Emiplus.View.Produtos
                 {
                     if (!ofd.CheckFileExists)
                     {
-                        Alert.Message("Opps", "Não encontramos a imagem selecionada. Tente Novamente!", Alert.AlertType.error);
+                        Alert.Message("Opps", "Não encontramos a imagem selecionada. Tente Novamente!",
+                            Alert.AlertType.error);
                         return;
                     }
 
-                    string path = ofd.InitialDirectory + ofd.FileName;
-                    string ext = Path.GetExtension(ofd.FileName);
+                    var path = ofd.InitialDirectory + ofd.FileName;
+                    var ext = Path.GetExtension(ofd.FileName);
 
                     if (File.Exists(path))
                     {
                         if (!Directory.Exists(Program.PATH_IMAGE + @"\Imagens"))
                             Directory.CreateDirectory(Program.PATH_IMAGE + @"\Imagens");
-                        
-                        string nameImage = $"{Validation.CleanString(nome.Text).Replace(" ", "-")}{ext}";
+
+                        var nameImage = $"{Validation.CleanString(nome.Text).Replace(" ", "-")}{ext}";
 
                         if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{nameImage}"))
                             File.Delete($@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
-                        
+
                         File.Copy(path, $@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
 
                         _modelItem.Id = idPdtSelecionado;
@@ -684,15 +702,15 @@ namespace Emiplus.View.Produtos
                         _modelItem.Save(_modelItem, false);
 
                         var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
-                        imageProduct.Image = byteArrayToImage(imageAsByteArray);
+                        imageProduct.Image = ByteArrayToImage(imageAsByteArray);
                         pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{nameImage}";
                         btnRemoverImage.Visible = true;
                         Alert.Message("Pronto!", "Imagem atualizada com sucesso.", Alert.AlertType.success);
                     }
                     else
                     {
-                        Alert.Message("Opps", "Não foi possível copiar a imagem. Tente novamente.", Alert.AlertType.error);
-                        return;
+                        Alert.Message("Opps", "Não foi possível copiar a imagem. Tente novamente.",
+                            Alert.AlertType.error);
                     }
                 }
             };
@@ -702,20 +720,16 @@ namespace Emiplus.View.Produtos
 
             selecionarNCM.Click += (s, e) =>
             {
-                ModalNCM f = new ModalNCM();
-                f.TopMost = true;
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    ncm.Text = ModalNCM.NCM;
-                }
+                var f = new ModalNCM {TopMost = true};
+                if (f.ShowDialog() == DialogResult.OK) ncm.Text = ModalNCM.NCM;
             };
 
             backOn.DoWork += (s, e) =>
             {
-                 _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Item>();
-                 categorias = new Categoria().GetAll("Produtos");
-                 impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-                 impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
+                categorias = new Categoria().GetAll("Produtos");
+                Impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
+                Impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             };
 
             backOn.RunWorkerCompleted += (s, e) =>
@@ -728,9 +742,7 @@ namespace Emiplus.View.Produtos
                 }
                 else
                 {
-                    _modelItem = new Model.Item();
-                    _modelItem.Tipo = "Produtos";
-                    _modelItem.Id = idPdtSelecionado;
+                    _modelItem = new Model.Item {Tipo = "Produtos", Id = idPdtSelecionado};
                     if (_modelItem.Save(_modelItem, false))
                     {
                         idPdtSelecionado = _modelItem.GetLastId();
@@ -747,7 +759,7 @@ namespace Emiplus.View.Produtos
             btnVariacao.Click += (s, e) =>
             {
                 ModalVariacao.idProduto = idPdtSelecionado;
-                ModalVariacao form = new ModalVariacao();
+                var form = new ModalVariacao();
                 form.ShowDialog();
             };
 
@@ -755,14 +767,7 @@ namespace Emiplus.View.Produtos
             {
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false)
-                    {
-                        GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = true;
-                    }
-                    else
-                    {
-                        GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = false;
-                    }
+                    GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = (bool) GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false;
                 }
             };
 
@@ -771,7 +776,7 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -781,7 +786,7 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };
