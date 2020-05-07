@@ -3,6 +3,7 @@ using Emiplus.View.Common;
 using SqlKata.Execution;
 using System;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Comercial
 {
@@ -399,7 +400,7 @@ namespace Emiplus.View.Comercial
 
             label6.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=6o9mR7oNp70");
         }
 

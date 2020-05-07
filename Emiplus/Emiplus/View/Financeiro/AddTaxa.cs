@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using SqlKata.Execution;
 
@@ -102,7 +103,7 @@ namespace Emiplus.View.Financeiro
             diasReceber.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 2);
 
             btnExit.Click += (s, e) => Close();
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
 
         private void MaskPrice(object s, EventArgs e)

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Produtos
 {
@@ -419,7 +420,7 @@ namespace Emiplus.View.Produtos
 
             cfop.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 4);
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

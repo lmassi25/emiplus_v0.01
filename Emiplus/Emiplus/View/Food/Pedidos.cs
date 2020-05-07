@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Model;
@@ -231,7 +232,7 @@ namespace Emiplus.View.Food
             btnEditar.Click += (s, e) => EditarPedido();
 
             btnExit.Click += (s, e) => Close();
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

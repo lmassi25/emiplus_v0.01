@@ -1,18 +1,26 @@
-﻿namespace Emiplus.Data.Helpers
-{
-    using Serilog;
+﻿using Serilog;
 
+namespace Emiplus.Data.Helpers
+{
     public class Log
     {
+        public enum LogType
+        {
+            info,
+            warning,
+            error,
+            fatal
+        }
+
         public void Add(string classe, string mensagem, LogType type)
         {
             Serilog.Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Information()
-            .WriteTo.File(
-                "Logs/" + classe + ".txt",
-                outputTemplate: "[{Timestamp:dd/MM/yyyy HH:mm:ss} {Level}] {Message:lj}{NewLine}{Exception}"
+                .MinimumLevel.Information()
+                .WriteTo.File(
+                    "Logs/" + classe + ".txt",
+                    outputTemplate: "[{Timestamp:dd/MM/yyyy HH:mm:ss} {Level}] {Message:lj}{NewLine}{Exception}"
                 )
-            .CreateLogger();
+                .CreateLogger();
 
             switch (type)
             {
@@ -34,11 +42,6 @@
             }
 
             Serilog.Log.CloseAndFlush();
-        }
-
-        public enum LogType
-        {
-            info, warning, error, fatal
         }
     }
 }

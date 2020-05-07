@@ -207,7 +207,7 @@ namespace Emiplus.View.Comercial
             label5.Click += (s, e) => Close();
             label8.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             using (var b = WorkerBackground)
             {

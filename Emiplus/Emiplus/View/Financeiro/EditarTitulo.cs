@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Comercial;
@@ -43,6 +45,26 @@ namespace Emiplus.View.Financeiro
             valorLiquido.Text = Math.Abs(_modelTitulo.Valor_Liquido) < 0
                 ? Validation.FormatPrice(0, true)
                 : Validation.FormatPrice(_modelTitulo.Valor_Liquido, true);
+
+            if (!string.IsNullOrEmpty(_modelTitulo.Taxas))
+            {
+                var taxas = _modelTitulo.Taxas.Split('|');
+                if (taxas.Any())
+                {
+                    tarifaFixa.Text = $@"Tarifa fixa R$ {Validation.FormatPrice(Validation.ConvertToDouble(taxas[0]))}";
+                    txtTarifaFixa.Text = $@"R$ {Validation.FormatPrice(Validation.ConvertToDouble(taxas[0]))}";
+
+                    tarifaCartao.Text = $@"Taxa do cartão {taxas[1]}%";
+                    double taxaCartao = _modelTitulo.Recebido / 100 * Validation.ConvertToDouble(taxas[1]);
+                    txtTaxaCartao.Text = $@"{Validation.FormatPrice(taxaCartao, true)}";
+
+                    tarifaParcelamento.Text = $@"Taxa de parcelamento {taxas[2]}%";
+                    txtTaxaAntecipacao.Text = $@"{Validation.FormatPrice(Validation.ConvertToDouble(taxas[3]), true)}";
+
+                    if (string.IsNullOrEmpty(taxas[4])) prazoReceber.Visible = false;
+                    prazoReceber.Text = $@"No prazo de {taxas[4]} dias.";
+                }
+            }
 
             if (_modelTitulo.Recebido > 0)
             {
@@ -369,7 +391,7 @@ namespace Emiplus.View.Financeiro
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
 
         private void DynamicPanel(VisualPanel panel)

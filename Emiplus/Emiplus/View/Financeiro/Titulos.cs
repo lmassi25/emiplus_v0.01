@@ -11,6 +11,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Financeiro
 {
@@ -311,7 +312,7 @@ namespace Emiplus.View.Financeiro
                     dataGridView.Cursor = Cursors.Default;
             };
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             imprimir.Click += async (s, e) => await RenderizarAsync();
         }
 

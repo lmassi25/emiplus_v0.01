@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Produtos
 {
@@ -160,7 +161,7 @@ namespace Emiplus.View.Produtos
             
             search.TextChanged += (s, e) => SetContentTableAsync(GridLista);
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             btnExit.Click += (s, e) => Close();
 
             GridLista.CellClick += (s, e) =>

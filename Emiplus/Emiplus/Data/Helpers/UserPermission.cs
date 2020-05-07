@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using VisualPlus.Toolkit.Controls.Interactivity;
 
 namespace Emiplus.Data.Helpers
 {
@@ -13,7 +14,8 @@ namespace Emiplus.Data.Helpers
                 button.Cursor = Cursors.No;
 
                 if (message)
-                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.",
+                        Alert.AlertType.warning);
 
                 return true;
             }
@@ -21,7 +23,7 @@ namespace Emiplus.Data.Helpers
             return false;
         }
 
-        public static bool SetControlVisual(VisualPlus.Toolkit.Controls.Interactivity.VisualButton button, PictureBox img, string tela, bool message = true)
+        public static bool SetControlVisual(VisualButton button, PictureBox img, string tela, bool message = true)
         {
             if (!GetPermission(tela))
             {
@@ -30,7 +32,8 @@ namespace Emiplus.Data.Helpers
                 button.Cursor = Cursors.No;
 
                 if (message)
-                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.",
+                        Alert.AlertType.warning);
 
                 return true;
             }
@@ -59,7 +62,6 @@ namespace Emiplus.Data.Helpers
                 return true;
 
             foreach (dynamic item in Program.userPermissions)
-            {
                 if (item.Key == tela)
                 {
                     if (item.Value == "1")
@@ -67,7 +69,6 @@ namespace Emiplus.Data.Helpers
 
                     return false;
                 }
-            }
 
             return true;
         }

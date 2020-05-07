@@ -550,7 +550,7 @@ namespace Emiplus.View.Comercial
             btnExit.Click += (s, e) => Close();
             label5.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             GridLista.CellFormatting += (s, e) =>
             {

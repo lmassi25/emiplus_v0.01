@@ -342,7 +342,7 @@ namespace Emiplus.View.Common
             FormClosed += (s, e) => Validation.KillEmiplus();
             btnFechar.Click += (s, e) => Close();
             linkRecover.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin/forgotten");
-            linkSupport.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            linkSupport.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
 
         #region DLL

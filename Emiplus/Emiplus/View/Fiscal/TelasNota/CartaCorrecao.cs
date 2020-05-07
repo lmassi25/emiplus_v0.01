@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Fiscal.TelasNota
 {
@@ -71,7 +72,7 @@ namespace Emiplus.View.Fiscal.TelasNota
 
             //GridLista.DoubleClick += (s, e) => MessageBox.Show("");
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             btnAdicionar.Click += (s, e) =>
             {

@@ -24,11 +24,11 @@ namespace Emiplus.View.Produtos
     public partial class AddProduct : Form
     {
         private readonly Item _controllerItem = new Item();
-        private Model.Item _modelItem = new Model.Item();
 
         private readonly BackgroundWorker backOn = new BackgroundWorker();
 
         private readonly OpenFileDialog ofd = new OpenFileDialog();
+        private Model.Item _modelItem = new Model.Item();
 
         public AddProduct()
         {
@@ -622,7 +622,7 @@ namespace Emiplus.View.Produtos
 
             nome.KeyPress += (s, e) => { Masks.MaskMaxLength(s, e, 100); };
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             chkImpostoNFE.Click += (s, e) =>
             {
@@ -766,9 +766,8 @@ namespace Emiplus.View.Produtos
             GridAdicionais.CellClick += (s, e) =>
             {
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
-                {
-                    GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = (bool) GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false;
-                }
+                    GridAdicionais.SelectedRows[0].Cells["Selecione"].Value =
+                        (bool) GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false;
             };
 
             GridAdicionais.CellMouseEnter += (s, e) =>

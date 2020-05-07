@@ -419,7 +419,7 @@ namespace Emiplus.View.Common
             };
 
             FormClosed += (s, e) => Validation.KillEmiplus();
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             btnAccount.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 
             timer1.Tick += (s, e) =>

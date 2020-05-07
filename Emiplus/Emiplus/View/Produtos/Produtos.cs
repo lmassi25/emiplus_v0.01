@@ -208,7 +208,7 @@ namespace Emiplus.View.Produtos
                     if ((bool) item.Cells["Selecione"].Value)
                         ListProdutos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                EditAllProducts.listProducts = ListProdutos;
+                EditAllProducts.ListProducts = ListProdutos;
                 OpenForm.Show<EditAllProducts>(this);
 
                 btnMarcarCheckBox.Text = @"Marcar Todos";
@@ -259,7 +259,7 @@ namespace Emiplus.View.Produtos
                 btnMarcarCheckBox.Text = btnMarcarCheckBox.Text == @"Marcar Todos" ? "Desmarcar Todos" : "Marcar Todos";
             };
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             workerBackground.DoWork += async (s, e) => { dataTable = await _controller.GetDataTable(); };
 

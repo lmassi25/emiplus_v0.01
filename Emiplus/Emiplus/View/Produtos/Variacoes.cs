@@ -1,16 +1,11 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
@@ -29,17 +24,21 @@ namespace Emiplus.View.Produtos
         {
             Table.ColumnCount = 2;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            
+
             Table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
             Table.Columns.Insert(0, checkColumn);
 
             Table.Columns[1].Name = "ID";
@@ -54,16 +53,14 @@ namespace Emiplus.View.Produtos
         {
             Table.Rows.Clear();
 
-            IEnumerable<Model.ItemGrupo> grupos = new Model.ItemGrupo().FindAll().WhereFalse("excluir").Get<Model.ItemGrupo>();
-            foreach (Model.ItemGrupo item in grupos)
-            {
+            var grupos = new ItemGrupo().FindAll().WhereFalse("excluir").Get<ItemGrupo>();
+            foreach (var item in grupos)
                 Table.Rows.Add(
                     false,
                     item.Id,
                     item.Title
                 );
-            }
-            
+
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
@@ -78,7 +75,7 @@ namespace Emiplus.View.Produtos
             btnAdicionar.Click += (s, e) =>
             {
                 AddVariacao.Id = 0;
-                AddVariacao form = new AddVariacao();
+                var form = new AddVariacao();
                 if (form.ShowDialog() == DialogResult.OK)
                     LoadData(GridLista);
             };
@@ -88,7 +85,7 @@ namespace Emiplus.View.Produtos
                 if (GridLista.SelectedRows.Count > 0)
                 {
                     AddVariacao.Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    AddVariacao form = new AddVariacao();
+                    var form = new AddVariacao();
                     if (form.ShowDialog() == DialogResult.OK)
                         LoadData(GridLista);
                 }
@@ -98,20 +95,23 @@ namespace Emiplus.View.Produtos
             {
                 listGrupos.Clear();
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if ((bool) item.Cells["Selecione"].Value)
                         listGrupos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
-                
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os GRUPOS selecionados e seus atributos, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a deletar os GRUPOS selecionados e seus atributos, continuar?",
+                    AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    foreach (var attr in listGrupos) {
-                        new Model.ItemGrupo().Remove(attr);
-                        new Model.ItemAtributos().Remove(attr, "GRUPO");
+                    foreach (var attr in listGrupos)
+                    {
+                        new ItemGrupo().Remove(attr);
+                        new ItemAtributos().Remove(attr, "GRUPO");
                     }
-                    
+
                     LoadData(GridLista);
                 }
-                
+
                 btnDelete.Visible = false;
             };
 
@@ -119,7 +119,7 @@ namespace Emiplus.View.Produtos
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnDelete.Visible = true;
@@ -128,12 +128,10 @@ namespace Emiplus.View.Produtos
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
+                        var hideBtns = false;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
-                            {
+                            if ((bool) item.Cells["Selecione"].Value)
                                 hideBtns = true;
-                            }
 
                         btnDelete.Visible = hideBtns;
                     }
@@ -145,7 +143,7 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -155,13 +153,13 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };
 
             btnExit.Click += (s, e) => Close();
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

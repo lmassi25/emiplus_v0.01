@@ -1,18 +1,19 @@
-﻿using Emiplus.Data.Helpers;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
 using SqlKata.Execution;
-using System;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarProdutosConcluido : Form
     {
-        private Model.Item _mItem = new Model.Item();
+        private Item _mItem = new Item();
 
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public ImportarProdutosConcluido()
         {
@@ -28,10 +29,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[0].Width = 150;
             GridLista.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            DataGridViewImageColumn columnImg = new DataGridViewImageColumn();
+            var columnImg = new DataGridViewImageColumn();
             {
                 columnImg.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                columnImg.HeaderText = "Importado";
+                columnImg.HeaderText = @"Importado";
                 columnImg.Name = "Importado";
                 columnImg.Width = 70;
             }
@@ -41,13 +42,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[2].Visible = false;
 
             foreach (dynamic item in ImportarProdutos.produtos)
-            {
                 GridLista.Rows.Add(
                     item.Nome,
-                    new Bitmap(Properties.Resources.error16x),
+                    new Bitmap(Resources.error16x),
                     item.Ordem
                 );
-            }
         }
 
         private async Task Importar()
@@ -57,8 +56,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 int id = item.Id;
                 string nome = item.Nome;
                 string codeBarras = item.CodeBarras;
-                
-                _mItem = _mItem.Query().Where(q => q.Where("id", id).OrWhere("nome", nome).OrWhere("codebarras", codeBarras)).FirstOrDefault<Model.Item>();
+
+                _mItem = _mItem.Query()
+                    .Where(q => q.Where("id", id).OrWhere("nome", nome).OrWhere("codebarras", codeBarras))
+                    .FirstOrDefault<Item>();
 
                 _mItem.Tipo = "Produtos";
                 _mItem.Excluir = 0;
@@ -74,41 +75,30 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.Ncm = item.NCM ?? "";
                 _mItem.id_sync = item.idSync == 0 ? Validation.RandomSecurity() : item.idSync;
                 if (_mItem.Save(_mItem, false))
-                {
                     foreach (DataGridViewRow gridData in GridLista.Rows)
-                    {
-                        if ((int)gridData.Cells["Ordem"].Value == (int)item.Ordem)
-                        {
-                            gridData.Cells["Importado"].Value = new Bitmap(Properties.Resources.success16x);
-                        }
-                    }
-                }
+                        if ((int) gridData.Cells["Ordem"].Value == (int) item.Ordem)
+                            gridData.Cells["Importado"].Value = new Bitmap(Resources.success16x);
             }
         }
 
         private void Eventos()
         {
-            Load += (s, e) =>
-            {
-                SetTable();
-            };
+            Load += (s, e) => { SetTable(); };
 
-            btnImportar.Click += (s, e) => WorkerBackground.RunWorkerAsync();
+            btnImportar.Click += (s, e) => workerBackground.RunWorkerAsync();
 
             btnClose.Click += (s, e) =>
             {
-                Application.OpenForms["ImportarNfe"].Close();
-                Application.OpenForms["ImportarProdutos"].Close();
+                Application.OpenForms["ImportarNfe"]?.Close();
+                Application.OpenForms["ImportarProdutos"]?.Close();
                 Close();
             };
 
-            WorkerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker) delegate {
-                Importar();
-            });
+            workerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker) delegate { Importar(); });
 
-            WorkerBackground.RunWorkerCompleted += async (s, e) =>
+            workerBackground.RunWorkerCompleted += (s, e) =>
             {
-                label1.Text = "Importação Concluída! :)";
+                label1.Text = @"Importação Concluída! :)";
                 btnImportar.Visible = false;
                 btnClose.Visible = true;
             };

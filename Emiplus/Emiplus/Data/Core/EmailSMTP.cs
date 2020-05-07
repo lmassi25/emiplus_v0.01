@@ -1,29 +1,18 @@
-﻿using Emiplus.Data.Helpers;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
+using System.Text;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.Data.Core
 {
     internal class EmailSMTP
     {
-        private string Host { get; set; }
-        private int Port { get; set; }
-        private string Mode { get; set; }
-        private string Smtp { get; set; }
-        private string Pass { get; set; }
-        private string Sender { get; set; }
-        private string User { get; set; }
-        private string From { get; set; }
-        private string To { get; set; }
-        private string ToName { get; set; }
-        private string Subject { get; set; }
-        private string Body { get; set; }
-
-        private SmtpClient smtpClient;
-        private NetworkCredential smtpCredentials;
+        private MailAddress fromAddress;
 
         private MailMessage message;
-        private MailAddress fromAddress;
+
+        private readonly SmtpClient smtpClient;
+        private readonly NetworkCredential smtpCredentials;
         private MailAddress toAddress;
 
         public EmailSMTP()
@@ -52,6 +41,19 @@ namespace Emiplus.Data.Core
             smtpClient = new SmtpClient();
             smtpCredentials = new NetworkCredential(Smtp, Pass);
         }
+
+        private string Host { get; }
+        private int Port { get; }
+        private string Mode { get; }
+        private string Smtp { get; }
+        private string Pass { get; }
+        private string Sender { get; }
+        private string User { get; }
+        private string From { get; set; }
+        private string To { get; set; }
+        private string ToName { get; set; }
+        private string Subject { get; set; }
+        private string Body { get; set; }
 
         public EmailSMTP SetEmailTo(string email, string name)
         {
@@ -89,7 +91,7 @@ namespace Emiplus.Data.Core
             message.From = fromAddress;
             message.To.Add(toAddress);
             message.IsBodyHtml = true;
-            message.BodyEncoding = System.Text.Encoding.UTF8;
+            message.BodyEncoding = Encoding.UTF8;
             message.Subject = Subject;
             message.Body = Body;
 

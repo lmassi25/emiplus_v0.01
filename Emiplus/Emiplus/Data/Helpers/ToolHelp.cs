@@ -4,9 +4,18 @@ namespace Emiplus.Data.Helpers
 {
     public class ToolHelp
     {
-        public static void Show(string message, PictureBox image, ToolTipIcon icon = ToolTipIcon.Info, string title = null)
+        public enum ToolTipIcon
         {
-            ToolTip tool = new ToolTip();
+            Error,
+            Info,
+            Warning,
+            None
+        }
+
+        public static void Show(string message, PictureBox image, ToolTipIcon icon = ToolTipIcon.Info,
+            string title = null)
+        {
+            var tool = new ToolTip();
 
             if (title != null)
                 tool.ToolTipTitle = title;
@@ -39,11 +48,6 @@ namespace Emiplus.Data.Helpers
             tool.SetToolTip(image, message);
 
             image.Cursor = Cursors.Help;
-        }
-
-        public enum ToolTipIcon
-        {
-            Error, Info, Warning, None
         }
     }
 }

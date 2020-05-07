@@ -1,64 +1,69 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Controller;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Common;
 using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Produtos
 {
     public partial class Categorias : Form
     {
-        public static int idCatSelected { get; set; }
-        private Controller.Categoria _controller = new Controller.Categoria();
+        private readonly Categoria _controller = new Categoria();
 
         private IEnumerable<dynamic> dataTable;
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        private Timer timer = new Timer(Configs.TimeLoading);
+        private readonly Timer timer = new Timer(Configs.TimeLoading);
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public Categorias()
         {
             InitializeComponent();
             Eventos();
 
-            if (Home.CategoriaPage == "Produtos")
+            switch (Home.CategoriaPage)
             {
-                pictureBox1.Image = Properties.Resources.box;
-                label5.Text = "Produtos";
-                label1.Text = "Categorias";
-                label2.Text = "Se organize melhor criando categorias para seus produtos.";
-            }
-
-            if (Home.CategoriaPage == "Receitas")
-            {
-                pictureBox1.Image = Properties.Resources.money_bag__1_;
-                label5.Text = "Financeiro";
-                label1.Text = "Nova Receita";
-                label2.Text = "Se organize melhor criando os tipos de receitas para lançar no financeiro.";
-            }
-
-            if (Home.CategoriaPage == "Despesas")
-            {
-                pictureBox1.Image = Properties.Resources.money_bag__1_;
-                label5.Text = "Financeiro";
-                label1.Text = "Nova Despesa";
-                label2.Text = "Se organize melhor criando os tipos de despesas para lançar no financeiro.";
+                case "Produtos":
+                    pictureBox1.Image = Resources.box;
+                    label5.Text = @"Produtos";
+                    label1.Text = @"Categorias";
+                    label2.Text = @"Se organize melhor criando categorias para seus produtos.";
+                    break;
+                case "Receitas":
+                    pictureBox1.Image = Resources.money_bag__1_;
+                    label5.Text = @"Financeiro";
+                    label1.Text = @"Nova Receita";
+                    label2.Text = @"Se organize melhor criando os tipos de receitas para lançar no financeiro.";
+                    break;
+                case "Despesas":
+                    pictureBox1.Image = Resources.money_bag__1_;
+                    label5.Text = @"Financeiro";
+                    label1.Text = @"Nova Despesa";
+                    label2.Text = @"Se organize melhor criando os tipos de despesas para lançar no financeiro.";
+                    break;
             }
         }
+
+        public static int idCatSelected { get; set; }
 
         private void DataTableStart()
         {
             GridListaCategorias.Visible = false;
-            Loading.Size = new System.Drawing.Size(GridListaCategorias.Width, GridListaCategorias.Height);
+            Loading.Size = new Size(GridListaCategorias.Width, GridListaCategorias.Height);
             Loading.Visible = true;
-            WorkerBackground.RunWorkerAsync();
+            workerBackground.RunWorkerAsync();
         }
 
-        private async void DataTable() => await _controller.SetTable(GridListaCategorias, null, search.Text);
+        private async void DataTable()
+        {
+            await _controller.SetTable(GridListaCategorias, null, search.Text);
+        }
 
         private void EditCategoria(bool create = false)
         {
@@ -129,14 +134,11 @@ namespace Emiplus.View.Produtos
                 GridListaCategorias.Visible = false;
             };
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
-                b.DoWork += async (s, e) =>
-                {
-                    dataTable = await _controller.GetDataTable();
-                };
+                b.DoWork += async (s, e) => { dataTable = await _controller.GetDataTable(); };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
@@ -148,7 +150,7 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker) delegate
             {
                 DataTable();
                 Loading.Visible = false;

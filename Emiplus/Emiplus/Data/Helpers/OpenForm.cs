@@ -6,14 +6,13 @@ namespace Emiplus.Data.Helpers
     public class OpenForm
     {
         /// <summary>
-        /// Adiciona um Form dentro de outro Form
+        ///     Adiciona um Form dentro de outro Form
         /// </summary>
         /// <typeparam name="MeuForm">Form externo</typeparam>
         /// <param name="Principal">Form atual</param>
         public static void Show<MeuForm>(Form Principal) where MeuForm : Form, new()
         {
-            Form formulario;
-            formulario = Principal.Controls.OfType<MeuForm>().LastOrDefault();
+            Form formulario = Principal.Controls.OfType<MeuForm>().LastOrDefault();
 
             if (formulario == null)
             {
@@ -37,8 +36,7 @@ namespace Emiplus.Data.Helpers
 
         public static void ShowInPanel<MeuForm>(Panel Principal) where MeuForm : Form, new()
         {
-            Form formulario;
-            formulario = Principal.Controls.OfType<MeuForm>().FirstOrDefault();
+            Form formulario = Principal.Controls.OfType<MeuForm>().FirstOrDefault();
 
             if (formulario == null)
             {

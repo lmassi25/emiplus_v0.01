@@ -40,7 +40,7 @@ namespace Emiplus.Data.Core
 
         public JObject Response()
         {
-            IRestResponse response = client.Execute(request);
+            var response = client.Execute(request);
             return JObject.Parse(response.Content);
         }
     }

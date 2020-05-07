@@ -7,19 +7,19 @@ namespace Emiplus.Data.Core
         public static bool AtualizacaoDisponivel { get; set; }
 
         /// <summary>
-        /// Pega versão recente do app na web
+        ///     Pega versão recente do app na web
         /// </summary>
         public string GetVersionWebTxt()
         {
-            using (WebClient client = new WebClient())
+            using (var client = new WebClient())
             {
-                string version = client.DownloadString(Program.URL_BASE + "/version/version.txt");
+                var version = client.DownloadString(Program.URL_BASE + "/version/version.txt");
                 return version;
             }
         }
 
         /// <summary>
-        /// Verifica versão da web com a versão do app e atualiza o INI para disponibilizar a versão mais recente
+        ///     Verifica versão da web com a versão do app e atualiza o INI para disponibilizar a versão mais recente
         /// </summary>
         public void CheckUpdate()
         {
@@ -35,7 +35,7 @@ namespace Emiplus.Data.Core
         }
 
         /// <summary>
-        /// Verifica se existe as KEYs principais de configuração no arquivo INI, e adiciona caso não exista
+        ///     Verifica se existe as KEYs principais de configuração no arquivo INI, e adiciona caso não exista
         /// </summary>
         public void CheckIni()
         {

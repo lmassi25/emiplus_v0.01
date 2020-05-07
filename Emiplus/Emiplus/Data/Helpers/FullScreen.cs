@@ -2,7 +2,7 @@
 
 namespace Emiplus.Data.Helpers
 {
-    class FullScreen
+    internal class FullScreen
     {
         public void EnterFullScreenMode(Form targetForm)
         {
@@ -13,7 +13,7 @@ namespace Emiplus.Data.Helpers
 
         public void LeaveFullScreenMode(Form targetForm)
         {
-            targetForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            targetForm.FormBorderStyle = FormBorderStyle.Sizable;
             targetForm.WindowState = FormWindowState.Normal;
         }
     }

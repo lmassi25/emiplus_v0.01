@@ -5,6 +5,7 @@ using SqlKata.Execution;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Produtos
 {
@@ -168,7 +169,7 @@ namespace Emiplus.View.Produtos
 
             nome.KeyPress += (s, e) => Masks.MaskMaxLength(s, e, 100);
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

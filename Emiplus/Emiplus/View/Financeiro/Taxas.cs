@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using SqlKata.Execution;
@@ -138,7 +139,7 @@ namespace Emiplus.View.Financeiro
 
             GridLista.GotFocus += (s, e) => SetContentTable(GridLista);
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             btnExit.Click += (s, e) => Close();
 
             btnAdicionar.Click += (s, e) => EditarTaxa(true);
