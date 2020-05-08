@@ -1,15 +1,14 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using SqlKata.Execution;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoPayAcrescimo : Form
     {
         private Model.Pedido _mPedido = new Model.Pedido();
-        private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
-
-        public static int idPedido { get; set; }
+        private PedidoItem _mPedidoItens = new PedidoItem();
 
         public PedidoPayAcrescimo()
         {
@@ -19,12 +18,14 @@ namespace Emiplus.View.Comercial
             Frete.Focus();
         }
 
+        public static int idPedido { get; set; }
+
         private void FormulaFrete(string total, int idItem)
         {
             var dataPedido = _mPedido.Query().Select("id", "total").Where("id", idPedido).First<Model.Pedido>();
-            _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<Model.PedidoItem>();
+            _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<PedidoItem>();
 
-            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / dataPedido.Total);
+            var soma1 = Validation.Round(_mPedidoItens.Total * 100 / dataPedido.Total);
             var soma2 = Validation.Round(soma1 / 100);
             var soma3 = Validation.Round(Validation.ConvertToDouble(total) * soma2);
 
@@ -37,24 +38,24 @@ namespace Emiplus.View.Comercial
 
         private void Save()
         {
-            if (idPedido > 0)
-            {
-                _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
-                var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
+            if (idPedido <= 0)
+                return;
 
-                string freteValor = Frete.Text;
+            _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+            var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
 
-                foreach (var item in data)
-                    FormulaFrete(freteValor, item.ID);
+            var freteValor = Frete.Text;
 
-                _mPedido.Tipo = "Vendas";
-                _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
-                if (_mPedido.Save(_mPedido))
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-            }
+            foreach (var item in data)
+                FormulaFrete(freteValor, item.ID);
+
+            _mPedido.Tipo = "Vendas";
+            _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
+            if (!_mPedido.Save(_mPedido)) 
+                return;
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -78,12 +79,12 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                Model.Pedido data = _mPedido.Query().Select("frete").Where("id", idPedido).FirstOrDefault<Model.Pedido>();
-                if (data != null)
-                {
-                    if (data.Desconto > 0)
-                        Frete.Text = Validation.FormatPrice(data.Frete);
-                }
+                var data = _mPedido.Query().Select("frete").Where("id", idPedido).FirstOrDefault<Model.Pedido>();
+                if (data == null)
+                    return;
+
+                if (data.Desconto > 0)
+                    Frete.Text = Validation.FormatPrice(data.Frete);
             };
 
             btnSalvar.Click += (s, e) => Save();

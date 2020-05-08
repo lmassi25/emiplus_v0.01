@@ -1,21 +1,13 @@
-﻿namespace Emiplus.Controller
-{
-    using Emiplus.Data.Helpers;
-    using Emiplus.Properties;
-    using SqlKata.Execution;
-    using System.Linq;
+﻿using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using SqlKata.Execution;
 
+namespace Emiplus.Controller
+{
     internal class Estoque
     {
-        public int Id { get; set; }
-        private int User { get; set; }
-        private double Amount { get; set; }
-        private string Obs { get; set; }
-        private string Local { get; set; }
-        private string Action { get; set; }
-        private int idPedido { get; set; }
-
-        private Model.ItemEstoqueMovimentacao _mItemEstoque = new Model.ItemEstoqueMovimentacao();
+        private readonly ItemEstoqueMovimentacao _mItemEstoque = new ItemEstoqueMovimentacao();
 
         public Estoque(int id, string local, string obs = "")
         {
@@ -24,6 +16,13 @@
             Local = local;
             Obs = obs;
         }
+
+        public int Id { get; set; }
+        private int User { get; }
+        private double Amount { get; set; }
+        private string Obs { get; }
+        private string Local { get; }
+        private string Action { get; set; }
 
         public Estoque Add()
         {
@@ -49,10 +48,7 @@
 
         public void Pedido()
         {
-            if (Id <= 0)
-            {
-                return;
-            }
+            if (Id <= 0) return;
 
             var itens = new Model.PedidoItem().FindAll().Where("pedido", Id).WhereFalse("excluir").Get();
 
@@ -61,66 +57,80 @@
                 var item = GetItem(data.ITEM);
                 Amount = Validation.ConvertToDouble(data.QUANTIDADE);
 
-                _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetIdPedido(Id).SetItem(item).Save(_mItemEstoque);
-            
-                if (data.ATRIBUTO != "0") {
-                    string attrId = data.ATRIBUTO;
-                    Model.ItemEstoque upEstoque = new Model.ItemEstoque().FindAll().Where("id", attrId).FirstOrDefault<Model.ItemEstoque>();
-                    if (upEstoque != null) {
-                        if (Action == "A") {
-                            upEstoque.Estoque += Amount;
-                            if (Local != "Compras" || Local != "Devoluções")
-                                upEstoque.Vendido -= Validation.ConvertToInt32(data.QUANTIDADE);
-                        }
+                _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs)
+                    .SetIdPedido(Id).SetItem(item).Save(_mItemEstoque);
 
-                        if (Action == "R") {
-                            upEstoque.Estoque -= Amount;
-                            if (Local != "Remessas" || Local != "Compras" || Local != "Devoluções")
-                                upEstoque.Vendido += Validation.ConvertToInt32(data.QUANTIDADE);
+                if (data.ATRIBUTO == "0")
+                    continue;
 
-                            if (Local == "Devoluções")
-                                upEstoque.Vendido -= Validation.ConvertToInt32(data.QUANTIDADE);
-                        }
+                string attrId = data.ATRIBUTO;
+                var upEstoque = new ItemEstoque().FindAll().Where("id", attrId).FirstOrDefault<ItemEstoque>();
+                if (upEstoque == null)
+                    continue;
 
-                        upEstoque.Save(upEstoque);
+                switch (Action)
+                {
+                    case "A":
+                    {
+                        upEstoque.Estoque += Amount;
+                        if (Local != "Compras" || Local != "Devoluções")
+                            upEstoque.Vendido -= Validation.ConvertToInt32(data.QUANTIDADE);
+                        break;
+                    }
+                    case "R":
+                    {
+                        upEstoque.Estoque -= Amount;
+                        if (Local != "Remessas" || Local != "Compras" || Local != "Devoluções")
+                            upEstoque.Vendido += Validation.ConvertToInt32(data.QUANTIDADE);
+
+                        if (Local == "Devoluções")
+                            upEstoque.Vendido -= Validation.ConvertToInt32(data.QUANTIDADE);
+                        break;
                     }
                 }
+
+                upEstoque.Save(upEstoque);
             }
         }
 
         public void Item()
         {
-            if (Id <= 0)
-            {
-                return;
-            }
+            if (Id <= 0) return;
 
             var pedidoItem = GetPedidoItem(Id);
             var item = GetItem(pedidoItem.Item);
             Amount = Validation.ConvertToDouble(pedidoItem.Quantidade);
 
-            _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs).SetIdPedido(pedidoItem.Pedido).SetItem(item).Save(_mItemEstoque);
-        
-            Model.ItemEstoque upEstoque = new Model.ItemEstoque().FindAll().Where("id", pedidoItem.Atributo).FirstOrDefault<Model.ItemEstoque>();
-            if (upEstoque != null) {
-                if (Action == "A") {
+            _mItemEstoque.SetUsuario(User).SetQuantidade(Amount).SetTipo(Action).SetLocal(Local).SetObs(Obs)
+                .SetIdPedido(pedidoItem.Pedido).SetItem(item).Save(_mItemEstoque);
+
+            var upEstoque = new ItemEstoque().FindAll().Where("id", pedidoItem.Atributo).FirstOrDefault<ItemEstoque>();
+            if (upEstoque == null)
+                return;
+
+            switch (Action)
+            {
+                case "A":
+                {
                     upEstoque.Estoque += Amount;
 
                     if (Local != "Compras" && Local != "Devoluções")
                         upEstoque.Vendido -= Validation.ConvertToInt32(pedidoItem.Quantidade);
+                    break;
                 }
-
-                if (Action == "R") {
+                case "R":
+                {
                     upEstoque.Estoque -= Amount;
                     if (Local != "Remessas" && Local != "Compras" && Local != "Devoluções")
                         upEstoque.Vendido += Validation.ConvertToInt32(pedidoItem.Quantidade);
 
                     if (Local == "Devoluções")
                         upEstoque.Vendido -= Validation.ConvertToInt32(pedidoItem.Quantidade);
+                    break;
                 }
-
-                upEstoque.Save(upEstoque);
             }
+
+            upEstoque.Save(upEstoque);
         }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Emiplus.Data.Helpers;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalVendedor : Form
     {
-        public static int Id { get; set; }
-
-        private Controller.Pedido _controller = new Controller.Pedido();
+        private readonly Controller.Pedido _controller = new Controller.Pedido();
 
         public PedidoModalVendedor()
         {
@@ -16,17 +13,22 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTableColaboradores(GridListaVendedores, search.Text, "Colaboradores");
+        public static int Id { get; set; }
+
+        private void DataTable()
+        {
+            _controller.GetDataTableColaboradores(GridListaVendedores, search.Text, "Colaboradores");
+        }
 
         private void SelectItemGrid()
         {
-            if (GridListaVendedores.SelectedRows.Count > 0)
-            {
-                DialogResult = DialogResult.OK;
-                Id = Validation.ConvertToInt32(GridListaVendedores.SelectedRows[0].Cells["ID"].Value);
+            if (GridListaVendedores.SelectedRows.Count <= 0) 
+                return;
 
-                Close();
-            }
+            DialogResult = DialogResult.OK;
+            Id = Validation.ConvertToInt32(GridListaVendedores.SelectedRows[0].Cells["ID"].Value);
+
+            Close();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)

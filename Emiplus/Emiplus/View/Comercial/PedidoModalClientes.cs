@@ -1,68 +1,29 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalClientes : Form
     {
-        public static int Id { get; set; }
-        public static string page { get; set; }
-
-        private Controller.Pedido _controller = new Controller.Pedido();
+        private readonly Controller.Pedido _controller = new Controller.Pedido();
 
         public PedidoModalClientes()
         {
             InitializeComponent();
-
-            switch (Home.pedidoPage)
-            {
-                case "Delivery":
-                    if (page == "Entregadores") 
-                    {
-                        label11.Text = "Selecione o Entregador!";
-                        label2.Text = "Buscar entregador (F1):";
-                        NovoCliente.Text = "Entregador Novo ? (F9)";
-                        label1.Text = "Entregadores encontrados:";
-                        pictureBox1.Image = Resources.deliveryman;
-                    }
-                    else
-                    {
-                        label11.Text = "Selecione o Cliente!";
-                        label2.Text = "Buscar cliente (F1):";
-                        NovoCliente.Text = "Cliente Novo ? (F9)";
-                        label1.Text = "Clientes encontrados:";
-                    }
-                    break;
-
-                case "Compras":
-                    label11.Text = "Selecione o Fornecedor!";
-                    label2.Text = "Buscar fornecedor (F1):";
-                    NovoCliente.Text = "Fornecedor Novo ? (F9)";
-                    label1.Text = "Fornecedores encontrados:";
-                    break;
-
-                default:
-                    label11.Text = "Selecione o Cliente!";
-                    label2.Text = "Buscar cliente (F1):";
-                    NovoCliente.Text = "Cliente Novo ? (F9)";
-                    label1.Text = "Clientes encontrados:";
-                    break;
-            }
-
             Eventos();
         }
+
+        public static int Id { get; set; }
+        public static string page { get; set; }
 
         private void DataTable()
         {
             switch (Home.pedidoPage)
             {
                 case "Delivery":
-                    if (page == "Entregadores") 
-                        _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Entregadores");
-                    else
-                        _controller.GetDataTablePessoa(GridListaClientes, search.Text, "Clientes");
+                    _controller.GetDataTablePessoa(GridListaClientes, search.Text, page == "Entregadores" ? "Entregadores" : "Clientes");
                     break;
 
                 case "Compras":
@@ -93,10 +54,7 @@ namespace Emiplus.View.Comercial
             switch (Home.pedidoPage)
             {
                 case "Delivery":
-                    if (page == "Entregadores")
-                        Home.pessoaPage = "Entregadores";
-                    else
-                        Home.pessoaPage = "Clientes";
+                    Home.pessoaPage = page == "Entregadores" ? "Entregadores" : "Clientes";
                     break;
 
                 case "Compras":
@@ -109,7 +67,8 @@ namespace Emiplus.View.Comercial
             }
 
             Clientes.Id = 0;
-            using (AddClientes f = new AddClientes()) {
+            using (var f = new AddClientes())
+            {
                 f.btnSalvarText = "Salvar e Inserir";
                 f.btnSalvarWidth = 150;
                 f.btnSalvarLocation = 590;
@@ -177,6 +136,45 @@ namespace Emiplus.View.Comercial
             KeyDown += KeyDowns;
             KeyPreview = true;
             Masks.SetToUpper(this);
+
+            Shown += (s, e) =>
+            {
+                switch (Home.pedidoPage)
+                {
+                    case "Delivery":
+                        if (page == "Entregadores")
+                        {
+                            label11.Text = @"Selecione o Entregador!";
+                            label2.Text = @"Buscar entregador (F1):";
+                            NovoCliente.Text = @"Entregador Novo ? (F9)";
+                            label1.Text = @"Entregadores encontrados:";
+                            pictureBox1.Image = Resources.deliveryman;
+                        }
+                        else
+                        {
+                            label11.Text = @"Selecione o Cliente!";
+                            label2.Text = @"Buscar cliente (F1):";
+                            NovoCliente.Text = @"Cliente Novo ? (F9)";
+                            label1.Text = @"Clientes encontrados:";
+                        }
+
+                        break;
+
+                    case "Compras":
+                        label11.Text = @"Selecione o Fornecedor!";
+                        label2.Text = @"Buscar fornecedor (F1):";
+                        NovoCliente.Text = @"Fornecedor Novo ? (F9)";
+                        label1.Text = @"Fornecedores encontrados:";
+                        break;
+
+                    default:
+                        label11.Text = @"Selecione o Cliente!";
+                        label2.Text = @"Buscar cliente (F1):";
+                        NovoCliente.Text = @"Cliente Novo ? (F9)";
+                        label1.Text = @"Clientes encontrados:";
+                        break;
+                }
+            };
 
             search.TextChanged += (s, e) => DataTable();
             search.Enter += (s, e) => DataTable();

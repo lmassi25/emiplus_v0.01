@@ -1,26 +1,17 @@
-﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Comercial
 {
     public partial class OpcoesNfse : Form
     {
-        public static int idPedido { get; set; }
-        public static int idNota { get; set; }
-
-        private Model.Nota _modelNota = new Model.Nota();
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private Nota _modelNota = new Nota();
         private string _msg, justificativa;
-        private int p1 = 0;
+        private int p1;
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public OpcoesNfse()
         {
@@ -28,33 +19,34 @@ namespace Emiplus.View.Comercial
 
             if (idNota == 0)
             {
-                var checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFSe").FirstOrDefault<Model.Nota>();
+                var checkNota = new Nota().FindByIdPedidoUltReg(idPedido, "", "NFSe").FirstOrDefault<Nota>();
 
-                if (checkNota != null)
-                {
-                    idNota = checkNota.Id;
-                }
+                if (checkNota != null) idNota = checkNota.Id;
             }
 
             Eventos();
         }
-        
+
+        public static int idPedido { get; set; }
+        public static int idNota { get; set; }
+
         public void Eventos()
         {
             Emitir.Click += (s, e) =>
             {
-                var checkNota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
+                var checkNota = new Nota().FindById(idNota).FirstOrDefault<Nota>();
                 if (checkNota == null)
                 {
-                    Model.Nota _modelNotaNova = new Model.Nota();
-
-                    _modelNotaNova.Id = 0;
-                    _modelNotaNova.Tipo = "NFSe";
-                    _modelNotaNova.Status = "Pendente";
-                    _modelNotaNova.id_pedido = idPedido;
+                    var _modelNotaNova = new Nota
+                    {
+                        Id = 0, 
+                        Tipo = "NFSe", 
+                        Status = "Pendente", 
+                        id_pedido = idPedido
+                    };
                     _modelNotaNova.Save(_modelNotaNova, false);
 
-                    checkNota = new Model.Nota().FindByIdPedidoUltReg(idPedido, "", "NFSe").FirstOrDefault<Model.Nota>();
+                    checkNota = new Nota().FindByIdPedidoUltReg(idPedido, "", "NFSe").FirstOrDefault<Nota>();
                 }
 
                 if (checkNota.Status == "Cancelada")
@@ -82,7 +74,9 @@ namespace Emiplus.View.Comercial
 
                 if (checkNota.Status != "Pendente")
                 {
-                    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.", Alert.AlertType.warning);
+                    Alert.Message("Atenção!", "Não é possível emitir uma nota Autorizada/Cancelada.",
+                        Alert.AlertType.warning);
+
                     return;
                 }
 
@@ -93,19 +87,21 @@ namespace Emiplus.View.Comercial
                 if (p1 == 0)
                 {
                     p1 = 1;
-                    WorkerBackground.RunWorkerAsync();
+                    workerBackground.RunWorkerAsync();
                 }
                 else
+                {
                     Alert.Message("Ação não permitida", "Aguarde processo finalizar", Alert.AlertType.warning);
+                }
             };
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
-                b.DoWork += async (s, e) =>
+                b.DoWork += (s, e) =>
                 {
                     switch (p1)
                     {
-                        case 1:                            
+                        case 1:
                             _msg = new Controller.Fiscal().Emitir(idPedido, "NFSe", _modelNota.Id);
                             break;
 
@@ -132,7 +128,7 @@ namespace Emiplus.View.Comercial
                     }
                 };
 
-                b.RunWorkerCompleted += async (s, e) =>
+                b.RunWorkerCompleted += (s, e) =>
                 {
                     p1 = 0;
                     retorno.Text = _msg;
@@ -141,8 +137,8 @@ namespace Emiplus.View.Comercial
 
             FormClosing += (s, e) =>
             {
-                OpcoesNfse.idPedido = 0;
-                OpcoesNfse.idNota = 0;
+                idPedido = 0;
+                idNota = 0;
             };
         }
     }

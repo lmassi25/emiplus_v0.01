@@ -1,21 +1,18 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using Emiplus.Data.Helpers;
 using SqlKata;
-using System;
+using SqlKata.Execution;
 
 namespace Emiplus.Model
 {
-    using Data.Database;
-    using SqlKata.Execution;
-
-    internal class Estoque : Model
+    internal class Estoque : Data.Database.Model
     {
         public Estoque() : base("ESTOQUE")
         {
         }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
+
         public int id_item { get; set; }
         public DateTime Criado { get; private set; }
         public string id_empresa { get; set; }
@@ -26,13 +23,14 @@ namespace Emiplus.Model
         public void GerarEstoque()
         {
             dynamic items = new Item().FindAll().Where("excluir", 0).Where("tipo", "Produtos").Get();
-            if (items != null) {
-                foreach (dynamic data in items)
+            if (items != null)
+                foreach (var data in items)
                 {
                     int id = data.ID;
                     double estoque = Validation.ConvertToDouble(data.ESTOQUEATUAL);
 
-                    dynamic itemsCheck = FindAll().Where("id_item", id).Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Now)).FirstOrDefault<Estoque>();
+                    dynamic itemsCheck = FindAll().Where("id_item", id)
+                        .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Now)).FirstOrDefault<Estoque>();
                     if (itemsCheck == null)
                     {
                         id_item = id;
@@ -40,7 +38,6 @@ namespace Emiplus.Model
                         Save(this);
                     }
                 }
-            }
         }
 
         public bool Save(Estoque data)

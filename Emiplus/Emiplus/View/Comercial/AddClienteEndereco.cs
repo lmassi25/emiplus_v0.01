@@ -1,50 +1,24 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class AddClienteEndereco : Form
     {
-        private int IdAddress = AddClientes.IdAddress;
-        private int IdPessoa = AddClientes.Id;
         private PessoaEndereco _modelAddress = new PessoaEndereco();
-        private PessoaEndereco retorno = new PessoaEndereco();
         private string cep_aux;
+        private readonly int IdAddress = AddClientes.IdAddress;
+        private readonly int IdPessoa = AddClientes.Id;
+        private PessoaEndereco retorno = new PessoaEndereco();
 
         public AddClienteEndereco()
         {
             InitializeComponent();
             Eventos();
-
-            if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
-            {
-                Alert.Message("Opss", "Não foi possível, tente novamente.", Alert.AlertType.error);
-                Close();
-            }
-
-            pais.DataSource = new List<String> { "Brasil" };
-            estado.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
-
-            if (IdAddress > 0)
-            {
-                _modelAddress = _modelAddress.FindById(IdAddress).FirstOrDefault<PessoaEndereco>();
-
-                cep.Text = _modelAddress.Cep ?? "";
-                rua.Text = _modelAddress.Rua ?? "";
-                bairro.Text = _modelAddress.Bairro ?? "";
-                cidade.Text = _modelAddress.Cidade ?? "";
-                nr.Text = _modelAddress.Nr ?? "";
-                complemento.Text = _modelAddress.Complemento ?? "";
-                estado.Text = _modelAddress.Estado ?? "";
-                pais.Text = _modelAddress.Pais ?? "";
-                ibge.Text = _modelAddress.IBGE ?? "";
-            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -63,6 +37,33 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
+            Shown += (s, e) =>
+            {
+                if (!IdPessoa.IsNumber() && IdPessoa == 0)
+                {
+                    Alert.Message("Opss", "Não foi possível, tente novamente.", Alert.AlertType.error);
+                    Close();
+                }
+
+                pais.DataSource = new List<string> {"Brasil"};
+                estado.DataSource = Support.GetEstados();
+
+                if (IdAddress <= 0)
+                    return;
+
+                _modelAddress = _modelAddress.FindById(IdAddress).FirstOrDefault<PessoaEndereco>();
+
+                cep.Text = _modelAddress.Cep ?? "";
+                rua.Text = _modelAddress.Rua ?? "";
+                bairro.Text = _modelAddress.Bairro ?? "";
+                cidade.Text = _modelAddress.Cidade ?? "";
+                nr.Text = _modelAddress.Nr ?? "";
+                complemento.Text = _modelAddress.Complemento ?? "";
+                estado.Text = _modelAddress.Estado ?? "";
+                pais.Text = _modelAddress.Pais ?? "";
+                ibge.Text = _modelAddress.IBGE ?? "";
+            };
+
             btnAddrSalvar.Click += (s, e) =>
             {
                 _modelAddress.Id = IdAddress;
@@ -76,27 +77,27 @@ namespace Emiplus.View.Comercial
                 _modelAddress.Pais = pais.Text;
                 _modelAddress.IBGE = ibge.Text;
 
-                if (_modelAddress.Save(_modelAddress))
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!_modelAddress.Save(_modelAddress))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnAddrDelete.Click += (s, e) =>
             {
                 var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir o endereço?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
-                if (result)
-                {
-                    if (_modelAddress.Remove(IdAddress))
-                    {
-                        DialogResult = DialogResult.OK;
-                        Close();
-                    }
-                }
+                if (!result)
+                    return;
+
+                if (!_modelAddress.Remove(IdAddress))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
-            cep.KeyPress += (s, e) => Masks.MaskCEP(s, e);
+            cep.KeyPress += Masks.MaskCEP;
             buscarEndereco.Click += (s, e) =>
             {
                 buscarEndereco.Enabled = false;
@@ -116,7 +117,7 @@ namespace Emiplus.View.Comercial
                 pais.Enabled = false;
                 ibge.Enabled = false;
 
-                if (String.IsNullOrEmpty(cep.Text))
+                if (string.IsNullOrEmpty(cep.Text))
                     return;
 
                 if (cep.Text.Replace("-", "").Length != 8)

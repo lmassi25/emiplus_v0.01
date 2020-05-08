@@ -1,69 +1,68 @@
-﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Comercial
 {
     public partial class AddAtributo : Form
     {
-        public static int idProduto { get; set; }
-        public static int idAttr { get; set; }
-
         public AddAtributo()
         {
             InitializeComponent();
             Eventos();
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        public static int idProduto { get; set; }
+        public static int idAttr { get; set; }
+
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 5;
+            table.ColumnCount = 5;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            
-            Table.RowHeadersVisible = false;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            table.RowHeadersVisible = false;
 
-            Table.Columns[1].Name = "Atributo";
-            Table.Columns[1].Width = 150;
-            Table.Columns[1].Visible = true;
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
 
-            Table.Columns[2].Name = "Estoque";
-            Table.Columns[2].Width = 70;
-            Table.Columns[2].Visible = true;
+            table.Columns[1].Name = "Atributo";
+            table.Columns[1].Width = 150;
+            table.Columns[1].Visible = true;
 
-            Table.Columns[3].Name = "Referencia";
-            Table.Columns[3].Width = 70;
-            Table.Columns[3].Visible = true;
+            table.Columns[2].Name = "Estoque";
+            table.Columns[2].Width = 70;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[4].Name = "Código de Barras";
-            Table.Columns[4].Width = 130;
-            Table.Columns[4].Visible = true;
+            table.Columns[3].Name = "Referencia";
+            table.Columns[3].Width = 70;
+            table.Columns[3].Visible = true;
+
+            table.Columns[4].Name = "Código de Barras";
+            table.Columns[4].Width = 130;
+            table.Columns[4].Visible = true;
         }
 
         private void LoadAttr()
         {
             SetHeadersTable(GridLista);
 
-            IEnumerable<Model.ItemEstoque> itemEstoque = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto).Get<Model.ItemEstoque>();
+            var itemEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
+                .Get<ItemEstoque>();
             if (itemEstoque != null)
-            {
-                foreach (Model.ItemEstoque attr in itemEstoque)
-                {
+                foreach (var attr in itemEstoque)
                     GridLista.Rows.Add(
                         attr.Id,
                         attr.Title,
                         attr.Estoque,
                         attr.Referencia,
                         attr.Codebarras
-                        );
-                }
-            }
+                    );
         }
 
         private void SelectItemGrid()
@@ -123,7 +122,7 @@ namespace Emiplus.View.Comercial
                     Close();
                     return;
                 }
-                
+
                 GridLista.Focus();
                 LoadAttr();
             };

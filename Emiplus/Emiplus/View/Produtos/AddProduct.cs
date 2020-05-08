@@ -37,6 +37,7 @@ namespace Emiplus.View.Produtos
         }
 
         public static int idPdtSelecionado { get; set; }
+        private ArrayList fornecedores { get; set; }
         private ArrayList categorias { get; set; }
         private IEnumerable<dynamic> Impostos { get; set; }
         private IEnumerable<dynamic> Impostos2 { get; set; }
@@ -105,7 +106,9 @@ namespace Emiplus.View.Produtos
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
 
-            LoadFornecedores();
+            Fornecedor.DataSource = fornecedores;
+            Fornecedor.DisplayMember = "Nome";
+            Fornecedor.ValueMember = "Id";
 
             Medidas.DataSource = Support.GetMedidas();
 
@@ -185,9 +188,9 @@ namespace Emiplus.View.Produtos
             nome.Text = _modelItem?.Nome ?? "";
             codebarras.Text = _modelItem?.CodeBarras ?? "";
             referencia.Text = _modelItem?.Referencia ?? "";
-            valorcompra.Text = Validation.Price(_modelItem.ValorCompra);
-            valorvenda.Text = Validation.Price(_modelItem.ValorVenda);
-            estoqueminimo.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueMinimo);
+            valorcompra.Text = Validation.Price(_modelItem?.ValorCompra ?? 0);
+            valorvenda.Text = Validation.Price(_modelItem?.ValorVenda ?? 0);
+            estoqueminimo.Text = Validation.FormatMedidas(_modelItem?.Medida ?? "UN", _modelItem?.EstoqueMinimo ?? 0);
             LoadEstoque();
             CustoMedio();
 
@@ -728,6 +731,7 @@ namespace Emiplus.View.Produtos
             {
                 _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
                 categorias = new Categoria().GetAll("Produtos");
+                fornecedores = new Pessoa().GetAll("Fornecedores");
                 Impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                 Impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             };

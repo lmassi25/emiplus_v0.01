@@ -1,9 +1,4 @@
-﻿using DotLiquid;
-using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using Emiplus.Properties;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,12 +6,18 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DotLiquid;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Model;
+using Emiplus.Properties;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Reports
 {
     public partial class EstoqueEntradaSaida : Form
     {
-        private Model.Item _mItem = new Model.Item();
+        private readonly Item _mItem = new Item();
 
         // AutoComplete
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
@@ -27,42 +28,37 @@ namespace Emiplus.View.Reports
             Eventos();
         }
 
-        private async Task DataTableAsync() => await SetTable(GridLista);
+        private async Task DataTableAsync()
+        {
+            await SetTable(GridLista);
+        }
 
         /// <summary>
-        /// Autocomplete do campo de busca de produtos.
+        ///     Autocomplete do campo de busca de produtos.
         /// </summary>
         private void AutoCompleteItens()
         {
-            var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
-
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
-            }
-
+            collection = _mItem.AutoComplete("Produtos");
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de usuários.
+        ///     Autocomplete do campo de busca de usuários.
         /// </summary>
         private void AutoCompleteUsers()
         {
-            Usuarios.DataSource = (new Model.Usuarios()).GetAllUsers();
+            Usuarios.DataSource = new Usuarios().GetAllUsers();
             Usuarios.DisplayMember = "Nome";
             Usuarios.ValueMember = "Id";
         }
 
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
-            var model = new Model.ItemEstoqueMovimentacao().Query();
+            var model = new ItemEstoqueMovimentacao().Query();
 
             if (!noFilterData.Checked)
-            {
                 model.Where("ITEM_MOV_ESTOQUE.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
-                .Where("ITEM_MOV_ESTOQUE.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
-            }
+                    .Where("ITEM_MOV_ESTOQUE.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
 
             if (Validation.ConvertToInt32(Locais.SelectedValue) >= 1)
             {
@@ -86,27 +82,17 @@ namespace Emiplus.View.Reports
             }
 
             if (Validation.ConvertToInt32(Usuarios.SelectedValue) >= 1)
-            {
                 model.Where("ITEM_MOV_ESTOQUE.id_usuario", Validation.ConvertToInt32(Usuarios.SelectedValue));
-            }
 
             if (!filterAll.Checked)
             {
-                if (filterAdicionado.Checked)
-                {
-                    model.Where("ITEM_MOV_ESTOQUE.TIPO", "A");
-                }
+                if (filterAdicionado.Checked) model.Where("ITEM_MOV_ESTOQUE.TIPO", "A");
 
-                if (filterRemovido.Checked)
-                {
-                    model.Where("ITEM_MOV_ESTOQUE.TIPO", "R");
-                }
+                if (filterRemovido.Checked) model.Where("ITEM_MOV_ESTOQUE.TIPO", "R");
             }
 
             if (collection.Lookup(BuscarProduto.Text) > 0)
-            {
                 model.Where("ITEM_MOV_ESTOQUE.id_item", collection.Lookup(BuscarProduto.Text));
-            }
 
             model.LeftJoin("ITEM", "ITEM.id", "ITEM_MOV_ESTOQUE.id_item");
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario");
@@ -120,7 +106,9 @@ namespace Emiplus.View.Reports
         {
             Table.ColumnCount = 5;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -145,15 +133,15 @@ namespace Emiplus.View.Reports
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable();
+                var dados = await GetDataTable();
                 Data = dados;
             }
 
-            for (int i = 0; i < Data.Count(); i++)
+            for (var i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
-                var tipo = (item.TIPO == "R") ? "-" : "+";
-                var total = (item.TIPO == "R") ? (item.ANTERIOR - item.QUANTIDADE) : (item.ANTERIOR + item.QUANTIDADE);
+                var tipo = item.TIPO == "R" ? "-" : "+";
+                var total = item.TIPO == "R" ? item.ANTERIOR - item.QUANTIDADE : item.ANTERIOR + item.QUANTIDADE;
 
                 Table.Rows.Add(
                     item.NOME,
@@ -194,13 +182,15 @@ namespace Emiplus.View.Reports
                 dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
 
-                var origens = new ArrayList();
-                origens.Add(new { Id = "0", Nome = "Todos" });
-                origens.Add(new { Id = "1", Nome = "Cadastro de Produtos" });
-                origens.Add(new { Id = "2", Nome = "Vendas" });
-                origens.Add(new { Id = "3", Nome = "Orçamentos" });
-                origens.Add(new { Id = "4", Nome = "Consignações" });
-                origens.Add(new { Id = "5", Nome = "Devoluções" });
+                var origens = new ArrayList
+                {
+                    new {Id = "0", Nome = "Todos"},
+                    new {Id = "1", Nome = "Cadastro de Produtos"},
+                    new {Id = "2", Nome = "Vendas"},
+                    new {Id = "3", Nome = "Orçamentos"},
+                    new {Id = "4", Nome = "Consignações"},
+                    new {Id = "5", Nome = "Devoluções"}
+                };
 
                 Locais.DataSource = origens;
                 Locais.DisplayMember = "Nome";
@@ -212,10 +202,7 @@ namespace Emiplus.View.Reports
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
-            btnSearch.Click += async (s, e) =>
-            {
-                await DataTableAsync();
-            };
+            btnSearch.Click += async (s, e) => { await DataTableAsync(); };
 
             imprimir.Click += async (s, e) => await RenderizarAsync();
 
@@ -224,24 +211,22 @@ namespace Emiplus.View.Reports
 
         private async Task RenderizarAsync()
         {
-            IEnumerable<dynamic> dados = await GetDataTable();
+            var dados = await GetDataTable();
 
-            ArrayList data = new ArrayList();
+            var data = new ArrayList();
             foreach (var item in dados)
-            {
                 data.Add(new
                 {
                     Nome = item.NOME,
                     Usuario = item.NOME_USER,
                     Quantidade = item.QUANTIDADE,
-                    Tipo = (item.TIPO == "R") ? "-" : "+",
+                    Tipo = item.TIPO == "R" ? "-" : "+",
                     Local = item.LOCAL,
                     EstoqueAnterior = item.ANTERIOR,
-                    EstoqueTotal = (item.TIPO == "R") ? item.ANTERIOR - item.QUANTIDADE : item.ANTERIOR + item.QUANTIDADE,
+                    EstoqueTotal = item.TIPO == "R" ? item.ANTERIOR - item.QUANTIDADE : item.ANTERIOR + item.QUANTIDADE,
                     Referencia = item.REFERENCIA,
                     Criado = Validation.ConvertDateToForm(item.CRIADO, true)
                 });
-            }
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\EstoqueEntradaSaida.html"));
             var render = html.Render(Hash.FromAnonymousObject(new

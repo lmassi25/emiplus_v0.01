@@ -1,20 +1,15 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class FecharCaixa : Form
     {
-        public static int idCaixa { get; set; }
-        private Controller.Caixa _controllerCaixa = new Controller.Caixa();
+        private readonly Controller.Caixa _controllerCaixa = new Controller.Caixa();
         private Model.Caixa _modelCaixa = new Model.Caixa();
-        private Model.CaixaMovimentacao _modelCaixaMov = new Model.CaixaMovimentacao();
-
-        public static bool fecharImprimir { get; set; }
 
         public FecharCaixa()
         {
@@ -22,11 +17,17 @@ namespace Emiplus.View.Financeiro
             Eventos();
         }
 
+        public static int idCaixa { get; set; }
+
+        public static bool fecharImprimir { get; set; }
+
         private void LoadData()
         {
             _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
-            
-            var Dinheiro = Validation.ConvertToDouble(_controllerCaixa.SumEntradasDinheiro(_modelCaixa.Id) + _modelCaixa.Saldo_Inicial - _controllerCaixa.SumSaidas(_modelCaixa.Id));
+
+            var Dinheiro = Validation.ConvertToDouble(_controllerCaixa.SumEntradasDinheiro(_modelCaixa.Id) +
+                                                      _modelCaixa.Saldo_Inicial -
+                                                      _controllerCaixa.SumSaidas(_modelCaixa.Id));
             txtSaldoDinheiro.Text = Validation.FormatPrice(Dinheiro, true);
             txtSaldoTotal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
         }

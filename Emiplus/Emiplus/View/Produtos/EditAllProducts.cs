@@ -31,61 +31,61 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private IEnumerable<dynamic> fornecedores { get; set; }
+        private ArrayList fornecedores { get; set; }
         private ArrayList categorias { get; set; }
         private IEnumerable<dynamic> impostos { get; set; }
         private IEnumerable<dynamic> impostos2 { get; set; }
 
         public static bool FormOpen { get; set; }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 6;
+            table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
                 new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Categoria";
-            Table.Columns[1].Width = 150;
-            Table.Columns[1].Visible = true;
+            table.Columns[1].Name = "Categoria";
+            table.Columns[1].Width = 150;
+            table.Columns[1].Visible = true;
 
-            Table.Columns[2].Name = "Referência";
-            Table.Columns[2].Width = 100;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Referência";
+            table.Columns[2].Width = 100;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Descrição";
-            Table.Columns[3].Width = 120;
-            Table.Columns[3].MinimumWidth = 120;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Descrição";
+            table.Columns[3].Width = 120;
+            table.Columns[3].MinimumWidth = 120;
+            table.Columns[3].Visible = true;
 
-            Table.Columns[4].Name = "Custo";
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 100;
-            Table.Columns[4].Visible = true;
+            table.Columns[4].Name = "Custo";
+            table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[4].Width = 100;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[5].Name = "Venda";
-            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[5].Width = 100;
-            Table.Columns[5].Visible = true;
+            table.Columns[5].Name = "Venda";
+            table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[5].Width = 100;
+            table.Columns[5].Visible = true;
         }
 
-        private async Task SetContentTableAsync(DataGridView Table)
+        private async Task SetContentTableAsync(DataGridView table)
         {
-            Table.Rows.Clear();
+            table.Rows.Clear();
 
             foreach (var item in ListProducts)
             {
                 var items = _modelItem.FindById(item).Get();
 
                 foreach (var data in items)
-                    Table.Rows.Add(
+                    table.Rows.Add(
                         data.ID,
                         data.CATEGORIA,
                         data.REFERENCIA,
@@ -95,7 +95,7 @@ namespace Emiplus.View.Produtos
                     );
             }
 
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadFornecedores()
@@ -154,7 +154,9 @@ namespace Emiplus.View.Produtos
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
 
-            LoadFornecedores();
+            Fornecedor.DataSource = fornecedores;
+            Fornecedor.DisplayMember = "Nome";
+            Fornecedor.ValueMember = "Id";
 
             Medidas.DataSource = Support.GetMedidas();
 
@@ -335,8 +337,7 @@ namespace Emiplus.View.Produtos
             backOn.DoWork += (s, e) =>
             {
                 categorias = new Categoria().GetAll("Produtos");
-                fornecedores = new Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir")
-                    .OrderByDesc("nome").Get();
+                fornecedores = new Pessoa().GetAll("Fornecedores");
                 impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                 impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             };

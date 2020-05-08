@@ -1,68 +1,78 @@
-﻿using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Model;
+using SqlKata.Execution;
 using static Emiplus.Data.Helpers.Validation;
 
 namespace Emiplus.Controller
 {
     public class Item : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, int NrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true, bool Servicos = false)
+        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null, int NrRegistros = 50,
+            bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true, bool Servicos = false)
         {
             var search = "%" + SearchText + "%";
 
             var query = new Model.Item().Query();
             query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
-             .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
-             .Where("item.excluir", 0)
-             //.Where("item.tipo", "Produtos")
-             .Where
-             (
-                 q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
-             );
+                .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra",
+                    "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
+                .Where("item.excluir", 0)
+                //.Where("item.tipo", "Produtos")
+                .Where
+                (
+                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search)
+                        .OrWhere("categoria.nome", "like", search)
+                );
 
             if (!Servicos)
                 query.Where("item.tipo", "Produtos");
 
-            if (Ordem == "Z-A")
-                query.OrderByDesc("item.nome");
-            if (Ordem == "A-Z")
-                query.OrderByRaw("item.nome ASC");
-            if (Ordem == "Aleatório")
-                query.OrderByRaw("RAND()");
+            switch (Ordem)
+            {
+                case "Z-A":
+                    query.OrderByDesc("item.nome");
+                    break;
+                case "A-Z":
+                    query.OrderByRaw("item.nome ASC");
+                    break;
+                case "Aleatório":
+                    query.OrderByRaw("RAND()");
+                    break;
+            }
 
             if (!TodosRegistros)
                 query.Limit(NrRegistros);
 
             if (!Inativos)
-            {
                 query.Where
                 (
                     q => q.Where("item.ativo", "0").OrWhereNull("item.ativo")
                 );
-            }
 
 
             return query.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableTotal(string SearchText = null, bool TodosRegistros = false, int NrRegistros = 50)
+        public Task<IEnumerable<dynamic>> GetDataTableTotal(string SearchText = null, bool TodosRegistros = false,
+            int NrRegistros = 50)
         {
             var search = "%" + SearchText + "%";
 
             var query = new Model.Item().Query();
             query.LeftJoin("categoria", "categoria.id", "item.categoriaid")
-             .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra", "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
-             .Where("item.excluir", 0)
-             .Where("item.tipo", "Produtos")
-             .Where
-             (
-                 q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("categoria.nome", "like", search)
-             );
+                .Select("item.id", "item.nome", "item.referencia", "item.codebarras", "item.valorcompra",
+                    "item.valorvenda", "item.estoqueatual", "item.medida", "categoria.nome as categoria")
+                .Where("item.excluir", 0)
+                .Where("item.tipo", "Produtos")
+                .Where
+                (
+                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search)
+                        .OrWhere("categoria.nome", "like", search)
+                );
 
             if (!TodosRegistros)
                 query.Limit(NrRegistros);
@@ -70,11 +80,14 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0, bool ativo = true, bool Servicos = false)
+        public async Task SetTable(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "",
+            int page = 0, bool ativo = true, bool Servicos = false)
         {
             Table.ColumnCount = 8;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -112,11 +125,11 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable(SearchText, 50, false, "Ascendente", ativo, Servicos);
+                var dados = await GetDataTable(SearchText, 50, false, "Ascendente", ativo, Servicos);
                 Data = dados;
             }
 
-            for (int i = 0; i < Data.Count(); i++)
+            for (var i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
 
@@ -135,9 +148,9 @@ namespace Emiplus.Controller
             Table.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableServicos(string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTableServicos(string searchText = null)
         {
-            var search = "%" + SearchText + "%";
+            var search = "%" + searchText + "%";
 
             return new Model.Item().Query()
                 .Select("item.id", "item.nome", "item.referencia", "item.valorcompra", "item.valorvenda")
@@ -145,18 +158,21 @@ namespace Emiplus.Controller
                 .Where("item.tipo", "Serviços")
                 .Where
                 (
-                    q => q.WhereLike("item.nome", search, false).OrWhere("item.referencia", "like", search)
+                    q => q.WhereLike("item.nome", search).OrWhere("item.referencia", "like", search)
                 )
                 .OrderByDesc("item.criado")
                 .Limit(50)
                 .GetAsync<dynamic>();
         }
 
-        public async Task SetTableServicos(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "", int page = 0)
+        public async Task SetTableServicos(DataGridView Table, IEnumerable<dynamic> Data = null, string SearchText = "",
+            int page = 0)
         {
             Table.ColumnCount = 5;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -183,11 +199,11 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTableServicos(SearchText);
+                var dados = await GetDataTableServicos(SearchText);
                 Data = dados;
             }
 
-            for (int i = 0; i < Data.Count(); i++)
+            for (var i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
 
@@ -235,25 +251,22 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var lista = new Model.ItemEstoqueMovimentacao().Query()
-                 .LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario")
-                 .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
+            var lista = new ItemEstoqueMovimentacao().Query()
+                .LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario")
+                .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
                 .Where("id_item", id)
                 .OrderByDesc("criado");
 
-            if (limit > 0)
-            {
-                lista.Limit(limit);
-            }
+            if (limit > 0) lista.Limit(limit);
 
-            for (int i = 0; i < lista.Get().Count(); i++)
+            for (var i = 0; i < lista.Get().Count(); i++)
             {
                 var item = lista.Get().ElementAt(i);
                 Table.Rows.Add(
                     item.ID,
                     item.TIPO == "A" ? "Adicionado" : "Removido",
                     item.QUANTIDADE,
-                    String.Format("{0:d/M/yyyy HH:mm}", item.CRIADO),
+                    string.Format("{0:d/M/yyyy HH:mm}", item.CRIADO),
                     item.NOME_USER,
                     item.OBSERVACAO,
                     item.LOCAL,

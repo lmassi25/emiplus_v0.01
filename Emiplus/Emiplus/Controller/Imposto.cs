@@ -1,18 +1,17 @@
-﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 
 namespace Emiplus.Controller
 {
     internal class Imposto
     {
-        private Model.PedidoItem _modelpedidoItem = new Model.PedidoItem();
-        private Model.Item _modelItem = new Model.Item();
         private Model.Imposto _modelImposto = new Model.Imposto();
+        private Model.Item _modelItem = new Model.Item();
+        private Model.PedidoItem _modelpedidoItem = new Model.PedidoItem();
 
         public void SetImposto(int idPedidoItem, int idImposto = 0, string tipo = "", string NCM = "")
         {
@@ -24,7 +23,6 @@ namespace Emiplus.Controller
             if (idImposto == 0)
             {
                 if (_modelItem.Count() != 0)
-                {
                     switch (tipo)
                     {
                         case "CFe":
@@ -32,17 +30,18 @@ namespace Emiplus.Controller
                             if (_modelItem.Impostoidcfe == 0)
                                 break;
 
-                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe).FirstOrDefault<Model.Imposto>();
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoidcfe)
+                                .FirstOrDefault<Model.Imposto>();
                             break;
 
                         default:
                             if (_modelItem.Impostoid == 0)
                                 break;
 
-                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoid).FirstOrDefault<Model.Imposto>();
+                            _modelImposto = _modelImposto.FindById(_modelItem.Impostoid)
+                                .FirstOrDefault<Model.Imposto>();
                             break;
                     }
-                }
             }
             else
             {
@@ -109,7 +108,8 @@ namespace Emiplus.Controller
 
                 case "101":
                     _modelpedidoItem.Icms101Aliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
-                    _modelpedidoItem.Icms101Vlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.Icms101Aliq);
+                    _modelpedidoItem.Icms101Vlr =
+                        Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.Icms101Aliq);
                     break;
 
                 case "201":
@@ -119,16 +119,20 @@ namespace Emiplus.Controller
                     _modelpedidoItem.IcmsAliq = Validation.RoundAliquotas(_modelImposto.IcmsAliq / 100);
                     _modelpedidoItem.IcmsVlr = Validation.Round(_modelpedidoItem.IcmsBase * _modelpedidoItem.IcmsAliq);
                     //---------------ICMS ST
-                    _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsBase + (_modelpedidoItem.IcmsBase * (_modelImposto.IcmsStIva / 100)));
+                    _modelpedidoItem.IcmsStBase =
+                        Validation.Round(_modelpedidoItem.IcmsBase +
+                                         _modelpedidoItem.IcmsBase * (_modelImposto.IcmsStIva / 100));
                     _modelpedidoItem.IcmsStAliq = Validation.RoundAliquotas(_modelImposto.IcmsStAliq / 100);
                     if (_modelImposto.IcmsStReducaoAliq > 0)
-                    {
-                        _modelpedidoItem.IcmsStBase = Validation.Round(_modelpedidoItem.IcmsStBase - (_modelpedidoItem.IcmsStBase * (_modelImposto.IcmsStReducaoAliq / 100)));
-                    }
-                    _modelpedidoItem.Icmsstvlr = Validation.Round(_modelpedidoItem.IcmsStBase * _modelpedidoItem.IcmsStAliq);
+                        _modelpedidoItem.IcmsStBase = Validation.Round(
+                            _modelpedidoItem.IcmsStBase -
+                            _modelpedidoItem.IcmsStBase * (_modelImposto.IcmsStReducaoAliq / 100));
+                    _modelpedidoItem.Icmsstvlr =
+                        Validation.Round(_modelpedidoItem.IcmsStBase * _modelpedidoItem.IcmsStAliq);
 
                     //---------------ICMS ST - ICMS
-                    _modelpedidoItem.Icmsstvlr = Validation.Round(_modelpedidoItem.Icmsstvlr - _modelpedidoItem.IcmsVlr);
+                    _modelpedidoItem.Icmsstvlr =
+                        Validation.Round(_modelpedidoItem.Icmsstvlr - _modelpedidoItem.IcmsVlr);
 
                     _modelpedidoItem.IcmsBase = 0;
                     _modelpedidoItem.IcmsAliq = 0;
@@ -154,15 +158,9 @@ namespace Emiplus.Controller
                     break;
             }
 
-            if (_modelpedidoItem.IcmsAliq > 0)
-            {
-                _modelpedidoItem.IcmsAliq = (_modelpedidoItem.IcmsAliq * 100);
-            }
+            if (_modelpedidoItem.IcmsAliq > 0) _modelpedidoItem.IcmsAliq = _modelpedidoItem.IcmsAliq * 100;
 
-            if (_modelpedidoItem.IcmsStAliq > 0)
-            {
-                _modelpedidoItem.IcmsStAliq = (_modelpedidoItem.IcmsStAliq * 100);
-            }
+            if (_modelpedidoItem.IcmsStAliq > 0) _modelpedidoItem.IcmsStAliq = _modelpedidoItem.IcmsStAliq * 100;
 
             #endregion ICMS
 
@@ -179,6 +177,7 @@ namespace Emiplus.Controller
                         _modelpedidoItem.IpiAliq = Validation.RoundAliquotas(_modelImposto.IpiAliq / 100);
                         _modelpedidoItem.IpiVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.IpiAliq);
                     }
+
                     break;
 
                 default:
@@ -203,6 +202,7 @@ namespace Emiplus.Controller
                         _modelpedidoItem.PisAliq = Validation.RoundAliquotas(_modelImposto.PisAliq / 100);
                         _modelpedidoItem.PisVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.PisAliq);
                     }
+
                     break;
 
                 default:
@@ -211,10 +211,10 @@ namespace Emiplus.Controller
                     break;
             }
 
-            if (_modelpedidoItem.PisAliq > 0)            
-                _modelpedidoItem.PisAliq = (_modelpedidoItem.PisAliq * 100);
+            if (_modelpedidoItem.PisAliq > 0)
+                _modelpedidoItem.PisAliq = _modelpedidoItem.PisAliq * 100;
 
-            if (String.IsNullOrEmpty(_modelpedidoItem.Pis))
+            if (string.IsNullOrEmpty(_modelpedidoItem.Pis))
                 _modelpedidoItem.Pis = "0";
 
             #endregion PIS
@@ -230,8 +230,10 @@ namespace Emiplus.Controller
                     if (_modelImposto.CofinsAliq > 0)
                     {
                         _modelpedidoItem.CofinsAliq = Validation.RoundAliquotas(_modelImposto.CofinsAliq / 100);
-                        _modelpedidoItem.CofinsVlr = Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.CofinsAliq);
+                        _modelpedidoItem.CofinsVlr =
+                            Validation.Round(_modelpedidoItem.Total * _modelpedidoItem.CofinsAliq);
                     }
+
                     break;
 
                 default:
@@ -240,34 +242,37 @@ namespace Emiplus.Controller
                     break;
             }
 
-            if (_modelpedidoItem.CofinsAliq > 0)            
-                _modelpedidoItem.CofinsAliq = (_modelpedidoItem.CofinsAliq * 100);
+            if (_modelpedidoItem.CofinsAliq > 0)
+                _modelpedidoItem.CofinsAliq = _modelpedidoItem.CofinsAliq * 100;
 
-            if (String.IsNullOrEmpty(_modelpedidoItem.Cofins))
+            if (string.IsNullOrEmpty(_modelpedidoItem.Cofins))
                 _modelpedidoItem.Cofins = "0";
 
             #endregion COFINS
 
             #region vTotTrib
 
-            _modelpedidoItem.Federal = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqFederal / 100));
-            _modelpedidoItem.Estadual = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqEstadual / 100));
-            _modelpedidoItem.Municipal = Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqMunicipal / 100));
+            _modelpedidoItem.Federal =
+                Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqFederal / 100));
+            _modelpedidoItem.Estadual =
+                Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqEstadual / 100));
+            _modelpedidoItem.Municipal =
+                Validation.Round(_modelpedidoItem.Total * Validation.Round(_modelItem.AliqMunicipal / 100));
 
             #endregion vTotTrib
 
             _modelpedidoItem.Save(_modelpedidoItem);
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTable(string SearchText = null)
+        public Task<IEnumerable<dynamic>> GetDataTable(string searchText = null)
         {
-            var search = "%" + SearchText + "%";
+            var search = "%" + searchText + "%";
 
             return new Model.Imposto().Query()
                 .Where("EXCLUIR", 0)
                 .Where
                 (
-                    q => q.WhereLike("nome", search, false)
+                    q => q.WhereLike("nome", search)
                 )
                 .OrderByDesc("criado")
                 .GetAsync<dynamic>();
@@ -277,7 +282,9 @@ namespace Emiplus.Controller
         {
             Table.ColumnCount = 2;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -291,17 +298,15 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable(SearchText);
+                var dados = await GetDataTable(SearchText);
                 Data = dados;
             }
 
             foreach (var item in Data)
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.NOME
                 );
-            }
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

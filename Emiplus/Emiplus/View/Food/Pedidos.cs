@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.Controller;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
-using Emiplus.Model;
 using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using SqlKata.Execution;
 using Pedido = Emiplus.Model.Pedido;
+using Pessoa = Emiplus.Model.Pessoa;
 
 namespace Emiplus.View.Food
 {
     public partial class Pedidos : Form
     {
-        private readonly Controller.Titulo _controllerTitulo = new Controller.Titulo();
+        private readonly Titulo _controllerTitulo = new Titulo();
         private readonly KeyedAutoCompleteStringCollection collectionClientes = new KeyedAutoCompleteStringCollection();
 
         public Pedidos()
@@ -90,7 +90,7 @@ namespace Emiplus.View.Food
         private void SetHeadersTable(DataGridView table)
         {
             table.ColumnCount = 8;
-            
+
             typeof(DataGridView).InvokeMember("DoubleBuffered",
                 BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
                 new object[] {true});
@@ -165,8 +165,8 @@ namespace Emiplus.View.Food
             }
 
             #endregion
-            
-            IEnumerable<Pedido> data = pedidos.Get<Pedido>();
+
+            var data = pedidos.Get<Pedido>();
             if (data.Any())
                 foreach (var pedido in data)
                 {
@@ -178,7 +178,10 @@ namespace Emiplus.View.Food
                     if (GetDataPessoa(pedido.Id_Transportadora) != null)
                         entregador = GetDataPessoa(pedido.Id_Transportadora).Nome;
 
-                    string statusPagamento = _controllerTitulo.GetLancados(pedido.Id) < _controllerTitulo.GetTotalPedido(pedido.Id) ? "Receber" : "Recebido";
+                    var statusPagamento =
+                        _controllerTitulo.GetLancados(pedido.Id) < _controllerTitulo.GetTotalPedido(pedido.Id)
+                            ? "Receber"
+                            : "Recebido";
 
                     table.Rows.Add(
                         pedido.Id,
@@ -203,12 +206,12 @@ namespace Emiplus.View.Food
 
         private void EditarPedido()
         {
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                Home.pedidoPage = GridLista.SelectedRows[0].Cells["Venda"].Value.ToString();
-                OpenForm.Show<DetailsPedido>(this);
-            }
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
+
+            DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+            Home.pedidoPage = GridLista.SelectedRows[0].Cells["Venda"].Value.ToString();
+            OpenForm.Show<DetailsPedido>(this);
         }
 
         private void Eventos()

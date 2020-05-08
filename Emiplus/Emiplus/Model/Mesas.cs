@@ -1,17 +1,17 @@
-﻿namespace Emiplus.Model
+﻿using System;
+using Emiplus.Data.Helpers;
+using SqlKata;
+
+namespace Emiplus.Model
 {
-    using Data.Database;
-    using Data.Helpers;
-    using SqlKata;
-    using System;
-
-    internal class Mesas : Model
+    internal class Mesas : Data.Database.Model
     {
-        public Mesas() : base("MESA") {}
+        public Mesas() : base("MESA")
+        {
+        }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
+
         public string id_empresa { get; private set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -32,21 +32,15 @@
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
 
-                if (Data(data).Create() == 1)
-                    return true;
-                
-                return false;
+                return Data(data).Create() == 1;
             }
-            
+
             if (data.Id != 0)
             {
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
-                
-                if (Data(data).Update("ID", data.Id) == 1)
-                    return true;
-                
-                return false;
+
+                return Data(data).Update("ID", data.Id) == 1;
             }
 
             return false;
@@ -54,16 +48,14 @@
 
         public bool Remove(int id, string column = "ID")
         {
-            var data = new {
+            var data = new
+            {
                 Excluir = 1,
                 Deletado = DateTime.Now,
                 status_sync = "UPDATE"
-                };
+            };
 
-            if (Data(data).Update(column, id) == 1)
-                return true;
-
-            return false;
+            return Data(data).Update(column, id) == 1;
         }
     }
 }

@@ -1,26 +1,23 @@
-﻿using Emiplus.Data.Helpers;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Comercial
 {
     public partial class ModalDividirValor : Form
     {
-        public static double Valor { get; set; }
-        public static double ValorDivido { get; set; }
-        public static double ValorRestante { get; set; }
-
         public ModalDividirValor()
         {
             InitializeComponent();
             Eventos();
         }
 
+        public static double Valor { get; set; }
+        public static double ValorDivido { get; set; }
+        public static double ValorRestante { get; set; }
+
         private void Eventos()
         {
-            Shown += (s, e) =>
-            {
-                txtValorItem.Text = Validation.FormatPrice(Valor, true);
-            };
+            Shown += (s, e) => { txtValorItem.Text = Validation.FormatPrice(Valor, true); };
 
             txtDividir.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 2);
 

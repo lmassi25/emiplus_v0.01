@@ -32,7 +32,7 @@ namespace Emiplus
         /// </summary>
         public static string TOKEN = "f012622defec1e2bad3b8596e0642c";
 
-        public static ArrayList userPermissions = new ArrayList();
+        public static ArrayList UserPermissions = new ArrayList();
 
         /// <summary>
         ///     Caminho definido no Config.ini
@@ -48,7 +48,7 @@ namespace Emiplus
         [STAThread]
         public static void Main()
         {
-            userPermissions.Clear();
+            UserPermissions.Clear();
             PATH_BASE = IniFile.Read("Path", "LOCAL");
             IP_REMOTO = IniFile.Read("Remoto", "LOCAL");
             PATH_IMAGE = string.IsNullOrEmpty(IP_REMOTO) ? $"{PATH_BASE}" : $@"{IP_REMOTO}\Emiplus";
@@ -78,12 +78,12 @@ namespace Emiplus
                 }
 
                 if (string.IsNullOrEmpty(jo["telas"]?.ToString()))
-                    userPermissions.Add(new {all = 1});
+                    UserPermissions.Add(new {all = 1});
                 else
                     foreach (dynamic item in jo["telas"])
-                        userPermissions.Add(new {Key = item.Name, Value = item.Value.ToString()});
+                        UserPermissions.Add(new {Key = item.Name, Value = item.Value.ToString()});
 
-                var data = JsonConvert.SerializeObject(userPermissions);
+                var data = JsonConvert.SerializeObject(UserPermissions);
 
                 //gravando informação em um arquivo na pasta raiz do executavel
                 var writerJson = File.CreateText($".\\P{Settings.Default.user_id}.json");
@@ -94,7 +94,7 @@ namespace Emiplus
             else
             {
                 var dataJson = File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
-                userPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
+                UserPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
             }
         }
     }

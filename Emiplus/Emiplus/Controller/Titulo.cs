@@ -174,8 +174,9 @@ namespace Emiplus.Controller
                             data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao) /
                                                  Validation.ConvertToInt32(parcela); // sem juros
                     }
-                    
-                    data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+
+                    data.Taxas =
+                        $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -215,7 +216,8 @@ namespace Emiplus.Controller
                                                  Validation.ConvertToInt32(parcela); // sem juros
                     }
 
-                    data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+                    data.Taxas =
+                        $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -229,7 +231,9 @@ namespace Emiplus.Controller
                 data.Id = 0;
                 data.Id_FormaPgto = formaPgto;
                 data.Emissao = Validation.DateNowToSql();
-                data.Vencimento = !string.IsNullOrEmpty(inicio) ? Validation.ConvertDateToSql(inicio) : Validation.DateNowToSql();
+                data.Vencimento = !string.IsNullOrEmpty(inicio)
+                    ? Validation.ConvertDateToSql(inicio)
+                    : Validation.DateNowToSql();
 
                 double taxaAntecipacao = 0;
                 if (formaPgto == 1 && valor > GetRestante(idPedido))
@@ -249,7 +253,8 @@ namespace Emiplus.Controller
                     data.Valor_Liquido = valor - taxadebito - _mTaxa.Taxa_Fixa - taxaAntecipacao;
                 }
 
-                data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Debito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+                data.Taxas =
+                    $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Debito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
                 data.Id_Caixa = Home.idCaixa;
                 data.Tipo = Home.pedidoPage == "Compras" ? "Pagar" : "Receber";
 

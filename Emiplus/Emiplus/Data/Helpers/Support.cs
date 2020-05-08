@@ -88,6 +88,15 @@ namespace Emiplus.Data.Helpers
             };
         }
 
+        public static List<string> GetEstados()
+        {
+            return new List<string>
+            {
+                "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR",
+                "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+            };
+        }
+
         public static void Video(string videoUrl)
         {
             var f = new VideoTutorial(videoUrl);

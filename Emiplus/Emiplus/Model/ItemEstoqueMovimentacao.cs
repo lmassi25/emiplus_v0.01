@@ -1,39 +1,15 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using Emiplus.Data.Helpers;
 using SqlKata;
-using System;
+using Valit;
 
 namespace Emiplus.Model
 {
-    using Data.Database;
-    using Valit;
-
-    internal class ItemEstoqueMovimentacao : Model
+    internal class ItemEstoqueMovimentacao : Data.Database.Model
     {
         public ItemEstoqueMovimentacao() : base("ITEM_MOV_ESTOQUE")
         {
         }
-
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
-
-        public DateTime Criado { get; private set; }
-        public string id_empresa { get; private set; }
-        public int id_item { get; set; }
-        public int id_usuario { get; set; }
-        public double Quantidade { get; set; }
-        public string observacao { get; set; }
-        public string tipo { get; set; }
-        public string local { get; set; }
-        public double Anterior { get; set; }
-        public int Id_Pedido { get; set; }
-
-        public int id_sync { get; set; }
-        public string status_sync { get; set; }
-
-        #endregion CAMPOS
 
         public ItemEstoqueMovimentacao SetQuantidade(double Quantidade)
         {
@@ -73,19 +49,19 @@ namespace Emiplus.Model
 
         public ItemEstoqueMovimentacao SetItem(Item item)
         {
-            double EstoqueAtual = item.EstoqueAtual;
+            var EstoqueAtual = item.EstoqueAtual;
 
             id_item = item.Id;
             Anterior = item.EstoqueAtual;
 
-            if (tipo == "A")
+            switch (tipo)
             {
-                item.EstoqueAtual = EstoqueAtual + Quantidade;
-            }
-
-            if (tipo == "R")
-            {
-                item.EstoqueAtual = EstoqueAtual - Quantidade;
+                case "A":
+                    item.EstoqueAtual = EstoqueAtual + Quantidade;
+                    break;
+                case "R":
+                    item.EstoqueAtual = EstoqueAtual - Quantidade;
+                    break;
             }
 
             item.Save(item, false);
@@ -125,10 +101,31 @@ namespace Emiplus.Model
                     Alert.Message("Opss!", message, Alert.AlertType.error);
                     return true;
                 }
+
                 return true;
             }
 
             return false;
         }
+
+        #region CAMPOS
+
+        [Ignore] [Key("ID")] public int Id { get; set; }
+
+        public DateTime Criado { get; private set; }
+        public string id_empresa { get; private set; }
+        public int id_item { get; set; }
+        public int id_usuario { get; set; }
+        public double Quantidade { get; set; }
+        public string observacao { get; set; }
+        public string tipo { get; set; }
+        public string local { get; set; }
+        public double Anterior { get; set; }
+        public int Id_Pedido { get; set; }
+
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
+
+        #endregion CAMPOS
     }
 }

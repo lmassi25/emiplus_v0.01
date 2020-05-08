@@ -1,22 +1,17 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Emiplus.Data.Helpers;
-    using SqlKata;
-    using SqlKata.Execution;
-    using System;
+﻿using System;
+using Emiplus.Data.Helpers;
+using SqlKata;
+using SqlKata.Execution;
 
-    internal class Etiqueta : Model
+namespace Emiplus.Model
+{
+    internal class Etiqueta : Data.Database.Model
     {
         public Etiqueta() : base("ETIQUETA")
         {
         }
 
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -27,9 +22,6 @@
         public int quantidade { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion CAMPOS
-
-
 
         public bool Clean()
         {
@@ -50,11 +42,9 @@
                 {
                     return true;
                 }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao adicionar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+
+                Alert.Message("Opss", "Erro ao adicionar, verifique os dados.", Alert.AlertType.error);
+                return false;
             }
 
             return true;

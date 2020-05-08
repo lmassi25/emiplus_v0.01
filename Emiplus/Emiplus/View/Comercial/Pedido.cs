@@ -1,56 +1,51 @@
-﻿using DotLiquid;
-using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using Emiplus.Properties;
-using Emiplus.View.Common;
-using Emiplus.View.Fiscal;
-using Emiplus.View.Fiscal.TelasNota;
-using Emiplus.View.Reports;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using DotLiquid;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using Emiplus.View.Fiscal.TelasNota;
+using Emiplus.View.Reports;
+using SqlKata.Execution;
+using Nota = Emiplus.View.Fiscal.Nota;
 using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Comercial
 {
     /// <summary>
-    /// Responsavel por Vendas, Compras, Orçamentos, Consignações, Devoluções
+    ///     Responsavel por Vendas, Compras, Orçamentos, Consignações, Devoluções
     /// </summary>
     public partial class Pedido : Form
     {
-        #region V
+        private readonly Controller.Pedido _cPedido = new Controller.Pedido();
+        private readonly Item _mItem = new Item();
+        private readonly Pessoa _mPessoa = new Pessoa();
 
-        private Controller.Pedido _cPedido = new Controller.Pedido();
-        private Model.Pessoa _mPessoa = new Model.Pessoa();
-        private Model.Item _mItem = new Model.Item();
+        private readonly KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
-        private IEnumerable<dynamic> dataTable;
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
-
-        private Timer timer = new Timer(Configs.TimeLoading);
-
-        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
-
-        private KeyedAutoCompleteStringCollection collectionA = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionB = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionC = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionD = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionE = new KeyedAutoCompleteStringCollection();
-        private KeyedAutoCompleteStringCollection collectionF = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionA = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionB = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionC = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionD = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionE = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionF = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collectionItem = new KeyedAutoCompleteStringCollection();
 
         private string controle;
 
-        #endregion V
+        private IEnumerable<dynamic> dataTable;
+
+        private readonly Timer timer = new Timer(Configs.TimeLoading);
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public Pedido()
         {
@@ -64,41 +59,41 @@ namespace Emiplus.View.Comercial
             switch (Home.pedidoPage)
             {
                 case "Orçamentos":
-                    label2.Text = "Gerencie os " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague um orçamento.";
+                    label2.Text = $@"Gerencie os {Home.pedidoPage.ToLower()} aqui! Adicione, edite ou apague um orçamento.";
                     //label13.Visible = false;
                     break;
 
                 case "Consignações":
-                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma consignação.";
+                    label2.Text = $@"Gerencie as {Home.pedidoPage.ToLower()} aqui! Adicione, edite ou apague uma consignação.";
                     //label13.Visible = false;
                     break;
 
                 case "Trocas":
-                    label2.Text = "Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
+                    label2.Text = @"Gerencie as Trocas aqui! Adicione, edite ou apague uma devolução.";
                     break;
 
                 case "Compras":
-                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma compra.";
-                    label11.Text = "Procurar por fornecedor";
+                    label2.Text = $@"Gerencie as {Home.pedidoPage.ToLower()} aqui! Adicione, edite ou apague uma compra.";
+                    label11.Text = @"Procurar por fornecedor";
                     //label13.Visible = false;
                     break;
 
                 case "Notas":
-                    label1.Text = "NF-e";
-                    label2.Text = "Gerencie as NF-e aqui! Adicione, edite ou apague uma nota.";
+                    label1.Text = @"NF-e";
+                    label2.Text = @"Gerencie as NF-e aqui! Adicione, edite ou apague uma nota.";
                     break;
 
                 case "Cupons":
-                    label1.Text = "CF-e S@T";
-                    label2.Text = "Gerencie os CF-e S@T aqui! Adicione, edite ou apague um cupom.";
+                    label1.Text = @"CF-e S@T";
+                    label2.Text = @"Gerencie os CF-e S@T aqui! Adicione, edite ou apague um cupom.";
                     break;
 
                 case "Vendas":
-                    label2.Text = "Gerencie as " + Home.pedidoPage.ToLower() + " aqui! Adicione, edite ou apague uma venda.";
+                    label2.Text = $@"Gerencie as {Home.pedidoPage.ToLower()} aqui! Adicione, edite ou apague uma venda.";
                     break;
 
                 case "Ordens de Servico":
-                    label2.Text = "Gerencie as O.S. aqui! Adicione, edite ou apague uma o.s.";
+                    label2.Text = @"Gerencie as O.S. aqui! Adicione, edite ou apague uma o.s.";
                     label14.Visible = false;
                     produtoId.Visible = false;
                     break;
@@ -109,7 +104,7 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de pessoas.
+        ///     Autocomplete do campo de busca de pessoas.
         /// </summary>
         private void AutoCompletePessoas()
         {
@@ -138,26 +133,24 @@ namespace Emiplus.View.Comercial
             }
 
             foreach (var itens in data.Get())
-            {
                 if (itens.NOME != "Novo registro")
                     collection.Add(itens.NOME, itens.ID);
-            }
 
             BuscarPessoa.AutoCompleteCustomSource = collection;
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de usuários.
+        ///     Autocomplete do campo de busca de usuários.
         /// </summary>
         private void AutoCompleteUsers()
         {
-            Usuarios.DataSource = (new Model.Usuarios()).GetAllUsers();
+            Usuarios.DataSource = new Usuarios().GetAllUsers();
             Usuarios.DisplayMember = "Nome";
             Usuarios.ValueMember = "Id";
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de os.
+        ///     Autocomplete do campo de busca de os.
         /// </summary>
         private void AutoCompleteOS()
         {
@@ -167,10 +160,7 @@ namespace Emiplus.View.Comercial
             data.Where("campoa", "<>", "");
             data.WhereNotNull("campoa");
 
-            foreach (var itens in data.Get())
-            {
-                collectionA.Add(itens.CAMPOA);
-            }
+            foreach (var itens in data.Get()) collectionA.Add(itens.CAMPOA);
 
             aText.AutoCompleteCustomSource = collectionA;
 
@@ -178,10 +168,7 @@ namespace Emiplus.View.Comercial
             data.Where("campob", "<>", "");
             data.WhereNotNull("campob");
 
-            foreach (var itens in data.Get())
-            {
-                collectionB.Add(itens.CAMPOB);
-            }
+            foreach (var itens in data.Get()) collectionB.Add(itens.CAMPOB);
 
             bText.AutoCompleteCustomSource = collectionB;
 
@@ -189,10 +176,7 @@ namespace Emiplus.View.Comercial
             data.Where("campoc", "<>", "");
             data.WhereNotNull("campoc");
 
-            foreach (var itens in data.Get())
-            {
-                collectionC.Add(itens.CAMPOC);
-            }
+            foreach (var itens in data.Get()) collectionC.Add(itens.CAMPOC);
 
             cText.AutoCompleteCustomSource = collectionC;
 
@@ -200,10 +184,7 @@ namespace Emiplus.View.Comercial
             data.Where("campod", "<>", "");
             data.WhereNotNull("campod");
 
-            foreach (var itens in data.Get())
-            {
-                collectionD.Add(itens.CAMPOD);
-            }
+            foreach (var itens in data.Get()) collectionD.Add(itens.CAMPOD);
 
             dText.AutoCompleteCustomSource = collectionD;
 
@@ -211,10 +192,7 @@ namespace Emiplus.View.Comercial
             data.Where("campoe", "<>", "");
             data.WhereNotNull("campoe");
 
-            foreach (var itens in data.Get())
-            {
-                collectionE.Add(itens.CAMPOE);
-            }
+            foreach (var itens in data.Get()) collectionE.Add(itens.CAMPOE);
 
             eText.AutoCompleteCustomSource = collectionE;
 
@@ -222,10 +200,7 @@ namespace Emiplus.View.Comercial
             data.Where("campof", "<>", "");
             data.WhereNotNull("campof");
 
-            foreach (var itens in data.Get())
-            {
-                collectionF.Add(itens.CAMPOF);
-            }
+            foreach (var itens in data.Get()) collectionF.Add(itens.CAMPOF);
 
             fText.AutoCompleteCustomSource = collectionF;
         }
@@ -235,16 +210,16 @@ namespace Emiplus.View.Comercial
             BuscarPessoa.Select();
 
             GridLista.Visible = false;
-            Loading.Size = new System.Drawing.Size(GridLista.Width, GridLista.Height);
+            Loading.Size = new Size(GridLista.Width, GridLista.Height);
             Loading.Visible = true;
-            WorkerBackground.RunWorkerAsync();
+            workerBackground.RunWorkerAsync();
         }
 
         private async void Filter()
         {
-            int excluir = 0;
+            var excluir = 0;
 
-            Dictionary<string, string> dataFilters = new Dictionary<string, string>();
+            var dataFilters = new Dictionary<string, string>();
 
             if (Home.pedidoPage == "Ordens de Servico")
             {
@@ -259,7 +234,10 @@ namespace Emiplus.View.Comercial
             if (filterRemovido.Checked)
                 excluir = 1;
 
-            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text), dataFilters);
+            await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text,
+                noFilterData.Checked, null, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text),
+                Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue),
+                collectionItem.Lookup(produtoId.Text), dataFilters);
         }
 
         private void EditPedido(bool create = false)
@@ -268,110 +246,113 @@ namespace Emiplus.View.Comercial
 
             if (create)
             {
-                if (Home.pedidoPage == "Notas")
+                switch (Home.pedidoPage)
                 {
-                    Nota.disableCampos = false;
-                    Nota.Id = 0;
-                    //OpcoesNfeRapida.idPedido = 0;
-                    Nota nota = new Nota();
-                    nota.ShowDialog();
-                    //Filter();
-                    return;
+                    case "Notas":
+                    {
+                        Nota.disableCampos = false;
+                        Nota.Id = 0;
+                        //OpcoesNfeRapida.idPedido = 0;
+                        var nota = new Nota();
+                        nota.ShowDialog();
+                        //Filter();
+                        return;
+                    }
+                    case "Ordens de Servico":
+                        AddOs.Id = 0;
+                        OpenForm.Show<AddOs>(this);
+                        return;
                 }
-                else if (Home.pedidoPage == "Ordens de Servico")
-                {
-                    AddOs.Id = 0;
-                    OpenForm.Show<Comercial.AddOs>(this);
-                    return;
-                }
-                else
-                {
-                    AddPedidos.Id = 0;
-                    AddPedidos NovoPedido = new AddPedidos();
-                    NovoPedido.ShowDialog();
-                    //Filter();
-                    return;
-                }
+
+                AddPedidos.Id = 0;
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
+                //Filter();
+                return;
             }
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                Model.Pedido dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value)).FirstOrDefault<Model.Pedido>();
-                if (dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" && Home.pedidoPage != "Cupons")
+                var dataTipo = new Model.Pedido().FindById(Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value))
+                    .FirstOrDefault<Model.Pedido>();
+                if (dataTipo != null && dataTipo.Tipo != Home.pedidoPage && Home.pedidoPage != "Notas" &&
+                    Home.pedidoPage != "Cupons")
                 {
                     Alert.Message("Opss", "Não é possível carregar este registro", Alert.AlertType.warning);
                     return;
                 }
 
-                if (Home.pedidoPage == "Ordens de Servico")
+                switch (Home.pedidoPage)
                 {
-                    AddOs.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    OpenForm.Show<Comercial.AddOs>(this);
-                    return;
-                }
-
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Devoluções")
-                {
-                    AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    AddPedidos NovoPedido = new AddPedidos();
-                    NovoPedido.ShowDialog();
-                    return;
-                }
-
-                if (Home.pedidoPage == "Cupons")
-                {
-                    OpcoesCfe.tipoTela = 1;
-                    OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    OpcoesCfe.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
-                    OpcoesCfe f = new OpcoesCfe();
-                    f.Show();
-                    return;
-                }
-
-                if (Home.pedidoPage == "Notas")
-                {
-                    if (!GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"))
+                    case "Ordens de Servico":
+                        AddOs.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        OpenForm.Show<AddOs>(this);
+                        return;
+                    case "Orçamentos":
+                    case "Consignações":
+                    case "Devoluções":
+                    {
+                        AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        var novoPedido = new AddPedidos();
+                        novoPedido.ShowDialog();
+                        return;
+                    }
+                    case "Cupons":
+                    {
+                        OpcoesCfe.tipoTela = 1;
+                        OpcoesCfe.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        OpcoesCfe.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
+                        var f = new OpcoesCfe();
+                        f.Show();
+                        return;
+                    }
+                    case "Notas" when !GridLista.SelectedRows[0].Cells["Status"].Value.ToString().Contains("Pendente"):
                     {
                         OpcoesNfeRapida.idNota = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
                         OpcoesNfeRapida.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                        OpcoesNfeRapida f = new OpcoesNfeRapida();
+                        var f = new OpcoesNfeRapida();
                         f.Show();
+                        break;
                     }
-                    else
+                    case "Notas":
                     {
                         Nota.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["IDNOTA"].Value);
-                        Nota nota = new Nota();
+                        var nota = new Nota();
                         nota.ShowDialog();
+                        break;
                     }
-                }
-                else
-                {
-                    if (Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["EXCLUIR"].Value) > 0)
+                    default:
                     {
-                        Alert.Message("Erro", "Esse registro foi excluido e não é permitido acessá-lo", Alert.AlertType.warning);
-                        return;
-                    }
+                        if (Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["EXCLUIR"].Value) > 0)
+                        {
+                            Alert.Message("Erro", "Esse registro foi excluido e não é permitido acessá-lo", Alert.AlertType.warning);
+                            return;
+                        }
 
-                    if (Home.pedidoPage == "Compras" && GridLista.SelectedRows[0].Cells["Status"].Value.ToString() == "Pendente")
-                    {
-                        AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                        AddPedidos NovoPedido = new AddPedidos();
-                        NovoPedido.ShowDialog();
-                        return;
-                    }
+                        switch (Home.pedidoPage)
+                        {
+                            case "Compras" when GridLista.SelectedRows[0].Cells["Status"].Value.ToString() == "Pendente":
+                            {
+                                AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                                var novoPedido = new AddPedidos();
+                                novoPedido.ShowDialog();
+                                return;
+                            }
+                            case "Vendas" when GridLista.SelectedRows[0].Cells["Status"].Value.ToString() == "Pendente":
+                            {
+                                AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                                var novoPedido = new AddPedidos();
+                                novoPedido.ShowDialog();
+                                return;
+                            }
+                        }
 
-                    if (Home.pedidoPage == "Vendas" && GridLista.SelectedRows[0].Cells["Status"].Value.ToString() == "Pendente")
-                    {
-                        AddPedidos.Id = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                        AddPedidos NovoPedido = new AddPedidos();
-                        NovoPedido.ShowDialog();
-                        return;
+                        DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                        //DetailsPedido detailsPedido = new DetailsPedido();
+                        //detailsPedido.ShowDialog();
+                        OpenForm.Show<DetailsPedido>(this);
+                        break;
                     }
-
-                    DetailsPedido.idPedido = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    //DetailsPedido detailsPedido = new DetailsPedido();
-                    //detailsPedido.ShowDialog();
-                    OpenForm.Show<DetailsPedido>(this);
                 }
 
                 //Filter();
@@ -415,9 +396,9 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                int diff = 0;
+                int diff;
 
-                if(Home.pedidoPage != "Ordens de Servico")
+                if (Home.pedidoPage != "Ordens de Servico")
                 {
                     aLabel.Visible = false;
                     aText.Visible = false;
@@ -447,29 +428,41 @@ namespace Emiplus.View.Comercial
                     return;
                 }
 
-                aLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_1_Pesquisa", "OS")) : false;
+                aLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_1_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_1_Pesquisa", "OS"));
                 aText.Visible = aLabel.Visible;
-                aLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_1_Descr", "OS")) ? IniFile.Read("Campo_1_Descr", "OS") : "";
+                aLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_1_Descr", "OS"))
+                    ? IniFile.Read("Campo_1_Descr", "OS")
+                    : "";
 
-                bLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_2_Pesquisa", "OS")) : false;
+                bLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_2_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_2_Pesquisa", "OS"));
                 bText.Visible = bLabel.Visible;
-                bLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_2_Descr", "OS")) ? IniFile.Read("Campo_2_Descr", "OS") : "";
+                bLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_2_Descr", "OS"))
+                    ? IniFile.Read("Campo_2_Descr", "OS")
+                    : "";
 
-                cLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_3_Pesquisa", "OS")) : false;
+                cLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_3_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_3_Pesquisa", "OS"));
                 cText.Visible = cLabel.Visible;
-                cLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_3_Descr", "OS")) ? IniFile.Read("Campo_3_Descr", "OS") : "";
+                cLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_3_Descr", "OS"))
+                    ? IniFile.Read("Campo_3_Descr", "OS")
+                    : "";
 
-                dLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_4_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_4_Pesquisa", "OS")) : false;
+                dLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_4_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_4_Pesquisa", "OS"));
                 dText.Visible = dLabel.Visible;
-                dLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_4_Descr", "OS")) ? IniFile.Read("Campo_4_Descr", "OS") : "";
+                dLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_4_Descr", "OS"))
+                    ? IniFile.Read("Campo_4_Descr", "OS")
+                    : "";
 
-                eLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_5_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_5_Pesquisa", "OS")) : false;
+                eLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_5_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_5_Pesquisa", "OS"));
                 eText.Visible = eLabel.Visible;
-                eLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_5_Descr", "OS")) ? IniFile.Read("Campo_5_Descr", "OS") : "";
+                eLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_5_Descr", "OS"))
+                    ? IniFile.Read("Campo_5_Descr", "OS")
+                    : "";
 
-                fLabel.Visible = !String.IsNullOrEmpty(IniFile.Read("Campo_6_Pesquisa", "OS")) ? Convert.ToBoolean(IniFile.Read("Campo_6_Pesquisa", "OS")) : false;
+                fLabel.Visible = !string.IsNullOrEmpty(IniFile.Read("Campo_6_Pesquisa", "OS")) && Convert.ToBoolean(IniFile.Read("Campo_6_Pesquisa", "OS"));
                 fText.Visible = fLabel.Visible;
-                fLabel.Text = !String.IsNullOrEmpty(IniFile.Read("Campo_6_Descr", "OS")) ? IniFile.Read("Campo_6_Descr", "OS") : "";
+                fLabel.Text = !string.IsNullOrEmpty(IniFile.Read("Campo_6_Descr", "OS"))
+                    ? IniFile.Read("Campo_6_Descr", "OS")
+                    : "";
 
                 if (!dLabel.Visible && !eLabel.Visible && !eLabel.Visible)
                 {
@@ -504,31 +497,36 @@ namespace Emiplus.View.Comercial
                 dataInicial.Text = DateTime.Now.ToString();
                 dataFinal.Text = DateTime.Now.ToString();
 
-                var status = new ArrayList();
-                status.Add(new { ID = 99, NOME = "Todos" });
+                var status = new ArrayList {new {ID = 99, NOME = "Todos"}};
+                switch (Home.pedidoPage)
+                {
+                    case "Notas":
+                    case "Cupons":
+                    {
+                        if (Home.pedidoPage == "Notas")
+                            status.Add(new {ID = 1, NOME = "Pendentes"});
 
-                if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
-                {
-                    if (Home.pedidoPage == "Notas")
-                        status.Add(new { ID = 1, NOME = "Pendentes" });
-                    status.Add(new { ID = 2, NOME = "Autorizadas" });
-                    status.Add(new { ID = 3, NOME = "Canceladas" });
-                }
-                else if (Home.pedidoPage == "Ordens de Servico" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
-                {
-                    status.Add(new { ID = 0, NOME = "Pendente" });
-                    status.Add(new { ID = 1, NOME = "Finalizado" });
-                }
-                else
-                {
-                    status.Add(new { ID = 2, NOME = "Recebimento Pendente" });
-                    status.Add(new { ID = 1, NOME = @"Finalizado\Recebido" });
+                        status.Add(new {ID = 2, NOME = "Autorizadas"});
+                        status.Add(new {ID = 3, NOME = "Canceladas"});
+                        break;
+                    }
+                    case "Ordens de Servico":
+                    case "Orçamentos":
+                    case "Devoluções":
+                    case "Consignações":
+                        status.Add(new {ID = 0, NOME = "Pendente"});
+                        status.Add(new {ID = 1, NOME = "Finalizado"});
+                        break;
+                    default:
+                        status.Add(new {ID = 2, NOME = "Recebimento Pendente"});
+                        status.Add(new {ID = 1, NOME = @"Finalizado\Recebido"});
+                        break;
                 }
 
                 Status.DataSource = status;
                 Status.DisplayMember = "NOME";
                 Status.ValueMember = "ID";
-                Status.SelectedValue = 99;                
+                Status.SelectedValue = 99;
             };
 
             BuscarPessoa.KeyDown += (s, e) =>
@@ -539,10 +537,7 @@ namespace Emiplus.View.Comercial
 
             btnSearch.Click += (s, e) => Filter();
 
-            btnAdicionar.Click += (s, e) =>
-            {
-                EditPedido(true);
-            };
+            btnAdicionar.Click += (s, e) => { EditPedido(true); };
 
             btnEditar.Click += (s, e) => EditPedido();
             GridLista.DoubleClick += (s, e) => EditPedido();
@@ -554,41 +549,43 @@ namespace Emiplus.View.Comercial
 
             GridLista.CellFormatting += (s, e) =>
             {
-                if (Home.pedidoPage != "Remessas") {
+                if (Home.pedidoPage != "Remessas")
                     foreach (DataGridViewRow row in GridLista.Rows)
-                    {
                         if (row.Cells[7].Value.ToString().Contains("Finalizado") || row.Cells[7].Value.ToString().Contains("Autorizada"))
                         {
-                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold,
+                                GraphicsUnit.Point, 0);
                             row.Cells[7].Style.ForeColor = Color.White;
                             row.Cells[7].Style.BackColor = Color.FromArgb(139, 215, 146);
                         }
                         else if (row.Cells[7].Value.ToString().Contains("Cancelada"))
                         {
-                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold,
+                                GraphicsUnit.Point, 0);
                             row.Cells[7].Style.ForeColor = Color.White;
                             row.Cells[7].Style.BackColor = Color.FromArgb(0, 150, 230);
                         }
                         else
                         {
-                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                            row.Cells[7].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold,
+                                GraphicsUnit.Point, 0);
                             row.Cells[7].Style.ForeColor = Color.White;
                             row.Cells[7].Style.BackColor = Color.FromArgb(255, 89, 89);
                         }
-                    }
-                }
             };
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
                 b.DoWork += async (s, e) =>
                 {
-                    dataTable = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked);
+                    dataTable = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text,
+                        dataFinal.Text, noFilterData.Checked);
                 };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
-                    await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, dataTable, BuscarPessoa.Text);
+                    await _cPedido.SetTablePedidos(GridLista, Home.pedidoPage, dataInicial.Text, dataFinal.Text,
+                        noFilterData.Checked, dataTable, BuscarPessoa.Text);
 
                     Loading.Visible = false;
                     GridLista.Visible = true;
@@ -596,7 +593,7 @@ namespace Emiplus.View.Comercial
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => BuscarPessoa.Invoke((MethodInvoker)delegate
+            timer.Elapsed += (s, e) => BuscarPessoa.Invoke((MethodInvoker) delegate
             {
                 Filter();
                 Loading.Visible = false;
@@ -611,15 +608,24 @@ namespace Emiplus.View.Comercial
 
             imprimir.Click += async (s, e) => await RenderizarAsync();
 
-            if (Home.pedidoPage == "Vendas")
-                btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=Z2pkMEAAk4Q");
-            if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
-                btnVideoAjuda.Visible = false;
+            switch (Home.pedidoPage)
+            {
+                case "Vendas":
+                    btnVideoAjuda.Click += (s, e) => Support.Video("https://www.youtube.com/watch?v=Z2pkMEAAk4Q");
+                    break;
+                case "Notas":
+                case "Cupons":
+                case "Orçamentos":
+                case "Devoluções":
+                case "Consignações":
+                    btnVideoAjuda.Visible = false;
+                    break;
+            }
         }
 
         private async Task RenderizarAsync()
         {
-            int excluir = 0;
+            var excluir = 0;
 
             if (filterRemovido.Checked)
                 excluir = 1;
@@ -631,38 +637,55 @@ namespace Emiplus.View.Comercial
             {
                 case "Cupons":
                 case "Notas":
-                    dados = await _cPedido.GetDataTableNotas(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue));
+                    dados = await _cPedido.GetDataTableNotas(Home.pedidoPage, dataInicial.Text, dataFinal.Text,
+                        noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text),
+                        Validation.ConvertToInt32(Status.SelectedValue),
+                        Validation.ConvertToInt32(Usuarios.SelectedValue));
                     break;
 
                 default:
-                    dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
+                    dados = await _cPedido.GetDataTablePedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text,
+                        noFilterData.Checked, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text),
+                        Validation.ConvertToInt32(Status.SelectedValue),
+                        Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
                     break;
             }
 
-            ArrayList data = new ArrayList();
+            var data = new ArrayList();
             double total = 0;
             foreach (var item in dados)
             {
                 var statusNfePedido = "";
 
-                if (Home.pedidoPage == "Compras")
-                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Pago" : item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
-
-                if (Home.pedidoPage == "Vendas")
-                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
-
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
-                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
+                switch (Home.pedidoPage)
+                {
+                    case "Compras":
+                        statusNfePedido = item.STATUS == 0 ? "Pendente" :
+                            item.STATUS == 1 ? @"Finalizado\Pago" :
+                            item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
+                        break;
+                    case "Vendas":
+                        statusNfePedido = item.STATUS == 0 ? "Pendente" :
+                            item.STATUS == 1 ? @"Finalizado\Recebido" :
+                            item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
+                        break;
+                    case "Orçamentos":
+                    case "Devoluções":
+                    case "Consignações":
+                        statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
+                        break;
+                }
 
                 #region N° SEFAZ
 
                 string n_cfe = "", n_nfe = "";
-                var dataNota = Home.pedidoPage == "Cupons" ? _cPedido.GetDadosNota(0, item.IDNOTA) : Home.pedidoPage == "Notas" ? _cPedido.GetDadosNota(0, item.IDNOTA) : _cPedido.GetDadosNota(item.ID);
+                var dataNota = Home.pedidoPage == "Cupons" ? _cPedido.GetDadosNota(0, item.IDNOTA) :
+                    Home.pedidoPage == "Notas" ? _cPedido.GetDadosNota(0, item.IDNOTA) : _cPedido.GetDadosNota(item.ID);
 
                 if (dataNota == null)
                     return;
 
-                foreach (dynamic item2 in dataNota)
+                foreach (var item2 in dataNota)
                 {
                     if (item2.TIPONFE == "NFe")
                     {
@@ -672,7 +695,7 @@ namespace Emiplus.View.Comercial
                             n_nfe = item2.NFE + " / " + item2.SERIE;
 
                         if (Home.pedidoPage == "Notas")
-                            statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
+                            statusNfePedido = item2.STATUSNFE ?? "Pendente";
                     }
 
                     if (item2.TIPONFE == "CFe")
@@ -683,69 +706,67 @@ namespace Emiplus.View.Comercial
                             n_cfe = item2.NFE;
 
                         if (Home.pedidoPage == "Cupons")
-                            statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
+                            statusNfePedido = item2.STATUSNFE ?? "Pendente";
                     }
                 }
 
                 #endregion N° SEFAZ
 
-
                 total = Validation.ConvertToDouble(item.TOTAL) + Validation.ConvertToDouble(item.TOTAL);
                 data.Add(new
                 {
                     //.Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
-                    ID = item.ID,
+                    item.ID,
                     EMISSAO = Validation.ConvertDateToForm(item.EMISSAO),
                     CLIENTE = item.NOME,
                     TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
-                    n_nfe = n_nfe,
-                    n_cfe = n_cfe,
-                    COLABORADOR = item.COLABORADOR,
-                    CRIADO = item.CRIADO,
+                    n_nfe,
+                    n_cfe,
+                    item.COLABORADOR,
+                    item.CRIADO,
                     STATUS = statusNfePedido,
-                    CHAVEDEACESSO = item.CHAVEDEACESSO
+                    item.CHAVEDEACESSO
                 });
             }
 
-            IEnumerable<dynamic> dados2 = await _cPedido.GetDataTableTotaisPedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text, BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text), Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue), collectionItem.Lookup(produtoId.Text));
-            ArrayList data2 = new ArrayList();
+            var dados2 = await _cPedido.GetDataTableTotaisPedidos(Home.pedidoPage, dataInicial.Text, dataFinal.Text,
+                BuscarPessoa.Text, excluir, Validation.ConvertToInt32(BuscaID.Text),
+                Validation.ConvertToInt32(Status.SelectedValue), Validation.ConvertToInt32(Usuarios.SelectedValue),
+                collectionItem.Lookup(produtoId.Text));
+            var data2 = new ArrayList();
             foreach (var item in dados2)
-            {
                 data2.Add(new
                 {
-                    ID = item.ID,
-                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                    item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
                 });
-            }
 
-            IEnumerable<dynamic> dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked, Validation.ConvertToInt32(Status.SelectedValue));
-            ArrayList data3 = new ArrayList();
+            var dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked,
+                Validation.ConvertToInt32(Status.SelectedValue));
+            var data3 = new ArrayList();
             foreach (var item in dados3)
-            {
                 data3.Add(new
                 {
-                    ID = item.ID,
-                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                    item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
                 });
-            }
-            
-            IEnumerable<dynamic> dados4 = _cPedido.GetTotaisNota("CFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked, Validation.ConvertToInt32(Status.SelectedValue));
-            ArrayList data4 = new ArrayList();
+
+            var dados4 = _cPedido.GetTotaisNota("CFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked,
+                Validation.ConvertToInt32(Status.SelectedValue));
+            var data4 = new ArrayList();
             foreach (var item in dados4)
-            {
                 data4.Add(new
                 {
-                    ID = item.ID,
-                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL)),
+                    item.ID,
+                    TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
                 });
-            }
 
             if (!File.Exists($@"{Program.PATH_BASE}\html\Pedidos.html"))
             {
                 Alert.Message("Opps", "Não encontramos os arquivos base de relatório", Alert.AlertType.warning);
                 return;
             }
-            
+
             Template html;
             if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
                 html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Notas.html"));

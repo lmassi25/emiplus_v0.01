@@ -1,13 +1,16 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Common;
+using SqlKata.Execution;
+using VisualPlus.Enumerators;
+using VisualPlus.Structure;
 using VisualPlus.Toolkit.Controls.Interactivity;
 using VisualPlus.Toolkit.Controls.Layout;
 
@@ -15,11 +18,11 @@ namespace Emiplus.View.Comercial
 {
     public partial class Mesas : Form
     {
-        private Model.Pedido _mPedido = new Model.Pedido();
-        private PedidoItem _mPedidoItem = new PedidoItem();
+        private readonly Model.Pedido _mPedido = new Model.Pedido();
+        private readonly PedidoItem _mPedidoItem = new PedidoItem();
 
-        private List<string> checks = new List<string>();
-        
+        private readonly List<string> checks = new List<string>();
+
         public Mesas()
         {
             InitializeComponent();
@@ -28,7 +31,8 @@ namespace Emiplus.View.Comercial
 
         private double GetSubTotal(string mesa)
         {
-            PedidoItem data = new PedidoItem().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("mesa", mesa).WhereFalse("excluir").Where("pedido", 0).FirstOrDefault<PedidoItem>();
+            var data = new PedidoItem().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("mesa", mesa)
+                .WhereFalse("excluir").Where("pedido", 0).FirstOrDefault<PedidoItem>();
             if (data != null)
                 return data.Total;
 
@@ -37,10 +41,11 @@ namespace Emiplus.View.Comercial
 
         private PedidoItem GetData(string mesa)
         {
-            PedidoItem data = new PedidoItem().FindAll().Where("mesa", mesa).WhereFalse("excluir").Where("pedido", 0).FirstOrDefault<PedidoItem>();
+            var data = new PedidoItem().FindAll().Where("mesa", mesa).WhereFalse("excluir").Where("pedido", 0)
+                .FirstOrDefault<PedidoItem>();
             return data;
         }
-        
+
         private Usuarios GetUsuario(string mesa)
         {
             var idUser = GetData(mesa) == null ? 0 : GetData(mesa).Usuario;
@@ -51,23 +56,24 @@ namespace Emiplus.View.Comercial
         private void LoadMesas(string searchText = "")
         {
             flowLayout.Controls.Clear();
-            
-            string txtSearch = $"%{searchText}%";
+
+            var txtSearch = $"%{searchText}%";
             if (IniFile.Read("MesasPreCadastrada", "Comercial") == "True")
             {
-                IEnumerable<Model.Mesas> mesas = new Model.Mesas().FindAll().WhereFalse("excluir").Where("mesa", "like", txtSearch).Get<Model.Mesas>();
-                if (mesas.Count() > 0)
-                {
+                var mesas = new Model.Mesas().FindAll().WhereFalse("excluir").Where("mesa", "like", txtSearch)
+                    .Get<Model.Mesas>();
+                if (mesas.Any())
                     foreach (var mesa in mesas)
                     {
-                        string idMesa = mesa.Mesa;
+                        var idMesa = mesa.Mesa;
 
-                        PedidoItem pedidoItem = new PedidoItem().FindAll().WhereFalse("excluir").Where("pedido", 0).Where("mesa", idMesa).FirstOrDefault<PedidoItem>();
+                        var pedidoItem = new PedidoItem().FindAll().WhereFalse("excluir").Where("pedido", 0)
+                            .Where("mesa", idMesa).FirstOrDefault<PedidoItem>();
 
-                        VisualPanel panel1 = new VisualPanel
+                        var panel1 = new VisualPanel
                         {
-                            Anchor = (AnchorStyles.Top | AnchorStyles.Left)
-                                     | AnchorStyles.Right,
+                            Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                      | AnchorStyles.Right,
                             BackColor = Color.Transparent,
                             BackColorState
                                 = {Disabled = Color.FromArgb(224, 224, 224), Enabled = Color.FromArgb(249, 249, 249)},
@@ -79,18 +85,18 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 6,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             ForeColor = Color.FromArgb(0, 0, 0),
                             Location = new Point(3, 3),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = $"{idMesa}mesa",
                             Cursor = Cursors.Hand,
                             Padding = new Padding(5),
                             Size = new Size(229, 140),
                             TabIndex = 40060,
-                            Text = "visualPanel2",
+                            Text = @"visualPanel2",
                             TextStyle =
                             {
                                 Disabled = Color.FromArgb(131, 129, 129),
@@ -99,13 +105,13 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             }
                         };
 
                         #region panel2
 
-                        VisualPanel panel2 = new VisualPanel
+                        var panel2 = new VisualPanel
                         {
                             BackColor = Color.Gray,
                             BackColorState = {Disabled = Color.FromArgb(224, 224, 224), Enabled = Color.Gray},
@@ -116,17 +122,17 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 6,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             ForeColor = Color.FromArgb(0, 0, 0),
                             Location = new Point(0, 0),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = "visualPanel1",
                             Padding = new Padding(5),
                             Size = new Size(229, 41),
                             TabIndex = 11,
-                            Text = "visualPanel1",
+                            Text = @"visualPanel1",
                             TextStyle =
                             {
                                 Disabled = Color.FromArgb(131, 129, 129),
@@ -135,11 +141,11 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             }
                         };
 
-                        Label txtNrMesa = new Label
+                        var txtNrMesa = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.Gray,
@@ -153,7 +159,7 @@ namespace Emiplus.View.Comercial
                         };
                         txtNrMesa.Click += ActionMesa;
 
-                        VisualCheckBox check = new VisualCheckBox
+                        var check = new VisualCheckBox
                         {
                             BackColor = Color.Gray,
                             Border =
@@ -163,7 +169,7 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 3,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             Box = new Size(14, 14),
@@ -184,15 +190,15 @@ namespace Emiplus.View.Comercial
                                 Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point,
                                     0),
                                 ShapeRounding = 3,
-                                ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded,
-                                Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark,
+                                ShapeType = ShapeTypes.Rounded,
+                                Style = CheckStyle.CheckType.Checkmark,
                                 Thickness = 2F
                             },
                             Cursor = Cursors.Hand,
                             ForeColor = Color.FromArgb(0, 0, 0),
                             IsBoxLarger = false,
                             Location = new Point(9, 9),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = $"{idMesa}check",
                             Size = new Size(18, 23),
                             TabIndex = 9,
@@ -205,7 +211,7 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             },
                             Checked = false
                         };
@@ -216,9 +222,10 @@ namespace Emiplus.View.Comercial
 
                         panel2.Controls.Add(check);
                         panel2.Controls.Add(txtNrMesa);
+
                         #endregion
 
-                        Label subTotal = new Label
+                        var subTotal = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -228,10 +235,10 @@ namespace Emiplus.View.Comercial
                             Name = "label13",
                             Size = new Size(54, 15),
                             TabIndex = 15,
-                            Text = "Subtotal:"
+                            Text = @"Subtotal:"
                         };
 
-                        Label txtSubTotal = new Label
+                        var txtSubTotal = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -240,15 +247,14 @@ namespace Emiplus.View.Comercial
                             Location = new Point(72, 112),
                             Name = "label12",
                             Size = new Size(56, 15),
-                            TabIndex = 16
+                            TabIndex = 16,
+                            Text = pedidoItem != null
+                                ? $"R$ {Validation.FormatPrice(GetSubTotal(idMesa))}"
+                                : "R$ 00,00"
                         };
 
-                        if (pedidoItem != null)
-                            txtSubTotal.Text = $"R$ {Validation.FormatPrice(GetSubTotal(idMesa))}";
-                        else 
-                            txtSubTotal.Text = "R$ 00,00";
 
-                        Label hra = new Label
+                        var hra = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -258,10 +264,10 @@ namespace Emiplus.View.Comercial
                             Name = "label3",
                             Size = new Size(46, 15),
                             TabIndex = 7,
-                            Text = "Tempo:"
+                            Text = @"Tempo:"
                         };
 
-                        Label txtHra = new Label
+                        var txtHra = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -279,12 +285,14 @@ namespace Emiplus.View.Comercial
                             var hourMesa = date.AddHours(-GetData(idMesa).Criado.Hour);
                             var minMesa = date.AddMinutes(-GetData(idMesa).Criado.Minute);
 
-                            txtHra.Text = $"{hourMesa.Hour}h {minMesa.Minute}m";
+                            txtHra.Text = $@"{hourMesa.Hour}h {minMesa.Minute}m";
                         }
                         else
-                            txtHra.Text = "00h 00m";
+                        {
+                            txtHra.Text = @"00h 00m";
+                        }
 
-                        Label status = new Label
+                        var status = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -294,30 +302,23 @@ namespace Emiplus.View.Comercial
                             Name = "label7",
                             Size = new Size(42, 15),
                             TabIndex = 10,
-                            Text = "Status:"
+                            Text = @"Status:"
                         };
 
-                        Label txtStatus = new Label
+                        var txtStatus = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
                             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0),
                             Location = new Point(72, 70),
                             Name = "label10",
-                            Size = new Size(56, 15)
+                            Size = new Size(56, 15),
+                            ForeColor = pedidoItem != null ? Color.Red : Color.Green,
+                            Text = pedidoItem != null ? "Ocupado" : "Livre"
                         };
 
-                        if (pedidoItem != null)
-                            txtStatus.ForeColor = Color.Red;
-                        else
-                            txtStatus.ForeColor = Color.Green;
 
-                        if (pedidoItem != null)
-                            txtStatus.Text = "Ocupado";
-                        else
-                            txtStatus.Text = "Livre";
-
-                        Label atendente = new Label
+                        var atendente = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -327,10 +328,10 @@ namespace Emiplus.View.Comercial
                             Name = "label4",
                             Size = new Size(65, 15),
                             TabIndex = 8,
-                            Text = "Atendente:"
+                            Text = @"Atendente:"
                         };
 
-                        Label txtAtendente = new Label
+                        var txtAtendente = new Label
                         {
                             BackColor = Color.FromArgb(249, 249, 249),
                             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0),
@@ -341,13 +342,15 @@ namespace Emiplus.View.Comercial
                             TabIndex = 12
                         };
 
-                        if (txtStatus.Text == "Ocupado")
+                        if (txtStatus.Text == @"Ocupado")
                         {
                             var userName = GetUsuario(idMesa) == null ? "" : GetUsuario(idMesa).Nome;
-                            txtAtendente.Text = $"{Validation.FirstCharToUpper(userName)}";
+                            txtAtendente.Text = $@"{Validation.FirstCharToUpper(userName)}";
                         }
                         else
+                        {
                             txtAtendente.Text = "";
+                        }
 
                         panel1.Controls.Add(txtSubTotal);
                         panel1.Controls.Add(subTotal);
@@ -361,23 +364,23 @@ namespace Emiplus.View.Comercial
 
                         flowLayout.Controls.Add(panel1);
                     }
-                }
             }
             else
             {
-                var mesas = _mPedidoItem.FindAll(new[] { "mesa" }).Where("pedido", 0).Where("mesa", "like", txtSearch).GroupBy("mesa").Get();
+                var mesas = _mPedidoItem.FindAll(new[] {"mesa"}).Where("pedido", 0).Where("mesa", "like", txtSearch)
+                    .GroupBy("mesa").Get();
                 if (mesas != null)
-                {
                     foreach (var mesa in mesas)
                     {
                         string idMesa = mesa.MESA.ToString();
 
-                        VisualPanel panel1 = new VisualPanel
+                        var panel1 = new VisualPanel
                         {
-                            Anchor = (AnchorStyles.Top | AnchorStyles.Left)
-                                     | AnchorStyles.Right,
+                            Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                      | AnchorStyles.Right,
                             BackColor = Color.Transparent,
-                            BackColorState = {Disabled = Color.FromArgb(224, 224, 224), Enabled = Color.FromArgb(249, 249, 249)},
+                            BackColorState =
+                                {Disabled = Color.FromArgb(224, 224, 224), Enabled = Color.FromArgb(249, 249, 249)},
                             BackgroundImageLayout = ImageLayout.Zoom,
                             Border =
                             {
@@ -386,18 +389,18 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 6,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             ForeColor = Color.FromArgb(0, 0, 0),
                             Location = new Point(3, 3),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = $"{idMesa}mesa",
                             Cursor = Cursors.Hand,
                             Padding = new Padding(5),
                             Size = new Size(229, 140),
                             TabIndex = 40060,
-                            Text = "visualPanel2",
+                            Text = @"visualPanel2",
                             TextStyle =
                             {
                                 Disabled = Color.FromArgb(131, 129, 129),
@@ -406,13 +409,13 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             }
                         };
 
                         #region panel2
 
-                        VisualPanel panel2 = new VisualPanel
+                        var panel2 = new VisualPanel
                         {
                             BackColor = Color.Gray,
                             BackColorState = {Disabled = Color.FromArgb(224, 224, 224), Enabled = Color.Gray},
@@ -423,17 +426,17 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 6,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             ForeColor = Color.FromArgb(0, 0, 0),
                             Location = new Point(0, 0),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = "visualPanel1",
                             Padding = new Padding(5),
                             Size = new Size(229, 41),
                             TabIndex = 11,
-                            Text = "visualPanel1",
+                            Text = @"visualPanel1",
                             TextStyle =
                             {
                                 Disabled = Color.FromArgb(131, 129, 129),
@@ -442,11 +445,11 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             }
                         };
 
-                        Label txtNrMesa = new Label
+                        var txtNrMesa = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.Gray,
@@ -460,7 +463,7 @@ namespace Emiplus.View.Comercial
                         };
                         txtNrMesa.Click += ActionMesa;
 
-                        VisualCheckBox check = new VisualCheckBox
+                        var check = new VisualCheckBox
                         {
                             Checked = false,
                             BackColor = Color.Gray,
@@ -471,7 +474,7 @@ namespace Emiplus.View.Comercial
                                 HoverVisible = true,
                                 Rounding = 3,
                                 Thickness = 1,
-                                Type = VisualPlus.Enumerators.ShapeTypes.Rounded,
+                                Type = ShapeTypes.Rounded,
                                 Visible = true
                             },
                             Box = new Size(14, 14),
@@ -492,15 +495,15 @@ namespace Emiplus.View.Comercial
                                 Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point,
                                     0),
                                 ShapeRounding = 3,
-                                ShapeType = VisualPlus.Enumerators.ShapeTypes.Rounded,
-                                Style = VisualPlus.Structure.CheckStyle.CheckType.Checkmark,
+                                ShapeType = ShapeTypes.Rounded,
+                                Style = CheckStyle.CheckType.Checkmark,
                                 Thickness = 2F
                             },
                             Cursor = Cursors.Hand,
                             ForeColor = Color.FromArgb(0, 0, 0),
                             IsBoxLarger = false,
                             Location = new Point(9, 9),
-                            MouseState = VisualPlus.Enumerators.MouseStates.Normal,
+                            MouseState = MouseStates.Normal,
                             Name = $"{idMesa}check",
                             Size = new Size(18, 23),
                             TabIndex = 9,
@@ -513,16 +516,17 @@ namespace Emiplus.View.Comercial
                                 Pressed = Color.FromArgb(0, 0, 0),
                                 TextAlignment = StringAlignment.Center,
                                 TextLineAlignment = StringAlignment.Center,
-                                TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit
+                                TextRenderingHint = TextRenderingHint.ClearTypeGridFit
                             }
                         };
                         check.Click += ActionCheck;
 
                         panel2.Controls.Add(check);
                         panel2.Controls.Add(txtNrMesa);
+
                         #endregion
 
-                        Label subTotal = new Label
+                        var subTotal = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -532,10 +536,10 @@ namespace Emiplus.View.Comercial
                             Name = "label13",
                             Size = new Size(54, 15),
                             TabIndex = 15,
-                            Text = "Subtotal:"
+                            Text = @"Subtotal:"
                         };
 
-                        Label txtSubTotal = new Label
+                        var txtSubTotal = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -545,10 +549,10 @@ namespace Emiplus.View.Comercial
                             Name = "label12",
                             Size = new Size(56, 15),
                             TabIndex = 16,
-                            Text = $"R$ {Validation.FormatPrice(GetSubTotal(idMesa))}"
+                            Text = $@"R$ {Validation.FormatPrice(GetSubTotal(idMesa))}"
                         };
 
-                        Label hra = new Label
+                        var hra = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -558,10 +562,10 @@ namespace Emiplus.View.Comercial
                             Name = "label3",
                             Size = new Size(46, 15),
                             TabIndex = 7,
-                            Text = "Tempo:"
+                            Text = @"Tempo:"
                         };
 
-                        Label txtHra = new Label
+                        var txtHra = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -579,7 +583,7 @@ namespace Emiplus.View.Comercial
 
                         txtHra.Text = $@"{hourMesa.Hour}h {minMesa.Minute}m";
 
-                        Label status = new Label
+                        var status = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -589,10 +593,10 @@ namespace Emiplus.View.Comercial
                             Name = "label7",
                             Size = new Size(42, 15),
                             TabIndex = 10,
-                            Text = "Status:"
+                            Text = @"Status:"
                         };
 
-                        Label txtStatus = new Label
+                        var txtStatus = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -602,10 +606,10 @@ namespace Emiplus.View.Comercial
                             Name = "label10",
                             Size = new Size(56, 15),
                             TabIndex = 13,
-                            Text = "Ocupado"
+                            Text = @"Ocupado"
                         };
 
-                        Label atendente = new Label
+                        var atendente = new Label
                         {
                             AutoSize = true,
                             BackColor = Color.FromArgb(249, 249, 249),
@@ -615,10 +619,10 @@ namespace Emiplus.View.Comercial
                             Name = "label4",
                             Size = new Size(65, 15),
                             TabIndex = 8,
-                            Text = "Atendente:"
+                            Text = @"Atendente:"
                         };
 
-                        Label txtAtendente = new Label
+                        var txtAtendente = new Label
                         {
                             BackColor = Color.FromArgb(249, 249, 249),
                             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0),
@@ -630,7 +634,7 @@ namespace Emiplus.View.Comercial
                         };
 
                         var userName = GetUsuario(idMesa) == null ? "" : GetUsuario(idMesa).Nome;
-                        txtAtendente.Text = $"{userName}";
+                        txtAtendente.Text = $@"{userName}";
 
                         panel1.Controls.Add(txtSubTotal);
                         panel1.Controls.Add(subTotal);
@@ -644,11 +648,10 @@ namespace Emiplus.View.Comercial
 
                         flowLayout.Controls.Add(panel1);
                     }
-                }
             }
         }
 
-        private  void Eventos()
+        private void Eventos()
         {
             Shown += (s, e) =>
             {
@@ -658,7 +661,9 @@ namespace Emiplus.View.Comercial
 
             btnFechar.Click += (s, e) =>
             {
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a fechar uma mesa, ao continuar não será possível voltar!" + Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a fechar uma mesa, ao continuar não será possível voltar!" +
+                    Environment.NewLine + "Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (!result)
                     return;
 
@@ -670,27 +675,26 @@ namespace Emiplus.View.Comercial
                     _mPedido.campof = "MESA";
                     _mPedido.Cliente = 1;
                     _mPedido.Save(_mPedido);
-                    int idPedido = _mPedido.GetLastId();
-
-                    foreach (string mesa in checks)
+                    var idPedido = _mPedido.GetLastId();
+                    
+                    foreach (var mesa in checks)
                     {
-                        var dataMesa = _mPedidoItem.FindAll().Where("mesa", mesa).WhereFalse("excluir").Where("pedido", 0).Get();
+                        var dataMesa = _mPedidoItem.FindAll().Where("mesa", mesa).WhereFalse("excluir")
+                            .Where("pedido", 0).Get();
                         if (dataMesa != null)
-                        {
-                            foreach (dynamic item in dataMesa)
+                            foreach (var item in dataMesa)
                             {
                                 int id = item.ID;
-                                PedidoItem update = _mPedidoItem.FindById(id).FirstOrDefault<PedidoItem>();
+                                var update = _mPedidoItem.FindById(id).FirstOrDefault<PedidoItem>();
                                 update.Pedido = idPedido;
                                 update.Save(update);
                             }
-                        }
                     }
 
                     Home.pedidoPage = "Vendas";
                     AddPedidos.Id = idPedido;
                     AddPedidos.PDV = false;
-                    using (AddPedidos novoPedido = new AddPedidos())
+                    using (var novoPedido = new AddPedidos())
                     {
                         novoPedido.TopMost = true;
                         novoPedido.ShowDialog();
@@ -706,11 +710,11 @@ namespace Emiplus.View.Comercial
 
             btnAdicionar.Click += (s, e) =>
             {
-                AddItemMesa form = new AddItemMesa();
+                var form = new AddItemMesa();
                 if (form.ShowDialog() == DialogResult.OK)
                     LoadMesas();
             };
-            
+
             search.TextChanged += (s, e) => LoadMesas(search.Text);
             btnAtualizar.Click += (s, e) => LoadMesas();
 
@@ -719,15 +723,15 @@ namespace Emiplus.View.Comercial
 
         private void ActionMesa(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            var label = (Label) sender;
             Mesa.nrMesa = label.Name;
             OpenForm.Show<Mesa>(this);
         }
 
         private void ActionCheck(object sender, EventArgs e)
         {
-            VisualCheckBox check = (VisualCheckBox)sender;
-            string idCheck = check.Name.Replace("check", "");
+            var check = (VisualCheckBox) sender;
+            var idCheck = check.Name.Replace("check", "");
             if (check.Checked)
                 checks.Add(idCheck);
             else

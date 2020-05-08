@@ -7,68 +7,53 @@ namespace Emiplus.Data.Helpers
     {
         public static bool SetControl(Button button, PictureBox img, string tela, bool message = true)
         {
-            if (!GetPermission(tela))
-            {
-                img.Visible = true;
+            if (GetPermission(tela))
+                return false;
 
-                button.Cursor = Cursors.No;
+            img.Visible = true;
+            button.Cursor = Cursors.No;
 
-                if (message)
-                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.",
-                        Alert.AlertType.warning);
+            if (message)
+                Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
 
-                return true;
-            }
+            return true;
 
-            return false;
         }
 
         public static bool SetControlVisual(VisualButton button, PictureBox img, string tela, bool message = true)
         {
-            if (!GetPermission(tela))
-            {
-                img.Visible = true;
+            if (GetPermission(tela))
+                return false;
 
-                button.Cursor = Cursors.No;
+            img.Visible = true;
+            button.Cursor = Cursors.No;
 
-                if (message)
-                    Alert.Message("Oppss", "Você não possui permissão para acessar essa área.",
-                        Alert.AlertType.warning);
+            if (message)
+                Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
 
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         public static bool SetControlLabel(Label button, PictureBox img, string tela)
         {
-            if (!GetPermission(tela))
-            {
-                img.Visible = true;
+            if (GetPermission(tela))
+                return false;
 
-                button.Cursor = Cursors.No;
-                Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
+            img.Visible = true;
+            button.Cursor = Cursors.No;
+            Alert.Message("Oppss", "Você não possui permissão para acessar essa área.", Alert.AlertType.warning);
 
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         private static bool GetPermission(string tela)
         {
-            if (Program.userPermissions.Count == 1 && Program.userPermissions[0].ToString() == "{ all = 1 }")
+            if (Program.UserPermissions.Count == 1 && Program.UserPermissions[0].ToString() == "{ all = 1 }")
                 return true;
 
-            foreach (dynamic item in Program.userPermissions)
+            foreach (dynamic item in Program.UserPermissions)
                 if (item.Key == tela)
-                {
-                    if (item.Value == "1")
-                        return true;
-
-                    return false;
-                }
+                    return item.Value == "1";
 
             return true;
         }

@@ -1,16 +1,12 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Common;
-using System;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalTransportadora : Form
     {
-        public static int Id { get; set; }
-        public static string page { get; set; }
-
-        private Controller.Pedido _controller = new Controller.Pedido();
+        private readonly Controller.Pedido _controller = new Controller.Pedido();
 
         public PedidoModalTransportadora()
         {
@@ -18,24 +14,31 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        private void DataTable() => _controller.GetDataTablePessoa(GridLista, search.Text, "Transportadoras");
+        public static int Id { get; set; }
+        public static string page { get; set; }
+
+        private void DataTable()
+        {
+            _controller.GetDataTablePessoa(GridLista, search.Text, "Transportadoras");
+        }
 
         private void SelectItemGrid()
         {
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                DialogResult = DialogResult.OK;
-                Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
 
-                Close();
-            }
+            DialogResult = DialogResult.OK;
+            Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+
+            Close();
         }
 
         private void FormNovoCliente()
         {
             Clientes.Id = 0;
             Home.pessoaPage = "Transportadoras";
-            using (AddClientes f = new AddClientes()) {
+            using (var f = new AddClientes())
+            {
                 f.btnSalvarText = "Salvar e Inserir";
                 f.btnSalvarWidth = 150;
                 f.btnSalvarLocation = 590;

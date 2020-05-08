@@ -8,8 +8,6 @@ namespace Emiplus.View.Financeiro
 {
     public partial class AddTaxa : Form
     {
-        public static int Id { get; set; }
-
         private Model.Taxas _mTaxas = new Model.Taxas();
 
         public AddTaxa()
@@ -17,9 +15,13 @@ namespace Emiplus.View.Financeiro
             InitializeComponent();
             Eventos();
 
-            ToolHelp.Show("Em quantos dias o dinheiro vai estar disponível para você?", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Sem acréscimo para o COMPRADOR apartir da parcela selecionada.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Em quantos dias o dinheiro vai estar disponível para você?", pictureBox4,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Sem acréscimo para o COMPRADOR apartir da parcela selecionada.", pictureBox5,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
+
+        public static int Id { get; set; }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
@@ -55,7 +57,7 @@ namespace Emiplus.View.Financeiro
                     }
                 }
             };
-            
+
             btnSalvar.Click += (s, e) =>
             {
                 if (string.IsNullOrEmpty(txtTitulo.Text))
@@ -81,7 +83,8 @@ namespace Emiplus.View.Financeiro
                 _mTaxas.Taxa_Debito = Validation.ConvertToDouble(txtTaxaDebito.Text);
                 _mTaxas.Taxa_Fixa = Validation.ConvertToDouble(txtTarifaFixa.Text);
                 _mTaxas.Taxa_Parcela = Validation.ConvertToDouble(txtTaxaParcela.Text);
-                _mTaxas.Parcela_Semjuros = Validation.ConvertToInt32(Parcelas.SelectedItem.ToString().Replace("° Parcela", ""));
+                _mTaxas.Parcela_Semjuros =
+                    Validation.ConvertToInt32(Parcelas.SelectedItem.ToString().Replace("° Parcela", ""));
                 _mTaxas.Dias_Receber = Validation.ConvertToInt32(diasReceber.Text);
                 _mTaxas.Taxa_Antecipacao = Validation.ConvertToDouble(txtTaxaAntecipacao.Text);
                 _mTaxas.Antecipacao_Auto = checkAntecipacaoAuto.Checked ? 1 : 0;
@@ -92,7 +95,9 @@ namespace Emiplus.View.Financeiro
                     Close();
                 }
                 else
+                {
                     Alert.Message("Opps", "Algo deu errado ao salvar.", Alert.AlertType.error);
+                }
             };
 
             txtTarifaFixa.TextChanged += MaskPrice;
@@ -108,7 +113,7 @@ namespace Emiplus.View.Financeiro
 
         private void MaskPrice(object s, EventArgs e)
         {
-            TextBox txt = (TextBox)s;
+            var txt = (TextBox) s;
             Masks.MaskPrice(ref txt);
         }
     }

@@ -405,7 +405,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         private void ModalItens()
         {
             if (collection.Lookup(BuscarProduto.Text) == 0)
-                if (Application.OpenForms["PedidoModalItens"] as PedidoModalItens == null)
+                if (!(Application.OpenForms["PedidoModalItens"] is PedidoModalItens))
                 {
                     PedidoModalItens.txtSearch = BuscarProduto.Text;
                     var form = new PedidoModalItens {TopMost = true};
@@ -423,11 +423,15 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.SelectedRows[0].Cells["Referência"].Value = referencia.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value = valorcompra.Text;
 
-            if (ImportarNfe.optionSelected == 1)
-                GridLista.SelectedRows[0].Cells[6].Value = 0;
-
-            if (ImportarNfe.optionSelected == 2)
-                GridLista.SelectedRows[0].Cells[6].Value = estoqueatual.Text;
+            switch (ImportarNfe.optionSelected)
+            {
+                case 1:
+                    GridLista.SelectedRows[0].Cells[6].Value = 0;
+                    break;
+                case 2:
+                    GridLista.SelectedRows[0].Cells[6].Value = estoqueatual.Text;
+                    break;
+            }
 
             GridLista.SelectedRows[0].Cells["Medida"].Value = Medidas.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value = valorvenda.Text;

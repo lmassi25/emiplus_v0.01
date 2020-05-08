@@ -10,20 +10,19 @@ namespace Emiplus.View.Produtos
     {
         private readonly Item _modelItem = new Item();
         private readonly ItemEstoqueMovimentacao _modelItemEstoque = new ItemEstoqueMovimentacao();
-        private readonly int IdItem = AddProduct.idPdtSelecionado;
+        private readonly int idItem = AddProduct.idPdtSelecionado;
 
         public AddEstoque()
         {
             InitializeComponent();
             Eventos();
 
-            if (IdItem > 0)
+            if (idItem > 0)
             {
-                var item = _modelItem.FindById(IdItem).First<Item>();
+                var item = _modelItem.FindById(idItem).First<Item>();
 
                 tituloProduto.Text = item.Nome;
-                estoqueAtual.Text =
-                    Validation.FormatMedidas(item.Medida, Validation.ConvertToDouble(item.EstoqueAtual));
+                estoqueAtual.Text = Validation.FormatMedidas(item.Medida, Validation.ConvertToDouble(item.EstoqueAtual));
                 custoAtual.Text = Validation.FormatPrice(item.ValorCompra);
             }
         }
@@ -46,25 +45,25 @@ namespace Emiplus.View.Produtos
 
             btnSalvar.Click += (s, e) =>
             {
-                var item = _modelItem.FindById(IdItem).FirstOrDefault<Item>();
-                if (item != null)
+                var item = _modelItem.FindById(idItem).FirstOrDefault<Item>();
+                if (item == null)
+                    return;
+
+                var tipo = btnRadioAddItem.Checked ? "A" : btnRadioRemoveItem.Checked ? "R" : "A";
+
+                var data = _modelItemEstoque
+                    .SetUsuario(Settings.Default.user_id)
+                    .SetQuantidade(Validation.ConvertToDouble(quantidade.Text))
+                    .SetTipo(tipo)
+                    .SetLocal("Cadastro de Produto")
+                    .SetObs(obs.Text)
+                    .SetItem(item)
+                    .Save(_modelItemEstoque);
+
+                if (data)
                 {
-                    var tipo = btnRadioAddItem.Checked ? "A" : btnRadioRemoveItem.Checked ? "R" : "A";
-
-                    var data = _modelItemEstoque
-                        .SetUsuario(Settings.Default.user_id)
-                        .SetQuantidade(Validation.ConvertToDouble(quantidade.Text))
-                        .SetTipo(tipo)
-                        .SetLocal("Cadastro de Produto")
-                        .SetObs(obs.Text)
-                        .SetItem(item)
-                        .Save(_modelItemEstoque);
-
-                    if (data)
-                    {
-                        DialogResult = DialogResult.OK;
-                        Close();
-                    }
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
             };
 
@@ -73,7 +72,7 @@ namespace Emiplus.View.Produtos
 
             quantidade.TextChanged += (s, e) =>
             {
-                var item = _modelItem.FindById(IdItem).First<Item>();
+                var item = _modelItem.FindById(idItem).First<Item>();
                 if (btnRadioAddItem.Checked)
                     novaQtd.Text = Validation.FormatMedidas(item.Medida,
                         item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text));
@@ -85,7 +84,7 @@ namespace Emiplus.View.Produtos
 
             btnRadioAddItem.Click += (s, e) =>
             {
-                var item = _modelItem.FindById(IdItem).First<Item>();
+                var item = _modelItem.FindById(idItem).First<Item>();
                 if (!string.IsNullOrEmpty(quantidade.Text))
                     novaQtd.Text = Validation.FormatMedidas(item.Medida,
                         item.EstoqueAtual + Validation.ConvertToDouble(quantidade.Text));
@@ -93,7 +92,7 @@ namespace Emiplus.View.Produtos
 
             btnRadioRemoveItem.Click += (s, e) =>
             {
-                var item = _modelItem.FindById(IdItem).First<Item>();
+                var item = _modelItem.FindById(idItem).First<Item>();
                 if (!string.IsNullOrEmpty(quantidade.Text))
                     novaQtd.Text = Validation.FormatMedidas(item.Medida,
                         item.EstoqueAtual - Validation.ConvertToDouble(quantidade.Text));

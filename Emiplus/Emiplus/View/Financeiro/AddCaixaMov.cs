@@ -1,31 +1,32 @@
-﻿using DotLiquid;
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using DotLiquid;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Emiplus.View.Produtos;
 using Emiplus.View.Reports;
 using SqlKata.Execution;
-using System;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class AddCaixaMov : Form
     {
-        public static int idMov { get; set; }
-        public static int idCaixa { get; set; }
+        private Model.Caixa _modelCaixa = new Model.Caixa();
         private CaixaMovimentacao _modelCaixaMov = new CaixaMovimentacao();
         private Titulo _modelTitulo = new Titulo();
-        private Model.Caixa _modelCaixa = new Model.Caixa();
-        private Model.Usuarios _modelUsuarios = new Model.Usuarios();
+        private readonly Usuarios _modelUsuarios = new Usuarios();
 
         public AddCaixaMov()
         {
             InitializeComponent();
             Eventos();
         }
+
+        public static int idMov { get; set; }
+        public static int idCaixa { get; set; }
 
         private void LoadFornecedores()
         {
@@ -70,7 +71,7 @@ namespace Emiplus.View.Financeiro
                         Categorias.Enabled = true;
                         Fornecedor.Enabled = true;
                         imprimir.Visible = false;
-                        label4.Text = "Despesa:";
+                        label4.Text = @"Despesa:";
                         break;
 
                     case 2:
@@ -78,7 +79,7 @@ namespace Emiplus.View.Financeiro
                         Categorias.Enabled = true;
                         Fornecedor.Enabled = false;
                         imprimir.Visible = true;
-                        label4.Text = "Despesa:";
+                        label4.Text = @"Despesa:";
                         break;
 
                     case 3:
@@ -86,7 +87,7 @@ namespace Emiplus.View.Financeiro
                         Categorias.Enabled = false;
                         Fornecedor.Enabled = false;
                         imprimir.Visible = false;
-                        label4.Text = "Receita:";
+                        label4.Text = @"Receita:";
                         break;
                 }
 
@@ -122,17 +123,14 @@ namespace Emiplus.View.Financeiro
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
-            {
-                Start();
-            };
+            Load += (s, e) => { Start(); };
 
             Tipo1.Click += (s, e) =>
             {
                 Categorias.Enabled = true;
                 Fornecedor.Enabled = true;
                 imprimir.Visible = false;
-                label4.Text = "Despesa:";
+                label4.Text = @"Despesa:";
                 LoadCategorias("Despesas");
             };
             Tipo2.Click += (s, e) =>
@@ -140,7 +138,7 @@ namespace Emiplus.View.Financeiro
                 Categorias.Enabled = true;
                 Fornecedor.Enabled = false;
                 imprimir.Visible = true;
-                label4.Text = "Despesa:";
+                label4.Text = @"Despesa:";
                 LoadCategorias("Despesas");
             };
 
@@ -149,33 +147,37 @@ namespace Emiplus.View.Financeiro
                 Categorias.Enabled = false;
                 Fornecedor.Enabled = false;
                 imprimir.Visible = false;
-                label4.Text = "Receita:";
+                label4.Text = @"Receita:";
                 LoadCategorias("Receitas");
             };
 
             btnAddCategoria.Click += (s, e) =>
             {
-                string CategoriasdeContas = "";
+                string categoriasdeContas;
                 if (Tipo1.Checked || Tipo2.Checked)
-                    CategoriasdeContas = "Despesas";
+                    categoriasdeContas = "Despesas";
                 else
-                    CategoriasdeContas = "Receitas";
+                    categoriasdeContas = "Receitas";
 
-                Home.CategoriaPage = CategoriasdeContas;
-                AddCategorias f = new AddCategorias();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
+                Home.CategoriaPage = categoriasdeContas;
+                var f = new AddCategorias
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 if (f.ShowDialog() == DialogResult.OK)
-                    LoadCategorias(CategoriasdeContas);
+                    LoadCategorias(categoriasdeContas);
             };
 
             btnAddFornecedor.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";
-                Comercial.AddClientes.Id = 0;
-                Comercial.AddClientes f = new Comercial.AddClientes();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
+                AddClientes.Id = 0;
+                var f = new AddClientes
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadFornecedores();
             };
@@ -184,7 +186,7 @@ namespace Emiplus.View.Financeiro
             {
                 _modelCaixaMov.id_caixa = idCaixa;
                 _modelCaixaMov.id_formapgto = Dinheiro.Checked ? 1 : Cheque.Checked ? 2 : 1;
-                
+
                 _modelCaixaMov.id_categoria = Validation.ConvertToInt32(Categorias.SelectedValue);
                 _modelCaixaMov.id_pessoa = Validation.ConvertToInt32(Fornecedor.SelectedValue);
 
@@ -192,17 +194,10 @@ namespace Emiplus.View.Financeiro
 
                 var tipo = "";
                 if (Tipo1.Checked)
-                {
                     tipo = "Saída - Lançamento de Despesa";
-                }
                 else if (Tipo2.Checked)
-                {
                     tipo = "Saída - Sangria";
-                }
-                else if (Tipo3.Checked)
-                {
-                    tipo = "Entrada - Acréscimo";
-                }
+                else if (Tipo3.Checked) tipo = "Entrada - Acréscimo";
 
                 var formaPgto = "";
                 if (Dinheiro.Checked)
@@ -218,8 +213,9 @@ namespace Emiplus.View.Financeiro
                     if (Tipo1.Checked)
                     {
                         if (_modelCaixaMov.Id != 0)
-                            _modelTitulo = _modelTitulo.Query().Where("id_caixa_mov", _modelCaixaMov.Id).Where("excluir", 0).FirstOrDefault<Model.Titulo>();
-                        
+                            _modelTitulo = _modelTitulo.Query().Where("id_caixa_mov", _modelCaixaMov.Id)
+                                .Where("excluir", 0).FirstOrDefault<Titulo>();
+
                         _modelTitulo.Tipo = "Pagar";
                         _modelTitulo.Emissao = Validation.DateNowToSql();
                         _modelTitulo.Id_Categoria = _modelCaixaMov.id_categoria;
@@ -243,7 +239,7 @@ namespace Emiplus.View.Financeiro
 
             Valor.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
@@ -265,7 +261,7 @@ namespace Emiplus.View.Financeiro
                 _modelCaixa = _modelCaixa.FindById(idCaixa).FirstOrDefault<Model.Caixa>();
 
                 var user = _modelUsuarios.FindByUserId(_modelCaixa.Usuario).FirstOrDefault();
-                string userName = "";
+                var userName = "";
                 if (user != null)
                     userName = user.NOME;
 

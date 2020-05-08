@@ -20,16 +20,16 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 2;
+            table.ColumnCount = 2;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
                 new object[] {true});
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
             var checkColumn = new DataGridViewCheckBoxColumn
             {
@@ -39,14 +39,14 @@ namespace Emiplus.View.Produtos
                 CellTemplate = new DataGridViewCheckBoxCell(),
                 Width = 60
             };
-            Table.Columns.Insert(0, checkColumn);
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Grupo";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Grupo";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
         }
 
         private void LoadData(DataGridView Table)
@@ -82,13 +82,13 @@ namespace Emiplus.View.Produtos
 
             GridLista.DoubleClick += (s, e) =>
             {
-                if (GridLista.SelectedRows.Count > 0)
-                {
-                    AddVariacao.Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    var form = new AddVariacao();
-                    if (form.ShowDialog() == DialogResult.OK)
-                        LoadData(GridLista);
-                }
+                if (GridLista.SelectedRows.Count <= 0)
+                    return;
+
+                AddVariacao.Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                var form = new AddVariacao();
+                if (form.ShowDialog() == DialogResult.OK)
+                    LoadData(GridLista);
             };
 
             btnDelete.Click += (s, e) =>

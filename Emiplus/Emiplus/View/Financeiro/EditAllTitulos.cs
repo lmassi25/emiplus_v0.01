@@ -1,25 +1,17 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class EditAllTitulos : Form
     {
-        private Titulo _modelTitulo = new Titulo();
-
         public static List<int> listTitulos = new List<int>();
+        private Titulo _modelTitulo = new Titulo();
 
         public EditAllTitulos()
         {
@@ -31,7 +23,9 @@ namespace Emiplus.View.Financeiro
         {
             Table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -39,11 +33,7 @@ namespace Emiplus.View.Financeiro
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            if (Home.financeiroPage == "Receber")
-                Table.Columns[1].Name = "Receber de";
-            else
-                Table.Columns[1].Name = "Pagar para";
-
+            Table.Columns[1].Name = Home.financeiroPage == "Receber" ? "Receber de" : "Pagar para";
             Table.Columns[1].Width = 150;
             Table.Columns[1].Visible = true;
 
@@ -57,11 +47,7 @@ namespace Emiplus.View.Financeiro
             Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[4].Width = 100;
 
-            if (Home.financeiroPage == "Receber")
-                Table.Columns[5].Name = "Recebido";
-            else
-                Table.Columns[5].Name = "Pago";
-
+            Table.Columns[5].Name = Home.financeiroPage == "Receber" ? "Recebido" : "Pago";
             Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[5].Width = 100;
         }
@@ -72,15 +58,16 @@ namespace Emiplus.View.Financeiro
 
             foreach (var item in listTitulos)
             {
-                var mTitulo = new Model.Titulo();
+                var mTitulo = new Titulo();
                 var DB = mTitulo.Query()
-                .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
-                .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
-                .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total", "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto", "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
-                .Where("titulo.excluir", 0).Where("titulo.id", item);
+                    .LeftJoin("formapgto", "formapgto.id", "titulo.id_formapgto")
+                    .LeftJoin("pessoa", "pessoa.id", "titulo.id_pessoa")
+                    .Select("titulo.id", "titulo.recebido", "titulo.vencimento", "titulo.emissao", "titulo.total",
+                        "titulo.id_pedido", "titulo.baixa_data", "titulo.baixa_total", "formapgto.nome as formapgto",
+                        "pessoa.nome", "pessoa.fantasia", "pessoa.rg", "pessoa.cpf")
+                    .Where("titulo.excluir", 0).Where("titulo.id", item);
 
-                foreach (dynamic data in DB.Get())
-                {
+                foreach (var data in DB.Get())
                     Table.Rows.Add(
                         data.ID,
                         data.NOME,
@@ -89,7 +76,6 @@ namespace Emiplus.View.Financeiro
                         Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL), true),
                         Validation.FormatPrice(Validation.ConvertToDouble(data.RECEBIDO), true)
                     );
-                }
             }
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -104,13 +90,9 @@ namespace Emiplus.View.Financeiro
 
         private void LoadCategorias()
         {
-            var CategoriasdeContas = "";
-            if (Home.financeiroPage == "Pagar")
-                CategoriasdeContas = "Despesas";
-            else
-                CategoriasdeContas = "Receitas";
+            var categoriasdeContas = Home.financeiroPage == "Pagar" ? "Despesas" : "Receitas";
 
-            receita.DataSource = new Categoria().GetAll(CategoriasdeContas);
+            receita.DataSource = new Categoria().GetAll(categoriasdeContas);
             receita.ValueMember = "Id";
             receita.DisplayMember = "Nome";
         }
@@ -119,7 +101,7 @@ namespace Emiplus.View.Financeiro
         {
             foreach (var item in listTitulos)
             {
-                _modelTitulo = _modelTitulo.FindById(item).FirstOrDefault<Model.Titulo>();
+                _modelTitulo = _modelTitulo.FindById(item).FirstOrDefault<Titulo>();
                 _modelTitulo.Tipo = Home.financeiroPage;
 
                 if (!string.IsNullOrEmpty(dataRecebido.Text))
@@ -152,15 +134,15 @@ namespace Emiplus.View.Financeiro
             {
                 if (Home.financeiroPage == "Pagar")
                 {
-                    label6.Text = "Pagamentos";
-                    label2.Text = "Pagamentoss a serem editados:";
-                    label3.Text = "As alterações abaixo, será aplicado a todos os pagamentos listado acima.";
+                    label6.Text = @"Pagamentos";
+                    label2.Text = @"Pagamentoss a serem editados:";
+                    label3.Text = @"As alterações abaixo, será aplicado a todos os pagamentos listado acima.";
 
-                    label23.Text = "Pagar para";
-                    label8.Text = "Despesa";
-                    visualGroupBox2.Text = "Pagamento";
-                    label9.Text = "Data Pagamento";
-                    label10.Text = "Valor Pagamento";
+                    label23.Text = @"Pagar para";
+                    label8.Text = @"Despesa";
+                    visualGroupBox2.Text = @"Pagamento";
+                    label9.Text = @"Data Pagamento";
+                    label10.Text = @"Valor Pagamento";
                 }
 
                 Refresh();
@@ -178,15 +160,16 @@ namespace Emiplus.View.Financeiro
 
             btnSalvar.Click += (s, e) =>
             {
-                var result = AlertOptions.Message("Atenção!", "Confirmar alterações?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Confirmar alterações?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
                 if (result)
                     Save();
             };
 
-            dataRecebido.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            dataRecebido.KeyPress += Masks.MaskBirthday;
             recebido.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 

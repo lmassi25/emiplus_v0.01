@@ -1,24 +1,21 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Windows.Media;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using LiveCharts;
 using LiveCharts.Wpf;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class DetalhesComissao : Form
     {
-        public static int idUser { get; set; }
-        private int quantidadeDias { get; set; }
-        private Model.Usuarios Usuario { get; set; }
+        private List<double> valor = new List<double>();
 
-        private List<double> Valor = new List<double>();
-
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public DetalhesComissao()
         {
@@ -26,15 +23,22 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
+        public static int idUser { get; set; }
+        private int QuantidadeDias { get; set; }
+        private Usuarios Usuario { get; set; }
+
         private List<double> GetDados()
         {
-            List<double> values = new List<double>();
+            var values = new List<double>();
 
-            for (int i = 0; i < quantidadeDias; i++)
+            for (var i = 0; i < QuantidadeDias; i++)
             {
-                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas").Where("colaborador", idUser)
-                .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
-                .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true)).FirstOrDefault();
+                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                    .Where("tipo", "Vendas").Where("colaborador", idUser)
+                    .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
+                    .Where("criado", "<=",
+                        Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true))
+                    .FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToInt32(data.TOTAL) : "0");
             }
 
@@ -43,25 +47,27 @@ namespace Emiplus.View.Comercial
 
         private void GetDays()
         {
-            quantidadeDias = (DateTime.Parse(dataFinal.Value.ToString()).Subtract(DateTime.Parse(dataInicial.Value.ToString()))).Days + 1;
+            QuantidadeDias = DateTime.Parse(dataFinal.Value.ToString())
+                .Subtract(DateTime.Parse(dataInicial.Value.ToString())).Days + 1;
         }
 
         private void LoadDados()
         {
-            var Total = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas").WhereFalse("excluir").Where("colaborador", idUser)
-               .Where("criado", ">=", Validation.ConvertDateToSql(dataInicial.Text, true))
-               .Where("criado", "<=", Validation.ConvertDateToSql(dataFinal.Text, true)).FirstOrDefault();
+            var Total = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas")
+                .WhereFalse("excluir").Where("colaborador", idUser)
+                .Where("criado", ">=", Validation.ConvertDateToSql(dataInicial.Text, true))
+                .Where("criado", "<=", Validation.ConvertDateToSql(dataFinal.Text, true)).FirstOrDefault();
             totalVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(Total.TOTAL), true);
 
-            double VlrComissao = Validation.ConvertToDouble(Total.TOTAL) * (Usuario.Comissao / 100.0);
-            totalComissao.Text = Validation.FormatPrice(VlrComissao, true);
+            double vlrComissao = Validation.ConvertToDouble(Total.TOTAL) * (Usuario.Comissao / 100.0);
+            totalComissao.Text = Validation.FormatPrice(vlrComissao, true);
         }
 
         private void LoadGrafico()
         {
             cartesianChart1.AxisY.Add(new Axis
             {
-                LabelFormatter = value => Validation.FormatPrice(value, true),
+                LabelFormatter = value => Validation.FormatPrice(value, true)
             });
 
             cartesianChart1.LegendLocation = LegendLocation.Right;
@@ -71,8 +77,8 @@ namespace Emiplus.View.Comercial
         {
             cartesianChart1.AxisX.Clear();
 
-            var labels = new string[quantidadeDias];
-            for (int i = 0; i < quantidadeDias; i++)
+            var labels = new string[QuantidadeDias];
+            for (var i = 0; i < QuantidadeDias; i++)
                 labels[i] = DateTime.Now.AddDays(-i).ToString("dd/MM");
 
             cartesianChart1.AxisX.Add(new Axis
@@ -86,14 +92,16 @@ namespace Emiplus.View.Comercial
         {
             cartesianChart1.Series.Clear();
 
-            SeriesCollection series = new SeriesCollection();
-            series.Add(new LineSeries()
+            var series = new SeriesCollection
             {
-                Title = "Valor",
-                PointGeometrySize = 10,
-                Values = new ChartValues<double>(Valor),
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(51, 211, 74))
-            });
+                new LineSeries
+                {
+                    Title = "Valor",
+                    PointGeometrySize = 10,
+                    Values = new ChartValues<double>(valor),
+                    Stroke = new SolidColorBrush(Color.FromRgb(51, 211, 74))
+                }
+            };
 
             cartesianChart1.Series = series;
         }
@@ -105,7 +113,7 @@ namespace Emiplus.View.Comercial
                 dataInicial.Text = DateTime.Today.AddMonths(-1).ToString();
                 dataFinal.Text = DateTime.Now.ToString();
 
-                Usuario = new Model.Usuarios().FindAll().Where("id_user", idUser).FirstOrDefault<Model.Usuarios>();
+                Usuario = new Usuarios().FindAll().Where("id_user", idUser).FirstOrDefault<Usuarios>();
 
                 LoadDados();
                 GetDays();
@@ -113,27 +121,24 @@ namespace Emiplus.View.Comercial
 
             Shown += (s, e) =>
             {
-                this.Refresh();
+                Refresh();
 
                 LoadGrafico();
                 LoadLabels();
 
-                WorkerBackground.RunWorkerAsync();
+                workerBackground.RunWorkerAsync();
             };
 
             filtrar.Click += (s, e) =>
             {
                 GetDays();
                 LoadLabels();
-                WorkerBackground.RunWorkerAsync();
+                workerBackground.RunWorkerAsync();
             };
 
-            WorkerBackground.DoWork += (s, e) =>
-            {
-                Valor = GetDados();
-            };
+            workerBackground.DoWork += (s, e) => { valor = GetDados(); };
 
-            WorkerBackground.RunWorkerCompleted += (s, e) =>
+            workerBackground.RunWorkerCompleted += (s, e) =>
             {
                 LoadDados();
                 LoadSeriesGrafico();

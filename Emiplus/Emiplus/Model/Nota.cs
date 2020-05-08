@@ -1,7 +1,7 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using Emiplus.Data.Helpers;
 using SqlKata;
 using SqlKata.Execution;
-using System;
 
 namespace Emiplus.Model
 {
@@ -11,11 +11,8 @@ namespace Emiplus.Model
         {
         }
 
-        #region CAMPOS
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; set; }
@@ -34,50 +31,38 @@ namespace Emiplus.Model
         public string protocolodeuso { get; set; }
         public int id_nota { get; set; }
         public string nr_serie_sat { get; set; }
-        
-        #endregion CAMPOS
 
-        public SqlKata.Query FindByIdPedido(int id)
+        public Query FindByIdPedido(int id)
         {
             return Query().Where("id_pedido", id).Where("excluir", 0);
         }
 
-        public SqlKata.Query FindByIdPedidoAndTipoAndStatus(int id, string tipo, string status = "Pendente")
+        public Query FindByIdPedidoAndTipoAndStatus(int id, string tipo, string status = "Pendente")
         {
             return Query().Where("status", status).Where("tipo", tipo).Where("id_pedido", id).Where("excluir", 0);
         }
 
-        public SqlKata.Query FindByIdPedidoAndTipo(int id, string tipo)
+        public Query FindByIdPedidoAndTipo(int id, string tipo)
         {
             return Query().Where("tipo", tipo).Where("id_pedido", id).Where("excluir", 0);
         }
 
-        public SqlKata.Query FindByIdPedidoUltReg(int Pedido, string status = "", string tipo = "")
+        public Query FindByIdPedidoUltReg(int Pedido, string status = "", string tipo = "")
         {
-            int id = 0;
+            var id = 0;
 
-            try
-            {
-                var res = new Model.Nota()
-                    .Query()
-                    .SelectRaw("MAX(ID) as TOTAL")
-                    .Where("NOTA.ID_PEDIDO", Pedido);
+            var res = new Nota()
+                .Query()
+                .SelectRaw("MAX(ID) as TOTAL")
+                .Where("NOTA.ID_PEDIDO", Pedido);
 
-                if (!String.IsNullOrEmpty(status))
-                    res.Where("NOTA.STATUS", status);
+            if (!string.IsNullOrEmpty(status))
+                res.Where("NOTA.STATUS", status);
 
-                if (!String.IsNullOrEmpty(tipo))
-                    res.Where("NOTA.TIPO", tipo);
+            if (!string.IsNullOrEmpty(tipo))
+                res.Where("NOTA.TIPO", tipo);
 
-                foreach (var item in res.Get())
-                {
-                    id = Validation.ConvertToInt32(item.TOTAL);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            foreach (var item in res.Get()) id = Validation.ConvertToInt32(item.TOTAL);
 
             return Query().Where("NOTA.ID", id);
         }
@@ -127,7 +112,7 @@ namespace Emiplus.Model
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Dados da nota removido com sucesso.", Alert.AlertType.info);

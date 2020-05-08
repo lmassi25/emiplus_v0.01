@@ -1,27 +1,14 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Newtonsoft.Json;
-using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using RestSharp;
 
 namespace Emiplus.View.Produtos
 {
     public partial class ModalNCM : Form
     {
-        public static string NCM { get; set; }
-        private dynamic ncms { get; set; }
-        private string searchTxt { get; set; }
-
-        private BackgroundWorker backWork = new BackgroundWorker();
+        private readonly BackgroundWorker backWork = new BackgroundWorker();
 
         public ModalNCM()
         {
@@ -29,7 +16,14 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private void DataTable() => GetDataTable(GridLista);
+        public static string NCM { get; set; }
+        private dynamic Ncms { get; set; }
+        private string SearchTxt { get; set; }
+
+        private void DataTable()
+        {
+            GetDataTable(GridLista);
+        }
 
         public void GetDataTable(DataGridView Table)
         {
@@ -38,13 +32,13 @@ namespace Emiplus.View.Produtos
             Table.Columns[0].Name = "NCM";
             Table.Columns[0].Width = 60;
 
-            Table.Columns[1].HeaderText = "Descrição";
+            Table.Columns[1].HeaderText = @"Descrição";
             Table.Columns[1].Name = "Descricao";
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Table.Rows.Clear();
 
-            var jo = ncms;
+            var jo = Ncms;
             if (jo["error"] != null && jo["error"].ToString() != "")
             {
                 Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);
@@ -52,23 +46,21 @@ namespace Emiplus.View.Produtos
             }
 
             foreach (var item in jo)
-            {
                 Table.Rows.Add(
                     item.Value["codigo"],
                     item.Value["descricao"]
                 );
-            }
         }
 
         private void SelectItemGrid()
         {
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                DialogResult = DialogResult.OK;
-                NCM = GridLista.SelectedRows[0].Cells["NCM"].Value.ToString();
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
 
-                Close();
-            }
+            DialogResult = DialogResult.OK;
+            NCM = GridLista.SelectedRows[0].Cells["NCM"].Value.ToString();
+
+            Close();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -127,7 +119,7 @@ namespace Emiplus.View.Produtos
 
             buscar.Click += (s, e) =>
             {
-                searchTxt = search.Text;
+                SearchTxt = search.Text;
                 backWork.RunWorkerAsync();
             };
 
@@ -141,7 +133,7 @@ namespace Emiplus.View.Produtos
                     id_empresa = IniFile.Read("idEmpresa", "APP")
                 };
 
-                ncms = new RequestApi().URL(Program.URL_BASE + $"/api/ncm&search={searchTxt}").Content(obj, Method.POST).Response();
+                Ncms = new RequestApi().URL(Program.URL_BASE + $"/api/ncm&search={SearchTxt}").Content(obj, Method.POST).Response();
             };
 
             backWork.RunWorkerCompleted += (s, e) =>
@@ -150,6 +142,5 @@ namespace Emiplus.View.Produtos
                 DataTable();
             };
         }
-
     }
 }

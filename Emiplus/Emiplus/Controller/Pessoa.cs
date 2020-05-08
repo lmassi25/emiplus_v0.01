@@ -1,15 +1,17 @@
-﻿namespace Emiplus.Controller
-{
-    using Emiplus.View.Common;
-    using SqlKata.Execution;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Emiplus.Model;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 
+namespace Emiplus.Controller
+{
     internal class Pessoa : Data.Core.Controller
     {
-        public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null, int nrRegistros = 50, bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true)
+        public Task<IEnumerable<dynamic>> GetDataTableClientes(string SearchText = null, int nrRegistros = 50,
+            bool TodosRegistros = false, string Ordem = "Ascendente", bool Inativos = true)
         {
             var search = "%" + SearchText + "%";
 
@@ -23,23 +25,27 @@
                         .OrWhere("rg", "like", search)
                         .OrWhere("cpf", "like", search));
 
-            if (Ordem == "Z-A")
-                query.OrderByDesc("nome");
-            if (Ordem == "A-Z")
-                query.OrderByRaw("nome ASC");
-            if (Ordem == "Aleatório")
-                query.OrderByRaw("RAND()");
+            switch (Ordem)
+            {
+                case "Z-A":
+                    query.OrderByDesc("nome");
+                    break;
+                case "A-Z":
+                    query.OrderByRaw("nome ASC");
+                    break;
+                case "Aleatório":
+                    query.OrderByRaw("RAND()");
+                    break;
+            }
 
             if (!TodosRegistros)
                 query.Limit(nrRegistros);
 
             if (!Inativos)
-            {
                 query.Where
                 (
                     q => q.Where("ativo", "<>", "1").OrWhereNull("ativo")
                 );
-            }
 
             return query.GetAsync<dynamic>();
         }
@@ -48,7 +54,9 @@
         {
             Table.ColumnCount = 5;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -71,12 +79,11 @@
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTableClientes(SearchText);
+                var dados = await GetDataTableClientes(SearchText);
                 Data = dados;
             }
 
             foreach (var item in Data)
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.NOME,
@@ -84,7 +91,6 @@
                     item.CPF,
                     item.RG
                 );
-            }
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -120,7 +126,7 @@
 
             Table.Rows.Clear();
 
-            var address = new Model.PessoaEndereco();
+            var address = new PessoaEndereco();
 
             var data = address.Query()
                 .Where("EXCLUIR", 0)
@@ -129,7 +135,6 @@
                 .Get();
 
             foreach (var item in data)
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.CEP,
@@ -140,7 +145,6 @@
                     item.ESTADO,
                     item.PAIS
                 );
-            }
         }
 
         public void GetDataTableContato(DataGridView Table, int Id)
@@ -164,7 +168,7 @@
 
             Table.Rows.Clear();
 
-            var address = new Model.PessoaContato();
+            var address = new PessoaContato();
 
             var data = address.Query()
                 .Where("EXCLUIR", 0)
@@ -173,7 +177,6 @@
                 .Get();
 
             foreach (var item in data)
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.CONTATO,
@@ -181,7 +184,6 @@
                     item.CELULAR,
                     item.EMAIL
                 );
-            }
         }
     }
 }

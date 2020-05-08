@@ -1,7 +1,6 @@
-﻿using Emiplus.Data.Core;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using System;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Configuracoes
 {
@@ -15,132 +14,82 @@ namespace Emiplus.View.Configuracoes
 
         public void Eventos()
         {
-            ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Essa opção ativa o controle do estoque, não permitindo vender itens com o estoque zerado.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Ative essa opção para utilizar as mesas predefinidas no sistema.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.",
+                pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Essa opção ativa o controle do estoque, não permitindo vender itens com o estoque zerado.",
+                pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Ative essa opção para utilizar as mesas predefinidas no sistema.", pictureBox5,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             Shown += (s, e) =>
             {
-                if (!String.IsNullOrEmpty(IniFile.Read("RetomarVenda", "Comercial")))
-                {
-                    if (IniFile.Read("RetomarVenda", "Comercial") == "True")
-                        retomarVendaInicio.Toggled = true;
-                    else
-                        retomarVendaInicio.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("RetomarVenda", "Comercial")))
+                    retomarVendaInicio.Toggled = IniFile.Read("RetomarVenda", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("ControlarEstoque", "Comercial")))
-                {
-                    if (IniFile.Read("ControlarEstoque", "Comercial") == "True")
-                        btnControlarEstoque.Toggled = true;
-                    else
-                        btnControlarEstoque.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("ControlarEstoque", "Comercial")))
+                    btnControlarEstoque.Toggled = IniFile.Read("ControlarEstoque", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("LimiteDesconto", "Comercial")))
-                    txtLimiteDesconto.Text = Validation.Price(Validation.ConvertToDouble(IniFile.Read("LimiteDesconto", "Comercial")));
+                if (!string.IsNullOrEmpty(IniFile.Read("LimiteDesconto", "Comercial")))
+                    txtLimiteDesconto.Text =
+                        Validation.Price(Validation.ConvertToDouble(IniFile.Read("LimiteDesconto", "Comercial")));
 
-                if (!String.IsNullOrEmpty(IniFile.Read("TrocasCliente", "Comercial")))
-                {
-                    if (IniFile.Read("TrocasCliente", "Comercial") == "True")
-                        Trocas_01.Toggled = true;
-                    else
-                        Trocas_01.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("TrocasCliente", "Comercial")))
+                    Trocas_01.Toggled = IniFile.Read("TrocasCliente", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("UserNoDocument", "Comercial")))
-                {
-                    if (IniFile.Read("UserNoDocument", "Comercial") == "True")
-                        UserNoDocument.Toggled = true;
-                    else
-                        UserNoDocument.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("UserNoDocument", "Comercial")))
+                    UserNoDocument.Toggled = IniFile.Read("UserNoDocument", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("ShowImagePDV", "Comercial")))
-                {
-                    if (IniFile.Read("ShowImagePDV", "Comercial") == "True")
-                        imgPDV.Toggled = true;
-                    else
-                        imgPDV.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("ShowImagePDV", "Comercial")))
+                    imgPDV.Toggled = IniFile.Read("ShowImagePDV", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("Alimentacao", "Comercial")))
-                {
-                    if (IniFile.Read("Alimentacao", "Comercial") == "True")
-                        btnAlimentacao.Toggled = true;
-                    else
-                        btnAlimentacao.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("Alimentacao", "Comercial")))
+                    btnAlimentacao.Toggled = IniFile.Read("Alimentacao", "Comercial") == "True";
 
-                if (!String.IsNullOrEmpty(IniFile.Read("MesasPreCadastrada", "Comercial")))
-                {
-                    if (IniFile.Read("MesasPreCadastrada", "Comercial") == "True")
-                        btnMesasPreCadastrada.Toggled = true;
-                    else
-                        btnMesasPreCadastrada.Toggled = false;
-                }
+                if (!string.IsNullOrEmpty(IniFile.Read("MesasPreCadastrada", "Comercial")))
+                    btnMesasPreCadastrada.Toggled = IniFile.Read("MesasPreCadastrada", "Comercial") == "True";
             };
 
             retomarVendaInicio.Click += (s, e) =>
             {
-                if (retomarVendaInicio.Toggled)
-                    IniFile.Write("RetomarVenda", "False", "Comercial");
-                else
-                    IniFile.Write("RetomarVenda", "True", "Comercial");
+                IniFile.Write("RetomarVenda", retomarVendaInicio.Toggled ? "False" : "True", "Comercial");
             };
 
             btnControlarEstoque.Click += (s, e) =>
             {
-                if (btnControlarEstoque.Toggled)
-                    IniFile.Write("ControlarEstoque", "False", "Comercial");
-                else
-                    IniFile.Write("ControlarEstoque", "True", "Comercial");
+                IniFile.Write("ControlarEstoque", btnControlarEstoque.Toggled ? "False" : "True", "Comercial");
             };
 
             Trocas_01.Click += (s, e) =>
             {
-                if (Trocas_01.Toggled)
-                    IniFile.Write("TrocasCliente", "False", "Comercial");
-                else
-                    IniFile.Write("TrocasCliente", "True", "Comercial");
+                IniFile.Write("TrocasCliente", Trocas_01.Toggled ? "False" : "True", "Comercial");
             };
 
             UserNoDocument.Click += (s, e) =>
             {
-                if (UserNoDocument.Toggled)
-                    IniFile.Write("UserNoDocument", "False", "Comercial");
-                else
-                    IniFile.Write("UserNoDocument", "True", "Comercial");
+                IniFile.Write("UserNoDocument", UserNoDocument.Toggled ? "False" : "True", "Comercial");
             };
 
             imgPDV.Click += (s, e) =>
             {
-                if (imgPDV.Toggled)
-                    IniFile.Write("ShowImagePDV", "False", "Comercial");
-                else
-                    IniFile.Write("ShowImagePDV", "True", "Comercial");
+                IniFile.Write("ShowImagePDV", imgPDV.Toggled ? "False" : "True", "Comercial");
             };
 
             btnAlimentacao.Click += (s, e) =>
             {
-                if (btnAlimentacao.Toggled)
-                    IniFile.Write("Alimentacao", "False", "Comercial");
-                else
-                    IniFile.Write("Alimentacao", "True", "Comercial");
+                IniFile.Write("Alimentacao", btnAlimentacao.Toggled ? "False" : "True", "Comercial");
             };
 
             btnMesasPreCadastrada.Click += (s, e) =>
             {
-                if (btnMesasPreCadastrada.Toggled)
-                    IniFile.Write("MesasPreCadastrada", "False", "Comercial");
-                else
-                    IniFile.Write("MesasPreCadastrada", "True", "Comercial");
+                IniFile.Write("MesasPreCadastrada", btnMesasPreCadastrada.Toggled ? "False" : "True", "Comercial");
             };
 
-            txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto", Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");
+            txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto",
+                Validation.ConvertToDouble(txtLimiteDesconto.Text).ToString(), "Comercial");
             txtLimiteDesconto.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 

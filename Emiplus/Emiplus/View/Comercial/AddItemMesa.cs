@@ -1,27 +1,27 @@
-﻿using Emiplus.Data.Core;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Common;
-using SqlKata.Execution;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Windows.Forms;
 using Emiplus.View.Food;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Comercial
 {
     public partial class AddItemMesa : Form
     {
-        private Model.Item _mItem = new Model.Item();
-        private Model.PedidoItem _mPedidoItem = new Model.PedidoItem();
+        private readonly Item _mItem = new Item();
+        private readonly PedidoItem _mPedidoItem = new PedidoItem();
 
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-        public List<int> listProdutos = new List<int>();
+        public List<int> ListProdutos = new List<int>();
 
         public AddItemMesa()
         {
@@ -29,9 +29,10 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        private void actionEnviar()
+        private void ActionEnviar()
         {
-            if (IniFile.Read("MesasPreCadastrada", "Comercial") == "False") {
+            if (IniFile.Read("MesasPreCadastrada", "Comercial") == "False")
+            {
                 if (string.IsNullOrEmpty(nrMesa.Text))
                 {
                     Alert.Message("Oppss", "É necessário informar uma mesa", Alert.AlertType.warning);
@@ -40,9 +41,9 @@ namespace Emiplus.View.Comercial
             }
             else
             {
-                if(Mesas.SelectedValue == null)
+                if (Mesas.SelectedValue == null)
                 {
-                    if(nrMesa.Text == "")
+                    if (nrMesa.Text == "")
                     {
                         Alert.Message("Oppss", "É necessário informar uma mesa", Alert.AlertType.warning);
                         return;
@@ -54,16 +55,16 @@ namespace Emiplus.View.Comercial
                     return;
                 }
             }
-            
+
             if (GridLista.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in GridLista.Rows)
                 {
-                    int id = Validation.ConvertToInt32(row.Cells["ID"].Value);
-                    Model.Item dataItem = _mItem.FindById(id).WhereFalse("excluir").FirstOrDefault<Model.Item>();
+                    var id = Validation.ConvertToInt32(row.Cells["ID"].Value);
+                    var dataItem = _mItem.FindById(id).WhereFalse("excluir").FirstOrDefault<Item>();
                     if (dataItem != null)
                     {
-                        string obs = row.Cells["Observação"].Value.ToString();
+                        var obs = row.Cells["Observação"].Value.ToString();
 
                         _mPedidoItem.Id = 0;
                         _mPedidoItem.Tipo = "Produtos";
@@ -79,12 +80,7 @@ namespace Emiplus.View.Comercial
                         _mPedidoItem.TotalVenda = Validation.ConvertToDouble(row.Cells["Valor"].Value);
                         _mPedidoItem.Info_Adicional = obs;
                         _mPedidoItem.Adicional = row.Cells["AddonSelected"].Value.ToString();
-
-                        if (IniFile.Read("MesasPreCadastrada", "Comercial") == "True")
-                            _mPedidoItem.Mesa = Mesas.Text;
-                        else
-                            _mPedidoItem.Mesa = nrMesa.Text;
-
+                        _mPedidoItem.Mesa = IniFile.Read("MesasPreCadastrada", "Comercial") == "True" ? Mesas.Text : nrMesa.Text;
                         _mPedidoItem.Status = "FAZENDO";
                         _mPedidoItem.Usuario = Settings.Default.user_id;
                         _mPedidoItem.Save(_mPedidoItem, false);
@@ -99,94 +95,104 @@ namespace Emiplus.View.Comercial
             }
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 6;
+            table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Item";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
-            Table.Columns[2].ReadOnly = true;
+            table.Columns[2].Name = "Item";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
+            table.Columns[2].ReadOnly = true;
 
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].Width = 80;
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Visible = true;
-            Table.Columns[3].ReadOnly = true;
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].Width = 80;
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[3].Visible = true;
+            table.Columns[3].ReadOnly = true;
 
-            Table.Columns[4].Name = "Observação";
-            Table.Columns[4].Width = 100;
-            Table.Columns[4].Visible = true;
+            table.Columns[4].Name = "Observação";
+            table.Columns[4].Width = 100;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[5].Name = "AddonSelected";
-            Table.Columns[5].Width = 100;
-            Table.Columns[5].Visible = false;
-            
-            Table.Columns[6].Name = "Unitario";
-            Table.Columns[6].Width = 80;
-            Table.Columns[6].Visible = false;
+            table.Columns[5].Name = "AddonSelected";
+            table.Columns[5].Width = 100;
+            table.Columns[5].Visible = false;
 
-            DataGridViewImageColumn imgDividir = new DataGridViewImageColumn();
-            imgDividir.Image = Resources.menu20x;
-            imgDividir.Name = "Adicional";
-            imgDividir.Width = 60;
-            imgDividir.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Table.Columns.Add(imgDividir);
+            table.Columns[6].Name = "Unitario";
+            table.Columns[6].Width = 80;
+            table.Columns[6].Visible = false;
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            var imgDividir = new DataGridViewImageColumn
+            {
+                Image = Resources.menu20x,
+                Name = "Adicional",
+                Width = 60,
+                DefaultCellStyle = {Alignment = DataGridViewContentAlignment.MiddleCenter}
+            };
+            table.Columns.Add(imgDividir);
+
+            table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void SetHeadersTableProdutos(DataGridView Table)
+        private void SetHeadersTableProdutos(DataGridView table)
         {
-            Table.ColumnCount = 4;
+            table.ColumnCount = 4;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Referência";
-            Table.Columns[1].Width = 80;
-            Table.Columns[1].Visible = true;
+            table.Columns[1].Name = "Referência";
+            table.Columns[1].Width = 80;
+            table.Columns[1].Visible = true;
 
-            Table.Columns[2].Name = "Item";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
-            Table.Columns[2].ReadOnly = true;
+            table.Columns[2].Name = "Item";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
+            table.Columns[2].ReadOnly = true;
 
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].Width = 80;
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Visible = true;
-            Table.Columns[3].ReadOnly = true;
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].Width = 80;
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[3].Visible = true;
+            table.Columns[3].ReadOnly = true;
 
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Image = Resources.success16x;
-            img.Name = "Adicionar";
-            img.Width = 60;
-            img.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Table.Columns.Add(img);
+            var img = new DataGridViewImageColumn
+            {
+                Image = Resources.success16x,
+                Name = "Adicionar",
+                Width = 60,
+                DefaultCellStyle = {Alignment = DataGridViewContentAlignment.MiddleCenter}
+            };
+            table.Columns.Add(img);
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadProdutos()
@@ -198,20 +204,17 @@ namespace Emiplus.View.Comercial
             }
 
             GridProdutos.Rows.Clear();
-            IEnumerable<Model.Item> itens = new Model.Item().FindAll().WhereFalse("excluir").Where("tipo", "Produtos").Where("categoriaid", Validation.ConvertToInt32(Categorias.SelectedValue)).Get<Model.Item>();
-            if (itens.Count() > 0)
-            {
-                foreach (Model.Item item in itens)
-                {
+            var itens = new Item().FindAll().WhereFalse("excluir").Where("tipo", "Produtos")
+                .Where("categoriaid", Validation.ConvertToInt32(Categorias.SelectedValue)).Get<Item>();
+            if (itens.Any())
+                foreach (var item in itens)
                     GridProdutos.Rows.Add(
                         item.Id,
                         item.Referencia,
                         item.Nome,
                         Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
                         Resources.plus20x
-                        );
-                }
-            }
+                    );
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -232,7 +235,7 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                Categorias.DataSource = new Categoria().GetAll("Produtos");;
+                Categorias.DataSource = new Categoria().GetAll("Produtos");
                 Categorias.DisplayMember = "Nome";
                 Categorias.ValueMember = "Id";
             };
@@ -242,7 +245,7 @@ namespace Emiplus.View.Comercial
                 // Autocomplete de produtos
                 collection = _mItem.AutoComplete("Produtos");
                 BuscarProduto.AutoCompleteCustomSource = collection;
-                
+
                 SetHeadersTable(GridLista);
                 SetHeadersTableProdutos(GridProdutos);
 
@@ -252,11 +255,11 @@ namespace Emiplus.View.Comercial
                     Mesas.Visible = true;
 
                     var listMesas = new ArrayList();
-                    listMesas.Add(new { Id = "0", Nome = $"SELECIONE" });
-                    IEnumerable<Model.Mesas> getMesas = new Model.Mesas().FindAll().WhereFalse("excluir").Get<Model.Mesas>();
-                    if (getMesas.Count() > 0)
-                        foreach (Model.Mesas mesas in getMesas)
-                            listMesas.Add(new { Id = $"{mesas.Id}", Nome = $"{mesas.Mesa}" });
+                    listMesas.Add(new {Id = "0", Nome = "SELECIONE"});
+                    var getMesas = new Model.Mesas().FindAll().WhereFalse("excluir").Get<Model.Mesas>();
+                    if (getMesas.Any())
+                        foreach (var mesas in getMesas)
+                            listMesas.Add(new {Id = $"{mesas.Id}", Nome = $"{mesas.Mesa}"});
 
                     Mesas.DataSource = listMesas;
                     Mesas.DisplayMember = "Nome";
@@ -266,30 +269,30 @@ namespace Emiplus.View.Comercial
 
             BuscarProduto.KeyDown += (s, e) =>
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    Model.Item item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
-                    if (item != null)
-                    {
-                        GridLista.Rows.Add(
-                            false,
-                            item.Id,
-                            item.Nome,
-                            Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
-                            "",
-                            "",
-                            Validation.ConvertToDouble(item.ValorVenda),
-                            Resources.menu20x
-                        );
+                if (e.KeyCode != Keys.Enter)
+                    return;
 
-                        BuscarProduto.Text = "";
-                        BuscarProduto.Select();
-                    }
-                }
+                var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Item>();
+                if (item == null)
+                    return;
+
+                GridLista.Rows.Add(
+                    false,
+                    item.Id,
+                    item.Nome,
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
+                    "",
+                    "",
+                    Validation.ConvertToDouble(item.ValorVenda),
+                    Resources.menu20x
+                );
+
+                BuscarProduto.Text = "";
+                BuscarProduto.Select();
             };
 
             btnFiltrar.Click += (s, e) => LoadProdutos();
-            btnEnviar.Click += (s, e) => actionEnviar();
+            btnEnviar.Click += (s, e) => ActionEnviar();
 
             GridProdutos.CellClick += (s, e) =>
             {
@@ -315,7 +318,7 @@ namespace Emiplus.View.Comercial
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridProdutos.Columns[e.ColumnIndex].Name == "Adicionar")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -325,7 +328,7 @@ namespace Emiplus.View.Comercial
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridProdutos.Columns[e.ColumnIndex].Name == "Adicionar")
                     dataGridView.Cursor = Cursors.Default;
             };
@@ -335,14 +338,15 @@ namespace Emiplus.View.Comercial
                 var toBeDeleted = new List<DataGridViewRow>();
                 toBeDeleted.Clear();
 
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os PRODUTOS selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a deletar os PRODUTOS selecionados, continuar?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    foreach (DataGridViewRow item in GridLista.Rows) {
-                        System.Console.WriteLine(item.Cells["Selecione"].Value);
-                        if ((bool)item.Cells["Selecione"].Value == true) {
-                            toBeDeleted.Add(item);
-                        }
+                    foreach (DataGridViewRow item in GridLista.Rows)
+                    {
+                        Console.WriteLine(item.Cells["Selecione"].Value);
+                        if ((bool) item.Cells["Selecione"].Value) toBeDeleted.Add(item);
                     }
 
                     toBeDeleted.ForEach(d => GridLista.Rows.Remove(d));
@@ -355,7 +359,7 @@ namespace Emiplus.View.Comercial
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
@@ -364,12 +368,10 @@ namespace Emiplus.View.Comercial
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
+                        var hideBtns = false;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
-                            {
+                            if ((bool) item.Cells["Selecione"].Value)
                                 hideBtns = true;
-                            }
 
                         btnRemover.Visible = hideBtns;
                     }
@@ -378,14 +380,18 @@ namespace Emiplus.View.Comercial
                 if (GridLista.Columns[e.ColumnIndex].Name == "Adicional")
                 {
                     AdicionaisDispon.ValorAddon = 0;
-                    AdicionaisDispon.AddonSelected = GridLista.SelectedRows[0].Cells["AddonSelected"].Value != null ? GridLista.SelectedRows[0].Cells["AddonSelected"].Value.ToString() : "";
+                    AdicionaisDispon.AddonSelected = GridLista.SelectedRows[0].Cells["AddonSelected"].Value != null
+                        ? GridLista.SelectedRows[0].Cells["AddonSelected"].Value.ToString()
+                        : "";
                     AdicionaisDispon.IdPedidoItem = 0;
                     AdicionaisDispon.IdItem = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                    AdicionaisDispon form = new AdicionaisDispon();
+                    var form = new AdicionaisDispon();
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        double getValor = Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Unitario"].Value.ToString().Replace("R$ ", ""));
-                        GridLista.SelectedRows[0].Cells["Valor"].Value = Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
+                        var getValor = Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Unitario"].Value
+                            .ToString().Replace("R$ ", ""));
+                        GridLista.SelectedRows[0].Cells["Valor"].Value =
+                            Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
                         GridLista.SelectedRows[0].Cells["AddonSelected"].Value = AdicionaisDispon.AddonSelected;
                     }
                 }
@@ -396,8 +402,9 @@ namespace Emiplus.View.Comercial
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" || GridLista.Columns[e.ColumnIndex].Name == "Adicional")
+                var dataGridView = s as DataGridView;
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" ||
+                    GridLista.Columns[e.ColumnIndex].Name == "Adicional")
                     dataGridView.Cursor = Cursors.Hand;
             };
 
@@ -406,8 +413,9 @@ namespace Emiplus.View.Comercial
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" || GridLista.Columns[e.ColumnIndex].Name == "Adicional")
+                var dataGridView = s as DataGridView;
+                if (GridLista.Columns[e.ColumnIndex].Name == "Selecione" ||
+                    GridLista.Columns[e.ColumnIndex].Name == "Adicional")
                     dataGridView.Cursor = Cursors.Default;
             };
         }

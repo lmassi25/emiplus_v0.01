@@ -7,8 +7,8 @@ namespace Emiplus.View.Comercial
 {
     public partial class OpcoesCfeEmitir : Form
     {
-        private string _msg;
         private readonly BackgroundWorker workerBackground = new BackgroundWorker();
+        private string _msg;
 
         public OpcoesCfeEmitir()
         {

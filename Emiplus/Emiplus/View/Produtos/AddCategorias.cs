@@ -75,11 +75,11 @@ namespace Emiplus.View.Produtos
                 _modelCategoria.Nome = nome.Text;
                 _modelCategoria.Tipo = Home.CategoriaPage;
 
-                if (_modelCategoria.Save(_modelCategoria))
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!_modelCategoria.Save(_modelCategoria))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnRemover.Click += (s, e) =>

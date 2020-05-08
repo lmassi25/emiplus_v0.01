@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
@@ -17,9 +11,9 @@ namespace Emiplus.View.Financeiro
 {
     public partial class Taxas : Form
     {
-        private Model.Taxas _mTaxas = new Model.Taxas();
+        private readonly Model.Taxas _mTaxas = new Model.Taxas();
 
-        public List<int> listTaxas = new List<int>();
+        public List<int> ListTaxas = new List<int>();
 
         public Taxas()
         {
@@ -31,17 +25,21 @@ namespace Emiplus.View.Financeiro
         {
             Table.ColumnCount = 7;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
             Table.Columns.Insert(0, checkColumn);
 
             Table.Columns[1].Name = "ID";
@@ -66,7 +64,7 @@ namespace Emiplus.View.Financeiro
             Table.Columns[6].Name = "Taxa Parcelas";
             Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Table.Columns[6].Width = 100;
-            
+
             Table.Columns[7].Name = "Parcelas Sem Juros";
             Table.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Table.Columns[7].Width = 110;
@@ -76,11 +74,9 @@ namespace Emiplus.View.Financeiro
         {
             Table.Rows.Clear();
 
-            IEnumerable<Model.Taxas> dataTaxa = _mTaxas.FindAll().WhereFalse("excluir").Get<Model.Taxas>();
-            if (dataTaxa.Count() > 0)
-            {
-                foreach (Model.Taxas item in dataTaxa)
-                {
+            var dataTaxa = _mTaxas.FindAll().WhereFalse("excluir").Get<Model.Taxas>();
+            if (dataTaxa.Any())
+                foreach (var item in dataTaxa)
                     Table.Rows.Add(
                         false,
                         item.Id,
@@ -91,8 +87,6 @@ namespace Emiplus.View.Financeiro
                         $"{item.Taxa_Parcela}%",
                         item.Parcela_Semjuros
                     );
-                }
-            }
 
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -106,11 +100,11 @@ namespace Emiplus.View.Financeiro
                 return;
             }
 
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                AddTaxa.Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                OpenForm.Show<AddTaxa>(this);
-            }
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
+
+            AddTaxa.Id = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+            OpenForm.Show<AddTaxa>(this);
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -147,15 +141,17 @@ namespace Emiplus.View.Financeiro
 
             btnRemover.Click += (s, e) =>
             {
-                listTaxas.Clear();
+                ListTaxas.Clear();
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
-                        listTaxas.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
+                    if ((bool) item.Cells["Selecione"].Value)
+                        ListTaxas.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                var result = AlertOptions.Message("Atenção!", $"Você está prestes a deletar os itens selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a deletar os itens selecionados, continuar?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    foreach (var item in listTaxas)
+                    foreach (var item in ListTaxas)
                         new Model.Taxas().Remove(item);
 
                     SetContentTable(GridLista);
@@ -172,7 +168,7 @@ namespace Emiplus.View.Financeiro
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
@@ -183,10 +179,10 @@ namespace Emiplus.View.Financeiro
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
-                        bool hideBtnsTop = true;
+                        var hideBtns = false;
+                        var hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
+                            if ((bool) item.Cells["Selecione"].Value)
                             {
                                 hideBtns = true;
                                 hideBtnsTop = false;
@@ -204,7 +200,7 @@ namespace Emiplus.View.Financeiro
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -214,7 +210,7 @@ namespace Emiplus.View.Financeiro
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };

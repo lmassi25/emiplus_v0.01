@@ -1,26 +1,26 @@
-﻿using DotLiquid;
-using Emiplus.Controller;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Emiplus.View.Common;
-using Emiplus.View.Reports;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DotLiquid;
+using Emiplus.Controller;
 using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using Emiplus.View.Reports;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class Titulos : Form
     {
-        private Controller.Titulo _cTitulo = new Controller.Titulo();
-        private int tipo;
+        private readonly Titulo _cTitulo = new Titulo();
 
         public List<int> listTitulos = new List<int>();
+        private int tipo;
 
         public Titulos()
         {
@@ -30,19 +30,17 @@ namespace Emiplus.View.Financeiro
 
         private void FilterTypes()
         {
-            tipo = data.Text == "Emissão" ? 1 : 0;
+            tipo = data.Text == @"Emissão" ? 1 : 0;
 
-            if (status.Text != "Todos")
-                Controller.Titulo.status = status.Text;
-            else
-                Controller.Titulo.status = "";
+            Titulo.status = status.Text != @"Todos" ? status.Text : "";
         }
 
         private void Filter()
         {
             FilterTypes();
 
-            _cTitulo.GetDataTableTitulosGeradosFilter(GridLista, Home.financeiroPage, search.Text, tipo, dataInicial.Text, dataFinal.Text);
+            _cTitulo.GetDataTableTitulosGeradosFilter(GridLista, Home.financeiroPage, search.Text, tipo,
+                dataInicial.Text, dataFinal.Text);
         }
 
         private void EditTitulo(bool create = false)
@@ -54,28 +52,32 @@ namespace Emiplus.View.Financeiro
                 return;
             }
 
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                EditarTitulo.IdTitulo = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                OpenForm.Show<EditarTitulo>(this);
-            }
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
+
+            EditarTitulo.IdTitulo = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+            OpenForm.Show<EditarTitulo>(this);
         }
 
         private void SetHeadersTable(DataGridView Table)
         {
             Table.ColumnCount = 8;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
             Table.Columns.Insert(0, checkColumn);
 
             Table.Columns[1].Name = "ID";
@@ -84,11 +86,7 @@ namespace Emiplus.View.Financeiro
             Table.Columns[2].Name = "Emissão";
             Table.Columns[2].Width = 100;
 
-            if (Home.financeiroPage == "Receber")
-                Table.Columns[3].Name = "Receber de";
-            else
-                Table.Columns[3].Name = "Pagar para";
-
+            Table.Columns[3].Name = Home.financeiroPage == "Receber" ? "Receber de" : "Pagar para";
             Table.Columns[3].Width = 150;
 
             Table.Columns[4].Name = "Forma de Pagamento";
@@ -101,14 +99,10 @@ namespace Emiplus.View.Financeiro
             Table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[6].Width = 100;
 
-            if (Home.financeiroPage == "Receber")
-                Table.Columns[7].Name = "Recebido";
-            else
-                Table.Columns[7].Name = "Pago";
-
+            Table.Columns[7].Name = Home.financeiroPage == "Receber" ? "Recebido" : "Pago";
             Table.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[7].Width = 100;
-            
+
             Table.Columns[8].Name = "Valor Bruto";
             Table.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[8].Width = 100;
@@ -120,8 +114,8 @@ namespace Emiplus.View.Financeiro
 
             Table.Rows.Clear();
 
-            foreach (dynamic item in _cTitulo.GetDataTableTitulosGerados(Home.financeiroPage, search.Text, tipo, dataInicial.Text, dataFinal.Text))
-            {
+            foreach (var item in _cTitulo.GetDataTableTitulosGerados(Home.financeiroPage, search.Text, tipo,
+                dataInicial.Text, dataFinal.Text))
                 Table.Rows.Add(
                     false,
                     item.ID,
@@ -133,7 +127,6 @@ namespace Emiplus.View.Financeiro
                     Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALOR_BRUTO), true)
                 );
-            }
 
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -157,22 +150,23 @@ namespace Emiplus.View.Financeiro
 
             Load += (s, e) =>
             {
-                if (Home.financeiroPage == "Receber")
+                switch (Home.financeiroPage)
                 {
-                    label1.Text = "Recebimentos";
-                    label6.Text = "Recebimentos";
-                    label2.Text = "Confira aqui todas os títulos a Receber/Recebidos da sua empresa.";
-                    status.DataSource = new List<String> { "Todos", "Pendentes", "Recebidos" };
-                }
-                else if (Home.financeiroPage == "Pagar")
-                {
-                    label1.Text = "Pagamentos";
-                    label6.Text = "Pagamentos";
-                    label2.Text = "Confira aqui todas os títulos a Pagar/Pagos da sua empresa.";
-                    status.DataSource = new List<String> { "Todos", "Pendentes", "Pagos" };
+                    case "Receber":
+                        label1.Text = @"Recebimentos";
+                        label6.Text = @"Recebimentos";
+                        label2.Text = @"Confira aqui todas os títulos a Receber/Recebidos da sua empresa.";
+                        status.DataSource = new List<string> {"Todos", "Pendentes", "Recebidos"};
+                        break;
+                    case "Pagar":
+                        label1.Text = @"Pagamentos";
+                        label6.Text = @"Pagamentos";
+                        label2.Text = @"Confira aqui todas os títulos a Pagar/Pagos da sua empresa.";
+                        status.DataSource = new List<string> {"Todos", "Pendentes", "Pagos"};
+                        break;
                 }
 
-                data.DataSource = new List<String> { "Vencimento", "Emissão" };
+                data.DataSource = new List<string> {"Vencimento", "Emissão"};
 
                 dataInicial.Text = Validation.DateNowToSql();
                 dataFinal.Text = Validation.DateNowToSql();
@@ -183,7 +177,7 @@ namespace Emiplus.View.Financeiro
                 SetHeadersTable(GridLista);
                 SetContentTable(GridLista);
             };
-            
+
             search.TextChanged += (s, e) => SetContentTable(GridLista);
             search.Enter += (s, e) => SetContentTable(GridLista);
             filtrar.Click += (s, e) => SetContentTable(GridLista);
@@ -198,13 +192,13 @@ namespace Emiplus.View.Financeiro
                 listTitulos.Clear();
 
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if ((bool) item.Cells["Selecione"].Value)
                         listTitulos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
                 EditAllTitulos.listTitulos = listTitulos;
                 OpenForm.Show<EditAllTitulos>(this);
 
-                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnMarcarCheckBox.Text = @"Marcar Todos";
                 btnRemover.Visible = false;
                 btnEditAll.Visible = false;
                 btnEditar.Enabled = true;
@@ -214,11 +208,10 @@ namespace Emiplus.View.Financeiro
             btnMarcarCheckBox.Click += (s, e) =>
             {
                 foreach (DataGridViewRow item in GridLista.Rows)
-                {
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if ((bool) item.Cells["Selecione"].Value)
                     {
                         item.Cells["Selecione"].Value = false;
-                        btnMarcarCheckBox.Text = "Marcar Todos";
+                        btnMarcarCheckBox.Text = @"Marcar Todos";
                         btnRemover.Visible = false;
                         btnEditAll.Visible = false;
                         btnEditar.Enabled = true;
@@ -227,23 +220,24 @@ namespace Emiplus.View.Financeiro
                     else
                     {
                         item.Cells["Selecione"].Value = true;
-                        btnMarcarCheckBox.Text = "Desmarcar Todos";
+                        btnMarcarCheckBox.Text = @"Desmarcar Todos";
                         btnRemover.Visible = true;
                         btnEditAll.Visible = true;
                         btnEditar.Enabled = false;
                         btnAdicionar.Enabled = false;
                     }
-                }
             };
 
             btnRemover.Click += (s, e) =>
             {
                 listTitulos.Clear();
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
+                    if ((bool) item.Cells["Selecione"].Value)
                         listTitulos.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                var result = AlertOptions.Message("Atenção!", $"Você está prestes a deletar os {label1.Text.ToLower()} selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    $"Você está prestes a deletar os {label1.Text.ToLower()} selecionados, continuar?",
+                    AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     foreach (var item in listTitulos)
@@ -252,7 +246,7 @@ namespace Emiplus.View.Financeiro
                     SetContentTable(GridLista);
                 }
 
-                btnMarcarCheckBox.Text = "Marcar Todos";
+                btnMarcarCheckBox.Text = @"Marcar Todos";
                 btnRemover.Visible = false;
                 btnEditAll.Visible = false;
                 btnEditar.Enabled = true;
@@ -263,7 +257,7 @@ namespace Emiplus.View.Financeiro
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
@@ -275,10 +269,10 @@ namespace Emiplus.View.Financeiro
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
-                        bool hideBtnsTop = true;
+                        var hideBtns = false;
+                        var hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
+                            if ((bool) item.Cells["Selecione"].Value)
                             {
                                 hideBtns = true;
                                 hideBtnsTop = false;
@@ -297,7 +291,7 @@ namespace Emiplus.View.Financeiro
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -307,7 +301,7 @@ namespace Emiplus.View.Financeiro
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };
@@ -320,9 +314,10 @@ namespace Emiplus.View.Financeiro
         {
             FilterTypes();
 
-            IEnumerable<dynamic> dados = _cTitulo.GetDataTableTitulosGerados(Home.financeiroPage, search.Text, tipo, dataInicial.Text, dataFinal.Text);
+            var dados = _cTitulo.GetDataTableTitulosGerados(Home.financeiroPage, search.Text, tipo, dataInicial.Text,
+                dataFinal.Text);
 
-            string formatipo = "", clientetipo = "";
+            string formatipo, clientetipo;
 
             if (Home.financeiroPage == "Receber")
             {
@@ -335,13 +330,12 @@ namespace Emiplus.View.Financeiro
                 clientetipo = "Pagar para";
             }
 
-            ArrayList data = new ArrayList();
+            var data = new ArrayList();
             foreach (var item in dados)
-            {
                 data.Add(new
                 {
-                    ID = item.ID,
-                    FORMAPGTO = item.FORMAPGTO,
+                    item.ID,
+                    item.FORMAPGTO,
                     EMISSAO = Validation.ConvertDateToForm(item.EMISSAO),
                     VENCIMENTO = Validation.ConvertDateToForm(item.VENCIMENTO),
                     CLIENTE = item.NOME,
@@ -349,7 +343,6 @@ namespace Emiplus.View.Financeiro
                     BAIXA_DATA = item.BAIXA_DATA != null ? Validation.ConvertDateToForm(item.BAIXA_DATA) : "",
                     RECEBIDO = Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO))
                 });
-            }
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Titulos.html"));
             var render = html.Render(Hash.FromAnonymousObject(new

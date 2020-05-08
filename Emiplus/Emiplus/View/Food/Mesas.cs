@@ -1,20 +1,20 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Food
 {
     public partial class Mesas : Form
     {
-        // Lista de ID para exclusão
-        public List<int> listMesas = new List<int>();
+        private readonly Model.Mesas _mMesas = new Model.Mesas();
 
-        private Model.Mesas _mMesas = new Model.Mesas();
+        // Lista de ID para exclusão
+        public List<int> ListMesas = new List<int>();
 
         public Mesas()
         {
@@ -22,53 +22,54 @@ namespace Emiplus.View.Food
             Eventos();
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 3;
+            table.ColumnCount = 3;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Mesa";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Mesa";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Qtd. de Pessoas";
-            Table.Columns[3].Width = 130;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Qtd. de Pessoas";
+            table.Columns[3].Width = 130;
+            table.Columns[3].Visible = true;
         }
 
         private void DataTable(string txtSearch = "")
         {
             GridLista.Rows.Clear();
 
-            string likeSearch = $"%{txtSearch}%";
-            IEnumerable<Model.Mesas> mesas = _mMesas.FindAll().WhereFalse("excluir").Where("mesa", "like", likeSearch).OrderByRaw("mesa ASC").Get<Model.Mesas>();
-            if (mesas.Count() > 0)
-            {
-                foreach (Model.Mesas data in mesas)
-                {
+            var likeSearch = $"%{txtSearch}%";
+            var mesas = _mMesas.FindAll().WhereFalse("excluir").Where("mesa", "like", likeSearch).OrderByRaw("mesa ASC")
+                .Get<Model.Mesas>();
+            if (mesas.Any())
+                foreach (var data in mesas)
                     GridLista.Rows.Add(
                         false,
                         data.Id,
                         data.Mesa,
                         data.NrPessoas
                     );
-                }
-            }
 
             GridLista.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -101,8 +102,8 @@ namespace Emiplus.View.Food
         {
             if (create)
             {
-                CadastrarMesa.idMesa = 0;
-                CadastrarMesa form = new CadastrarMesa();
+                CadastrarMesa.IdMesa = 0;
+                var form = new CadastrarMesa();
                 if (form.ShowDialog() == DialogResult.OK)
                     DataTable();
 
@@ -111,8 +112,8 @@ namespace Emiplus.View.Food
 
             if (GridLista.SelectedRows.Count > 0)
             {
-                CadastrarMesa.idMesa = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                CadastrarMesa form = new CadastrarMesa();
+                CadastrarMesa.IdMesa = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                var form = new CadastrarMesa();
                 if (form.ShowDialog() == DialogResult.OK)
                     DataTable();
             }
@@ -143,15 +144,17 @@ namespace Emiplus.View.Food
 
             btnRemover.Click += (s, e) =>
             {
-                listMesas.Clear();
+                ListMesas.Clear();
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
-                        listMesas.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
+                    if ((bool) item.Cells["Selecione"].Value)
+                        ListMesas.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
 
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar todas MESAS selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a deletar todas MESAS selecionados, continuar?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    foreach (var item in listMesas)
+                    foreach (var item in ListMesas)
                         new Model.Mesas().Remove(item);
 
                     DataTable();
@@ -166,7 +169,7 @@ namespace Emiplus.View.Food
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
@@ -177,10 +180,10 @@ namespace Emiplus.View.Food
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
-                        bool hideBtnsTop = true;
+                        var hideBtns = false;
+                        var hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
+                            if ((bool) item.Cells["Selecione"].Value)
                             {
                                 hideBtns = true;
                                 hideBtnsTop = false;
@@ -198,7 +201,7 @@ namespace Emiplus.View.Food
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -208,11 +211,11 @@ namespace Emiplus.View.Food
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };
-            
+
             btnExit.Click += (s, e) => Close();
         }
     }

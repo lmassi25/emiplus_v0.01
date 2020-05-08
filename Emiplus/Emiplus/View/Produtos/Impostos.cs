@@ -1,23 +1,23 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Produtos
 {
     public partial class Impostos : Form
     {
-        public static int idImpSelected { get; set; }
-        private Controller.Imposto _controller = new Controller.Imposto();
+        private readonly Controller.Imposto _controller = new Controller.Imposto();
 
         private IEnumerable<dynamic> dataTable;
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        private Timer timer = new Timer(Configs.TimeLoading);
+        private readonly Timer timer = new Timer(Configs.TimeLoading);
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public Impostos()
         {
@@ -25,14 +25,19 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private async void DataTable() => await _controller.SetTable(GridListaImpostos, null, search.Text);
+        public static int idImpSelected { get; set; }
+
+        private async void DataTable()
+        {
+            await _controller.SetTable(GridListaImpostos, null, search.Text);
+        }
 
         private void DataTableStart()
         {
             GridListaImpostos.Visible = false;
-            Loading.Size = new System.Drawing.Size(GridListaImpostos.Width, GridListaImpostos.Height);
+            Loading.Size = new Size(GridListaImpostos.Width, GridListaImpostos.Height);
             Loading.Visible = true;
-            WorkerBackground.RunWorkerAsync();
+            workerBackground.RunWorkerAsync();
         }
 
         private void EditImposto(bool create = false)
@@ -106,12 +111,9 @@ namespace Emiplus.View.Produtos
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
-                b.DoWork += async (s, e) =>
-                {
-                    dataTable = await _controller.GetDataTable();
-                };
+                b.DoWork += async (s, e) => { dataTable = await _controller.GetDataTable(); };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {
@@ -123,7 +125,7 @@ namespace Emiplus.View.Produtos
             }
 
             timer.AutoReset = false;
-            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker)delegate
+            timer.Elapsed += (s, e) => search.Invoke((MethodInvoker) delegate
             {
                 DataTable();
                 Loading.Visible = false;

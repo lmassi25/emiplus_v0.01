@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -15,9 +14,8 @@ namespace Emiplus.View.Produtos
 {
     public partial class ModalVariacao : Form
     {
-        private Item _mItem = new Item();
-
         private readonly KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private Item _mItem = new Item();
 
         public ModalVariacao()
         {
@@ -65,16 +63,16 @@ namespace Emiplus.View.Produtos
             return llstRes;
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 6;
+            table.ColumnCount = 6;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
                 new object[] {true});
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
             var checkColumn = new DataGridViewCheckBoxColumn
             {
@@ -84,29 +82,29 @@ namespace Emiplus.View.Produtos
                 CellTemplate = new DataGridViewCheckBoxCell(),
                 Width = 60
             };
-            Table.Columns.Insert(0, checkColumn);
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Combinação";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Combinação";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Estoque";
-            Table.Columns[3].Width = 70;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Estoque";
+            table.Columns[3].Width = 70;
+            table.Columns[3].Visible = true;
 
-            Table.Columns[4].Name = "Referencia";
-            Table.Columns[4].Width = 70;
-            Table.Columns[4].Visible = true;
+            table.Columns[4].Name = "Referencia";
+            table.Columns[4].Width = 70;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[5].Name = "Código de Barras";
-            Table.Columns[5].Width = 130;
-            Table.Columns[5].Visible = true;
+            table.Columns[5].Name = "Código de Barras";
+            table.Columns[5].Width = 130;
+            table.Columns[5].Visible = true;
 
-            Table.Columns[6].Name = "IDAttr";
-            Table.Columns[6].Visible = false;
+            table.Columns[6].Name = "IDAttr";
+            table.Columns[6].Visible = false;
         }
 
         // Autocomplete no campo Grupos
@@ -161,22 +159,22 @@ namespace Emiplus.View.Produtos
 
         private void ClearEstoque()
         {
-            if (dataGridVariacao.Rows.Count > 0)
-            {
-                var generateAlert = AlertOptions.Message("Atenção",
-                    "Você está prestes a deletar todo o estoque de combinações, continuar?", AlertBig.AlertType.info,
-                    AlertBig.AlertBtn.YesNo);
-                if (!generateAlert)
-                    return;
+            if (dataGridVariacao.Rows.Count <= 0)
+                return;
 
-                var checkEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
-                    .Get<ItemEstoque>();
-                if (checkEstoque.Any())
-                    foreach (var data in checkEstoque)
-                        new ItemEstoque().Remove(data.Id);
+            var generateAlert = AlertOptions.Message("Atenção",
+                "Você está prestes a deletar todo o estoque de combinações, continuar?", AlertBig.AlertType.info,
+                AlertBig.AlertBtn.YesNo);
+            if (!generateAlert)
+                return;
 
-                dataGridVariacao.Rows.Clear();
-            }
+            var checkEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
+                .Get<ItemEstoque>();
+            if (checkEstoque.Any())
+                foreach (var data in checkEstoque)
+                    new ItemEstoque().Remove(data.Id);
+
+            dataGridVariacao.Rows.Clear();
         }
 
         private void Eventos()
@@ -250,27 +248,27 @@ namespace Emiplus.View.Produtos
 
                     var grupo = new ItemGrupo().FindAll().WhereFalse("excluir").Where("title", word)
                         .FirstOrDefault<ItemGrupo>();
-                    if (grupo != null)
-                    {
-                        var attr = new ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id)
-                            .Get<ItemAtributos>();
-                        foreach (var data in attr)
-                            switch (i_attrs)
-                            {
-                                case 1:
-                                    attr1Name.Add($"{data.Atributo}");
-                                    attr1Id.Add($"{data.Id}");
-                                    break;
-                                case 2:
-                                    attr2Name.Add($" - {data.Atributo}");
-                                    attr2Id.Add($", {data.Id}");
-                                    break;
-                                case 3:
-                                    attr3Name.Add($" - {data.Atributo}");
-                                    attr3Id.Add($", {data.Id}");
-                                    break;
-                            }
-                    }
+                    if (grupo == null)
+                        continue;
+
+                    var attr = new ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id)
+                        .Get<ItemAtributos>();
+                    foreach (var data in attr)
+                        switch (i_attrs)
+                        {
+                            case 1:
+                                attr1Name.Add($"{data.Atributo}");
+                                attr1Id.Add($"{data.Id}");
+                                break;
+                            case 2:
+                                attr2Name.Add($" - {data.Atributo}");
+                                attr2Id.Add($", {data.Id}");
+                                break;
+                            case 3:
+                                attr3Name.Add($" - {data.Atributo}");
+                                attr3Id.Add($", {data.Id}");
+                                break;
+                        }
                 }
 
                 var lstMaster = new List<List<string>>();
@@ -333,7 +331,8 @@ namespace Emiplus.View.Produtos
                 {
                     // Apaga o registro se estoque for 0 e se existir no banco
                     if (Validation.ConvertToDouble(row.Cells["Estoque"].Value) == 0)
-                        if (row.Cells["IDAttr"].Value != null && !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
+                        if (row.Cells["IDAttr"].Value != null &&
+                            !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
                         {
                             new ItemEstoque().Remove(Validation.ConvertToInt32(row.Cells["IDAttr"].Value));
                             continue;

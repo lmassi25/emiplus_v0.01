@@ -277,7 +277,6 @@
     <Compile Include="Controller\PedidoImpressao.cs" />
     <Compile Include="Controller\PedidoItem.cs" />
     <Compile Include="Controller\Pessoa.cs" />
-    <Compile Include="Controller\Remessas.cs" />
     <Compile Include="Controller\Sat.cs" />
     <Compile Include="Controller\Titulo.cs" />
     <Compile Include="Data\Core\BackupAutomatico.cs" />
@@ -315,6 +314,7 @@
     <Compile Include="Data\Helpers\UserPermission.cs" />
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Model\Caixa.cs" />
     <Compile Include="Model\CaixaMovimentacao.cs" />
     <Compile Include="Model\Categoria.cs" />
@@ -719,12 +719,6 @@
     </Compile>
     <Compile Include="View\Configuracoes\Sistema.Designer.cs">
       <DependentUpon>Sistema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Exemplos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Exemplos.Designer.cs">
-      <DependentUpon>Exemplos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Financeiro\AbrirCaixa.cs">
       <SubType>Form</SubType>
@@ -1377,9 +1371,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Sistema.resx">
       <DependentUpon>Sistema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Exemplos.resx">
-      <DependentUpon>Exemplos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Financeiro\AbrirCaixa.resx">
       <DependentUpon>AbrirCaixa.cs</DependentUpon>

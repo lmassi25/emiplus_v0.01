@@ -48,11 +48,11 @@ namespace Emiplus.View.Comercial
 
         private void ViewComissao()
         {
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                DetalhesComissao.idUser = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
-                OpenForm.Show<DetalhesComissao>(this);
-            }
+            if (GridLista.SelectedRows.Count <= 0)
+                return;
+
+            DetalhesComissao.idUser = Convert.ToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+            OpenForm.Show<DetalhesComissao>(this);
         }
 
         private void Eventos()

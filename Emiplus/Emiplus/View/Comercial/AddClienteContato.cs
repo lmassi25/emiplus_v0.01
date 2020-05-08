@@ -1,38 +1,21 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class AddClienteContato : Form
     {
-        private int IdPessoa = AddClientes.Id;
-        private int IdContact = AddClientes.IdContact;
         private PessoaContato _modelContato = new PessoaContato();
+        private readonly int IdContact = AddClientes.IdContact;
+        private readonly int IdPessoa = AddClientes.Id;
 
         public AddClienteContato()
         {
             InitializeComponent();
             Eventos();
-
-            if (!Validation.IsNumber(IdPessoa) && IdPessoa == 0)
-            {
-                Alert.Message("Opss", "Não foi possível, tente novamente.", Alert.AlertType.error);
-                Close();
-            }
-
-            if (IdContact > 0)
-            {
-                _modelContato = _modelContato.FindById(IdContact).First<PessoaContato>();
-
-                contato.Text = _modelContato.Contato ?? "";
-                celular.Text = _modelContato.Celular ?? "";
-                telefone.Text = _modelContato.Telefone ?? "";
-                email.Text = _modelContato.Email ?? "";
-            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -51,6 +34,25 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
+            Shown += (s, e) =>
+            {
+                if (!IdPessoa.IsNumber() && IdPessoa == 0)
+                {
+                    Alert.Message("Opss", "Não foi possível, tente novamente.", Alert.AlertType.error);
+                    Close();
+                }
+
+                if (IdContact <= 0)
+                    return;
+
+                _modelContato = _modelContato.FindById(IdContact).First<PessoaContato>();
+
+                contato.Text = _modelContato.Contato ?? "";
+                celular.Text = _modelContato.Celular ?? "";
+                telefone.Text = _modelContato.Telefone ?? "";
+                email.Text = _modelContato.Email ?? "";
+            };
+
             btnContatoSalvar.Click += (s, e) =>
             {
                 _modelContato.Id = IdContact;
@@ -60,24 +62,24 @@ namespace Emiplus.View.Comercial
                 _modelContato.Telefone = telefone.Text;
                 _modelContato.Email = email.Text;
 
-                if (_modelContato.Save(_modelContato))
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!_modelContato.Save(_modelContato))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnContatoDelete.Click += (s, e) =>
             {
                 var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir o contato?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
-                if (result)
-                {
-                    if (_modelContato.Remove(IdContact))
-                    {
-                        DialogResult = DialogResult.OK;
-                        Close();
-                    }
-                }
+                if (!result)
+                    return;
+
+                if (!_modelContato.Remove(IdContact))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             contato.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);

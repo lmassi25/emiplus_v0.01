@@ -815,7 +815,7 @@ namespace Emiplus.View.Comercial
                                 item.Total
                             });
 
-                    PedidoModalDividirConta.itens = itens;
+                    PedidoModalDividirConta.Itens = itens;
                 }
 
                 var form = new PedidoModalDividirConta {TopMost = true};

@@ -1,142 +1,79 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using SqlKata.Execution;
+using Pessoa = Emiplus.Controller.Pessoa;
 
 namespace Emiplus.View.Comercial
 {
-    using Model;
-    using System.Collections.Generic;
-
     public partial class AddClientes : Form
     {
-        private Controller.Pessoa _controller = new Controller.Pessoa();
-        private Pessoa _modelPessoa = new Pessoa();
-        private PessoaEndereco _modelAddress = new PessoaEndereco();
-        private PessoaContato _modelContact = new PessoaContato();
+        private readonly Pessoa _controller = new Pessoa();
+        private Model.Pessoa _modelPessoa = new Model.Pessoa();
+
+        private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
+        private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
+
+        public AddClientes()
+        {
+            InitializeComponent();
+            Eventos();
+        }
 
         public static int Id { get; set; }
         public static int IdAddress { get; set; }
         public static int IdContact { get; set; }
         private static bool disableRGie { get; set; } = true;
 
-        private int IdClientePedido = PedidoModalClientes.Id; // Tela pedidos
-        private string pageClientePedido = PedidoModalClientes.page; // Tela pedidos
-
         public string btnSalvarText
         {
-            get
-            {
-                return btnSalvar.Text;
-            }
-            set
-            {
-                btnSalvar.Text = value;
-            }
+            get => btnSalvar.Text;
+            set => btnSalvar.Text = value;
         }
 
         public int btnSalvarWidth
         {
-            get
-            {
-                return btnSalvar.Width;
-            }
-            set
-            {
-                btnSalvar.Width = value;
-            }
+            get => btnSalvar.Width;
+            set => btnSalvar.Width = value;
         }
 
         public int btnSalvarLocation
         {
-            get
-            {
-                return btnSalvar.Left;
-            }
-            set
-            {
-                btnSalvar.Left = value;
-            }
+            get => btnSalvar.Left;
+            set => btnSalvar.Left = value;
         }
 
         public int btnAtivoLocation
         {
-            get
-            {
-                return Ativo.Left;
-            }
-            set
-            {
-                Ativo.Left = value;
-            }
+            get => Ativo.Left;
+            set => Ativo.Left = value;
         }
 
-        public AddClientes()
+        private void DataTableAddress()
         {
-            InitializeComponent();
-            Eventos();
-
-            Id = Clientes.Id;
-
-            if (String.IsNullOrEmpty(Home.pessoaPage) && Validation.IsNumber(Id))
-            {
-                Id = 0;
-                Home.pessoaPage = "Clientes";
-            }
-
-            label6.Text = Home.pessoaPage;
-            label1.Text = "Adicionar " + Home.pessoaPage;
-            label1.Left = 307;
-            pictureBox2.Left = 284;
-            label4.Text = "Comercial";
-
-            if (Home.pessoaPage == "Fornecedores")
-            {
-                pictureBox1.Image = Properties.Resources.box;
-                label4.Text = "Produtos";
-                label1.Left = 343;
-                pictureBox2.Left = 319;
-            }
-
-            credencial.TabPages.Remove(tabTransporte); // Tab 'Transporte'
-            if (Home.pessoaPage == "Transportadoras")
-            {
-                pictureBox1.Image = Properties.Resources.box;
-                label4.Text = "Produtos";
-                label1.Left = 359;
-                pictureBox2.Left = 335;
-                credencial.TabPages.Add(tabTransporte);
-                uf.DataSource = new List<String> { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
-            }
-
-            if (Id == 0)
-            {
-                _modelPessoa.Id = Id;
-                _modelPessoa.Tipo = Home.pessoaPage;
-                _modelPessoa.Nome = "NOVO REGISTRO";
-                if (_modelPessoa.Save(_modelPessoa))
-                    Id = _modelPessoa.GetLastId();
-            }
+            _controller.GetDataTableEnderecos(ListaEnderecos, Id);
         }
 
-        private void DataTableAddress() => _controller.GetDataTableEnderecos(ListaEnderecos, Id);
-
-        private void DataTableContatos() => _controller.GetDataTableContato(ListaContatos, Id);
+        private void DataTableContatos()
+        {
+            _controller.GetDataTableContato(ListaContatos, Id);
+        }
 
         private void GetContato(bool create = false)
         {
             if (create)
             {
                 IdContact = 0;
-                AddClienteContato addContact = new AddClienteContato();
-                addContact.TopMost = true;
-                if (addContact.ShowDialog() == DialogResult.OK)
-                {
-                    SetFocus();
-                    DataTableContatos();
-                }
+                var addContact = new AddClienteContato {TopMost = true};
+                if (addContact.ShowDialog() != DialogResult.OK)
+                    return;
+
+                SetFocus();
+                DataTableContatos();
                 return;
             }
 
@@ -147,8 +84,7 @@ namespace Emiplus.View.Comercial
             }
 
             IdContact = Convert.ToInt32(ListaContatos.SelectedRows[0].Cells["ID"].Value);
-            AddClienteContato form = new AddClienteContato();
-            form.TopMost = true;
+            var form = new AddClienteContato {TopMost = true};
             if (form.ShowDialog() == DialogResult.OK)
                 SetFocus();
         }
@@ -158,13 +94,13 @@ namespace Emiplus.View.Comercial
             if (create)
             {
                 IdAddress = 0;
-                AddClienteEndereco addAddr = new AddClienteEndereco();
-                addAddr.TopMost = true;
-                if (addAddr.ShowDialog() == DialogResult.OK)
-                {
-                    SetFocus();
-                    DataTableAddress();
-                }
+                var addAddr = new AddClienteEndereco {TopMost = true};
+                if (addAddr.ShowDialog() != DialogResult.OK)
+                    return;
+
+                SetFocus();
+                DataTableAddress();
+
                 return;
             }
 
@@ -175,16 +111,14 @@ namespace Emiplus.View.Comercial
             }
 
             IdAddress = Convert.ToInt32(ListaEnderecos.SelectedRows[0].Cells["ID"].Value);
-            AddClienteEndereco form = new AddClienteEndereco();
-            form.TopMost = true;
+            var form = new AddClienteEndereco {TopMost = true};
             if (form.ShowDialog() == DialogResult.OK)
                 SetFocus();
         }
 
         private void LoadData()
         {
-            //SelectedIndex = Combox1.FindStringExact("test1")
-            _modelPessoa = _modelPessoa.FindById(Id).First<Pessoa>();
+            _modelPessoa = _modelPessoa.FindById(Id).First<Model.Pessoa>();
 
             nomeRS.Text = _modelPessoa?.Nome ?? "";
             nomeFantasia.Text = _modelPessoa?.Fantasia ?? "";
@@ -192,7 +126,7 @@ namespace Emiplus.View.Comercial
             cpfCnpj.Text = _modelPessoa?.CPF ?? "";
             rgIE.Text = _modelPessoa?.RG ?? "";
             pessoaJF.Text = _modelPessoa?.Pessoatipo ?? "Física";
-            Isento.Checked = _modelPessoa.Isento == 1 ? true : false;
+            Isento.Checked = _modelPessoa?.Isento == 1;
 
             if (Home.pessoaPage == "Transportadoras")
             {
@@ -201,21 +135,33 @@ namespace Emiplus.View.Comercial
                 rntc.Text = _modelPessoa?.Transporte_rntc ?? "";
             }
 
-            ToolHelp.Show("Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine + "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine + "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Nome Fantasia, também conhecido como Nome de Fachada ou Marca Empresarial," + Environment.NewLine +
+                "é o nome popular de uma empresa, e pode ou não ser igual à sua razão social.", pictureBox14,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "A sigla RNTRC significa Registro Nacional de Transportadores de Cargas." + Environment.NewLine +
+                "É um certificado público feito pela Agência Nacional de Transportes Terrestres (ANTT).", pictureBox10,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             switch (Home.pessoaPage)
             {
                 default:
-                    ToolHelp.Show("Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show(
+                        "Caso o cliente seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.",
+                        pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
 
                 case "Fornecedores":
-                    ToolHelp.Show("Caso o fornecedor seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show(
+                        "Caso o fornecedor seja isento de inscrição estadual" + Environment.NewLine +
+                        "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
 
                 case "Transportadoras":
-                    ToolHelp.Show("Caso a transportadora seja isento de inscrição estadual" + Environment.NewLine + "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                    ToolHelp.Show(
+                        "Caso a transportadora seja isento de inscrição estadual" + Environment.NewLine +
+                        "marque esta opção.", pictureBox13, ToolHelp.ToolTipIcon.Info, "Ajuda!");
                     break;
             }
         }
@@ -238,22 +184,60 @@ namespace Emiplus.View.Comercial
             KeyPreview = true;
             Masks.SetToUpper(this);
 
-            Load += (s, e) =>
+            Shown += (s, e) =>
             {
+                Id = Clientes.Id;
+
+                if (string.IsNullOrEmpty(Home.pessoaPage) && Id.IsNumber())
+                {
+                    Id = 0;
+                    Home.pessoaPage = "Clientes";
+                }
+
+                label6.Text = Home.pessoaPage;
+                label1.Text = @"Adicionar " + Home.pessoaPage;
+                label1.Left = 307;
+                pictureBox2.Left = 284;
+                label4.Text = @"Comercial";
+
+                credencial.TabPages.Remove(tabTransporte); // Tab 'Transporte'
+                switch (Home.pessoaPage)
+                {
+                    case "Fornecedores":
+                        pictureBox1.Image = Resources.box;
+                        label4.Text = @"Produtos";
+                        label1.Left = 343;
+                        pictureBox2.Left = 319;
+                        break;
+                    case "Transportadoras":
+                        pictureBox1.Image = Resources.box;
+                        label4.Text = @"Produtos";
+                        label1.Left = 359;
+                        pictureBox2.Left = 335;
+                        credencial.TabPages.Add(tabTransporte);
+                        uf.DataSource = Support.GetEstados();
+                        break;
+                }
+
                 DataTableAddress();
                 DataTableContatos();
 
-                pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
+                pessoaJF.DataSource = new List<string> {"Física", "Jurídica"};
 
-                if (pessoaJF.Text == "Física")
-                    Isento.Checked = true;
-                else
-                    Isento.Checked = false;
+                Isento.Checked = pessoaJF.Text == @"Física";
+                SetFocus();
 
                 if (Id > 0)
                     LoadData();
 
-                SetFocus();
+                if (Id == 0)
+                {
+                    _modelPessoa.Id = Id;
+                    _modelPessoa.Tipo = Home.pessoaPage;
+                    _modelPessoa.Nome = "NOVO REGISTRO";
+                    if (_modelPessoa.Save(_modelPessoa))
+                        Id = _modelPessoa.GetLastId();
+                }
             };
 
             Activated += (s, e) =>
@@ -264,37 +248,40 @@ namespace Emiplus.View.Comercial
 
             btnSalvar.Click += (s, e) =>
             {
-                if (Data.Core.IniFile.Read("UserNoDocument", "Comercial") == "False" && Home.pessoaPage == "Clientes") {
+                if (IniFile.Read("UserNoDocument", "Comercial") == "False" && Home.pessoaPage == "Clientes")
                     if (!string.IsNullOrEmpty(cpfCnpj.Text))
                     {
-                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text)
+                            .Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
                         if (data != null)
                         {
-                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.",
+                                Alert.AlertType.error);
                             return;
                         }
                     }
-                }
 
                 if (Home.pessoaPage != "Clientes")
-                {
                     if (!string.IsNullOrEmpty(cpfCnpj.Text))
                     {
-                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                        var data = _modelPessoa.Query().Where("id", "!=", Id).Where("CPF", cpfCnpj.Text)
+                            .Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
                         if (data != null)
                         {
-                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.", Alert.AlertType.error);
+                            Alert.Message("Oppss", "Já existe um registro cadastrado com esse CPF/CNPJ.",
+                                Alert.AlertType.error);
                             return;
                         }
                     }
-                }
 
                 if (!string.IsNullOrEmpty(nomeRS.Text))
                 {
-                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("NOME", nomeRS.Text).Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
+                    var data = _modelPessoa.Query().Where("id", "!=", Id).Where("NOME", nomeRS.Text)
+                        .Where("tipo", Home.pessoaPage).Where("excluir", 0).FirstOrDefault();
                     if (data != null)
                     {
-                        Alert.Message("Oppss", "Já existe um registro cadastrado com esse NOME.", Alert.AlertType.error);
+                        Alert.Message("Oppss", "Já existe um registro cadastrado com esse NOME.",
+                            Alert.AlertType.error);
                         return;
                     }
                 }
@@ -310,13 +297,12 @@ namespace Emiplus.View.Comercial
                 _modelPessoa.Isento = Isento.Checked ? 1 : 0;
 
                 if (!Isento.Checked)
-                {
-                    if (pessoaJF.Text == "Jurídica" && string.IsNullOrEmpty(rgIE.Text))
+                    if (pessoaJF.Text == @"Jurídica" && string.IsNullOrEmpty(rgIE.Text))
                     {
-                        Alert.Message("Oppss", "Inscrição estadual é obrigatório para pessoa jurídica.", Alert.AlertType.warning);
+                        Alert.Message("Oppss", "Inscrição estadual é obrigatório para pessoa jurídica.",
+                            Alert.AlertType.warning);
                         return;
                     }
-                }
 
                 if (Home.pessoaPage == "Transportadoras")
                 {
@@ -325,27 +311,25 @@ namespace Emiplus.View.Comercial
                     _modelPessoa.Transporte_rntc = rntc.Text;
                 }
 
-                if (Ativo.Toggled)
-                    _modelPessoa.ativo = 0;
-                else
-                    _modelPessoa.ativo = 1;
+                _modelPessoa.ativo = Ativo.Toggled ? 0 : 1;
 
-                if (_modelPessoa.Save(_modelPessoa))
-                {
-                    Id = _modelPessoa.GetLastId();
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!_modelPessoa.Save(_modelPessoa))
+                    return;
+
+                Id = _modelPessoa.GetLastId();
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnRemover.Click += (s, e) =>
             {
-                var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                if (result)
-                {
-                    if (_modelPessoa.Remove(Id))
-                        Close();
-                }
+                var result = AlertOptions.Message("Atenção!", "Deseja realmente excluir?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
+                if (!result)
+                    return;
+
+                if (_modelPessoa.Remove(Id))
+                    Close();
             };
 
             btnAdicionarEndereco.Click += (s, e) => GetEndereco(true);
@@ -358,28 +342,26 @@ namespace Emiplus.View.Comercial
             ListaContatos.DoubleClick += (s, e) => GetContato();
             nomeRS.Enter += (s, e) => DataTableContatos();
 
-            pessoaJF.SelectedIndexChanged += (s, e) =>
-            {
-                if (pessoaJF.Text == "Física")
-                    Isento.Checked = true;
-                else
-                    Isento.Checked = false;
-            };
+            pessoaJF.SelectedIndexChanged += (s, e) => { Isento.Checked = pessoaJF.Text == @"Física"; };
 
             cpfCnpj.KeyPress += (s, e) =>
             {
-                if (pessoaJF.Text == "Física")
-                    Masks.MaskCPF(s, e);
-
-                if (pessoaJF.Text == "Jurídica")
-                    Masks.MaskCNPJ(s, e);
+                switch (pessoaJF.Text)
+                {
+                    case "Física":
+                        Masks.MaskCPF(s, e);
+                        break;
+                    case "Jurídica":
+                        Masks.MaskCNPJ(s, e);
+                        break;
+                }
             };
 
             Isento.Click += (s, e) =>
             {
                 if (disableRGie)
                 {
-                    if (pessoaJF.Text != "Jurídica")
+                    if (pessoaJF.Text != @"Jurídica")
                         rgIE.Enabled = false;
 
                     disableRGie = false;
@@ -391,11 +373,11 @@ namespace Emiplus.View.Comercial
                 }
             };
 
-            nascimento.KeyPress += (s, e) => Masks.MaskBirthday(s, e);
+            nascimento.KeyPress += Masks.MaskBirthday;
             rgIE.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 13);
             nomeRS.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
             nomeFantasia.KeyPress += (s, e) => Masks.MaskOnlyNumberAndChar(s, e, 50);
-            
+
             btnExit.Click += (s, e) => CloseForm();
 
             label6.Click += (s, e) => Close();
@@ -406,10 +388,12 @@ namespace Emiplus.View.Comercial
 
         private void CloseForm()
         {
-            var dataProd = _modelPessoa.Query().Where("id", Id).Where("atualizado", "01.01.0001, 00:00:00.000").FirstOrDefault();
+            var dataProd = _modelPessoa.Query().Where("id", Id).Where("atualizado", "01.01.0001, 00:00:00.000")
+                .FirstOrDefault();
             if (dataProd != null)
             {
-                var result = AlertOptions.Message("Atenção!", "Você não salvou esse registro, deseja deletar?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Você não salvou esse registro, deseja deletar?",
+                    AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     var data = _modelPessoa.Remove(Id);

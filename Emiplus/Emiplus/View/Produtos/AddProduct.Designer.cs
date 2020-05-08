@@ -1576,7 +1576,7 @@
             this.filterMaisRecentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.filterMaisRecentes.AutoSize = true;
             this.filterMaisRecentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterMaisRecentes.Location = new System.Drawing.Point(599, 39);
+            this.filterMaisRecentes.Location = new System.Drawing.Point(583, 39);
             this.filterMaisRecentes.Name = "filterMaisRecentes";
             this.filterMaisRecentes.Size = new System.Drawing.Size(97, 19);
             this.filterMaisRecentes.TabIndex = 203;
@@ -1589,7 +1589,7 @@
             this.filterTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.filterTodos.AutoSize = true;
             this.filterTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.filterTodos.Location = new System.Drawing.Point(537, 39);
+            this.filterTodos.Location = new System.Drawing.Point(521, 39);
             this.filterTodos.Name = "filterTodos";
             this.filterTodos.Size = new System.Drawing.Size(56, 19);
             this.filterTodos.TabIndex = 202;
@@ -1673,7 +1673,7 @@
             this.panel1.Controls.Add(this.listaEstoque);
             this.panel1.Location = new System.Drawing.Point(6, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(693, 189);
+            this.panel1.Size = new System.Drawing.Size(679, 189);
             this.panel1.TabIndex = 28;
             // 
             // listaEstoque
@@ -1695,7 +1695,7 @@
             this.listaEstoque.RowHeadersVisible = false;
             this.listaEstoque.RowTemplate.Height = 30;
             this.listaEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaEstoque.Size = new System.Drawing.Size(693, 189);
+            this.listaEstoque.Size = new System.Drawing.Size(679, 189);
             this.listaEstoque.TabIndex = 6;
             this.listaEstoque.TabStop = false;
             // 

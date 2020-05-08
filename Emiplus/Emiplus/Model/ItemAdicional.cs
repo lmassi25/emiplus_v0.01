@@ -32,10 +32,7 @@
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
 
-                if (Data(data).Create() == 1)
-                    return true;
-                
-                return false;
+                return Data(data).Create() == 1;
             }
             
             if (data.Id != 0)
@@ -43,10 +40,7 @@
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 
-                if (Data(data).Update("ID", data.Id) == 1)
-                    return true;
-                
-                return false;
+                return Data(data).Update("ID", data.Id) == 1;
             }
 
             return false;
@@ -60,10 +54,7 @@
                 status_sync = "UPDATE"
                 };
 
-            if (Data(data).Update(column, id) == 1)
-                return true;
-
-            return false;
+            return Data(data).Update(column, id) == 1;
         }
     }
 }
