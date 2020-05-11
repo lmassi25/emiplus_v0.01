@@ -1,19 +1,17 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Data.Helpers;
-    using SqlKata;
-    using System;
+﻿using System;
+using Emiplus.Data.Helpers;
+using SqlKata;
 
-    internal class ItemGrupo : Model
+namespace Emiplus.Model
+{
+    internal class ItemGrupo : Data.Database.Model
     {
         public ItemGrupo() : base("ITEM_GRUPOS")
         {
         }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
+
         public string id_empresa { get; private set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
@@ -34,22 +32,26 @@
                 data.Criado = DateTime.Now;
 
                 if (Data(data).Create() == 1)
+                {
                     Alert.Message("Tudo certo!", "Grupo salvo com sucesso.", Alert.AlertType.success);
+                }
                 else
                 {
                     Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
                     return false;
                 }
             }
-            
+
 
             if (data.Id != 0)
             {
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
-                
+
                 if (Data(data).Update("ID", data.Id) == 1)
+                {
                     Alert.Message("Tudo certo!", "Grupo atualizado com sucesso.", Alert.AlertType.success);
+                }
                 else
                 {
                     Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
@@ -62,11 +64,12 @@
 
         public bool Remove(int id)
         {
-            var data = new {
+            var data = new
+            {
                 Excluir = 1,
                 Deletado = DateTime.Now,
                 status_sync = "UPDATE"
-                };
+            };
 
             if (Data(data).Update("ID", id) == 1)
             {

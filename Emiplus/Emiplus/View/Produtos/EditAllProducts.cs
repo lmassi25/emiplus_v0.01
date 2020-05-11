@@ -1,36 +1,26 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.Model;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Comercial;
+using Emiplus.View.Common;
+using SqlKata.Execution;
+using Categoria = Emiplus.Model.Categoria;
+using Pessoa = Emiplus.Model.Pessoa;
 
 namespace Emiplus.View.Produtos
 {
     public partial class EditAllProducts : Form
     {
+        public static List<int> ListProducts = new List<int>();
         private Model.Item _modelItem = new Model.Item();
-        private Controller.Item _controllerItem = new Controller.Item();
 
-        private BackgroundWorker backOn = new BackgroundWorker();
-
-        private IEnumerable<dynamic> fornecedores { get; set; }
-        private ArrayList categorias { get; set; }
-        private IEnumerable<dynamic> impostos { get; set; }
-        private IEnumerable<dynamic> impostos2 { get; set; }
-
-        public static List<int> listProducts = new List<int>();
-
-        public static bool FormOpen { get; set; }
+        private readonly BackgroundWorker backOn = new BackgroundWorker();
 
         public EditAllProducts()
         {
@@ -41,53 +31,61 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private void SetHeadersTable(DataGridView Table)
-        {
-            Table.ColumnCount = 6;
+        private ArrayList fornecedores { get; set; }
+        private ArrayList categorias { get; set; }
+        private IEnumerable<dynamic> impostos { get; set; }
+        private IEnumerable<dynamic> impostos2 { get; set; }
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+        public static bool FormOpen { get; set; }
+
+        private void SetHeadersTable(DataGridView table)
+        {
+            table.ColumnCount = 6;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Categoria";
-            Table.Columns[1].Width = 150;
-            Table.Columns[1].Visible = true;
+            table.Columns[1].Name = "Categoria";
+            table.Columns[1].Width = 150;
+            table.Columns[1].Visible = true;
 
-            Table.Columns[2].Name = "Referência";
-            Table.Columns[2].Width = 100;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Referência";
+            table.Columns[2].Width = 100;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Descrição";
-            Table.Columns[3].Width = 120;
-            Table.Columns[3].MinimumWidth = 120;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Descrição";
+            table.Columns[3].Width = 120;
+            table.Columns[3].MinimumWidth = 120;
+            table.Columns[3].Visible = true;
 
-            Table.Columns[4].Name = "Custo";
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 100;
-            Table.Columns[4].Visible = true;
+            table.Columns[4].Name = "Custo";
+            table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[4].Width = 100;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[5].Name = "Venda";
-            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[5].Width = 100;
-            Table.Columns[5].Visible = true;
+            table.Columns[5].Name = "Venda";
+            table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[5].Width = 100;
+            table.Columns[5].Visible = true;
         }
 
-        private async Task SetContentTableAsync(DataGridView Table)
+        private async Task SetContentTableAsync(DataGridView table)
         {
-            Table.Rows.Clear();
+            table.Rows.Clear();
 
-            foreach (var item in listProducts)
+            foreach (var item in ListProducts)
             {
                 var items = _modelItem.FindById(item).Get();
 
-                foreach (dynamic data in items)
-                {
-                    Table.Rows.Add(
+                foreach (var data in items)
+                    table.Rows.Add(
                         data.ID,
                         data.CATEGORIA,
                         data.REFERENCIA,
@@ -95,10 +93,9 @@ namespace Emiplus.View.Produtos
                         Validation.FormatPrice(Validation.ConvertToDouble(data.VALORCOMPRA), false),
                         Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true)
                     );
-                }
             }
 
-            Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadFornecedores()
@@ -108,11 +105,11 @@ namespace Emiplus.View.Produtos
             Fornecedor.ValueMember = "Id";
             Fornecedor.Refresh();
         }
-        
+
         private void LoadImpostoOne()
         {
             impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos.Count() > 0)
+            if (impostos.Any())
             {
                 ImpostoNFE.DataSource = impostos;
                 ImpostoNFE.DisplayMember = "NOME";
@@ -125,7 +122,7 @@ namespace Emiplus.View.Produtos
         private void LoadImpostoTwo()
         {
             impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
-            if (impostos2.Count() > 0)
+            if (impostos2.Any())
             {
                 ImpostoCFE.DataSource = impostos2;
                 ImpostoCFE.DisplayMember = "NOME";
@@ -137,21 +134,33 @@ namespace Emiplus.View.Produtos
 
         private void Start()
         {
-            ToolHelp.Show("Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." + Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.", pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar a categoria do produto, a mesma deve estar cadastrada previamente.\nPara cadastrar uma nova categoria acesse Produtos>Categorias>Adicionar.",
+                pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar o imposto do produto, o mesmo deve estar cadastrado previamente." +
+                Environment.NewLine + "Para cadastrar um novo imposto acesse Produtos>Impostos>Adicionar. ",
+                pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Para selecionar o fornecedor do produto, o mesmo deve estar cadastrado previamente." +
+                Environment.NewLine + "Para cadastrar um novo Fornecedor acesse Produtos>Fornecedores>Adicionar.",
+                pictureBox14, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Descrição adicional para o produto.", pictureBox10, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.",
+                pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             Categorias.DataSource = categorias;
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
 
-            LoadFornecedores();
+            Fornecedor.DataSource = fornecedores;
+            Fornecedor.DisplayMember = "Nome";
+            Fornecedor.ValueMember = "Id";
 
             Medidas.DataSource = Support.GetMedidas();
 
-            if (impostos.Count() > 0)
+            if (impostos.Any())
             {
                 ImpostoNFE.DataSource = impostos;
                 ImpostoNFE.DisplayMember = "NOME";
@@ -160,7 +169,7 @@ namespace Emiplus.View.Produtos
 
             ImpostoNFE.SelectedValue = 0;
 
-            if (impostos2.Count() > 0)
+            if (impostos2.Any())
             {
                 ImpostoCFE.DataSource = impostos2;
                 ImpostoCFE.DisplayMember = "NOME";
@@ -176,7 +185,7 @@ namespace Emiplus.View.Produtos
 
         private void Save()
         {
-            foreach (var item in listProducts)
+            foreach (var item in ListProducts)
             {
                 _modelItem = _modelItem.FindById(item).FirstOrDefault<Model.Item>();
                 if (!string.IsNullOrEmpty(valorcompra.Text))
@@ -210,12 +219,12 @@ namespace Emiplus.View.Produtos
                 _modelItem.Fornecedor = Validation.ConvertToInt32(Fornecedor.SelectedValue);
 
                 if (ImpostoNFE.SelectedValue != null)
-                    _modelItem.Impostoid = (int)ImpostoNFE.SelectedValue;
+                    _modelItem.Impostoid = (int) ImpostoNFE.SelectedValue;
                 else
                     _modelItem.Impostoid = 0;
 
                 if (ImpostoCFE.SelectedValue != null)
-                    _modelItem.Impostoidcfe = (int)ImpostoCFE.SelectedValue;
+                    _modelItem.Impostoidcfe = (int) ImpostoCFE.SelectedValue;
                 else
                     _modelItem.Impostoidcfe = 0;
 
@@ -225,7 +234,7 @@ namespace Emiplus.View.Produtos
                 _modelItem.Save(_modelItem, false);
             }
 
-            listProducts = null;
+            ListProducts = null;
             Close();
         }
 
@@ -235,7 +244,7 @@ namespace Emiplus.View.Produtos
             {
                 case Keys.Escape:
                     Close();
-                    break;                
+                    break;
             }
         }
 
@@ -249,10 +258,7 @@ namespace Emiplus.View.Produtos
             {
                 Refresh();
 
-                this.BeginInvoke((MethodInvoker)delegate
-                {
-                    backOn.RunWorkerAsync();
-                });
+                BeginInvoke((MethodInvoker) delegate { backOn.RunWorkerAsync(); });
 
                 SetHeadersTable(GridListaProdutos);
             };
@@ -262,40 +268,41 @@ namespace Emiplus.View.Produtos
 
             btnSalvar.Click += (s, e) =>
             {
-                var result = AlertOptions.Message("Atenção!", "Confirmar alterações nos produtos?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Confirmar alterações nos produtos?",
+                    AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                     Save();
             };
 
             valorcompra.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             valorvenda.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             txtLimiteDesconto.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             btnAddFornecedor.Click += (s, e) =>
             {
                 Home.pessoaPage = "Fornecedores";
-                Comercial.AddClientes.Id = 0;
-                Comercial.AddClientes f = new Comercial.AddClientes();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                if (f.ShowDialog() == DialogResult.OK)
+                AddClientes.Id = 0;
+                var f = new AddClientes
                 {
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                if (f.ShowDialog() == DialogResult.OK)
                     LoadFornecedores();
-                }
             };
 
             ncm.KeyPress += (s, e) => Masks.MaskOnlyNumbers(s, e, 8);
@@ -303,7 +310,7 @@ namespace Emiplus.View.Produtos
 
             chkImpostoNFE.Click += (s, e) =>
             {
-                if (chkImpostoNFE.Checked == true)
+                if (chkImpostoNFE.Checked)
                 {
                     ImpostoNFE.Enabled = true;
                 }
@@ -316,7 +323,7 @@ namespace Emiplus.View.Produtos
 
             chkImpostoCFE.Click += (s, e) =>
             {
-                if (chkImpostoCFE.Checked == true)
+                if (chkImpostoCFE.Checked)
                 {
                     ImpostoCFE.Enabled = true;
                 }
@@ -330,7 +337,7 @@ namespace Emiplus.View.Produtos
             backOn.DoWork += (s, e) =>
             {
                 categorias = new Categoria().GetAll("Produtos");
-                fornecedores = new Model.Pessoa().FindAll().Where("tipo", "Fornecedores").WhereFalse("excluir").OrderByDesc("nome").Get();
+                fornecedores = new Pessoa().GetAll("Fornecedores");
                 impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                 impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             };
@@ -341,51 +348,54 @@ namespace Emiplus.View.Produtos
 
                 await SetContentTableAsync(GridListaProdutos);
             };
-            
+
             btnAddImpostoOne.Click += (s, e) =>
             {
                 Impostos.idImpSelected = 0;
-                AddImpostos f = new AddImpostos();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                if (f.ShowDialog() == DialogResult.OK)
+                var f = new AddImpostos
                 {
-                    LoadImpostoOne();
-                    LoadImpostoTwo();
-                }                    
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                if (f.ShowDialog() != DialogResult.OK)
+                    return;
+
+                LoadImpostoOne();
+                LoadImpostoTwo();
             };
 
             btnAddImpostoTwo.Click += (s, e) =>
             {
                 Impostos.idImpSelected = 0;
-                AddImpostos f = new AddImpostos();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                if (f.ShowDialog() == DialogResult.OK)
+                var f = new AddImpostos
                 {
-                    LoadImpostoOne();
-                    LoadImpostoTwo();
-                }
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                if (f.ShowDialog() != DialogResult.OK)
+                    return;
+
+                LoadImpostoOne();
+                LoadImpostoTwo();
             };
 
             btnAddCategoria.Click += (s, e) =>
             {
                 Home.CategoriaPage = "Produtos";
-                AddCategorias f = new AddCategorias();
-                f.FormBorderStyle = FormBorderStyle.FixedSingle;
-                f.StartPosition = FormStartPosition.CenterScreen;
-                f.TopMost = true;
-                if (f.ShowDialog() == DialogResult.OK)
+                var f = new AddCategorias
                 {
-                    Categorias.DataSource = new Categoria().GetAll("Produtos");
-                    Categorias.Refresh();
-                }
+                    FormBorderStyle = FormBorderStyle.FixedSingle,
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
+                if (f.ShowDialog() != DialogResult.OK)
+                    return;
+
+                Categorias.DataSource = new Categoria().GetAll("Produtos");
+                Categorias.Refresh();
             };
 
-            FormClosing += (s, e) =>
-            {
-                FormOpen = false;
-            };
+            FormClosing += (s, e) => { FormOpen = false; };
         }
     }
 }

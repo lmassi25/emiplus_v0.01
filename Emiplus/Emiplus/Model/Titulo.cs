@@ -1,22 +1,15 @@
-﻿namespace Emiplus.Model
+﻿using System;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using SqlKata;
+
+namespace Emiplus.Model
 {
-    using Data.Database;
-    using Data.Helpers;
-    using Emiplus.Properties;
-    using SqlKata;
-    using System;
-    using Valit;
-
-    internal class Titulo : Model
+    internal class Titulo : Data.Database.Model
     {
-        public Titulo() : base("TITULO")
-        {
-        }
+        public Titulo() : base("TITULO") { }
 
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
+        [Ignore] [Key("ID")]
         public int Id { get; set; }
 
         public string Tipo { get; set; }
@@ -37,7 +30,7 @@
         public string Vencimento { get; set; }
         public double Total { get; set; }
         public double Recebido { get; set; }
-        public double Valor_Bruto { get; set; }
+        public double Valor_Liquido { get; set; }
         public string Baixa_data { get; set; }
         public double Baixa_total { get; set; }
         public int Baixa_id_formapgto { get; set; }
@@ -48,48 +41,12 @@
         public int Tipo_Recorrencia { get; set; }
         public int Qtd_Recorrencia { get; set; }
         public int Nr_Recorrencia { get; set; }
+        public string Taxas { get; set; }
 
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion CAMPOS
 
-        //public Titulo SetTipo(string tipo)
-        //{
-        //    Tipo = tipo;
-        //    return this;
-        //}
-
-        //public Titulo SetPedido(int idPedido)
-        //{
-        //    Id_Pedido = idPedido;
-        //    return this;
-        //}
-
-        //public Titulo SetFormaPgto(int idFormaPgto)
-        //{
-        //    Id_FormaPgto = idFormaPgto;
-        //    return this;
-        //}
-
-        //public Titulo SetCaixa(int idCaixa)
-        //{
-        //    Id_Caixa = idCaixa;
-        //    return this;
-        //}
-
-        //public Titulo SetCategoria(int idCat)
-        //{
-        //    Id_Categoria = idCat;
-        //    return this;
-        //}
-
-        //public Titulo SetEmissao(string dataEmissao)
-        //{
-        //    Emissao = dataEmissao;
-        //    return this;
-        //}
-
-        public SqlKata.Query FindByPedido(int id)
+        public Query FindByPedido(int id)
         {
             var data = Query().Where("id_pedido", id);
             return data;
@@ -141,7 +98,7 @@
 
         public bool RemoveIdCaixaMov(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID_CAIXA_MOV", id) == 1)
             {
                 Alert.Message("Pronto!", "Removido com sucesso.", Alert.AlertType.info);
@@ -154,7 +111,7 @@
 
         public bool Remove(int id, string column = "ID", bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update(column, id) == 1)
             {
                 if (message)

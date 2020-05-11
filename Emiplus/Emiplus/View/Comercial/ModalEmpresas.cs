@@ -1,27 +1,29 @@
-﻿using Emiplus.Data.Core;
+﻿using System.Reflection;
+using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Properties;
-using System.Reflection;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class ModalEmpresas : Form
     {
-        public static string Id { get; set; }
-        public static string RazaoSocial { get; set; }
-
         public ModalEmpresas()
         {
             InitializeComponent();
             Eventos();
         }
 
+        public static string Id { get; set; }
+        public static string RazaoSocial { get; set; }
+
         private void SetHeadersTable(DataGridView Table)
         {
             Table.ColumnCount = 3;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -46,8 +48,11 @@ namespace Emiplus.View.Comercial
 
             if (Support.CheckForInternetConnection())
             {
-                int idUser = Settings.Default.user_sub_user != 0 ? Settings.Default.user_sub_user : Settings.Default.user_id;
-                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{idUser}").Content().Response();
+                var idUser = Settings.Default.user_sub_user != 0
+                    ? Settings.Default.user_sub_user
+                    : Settings.Default.user_id;
+                var jo = new RequestApi().URL($"{Program.URL_BASE}/api/empresas/{Program.TOKEN}/{idUser}").Content()
+                    .Response();
 
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {
@@ -56,34 +61,31 @@ namespace Emiplus.View.Comercial
                 }
 
                 foreach (dynamic item in jo)
-                {
-                    if (item.Value.id_unique != Settings.Default.empresa_unique_id) {
+                    if (item.Value.id_unique != Settings.Default.empresa_unique_id)
                         Table.Rows.Add(
                             item.Value.id_unique,
                             item.Value.razao_social,
                             item.Value.cnpj
-                            );
-                    }
-                }
+                        );
             }
             else
             {
                 Alert.Message("Opps", "Você precisa estar conectado a internet.", Alert.AlertType.error);
             }
-            
+
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void SelectItemGrid()
         {
-            if (GridLista.SelectedRows.Count > 0)
-            {
-                DialogResult = DialogResult.OK;
-                Id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
-                RazaoSocial = GridLista.SelectedRows[0].Cells["Razão Social"].Value.ToString();
+            if (GridLista.SelectedRows.Count <= 0) 
+                return;
 
-                Close();
-            }
+            DialogResult = DialogResult.OK;
+            Id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
+            RazaoSocial = GridLista.SelectedRows[0].Cells["Razão Social"].Value.ToString();
+
+            Close();
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)

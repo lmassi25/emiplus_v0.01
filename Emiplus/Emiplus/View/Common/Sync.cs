@@ -1,29 +1,27 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Database;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Newtonsoft.Json;
-using RestSharp;
-using SqlKata.Execution;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Database;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Newtonsoft.Json;
+using RestSharp;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Common
 {
     public partial class Sync : Form
     {
-
-        public static bool Remessa { get; set; }
-
-        private BackgroundWorker backWork = new BackgroundWorker();
+        private readonly BackgroundWorker backWork = new BackgroundWorker();
 
         /// <summary>
-        /// Acesso ao banco local
+        ///     Acesso ao banco local
         /// </summary>
-        private QueryFactory connect = new Connect().Open();
+        private readonly QueryFactory connect = new Connect().Open();
 
         public Sync()
         {
@@ -33,13 +31,14 @@ namespace Emiplus.View.Common
                 Eventos();
         }
 
+        public static bool Remessa { get; set; }
+
         private async Task RunSyncAsync(string table)
         {
             // ######### CREATE #########   
             var dataCreate = await GetCreateDataAsync(table);
             if (dataCreate != null)
-            {
-                foreach (dynamic item in dataCreate)
+                foreach (var item in dataCreate)
                 {
                     // inserie no banco online
                     dynamic obj = new
@@ -50,19 +49,19 @@ namespace Emiplus.View.Common
                         status_sync = "CREATED"
                     };
 
-                    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
-                    if (response["status"] == "OK") {
+                    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+                        .Content(obj, Method.POST).Response();
+                    if (response["status"] == "OK")
                         await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
-                    } else
-                        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+                    else
+                        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                            Log.LogType.fatal);
                 }
-            }
 
             // ######### UPDATE #########
             var dataUpdate = await GetUpdateDataAsync(table);
             if (dataUpdate != null)
-            {
-                foreach (dynamic item in dataUpdate)
+                foreach (var item in dataUpdate)
                 {
                     if (CheckCreated(table, item.ID_SYNC))
                     {
@@ -75,24 +74,23 @@ namespace Emiplus.View.Common
                             status_sync = "CREATED"
                         };
 
-                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
+                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+                            .Content(obj, Method.POST).Response();
                         if (response["status"] == "OK")
                             await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
                         else
-                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                                Log.LogType.fatal);
                     }
 
                     // atualiza online (UPDATE -> CREATED)
                     if (UpdateOnline(table, item.ID_SYNC, item))
-                        await UpdateAsync(table, item.ID_SYNC);  // atualiza local (UPDATE -> CREATED)
+                        await UpdateAsync(table, item.ID_SYNC); // atualiza local (UPDATE -> CREATED)
                 }
-            }
 
             var dataCreated = await GetCreatedDataAsync(table);
             if (dataCreated != null)
-            {
-                foreach (dynamic item in dataCreated)
-                {
+                foreach (var item in dataCreated)
                     if (CheckCreated(table, item.ID_SYNC))
                     {
                         // inserie no banco online
@@ -104,110 +102,13 @@ namespace Emiplus.View.Common
                             status_sync = "CREATED"
                         };
 
-                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create").Content(obj, Method.POST).Response();
+                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+                            .Content(obj, Method.POST).Response();
                         if (response["status"] == "FAIL")
-                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                                Log.LogType.fatal);
                     }
-                }
-            }
         }
-
-        #region Metodos geral
-
-        /// <summary>
-        /// Recupera os dados das tabelas do sistema local para manipulação
-        /// Função retorna os registros 'CREATE' ou 'NULL'
-        /// </summary>
-        private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string Table)
-        {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATE");
-
-            if (Remessa && Table == "pedido_item")
-                baseQuery.Where("status", "Remessa");
-
-            if (Remessa && Table == "pedido")
-                baseQuery.Where("tipo", "Remessas");
-
-            return await baseQuery.Clone().From(Table).GetAsync();
-        }
-
-        /// <summary>
-        /// Recupera os dados das tabelas do sistema local para manipulação
-        /// Função retorna os registros 'CREATED' ou 'NULL'
-        /// </summary>
-        private async Task<IEnumerable<dynamic>> GetCreatedDataAsync(string Table)
-        {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATED");
-
-            if (Remessa && Table == "pedido_item")
-                baseQuery.Where("status", "Remessa");
-
-            if (Remessa && Table == "pedido")
-                baseQuery.Where("tipo", "Remessas");
-
-            return await baseQuery.Clone().From(Table).GetAsync();
-        }
-
-        /// <summary>
-        /// Recupera os dados das tabelas do sistema local para manipulação
-        /// Função retorna os registros 'UPDATE'
-        /// </summary>
-        private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string Table)
-        {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "UPDATE");
-
-            if (Remessa && Table == "pedido_item")
-                baseQuery.Where("status", "Remessa");
-
-            if (Remessa && Table == "pedido")
-                baseQuery.Where("tipo", "Remessas");
-
-            return await baseQuery.Clone().From(Table).GetAsync();
-        }
-
-        /// <summary>
-        /// Atualiza o registro local, UPDATE -> CREATED
-        /// </summary>
-        ///  private async Task UpdateAsync(string table, int id, object item) => await connect.Query(table).Where("id", id).UpdateAsync(Columns(table, item));
-        private async Task UpdateAsync(string table, int id)
-        {
-            await connect.Query(table).Where("id_sync", id).UpdateAsync(new { status_sync = "CREATED" });
-        }
-
-        /// <summary>
-        /// Atualiza os dados no banco online
-        /// </summary>
-        private bool UpdateOnline(string table, int id, dynamic item)
-        {
-            dynamic obj = new
-            {
-                token = Program.TOKEN,
-                id_empresa = Settings.Default.empresa_unique_id,
-                data = JsonConvert.SerializeObject(item),
-                status_sync = "CREATED"
-            };
-
-            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/update/{id}").Content(obj, Method.POST).Response();
-            if (response["status"] == "OK")
-                return true;
-
-            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
-            return false;
-        }
-
-        /// <summary>
-        /// Checa se o 'item' já foi inserido no banco online, true = não existe, false = já existe no banco
-        /// </summary>
-        private bool CheckCreated(string table, int id)
-        {
-            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}").Content().Response();
-            if (response["status"].ToString() == "FAIL")
-                return true;
-
-            return false;
-        }
-
-        #endregion Metodos geral
 
         private void SendNota()
         {
@@ -217,7 +118,7 @@ namespace Emiplus.View.Common
             if (!Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Autorizadas\\temp"))
                 return;
 
-            DirectoryInfo d = new DirectoryInfo(IniFile.Read("Path", "LOCAL") + "\\Autorizadas\\temp");
+            var d = new DirectoryInfo(IniFile.Read("Path", "LOCAL") + "\\Autorizadas\\temp");
 
             foreach (var file in d.GetFiles("*.xml"))
             {
@@ -228,7 +129,8 @@ namespace Emiplus.View.Common
                     xml = contentXml[0]
                 };
 
-                var json = new RequestApi().URL("https://app.notasegura.com.br/api/invoices?token=f278b338e853ed759383cca7da6dcf22e1c61301")
+                new RequestApi()
+                    .URL("https://app.notasegura.com.br/api/invoices?token=f278b338e853ed759383cca7da6dcf22e1c61301")
                     .Content(obj, Method.POST)
                     .AddHeader("Authorization", $"Basic {IniFile.Read("encodeNS", "DEV")}")
                     .AddHeader("Content-Type", "application/x-www-form-urlencoded")
@@ -246,7 +148,7 @@ namespace Emiplus.View.Common
                 id_empresa = Settings.Default.empresa_unique_id
             };
 
-            new RequestApi().URL(Program.URL_BASE + $"/api/lastsync").Content(obj, Method.POST).Response();
+            new RequestApi().URL(Program.URL_BASE + "/api/lastsync").Content(obj, Method.POST).Response();
         }
 
         public async Task SendRemessa()
@@ -254,15 +156,13 @@ namespace Emiplus.View.Common
             var baseQueryEnviando = connect.Query().Where("id_empresa", "!=", "").Where("campoa", "ENVIANDO");
             var dataUpdateEnviando = await baseQueryEnviando.Clone().From("pedido").GetAsync();
             if (dataUpdateEnviando != null)
-            {
-                foreach (dynamic item in dataUpdateEnviando)
+                foreach (var item in dataUpdateEnviando)
                 {
                     int idPedido = item.ID;
-                    Model.Pedido update = new Model.Pedido().FindById(idPedido).FirstOrDefault<Model.Pedido>();
+                    var update = new Pedido().FindById(idPedido).FirstOrDefault<Pedido>();
                     update.campoa = "ENVIADO";
                     update.Save(update);
                 }
-            }
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pedido");
@@ -270,16 +170,18 @@ namespace Emiplus.View.Common
             var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("campoa", "ENVIADO");
             var dataUpdate = await baseQuery.Clone().From("pedido").GetAsync();
             if (dataUpdate != null)
-            {
-                foreach (dynamic item in dataUpdate)
+                foreach (var item in dataUpdate)
                 {
-                    dynamic response = new RequestApi().URL(Program.URL_BASE + $"/api/pedido/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{item.ID_SYNC}").Content().Response();
+                    dynamic response = new RequestApi()
+                        .URL(Program.URL_BASE +
+                             $"/api/pedido/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{item.ID_SYNC}")
+                        .Content().Response();
                     if (response["status"].ToString() == "OK")
                     {
                         if (response.data.campoa == "RECEBIDO")
                         {
                             int idPedido = item.ID;
-                            Model.Pedido update = new Model.Pedido().FindById(idPedido).FirstOrDefault<Model.Pedido>();
+                            var update = new Pedido().FindById(idPedido).FirstOrDefault<Pedido>();
                             update.campoa = "RECEBIDO";
                             update.Save(update);
                         }
@@ -292,13 +194,16 @@ namespace Emiplus.View.Common
                             };
 
                             // atualiza online (UPDATE -> CREATED)
-                            var responseP = new RequestApi().URL(Program.URL_BASE + $"/api/pedido/updateRemessa/{item.ID_SYNC}/ENVIADO").Content(obj, Method.POST).Response();
+                            var responseP = new RequestApi()
+                                .URL(Program.URL_BASE + $"/api/pedido/updateRemessa/{item.ID_SYNC}/ENVIADO")
+                                .Content(obj, Method.POST).Response();
                             if (responseP["status"] != "OK")
-                                new Log().Add("SYNC", $"{responseP["status"]} | Tabela: pedido - {responseP["message"]}", Log.LogType.fatal);
+                                new Log().Add("SYNC",
+                                    $"{responseP["status"]} | Tabela: pedido - {responseP["message"]}",
+                                    Log.LogType.fatal);
                         }
                     }
                 }
-            }
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pedido_item");
@@ -306,8 +211,10 @@ namespace Emiplus.View.Common
 
         public async Task ReceberRemessa()
         {
-            var response = new RequestApi().URL(Program.URL_BASE + $"/api/pedido/remessas/{Program.TOKEN}/{Settings.Default.empresa_unique_id}").Content().Response();
-            if (response["error"].ToString() == "Nenhum registro encontrado")
+            var response = new RequestApi()
+                .URL(Program.URL_BASE + $"/api/pedido/remessas/{Program.TOKEN}/{Settings.Default.empresa_unique_id}")
+                .Content().Response();
+            if (response["error"]?.ToString() == "Nenhum registro encontrado")
             {
                 Alert.Message("OPPS", "Não existem remessas.", Alert.AlertType.error);
                 return;
@@ -323,34 +230,35 @@ namespace Emiplus.View.Common
                 int idPedido = item.Value.pedido.id;
                 int idSync = item.Value.pedido.id_sync;
 
-                int lastId = 0;
+                var lastId = 0;
                 if (item.Value.pedido != null)
                 {
-                    Model.Pedido createPedido = new Model.Pedido();
-                    createPedido.Id = 0;
-                    createPedido.Tipo = "Remessas";
-                    createPedido.Excluir = 0;
-                    createPedido.Emissao = item.Value.pedido.emissao;
-                    createPedido.Cliente = item.Value.pedido.cliente;
-                    createPedido.Colaborador = item.Value.pedido.colaborador;
-                    createPedido.Total = item.Value.pedido.total;
-                    createPedido.Desconto = item.Value.pedido.desconto;
-                    createPedido.Frete = item.Value.pedido.frete;
-                    createPedido.Produtos = item.Value.pedido.produtos;
-                    createPedido.id_usuario = item.Value.pedido.id_usuario;
-                    createPedido.campoa = "RECEBIDO";
-                    createPedido.campob = item.Value.pedido.campoc;
-                    createPedido.Observacao = $"Remessa da empresa: {idEmpresa}";
+                    var createPedido = new Pedido
+                    {
+                        Id = 0,
+                        Tipo = "Remessas",
+                        Excluir = 0,
+                        Emissao = item.Value.pedido.emissao,
+                        Cliente = item.Value.pedido.cliente,
+                        Colaborador = item.Value.pedido.colaborador,
+                        Total = item.Value.pedido.total,
+                        Desconto = item.Value.pedido.desconto,
+                        Frete = item.Value.pedido.frete,
+                        Produtos = item.Value.pedido.produtos,
+                        id_usuario = item.Value.pedido.id_usuario,
+                        campoa = "RECEBIDO",
+                        campob = item.Value.pedido.campoc,
+                        Observacao = $"Remessa da empresa: {idEmpresa}"
+                    };
                     createPedido.Save(createPedido);
-                    
+
                     lastId = createPedido.GetLastId();
                 }
 
                 if (item.Value.itens != null)
-                {
-                    foreach (dynamic data in item.Value.itens)
+                    foreach (var data in item.Value.itens)
                     {
-                        Model.PedidoItem createPedidoItem = new Model.PedidoItem();
+                        var createPedidoItem = new PedidoItem();
                         createPedidoItem.Id = 0;
                         createPedidoItem.Tipo = "Produtos";
                         createPedidoItem.Excluir = 0;
@@ -358,11 +266,12 @@ namespace Emiplus.View.Common
 
                         string codebarras = data.Value.cean;
                         double quantidade = data.Value.quantidade;
-                        Model.Item dataItem = new Model.Item().FindAll().WhereFalse("excluir").Where("codebarras", codebarras).FirstOrDefault<Model.Item>();
+                        var dataItem = new Item().FindAll().WhereFalse("excluir").Where("codebarras", codebarras)
+                            .FirstOrDefault<Item>();
                         int idItem = 0;
                         if (dataItem != null)
                         {
-                            Model.ItemEstoqueMovimentacao movEstoque = new Model.ItemEstoqueMovimentacao()
+                            var movEstoque = new ItemEstoqueMovimentacao()
                                 .SetUsuario(idUsuario)
                                 .SetQuantidade(quantidade)
                                 .SetTipo("A")
@@ -377,22 +286,24 @@ namespace Emiplus.View.Common
                         }
                         else
                         {
-                            Model.Item createItem = new Model.Item();
-                            createItem.Id = 0;
-                            createItem.Excluir = 0;
-                            createItem.Tipo = "Produtos";
-                            createItem.CodeBarras = codebarras;
-                            createItem.Referencia = data.Value.cprod;
-                            createItem.Nome = data.Value.xprod;
-                            createItem.ValorCompra = data.Value.valorcompra;
-                            createItem.ValorVenda = data.Value.valorvenda;
-                            createItem.Ncm = data.Value.ncm;
-                            createItem.ativo = 0;
+                            var createItem = new Item
+                            {
+                                Id = 0,
+                                Excluir = 0,
+                                Tipo = "Produtos",
+                                CodeBarras = codebarras,
+                                Referencia = data.Value.cprod,
+                                Nome = data.Value.xprod,
+                                ValorCompra = data.Value.valorcompra,
+                                ValorVenda = data.Value.valorvenda,
+                                Ncm = data.Value.ncm,
+                                ativo = 0
+                            };
                             createItem.Save(createItem);
 
                             idItem = createItem.GetLastId();
 
-                             Model.ItemEstoqueMovimentacao movEstoque = new Model.ItemEstoqueMovimentacao()
+                            var movEstoque = new ItemEstoqueMovimentacao()
                                 .SetUsuario(idUsuario)
                                 .SetQuantidade(quantidade)
                                 .SetTipo("A")
@@ -425,7 +336,6 @@ namespace Emiplus.View.Common
                         createPedidoItem.Status = data.Value.status;
                         createPedidoItem.Save(createPedidoItem, false);
                     }
-                }
 
                 dynamic obj = new
                 {
@@ -433,9 +343,11 @@ namespace Emiplus.View.Common
                     id_empresa = idEmpresa
                 };
 
-                var responseP = new RequestApi().URL(Program.URL_BASE + $"/api/pedido/updateRemessa/{idSync}/RECEBIDO").Content(obj, Method.POST).Response();
+                var responseP = new RequestApi().URL(Program.URL_BASE + $"/api/pedido/updateRemessa/{idSync}/RECEBIDO")
+                    .Content(obj, Method.POST).Response();
                 if (responseP["status"] != "OK")
-                    new Log().Add("SYNC", $"{responseP["status"]} | Tabela: pedido - {responseP["message"]}", Log.LogType.fatal);
+                    new Log().Add("SYNC", $"{responseP["status"]} | Tabela: pedido - {responseP["message"]}",
+                        Log.LogType.fatal);
             }
         }
 
@@ -452,9 +364,6 @@ namespace Emiplus.View.Common
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("categoria");
-
-            // await RunSyncAsync("etiqueta");
-            // await RunSyncAsync("formapgto");
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("imposto");
@@ -508,24 +417,17 @@ namespace Emiplus.View.Common
             timer1.Tick += (s, e) =>
             {
                 if (Support.CheckForInternetConnection())
-                {
                     if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
-                    {
                         if (!Home.syncActive)
                         {
                             backWork.RunWorkerAsync();
                             Home.syncActive = true;
                         }
-                    }
-                }
 
                 timer1.Stop();
             };
 
-            backWork.DoWork += async (s, e) =>
-            {
-                await StartSync();
-            };
+            backWork.DoWork += async (s, e) => { await StartSync(); };
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
@@ -536,5 +438,106 @@ namespace Emiplus.View.Common
                 Home.syncActive = false;
             };
         }
+
+        #region Metodos geral
+
+        /// <summary>
+        ///     Recupera os dados das tabelas do sistema local para manipulação
+        ///     Função retorna os registros 'CREATE' ou 'NULL'
+        /// </summary>
+        private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string table)
+        {
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATE");
+
+            if (Remessa && table == "pedido_item")
+                baseQuery.Where("status", "Remessa");
+
+            if (Remessa && table == "pedido")
+                baseQuery.Where("tipo", "Remessas");
+
+            return await baseQuery.Clone().From(table).GetAsync();
+        }
+
+        /// <summary>
+        ///     Recupera os dados das tabelas do sistema local para manipulação
+        ///     Função retorna os registros 'CREATED' ou 'NULL'
+        /// </summary>
+        private async Task<IEnumerable<dynamic>> GetCreatedDataAsync(string table)
+        {
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATED");
+
+            if (Remessa && table == "pedido_item")
+                baseQuery.Where("status", "Remessa");
+
+            if (Remessa && table == "pedido")
+                baseQuery.Where("tipo", "Remessas");
+
+            return await baseQuery.Clone().From(table).GetAsync();
+        }
+
+        /// <summary>
+        ///     Recupera os dados das tabelas do sistema local para manipulação
+        ///     Função retorna os registros 'UPDATE'
+        /// </summary>
+        private async Task<IEnumerable<dynamic>> GetUpdateDataAsync(string table)
+        {
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "UPDATE");
+
+            if (Remessa && table == "pedido_item")
+                baseQuery.Where("status", "Remessa");
+
+            if (Remessa && table == "pedido")
+                baseQuery.Where("tipo", "Remessas");
+
+            return await baseQuery.Clone().From(table).GetAsync();
+        }
+
+        /// <summary>
+        ///     Atualiza o registro local, UPDATE -> CREATED
+        /// </summary>
+        /// private async Task UpdateAsync(string table, int id, object item) => await connect.Query(table).Where("id", id).UpdateAsync(Columns(table, item));
+        private async Task UpdateAsync(string table, int id)
+        {
+            await connect.Query(table).Where("id_sync", id).UpdateAsync(new {status_sync = "CREATED"});
+        }
+
+        /// <summary>
+        ///     Atualiza os dados no banco online
+        /// </summary>
+        private bool UpdateOnline(string table, int id, dynamic item)
+        {
+            dynamic obj = new
+            {
+                token = Program.TOKEN,
+                id_empresa = Settings.Default.empresa_unique_id,
+                data = JsonConvert.SerializeObject(item),
+                status_sync = "CREATED"
+            };
+
+            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/update/{id}")
+                .Content(obj, Method.POST).Response();
+            if (response["status"] == "OK")
+                return true;
+
+            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+            return false;
+        }
+
+        /// <summary>
+        ///     Checa se o 'item' já foi inserido no banco online, true = não existe, false = já existe no banco
+        /// </summary>
+        private bool CheckCreated(string table, int id)
+        {
+            var response = new RequestApi()
+                .URL(Program.URL_BASE +
+                     $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}")
+                .Content().Response();
+            if (response["status"]?.ToString() == "FAIL")
+                return true;
+
+            return false;
+        }
+
+        #endregion Metodos geral
     }
 }

@@ -1,27 +1,42 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Financeiro;
-using LiveCharts;
-using LiveCharts.Wpf;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.View.Financeiro;
+using LiveCharts;
+using LiveCharts.Wpf;
+using SqlKata.Execution;
+using Caixa = Emiplus.Controller.Caixa;
 
 namespace Emiplus.View.Common
 {
     public partial class TelaInicial : Form
     {
-        private Model.Titulo _mTitulo = new Model.Titulo();
+        private readonly Titulo _mTitulo = new Titulo();
+        private List<double> aPagar = new List<double>();
 
-        private int Days = 6;
+        private List<double> aReceber = new List<double>();
 
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private IEnumerable<dynamic> dataProductsEstoque;
+
+        private readonly int Days = 6;
+        private List<int> vendas = new List<int>();
+
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
+
+        public TelaInicial()
+        {
+            InitializeComponent();
+            Eventos();
+        }
 
         private dynamic Pedidos { get; set; }
-        private dynamic Pedidos_Itens { get; set; }
+        private dynamic PedidosItens { get; set; }
         private dynamic GetTotalVendas { get; set; }
         private dynamic GetReceberHoje { get; set; }
         private dynamic GetPagarHoje { get; set; }
@@ -30,95 +45,101 @@ namespace Emiplus.View.Common
         private dynamic GetReceberAtrasado { get; set; }
         private dynamic GetPagarAtrasado { get; set; }
 
-        private List<double> aReceber = new List<double>();
-        private List<double> aPagar = new List<double>();
-        private List<int> Vendas = new List<int>();
-
-        private IEnumerable<dynamic> dataProductsEstoque;
-
-        public TelaInicial()
-        {
-            InitializeComponent();
-            Eventos();
-        }
-
         private void LoadData()
         {
             totalVendas.Text = Pedidos != null ? Pedidos.TOTAL.ToString() : "0";
-            itensVendidos.Text = Pedidos_Itens.TOTAL != null ? Pedidos_Itens.TOTAL.ToString() : "0";
-            valorTotalVendas.Text = GetTotalVendas == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
+            itensVendidos.Text = PedidosItens.TOTAL != null ? PedidosItens.TOTAL.ToString() : "0";
+            valorTotalVendas.Text = GetTotalVendas == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL), true);
 
             if (GetReceberHoje != null && Pedidos != null)
-                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas.TOTAL / Pedidos.TOTAL), true);
+                valorMedioVendas.Text = Validation.FormatPrice(Validation.ConvertToDouble(GetTotalVendas?.TOTAL / Pedidos.TOTAL), true);
             else
-                valorMedioVendas.Text = "R$ 00,00";
+                valorMedioVendas.Text = @"R$ 00,00";
 
-            this.aReceberHoje.Text = GetReceberHoje == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetReceberHoje.TOTAL), true);
-            this.aPagarHoje.Text = GetPagarHoje == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetPagarHoje.TOTAL), true);
-            this.aReceber7dias.Text = GetReceber7dias == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetReceber7dias.TOTAL), true);
-            this.aPagar7dias.Text = GetPagar7dias == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetPagar7dias.TOTAL), true);
-            this.aReceberAtrasado.Text = GetReceberAtrasado == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetReceberAtrasado.TOTAL), true);
-            this.aPagarAtrasado.Text = GetPagarAtrasado == null ? "R$ 00,00" : Validation.FormatPrice(Validation.ConvertToDouble(GetPagarAtrasado.TOTAL), true);
+            aReceberHoje.Text = GetReceberHoje == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetReceberHoje.TOTAL), true);
+            aPagarHoje.Text = GetPagarHoje == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetPagarHoje.TOTAL), true);
+            aReceber7dias.Text = GetReceber7dias == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetReceber7dias.TOTAL), true);
+            aPagar7dias.Text = GetPagar7dias == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetPagar7dias.TOTAL), true);
+            aReceberAtrasado.Text = GetReceberAtrasado == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetReceberAtrasado.TOTAL), true);
+            aPagarAtrasado.Text = GetPagarAtrasado == null
+                ? "R$ 00,00"
+                : Validation.FormatPrice(Validation.ConvertToDouble(GetPagarAtrasado.TOTAL), true);
         }
 
         /// <summary>
-        /// Usado no WorkerBackground para recuperar os dados do banco e alimentar o LoadData()
+        ///     Usado no WorkerBackground para recuperar os dados do banco e alimentar o LoadData()
         /// </summary>
         private void GetDados()
         {
-            var Pedidos = new Model.Pedido().Query().SelectRaw("COUNT(ID) AS TOTAL").Where("tipo", "Vendas").WhereFalse("excluir")
-               .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-Days).ToString(), true))
-               .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Now.ToString(), true)).FirstOrDefault();
-            this.Pedidos = Pedidos;
-
-            var Pedidos_Itens = new Model.PedidoItem().Query().SelectRaw("SUM(QUANTIDADE) AS TOTAL").Where("tipo", "Produtos").WhereFalse("excluir")
+            Pedidos = new Pedido().Query().SelectRaw("COUNT(ID) AS TOTAL").Where("tipo", "Vendas")
+                .WhereFalse("excluir")
                 .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-Days).ToString(), true))
                 .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Now.ToString(), true)).FirstOrDefault();
-            this.Pedidos_Itens = Pedidos_Itens;
 
-            var Total = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas").WhereFalse("excluir")
-               .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-Days).ToString(), true))
-               .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Now.ToString(), true)).FirstOrDefault();
-            this.GetTotalVendas = Total;
+            PedidosItens = new PedidoItem().Query().SelectRaw("SUM(QUANTIDADE) AS TOTAL").Where("tipo", "Produtos")
+                .WhereFalse("excluir")
+                .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-Days).ToString(), true))
+                .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Now.ToString(), true)).FirstOrDefault();
+            
+            GetTotalVendas = new Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").Where("tipo", "Vendas")
+                .WhereFalse("excluir")
+                .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-Days).ToString(), true))
+                .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Now.ToString(), true)).FirstOrDefault();
 
-            var aReceberHoje = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Receber")
-            .Where("vencimento", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetReceberHoje = aReceberHoje;
+            GetReceberHoje = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Receber")
+                .Where("vencimento", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
 
-            var aPagarHoje = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Pagar")
-            .Where("vencimento", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetPagarHoje = aPagarHoje;
+            GetPagarHoje = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Pagar")
+                .Where("vencimento", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
 
-            var aReceber7dias = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Receber")
-            .Where("vencimento", ">", DateTime.Now.AddDays(+1).ToString("dd.MM.yyyy"))
-            .Where("vencimento", "<=", DateTime.Now.AddDays(+7).ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetReceber7dias = aReceber7dias;
+            GetReceber7dias = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Receber")
+                .Where("vencimento", ">", DateTime.Now.AddDays(+1).ToString("dd.MM.yyyy"))
+                .Where("vencimento", "<=", DateTime.Now.AddDays(+7).ToString("dd.MM.yyyy")).WhereNull("baixa_data")
+                .FirstOrDefault();
 
-            var aPagar7dias = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Pagar")
-            .Where("vencimento", ">", DateTime.Now.AddDays(+1).ToString("dd.MM.yyyy"))
-            .Where("vencimento", "<=", DateTime.Now.AddDays(+7).ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetPagar7dias = aPagar7dias;
+            GetPagar7dias = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Pagar")
+                .Where("vencimento", ">", DateTime.Now.AddDays(+1).ToString("dd.MM.yyyy"))
+                .Where("vencimento", "<=", DateTime.Now.AddDays(+7).ToString("dd.MM.yyyy")).WhereNull("baixa_data")
+                .FirstOrDefault();
 
-            var aReceberAtrasado = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Receber")
-            .Where("vencimento", "<", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetReceberAtrasado = aReceberAtrasado;
+            GetReceberAtrasado = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Receber")
+                .Where("vencimento", "<", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
 
-            var aPagarAtrasado = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Pagar")
-           .Where("vencimento", "<", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
-            this.GetPagarAtrasado = aPagarAtrasado;
+            GetPagarAtrasado = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                .Where("tipo", "Pagar")
+                .Where("vencimento", "<", DateTime.Now.ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
         }
 
         private List<double> GetValues(string tipo)
         {
-            List<double> values = new List<double>();
+            var values = new List<double>();
 
-            int dias = 7;
-            for (int i = 0; i < dias; i++)
+            var dias = 7;
+            for (var i = 0; i < dias; i++)
             {
                 var data = _mTitulo.Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", tipo)
-                .Where("vencimento", DateTime.Now.AddDays(-i).ToString("dd.MM.yyyy")).WhereNull("baixa_data").FirstOrDefault();
+                    .Where("vencimento", DateTime.Now.AddDays(-i).ToString("dd.MM.yyyy")).WhereNull("baixa_data")
+                    .FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToDouble(data.TOTAL) : "00.00");
             }
+
             values.Reverse();
 
             return values;
@@ -126,16 +147,20 @@ namespace Emiplus.View.Common
 
         private List<int> GetVendas()
         {
-            List<int> values = new List<int>();
+            var values = new List<int>();
 
-            int dias = 7;
-            for (int i = 0; i < dias; i++)
+            var dias = 7;
+            for (var i = 0; i < dias; i++)
             {
-                var data = new Model.Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir").Where("tipo", "Vendas")
-                .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
-                .Where("criado", "<=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true)).FirstOrDefault();
+                var data = new Pedido().Query().SelectRaw("SUM(TOTAL) AS TOTAL").WhereFalse("excluir")
+                    .Where("tipo", "Vendas")
+                    .Where("criado", ">=", Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString(), true))
+                    .Where("criado", "<=",
+                        Validation.ConvertDateToSql(DateTime.Today.AddDays(-i).ToString("yyyy-MM-dd 23:59"), true))
+                    .FirstOrDefault();
                 values.Add(data != null ? Validation.ConvertToInt32(data.TOTAL) : "0");
             }
+
             values.Reverse();
 
             return values;
@@ -144,18 +169,18 @@ namespace Emiplus.View.Common
         private void LoadGrafico()
         {
             var labels = new string[7];
-            for (int i = 0; i < 7; i++)
+            for (var i = 0; i < 7; i++)
                 labels[i] = DateTime.Now.AddDays(-i).ToString("dd/MM");
 
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Últimos 7 dias (da semana atual)",
-                Labels = new[] { labels[6], labels[5], labels[4], labels[3], labels[2], labels[1], "Hoje" }
+                Labels = new[] {labels[6], labels[5], labels[4], labels[3], labels[2], labels[1], "Hoje"}
             });
 
             cartesianChart1.AxisY.Add(new Axis
             {
-                LabelFormatter = value => Validation.FormatPrice(value, true),
+                LabelFormatter = value => Validation.FormatPrice(value, true)
             });
 
             cartesianChart1.LegendLocation = LegendLocation.Right;
@@ -164,80 +189,81 @@ namespace Emiplus.View.Common
         private void LoadSeriesGrafico()
         {
             cartesianChart1.Series.Clear();
-            SeriesCollection series = new SeriesCollection();
+            var series = new SeriesCollection();
 
-            series.Add(new LineSeries()
+            series.Add(new LineSeries
             {
                 Title = "A Receber",
                 PointGeometrySize = 20,
                 Values = new ChartValues<double>(aReceber),
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(51, 211, 74))
+                Stroke = new SolidColorBrush(Color.FromRgb(51, 211, 74))
             });
 
-            series.Add(new LineSeries()
+            series.Add(new LineSeries
             {
                 Title = "A Pagar",
                 Values = new ChartValues<double>(aPagar),
                 PointGeometrySize = 15,
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(243, 102, 36))
+                Stroke = new SolidColorBrush(Color.FromRgb(243, 102, 36))
             });
 
-            series.Add(new LineSeries()
+            series.Add(new LineSeries
             {
                 Title = "Vendas",
-                Values = new ChartValues<int>(Vendas),
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(28, 142, 196)),
+                Values = new ChartValues<int>(vendas),
+                Stroke = new SolidColorBrush(Color.FromRgb(28, 142, 196)),
                 StrokeThickness = 1,
-                StrokeDashArray = new System.Windows.Media.DoubleCollection(20),
-                Fill = System.Windows.Media.Brushes.Transparent,
+                StrokeDashArray = new DoubleCollection(20),
+                Fill = Brushes.Transparent,
                 LineSmoothness = 0
             });
 
             cartesianChart1.Series = series;
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 6;
+            table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            Table.Columns[0].Name = "ID";
-            Table.Columns[0].Visible = false;
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
 
-            Table.Columns[1].Name = "Cód. de Barras";
-            Table.Columns[1].Width = 130;
-            Table.Columns[1].Visible = true;
+            table.Columns[1].Name = "Cód. de Barras";
+            table.Columns[1].Width = 130;
+            table.Columns[1].Visible = true;
 
-            Table.Columns[2].Name = "Referência";
-            Table.Columns[2].Width = 100;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Referência";
+            table.Columns[2].Width = 100;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Descrição";
-            Table.Columns[3].Width = 120;
-            Table.Columns[3].MinimumWidth = 120;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Descrição";
+            table.Columns[3].Width = 120;
+            table.Columns[3].MinimumWidth = 120;
+            table.Columns[3].Visible = true;
 
-            Table.Columns[4].Name = "Estoque Mínimo";
-            Table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[4].Width = 130;
-            Table.Columns[4].Visible = true;
+            table.Columns[4].Name = "Estoque Mínimo";
+            table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[4].Width = 130;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[5].Name = "Estoque Atual";
-            Table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[5].Width = 130;
-            Table.Columns[5].Visible = true;
+            table.Columns[5].Name = "Estoque Atual";
+            table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[5].Width = 130;
+            table.Columns[5].Visible = true;
         }
 
         private async Task SetContentTableAsync(DataGridView Table, IEnumerable<dynamic> Data = null)
         {
             Table.Rows.Clear();
 
-            foreach (dynamic item in Data)
-            {
+            foreach (var item in Data)
                 Table.Rows.Add(
                     item.ID,
                     item.CODEBARRAS,
@@ -246,31 +272,38 @@ namespace Emiplus.View.Common
                     Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEMINIMO)),
                     Validation.FormatMedidas(item.MEDIDA, Validation.ConvertToDouble(item.ESTOQUEATUAL))
                 );
-            }
 
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void Eventos()
         {
-            Load += (s, e) => WorkerBackground.RunWorkerAsync();
-
-            Shown += (s, e) =>
+            Shown += async (s, e) =>
             {
-                this.Refresh();
+                Refresh();
 
-                ToolHelp.Show($"Referente ao período {DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                loading.Visible = true;
+                workerBackground.RunWorkerAsync();
 
-                dataSemana.Text = $"{DateTime.Now.AddDays(-Days).ToString("dd/MM/yyyy")} até Hoje ({DateTime.Now.ToString("dd/MM/yyyy")})";
+                ToolHelp.Show(
+                    $"Referente ao período ({DateTime.Now.AddDays(-Days):dd/MM/yyyy}) até Hoje ({DateTime.Now:dd/MM/yyyy})",
+                    pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+
+                dataSemana.Text = $@"{DateTime.Now.AddDays(-Days):dd/MM/yyyy} até Hoje ({DateTime.Now:dd/MM/yyyy})";
                 LoadGrafico();
 
-                //WorkerBackground.RunWorkerAsync();
                 SetHeadersTable(GridLista);
+
+                await Task.Delay(1000);
+                new Caixa().CheckCaixaDate();
             };
 
             timer1.Tick += (s, e) =>
             {
-                WorkerBackground.RunWorkerAsync();
+                panel1.Visible = false;
+                loading.Visible = true;
+
+                workerBackground.RunWorkerAsync();
                 timer1.Enabled = true;
                 timer1.Stop();
             };
@@ -307,24 +340,26 @@ namespace Emiplus.View.Common
                 OpenForm.Show<EditarTitulo>(this);
             };
 
-            WorkerBackground.DoWork += (s, e) =>
+            workerBackground.DoWork += (s, e) =>
             {
                 GetDados();
-                new Model.Estoque().GerarEstoque();
+                new Estoque().GerarEstoque();
 
                 aReceber = GetValues("Receber");
                 aPagar = GetValues("Pagar");
-                Vendas = GetVendas();
+                vendas = GetVendas();
 
-                dataProductsEstoque = (new Model.Item()).FindAll()
-                .WhereRaw("estoqueminimo >= estoqueatual")
-                .Where("estoqueminimo", "!=", "0")
-                .WhereFalse("excluir")
-                .Get();
+                dataProductsEstoque = new Item().FindAll()
+                    .WhereRaw("estoqueminimo >= estoqueatual")
+                    .Where("estoqueminimo", "!=", "0")
+                    .WhereFalse("excluir")
+                    .Get();
             };
 
-            WorkerBackground.RunWorkerCompleted += async (s, e) =>
+            workerBackground.RunWorkerCompleted += async (s, e) =>
             {
+                panel1.Visible = true;
+                loading.Visible = false;
                 //timer1.Start();
                 LoadData();
                 LoadSeriesGrafico();
@@ -334,7 +369,10 @@ namespace Emiplus.View.Common
 
             btnRefresh.Click += (s, e) =>
             {
-                WorkerBackground.RunWorkerAsync();
+                panel1.Visible = false;
+                loading.Visible = true;
+
+                workerBackground.RunWorkerAsync();
             };
         }
     }

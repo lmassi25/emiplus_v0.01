@@ -1,13 +1,15 @@
-﻿using Emiplus.Data.Helpers;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Configuracoes;
 
 namespace Emiplus.View.Common
 {
     public partial class TelaConfigInicial : Form
     {
-        private BackgroundWorker backWork = new BackgroundWorker();
-        private BackgroundWorker backWorkRemessa = new BackgroundWorker();
+        private readonly BackgroundWorker backWork = new BackgroundWorker();
+        private readonly BackgroundWorker backWorkRemessa = new BackgroundWorker();
 
         public TelaConfigInicial()
         {
@@ -17,21 +19,23 @@ namespace Emiplus.View.Common
 
         public void Eventos()
         {
-            ToolHelp.Show("Utilize essa função para sincronizar todos os dados do programa para consulta no sistema web do seus dados.", pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show(
+                "Utilize essa função para sincronizar todos os dados do programa para consulta no sistema web do seus dados.",
+                pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
             Load += (s, e) => Refresh();
 
-            dadosEmpresa.Click += (s, e) => OpenForm.Show<Configuracoes.InformacaoGeral>(this);
-            email.Click += (s, e) => OpenForm.Show<Configuracoes.Email>(this);
-            sat.Click += (s, e) => OpenForm.Show<Configuracoes.Cfesat>(this);
+            dadosEmpresa.Click += (s, e) => OpenForm.Show<InformacaoGeral>(this);
+            email.Click += (s, e) => OpenForm.Show<Email>(this);
+            sat.Click += (s, e) => OpenForm.Show<Cfesat>(this);
             comercial.Click += (s, e) => OpenForm.Show<Configuracoes.Comercial>(this);
-            os.Click += (s, e) => OpenForm.Show<Configuracoes.OS>(this);
-            impressao.Click += (s, e) => OpenForm.Show<Configuracoes.Impressao>(this);
-            system.Click += (s, e) => OpenForm.Show<Configuracoes.Sistema>(this);
+            os.Click += (s, e) => OpenForm.Show<OS>(this);
+            impressao.Click += (s, e) => OpenForm.Show<Impressao>(this);
+            system.Click += (s, e) => OpenForm.Show<Sistema>(this);
 
             btnImportar.Click += (s, e) =>
             {
-                ImportarDados f = new ImportarDados();
+                var f = new ImportarDados();
                 f.ShowDialog();
             };
 
@@ -39,10 +43,11 @@ namespace Emiplus.View.Common
             {
                 if (Support.CheckForInternetConnection())
                 {
-                    if (!Home.syncActive) {
+                    if (!Home.syncActive)
+                    {
                         Home.syncActive = true;
-                        pictureBox10.Image = Properties.Resources.loader_page;
-                        btnSincronizar.Text = "Sincronizando..";
+                        pictureBox10.Image = Resources.loader_page;
+                        btnSincronizar.Text = @"Sincronizando..";
                         backWork.RunWorkerAsync();
                     }
                     else
@@ -58,15 +63,15 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += async (s, e) =>
             {
-                Sync f = new Sync();
+                var f = new Sync();
                 await f.StartSync();
             };
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
                 new Log().Add("SYNC", "Sincronização", Log.LogType.fatal);
-                pictureBox10.Image = Properties.Resources.refresh;
-                btnSincronizar.Text = "Sincronizar";
+                pictureBox10.Image = Resources.refresh;
+                btnSincronizar.Text = @"Sincronizar";
                 Home.syncActive = false;
             };
 
@@ -77,10 +82,11 @@ namespace Emiplus.View.Common
             {
                 if (Support.CheckForInternetConnection())
                 {
-                    if (!Home.syncActive) {
+                    if (!Home.syncActive)
+                    {
                         Home.syncActive = true;
-                        pictureBox14.Image = Properties.Resources.loader_page;
-                        label13.Text = "Enviando..";
+                        pictureBox14.Image = Resources.loader_page;
+                        label13.Text = @"Enviando..";
                         backWorkRemessa.RunWorkerAsync();
                     }
                     else
@@ -92,7 +98,7 @@ namespace Emiplus.View.Common
 
             backWorkRemessa.DoWork += async (s, e) =>
             {
-                Sync f = new Sync();
+                var f = new Sync();
                 Sync.Remessa = true;
                 await f.SendRemessa();
                 Sync.Remessa = false;
@@ -101,18 +107,18 @@ namespace Emiplus.View.Common
             backWorkRemessa.RunWorkerCompleted += (s, e) =>
             {
                 new Log().Add("SYNC", "Remessa enviada", Log.LogType.fatal);
-                pictureBox14.Image = Properties.Resources.caja;
-                label13.Text = "Remessas";
+                pictureBox14.Image = Resources.caja;
+                label13.Text = @"Remessas";
                 Home.syncActive = false;
             };
 
             btnRemessaReceber.Click += async (s, e) =>
             {
-                Sync f = new Sync();
+                var f = new Sync();
                 await f.ReceberRemessa();
             };
-            
-            btnImportProdutos.Click += (s, e) => OpenForm.Show<Configuracoes.ImportProdutos>(this);
+
+            btnImportProdutos.Click += (s, e) => OpenForm.Show<ImportProdutos>(this);
         }
     }
 }

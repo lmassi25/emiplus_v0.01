@@ -1,50 +1,20 @@
-﻿using ChoETL;
+﻿using System.Collections;
+using ChoETL;
 using Emiplus.Data.Helpers;
-using System.Collections;
 
 namespace Emiplus.Controller
 {
     internal class ImportarNfe
     {
-        private dynamic dataNota { get; set; }
-
-        /// <summary>
-        /// Dados da Nota
-        /// </summary>
-        public ArrayList Dados { get; set; }
-
-        /// <summary>
-        /// Dados do Fornecedor
-        /// </summary>
-        private ArrayList Fornecedor { get; set; }
-
-        /// <summary>
-        /// Lista de Produtos
-        /// </summary>
-        public ArrayList Produtos { get; set; }
-
-        /// <summary>
-        /// Totais dos impostos da NFe
-        /// </summary>
-        private ArrayList Totais { get; set; }
-
-        /// <summary>
-        /// Pagamentos com as parcelas
-        /// </summary>
-        private ArrayList Pagamentos { get; set; }
-
         public ImportarNfe(string pathXml)
         {
-            ChoXmlRecordConfiguration config = new ChoXmlRecordConfiguration();
+            var config = new ChoXmlRecordConfiguration();
             config.NamespaceManager.AddNamespace("x", "http://www.portalfiscal.inf.br/nfe");
 
             dynamic loadNota = new ChoXmlReader(pathXml, config);
-            foreach (dynamic dataNota in loadNota)
+            foreach (var dataNota in loadNota)
             {
-                if (dataNota.ContainsKey("infNFe"))
-                    this.dataNota = dataNota.infNFe;
-                else
-                    this.dataNota = dataNota;
+                this.dataNota = dataNota.ContainsKey("infNFe") ? dataNota.infNFe : dataNota;
 
                 break;
             }
@@ -54,6 +24,28 @@ namespace Emiplus.Controller
             LoadFornecedor();
             LoadPagamentos();
         }
+
+        private dynamic dataNota { get; }
+
+        /// <summary>
+        ///     Dados da Nota
+        /// </summary>
+        public ArrayList Dados { get; set; }
+
+        /// <summary>
+        ///     Dados do Fornecedor
+        /// </summary>
+        private ArrayList Fornecedor { get; set; }
+
+        /// <summary>
+        ///     Lista de Produtos
+        /// </summary>
+        public ArrayList Produtos { get; set; }
+
+        /// <summary>
+        ///     Pagamentos com as parcelas
+        /// </summary>
+        private ArrayList Pagamentos { get; set; }
 
         public dynamic GetDados()
         {
@@ -77,31 +69,28 @@ namespace Emiplus.Controller
 
         private void LoadDados()
         {
-            Dados = new ArrayList();
-            Dados.Add(new
+            Dados = new ArrayList
             {
-                Versao = dataNota.versao,
-                Nr = dataNota.ide.nNF,
-                Codigo = dataNota.ide.cNF,
-                Id = dataNota.Id,
-                Serie = dataNota.ide.serie,
-                NaturezaOpercao = dataNota.ide.natOp,
-                Emissao = Validation.ConvertDateToForm(dataNota.ide.dhEmi, true),
-                cUF = dataNota.ide.cUF
-            });
+                new
+                {
+                    Versao = dataNota.versao,
+                    Nr = dataNota.ide.nNF,
+                    Codigo = dataNota.ide.cNF,
+                    dataNota.Id,
+                    Serie = dataNota.ide.serie,
+                    NaturezaOpercao = dataNota.ide.natOp,
+                    Emissao = Validation.ConvertDateToForm(dataNota.ide.dhEmi, true),
+                    dataNota.ide.cUF
+                }
+            };
         }
 
         private void LoadProdutos()
         {
-            dynamic produtos = null;
-            if (dataNota.ContainsKey("dets"))
-                produtos = dataNota.dets;
-            else
-                produtos = dataNota.det;
+            var produtos = dataNota.ContainsKey("dets") ? dataNota.dets : dataNota.det;
 
             Produtos = new ArrayList();
             if (dataNota.ContainsKey("dets"))
-            {
                 // Imp_ICMSSN_orig = item.imposto.ICMS[0].orig,
 
                 foreach (var item in produtos)
@@ -112,8 +101,8 @@ namespace Emiplus.Controller
                         Referencia = item.prod.cProd,
                         CodeBarras = item.prod.cEAN,
                         Descricao = item.prod.xProd,
-                        NCM = item.prod.NCM,
-                        CFOP = item.prod.CFOP,
+                        item.prod.NCM,
+                        item.prod.CFOP,
                         Medida = item.prod.uCom,
                         Quantidade = item.prod.qCom,
                         VlrCompra = item.prod.vUnCom
@@ -121,23 +110,20 @@ namespace Emiplus.Controller
 
                     Produtos.Add(obj);
                 }
-            }
             else
-            {
                 Produtos.Add(
-                        new
-                        {
-                            nrItem = produtos.nItem,
-                            Referencia = produtos.prod.cProd,
-                            CodeBarras = produtos.prod.cEAN,
-                            Descricao = produtos.prod.xProd,
-                            NCM = produtos.prod.NCM,
-                            CFOP = produtos.prod.CFOP,
-                            Medida = produtos.prod.uCom,
-                            Quantidade = produtos.prod.qCom,
-                            VlrCompra = produtos.prod.vUnCom
-                        });
-            }
+                    new
+                    {
+                        nrItem = produtos.nItem,
+                        Referencia = produtos.prod.cProd,
+                        CodeBarras = produtos.prod.cEAN,
+                        Descricao = produtos.prod.xProd,
+                        produtos.prod.NCM,
+                        produtos.prod.CFOP,
+                        Medida = produtos.prod.uCom,
+                        Quantidade = produtos.prod.qCom,
+                        VlrCompra = produtos.prod.vUnCom
+                    });
         }
 
         private void LoadFornecedor()
@@ -146,10 +132,10 @@ namespace Emiplus.Controller
             {
                 Fornecedor = new ArrayList();
 
-                string document = "";
-                string ie = "";
-                string email = "";
-                string fone = "";
+                var document = "";
+                var ie = "";
+                var email = "";
+                var fone = "";
                 if (dataNota.emit.ContainsKey("CPF"))
                     document = dataNota.emit.CPF;
 
@@ -190,19 +176,19 @@ namespace Emiplus.Controller
         private void LoadPagamentos()
         {
             Pagamentos = new ArrayList();
-            ArrayList datesTimes = new ArrayList();
+            var datesTimes = new ArrayList();
 
-            string dateTime = "";
-            string Valor = "";
-            string Tipo = "";
+            var dateTime = "";
+            var Valor = "";
+            var Tipo = "";
 
             if (dataNota.ContainsKey("cobr") == true)
             {
-                if (dataNota.cobr is ChoETL.ChoDynamicObject)
+                if (dataNota.cobr is ChoDynamicObject)
                 {
                     if (dataNota.cobr.ContainsKey("dups") == true)
                     {
-                        int u = -1;
+                        var u = -1;
                         foreach (var dataCOBR in dataNota.cobr.dups)
                         {
                             u++;
@@ -217,16 +203,16 @@ namespace Emiplus.Controller
 
                             Pagamentos.Add(new
                             {
-                                dateTime = dateTime,
-                                Tipo = Tipo,
-                                Valor = Valor
+                                dateTime,
+                                Tipo,
+                                Valor
                             });
                         }
                     }
                 }
                 else
                 {
-                    int u = -1;
+                    var u = -1;
                     foreach (var dataCOBR in dataNota.cobr)
                     {
                         u++;
@@ -236,9 +222,9 @@ namespace Emiplus.Controller
 
                         Pagamentos.Add(new
                         {
-                            dateTime = dateTime,
-                            Tipo = Tipo,
-                            Valor = Valor
+                            dateTime,
+                            Tipo,
+                            Valor
                         });
                     }
                 }
@@ -248,34 +234,24 @@ namespace Emiplus.Controller
             {
                 Pagamentos.Clear();
 
-                int u = -1;
+                var u = -1;
                 foreach (var dataCOBR in dataNota.pag)
                 {
                     u++;
 
                     if (dataNota.ContainsKey("pag"))
                     {
-                        if (dataCOBR.Key == "detPag")
-                            Tipo = dataCOBR.Value.tPag;
-                        else
-                            Tipo = dataCOBR.tPag;
-
-                        if (dataCOBR.Key == "detPag")
-                            Valor = dataCOBR.Value.vPag;
-                        else
-                            Valor = dataCOBR.vPag;
+                        Tipo = dataCOBR.Key == "detPag" ? (string) dataCOBR.Value.tPag : (string) dataCOBR.tPag;
+                        Valor = dataCOBR.Key == "detPag" ? (string) dataCOBR.Value.vPag : (string) dataCOBR.vPag;
                     }
 
-                    if (datesTimes.Count > 0)
-                    {
-                        dateTime = datesTimes[u].ToString();
-                    }
+                    if (datesTimes.Count > 0) dateTime = datesTimes[u].ToString();
 
                     Pagamentos.Add(new
                     {
-                        dateTime = dateTime,
-                        Tipo = Tipo,
-                        Valor = Valor
+                        dateTime,
+                        Tipo,
+                        Valor
                     });
                 }
             }

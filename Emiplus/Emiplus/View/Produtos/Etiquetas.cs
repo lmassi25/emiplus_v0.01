@@ -1,52 +1,58 @@
-﻿using DotLiquid;
-using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using Emiplus.Properties;
-using Emiplus.View.Reports;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using BarcodeLib;
+using DotLiquid;
+using Emiplus.Controller;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Properties;
+using Emiplus.View.Reports;
+using SqlKata.Execution;
+using Item = Emiplus.Model.Item;
 using Timer = System.Timers.Timer;
 
 namespace Emiplus.View.Produtos
 {
     public partial class Etiquetas : Form
     {
-        private Model.Item _mItem = new Model.Item();
-        private Controller.Etiqueta _controller = new Controller.Etiqueta();
+        private readonly Etiqueta _controller = new Etiqueta();
+        private readonly Item _mItem = new Item();
 
-        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
 
         private IEnumerable<dynamic> dataTable;
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
 
-        private Timer timer = new Timer(Configs.TimeLoading);
+        private readonly Timer timer = new Timer(Configs.TimeLoading);
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public Etiquetas()
         {
             InitializeComponent();
             Eventos();
 
-            ToolHelp.Show("Informe a quantidade de posições que você já utilizou na folha atual.", pictureBox2, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Informe a quantidade de posições que você já utilizou na folha atual.", pictureBox2,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
             ToolHelp.Show("Selecione o modelo da etiqueta.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Digite a quantidade de etiquetas que deseja gerar.", pictureBox5, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Digite a quantidade de etiquetas que deseja gerar.", pictureBox5, ToolHelp.ToolTipIcon.Info,
+                "Ajuda!");
         }
 
         private void Start()
         {
-            var origens = new ArrayList();
-            origens.Add(new { Id = "10", Nome = "Pimaco 10, CARTA - Cod. 6283" });
-            origens.Add(new { Id = "30", Nome = "Pimaco 30, CARTA - Cod. 6280" });
-            origens.Add(new { Id = "60", Nome = "Pimaco 60, CARTA - Cod. 6089" });
+            var origens = new ArrayList
+            {
+                new {Id = "10", Nome = "Pimaco 10, CARTA - Cod. 6283"},
+                new {Id = "30", Nome = "Pimaco 30, CARTA - Cod. 6280"},
+                new {Id = "60", Nome = "Pimaco 60, CARTA - Cod. 6089"}
+            };
 
             modelos.DataSource = origens;
             modelos.DisplayMember = "Nome";
@@ -58,14 +64,17 @@ namespace Emiplus.View.Produtos
             GridLista.Visible = false;
             Loading.Size = new Size(GridLista.Width, GridLista.Height);
             Loading.Visible = true;
-            WorkerBackground.RunWorkerAsync();
+            workerBackground.RunWorkerAsync();
         }
 
-        private async void DataTable() => await _controller.SetTable(GridLista, null);
+        private async void DataTable()
+        {
+            await _controller.SetTable(GridLista);
+        }
 
         private void LoadItens()
         {
-            int count = new Model.Etiqueta().Count();
+            var count = new Model.Etiqueta().Count();
             qtdAdd.Text = count.ToString();
 
             if (count <= 10)
@@ -79,43 +88,43 @@ namespace Emiplus.View.Produtos
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de produtos.
+        ///     Autocomplete do campo de busca de produtos.
         /// </summary>
         private void AutoCompleteItens()
         {
             var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
 
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
-            }
+            foreach (var itens in item) collection.Add(itens.NOME, itens.ID);
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
         private void AddItem()
         {
-            int count = new Model.Etiqueta().Count();
+            var count = new Model.Etiqueta().Count();
             if (count >= Validation.ConvertToInt32(modelos.SelectedValue))
             {
-                Alert.Message("Oppss", "A quantidade de produtos já está no limite. Altere o modelo da etiqueta.", Alert.AlertType.warning);
+                Alert.Message("Oppss", "A quantidade de produtos já está no limite. Altere o modelo da etiqueta.",
+                    Alert.AlertType.warning);
                 return;
             }
 
-            if (collection.Lookup(BuscarProduto.Text) > 0)
-            {
-                var itemId = collection.Lookup(BuscarProduto.Text);
-                Model.Item item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Model.Item>();
+            if (collection.Lookup(BuscarProduto.Text) <= 0)
+                return;
 
-                Model.Etiqueta etiqueta = new Model.Etiqueta();
-                etiqueta.id_item = item.Id;
-                etiqueta.quantidade = 1;
-                etiqueta.Save(etiqueta);
-            }
+            var itemId = collection.Lookup(BuscarProduto.Text);
+            var item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Item>();
+
+            var etiqueta = new Model.Etiqueta
+            {
+                id_item = item.Id,
+                quantidade = 1
+            };
+            etiqueta.Save(etiqueta);
         }
 
         /// <summary>
-        /// Limpa os input text.
+        ///     Limpa os input text.
         /// </summary>
         private void ClearForms()
         {
@@ -132,63 +141,48 @@ namespace Emiplus.View.Produtos
                 .Limit(Validation.ConvertToInt32(modelos.SelectedValue) - Validation.ConvertToInt32(colunas.Text))
                 .Get<dynamic>();
 
-            var Etiqueta = "etiqueta" + modelos.SelectedValue.ToString() + ".css";
+            var Etiqueta = "etiqueta" + modelos.SelectedValue + ".css";
             var Colunas = string.IsNullOrEmpty(colunas.Text) ? 0 : Validation.ConvertToInt32(colunas.Text);
 
-            string paddingEtiqueta = "";
+            var paddingEtiqueta = "";
             if (modelos.SelectedValue.ToString() == "10")
-                paddingEtiqueta = $"{IniFile.Read("Pimaco10Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Left", "ETIQUETAS")}mm";
+                paddingEtiqueta =
+                    $"{IniFile.Read("Pimaco10Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco10Left", "ETIQUETAS")}mm";
 
             if (modelos.SelectedValue.ToString() == "30")
-                paddingEtiqueta = $"{IniFile.Read("Pimaco30Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Left", "ETIQUETAS")}mm";
+                paddingEtiqueta =
+                    $"{IniFile.Read("Pimaco30Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco30Left", "ETIQUETAS")}mm";
 
             if (modelos.SelectedValue.ToString() == "60")
-                paddingEtiqueta = $"{IniFile.Read("Pimaco60Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Left", "ETIQUETAS")}mm";
+                paddingEtiqueta =
+                    $"{IniFile.Read("Pimaco60Top", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Right", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Bottom", "ETIQUETAS")}mm {IniFile.Read("Pimaco60Left", "ETIQUETAS")}mm";
 
 
-            bool logo = false;
-            if (modelos.SelectedValue.ToString() == "10")
-                logo = true;
+            bool logo = modelos.SelectedValue.ToString() == "10";
+            bool hideLogoHtml = hideLogo.Checked;
+            bool hideRefHtml = hideRef.Checked;
+            bool hideCodeHtml = hideCode.Checked;
 
-            bool hideLogoHtml = false;
-            if (hideLogo.Checked)
-                hideLogoHtml = true;
+            var logoUrl = Settings.Default.empresa_logo;
+            var aux_codbar = "";
 
-            bool hideRefHtml = false;
-            if (hideRef.Checked)
-                hideRefHtml = true;
-
-            bool hideCodeHtml = false;
-            if (hideCode.Checked)
-                hideCodeHtml = true;
-
-            string logoUrl = Settings.Default.empresa_logo;
-            string aux_codbar = "";
-
-            ArrayList t = new ArrayList();
+            var t = new ArrayList();
             foreach (var item in itens)
             {
-                var codeImageBar = ""; aux_codbar = "";
+                var codeImageBar = "";
+                aux_codbar = "";
 
-                if (!String.IsNullOrEmpty(item.CODEBARRAS) && String.IsNullOrEmpty(aux_codbar))
-                {
+                if (!string.IsNullOrEmpty(item.CODEBARRAS) && string.IsNullOrEmpty(aux_codbar))
                     aux_codbar = item.CODEBARRAS;
-                }
 
-                if (!String.IsNullOrEmpty(item.REFERENCIA) && String.IsNullOrEmpty(aux_codbar))
-                {
+                if (!string.IsNullOrEmpty(item.REFERENCIA) && string.IsNullOrEmpty(aux_codbar))
                     aux_codbar = item.REFERENCIA;
-                }
 
-                if (!String.IsNullOrEmpty(aux_codbar))
+                if (!string.IsNullOrEmpty(aux_codbar))
                 {
-                    BarcodeLib.TYPE typeBarCode;
-                    if (Regex.Matches(aux_codbar, @"[a-zA-Z]").Count > 0)
-                        typeBarCode = BarcodeLib.TYPE.EAN13;
-                    else
-                        typeBarCode = BarcodeLib.TYPE.CODE128;
+                    var typeBarCode = Regex.Matches(aux_codbar, @"[a-zA-Z]").Count > 0 ? TYPE.EAN13 : TYPE.CODE128;
 
-                    Image img = (new BarcodeLib.Barcode()).Encode(typeBarCode, aux_codbar, Color.Black, Color.White, 195, 105);
+                    var img = new Barcode().Encode(typeBarCode, aux_codbar, Color.Black, Color.White, 195, 105);
                     codeImageBar = ImageToBase64(img, ImageFormat.Png);
                 }
 
@@ -208,7 +202,7 @@ namespace Emiplus.View.Produtos
                 urlBase = Program.URL_BASE,
                 ModeloCss = Etiqueta,
                 mitens = t,
-                Colunas = Colunas,
+                Colunas,
                 showLogo = logo,
                 LogoUrl = logoUrl,
                 logoHtml = hideLogoHtml,
@@ -224,14 +218,14 @@ namespace Emiplus.View.Produtos
 
         public string ImageToBase64(Image image, ImageFormat format)
         {
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
                 // Convert Image to byte[]
                 image.Save(ms, format);
-                byte[] imageBytes = ms.ToArray();
+                var imageBytes = ms.ToArray();
 
                 // Convert byte[] to base 64 string
-                string base64String = Convert.ToBase64String(imageBytes);
+                var base64String = Convert.ToBase64String(imageBytes);
                 return base64String;
             }
         }
@@ -265,10 +259,7 @@ namespace Emiplus.View.Produtos
 
             addProduto.Click += (s, e) =>
             {
-                for (int i = 0; i < Validation.ConvertToInt32(Quantidade.Text); i++)
-                {
-                    AddItem();
-                }
+                for (var i = 0; i < Validation.ConvertToInt32(Quantidade.Text); i++) AddItem();
 
                 // Limpa os campos
                 ClearForms();
@@ -278,10 +269,7 @@ namespace Emiplus.View.Produtos
 
             imprimir.Click += (s, e) => Render();
 
-            modelos.SelectedValueChanged += (s, e) =>
-            {
-                label9.Text = modelos.SelectedValue.ToString();
-            };
+            modelos.SelectedValueChanged += (s, e) => { label9.Text = modelos.SelectedValue.ToString(); };
 
             btnClean.Click += (s, e) =>
             {
@@ -293,12 +281,9 @@ namespace Emiplus.View.Produtos
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
-                b.DoWork += async (s, e) =>
-                {
-                    dataTable = await _controller.GetDataTable();
-                };
+                b.DoWork += async (s, e) => { dataTable = await _controller.GetDataTable(); };
 
                 b.RunWorkerCompleted += async (s, e) =>
                 {

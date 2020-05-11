@@ -1,21 +1,15 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Emiplus.WSCorreios;
+using Newtonsoft.Json.Linq;
+using Exception = System.Exception;
 
 namespace Emiplus.Data.Helpers
 {
     public class CEP
     {
         public string cep { get; set; }
-
-        public class MunicipioJson
-        {
-            public int id { get; set; }
-            public string ufid { get; set; }
-            public string nome { get; set; }
-        }
 
         public CEP SetCep(string c)
         {
@@ -27,7 +21,7 @@ namespace Emiplus.Data.Helpers
         {
             try
             {
-                using (var ws = new WSCorreios.AtendeClienteClient())
+                using (var ws = new AtendeClienteClient())
                 {
                     var resposta = ws.consultaCEP(cep);
 
@@ -39,11 +33,6 @@ namespace Emiplus.Data.Helpers
             }
             catch (Exception ex)
             {
-                if (ex == null)
-                {
-                    return false;
-                }
-
                 if (ex.ToString().Contains("CEP INVÁLIDO"))
                 {
                     Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
@@ -62,7 +51,7 @@ namespace Emiplus.Data.Helpers
 
         public dynamic GetRetornoCorreios()
         {
-            using (var ws = new WSCorreios.AtendeClienteClient())
+            using (var ws = new AtendeClienteClient())
             {
                 var resposta = ws.consultaCEP(cep);
 
@@ -75,7 +64,7 @@ namespace Emiplus.Data.Helpers
             using (var json = new WebClient())
             {
                 var download = json.DownloadString("https://www.emiplus.com.br/json/municipio");
-                JObject googleSearch = JObject.Parse(download);
+                var googleSearch = JObject.Parse(download);
 
                 IList<JToken> results = googleSearch["municipios"].Children().ToList();
 
@@ -83,19 +72,24 @@ namespace Emiplus.Data.Helpers
 
                 var resposta = GetRetornoCorreios();
 
-                foreach (JToken result in results)
+                foreach (var result in results)
                 {
-                    MunicipioJson searchResult = result.ToObject<MunicipioJson>();
+                    var searchResult = result.ToObject<MunicipioJson>();
                     searchResults.Add(searchResult);
 
                     if (string.Compare(searchResult.nome, resposta.cidade, true) == 0)
-                    {
                         return searchResult.id.ToString();
-                    }
                 }
             }
 
             return "0";
+        }
+
+        public class MunicipioJson
+        {
+            public int id { get; set; }
+            public string ufid { get; set; }
+            public string nome { get; set; }
         }
     }
 }

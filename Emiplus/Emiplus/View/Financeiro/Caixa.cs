@@ -1,9 +1,4 @@
-﻿using DotLiquid;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Emiplus.View.Reports;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,14 +7,20 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DotLiquid;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Reports;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class Caixa : Form
     {
+        private readonly Controller.Caixa _controllerCaixa = new Controller.Caixa();
 
         private Model.Caixa _modelCaixa = new Model.Caixa();
-        private Controller.Caixa _controllerCaixa = new Controller.Caixa();
 
         public Caixa()
         {
@@ -29,27 +30,26 @@ namespace Emiplus.View.Financeiro
 
         private void AutoCompleteUsers()
         {
-            Usuarios.DataSource = (new Model.Usuarios()).GetAllUsers();
+            Usuarios.DataSource = new Usuarios().GetAllUsers();
             Usuarios.DisplayMember = "Nome";
             Usuarios.ValueMember = "Id";
         }
 
-        private async Task DataTableAsync() => await SetTable(GridLista);
+        private async Task DataTableAsync()
+        {
+            await SetTable(GridLista);
+        }
 
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
             var model = new Model.Caixa().Query();
 
             if (!noFilterData.Checked)
-            {
                 model.Where("CAIXA.criado", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
                     .Where("CAIXA.criado", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
-            }
 
             if (Validation.ConvertToInt32(Usuarios.SelectedValue) >= 1)
-            {
                 model.Where("CAIXA.usuario", Validation.ConvertToInt32(Usuarios.SelectedValue));
-            }
 
             model.LeftJoin("USUARIOS", "USUARIOS.id_user", "CAIXA.usuario");
             model.Select("CAIXA.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user");
@@ -63,7 +63,9 @@ namespace Emiplus.View.Financeiro
         {
             Table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -90,11 +92,11 @@ namespace Emiplus.View.Financeiro
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable();
+                var dados = await GetDataTable();
                 Data = dados;
             }
 
-            for (int i = 0; i < Data.Count(); i++)
+            for (var i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
 
@@ -164,26 +166,23 @@ namespace Emiplus.View.Financeiro
             GridLista.CellFormatting += (s, e) =>
             {
                 foreach (DataGridViewRow row in GridLista.Rows)
-                {
                     if (row.Cells[5].Value.ToString().Contains("Fechado"))
                     {
-                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold,
+                            GraphicsUnit.Point, 0);
                         row.Cells[5].Style.ForeColor = Color.White;
                         row.Cells[5].Style.BackColor = Color.FromArgb(139, 215, 146);
                     }
                     else
                     {
-                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                        row.Cells[5].Style.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold,
+                            GraphicsUnit.Point, 0);
                         row.Cells[5].Style.ForeColor = Color.White;
                         row.Cells[5].Style.BackColor = Color.FromArgb(255, 89, 89);
                     }
-                }
             };
 
-            btnSearch.Click += async (s, e) =>
-            {
-                await DataTableAsync();
-            };
+            btnSearch.Click += async (s, e) => { await DataTableAsync(); };
 
             GridLista.DoubleClick += (s, e) => ShowDetailsCaixa();
 
@@ -197,7 +196,7 @@ namespace Emiplus.View.Financeiro
 
         private ArrayList GetDataCaixas()
         {
-            ArrayList dados = new ArrayList();
+            var dados = new ArrayList();
             dados.Clear();
 
             double txtSaldoInicial = 0;
@@ -223,9 +222,10 @@ namespace Emiplus.View.Financeiro
             double txtBoleto = 0;
 
             foreach (DataGridViewRow item in GridLista.Rows)
-            {
-                if (Validation.ConvertToInt32(item.Cells["ID"].Value) != 0) {
-                    _modelCaixa = _modelCaixa.FindById(Validation.ConvertToInt32(item.Cells["ID"].Value)).FirstOrDefault<Model.Caixa>();
+                if (Validation.ConvertToInt32(item.Cells["ID"].Value) != 0)
+                {
+                    _modelCaixa = _modelCaixa.FindById(Validation.ConvertToInt32(item.Cells["ID"].Value))
+                        .FirstOrDefault<Model.Caixa>();
 
                     txtSaldoInicial += _modelCaixa.Saldo_Inicial;
                     txtEntradas += _controllerCaixa.SumEntradas(_modelCaixa.Id);
@@ -249,7 +249,6 @@ namespace Emiplus.View.Financeiro
                     txtCrediario = _controllerCaixa.SumPagamento(_modelCaixa.Id, 5);
                     txtBoleto = _controllerCaixa.SumPagamento(_modelCaixa.Id, 6);
                 }
-            }
 
             dados.Add(new
             {
@@ -287,7 +286,8 @@ namespace Emiplus.View.Financeiro
                 URL_BASE = Program.PATH_BASE,
                 NomeFantasia = Settings.Default.empresa_nome_fantasia,
                 CNPJ = Settings.Default.empresa_cnpj,
-                Address = $"{Settings.Default.empresa_rua} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
+                Address =
+                    $"{Settings.Default.empresa_rua} - {Settings.Default.empresa_bairro} - {Settings.Default.empresa_cidade}/{Settings.Default.empresa_estado}",
                 Logo = Settings.Default.empresa_logo,
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy HH:mm"),
                 txtResponsavel = Usuarios.Text,
@@ -301,7 +301,7 @@ namespace Emiplus.View.Financeiro
                 txtVendasDescontos = Validation.FormatPrice(dados[0].txtVendasDescontos, true),
                 txtVendasMedia = Validation.FormatPrice(dados[0].txtVendasMedia, true),
                 txtVendasCanceladasTotal = Validation.FormatPrice(dados[0].txtVendasCanceladasTotal, true),
-                txtVendasCanceladas = dados[0].txtVendasCanceladas,
+                dados[0].txtVendasCanceladas,
                 txtDinheiro = Validation.FormatPrice(dados[0].txtDinheiro, true),
                 txtCheque = Validation.FormatPrice(dados[0].txtCheque, true),
                 txtCarDeb = Validation.FormatPrice(dados[0].txtCarDeb, true),
@@ -317,7 +317,9 @@ namespace Emiplus.View.Financeiro
 
             Browser.htmlRender = render;
             using (var f = new Browser())
+            {
                 f.ShowDialog();
+            }
         }
     }
 }

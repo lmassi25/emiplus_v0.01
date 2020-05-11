@@ -7,8 +7,7 @@ namespace Emiplus.Data.Helpers
     {
         public static bool Message(string title, string message, AlertBig.AlertType type, AlertBig.AlertBtn btn, bool focus = false)
         {
-            var result = new AlertBig(title, message, type, btn, focus);
-            result.TopMost = true;
+            var result = new AlertBig(title, message, type, btn, focus) {TopMost = true};
             if (result.ShowDialog() == DialogResult.OK)
                 return true;
 

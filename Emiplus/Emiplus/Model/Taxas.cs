@@ -23,6 +23,9 @@ namespace Emiplus.Model
         public double Taxa_Debito { get; set; }
         public double Taxa_Parcela { get; set; }
         public int Parcela_Semjuros { get; set; }
+        public int Dias_Receber { get; set; }
+        public int Antecipacao_Auto { get; set; }
+        public double Taxa_Antecipacao { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
@@ -36,10 +39,7 @@ namespace Emiplus.Model
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
 
-                if (Data(data).Create() == 1)
-                    return true;
-
-                return false;
+                return Data(data).Create() == 1;
             }
 
             if (data.Id != 0)
@@ -47,10 +47,7 @@ namespace Emiplus.Model
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
 
-                if (Data(data).Update("ID", data.Id) == 1)
-                    return true;
-
-                return false;
+                return Data(data).Update("ID", data.Id) == 1;
             }
 
             return false;
@@ -65,10 +62,7 @@ namespace Emiplus.Model
                 status_sync = "UPDATE"
             };
 
-            if (Data(data).Update(column, id) == 1)
-                return true;
-
-            return false;
+            return Data(data).Update(column, id) == 1;
         }
     }
 }

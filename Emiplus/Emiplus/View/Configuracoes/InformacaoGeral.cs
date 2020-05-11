@@ -16,6 +16,7 @@ namespace Emiplus.View.Configuracoes
         {
             Shown += (s, e) =>
             {
+                idEmpresa.Text = Settings.Default.empresa_unique_id;
                 cnpj.Text = Settings.Default.empresa_cnpj;
                 razaosocial.Text = Settings.Default.empresa_razao_social;
                 nomefantasia.Text = Settings.Default.empresa_nome_fantasia;

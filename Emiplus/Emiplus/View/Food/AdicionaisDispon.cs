@@ -9,13 +9,8 @@ namespace Emiplus.View.Food
 {
     public partial class AdicionaisDispon : Form
     {
-        public static int IdItem { get; set; }
-        public static int IdPedidoItem { get; set; }
-        public static string AddonSelected { get; set; }
-        public static double ValorAddon { get; set; }
-
-        private Model.Item _modelItem = new Item();
-        private Model.PedidoItem _modelPedidoItem = new PedidoItem();
+        private Item _modelItem = new Item();
+        private PedidoItem _modelPedidoItem = new PedidoItem();
 
         public AdicionaisDispon()
         {
@@ -23,35 +18,44 @@ namespace Emiplus.View.Food
             Eventos();
         }
 
-        private void SetHeadersAdicionais(DataGridView Table)
+        public static int IdItem { get; set; }
+        public static int IdPedidoItem { get; set; }
+        public static string AddonSelected { get; set; }
+        public static double ValorAddon { get; set; }
+
+        private void SetHeadersAdicionais(DataGridView table)
         {
-            Table.ColumnCount = 3;
+            table.ColumnCount = 3;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Adicional";
-            Table.Columns[2].Width = 120;
-            Table.Columns[2].MinimumWidth = 120;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Adicional";
+            table.Columns[2].Width = 120;
+            table.Columns[2].MinimumWidth = 120;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[3].Width = 100;
+            table.Columns[3].Visible = true;
         }
 
         private void SetContentTableAdicionais(DataGridView table)
@@ -60,20 +64,18 @@ namespace Emiplus.View.Food
 
             if (!string.IsNullOrEmpty(_modelItem.Adicional))
             {
-                string[] addons = _modelItem.Adicional.Split(',');
-                foreach (string id in addons)
+                var addons = _modelItem.Adicional.Split(',');
+                foreach (var id in addons)
                 {
-                    ItemAdicional data = new ItemAdicional().FindAll().Where("id", id).WhereFalse("excluir")
+                    var data = new ItemAdicional().FindAll().Where("id", id).WhereFalse("excluir")
                         .FirstOrDefault<ItemAdicional>();
                     if (data.Count() > 0)
-                    {
                         table.Rows.Add(
                             false,
                             data.Id,
                             data.Title,
                             Validation.FormatPrice(Validation.ConvertToDouble(data.Valor), true)
                         );
-                    }
                 }
             }
 
@@ -83,19 +85,13 @@ namespace Emiplus.View.Food
         private void LoadAddonsSelected(string adicional)
         {
             foreach (DataGridViewRow item in GridLista.Rows)
-            {
                 if (!string.IsNullOrEmpty(adicional))
                 {
-                    string[] addons = adicional.Split(',');
-                    foreach (string id in addons)
-                    {
+                    var addons = adicional.Split(',');
+                    foreach (var id in addons)
                         if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
-                        {
                             item.Cells["Selecione"].Value = true;
-                        }
-                    }
                 }
-            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -127,12 +123,12 @@ namespace Emiplus.View.Food
             Shown += (s, e) =>
             {
                 Refresh();
-                
+
                 if (IdItem > 0)
                     _modelItem = _modelItem.FindById(IdItem).FirstOrDefault<Item>();
 
                 if (IdPedidoItem > 0)
-                    _modelPedidoItem = _modelPedidoItem.FindById(IdPedidoItem).FirstOrDefault<Model.PedidoItem>();
+                    _modelPedidoItem = _modelPedidoItem.FindById(IdPedidoItem).FirstOrDefault<PedidoItem>();
 
                 SetHeadersAdicionais(GridLista);
                 SetContentTableAdicionais(GridLista);
@@ -146,26 +142,24 @@ namespace Emiplus.View.Food
 
             btnSalvar.Click += (s, e) =>
             {
-                StringBuilder Addon = new StringBuilder();
-                double SumValor = 0;
+                var addon = new StringBuilder();
+                double sumValor = 0;
                 foreach (DataGridViewRow item in GridLista.Rows)
-                {
-                    if ((bool)item.Cells["Selecione"].Value)
+                    if ((bool) item.Cells["Selecione"].Value)
                     {
-                        SumValor += Validation.ConvertToDouble(item.Cells["Valor"].Value);
+                        sumValor += Validation.ConvertToDouble(item.Cells["Valor"].Value);
 
-                        if (string.IsNullOrEmpty(Addon.ToString()))
+                        if (string.IsNullOrEmpty(addon.ToString()))
                         {
-                            Addon.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
+                            addon.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
                             continue;
                         }
 
-                        Addon.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
+                        addon.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
                     }
-                }
 
-                ValorAddon = SumValor;
-                AddonSelected = Addon.ToString();
+                ValorAddon = sumValor;
+                AddonSelected = addon.ToString();
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -175,14 +169,7 @@ namespace Emiplus.View.Food
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
-                    {
-                        GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
-                    }
-                    else
-                    {
-                        GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
-                    }
+                    GridLista.SelectedRows[0].Cells["Selecione"].Value = (bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false;
                 }
             };
 
@@ -191,7 +178,7 @@ namespace Emiplus.View.Food
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -201,7 +188,7 @@ namespace Emiplus.View.Food
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };

@@ -1,40 +1,25 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.Properties;
 using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class OpcoesCfeCpf : Form
     {
-        public static int idPedido { get; set; } // id pedido
-        public static bool emitir { get; set; }
+        private Pessoa _mCliente = new Pessoa();
         private Model.Pedido _mPedido = new Model.Pedido();
-        private Model.Pessoa _mCliente = new Model.Pessoa();
-
-        private string _msg;
 
         public OpcoesCfeCpf()
         {
             InitializeComponent();
-
-            if (OpcoesCfe.tipo == "NFCe")
-            {
-                pictureBox1.Image = Resources.nfce;
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                label10.Text = "Confirme as informações do cliente que serão enviadas ao NFCe";
-            }
-
-            _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
-
-            if (_mPedido != null && _mPedido.Cliente > 0)
-                _mCliente = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Model.Pessoa>();
-
             Eventos();
         }
+
+        public static int idPedido { get; set; } // id pedido
+        public static bool emitir { get; set; }
 
         private void KeyDowns(object sender, KeyEventArgs e)
         {
@@ -63,8 +48,7 @@ namespace Emiplus.View.Comercial
             if (emitir)
             {
                 OpcoesCfeEmitir.idPedido = idPedido;
-                OpcoesCfeEmitir f = new OpcoesCfeEmitir();
-                f.TopMost = true;
+                var f = new OpcoesCfeEmitir {TopMost = true};
                 f.Show();
 
                 Close();
@@ -72,8 +56,7 @@ namespace Emiplus.View.Comercial
             else
             {
                 OpcoesCfe.idPedido = idPedido;
-                OpcoesCfe f = new OpcoesCfe();
-                f.TopMost = true;
+                var f = new OpcoesCfe {TopMost = true};
                 f.Show();
 
                 Close();
@@ -81,7 +64,7 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
@@ -91,44 +74,51 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                pessoaJF.DataSource = new List<String> { "Física", "Jurídica" };
+                if (OpcoesCfe.tipo == "NFCe")
+                {
+                    pictureBox1.Image = Resources.nfce;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                    label10.Text = @"Confirme as informações do cliente que serão enviadas ao NFCe";
+                }
+
+                _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+
+                if (_mPedido != null && _mPedido.Cliente > 0)
+                    _mCliente = _mCliente.FindById(_mPedido.Cliente).FirstOrDefault<Pessoa>();
+
+                pessoaJF.DataSource = new List<string> {"Física", "Jurídica"};
 
                 nomeRS.Text = _mCliente.Nome ?? "";
                 cpfCnpj.Text = _mCliente.CPF ?? "";
                 pessoaJF.Text = _mCliente.Pessoatipo ?? "Física";
 
-                if (!string.IsNullOrEmpty(_mPedido.cfe_nome) && _mPedido.cfe_nome != "Consumidor Final")
+                if (!string.IsNullOrEmpty(_mPedido?.cfe_nome) && _mPedido.cfe_nome != "Consumidor Final")
                     nomeRS.Text = _mPedido.cfe_nome;
 
-                if (!String.IsNullOrEmpty(_mPedido.cfe_cpf))
+                if (!string.IsNullOrEmpty(_mPedido?.cfe_cpf))
                 {
                     cpfCnpj.Text = _mPedido.cfe_cpf;
 
-                    if (_mPedido.cfe_cpf.Length == 11)
-                        pessoaJF.SelectedItem = "Física";
-                    else
-                        pessoaJF.SelectedItem = "Jurídica";
+                    pessoaJF.SelectedItem = _mPedido.cfe_cpf.Length == 11 ? "Física" : "Jurídica";
                 }
             };
 
             cpfCnpj.KeyPress += (s, e) =>
             {
-                if (pessoaJF.Text == "Física")
-                    Masks.MaskCPF(s, e);
-
-                if (pessoaJF.Text == "Jurídica")
-                    Masks.MaskCNPJ(s, e);
+                switch (pessoaJF.Text)
+                {
+                    case "Física":
+                        Masks.MaskCPF(s, e);
+                        break;
+                    case "Jurídica":
+                        Masks.MaskCNPJ(s, e);
+                        break;
+                }
             };
 
-            btnSalvar.Click += (s, e) =>
-            {
-                Continuar();
-            };
+            btnSalvar.Click += (s, e) => { Continuar(); };
 
-            btnCancelar.Click += (s, e) =>
-            {
-                Close();
-            };
+            btnCancelar.Click += (s, e) => { Close(); };
         }
     }
 }

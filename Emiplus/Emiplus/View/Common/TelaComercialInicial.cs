@@ -1,8 +1,11 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Comercial;
+using Emiplus.View.Reports;
 using SqlKata.Execution;
-using System.Windows.Forms;
+using Pedido = Emiplus.View.Comercial.Pedido;
 
 namespace Emiplus.View.Common
 {
@@ -40,8 +43,8 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
                 AddPedidos.PDV = true;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             Clientes.Click += (s, e) =>
@@ -50,7 +53,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             Pedidos.Click += (s, e) =>
@@ -61,8 +64,8 @@ namespace Emiplus.View.Common
                 Home.pedidoPage = "Vendas";
                 AddPedidos.Id = 0;
                 AddPedidos.PDV = false;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             Orcamentos.Click += (s, e) =>
@@ -72,8 +75,8 @@ namespace Emiplus.View.Common
 
                 Home.pedidoPage = "Orçamentos";
                 AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             Consignacoes.Click += (s, e) =>
@@ -83,8 +86,8 @@ namespace Emiplus.View.Common
 
                 Home.pedidoPage = "Consignações";
                 AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             Devolucoes.Click += (s, e) =>
@@ -94,8 +97,8 @@ namespace Emiplus.View.Common
 
                 Home.pedidoPage = "Devoluções";
                 AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             VendasRel.Click += (s, e) =>
@@ -113,7 +116,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Vendas";
-                OpenForm.Show<Reports.ProdutosVendidos>(this);
+                OpenForm.Show<ProdutosVendidos>(this);
                 //Reports.ProdutosVendidos ProdVendidos = new Reports.ProdutosVendidos();
                 //ProdVendidos.ShowDialog();
             };
@@ -170,7 +173,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(Comissoes, pictureBox14, "com_comissoes"))
                     return;
 
-                Model.Usuarios usuarios = new Model.Usuarios().FindByUserId(Settings.Default.user_id).FirstOrDefault<Model.Usuarios>();
+                var usuarios = new Usuarios().FindByUserId(Settings.Default.user_id).FirstOrDefault<Usuarios>();
                 if (usuarios.Sub_user == 0)
                 {
                     OpenForm.Show<Comissão>(this);

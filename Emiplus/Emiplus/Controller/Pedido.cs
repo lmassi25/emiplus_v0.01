@@ -1,26 +1,31 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Emiplus.View.Common;
-using ESC_POS_USB_NET.Printer;
-using SqlKata.Execution;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using ESC_POS_USB_NET.Printer;
+using SqlKata.Execution;
 
 namespace Emiplus.Controller
 {
     internal class Pedido
     {
-        private Model.Pedido _modelPedido = new Model.Pedido();
-        private Model.Titulo _modelTitulo = new Model.Titulo();
+        private readonly Model.Pedido _modelPedido = new Model.Pedido();
+        private readonly Model.Titulo _modelTitulo = new Model.Titulo();
 
         /// <summary>
-        /// Alimenta grid dos clientes
+        ///     Voucher
+        /// </summary>
+        private readonly Random random = new Random();
+
+        /// <summary>
+        ///     Alimenta grid dos clientes
         /// </summary>
         /// <param name="Table">Grid para alimentar</param>
         /// <param name="SearchText">Input box</param>
@@ -67,7 +72,6 @@ namespace Emiplus.Controller
                 .Get();
 
             foreach (var cliente in data)
-            {
                 Table.Rows.Add(
                     cliente.ID,
                     cliente.NOME,
@@ -75,11 +79,10 @@ namespace Emiplus.Controller
                     cliente.RG,
                     cliente.FANTASIA
                 );
-            }
         }
 
         /// <summary>
-        /// Alimenta grid dos colaboradores
+        ///     Alimenta grid dos colaboradores
         /// </summary>
         /// <param name="Table">Grid para alimentar</param>
         /// <param name="SearchText">Input box</param>
@@ -96,7 +99,7 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            var clientes = new Model.Usuarios();
+            var clientes = new Usuarios();
 
             var search = "%" + SearchText + "%";
 
@@ -112,15 +115,15 @@ namespace Emiplus.Controller
                 .Get();
 
             foreach (var cliente in data)
-            {
                 Table.Rows.Add(
                     cliente.ID_USER,
                     cliente.NOME
                 );
-            }
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0, Dictionary<string, string> dataFilter = null)
+        public Task<IEnumerable<dynamic>> GetDataTablePedidos(string tipo, string dataInicial, string dataFinal,
+            bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0,
+            int usuario = 0, int idProduto = 0, Dictionary<string, string> dataFilter = null)
         {
             var search = "%" + SearchText + "%";
 
@@ -134,14 +137,14 @@ namespace Emiplus.Controller
                 //.LeftJoin("pedido_item", "pedido_item.pedido", "pedido.id")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe")
                 //.Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido_item.item", "pedido_item.pedido")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "pedido.campoa", "pedido.campob")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome",
+                    "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir",
+                    "pedido.status", "pedido.campoa", "pedido.campob")
                 .Where("pedido.excluir", excluir);
 
             if (!noFilterData)
-            {
                 query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                     .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
-            }
+                    .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
 
             if (!tipo.Contains("Notas"))
                 query.Where("pedido.tipo", tipo);
@@ -154,7 +157,6 @@ namespace Emiplus.Controller
                 if (status != 0)
                 {
                     if (tipo == "Notas")
-                    {
                         //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
                         switch (status)
                         {
@@ -170,11 +172,8 @@ namespace Emiplus.Controller
                                 query.Where("nota.status", "Cancelada");
                                 break;
                         }
-                    }
                     else
-                    {
                         query.Where("pedido.status", status);
-                    }
                 }
                 else
                 {
@@ -186,31 +185,22 @@ namespace Emiplus.Controller
                 query.Where("pedido.id", idPedido);
 
             if (idProduto != 0)
-            {
-                query.WhereRaw($"EXISTS (SELECT FIRST 1 1 FROM \"PEDIDO_ITEM\" WHERE \"PEDIDO_ITEM\".\"ITEM\" = {idProduto} AND \"PEDIDO\".\"ID\" = \"PEDIDO_ITEM\".\"PEDIDO\" AND \"PEDIDO_ITEM\".\"EXCLUIR\" = 0)");
-            }
+                query.WhereRaw(
+                    $"EXISTS (SELECT FIRST 1 1 FROM \"PEDIDO_ITEM\" WHERE \"PEDIDO_ITEM\".\"ITEM\" = {idProduto} AND \"PEDIDO\".\"ID\" = \"PEDIDO_ITEM\".\"PEDIDO\" AND \"PEDIDO_ITEM\".\"EXCLUIR\" = 0)");
 
-            if(tipo == "Ordens de Servico")
-            {
-                if(dataFilter != null)
-                {
+            if (tipo == "Ordens de Servico")
+                if (dataFilter != null)
                     foreach (var item in dataFilter)
-                    {
-                        if (!String.IsNullOrEmpty(item.Value))
-                        {
+                        if (!string.IsNullOrEmpty(item.Value))
                             query.Where
                             (
                                 q => q.WhereLike("pedido." + item.Key, item.Value)
                             );
-                        }
-                    }
-                }
-            }
 
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
                 (
-                    q => q.WhereLike("pessoa.nome", search, false)
+                    q => q.WhereLike("pessoa.nome", search)
                 );
 
             query.OrderByDesc("pedido.id");
@@ -218,7 +208,9 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableNotas(string tipo, string dataInicial, string dataFinal, bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0)
+        public Task<IEnumerable<dynamic>> GetDataTableNotas(string tipo, string dataInicial, string dataFinal,
+            bool noFilterData, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0,
+            int usuario = 0)
         {
             var search = "%" + SearchText + "%";
 
@@ -229,29 +221,34 @@ namespace Emiplus.Controller
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
                 .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
                 .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir", "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe", "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota", "nota.CHAVEDEACESSO as chavedeacesso");
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome",
+                    "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir",
+                    "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe",
+                    "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota",
+                    "nota.CHAVEDEACESSO as chavedeacesso");
             //.Where("nota.excluir", excluir)
             //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
             //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
 
-            if (!noFilterData) {
+            if (!noFilterData)
                 query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
                     .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
-            }
 
             if (tipo != "Cupons")
                 query.Where("pedido.excluir", excluir);
 
-            if (tipo == "Notas")
-                query.Where("nota.tipo", "NFe");
-
-            if (tipo == "Cupons")
+            switch (tipo)
             {
-                query.Where("nota.tipo", "CFe");
-                query.Where(
-                    q => q.Where("nota.status", "<>", "Pendente").Where("nota.status", "<>", "Falha")
-                );
-                //query.Where("nota.status", "<>", "Pendente");
+                case "Notas":
+                    query.Where("nota.tipo", "NFe");
+                    break;
+                case "Cupons":
+                    query.Where("nota.tipo", "CFe");
+                    query.Where(
+                        q => q.Where("nota.status", "<>", "Pendente").Where("nota.status", "<>", "Falha")
+                    );
+                    //query.Where("nota.status", "<>", "Pendente");
+                    break;
             }
 
             if (usuario != 0)
@@ -260,7 +257,6 @@ namespace Emiplus.Controller
             if (status != 0)
             {
                 if (tipo == "Notas" || tipo == "Cupons")
-                {
                     //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
                     switch (status)
                     {
@@ -274,7 +270,6 @@ namespace Emiplus.Controller
                             query.Where("nota.status", "Cancelada");
                             break;
                     }
-                }
                 else
                     query.Where("pedido.status", status);
             }
@@ -285,7 +280,7 @@ namespace Emiplus.Controller
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
                 (
-                    q => q.WhereLike("pessoa.nome", search, false)
+                    q => q.WhereLike("pessoa.nome", search)
                 );
 
             query.OrderByDesc("nota.id");
@@ -293,22 +288,22 @@ namespace Emiplus.Controller
             return query.GetAsync<dynamic>();
         }
 
-        public Task<IEnumerable<dynamic>> GetDataTableTotaisPedidos(string tipo, string dataInicial, string dataFinal, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0)
+        public Task<IEnumerable<dynamic>> GetDataTableTotaisPedidos(string tipo, string dataInicial, string dataFinal,
+            string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0,
+            int idProduto = 0)
         {
             var search = "%" + SearchText + "%";
 
             var query = new Model.Pedido().Query();
 
             query
-            .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-            .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
-            .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
-
-            .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
-
-            .Where("pedido.excluir", excluir)
-            .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-            .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
+                .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
+                .SelectRaw("SUM(pedido.total) as total, COUNT(pedido.id) as id")
+                .Where("pedido.excluir", excluir)
+                .Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
+                .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
 
             if (!tipo.Contains("Notas"))
                 query.Where("pedido.tipo", tipo);
@@ -324,7 +319,6 @@ namespace Emiplus.Controller
                 if (status != 0)
                 {
                     if (tipo == "Notas")
-                    {
                         //1-PENDENTES 2-AUTORIZADAS 3-CANCELADAS
                         switch (status)
                         {
@@ -340,11 +334,8 @@ namespace Emiplus.Controller
                                 query.Where("nota.status", "Cancelada");
                                 break;
                         }
-                    }
                     else
-                    {
                         query.Where("pedido.status", status);
-                    }
                 }
                 else
                 {
@@ -361,13 +352,14 @@ namespace Emiplus.Controller
             if (!string.IsNullOrEmpty(SearchText))
                 query.Where
                 (
-                    q => q.WhereLike("pessoa.nome", search, false)
+                    q => q.WhereLike("pessoa.nome", search)
                 );
 
             return query.GetAsync<dynamic>();
         }
 
-        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal, bool noFilterData, int status = 2)
+        public IEnumerable<dynamic> GetTotaisNota(string tipo, string dataInicial, string dataFinal, bool noFilterData,
+            int status = 2)
         {
             var query = new Model.Nota().Query();
 
@@ -386,7 +378,6 @@ namespace Emiplus.Controller
             query.Where("nota.tipo", tipo);
 
             if (status != 0)
-            {
                 switch (status)
                 {
                     case 1:
@@ -405,16 +396,20 @@ namespace Emiplus.Controller
                             query.Where("nota.status", "<>", "Pendente");
                         break;
                 }
-            }
 
             return query.Get();
         }
 
-        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal, bool noFilterData, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0, int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0, Dictionary<string, string> dataFilter = null)
+        public async Task SetTablePedidos(DataGridView Table, string tipo, string dataInicial, string dataFinal,
+            bool noFilterData, IEnumerable<dynamic> Data = null, string SearchText = null, int excluir = 0,
+            int idPedido = 0, int status = 0, int usuario = 0, int idProduto = 0,
+            Dictionary<string, string> dataFilter = null)
         {
             Table.ColumnCount = 14;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -422,32 +417,38 @@ namespace Emiplus.Controller
             Table.Columns[0].Name = "ID";
             Table.Columns[0].Visible = false;
 
-            if (tipo == "Notas")
+            switch (tipo)
             {
-                Table.Columns[1].Name = "N° Sefaz / Série";
-                Table.Columns[1].MinimumWidth = 110;
-            }
-            else if (tipo == "Cupons")
-            {
-                Table.Columns[1].Name = "N° Sefaz";
-                Table.Columns[1].Width = 75;
-            }
-            else
-            {
-                Table.Columns[1].Name = "N°";
-                Table.Columns[1].Width = 50;
+                case "Notas":
+                    Table.Columns[1].Name = "N° Sefaz / Série";
+                    Table.Columns[1].MinimumWidth = 110;
+                    break;
+                case "Cupons":
+                    Table.Columns[1].Name = "N° Sefaz";
+                    Table.Columns[1].Width = 75;
+                    break;
+                default:
+                    Table.Columns[1].Name = "N°";
+                    Table.Columns[1].Width = 50;
+                    break;
             }
 
             Table.Columns[2].Name = "Emissão";
             Table.Columns[2].MinimumWidth = 80;
 
-            if (tipo == "Compras")
-                Table.Columns[3].Name = "Fornecedor";
-            else if (tipo == "Remessas")
-                Table.Columns[3].Name = "Empresa";
-            else
-                Table.Columns[3].Name = "Cliente";
-            
+            switch (tipo)
+            {
+                case "Compras":
+                    Table.Columns[3].Name = "Fornecedor";
+                    break;
+                case "Remessas":
+                    Table.Columns[3].Name = "Empresa";
+                    break;
+                default:
+                    Table.Columns[3].Name = "Cliente";
+                    break;
+            }
+
             Table.Columns[3].Width = 150;
             Table.Columns[3].MinimumWidth = 150;
 
@@ -478,14 +479,16 @@ namespace Emiplus.Controller
             Table.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[10].Visible = false;
 
-            if (tipo == "Vendas")
+            switch (tipo)
             {
-                Table.Columns[9].Visible = true;
-                Table.Columns[10].Visible = true;
+                case "Vendas":
+                    Table.Columns[9].Visible = true;
+                    Table.Columns[10].Visible = true;
+                    break;
+                case "Ordens de Servico":
+                    Table.Columns[4].Visible = false;
+                    break;
             }
-
-            if (tipo == "Ordens de Servico")
-                Table.Columns[4].Visible = false;
 
             Table.Columns[11].Name = "TIPO";
             Table.Columns[11].Visible = false;
@@ -495,10 +498,7 @@ namespace Emiplus.Controller
 
             Table.Columns[13].Name = "Chave de Acesso";
             Table.Columns[13].MinimumWidth = 280;
-            if(tipo == "Notas")
-                Table.Columns[13].Visible = true;
-            else
-                Table.Columns[13].Visible = false;
+            Table.Columns[13].Visible = tipo == "Notas";
 
             Table.Rows.Clear();
 
@@ -510,11 +510,13 @@ namespace Emiplus.Controller
             {
                 case "Cupons":
                 case "Notas":
-                    dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario);
+                    dados = await GetDataTableNotas(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir,
+                        idPedido, status, usuario);
                     break;
 
                 default:
-                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir, idPedido, status, usuario, idProduto, dataFilter);
+                    dados = await GetDataTablePedidos(tipo, dataInicial, dataFinal, noFilterData, SearchText, excluir,
+                        idPedido, status, usuario, idProduto, dataFilter);
                     break;
             }
 
@@ -525,34 +527,44 @@ namespace Emiplus.Controller
             {
                 var statusNfePedido = "";
 
-                if (tipo == "Compras")
-                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Pago" : item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
+                switch (tipo)
+                {
+                    case "Compras":
+                        statusNfePedido = item.STATUS == 0 ? "Pendente" :
+                            item.STATUS == 1 ? @"Finalizado\Pago" :
+                            item.STATUS == 2 ? "Pagamento Pendente" : "N/D";
+                        break;
+                    case "Remessas":
+                        statusNfePedido = item.CAMPOA;
+                        break;
+                    case "Vendas":
+                        statusNfePedido = item.STATUS == 0 ? "Pendente" :
+                            item.STATUS == 1 ? @"Finalizado\Recebido" :
+                            item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
+                        break;
+                }
 
-                if (tipo == "Remessas")
-                    statusNfePedido = item.CAMPOA;
-
-                if (tipo == "Vendas")
-                    statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? @"Finalizado\Recebido" : item.STATUS == 2 ? "Recebimento Pendente" : "N/D";
-
-                if (Home.pedidoPage == "Ordens de Servico" || Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
+                if (Home.pedidoPage == "Ordens de Servico" || Home.pedidoPage == "Orçamentos" ||
+                    Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações")
                     statusNfePedido = item.STATUS == 0 ? "Pendente" : item.STATUS == 1 ? "Finalizado" : "N/D";
 
                 #region N° SEFAZ
 
                 string n_cfe = "", n_nfe = "";
-                var dataNota = tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) : tipo == "Notas" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID);
+                var dataNota = tipo == "Cupons" ? GetDadosNota(0, item.IDNOTA) :
+                    tipo == "Notas" ? GetDadosNota(0, item.IDNOTA) : GetDadosNota(item.ID);
 
                 if (dataNota == null)
                     return;
 
-                foreach (dynamic item2 in dataNota)
+                foreach (var item2 in dataNota)
                 {
                     if (item2.TIPONFE == "NFe")
                     {
                         if (tipo == "Vendas" && item2.STATUSNFE == "Cancelada")
                             n_nfe = "";
                         else
-                            n_nfe = !String.IsNullOrEmpty(item2.SERIE) ? item2.NFE + "/" + item2.SERIE : item2.NFE;
+                            n_nfe = !string.IsNullOrEmpty(item2.SERIE) ? item2.NFE + "/" + item2.SERIE : item2.NFE;
 
                         if (tipo == "Notas")
                             statusNfePedido = item2.STATUSNFE == null ? "Pendente" : item2.STATUSNFE;
@@ -577,7 +589,8 @@ namespace Emiplus.Controller
                     item.ID,
                     tipo == "Notas" ? n_nfe : tipo == "Cupons" ? n_cfe : item.ID,
                     Validation.ConvertDateToForm(item.EMISSAO),
-                    item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" : tipo == "Remessas" ? item.CAMPOB : item.NOME,
+                    item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" :
+                    tipo == "Remessas" ? item.CAMPOB : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
                     item.COLABORADOR,
                     tipo == "Notas" || tipo == "Cupons" ? item.CRIADONOTA : item.CRIADO,
@@ -617,7 +630,7 @@ namespace Emiplus.Controller
         {
             _modelPedido.Remove(idPedido, "id", false);
 
-            if(Home.pedidoPage == "Ordens de Servico")
+            if (Home.pedidoPage == "Ordens de Servico")
             {
                 Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
                 return;
@@ -625,30 +638,40 @@ namespace Emiplus.Controller
 
             _modelTitulo.Remove(idPedido, "id_pedido", false);
 
-            if (Home.pedidoPage == "Vendas" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Orçamentos")
-                new Controller.Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Add().Pedido();
-            else if (Home.pedidoPage == "Compras" || Home.pedidoPage == "Devoluções")
-                new Controller.Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Remove().Pedido();
+            switch (Home.pedidoPage)
+            {
+                case "Vendas":
+                case "Consignações":
+                case "Orçamentos":
+                    new Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Add().Pedido();
+                    break;
+                case "Compras":
+                case "Devoluções":
+                    new Estoque(idPedido, Home.pedidoPage, "Botão Apagar").Remove().Pedido();
+                    break;
+            }
 
             Alert.Message("Pronto!", "Removido com sucesso!", Alert.AlertType.info);
         }
 
         public void Imprimir(int idPedido, string tipo = "Bobina 80mm")
         {
-            if (tipo == "Ordens de Servico")
+            switch (tipo)
             {
-                PedidoImpressao print = new PedidoImpressao();
-                print.PrintOS(idPedido);
-                return;
+                case "Ordens de Servico":
+                {
+                    var print = new PedidoImpressao();
+                    print.PrintOS(idPedido);
+                    return;
+                }
+                case "Folha A4":
+                {
+                    var print = new PedidoImpressao();
+                    print.Print(idPedido);
+                    return;
+                }
             }
 
-            if (tipo == "Folha A4")
-            {
-                PedidoImpressao print = new PedidoImpressao();
-                print.Print(idPedido);
-                return;
-            }
-            
             if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
             {
                 #region IMPRESSAO
@@ -656,8 +679,8 @@ namespace Emiplus.Controller
                 #region EMITENTE
 
                 var _emitente = new Model.Pessoa();
-                var _emitenteEndereco = new Model.PessoaEndereco();
-                var _emitenteContato = new Model.PessoaContato();
+                var _emitenteEndereco = new PessoaEndereco();
+                var _emitenteContato = new PessoaContato();
 
                 _emitente.RG = Settings.Default.empresa_inscricao_estadual;
                 _emitente.CPF = Settings.Default.empresa_cnpj;
@@ -689,7 +712,7 @@ namespace Emiplus.Controller
                     return;
                 }
 
-                Printer printer = new Printer(printername);
+                var printer = new Printer(printername);
 
                 //using (WebClient wc = new WebClient())
                 //{
@@ -714,25 +737,23 @@ namespace Emiplus.Controller
 
                 printer.BoldMode("Extrato N°" + _pedido.Id);
 
-                if (_pedido.Tipo == "Orçamentos")
+                switch (_pedido.Tipo)
                 {
-                    printer.BoldMode("Orçamento".ToUpper());
-                }
-                else if (_pedido.Tipo == "Consignações")
-                {
-                    printer.BoldMode("Consignação".ToUpper());
-                }
-                else if (_pedido.Tipo == "Compras")
-                {
-                    printer.BoldMode("Compra".ToUpper());
-                }
-                else if (_pedido.Tipo == "Devoluções")
-                {
-                    printer.BoldMode("Devolução".ToUpper());
-                }
-                else
-                {
-                    printer.BoldMode("Venda".ToUpper());
+                    case "Orçamentos":
+                        printer.BoldMode("Orçamento".ToUpper());
+                        break;
+                    case "Consignações":
+                        printer.BoldMode("Consignação".ToUpper());
+                        break;
+                    case "Compras":
+                        printer.BoldMode("Compra".ToUpper());
+                        break;
+                    case "Devoluções":
+                        printer.BoldMode("Devolução".ToUpper());
+                        break;
+                    default:
+                        printer.BoldMode("Venda".ToUpper());
+                        break;
                 }
 
                 printer.Separator();
@@ -754,20 +775,26 @@ namespace Emiplus.Controller
                 //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
 
                 var itens = new Model.PedidoItem().Query()
-                .LeftJoin("item", "pedido_item.item", "item.id")
-                .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
-                .Where("pedido_item.pedido", idPedido)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos")
-                .OrderBy("pedido_item.id")
-                .Get();
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
+                        "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
+                        "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                    .Where("pedido_item.pedido", idPedido)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .OrderBy("pedido_item.id")
+                    .Get();
 
-                int count = 0;
+                var count = 0;
 
                 foreach (var data in itens)
                 {
                     count++;
-                    printer.Append(Validation.AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
+                    printer.Append(Validation.AddSpaces(
+                        count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " +
+                        Validation.FormatDecimalPrice(data.VALORVENDA) + " (" +
+                        Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")",
+                        Validation.FormatDecimalPrice(data.TOTAL)));
                 }
 
                 printer.NewLines(2);
@@ -781,9 +808,10 @@ namespace Emiplus.Controller
                 //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
                 //total = total + Validation.ConvertToDouble(data.TOTAL);
 
-                string formapgto = "";
+                var formapgto = "";
 
-                var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", idPedido).Where("titulo.excluir", 0).Get();
+                var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", idPedido)
+                    .Where("titulo.excluir", 0).Get();
                 foreach (var data in pagamentos)
                 {
                     switch (data.ID_FORMAPGTO)
@@ -834,14 +862,14 @@ namespace Emiplus.Controller
                     printer.Separator();
                 }
                 else
+                {
                     printer.NewLines(3);
+                }
 
                 printer.FullPaperCut();
                 printer.PrintDocument();
 
                 #endregion IMPRESSAO
-
-                return;
             }
         }
 
@@ -850,8 +878,8 @@ namespace Emiplus.Controller
             #region EMITENTE
 
             var _emitente = new Model.Pessoa();
-            var _emitenteEndereco = new Model.PessoaEndereco();
-            var _emitenteContato = new Model.PessoaContato();
+            var _emitenteEndereco = new PessoaEndereco();
+            var _emitenteContato = new PessoaContato();
 
             _emitente.RG = Settings.Default.empresa_inscricao_estadual;
             _emitente.CPF = Settings.Default.empresa_cnpj;
@@ -883,29 +911,29 @@ namespace Emiplus.Controller
             var itens = new Model.PedidoItem().Query();
 
             if (idPedido > 0)
-            {
                 itens
-                .LeftJoin("item", "pedido_item.item", "item.id")
-                .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
-                .Where("pedido_item.pedido", idPedido)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos")
-                .OrderBy("pedido_item.id");           
-            }
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
+                        "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
+                        "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
+                    .Where("pedido_item.pedido", idPedido)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .OrderBy("pedido_item.id");
             else
-            {
                 itens
-                .LeftJoin("item", "pedido_item.item", "item.id")
-                .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
-                .Where("pedido_item.id", idPedidoItem)
-                .Where("pedido_item.excluir", 0)
-                .Where("pedido_item.tipo", "Produtos")
-                .OrderBy("pedido_item.id");                
-            }
-                       
-            Printer printer = new Printer(printername);
-            
-            int count = 0;
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
+                        "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
+                        "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal", "pedido_item.mesa")
+                    .Where("pedido_item.id", idPedidoItem)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .OrderBy("pedido_item.id");
+
+            var printer = new Printer(printername);
+
+            var count = 0;
 
             foreach (var data in itens.Get())
             {
@@ -929,24 +957,23 @@ namespace Emiplus.Controller
                 printer.Separator();
 
                 count++;
-                printer.Append(Validation.AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)));
+                printer.Append(Validation.AddSpaces(
+                    count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " +
+                    Validation.FormatDecimalPrice(data.VALORVENDA) + " (" +
+                    Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")",
+                    Validation.FormatDecimalPrice(data.TOTAL)));
             }
         }
-
-        /// <summary>
-        /// Voucher
-        /// </summary>
-        private Random random = new Random();
 
         public string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         /// <summary>
-        /// Alimenta grid das devoluções
+        ///     Alimenta grid das devoluções
         /// </summary>
         public void GetDataTableDevolucoes(DataGridView Table, int pedido)
         {
@@ -966,21 +993,20 @@ namespace Emiplus.Controller
 
             var data = devolucoes
                 .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
-                .Select("pedido.id", "pedido.voucher", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome", "pedido.criado", "pedido.excluir", "pedido.status")
+                .Select("pedido.id", "pedido.voucher", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome",
+                    "pedido.criado", "pedido.excluir", "pedido.status")
                 .Where("pedido.excluir", "0")
                 .Where("pedido.venda", pedido)
                 .Where("pedido.tipo", "Devoluções")
                 .Get();
 
             foreach (var item in data)
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.VOUCHER,
                     item.NOME,
                     item.TOTAL
                 );
-            }
         }
     }
 }

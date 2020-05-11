@@ -1,7 +1,9 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using System;
+﻿using System.IO;
 using System.Windows.Forms;
+using Emiplus.Controller;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
 
 namespace Emiplus.View.Configuracoes
 {
@@ -21,45 +23,56 @@ namespace Emiplus.View.Configuracoes
             servidor.Items.Add("Producao");
             impressora.DataSource = Support.GetImpressoras();
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Servidor", "SAT")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Servidor", "SAT")))
                 servidor.SelectedItem = IniFile.Read("Servidor", "SAT");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Printer", "SAT")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Printer", "SAT")))
                 impressora.SelectedItem = IniFile.Read("Printer", "SAT");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("N_Serie", "SAT")))
+            if (!string.IsNullOrEmpty(IniFile.Read("N_Serie", "SAT")))
                 serie.Text = IniFile.Read("N_Serie", "SAT");
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
             logs.Click += (s, e) =>
             {
-                Cfesat_logs f = new Cfesat_logs();
+                var f = new Cfesat_logs();
                 Cfesat_logs.tipo = 0;
                 f.ShowDialog();
             };
 
-            consultarsat.Click += (s, e) => AlertOptions.Message("Retorno", new Controller.Fiscal().Consulta(), Common.AlertBig.AlertType.info, Common.AlertBig.AlertBtn.OK);
+            consultarsat.Click += (s, e) =>
+            {
+                if (!File.Exists(Sat.Dll))
+                {
+                    Alert.Message("Opps", "Não encontramos a DLL do SAT", Alert.AlertType.warning);
+                    return;
+                }
+
+                AlertOptions.Message("Retorno", new Controller.Fiscal().Consulta(), AlertBig.AlertType.info,
+                    AlertBig.AlertBtn.OK);
+            };
 
             consultarstatus.Click += (s, e) =>
             {
-                Cfesat_logs f = new Cfesat_logs();
+                var f = new Cfesat_logs();
                 Cfesat_logs.tipo = 1;
                 f.ShowDialog();
             };
 
             base64.Click += (s, e) =>
             {
-                Cfesat_base64 f = new Cfesat_base64();
+                var f = new Cfesat_base64();
                 f.ShowDialog();
             };
 
             servidor.Leave += (s, e) => IniFile.Write("Servidor", servidor.Text, "SAT");
-            impressora.SelectedIndexChanged += (s, e) => IniFile.Write("Printer", impressora.SelectedItem.ToString(), "SAT");
+            impressora.SelectedIndexChanged +=
+                (s, e) => IniFile.Write("Printer", impressora.SelectedItem.ToString(), "SAT");
             serie.Leave += (s, e) => IniFile.Write("N_Serie", serie.Text, "SAT");
 
             btnExit.Click += (s, e) => Close();

@@ -1,6 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Comercial;
 using Emiplus.View.Fiscal;
-using System.Windows.Forms;
+using Emiplus.View.Produtos;
 
 namespace Emiplus.View.Common
 {
@@ -21,7 +23,7 @@ namespace Emiplus.View.Common
 
                 Nota.disableCampos = false;
                 Nota.Id = 0;
-                Nota nota = new Nota();
+                var nota = new Nota();
                 nota.ShowDialog();
             };
 
@@ -31,7 +33,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Notas";
-                OpenForm.Show<Comercial.Pedido>(this);
+                OpenForm.Show<Pedido>(this);
             };
 
             naturezaOP.Click += (s, e) =>
@@ -39,7 +41,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(naturezaOP, pictureBox5, "fiscal_natop"))
                     return;
 
-                OpenForm.Show<Fiscal.Natureza>(this);
+                OpenForm.Show<Natureza>(this);
             };
 
             clientes.Click += (s, e) =>
@@ -48,7 +50,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Clientes";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             fornecedores.Click += (s, e) =>
@@ -57,7 +59,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Fornecedores";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             transportadoras.Click += (s, e) =>
@@ -66,7 +68,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Transportadoras";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             impostos.Click += (s, e) =>
@@ -74,7 +76,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(impostos, pictureBox4, "fiscal_impostos"))
                     return;
 
-                OpenForm.Show<Produtos.Impostos>(this);
+                OpenForm.Show<Impostos>(this);
             };
 
             InutilizarNFE.Click += (s, e) =>
@@ -90,7 +92,8 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(AlterarNFE, pictureBox10, "fiscal_alterar"))
                     return;
 
-                AlertOptions.Message("", "Para alterar o últ. n° da NF-e acesse nossa área do Cliente online.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                AlertOptions.Message("", "Para alterar o últ. n° da NF-e acesse nossa área do Cliente online.",
+                    AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
             };
 
             EnviarXml.Click += (s, e) =>
@@ -107,7 +110,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Cupons";
-                OpenForm.Show<Comercial.Pedido>(this);
+                OpenForm.Show<Pedido>(this);
             };
         }
     }

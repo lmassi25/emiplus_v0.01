@@ -1,15 +1,15 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Linq;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class AbrirCaixa : Form
     {
-        private Model.Caixa _modelCaixa = new Model.Caixa();
+        private readonly Model.Caixa _modelCaixa = new Model.Caixa();
 
         public AbrirCaixa()
         {
@@ -17,7 +17,8 @@ namespace Emiplus.View.Financeiro
             Eventos();
 
             ToolHelp.Show("Abre um novo caixa.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
-            ToolHelp.Show("Utiliza um caixa existente aberto por outro usuário.", pictureBox1, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+            ToolHelp.Show("Utiliza um caixa existente aberto por outro usuário.", pictureBox1,
+                ToolHelp.ToolTipIcon.Info, "Ajuda!");
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -42,14 +43,14 @@ namespace Emiplus.View.Financeiro
                 Caixas.Enabled = false;
 
                 var caixas = new Model.Caixa().Query()
-                .LeftJoin("USUARIOS", "USUARIOS.ID_USER", "CAIXA.USUARIO")
-                .SelectRaw("USUARIOS.NOME, CAIXA.*")
-                .Where("CAIXA.tipo", "Aberto")
-                .WhereFalse("CAIXA.excluir")
-                .OrderByDesc("CAIXA.criado")
-                .Get();
+                    .LeftJoin("USUARIOS", "USUARIOS.ID_USER", "CAIXA.USUARIO")
+                    .SelectRaw("USUARIOS.NOME, CAIXA.*")
+                    .Where("CAIXA.tipo", "Aberto")
+                    .WhereFalse("CAIXA.excluir")
+                    .OrderByDesc("CAIXA.criado")
+                    .Get();
 
-                if (caixas.Count() > 0)
+                if (caixas.Any())
                 {
                     Caixas.DataSource = caixas;
                     Caixas.DisplayMember = "NOME";
@@ -65,19 +66,18 @@ namespace Emiplus.View.Financeiro
 
             OutroCaixa.Click += (s, e) =>
             {
-                btnCriar.Text = "Vincular Caixa";
+                btnCriar.Text = @"Vincular Caixa";
                 EnableDisableCampos(false, true);
             };
             MeuCaixa.Click += (s, e) =>
             {
-                btnCriar.Text = "Abrir Caixa";
+                btnCriar.Text = @"Abrir Caixa";
                 EnableDisableCampos(true, false);
             };
 
             btnCriar.Click += (s, e) =>
             {
                 if (!MeuCaixa.Checked)
-                {
                     if (OutroCaixa.Checked)
                     {
                         Home.idCaixa = Validation.ConvertToInt32(Caixas.SelectedValue);
@@ -87,7 +87,6 @@ namespace Emiplus.View.Financeiro
                         Close();
                         return;
                     }
-                }
 
                 _modelCaixa.Tipo = "Aberto";
                 _modelCaixa.Usuario = Settings.Default.user_id;
@@ -105,7 +104,7 @@ namespace Emiplus.View.Financeiro
 
             ValorInicial.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
         }

@@ -1,22 +1,21 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Data.Helpers;
-    using SqlKata;
-    using SqlKata.Execution;
-    using System;
-    using System.Collections;
-    using Valit;
+﻿using System;
+using System.Collections;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using SqlKata;
+using SqlKata.Execution;
+using Valit;
 
-    internal class Pessoa : Model
+namespace Emiplus.Model
+{
+    internal class Pessoa : Data.Database.Model
     {
         public Pessoa() : base("PESSOA")
         {
         }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public string Tipo { get; set; }
         public int Excluir { get; set; }
@@ -38,31 +37,9 @@
         public string status_sync { get; set; }
         public int ativo { get; set; }
 
-        #region SQL Create
-
-        //CREATE TABLE PESSOA
-        //(
-        //id integer not null primary key,
-        //tipo integer not null,
-        //excluir integer,
-        //criado timestamp,
-        //atualizado timestamp,
-        //deletado timestamp,
-        //empresaid varchar(255),
-        //pessoasinc varchar(50),
-        //padrao integer,
-        //nome varchar(255),
-        //fantasia varchar(255),
-        //rg varchar(50),
-        //cpf varchar(50),
-        //aniversario date
-        //);
-
-        #endregion SQL Create
-
         public Pessoa FromCsv(string csvLine, string tipo = "Clientes")
         {
-            string[] values = csvLine.Split(';');
+            var values = csvLine.Split(';');
 
             Id = 0;
             Tipo = tipo;
@@ -70,7 +47,7 @@
             Atualizado = DateTime.Now;
             Nome = values[0];
 
-            Random rnd = new Random();
+            var rnd = new Random();
             if (ExistsName(Nome))
             {
                 Nome = Nome + " " + rnd.Next(1, 10);
@@ -92,30 +69,34 @@
             {
                 if (!string.IsNullOrEmpty(values[9]))
                 {
-                    PessoaContato contato = new PessoaContato();
-                    contato.Id_pessoa = this.GetLastId();
-                    contato.Excluir = 0;
-                    contato.Contato = values[9];
-                    contato.Telefone = values[10];
-                    contato.Celular = values[11];
-                    contato.Email = values[12];
+                    var contato = new PessoaContato
+                    {
+                        Id_pessoa = GetLastId(),
+                        Excluir = 0,
+                        Contato = values[9],
+                        Telefone = values[10],
+                        Celular = values[11],
+                        Email = values[12]
+                    };
                     contato.Save(contato, false);
                 }
 
                 if (!string.IsNullOrEmpty(values[13]))
                 {
-                    PessoaEndereco addr = new PessoaEndereco();
-                    addr.Id_pessoa = this.GetLastId();
-                    addr.Excluir = 0;
-                    addr.Cep = values[13];
-                    addr.Estado = values[14];
-                    addr.Cidade = values[15];
-                    addr.Rua = values[16];
-                    addr.Nr = values[17];
-                    addr.Complemento = values[18];
-                    addr.Bairro = values[19];
-                    addr.Pais = values[20];
-                    addr.IBGE = values[21];
+                    var addr = new PessoaEndereco
+                    {
+                        Id_pessoa = GetLastId(),
+                        Excluir = 0,
+                        Cep = values[13],
+                        Estado = values[14],
+                        Cidade = values[15],
+                        Rua = values[16],
+                        Nr = values[17],
+                        Complemento = values[18],
+                        Bairro = values[19],
+                        Pais = values[20],
+                        IBGE = values[21]
+                    };
                     addr.Save(addr, false);
                 }
             }
@@ -125,29 +106,19 @@
 
         public bool ExistsName(string name, bool importacao = true, int idItem = 0)
         {
-            dynamic data;
-            if (importacao)
-                data = Query().Where("nome", name).Where("excluir", 0).FirstOrDefault();
-            else
-                data = Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
+            var data = importacao ? Query().Where("nome", name).Where("excluir", 0).FirstOrDefault() : Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
 
-            if (data != null)
-                return true;
-
-            return false;
+            return data != null;
         }
 
         public ArrayList GetAll(string tipo = "Clientes")
         {
-            var data = new ArrayList();
-            data.Add(new { Id = "0", Nome = "SELECIONE" });
+            var data = new ArrayList {new {Id = "0", Nome = "SELECIONE"}};
 
             var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").Where("tipo", tipo).OrderByDesc("nome").Get();
             if (findDB != null)
-            {
                 foreach (var item in findDB)
-                    data.Add(new { Id = $"{item.ID}", Nome = $"{item.NOME}" });
-            }
+                    data.Add(new {Id = $"{item.ID}", Nome = $"{item.NOME}"});
 
             return data;
         }
@@ -156,7 +127,7 @@
         {
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
 
-            if (String.IsNullOrEmpty(data.Aniversario))
+            if (string.IsNullOrEmpty(data.Aniversario))
                 data.Aniversario = null;
 
             if (data.Id == 0)
@@ -168,32 +139,28 @@
                 {
                     return true;
                 }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
 
-                    return false;
-                }
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+
+                return false;
+            }
+
+            if (ValidarDados(data))
+                return false;
+
+            data.status_sync = "UPDATE";
+            data.Atualizado = DateTime.Now;
+            if (Data(data).Update("ID", data.Id) == 1)
+            {
+                if (message)
+                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
             }
             else
             {
-                if (ValidarDados(data))
-                    return false;
-
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    if (message)
-                        Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                return false;
             }
 
             return true;
@@ -201,7 +168,7 @@
 
         public bool Remove(int id, bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID", id) == 1)
             {
                 if (message)
@@ -217,17 +184,17 @@
         }
 
         /// <summary>
-        /// <para>Valida os campos do Model</para>
-        /// <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html"/> </para>
+        ///     <para>Valida os campos do Model</para>
+        ///     <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html" /> </para>
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
         public bool ValidarDados(Pessoa data)
         {
-            if (Emiplus.Data.Core.IniFile.Read("UserNoDocument", "Comercial") == "True" && View.Common.Home.pessoaPage == "Clientes")
+            if (IniFile.Read("UserNoDocument", "Comercial") == "True" && Home.pessoaPage == "Clientes")
                 return false;
 
-            IValitResult result = ValitRules<Pessoa>
+            var result = ValitRules<Pessoa>
                 .Create()
                 .Ensure(m => m.CPF, _ => _
                     .Required()

@@ -2,6 +2,7 @@
 using SqlKata.Execution;
 using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Fiscal
 {
@@ -101,7 +102,7 @@ namespace Emiplus.View.Fiscal
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

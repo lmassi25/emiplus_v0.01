@@ -4,19 +4,31 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows.Forms;
+using Emiplus.Properties;
+using VisualPlus.Toolkit.Controls.Editors;
 
 namespace Emiplus.Data.Helpers
 {
     public static class Validation
     {
+        public enum BorderColor
+        {
+            Vermelho,
+            Azul
+        }
+
+        private static readonly Random Rnd = new Random();
+
+        private static readonly string PasswordHash = "P@@Sw0rd";
+        private static readonly string SaltKey = "S@LT&KEY";
+        private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+
         public static string AddSpaces(string valueF, string valueE)
         {
             if (string.IsNullOrEmpty(valueE))
@@ -27,21 +39,21 @@ namespace Emiplus.Data.Helpers
 
             if ((valueF + valueE).Length <= 48)
                 return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
-            else
-                return valueF + " " + valueE;
+            return valueF + " " + valueE;
         }
 
         public static int GetNumberOfDigits(decimal d)
         {
-            decimal abs = Math.Abs(d);
+            var abs = Math.Abs(d);
 
-            return abs < 1 ? 0 : (int)(Math.Log10(decimal.ToDouble(abs)) + 1);
+            return abs < 1 ? 0 : (int) (Math.Log10(decimal.ToDouble(abs)) + 1);
         }
 
         /// <summary>
-        /// Arredondamento para 3 casas decimais
+        ///     Arredondamento para 3 casas decimais
         /// </summary>
         /// <param name="value"></param>
+        /// <param name="casasDecimais"></param>
         /// <returns></returns>
         public static double Round(double value, int casasDecimais = 2)
         {
@@ -60,7 +72,7 @@ namespace Emiplus.Data.Helpers
 
         public static string CleanString(string dirtyString)
         {
-            StringBuilder str = new StringBuilder(dirtyString);
+            var str = new StringBuilder(dirtyString);
 
             str.Replace('Ä', 'A').Replace('Å', 'A').Replace('Æ', 'A')
                 .Replace('Ë', 'E').Replace('Ï', 'I').Replace('Ð', 'D').Replace('Ö', 'O')
@@ -84,17 +96,15 @@ namespace Emiplus.Data.Helpers
 
         public static string CleanStringForFiscal(string dirtyString)
         {
-            if (String.IsNullOrEmpty(dirtyString))
+            if (string.IsNullOrEmpty(dirtyString))
                 return "";
 
-            StringBuilder str = new StringBuilder(CleanString(dirtyString));
+            var str = new StringBuilder(CleanString(dirtyString));
 
-            if (str.ToString().Replace(" ", "").All(char.IsDigit))
-            {
-                str = str.Replace(" ", "");
-            }
+            if (str.ToString().Replace(" ", "").All(char.IsDigit)) str = str.Replace(" ", "");
 
-            return (Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(str.ToString())).ToString(Program.cultura).Trim()).ToUpper(Program.cultura);
+            return Encoding.ASCII.GetString(Encoding.GetEncoding("Cyrillic").GetBytes(str.ToString()))
+                .ToString(Program.cultura).Trim().ToUpper(Program.cultura);
         }
 
         public static string OneSpaceString(string aux)
@@ -102,38 +112,30 @@ namespace Emiplus.Data.Helpers
             aux = aux.TrimStart();
             aux = aux.TrimEnd();
 
-            Regex regex = new Regex(@"\s{2,}");
+            var regex = new Regex(@"\s{2,}");
             aux = regex.Replace(aux, " ");
 
             return aux;
         }
 
         /// <summary>
-        /// Converte valor double pra ordem de dinheiro REAL
+        ///     Converte valor double pra ordem de dinheiro REAL
         /// </summary>
-        /// <param name="obj">1234.95</param>
+        /// <param name="value">1234.95</param>
+        /// <param name="cifrao"></param>
         /// <returns>1.234,95</returns>
         public static string FormatPrice(double value, bool cifrao = false)
         {
-            string res;
-
-            if (cifrao)
-                res = value.ToString("C", Program.cultura);
-            else
-                res = string.Format(Program.cultura, "{0:N2}", value);
-
+            var res = cifrao ? value.ToString("C", Program.cultura) : string.Format(Program.cultura, "{0:N2}", value);
             return res;
         }
 
+        /// <summary>
+        ///     Converte valor DECIMAL pra ordem de dinheiro REAL
+        /// </summary>
         public static string FormatDecimalPrice(decimal value, bool cifrao = false)
         {
-            string res;
-
-            if (cifrao)
-                res = value.ToString("C", Program.cultura);
-            else
-                res = string.Format(Program.cultura, "{0:N2}", value);
-
+            var res = cifrao ? value.ToString("C", Program.cultura) : string.Format(Program.cultura, "{0:N2}", value);
             return res;
         }
 
@@ -144,7 +146,7 @@ namespace Emiplus.Data.Helpers
 
         public static string FormatPriceWithDot(object value, int decimais = 2)
         {
-            string aux = "";
+            string aux;
 
             switch (decimais)
             {
@@ -193,7 +195,7 @@ namespace Emiplus.Data.Helpers
 
             if (string.IsNullOrEmpty(value.ToString()))
                 return 0;
-            
+
             return Convert.ToInt32(value, Program.cultura);
         }
 
@@ -202,19 +204,14 @@ namespace Emiplus.Data.Helpers
             if (date == null)
                 return "";
 
-            if (String.IsNullOrEmpty(date.ToString()))
+            if (string.IsNullOrEmpty(date.ToString()))
                 return "";
 
             DateTime temp;
             if (!DateTime.TryParse(date.ToString(), out temp))
                 return "";
 
-            string data;
-            if (large)
-                data = Convert.ToDateTime(date, Program.cultura).ToString("dd/MM/yyyy HH:mm", Program.cultura);
-            else
-                data = Convert.ToDateTime(date, Program.cultura).ToString("dd/MM/yyyy", Program.cultura);
-
+            var data = Convert.ToDateTime(date, Program.cultura).ToString(large ? "dd/MM/yyyy HH:mm" : "dd/MM/yyyy", Program.cultura);
             if (data == "01/01/0001 00:00")
                 data = "";
 
@@ -226,19 +223,14 @@ namespace Emiplus.Data.Helpers
             if (date == null)
                 return "";
 
-            if (String.IsNullOrEmpty(date.ToString()))
+            if (string.IsNullOrEmpty(date.ToString()))
                 return "";
 
             DateTime temp;
             if (!DateTime.TryParse(date.ToString(), out temp))
                 return "";
 
-            string data;
-            if (large)
-                data = Convert.ToDateTime(date, Program.cultura).ToString("yyyy-MM-dd HH:mm", Program.cultura);
-            else
-                data = Convert.ToDateTime(date, Program.cultura).ToString("yyyy-MM-dd", Program.cultura);
-
+            var data = Convert.ToDateTime(date, Program.cultura).ToString(large ? "yyyy-MM-dd HH:mm" : "yyyy-MM-dd", Program.cultura);
             return data;
         }
 
@@ -247,7 +239,7 @@ namespace Emiplus.Data.Helpers
             if (date == null)
                 return Convert.ToDateTime("01/01/0001");
 
-            if (String.IsNullOrEmpty(date.ToString()))
+            if (string.IsNullOrEmpty(date.ToString()))
                 return Convert.ToDateTime("01/01/0001");
 
             if (date.ToString().IndexOf("/") > 0)
@@ -259,8 +251,8 @@ namespace Emiplus.Data.Helpers
                 {
                     return Convert.ToDateTime("01/01/0001");
                 }
-            else
-                return Convert.ToDateTime("01/01/0001");
+
+            return Convert.ToDateTime("01/01/0001");
         }
 
         public static string DateNowToSql()
@@ -269,11 +261,12 @@ namespace Emiplus.Data.Helpers
         }
 
         /// <summary>
-        /// Retorna o valor de acordo com a medida, Exemplo: UN retornará números inteiros (120), KG retornará número com 3 casas decimais
+        ///     Retorna o valor de acordo com a medida, Exemplo: UN retornará números inteiros (120), KG retornará número com 3
+        ///     casas decimais
         /// </summary>
-        public static string FormatMedidas(string Medida, double Valor)
+        public static string FormatMedidas(string medida, double valor)
         {
-            switch (Medida)
+            switch (medida)
             {
                 case "UN":
                 case "PC":
@@ -287,13 +280,15 @@ namespace Emiplus.Data.Helpers
                 case "KIT":
                 case "CNT":
                 case "PCT":
-                    string result = Valor.ToString(Program.cultura);
+                    var result = valor.ToString(Program.cultura);
 
-                    if (Valor.ToString(Program.cultura).Contains(","))
-                        result = Valor.ToString(Program.cultura).Substring(0, Valor.ToString(Program.cultura).IndexOf(",", StringComparison.OrdinalIgnoreCase));
+                    if (valor.ToString(Program.cultura).Contains(","))
+                        result = valor.ToString(Program.cultura).Substring(0,
+                            valor.ToString(Program.cultura).IndexOf(",", StringComparison.OrdinalIgnoreCase));
 
-                    if (Valor.ToString(Program.cultura).Contains("."))
-                        result = Valor.ToString(Program.cultura).Substring(0, Valor.ToString(Program.cultura).IndexOf(".", StringComparison.OrdinalIgnoreCase));
+                    if (valor.ToString(Program.cultura).Contains("."))
+                        result = valor.ToString(Program.cultura).Substring(0,
+                            valor.ToString(Program.cultura).IndexOf(".", StringComparison.OrdinalIgnoreCase));
 
                     return result.ToString(Program.cultura);
 
@@ -302,11 +297,11 @@ namespace Emiplus.Data.Helpers
                 case "L":
                 case "ML":
                 case "M2":
-                    return Valor.ToString("0.000", Program.cultura);
+                    return valor.ToString("0.000", Program.cultura);
                 case "G":
-                    return Valor.ToString("0.00", Program.cultura);
+                    return valor.ToString("0.00", Program.cultura);
                 default:
-                    return Valor.ToString("0.00", Program.cultura);
+                    return valor.ToString("0.00", Program.cultura);
             }
         }
 
@@ -319,7 +314,7 @@ namespace Emiplus.Data.Helpers
 
             p1 = value.Substring(0, value.IndexOf('.'));
 
-            if (value.Substring(value.IndexOf('.'), (value.Length - value.IndexOf('.'))).Length >= 3)
+            if (value.Substring(value.IndexOf('.'), value.Length - value.IndexOf('.')).Length >= 3)
                 p2 = value.Substring(value.IndexOf('.'), 3).Replace(".", ",");
 
             return FormatPrice(ConvertToDouble(p1 + p2));
@@ -327,14 +322,10 @@ namespace Emiplus.Data.Helpers
 
         public static void WarningInput(TextBox textbox, PictureBox img)
         {
-            if (String.IsNullOrEmpty(textbox.Text) || textbox.Text == "0,00")
-            {
-                img.Image = Properties.Resources.warning16x;
-            }
+            if (string.IsNullOrEmpty(textbox.Text) || textbox.Text == @"0,00")
+                img.Image = Resources.warning16x;
             else
-            {
-                img.Image = Properties.Resources.success16x;
-            }
+                img.Image = Resources.success16x;
         }
 
         public static string FirstCharToUpper(string input)
@@ -346,7 +337,7 @@ namespace Emiplus.Data.Helpers
         }
 
         /// <summary>
-        /// Determines if a specific value is a number.
+        ///     Determines if a specific value is a number.
         /// </summary>
         /// <returns><c>true</c> if the value is a number; otherwise, <c>false</c>.</returns>
         /// <param name="value">Value.</param>
@@ -369,8 +360,8 @@ namespace Emiplus.Data.Helpers
 
         public static string OnlyNumbers(string toNormalize)
         {
-            string resultString = string.Empty;
-            Regex regexObj = new Regex(@"[^\d\d.\,]");
+            var resultString = string.Empty;
+            var regexObj = new Regex(@"[^\d\d.\,]");
             resultString = regexObj.Replace(toNormalize, "");
             return resultString;
         }
@@ -392,15 +383,15 @@ namespace Emiplus.Data.Helpers
 
         public static bool IsGreaterThanOrEqualTo<T>(this T firstValue, T secondValue) where T : IComparable<T>
         {
-            return (firstValue.IsEqualTo(secondValue) || firstValue.IsGreaterThan(secondValue));
+            return firstValue.IsEqualTo(secondValue) || firstValue.IsGreaterThan(secondValue);
         }
 
         public static bool IsLessThanOrEqualTo<T>(this T firstValue, T secondValue) where T : IComparable<T>
         {
-            return (firstValue.IsEqualTo(secondValue) || firstValue.IsLessThan(secondValue));
+            return firstValue.IsEqualTo(secondValue) || firstValue.IsLessThan(secondValue);
         }
 
-        public static void BorderInput(VisualPlus.Toolkit.Controls.Editors.VisualTextBox input, BorderColor color)
+        public static void BorderInput(VisualTextBox input, BorderColor color)
         {
             switch (color)
             {
@@ -421,50 +412,40 @@ namespace Emiplus.Data.Helpers
             }
         }
 
-        public enum BorderColor
-        {
-            Vermelho, Azul
-        }
-
         public static int digitoVerificador(string codbarras)
         {
-            int digitoParaSomar = 0;
+            var digitoParaSomar = 0;
 
             double pares = 0, impares = 0, total = 0, multiplicador = 1;
 
-            int item = 0;
+            var item = 0;
 
             if (!string.IsNullOrEmpty(codbarras))
-            {
                 if (codbarras.Length == 12)
                 {
                     item = 0;
                     while (item < 12)
                     {
-                        string auxNum = "";
+                        var auxNum = "";
                         auxNum = codbarras.Substring(item, 1);
 
-                        if ((ConvertToInt32(auxNum) % 2) == 0)
-                            pares = pares + (ConvertToInt32(auxNum) * multiplicador);
+                        if (ConvertToInt32(auxNum) % 2 == 0)
+                            pares = pares + ConvertToInt32(auxNum) * multiplicador;
                         else
-                            impares = impares + (ConvertToInt32(auxNum) * multiplicador);
+                            impares = impares + ConvertToInt32(auxNum) * multiplicador;
 
-                        if (multiplicador == 1)
-                            multiplicador = 3;
-                        else
-                            multiplicador = 1;
+                        multiplicador = multiplicador == 1 ? 3 : 1;
 
                         item++;
                     }
                 }
-            }
 
             //impares = impares * 3;
             total = impares + pares;
 
             digitoParaSomar = -1;
 
-            int procurarMultiplo = 0;
+            var procurarMultiplo = 0;
             while (procurarMultiplo == 0)
             {
                 digitoParaSomar++;
@@ -479,11 +460,8 @@ namespace Emiplus.Data.Helpers
         {
             long x = 0;
 
-            Random random = new Random();
-            for (int i = 0; i < maxNumeric; i++)
-            {
-                x += (long)(Math.Pow(10, i) * random.Next(1, 10));
-            }
+            var random = new Random();
+            for (var i = 0; i < maxNumeric; i++) x += (long) (Math.Pow(10, i) * random.Next(1, 10));
 
             return x;
         }
@@ -495,8 +473,8 @@ namespace Emiplus.Data.Helpers
 
         public static void KillEmiplus()
         {
-            Process[] processes = Process.GetProcessesByName("Emiplus");
-            foreach (Process process in processes)
+            var processes = Process.GetProcessesByName("Emiplus");
+            foreach (var process in processes)
                 process.Kill();
         }
 
@@ -527,44 +505,39 @@ namespace Emiplus.Data.Helpers
 
         public static bool validMail(string address)
         {
-            EmailAddressAttribute e = new EmailAddressAttribute();
+            var e = new EmailAddressAttribute();
             if (e.IsValid(address))
                 return true;
 
             return false;
         }
 
-        private static Random rnd = new Random();
         public static int RandomSecurity()
         {
-            DateTime foo = DateTime.UtcNow;
-            long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
-            long random = rnd.Next(15, 999999);
-            return (int)unixTime + (int)random;
+            var foo = DateTime.UtcNow;
+            var unixTime = ((DateTimeOffset) foo).ToUnixTimeSeconds();
+            long random = Rnd.Next(15, 999999);
+            return (int) unixTime + (int) random;
         }
 
         public static string Base64Encode(string plainText)
         {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
         }
 
         public static string Base64Decode(string base64EncodedData)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
-
-        private static readonly string PasswordHash = "P@@Sw0rd";
-        private static readonly string SaltKey = "S@LT&KEY";
-        private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
 
         public static string Encrypt(string plainText)
         {
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
 
-            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
-            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.Zeros };
+            var keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
+            var symmetricKey = new RijndaelManaged {Mode = CipherMode.CBC, Padding = PaddingMode.Zeros};
             var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
 
             byte[] cipherTextBytes;
@@ -578,23 +551,25 @@ namespace Emiplus.Data.Helpers
                     cipherTextBytes = memoryStream.ToArray();
                     cryptoStream.Close();
                 }
+
                 memoryStream.Close();
             }
+
             return Convert.ToBase64String(cipherTextBytes);
         }
 
         public static string Decrypt(string encryptedText)
         {
-            byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);
-            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
-            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.None };
+            var cipherTextBytes = Convert.FromBase64String(encryptedText);
+            var keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
+            var symmetricKey = new RijndaelManaged {Mode = CipherMode.CBC, Padding = PaddingMode.None};
 
             var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
             var memoryStream = new MemoryStream(cipherTextBytes);
             var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            var plainTextBytes = new byte[cipherTextBytes.Length];
 
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+            var decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
             memoryStream.Close();
             cryptoStream.Close();
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());

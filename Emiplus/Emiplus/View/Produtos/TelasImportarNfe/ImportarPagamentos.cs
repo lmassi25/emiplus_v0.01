@@ -1,14 +1,13 @@
-﻿using Emiplus.Data.Helpers;
-using System.Collections;
+﻿using System.Collections;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarPagamentos : Form
     {
-        private ImportarNfe dataNfe = new ImportarNfe();
-
         public static ArrayList titulos = new ArrayList();
+        private readonly ImportarNfe dataNfe = new ImportarNfe();
 
         public ImportarPagamentos()
         {
@@ -20,18 +19,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         {
             var dadosTitulos = dataNfe.GetNotas();
             foreach (dynamic item in dadosTitulos)
-            {
                 SetTable(item.GetPagamentos(), item.GetDados().Id, item.GetDados().Nr);
-            }
         }
 
         private void SetTable(dynamic dataTitulos, string id = "", string nr = "")
         {
             GridLista.ColumnCount = 5;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            var checkColumn = new DataGridViewCheckBoxColumn();
             {
-                checkColumn.HeaderText = "Importar";
+                checkColumn.HeaderText = @"Importar";
                 checkColumn.Name = "Importar";
                 checkColumn.FlatStyle = FlatStyle.Standard;
                 checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
@@ -55,8 +52,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[5].Name = "nr";
             GridLista.Columns[5].Visible = false;
 
-            foreach (dynamic item in dataTitulos)
-            {
+            foreach (var item in dataTitulos)
                 GridLista.Rows.Add(
                     true,
                     item.Tipo,
@@ -65,28 +61,23 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     id,
                     nr
                 );
-            }
 
             GridLista.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void Eventos()
         {
-            Load += (s, e) =>
-            {
-                GetTitulos();
-            };
+            Load += (s, e) => { GetTitulos(); };
 
             btnImportar.Click += (s, e) =>
             {
                 titulos.Clear();
 
-                int i = -1;
+                var i = -1;
                 foreach (DataGridViewRow item in GridLista.Rows)
                 {
                     i++;
-                    if ((bool)item.Cells["Importar"].Value == true)
-                    {
+                    if ((bool) item.Cells["Importar"].Value)
                         titulos.Add(new
                         {
                             Ordem = i,
@@ -96,20 +87,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             id = item.Cells["id"].Value.ToString(),
                             nr = item.Cells["nr"].Value.ToString()
                         });
-                    }
                 }
 
-                OpenForm.Show<TelasImportarNfe.ImportarCompraConcluido>(this);
+                OpenForm.Show<ImportarCompraConcluido>(this);
             };
 
             GridLista.CellClick += (s, e) =>
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Importar"].Value == false)
-                        GridLista.SelectedRows[0].Cells["Importar"].Value = true;
-                    else
-                        GridLista.SelectedRows[0].Cells["Importar"].Value = false;
+                    GridLista.SelectedRows[0].Cells["Importar"].Value = (bool) GridLista.SelectedRows[0].Cells["Importar"].Value == false;
                 }
             };
 
@@ -118,7 +105,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -128,7 +115,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
                     dataGridView.Cursor = Cursors.Default;
             };

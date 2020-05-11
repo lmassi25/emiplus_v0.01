@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Emiplus.View.Reports
 {
@@ -20,25 +12,24 @@ namespace Emiplus.View.Reports
 
         private void Eventos()
         {
-            Load += (s, e) =>
-            {
-                Tipo.SelectedIndex = 0;
-            };
+            Load += (s, e) => { Tipo.SelectedIndex = 0; };
 
             btnGerar.Click += (s, e) =>
             {
-                if (Tipo.SelectedItem == "Folha A4")
-                    DialogResult = DialogResult.OK;
-                else if (Tipo.SelectedItem == "Bobina")
-                    DialogResult = DialogResult.Cancel;
-                    
+                switch (Tipo.SelectedItem)
+                {
+                    case "Folha A4":
+                        DialogResult = DialogResult.OK;
+                        break;
+                    case "Bobina":
+                        DialogResult = DialogResult.Cancel;
+                        break;
+                }
+
                 Close();
             };
 
-            btnCancelar.Click += (s, e) =>
-            {
-                DialogResult = DialogResult.Abort;
-            };
+            btnCancelar.Click += (s, e) => { DialogResult = DialogResult.Abort; };
         }
     }
 }

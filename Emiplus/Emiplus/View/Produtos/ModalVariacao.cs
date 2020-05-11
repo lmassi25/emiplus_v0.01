@@ -1,28 +1,21 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using Emiplus.Properties;
-using SqlKata.Execution;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos
 {
     public partial class ModalVariacao : Form
     {
-        private Model.Item _mItem = new Model.Item();
-
-        public static int idProduto { get; set; }
-
-         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private readonly KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private Item _mItem = new Item();
 
         public ModalVariacao()
         {
@@ -30,106 +23,105 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
+        public static int idProduto { get; set; }
+
         private List<string> GetPermutation(int numLoops, List<List<string>> lstMaster)
         {
-            int[] loopIndex = new int[numLoops];
-            int[] loopCnt = new int[numLoops];
+            var loopIndex = new int[numLoops];
+            var loopCnt = new int[numLoops];
 
-            List<string> llstRes = new List<string>();
+            var llstRes = new List<string>();
 
-            for(int i = 0; i < numLoops; i++) loopIndex[i] = 0;
-            for(int i = 0; i < numLoops; i++) loopCnt[i] = lstMaster[i].Count;
+            for (var i = 0; i < numLoops; i++) loopIndex[i] = 0;
+            for (var i = 0; i < numLoops; i++) loopCnt[i] = lstMaster[i].Count;
 
-            bool finished = false;
-            while(!finished)
+            var finished = false;
+            while (!finished)
             {
                 // access current element
-                string line = "";
-                for(int i = 0; i < numLoops; i++)
-                {
-                    line += lstMaster[i][loopIndex[i]];
-                }
+                var line = "";
+                for (var i = 0; i < numLoops; i++) line += lstMaster[i][loopIndex[i]];
                 llstRes.Add(line);
-                int n = numLoops-1;                  
-                for(;;)
+                var n = numLoops - 1;
+                for (;;)
                 {
                     // increment innermost loop
                     loopIndex[n]++;
                     // if at Cnt: reset, increment outer loop
-                    if(loopIndex[n] < loopCnt[n]) break;
+                    if (loopIndex[n] < loopCnt[n]) break;
 
                     loopIndex[n] = 0;
                     n--;
-                    if(n < 0)
-                    { 
-                        finished=true;
+                    if (n < 0)
+                    {
+                        finished = true;
                         break;
                     }
-                }       
+                }
             }
 
             return llstRes;
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 6;
+            table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
-            Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            
-            Table.RowHeadersVisible = false;
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            table.RowHeadersVisible = false;
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[2].Name = "Combinação";
-            Table.Columns[2].Width = 150;
-            Table.Columns[2].Visible = true;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[3].Name = "Estoque";
-            Table.Columns[3].Width = 70;
-            Table.Columns[3].Visible = true;
+            table.Columns[2].Name = "Combinação";
+            table.Columns[2].Width = 150;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[4].Name = "Referencia";
-            Table.Columns[4].Width = 70;
-            Table.Columns[4].Visible = true;
+            table.Columns[3].Name = "Estoque";
+            table.Columns[3].Width = 70;
+            table.Columns[3].Visible = true;
 
-            Table.Columns[5].Name = "Código de Barras";
-            Table.Columns[5].Width = 130;
-            Table.Columns[5].Visible = true;
+            table.Columns[4].Name = "Referencia";
+            table.Columns[4].Width = 70;
+            table.Columns[4].Visible = true;
 
-            Table.Columns[6].Name = "IDAttr";
-            Table.Columns[6].Visible = false;
+            table.Columns[5].Name = "Código de Barras";
+            table.Columns[5].Width = 130;
+            table.Columns[5].Visible = true;
+
+            table.Columns[6].Name = "IDAttr";
+            table.Columns[6].Visible = false;
         }
 
         // Autocomplete no campo Grupos
         private void AutoCompleteGrupos()
         {
-            IEnumerable<Model.ItemGrupo> grupos = new Model.ItemGrupo().FindAll().WhereFalse("excluir").Get<Model.ItemGrupo>();
+            var grupos = new ItemGrupo().FindAll().WhereFalse("excluir").Get<ItemGrupo>();
             if (grupos != null)
-            {
-                foreach (Model.ItemGrupo item in grupos)
-                {
+                foreach (var item in grupos)
                     collection.Add(item.Title, item.Id);
-                }
-            }
 
             txtGrupos.AutoCompleteCustomSource = collection;
         }
 
         private void AddCombination()
         {
-            string[] grupos = txtBuscarVariacao.Text.Split('+');
-            if (grupos.Count() == 3)
+            var grupos = txtBuscarVariacao.Text.Split('+');
+            if (grupos.Length == 3)
             {
                 Alert.Message("Opps", "É permitido apenas 3 combinações diferente.", Alert.AlertType.error);
                 return;
@@ -167,22 +159,22 @@ namespace Emiplus.View.Produtos
 
         private void ClearEstoque()
         {
-            if (dataGridVariacao.Rows.Count > 0) {
-                bool generateAlert = AlertOptions.Message("Atenção", "Você está prestes a deletar todo o estoque de combinações, continuar?", Common.AlertBig.AlertType.info, Common.AlertBig.AlertBtn.YesNo);
-                if (!generateAlert)
-                    return;
-                
-                IEnumerable<Model.ItemEstoque> checkEstoque = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto).Get<Model.ItemEstoque>();
-                if (checkEstoque.Count() > 0)
-                {
-                    foreach (Model.ItemEstoque data in checkEstoque)
-                    {
-                        new Model.ItemEstoque().Remove(data.Id);
-                    }
-                }
+            if (dataGridVariacao.Rows.Count <= 0)
+                return;
 
-                dataGridVariacao.Rows.Clear();
-            }
+            var generateAlert = AlertOptions.Message("Atenção",
+                "Você está prestes a deletar todo o estoque de combinações, continuar?", AlertBig.AlertType.info,
+                AlertBig.AlertBtn.YesNo);
+            if (!generateAlert)
+                return;
+
+            var checkEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
+                .Get<ItemEstoque>();
+            if (checkEstoque.Any())
+                foreach (var data in checkEstoque)
+                    new ItemEstoque().Remove(data.Id);
+
+            dataGridVariacao.Rows.Clear();
         }
 
         private void Eventos()
@@ -194,14 +186,16 @@ namespace Emiplus.View.Produtos
 
             Load += (s, e) =>
             {
-                ToolHelp.Show("Com essa opção marcada é possível que o sistema dê uma travada para gerar\ncada código de barras diferente um do outro.", pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show(
+                    "Com essa opção marcada é possível que o sistema dê uma travada para gerar\ncada código de barras diferente um do outro.",
+                    pictureBox4, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             };
 
             Shown += (s, e) =>
             {
                 Refresh();
 
-                _mItem = _mItem.FindById(idProduto).FirstOrDefault<Model.Item>();
+                _mItem = _mItem.FindById(idProduto).FirstOrDefault<Item>();
                 AutoCompleteGrupos();
                 SetHeadersTable(dataGridVariacao);
                 LoadDataGrid();
@@ -209,12 +203,9 @@ namespace Emiplus.View.Produtos
                 txtGrupos.Focus();
             };
 
-            btnAddGrupo.Click += (s, e) =>
-            {
-                AddCombination();
-            };
+            btnAddGrupo.Click += (s, e) => { AddCombination(); };
 
-            btnClearCombinacao.Click += (s, e) => 
+            btnClearCombinacao.Click += (s, e) =>
             {
                 ClearEstoque();
                 txtBuscarVariacao.Text = "";
@@ -230,198 +221,39 @@ namespace Emiplus.View.Produtos
                     return;
                 }
 
-                if (dataGridVariacao.Rows.Count > 0) {
-                    bool generateAlert = AlertOptions.Message("Atenção", "Ao gerar novas combinações, você irá perder a atual!\n Continuar?", Common.AlertBig.AlertType.info, Common.AlertBig.AlertBtn.YesNo);
+                if (dataGridVariacao.Rows.Count > 0)
+                {
+                    var generateAlert = AlertOptions.Message("Atenção",
+                        "Ao gerar novas combinações, você irá perder a atual!\n Continuar?", AlertBig.AlertType.info,
+                        AlertBig.AlertBtn.YesNo);
                     if (!generateAlert)
                         return;
-                    
+
                     dataGridVariacao.Rows.Clear();
                 }
 
-                List<string> attr1Name = new List<string>();
-                List<string> attr2Name = new List<string>();
-                List<string> attr3Name = new List<string>();
+                var attr1Name = new List<string>();
+                var attr2Name = new List<string>();
+                var attr3Name = new List<string>();
 
-                List<string> attr1Id = new List<string>();
-                List<string> attr2Id = new List<string>();
-                List<string> attr3Id = new List<string>();
+                var attr1Id = new List<string>();
+                var attr2Id = new List<string>();
+                var attr3Id = new List<string>();
 
-                string[] grupos = txtBuscarVariacao.Text.Split('+');
-                int i_attrs = 0;
-                foreach (string word in grupos)
+                var grupos = txtBuscarVariacao.Text.Split('+');
+                var i_attrs = 0;
+                foreach (var word in grupos)
                 {
                     i_attrs++;
 
-                    Model.ItemGrupo grupo = new Model.ItemGrupo().FindAll().WhereFalse("excluir").Where("title", word).FirstOrDefault<Model.ItemGrupo>();
-                    if (grupo != null)
-                    {
-                        IEnumerable<Model.ItemAtributos> attr = new Model.ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id).Get<Model.ItemAtributos>();
-                        foreach (Model.ItemAtributos data in attr)
-                        {
-                            switch (i_attrs)
-                            {
-                                case 1:
-                                    attr1Name.Add($"{data.Atributo}");
-                                    attr1Id.Add($"{data.Id}");
-                                    break;
-                                case 2:
-                                    attr2Name.Add($" - {data.Atributo}");
-                                    attr2Id.Add($", {data.Id}");
-                                    break;
-                                case 3:
-                                    attr3Name.Add($" - {data.Atributo}");
-                                    attr3Id.Add($", {data.Id}");
-                                    break;
-                            }
-                        }
-                    }
-                }
+                    var grupo = new ItemGrupo().FindAll().WhereFalse("excluir").Where("title", word)
+                        .FirstOrDefault<ItemGrupo>();
+                    if (grupo == null)
+                        continue;
 
-                List<List<string>> lstMaster = new List<List<string>>();
-                if (attr1Id.Count > 0)
-                    lstMaster.Add(attr1Id);
-
-                if (attr2Id.Count > 0)
-                    lstMaster.Add(attr2Id);
-
-                if (attr3Id.Count > 0)
-                    lstMaster.Add(attr3Id);
-
-                List<List<string>> lstMasterNames = new List<List<string>>();
-                if (attr1Name.Count > 0)
-                    lstMasterNames.Add(attr1Name);
-
-                if (attr2Name.Count > 0)
-                    lstMasterNames.Add(attr2Name);
-
-                if (attr3Name.Count > 0)
-                    lstMasterNames.Add(attr3Name);
-
-                List<string> ids = GetPermutation(lstMaster.Count, lstMaster);
-                List<string> names = GetPermutation(lstMasterNames.Count, lstMasterNames);
-
-                if (ids.Count == names.Count)
-                {
-                    for (int u = 0; u < ids.Count(); u++)
-                    {
-                        string codeBarras = "";
-                        if (checkCodeBarras.Checked)
-                            codeBarras = CodeBarrasRandom();
-
-                        dataGridVariacao.Rows.Add(
-                            false,
-                            ids[u],
-                            names[u],
-                            0,
-                            "",
-                            codeBarras
-                            );
-                    }
-
-                    dataGridVariacao.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-            };
-
-            btnSalvar.Click += (s, e) =>
-            {
-                if (dataGridVariacao.Rows.Count > 0)
-                {
-                    Model.Item item = new Model.Item().FindById(idProduto).WhereFalse("excluir").FirstOrDefault<Model.Item>();
-                    if (item != null)
-                    {
-                        item.Atributos = txtBuscarVariacao.Text;
-                        item.Save(item);
-                    }
-
-                    foreach (DataGridViewRow row in dataGridVariacao.Rows)
-                    {
-                        // Apaga o registro se estoque for 0 e se existir no banco
-                        if (Validation.ConvertToDouble(row.Cells["Estoque"].Value) == 0)
-                        {
-                            if (row.Cells["IDAttr"].Value != null && !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
-                            {
-                                new Model.ItemEstoque().Remove(Validation.ConvertToInt32(row.Cells["IDAttr"].Value));
-                                continue;
-                            }
-                        }
-
-                        // Se a coluna for diferente de 0 ou diferente de vazio, inclui a linha no banco!
-                        if (Validation.ConvertToDouble(row.Cells["Estoque"].Value) > 0)
-                        {
-                            string codeBarras = "";
-                            if (checkCodeBarras.Checked && string.IsNullOrEmpty(row.Cells["Código de Barras"].Value.ToString()))
-                                codeBarras = CodeBarrasRandom();
-                            else 
-                                codeBarras = row.Cells["Código de Barras"].Value.ToString();
-
-                            // Se a coluna IDAttr não estiver vazio, atualiza o registro
-                            if (row.Cells["IDAttr"].Value != null && !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
-                            {
-                                Model.ItemEstoque updateEstoque = new Model.ItemEstoque().FindById(Validation.ConvertToInt32(row.Cells["IDAttr"].Value)).FirstOrDefault<Model.ItemEstoque>();
-                                updateEstoque.Item = idProduto;
-                                updateEstoque.Referencia = row.Cells["Referencia"].Value.ToString();
-                                updateEstoque.Codebarras = codeBarras;
-                                updateEstoque.Atributo = row.Cells["ID"].Value.ToString();
-                                updateEstoque.Estoque = Validation.ConvertToDouble(row.Cells["Estoque"].Value);
-                                updateEstoque.Usuario = Settings.Default.user_id;
-                                updateEstoque.Title = row.Cells["Combinação"].Value.ToString();
-                                updateEstoque.Save(updateEstoque);
-
-                                continue;
-                            }
-
-                            Model.ItemEstoque estoque = new Model.ItemEstoque();
-                            estoque.Item = idProduto;
-                            estoque.Referencia = row.Cells["Referencia"].Value.ToString();
-                            estoque.Codebarras = codeBarras;
-                            estoque.Atributo = row.Cells["ID"].Value.ToString();
-                            estoque.Estoque = Validation.ConvertToDouble(row.Cells["Estoque"].Value);
-                            estoque.Usuario = Settings.Default.user_id;
-                            estoque.Title = row.Cells["Combinação"].Value.ToString();
-                            estoque.Save(estoque);
-
-                            row.Cells["IDAttr"].Value = estoque.GetLastId();
-                        }
-                    }
-
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-            };
-            
-            btnClose.Click += (s, e) => Close();
-        }
-
-        private void LoadDataGrid()
-        {
-            IEnumerable<Model.ItemEstoque> checkEstoque = new Model.ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto).Get<Model.ItemEstoque>();
-            if (checkEstoque.Count() == 0)
-                return;
-
-            btnGerar.Visible = false;
-            btnClearCombinacao.Visible = true;
-            txtBuscarVariacao.Text = _mItem.Atributos;
-
-            List<string> attr1Name = new List<string>();
-            List<string> attr2Name = new List<string>();
-            List<string> attr3Name = new List<string>();
-
-            List<string> attr1Id = new List<string>();
-            List<string> attr2Id = new List<string>();
-            List<string> attr3Id = new List<string>();
-
-            string[] grupos = _mItem.Atributos.Split('+');
-            int i_attrs = 0;
-            foreach (string word in grupos)
-            {
-                i_attrs++;
-
-                Model.ItemGrupo grupo = new Model.ItemGrupo().FindAll().WhereFalse("excluir").Where("title", word).FirstOrDefault<Model.ItemGrupo>();
-                if (grupo != null)
-                {
-                    IEnumerable<Model.ItemAtributos> attr = new Model.ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id).Get<Model.ItemAtributos>();
-                    foreach (Model.ItemAtributos data in attr)
-                    {
+                    var attr = new ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id)
+                        .Get<ItemAtributos>();
+                    foreach (var data in attr)
                         switch (i_attrs)
                         {
                             case 1:
@@ -437,38 +269,36 @@ namespace Emiplus.View.Produtos
                                 attr3Id.Add($", {data.Id}");
                                 break;
                         }
-                    }
                 }
-            }
 
-            List<List<string>> lstMaster = new List<List<string>>();
-            if (attr1Id.Count > 0)
-                lstMaster.Add(attr1Id);
+                var lstMaster = new List<List<string>>();
+                if (attr1Id.Count > 0)
+                    lstMaster.Add(attr1Id);
 
-            if (attr2Id.Count > 0)
-                lstMaster.Add(attr2Id);
+                if (attr2Id.Count > 0)
+                    lstMaster.Add(attr2Id);
 
-            if (attr3Id.Count > 0)
-                lstMaster.Add(attr3Id);
+                if (attr3Id.Count > 0)
+                    lstMaster.Add(attr3Id);
 
-            List<List<string>> lstMasterNames = new List<List<string>>();
-            if (attr1Name.Count > 0)
-                lstMasterNames.Add(attr1Name);
+                var lstMasterNames = new List<List<string>>();
+                if (attr1Name.Count > 0)
+                    lstMasterNames.Add(attr1Name);
 
-            if (attr2Name.Count > 0)
-                lstMasterNames.Add(attr2Name);
+                if (attr2Name.Count > 0)
+                    lstMasterNames.Add(attr2Name);
 
-            if (attr3Name.Count > 0)
-                lstMasterNames.Add(attr3Name);
+                if (attr3Name.Count > 0)
+                    lstMasterNames.Add(attr3Name);
 
-            List<string> ids = GetPermutation(lstMaster.Count, lstMaster);
-            List<string> names = GetPermutation(lstMasterNames.Count, lstMasterNames);
+                var ids = GetPermutation(lstMaster.Count, lstMaster);
+                var names = GetPermutation(lstMasterNames.Count, lstMasterNames);
 
-            if (ids.Count == names.Count)
-            {
-                for (int u = 0; u < ids.Count(); u++)
+                if (ids.Count != names.Count) return;
+
+                for (var u = 0; u < ids.Count; u++)
                 {
-                    string codeBarras = "";
+                    var codeBarras = "";
                     if (checkCodeBarras.Checked)
                         codeBarras = CodeBarrasRandom();
 
@@ -479,37 +309,196 @@ namespace Emiplus.View.Produtos
                         0,
                         "",
                         codeBarras
-                        );
-                }
-
-                if (checkEstoque != null && checkEstoque.Count() > 0)
-                {
-                    // Verifica se existe algum linha
-                    if (dataGridVariacao.Rows.Count > 0)
-                    {
-                        // Percorre todas as linhas do datagrid
-                        foreach (DataGridViewRow row in dataGridVariacao.Rows)
-                        {
-                            // Percorre todos dados do banco, comparando as linhas do grid
-                            foreach (Model.ItemEstoque item in checkEstoque)
-                            {
-                                Console.WriteLine(row.Cells["ID"].Value.ToString());
-                                Console.WriteLine(item.Atributo);
-                                if (row.Cells["ID"].Value.ToString() == item.Atributo)
-                                {
-                                    row.Cells["Referencia"].Value = item.Referencia;
-                                    row.Cells["Código de Barras"].Value = item.Codebarras;
-                                    row.Cells["Estoque"].Value = item.Estoque;
-                                    row.Cells["IDAttr"].Value = item.Id;
-                                }
-                            }
-
-                        }
-                    }
+                    );
                 }
 
                 dataGridVariacao.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            };
+
+            btnSalvar.Click += (s, e) =>
+            {
+                if (dataGridVariacao.Rows.Count <= 0)
+                    return;
+
+                var item = new Item().FindById(idProduto).WhereFalse("excluir").FirstOrDefault<Item>();
+                if (item != null)
+                {
+                    item.Atributos = txtBuscarVariacao.Text;
+                    item.Save(item);
+                }
+
+                foreach (DataGridViewRow row in dataGridVariacao.Rows)
+                {
+                    // Apaga o registro se estoque for 0 e se existir no banco
+                    if (Validation.ConvertToDouble(row.Cells["Estoque"].Value) == 0)
+                        if (row.Cells["IDAttr"].Value != null &&
+                            !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
+                        {
+                            new ItemEstoque().Remove(Validation.ConvertToInt32(row.Cells["IDAttr"].Value));
+                            continue;
+                        }
+
+                    // Se a coluna for diferente de 0 ou diferente de vazio, inclui a linha no banco!
+                    if (!(Validation.ConvertToDouble(row.Cells["Estoque"].Value) > 0))
+                        continue;
+
+                    string codeBarras;
+                    if (checkCodeBarras.Checked && string.IsNullOrEmpty(row.Cells["Código de Barras"].Value.ToString()))
+                        codeBarras = CodeBarrasRandom();
+                    else
+                        codeBarras = row.Cells["Código de Barras"].Value.ToString();
+
+                    // Se a coluna IDAttr não estiver vazio, atualiza o registro
+                    if (row.Cells["IDAttr"].Value != null &&
+                        !string.IsNullOrEmpty(row.Cells["IDAttr"].Value.ToString()))
+                    {
+                        var updateEstoque = new ItemEstoque()
+                            .FindById(Validation.ConvertToInt32(row.Cells["IDAttr"].Value))
+                            .FirstOrDefault<ItemEstoque>();
+                        updateEstoque.Item = idProduto;
+                        updateEstoque.Referencia = row.Cells["Referencia"].Value.ToString();
+                        updateEstoque.Codebarras = codeBarras;
+                        updateEstoque.Atributo = row.Cells["ID"].Value.ToString();
+                        updateEstoque.Estoque = Validation.ConvertToDouble(row.Cells["Estoque"].Value);
+                        updateEstoque.Usuario = Settings.Default.user_id;
+                        updateEstoque.Title = row.Cells["Combinação"].Value.ToString();
+                        updateEstoque.Save(updateEstoque);
+
+                        continue;
+                    }
+
+                    var estoque = new ItemEstoque
+                    {
+                        Item = idProduto,
+                        Referencia = row.Cells["Referencia"].Value.ToString(),
+                        Codebarras = codeBarras,
+                        Atributo = row.Cells["ID"].Value.ToString(),
+                        Estoque = Validation.ConvertToDouble(row.Cells["Estoque"].Value),
+                        Usuario = Settings.Default.user_id,
+                        Title = row.Cells["Combinação"].Value.ToString()
+                    };
+                    estoque.Save(estoque);
+
+                    row.Cells["IDAttr"].Value = estoque.GetLastId();
+                }
+
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+
+            btnClose.Click += (s, e) => Close();
+        }
+
+        private void LoadDataGrid()
+        {
+            var checkEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
+                .Get<ItemEstoque>();
+            if (!checkEstoque.Any())
+                return;
+
+            btnGerar.Visible = false;
+            btnClearCombinacao.Visible = true;
+            txtBuscarVariacao.Text = _mItem.Atributos;
+
+            var attr1Name = new List<string>();
+            var attr2Name = new List<string>();
+            var attr3Name = new List<string>();
+
+            var attr1Id = new List<string>();
+            var attr2Id = new List<string>();
+            var attr3Id = new List<string>();
+
+            var grupos = _mItem.Atributos.Split('+');
+            var i_attrs = 0;
+            foreach (var word in grupos)
+            {
+                i_attrs++;
+
+                var grupo = new ItemGrupo().FindAll().WhereFalse("excluir").Where("title", word)
+                    .FirstOrDefault<ItemGrupo>();
+                if (grupo == null)
+                    continue;
+
+                var attr = new ItemAtributos().FindAll().WhereFalse("excluir").Where("grupo", grupo.Id)
+                    .Get<ItemAtributos>();
+                foreach (var data in attr)
+                    switch (i_attrs)
+                    {
+                        case 1:
+                            attr1Name.Add($"{data.Atributo}");
+                            attr1Id.Add($"{data.Id}");
+                            break;
+                        case 2:
+                            attr2Name.Add($" - {data.Atributo}");
+                            attr2Id.Add($", {data.Id}");
+                            break;
+                        case 3:
+                            attr3Name.Add($" - {data.Atributo}");
+                            attr3Id.Add($", {data.Id}");
+                            break;
+                    }
             }
+
+            var lstMaster = new List<List<string>>();
+            if (attr1Id.Count > 0)
+                lstMaster.Add(attr1Id);
+
+            if (attr2Id.Count > 0)
+                lstMaster.Add(attr2Id);
+
+            if (attr3Id.Count > 0)
+                lstMaster.Add(attr3Id);
+
+            var lstMasterNames = new List<List<string>>();
+            if (attr1Name.Count > 0)
+                lstMasterNames.Add(attr1Name);
+
+            if (attr2Name.Count > 0)
+                lstMasterNames.Add(attr2Name);
+
+            if (attr3Name.Count > 0)
+                lstMasterNames.Add(attr3Name);
+
+            var ids = GetPermutation(lstMaster.Count, lstMaster);
+            var names = GetPermutation(lstMasterNames.Count, lstMasterNames);
+
+            if (ids.Count != names.Count)
+                return;
+
+            for (var u = 0; u < ids.Count; u++)
+            {
+                var codeBarras = "";
+                if (checkCodeBarras.Checked)
+                    codeBarras = CodeBarrasRandom();
+
+                dataGridVariacao.Rows.Add(
+                    false,
+                    ids[u],
+                    names[u],
+                    0,
+                    "",
+                    codeBarras
+                );
+            }
+
+            if (checkEstoque != null && checkEstoque.Any())
+                // Verifica se existe algum linha
+                if (dataGridVariacao.Rows.Count > 0)
+                    // Percorre todas as linhas do datagrid
+                    foreach (DataGridViewRow row in dataGridVariacao.Rows)
+                        // Percorre todos dados do banco, comparando as linhas do grid
+                    foreach (var item in checkEstoque)
+                    {
+                        if (row.Cells["ID"].Value.ToString() != item.Atributo)
+                            continue;
+
+                        row.Cells["Referencia"].Value = item.Referencia;
+                        row.Cells["Código de Barras"].Value = item.Codebarras;
+                        row.Cells["Estoque"].Value = item.Estoque;
+                        row.Cells["IDAttr"].Value = item.Id;
+                    }
+
+            dataGridVariacao.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private string CodeBarrasRandom()

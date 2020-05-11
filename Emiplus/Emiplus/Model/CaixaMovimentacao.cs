@@ -1,22 +1,17 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Data.Helpers;
-    using Emiplus.Properties;
-    using SqlKata;
-    using System;
+﻿using System;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using SqlKata;
 
-    internal class CaixaMovimentacao : Model
+namespace Emiplus.Model
+{
+    internal class CaixaMovimentacao : Data.Database.Model
     {
         public CaixaMovimentacao() : base("CAIXA_MOV")
         {
         }
 
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public string id_empresa { get; private set; }
         public int id_caixa { get; set; }
@@ -34,9 +29,6 @@
         public string Obs { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion CAMPOS
-
-
 
         public bool Save(CaixaMovimentacao data)
         {
@@ -78,7 +70,7 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Movimentação removida com sucesso.", Alert.AlertType.info);

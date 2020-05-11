@@ -1,39 +1,21 @@
-﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using RestSharp;
-using SqlKata.Execution;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices; // Biblioteca para mover tela
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using RestSharp;
+using SqlKata.Execution; // Biblioteca para mover tela
 
 namespace Emiplus.View.Common
 {
     public partial class Login : Form
     {
-        private static readonly HttpClient client = new HttpClient();
-
-        #region DLL
-
-        // DLL que possibilita mover a janela pela barra de título: BarraTitulo_MouseDown
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xf012, 0);
-        }
-
-        #endregion DLL
-
         public Login()
         {
             InitializeComponent();
@@ -79,13 +61,12 @@ namespace Emiplus.View.Common
                 }
 
                 if (Validation.ConvertToInt32(jo["user"]["plan_status"]) <= 0)
-                {
                     if (Validation.ConvertToInt32(jo["user"]["plan_trial"]) <= 0)
                     {
-                        Alert.Message("Opss", "Seus dias de avaliação acabou, contrate um plano.", Alert.AlertType.info);
+                        Alert.Message("Opss", "Seus dias de avaliação acabou, contrate um plano.",
+                            Alert.AlertType.info);
                         return;
                     }
-                }
 
                 Settings.Default.user_id = Validation.ConvertToInt32(jo["user"]["id"]);
                 Settings.Default.user_name = jo["user"]["name"].ToString();
@@ -140,13 +121,16 @@ namespace Emiplus.View.Common
 
                 Settings.Default.Save();
 
-                Model.Usuarios usuarios = new Model.Usuarios();
-                var userId = Settings.Default.user_sub_user == 0 ? Settings.Default.user_id : Settings.Default.user_sub_user;
-                var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}").Content().Response();
+                var usuarios = new Usuarios();
+                var userId = Settings.Default.user_sub_user == 0
+                    ? Settings.Default.user_id
+                    : Settings.Default.user_sub_user;
+                var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}")
+                    .Content().Response();
                 usuarios.Delete("excluir", 0);
                 foreach (var item in dataUser)
                 {
-                    var nameComplete = $"{item.Value["name"].ToString()} {item.Value["lastname"].ToString()}";
+                    var nameComplete = $"{item.Value["name"]} {item.Value["lastname"]}";
                     var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
                     if (exists == null)
                     {
@@ -156,8 +140,8 @@ namespace Emiplus.View.Common
                         usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
                         usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
                         usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
-                        usuarios.email = item.Value["email"].ToString();
-                        usuarios.senha = item.Value["senha"].ToString();
+                        usuarios.email = item.Value["email"]?.ToString();
+                        usuarios.senha = item.Value["senha"]?.ToString();
                     }
                     else
                     {
@@ -167,29 +151,30 @@ namespace Emiplus.View.Common
                         usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
                         usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
                         usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
-                        usuarios.email = item.Value["email"].ToString();
-                        usuarios.senha = item.Value["senha"].ToString();
+                        usuarios.email = item.Value["email"]?.ToString();
+                        usuarios.senha = item.Value["senha"]?.ToString();
                     }
+
                     usuarios.Save(usuarios);
                 }
             }
             else
             {
-                Model.Usuarios user = new Model.Usuarios();
+                var user = new Usuarios();
 
                 var checkUsuarios = user.FindAll().Get();
-                if (checkUsuarios.Count() == 0)
+                if (!checkUsuarios.Any())
                 {
-                    Alert.Message("Opps", "Você precisa estar conectado a internet no seu primeiro Login ao sistema.", Alert.AlertType.error);
+                    Alert.Message("Opps", "Você precisa estar conectado a internet no seu primeiro Login ao sistema.",
+                        Alert.AlertType.error);
                     return;
                 }
 
-                var getUser = user.FindAll().Where("email", email.Text).FirstOrDefault<Model.Usuarios>();
+                var getUser = user.FindAll().Where("email", email.Text).FirstOrDefault<Usuarios>();
 
-                string decryptedstring = "";
                 if (getUser != null)
                 {
-                    decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
+                    var decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
 
                     if (decryptedstring != password.Text)
                     {
@@ -203,20 +188,18 @@ namespace Emiplus.View.Common
             }
 
             Hide();
-            Home form = new Home();
+            var form = new Home();
             form.ShowDialog();
         }
 
         private void InitData()
         {
             if (!string.IsNullOrEmpty(Settings.Default.login_email))
-            {
                 if (Settings.Default.login_remember)
                 {
                     email.Text = Settings.Default.login_email;
                     remember.Checked = true;
                 }
-            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -236,24 +219,24 @@ namespace Emiplus.View.Common
 
             Load += (s, e) =>
             {
-                version.Text = "Versão " + IniFile.Read("Version", "APP");
+                version.Text = @"Versão " + IniFile.Read("Version", "APP");
 
                 if (Support.CheckForInternetConnection())
                 {
-                    Update update = new Update();
+                    var update = new Update();
                     update.CheckUpdate();
                     update.CheckIni();
 
                     if (Data.Core.Update.AtualizacaoDisponivel)
                     {
                         btnUpdate.Visible = true;
-                        btnUpdate.Text = "Atualizar Versão " + update.GetVersionWebTxt();
+                        btnUpdate.Text = $@"Atualizar Versão {update.GetVersionWebTxt()}";
                         label5.Visible = false;
                         email.Visible = false;
                         label6.Visible = false;
                         password.Visible = false;
                         btnEntrar.Visible = false;
-                        label1.Text = "Antes de continuar..";
+                        label1.Text = @"Antes de continuar..";
                     }
                     else
                     {
@@ -263,7 +246,7 @@ namespace Emiplus.View.Common
                         label6.Visible = true;
                         password.Visible = true;
                         btnEntrar.Visible = true;
-                        label1.Text = "Entre com sua conta";
+                        label1.Text = @"Entre com sua conta";
                     }
                 }
 
@@ -286,32 +269,33 @@ namespace Emiplus.View.Common
             {
                 if (!Support.CheckForInternetConnection())
                 {
-                    AlertOptions.Message("Atenção!", "Você precisa estar conectado a internet para atualizar.", AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
+                    AlertOptions.Message("Atenção!", "Você precisa estar conectado a internet para atualizar.",
+                        AlertBig.AlertType.info, AlertBig.AlertBtn.OK);
                     return;
                 }
 
-                var result = AlertOptions.Message("Atenção!", "Deseja iniciar o processo de atualização?", AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
+                var result = AlertOptions.Message("Atenção!", "Deseja iniciar o processo de atualização?",
+                    AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
                     IniFile.Write("Update", "true", "APP");
 
                     if (File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
-                    {
                         File.Delete($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
-                    }
 
                     if (!Directory.Exists($"{Support.BasePath()}\\Update"))
                         Directory.CreateDirectory($"{Support.BasePath()}\\Update");
 
                     using (var d = new WebClient())
                     {
-                        d.DownloadFile($"https://github.com/lmassi25/files/releases/download/Install/InstallEmiplus.exe", $"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
+                        d.DownloadFile("https://github.com/lmassi25/files/releases/download/Install/InstallEmiplus.exe",
+                            $"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
                     }
 
                     if (!File.Exists($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe"))
-                    {
-                        Alert.Message("Oopss", "Não foi possível iniciar a atualização. Verifique a conexão com a internet.", Alert.AlertType.error);
-                    }
+                        Alert.Message("Oopss",
+                            "Não foi possível iniciar a atualização. Verifique a conexão com a internet.",
+                            Alert.AlertType.error);
 
                     Process.Start($"{Support.BasePath()}\\Update\\InstalarEmiplus.exe");
                     Validation.KillEmiplus();
@@ -320,11 +304,12 @@ namespace Emiplus.View.Common
 
             btnConfirmar.Click += (s, e) =>
             {
-                string id_empresa = idEmpresa.Text;
+                var id_empresa = idEmpresa.Text;
 
                 if (id_empresa.Length < 36)
                 {
-                    Alert.Message("Opps", "ID da empresa está incorreto! Por favor insira um ID válido.", Alert.AlertType.error);
+                    Alert.Message("Opps", "ID da empresa está incorreto! Por favor insira um ID válido.",
+                        Alert.AlertType.error);
                     return;
                 }
 
@@ -332,11 +317,11 @@ namespace Emiplus.View.Common
                 {
                     dynamic objt = new
                     {
-                        token = Program.TOKEN,
-                        id_empresa = id_empresa
+                        token = Program.TOKEN, id_empresa
                     };
 
-                    var validar = new RequestApi().URL(Program.URL_BASE + "/api/validarempresa").Content(objt, Method.POST).Response();
+                    var validar = new RequestApi().URL(Program.URL_BASE + "/api/validarempresa")
+                        .Content(objt, Method.POST).Response();
 
                     if (validar["error"] == "true")
                     {
@@ -349,15 +334,32 @@ namespace Emiplus.View.Common
                 }
                 else
                 {
-                    Alert.Message("Opps", "Você precisa estar conectado a internet para continuar.", Alert.AlertType.error);
-                    return;
+                    Alert.Message("Opps", "Você precisa estar conectado a internet para continuar.",
+                        Alert.AlertType.error);
                 }
             };
 
             FormClosed += (s, e) => Validation.KillEmiplus();
             btnFechar.Click += (s, e) => Close();
             linkRecover.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin/forgotten");
-            linkSupport.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            linkSupport.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
+
+        #region DLL
+
+        // DLL que possibilita mover a janela pela barra de título: BarraTitulo_MouseDown
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private static extern void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private static extern void SendMessage(IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
+        #endregion DLL
     }
 }

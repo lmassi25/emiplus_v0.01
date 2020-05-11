@@ -1,9 +1,9 @@
-﻿using SqlKata.Execution;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SqlKata.Execution;
 using static Emiplus.Data.Helpers.Validation;
 
 namespace Emiplus.Controller
@@ -24,7 +24,9 @@ namespace Emiplus.Controller
         {
             Table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -52,11 +54,11 @@ namespace Emiplus.Controller
 
             if (Data == null)
             {
-                IEnumerable<dynamic> dados = await GetDataTable();
+                var dados = await GetDataTable();
                 Data = dados;
             }
 
-            for (int i = 0; i < Data.Count(); i++)
+            for (var i = 0; i < Data.Count(); i++)
             {
                 var item = Data.ElementAt(i);
 

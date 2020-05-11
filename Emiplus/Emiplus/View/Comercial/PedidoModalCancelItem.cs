@@ -1,13 +1,15 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System.Windows.Forms;
+using Estoque = Emiplus.Controller.Estoque;
 
 namespace Emiplus.View.Comercial
 {
     public partial class PedidoModalCancelItem : Form
     {
-        private int IdPedidoItem = AddPedidos.IdPedidoItem;
+        private readonly int idPedidoItem = AddPedidos.IdPedidoItem;
 
         public PedidoModalCancelItem()
         {
@@ -17,21 +19,21 @@ namespace Emiplus.View.Comercial
 
         private void CancelItem()
         {
-            if (IdPedidoItem <= 0)
+            if (idPedidoItem <= 0)
                 return;
 
-            Model.PedidoItem item = new Model.PedidoItem();
-            item = item.FindById(IdPedidoItem).FirstOrDefault<Model.PedidoItem>();
+            var item = new PedidoItem();
+            item = item.FindById(idPedidoItem).FirstOrDefault<PedidoItem>();
 
             if (item.Tipo == "Produtos")
             {
                 if (Home.pedidoPage != "Compras")
-                    new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Add().Item();
+                    new Estoque(idPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Add().Item();
                 else
-                    new Controller.Estoque(IdPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Remove().Item();
+                    new Estoque(idPedidoItem, Home.pedidoPage, "Botão Cancelar Produto").Remove().Item();
             }
 
-            item.Remove(IdPedidoItem);
+            item.Remove(idPedidoItem);
 
             DialogResult = DialogResult.OK;
             Close();

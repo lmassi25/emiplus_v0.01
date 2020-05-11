@@ -1,57 +1,37 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.Properties;
 using SqlKata.Execution;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class OpcoesCfe : Form
     {
+        private readonly Nota _modelNota = new Nota();
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
+        private string _msg;
+        private int p1;
+
+        public OpcoesCfe()
+        {
+            InitializeComponent();
+            Eventos();
+        }
+
         public static int idPedido { get; set; } // id pedido
         public static int idNota { get; set; } // id nota
         public static int tipoTela { get; set; } = 0;
         public static string tipo { get; set; } //CFe NFCe
 
-        private Model.Nota _modelNota = new Model.Nota();
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
-        private int p1 = 0;
-        private string _msg;
-
-        public OpcoesCfe()
+        private string CheckCupom()
         {
-            InitializeComponent();
-            
-            if (OpcoesCfe.tipo == "NFCe")
-            {
-                pictureBox1.Image = Resources.nfce;
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            
-            if (OpcoesCfe.tipoTela == 0)
-                btnDetalhes.Visible = false;
-
-            Eventos();
-        }
-
-        private string checkCupom()
-        {
-            Model.Nota checkNota = new Model.Nota();
-
-            if (idNota > 0)
-                checkNota = _modelNota.FindById(idNota).FirstOrDefault<Model.Nota>();
-            else
-                checkNota = _modelNota.FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Model.Nota>();
-
-            if (checkNota == null)
-                return null;
-
-            if (checkNota.Status == null)
-                return null;
-
-            return checkNota.Status;
+            var checkNota = idNota > 0
+                ? _modelNota.FindById(idNota).FirstOrDefault<Nota>()
+                : _modelNota.FindByIdPedidoUltReg(idPedido, "", "CFe").FirstOrDefault<Nota>();
+            return checkNota?.Status;
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -65,7 +45,7 @@ namespace Emiplus.View.Comercial
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
@@ -74,19 +54,31 @@ namespace Emiplus.View.Comercial
 
             Load += (s, e) =>
             {
-                if (checkCupom() == null || checkCupom() == "Pendente")
-                    Emitir.Text = "Emitir";
-                else if (checkCupom() == "Autorizada" || checkCupom() == "Autorizado")
-                    Emitir.Text = "Cancelar";
-                else if (checkCupom() == "Cancelada" || checkCupom() == "Cancelado")
+                if (tipo == "NFCe")
+                {
+                    pictureBox1.Image = Resources.nfce;
+                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+
+                if (tipoTela == 0)
+                    btnDetalhes.Visible = false;
+
+                if (CheckCupom() == null || CheckCupom() == "Pendente")
+                {
+                    Emitir.Text = @"Emitir";
+                }
+                else if (CheckCupom() == "Autorizada" || CheckCupom() == "Autorizado")
+                {
+                    Emitir.Text = @"Cancelar";
+                }
+                else if (CheckCupom() == "Cancelada" || CheckCupom() == "Cancelado")
                 {
                     Emitir.Visible = false;
                     btnDetalhes.Visible = false;
                     Imprimir.Location = new Point(330, 303);
                 }
 
-                var nota = new Model.Nota().FindById(idNota).FirstOrDefault<Model.Nota>();
-
+                var nota = new Nota().FindById(idNota).FirstOrDefault<Nota>();
                 if (nota == null)
                     return;
 
@@ -99,34 +91,35 @@ namespace Emiplus.View.Comercial
 
             Emitir.Click += (s, e) =>
             {
-                if (Emitir.Text == "Cancelar")
+                if (Emitir.Text == @"Cancelar")
                 {
                     retorno.Text = "Cancelando cupom...";
 
                     p1 = 2;
-                    WorkerBackground.RunWorkerAsync();
+                    workerBackground.RunWorkerAsync();
                 }
                 else
                 {
                     retorno.Text = "Emitindo cupom...";
 
                     p1 = 1;
-                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe").FirstOrDefault<Model.Nota>();
+                    var checkNota = _modelNota.FindByIdPedidoAndTipo(idPedido, tipo == "NFCe" ? "NFCe" : "CFe")
+                        .FirstOrDefault<Nota>();
                     if (checkNota == null)
                     {
                         _modelNota.Id = 0;
-                        _modelNota.Tipo = OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe";
+                        _modelNota.Tipo = tipo == "NFCe" ? "NFCe" : "CFe";
                         _modelNota.id_pedido = idPedido;
                         _modelNota.Save(_modelNota, false);
                     }
 
-                    WorkerBackground.RunWorkerAsync();
+                    workerBackground.RunWorkerAsync();
                 }
             };
 
             Imprimir.Click += (s, e) =>
             {
-                if (checkCupom() == null)
+                if (CheckCupom() == null)
                 {
                     Alert.Message("Opps!", "Emita o cupom para imprimir.", Alert.AlertType.warning);
                     return;
@@ -139,18 +132,18 @@ namespace Emiplus.View.Comercial
                 retorno.Text = "CF-e S@T impresso com sucesso!";
             };
 
-            using (var b = WorkerBackground)
+            using (var b = workerBackground)
             {
                 b.DoWork += async (s, e) =>
                 {
                     switch (p1)
                     {
                         case 1:
-                            _msg = new Controller.Fiscal().Emitir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
+                            _msg = new Controller.Fiscal().Emitir(idPedido, tipo == "NFCe" ? "NFCe" : "CFe");
                             break;
 
                         case 2:
-                            _msg = new Controller.Fiscal().Cancelar(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
+                            _msg = new Controller.Fiscal().Cancelar(idPedido, tipo == "NFCe" ? "NFCe" : "CFe");
                             break;
                     }
                 };
@@ -166,17 +159,13 @@ namespace Emiplus.View.Comercial
             btnDetalhes.Click += (s, e) =>
             {
                 DetailsPedido.idPedido = idPedido;
-                DetailsPedido detailsPedido = new DetailsPedido();
-                detailsPedido.TopMost = true;
+                var detailsPedido = new DetailsPedido {TopMost = true};
                 detailsPedido.Show();
 
                 Close();
             };
 
-            FormClosing += (s, e) =>
-            {
-                OpcoesCfe.tipo = "";
-            };
+            FormClosing += (s, e) => { tipo = ""; };
         }
     }
 }

@@ -1,17 +1,19 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos
 {
     public partial class Adicional : Form
     {
-        public List<int> listAdicionais = new List<int>();
+        public List<int> ListAdicionais = new List<int>();
 
         public Adicional()
         {
@@ -19,60 +21,61 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        private void SetHeadersTable(DataGridView Table)
+        private void SetHeadersTable(DataGridView table)
         {
-            Table.ColumnCount = 3;
+            table.ColumnCount = 3;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            Table.RowHeadersVisible = false;
+            table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
-            Table.Columns.Insert(0, checkColumn);
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
 
-            Table.Columns[1].Name = "ID";
-            Table.Columns[1].Visible = false;
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
 
-            Table.Columns[2].Name = "Adicional";
-            Table.Columns[2].Width = 120;
-            Table.Columns[2].MinimumWidth = 120;
-            Table.Columns[2].Visible = true;
+            table.Columns[2].Name = "Adicional";
+            table.Columns[2].Width = 120;
+            table.Columns[2].MinimumWidth = 120;
+            table.Columns[2].Visible = true;
 
-            Table.Columns[3].Name = "Valor";
-            Table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            Table.Columns[3].Width = 100;
-            Table.Columns[3].Visible = true;
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[3].Width = 100;
+            table.Columns[3].Visible = true;
         }
 
-        private async Task SetContentTableAsync(DataGridView Table)
+        private async Task SetContentTableAsync(DataGridView table)
         {
-            Table.Rows.Clear();
+            table.Rows.Clear();
 
-            var adicionais = new Model.ItemAdicional().FindAll().WhereFalse("excluir");
-            
+            var adicionais = new ItemAdicional().FindAll().WhereFalse("excluir");
+
             if (!string.IsNullOrEmpty(search.Text))
                 adicionais.Where("title", "like", $"%{search.Text}%");
 
-            IEnumerable<Model.ItemAdicional> data = adicionais.Get<Model.ItemAdicional>();
-            if (data.Count() > 0) {
-                foreach (Model.ItemAdicional item in data)
-                {
-                    Table.Rows.Add(
+            var data = adicionais.Get<ItemAdicional>();
+            if (data.Any())
+                foreach (var item in data)
+                    table.Rows.Add(
                         false,
                         item.Id,
                         item.Title,
                         Validation.FormatPrice(Validation.ConvertToDouble(item.Valor), true)
                     );
-                }
-            }
 
-            Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void EditProduct(bool create = false)
@@ -139,17 +142,19 @@ namespace Emiplus.View.Produtos
 
             btnRemover.Click += (s, e) =>
             {
-                listAdicionais.Clear();
+                ListAdicionais.Clear();
                 foreach (DataGridViewRow item in GridLista.Rows)
-                    if ((bool)item.Cells["Selecione"].Value == true)
-                        listAdicionais.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
-                
-                var result = AlertOptions.Message("Atenção!", "Você está prestes a deletar os ADICIONAIS selecionados, continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                    if ((bool) item.Cells["Selecione"].Value)
+                        ListAdicionais.Add(Validation.ConvertToInt32(item.Cells["ID"].Value));
+
+                var result = AlertOptions.Message("Atenção!",
+                    "Você está prestes a deletar os ADICIONAIS selecionados, continuar?", AlertBig.AlertType.warning,
+                    AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    foreach (var item in listAdicionais)
-                        new Model.ItemAdicional().Remove(item);
-                    
+                    foreach (var item in ListAdicionais)
+                        new ItemAdicional().Remove(item);
+
                     SetContentTableAsync(GridLista);
                 }
 
@@ -157,17 +162,17 @@ namespace Emiplus.View.Produtos
                 btnEditar.Visible = true;
                 btnAdicionar.Visible = true;
             };
-            
+
             search.TextChanged += (s, e) => SetContentTableAsync(GridLista);
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
             btnExit.Click += (s, e) => Close();
 
             GridLista.CellClick += (s, e) =>
             {
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
+                    if ((bool) GridLista.SelectedRows[0].Cells["Selecione"].Value == false)
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = true;
                         btnRemover.Visible = true;
@@ -178,10 +183,10 @@ namespace Emiplus.View.Produtos
                     {
                         GridLista.SelectedRows[0].Cells["Selecione"].Value = false;
 
-                        bool hideBtns = false;
-                        bool hideBtnsTop = true;
+                        var hideBtns = false;
+                        var hideBtnsTop = true;
                         foreach (DataGridViewRow item in GridLista.Rows)
-                            if ((bool)item.Cells["Selecione"].Value == true)
+                            if ((bool) item.Cells["Selecione"].Value)
                             {
                                 hideBtns = true;
                                 hideBtnsTop = false;
@@ -199,7 +204,7 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Hand;
             };
@@ -209,7 +214,7 @@ namespace Emiplus.View.Produtos
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
+                var dataGridView = s as DataGridView;
                 if (GridLista.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };

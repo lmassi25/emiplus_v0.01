@@ -1,35 +1,35 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Emiplus.Data.Helpers;
-    using Emiplus.Properties;
-    using Emiplus.View.Common;
-    using SqlKata;
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
+using Emiplus.View.Common;
+using SqlKata;
 
-    internal class Pedido : Model
+namespace Emiplus.Model
+{
+    internal class Pedido : Data.Database.Model
     {
         public Pedido() : base("PEDIDO")
         {
         }
 
-        #region CAMPOS
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
         public string Tipo { get; set; }
         public int Excluir { get; set; }
         public DateTime Criado { get; private set; }
         public DateTime Atualizado { get; private set; }
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; }
+
         public string Voucher { get; set; }
+
         // referencia com a tabela Pessoa
         public int Cliente { get; set; }
+
         //public Pessoa Cliente { get; set; }
         public int Colaborador { get; set; }
+
         //public Pessoa Colaborador { get; set; }
         // totais
         public double Total { get; set; }
@@ -80,34 +80,32 @@
         public string campod { get; set; }
         public string campoe { get; set; }
         public string campof { get; set; }
-        public string problema  { get; set; }
+        public string problema { get; set; }
         public string solucao { get; set; }
         public int os { get; set; }
         public string empresa { get; set; }
 
-        #endregion CAMPOS
-
         public Pedido SaveTotais(Dictionary<string, double> data)
-            {
-                Id = Validation.ConvertToInt32(data["Id"]);
-                Produtos = data["Produtos"];
-                Servicos = data["Servicos"];
-                Frete = data["Frete"];
-                Desconto = data["Desconto"] + data["DescontoServicos"];
-                Devolucao = data["Devolucao"];
-                IPI = data["IPI"];
-                ICMSBASE = data["ICMSBASE"];
-                ICMS = data["ICMS"];
-                ICMSSTBASE = data["ICMSSTBASE"];
-                ICMSST = data["ICMSST"];
-                COFINS = data["COFINS"];
-                PIS = data["PIS"];
-                Seguro = data["SEGURO"];
-                Despesa = data["DESPESA"];
-                Total = (Produtos + Servicos + Frete + IPI + ICMSST + Seguro + Despesa) - (Desconto + Devolucao);
+        {
+            Id = Validation.ConvertToInt32(data["Id"]);
+            Produtos = data["Produtos"];
+            Servicos = data["Servicos"];
+            Frete = data["Frete"];
+            Desconto = data["Desconto"] + data["DescontoServicos"];
+            Devolucao = data["Devolucao"];
+            IPI = data["IPI"];
+            ICMSBASE = data["ICMSBASE"];
+            ICMS = data["ICMS"];
+            ICMSSTBASE = data["ICMSSTBASE"];
+            ICMSST = data["ICMSST"];
+            COFINS = data["COFINS"];
+            PIS = data["PIS"];
+            Seguro = data["SEGURO"];
+            Despesa = data["DESPESA"];
+            Total = Produtos + Servicos + Frete + IPI + ICMSST + Seguro + Despesa - (Desconto + Devolucao);
 
-                return this;
-            }
+            return this;
+        }
 
         public double GetDesconto()
         {
@@ -119,7 +117,7 @@
             return Total;
         }
 
-        public SqlKata.Query FindByVoucher(string voucher)
+        public Query FindByVoucher(string voucher)
         {
             return Query().Where("voucher", voucher.ToUpper());
         }
@@ -153,7 +151,7 @@
 
         public bool Remove(int id, string column = "ID", bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update(column, id) == 1)
             {
                 if (message)

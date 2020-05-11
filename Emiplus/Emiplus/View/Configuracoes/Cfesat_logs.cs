@@ -5,9 +5,8 @@ namespace Emiplus.View.Configuracoes
 {
     public partial class Cfesat_logs : Form
     {
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
         private string _msg;
-        public static int tipo { get; set; }
+        private readonly BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         public Cfesat_logs()
         {
@@ -18,6 +17,8 @@ namespace Emiplus.View.Configuracoes
             Start();
         }
 
+        public static int tipo { get; set; }
+
         public void Start()
         {
             label12.Focus();
@@ -27,7 +28,7 @@ namespace Emiplus.View.Configuracoes
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
@@ -35,16 +36,10 @@ namespace Emiplus.View.Configuracoes
             {
                 b.DoWork += async (s, e) =>
                 {
-                    if (tipo == 1)
-                        _msg = new Controller.Fiscal().Logs(1);
-                    else
-                        _msg = new Controller.Fiscal().Logs(0);
+                    _msg = tipo == 1 ? new Controller.Fiscal().Logs(1) : new Controller.Fiscal().Logs();
                 };
 
-                b.RunWorkerCompleted += async (s, e) =>
-                {
-                    retorno.Text = _msg;
-                };
+                b.RunWorkerCompleted += async (s, e) => { retorno.Text = _msg; };
             }
         }
     }

@@ -1,7 +1,6 @@
-﻿using Emiplus.Data.Core;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
-using System;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Configuracoes
 {
@@ -23,57 +22,58 @@ namespace Emiplus.View.Configuracoes
             tipoimpressora.Items.Add("Bobina 80mm");
 
             impressora.DataSource = Support.GetImpressoras();
-             
-            if (!String.IsNullOrEmpty(IniFile.Read("Printer", "Comercial")))
+
+            if (!string.IsNullOrEmpty(IniFile.Read("Printer", "Comercial")))
                 tipoimpressora.SelectedItem = IniFile.Read("Printer", "Comercial");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("PrinterName", "Comercial")))
+            if (!string.IsNullOrEmpty(IniFile.Read("PrinterName", "Comercial")))
                 impressora.SelectedItem = IniFile.Read("PrinterName", "Comercial");
 
             // Pimaco 10
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco10Top", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco10Top", "ETIQUETAS")))
                 pi10Top.Text = IniFile.Read("Pimaco10Top", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco10Right", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco10Right", "ETIQUETAS")))
                 pi10Right.Text = IniFile.Read("Pimaco10Right", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco10Bottom", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco10Bottom", "ETIQUETAS")))
                 pi10Bottom.Text = IniFile.Read("Pimaco10Bottom", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco10Left", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco10Left", "ETIQUETAS")))
                 pi10Left.Text = IniFile.Read("Pimaco10Left", "ETIQUETAS");
 
             // Pimaco 30
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco30Top", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco30Top", "ETIQUETAS")))
                 pi30Top.Text = IniFile.Read("Pimaco30Top", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco30Right", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco30Right", "ETIQUETAS")))
                 pi30Right.Text = IniFile.Read("Pimaco30Right", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco30Bottom", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco30Bottom", "ETIQUETAS")))
                 pi30Bottom.Text = IniFile.Read("Pimaco30Bottom", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco30Left", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco30Left", "ETIQUETAS")))
                 pi30Left.Text = IniFile.Read("Pimaco30Left", "ETIQUETAS");
 
             // Pimaco 60
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco60Top", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco60Top", "ETIQUETAS")))
                 pi60Top.Text = IniFile.Read("Pimaco60Top", "ETIQUETAS");
-            
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco60Right", "ETIQUETAS")))
+
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco60Right", "ETIQUETAS")))
                 pi60Right.Text = IniFile.Read("Pimaco60Right", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco60Bottom", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco60Bottom", "ETIQUETAS")))
                 pi60Bottom.Text = IniFile.Read("Pimaco60Bottom", "ETIQUETAS");
 
-            if (!String.IsNullOrEmpty(IniFile.Read("Pimaco60Left", "ETIQUETAS")))
+            if (!string.IsNullOrEmpty(IniFile.Read("Pimaco60Left", "ETIQUETAS")))
                 pi60Left.Text = IniFile.Read("Pimaco60Left", "ETIQUETAS");
         }
 
         private void Eventos()
         {
             tipoimpressora.Leave += (s, e) => IniFile.Write("Printer", tipoimpressora.Text, "Comercial");
-            impressora.SelectedIndexChanged += (s, e) => IniFile.Write("PrinterName", impressora.SelectedItem.ToString(), "Comercial");
+            impressora.SelectedIndexChanged += (s, e) =>
+                IniFile.Write("PrinterName", impressora.SelectedItem.ToString(), "Comercial");
 
             pi10Top.Leave += (s, e) => IniFile.Write("Pimaco10Top", pi10Top.Text, "ETIQUETAS");
             pi10Right.Leave += (s, e) => IniFile.Write("Pimaco10Right", pi10Right.Text, "ETIQUETAS");

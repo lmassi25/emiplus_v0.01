@@ -105,7 +105,7 @@ namespace Emiplus.View.Fiscal
                 GridLista.Visible = false;
             };
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             using (var b = WorkerBackground)
             {

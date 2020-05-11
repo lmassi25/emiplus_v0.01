@@ -1,26 +1,24 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.Properties;
-using Emiplus.View.Common;
-using System;
+﻿using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Common;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarCompraConcluido : Form
     {
-        private ImportarNfe dataNfe = new ImportarNfe();
-        private ArrayList produtosID = new ArrayList();
-
-        private Model.Item _mItem = new Model.Item();
-        private Model.Pedido _mPedido = new Model.Pedido();
-        private Model.PedidoItem _mPedidoItem = new Model.PedidoItem();
-        private Model.Titulo _mTitulo = new Model.Titulo();
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
-
-        private int idFornecedor { get; set; }
+        private readonly Item _mItem = new Item();
+        private readonly Pedido _mPedido = new Pedido();
+        private readonly PedidoItem _mPedidoItem = new PedidoItem();
+        private readonly Titulo _mTitulo = new Titulo();
+        private readonly ImportarNfe dataNfe = new ImportarNfe();
+        private readonly ArrayList produtosID = new ArrayList();
+        private readonly BackgroundWorker WorkerBackground = new BackgroundWorker();
 
         public ImportarCompraConcluido()
         {
@@ -28,24 +26,24 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Eventos();
         }
 
+        private int idFornecedor { get; set; }
+
         private void SetDataNota()
         {
             var dadosFornecedor = dataNfe.GetNotas();
             if (dadosFornecedor.Count > 0)
-            {
                 foreach (Controller.ImportarNfe item in dadosFornecedor)
                 {
                     cnpj.Text = item.GetFornecedor().CPFcnpj;
                     IE.Text = item.GetFornecedor().IE;
                     razaosocial.Text = item.GetFornecedor().razaoSocial;
 
-                    rua.Text = item.GetFornecedor().Addr_Rua + " " + item.GetFornecedor().Addr_Nr;
+                    rua.Text = item.GetFornecedor().Addr_Rua + @" " + item.GetFornecedor().Addr_Nr;
                     bairro.Text = item.GetFornecedor().Addr_Bairro;
                     cep.Text = item.GetFornecedor().Addr_CEP;
                     cidade.Text = item.GetFornecedor().Addr_Cidade;
                     estado.Text = item.GetFornecedor().Addr_UF;
                 }
-            }
 
             var dataNotas = dataNfe.GetNotas();
             foreach (Controller.ImportarNfe item in dataNotas)
@@ -64,10 +62,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[0].Width = 150;
             GridLista.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            DataGridViewImageColumn columnImg = new DataGridViewImageColumn();
+            var columnImg = new DataGridViewImageColumn();
             {
                 columnImg.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                columnImg.HeaderText = "Importado";
+                columnImg.HeaderText = @"Importado";
                 columnImg.Name = "Importado";
                 columnImg.Width = 70;
             }
@@ -77,13 +75,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.Columns[2].Visible = false;
 
             foreach (dynamic item in ImportarProdutos.produtos)
-            {
                 GridLista.Rows.Add(
                     item.Nome,
-                    new Bitmap(Properties.Resources.error16x),
+                    new Bitmap(Resources.error16x),
                     item.Ordem
                 );
-            }
         }
 
         private void SetTableTitulos()
@@ -100,39 +96,34 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridListaTitulos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             foreach (dynamic item in ImportarPagamentos.titulos)
-            {
                 GridListaTitulos.Rows.Add(
                     item.FormaPgto,
                     item.Data,
                     item.Valor
                 );
-            }
 
             GridListaTitulos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void AddProdutos()
         {
-            bool success = false;
             foreach (dynamic item in ImportarProdutos.produtos)
             {
                 if (item.Id != 0)
-                {
                     produtosID.Add(new
                     {
-                        Id = item.Id,
-                        Referencia = item.Referencia,
-                        CodeBarras = item.CodeBarras,
-                        Nome = item.Nome,
-                        Medida = item.Medida,
-                        Estoque = item.Estoque,
-                        CategoriaId = item.CategoriaId,
-                        ValorCompra = item.ValorCompra,
-                        ValorVenda = item.ValorVenda,
-                        Fornecedor = item.Fornecedor,
-                        NCM = item.NCM
+                        item.Id,
+                        item.Referencia,
+                        item.CodeBarras,
+                        item.Nome,
+                        item.Medida,
+                        item.Estoque,
+                        item.CategoriaId,
+                        item.ValorCompra,
+                        item.ValorVenda,
+                        item.Fornecedor,
+                        item.NCM
                     });
-                }
 
                 idFornecedor = Validation.ConvertToInt32(item.Fornecedor);
 
@@ -151,37 +142,28 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.Ncm = item.NCM;
                 _mItem.id_sync = Validation.RandomSecurity();
                 _mItem.status_sync = "CREATE";
-                if (_mItem.Save(_mItem, false))
-                {
-                    success = true;
-                    if (item.Id == 0)
-                    {
-                        produtosID.Add(new
-                        {
-                            Id = _mItem.GetLastId(),
-                            Referencia = item.Referencia,
-                            CodeBarras = item.CodeBarras,
-                            Nome = item.Nome,
-                            Medida = item.Medida,
-                            Estoque = item.Estoque,
-                            CategoriaId = item.CategoriaId,
-                            ValorCompra = item.ValorCompra,
-                            ValorVenda = item.ValorVenda,
-                            Fornecedor = item.Fornecedor,
-                            NCM = item.NCM
-                        });
-                    }
+                if (!_mItem.Save(_mItem, false))
+                    continue;
 
-                    foreach (DataGridViewRow gridData in GridLista.Rows)
+                if (item.Id == 0)
+                    produtosID.Add(new
                     {
-                        if ((int)gridData.Cells["Ordem"].Value == (int)item.Ordem)
-                        {
-                            gridData.Cells["Importado"].Value = new Bitmap(Properties.Resources.success16x);
-                        }
-                    }
-                }
-                else
-                    success = false;
+                        Id = _mItem.GetLastId(),
+                        item.Referencia,
+                        item.CodeBarras,
+                        item.Nome,
+                        item.Medida,
+                        item.Estoque,
+                        item.CategoriaId,
+                        item.ValorCompra,
+                        item.ValorVenda,
+                        item.Fornecedor,
+                        item.NCM
+                    });
+
+                foreach (DataGridViewRow gridData in GridLista.Rows)
+                    if ((int) gridData.Cells["Ordem"].Value == (int) item.Ordem)
+                        gridData.Cells["Importado"].Value = new Bitmap(Resources.success16x);
             }
         }
 
@@ -193,51 +175,50 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             _mPedido.Chavedeacesso = Id.Text;
             _mPedido.Cliente = idFornecedor;
             _mPedido.Colaborador = Settings.Default.user_id;
-            if (_mPedido.Save(_mPedido))
+            if (!_mPedido.Save(_mPedido))
+                return;
+
+            foreach (dynamic item in produtosID)
             {
-                foreach (dynamic item in produtosID)
-                {
-                    _mPedidoItem.Id = 0;
-                    _mPedidoItem.Tipo = "Produtos";
-                    _mPedidoItem.Pedido = _mPedido.GetLastId();
-                    _mPedidoItem.CProd = item.Referencia;
-                    _mPedidoItem.CEan = item.CodeBarras;
-                    _mPedidoItem.xProd = item.Nome;
-                    _mPedidoItem.Ncm = item.NCM;
-                    _mPedidoItem.Item = item.Id;
-                    _mPedidoItem.ValorCompra = 0;
-                    _mPedidoItem.ValorVenda = item.ValorCompra;
-                    _mPedidoItem.Medida = item.Medida;
-                    _mPedidoItem.Quantidade = item.Estoque;
-                    _mPedidoItem.Total = item.Estoque * item.ValorCompra;
-                    _mPedidoItem.TotalVenda = item.Estoque * item.ValorCompra;
-                    _mPedidoItem.Save(_mPedidoItem, false);
-                }
-
-                foreach (dynamic item in ImportarPagamentos.titulos)
-                {
-                    _mTitulo.Id = 0;
-                    _mTitulo.Tipo = "Pagar";
-                    _mTitulo.Emissao = Validation.ConvertDateToSql(Emissao.Text);
-                    _mTitulo.Id_FormaPgto = Validation.ConvertToInt32(item.FormaPgto);
-                    _mTitulo.Id_Pedido = _mPedido.GetLastId();
-                    _mTitulo.Vencimento = item.Data;
-                    _mTitulo.Total = Validation.ConvertToDouble(item.Valor.Replace(".", ","));
-                    _mTitulo.Id_Pessoa = idFornecedor;
-                    _mTitulo.Obs = $"Pagamento gerado a partir da importação de compra. Chave de acesso: {item.id} | Número da nota: {item.nr}";
-                    _mTitulo.Save(_mTitulo, false);
-                }
-
-                Console.WriteLine(_mPedido.GetLastId());
-                var data = _mPedido.SaveTotais(_mPedidoItem.SumTotais(_mPedido.GetLastId()));
-                _mPedido.Save(data);
+                _mPedidoItem.Id = 0;
+                _mPedidoItem.Tipo = "Produtos";
+                _mPedidoItem.Pedido = _mPedido.GetLastId();
+                _mPedidoItem.CProd = item.Referencia;
+                _mPedidoItem.CEan = item.CodeBarras;
+                _mPedidoItem.xProd = item.Nome;
+                _mPedidoItem.Ncm = item.NCM;
+                _mPedidoItem.Item = item.Id;
+                _mPedidoItem.ValorCompra = 0;
+                _mPedidoItem.ValorVenda = item.ValorCompra;
+                _mPedidoItem.Medida = item.Medida;
+                _mPedidoItem.Quantidade = item.Estoque;
+                _mPedidoItem.Total = item.Estoque * item.ValorCompra;
+                _mPedidoItem.TotalVenda = item.Estoque * item.ValorCompra;
+                _mPedidoItem.Save(_mPedidoItem, false);
             }
+
+            foreach (dynamic item in ImportarPagamentos.titulos)
+            {
+                _mTitulo.Id = 0;
+                _mTitulo.Tipo = "Pagar";
+                _mTitulo.Emissao = Validation.ConvertDateToSql(Emissao.Text);
+                _mTitulo.Id_FormaPgto = Validation.ConvertToInt32(item.FormaPgto);
+                _mTitulo.Id_Pedido = _mPedido.GetLastId();
+                _mTitulo.Vencimento = item.Data;
+                _mTitulo.Total = Validation.ConvertToDouble(item.Valor.Replace(".", ","));
+                _mTitulo.Id_Pessoa = idFornecedor;
+                _mTitulo.Obs = $"Pagamento gerado a partir da importação de compra. Chave de acesso: {item.id} | Número da nota: {item.nr}";
+                _mTitulo.Save(_mTitulo, false);
+            }
+
+            var data = _mPedido.SaveTotais(_mPedidoItem.SumTotais(_mPedido.GetLastId()));
+            _mPedido.Save(data);
         }
 
         private void Aguarde()
         {
             pictureBox4.Visible = true;
-            btnImportar.Text = "Aguarde...";
+            btnImportar.Text = @"Aguarde...";
         }
 
         private void Eventos()
@@ -264,17 +245,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             WorkerBackground.RunWorkerCompleted += (s, e) =>
             {
                 pictureBox4.Visible = false;
-                btnImportar.Text = "Pronto";
-                
-                string Msg = $"Importação concluída com sucesso.";
-                string Title = "Pronto!";
+                btnImportar.Text = @"Pronto";
+
+                var Msg = "Importação concluída com sucesso.";
+                var Title = "Pronto!";
 
                 var result = AlertOptions.Message(Title, Msg, AlertBig.AlertType.warning, AlertBig.AlertBtn.OK);
-                if (result)
-                {
-                    Close();
-                    Application.OpenForms["ImportarNfe"].Close();
-                }
+                if (!result) return;
+
+                Close();
+                Application.OpenForms["ImportarNfe"]?.Close();
             };
 
             Back.Click += (s, e) => Close();

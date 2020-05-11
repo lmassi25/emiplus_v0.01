@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnTodosAreceber = new System.Windows.Forms.Label();
             this.btnNovoRecebimento = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -66,6 +66,7 @@
             this.aPagarAtrasado = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -79,7 +80,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.GridLista = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnRefresh = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.loading = new System.Windows.Forms.PictureBox();
             this.visualPanel2.SuspendLayout();
             this.visualPanel3.SuspendLayout();
             this.visualPanel4.SuspendLayout();
@@ -93,6 +94,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loading)).BeginInit();
             this.SuspendLayout();
             // 
             // visualPanel2
@@ -651,6 +653,41 @@
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 161;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRefresh.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnRefresh.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnRefresh.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnRefresh.Border.Color = System.Drawing.Color.LightSteelBlue;
+            this.btnRefresh.Border.HoverColor = System.Drawing.Color.LightSteelBlue;
+            this.btnRefresh.Border.HoverVisible = true;
+            this.btnRefresh.Border.Rounding = 6;
+            this.btnRefresh.Border.Thickness = 1;
+            this.btnRefresh.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnRefresh.Border.Visible = true;
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.btnRefresh.Image = null;
+            this.btnRefresh.Location = new System.Drawing.Point(622, 8);
+            this.btnRefresh.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(103, 23);
+            this.btnRefresh.TabIndex = 159;
+            this.btnRefresh.Text = "Atualizar dados";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnRefresh.TextStyle.Enabled = System.Drawing.Color.LightSlateGray;
+            this.btnRefresh.TextStyle.Hover = System.Drawing.Color.LightSlateGray;
+            this.btnRefresh.TextStyle.Pressed = System.Drawing.Color.LightSlateGray;
+            this.btnRefresh.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRefresh.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnRefresh.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -744,10 +781,11 @@
             this.panel1.Controls.Add(this.visualPanel4);
             this.panel1.Controls.Add(this.visualPanel5);
             this.panel1.Controls.Add(this.visualPanel6);
-            this.panel1.Location = new System.Drawing.Point(0, 38);
+            this.panel1.Location = new System.Drawing.Point(0, 41);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 607);
             this.panel1.TabIndex = 171;
+            this.panel1.Visible = false;
             // 
             // visualSeparator2
             // 
@@ -811,23 +849,23 @@
             this.GridLista.BackgroundColor = System.Drawing.Color.White;
             this.GridLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridLista.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridLista.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridLista.Location = new System.Drawing.Point(0, 0);
@@ -854,40 +892,18 @@
             this.label3.TabIndex = 171;
             this.label3.Text = "Estoque Mínimo";
             // 
-            // btnRefresh
+            // loading
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
-            this.btnRefresh.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnRefresh.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnRefresh.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnRefresh.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnRefresh.Border.Color = System.Drawing.Color.LightSteelBlue;
-            this.btnRefresh.Border.HoverColor = System.Drawing.Color.LightSteelBlue;
-            this.btnRefresh.Border.HoverVisible = true;
-            this.btnRefresh.Border.Rounding = 6;
-            this.btnRefresh.Border.Thickness = 1;
-            this.btnRefresh.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnRefresh.Border.Visible = true;
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.btnRefresh.Image = null;
-            this.btnRefresh.Location = new System.Drawing.Point(622, 8);
-            this.btnRefresh.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(103, 23);
-            this.btnRefresh.TabIndex = 159;
-            this.btnRefresh.Text = "Atualizar dados";
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRefresh.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnRefresh.TextStyle.Enabled = System.Drawing.Color.LightSlateGray;
-            this.btnRefresh.TextStyle.Hover = System.Drawing.Color.LightSlateGray;
-            this.btnRefresh.TextStyle.Pressed = System.Drawing.Color.LightSlateGray;
-            this.btnRefresh.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnRefresh.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnRefresh.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.loading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.loading.Image = ((System.Drawing.Image)(resources.GetObject("loading.Image")));
+            this.loading.Location = new System.Drawing.Point(283, 268);
+            this.loading.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(167, 119);
+            this.loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loading.TabIndex = 160;
+            this.loading.TabStop = false;
+            this.loading.Visible = false;
             // 
             // TelaInicial
             // 
@@ -897,6 +913,7 @@
             this.ClientSize = new System.Drawing.Size(733, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.loading);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -924,6 +941,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loading)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -977,5 +995,6 @@
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator2;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator1;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnRefresh;
+        private System.Windows.Forms.PictureBox loading;
     }
 }

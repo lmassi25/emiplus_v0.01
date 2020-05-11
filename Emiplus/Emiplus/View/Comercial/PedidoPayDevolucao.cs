@@ -1,8 +1,7 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using SqlKata.Execution;
-using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
@@ -10,11 +9,11 @@ namespace Emiplus.View.Comercial
     {
         public static int idPedido;
 
+        private readonly Controller.Pedido _controller = new Controller.Pedido();
+
         private Model.Pedido _mDevolucao = new Model.Pedido();
         private Model.Pedido _mPedido = new Model.Pedido();
-        private Model.PedidoItem _mPedidoItens = new Model.PedidoItem();
-
-        private Controller.Pedido _controller = new Controller.Pedido();
+        private PedidoItem _mPedidoItens = new PedidoItem();
 
         public PedidoPayDevolucao()
         {
@@ -25,18 +24,19 @@ namespace Emiplus.View.Comercial
         private void FormulaDevolucao(int idItem)
         {
             _mPedido = _mPedido.Query().Where("id", idPedido).FirstOrDefault<Model.Pedido>();
-            _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<Model.PedidoItem>();
+            _mPedidoItens = _mPedidoItens.Query().Where("id", idItem).First<PedidoItem>();
 
-            var data = new Model.Pedido().Query().SelectRaw("SUM(PEDIDO.total) as total").Where("tipo", "Devoluções").Where("excluir", "0").Where("venda", idPedido).FirstOrDefault<Model.Pedido>();
+            var data = new Model.Pedido().Query().SelectRaw("SUM(PEDIDO.total) as total").Where("tipo", "Devoluções")
+                .Where("excluir", "0").Where("venda", idPedido).FirstOrDefault<Model.Pedido>();
 
             if (data == null)
             {
                 Alert.Message("Opss", "Problema para encontrar total da Troca", Alert.AlertType.warning);
-                return;                
+                return;
             }
 
             var total = Validation.ConvertToDouble(data.Total);
-            var soma1 = Validation.Round((_mPedidoItens.Total * 100) / _mPedido.Total);
+            var soma1 = Validation.Round(_mPedidoItens.Total * 100 / _mPedido.Total);
             var soma2 = Validation.Round(soma1 / 100);
             var soma3 = Validation.Round(Validation.ConvertToDouble(total) * soma2);
 
@@ -48,14 +48,13 @@ namespace Emiplus.View.Comercial
 
         private void Save()
         {
-            if (String.IsNullOrEmpty(Voucher.Text))
+            if (string.IsNullOrEmpty(Voucher.Text))
             {
                 Alert.Message("Ação não permitida", "Voucher inválido!", Alert.AlertType.warning);
                 return;
             }
 
             _mDevolucao = _mDevolucao.FindByVoucher(Voucher.Text).FirstOrDefault<Model.Pedido>();
-
             if (_mDevolucao == null)
             {
                 Alert.Message("Ação não permitida", "Voucher inválido!", Alert.AlertType.warning);
@@ -80,11 +79,8 @@ namespace Emiplus.View.Comercial
             if (_mDevolucao.Save(_mDevolucao))
             {
                 var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Where("excluir", "0").Get();
-                
-                foreach (var item in data)
-                {
-                    FormulaDevolucao(item.ID);
-                }
+
+                foreach (var item in data) FormulaDevolucao(item.ID);
 
                 _mPedido = _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
                 _mPedido.Save(_mPedido);
@@ -95,7 +91,6 @@ namespace Emiplus.View.Comercial
             else
             {
                 Alert.Message("Opss", "Problema ao salvar Troca!", Alert.AlertType.warning);
-                return;
             }
         }
 
@@ -128,10 +123,7 @@ namespace Emiplus.View.Comercial
             //porcentagem.KeyDown += KeyDowns;
             //dinheiro.KeyDown += KeyDowns;
 
-            Load += (s, e) =>
-            {
-                DataTable();
-            };
+            Load += (s, e) => { DataTable(); };
 
             btnSalvar.Click += (s, e) =>
             {

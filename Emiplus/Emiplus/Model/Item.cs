@@ -1,26 +1,20 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Properties;
 using SqlKata;
-using System;
+using SqlKata.Execution;
+using Valit;
 
 namespace Emiplus.Model
 {
-    using Data.Database;
-    using Emiplus.Data.SobreEscrever;
-    using Emiplus.Properties;
-    using SqlKata.Execution;
-    using Valit;
-
-    internal class Item : Model
+    internal class Item : Data.Database.Model
     {
         public Item() : base("ITEM")
         {
         }
 
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public string Tipo { get; set; }
         public int Excluir { get; set; }
@@ -61,11 +55,9 @@ namespace Emiplus.Model
         public string Atributos { get; set; }
         public string Adicional { get; set; }
 
-        #endregion CAMPOS
-
         public Item FromCsv(string csvLine, string tipo = "Produtos")
         {
-            string[] values = csvLine.Split(';');
+            var values = csvLine.Split(';');
 
             Id = 0;
             Tipo = tipo;
@@ -73,7 +65,7 @@ namespace Emiplus.Model
             Atualizado = DateTime.Now;
             Nome = values[0];
 
-            Random rnd = new Random();
+            var rnd = new Random();
             if (ExistsName(Nome))
             {
                 Nome = Nome + " " + rnd.Next(1, 10);
@@ -84,10 +76,7 @@ namespace Emiplus.Model
 
             Referencia = values[1];
 
-            if (string.IsNullOrEmpty(values[2]))
-                CodeBarras = Validation.CodeBarrasRandom();
-            else
-                CodeBarras = values[2];
+            CodeBarras = string.IsNullOrEmpty(values[2]) ? Validation.CodeBarrasRandom() : values[2];
 
             if (ExistsCodeBarras(CodeBarras))
                 CodeBarras = Validation.CodeBarrasRandom();
@@ -112,7 +101,7 @@ namespace Emiplus.Model
 
         public KeyedAutoCompleteStringCollection AutoComplete(string tipo = "")
         {
-            KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+            var collection = new KeyedAutoCompleteStringCollection();
 
             var item = Query().Select("id", "nome", "tipo").Where("excluir", 0);
             item.Where(q => q.Where("item.ativo", "0").OrWhereNull("item.ativo"));
@@ -121,40 +110,28 @@ namespace Emiplus.Model
                 item.Where("tipo", tipo);
 
             foreach (var itens in item.Get())
-            {
-                if (!String.IsNullOrEmpty(itens.NOME))
+                if (!string.IsNullOrEmpty(itens.NOME))
                     collection.Add(itens.NOME, itens.ID);
-            }
-            
+
             return collection;
         }
 
         public bool ExistsCodeBarras(string codebarras, bool importacao = true, int idItem = 0)
         {
-            dynamic data;
-            if (importacao)
-                data = Query().Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault();
-            else
-                data = Query().Where("id", "!=", idItem).Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault();
-            
-            if (data != null)
-                return true;
-            
-            return false;
+            var data = importacao
+                ? Query().Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault()
+                : Query().Where("id", "!=", idItem).Where("codebarras", codebarras).Where("excluir", 0).FirstOrDefault();
+
+            return data != null;
         }
 
         public bool ExistsName(string name, bool importacao = true, int idItem = 0)
         {
-            dynamic data;
-            if (importacao)
-                data = Query().Where("nome", name).Where("excluir", 0).FirstOrDefault();
-            else
-                data = Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
+            var data = importacao
+                ? Query().Where("nome", name).Where("excluir", 0).FirstOrDefault()
+                : Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
 
-            if (data != null)
-                return true;
-
-            return false;
+            return data != null;
         }
 
         public bool Save(Item data, bool message = true)
@@ -181,13 +158,14 @@ namespace Emiplus.Model
             {
                 if (ValidarDados(data))
                     return false;
-                
+
                 data.Atualizado_por = Settings.Default.user_id;
                 data.status_sync = "UPDATE";
                 data.Atualizado = DateTime.Now;
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
-                    if (message) Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
                     return true;
                 }
 
@@ -200,7 +178,7 @@ namespace Emiplus.Model
 
         public bool Remove(int id, bool message = true)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID", id) == 1)
             {
                 if (message)
@@ -216,8 +194,8 @@ namespace Emiplus.Model
         }
 
         /// <summary>
-        /// <para>Valida os campos do Model</para>
-        /// <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html"/> </para>
+        ///     <para>Valida os campos do Model</para>
+        ///     <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html" /> </para>
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
@@ -243,6 +221,7 @@ namespace Emiplus.Model
                     Alert.Message("Opss!", message, Alert.AlertType.error);
                     return true;
                 }
+
                 return true;
             }
 

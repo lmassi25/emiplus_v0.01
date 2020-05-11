@@ -1,21 +1,16 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Data.Helpers;
-    using SqlKata;
-    using System;
+﻿using System;
+using Emiplus.Data.Helpers;
+using SqlKata;
 
-    internal class Caixa : Model
+namespace Emiplus.Model
+{
+    internal class Caixa : Data.Database.Model
     {
         public Caixa() : base("CAIXA")
         {
         }
 
-        #region CAMPOS
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public string Tipo { get; set; }
         public int Excluir { get; set; }
@@ -32,8 +27,6 @@
         public DateTime Fechado { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-        #endregion CAMPOS
-
 
 
         public bool Save(Caixa data, bool message = true)
@@ -54,6 +47,7 @@
                 {
                     if (message)
                         Alert.Message("Opss", "Erro ao adicionar caixa, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
@@ -70,6 +64,7 @@
                 {
                     if (message)
                         Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+
                     return false;
                 }
             }
@@ -79,7 +74,12 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new
+            {
+                Excluir = 1, 
+                Deletado = DateTime.Now,
+                status_sync = "UPDATE"
+            };
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Caixa removido com sucesso.", Alert.AlertType.info);

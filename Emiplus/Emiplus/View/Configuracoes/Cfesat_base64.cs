@@ -1,15 +1,16 @@
-﻿using Emiplus.Data.Helpers;
-using System;
+﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using Emiplus.Data.Helpers;
 
 namespace Emiplus.View.Configuracoes
 {
     public partial class Cfesat_base64 : Form
     {
-        private OpenFileDialog ofd = new OpenFileDialog();
+        private readonly OpenFileDialog ofd = new OpenFileDialog();
 
         public Cfesat_base64()
         {
@@ -20,26 +21,20 @@ namespace Emiplus.View.Configuracoes
         }
 
         /// <summary>
-        /// Eventos do form
+        ///     Eventos do form
         /// </summary>
         public void Eventos()
         {
             logs.Click += (s, e) =>
             {
-                string _path_autorizada = @"C:\Emiplus\CFe\Autorizadas", conteudo = "", ChaveDeAcesso = "", nr_Nota = "", assinatura_qrcode = "";
+                string _path_autorizada = @"C:\Emiplus\CFe\Autorizadas";
 
                 ofd.RestoreDirectory = true;
                 ofd.DefaultExt = "txt";
-                ofd.Filter = "TXT|*.txt";
+                ofd.Filter = @"TXT|*.txt";
                 ofd.CheckFileExists = true;
                 ofd.CheckPathExists = true;
-                //ofd.Multiselect = MultipleImports;
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    caminho.Text = ofd.FileName;
-                }
-
-                //caminho.Text = @"D:\_CLIENTES\MIKE CENTER\3.txt";
+                if (ofd.ShowDialog() == DialogResult.OK) caminho.Text = ofd.FileName;
 
                 if (!File.Exists(caminho.Text))
                 {
@@ -47,47 +42,49 @@ namespace Emiplus.View.Configuracoes
                     return;
                 }
 
-                conteudo = File.ReadAllText(caminho.Text);
+                var conteudo = File.ReadAllText(caminho.Text);
 
-                if (String.IsNullOrEmpty(conteudo))
+                if (string.IsNullOrEmpty(conteudo))
                 {
                     Alert.Message("Ação não permitida", "Conteúdo inválido!", Alert.AlertType.warning);
                     return;
                 }
 
                 if (!Directory.Exists(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00")))
-                    Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00"));
+                    Directory.CreateDirectory(_path_autorizada + "\\" + DateTime.Now.Year +
+                                              DateTime.Now.Month.ToString("00"));
 
-                XmlDocument oXML = new XmlDocument();
-                oXML.LoadXml(Base64ToString(Sep_Delimitador('|', 6, conteudo)));
+                var oXml = new XmlDocument();
+                oXml.LoadXml(Base64ToString(Sep_Delimitador('|', 6, conteudo)));
 
-                ChaveDeAcesso = oXML.SelectSingleNode("/CFe/infCFe").Attributes.GetNamedItem("Id").Value;
-                nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
-                assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
+                var chaveDeAcesso = oXml.SelectSingleNode(@"/CFe/infCFe")?.Attributes?.GetNamedItem("Id").Value;
+                //var nr_Nota = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[4].InnerText;
+                //var assinatura_qrcode = oXML.SelectSingleNode("/CFe/infCFe/ide").ChildNodes[11].InnerText;
 
                 var doc = XDocument.Parse(Base64ToString(Sep_Delimitador('|', 6, conteudo)));
-                doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml");
+                doc.Save(_path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" +
+                         chaveDeAcesso + ".xml");
 
                 Alert.Message("Sucesso", "Arquivo criado com sucesso!", Alert.AlertType.success);
 
-                novoArquivo.Text = _path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") + "\\" + ChaveDeAcesso + ".xml";
+                novoArquivo.Text = _path_autorizada + "\\" + DateTime.Now.Year + DateTime.Now.Month.ToString("00") +
+                                   "\\" + chaveDeAcesso + ".xml";
             };
         }
 
-        public static string Base64ToString(string base64)  // caso queira tirar o arquivo de base 64
+        public static string Base64ToString(string base64) // caso queira tirar o arquivo de base 64
         {
-            byte[] arq;
             //System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-            System.Text.UTF8Encoding enc = new System.Text.UTF8Encoding();
-            arq = Convert.FromBase64String(base64);
+            var enc = new UTF8Encoding();
+            var arq = Convert.FromBase64String(base64);
             base64 = enc.GetString(arq);
             return base64;
         }
 
         private static string Sep_Delimitador(char sep, int posicao, string dados)
         {
-            string[] ret_dados = dados.Split(sep);
-            return ret_dados[posicao];
+            var retDados = dados.Split(sep);
+            return retDados[posicao];
         }
     }
 }

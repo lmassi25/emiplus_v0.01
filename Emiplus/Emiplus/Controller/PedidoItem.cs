@@ -1,11 +1,10 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.View.Common;
-using SqlKata.Execution;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.View.Common;
+using SqlKata.Execution;
 
 namespace Emiplus.Controller
 {
@@ -17,7 +16,11 @@ namespace Emiplus.Controller
         {
             var itens = new Model.PedidoItem().Query()
                 .LeftJoin("item", "item.id", "pedido_item.item")
-                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.xprod", "pedido_item.medida", "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm", "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis", "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total", "pedido_item.status", "item.nome", "item.referencia", "pedido_item.item")
+                .Select("pedido_item.id", "pedido_item.quantidade", "pedido_item.xprod", "pedido_item.medida",
+                    "pedido_item.valorvenda", "pedido_item.desconto", "pedido_item.frete", "pedido_item.ncm",
+                    "pedido_item.cfop", "pedido_item.origem", "pedido_item.icms", "pedido_item.ipi", "pedido_item.pis",
+                    "pedido_item.cofins", "pedido_item.federal", "pedido_item.estadual", "pedido_item.total",
+                    "pedido_item.status", "item.nome", "item.referencia", "pedido_item.item")
                 .Where("pedido_item.pedido", idPedido)
                 .Where("pedido_item.excluir", 0);
             //.Where("pedido_item.tipo", "Produtos");
@@ -26,7 +29,7 @@ namespace Emiplus.Controller
         }
 
         /// <summary>
-        /// Alimenta o Datagrid da tela de Vendas e da tela Detalhes do Pedido.
+        ///     Alimenta o Datagrid da tela de Vendas e da tela Detalhes do Pedido.
         /// </summary>
         public void GetDataTableItens(DataGridView Table, int idPedido)
         {
@@ -119,7 +122,7 @@ namespace Emiplus.Controller
             Table.Columns[14].Visible = impostos;
             Table.Columns[15].Visible = impostos;
             Table.Columns[16].Visible = impostos;
-            
+
             if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
                 Table.Columns[18].Visible = true;
 
@@ -130,7 +133,7 @@ namespace Emiplus.Controller
 
             var itens = GetDataItens(idPedido);
 
-            int count = 1;
+            var count = 1;
             foreach (var data in itens)
             {
                 Table.Rows.Add(
@@ -138,17 +141,18 @@ namespace Emiplus.Controller
                     count++,
                     data.REFERENCIA,
                     data.XPROD,
-                    Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE)) + " " + data.MEDIDA,
+                    Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE)) + " " +
+                    data.MEDIDA,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.FRETE), true),
-                    String.IsNullOrEmpty(data.NCM) ? "0" : data.NCM,
-                    String.IsNullOrEmpty(data.CFOP) ? "0" : data.CFOP,
-                    String.IsNullOrEmpty(data.ORIGEM) ? "N/D" : data.ORIGEM,
-                    String.IsNullOrEmpty(data.ICMS) ? "0" : data.ICMS,
-                    String.IsNullOrEmpty(data.IPI) ? "0" : data.IPI,
-                    String.IsNullOrEmpty(data.PIS) ? "0" : data.PIS,
-                    String.IsNullOrEmpty(data.COFINS) ? "0" : data.COFINS,
+                    string.IsNullOrEmpty(data.NCM) ? "0" : data.NCM,
+                    string.IsNullOrEmpty(data.CFOP) ? "0" : data.CFOP,
+                    string.IsNullOrEmpty(data.ORIGEM) ? "N/D" : data.ORIGEM,
+                    string.IsNullOrEmpty(data.ICMS) ? "0" : data.ICMS,
+                    string.IsNullOrEmpty(data.IPI) ? "0" : data.IPI,
+                    string.IsNullOrEmpty(data.PIS) ? "0" : data.PIS,
+                    string.IsNullOrEmpty(data.COFINS) ? "0" : data.COFINS,
                     Validation.FormatPrice(Validation.ConvertToDouble(data.FEDERAL), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(data.ESTADUAL), true),
                     data.STATUS,
@@ -180,10 +184,12 @@ namespace Emiplus.Controller
 
             Table.Columns[3].Name = "Descrição";
             Table.Columns[3].MinimumWidth = 150;
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Padding = new Padding(5, 5, 0, 5);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            var dataGridViewCellStyle1 = new DataGridViewCellStyle
+            {
+                Alignment = DataGridViewContentAlignment.MiddleLeft,
+                Padding = new Padding(5, 5, 0, 5),
+                WrapMode = DataGridViewTriState.True
+            };
 
             Table.Columns[3].DefaultCellStyle = dataGridViewCellStyle1;
 
@@ -194,7 +200,7 @@ namespace Emiplus.Controller
 
             var itens = GetDataItens(idPedido);
 
-            int count = 1;
+            var count = 1;
             foreach (var data in itens)
             {
                 Table.Rows.Add(
@@ -203,7 +209,7 @@ namespace Emiplus.Controller
                     data.REFERENCIA,
                     $"{data.XPROD} {Environment.NewLine}" +
                     $"{Validation.FormatMedidas(data.MEDIDA, Validation.ConvertToDouble(data.QUANTIDADE))} {data.MEDIDA} x {Validation.FormatPrice(Validation.ConvertToDouble(data.VALORVENDA))} (-{Validation.FormatPrice(Validation.ConvertToDouble(data.DESCONTO))}) = {Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL))}"
-                    );
+                );
 
                 Table.Rows[count - 2].Selected = true;
             }

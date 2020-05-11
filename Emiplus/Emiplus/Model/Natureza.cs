@@ -10,8 +10,6 @@ namespace Emiplus.Model
         {
         }
 
-        #region CAMPOS
-
         [Ignore]
         [Key("ID")]
         public int Id { get; set; }
@@ -24,10 +22,6 @@ namespace Emiplus.Model
         public string Nome { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
-
-        #endregion CAMPOS
-
-
 
         public bool Save(Natureza data)
         {

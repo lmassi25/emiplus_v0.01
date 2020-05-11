@@ -1,14 +1,13 @@
-﻿using CefSharp;
+﻿using System;
+using System.Windows.Forms;
+using CefSharp;
 using CefSharp.WinForms;
 using Emiplus.Data.Helpers;
-using System;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Reports
 {
     public partial class Browser : Form
     {
-        public static string htmlRender { get; set; }
         public ChromiumWebBrowser chromeBrowser;
 
         public Browser()
@@ -18,9 +17,11 @@ namespace Emiplus.View.Reports
             Eventos();
         }
 
+        public static string htmlRender { get; set; }
+
         public void InitializeChromiumAsync()
         {
-            CefSettings settings = new CefSettings();
+            var settings = new CefSettings();
 
             if (!Cef.IsInitialized)
                 Cef.Initialize(settings);
@@ -32,9 +33,11 @@ namespace Emiplus.View.Reports
             chromeBrowser.LoadHtml(htmlRender, "https://rendering/");
             chromeBrowser.Dock = DockStyle.Fill;
 
-            BrowserSettings browserSettings = new BrowserSettings();
-            browserSettings.FileAccessFromFileUrls = CefState.Enabled;
-            browserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            var browserSettings = new BrowserSettings
+            {
+                FileAccessFromFileUrls = CefState.Enabled,
+                UniversalAccessFromFileUrls = CefState.Enabled
+            };
             chromeBrowser.BrowserSettings = browserSettings;
         }
 
@@ -61,10 +64,7 @@ namespace Emiplus.View.Reports
                 search.Select();
             };
 
-            FormClosed += (s, e) =>
-            {
-                DialogResult = DialogResult.OK;
-            };
+            FormClosed += (s, e) => { DialogResult = DialogResult.OK; };
 
             search.KeyUp += (s, e) =>
             {
@@ -77,30 +77,25 @@ namespace Emiplus.View.Reports
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             };
 
             anterior.Click += (s, e) => chromeBrowser.Find(0, search.Text, false, false, false);
             proximo.Click += (s, e) => chromeBrowser.Find(0, search.Text, true, false, false);
 
-            imprimir.Click += (s, e) =>
-            {
-                chromeBrowser.Print();
-            };
+            imprimir.Click += (s, e) => { chromeBrowser.Print(); };
 
             pdf.Click += (s, e) =>
             {
                 using (var fileDialog = new SaveFileDialog())
                 {
                     fileDialog.DefaultExt = "pdf";
-                    fileDialog.Filter = "PDF(*.pdf)|*.pdf";
+                    fileDialog.Filter = @"PDF(*.pdf)|*.pdf";
                     fileDialog.AddExtension = true;
                     fileDialog.FileName = $"PDF-{Validation.RandomNumeric(15)}";
-                    DialogResult res = fileDialog.ShowDialog();
-                    if (res == DialogResult.OK)
-                    {
-                        chromeBrowser.PrintToPdfAsync(fileDialog.FileName);
-                    }
+                    var res = fileDialog.ShowDialog();
+                    if (res == DialogResult.OK) chromeBrowser.PrintToPdfAsync(fileDialog.FileName);
                 }
             };
         }

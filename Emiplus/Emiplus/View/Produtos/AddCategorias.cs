@@ -1,15 +1,17 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata.Execution;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddCategorias : Form
     {
-        private int idCatSelected = Categorias.idCatSelected;
-        private Categoria _modelCategoria = new Categoria();
+        private readonly Categoria _modelCategoria = new Categoria();
+        private readonly int idCatSelected = Categorias.idCatSelected;
 
         public AddCategorias()
         {
@@ -22,25 +24,23 @@ namespace Emiplus.View.Produtos
                 nome.Text = _modelCategoria.Nome ?? "";
             }
 
-            if (Home.CategoriaPage == "Produtos")
+            switch (Home.CategoriaPage)
             {
-                pictureBox1.Image = Properties.Resources.box;
-                label1.Text = "Nova Categoria";
-                label5.Text = "Produtos";
-            }
-
-            if (Home.CategoriaPage == "Receitas")
-            {
-                pictureBox1.Image = Properties.Resources.money_bag__1_;
-                label1.Text = "Nova Receita";
-                label5.Text = "Financeiro";
-            }
-
-            if (Home.CategoriaPage == "Despesas")
-            {
-                pictureBox1.Image = Properties.Resources.money_bag__1_;
-                label1.Text = "Nova Despesa";
-                label5.Text = "Financeiro";
+                case "Produtos":
+                    pictureBox1.Image = Resources.box;
+                    label1.Text = @"Nova Categoria";
+                    label5.Text = @"Produtos";
+                    break;
+                case "Receitas":
+                    pictureBox1.Image = Resources.money_bag__1_;
+                    label1.Text = @"Nova Receita";
+                    label5.Text = @"Financeiro";
+                    break;
+                case "Despesas":
+                    pictureBox1.Image = Resources.money_bag__1_;
+                    label1.Text = @"Nova Despesa";
+                    label5.Text = @"Financeiro";
+                    break;
             }
         }
 
@@ -64,7 +64,9 @@ namespace Emiplus.View.Produtos
             {
                 nome.Select();
 
-                ToolHelp.Show("Digite o nome que deseja para a categoria.\nVocê pode cadastrar a Marca do produto como uma categoria por exemplo.", pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
+                ToolHelp.Show(
+                    "Digite o nome que deseja para a categoria.\nVocê pode cadastrar a Marca do produto como uma categoria por exemplo.",
+                    pictureBox6, ToolHelp.ToolTipIcon.Info, "Ajuda!");
             };
 
             btnSalvar.Click += (s, e) =>
@@ -73,11 +75,11 @@ namespace Emiplus.View.Produtos
                 _modelCategoria.Nome = nome.Text;
                 _modelCategoria.Tipo = Home.CategoriaPage;
 
-                if (_modelCategoria.Save(_modelCategoria))
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (!_modelCategoria.Save(_modelCategoria))
+                    return;
+
+                DialogResult = DialogResult.OK;
+                Close();
             };
 
             btnRemover.Click += (s, e) =>
@@ -91,7 +93,7 @@ namespace Emiplus.View.Produtos
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
     }
 }

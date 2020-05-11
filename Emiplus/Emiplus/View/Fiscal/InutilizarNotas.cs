@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Emiplus.Data.Core;
 
 namespace Emiplus.View.Fiscal
 {
@@ -105,7 +106,7 @@ namespace Emiplus.View.Fiscal
             dataFinal.ValueChanged += (s, e) => Filter();
             status.SelectedValueChanged += (s, e) => Filter();
 
-            btnHelp.Click += (s, e) => Support.OpenLinkBrowser("https://ajuda.emiplus.com.br");
+            btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
 
             btnRetransmitir.Click += (s, e) =>
             {

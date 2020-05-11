@@ -1,8 +1,8 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using Emiplus.View.Comercial;
 using Emiplus.View.Produtos;
 using Emiplus.View.Reports;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Common
 {
@@ -29,7 +29,7 @@ namespace Emiplus.View.Common
                 //if (UserPermission.SetControl(Produtos, pictureBox9, "pdt_pdt"))
                 //    return;
 
-                OpenForm.Show<Produtos.Servicos>(this);
+                OpenForm.Show<Servicos>(this);
             };
 
             Etiquetas.Click += (s, e) =>
@@ -37,7 +37,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(Etiquetas, pictureBox2, "pdt_etiquetas"))
                     return;
 
-                OpenForm.Show<Produtos.Etiquetas>(this);
+                OpenForm.Show<Etiquetas>(this);
             };
 
             Categorias.Click += (s, e) =>
@@ -46,7 +46,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.CategoriaPage = "Produtos";
-                OpenForm.Show<Produtos.Categorias>(this);
+                OpenForm.Show<Categorias>(this);
             };
 
             Impostos.Click += (s, e) =>
@@ -54,7 +54,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(Impostos, pictureBox3, "pdt_impostos"))
                     return;
 
-                OpenForm.Show<Produtos.Impostos>(this);
+                OpenForm.Show<Impostos>(this);
             };
 
             fornecedores.Click += (s, e) =>
@@ -63,7 +63,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Fornecedores";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             transportadoras.Click += (s, e) =>
@@ -72,7 +72,7 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pessoaPage = "Transportadoras";
-                OpenForm.Show<Comercial.Clientes>(this);
+                OpenForm.Show<Clientes>(this);
             };
 
             ReajusteProduto.Click += (s, e) =>
@@ -80,7 +80,7 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(ReajusteProduto, pictureBox7, "pdt_reajuste"))
                     return;
 
-                OpenForm.Show<Produtos.ReajusteDeProduto>(this);
+                OpenForm.Show<ReajusteDeProduto>(this);
             };
 
             Compras.Click += (s, e) =>
@@ -89,21 +89,21 @@ namespace Emiplus.View.Common
                     return;
 
                 Home.pedidoPage = "Compras";
-                OpenForm.Show<Comercial.Pedido>(this);
+                OpenForm.Show<Pedido>(this);
             };
 
             btnRemessas.Click += (s, e) =>
             {
                 Home.pedidoPage = "Remessas";
-                OpenForm.Show<Comercial.Pedido>(this);
+                OpenForm.Show<Pedido>(this);
             };
 
             btnRemessa.Click += (s, e) =>
             {
                 Home.pedidoPage = "Remessas";
                 AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             HistoricoEntradaSaida.Click += (s, e) =>
@@ -116,7 +116,7 @@ namespace Emiplus.View.Common
 
             Estoque.Click += (s, e) =>
             {
-                if (UserPermission.SetControl(this.Estoque, pictureBox12, "pdt_inventario"))
+                if (UserPermission.SetControl(Estoque, pictureBox12, "pdt_inventario"))
                     return;
 
                 OpenForm.Show<Inventario>(this);
@@ -129,8 +129,8 @@ namespace Emiplus.View.Common
 
                 Home.pedidoPage = "Compras";
                 AddPedidos.Id = 0;
-                AddPedidos NovoPedido = new AddPedidos();
-                NovoPedido.ShowDialog();
+                var novoPedido = new AddPedidos();
+                novoPedido.ShowDialog();
             };
 
             importarNfe.Click += (s, e) =>
@@ -138,14 +138,11 @@ namespace Emiplus.View.Common
                 if (UserPermission.SetControl(importarNfe, pictureBox14, "pdt_importarnfe"))
                     return;
 
-                Produtos.ImportarNfe f = new Produtos.ImportarNfe();
+                var f = new ImportarNfe();
                 f.ShowDialog();
             };
 
-            btnAdicionais.Click += (s, e) =>
-            {
-                OpenForm.Show<Adicional>(this);
-            };
+            btnAdicionais.Click += (s, e) => { OpenForm.Show<Adicional>(this); };
 
             btnVariation.Click += (s, e) => OpenForm.Show<Variacoes>(this);
         }

@@ -1,31 +1,28 @@
-﻿using Emiplus.Data.Helpers;
-using Emiplus.Data.SobreEscrever;
-using Emiplus.View.Comercial;
-using SqlKata.Execution;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
+using Emiplus.Model;
+using Emiplus.Properties;
+using Emiplus.View.Comercial;
+using SqlKata.Execution;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
     public partial class ImportarProdutos : Form
     {
-        private ImportarNfe dataNfe = new ImportarNfe();
-        private Model.Item _mItem = new Model.Item();
-        private Model.Pessoa _mPessoa = new Model.Pessoa();
-        private Model.PessoaContato _mPessoaContato = new Model.PessoaContato();
-        private Model.PessoaEndereco _mPessoaAddr = new Model.PessoaEndereco();
-
         public static ArrayList produtos = new ArrayList();
         public static ArrayList fornecedores = new ArrayList();
+        private Item _mItem = new Item();
+        private readonly Pessoa _mPessoa = new Pessoa();
 
-        private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-        private BackgroundWorker WorkerBackground = new BackgroundWorker();
+        private readonly KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
+        private readonly ImportarNfe dataNfe = new ImportarNfe();
+        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
         public ImportarProdutos()
         {
@@ -34,89 +31,89 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         }
 
         /// <summary>
-        /// Autocomplete do campo de busca de produtos.
+        ///     Autocomplete do campo de busca de produtos.
         /// </summary>
         private void AutoCompleteItens()
         {
             var item = _mItem.Query().Select("id", "nome").Where("excluir", 0).Where("tipo", "Produtos").Get();
 
-            foreach (var itens in item)
-            {
-                collection.Add(itens.NOME, itens.ID);
-            }
+            foreach (var itens in item) collection.Add(itens.NOME, itens.ID);
 
             BuscarProduto.AutoCompleteCustomSource = collection;
         }
 
-        private int IDFornecedor(dynamic item)
+        private int IdFornecedor(dynamic item)
         {
-            int idFornecedor = 0;
+            var idFornecedor = 0;
             string cnpj = item.GetFornecedor().CPFcnpj;
-            var p = _mPessoa.Query().Select("*").Where("cpf", cnpj).FirstOrDefault<Model.Pessoa>();
+            var p = _mPessoa.Query().Select("*").Where("cpf", cnpj).FirstOrDefault<Pessoa>();
             if (p != null)
             {
                 idFornecedor = p.Id;
                 return idFornecedor;
             }
-            else
+
+            var fornecedorCadastro = new Pessoa
             {
-                Model.Pessoa fornecedorCadastro = new Model.Pessoa();
-                fornecedorCadastro.Id = 0;
-                fornecedorCadastro.Tipo = "Fornecedores";
-                fornecedorCadastro.Pessoatipo = "Jurídica";
-                fornecedorCadastro.CPF = item.GetFornecedor().CPFcnpj;
-                fornecedorCadastro.Nome = item.GetFornecedor().razaoSocial;
-                fornecedorCadastro.RG = item.GetFornecedor().IE;
-                if (fornecedorCadastro.Save(fornecedorCadastro, false))
-                {
-                    idFornecedor = fornecedorCadastro.GetLastId();
+                Id = 0,
+                Tipo = "Fornecedores",
+                Pessoatipo = "Jurídica",
+                CPF = item.GetFornecedor().CPFcnpj,
+                Nome = item.GetFornecedor().razaoSocial,
+                RG = item.GetFornecedor().IE
+            };
+            if (!fornecedorCadastro.Save(fornecedorCadastro, false))
+                return 0;
 
-                    Model.PessoaEndereco fornecedorAddr = new Model.PessoaEndereco();
-                    fornecedorAddr.Id = 0;
-                    fornecedorAddr.Id_pessoa = idFornecedor;
-                    fornecedorAddr.Cep = item.GetFornecedor().Addr_CEP;
-                    fornecedorAddr.Rua = item.GetFornecedor().Addr_Rua;
-                    fornecedorAddr.Estado = item.GetFornecedor().Addr_UF;
-                    fornecedorAddr.Cidade = item.GetFornecedor().Addr_Cidade;
-                    fornecedorAddr.Nr = item.GetFornecedor().Addr_Nr;
-                    fornecedorAddr.Bairro = item.GetFornecedor().Addr_Bairro;
-                    fornecedorAddr.IBGE = item.GetFornecedor().Addr_IBGE;
-                    fornecedorAddr.Pais = "Brasil";
-                    fornecedorAddr.Save(fornecedorAddr, false);
+            idFornecedor = fornecedorCadastro.GetLastId();
 
-                    if (!string.IsNullOrEmpty(item.GetFornecedor().Email) || !string.IsNullOrEmpty(item.GetFornecedor().Tel))
-                    {
-                        Model.PessoaContato fornecedorContato = new Model.PessoaContato();
-                        fornecedorContato.Id = 0;
-                        fornecedorContato.Contato = "Contato 1";
-                        fornecedorContato.Id_pessoa = idFornecedor;
-                        fornecedorContato.Email = item.GetFornecedor().Email;
-                        fornecedorContato.Telefone = item.GetFornecedor().Tel;
-                        fornecedorContato.Save(fornecedorContato, false);
-                    }
+            var fornecedorAddr = new PessoaEndereco
+            {
+                Id = 0,
+                Id_pessoa = idFornecedor,
+                Cep = item.GetFornecedor().Addr_CEP,
+                Rua = item.GetFornecedor().Addr_Rua,
+                Estado = item.GetFornecedor().Addr_UF,
+                Cidade = item.GetFornecedor().Addr_Cidade,
+                Nr = item.GetFornecedor().Addr_Nr,
+                Bairro = item.GetFornecedor().Addr_Bairro,
+                IBGE = item.GetFornecedor().Addr_IBGE,
+                Pais = "Brasil"
+            };
+            fornecedorAddr.Save(fornecedorAddr, false);
 
-                    return idFornecedor;
-                }
-            }
+            if (string.IsNullOrEmpty(item.GetFornecedor().Email) && string.IsNullOrEmpty(item.GetFornecedor().Tel))
+                return idFornecedor;
 
-            return 0;
+            var fornecedorContato = new PessoaContato
+            {
+                Id = 0,
+                Contato = "Contato 1",
+                Id_pessoa = idFornecedor,
+                Email = item.GetFornecedor().Email,
+                Telefone = item.GetFornecedor().Tel
+            };
+            fornecedorContato.Save(fornecedorContato, false);
+
+            return idFornecedor;
+
         }
 
         /// <summary>
-        /// Pega os produtos das notas e cria um novo arraylist
+        ///     Pega os produtos das notas e cria um novo arraylist
         /// </summary>
         /// <returns></returns>
         private ArrayList GetAllProdutos()
         {
-            ArrayList allProdutos = new ArrayList();
+            var allProdutos = new ArrayList();
 
             var count = dataNfe.GetNotas();
             if (count.Count > 0)
             {
                 foreach (Controller.ImportarNfe item in count)
                 {
-                    int idFornecedor = IDFornecedor(item);
-                    foreach (dynamic pdt in item.GetProdutos())
+                    var idFornecedor = IdFornecedor(item);
+                    foreach (var pdt in item.GetProdutos())
                     {
                         object produtos = new
                         {
@@ -141,7 +138,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         }
 
         /// <summary>
-        /// Table dos produtos
+        ///     Table dos produtos
         /// </summary>
         /// <param name="Table">GridLista</param>
         /// <param name="dataProdutos">array dos produtos</param>
@@ -149,14 +146,16 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         {
             Table.ColumnCount = 13;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             //Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
 
-            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            var checkColumn = new DataGridViewCheckBoxColumn();
             {
-                checkColumn.HeaderText = "Importar";
+                checkColumn.HeaderText = @"Importar";
                 checkColumn.Name = "Importar";
                 checkColumn.FlatStyle = FlatStyle.Standard;
                 checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
@@ -164,10 +163,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             }
             Table.Columns.Insert(0, checkColumn);
 
-            DataGridViewImageColumn columnImg = new DataGridViewImageColumn();
+            var columnImg = new DataGridViewImageColumn();
             {
                 columnImg.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                columnImg.HeaderText = "Cadastrado";
+                columnImg.HeaderText = @"Cadastrado";
                 columnImg.Name = "Cadastrado";
                 columnImg.Width = 70;
             }
@@ -185,10 +184,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Table.Columns[5].Name = "Medida";
             Table.Columns[5].Width = 60;
 
-            if (ImportarNfe.optionSelected != 1)
-                Table.Columns[6].Name = "Qtd. (+)";
-            else
-                Table.Columns[6].Name = "Qtd.";
+            Table.Columns[6].Name = ImportarNfe.optionSelected != 1 ? "Qtd. (+)" : "Qtd.";
             Table.Columns[6].Width = 60;
             if (ImportarNfe.optionSelected == 1)
                 Table.Columns[6].Visible = false;
@@ -202,10 +198,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             Table.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[8].CellTemplate.Style.BackColor = Color.Beige;
 
-            DataGridViewImageColumn columnImgEdit = new DataGridViewImageColumn();
+            var columnImgEdit = new DataGridViewImageColumn();
             {
                 columnImgEdit.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                columnImgEdit.HeaderText = "Editar";
+                columnImgEdit.HeaderText = @"Editar";
                 columnImgEdit.Name = "Editar";
                 columnImgEdit.Width = 70;
             }
@@ -233,11 +229,10 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
             foreach (dynamic item in dataProdutos)
             {
-                bool goBack = false;
-                int rowIndex = -1;
+                var goBack = false;
+                var rowIndex = -1;
                 foreach (DataGridViewRow row in Table.Rows)
-                {
-                    if (row.Cells["Cód. de Barras"].Value.ToString() != "SEM GTIN") {
+                    if (row.Cells["Cód. de Barras"].Value.ToString() != "SEM GTIN")
                         if (row.Cells["Cód. de Barras"].Value.ToString().Equals(item.pdt.CodeBarras))
                         {
                             rowIndex = row.Index;
@@ -245,37 +240,34 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             var getQtd = GridLista.Rows[rowIndex].Cells[6].Value;
                             var getValorCompra = GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value;
                             //GridLista.Rows[rowIndex].Cells["Vlr. Compra"].Value = Validation.FormatPrice(Validation.ConvertToDouble(getValorCompra) + Validation.ConvertToDouble(FormatPriceXml(item.pdt.VlrCompra)));
-                            GridLista.Rows[rowIndex].Cells[6].Value = Validation.ConvertToDouble(getQtd) + Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade));
+                            GridLista.Rows[rowIndex].Cells[6].Value =
+                                Validation.ConvertToDouble(getQtd) +
+                                Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade));
                         }
-                    }
-                }
 
                 if (goBack)
                     continue;
 
-                string CodeBarrasUniq = "";
-                if (item.pdt.CodeBarras == "SEM GTIN")
-                    CodeBarrasUniq = Validation.CodeBarrasRandom();
-                else
-                    CodeBarrasUniq = item.pdt.CodeBarras;
+                var codeBarrasUniq = item.pdt.CodeBarras == "SEM GTIN" ? Validation.CodeBarrasRandom() : (string) item.pdt.CodeBarras;
 
                 dynamic findItem = null;
-                if (FindItem(CodeBarrasUniq, item.pdt.Descricao) != null)
-                {
-                    findItem = FindItem(CodeBarrasUniq, item.pdt.Descricao);
-                }
+                if (FindItem(codeBarrasUniq, item.pdt.Descricao) != null)
+                    findItem = FindItem(codeBarrasUniq, item.pdt.Descricao);
 
                 Table.Rows.Add(
                     true,
-                    findItem != null ? new Bitmap(Properties.Resources.success16x) : new Bitmap(Properties.Resources.error16x),
+                    findItem != null ? new Bitmap(Resources.success16x) : new Bitmap(Resources.error16x),
                     item.pdt.Referencia,
-                    findItem != null ? findItem.CODEBARRAS : CodeBarrasUniq,
+                    findItem != null ? findItem.CODEBARRAS : codeBarrasUniq,
                     item.pdt.Descricao,
                     item.pdt.Medida,
-                    Validation.FormatMedidas(item.pdt.Medida, Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade))),
+                    Validation.FormatMedidas(item.pdt.Medida,
+                        Validation.ConvertToDouble(Validation.FormatPriceXml(item.pdt.Quantidade))),
                     Validation.FormatPriceXml(item.pdt.VlrCompra),
-                    findItem != null ? Validation.FormatPrice(Validation.ConvertToDouble(findItem.VALORVENDA)) : "00,00",
-                    new Bitmap(Properties.Resources.edit16x),
+                    findItem != null
+                        ? Validation.FormatPrice(Validation.ConvertToDouble(findItem.VALORVENDA))
+                        : "00,00",
+                    new Bitmap(Resources.edit16x),
                     findItem != null ? findItem.ID : 0,
                     findItem != null ? findItem.CATEGORIAID : "",
                     "0",
@@ -289,13 +281,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         }
 
         /// <summary>
-        /// Vincular ou editar produto
+        ///     Vincular ou editar produto
         /// </summary>
         private void VincularProduto(bool edit = false)
         {
             if (edit)
             {
-                Model.Item _mItem = new Model.Item();
+                var _mItem = new Item();
 
                 panelVinculacao.Visible = true;
                 panelVinculacao.Location = new Point(34, 453);
@@ -303,7 +295,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 pictureBox4.Visible = false;
                 BuscarProduto.Visible = false;
                 btnVincular.Visible = false;
-                label9.Text = "Edite o produto selecionado abaixo";
+                label9.Text = @"Edite o produto selecionado abaixo";
 
                 if (ImportarNfe.optionSelected == 1)
                 {
@@ -316,22 +308,25 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     novoEstoque.Visible = false;
                 }
 
-                string id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
-                string editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
+                var id = GridLista.SelectedRows[0].Cells["ID"].Value.ToString();
+                var editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
 
                 // TRÁS ALGUNS DADOS DO BANCO CASO EXISTA ALGUM REGISTRO, SE NÃO, PEGA OS DADOS DO DATAGRID "PARA EDITAR"
-                _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Model.Item>();
+                _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Item>();
                 if (_mItem != null && editado == "0")
                 {
-                    nome.Text = _mItem?.Nome ?? "";
+                    nome.Text = _mItem.Nome ?? "";
                     codebarras.Text = _mItem?.CodeBarras ?? "";
                     referencia.Text = _mItem?.Referencia ?? "";
                     valorcompra.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
                     estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
                     valorvenda.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorVenda));
-                    valorCompraAtual.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
+                    valorCompraAtual.Text =
+                        Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
                     estoqueProduto.Text = _mItem.EstoqueAtual.ToString();
-                    novoEstoque.Text = (Validation.ConvertToDouble(estoqueatual.Text) + Validation.ConvertToDouble(estoqueProduto.Text)).ToString();
+                    novoEstoque.Text =
+                        (Validation.ConvertToDouble(estoqueatual.Text) +
+                         Validation.ConvertToDouble(estoqueProduto.Text)).ToString();
 
                     if (_mItem.Medida != null)
                         Medidas.SelectedItem = _mItem.Medida;
@@ -343,11 +338,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     nome.Text = GridLista.SelectedRows[0].Cells["Descrição"].Value.ToString();
                     codebarras.Text = GridLista.SelectedRows[0].Cells["Cód. de Barras"].Value.ToString();
                     referencia.Text = GridLista.SelectedRows[0].Cells["Referência"].Value.ToString();
-                    valorcompra.Text = Validation.FormatPrice(Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value));
+                    valorcompra.Text =
+                        Validation.FormatPrice(
+                            Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value));
                     estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
                     valorvenda.Text = GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value.ToString();
                     valorCompraAtual.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
-                    estoqueProduto.Text = "N/D";
+                    estoqueProduto.Text = @"N/D";
 
                     Categorias.SelectedValue = GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value;
                     novoEstoque.Text = estoqueatual.Text;
@@ -361,26 +358,29 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 if (GridLista.SelectedRows.Count > 0)
                 {
-                    _mItem = new Model.Item();
+                    _mItem = new Item();
 
                     panelVinculacao.Visible = true;
 
-                    int id = collection.Lookup(BuscarProduto.Text); // id produto
-                    string editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
+                    var id = collection.Lookup(BuscarProduto.Text); // id produto
+                    var editado = GridLista.SelectedRows[0].Cells["EDITADO"].Value.ToString();
 
-                    _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Model.Item>();
+                    _mItem = _mItem.Query().Select("*").Where("ID", id).Where("excluir", 0).FirstOrDefault<Item>();
                     if (_mItem != null && editado == "0")
                     {
-                        IDPDT.Text = _mItem?.Id.ToString() ?? "0";
+                        IDPDT.Text = _mItem?.Id.ToString();
                         nome.Text = _mItem?.Nome ?? "";
                         codebarras.Text = _mItem?.CodeBarras ?? "";
                         referencia.Text = _mItem?.Referencia ?? "";
                         valorcompra.Text = GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value.ToString();
                         estoqueatual.Text = GridLista.SelectedRows[0].Cells[6].Value.ToString();
                         valorvenda.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorVenda));
-                        valorCompraAtual.Text = Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
+                        valorCompraAtual.Text =
+                            Validation.FormatPrice(Validation.ConvertToDouble(_mItem.ValorCompra), true);
                         estoqueProduto.Text = _mItem.EstoqueAtual.ToString();
-                        novoEstoque.Text = (Validation.ConvertToDouble(estoqueatual.Text) + Validation.ConvertToDouble(estoqueProduto.Text)).ToString();
+                        novoEstoque.Text =
+                            (Validation.ConvertToDouble(estoqueatual.Text) +
+                             Validation.ConvertToDouble(estoqueProduto.Text)).ToString();
 
                         if (_mItem.Medida != null)
                             Medidas.SelectedItem = _mItem.Medida;
@@ -400,27 +400,21 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
         }
 
         /// <summary>
-        /// Janela para selecionar itens não encontrados.
+        ///     Janela para selecionar itens não encontrados.
         /// </summary>
         private void ModalItens()
         {
             if (collection.Lookup(BuscarProduto.Text) == 0)
-            {
-                if ((Application.OpenForms["PedidoModalItens"] as PedidoModalItens) == null)
+                if (!(Application.OpenForms["PedidoModalItens"] is PedidoModalItens))
                 {
                     PedidoModalItens.txtSearch = BuscarProduto.Text;
-                    PedidoModalItens form = new PedidoModalItens();
-                    form.TopMost = true;
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        BuscarProduto.Text = PedidoModalItens.NomeProduto;
-                    }
+                    var form = new PedidoModalItens {TopMost = true};
+                    if (form.ShowDialog() == DialogResult.OK) BuscarProduto.Text = PedidoModalItens.NomeProduto;
                 }
-            }
         }
 
         /// <summary>
-        /// Salva os dados na datagrid
+        ///     Salva os dados na datagrid
         /// </summary>
         private void SalvarProduto()
         {
@@ -429,30 +423,36 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             GridLista.SelectedRows[0].Cells["Referência"].Value = referencia.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Compra"].Value = valorcompra.Text;
 
-            if (ImportarNfe.optionSelected == 1)
-                GridLista.SelectedRows[0].Cells[6].Value = 0;
-
-            if (ImportarNfe.optionSelected == 2)
-                GridLista.SelectedRows[0].Cells[6].Value = estoqueatual.Text;
+            switch (ImportarNfe.optionSelected)
+            {
+                case 1:
+                    GridLista.SelectedRows[0].Cells[6].Value = 0;
+                    break;
+                case 2:
+                    GridLista.SelectedRows[0].Cells[6].Value = estoqueatual.Text;
+                    break;
+            }
 
             GridLista.SelectedRows[0].Cells["Medida"].Value = Medidas.Text;
             GridLista.SelectedRows[0].Cells["Vlr. Venda"].Value = valorvenda.Text;
 
             if (Categorias.SelectedValue != null)
-                GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value = (int)Categorias.SelectedValue;
+                GridLista.SelectedRows[0].Cells["CATEGORIAID"].Value = (int) Categorias.SelectedValue;
 
             GridLista.SelectedRows[0].Cells["EDITADO"].Value = "1";
             GridLista.SelectedRows[0].Cells["IDVINCULO"].Value = IDPDT.Text;
 
             if (!string.IsNullOrEmpty(IDPDT.Text))
-                GridLista.SelectedRows[0].Cells["Cadastrado"].Value = new Bitmap(Properties.Resources.success16x);
+                GridLista.SelectedRows[0].Cells["Cadastrado"].Value = new Bitmap(Resources.success16x);
 
             GridLista.Enabled = true;
         }
 
         private dynamic FindItem(string codeBarras, string nome)
         {
-            var findItem = _mItem.Query().Select("*").Where(q => q.Where("nome", nome).OrWhere("codebarras", codeBarras)).Where("excluir", 0).FirstOrDefault();
+            var findItem = _mItem.Query().Select("*")
+                .Where(q => q.Where("nome", nome).OrWhere("codebarras", codeBarras)).Where("excluir", 0)
+                .FirstOrDefault();
             if (findItem != null)
                 return findItem;
 
@@ -461,11 +461,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
         private void Eventos()
         {
-            WorkerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker)delegate {
-                LoadProdutos();
-            });
+            workerBackground.DoWork += (s, e) => GridLista.Invoke((MethodInvoker) LoadProdutos);
 
-            WorkerBackground.RunWorkerCompleted += (s, e) =>
+            workerBackground.RunWorkerCompleted += (s, e) =>
             {
                 label2.Visible = false;
                 pictureBox2.Visible = false;
@@ -478,8 +476,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 AutoCompleteItens();
                 pictureBox2.Visible = true;
 
-                var cat = new Model.Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
-                if (cat.Count() > 0)
+                var cat = new Categoria().FindAll().Where("tipo", "Produtos").WhereFalse("excluir").OrderByDesc("nome").Get();
+                if (cat.Any())
                 {
                     Categorias.DataSource = cat;
                     Categorias.DisplayMember = "NOME";
@@ -494,13 +492,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     label10.Visible = false;
                     pictureBox4.Visible = false;
                     btnVincular.Visible = false;
-                    label9.Text = "Edite o produto selecionado abaixo";
+                    label9.Text = @"Edite o produto selecionado abaixo";
                 }
 
 
                 pictureBox2.Visible = true;
                 GridLista.Visible = false;
-                WorkerBackground.RunWorkerAsync();
+                workerBackground.RunWorkerAsync();
             };
 
             btnVincular.Click += (s, e) => VincularProduto();
@@ -517,10 +515,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
                 if (GridLista.Columns[e.ColumnIndex].Name == "Importar")
                 {
-                    if ((bool)GridLista.SelectedRows[0].Cells["Importar"].Value == false)
-                        GridLista.SelectedRows[0].Cells["Importar"].Value = true;
-                    else
-                        GridLista.SelectedRows[0].Cells["Importar"].Value = false;
+                    GridLista.SelectedRows[0].Cells["Importar"].Value = (bool) GridLista.SelectedRows[0].Cells["Importar"].Value == false;
                 }
             };
 
@@ -529,8 +524,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Importar" || GridLista.Columns[e.ColumnIndex].Name == "Editar")
+                var dataGridView = s as DataGridView;
+                if (GridLista.Columns[e.ColumnIndex].Name == "Importar" ||
+                    GridLista.Columns[e.ColumnIndex].Name == "Editar")
                     dataGridView.Cursor = Cursors.Hand;
             };
 
@@ -539,8 +535,9 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 if (e.ColumnIndex < 0 || e.RowIndex < 0)
                     return;
 
-                var dataGridView = (s as DataGridView);
-                if (GridLista.Columns[e.ColumnIndex].Name == "Importar" || GridLista.Columns[e.ColumnIndex].Name == "Editar")
+                var dataGridView = s as DataGridView;
+                if (GridLista.Columns[e.ColumnIndex].Name == "Importar" ||
+                    GridLista.Columns[e.ColumnIndex].Name == "Editar")
                     dataGridView.Cursor = Cursors.Default;
             };
 
@@ -554,7 +551,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                     pictureBox4.Visible = true;
                     BuscarProduto.Visible = true;
                     btnVincular.Visible = true;
-                    label9.Text = "Vincular a produtos existentes";
+                    label9.Text = @"Vincular a produtos existentes";
                     panelVinculacao.Location = new Point(34, 517);
                 }
 
@@ -565,21 +562,22 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             {
                 produtos.Clear();
 
-                int i = -1;
+                var i = -1;
                 foreach (DataGridViewRow item in GridLista.Rows)
                 {
                     i++;
-                    if ((bool)item.Cells["Importar"].Value == true)
+                    if ((bool) item.Cells["Importar"].Value)
                     {
-                        int id = Validation.ConvertToInt32(item.Cells["IDVINCULO"].Value);
+                        var id = Validation.ConvertToInt32(item.Cells["IDVINCULO"].Value);
                         double estoque = 0;
-                        string codeBarras = item.Cells["Cód. de Barras"].Value.ToString();
-                        int id_sync = 0;
+                        var codeBarras = item.Cells["Cód. de Barras"].Value.ToString();
+                        var id_sync = 0;
 
                         if (!string.IsNullOrEmpty(codeBarras))
                         {
-                            Model.Item _mItem = new Model.Item();
-                            _mItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).Where("excluir", 0).FirstOrDefault<Model.Item>();
+                            var _mItem = new Item();
+                            _mItem = _mItem.Query().Select("*").Where("codebarras", codeBarras).Where("excluir", 0)
+                                .FirstOrDefault<Item>();
                             if (_mItem != null)
                             {
                                 id = _mItem.Id;
@@ -590,11 +588,15 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
                         estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
 
-                        if (ImportarNfe.optionSelected == 1)
-                            estoque = 0;
-
-                        if (ImportarNfe.optionSelected == 3)
-                            estoque = Validation.ConvertToDouble(item.Cells[6].Value);
+                        switch (ImportarNfe.optionSelected)
+                        {
+                            case 1:
+                                estoque = 0;
+                                break;
+                            case 3:
+                                estoque = Validation.ConvertToDouble(item.Cells[6].Value);
+                                break;
+                        }
 
                         produtos.Add(new
                         {
@@ -623,13 +625,13 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
 
             valorcompra.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
             };
 
             valorvenda.TextChanged += (s, e) =>
             {
-                TextBox txt = (TextBox)s;
+                var txt = (TextBox) s;
                 Masks.MaskPrice(ref txt);
 
                 Validation.WarningInput(txt, warning);
@@ -638,46 +640,38 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             btnMarcarCheckBox.Click += (s, e) =>
             {
                 foreach (DataGridViewRow item in GridLista.Rows)
-                {
-                    if (btnMarcarCheckBox.Text == "Marcar Todos")
+                    if (btnMarcarCheckBox.Text == @"Marcar Todos")
                     {
-                        if ((bool)item.Cells["Importar"].Value == false)
-                        {
-                            item.Cells["Importar"].Value = true;
-                        }
+                        if ((bool) item.Cells["Importar"].Value == false) item.Cells["Importar"].Value = true;
                     }
                     else
                     {
                         item.Cells["Importar"].Value = false;
                     }
-                }
 
-                if (btnMarcarCheckBox.Text == "Marcar Todos")
-                    btnMarcarCheckBox.Text = "Desmarcar Todos";
-                else
-                    btnMarcarCheckBox.Text = "Marcar Todos";
+                btnMarcarCheckBox.Text = btnMarcarCheckBox.Text == @"Marcar Todos" ? @"Desmarcar Todos" : @"Marcar Todos";
             };
 
             BuscarProduto.KeyDown += (s, e) =>
             {
-                if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode != Keys.Enter)
+                    return;
+
+                if (!string.IsNullOrEmpty(BuscarProduto.Text))
                 {
-                    if (!string.IsNullOrEmpty(BuscarProduto.Text))
-                    {
-                        var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Model.Item>();
-                        if (item != null)
-                            BuscarProduto.Text = item.Nome;
+                    var item = _mItem.FindById(collection.Lookup(BuscarProduto.Text)).FirstOrDefault<Item>();
+                    if (item != null)
+                        BuscarProduto.Text = item.Nome;
 
-                        ModalItens();
+                    ModalItens();
 
-                        return;
-                    }
-
-                    if (string.IsNullOrEmpty(BuscarProduto.Text))
-                        ModalItens();
-                    else
-                        VincularProduto();
+                    return;
                 }
+
+                if (string.IsNullOrEmpty(BuscarProduto.Text))
+                    ModalItens();
+                else
+                    VincularProduto();
             };
 
             Back.Click += (s, e) => Close();

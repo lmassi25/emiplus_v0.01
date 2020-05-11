@@ -1,13 +1,11 @@
-﻿using Emiplus.Data.Helpers;
+﻿using System.Windows.Forms;
+using Emiplus.Data.Helpers;
 using SqlKata.Execution;
-using System.Windows.Forms;
 
 namespace Emiplus.View.Comercial
 {
     public partial class AddObservacao : Form
     {
-        public static int idPedido { get; set; }
-
         private Model.Pedido _mPedido = new Model.Pedido();
 
         public AddObservacao()
@@ -15,6 +13,8 @@ namespace Emiplus.View.Comercial
             InitializeComponent();
             Eventos();
         }
+
+        public static int idPedido { get; set; }
 
         private void Eventos()
         {
@@ -32,10 +32,7 @@ namespace Emiplus.View.Comercial
                 Close();
             };
 
-            btnCancelar.Click += (s, e) =>
-            {
-                Close();
-            };
+            btnCancelar.Click += (s, e) => { Close(); };
         }
     }
 }

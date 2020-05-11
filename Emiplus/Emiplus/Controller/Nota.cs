@@ -1,10 +1,10 @@
-﻿using Emiplus.Data.Helpers;
-using SqlKata.Execution;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emiplus.Data.Helpers;
+using SqlKata.Execution;
 
 namespace Emiplus.Controller
 {
@@ -25,7 +25,9 @@ namespace Emiplus.Controller
         {
             Table.ColumnCount = 5;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -46,19 +48,19 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            IEnumerable<dynamic> dados = await GetDataTable(idPedido, idNota);
+            var dados = await GetDataTable(idPedido, idNota);
 
-            for (int i = 0; i < dados.Count(); i++)
+            for (var i = 0; i < dados.Count(); i++)
             {
                 var item = dados.ElementAt(i);
 
                 Table.Rows.Add(
-                     item.ID,
-                     item.SERIE,
-                     item.CRIADO,
-                     item.CORRECAO,
-                     item.STATUS
-                 );
+                    item.ID,
+                    item.SERIE,
+                    item.CRIADO,
+                    item.CORRECAO,
+                    item.STATUS
+                );
             }
 
             Table.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -68,22 +70,15 @@ namespace Emiplus.Controller
         {
             var query = new Model.Nota().Query();
 
-            query
-            .SelectRaw("MAX(serie) as serie")
-            .Where("excluir", 0)
-            //.Where("id", idNota)
-            .Where("id_pedido", idPedido)
-            .Where("tipo", "CCe");
-
-            if (query == null)
-                return "1";
+            query.SelectRaw("MAX(serie) as serie")
+                .Where("excluir", 0)
+                //.Where("id", idNota)
+                .Where("id_pedido", idPedido)
+                .Where("tipo", "CCe");
 
             foreach (var item in query.Get())
             {
-                if (item.SERIE == null)
-                    return "1";
-
-                return (Validation.ConvertToInt32(item.SERIE) + 1).ToString();
+                return item.SERIE == null ? "1" : (string) (Validation.ConvertToInt32(item.SERIE) + 1).ToString();
             }
 
             return "1";
@@ -103,7 +98,9 @@ namespace Emiplus.Controller
         {
             Table.ColumnCount = 2;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -115,16 +112,16 @@ namespace Emiplus.Controller
 
             Table.Rows.Clear();
 
-            IEnumerable<dynamic> dados = await GetDataTableDoc(idPedido);
+            var dados = await GetDataTableDoc(idPedido);
 
-            for (int i = 0; i < dados.Count(); i++)
+            for (var i = 0; i < dados.Count(); i++)
             {
                 var item = dados.ElementAt(i);
 
                 Table.Rows.Add(
-                     item.ID,
-                     item.CHAVEDEACESSO
-                 );
+                    item.ID,
+                    item.CHAVEDEACESSO
+                );
             }
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -135,7 +132,8 @@ namespace Emiplus.Controller
             var notas = new Model.Nota();
 
             var data = notas.Query()
-                .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio", "nota.assinatura_qrcode as final", "nota.serie as serie", "nota.status as status")
+                .Select("nota.id as id", "nota.criado as criado", "nota.nr_nota as inicio",
+                    "nota.assinatura_qrcode as final", "nota.serie as serie", "nota.status as status")
                 .Where("nota.excluir", 0)
                 .Where("nota.tipo", "Inutiliza");
             //.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true))
@@ -143,10 +141,7 @@ namespace Emiplus.Controller
 
             if (!string.IsNullOrEmpty(status) && status != "Todos")
             {
-                if (status == "Transmitidos")
-                    data.Where("nota.status", "Transmitindo...");
-                else
-                    data.Where("nota.status", "Autorizada");
+                data.Where("nota.status", status == "Transmitidos" ? "Transmitindo..." : "Autorizada");
             }
 
             return data.Get();
@@ -156,7 +151,9 @@ namespace Emiplus.Controller
         {
             Table.ColumnCount = 6;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, Table,
+                new object[] {true});
             Table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             Table.RowHeadersVisible = false;
@@ -183,7 +180,6 @@ namespace Emiplus.Controller
             Table.Rows.Clear();
 
             foreach (var item in GetDataTableInutilizar(status, dataInicial, dataFinal))
-            {
                 Table.Rows.Add(
                     item.ID,
                     item.INICIO,
@@ -192,7 +188,6 @@ namespace Emiplus.Controller
                     item.CRIADO,
                     item.STATUS == "Autorizada" ? "Inutilização de número homologado" : item.STATUS
                 );
-            }
 
             Table.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

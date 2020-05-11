@@ -56,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(227, 55);
             this.Controls.Add(this.label1);
             this.Name = "Sync";
+            this.Opacity = 0.1D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.ResumeLayout(false);
