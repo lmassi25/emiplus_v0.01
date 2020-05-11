@@ -1777,6 +1777,8 @@
     <None Include="Assets\Images\icons\menu20x.png" />
     <None Include="Assets\Images\icons\seta %281%29.png" />
     <None Include="Assets\Images\icons\seta2.png" />
+    <None Include="Assets\Images\icons\firmar.png" />
+    <None Include="Assets\Images\icons\plus23.png" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />

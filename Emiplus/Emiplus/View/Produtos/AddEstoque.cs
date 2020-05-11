@@ -10,21 +10,12 @@ namespace Emiplus.View.Produtos
     {
         private readonly Item _modelItem = new Item();
         private readonly ItemEstoqueMovimentacao _modelItemEstoque = new ItemEstoqueMovimentacao();
-        private readonly int idItem = AddProduct.idPdtSelecionado;
+        private readonly int idItem = AddProduct.IdPdtSelecionado;
 
         public AddEstoque()
         {
             InitializeComponent();
             Eventos();
-
-            if (idItem > 0)
-            {
-                var item = _modelItem.FindById(idItem).First<Item>();
-
-                tituloProduto.Text = item.Nome;
-                estoqueAtual.Text = Validation.FormatMedidas(item.Medida, Validation.ConvertToDouble(item.EstoqueAtual));
-                custoAtual.Text = Validation.FormatPrice(item.ValorCompra);
-            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -42,6 +33,18 @@ namespace Emiplus.View.Produtos
             KeyDown += KeyDowns;
             KeyPreview = true;
             Masks.SetToUpper(this);
+
+            Shown += (s, e) =>
+            {
+                if (idItem > 0)
+                {
+                    var item = _modelItem.FindById(idItem).First<Item>();
+
+                    tituloProduto.Text = item.Nome;
+                    estoqueAtual.Text = Validation.FormatMedidas(item.Medida, Validation.ConvertToDouble(item.EstoqueAtual));
+                    custoAtual.Text = Validation.FormatPrice(item.ValorCompra);
+                }
+            };
 
             btnSalvar.Click += (s, e) =>
             {

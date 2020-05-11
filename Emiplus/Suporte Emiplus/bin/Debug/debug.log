@@ -2,3 +2,14 @@
 [0316/175227.732:ERROR:browser_process_sub_thread.cc(221)] Waited 19 ms for network service
 [0316/175321.568:ERROR:browser_process_sub_thread.cc(221)] Waited 15 ms for network service
 [0317/085628.797:ERROR:browser_process_sub_thread.cc(221)] Waited 15 ms for network service
+[0508/102437.126:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/102451.865:ERROR:browser_process_sub_thread.cc(221)] Waited 19 ms for network service
+[0508/102510.606:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/102522.631:ERROR:browser_process_sub_thread.cc(221)] Waited 16 ms for network service
+[0508/102941.388:INFO:CONSOLE(6)] "Uncaught SyntaxError: Unexpected end of input", source: https://rendering/ (6)
+[0508/102944.978:INFO:CONSOLE(25)] "WebSocket connection to 'wss://chat-ca.jivosite.com/2RL9rGtLcm?e5542dcae9bef318' failed: WebSocket is closed before the connection is established.", source:  (25)
+[0508/103006.216:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/103525.623:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/103622.654:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/104536.322:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
+[0508/105930.521:ERROR:browser_process_sub_thread.cc(221)] Waited 15 ms for network service

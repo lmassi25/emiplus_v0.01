@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
+using Emiplus.Properties;
 using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Emiplus.View.Produtos;
@@ -384,28 +386,14 @@ namespace Emiplus.View.Financeiro
                     recebido.Enabled = false;
                 }
             };
-
-            menuTaxas.Click += (s, e) => DynamicPanel(panelTaxas);
-            menuBoleto.Click += (s, e) => DynamicPanel(panelBoleto);
+            
+            menuTaxas.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelTaxas, menuTaxas);
+            menuBoleto.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelBoleto, menuBoleto);
 
             btnExit.Click += (s, e) => Close();
             label6.Click += (s, e) => Close();
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
-        }
-
-        private void DynamicPanel(VisualPanel panel)
-        {
-            if (panel.Visible == false)
-            {
-                flowLayoutPanel.Height = flowLayoutPanel.Height + panel.Height;
-                panel.Visible = true;
-            }
-            else
-            {
-                flowLayoutPanel.Height = flowLayoutPanel.Height - panel.Height;
-                panel.Visible = false;
-            }
         }
     }
 }

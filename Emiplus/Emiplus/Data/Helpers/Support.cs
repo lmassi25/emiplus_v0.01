@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Printing;
+using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
+using Emiplus.Properties;
 using Emiplus.View.Common;
+using VisualPlus.Toolkit.Controls.Layout;
 
 namespace Emiplus.Data.Helpers
 {
@@ -140,6 +144,46 @@ namespace Emiplus.Data.Helpers
             catch
             {
                 return false;
+            }
+        }
+
+        public static void DynamicPanel(FlowLayoutPanel layout, VisualPanel panel, VisualPanel menu)
+        {
+            if (panel.Visible == false)
+            {
+                layout.Height += panel.Height;
+                panel.Visible = true;
+
+                var backColor = Color.FromArgb(26, 32, 44);
+                menu.BackColorState.Enabled = backColor;
+                foreach (var image in menu.Controls.OfType<PictureBox>())
+                {
+                    image.Image = Resources.firmar;
+                    image.BackColor = backColor;
+                }
+
+                foreach (var label in menu.Controls.OfType<Label>())
+                    label.BackColor = backColor;
+
+                menu.Refresh();
+            }
+            else
+            {
+                layout.Height -= panel.Height;
+                panel.Visible = false;
+
+                var backColor = Color.FromArgb(46, 55, 72);
+                menu.BackColorState.Enabled = backColor;
+                foreach (var image in menu.Controls.OfType<PictureBox>())
+                {
+                    image.Image = Resources.plus23;
+                    image.BackColor = backColor;
+                }
+
+                foreach (var label in menu.Controls.OfType<Label>())
+                    label.BackColor = backColor;
+
+                menu.Refresh();
             }
         }
     }

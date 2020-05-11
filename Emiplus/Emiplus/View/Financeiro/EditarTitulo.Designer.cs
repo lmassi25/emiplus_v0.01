@@ -87,6 +87,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.menuTaxas = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panelTaxas = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.label15 = new System.Windows.Forms.Label();
@@ -115,6 +116,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.panelBoleto = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.label24 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -129,6 +131,7 @@
             this.panel3.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.menuTaxas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panelTaxas.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -139,6 +142,7 @@
             this.panel5.SuspendLayout();
             this.menuBoleto.SuspendLayout();
             this.panelBoleto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox12
@@ -1600,14 +1604,15 @@
             // 
             this.menuTaxas.BackColor = System.Drawing.Color.Transparent;
             this.menuTaxas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.menuTaxas.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.menuTaxas.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.menuTaxas.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.menuTaxas.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuTaxas.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuTaxas.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.menuTaxas.Border.HoverVisible = true;
             this.menuTaxas.Border.Rounding = 6;
             this.menuTaxas.Border.Thickness = 1;
             this.menuTaxas.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.menuTaxas.Border.Visible = true;
+            this.menuTaxas.Controls.Add(this.pictureBox9);
             this.menuTaxas.Controls.Add(this.label16);
             this.menuTaxas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuTaxas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1615,7 +1620,7 @@
             this.menuTaxas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.menuTaxas.Name = "menuTaxas";
             this.menuTaxas.Padding = new System.Windows.Forms.Padding(5);
-            this.menuTaxas.Size = new System.Drawing.Size(636, 31);
+            this.menuTaxas.Size = new System.Drawing.Size(636, 35);
             this.menuTaxas.TabIndex = 569;
             this.menuTaxas.Text = "visualPanel1";
             this.menuTaxas.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -1626,13 +1631,24 @@
             this.menuTaxas.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.menuTaxas.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.pictureBox9.Image = global::Emiplus.Properties.Resources.plus23;
+            this.pictureBox9.Location = new System.Drawing.Point(604, 6);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 564;
+            this.pictureBox9.TabStop = false;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(12, 6);
+            this.label16.Location = new System.Drawing.Point(12, 9);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 17);
             this.label16.TabIndex = 565;
@@ -1667,7 +1683,7 @@
             this.panelTaxas.Controls.Add(this.label26);
             this.panelTaxas.Controls.Add(this.panel5);
             this.panelTaxas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelTaxas.Location = new System.Drawing.Point(3, 40);
+            this.panelTaxas.Location = new System.Drawing.Point(3, 44);
             this.panelTaxas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.panelTaxas.Name = "panelTaxas";
             this.panelTaxas.Padding = new System.Windows.Forms.Padding(5);
@@ -1699,7 +1715,7 @@
             // 
             this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel9.Controls.Add(this.txtTaxaAntecipacao);
             this.panel9.Location = new System.Drawing.Point(478, 236);
             this.panel9.Name = "panel9";
@@ -1805,7 +1821,7 @@
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel8.Controls.Add(this.label31);
             this.panel8.Location = new System.Drawing.Point(321, 235);
             this.panel8.Name = "panel8";
@@ -1828,7 +1844,7 @@
             // 
             this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel7.Controls.Add(this.txtTaxaCartao);
             this.panel7.Location = new System.Drawing.Point(164, 236);
             this.panel7.Name = "panel7";
@@ -1851,7 +1867,7 @@
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel6.Controls.Add(this.txtTarifaFixa);
             this.panel6.Location = new System.Drawing.Point(7, 236);
             this.panel6.Name = "panel6";
@@ -1921,7 +1937,7 @@
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.panel5.Controls.Add(this.label25);
             this.panel5.Location = new System.Drawing.Point(17, 17);
             this.panel5.Name = "panel5";
@@ -1944,22 +1960,23 @@
             // 
             this.menuBoleto.BackColor = System.Drawing.Color.Transparent;
             this.menuBoleto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.menuBoleto.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.menuBoleto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.menuBoleto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.menuBoleto.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuBoleto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuBoleto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.menuBoleto.Border.HoverVisible = true;
             this.menuBoleto.Border.Rounding = 6;
             this.menuBoleto.Border.Thickness = 1;
             this.menuBoleto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
             this.menuBoleto.Border.Visible = true;
+            this.menuBoleto.Controls.Add(this.pictureBox10);
             this.menuBoleto.Controls.Add(this.label19);
             this.menuBoleto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuBoleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuBoleto.Location = new System.Drawing.Point(3, 518);
+            this.menuBoleto.Location = new System.Drawing.Point(3, 522);
             this.menuBoleto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.menuBoleto.Name = "menuBoleto";
             this.menuBoleto.Padding = new System.Windows.Forms.Padding(5);
-            this.menuBoleto.Size = new System.Drawing.Size(636, 31);
+            this.menuBoleto.Size = new System.Drawing.Size(636, 35);
             this.menuBoleto.TabIndex = 571;
             this.menuBoleto.Text = "visualPanel2";
             this.menuBoleto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -1973,10 +1990,10 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
             this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(12, 6);
+            this.label19.Location = new System.Drawing.Point(12, 9);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(47, 17);
             this.label19.TabIndex = 565;
@@ -1996,7 +2013,7 @@
             this.panelBoleto.Border.Visible = true;
             this.panelBoleto.Controls.Add(this.label24);
             this.panelBoleto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelBoleto.Location = new System.Drawing.Point(3, 555);
+            this.panelBoleto.Location = new System.Drawing.Point(3, 563);
             this.panelBoleto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.panelBoleto.Name = "panelBoleto";
             this.panelBoleto.Padding = new System.Windows.Forms.Padding(5);
@@ -2023,6 +2040,17 @@
             this.label24.Size = new System.Drawing.Size(98, 17);
             this.label24.TabIndex = 562;
             this.label24.Text = "Em construção";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.pictureBox10.Image = global::Emiplus.Properties.Resources.plus23;
+            this.pictureBox10.Location = new System.Drawing.Point(604, 6);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 566;
+            this.pictureBox10.TabStop = false;
             // 
             // EditarTitulo
             // 
@@ -2057,6 +2085,7 @@
             this.flowLayoutPanel.ResumeLayout(false);
             this.menuTaxas.ResumeLayout(false);
             this.menuTaxas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panelTaxas.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -2069,6 +2098,7 @@
             this.menuBoleto.PerformLayout();
             this.panelBoleto.ResumeLayout(false);
             this.panelBoleto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2159,5 +2189,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label txtTaxaAntecipacao;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }

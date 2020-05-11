@@ -294,7 +294,7 @@ namespace Emiplus.View.Common
 
                 SetHeadersTable(GridLista);
 
-                await Task.Delay(3000);
+                await Task.Delay(1000);
                 new Caixa().CheckCaixaDate();
             };
 

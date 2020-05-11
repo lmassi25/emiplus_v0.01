@@ -203,6 +203,16 @@ namespace Emiplus.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap firmar {
+            get {
+                object obj = ResourceManager.GetObject("firmar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
@@ -276,6 +286,16 @@ namespace Emiplus.Properties {
         internal static System.Drawing.Bitmap plus20x {
             get {
                 object obj = ResourceManager.GetObject("plus20x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus23 {
+            get {
+                object obj = ResourceManager.GetObject("plus23", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

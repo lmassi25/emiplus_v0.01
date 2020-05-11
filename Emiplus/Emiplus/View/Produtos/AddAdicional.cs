@@ -21,7 +21,7 @@ namespace Emiplus.View.Produtos
         private void LoadData()
         {
             _mItemAdicional = _mItemAdicional.FindAll().WhereFalse("excluir").Where("id", Id).FirstOrDefault<ItemAdicional>();
-            if (!(_mItemAdicional is object))
+            if (_mItemAdicional == null)
                 return;
 
             title.Text = _mItemAdicional.Title ?? "";

@@ -16,16 +16,14 @@ using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Newtonsoft.Json;
 using SqlKata.Execution;
-using Item = Emiplus.Controller.Item;
 using Pessoa = Emiplus.Model.Pessoa;
 
 namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
-        private readonly Item _controllerItem = new Item();
-
         private readonly BackgroundWorker backOn = new BackgroundWorker();
+        private readonly BackgroundWorker workerBackEstoque = new BackgroundWorker();
 
         private readonly OpenFileDialog ofd = new OpenFileDialog();
         private Model.Item _modelItem = new Model.Item();
@@ -36,12 +34,14 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
-        public static int idPdtSelecionado { get; set; }
-        private ArrayList fornecedores { get; set; }
-        private ArrayList categorias { get; set; }
+        public static int IdPdtSelecionado { get; set; }
+        private ArrayList ListFornecedores { get; set; }
+        private ArrayList ListCategorias { get; set; }
         private IEnumerable<dynamic> Impostos { get; set; }
         private IEnumerable<dynamic> Impostos2 { get; set; }
-
+        private IEnumerable<dynamic> ListEstoque { get; set; }
+        private static int LimitShowStock { get; set; }
+        
         private void LoadFornecedores()
         {
             Fornecedor.DataSource = new Pessoa().GetAll("Fornecedores");
@@ -102,11 +102,11 @@ namespace Emiplus.View.Produtos
                 "Atribua um limite para lançar descontos a este item. O Valor irá influenciar nos descontos em reais e porcentagens.",
                 pictureBox11, ToolHelp.ToolTipIcon.Info, "Ajuda!");
 
-            Categorias.DataSource = categorias;
+            Categorias.DataSource = ListCategorias;
             Categorias.DisplayMember = "Nome";
             Categorias.ValueMember = "Id";
 
-            Fornecedor.DataSource = fornecedores;
+            Fornecedor.DataSource = ListFornecedores;
             Fornecedor.DisplayMember = "Nome";
             Fornecedor.ValueMember = "Id";
 
@@ -123,7 +123,7 @@ namespace Emiplus.View.Produtos
             filterTodos.Checked = false;
         }
 
-        private void SetHeadersAdicionais(DataGridView table)
+        private static void SetHeadersAdicionais(DataGridView table)
         {
             table.ColumnCount = 3;
 
@@ -158,7 +158,7 @@ namespace Emiplus.View.Produtos
             table.Columns[3].Visible = true;
         }
 
-        private void SetContentTableAdicionais(DataGridView table)
+        private static void SetContentTableAdicionais(DataGridView table)
         {
             table.Rows.Clear();
 
@@ -177,13 +177,13 @@ namespace Emiplus.View.Produtos
 
         private void LoadEstoque()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
+            _modelItem = _modelItem.FindById(IdPdtSelecionado).FirstOrDefault<Model.Item>();
             estoqueatual.Text = Validation.FormatMedidas(_modelItem.Medida, _modelItem.EstoqueAtual);
         }
 
         private void LoadData()
         {
-            _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
+            _modelItem = _modelItem.FindById(IdPdtSelecionado).FirstOrDefault<Model.Item>();
 
             nome.Text = _modelItem?.Nome ?? "";
             codebarras.Text = _modelItem?.CodeBarras ?? "";
@@ -291,7 +291,7 @@ namespace Emiplus.View.Produtos
         private void Save()
         {
             if (!string.IsNullOrEmpty(nome.Text))
-                if (_modelItem.ExistsName(nome.Text, false, idPdtSelecionado))
+                if (_modelItem.ExistsName(nome.Text, false, IdPdtSelecionado))
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse NOME.", Alert.AlertType.error);
                     return;
@@ -306,7 +306,7 @@ namespace Emiplus.View.Produtos
                     return;
                 }
 
-                if (_modelItem.ExistsCodeBarras(codebarras.Text, false, idPdtSelecionado))
+                if (_modelItem.ExistsCodeBarras(codebarras.Text, false, IdPdtSelecionado))
                 {
                     Alert.Message("Oppss", "Já existe um produto cadastrado com esse código de barras.",
                         Alert.AlertType.error);
@@ -324,7 +324,7 @@ namespace Emiplus.View.Produtos
                     return;
             }
 
-            _modelItem.Id = idPdtSelecionado;
+            _modelItem.Id = IdPdtSelecionado;
             _modelItem.Tipo = "Produtos";
             _modelItem.Nome = nome.Text;
             _modelItem.CodeBarras = codebarras.Text;
@@ -419,10 +419,55 @@ namespace Emiplus.View.Produtos
 
         private void DataTableEstoque()
         {
-            if (filterMaisRecentes.Checked)
-                _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado, 10);
-            else
-                _controllerItem.GetDataTableEstoque(listaEstoque, idPdtSelecionado);
+            LimitShowStock = filterMaisRecentes.Checked ? 10 : 0;
+            workerBackEstoque.RunWorkerAsync();
+        }
+
+        public void GetDataTableEstoque(DataGridView table)
+        {
+            table.ColumnCount = 8;
+
+            table.Columns[0].Name = "ID";
+            table.Columns[0].Visible = false;
+
+            table.Columns[1].Name = "Entrada/Saída";
+            table.Columns[1].Width = 100;
+
+            table.Columns[2].Name = "Quantidade";
+            table.Columns[2].Width = 100;
+
+            table.Columns[3].Name = "Data/Hora";
+            table.Columns[3].Width = 120;
+
+            table.Columns[4].Name = "Usuário";
+            table.Columns[4].Width = 120;
+
+            table.Columns[5].Name = "Obs.";
+            table.Columns[5].MinimumWidth = 120;
+            table.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            table.Columns[6].Name = "Tela";
+            table.Columns[6].MinimumWidth = 120;
+            table.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            table.Columns[7].Name = "Pedido";
+            table.Columns[7].Width = 50;
+
+            table.Rows.Clear();
+
+            foreach (var item in ListEstoque)
+            {
+                table.Rows.Add(
+                    item.ID,
+                    item.TIPO == "A" ? "Adicionado" : "Removido",
+                    item.QUANTIDADE,
+                    string.Format("{0:d/M/yyyy HH:mm}", item.CRIADO),
+                    item.NOME_USER,
+                    item.OBSERVACAO,
+                    item.LOCAL,
+                    item.ID_PEDIDO
+                );
+            }
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -447,7 +492,7 @@ namespace Emiplus.View.Produtos
 
                 BeginInvoke((MethodInvoker) delegate
                 {
-                    idPdtSelecionado = Produtos.IdPdtSelecionado;
+                    IdPdtSelecionado = Produtos.IdPdtSelecionado;
                     backOn.RunWorkerAsync();
                 });
 
@@ -455,9 +500,14 @@ namespace Emiplus.View.Produtos
                 nome.Focus();
             };
 
+            menuEstoque.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelEstoque, menuEstoque);
+            menuImpostos.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelImpostos, menuImpostos);
+            menuAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelAdicionais, menuAdicionais);
+            menuInfoAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelInfoAdicionais, menuInfoAdicionais);
+
             btnExit.Click += (s, e) =>
             {
-                var dataProd = _modelItem.Query().Where("id", idPdtSelecionado)
+                var dataProd = _modelItem.Query().Where("id", IdPdtSelecionado)
                     .Where("atualizado", "01.01.0001, 00:00:00.000").WhereNull("codebarras").FirstOrDefault();
                 if (dataProd != null)
                 {
@@ -465,7 +515,7 @@ namespace Emiplus.View.Produtos
                         AlertBig.AlertType.info, AlertBig.AlertBtn.YesNo);
                     if (result)
                     {
-                        var data = _modelItem.Remove(idPdtSelecionado, false);
+                        var data = _modelItem.Remove(IdPdtSelecionado, false);
                         if (data)
                             Close();
                     }
@@ -485,7 +535,7 @@ namespace Emiplus.View.Produtos
                     AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
                 if (result)
                 {
-                    var data = _modelItem.Remove(idPdtSelecionado);
+                    var data = _modelItem.Remove(IdPdtSelecionado);
                     if (data)
                         Close();
                 }
@@ -655,7 +705,7 @@ namespace Emiplus.View.Produtos
 
             btnRemoverImage.Click += (s, e) =>
             {
-                _modelItem.Id = idPdtSelecionado;
+                _modelItem.Id = IdPdtSelecionado;
 
                 if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}"))
                     File.Delete($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}");
@@ -700,7 +750,7 @@ namespace Emiplus.View.Produtos
 
                         File.Copy(path, $@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
 
-                        _modelItem.Id = idPdtSelecionado;
+                        _modelItem.Id = IdPdtSelecionado;
                         _modelItem.Image = nameImage;
                         _modelItem.Save(_modelItem, false);
 
@@ -729,9 +779,9 @@ namespace Emiplus.View.Produtos
 
             backOn.DoWork += (s, e) =>
             {
-                _modelItem = _modelItem.FindById(idPdtSelecionado).FirstOrDefault<Model.Item>();
-                categorias = new Categoria().GetAll("Produtos");
-                fornecedores = new Pessoa().GetAll("Fornecedores");
+                _modelItem = _modelItem.FindById(IdPdtSelecionado).FirstOrDefault<Model.Item>();
+                ListCategorias = new Categoria().GetAll("Produtos");
+                ListFornecedores = new Pessoa().GetAll("Fornecedores");
                 Impostos = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
                 Impostos2 = new Model.Imposto().FindAll().WhereFalse("excluir").OrderByDesc("nome").Get();
             };
@@ -740,16 +790,16 @@ namespace Emiplus.View.Produtos
             {
                 Start();
 
-                if (idPdtSelecionado > 0)
+                if (IdPdtSelecionado > 0)
                 {
                     LoadData();
                 }
                 else
                 {
-                    _modelItem = new Model.Item {Tipo = "Produtos", Id = idPdtSelecionado};
+                    _modelItem = new Model.Item {Tipo = "Produtos", Id = IdPdtSelecionado};
                     if (_modelItem.Save(_modelItem, false))
                     {
-                        idPdtSelecionado = _modelItem.GetLastId();
+                        IdPdtSelecionado = _modelItem.GetLastId();
                         LoadData();
                     }
                     else
@@ -760,9 +810,27 @@ namespace Emiplus.View.Produtos
                 }
             };
 
+            workerBackEstoque.DoWork += (s, e) =>
+            {
+                var query = new ItemEstoqueMovimentacao().Query()
+                    .LeftJoin("USUARIOS", "USUARIOS.id_user", "ITEM_MOV_ESTOQUE.id_usuario")
+                    .Select("ITEM_MOV_ESTOQUE.*", "USUARIOS.id_user", "USUARIOS.nome as nome_user")
+                    .Where("id_item", IdPdtSelecionado)
+                    .OrderByDesc("criado");
+
+                if (LimitShowStock > 0) query.Limit(LimitShowStock);
+                
+                ListEstoque = query.Get();
+            };
+            
+            workerBackEstoque.RunWorkerCompleted += (s, e) =>
+            {
+                GetDataTableEstoque(listaEstoque);
+            };
+
             btnVariacao.Click += (s, e) =>
             {
-                ModalVariacao.idProduto = idPdtSelecionado;
+                ModalVariacao.idProduto = IdPdtSelecionado;
                 var form = new ModalVariacao();
                 form.ShowDialog();
             };

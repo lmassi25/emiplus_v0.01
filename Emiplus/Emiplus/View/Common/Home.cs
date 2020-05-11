@@ -320,8 +320,8 @@ namespace Emiplus.View.Common
                     "Sincronização!");
                 timer1.Start();
 
-                await Task.Delay(5000);
                 // Janela de sincronização
+                await Task.Delay(5000);
                 if (Support.CheckForInternetConnection())
                 {
                     var f = new Sync();
@@ -438,7 +438,7 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += (s, e) =>
             {
-                if (File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
+                if (!File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
                 {
                     using (var client = new WebClient())
                     {
@@ -468,7 +468,7 @@ namespace Emiplus.View.Common
                 CadastroNotaSalva();
             };
 
-            btnSuporteOnline.Click += (s, e) => Process.Start("C:\\Emiplus\\Suporte Emiplus.exe");
+            btnSuporteOnline.Click += (s, e) => Process.Start($@"{Program.PATH_BASE}\Suporte Emiplus.exe");
         }
 
         private void LimparRegistros()
