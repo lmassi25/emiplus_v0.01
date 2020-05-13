@@ -115,14 +115,17 @@
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.label30 = new System.Windows.Forms.Label();
             this.panelAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.menuInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.panelInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.menuCombo = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.panelCombo = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.GridCombos = new System.Windows.Forms.DataGridView();
+            this.label34 = new System.Windows.Forms.Label();
+            this.menuInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.panelInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnRemoverImage = new System.Windows.Forms.Label();
             this.btnImage = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label25 = new System.Windows.Forms.Label();
@@ -146,9 +149,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.GridCombos = new System.Windows.Forms.DataGridView();
-            this.label34 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -175,20 +175,20 @@
             this.menuAdicionais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.panelAdicionais.SuspendLayout();
-            this.menuInfoAdicionais.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            this.panelInfoAdicionais.SuspendLayout();
             this.menuCombo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.panelCombo.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).BeginInit();
+            this.menuInfoAdicionais.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.panelInfoAdicionais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -2609,6 +2609,138 @@
             this.panelAdicionais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.panelAdicionais.Visible = false;
             // 
+            // menuCombo
+            // 
+            this.menuCombo.BackColor = System.Drawing.Color.Transparent;
+            this.menuCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.menuCombo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.HoverVisible = true;
+            this.menuCombo.Border.Rounding = 6;
+            this.menuCombo.Border.Thickness = 1;
+            this.menuCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.menuCombo.Border.Visible = true;
+            this.menuCombo.Controls.Add(this.pictureBox17);
+            this.menuCombo.Controls.Add(this.label33);
+            this.menuCombo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.Location = new System.Drawing.Point(3, 1242);
+            this.menuCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.menuCombo.Name = "menuCombo";
+            this.menuCombo.Padding = new System.Windows.Forms.Padding(5);
+            this.menuCombo.Size = new System.Drawing.Size(665, 35);
+            this.menuCombo.TabIndex = 577;
+            this.menuCombo.Text = "visualPanel2";
+            this.menuCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.menuCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.menuCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.menuCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.pictureBox17.Image = global::Emiplus.Properties.Resources.plus23;
+            this.pictureBox17.Location = new System.Drawing.Point(633, 6);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 566;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.White;
+            this.label33.Location = new System.Drawing.Point(12, 9);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(131, 17);
+            this.label33.TabIndex = 565;
+            this.label33.Text = "Combo de Produtos";
+            // 
+            // panelCombo
+            // 
+            this.panelCombo.BackColor = System.Drawing.Color.Transparent;
+            this.panelCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.panelCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.Border.HoverVisible = true;
+            this.panelCombo.Border.Rounding = 6;
+            this.panelCombo.Border.Thickness = 1;
+            this.panelCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.panelCombo.Border.Visible = true;
+            this.panelCombo.Controls.Add(this.panel6);
+            this.panelCombo.Controls.Add(this.label34);
+            this.panelCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.Location = new System.Drawing.Point(3, 1283);
+            this.panelCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.panelCombo.Name = "panelCombo";
+            this.panelCombo.Padding = new System.Windows.Forms.Padding(5);
+            this.panelCombo.Size = new System.Drawing.Size(665, 225);
+            this.panelCombo.TabIndex = 578;
+            this.panelCombo.Text = "visualPanel1";
+            this.panelCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.panelCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.panelCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.panelCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.panelCombo.Visible = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.GridCombos);
+            this.panel6.Location = new System.Drawing.Point(10, 33);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(646, 179);
+            this.panel6.TabIndex = 31;
+            // 
+            // GridCombos
+            // 
+            this.GridCombos.AllowUserToAddRows = false;
+            this.GridCombos.AllowUserToDeleteRows = false;
+            this.GridCombos.AllowUserToResizeColumns = false;
+            this.GridCombos.AllowUserToResizeRows = false;
+            this.GridCombos.BackgroundColor = System.Drawing.Color.White;
+            this.GridCombos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridCombos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridCombos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridCombos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridCombos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridCombos.Location = new System.Drawing.Point(0, 0);
+            this.GridCombos.MultiSelect = false;
+            this.GridCombos.Name = "GridCombos";
+            this.GridCombos.ReadOnly = true;
+            this.GridCombos.RowHeadersVisible = false;
+            this.GridCombos.RowTemplate.Height = 30;
+            this.GridCombos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridCombos.Size = new System.Drawing.Size(646, 179);
+            this.GridCombos.TabIndex = 6;
+            this.GridCombos.TabStop = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.White;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label34.Location = new System.Drawing.Point(8, 10);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(129, 17);
+            this.label34.TabIndex = 30;
+            this.label34.Text = "Combos disponíveis";
+            // 
             // menuInfoAdicionais
             // 
             this.menuInfoAdicionais.BackColor = System.Drawing.Color.Transparent;
@@ -2695,93 +2827,6 @@
             this.panelInfoAdicionais.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.panelInfoAdicionais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.panelInfoAdicionais.Visible = false;
-            // 
-            // menuCombo
-            // 
-            this.menuCombo.BackColor = System.Drawing.Color.Transparent;
-            this.menuCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.menuCombo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.HoverVisible = true;
-            this.menuCombo.Border.Rounding = 6;
-            this.menuCombo.Border.Thickness = 1;
-            this.menuCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.menuCombo.Border.Visible = true;
-            this.menuCombo.Controls.Add(this.pictureBox17);
-            this.menuCombo.Controls.Add(this.label33);
-            this.menuCombo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.Location = new System.Drawing.Point(3, 1242);
-            this.menuCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.menuCombo.Name = "menuCombo";
-            this.menuCombo.Padding = new System.Windows.Forms.Padding(5);
-            this.menuCombo.Size = new System.Drawing.Size(665, 35);
-            this.menuCombo.TabIndex = 577;
-            this.menuCombo.Text = "visualPanel2";
-            this.menuCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.menuCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.menuCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.menuCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.menuCombo.Visible = false;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.pictureBox17.Image = global::Emiplus.Properties.Resources.plus23;
-            this.pictureBox17.Location = new System.Drawing.Point(633, 6);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox17.TabIndex = 566;
-            this.pictureBox17.TabStop = false;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(12, 9);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(131, 17);
-            this.label33.TabIndex = 565;
-            this.label33.Text = "Combo de Produtos";
-            // 
-            // panelCombo
-            // 
-            this.panelCombo.BackColor = System.Drawing.Color.Transparent;
-            this.panelCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.BackColorState.Enabled = System.Drawing.Color.White;
-            this.panelCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.Border.HoverVisible = true;
-            this.panelCombo.Border.Rounding = 6;
-            this.panelCombo.Border.Thickness = 1;
-            this.panelCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.panelCombo.Border.Visible = true;
-            this.panelCombo.Controls.Add(this.panel6);
-            this.panelCombo.Controls.Add(this.label34);
-            this.panelCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.Location = new System.Drawing.Point(3, 1283);
-            this.panelCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.panelCombo.Name = "panelCombo";
-            this.panelCombo.Padding = new System.Windows.Forms.Padding(5);
-            this.panelCombo.Size = new System.Drawing.Size(665, 225);
-            this.panelCombo.TabIndex = 578;
-            this.panelCombo.Text = "visualPanel1";
-            this.panelCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.panelCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.panelCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.panelCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.panelCombo.Visible = false;
             // 
             // btnRemoverImage
             // 
@@ -3287,52 +3332,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.GridCombos);
-            this.panel6.Location = new System.Drawing.Point(10, 33);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(646, 179);
-            this.panel6.TabIndex = 31;
-            // 
-            // GridCombos
-            // 
-            this.GridCombos.AllowUserToAddRows = false;
-            this.GridCombos.AllowUserToDeleteRows = false;
-            this.GridCombos.AllowUserToResizeColumns = false;
-            this.GridCombos.AllowUserToResizeRows = false;
-            this.GridCombos.BackgroundColor = System.Drawing.Color.White;
-            this.GridCombos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridCombos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridCombos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridCombos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridCombos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridCombos.Location = new System.Drawing.Point(0, 0);
-            this.GridCombos.MultiSelect = false;
-            this.GridCombos.Name = "GridCombos";
-            this.GridCombos.ReadOnly = true;
-            this.GridCombos.RowHeadersVisible = false;
-            this.GridCombos.RowTemplate.Height = 30;
-            this.GridCombos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridCombos.Size = new System.Drawing.Size(646, 179);
-            this.GridCombos.TabIndex = 6;
-            this.GridCombos.TabStop = false;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.White;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(8, 10);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(129, 17);
-            this.label34.TabIndex = 30;
-            this.label34.Text = "Combos disponíveis";
-            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3383,16 +3382,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.panelAdicionais.ResumeLayout(false);
             this.panelAdicionais.PerformLayout();
-            this.menuInfoAdicionais.ResumeLayout(false);
-            this.menuInfoAdicionais.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            this.panelInfoAdicionais.ResumeLayout(false);
-            this.panelInfoAdicionais.PerformLayout();
             this.menuCombo.ResumeLayout(false);
             this.menuCombo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.panelCombo.ResumeLayout(false);
             this.panelCombo.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).EndInit();
+            this.menuInfoAdicionais.ResumeLayout(false);
+            this.menuInfoAdicionais.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.panelInfoAdicionais.ResumeLayout(false);
+            this.panelInfoAdicionais.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -3400,8 +3401,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).EndInit();
             this.ResumeLayout(false);
 
         }

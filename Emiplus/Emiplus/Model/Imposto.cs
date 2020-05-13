@@ -1,24 +1,17 @@
-﻿namespace Emiplus.Model
-{
-    using Data.Database;
-    using Emiplus.Data.Helpers;
-    using SqlKata;
-    using System;
-    using Valit;
+﻿using System;
+using Emiplus.Data.Helpers;
+using SqlKata;
+using Valit;
 
-    internal class Imposto : Model
+namespace Emiplus.Model
+{
+    internal class Imposto : Data.Database.Model
     {
         public Imposto() : base("IMPOSTO")
         {
         }
 
-        #region CAMPOS
-
-        //campos obrigatorios para todas as tabelas
-
-        [Ignore]
-        [Key("ID")]
-        public int Id { get; set; }
+        [Ignore] [Key("ID")] public int Id { get; set; }
 
         public string Tipo { get; set; }
         public int Excluir { get; set; }
@@ -28,18 +21,12 @@
         public string id_empresa { get; private set; }
 
         public string Nome { get; set; }
-
         public string Cfop { get; set; }
-
         public string Icms { get; set; } // CST CSOSN
         public double IcmsReducaoAliq { get; set; }
-
         public double IcmsIva { get; set; }
-
         public double IcmsAliq { get; set; }
-
         public double IcmsStIva { get; set; }
-
         public double IcmsStReducaoAliq { get; set; }
         public double IcmsStAliq { get; set; }
         public string Ipi { get; set; } // CST
@@ -52,7 +39,6 @@
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        #endregion CAMPOS
 
         public bool Save(Imposto data)
         {
@@ -96,7 +82,7 @@
 
         public bool Remove(int id)
         {
-            var data = new { Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE" };
+            var data = new {Excluir = 1, Deletado = DateTime.Now, status_sync = "UPDATE"};
             if (Data(data).Update("ID", id) == 1)
             {
                 Alert.Message("Pronto!", "Imposto removido com sucesso.", Alert.AlertType.info);
@@ -108,8 +94,8 @@
         }
 
         /// <summary>
-        /// <para>Valida os campos do Model</para>
-        /// <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html"/> </para>
+        ///     <para>Valida os campos do Model</para>
+        ///     <para>Documentação: <see cref="https://valitdocs.readthedocs.io/en/latest/validation-rules/index.html" /> </para>
         /// </summary>
         /// <param name="data">Objeto com valor dos atributos do Model Item</param>
         /// <returns>Retorna booleano e Mensagem</returns>
@@ -132,6 +118,7 @@
                     Alert.Message("Opss!", message, Alert.AlertType.error);
                     return true;
                 }
+
                 return true;
             }
 

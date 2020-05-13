@@ -389,8 +389,7 @@ namespace Emiplus.View.Comercial
                     {
                         var getValor = Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Unitario"].Value
                             .ToString().Replace("R$ ", ""));
-                        GridLista.SelectedRows[0].Cells["Valor"].Value =
-                            Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
+                        GridLista.SelectedRows[0].Cells["Valor"].Value = Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
                         GridLista.SelectedRows[0].Cells["AddonSelected"].Value = AdicionaisDispon.AddonSelected;
                     }
                 }
