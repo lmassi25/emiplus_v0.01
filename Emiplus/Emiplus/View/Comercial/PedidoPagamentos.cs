@@ -621,38 +621,36 @@ namespace Emiplus.View.Comercial
                 AddPedidos.BtnFinalizado = false;
                 TelaReceber.Visible = false;
 
-                if (Home.pedidoPage == "Orçamentos")
+                switch (Home.pedidoPage)
                 {
-                    label13.Text = $@"Dados do Orçamento: {idPedido}";
-                    label10.Text = @"Siga as etapas abaixo para criar um orçamento!";
-                }
-                else if (Home.pedidoPage == "Consignações")
-                {
-                    label13.Text = $@"Dados da Consignação: {idPedido}";
-                    label10.Text = @"Siga as etapas abaixo para criar uma consignãção!";
-                }
-                else if (Home.pedidoPage == "Devoluções")
-                {
-                    label13.Text = $@"Dados da Devolução: {idPedido}";
-                    label10.Text = @"Siga as etapas abaixo para criar uma devolução!";
-                }
-                else if (Home.pedidoPage == "Compras")
-                {
-                    label13.Text = $@"Dados da Compra: {idPedido}";
-                    label10.Text = @"Siga as etapas abaixo para adicionar uma compra!";
+                    case "Orçamentos":
+                        label13.Text = $@"Dados do Orçamento: {idPedido}";
+                        label10.Text = @"Siga as etapas abaixo para criar um orçamento!";
+                        break;
+                    case "Consignações":
+                        label13.Text = $@"Dados da Consignação: {idPedido}";
+                        label10.Text = @"Siga as etapas abaixo para criar uma consignãção!";
+                        break;
+                    case "Devoluções":
+                        label13.Text = $@"Dados da Devolução: {idPedido}";
+                        label10.Text = @"Siga as etapas abaixo para criar uma devolução!";
+                        break;
+                    case "Compras":
+                        label13.Text = $@"Dados da Compra: {idPedido}";
+                        label10.Text = @"Siga as etapas abaixo para adicionar uma compra!";
 
-                    label15.Text = @"Á Pagar";
-                    label1.Text = @"Pagamentos";
-                    //enviarEmail.Visible = false;
-                    btnNfe.Visible = false;
-                    button21.Visible = false;
-                    btnCFeSat.Visible = false;
-                    button22.Visible = false;
-                }
-                else
-                {
-                    label13.Text = $@"Dados da Venda: {idPedido}";
-                    label10.Text = @"Siga as etapas abaixo para adicionar uma venda!";
+                        label15.Text = @"Á Pagar";
+                        label1.Text = @"Pagamentos";
+                        //enviarEmail.Visible = false;
+                        btnNfe.Visible = false;
+                        button21.Visible = false;
+                        btnCFeSat.Visible = false;
+                        button22.Visible = false;
+                        break;
+                    default:
+                        label13.Text = $@"Dados da Venda: {idPedido}";
+                        label10.Text = @"Siga as etapas abaixo para adicionar uma venda!";
+                        break;
                 }
 
                 if (HideFinalizar)
@@ -671,6 +669,9 @@ namespace Emiplus.View.Comercial
                     btnImprimir.Visible = false;
                     button20.Visible = false;
                 }
+
+                if (IniFile.Read("Alimentacao", "Comercial") == "True")
+                    btnDividir.Visible = true;
 
                 mtxt.Visible = false;
                 mtxt2.Visible = false;

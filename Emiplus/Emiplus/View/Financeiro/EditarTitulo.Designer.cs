@@ -101,7 +101,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
+            this.txtTaxaParcela = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtTaxaCartao = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -113,10 +113,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.menuBoleto = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panelBoleto = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.label24 = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -141,8 +141,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel5.SuspendLayout();
             this.menuBoleto.SuspendLayout();
-            this.panelBoleto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            this.panelBoleto.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox12
@@ -1715,7 +1715,7 @@
             // 
             this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.txtTaxaAntecipacao);
             this.panel9.Location = new System.Drawing.Point(478, 236);
             this.panel9.Name = "panel9";
@@ -1753,7 +1753,7 @@
             this.tarifaParcelamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tarifaParcelamento.Location = new System.Drawing.Point(321, 270);
             this.tarifaParcelamento.Name = "tarifaParcelamento";
-            this.tarifaParcelamento.Size = new System.Drawing.Size(149, 23);
+            this.tarifaParcelamento.Size = new System.Drawing.Size(149, 32);
             this.tarifaParcelamento.TabIndex = 574;
             this.tarifaParcelamento.Text = "Taxa de parcelamento";
             this.tarifaParcelamento.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1821,30 +1821,30 @@
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.panel8.Controls.Add(this.label31);
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.txtTaxaParcela);
             this.panel8.Location = new System.Drawing.Point(321, 235);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(149, 31);
             this.panel8.TabIndex = 569;
             // 
-            // label31
+            // txtTaxaParcela
             // 
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label31.Location = new System.Drawing.Point(5, 4);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(145, 23);
-            this.label31.TabIndex = 563;
-            this.label31.Text = "R$ 0,00";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.txtTaxaParcela.BackColor = System.Drawing.Color.Transparent;
+            this.txtTaxaParcela.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaxaParcela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxaParcela.Location = new System.Drawing.Point(5, 4);
+            this.txtTaxaParcela.Name = "txtTaxaParcela";
+            this.txtTaxaParcela.Size = new System.Drawing.Size(145, 23);
+            this.txtTaxaParcela.TabIndex = 563;
+            this.txtTaxaParcela.Text = "R$ 0,00";
+            this.txtTaxaParcela.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel7
             // 
             this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.txtTaxaCartao);
             this.panel7.Location = new System.Drawing.Point(164, 236);
             this.panel7.Name = "panel7";
@@ -1867,7 +1867,7 @@
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.txtTarifaFixa);
             this.panel6.Location = new System.Drawing.Point(7, 236);
             this.panel6.Name = "panel6";
@@ -1937,7 +1937,7 @@
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label25);
             this.panel5.Location = new System.Drawing.Point(17, 17);
             this.panel5.Name = "panel5";
@@ -1986,6 +1986,18 @@
             this.menuBoleto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
             this.menuBoleto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.menuBoleto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.menuBoleto.Visible = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.pictureBox10.Image = global::Emiplus.Properties.Resources.plus23;
+            this.pictureBox10.Location = new System.Drawing.Point(604, 6);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 566;
+            this.pictureBox10.TabStop = false;
             // 
             // label19
             // 
@@ -2041,17 +2053,6 @@
             this.label24.TabIndex = 562;
             this.label24.Text = "Em construção";
             // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.pictureBox10.Image = global::Emiplus.Properties.Resources.plus23;
-            this.pictureBox10.Location = new System.Drawing.Point(604, 6);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 566;
-            this.pictureBox10.TabStop = false;
-            // 
             // EditarTitulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2096,9 +2097,9 @@
             this.panel5.ResumeLayout(false);
             this.menuBoleto.ResumeLayout(false);
             this.menuBoleto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.panelBoleto.ResumeLayout(false);
             this.panelBoleto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2171,7 +2172,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label txtTaxaParcela;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label txtTaxaCartao;
         private System.Windows.Forms.Panel panel6;

@@ -14,8 +14,8 @@ namespace Emiplus.View.Comercial
             Eventos();
         }
 
-        public static int idProduto { get; set; }
-        public static int idAttr { get; set; }
+        public static int IdProduto { get; set; }
+        public static int IdAttr { get; set; }
 
         private void SetHeadersTable(DataGridView table)
         {
@@ -52,7 +52,7 @@ namespace Emiplus.View.Comercial
         {
             SetHeadersTable(GridLista);
 
-            var itemEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", idProduto)
+            var itemEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", IdProduto)
                 .Get<ItemEstoque>();
             if (itemEstoque != null)
                 foreach (var attr in itemEstoque)
@@ -69,7 +69,7 @@ namespace Emiplus.View.Comercial
         {
             if (GridLista.SelectedRows.Count > 0)
             {
-                idAttr = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
+                IdAttr = Validation.ConvertToInt32(GridLista.SelectedRows[0].Cells["ID"].Value);
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -116,7 +116,7 @@ namespace Emiplus.View.Comercial
             {
                 Refresh();
 
-                if (idProduto < 0)
+                if (IdProduto < 0)
                 {
                     Alert.Message("Opps", "Não localizamos o produto.", Alert.AlertType.error);
                     Close();

@@ -54,6 +54,7 @@ namespace Emiplus.Model
         public int ativo { get; set; }
         public string Atributos { get; set; }
         public string Adicional { get; set; }
+        public string Combos { get; set; }
 
         public Item FromCsv(string csvLine, string tipo = "Produtos")
         {

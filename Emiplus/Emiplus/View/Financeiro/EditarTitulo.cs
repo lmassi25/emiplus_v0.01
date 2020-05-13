@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
-using Emiplus.Properties;
 using Emiplus.View.Comercial;
 using Emiplus.View.Common;
 using Emiplus.View.Produtos;
 using SqlKata.Execution;
-using VisualPlus.Toolkit.Controls.Layout;
 
 namespace Emiplus.View.Financeiro
 {
     public partial class EditarTitulo : Form
     {
         private Titulo _modelTitulo = new Titulo();
+        private readonly Controller.Titulo _controllerTitulo = new Controller.Titulo();
 
         public EditarTitulo()
         {
@@ -43,10 +41,10 @@ namespace Emiplus.View.Financeiro
                 ? ""
                 : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
             recebido.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? "" : Validation.Price(_modelTitulo.Recebido);
-            valorVenda.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? Validation.FormatPrice(0, true) : Validation.FormatPrice(_modelTitulo.Recebido, true);
-            valorLiquido.Text = Math.Abs(_modelTitulo.Valor_Liquido) < 0
+            valorVenda.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0 ? Validation.FormatPrice(0, true) : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido), true);
+            valorLiquido.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0
                 ? Validation.FormatPrice(0, true)
-                : Validation.FormatPrice(_modelTitulo.Valor_Liquido, true);
+                : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido), true);
 
             if (!string.IsNullOrEmpty(_modelTitulo.Taxas))
             {
@@ -57,14 +55,27 @@ namespace Emiplus.View.Financeiro
                     txtTarifaFixa.Text = $@"R$ {Validation.FormatPrice(Validation.ConvertToDouble(taxas[0]))}";
 
                     tarifaCartao.Text = $@"Taxa do cartão {taxas[1]}%";
-                    double taxaCartao = _modelTitulo.Recebido / 100 * Validation.ConvertToDouble(taxas[1]);
+                    var taxaCartao = _controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) / 100 * Validation.ConvertToDouble(taxas[1]);
                     txtTaxaCartao.Text = $@"{Validation.FormatPrice(taxaCartao, true)}";
+                    
+                    var taxaparcelas = _controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) / 100 * Validation.ConvertToDouble(taxas[2]);
+                    var totalParcelas = taxaparcelas * Validation.ConvertToInt32(taxas[5]);
+                    txtTaxaParcela.Text = !Convert.ToBoolean(taxas[6]) ? $@"R$ {Validation.FormatPrice(Validation.ConvertToDouble(totalParcelas))}" : $@"R$ {Validation.FormatPrice(0)}";
 
-                    tarifaParcelamento.Text = $@"Taxa de parcelamento {taxas[2]}%";
+                    tarifaParcelamento.Text = $@"Taxa de parcelamento {taxas[2]}% x {taxas[5]}";
                     txtTaxaAntecipacao.Text = $@"{Validation.FormatPrice(Validation.ConvertToDouble(taxas[3]), true)}";
 
                     if (string.IsNullOrEmpty(taxas[4])) prazoReceber.Visible = false;
                     prazoReceber.Text = $@"No prazo de {taxas[4]} dias.";
+
+                    if (!Convert.ToBoolean(taxas[6]))
+                        valorLiquido.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0
+                        ? Validation.FormatPrice(0, true)
+                        : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) - Validation.ConvertToDouble(taxas[0]) - taxaCartao - totalParcelas - Validation.ConvertToDouble(taxas[3]), true);
+                    else
+                        valorLiquido.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0
+                            ? Validation.FormatPrice(0, true)
+                            : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) - Validation.ConvertToDouble(taxas[0]) - taxaCartao - Validation.ConvertToDouble(taxas[3]), true);
                 }
             }
 

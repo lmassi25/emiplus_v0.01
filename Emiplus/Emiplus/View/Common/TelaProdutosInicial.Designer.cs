@@ -72,6 +72,7 @@
             this.btnRemessas = new System.Windows.Forms.Button();
             this.btnVariation = new System.Windows.Forms.Button();
             this.btnAdicionais = new System.Windows.Forms.Button();
+            this.btnCombo = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
@@ -798,12 +799,36 @@
             this.btnAdicionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdicionais.UseVisualStyleBackColor = false;
             // 
+            // btnCombo
+            // 
+            this.btnCombo.BackColor = System.Drawing.Color.Transparent;
+            this.btnCombo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCombo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCombo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCombo.FlatAppearance.BorderSize = 0;
+            this.btnCombo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCombo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btnCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCombo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCombo.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCombo.Image = ((System.Drawing.Image)(resources.GetObject("btnCombo.Image")));
+            this.btnCombo.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCombo.Location = new System.Drawing.Point(22, 497);
+            this.btnCombo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCombo.Name = "btnCombo";
+            this.btnCombo.Size = new System.Drawing.Size(219, 41);
+            this.btnCombo.TabIndex = 128;
+            this.btnCombo.Text = "          Combo de Produtos";
+            this.btnCombo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCombo.UseVisualStyleBackColor = false;
+            // 
             // TelaProdutosInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.btnCombo);
             this.Controls.Add(this.btnAdicionais);
             this.Controls.Add(this.btnVariation);
             this.Controls.Add(this.btnRemessas);
@@ -913,5 +938,6 @@
         private System.Windows.Forms.Button btnRemessas;
         private System.Windows.Forms.Button btnVariation;
         private System.Windows.Forms.Button btnAdicionais;
+        private System.Windows.Forms.Button btnCombo;
     }
 }

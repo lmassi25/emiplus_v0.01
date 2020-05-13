@@ -61,7 +61,7 @@ namespace Emiplus.Controller
                 return 0;
 
             var data = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).FirstOrDefault();
-            return Validation.ConvertToDouble(data.TOTAL ?? 0);
+            return Validation.ConvertToDouble(data?.TOTAL ?? 0);
         }
 
         public double GetTotalProdutos(int idPedido)
@@ -158,6 +158,7 @@ namespace Emiplus.Controller
                     data.Recebido = data.Total;
 
                     double taxaAntecipacao = 0;
+                    bool parcelaJuros = false;
                     if (formaPgto == 4)
                     {
                         if (_mTaxa.Antecipacao_Auto == 1)
@@ -165,18 +166,27 @@ namespace Emiplus.Controller
 
                         var taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
                         var taxaparcelas = valor / 100 * _mTaxa.Taxa_Parcela;
+                        var taxaFixa = _mTaxa.Taxa_Fixa / Validation.ConvertToInt32(parcela);
+                        var taxaAntecipacaoParcela = taxaAntecipacao / Validation.ConvertToInt32(parcela);
 
-                        if (i > _mTaxa.Parcela_Semjuros)
-                            data.Valor_Liquido =
-                                (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao - taxaparcelas) /
-                                Validation.ConvertToInt32(parcela); // com juros
+                        if (_mTaxa.Parcela_Semjuros > 0)
+                        {
+                            if (i > _mTaxa.Parcela_Semjuros)
+                            {
+                                parcelaJuros = true;
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela - taxaparcelas) /
+                                                     Validation.ConvertToInt32(parcela); // com juros
+                            }
+                            else
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
+                                                     Validation.ConvertToInt32(parcela); // sem juros
+                        }
                         else
-                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao) /
-                                                 Validation.ConvertToInt32(parcela); // sem juros
+                            data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
+                                                 Validation.ConvertToInt32(parcela);
                     }
 
-                    data.Taxas =
-                        $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+                    data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}|{parcela}|{parcelaJuros}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -198,6 +208,7 @@ namespace Emiplus.Controller
                     data.Recebido = data.Total;
 
                     double taxaAntecipacao = 0;
+                    bool parcelaJuros = false;
                     if (formaPgto == 4)
                     {
                         if (_mTaxa.Antecipacao_Auto == 1)
@@ -206,18 +217,27 @@ namespace Emiplus.Controller
                         // taxa de intermediação
                         var taxacredito = valor / 100 * _mTaxa.Taxa_Credito;
                         var taxaparcelas = valor / 100 * _mTaxa.Taxa_Parcela;
+                        var taxaFixa = _mTaxa.Taxa_Fixa / Validation.ConvertToInt32(parcela);
+                        var taxaAntecipacaoParcela = taxaAntecipacao / Validation.ConvertToInt32(parcela);
 
-                        if (count > _mTaxa.Parcela_Semjuros)
-                            data.Valor_Liquido =
-                                (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao - taxaparcelas) /
-                                Validation.ConvertToInt32(parcela); // com juros
+                        if (_mTaxa.Parcela_Semjuros > 0)
+                        {
+                            if (count > _mTaxa.Parcela_Semjuros)
+                            {
+                                parcelaJuros = true;
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela - taxaparcelas) /
+                                                     Validation.ConvertToInt32(parcela); // com juros
+                            }
+                            else
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
+                                                     Validation.ConvertToInt32(parcela); // sem juros
+                        }
                         else
-                            data.Valor_Liquido = (valor - taxacredito - _mTaxa.Taxa_Fixa - taxaAntecipacao) /
-                                                 Validation.ConvertToInt32(parcela); // sem juros
+                            data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
+                                                 Validation.ConvertToInt32(parcela);
                     }
-
-                    data.Taxas =
-                        $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+                    
+                    data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}|{parcela}|{parcelaJuros}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
                     data.Save(data, false);
@@ -253,8 +273,7 @@ namespace Emiplus.Controller
                     data.Valor_Liquido = valor - taxadebito - _mTaxa.Taxa_Fixa - taxaAntecipacao;
                 }
 
-                data.Taxas =
-                    $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Debito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}";
+                data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Debito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}|{parcela}|{_mTaxa.Parcela_Semjuros}";
                 data.Id_Caixa = Home.idCaixa;
                 data.Tipo = Home.pedidoPage == "Compras" ? "Pagar" : "Receber";
 
