@@ -404,6 +404,7 @@ namespace Emiplus.View.Common
                 {
                     panel3.Width = 241;
                     btnShowMenu.Image = Resources.seta1;
+                    label1.Visible = true;
                     version.Visible = true;
                     MenuExpansive = false;
                     IniFile.Write("MENU_EXPANSIVE", "false", "LAYOUT");
@@ -413,6 +414,7 @@ namespace Emiplus.View.Common
                     panel3.Width = 47;
                     btnShowMenu.Image = Resources.seta2;
                     version.Visible = false;
+                    label1.Visible = false;
                     MenuExpansive = true;
                     IniFile.Write("MENU_EXPANSIVE", "true", "LAYOUT");
                 }

@@ -135,6 +135,7 @@ namespace Emiplus.Model
                 data.Emissao = DateTime.Now;
                 data.Colaborador = Settings.Default.user_id;
                 data.id_usuario = Settings.Default.user_id;
+                data.Finalidade = 1;
                 if (Data(data).Create() != 1)
                     return false;
             }

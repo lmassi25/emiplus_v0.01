@@ -822,24 +822,6 @@
             this.Parcelas.IntegralHeight = false;
             this.Parcelas.ItemHeight = 23;
             this.Parcelas.ItemImageVisible = true;
-            this.Parcelas.Items.AddRange(new object[] {
-            "2° Parcela",
-            "3° Parcela",
-            "4° Parcela",
-            "5° Parcela",
-            "6° Parcela",
-            "7° Parcela",
-            "8° Parcela",
-            "9° Parcela",
-            "10° Parcela",
-            "11° Parcela",
-            "12° Parcela",
-            "13° Parcela",
-            "14° Parcela",
-            "15° Parcela",
-            "16° Parcela",
-            "17° Parcela",
-            "18° Parcela"});
             this.Parcelas.Location = new System.Drawing.Point(160, 324);
             this.Parcelas.MenuItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Parcelas.MenuItemNormal = System.Drawing.Color.White;

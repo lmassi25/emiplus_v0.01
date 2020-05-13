@@ -57,7 +57,7 @@ namespace Emiplus.View.Produtos
 
             var totalRegistros = new Model.Item().Query().SelectRaw("COUNT(ID) as TOTAL").Where("Excluir", 0)
                 .Where("Tipo", "Produtos").FirstOrDefault();
-            nrRegistros.Text = $@"Exibindo: {GridListaProdutos.Rows.Count} de {totalRegistros.TOTAL ?? 0} registros";
+            nrRegistros.Text = $@"Exibindo: {GridListaProdutos.Rows.Count} de {totalRegistros?.TOTAL ?? 0} registros";
         }
 
         private void EditProduct(bool create = false)
@@ -114,12 +114,14 @@ namespace Emiplus.View.Produtos
 
             table.RowHeadersVisible = false;
 
-            var checkColumn = new DataGridViewCheckBoxColumn();
-            checkColumn.HeaderText = "Selecione";
-            checkColumn.Name = "Selecione";
-            checkColumn.FlatStyle = FlatStyle.Standard;
-            checkColumn.CellTemplate = new DataGridViewCheckBoxCell();
-            checkColumn.Width = 60;
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
             table.Columns.Insert(0, checkColumn);
 
             table.Columns[1].Name = "ID";

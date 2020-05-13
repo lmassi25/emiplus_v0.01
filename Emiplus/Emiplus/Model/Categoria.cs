@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Emiplus.Data.Helpers;
+using Emiplus.Data.SobreEscrever;
 using SqlKata;
 using SqlKata.Execution;
 using Valit;
@@ -35,6 +36,22 @@ namespace Emiplus.Model
                     data.Add(new {Id = $"{item.ID}", Nome = $"{item.NOME}"});
 
             return data;
+        }
+
+        public KeyedAutoCompleteStringCollection AutoComplete(string tipo = "")
+        {
+            var collection = new KeyedAutoCompleteStringCollection();
+
+            var item = Query().Select("id", "nome", "tipo").Where("excluir", 0);
+
+            if (!string.IsNullOrEmpty(tipo))
+                item.Where("tipo", tipo);
+
+            foreach (var itens in item.Get<Categoria>())
+                if (!string.IsNullOrEmpty(itens.Nome))
+                    collection.Add(itens.Nome, itens.Id);
+
+            return collection;
         }
 
         public bool Save(Categoria data)

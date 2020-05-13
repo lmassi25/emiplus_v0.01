@@ -254,8 +254,7 @@ namespace Emiplus.View.Comercial
                     nrMesa.Visible = false;
                     Mesas.Visible = true;
 
-                    var listMesas = new ArrayList();
-                    listMesas.Add(new {Id = "0", Nome = "SELECIONE"});
+                    var listMesas = new ArrayList {new {Id = "0", Nome = "SELECIONE"}};
                     var getMesas = new Model.Mesas().FindAll().WhereFalse("excluir").Get<Model.Mesas>();
                     if (getMesas.Any())
                         foreach (var mesas in getMesas)

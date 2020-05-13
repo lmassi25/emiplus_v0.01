@@ -83,6 +83,11 @@ namespace Emiplus.View.Common
                 OpenForm.Show<ReajusteDeProduto>(this);
             };
 
+            btnCombo.Click += (s, e) =>
+            {
+                OpenForm.Show<ComboProdutos>(this);
+            };
+
             Compras.Click += (s, e) =>
             {
                 if (UserPermission.SetControl(Compras, pictureBox8, "pdt_novacompra"))

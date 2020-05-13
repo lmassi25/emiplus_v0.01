@@ -7,7 +7,7 @@ namespace Emiplus.View.Comercial
 {
     public partial class OpcoesCfeEmitir : Form
     {
-        private readonly BackgroundWorker workerBackground = new BackgroundWorker();
+        private readonly BackgroundWorker _workerBackground = new BackgroundWorker();
         private string _msg;
 
         public OpcoesCfeEmitir()
@@ -30,9 +30,9 @@ namespace Emiplus.View.Comercial
                 }
             };
 
-            Shown += (s, e) => workerBackground.RunWorkerAsync();
+            Shown += (s, e) => _workerBackground.RunWorkerAsync();
 
-            using (var b = workerBackground)
+            using (var b = _workerBackground)
             {
                 b.DoWork += (s, e) =>
                 {
@@ -46,7 +46,7 @@ namespace Emiplus.View.Comercial
                     if (_msg.Contains("Emitido com sucesso"))
                     {
                         label10.Text = @"Enviando impressão...";
-                        Task.Delay(3000);
+                        Task.Delay(2000);
 
                         new Controller.Fiscal().Imprimir(idPedido, OpcoesCfe.tipo == "NFCe" ? "NFCe" : "CFe");
 

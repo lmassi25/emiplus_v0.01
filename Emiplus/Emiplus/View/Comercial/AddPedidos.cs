@@ -68,177 +68,188 @@ namespace Emiplus.View.Comercial
 
             IDCaixa.Text = Home.idCaixa.ToString();
 
-            if (Home.pedidoPage == "Orçamentos")
+            switch (Home.pedidoPage)
             {
-                PDV = false;
-
-                label2.Text = $@"Dados do Orçamento: {Id}";
-                label3.Text = @"Siga as etapas abaixo para criar um orçamento!";
-                btnConcluir.Text = @"Finalizar";
-                btnConcluir.Refresh();
-                pictureBox8.Visible = false;
-                label12.Visible = false;
-                IDCaixa.Visible = false;
-                btnDelete.Text = @"Apagar";
-                btnGerarVenda.Visible = true;
-
-                if (_mPedido.status == 1)
+                case "Orçamentos":
                 {
-                    btnConcluir.Text = @"Reabrir";
+                    PDV = false;
 
-                    BuscarProduto.Enabled = false;
-                    Quantidade.Enabled = false;
-                    Preco.Enabled = false;
-                    Medidas.Enabled = false;
-                    DescontoPorcentagem.Enabled = false;
-                    DescontoReais.Enabled = false;
-                    addProduto.Enabled = false;
-                }
-                else
-                {
-                    btnQuantidade.Visible = true;
-                    btnQuantidade.Location = btnDelete.Location;
+                    label2.Text = $@"Dados do Orçamento: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para criar um orçamento!";
                     btnConcluir.Text = @"Finalizar";
+                    btnConcluir.Refresh();
+                    pictureBox8.Visible = false;
+                    label12.Visible = false;
+                    IDCaixa.Visible = false;
+                    btnDelete.Text = @"Apagar";
+                    btnGerarVenda.Visible = true;
+
+                    if (_mPedido.status == 1)
+                    {
+                        btnConcluir.Text = @"Reabrir";
+
+                        BuscarProduto.Enabled = false;
+                        Quantidade.Enabled = false;
+                        Preco.Enabled = false;
+                        Medidas.Enabled = false;
+                        DescontoPorcentagem.Enabled = false;
+                        DescontoReais.Enabled = false;
+                        addProduto.Enabled = false;
+                    }
+                    else
+                    {
+                        btnQuantidade.Visible = true;
+                        btnQuantidade.Location = btnDelete.Location;
+                        btnConcluir.Text = @"Finalizar";
+                        btnDelete.Visible = false;
+                        btnGerarVenda.Visible = false;
+                    }
+
+                    break;
+                }
+                case "Delivery":
+                {
+                    PDV = false;
+
+                    label17.Text = @"Entregador";
+                    pictureBox10.Image = Resources.deliveryman;
+
+                    btnGerarVenda.Visible = false;
+                    btnDelete.Visible = false;
+                    label2.Text = $@"Dados do Delivery: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para criar um novo pedido!";
+                    btnConcluir.Text = @"Receber";
+
+                    if (Home.idCaixa == 0) btnConcluir.Text = @"Finalizar";
+
+                    if (Home.idCaixa != 0)
+                    {
+                        imprimir.Visible = false;
+                        button2.Visible = false;
+                    }
+
+                    break;
+                }
+                case "Consignações":
+                {
+                    PDV = false;
+
+                    label2.Text = $@"Dados da Consignação: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para criar uma consignação!";
+                    btnConcluir.Text = @"Finalizar";
+                    pictureBox8.Visible = false;
+                    label12.Visible = false;
+                    IDCaixa.Visible = false;
+                    btnDelete.Text = @"Apagar";
+                    btnGerarVenda.Visible = true;
+
+                    if (_mPedido.status == 1)
+                    {
+                        btnConcluir.Text = @"Reabrir";
+
+                        BuscarProduto.Enabled = false;
+                        Quantidade.Enabled = false;
+                        Preco.Enabled = false;
+                        Medidas.Enabled = false;
+                        DescontoPorcentagem.Enabled = false;
+                        DescontoReais.Enabled = false;
+                        addProduto.Enabled = false;
+                    }
+                    else
+                    {
+                        btnConcluir.Text = @"Finalizar";
+                        btnDelete.Visible = false;
+                        btnGerarVenda.Visible = false;
+                    }
+
+                    break;
+                }
+                case "Compras":
+                    PDV = false;
+                    label15.Text = @"Fornecedor:";
+
+                    pictureBox8.Visible = false;
+                    label12.Visible = false;
+                    IDCaixa.Visible = false;
+                    label2.Text = $@"Dados da Compra: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para adicionar uma compra!";
+                    btnConcluir.Text = @"Pagamento";
+                    btnDelete.Visible = false;
+                    break;
+                case "Remessas":
+                    PDV = false;
+
+                    label15.Text = @"Empresa:";
+                    pictureBox8.Visible = false;
+                    label12.Visible = false;
+                    IDCaixa.Visible = false;
+                    label2.Text = $@"Dados da Remessa: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para fazer uma remessa!";
+                    btnConcluir.Text = @"Finalizar";
+                    btnDelete.Visible = false;
+                    nomeCliente.Text = @"Selecione uma empresa";
+                    pictureBox9.Image = Resources.skyscrapper;
+                    SelecionarCliente.Location = new Point(720, 15);
+                    break;
+                case "Devoluções":
+                {
+                    PDV = false;
+
+                    label2.Text = $@"Dados da Troca: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para criar uma troca!";
+                    btnConcluir.Text = @"Finalizar";
+
                     btnDelete.Visible = false;
                     btnGerarVenda.Visible = false;
+
+                    pictureBox8.Visible = true;
+                    pictureBox8.Image = Resources.voucher;
+                    label12.Visible = true;
+                    label12.Text = @"Voucher";
+                    IDCaixa.Visible = true;
+
+                    if (string.IsNullOrEmpty(_mPedido.Voucher))
+                        _mPedido.Voucher = new Controller.Pedido().RandomString(4);
+
+                    IDCaixa.Text = _mPedido.Voucher;
+
+                    if (_mPedido.status == 1)
+                    {
+                        btnConcluir.Text = @"Reabrir";
+
+                        BuscarProduto.Enabled = false;
+                        Quantidade.Enabled = false;
+                        Preco.Enabled = false;
+                        Medidas.Enabled = false;
+                        DescontoPorcentagem.Enabled = false;
+                        DescontoReais.Enabled = false;
+                        addProduto.Enabled = false;
+                    }
+                    else
+                    {
+                        btnConcluir.Text = @"Finalizar";
+                        btnDelete.Visible = false;
+                    }
+
+                    break;
                 }
-            }
-            else if (Home.pedidoPage == "Delivery")
-            {
-                PDV = false;
-
-                label17.Text = @"Entregador";
-                pictureBox10.Image = Resources.deliveryman;
-
-                btnGerarVenda.Visible = false;
-                btnDelete.Visible = false;
-                label2.Text = $@"Dados do Delivery: {Id}";
-                label3.Text = @"Siga as etapas abaixo para criar um novo pedido!";
-                btnConcluir.Text = @"Receber";
-
-                if (Home.idCaixa == 0) btnConcluir.Text = @"Finalizar";
-
-                if (Home.idCaixa != 0)
+                default:
                 {
-                    imprimir.Visible = false;
-                    button2.Visible = false;
-                }
-            }
-            else if (Home.pedidoPage == "Consignações")
-            {
-                PDV = false;
-
-                label2.Text = $@"Dados da Consignação: {Id}";
-                label3.Text = @"Siga as etapas abaixo para criar uma consignação!";
-                btnConcluir.Text = @"Finalizar";
-                pictureBox8.Visible = false;
-                label12.Visible = false;
-                IDCaixa.Visible = false;
-                btnDelete.Text = @"Apagar";
-                btnGerarVenda.Visible = true;
-
-                if (_mPedido.status == 1)
-                {
-                    btnConcluir.Text = @"Reabrir";
-
-                    BuscarProduto.Enabled = false;
-                    Quantidade.Enabled = false;
-                    Preco.Enabled = false;
-                    Medidas.Enabled = false;
-                    DescontoPorcentagem.Enabled = false;
-                    DescontoReais.Enabled = false;
-                    addProduto.Enabled = false;
-                }
-                else
-                {
-                    btnConcluir.Text = @"Finalizar";
-                    btnDelete.Visible = false;
                     btnGerarVenda.Visible = false;
-                }
-            }
-            else if (Home.pedidoPage == "Compras")
-            {
-                PDV = false;
-                label15.Text = @"Fornecedor:";
-
-                pictureBox8.Visible = false;
-                label12.Visible = false;
-                IDCaixa.Visible = false;
-                label2.Text = $@"Dados da Compra: {Id}";
-                label3.Text = @"Siga as etapas abaixo para adicionar uma compra!";
-                btnConcluir.Text = @"Pagamento";
-                btnDelete.Visible = false;
-            }
-            else if (Home.pedidoPage == "Remessas")
-            {
-                PDV = false;
-
-                label15.Text = @"Empresa:";
-                pictureBox8.Visible = false;
-                label12.Visible = false;
-                IDCaixa.Visible = false;
-                label2.Text = $@"Dados da Remessa: {Id}";
-                label3.Text = @"Siga as etapas abaixo para fazer uma remessa!";
-                btnConcluir.Text = @"Finalizar";
-                btnDelete.Visible = false;
-                nomeCliente.Text = @"Selecione uma empresa";
-                pictureBox9.Image = Resources.skyscrapper;
-                SelecionarCliente.Location = new Point(720, 15);
-            }
-            else if (Home.pedidoPage == "Devoluções")
-            {
-                PDV = false;
-
-                label2.Text = $@"Dados da Troca: {Id}";
-                label3.Text = @"Siga as etapas abaixo para criar uma troca!";
-                btnConcluir.Text = @"Finalizar";
-
-                btnDelete.Visible = false;
-                btnGerarVenda.Visible = false;
-
-                pictureBox8.Visible = true;
-                pictureBox8.Image = Resources.voucher;
-                label12.Visible = true;
-                label12.Text = @"Voucher";
-                IDCaixa.Visible = true;
-
-                if (string.IsNullOrEmpty(_mPedido.Voucher))
-                    _mPedido.Voucher = new Controller.Pedido().RandomString(4);
-
-                IDCaixa.Text = _mPedido.Voucher;
-
-                if (_mPedido.status == 1)
-                {
-                    btnConcluir.Text = @"Reabrir";
-
-                    BuscarProduto.Enabled = false;
-                    Quantidade.Enabled = false;
-                    Preco.Enabled = false;
-                    Medidas.Enabled = false;
-                    DescontoPorcentagem.Enabled = false;
-                    DescontoReais.Enabled = false;
-                    addProduto.Enabled = false;
-                }
-                else
-                {
-                    btnConcluir.Text = @"Finalizar";
                     btnDelete.Visible = false;
-                }
-            }
-            else
-            {
-                btnGerarVenda.Visible = false;
-                btnDelete.Visible = false;
-                label2.Text = $@"Dados da Venda: {Id}";
-                label3.Text = @"Siga as etapas abaixo para criar um novo pedido!";
-                btnConcluir.Text = @"Receber";
+                    label2.Text = $@"Dados da Venda: {Id}";
+                    label3.Text = @"Siga as etapas abaixo para criar um novo pedido!";
+                    btnConcluir.Text = @"Receber";
 
-                if (Home.idCaixa == 0) btnConcluir.Text = @"Finalizar";
+                    if (Home.idCaixa == 0) btnConcluir.Text = @"Finalizar";
 
-                if (Home.idCaixa != 0)
-                {
-                    imprimir.Visible = false;
-                    button2.Visible = false;
+                    if (Home.idCaixa != 0)
+                    {
+                        imprimir.Visible = false;
+                        button2.Visible = false;
+                    }
+
+                    break;
                 }
             }
 
@@ -743,17 +754,26 @@ namespace Emiplus.View.Comercial
                 var itemId = collection.Lookup(NomeProduto()[0]);
                 var item = _mItem.FindById(itemId).WhereFalse("excluir").FirstOrDefault<Item>();
 
+                if (!string.IsNullOrEmpty(item.Combos))
+                {
+                    AddCombo.IdProduto = itemId;
+                    var form = new AddCombo {TopMost = true};
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+
                 var titleAttr = "";
                 var idAttr = 0;
-                var itemEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", itemId)
-                    .Get<ItemEstoque>();
+                var itemEstoque = new ItemEstoque().FindAll().WhereFalse("excluir").Where("item", itemId).Get<ItemEstoque>();
                 if (itemEstoque.Any())
                 {
-                    AddAtributo.idProduto = itemId;
+                    AddAtributo.IdProduto = itemId;
                     var form = new AddAtributo {TopMost = true};
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        idAttr = AddAtributo.idAttr;
+                        idAttr = AddAtributo.IdAttr;
                         var attrTitle = new ItemEstoque().FindAll().WhereFalse("excluir").Where("id", idAttr)
                             .FirstOrDefault<ItemEstoque>();
                         if (attrTitle != null)

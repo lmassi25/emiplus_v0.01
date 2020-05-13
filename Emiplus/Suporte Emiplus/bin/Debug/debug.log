@@ -13,3 +13,4 @@
 [0508/103622.654:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
 [0508/104536.322:INFO:CONSOLE(1)] "Uncaught ReferenceError: jivo_api is not defined", source: https://rendering/ (1)
 [0508/105930.521:ERROR:browser_process_sub_thread.cc(221)] Waited 15 ms for network service
+[0512/103335.960:ERROR:browser_process_sub_thread.cc(221)] Waited 10 ms for network service

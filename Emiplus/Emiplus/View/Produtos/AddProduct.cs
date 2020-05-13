@@ -22,11 +22,22 @@ namespace Emiplus.View.Produtos
 {
     public partial class AddProduct : Form
     {
+        /// <summary>
+        /// Background worker para carregar dados do produto sem travar a tela
+        /// </summary>
         private readonly BackgroundWorker backOn = new BackgroundWorker();
+
+        /// <summary>
+        /// Background worker para carregar estoques na tabela listaEstoque
+        /// </summary>
         private readonly BackgroundWorker workerBackEstoque = new BackgroundWorker();
 
+        /// <summary>
+        /// Variavel usada para abrir o selecionador de arquivos, usado para imagem do produto
+        /// </summary>
         private readonly OpenFileDialog ofd = new OpenFileDialog();
-        private Model.Item _modelItem = new Model.Item();
+
+        private Item _modelItem = new Item();
 
         public AddProduct()
         {
@@ -34,12 +45,31 @@ namespace Emiplus.View.Produtos
             Eventos();
         }
 
+        /// <summary>
+        /// ID do produto, usado para manipular o registro no banco
+        /// </summary>
         public static int IdPdtSelecionado { get; set; }
+
+        /// <summary>
+        /// Array com os fornecedores, usado em segundo plano
+        /// </summary>
         private ArrayList ListFornecedores { get; set; }
+
+        /// <summary>
+        /// Array com todas as categorias, usado em segundo plano
+        /// </summary>
         private ArrayList ListCategorias { get; set; }
         private IEnumerable<dynamic> Impostos { get; set; }
         private IEnumerable<dynamic> Impostos2 { get; set; }
+
+        /// <summary>
+        /// Array com registros do estoque, usado para armazenar os registros em segundo plano e exibir assim que carregar
+        /// </summary>
         private IEnumerable<dynamic> ListEstoque { get; set; }
+
+        /// <summary>
+        /// Variavel usada para mostrar quantidade de estoque a ser exibido na gridEstoque
+        /// </summary>
         private static int LimitShowStock { get; set; }
         
         private void LoadFornecedores()
@@ -158,6 +188,49 @@ namespace Emiplus.View.Produtos
             table.Columns[3].Visible = true;
         }
 
+        /// <summary>
+        /// Adiciona colunas na tabela dos Combos
+        /// </summary>
+        /// <param name="table"></param>
+        private static void SetHeadersCombo(DataGridView table)
+        {
+            table.ColumnCount = 3;
+
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
+                new object[] { true });
+            table.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            table.RowHeadersVisible = false;
+
+            var checkColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = @"Selecione",
+                Name = "Selecione",
+                FlatStyle = FlatStyle.Standard,
+                CellTemplate = new DataGridViewCheckBoxCell(),
+                Width = 60
+            };
+            table.Columns.Insert(0, checkColumn);
+
+            table.Columns[1].Name = "ID";
+            table.Columns[1].Visible = false;
+
+            table.Columns[2].Name = "Combo";
+            table.Columns[2].Width = 120;
+            table.Columns[2].MinimumWidth = 120;
+            table.Columns[2].Visible = true;
+
+            table.Columns[3].Name = "Valor";
+            table.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            table.Columns[3].Width = 100;
+            table.Columns[3].Visible = true;
+        }
+
+        /// <summary>
+        /// Alimenta a grid dos adicionais
+        /// </summary>
+        /// <param name="table"></param>
         private static void SetContentTableAdicionais(DataGridView table)
         {
             table.Rows.Clear();
@@ -169,7 +242,28 @@ namespace Emiplus.View.Produtos
                         false,
                         item.Id,
                         item.Title,
-                        Validation.FormatPrice(Validation.ConvertToDouble(item.Valor), true)
+                        Validation.FormatPrice(item.Valor, true)
+                    );
+
+            table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        /// <summary>
+        /// Alimenta a grid dos combos
+        /// </summary>
+        /// <param name="table"></param>
+        private static void SetContentTableCombos(DataGridView table)
+        {
+            table.Rows.Clear();
+
+            var data = new ItemCombo().FindAll().WhereFalse("excluir").Get<ItemCombo>();
+            if (data.Any())
+                foreach (var item in data)
+                    table.Rows.Add(
+                        false,
+                        item.Id,
+                        item.Nome,
+                        Validation.FormatPrice(item.ValorVenda, true)
                     );
 
             table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -246,13 +340,23 @@ namespace Emiplus.View.Produtos
             }
 
             DataTableEstoque();
-            SetContentTableAdicionais(GridAdicionais);
 
+            SetContentTableAdicionais(GridAdicionais);
             foreach (DataGridViewRow item in GridAdicionais.Rows)
                 if (!string.IsNullOrEmpty(_modelItem.Adicional))
                 {
                     var addons = _modelItem.Adicional.Split(',');
                     foreach (var id in addons)
+                        if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
+                            item.Cells["Selecione"].Value = true;
+                }
+
+            SetContentTableCombos(GridCombos);
+            foreach (DataGridViewRow item in GridCombos.Rows)
+                if (!string.IsNullOrEmpty(_modelItem.Combos))
+                {
+                    var combos = _modelItem.Combos.Split(',');
+                    foreach (var id in combos)
                         if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
                             item.Cells["Selecione"].Value = true;
                 }
@@ -413,6 +517,21 @@ namespace Emiplus.View.Produtos
 
             _modelItem.Adicional = addon.ToString();
 
+            var combos = new StringBuilder();
+            foreach (DataGridViewRow item in GridCombos.Rows)
+                if ((bool)item.Cells["Selecione"].Value)
+                {
+                    if (string.IsNullOrEmpty(combos.ToString()))
+                    {
+                        combos.Append(Validation.ConvertToInt32(item.Cells["ID"].Value).ToString());
+                        continue;
+                    }
+
+                    combos.Append($",{Validation.ConvertToInt32(item.Cells["ID"].Value)}");
+                }
+
+            _modelItem.Combos = combos.ToString();
+
             if (_modelItem.Save(_modelItem))
                 Close();
         }
@@ -497,12 +616,14 @@ namespace Emiplus.View.Produtos
                 });
 
                 SetHeadersAdicionais(GridAdicionais);
+                SetHeadersCombo(GridCombos);
                 nome.Focus();
             };
 
             menuEstoque.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelEstoque, menuEstoque);
             menuImpostos.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelImpostos, menuImpostos);
             menuAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelAdicionais, menuAdicionais);
+            menuCombo.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelCombo, menuCombo);
             menuInfoAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelInfoAdicionais, menuInfoAdicionais);
 
             btnExit.Click += (s, e) =>
@@ -796,7 +917,7 @@ namespace Emiplus.View.Produtos
                 }
                 else
                 {
-                    _modelItem = new Model.Item {Tipo = "Produtos", Id = IdPdtSelecionado};
+                    _modelItem = new Item {Tipo = "Produtos", Id = IdPdtSelecionado};
                     if (_modelItem.Save(_modelItem, false))
                     {
                         IdPdtSelecionado = _modelItem.GetLastId();
@@ -835,11 +956,10 @@ namespace Emiplus.View.Produtos
                 form.ShowDialog();
             };
 
-            GridAdicionais.CellClick += (s, e) =>
+            GridAdicionais.CellContentClick += (s, e) =>
             {
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
-                    GridAdicionais.SelectedRows[0].Cells["Selecione"].Value =
-                        (bool) GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false;
+                    GridAdicionais.SelectedRows[0].Cells["Selecione"].Value = (bool) GridAdicionais.SelectedRows[0].Cells["Selecione"].Value == false;
             };
 
             GridAdicionais.CellMouseEnter += (s, e) =>
@@ -859,6 +979,32 @@ namespace Emiplus.View.Produtos
 
                 var dataGridView = s as DataGridView;
                 if (GridAdicionais.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Default;
+            };
+
+            GridCombos.CellContentClick += (s, e) =>
+            {
+                if (GridCombos.Columns[e.ColumnIndex].Name == "Selecione")
+                    GridCombos.SelectedRows[0].Cells["Selecione"].Value = (bool)GridCombos.SelectedRows[0].Cells["Selecione"].Value == false;
+            };
+
+            GridCombos.CellMouseEnter += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = s as DataGridView;
+                if (GridCombos.Columns[e.ColumnIndex].Name == "Selecione")
+                    dataGridView.Cursor = Cursors.Hand;
+            };
+
+            GridCombos.CellMouseLeave += (s, e) =>
+            {
+                if (e.ColumnIndex < 0 || e.RowIndex < 0)
+                    return;
+
+                var dataGridView = s as DataGridView;
+                if (GridCombos.Columns[e.ColumnIndex].Name == "Selecione")
                     dataGridView.Cursor = Cursors.Default;
             };
         }
