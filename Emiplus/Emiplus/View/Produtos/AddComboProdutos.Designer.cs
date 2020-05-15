@@ -530,9 +530,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(38, 271);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 43;
-            this.label2.Text = "Itens";
+            this.label2.Text = "Produtos";
             // 
             // txtAutoComplete
             // 

@@ -318,6 +318,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(83, 118);
@@ -329,6 +330,7 @@
             // 
             // label22
             // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -341,6 +343,7 @@
             // 
             // Medidas
             // 
+            this.Medidas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Medidas.BackColor = System.Drawing.Color.White;
             this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Medidas.BackColorState.Enabled = System.Drawing.Color.White;
@@ -399,6 +402,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -412,6 +416,7 @@
             // codebarras
             // 
             this.codebarras.AlphaNumeric = false;
+            this.codebarras.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.codebarras.BackColor = System.Drawing.Color.White;
             this.codebarras.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.codebarras.BackColorState.Enabled = System.Drawing.Color.White;
@@ -468,6 +473,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(85, 180);
@@ -479,6 +485,7 @@
             // 
             // label18
             // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -491,6 +498,7 @@
             // 
             // Categorias
             // 
+            this.Categorias.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Categorias.BackColor = System.Drawing.Color.White;
             this.Categorias.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Categorias.BackColorState.Enabled = System.Drawing.Color.White;
@@ -548,6 +556,7 @@
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -561,6 +570,7 @@
             // valorvenda
             // 
             this.valorvenda.AlphaNumeric = false;
+            this.valorvenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.valorvenda.BackColor = System.Drawing.Color.White;
             this.valorvenda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.valorvenda.BackColorState.Enabled = System.Drawing.Color.White;
@@ -618,6 +628,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -631,6 +642,7 @@
             // valorcompra
             // 
             this.valorcompra.AlphaNumeric = false;
+            this.valorcompra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.valorcompra.BackColor = System.Drawing.Color.White;
             this.valorcompra.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.valorcompra.BackColorState.Enabled = System.Drawing.Color.White;
@@ -688,6 +700,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -701,6 +714,7 @@
             // referencia
             // 
             this.referencia.AlphaNumeric = false;
+            this.referencia.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.referencia.BackColor = System.Drawing.Color.White;
             this.referencia.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.referencia.BackColorState.Enabled = System.Drawing.Color.White;
@@ -758,6 +772,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -771,6 +786,7 @@
             // nome
             // 
             this.nome.AlphaNumeric = false;
+            this.nome.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nome.BackColor = System.Drawing.Color.White;
             this.nome.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nome.BackColorState.Enabled = System.Drawing.Color.White;
@@ -908,6 +924,7 @@
             // 
             // pictureBox11
             // 
+            this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox11.BackColor = System.Drawing.Color.White;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
             this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
@@ -920,6 +937,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -933,6 +951,7 @@
             // txtLimiteDesconto
             // 
             this.txtLimiteDesconto.AlphaNumeric = false;
+            this.txtLimiteDesconto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtLimiteDesconto.BackColor = System.Drawing.Color.White;
             this.txtLimiteDesconto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtLimiteDesconto.BackColorState.Enabled = System.Drawing.Color.White;
@@ -990,6 +1009,7 @@
             // 
             // pictureBox14
             // 
+            this.pictureBox14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
             this.pictureBox14.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox14.InitialImage")));
@@ -1002,6 +1022,7 @@
             // 
             // label21
             // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1014,6 +1035,7 @@
             // 
             // Fornecedor
             // 
+            this.Fornecedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Fornecedor.BackColor = System.Drawing.Color.White;
             this.Fornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Fornecedor.BackColorState.Enabled = System.Drawing.Color.White;
@@ -2256,6 +2278,7 @@
             // 
             // flowLayoutPanel
             // 
+            this.flowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.Controls.Add(this.menuEstoque);
             this.flowLayoutPanel.Controls.Add(this.panelEstoque);
@@ -2830,6 +2853,7 @@
             // 
             // btnRemoverImage
             // 
+            this.btnRemoverImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoverImage.AutoSize = true;
             this.btnRemoverImage.BackColor = System.Drawing.Color.Transparent;
             this.btnRemoverImage.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2844,6 +2868,7 @@
             // 
             // btnImage
             // 
+            this.btnImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnImage.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
             this.btnImage.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
@@ -2878,6 +2903,7 @@
             // 
             // label25
             // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2891,6 +2917,7 @@
             // pathImage
             // 
             this.pathImage.AlphaNumeric = false;
+            this.pathImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pathImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.pathImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
             this.pathImage.BackColorState.Enabled = System.Drawing.Color.White;
@@ -2948,6 +2975,7 @@
             // 
             // visualSeparator3
             // 
+            this.visualSeparator3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.Location = new System.Drawing.Point(23, 103);
@@ -2969,6 +2997,7 @@
             // 
             // imageProduct
             // 
+            this.imageProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.imageProduct.BackColor = System.Drawing.Color.Transparent;
             this.imageProduct.Image = global::Emiplus.Properties.Resources.sem_imagem;
             this.imageProduct.Location = new System.Drawing.Point(20, 14);
@@ -2980,6 +3009,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2993,6 +3023,7 @@
             // custoMedio
             // 
             this.custoMedio.AlphaNumeric = false;
+            this.custoMedio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.custoMedio.BackColor = System.Drawing.Color.White;
             this.custoMedio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.custoMedio.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -3051,6 +3082,7 @@
             // 
             // btnAddCategoria
             // 
+            this.btnAddCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddCategoria.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddCategoria.BackColorState.Enabled = System.Drawing.Color.White;
             this.btnAddCategoria.BackColorState.Hover = System.Drawing.Color.White;
@@ -3084,6 +3116,7 @@
             // 
             // btnAddFornecedor
             // 
+            this.btnAddFornecedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddFornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddFornecedor.BackColorState.Enabled = System.Drawing.Color.White;
             this.btnAddFornecedor.BackColorState.Hover = System.Drawing.Color.White;
@@ -3117,6 +3150,7 @@
             // 
             // visualSeparator2
             // 
+            this.visualSeparator2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.Location = new System.Drawing.Point(23, 329);
@@ -3138,6 +3172,7 @@
             // 
             // visualSeparator1
             // 
+            this.visualSeparator1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.Location = new System.Drawing.Point(23, 242);
@@ -3159,6 +3194,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3172,6 +3208,7 @@
             // precoMedio
             // 
             this.precoMedio.AlphaNumeric = false;
+            this.precoMedio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.precoMedio.BackColor = System.Drawing.Color.White;
             this.precoMedio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.precoMedio.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));

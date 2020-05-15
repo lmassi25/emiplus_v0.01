@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Windows.Forms;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
+using Emiplus.View.Common;
 using Emiplus.View.Food;
 using SqlKata.Execution;
 
@@ -18,6 +20,11 @@ namespace Emiplus.View.Comercial
         private readonly Categoria _mCategoria = new Categoria();
         private Item _mItem = new Item();
         private readonly ItemCombo _mItemCombo = new ItemCombo();
+
+        /// <summary>
+        /// Armazena todos os produto a serem incluidos no pedido
+        /// </summary>
+        public static ArrayList listProdutosIncluir = new ArrayList();
 
         /// <summary>
         ///     Armazena todos ids dos combos, categorias e produtos
@@ -41,12 +48,22 @@ namespace Emiplus.View.Comercial
         public static int IdProduto { get; set; }
 
         /// <summary>
+        /// Recupera o ID do pedido
+        /// </summary>
+        public static int IdPedido { get; set; }
+
+        /// <summary>
+        /// Armazena o valor do combo para manipulação
+        /// </summary>
+        private double ValorCombo { get; set; }
+
+        /// <summary>
         ///     Adiciona as colunas na tabela dos itens
         /// </summary>
         /// <param name="table"></param>
         private void SetHeadersTableItens(DataGridView table)
         {
-            table.ColumnCount = 6;
+            table.ColumnCount = 7;
 
             typeof(DataGridView).InvokeMember("DoubleBuffered",
                 BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, table,
@@ -83,23 +100,28 @@ namespace Emiplus.View.Comercial
             table.Columns[3].Width = 150;
             table.Columns[3].Visible = true;
 
-            table.Columns[4].Name = "Valor";
+            table.Columns[4].Name = "Valor Base";
             table.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             table.Columns[4].Width = 100;
             table.Columns[4].Visible = true;
 
-            table.Columns[5].Name = "Estoque Atual";
-            table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            table.Columns[5].Width = 120;
+            table.Columns[5].Name = "Valor Adicional";
+            table.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            table.Columns[5].Width = 100;
             table.Columns[5].Visible = true;
 
-            table.Columns[6].Name = "AddonSelected";
-            table.Columns[6].Width = 100;
-            table.Columns[6].Visible = false;
+            table.Columns[6].Name = "Estoque Atual";
+            table.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            table.Columns[6].Width = 120;
+            table.Columns[6].Visible = true;
 
-            table.Columns[7].Name = "Unitario";
+            table.Columns[7].Name = "AddonSelected";
             table.Columns[7].Width = 100;
             table.Columns[7].Visible = false;
+
+            table.Columns[8].Name = "Unitario";
+            table.Columns[8].Width = 100;
+            table.Columns[8].Visible = false;
 
             var imgDividir = new DataGridViewImageColumn
             {
@@ -211,10 +233,11 @@ namespace Emiplus.View.Comercial
                             dataItem.Id,
                             dataItem.Nome,
                             Validation.FormatPrice(dataItem.ValorVenda, true),
+                            Validation.FormatPrice(0, true),
                             Validation.FormatMedidas(dataItem.Medida, Validation.ConvertToDouble(dataItem.EstoqueAtual)),
                             "",
                             Validation.FormatPrice(dataItem.ValorVenda, true),
-                            Resources.plus20x
+                            Resources.menu20x
                         );
                     }
                 }
@@ -271,6 +294,7 @@ namespace Emiplus.View.Comercial
             if (dataCombo == null)
                 return;
 
+            ValorCombo = dataCombo.ValorVenda;
             txtComboValor.Text = $@"Valor do Combo: {Validation.FormatPrice(dataCombo.ValorVenda, true)}";
 
             var itens = dataCombo.Produtos.Split('|');
@@ -337,7 +361,69 @@ namespace Emiplus.View.Comercial
                 LoadDataTableItens();
             };
 
-            btnInserir.Click += (s, e) => { };
+            btnInserir.Click += (s, e) =>
+            {
+                if (GridListaItens.Rows.Count < 0)
+                    return;
+
+                var count = GridListaItens.Rows.Cast<DataGridViewRow>().Count(row => (bool) row.Cells["Incluir"].Value) - 1;
+
+                listProdutosIncluir.Clear();
+                foreach (DataGridViewRow row in GridListaItens.Rows)
+                {
+                    if (!(bool)row.Cells["Incluir"].Value)
+                        continue;
+
+                    var idItem = Validation.ConvertToInt32(row.Cells["ID"].Value.ToString());
+                    var dataItem = _mItem.FindById(idItem).FirstOrDefault<Item>();
+
+                    var valorVenda = dataItem.ValorVenda - 1.00;
+
+                    var pedidoItem = new PedidoItem();
+                    pedidoItem.SetId(0)
+                        .SetTipo(dataItem.Tipo)
+                        .SetPedidoId(IdPedido)
+                        .SetItem(dataItem)
+                        .SetQuantidade(1)
+                        .SetMedida(dataItem.Medida);
+                    pedidoItem.Adicional = row.Cells["AddonSelected"].Value.ToString();
+
+                    if (IdProduto == dataItem.Id)
+                    {
+                        var valorCombo = Validation.ConvertToDouble(txtComboValor.Text.Replace("Valor do Combo: R$ ", ""));
+                        
+                        pedidoItem.ValorVenda = valorCombo - count;
+                        pedidoItem.Total = valorCombo - count;
+                        pedidoItem.TotalVenda = valorCombo - count;
+                    }
+                    else
+                    {
+                        pedidoItem.ValorVenda = dataItem.ValorVenda - valorVenda;
+                        pedidoItem.Total = dataItem.ValorVenda - valorVenda;
+                        pedidoItem.TotalVenda = dataItem.ValorVenda - valorVenda;
+                    }
+
+                    switch (Home.pedidoPage)
+                    {
+                        case "Remessas":
+                            pedidoItem.Status = "Remessa";
+                            break;
+                        case "Delivery":
+                        case "Balcao":
+                            pedidoItem.Status = "FAZENDO";
+                            break;
+                    }
+
+                    pedidoItem.Save(pedidoItem);
+
+                    listProdutosIncluir.Add(pedidoItem);
+
+                    new Controller.Estoque(pedidoItem.GetLastId(), Home.pedidoPage, "Adicionar Produto").Remove().Item();
+                }
+
+                DialogResult = DialogResult.OK;
+                Close();
+            };
 
             btnContinuar.Click += (s, e) =>
             {
@@ -355,10 +441,11 @@ namespace Emiplus.View.Comercial
                         GridListaSelectItens.SelectedRows[0].Cells["ID"].Value,
                         GridListaSelectItens.SelectedRows[0].Cells["Item"].Value,
                         GridListaSelectItens.SelectedRows[0].Cells["Valor"].Value,
+                        $"{Validation.FormatPrice(0, true)}",
                         GridListaSelectItens.SelectedRows[0].Cells["Estoque Atual"].Value,
                         "",
                         GridListaSelectItens.SelectedRows[0].Cells["Valor"].Value,
-                        Resources.plus20x
+                        Resources.menu20x
                     );
 
                     GridListaSelectItens.Rows.Clear();
@@ -408,8 +495,10 @@ namespace Emiplus.View.Comercial
                     {
                         var getValor = Validation.ConvertToDouble(GridListaItens.SelectedRows[0].Cells["Unitario"].Value
                             .ToString().Replace("R$ ", ""));
-                        GridListaItens.SelectedRows[0].Cells["Valor"].Value = Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
+                        GridListaItens.SelectedRows[0].Cells["Valor Adicional"].Value = Validation.FormatPrice(AdicionaisDispon.ValorAddon, true);
                         GridListaItens.SelectedRows[0].Cells["AddonSelected"].Value = AdicionaisDispon.AddonSelected;
+
+                        txtComboValor.Text = $"Valor do Combo: {Validation.FormatPrice(ValorCombo + AdicionaisDispon.ValorAddon, true)}";
                     }
                 }
             };

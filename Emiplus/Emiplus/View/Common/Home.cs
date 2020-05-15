@@ -57,6 +57,7 @@ namespace Emiplus.View.Common
             pictureBox5.BackColor = Color.FromArgb(46, 55, 72);
             pictureBox6.BackColor = Color.FromArgb(46, 55, 72);
             pictureBox7.BackColor = Color.FromArgb(46, 55, 72);
+
             panel3.Refresh();
         }
 
@@ -65,35 +66,36 @@ namespace Emiplus.View.Common
         /// </summary>
         private void CadastroNotaSalva()
         {
-            if (Support.CheckForInternetConnection())
-                // Realiza o cadastro no nota segura da empresa
-                if (string.IsNullOrEmpty(IniFile.Read("encodeNS", "DEV")))
+            if (!Support.CheckForInternetConnection())
+                return;
+
+            if (string.IsNullOrEmpty(IniFile.Read("encodeNS", "DEV")))
+            {
+                var cnpjLimpo = Settings.Default.empresa_cnpj.Replace("-", "").Replace(".", "").Replace("/", "");
+
+                dynamic obj = new
                 {
-                    var cnpjLimpo = Settings.Default.empresa_cnpj.Replace("-", "").Replace(".", "").Replace("/", "");
+                    corporate_name = Settings.Default.empresa_razao_social,
+                    name = Settings.Default.empresa_nome_fantasia,
+                    cnpj = cnpjLimpo,
+                    email = Settings.Default.user_email,
+                    password = "123@emiplus"
+                };
 
-                    dynamic obj = new
-                    {
-                        corporate_name = Settings.Default.empresa_razao_social,
-                        name = Settings.Default.empresa_nome_fantasia,
-                        cnpj = cnpjLimpo,
-                        email = Settings.Default.user_email,
-                        password = "123@emiplus"
-                    };
+                if (cnpjLimpo != "00000000000000")
+                {
+                    new RequestApi()
+                        .URL(
+                            "https://app.notasegura.com.br/api/users/?softwarehouse=f278b338e853ed759383cca7da6dcf22e1c61301")
+                        .Content(obj, Method.POST)
+                        .AddHeader("Accept", "application/json")
+                        .AddHeader("Content-Type", "application/x-www-form-urlencoded")
+                        .Response();
 
-                    if (cnpjLimpo != "00000000000000")
-                    {
-                        new RequestApi()
-                            .URL(
-                                "https://app.notasegura.com.br/api/users/?softwarehouse=f278b338e853ed759383cca7da6dcf22e1c61301")
-                            .Content(obj, Method.POST)
-                            .AddHeader("Accept", "application/json")
-                            .AddHeader("Content-Type", "application/x-www-form-urlencoded")
-                            .Response();
-
-                        IniFile.Write("encodeNS",
-                            Validation.Base64Encode($"{Settings.Default.empresa_email}:123@emiplus"), "DEV");
-                    }
+                    IniFile.Write("encodeNS",
+                        Validation.Base64Encode($"{Settings.Default.empresa_email}:123@emiplus"), "DEV");
                 }
+            }
         }
 
         private void MenuInicio(object sender, EventArgs e)
@@ -235,6 +237,34 @@ namespace Emiplus.View.Common
             pageClicked = "homeMenuSettings";
         }
 
+        private void MouseHover(PictureBox image, Button button, string tipo = "hover")
+        {
+            if (tipo == "hover")
+            {
+                image.BackColor = Color.FromArgb(26, 32, 44);
+                button.BackColor = Color.FromArgb(26, 32, 44);
+            }
+            else
+            {
+                image.BackColor = Color.FromArgb(46, 55, 72);
+                button.BackColor = Color.FromArgb(46, 55, 72);
+            }
+
+            if (pageClicked == button.Name)
+            {
+                image.BackColor = Color.FromArgb(26, 32, 44);
+                button.BackColor = Color.FromArgb(26, 32, 44);
+            }
+        }
+
+        private void EventMouse(Button button, PictureBox image)
+        {
+            image.MouseHover += (s, e) => MouseHover(image, button);
+            image.MouseLeave += (s, e) => MouseHover(image, button, "leave");
+            button.MouseHover += (s, e) => MouseHover(image, button);
+            button.MouseLeave += (s, e) => MouseHover(image, button, "leave");
+        }
+
         private void Eventos()
         {
             Shown += async (s, e) =>
@@ -337,58 +367,27 @@ namespace Emiplus.View.Common
 
             pictureBox2.Click += MenuInicio;
             homeMenuInicio.Click += MenuInicio;
-            pictureBox2.MouseHover += (s, e) => pictureBox2.BackColor = Color.FromArgb(26, 32, 44);
-            homeMenuInicio.MouseHover += (s, e) => pictureBox2.BackColor = Color.FromArgb(26, 32, 44);
-
+            EventMouse(homeMenuInicio, pictureBox2);
+            
             homeMenuProducts.Click += MenuProdutos;
             pictureBox3.Click += MenuProdutos;
-            homeMenuProducts.MouseHover += (s, e) =>
-            {
-                if (pageClicked == "homeMenuProducts")
-                    pictureBox3.BackColor = Color.FromArgb(26, 32, 44);
-
-                pictureBox3.Refresh();
-            };
+            EventMouse(homeMenuProducts, pictureBox3);
 
             homeMenuComercial.Click += MenuComercial;
             pictureBox4.Click += MenuComercial;
-            homeMenuComercial.MouseHover += (s, e) =>
-            {
-                if (pageClicked == "homeMenuComercial")
-                    pictureBox4.BackColor = Color.FromArgb(26, 32, 44);
-
-                pictureBox4.Refresh();
-            };
+            EventMouse(homeMenuComercial, pictureBox4);
 
             homeMenuFinanceiro.Click += MenuFinanceiro;
             pictureBox5.Click += MenuFinanceiro;
-            homeMenuFinanceiro.MouseHover += (s, e) =>
-            {
-                if (pageClicked == "homeMenuFinanceiro")
-                    pictureBox5.BackColor = Color.FromArgb(26, 32, 44);
-
-                pictureBox5.Refresh();
-            };
+            EventMouse(homeMenuFinanceiro, pictureBox5);
 
             homeMenuFiscal.Click += MenuFiscal;
             pictureBox6.Click += MenuFiscal;
-            homeMenuFiscal.MouseHover += (s, e) =>
-            {
-                if (pageClicked == "homeMenuFiscal")
-                    pictureBox6.BackColor = Color.FromArgb(26, 32, 44);
-
-                pictureBox6.Refresh();
-            };
+            EventMouse(homeMenuFiscal, pictureBox6);
 
             homeMenuSettings.Click += MenuConfig;
             pictureBox7.Click += MenuConfig;
-            homeMenuSettings.MouseHover += (s, e) =>
-            {
-                if (pageClicked == "homeMenuFiscal")
-                    pictureBox7.BackColor = Color.FromArgb(26, 32, 44);
-
-                pictureBox7.Refresh();
-            };
+            EventMouse(homeMenuSettings, pictureBox7);
 
             #endregion
 

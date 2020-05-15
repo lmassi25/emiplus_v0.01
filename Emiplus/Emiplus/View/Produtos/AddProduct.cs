@@ -285,6 +285,7 @@ namespace Emiplus.View.Produtos
             valorcompra.Text = Validation.Price(_modelItem?.ValorCompra ?? 0);
             valorvenda.Text = Validation.Price(_modelItem?.ValorVenda ?? 0);
             estoqueminimo.Text = Validation.FormatMedidas(_modelItem?.Medida ?? "UN", _modelItem?.EstoqueMinimo ?? 0);
+            inf_adicional.Text = _modelItem?.InfAdicional ?? "";
             LoadEstoque();
             CustoMedio();
 
@@ -430,6 +431,7 @@ namespace Emiplus.View.Produtos
             _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
             _modelItem.EstoqueMinimo = Validation.ConvertToDouble(estoqueminimo.Text);
             _modelItem.Medida = Medidas.Text;
+            _modelItem.InfAdicional = inf_adicional.Text;
 
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;

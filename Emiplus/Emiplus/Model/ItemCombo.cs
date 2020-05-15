@@ -31,7 +31,7 @@ namespace Emiplus.Model
             var idCombos = combos.Split(',');
             foreach (var id in idCombos)
             {
-                var dataCombo = FindById(Validation.ConvertToInt32(id)).FirstOrDefault<ItemCombo>();
+                var dataCombo = FindById(Validation.ConvertToInt32(id)).WhereFalse("excluir").FirstOrDefault<ItemCombo>();
                 if (dataCombo != null)
                     listCombos.Add(new { Id = $"{dataCombo.Id}", Nome = $"{dataCombo.Nome}" });
             }

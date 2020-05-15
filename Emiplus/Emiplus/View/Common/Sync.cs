@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emiplus.Data.Core;
@@ -9,6 +11,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using SqlKata.Execution;
 
@@ -35,79 +38,139 @@ namespace Emiplus.View.Common
 
         private async Task RunSyncAsync(string table)
         {
-            // ######### CREATE #########   
+            // ######### CREATE AND UPDATE #########   
             var dataCreate = await GetCreateDataAsync(table);
-            if (dataCreate != null)
-                foreach (var item in dataCreate)
+            if (dataCreate.Any())
+            {
+                dynamic obj = new
                 {
-                    // inserie no banco online
-                    dynamic obj = new
-                    {
-                        token = Program.TOKEN,
-                        id_empresa = Settings.Default.empresa_unique_id,
-                        data = JsonConvert.SerializeObject(item),
-                        status_sync = "CREATED"
-                    };
+                    token = Program.TOKEN,
+                    id_empresa = Settings.Default.empresa_unique_id,
+                    data = JsonConvert.SerializeObject(new {items = dataCreate}),
+                    status_sync = "CREATED"
+                };
 
-                    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
-                        .Content(obj, Method.POST).Response();
-                    if (response["status"] == "OK")
-                        await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
-                    else
-                        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
-                            Log.LogType.fatal);
+                var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/createJson")
+                    .Content(obj, Method.POST).Response();
+                if (response["status"] == "OK")
+                {
+                    var items = response["data"];
+                    foreach (var idsync in items)
+                        await UpdateAsync(table, Validation.ConvertToInt32(idsync.ToString()));
                 }
+                else
+                    new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+            }
+
+            //foreach (var item in dataCreate)
+            //    {
+            //        // inserie no banco online
+            //        dynamic obj = new
+            //        {
+            //            token = Program.TOKEN,
+            //            id_empresa = Settings.Default.empresa_unique_id,
+            //            data = JsonConvert.SerializeObject(item),
+            //            status_sync = "CREATED"
+            //        };
+
+            //        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //            .Content(obj, Method.POST).Response();
+            //        if (response["status"] == "OK")
+            //            await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+            //        else
+            //            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //                Log.LogType.fatal);
+            //    }
 
             // ######### UPDATE #########
-            var dataUpdate = await GetUpdateDataAsync(table);
-            if (dataUpdate != null)
-                foreach (var item in dataUpdate)
+            //var dataUpdate = await GetUpdateDataAsync(table);
+            //if (dataUpdate != null)
+            //    foreach (var item in dataUpdate)
+            //    {
+            //        if (CheckCreated(table, item.ID_SYNC))
+            //        {
+            //            // inserie no banco online
+            //            dynamic obj = new
+            //            {
+            //                token = Program.TOKEN,
+            //                id_empresa = Settings.Default.empresa_unique_id,
+            //                data = JsonConvert.SerializeObject(item),
+            //                status_sync = "CREATED"
+            //            };
+
+            //            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //                .Content(obj, Method.POST).Response();
+            //            if (response["status"] == "OK")
+            //                await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+            //            else
+            //                new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //                    Log.LogType.fatal);
+            //        }
+
+            //        // atualiza online (UPDATE -> CREATED)
+            //        if (UpdateOnline(table, item.ID_SYNC, item))
+            //            await UpdateAsync(table, item.ID_SYNC); // atualiza local (UPDATE -> CREATED)
+            //    }
+
+            
+                var responseC = new RequestApi()
+                    .URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/created")
+                    .Content().Response();
+                if (responseC["status"]?.ToString() == "OK")
                 {
-                    if (CheckCreated(table, item.ID_SYNC))
-                    {
-                        // inserie no banco online
-                        dynamic obj = new
+                    if (string.IsNullOrEmpty(responseC["data"].ToString())) 
+                        return;
+                    
+                    var dataCreated = await GetCreatedDataAsync(table);
+                    if (dataCreated != null)
+                        foreach (var item in dataCreated)
                         {
-                            token = Program.TOKEN,
-                            id_empresa = Settings.Default.empresa_unique_id,
-                            data = JsonConvert.SerializeObject(item),
-                            status_sync = "CREATED"
-                        };
+                            var t = responseC["data"].Children().Any(x => x["id"].Value<int>() != Validation.ConvertToInt32(item.ID));
+                            if (t)
+                            {
+                                Console.WriteLine(Validation.ConvertToInt32(item.ID));
+                            }
 
-                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
-                            .Content(obj, Method.POST).Response();
-                        if (response["status"] == "OK")
-                            await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
-                        else
-                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
-                                Log.LogType.fatal);
-                    }
 
-                    // atualiza online (UPDATE -> CREATED)
-                    if (UpdateOnline(table, item.ID_SYNC, item))
-                        await UpdateAsync(table, item.ID_SYNC); // atualiza local (UPDATE -> CREATED)
+                            foreach (var data in responseC["data"])
+                            {
+                                Console.WriteLine(Validation.ConvertToInt32(data.First()["id"]));
+                                Console.WriteLine(Validation.ConvertToInt32(item.ID));
+                                //var t = data.First().Any(x => x["id"] != Validation.ConvertToInt32(item.ID));
+                                //if (t)
+                                //{
+                                //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(data.First()["id"]));
+                                //}
+
+                                //if (Validation.ConvertToInt32(item.ID) != Validation.ConvertToInt32(data.First()["id"]))
+                                //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(data.First()["id"]));
+                            }
+                        }
+                }
+                else
+                {
+                    if (responseC["status"]?.ToString() == "FAIL")
+                        new Log().Add("SYNC", $"{responseC["status"]} | Tabela: {table} - {responseC["message"]}", Log.LogType.fatal);
                 }
 
-            var dataCreated = await GetCreatedDataAsync(table);
-            if (dataCreated != null)
-                foreach (var item in dataCreated)
-                    if (CheckCreated(table, item.ID_SYNC))
-                    {
-                        // inserie no banco online
-                        dynamic obj = new
-                        {
-                            token = Program.TOKEN,
-                            id_empresa = Settings.Default.empresa_unique_id,
-                            data = JsonConvert.SerializeObject(item),
-                            status_sync = "CREATED"
-                        };
 
-                        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
-                            .Content(obj, Method.POST).Response();
-                        if (response["status"] == "FAIL")
-                            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
-                                Log.LogType.fatal);
-                    }
+            //if (CheckCreated(table, item.ID_SYNC))
+            //{
+            //    // inserie no banco online
+            //    dynamic obj = new
+            //    {
+            //        token = Program.TOKEN,
+            //        id_empresa = Settings.Default.empresa_unique_id,
+            //        data = JsonConvert.SerializeObject(item),
+            //        status_sync = "CREATED"
+            //    };
+
+            //    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //        .Content(obj, Method.POST).Response();
+            //    if (response["status"] == "FAIL")
+            //        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //            Log.LogType.fatal);
+            //}
         }
 
         private void SendNota()
@@ -353,6 +416,8 @@ namespace Emiplus.View.Common
 
         public async Task StartSync()
         {
+            await RunSyncAsync("item");
+
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("categoria");
 
@@ -443,12 +508,12 @@ namespace Emiplus.View.Common
 
         /// <summary>
         ///     Recupera os dados das tabelas do sistema local para manipulação
-        ///     Função retorna os registros 'CREATE' ou 'NULL'
+        ///     Função retorna os registros 'CREATE' ou 'UPDATE'
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string table)
         {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where("status_sync", "CREATE");
-
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
+            
             if (Remessa && table == "pedido_item")
                 baseQuery.Where("status", "Remessa");
 
@@ -502,6 +567,15 @@ namespace Emiplus.View.Common
         }
 
         /// <summary>
+        ///     Atualiza o registro local, CREATED -> UPDATE
+        ///     Necessário para quando o registro está marcado como CREATED, mas não existe na base online
+        /// </summary>
+        private async Task UpdateToUpdateAsync(string table, int idsync)
+        {
+            await connect.Query(table).Where("id", idsync).UpdateAsync(new { status_sync = "UPDATE" });
+        }
+
+        /// <summary>
         ///     Atualiza os dados no banco online
         /// </summary>
         private bool UpdateOnline(string table, int id, dynamic item)
@@ -531,6 +605,23 @@ namespace Emiplus.View.Common
             var response = new RequestApi()
                 .URL(Program.URL_BASE +
                      $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}")
+                .Content().Response();
+            if (response["status"]?.ToString() == "FAIL")
+                return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Retorna todos os registros
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="status">CREATE, UPDATE ou CREATED</param>
+        /// <returns></returns>
+        private bool GetAllJson(string table, string status)
+        {
+            var response = new RequestApi()
+                .URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{status}")
                 .Content().Response();
             if (response["status"]?.ToString() == "FAIL")
                 return true;

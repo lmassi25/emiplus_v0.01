@@ -756,11 +756,37 @@ namespace Emiplus.View.Comercial
 
                 if (!string.IsNullOrEmpty(item.Combos))
                 {
-                    AddCombo.IdProduto = itemId;
-                    var form = new AddCombo { TopMost = true };
-                    if (form.ShowDialog() == DialogResult.OK)
+                    var comboExits = false;
+                    var idsCombo = item.Combos.Split(',');
+                    foreach (var id in idsCombo)
                     {
+                        var checkCombo = new Model.ItemCombo().FindById(Validation.ConvertToInt32(id)).WhereFalse("excluir").FirstOrDefault<ItemCombo>();
+                        if (checkCombo != null)
+                            comboExits = true;
+                    }
+                    
+                    if (comboExits)
+                    {
+                        AddCombo.IdProduto = itemId;
+                        AddCombo.IdPedido = Id;
+                        var form = new AddCombo {TopMost = true};
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            // Carrega a Grid com o Item adicionado acima.
+                            if (PDV)
+                                new Controller.PedidoItem().GetDataTableItensCompact(GridListaProdutos, Id);
+                            else
+                                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
 
+                            // Atualiza o total do pedido, e os totais da tela
+                            LoadTotais();
+
+                            // Limpa os campos
+                            ClearForms();
+
+                            BuscarProduto.Select();
+                            return;
+                        }
                     }
                 }
 

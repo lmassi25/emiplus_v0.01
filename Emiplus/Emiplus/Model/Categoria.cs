@@ -23,6 +23,7 @@ namespace Emiplus.Model
         public DateTime Deletado { get; private set; }
         public string id_empresa { get; private set; }
         public string Nome { get; set; }
+        public int Sub_Categoria { get; set; }
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 

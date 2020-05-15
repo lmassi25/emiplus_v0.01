@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Common;
 using SqlKata;
 using SqlKata.Execution;
@@ -356,6 +357,7 @@ namespace Emiplus.Model
         public bool Save(PedidoItem data, bool message = true)
         {
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
+            data.Usuario = Settings.Default.user_id;
 
             if (data.Id == 0)
             {
