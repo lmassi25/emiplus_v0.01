@@ -1,4 +1,5 @@
 ﻿using System;
+using ChoETL;
 using Emiplus.Data.Helpers;
 using Emiplus.Data.SobreEscrever;
 using Emiplus.Properties;
@@ -18,9 +19,9 @@ namespace Emiplus.Model
 
         public string Tipo { get; set; }
         public int Excluir { get; set; }
-        public DateTime Criado { get; private set; }
-        public DateTime Atualizado { get; private set; }
-        public DateTime Deletado { get; private set; }
+        public DateTime Criado { get; set; }
+        public DateTime Atualizado { get; set; }
+        public DateTime Deletado { get; set; }
         public string id_empresa { get; private set; }
         public string Image { get; set; }
         public string Nome { get; set; }
@@ -55,6 +56,9 @@ namespace Emiplus.Model
         public string Atributos { get; set; }
         public string Adicional { get; set; }
         public string Combos { get; set; }
+
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
 
         public Item FromCsv(string csvLine, string tipo = "Produtos")
         {
@@ -161,8 +165,12 @@ namespace Emiplus.Model
                     return false;
 
                 data.Atualizado_por = Settings.Default.user_id;
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
                     if (message)

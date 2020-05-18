@@ -11,7 +11,6 @@ using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 using SqlKata.Execution;
 
@@ -38,7 +37,9 @@ namespace Emiplus.View.Common
 
         private async Task RunSyncAsync(string table)
         {
-            // ######### CREATE AND UPDATE #########   
+            // ######### CREATE AND UPDATE #########
+            // 1 - Pego os registros com status CREATE ou UPDATE e envio para o db online para ser cadastrado ou atualizado.
+            // Caso o registro online seja mais recente não atualiza
             var dataCreate = await GetCreateDataAsync(table);
             if (dataCreate.Any())
             {
@@ -59,8 +60,13 @@ namespace Emiplus.View.Common
                         await UpdateAsync(table, Validation.ConvertToInt32(idsync.ToString()));
                 }
                 else
-                    new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}", Log.LogType.fatal);
+                {
+                    new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                        Log.LogType.fatal);
+                }
             }
+
+            #region comments
 
             //foreach (var item in dataCreate)
             //    {
@@ -112,46 +118,57 @@ namespace Emiplus.View.Common
             //            await UpdateAsync(table, item.ID_SYNC); // atualiza local (UPDATE -> CREATED)
             //    }
 
-            
-                var responseC = new RequestApi()
-                    .URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/created")
-                    .Content().Response();
-                if (responseC["status"]?.ToString() == "OK")
+            #endregion
+
+            // 2 - Pega todos os registros online em json.
+            // Pega todos os registros do banco LOCAL, faz um loop nos registros LOCAL e compara a data, se o registro online for mais recente atualiza o reigstro local
+            // com os dados do registro online, verifica também no loop se o registro existe, se não exitir cadastra no banco online
+            var responseC = new RequestApi()
+                .URL(Program.URL_BASE +
+                     $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/all")
+                .Content().Response();
+            switch (responseC["status"]?.ToString())
+            {
+                case "OK" when string.IsNullOrEmpty(responseC["data"]?.ToString()):
+                    return;
+                case "OK":
                 {
-                    if (string.IsNullOrEmpty(responseC["data"].ToString())) 
-                        return;
-                    
-                    var dataCreated = await GetCreatedDataAsync(table);
+                    var dataCreated = await GetAllDataAsync(table);
                     if (dataCreated != null)
                         foreach (var item in dataCreated)
                         {
-                            var t = responseC["data"].Children().Any(x => x["id"].Value<int>() != Validation.ConvertToInt32(item.ID));
-                            if (t)
-                            {
-                                Console.WriteLine(Validation.ConvertToInt32(item.ID));
-                            }
-
+                            // true = muda status para update para criar na proxima sync
+                            // não existe o registro cadastrado no banco online
+                            // Necessário caso o registro esteja como CREATED porém não esteja no banco online.
+                            var toUpdate = true;
 
                             foreach (var data in responseC["data"])
                             {
-                                Console.WriteLine(Validation.ConvertToInt32(data.First()["id"]));
-                                Console.WriteLine(Validation.ConvertToInt32(item.ID));
-                                //var t = data.First().Any(x => x["id"] != Validation.ConvertToInt32(item.ID));
-                                //if (t)
-                                //{
-                                //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(data.First()["id"]));
-                                //}
+                                // atualiza o registro no banco LOCAL caso tenha mudança no banco online
+                                if (Validation.ConvertToInt32(data.First()["ID"]) == Validation.ConvertToInt32(item.ID))
+                                {
+                                    var d1 = Convert.ToDateTime(data.First()["ATUALIZADO"]?.ToString());
+                                    var d2 = Convert.ToDateTime(item.ATUALIZADO.ToString());
 
-                                //if (Validation.ConvertToInt32(item.ID) != Validation.ConvertToInt32(data.First()["id"]))
-                                //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(data.First()["id"]));
+                                    // atualizar o registro local pois o registro online está mais recente
+                                    if (d1.CompareTo(d2) > 0) UpdateLocalAsync(table, data.First().ToString());
+
+                                    toUpdate = false;
+                                }
                             }
+
+                            // Muda o status do registro LOCAL para UPDATE
+                            if (toUpdate)
+                                await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
                         }
+
+                    break;
                 }
-                else
-                {
-                    if (responseC["status"]?.ToString() == "FAIL")
-                        new Log().Add("SYNC", $"{responseC["status"]} | Tabela: {table} - {responseC["message"]}", Log.LogType.fatal);
-                }
+                case "FAIL":
+                    new Log().Add("SYNC", $"{responseC["status"]} | Tabela: {table} - {responseC["message"]}",
+                        Log.LogType.fatal);
+                    break;
+            }
 
 
             //if (CheckCreated(table, item.ID_SYNC))
@@ -331,7 +348,7 @@ namespace Emiplus.View.Common
                         double quantidade = data.Value.quantidade;
                         var dataItem = new Item().FindAll().WhereFalse("excluir").Where("codebarras", codebarras)
                             .FirstOrDefault<Item>();
-                        int idItem = 0;
+                        var idItem = 0;
                         if (dataItem != null)
                         {
                             var movEstoque = new ItemEstoqueMovimentacao()
@@ -512,8 +529,9 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string table)
         {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "").Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
-            
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "")
+                .Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
+
             if (Remessa && table == "pedido_item")
                 baseQuery.Where("status", "Remessa");
 
@@ -558,6 +576,22 @@ namespace Emiplus.View.Common
         }
 
         /// <summary>
+        ///     Recupera todos os dados das tabelas do sistema local para manipulação
+        /// </summary>
+        private async Task<IEnumerable<dynamic>> GetAllDataAsync(string table)
+        {
+            var baseQuery = connect.Query().Where("id_empresa", "!=", "");
+
+            if (Remessa && table == "pedido_item")
+                baseQuery.Where("status", "Remessa");
+
+            if (Remessa && table == "pedido")
+                baseQuery.Where("tipo", "Remessas");
+
+            return await baseQuery.Clone().From(table).GetAsync();
+        }
+
+        /// <summary>
         ///     Atualiza o registro local, UPDATE -> CREATED
         /// </summary>
         /// private async Task UpdateAsync(string table, int id, object item) => await connect.Query(table).Where("id", id).UpdateAsync(Columns(table, item));
@@ -570,9 +604,22 @@ namespace Emiplus.View.Common
         ///     Atualiza o registro local, CREATED -> UPDATE
         ///     Necessário para quando o registro está marcado como CREATED, mas não existe na base online
         /// </summary>
-        private async Task UpdateToUpdateAsync(string table, int idsync)
+        private async Task UpdateToUpdateAsync(string table, int id)
         {
-            await connect.Query(table).Where("id", idsync).UpdateAsync(new { status_sync = "UPDATE" });
+            await connect.Query(table).Where("id", id).UpdateAsync(new {status_sync = "UPDATE"});
+        }
+
+        /// <summary>
+        ///     Necessário para atualizar o registro local quando houve mudança no sistema online
+        /// </summary>
+        private void UpdateLocalAsync(string table, string data)
+        {
+            //await connect.Query(table).Where("id", id).UpdateAsync(data);
+            if (table == "item")
+            {
+                var dados = JsonConvert.DeserializeObject<Item>(data);
+                new Item().Save(dados, false);
+            }
         }
 
         /// <summary>
@@ -613,7 +660,7 @@ namespace Emiplus.View.Common
         }
 
         /// <summary>
-        /// Retorna todos os registros
+        ///     Retorna todos os registros
         /// </summary>
         /// <param name="table"></param>
         /// <param name="status">CREATE, UPDATE ou CREATED</param>
@@ -621,7 +668,8 @@ namespace Emiplus.View.Common
         private bool GetAllJson(string table, string status)
         {
             var response = new RequestApi()
-                .URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{status}")
+                .URL(Program.URL_BASE +
+                     $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{status}")
                 .Content().Response();
             if (response["status"]?.ToString() == "FAIL")
                 return true;
