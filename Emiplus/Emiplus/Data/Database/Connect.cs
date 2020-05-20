@@ -1,5 +1,4 @@
 ﻿using Emiplus.Data.Core;
-using Emiplus.Data.Helpers;
 using FirebirdSql.Data.FirebirdClient;
 using SqlKata.Compilers;
 using SqlKata.Execution;
@@ -41,11 +40,9 @@ namespace Emiplus.Data.Database
             );
 
             var compiler = new FirebirdCompiler();
-            var db = new QueryFactory(connection, compiler);
-
-            db.Logger = compiled =>
+            var db = new QueryFactory(connection, compiler)
             {
-                System.Console.WriteLine(compiled.ToString());
+                Logger = compiled => { System.Console.WriteLine(compiled.ToString()); }
             };
 
             return db;

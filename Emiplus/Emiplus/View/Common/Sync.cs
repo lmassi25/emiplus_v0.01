@@ -5,12 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChoETL;
 using Emiplus.Data.Core;
 using Emiplus.Data.Database;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using SqlKata.Execution;
 
@@ -32,6 +34,8 @@ namespace Emiplus.View.Common
             if (Support.CheckForInternetConnection())
                 Eventos();
         }
+        
+        private static readonly string idEmpresa = IniFile.Read("idEmpresa", "APP");
 
         public static bool Remessa { get; set; }
 
@@ -46,18 +50,19 @@ namespace Emiplus.View.Common
                 dynamic obj = new
                 {
                     token = Program.TOKEN,
-                    id_empresa = Settings.Default.empresa_unique_id,
+                    id_empresa = idEmpresa,
                     data = JsonConvert.SerializeObject(new {items = dataCreate}),
-                    status_sync = "CREATED"
+                    status_sync = "CREATED",
+                    controller = table.Replace("_", "")
                 };
 
-                var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/createJson")
+                var response = new RequestApi().URL(Program.URL_BASE + "/api/geral/createjson")
                     .Content(obj, Method.POST).Response();
                 if (response["status"] == "OK")
                 {
                     var items = response["data"];
                     foreach (var idsync in items)
-                        await UpdateAsync(table, Validation.ConvertToInt32(idsync.ToString()));
+                        await UpdateAsync(table, Validation.ConvertToInt32(idsync?.ToString()));
                 }
                 else
                 {
@@ -74,7 +79,7 @@ namespace Emiplus.View.Common
             //        dynamic obj = new
             //        {
             //            token = Program.TOKEN,
-            //            id_empresa = Settings.Default.empresa_unique_id,
+            //            id_empresa = idEmpresa,
             //            data = JsonConvert.SerializeObject(item),
             //            status_sync = "CREATED"
             //        };
@@ -99,7 +104,7 @@ namespace Emiplus.View.Common
             //            dynamic obj = new
             //            {
             //                token = Program.TOKEN,
-            //                id_empresa = Settings.Default.empresa_unique_id,
+            //                id_empresa = idEmpresa,
             //                data = JsonConvert.SerializeObject(item),
             //                status_sync = "CREATED"
             //            };
@@ -122,10 +127,10 @@ namespace Emiplus.View.Common
 
             // 2 - Pega todos os registros online em json.
             // Pega todos os registros do banco LOCAL, faz um loop nos registros LOCAL e compara a data, se o registro online for mais recente atualiza o reigstro local
-            // com os dados do registro online, verifica também no loop se o registro existe, se não exitir cadastra no banco online
+            // com os dados do registro online
             var responseC = new RequestApi()
                 .URL(Program.URL_BASE +
-                     $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/all")
+                     $"/api/geral/getall/{Program.TOKEN}/{idEmpresa}/all/{table.Replace("_", "")}")
                 .Content().Response();
             switch (responseC["status"]?.ToString())
             {
@@ -141,16 +146,43 @@ namespace Emiplus.View.Common
                             // não existe o registro cadastrado no banco online
                             // Necessário caso o registro esteja como CREATED porém não esteja no banco online.
                             var toUpdate = true;
+                            
+                            var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+                            var dirs = JObject.Parse(responseC["data"].ToString())
+                                .Descendants()
+                                .OfType<JObject>()
+                                .Where(x=> x["ID"] != null && x["ID"] == item.ID)
+                                .Where(d => Convert.ToDateTime(d["ATUALIZADO"]).CompareTo(d2) >= 0)
+                                //.Select(x => new { ID = (int)x["ID"], ATUALIZADO = (string)x["ATUALIZADO"] })
+                                .FirstOrDefault();
 
+                            if (dirs == null)
+                                await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                            else
+                            {
+                                if (Convert.ToDateTime(dirs["ATUALIZADO"]).CompareTo(d2) > 0)
+                                    UpdateLocalAsync(table, dirs.ToString());
+                            }
+                            
+                            continue;
+                            Console.WriteLine(dirs);
+                            //Console.WriteLine(dirs?.ATUALIZADO);
+                            //var dados = dirs.Find(x => x.ID == item.ID);
+                            //Console.WriteLine(dados.ID);
+                            //Console.WriteLine(dados.ATUALIZADO);
+                                
                             foreach (var data in responseC["data"])
                             {
+                                if (data == null)
+                                    continue;
+                                
                                 // atualiza o registro no banco LOCAL caso tenha mudança no banco online
                                 if (Validation.ConvertToInt32(data.First()["ID"]) == Validation.ConvertToInt32(item.ID))
                                 {
                                     var d1 = Convert.ToDateTime(data.First()["ATUALIZADO"]?.ToString());
-                                    var d2 = Convert.ToDateTime(item.ATUALIZADO.ToString());
-
-                                    // atualizar o registro local pois o registro online está mais recente
+                                    //var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+                                    
+                                    // atualizar o registro local com os dados do registro online pois o registro online está mais recente
                                     if (d1.CompareTo(d2) > 0) UpdateLocalAsync(table, data.First().ToString());
 
                                     toUpdate = false;
@@ -177,7 +209,7 @@ namespace Emiplus.View.Common
             //    dynamic obj = new
             //    {
             //        token = Program.TOKEN,
-            //        id_empresa = Settings.Default.empresa_unique_id,
+            //        id_empresa = idEmpresa,
             //        data = JsonConvert.SerializeObject(item),
             //        status_sync = "CREATED"
             //    };
@@ -190,7 +222,7 @@ namespace Emiplus.View.Common
             //}
         }
 
-        private void SendNota()
+        public void SendNota()
         {
             if (string.IsNullOrEmpty(IniFile.Read("encodeNS", "DEV")))
                 return;
@@ -225,7 +257,7 @@ namespace Emiplus.View.Common
             dynamic obj = new
             {
                 token = Program.TOKEN,
-                id_empresa = Settings.Default.empresa_unique_id
+                id_empresa = idEmpresa
             };
 
             new RequestApi().URL(Program.URL_BASE + "/api/lastsync").Content(obj, Method.POST).Response();
@@ -254,7 +286,7 @@ namespace Emiplus.View.Common
                 {
                     dynamic response = new RequestApi()
                         .URL(Program.URL_BASE +
-                             $"/api/pedido/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{item.ID_SYNC}")
+                             $"/api/pedido/get/{Program.TOKEN}/{idEmpresa}/{item.ID_SYNC}")
                         .Content().Response();
                     if (response["status"].ToString() == "OK")
                     {
@@ -270,7 +302,7 @@ namespace Emiplus.View.Common
                             dynamic obj = new
                             {
                                 token = Program.TOKEN,
-                                id_empresa = Settings.Default.empresa_unique_id
+                                id_empresa = idEmpresa
                             };
 
                             // atualiza online (UPDATE -> CREATED)
@@ -292,7 +324,7 @@ namespace Emiplus.View.Common
         public async Task ReceberRemessa()
         {
             var response = new RequestApi()
-                .URL(Program.URL_BASE + $"/api/pedido/remessas/{Program.TOKEN}/{Settings.Default.empresa_unique_id}")
+                .URL(Program.URL_BASE + $"/api/pedido/remessas/{Program.TOKEN}/{idEmpresa}")
                 .Content().Response();
             if (response["error"]?.ToString() == "Nenhum registro encontrado")
             {
@@ -436,19 +468,16 @@ namespace Emiplus.View.Common
             await RunSyncAsync("item");
 
             if (Support.CheckForInternetConnection())
-                await RunSyncAsync("categoria");
-
-            if (Support.CheckForInternetConnection())
                 await RunSyncAsync("caixa");
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("caixa_mov");
 
             if (Support.CheckForInternetConnection())
-                await RunSyncAsync("categoria");
+                await RunSyncAsync("imposto");
 
             if (Support.CheckForInternetConnection())
-                await RunSyncAsync("imposto");
+                await RunSyncAsync("categoria");
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("item");
@@ -529,7 +558,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string table)
         {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "")
+            var baseQuery = connect.Query().Where("id_empresa",idEmpresa)
                 .Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
 
             if (Remessa && table == "pedido_item")
@@ -580,7 +609,7 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetAllDataAsync(string table)
         {
-            var baseQuery = connect.Query().Where("id_empresa", "!=", "");
+            var baseQuery = connect.Query().Where("id_empresa", idEmpresa);
 
             if (Remessa && table == "pedido_item")
                 baseQuery.Where("status", "Remessa");
@@ -614,11 +643,95 @@ namespace Emiplus.View.Common
         /// </summary>
         private void UpdateLocalAsync(string table, string data)
         {
-            //await connect.Query(table).Where("id", id).UpdateAsync(data);
-            if (table == "item")
+            if (string.IsNullOrEmpty(data))
+                return;
+            
+            switch (table)
             {
-                var dados = JsonConvert.DeserializeObject<Item>(data);
-                new Item().Save(dados, false);
+                case "categoria":
+                {
+                    var dados = JsonConvert.DeserializeObject<Categoria>(data);
+                    new Categoria().Save(dados, false);
+                    break;
+                }
+                case "caixa":
+                {
+                    var dados = JsonConvert.DeserializeObject<Caixa>(data);
+                    new Caixa().Save(dados, false);
+                    break;
+                }
+                case "caixa_mov":
+                {
+                    var dados = JsonConvert.DeserializeObject<CaixaMovimentacao>(data);
+                    new CaixaMovimentacao().Save(dados, false);
+                    break;
+                }
+                case "imposto":
+                {
+                    var dados = JsonConvert.DeserializeObject<Imposto>(data);
+                    new Imposto().Save(dados, false);
+                    break;
+                }
+                case "item":
+                {
+                    var dados = JsonConvert.DeserializeObject<Item>(data);
+                    new Item().Save(dados, false);
+                    break;
+                }
+                case "item_mov_estoque":
+                {
+                    var dados = JsonConvert.DeserializeObject<ItemEstoqueMovimentacao>(data);
+                    new ItemEstoqueMovimentacao().Save(dados, false);
+                    break;
+                }
+                case "natureza":
+                {
+                    var dados = JsonConvert.DeserializeObject<Natureza>(data);
+                    new Natureza().Save(dados, false);
+                    break;
+                }
+                case "pessoa":
+                {
+                    var dados = JsonConvert.DeserializeObject<Pessoa>(data);
+                    new Pessoa().Save(dados, false);
+                    break;
+                }
+                case "pessoa_contato":
+                {
+                    var dados = JsonConvert.DeserializeObject<PessoaContato>(data);
+                    new PessoaContato().Save(dados, false);
+                    break;
+                }
+                case "pessoa_endereco":
+                {
+                    var dados = JsonConvert.DeserializeObject<PessoaEndereco>(data);
+                    new PessoaEndereco().Save(dados, false);
+                    break;
+                }
+                case "titulo":
+                {
+                    var dados = JsonConvert.DeserializeObject<Titulo>(data);
+                    new Titulo().Save(dados, false);
+                    break;
+                }
+                case "nota":
+                {
+                    var dados = JsonConvert.DeserializeObject<Nota>(data);
+                    new Nota().Save(dados, false);
+                    break;
+                }
+                case "pedido":
+                {
+                    var dados = JsonConvert.DeserializeObject<Pedido>(data);
+                    new Pedido().Save(dados);
+                    break;
+                }
+                case "pedido_item":
+                {
+                    var dados = JsonConvert.DeserializeObject<PedidoItem>(data);
+                    new PedidoItem().Save(dados);
+                    break;
+                }
             }
         }
 
@@ -630,7 +743,7 @@ namespace Emiplus.View.Common
             dynamic obj = new
             {
                 token = Program.TOKEN,
-                id_empresa = Settings.Default.empresa_unique_id,
+                id_empresa = idEmpresa,
                 data = JsonConvert.SerializeObject(item),
                 status_sync = "CREATED"
             };
@@ -651,7 +764,7 @@ namespace Emiplus.View.Common
         {
             var response = new RequestApi()
                 .URL(Program.URL_BASE +
-                     $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{id}")
+                     $"/api/{table.Replace("_", "")}/get/{Program.TOKEN}/{idEmpresa}/{id}")
                 .Content().Response();
             if (response["status"]?.ToString() == "FAIL")
                 return true;
@@ -669,7 +782,7 @@ namespace Emiplus.View.Common
         {
             var response = new RequestApi()
                 .URL(Program.URL_BASE +
-                     $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{Settings.Default.empresa_unique_id}/{status}")
+                     $"/api/{table.Replace("_", "")}/getall/{Program.TOKEN}/{idEmpresa}/{status}")
                 .Content().Response();
             if (response["status"]?.ToString() == "FAIL")
                 return true;

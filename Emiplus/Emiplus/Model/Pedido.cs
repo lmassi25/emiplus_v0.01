@@ -85,6 +85,12 @@ namespace Emiplus.Model
         public int os { get; set; }
         public string empresa { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
         public Pedido SaveTotais(Dictionary<string, double> data)
         {
             Id = Validation.ConvertToInt32(data["Id"]);
@@ -136,18 +142,23 @@ namespace Emiplus.Model
                 data.Colaborador = Settings.Default.user_id;
                 data.id_usuario = Settings.Default.user_id;
                 data.Finalidade = 1;
-                if (Data(data).Create() != 1)
-                    return false;
-            }
-            else
-            {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) != 1)
-                    return false;
+                if (Data(data).Create() == 1)
+                    return true;
             }
 
-            return true;
+            if (data.Id > 0)
+            {
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
+                if (Data(data).Update("ID", data.Id) == 1)
+                    return true;
+            }
+
+            return false;
         }
 
         public bool Remove(int id, string column = "ID", bool message = true)

@@ -10,7 +10,6 @@ using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
-using Newtonsoft.Json;
 using RestSharp;
 using SqlKata.Execution;
 
@@ -360,7 +359,7 @@ namespace Emiplus.View.Common
                     f.Hide();
                 }
             };
-
+            
             developer.Click += (s, e) => OpenForm.ShowInPanel<Developer>(panelFormularios);
             btnPlano.Click += (s, e) => Support.OpenLinkBrowser(Program.URL_BASE + "/admin");
 

@@ -51,12 +51,7 @@ namespace Emiplus.Model
         public double Desconto { get; set; } // É o resultado de DescontoItem + DescontoPedido
         public double DescontoItem { get; set; } // valor informado no item
 
-        public double
-            DescontoPedido
-        {
-            get;
-            set;
-        } //  desconto total lançado pelo usuário dividido pelo quantidade de itens lançados
+        public double DescontoPedido { get; set; }
 
         public double Frete { get; set; } // SOMA AO RESPECTIVO TOTAL
         public double TotalCompra { get; set; }
@@ -108,6 +103,12 @@ namespace Emiplus.Model
         [Ignore] public string NomeAdicional { get; set; }
 
         [Ignore] public string TitleAtributo { get; set; }
+
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
 
         public PedidoItem SetTipo(string tipo)
         {
@@ -364,29 +365,29 @@ namespace Emiplus.Model
                 data.id_sync = Validation.RandomSecurity();
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
-                if (Data(data).Create() != 1)
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
-
-                    return false;
-                }
+                if (Data(data).Create() == 1)
+                    return true;
+                
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
             }
 
             if (data.Id > 0)
             {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) != 1)
+                if (!data.IgnoringDefaults)
                 {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-
-                    return false;
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
                 }
+
+                if (Data(data).Update("ID", data.Id) == 1)
+                    return true;
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
             }
 
-            return true;
+            return false;
         }
 
         public bool Remove(int id)

@@ -57,6 +57,9 @@ namespace Emiplus.Model
         public string Adicional { get; set; }
         public string Combos { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
         [Ignore]
         public bool IgnoringDefaults { get; set; }
 
@@ -152,11 +155,12 @@ namespace Emiplus.Model
                 if (Data(data).Create() == 1)
                 {
                     if (message) Alert.Message("Tudo certo!", "Produto salvo com sucesso.", Alert.AlertType.success);
+
                     return true;
                 }
 
-                Alert.Message("Opss", "Erro ao criar produto, verifique os dados.", Alert.AlertType.error);
-                return false;
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar produto, verifique os dados.", Alert.AlertType.error);
             }
 
             if (data.Id > 0)
@@ -175,14 +179,15 @@ namespace Emiplus.Model
                 {
                     if (message)
                         Alert.Message("Tudo certo!", "Produto atualizado com sucesso.", Alert.AlertType.success);
+
                     return true;
                 }
 
-                Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
-                return false;
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar o produto, verifique os dados.", Alert.AlertType.error);
             }
 
-            return true;
+            return false;
         }
 
         public bool Remove(int id, bool message = true)

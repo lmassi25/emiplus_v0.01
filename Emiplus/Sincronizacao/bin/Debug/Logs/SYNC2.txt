@@ -1,0 +1,34 @@
+[18/05/2020 21:49:46 Fatal] Sincronização
+[18/05/2020 22:14:56 Fatal] Sincronização main
+[18/05/2020 22:14:57 Fatal] possui net
+[18/05/2020 22:15:07 Fatal] backwork
+[18/05/2020 22:15:07 Fatal] backwork segundo plano
+[18/05/2020 22:24:20 Fatal] possui net
+[18/05/2020 22:24:30 Fatal] backwork
+[18/05/2020 22:24:30 Fatal] backwork segundo plano
+[18/05/2020 22:25:01 Fatal] possui net
+[18/05/2020 22:25:10 Fatal] backwork
+[18/05/2020 22:25:10 Fatal] backwork segundo plano
+[18/05/2020 22:25:39 Fatal] possui net
+[18/05/2020 22:25:49 Fatal] backwork
+[18/05/2020 22:25:49 Fatal] backwork segundo plano
+[18/05/2020 22:26:16 Fatal] possui net
+[18/05/2020 22:26:26 Fatal] backwork
+[18/05/2020 22:26:26 Fatal] backwork segundo plano
+[18/05/2020 22:26:49 Fatal] possui net
+[18/05/2020 22:26:59 Fatal] backwork
+[18/05/2020 22:26:59 Fatal] backwork segundo plano
+[18/05/2020 22:27:20 Fatal] possui net
+[18/05/2020 22:27:30 Fatal] backwork
+[18/05/2020 22:27:30 Fatal] backwork segundo plano
+[18/05/2020 22:37:42 Fatal] possui net
+[18/05/2020 22:37:52 Fatal] backwork
+[18/05/2020 22:37:52 Fatal] backwork segundo plano
+[18/05/2020 22:44:21 Fatal] possui net
+[18/05/2020 22:44:30 Fatal] backwork
+[18/05/2020 22:44:30 Fatal] backwork segundo plano
+[18/05/2020 22:49:53 Fatal] possui net
+[18/05/2020 22:50:17 Fatal] possui net
+[18/05/2020 22:51:02 Fatal] possui net
+[18/05/2020 22:52:35 Fatal] possui net
+[18/05/2020 23:03:53 Fatal] possui net

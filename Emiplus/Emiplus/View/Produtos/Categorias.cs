@@ -117,6 +117,8 @@ namespace Emiplus.View.Produtos
                 DataTableStart();
             };
 
+            Shown += (s, e) => search.Select();
+
             label5.Click += (s, e) => Close();
             btnExit.Click += (s, e) => Close();
 
