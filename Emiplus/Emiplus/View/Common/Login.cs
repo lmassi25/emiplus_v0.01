@@ -47,13 +47,9 @@ namespace Emiplus.View.Common
                     return;
                 }
 
-                if (remember.Checked)
-                    Settings.Default.login_remember = true;
-                else
-                    Settings.Default.login_remember = false;
-
+                Settings.Default.login_remember = remember.Checked;
                 Settings.Default.login_email = email.Text;
-
+                
                 if (Validation.ConvertToInt32(jo["user"]["status"]) <= 0)
                 {
                     Alert.Message("Opss", "Você precisa ativar sua conta, acesse seu e-mail!", Alert.AlertType.info);

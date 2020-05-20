@@ -46,6 +46,12 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
         public Query FindByPedido(int id)
         {
             var data = Query().Where("id_pedido", id);
@@ -68,32 +74,35 @@ namespace Emiplus.Model
                 {
                     if (message)
                         Alert.Message("Tudo certo!", "Salvo com sucesso.", Alert.AlertType.success);
+
+                    return true;
                 }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+                
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
             }
-            else
+            
+            if (data.Id > 0)
             {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
                     if (message)
                         Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+
+                    return true;
                 }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+                
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
             }
 
-            return true;
+            return false;
         }
 
         public bool RemoveIdCaixaMov(int id)

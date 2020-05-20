@@ -26,6 +26,15 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
+        /// <summary>
+        /// Função usada para carregar as categorias nos combobox
+        /// </summary>
         public ArrayList GetAll(string tipo)
         {
             var data = new ArrayList {new {Id = "0", Nome = "SELECIONE"}};
@@ -38,6 +47,9 @@ namespace Emiplus.Model
             return data;
         }
 
+        /// <summary>
+        /// Função alimenta o colletion para autocomplete nos textbox
+        /// </summary>
         public KeyedAutoCompleteStringCollection AutoComplete(string tipo = "")
         {
             var collection = new KeyedAutoCompleteStringCollection();
@@ -54,7 +66,7 @@ namespace Emiplus.Model
             return collection;
         }
 
-        public bool Save(Categoria data)
+        public bool Save(Categoria data, bool message = true)
         {
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
 
@@ -68,30 +80,41 @@ namespace Emiplus.Model
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Categoria salvo com sucesso.", Alert.AlertType.success);
+
+                    return true;
                 }
-                else
-                {
+
+                if (message)
                     Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
-            }
-            else
-            {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    Alert.Message("Tudo certo!", "Categoria atualizada com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
+
+                return false;
             }
 
-            return true;
+            if (data.Id > 0)
+            {
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
+                if (Data(data).Update("ID", data.Id) == 1)
+                {
+                    if (message)
+                        Alert.Message("Tudo certo!", "Categoria atualizada com sucesso.", Alert.AlertType.success);
+
+                    return true;
+                }
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+                
+                return false;
+            }
+            
+            return false;
         }
 
         public bool Remove(int id)

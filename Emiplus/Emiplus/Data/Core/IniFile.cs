@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Emiplus.Data.Core
 {
-    internal class IniFile
+    public class IniFile
     {
         //private static string Path;
         private static string EXE = Assembly.GetExecutingAssembly().GetName().Name;

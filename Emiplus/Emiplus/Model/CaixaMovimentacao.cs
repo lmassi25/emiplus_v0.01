@@ -30,7 +30,13 @@ namespace Emiplus.Model
         public int id_sync { get; set; }
         public string status_sync { get; set; }
 
-        public bool Save(CaixaMovimentacao data)
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
+        public bool Save(CaixaMovimentacao data, bool message = true)
         {
             data.id_user = Settings.Default.user_id;
             data.id_empresa = Program.UNIQUE_ID_EMPRESA;
@@ -42,30 +48,37 @@ namespace Emiplus.Model
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
                 {
-                    Alert.Message("Tudo certo!", "Movimentação feita com sucesso.", Alert.AlertType.success);
+                    if (message)
+                        Alert.Message("Tudo certo!", "Movimentação feita com sucesso.", Alert.AlertType.success);
+
+                    return true;
                 }
-                else
-                {
+
+                if (message)
                     Alert.Message("Opss", "Erro ao adicionar movimentação, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
-            }
-            else
-            {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
-                if (Data(data).Update("ID", data.Id) == 1)
-                {
-                    Alert.Message("Tudo certo!", "Movimentação atualizada com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-                    return false;
-                }
             }
 
-            return true;
+            if (data.Id > 0)
+            {
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
+                if (Data(data).Update("ID", data.Id) == 1)
+                {
+                    if (message)
+                        Alert.Message("Tudo certo!", "Movimentação atualizada com sucesso.", Alert.AlertType.success);
+
+                    return true;
+                }
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
+            }
+
+            return false;
         }
 
         public bool Remove(int id)

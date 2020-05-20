@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -189,34 +191,33 @@ namespace Emiplus.View.Common
         private void LoadSeriesGrafico()
         {
             cartesianChart1.Series.Clear();
-            var series = new SeriesCollection();
-
-            series.Add(new LineSeries
+            var series = new SeriesCollection
             {
-                Title = "A Receber",
-                PointGeometrySize = 20,
-                Values = new ChartValues<double>(aReceber),
-                Stroke = new SolidColorBrush(Color.FromRgb(51, 211, 74))
-            });
-
-            series.Add(new LineSeries
-            {
-                Title = "A Pagar",
-                Values = new ChartValues<double>(aPagar),
-                PointGeometrySize = 15,
-                Stroke = new SolidColorBrush(Color.FromRgb(243, 102, 36))
-            });
-
-            series.Add(new LineSeries
-            {
-                Title = "Vendas",
-                Values = new ChartValues<int>(vendas),
-                Stroke = new SolidColorBrush(Color.FromRgb(28, 142, 196)),
-                StrokeThickness = 1,
-                StrokeDashArray = new DoubleCollection(20),
-                Fill = Brushes.Transparent,
-                LineSmoothness = 0
-            });
+                new LineSeries
+                {
+                    Title = "A Receber",
+                    PointGeometrySize = 20,
+                    Values = new ChartValues<double>(aReceber),
+                    Stroke = new SolidColorBrush(Color.FromRgb(51, 211, 74))
+                },
+                new LineSeries
+                {
+                    Title = "A Pagar",
+                    Values = new ChartValues<double>(aPagar),
+                    PointGeometrySize = 15,
+                    Stroke = new SolidColorBrush(Color.FromRgb(243, 102, 36))
+                },
+                new LineSeries
+                {
+                    Title = "Vendas",
+                    Values = new ChartValues<int>(vendas),
+                    Stroke = new SolidColorBrush(Color.FromRgb(28, 142, 196)),
+                    StrokeThickness = 1,
+                    StrokeDashArray = new DoubleCollection(20),
+                    Fill = Brushes.Transparent,
+                    LineSmoothness = 0
+                }
+            };
 
             cartesianChart1.Series = series;
         }
@@ -294,7 +295,7 @@ namespace Emiplus.View.Common
 
                 SetHeadersTable(GridLista);
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 new Caixa().CheckCaixaDate();
             };
 

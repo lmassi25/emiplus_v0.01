@@ -84,10 +84,10 @@ namespace Emiplus.View.Comercial
                         _mPedidoItem.Status = "FAZENDO";
                         _mPedidoItem.Usuario = Settings.Default.user_id;
                         _mPedidoItem.Save(_mPedidoItem, false);
-
-                        new Controller.Pedido().ImprimirItens(0, _mPedidoItem.GetLastId());
                     }
                 }
+
+                new Controller.Pedido().ImprimirItens(0, _mPedidoItem.GetLastId());
 
                 Alert.Message("Pronto", "Pedido enviado com sucesso.", Alert.AlertType.success);
                 DialogResult = DialogResult.OK;
@@ -195,6 +195,9 @@ namespace Emiplus.View.Comercial
             table.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        /// <summary>
+        /// Carrega os itens da categoria especificada
+        /// </summary>
         private void LoadProdutos()
         {
             if (Validation.ConvertToInt32(Categorias.SelectedValue) == 0)
@@ -212,9 +215,22 @@ namespace Emiplus.View.Comercial
                         item.Id,
                         item.Referencia,
                         item.Nome,
-                        Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda)),
+                        Validation.FormatPrice(Validation.ConvertToDouble(item.ValorVenda), true),
                         Resources.plus20x
                     );
+        }
+
+        /// <summary>
+        /// Soma o valor dos itens dentro da grid
+        /// </summary>
+        /// <returns></returns>
+        private double SumTotalGrid()
+        {
+            double sum = 0;
+            for (var i = 0; i < GridLista.Rows.Count; ++i)
+                sum += Validation.ConvertToDouble(GridLista.Rows[i].Cells["Valor"].Value);
+
+            return sum;
         }
 
         private void KeyDowns(object sender, KeyEventArgs e)
@@ -275,6 +291,46 @@ namespace Emiplus.View.Comercial
                 if (item == null)
                     return;
 
+                if (!string.IsNullOrEmpty(item.Combos))
+                {
+                    var comboExits = false;
+                    var idsCombo = item.Combos.Split(',');
+                    foreach (var id in idsCombo)
+                    {
+                        var checkCombo = new Model.ItemCombo().FindById(Validation.ConvertToInt32(id)).WhereFalse("excluir").FirstOrDefault<ItemCombo>();
+                        if (checkCombo != null)
+                            comboExits = true;
+                    }
+
+                    if (comboExits)
+                    {
+                        AddCombo.IdProduto = item.Id;
+                        AddCombo.IdPedido = 0;
+                        var form = new AddCombo { TopMost = true };
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            foreach (PedidoItem data in AddCombo.listProdutosIncluir)
+                            {
+                                GridLista.Rows.Add(
+                                    false,
+                                    data.Item,
+                                    data.xProd,
+                                    Validation.FormatPrice(Validation.ConvertToDouble(data.ValorVenda)),
+                                    "",
+                                    data.Adicional,
+                                    Validation.ConvertToDouble(data.ValorVenda),
+                                    Resources.menu20x
+                                );
+                            }
+
+                            txtValorTotal.Text = $@"Valor Total: {Validation.FormatPrice(SumTotalGrid(), true)}";
+                            BuscarProduto.Text = "";
+                            BuscarProduto.Select();
+                            return;
+                        }
+                    }
+                }
+
                 GridLista.Rows.Add(
                     false,
                     item.Id,
@@ -286,6 +342,7 @@ namespace Emiplus.View.Comercial
                     Resources.menu20x
                 );
 
+                txtValorTotal.Text = $@"Valor Total: {Validation.FormatPrice(SumTotalGrid(), true)}";
                 BuscarProduto.Text = "";
                 BuscarProduto.Select();
             };
@@ -297,6 +354,51 @@ namespace Emiplus.View.Comercial
             {
                 if (GridProdutos.Columns[e.ColumnIndex].Name == "Adicionar")
                 {
+                    var idItem = Validation.ConvertToInt32(GridProdutos.SelectedRows[0].Cells["ID"].Value);
+                    var item = _mItem.FindById(idItem).FirstOrDefault<Item>();
+                    if (item == null)
+                        return;
+
+                    if (!string.IsNullOrEmpty(item.Combos))
+                    {
+                        var comboExits = false;
+                        var idsCombo = item.Combos.Split(',');
+                        foreach (var id in idsCombo)
+                        {
+                            var checkCombo = new Model.ItemCombo().FindById(Validation.ConvertToInt32(id)).WhereFalse("excluir").FirstOrDefault<ItemCombo>();
+                            if (checkCombo != null)
+                                comboExits = true;
+                        }
+
+                        if (comboExits)
+                        {
+                            AddCombo.IdProduto = item.Id;
+                            AddCombo.IdPedido = 0;
+                            var form = new AddCombo { TopMost = true };
+                            if (form.ShowDialog() == DialogResult.OK)
+                            {
+                                foreach (PedidoItem data in AddCombo.listProdutosIncluir)
+                                {
+                                    GridLista.Rows.Add(
+                                        false,
+                                        data.Item,
+                                        data.xProd,
+                                        Validation.FormatPrice(Validation.ConvertToDouble(data.ValorVenda)),
+                                        "",
+                                        data.Adicional,
+                                        Validation.ConvertToDouble(data.ValorVenda),
+                                        Resources.menu20x
+                                    );
+                                }
+
+                                BuscarProduto.Text = "";
+                                BuscarProduto.Select();
+                                Alert.Message("Pronto", "Item adicionado.", Alert.AlertType.success);
+                                return;
+                            }
+                        }
+                    }
+
                     GridLista.Rows.Add(
                         false,
                         GridProdutos.SelectedRows[0].Cells["ID"].Value,
@@ -308,6 +410,7 @@ namespace Emiplus.View.Comercial
                         Resources.menu20x
                     );
 
+                    txtValorTotal.Text = $@"Valor Total: {Validation.FormatPrice(SumTotalGrid(), true)}";
                     Alert.Message("Pronto", "Item adicionado.", Alert.AlertType.success);
                 }
             };
@@ -351,6 +454,7 @@ namespace Emiplus.View.Comercial
                     toBeDeleted.ForEach(d => GridLista.Rows.Remove(d));
                 }
 
+                txtValorTotal.Text = $@"Valor Total: {Validation.FormatPrice(SumTotalGrid(), true)}";
                 btnRemover.Visible = false;
             };
 
@@ -389,8 +493,7 @@ namespace Emiplus.View.Comercial
                     {
                         var getValor = Validation.ConvertToDouble(GridLista.SelectedRows[0].Cells["Unitario"].Value
                             .ToString().Replace("R$ ", ""));
-                        GridLista.SelectedRows[0].Cells["Valor"].Value =
-                            Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
+                        GridLista.SelectedRows[0].Cells["Valor"].Value = Validation.FormatPrice(getValor + AdicionaisDispon.ValorAddon);
                         GridLista.SelectedRows[0].Cells["AddonSelected"].Value = AdicionaisDispon.AddonSelected;
                     }
                 }

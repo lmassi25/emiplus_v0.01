@@ -285,6 +285,7 @@ namespace Emiplus.View.Produtos
             valorcompra.Text = Validation.Price(_modelItem?.ValorCompra ?? 0);
             valorvenda.Text = Validation.Price(_modelItem?.ValorVenda ?? 0);
             estoqueminimo.Text = Validation.FormatMedidas(_modelItem?.Medida ?? "UN", _modelItem?.EstoqueMinimo ?? 0);
+            inf_adicional.Text = _modelItem?.InfAdicional ?? "";
             LoadEstoque();
             CustoMedio();
 
@@ -334,7 +335,7 @@ namespace Emiplus.View.Produtos
             if (File.Exists($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}"))
             {
                 var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}");
-                imageProduct.Image = ByteArrayToImage(imageAsByteArray);
+                imageProduct.Image = Support.ByteArrayToImage(imageAsByteArray);
                 pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{_modelItem.Image}";
                 btnRemoverImage.Visible = true;
             }
@@ -360,13 +361,6 @@ namespace Emiplus.View.Produtos
                         if (Validation.ConvertToInt32(item.Cells["ID"].Value) == Validation.ConvertToInt32(id))
                             item.Cells["Selecione"].Value = true;
                 }
-        }
-
-        public Image ByteArrayToImage(byte[] byteArrayIn)
-        {
-            var ms = new MemoryStream(byteArrayIn);
-            var returnImage = Image.FromStream(ms);
-            return returnImage;
         }
 
         private void CustoMedio()
@@ -437,6 +431,7 @@ namespace Emiplus.View.Produtos
             _modelItem.ValorVenda = Validation.ConvertToDouble(valorvenda.Text);
             _modelItem.EstoqueMinimo = Validation.ConvertToDouble(estoqueminimo.Text);
             _modelItem.Medida = Medidas.Text;
+            _modelItem.InfAdicional = inf_adicional.Text;
 
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
@@ -621,10 +616,24 @@ namespace Emiplus.View.Produtos
             };
 
             menuEstoque.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelEstoque, menuEstoque);
+            label27.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelEstoque, menuEstoque);
+            pictureBox12.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelEstoque, menuEstoque);
+
             menuImpostos.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelImpostos, menuImpostos);
+            label35.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelImpostos, menuImpostos);
+            pictureBox16.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelImpostos, menuImpostos);
+
             menuAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelAdicionais, menuAdicionais);
+            label30.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelAdicionais, menuAdicionais);
+            pictureBox13.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelAdicionais, menuAdicionais);
+
             menuCombo.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelCombo, menuCombo);
+            label33.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelCombo, menuCombo);
+            pictureBox17.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelCombo, menuCombo);
+
             menuInfoAdicionais.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelInfoAdicionais, menuInfoAdicionais);
+            label31.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelInfoAdicionais, menuInfoAdicionais);
+            pictureBox15.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelInfoAdicionais, menuInfoAdicionais);
 
             btnExit.Click += (s, e) =>
             {
@@ -876,7 +885,7 @@ namespace Emiplus.View.Produtos
                         _modelItem.Save(_modelItem, false);
 
                         var imageAsByteArray = File.ReadAllBytes($@"{Program.PATH_IMAGE}\Imagens\{nameImage}");
-                        imageProduct.Image = ByteArrayToImage(imageAsByteArray);
+                        imageProduct.Image = Support.ByteArrayToImage(imageAsByteArray);
                         pathImage.Text = $@"{Program.PATH_IMAGE}\Imagens\{nameImage}";
                         btnRemoverImage.Visible = true;
                         Alert.Message("Pronto!", "Imagem atualizada com sucesso.", Alert.AlertType.success);
