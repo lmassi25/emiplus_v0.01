@@ -447,7 +447,7 @@ namespace Emiplus.View.Common
             this.homeMenuInicio.Name = "homeMenuInicio";
             this.homeMenuInicio.Size = new System.Drawing.Size(250, 50);
             this.homeMenuInicio.TabIndex = 26;
-            this.homeMenuInicio.Text = "            Início";
+            this.homeMenuInicio.Text = "            Visão Geral";
             this.homeMenuInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeMenuInicio.UseVisualStyleBackColor = false;
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
@@ -110,6 +111,13 @@ namespace Emiplus.Data.Helpers
         public static string BasePath()
         {
             return IniFile.Read("Path", "LOCAL");
+        }
+
+        public static Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            var ms = new MemoryStream(byteArrayIn);
+            var returnImage = Image.FromStream(ms);
+            return returnImage;
         }
 
         /// <summary>

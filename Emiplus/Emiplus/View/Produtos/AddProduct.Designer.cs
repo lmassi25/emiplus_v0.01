@@ -115,14 +115,17 @@
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.label30 = new System.Windows.Forms.Label();
             this.panelAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.menuInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.panelInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.menuCombo = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.label33 = new System.Windows.Forms.Label();
             this.panelCombo = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.GridCombos = new System.Windows.Forms.DataGridView();
+            this.label34 = new System.Windows.Forms.Label();
+            this.menuInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.panelInfoAdicionais = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
             this.btnRemoverImage = new System.Windows.Forms.Label();
             this.btnImage = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label25 = new System.Windows.Forms.Label();
@@ -146,9 +149,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.GridCombos = new System.Windows.Forms.DataGridView();
-            this.label34 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -175,20 +175,20 @@
             this.menuAdicionais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.panelAdicionais.SuspendLayout();
-            this.menuInfoAdicionais.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            this.panelInfoAdicionais.SuspendLayout();
             this.menuCombo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.panelCombo.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).BeginInit();
+            this.menuInfoAdicionais.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.panelInfoAdicionais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).BeginInit();
             this.barraTitulo.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -318,6 +318,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(83, 118);
@@ -329,6 +330,7 @@
             // 
             // label22
             // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -341,6 +343,7 @@
             // 
             // Medidas
             // 
+            this.Medidas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Medidas.BackColor = System.Drawing.Color.White;
             this.Medidas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Medidas.BackColorState.Enabled = System.Drawing.Color.White;
@@ -399,6 +402,7 @@
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -412,6 +416,7 @@
             // codebarras
             // 
             this.codebarras.AlphaNumeric = false;
+            this.codebarras.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.codebarras.BackColor = System.Drawing.Color.White;
             this.codebarras.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.codebarras.BackColorState.Enabled = System.Drawing.Color.White;
@@ -468,6 +473,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(85, 180);
@@ -479,6 +485,7 @@
             // 
             // label18
             // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -491,6 +498,7 @@
             // 
             // Categorias
             // 
+            this.Categorias.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Categorias.BackColor = System.Drawing.Color.White;
             this.Categorias.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Categorias.BackColorState.Enabled = System.Drawing.Color.White;
@@ -548,6 +556,7 @@
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -561,6 +570,7 @@
             // valorvenda
             // 
             this.valorvenda.AlphaNumeric = false;
+            this.valorvenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.valorvenda.BackColor = System.Drawing.Color.White;
             this.valorvenda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.valorvenda.BackColorState.Enabled = System.Drawing.Color.White;
@@ -618,6 +628,7 @@
             // 
             // label16
             // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -631,6 +642,7 @@
             // valorcompra
             // 
             this.valorcompra.AlphaNumeric = false;
+            this.valorcompra.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.valorcompra.BackColor = System.Drawing.Color.White;
             this.valorcompra.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.valorcompra.BackColorState.Enabled = System.Drawing.Color.White;
@@ -688,6 +700,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -701,6 +714,7 @@
             // referencia
             // 
             this.referencia.AlphaNumeric = false;
+            this.referencia.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.referencia.BackColor = System.Drawing.Color.White;
             this.referencia.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.referencia.BackColorState.Enabled = System.Drawing.Color.White;
@@ -758,6 +772,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -771,6 +786,7 @@
             // nome
             // 
             this.nome.AlphaNumeric = false;
+            this.nome.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nome.BackColor = System.Drawing.Color.White;
             this.nome.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nome.BackColorState.Enabled = System.Drawing.Color.White;
@@ -908,6 +924,7 @@
             // 
             // pictureBox11
             // 
+            this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox11.BackColor = System.Drawing.Color.White;
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
             this.pictureBox11.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.InitialImage")));
@@ -920,6 +937,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -933,6 +951,7 @@
             // txtLimiteDesconto
             // 
             this.txtLimiteDesconto.AlphaNumeric = false;
+            this.txtLimiteDesconto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtLimiteDesconto.BackColor = System.Drawing.Color.White;
             this.txtLimiteDesconto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtLimiteDesconto.BackColorState.Enabled = System.Drawing.Color.White;
@@ -990,6 +1009,7 @@
             // 
             // pictureBox14
             // 
+            this.pictureBox14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
             this.pictureBox14.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox14.InitialImage")));
@@ -1002,6 +1022,7 @@
             // 
             // label21
             // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1014,6 +1035,7 @@
             // 
             // Fornecedor
             // 
+            this.Fornecedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Fornecedor.BackColor = System.Drawing.Color.White;
             this.Fornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.Fornecedor.BackColorState.Enabled = System.Drawing.Color.White;
@@ -2256,6 +2278,7 @@
             // 
             // flowLayoutPanel
             // 
+            this.flowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.Controls.Add(this.menuEstoque);
             this.flowLayoutPanel.Controls.Add(this.panelEstoque);
@@ -2609,6 +2632,138 @@
             this.panelAdicionais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.panelAdicionais.Visible = false;
             // 
+            // menuCombo
+            // 
+            this.menuCombo.BackColor = System.Drawing.Color.Transparent;
+            this.menuCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.menuCombo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.menuCombo.Border.HoverVisible = true;
+            this.menuCombo.Border.Rounding = 6;
+            this.menuCombo.Border.Thickness = 1;
+            this.menuCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.menuCombo.Border.Visible = true;
+            this.menuCombo.Controls.Add(this.pictureBox17);
+            this.menuCombo.Controls.Add(this.label33);
+            this.menuCombo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.Location = new System.Drawing.Point(3, 1242);
+            this.menuCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.menuCombo.Name = "menuCombo";
+            this.menuCombo.Padding = new System.Windows.Forms.Padding(5);
+            this.menuCombo.Size = new System.Drawing.Size(665, 35);
+            this.menuCombo.TabIndex = 577;
+            this.menuCombo.Text = "visualPanel2";
+            this.menuCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.menuCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.menuCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.menuCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.menuCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.pictureBox17.Image = global::Emiplus.Properties.Resources.plus23;
+            this.pictureBox17.Location = new System.Drawing.Point(633, 6);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 566;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.White;
+            this.label33.Location = new System.Drawing.Point(12, 9);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(131, 17);
+            this.label33.TabIndex = 565;
+            this.label33.Text = "Combo de Produtos";
+            // 
+            // panelCombo
+            // 
+            this.panelCombo.BackColor = System.Drawing.Color.Transparent;
+            this.panelCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.BackColorState.Enabled = System.Drawing.Color.White;
+            this.panelCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelCombo.Border.HoverVisible = true;
+            this.panelCombo.Border.Rounding = 6;
+            this.panelCombo.Border.Thickness = 1;
+            this.panelCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.panelCombo.Border.Visible = true;
+            this.panelCombo.Controls.Add(this.panel6);
+            this.panelCombo.Controls.Add(this.label34);
+            this.panelCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.Location = new System.Drawing.Point(3, 1283);
+            this.panelCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.panelCombo.Name = "panelCombo";
+            this.panelCombo.Padding = new System.Windows.Forms.Padding(5);
+            this.panelCombo.Size = new System.Drawing.Size(665, 225);
+            this.panelCombo.TabIndex = 578;
+            this.panelCombo.Text = "visualPanel1";
+            this.panelCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.panelCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.panelCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.panelCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.panelCombo.Visible = false;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.GridCombos);
+            this.panel6.Location = new System.Drawing.Point(10, 33);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(646, 179);
+            this.panel6.TabIndex = 31;
+            // 
+            // GridCombos
+            // 
+            this.GridCombos.AllowUserToAddRows = false;
+            this.GridCombos.AllowUserToDeleteRows = false;
+            this.GridCombos.AllowUserToResizeColumns = false;
+            this.GridCombos.AllowUserToResizeRows = false;
+            this.GridCombos.BackgroundColor = System.Drawing.Color.White;
+            this.GridCombos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridCombos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.GridCombos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridCombos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridCombos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridCombos.Location = new System.Drawing.Point(0, 0);
+            this.GridCombos.MultiSelect = false;
+            this.GridCombos.Name = "GridCombos";
+            this.GridCombos.ReadOnly = true;
+            this.GridCombos.RowHeadersVisible = false;
+            this.GridCombos.RowTemplate.Height = 30;
+            this.GridCombos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridCombos.Size = new System.Drawing.Size(646, 179);
+            this.GridCombos.TabIndex = 6;
+            this.GridCombos.TabStop = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.White;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label34.Location = new System.Drawing.Point(8, 10);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(129, 17);
+            this.label34.TabIndex = 30;
+            this.label34.Text = "Combos disponíveis";
+            // 
             // menuInfoAdicionais
             // 
             this.menuInfoAdicionais.BackColor = System.Drawing.Color.Transparent;
@@ -2696,95 +2851,9 @@
             this.panelInfoAdicionais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.panelInfoAdicionais.Visible = false;
             // 
-            // menuCombo
-            // 
-            this.menuCombo.BackColor = System.Drawing.Color.Transparent;
-            this.menuCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.menuCombo.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.menuCombo.Border.HoverVisible = true;
-            this.menuCombo.Border.Rounding = 6;
-            this.menuCombo.Border.Thickness = 1;
-            this.menuCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.menuCombo.Border.Visible = true;
-            this.menuCombo.Controls.Add(this.pictureBox17);
-            this.menuCombo.Controls.Add(this.label33);
-            this.menuCombo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.Location = new System.Drawing.Point(3, 1242);
-            this.menuCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.menuCombo.Name = "menuCombo";
-            this.menuCombo.Padding = new System.Windows.Forms.Padding(5);
-            this.menuCombo.Size = new System.Drawing.Size(665, 35);
-            this.menuCombo.TabIndex = 577;
-            this.menuCombo.Text = "visualPanel2";
-            this.menuCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.menuCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.menuCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.menuCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.menuCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.menuCombo.Visible = false;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.pictureBox17.Image = global::Emiplus.Properties.Resources.plus23;
-            this.pictureBox17.Location = new System.Drawing.Point(633, 6);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox17.TabIndex = 566;
-            this.pictureBox17.TabStop = false;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(12, 9);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(131, 17);
-            this.label33.TabIndex = 565;
-            this.label33.Text = "Combo de Produtos";
-            // 
-            // panelCombo
-            // 
-            this.panelCombo.BackColor = System.Drawing.Color.Transparent;
-            this.panelCombo.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.BackColorState.Enabled = System.Drawing.Color.White;
-            this.panelCombo.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelCombo.Border.HoverVisible = true;
-            this.panelCombo.Border.Rounding = 6;
-            this.panelCombo.Border.Thickness = 1;
-            this.panelCombo.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.panelCombo.Border.Visible = true;
-            this.panelCombo.Controls.Add(this.panel6);
-            this.panelCombo.Controls.Add(this.label34);
-            this.panelCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.Location = new System.Drawing.Point(3, 1283);
-            this.panelCombo.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.panelCombo.Name = "panelCombo";
-            this.panelCombo.Padding = new System.Windows.Forms.Padding(5);
-            this.panelCombo.Size = new System.Drawing.Size(665, 225);
-            this.panelCombo.TabIndex = 578;
-            this.panelCombo.Text = "visualPanel1";
-            this.panelCombo.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.panelCombo.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panelCombo.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.panelCombo.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.panelCombo.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.panelCombo.Visible = false;
-            // 
             // btnRemoverImage
             // 
+            this.btnRemoverImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoverImage.AutoSize = true;
             this.btnRemoverImage.BackColor = System.Drawing.Color.Transparent;
             this.btnRemoverImage.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2799,6 +2868,7 @@
             // 
             // btnImage
             // 
+            this.btnImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnImage.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
             this.btnImage.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
@@ -2833,6 +2903,7 @@
             // 
             // label25
             // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2846,6 +2917,7 @@
             // pathImage
             // 
             this.pathImage.AlphaNumeric = false;
+            this.pathImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pathImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.pathImage.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
             this.pathImage.BackColorState.Enabled = System.Drawing.Color.White;
@@ -2903,6 +2975,7 @@
             // 
             // visualSeparator3
             // 
+            this.visualSeparator3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.Location = new System.Drawing.Point(23, 103);
@@ -2924,6 +2997,7 @@
             // 
             // imageProduct
             // 
+            this.imageProduct.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.imageProduct.BackColor = System.Drawing.Color.Transparent;
             this.imageProduct.Image = global::Emiplus.Properties.Resources.sem_imagem;
             this.imageProduct.Location = new System.Drawing.Point(20, 14);
@@ -2935,6 +3009,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2948,6 +3023,7 @@
             // custoMedio
             // 
             this.custoMedio.AlphaNumeric = false;
+            this.custoMedio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.custoMedio.BackColor = System.Drawing.Color.White;
             this.custoMedio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.custoMedio.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -3006,6 +3082,7 @@
             // 
             // btnAddCategoria
             // 
+            this.btnAddCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddCategoria.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddCategoria.BackColorState.Enabled = System.Drawing.Color.White;
             this.btnAddCategoria.BackColorState.Hover = System.Drawing.Color.White;
@@ -3039,6 +3116,7 @@
             // 
             // btnAddFornecedor
             // 
+            this.btnAddFornecedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddFornecedor.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddFornecedor.BackColorState.Enabled = System.Drawing.Color.White;
             this.btnAddFornecedor.BackColorState.Hover = System.Drawing.Color.White;
@@ -3072,6 +3150,7 @@
             // 
             // visualSeparator2
             // 
+            this.visualSeparator2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.Location = new System.Drawing.Point(23, 329);
@@ -3093,6 +3172,7 @@
             // 
             // visualSeparator1
             // 
+            this.visualSeparator1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.visualSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.Line = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator1.Location = new System.Drawing.Point(23, 242);
@@ -3114,6 +3194,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3127,6 +3208,7 @@
             // precoMedio
             // 
             this.precoMedio.AlphaNumeric = false;
+            this.precoMedio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.precoMedio.BackColor = System.Drawing.Color.White;
             this.precoMedio.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.precoMedio.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -3287,52 +3369,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.GridCombos);
-            this.panel6.Location = new System.Drawing.Point(10, 33);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(646, 179);
-            this.panel6.TabIndex = 31;
-            // 
-            // GridCombos
-            // 
-            this.GridCombos.AllowUserToAddRows = false;
-            this.GridCombos.AllowUserToDeleteRows = false;
-            this.GridCombos.AllowUserToResizeColumns = false;
-            this.GridCombos.AllowUserToResizeRows = false;
-            this.GridCombos.BackgroundColor = System.Drawing.Color.White;
-            this.GridCombos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridCombos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.GridCombos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridCombos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridCombos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridCombos.Location = new System.Drawing.Point(0, 0);
-            this.GridCombos.MultiSelect = false;
-            this.GridCombos.Name = "GridCombos";
-            this.GridCombos.ReadOnly = true;
-            this.GridCombos.RowHeadersVisible = false;
-            this.GridCombos.RowTemplate.Height = 30;
-            this.GridCombos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridCombos.Size = new System.Drawing.Size(646, 179);
-            this.GridCombos.TabIndex = 6;
-            this.GridCombos.TabStop = false;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.White;
-            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(8, 10);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(129, 17);
-            this.label34.TabIndex = 30;
-            this.label34.Text = "Combos disponíveis";
-            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -3383,16 +3419,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.panelAdicionais.ResumeLayout(false);
             this.panelAdicionais.PerformLayout();
-            this.menuInfoAdicionais.ResumeLayout(false);
-            this.menuInfoAdicionais.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            this.panelInfoAdicionais.ResumeLayout(false);
-            this.panelInfoAdicionais.PerformLayout();
             this.menuCombo.ResumeLayout(false);
             this.menuCombo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.panelCombo.ResumeLayout(false);
             this.panelCombo.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).EndInit();
+            this.menuInfoAdicionais.ResumeLayout(false);
+            this.menuInfoAdicionais.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.panelInfoAdicionais.ResumeLayout(false);
+            this.panelInfoAdicionais.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageProduct)).EndInit();
             this.barraTitulo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -3400,8 +3438,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridCombos)).EndInit();
             this.ResumeLayout(false);
 
         }

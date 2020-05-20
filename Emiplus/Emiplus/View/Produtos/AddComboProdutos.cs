@@ -187,9 +187,15 @@ namespace Emiplus.View.Produtos
         /// </summary>
         private void SaveItensTable()
         {
-            if (dataGridItens.Rows.Count < 0)
+            if (dataGridItens.Rows.Count <= 0)
             {
                 Alert.Message("Opps", "Selecione pelo menos 1 item para salvar o combo.", Alert.AlertType.error);
+                return;
+            }
+            
+            if (valorvenda.Text == "0,00")
+            {
+                Alert.Message("Opps", "O valor do combo precisa ser maior que zero.", Alert.AlertType.error);
                 return;
             }
 
@@ -262,13 +268,16 @@ namespace Emiplus.View.Produtos
                 switch (Tipo.SelectedItem.ToString())
                 {
                     case "Produtos":
+                        label2.Text = @"Produtos";
                         AutoCompleteItens();
                         break;
+
                     case "Categorias":
+                        label2.Text = @"Categorias";
                         AutoCompleteCategorias();
                         break;
                 }
-
+                
                 txtAutoComplete.Enabled = true;
                 btnIncluir.Visible = true;
             };

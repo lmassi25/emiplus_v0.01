@@ -47,7 +47,7 @@ namespace Emiplus.View.Configuracoes
 
             consultarsat.Click += (s, e) =>
             {
-                if (!File.Exists(Sat.Dll))
+                if (!File.Exists("Sat.Dll"))
                 {
                     Alert.Message("Opps", "Não encontramos a DLL do SAT", Alert.AlertType.warning);
                     return;

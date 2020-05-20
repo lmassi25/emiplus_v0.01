@@ -756,11 +756,37 @@ namespace Emiplus.View.Comercial
 
                 if (!string.IsNullOrEmpty(item.Combos))
                 {
-                    AddCombo.IdProduto = itemId;
-                    var form = new AddCombo {TopMost = true};
-                    if (form.ShowDialog() == DialogResult.OK)
+                    var comboExits = false;
+                    var idsCombo = item.Combos.Split(',');
+                    foreach (var id in idsCombo)
                     {
+                        var checkCombo = new Model.ItemCombo().FindById(Validation.ConvertToInt32(id)).WhereFalse("excluir").FirstOrDefault<ItemCombo>();
+                        if (checkCombo != null)
+                            comboExits = true;
+                    }
+                    
+                    if (comboExits)
+                    {
+                        AddCombo.IdProduto = itemId;
+                        AddCombo.IdPedido = Id;
+                        var form = new AddCombo {TopMost = true};
+                        if (form.ShowDialog() == DialogResult.OK)
+                        {
+                            // Carrega a Grid com o Item adicionado acima.
+                            if (PDV)
+                                new Controller.PedidoItem().GetDataTableItensCompact(GridListaProdutos, Id);
+                            else
+                                new Controller.PedidoItem().GetDataTableItens(GridListaProdutos, Id);
 
+                            // Atualiza o total do pedido, e os totais da tela
+                            LoadTotais();
+
+                            // Limpa os campos
+                            ClearForms();
+
+                            BuscarProduto.Select();
+                            return;
+                        }
                     }
                 }
 
@@ -921,11 +947,16 @@ namespace Emiplus.View.Comercial
                 pedidoItem.SetDescontoPorcentagens(descontoPorcentagemTxt);
                 pedidoItem.SomarTotal();
 
-                if (Home.pedidoPage == "Remessas")
-                    pedidoItem.Status = "Remessa";
-
-                if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
-                    pedidoItem.Status = "FAZENDO";
+                switch (Home.pedidoPage)
+                {
+                    case "Remessas":
+                        pedidoItem.Status = "Remessa";
+                        break;
+                    case "Delivery":
+                    case "Balcao":
+                        pedidoItem.Status = "FAZENDO";
+                        break;
+                }
 
                 pedidoItem.Save(pedidoItem);
 
@@ -934,19 +965,23 @@ namespace Emiplus.View.Comercial
                     {
                         new Imposto().SetImposto(pedidoItem.GetLastId());
 
-                        // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
-                        if (Home.pedidoPage == "Compras")
-                            new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add()
-                                .Item();
-                        else if (Home.pedidoPage == "Devoluções")
-                            new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add()
-                                .Item();
-                        else if (Home.pedidoPage == "Remessas")
-                            new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}")
-                                .Remove().Item();
-                        else
-                            new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}")
-                                .Remove().Item();
+                        switch (Home.pedidoPage)
+                        {
+                            // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
+                            case "Compras":
+                            case "Devoluções":
+                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add()
+                                    .Item();
+                                break;
+                            case "Remessas":
+                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}")
+                                    .Remove().Item();
+                                break;
+                            default:
+                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}")
+                                    .Remove().Item();
+                                break;
+                        }
                     }
 
                 // Carrega a Grid com o Item adicionado acima.

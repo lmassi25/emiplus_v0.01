@@ -37,6 +37,12 @@ namespace Emiplus.Model
         public string status_sync { get; set; }
         public int ativo { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
         public Pessoa FromCsv(string csvLine, string tipo = "Clientes")
         {
             var values = csvLine.Split(';');
@@ -106,7 +112,9 @@ namespace Emiplus.Model
 
         public bool ExistsName(string name, bool importacao = true, int idItem = 0)
         {
-            var data = importacao ? Query().Where("nome", name).Where("excluir", 0).FirstOrDefault() : Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
+            var data = importacao
+                ? Query().Where("nome", name).Where("excluir", 0).FirstOrDefault()
+                : Query().Where("id", "!=", idItem).Where("nome", name).Where("excluir", 0).FirstOrDefault();
 
             return data != null;
         }
@@ -115,7 +123,8 @@ namespace Emiplus.Model
         {
             var data = new ArrayList {new {Id = "0", Nome = "SELECIONE"}};
 
-            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").Where("tipo", tipo).OrderByDesc("nome").Get();
+            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").Where("tipo", tipo)
+                .OrderByDesc("nome").Get();
             if (findDB != null)
                 foreach (var item in findDB)
                     data.Add(new {Id = $"{item.ID}", Nome = $"{item.NOME}"});
@@ -136,34 +145,36 @@ namespace Emiplus.Model
                 data.status_sync = "CREATE";
                 data.Criado = DateTime.Now;
                 if (Data(data).Create() == 1)
+                    return true;
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
+            }
+
+            if (data.Id > 0)
+            {
+                if (ValidarDados(data))
+                    return false;
+
+                if (!data.IgnoringDefaults)
                 {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
+                if (Data(data).Update("ID", data.Id) == 1)
+                {
+                    if (message)
+                        Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
+
                     return true;
                 }
 
                 if (message)
-                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
-
-                return false;
-            }
-
-            if (ValidarDados(data))
-                return false;
-
-            data.status_sync = "UPDATE";
-            data.Atualizado = DateTime.Now;
-            if (Data(data).Update("ID", data.Id) == 1)
-            {
-                if (message)
-                    Alert.Message("Tudo certo!", "Atualizado com sucesso.", Alert.AlertType.success);
-            }
-            else
-            {
-                if (message)
                     Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
-                return false;
             }
 
-            return true;
+            return false;
         }
 
         public bool Remove(int id, bool message = true)

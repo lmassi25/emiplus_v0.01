@@ -102,7 +102,7 @@ namespace Emiplus.Controller
             Table.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             Table.Columns[17].Name = "Status";
-            Table.Columns[18].Visible = false;
+            Table.Columns[17].Visible = false;
             Table.Columns[17].Width = 100;
             Table.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -124,7 +124,7 @@ namespace Emiplus.Controller
             Table.Columns[16].Visible = impostos;
 
             if (Home.pedidoPage == "Delivery" || Home.pedidoPage == "Balcao")
-                Table.Columns[18].Visible = true;
+                Table.Columns[17].Visible = true;
 
             Table.Rows.Clear();
 

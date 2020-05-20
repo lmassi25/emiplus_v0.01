@@ -11,6 +11,28 @@ namespace Emiplus.Model
         {
         }
 
+        [Ignore] [Key("ID")] public int Id { get; set; }
+
+        public DateTime Criado { get; private set; }
+        public string id_empresa { get; private set; }
+        public int id_item { get; set; }
+        public int id_usuario { get; set; }
+        public double Quantidade { get; set; }
+        public string observacao { get; set; }
+        public string tipo { get; set; }
+        public string local { get; set; }
+        public double Anterior { get; set; }
+        public int Id_Pedido { get; set; }
+
+        public int id_sync { get; set; }
+        public string status_sync { get; set; }
+
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
         public ItemEstoqueMovimentacao SetQuantidade(double Quantidade)
         {
             this.Quantidade = Quantidade;
@@ -68,7 +90,7 @@ namespace Emiplus.Model
             return this;
         }
 
-        public bool Save(ItemEstoqueMovimentacao data)
+        public bool Save(ItemEstoqueMovimentacao data, bool message = true)
         {
             if (ValidarDados(data))
                 return false;
@@ -80,7 +102,9 @@ namespace Emiplus.Model
             if (Data(data).Create() == 1)
                 return true;
 
-            Alert.Message("Opss", "Erro ao adicionar estoque, verifique os dados.", Alert.AlertType.error);
+            if (message)
+                Alert.Message("Opss", "Erro ao adicionar estoque, verifique os dados.", Alert.AlertType.error);
+            
             return false;
         }
 
@@ -107,25 +131,5 @@ namespace Emiplus.Model
 
             return false;
         }
-
-        #region CAMPOS
-
-        [Ignore] [Key("ID")] public int Id { get; set; }
-
-        public DateTime Criado { get; private set; }
-        public string id_empresa { get; private set; }
-        public int id_item { get; set; }
-        public int id_usuario { get; set; }
-        public double Quantidade { get; set; }
-        public string observacao { get; set; }
-        public string tipo { get; set; }
-        public string local { get; set; }
-        public double Anterior { get; set; }
-        public int Id_Pedido { get; set; }
-
-        public int id_sync { get; set; }
-        public string status_sync { get; set; }
-
-        #endregion CAMPOS
     }
 }

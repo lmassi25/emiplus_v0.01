@@ -1,0 +1,251 @@
+[18/05/2020 22:27:16 Fatal] Sincronização
+[18/05/2020 22:39:01 Fatal]  | Tabela: item - 
+[18/05/2020 23:22:04 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:22:05 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:22:06 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:22:06 Fatal]  | Tabela: nota - 
+[18/05/2020 23:22:07 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:22:08 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:22:08 Fatal] Sincronização
+[18/05/2020 23:22:21 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:22:22 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:22:23 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:22:23 Fatal]  | Tabela: nota - 
+[18/05/2020 23:22:24 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:22:25 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:22:25 Fatal] Sincronização
+[18/05/2020 23:22:38 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:22:39 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:22:40 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:22:41 Fatal]  | Tabela: nota - 
+[18/05/2020 23:22:41 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:22:42 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:22:43 Fatal] Sincronização
+[18/05/2020 23:22:55 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:22:56 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:22:57 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:22:58 Fatal]  | Tabela: nota - 
+[18/05/2020 23:22:58 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:22:59 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:23:00 Fatal] Sincronização
+[18/05/2020 23:23:12 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:23:13 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:23:14 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:23:15 Fatal]  | Tabela: nota - 
+[18/05/2020 23:23:15 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:23:16 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:23:17 Fatal] Sincronização
+[18/05/2020 23:23:29 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:23:30 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:23:31 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:23:32 Fatal]  | Tabela: nota - 
+[18/05/2020 23:23:32 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:23:33 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:23:34 Fatal] Sincronização
+[18/05/2020 23:23:46 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:23:47 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:23:48 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:23:49 Fatal]  | Tabela: nota - 
+[18/05/2020 23:23:49 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:23:50 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:23:51 Fatal] Sincronização
+[18/05/2020 23:24:03 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:24:04 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:24:05 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:24:06 Fatal]  | Tabela: nota - 
+[18/05/2020 23:24:06 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:24:07 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:24:08 Fatal] Sincronização
+[18/05/2020 23:24:20 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:24:21 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:24:22 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:24:23 Fatal]  | Tabela: nota - 
+[18/05/2020 23:24:23 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:24:24 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:24:25 Fatal] Sincronização
+[18/05/2020 23:24:37 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:24:38 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:24:39 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:24:40 Fatal]  | Tabela: nota - 
+[18/05/2020 23:24:40 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:24:41 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:24:42 Fatal] Sincronização
+[18/05/2020 23:24:54 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:24:55 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:24:56 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:24:57 Fatal]  | Tabela: nota - 
+[18/05/2020 23:24:57 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:24:58 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:24:59 Fatal] Sincronização
+[18/05/2020 23:25:11 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:25:12 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:25:13 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:25:14 Fatal]  | Tabela: nota - 
+[18/05/2020 23:25:14 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:25:15 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:25:16 Fatal] Sincronização
+[18/05/2020 23:25:28 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:25:29 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:25:30 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:25:31 Fatal]  | Tabela: nota - 
+[18/05/2020 23:25:31 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:25:32 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:25:33 Fatal] Sincronização
+[18/05/2020 23:25:45 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:25:46 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:25:47 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:25:47 Fatal]  | Tabela: nota - 
+[18/05/2020 23:25:48 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:25:49 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:25:49 Fatal] Sincronização
+[18/05/2020 23:26:02 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:26:03 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:26:04 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:26:04 Fatal]  | Tabela: nota - 
+[18/05/2020 23:26:05 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:26:06 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:26:06 Fatal] Sincronização
+[18/05/2020 23:26:19 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:26:20 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:26:21 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:26:22 Fatal]  | Tabela: nota - 
+[18/05/2020 23:26:22 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:26:23 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:26:24 Fatal] Sincronização
+[18/05/2020 23:26:36 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:26:37 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:26:38 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:26:39 Fatal]  | Tabela: nota - 
+[18/05/2020 23:26:39 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:26:40 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:26:41 Fatal] Sincronização
+[18/05/2020 23:26:53 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:26:54 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:26:55 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:26:55 Fatal]  | Tabela: nota - 
+[18/05/2020 23:26:56 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:26:57 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:26:57 Fatal] Sincronização
+[18/05/2020 23:27:10 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:27:11 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:27:12 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:27:12 Fatal]  | Tabela: nota - 
+[18/05/2020 23:27:13 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:27:14 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:27:14 Fatal] Sincronização
+[18/05/2020 23:27:27 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:27:28 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:27:29 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:27:29 Fatal]  | Tabela: nota - 
+[18/05/2020 23:27:30 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:27:31 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:27:31 Fatal] Sincronização
+[18/05/2020 23:27:44 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:27:45 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:27:46 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:27:46 Fatal]  | Tabela: nota - 
+[18/05/2020 23:27:47 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:27:48 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:27:48 Fatal] Sincronização
+[18/05/2020 23:28:01 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:28:02 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:28:03 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:28:04 Fatal]  | Tabela: nota - 
+[18/05/2020 23:28:05 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:28:05 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:28:06 Fatal] Sincronização
+[18/05/2020 23:28:19 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:28:19 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:28:20 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:28:21 Fatal]  | Tabela: nota - 
+[18/05/2020 23:28:22 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:28:22 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:28:23 Fatal] Sincronização
+[18/05/2020 23:28:36 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:28:36 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:28:37 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:28:38 Fatal]  | Tabela: nota - 
+[18/05/2020 23:28:39 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:28:39 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:28:40 Fatal] Sincronização
+[18/05/2020 23:28:53 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:28:54 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:28:55 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:28:55 Fatal]  | Tabela: nota - 
+[18/05/2020 23:28:56 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:28:57 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:28:57 Fatal] Sincronização
+[18/05/2020 23:29:10 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:29:11 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:29:12 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:29:12 Fatal]  | Tabela: nota - 
+[18/05/2020 23:29:13 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:29:13 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:29:14 Fatal] Sincronização
+[18/05/2020 23:29:27 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:29:28 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:29:28 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:29:29 Fatal]  | Tabela: nota - 
+[18/05/2020 23:29:30 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:29:30 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:29:31 Fatal] Sincronização
+[18/05/2020 23:29:44 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:29:45 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:29:46 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:29:46 Fatal]  | Tabela: nota - 
+[18/05/2020 23:29:47 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:29:48 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:29:48 Fatal] Sincronização
+[18/05/2020 23:30:01 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:30:02 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:30:03 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:30:03 Fatal]  | Tabela: nota - 
+[18/05/2020 23:30:04 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:30:05 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:30:05 Fatal] Sincronização
+[18/05/2020 23:30:18 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:30:19 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:30:20 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:30:20 Fatal]  | Tabela: nota - 
+[18/05/2020 23:30:21 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:30:22 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:30:22 Fatal] Sincronização
+[18/05/2020 23:30:35 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:30:36 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:30:37 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:30:37 Fatal]  | Tabela: nota - 
+[18/05/2020 23:30:38 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:30:39 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:30:39 Fatal] Sincronização
+[18/05/2020 23:30:52 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:30:53 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:30:54 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:30:54 Fatal]  | Tabela: nota - 
+[18/05/2020 23:30:55 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:30:56 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:30:56 Fatal] Sincronização
+[18/05/2020 23:31:09 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:31:10 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:31:11 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:31:11 Fatal]  | Tabela: nota - 
+[18/05/2020 23:31:12 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:31:13 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:31:13 Fatal] Sincronização
+[18/05/2020 23:31:26 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:31:27 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:31:28 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:31:28 Fatal]  | Tabela: nota - 
+[18/05/2020 23:31:29 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:31:30 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:31:30 Fatal] Sincronização
+[18/05/2020 23:31:43 Fatal]  | Tabela: item_mov_estoque - 
+[18/05/2020 23:31:44 Fatal]  | Tabela: pessoa - 
+[18/05/2020 23:31:45 Fatal]  | Tabela: titulo - 
+[18/05/2020 23:31:45 Fatal]  | Tabela: nota - 
+[18/05/2020 23:31:46 Fatal]  | Tabela: pedido - 
+[18/05/2020 23:31:47 Fatal]  | Tabela: pedido_item - 
+[18/05/2020 23:31:47 Fatal] Sincronização
+[19/05/2020 16:46:17 Fatal]  | Tabela: categoria - 
+[19/05/2020 16:47:10 Fatal]  | Tabela: categoria - 
+[19/05/2020 16:48:08 Fatal]  | Tabela: categoria - 
+[19/05/2020 16:48:09 Fatal] FAIL | Tabela: categoria - Nenhum registro encontrado

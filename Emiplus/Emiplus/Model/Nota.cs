@@ -32,6 +32,12 @@ namespace Emiplus.Model
         public int id_nota { get; set; }
         public string nr_serie_sat { get; set; }
 
+        /// <summary>
+        /// Necessário para a sincronização de dados
+        /// </summary>
+        [Ignore]
+        public bool IgnoringDefaults { get; set; }
+
         public Query FindByIdPedido(int id)
         {
             return Query().Where("id_pedido", id).Where("excluir", 0);
@@ -80,34 +86,35 @@ namespace Emiplus.Model
                 {
                     if (message)
                         Alert.Message("Tudo certo!", "Dados da Nota salvo com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
 
-                    return false;
+                    return true;
                 }
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao criar, verifique os dados.", Alert.AlertType.error);
             }
-            else
+            
+            if (data.Id > 0)
             {
-                data.status_sync = "UPDATE";
-                data.Atualizado = DateTime.Now;
+                if (!data.IgnoringDefaults)
+                {
+                    data.status_sync = "UPDATE";
+                    data.Atualizado = DateTime.Now;
+                }
+
                 if (Data(data).Update("ID", data.Id) == 1)
                 {
                     if (message)
                         Alert.Message("Tudo certo!", "Dados da Nota atualizado com sucesso.", Alert.AlertType.success);
-                }
-                else
-                {
-                    if (message)
-                        Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
 
-                    return false;
+                    return true;
                 }
+
+                if (message)
+                    Alert.Message("Opss", "Erro ao atualizar, verifique os dados.", Alert.AlertType.error);
             }
 
-            return true;
+            return false;
         }
 
         public bool Remove(int id)
