@@ -77,8 +77,9 @@ namespace Emiplus.View.Comercial
         {
             if (create)
             {
-                Id = 0;
+                Clientes.Id = 0;
                 OpenForm.Show<AddClientes>(this);
+                return;
             }
 
             if (GridLista.SelectedRows.Count > 0)

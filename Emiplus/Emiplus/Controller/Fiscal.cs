@@ -2209,8 +2209,8 @@ namespace Emiplus.Controller
                 xml.WriteElementString("uCom", _pedidoItem.Medida);
                 xml.WriteElementString("qCom", Validation.FormatPriceWithDot(_pedidoItem.Quantidade, 2));
                 xml.WriteElementString("vUnCom", Validation.FormatPriceWithDot(_pedidoItem.ValorVenda, 2));
-
-                xml.WriteElementString("vProd", Validation.FormatPriceWithDot(_pedidoItem.Total + _pedidoItem.Desconto));
+                xml.WriteElementString("vProd",
+                    Validation.FormatPriceWithDot(_pedidoItem.Total + _pedidoItem.Desconto - _pedidoItem.Frete));
 
                 //if(!String.IsNullOrEmpty(_pedidoItem.CEan))
                 //{
@@ -2228,6 +2228,9 @@ namespace Emiplus.Controller
 
                 if (_pedidoItem.Desconto > 0)
                     xml.WriteElementString("vDesc", Validation.FormatPriceWithDot(_pedidoItem.Desconto, 2));
+
+                if (_pedidoItem.Frete > 0)
+                    xml.WriteElementString("vFrete", Validation.FormatPriceWithDot(_pedidoItem.Frete));
 
                 xml.WriteElementString("indTot", "1");
 
