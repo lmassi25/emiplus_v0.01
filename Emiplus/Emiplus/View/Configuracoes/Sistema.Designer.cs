@@ -55,6 +55,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.syncAuto = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -73,7 +77,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(680, 40);
+            this.panel4.Size = new System.Drawing.Size(663, 40);
             this.panel4.TabIndex = 542;
             // 
             // btnExit
@@ -252,7 +256,7 @@
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(598, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(581, 4);
             this.visualSeparator3.TabIndex = 538;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -302,7 +306,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(37, 446);
+            this.label9.Location = new System.Drawing.Point(37, 558);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 25);
             this.label9.TabIndex = 546;
@@ -314,13 +318,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.visualSeparator2.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
-            this.visualSeparator2.Location = new System.Drawing.Point(32, 430);
+            this.visualSeparator2.Location = new System.Drawing.Point(32, 542);
             this.visualSeparator2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualSeparator2.Name = "visualSeparator2";
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(598, 4);
+            this.visualSeparator2.Size = new System.Drawing.Size(581, 4);
             this.visualSeparator2.TabIndex = 545;
             this.visualSeparator2.Text = "visualSeparator2";
             this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -367,7 +371,7 @@
             this.erros.ImageSize = new System.Drawing.Size(16, 16);
             this.erros.ImageVisible = false;
             this.erros.ImageWidth = 35;
-            this.erros.Location = new System.Drawing.Point(52, 483);
+            this.erros.Location = new System.Drawing.Point(52, 595);
             this.erros.MaxLength = 255;
             this.erros.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.erros.MultiLine = true;
@@ -411,7 +415,7 @@
             this.btnClearErroLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearErroLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnClearErroLog.Image = null;
-            this.btnClearErroLog.Location = new System.Drawing.Point(478, 635);
+            this.btnClearErroLog.Location = new System.Drawing.Point(461, 747);
             this.btnClearErroLog.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnClearErroLog.Name = "btnClearErroLog";
             this.btnClearErroLog.Size = new System.Drawing.Size(154, 27);
@@ -438,7 +442,7 @@
             this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator4.ShadowVisible = true;
-            this.visualSeparator4.Size = new System.Drawing.Size(598, 4);
+            this.visualSeparator4.Size = new System.Drawing.Size(581, 4);
             this.visualSeparator4.TabIndex = 549;
             this.visualSeparator4.Text = "visualSeparator4";
             this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -553,6 +557,96 @@
             this.label12.TabIndex = 555;
             this.label12.Text = "Observação: Compartilhe em Rede a pasta principal do sistema.";
             // 
+            // syncAuto
+            // 
+            this.syncAuto.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.syncAuto.BackColorState.Enabled = System.Drawing.Color.White;
+            this.syncAuto.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.syncAuto.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.Border.HoverVisible = true;
+            this.syncAuto.Border.Rounding = 20;
+            this.syncAuto.Border.Thickness = 1;
+            this.syncAuto.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.syncAuto.Border.Visible = true;
+            this.syncAuto.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.ButtonBorder.HoverVisible = true;
+            this.syncAuto.ButtonBorder.Rounding = 18;
+            this.syncAuto.ButtonBorder.Thickness = 1;
+            this.syncAuto.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.syncAuto.ButtonBorder.Visible = true;
+            this.syncAuto.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.syncAuto.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.syncAuto.ButtonSize = new System.Drawing.Size(20, 20);
+            this.syncAuto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.syncAuto.FalseTextToggle = "Não";
+            this.syncAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.syncAuto.Location = new System.Drawing.Point(238, 490);
+            this.syncAuto.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.syncAuto.Name = "syncAuto";
+            this.syncAuto.ProgressImage = null;
+            this.syncAuto.Size = new System.Drawing.Size(58, 25);
+            this.syncAuto.TabIndex = 562;
+            this.syncAuto.Text = "visualToggle1";
+            this.syncAuto.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.syncAuto.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.syncAuto.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.syncAuto.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.syncAuto.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.syncAuto.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.syncAuto.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.syncAuto.Toggled = true;
+            this.syncAuto.TrueTextToggle = "Sim";
+            this.syncAuto.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(36, 455);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 25);
+            this.label14.TabIndex = 560;
+            this.label14.Text = "Trocas";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(60, 494);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(168, 17);
+            this.label15.TabIndex = 561;
+            this.label15.Text = "Sincronização automática?";
+            // 
+            // visualSeparator5
+            // 
+            this.visualSeparator5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Line = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(222)))), ((int)(((byte)(220)))));
+            this.visualSeparator5.Location = new System.Drawing.Point(32, 432);
+            this.visualSeparator5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualSeparator5.Name = "visualSeparator5";
+            this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.visualSeparator5.ShadowVisible = true;
+            this.visualSeparator5.Size = new System.Drawing.Size(581, 4);
+            this.visualSeparator5.TabIndex = 563;
+            this.visualSeparator5.Text = "visualSeparator5";
+            this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualSeparator5.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualSeparator5.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // Sistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,6 +654,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.visualSeparator5);
+            this.Controls.Add(this.syncAuto);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -618,5 +716,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle syncAuto;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
     }
 }
