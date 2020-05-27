@@ -465,8 +465,6 @@ namespace Emiplus.View.Common
 
         public async Task StartSync()
         {
-            await RunSyncAsync("item");
-
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("caixa");
 
@@ -531,8 +529,11 @@ namespace Emiplus.View.Common
                     if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
                         if (!Home.syncActive)
                         {
-                            backWork.RunWorkerAsync();
-                            Home.syncActive = true;
+                            if (IniFile.Read("syncAuto", "APP") == "True")
+                            {
+                                backWork.RunWorkerAsync();
+                                Home.syncActive = true;
+                            }
                         }
 
                 timer1.Stop();

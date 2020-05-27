@@ -25,6 +25,14 @@ namespace Emiplus.View.Configuracoes
 
                 if (!string.IsNullOrEmpty(IniFile.Read("Remoto", "LOCAL")))
                     ip.Text = IniFile.Read("Remoto", "LOCAL");
+
+                if (!string.IsNullOrEmpty(IniFile.Read("syncAuto", "APP")))
+                    syncAuto.Toggled = IniFile.Read("syncAuto", "APP") == "True";
+            };
+
+            syncAuto.Click += (s, e) =>
+            {
+                IniFile.Write("syncAuto", syncAuto.Toggled ? "False" : "True", "APP");
             };
 
             AtualizaDb.Click += (s, e) =>
