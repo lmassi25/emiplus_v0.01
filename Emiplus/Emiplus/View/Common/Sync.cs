@@ -136,6 +136,15 @@ namespace Emiplus.View.Common
             {
                 case "OK" when string.IsNullOrEmpty(responseC["data"]?.ToString()):
                     return;
+                case "FAIL" when !string.IsNullOrEmpty(responseC["message"]?.ToString()) && responseC["message"]?.ToString() == "Nenhum registro encontrado":
+                    var datalocal = await GetAllDataAsync(table);
+                    if (datalocal != null)
+                        foreach (var item in datalocal)
+                        {
+                            await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                        }
+
+                    break;
                 case "OK":
                 {
                     var dataCreated = await GetAllDataAsync(table);
@@ -147,25 +156,25 @@ namespace Emiplus.View.Common
                             // Necessário caso o registro esteja como CREATED porém não esteja no banco online.
                             var toUpdate = true;
                             
-                            var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
-                            var dirs = JObject.Parse(responseC["data"].ToString())
-                                .Descendants()
-                                .OfType<JObject>()
-                                .Where(x=> x["ID"] != null && x["ID"] == item.ID)
-                                .Where(d => Convert.ToDateTime(d["ATUALIZADO"]).CompareTo(d2) >= 0)
-                                //.Select(x => new { ID = (int)x["ID"], ATUALIZADO = (string)x["ATUALIZADO"] })
-                                .FirstOrDefault();
+                            //var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+                            //var dirs = JObject.Parse(responseC["data"].ToString())
+                            //    .Descendants()
+                            //    .OfType<JObject>()
+                            //    .Where(x=> x["ID"] != null && x["ID"] == item.ID)
+                            //    .Where(d => Convert.ToDateTime(d["ATUALIZADO"]).CompareTo(d2) >= 0)
+                            //    //.Select(x => new { ID = (int)x["ID"], ATUALIZADO = (string)x["ATUALIZADO"] })
+                            //    .FirstOrDefault();
 
-                            if (dirs == null)
-                                await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
-                            else
-                            {
-                                if (Convert.ToDateTime(dirs["ATUALIZADO"]).CompareTo(d2) > 0)
-                                    UpdateLocalAsync(table, dirs.ToString());
-                            }
+                            //if (dirs == null)
+                            //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                            //else
+                            //{
+                            //    if (Convert.ToDateTime(dirs["ATUALIZADO"]).CompareTo(d2) > 0)
+                            //        UpdateLocalAsync(table, dirs.ToString());
+                            //}
                             
-                            continue;
-                            Console.WriteLine(dirs);
+                            //continue;
+                            //Console.WriteLine(dirs);
                             //Console.WriteLine(dirs?.ATUALIZADO);
                             //var dados = dirs.Find(x => x.ID == item.ID);
                             //Console.WriteLine(dados.ID);
@@ -180,7 +189,7 @@ namespace Emiplus.View.Common
                                 if (Validation.ConvertToInt32(data.First()["ID"]) == Validation.ConvertToInt32(item.ID))
                                 {
                                     var d1 = Convert.ToDateTime(data.First()["ATUALIZADO"]?.ToString());
-                                    //var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+                                    var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
                                     
                                     // atualizar o registro local com os dados do registro online pois o registro online está mais recente
                                     if (d1.CompareTo(d2) > 0) UpdateLocalAsync(table, data.First().ToString());
