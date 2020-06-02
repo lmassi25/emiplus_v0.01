@@ -3,9 +3,12 @@ Emiplus/Emiplus/obj/
 Emiplus/Emiplus/bin/
 Emiplus/Suporte Emiplus/obj/
 Emiplus/Suporte Emiplus/bin/
+Emiplus/Sincronizacao/obj/
+Emiplus/Sincronizacao/bin/
 EMIPLUS.FDB
 
 *.fbk
+*.cache
 
 # Prerequisites
 *.d
