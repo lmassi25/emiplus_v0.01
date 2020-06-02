@@ -33,9 +33,9 @@ namespace Emiplus.View.Comercial
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddClientes));
             this.barraTitulo = new System.Windows.Forms.Panel();
             this.Ativo = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.btnSalvar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
@@ -48,12 +48,16 @@ namespace Emiplus.View.Comercial
             this.panel1 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnAdicionarEndereco = new System.Windows.Forms.Button();
+            this.btnEditarEndereco = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelContatos = new System.Windows.Forms.Panel();
             this.ListaContatos = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnAdicionarContato = new System.Windows.Forms.Button();
+            this.btnEditarContato = new System.Windows.Forms.Button();
             this.tabTransporte = new System.Windows.Forms.TabPage();
             this.uf = new VisualPlus.Toolkit.Controls.Interactivity.VisualComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,10 +65,16 @@ namespace Emiplus.View.Comercial
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.placa = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnVideoAjuda = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.nascimento = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.nomeFantasia = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
@@ -81,16 +91,6 @@ namespace Emiplus.View.Comercial
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExit = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.btnVideoAjuda = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.btnHelp = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.btnAdicionarEndereco = new System.Windows.Forms.Button();
-            this.btnEditarEndereco = new System.Windows.Forms.Button();
-            this.btnAdicionarContato = new System.Windows.Forms.Button();
-            this.btnEditarContato = new System.Windows.Forms.Button();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.barraTitulo.SuspendLayout();
             this.credencial.SuspendLayout();
@@ -103,13 +103,13 @@ namespace Emiplus.View.Comercial
             ((System.ComponentModel.ISupportInitialize)(this.ListaContatos)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabTransporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.SuspendLayout();
             // 
@@ -365,6 +365,48 @@ namespace Emiplus.View.Comercial
             this.label11.TabIndex = 5;
             this.label11.Text = "Endereços:";
             // 
+            // btnAdicionarEndereco
+            // 
+            this.btnAdicionarEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionarEndereco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAdicionarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionarEndereco.FlatAppearance.BorderSize = 0;
+            this.btnAdicionarEndereco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarEndereco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarEndereco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAdicionarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarEndereco.Image")));
+            this.btnAdicionarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdicionarEndereco.Location = new System.Drawing.Point(573, 4);
+            this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
+            this.btnAdicionarEndereco.Size = new System.Drawing.Size(80, 60);
+            this.btnAdicionarEndereco.TabIndex = 1;
+            this.btnAdicionarEndereco.Text = "Adicionar";
+            this.btnAdicionarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdicionarEndereco.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarEndereco
+            // 
+            this.btnEditarEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarEndereco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarEndereco.FlatAppearance.BorderSize = 0;
+            this.btnEditarEndereco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarEndereco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarEndereco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEndereco.Image")));
+            this.btnEditarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditarEndereco.Location = new System.Drawing.Point(487, 4);
+            this.btnEditarEndereco.Name = "btnEditarEndereco";
+            this.btnEditarEndereco.Size = new System.Drawing.Size(80, 60);
+            this.btnEditarEndereco.TabIndex = 0;
+            this.btnEditarEndereco.Text = "Editar";
+            this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditarEndereco.UseVisualStyleBackColor = true;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelContatos);
@@ -460,6 +502,48 @@ namespace Emiplus.View.Comercial
             this.label12.Size = new System.Drawing.Size(94, 25);
             this.label12.TabIndex = 5;
             this.label12.Text = "Contatos:";
+            // 
+            // btnAdicionarContato
+            // 
+            this.btnAdicionarContato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionarContato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAdicionarContato.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdicionarContato.FlatAppearance.BorderSize = 0;
+            this.btnAdicionarContato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarContato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarContato.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAdicionarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarContato.Image")));
+            this.btnAdicionarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdicionarContato.Location = new System.Drawing.Point(575, 5);
+            this.btnAdicionarContato.Name = "btnAdicionarContato";
+            this.btnAdicionarContato.Size = new System.Drawing.Size(80, 60);
+            this.btnAdicionarContato.TabIndex = 1;
+            this.btnAdicionarContato.Text = "Adicionar";
+            this.btnAdicionarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdicionarContato.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarContato
+            // 
+            this.btnEditarContato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarContato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEditarContato.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarContato.FlatAppearance.BorderSize = 0;
+            this.btnEditarContato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarContato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarContato.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarContato.Image")));
+            this.btnEditarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditarContato.Location = new System.Drawing.Point(489, 5);
+            this.btnEditarContato.Name = "btnEditarContato";
+            this.btnEditarContato.Size = new System.Drawing.Size(80, 60);
+            this.btnEditarContato.TabIndex = 0;
+            this.btnEditarContato.Text = "Editar";
+            this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditarContato.UseVisualStyleBackColor = true;
             // 
             // tabTransporte
             // 
@@ -687,6 +771,16 @@ namespace Emiplus.View.Comercial
             this.placa.Watermark.Visible = false;
             this.placa.WordWrap = true;
             // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(60, 130);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 43;
+            this.pictureBox10.TabStop = false;
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -704,6 +798,74 @@ namespace Emiplus.View.Comercial
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(733, 40);
             this.panel4.TabIndex = 79;
+            // 
+            // btnVideoAjuda
+            // 
+            this.btnVideoAjuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVideoAjuda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVideoAjuda.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnVideoAjuda.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnVideoAjuda.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnVideoAjuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnVideoAjuda.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnVideoAjuda.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVideoAjuda.Border.HoverVisible = true;
+            this.btnVideoAjuda.Border.Rounding = 6;
+            this.btnVideoAjuda.Border.Thickness = 1;
+            this.btnVideoAjuda.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnVideoAjuda.Border.Visible = true;
+            this.btnVideoAjuda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVideoAjuda.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnVideoAjuda.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVideoAjuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnVideoAjuda.Image = ((System.Drawing.Image)(resources.GetObject("btnVideoAjuda.Image")));
+            this.btnVideoAjuda.Location = new System.Drawing.Point(640, 6);
+            this.btnVideoAjuda.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnVideoAjuda.Name = "btnVideoAjuda";
+            this.btnVideoAjuda.Size = new System.Drawing.Size(37, 30);
+            this.btnVideoAjuda.TabIndex = 40058;
+            this.btnVideoAjuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVideoAjuda.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnVideoAjuda.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnVideoAjuda.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnVideoAjuda.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnVideoAjuda.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnVideoAjuda.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnVideoAjuda.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
+            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHelp.Border.HoverVisible = true;
+            this.btnHelp.Border.Rounding = 6;
+            this.btnHelp.Border.Thickness = 1;
+            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnHelp.Border.Visible = true;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            this.btnHelp.Location = new System.Drawing.Point(683, 6);
+            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(37, 30);
+            this.btnHelp.TabIndex = 40055;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // label5
             // 
@@ -727,6 +889,16 @@ namespace Emiplus.View.Comercial
             this.label6.TabIndex = 50;
             this.label6.Text = "Clientes";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(286, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -738,6 +910,27 @@ namespace Emiplus.View.Comercial
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 30;
             this.label4.Text = "Comercial";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(109, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(205, 11);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
             // 
             // nascimento
             // 
@@ -1257,199 +1450,6 @@ namespace Emiplus.View.Comercial
             this.pictureBox13.TabIndex = 38;
             this.pictureBox13.TabStop = false;
             // 
-            // btnVideoAjuda
-            // 
-            this.btnVideoAjuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVideoAjuda.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnVideoAjuda.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnVideoAjuda.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnVideoAjuda.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnVideoAjuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnVideoAjuda.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnVideoAjuda.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnVideoAjuda.Border.HoverVisible = true;
-            this.btnVideoAjuda.Border.Rounding = 6;
-            this.btnVideoAjuda.Border.Thickness = 1;
-            this.btnVideoAjuda.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnVideoAjuda.Border.Visible = true;
-            this.btnVideoAjuda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVideoAjuda.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnVideoAjuda.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVideoAjuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnVideoAjuda.Image = ((System.Drawing.Image)(resources.GetObject("btnVideoAjuda.Image")));
-            this.btnVideoAjuda.Location = new System.Drawing.Point(640, 6);
-            this.btnVideoAjuda.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnVideoAjuda.Name = "btnVideoAjuda";
-            this.btnVideoAjuda.Size = new System.Drawing.Size(37, 30);
-            this.btnVideoAjuda.TabIndex = 40058;
-            this.btnVideoAjuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnVideoAjuda.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnVideoAjuda.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnVideoAjuda.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnVideoAjuda.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnVideoAjuda.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnVideoAjuda.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnVideoAjuda.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.BackColorState.Enabled = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Hover = System.Drawing.Color.White;
-            this.btnHelp.BackColorState.Pressed = System.Drawing.Color.White;
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHelp.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.btnHelp.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.Border.HoverVisible = true;
-            this.btnHelp.Border.Rounding = 6;
-            this.btnHelp.Border.Thickness = 1;
-            this.btnHelp.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.btnHelp.Border.Visible = true;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnHelp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
-            this.btnHelp.Location = new System.Drawing.Point(683, 6);
-            this.btnHelp.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(37, 30);
-            this.btnHelp.TabIndex = 40055;
-            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnHelp.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.btnHelp.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
-            this.btnHelp.TextStyle.Hover = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.Pressed = System.Drawing.Color.White;
-            this.btnHelp.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.btnHelp.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(286, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(109, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(205, 11);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // btnAdicionarEndereco
-            // 
-            this.btnAdicionarEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionarEndereco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAdicionarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionarEndereco.FlatAppearance.BorderSize = 0;
-            this.btnAdicionarEndereco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarEndereco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionarEndereco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAdicionarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarEndereco.Image")));
-            this.btnAdicionarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarEndereco.Location = new System.Drawing.Point(573, 4);
-            this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
-            this.btnAdicionarEndereco.Size = new System.Drawing.Size(80, 60);
-            this.btnAdicionarEndereco.TabIndex = 1;
-            this.btnAdicionarEndereco.Text = "Adicionar";
-            this.btnAdicionarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionarEndereco.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarEndereco
-            // 
-            this.btnEditarEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarEndereco.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEditarEndereco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditarEndereco.FlatAppearance.BorderSize = 0;
-            this.btnEditarEndereco.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEditarEndereco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEditarEndereco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarEndereco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEditarEndereco.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEndereco.Image")));
-            this.btnEditarEndereco.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarEndereco.Location = new System.Drawing.Point(487, 4);
-            this.btnEditarEndereco.Name = "btnEditarEndereco";
-            this.btnEditarEndereco.Size = new System.Drawing.Size(80, 60);
-            this.btnEditarEndereco.TabIndex = 0;
-            this.btnEditarEndereco.Text = "Editar";
-            this.btnEditarEndereco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditarEndereco.UseVisualStyleBackColor = true;
-            // 
-            // btnAdicionarContato
-            // 
-            this.btnAdicionarContato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionarContato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAdicionarContato.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionarContato.FlatAppearance.BorderSize = 0;
-            this.btnAdicionarContato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarContato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionarContato.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAdicionarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionarContato.Image")));
-            this.btnAdicionarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionarContato.Location = new System.Drawing.Point(575, 5);
-            this.btnAdicionarContato.Name = "btnAdicionarContato";
-            this.btnAdicionarContato.Size = new System.Drawing.Size(80, 60);
-            this.btnAdicionarContato.TabIndex = 1;
-            this.btnAdicionarContato.Text = "Adicionar";
-            this.btnAdicionarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionarContato.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarContato
-            // 
-            this.btnEditarContato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarContato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEditarContato.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditarContato.FlatAppearance.BorderSize = 0;
-            this.btnEditarContato.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEditarContato.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEditarContato.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarContato.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEditarContato.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarContato.Image")));
-            this.btnEditarContato.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditarContato.Location = new System.Drawing.Point(489, 5);
-            this.btnEditarContato.Name = "btnEditarContato";
-            this.btnEditarContato.Size = new System.Drawing.Size(80, 60);
-            this.btnEditarContato.TabIndex = 0;
-            this.btnEditarContato.Text = "Editar";
-            this.btnEditarContato.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditarContato.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(60, 130);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 43;
-            this.pictureBox10.TabStop = false;
-            // 
             // pictureBox14
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Transparent;
@@ -1508,14 +1508,14 @@ namespace Emiplus.View.Comercial
             this.panel3.PerformLayout();
             this.tabTransporte.ResumeLayout(false);
             this.tabTransporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
