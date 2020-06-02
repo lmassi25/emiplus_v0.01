@@ -344,7 +344,6 @@ namespace Emiplus.View.Common
             workerBackground.DoWork += (s, e) =>
             {
                 GetDados();
-                new Estoque().GerarEstoque();
 
                 aReceber = GetValues("Receber");
                 aPagar = GetValues("Pagar");

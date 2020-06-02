@@ -535,6 +535,11 @@ namespace Emiplus.View.Comercial
                 KeyDowns(s, e);
             };
 
+            btnTotais.Click += (s, e) =>
+            {
+                OpenForm.Show<PedidoTotais>(this);
+            };
+
             btnSearch.Click += (s, e) => Filter();
 
             btnAdicionar.Click += (s, e) => { EditPedido(true); };

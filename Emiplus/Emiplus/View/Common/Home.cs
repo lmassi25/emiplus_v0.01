@@ -467,6 +467,8 @@ namespace Emiplus.View.Common
 
                 Program.SetPermissions();
                 CadastroNotaSalva();
+
+                new Estoque().GerarEstoque();
             };
 
             btnSuporteOnline.Click += (s, e) => Process.Start($@"{Program.PATH_BASE}\Suporte Emiplus.exe");
