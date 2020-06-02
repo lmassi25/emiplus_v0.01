@@ -205,6 +205,8 @@ namespace Emiplus.Controller
 
             query.OrderByDesc("pedido.id");
 
+            query.Limit(150);
+
             return query.GetAsync<dynamic>();
         }
 

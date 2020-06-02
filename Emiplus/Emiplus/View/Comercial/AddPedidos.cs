@@ -1304,6 +1304,7 @@ namespace Emiplus.View.Comercial
 
                 _mPedido = _mPedido.FindById(Id).First<Model.Pedido>();
                 _mPedido.Id = Id;
+                _mPedido.Emissao = DateTime.Now;
                 _mPedido.Tipo = "Vendas";
                 if (_mPedido.Save(_mPedido))
                 {

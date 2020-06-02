@@ -98,39 +98,42 @@ namespace Emiplus.View.Fiscal
                         _mPedido = _mPedido.FindById(_mNota.id_pedido).FirstOrDefault<Model.Pedido>();
                     }
                 }
-                    
-                if (!TelaDados.telaDados)
+
+                if(_mNota.Status == "Pendente")
                 {
-                    var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
-                    if (result)
+                    if (!TelaDados.telaDados)
                     {
-                        //if (Id > 0)
-                        //{
-                        //    _mPedido.Excluir = 1;
-                        //    if (_mPedido.Save(_mPedido))
-                        //    {
-                        //        _mNota.Excluir = 1;
-                        //        _mNota.Save(_mNota, false);
-                        //    }
-
-                        //    TelaDados.telaDados = true;                            
-                        //    Close();
-                        //}
-
-                        if (_mPedido != null)
+                        var result = AlertOptions.Message("Atenção!", "Você está prestes a excluir! Deseja continuar?", AlertBig.AlertType.warning, AlertBig.AlertBtn.YesNo);
+                        if (result)
                         {
-                            if (_mPedido.Tipo == "NFe")
+                            //if (Id > 0)
+                            //{
+                            //    _mPedido.Excluir = 1;
+                            //    if (_mPedido.Save(_mPedido))
+                            //    {
+                            //        _mNota.Excluir = 1;
+                            //        _mNota.Save(_mNota, false);
+                            //    }
+
+                            //    TelaDados.telaDados = true;                            
+                            //    Close();
+                            //}
+
+                            if (_mPedido != null)
                             {
-                                _mPedido.Excluir = 1;
-                                _mPedido.Save(_mPedido);
+                                if (_mPedido.Tipo == "NFe")
+                                {
+                                    _mPedido.Excluir = 1;
+                                    _mPedido.Save(_mPedido);
+                                }
                             }
-                        }
 
-                        if (_mNota != null)
-                        {
-                            _mNota.Excluir = 1;
-                            _mNota.id_pedido = 0;
-                            _mNota.Save(_mNota, false);
+                            if (_mNota != null)
+                            {
+                                _mNota.Excluir = 1;
+                                _mNota.id_pedido = 0;
+                                _mNota.Save(_mNota, false);
+                            }
                         }
                     }
                 }
