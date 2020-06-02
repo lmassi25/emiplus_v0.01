@@ -241,7 +241,7 @@ namespace Emiplus.Controller
 
             if (Pedido > 0)
                 _pedido = new Model.Pedido().FindById(Pedido).First<Model.Pedido>();
-
+            
             //_emitente = new Model.Pessoa().FindById(_id_empresa).First<Model.Pessoa>();
             _emitente = new Model.Pessoa();
 
@@ -1254,6 +1254,9 @@ namespace Emiplus.Controller
                         #endregion PATH
 
                         #region XML
+
+                        //_pedido.Emissao = DateTime.Now;
+                        //_pedido.Saida = DateTime.Now;
 
                         var xml = new XmlTextWriter(strFilePath, Encoding.UTF8);
                         xml.Formatting = Formatting.Indented;

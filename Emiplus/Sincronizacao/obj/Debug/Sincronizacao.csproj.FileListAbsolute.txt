@@ -215,7 +215,6 @@ C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csprojAssemblyRef
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.exe.config
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.Properties.Resources.resources
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.GenerateResource.cache
-C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.CoreCompileInputs.cache
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.CopyComplete
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.exe
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.pdb

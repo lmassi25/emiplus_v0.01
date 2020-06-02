@@ -38,7 +38,6 @@ namespace Emiplus
         ///     Caminho definido no Config.ini
         /// </summary>
         public static string PATH_BASE { get; set; }
-
         public static string IP_REMOTO { get; set; }
         public static string PATH_IMAGE { get; set; }
 
