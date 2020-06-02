@@ -373,8 +373,8 @@ namespace Emiplus.Controller
 
             if (!noFilterData)
             {
-                query.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial));
-                query.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal));
+                query.Where("nota.criado", ">=", $@"{Validation.ConvertDateToSql(dataInicial)} 00:00:00");
+                query.Where("nota.criado", "<=", $@"{Validation.ConvertDateToSql(dataFinal)} 23:59:59");
             }
 
             query.Where("nota.tipo", tipo);
