@@ -658,8 +658,12 @@ namespace Emiplus.View.Comercial
 
             var data = new ArrayList();
             double total = 0;
+            int qtd = 0;
             foreach (var item in dados)
             {
+                total += Validation.ConvertToDouble(item.TOTAL);
+                qtd += 1;
+
                 var statusNfePedido = "";
 
                 switch (Home.pedidoPage)
@@ -717,7 +721,7 @@ namespace Emiplus.View.Comercial
 
                 #endregion N° SEFAZ
 
-                total = Validation.ConvertToDouble(item.TOTAL) + Validation.ConvertToDouble(item.TOTAL);
+                //total = Validation.ConvertToDouble(item.TOTAL) + Validation.ConvertToDouble(item.TOTAL);
                 data.Add(new
                 {
                     //.Select("pedido.id", "pedido.emissao", "pedido.total", "pessoa.nome", "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir")
@@ -746,8 +750,7 @@ namespace Emiplus.View.Comercial
                     TOTAL = Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL))
                 });
 
-            var dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked,
-                Validation.ConvertToInt32(Status.SelectedValue));
+            var dados3 = _cPedido.GetTotaisNota("NFe", dataInicial.Text, dataFinal.Text, noFilterData.Checked, Validation.ConvertToInt32(Status.SelectedValue));
             var data3 = new ArrayList();
             foreach (var item in dados3)
                 data3.Add(new
@@ -791,7 +794,9 @@ namespace Emiplus.View.Comercial
                 Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
                 dataInicial = dataInicial.Text,
                 dataFinal = dataFinal.Text,
-                Titulo = Home.pedidoPage
+                Titulo = Home.pedidoPage,
+                totalSomado = Validation.FormatPrice(total, true),
+                quantidadeRegistros = qtd
             }));
 
             Browser.htmlRender = render;

@@ -476,45 +476,59 @@ namespace Emiplus.View.Common
         {
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("caixa");
+            new Log().Add("SYNC", "Caixa", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("caixa_mov");
+            new Log().Add("SYNC", "Caixa Mov", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("imposto");
+            new Log().Add("SYNC", "Imposto", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("categoria");
+            new Log().Add("SYNC", "Categoria", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("item");
+            new Log().Add("SYNC", "Item", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("item_mov_estoque");
+            new Log().Add("SYNC", "Item Mov Estoque", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("natureza");
+            new Log().Add("SYNC", "Natureza", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pessoa");
+            new Log().Add("SYNC", "Pessoa", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pessoa_contato");
+            new Log().Add("SYNC", "Pessoa Contato", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pessoa_endereco");
+            new Log().Add("SYNC", "Pessoa End", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("titulo");
+            new Log().Add("SYNC", "Titulo", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("nota");
+            new Log().Add("SYNC", "Nota", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pedido");
+            new Log().Add("SYNC", "Pedido", Log.LogType.fatal);
 
             if (Support.CheckForInternetConnection())
                 await RunSyncAsync("pedido_item");
+            new Log().Add("SYNC", "Pedido Item", Log.LogType.fatal);
 
             LastSync();
         }
