@@ -85,6 +85,7 @@
             this.bText = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.aLabel = new System.Windows.Forms.Label();
             this.aText = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.btnTotais = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
@@ -112,6 +113,7 @@
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
+            this.panel5.Controls.Add(this.btnTotais);
             this.panel5.Controls.Add(this.imprimir);
             this.panel5.Location = new System.Drawing.Point(0, 638);
             this.panel5.Name = "panel5";
@@ -1514,6 +1516,40 @@
             this.aText.Watermark.Visible = false;
             this.aText.WordWrap = true;
             // 
+            // btnTotais
+            // 
+            this.btnTotais.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnTotais.BackColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnTotais.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnTotais.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnTotais.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTotais.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.btnTotais.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(148)))), ((int)(((byte)(182)))));
+            this.btnTotais.Border.HoverVisible = true;
+            this.btnTotais.Border.Rounding = 6;
+            this.btnTotais.Border.Thickness = 1;
+            this.btnTotais.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnTotais.Border.Visible = true;
+            this.btnTotais.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTotais.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnTotais.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotais.ForeColor = System.Drawing.Color.White;
+            this.btnTotais.Image = null;
+            this.btnTotais.Location = new System.Drawing.Point(125, 5);
+            this.btnTotais.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnTotais.Name = "btnTotais";
+            this.btnTotais.Size = new System.Drawing.Size(149, 30);
+            this.btnTotais.TabIndex = 558;
+            this.btnTotais.Text = "Consultar Totais";
+            this.btnTotais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTotais.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnTotais.TextStyle.Enabled = System.Drawing.Color.White;
+            this.btnTotais.TextStyle.Hover = System.Drawing.Color.White;
+            this.btnTotais.TextStyle.Pressed = System.Drawing.Color.White;
+            this.btnTotais.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnTotais.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnTotais.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1602,5 +1638,6 @@
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox bText;
         private System.Windows.Forms.Label aLabel;
         private VisualPlus.Toolkit.Controls.Editors.VisualTextBox aText;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton btnTotais;
     }
 }
