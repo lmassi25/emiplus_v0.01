@@ -167,7 +167,6 @@ namespace Emiplus.View.Common
                 }
 
                 var getUser = user.FindAll().Where("email", email.Text).FirstOrDefault<Usuarios>();
-
                 if (getUser != null)
                 {
                     //var decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);

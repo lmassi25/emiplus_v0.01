@@ -397,8 +397,11 @@ namespace Emiplus.View.Financeiro
                     recebido.Enabled = false;
                 }
             };
-            
+
             menuTaxas.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelTaxas, menuTaxas);
+            label16.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelTaxas, menuTaxas);
+            pictureBox9.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelTaxas, menuTaxas);
+
             menuBoleto.Click += (s, e) => Support.DynamicPanel(flowLayoutPanel, panelBoleto, menuBoleto);
 
             btnExit.Click += (s, e) => Close();
