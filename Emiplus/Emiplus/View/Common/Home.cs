@@ -439,28 +439,34 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += (s, e) =>
             {
-                if (!File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
+                if (Support.CheckForInternetConnection())
                 {
-                    using (var client = new WebClient())
+                    if (!File.Exists($@"{Program.PATH_BASE}\Suporte Emiplus.exe"))
                     {
-                        client.DownloadFileAsync(
-                            new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe"),
-                            "Suporte Emiplus.exe");
-                    }
+                        using (var client = new WebClient())
+                        {
+                            client.DownloadFileAsync(
+                                new Uri("https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe"),
+                                "Suporte Emiplus.exe");
+                        }
 
-                    using (var client = new WebClient())
-                    {
-                        client.DownloadFileAsync(
-                            new Uri(
-                                "https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe.config"),
-                            "Suporte Emiplus.exe.config");
+                        using (var client = new WebClient())
+                        {
+                            client.DownloadFileAsync(
+                                new Uri(
+                                    "https://github.com/lmassi25/files/releases/download/Install/Suporte.Emiplus.exe.config"),
+                                "Suporte Emiplus.exe.config");
+                        }
                     }
                 }
 
                 var backup = new BackupAutomatico();
-                backup.StartBackup();
+                if (Support.CheckForInternetConnection())
+                {
+                    backup.StartBackup();
+                    backup.StartBackupCupom();
+                }
                 backup.BackupLocalDocuments();
-                backup.StartBackupCupom();
 
                 GerarTitulosRecorrentes();
                 LimparRegistros();
