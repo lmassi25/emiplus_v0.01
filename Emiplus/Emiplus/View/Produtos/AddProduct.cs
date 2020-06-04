@@ -436,35 +436,38 @@ namespace Emiplus.View.Produtos
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
 
-            if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
-                if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
-                {
-                    var data = new IBPT()
-                        .SetCodeBarras(_modelItem.CodeBarras)
-                        .SetDescricao(_modelItem.Nome)
-                        .SetMedida(_modelItem.Medida)
-                        .SetValor(_modelItem.ValorVenda)
-                        .SetCodigoNCM(_modelItem.Ncm)
-                        .GetDados();
-
-                    if (data != null)
+            if (Support.CheckForInternetConnection())
+            {
+                if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
+                    if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
                     {
-                        if (data.Message != null)
-                        {
-                            aliq_federal.Text = "0";
-                            aliq_estadual.Text = "0";
-                            aliq_municipal.Text = "0";
-                        }
-                        else
-                        {
-                            var s = JsonConvert.DeserializeObject(data.ToString());
+                        var data = new IBPT()
+                            .SetCodeBarras(_modelItem.CodeBarras)
+                            .SetDescricao(_modelItem.Nome)
+                            .SetMedida(_modelItem.Medida)
+                            .SetValor(_modelItem.ValorVenda)
+                            .SetCodigoNCM(_modelItem.Ncm)
+                            .GetDados();
 
-                            aliq_federal.Text = Validation.Price(s?.Nacional.Value);
-                            aliq_estadual.Text = Validation.Price(s?.Estadual.Value);
-                            aliq_municipal.Text = Validation.Price(s?.Municipal.Value);
+                        if (data != null)
+                        {
+                            if (data.Message != null)
+                            {
+                                aliq_federal.Text = "0";
+                                aliq_estadual.Text = "0";
+                                aliq_municipal.Text = "0";
+                            }
+                            else
+                            {
+                                var s = JsonConvert.DeserializeObject(data.ToString());
+
+                                aliq_federal.Text = Validation.Price(s?.Nacional.Value);
+                                aliq_estadual.Text = Validation.Price(s?.Estadual.Value);
+                                aliq_municipal.Text = Validation.Price(s?.Municipal.Value);
+                            }
                         }
                     }
-                }
+            }
 
             if (_modelItem.Ncm == "0")
             {
