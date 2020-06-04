@@ -170,9 +170,9 @@ namespace Emiplus.View.Common
 
                 if (getUser != null)
                 {
-                    var decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
+                    //var decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
 
-                    if (decryptedstring != password.Text)
+                    if (getUser.senha != password.Text)
                     {
                         Alert.Message("Opps", "Senha incorreta!", Alert.AlertType.error);
                         return;
