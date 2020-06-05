@@ -706,7 +706,7 @@ namespace Emiplus.View.Comercial
             if (form.ShowDialog() != DialogResult.OK)
                 return;
 
-            BuscarProduto.Text = PedidoModalItens.NomeProduto;
+            BuscarProduto.Text = PedidoModalItens.NomeProduto;            
             Preco.Text = Validation.FormatPrice(PedidoModalItens.ValorVendaProduto);
             PedidoModalItens.NomeProduto = "";
 
@@ -1338,7 +1338,11 @@ namespace Emiplus.View.Comercial
                             var item = _mItem.FindById(collection.Lookup(NomeProduto()[0])).FirstOrDefault<Item>();
                             if (item != null)
                             {
-                                Preco.Text = Validation.FormatPrice(item.ValorVenda);
+                                if(Home.pedidoPage == "Compras")
+                                    Preco.Text = Validation.FormatPrice(item.ValorCompra);
+                                else
+                                    Preco.Text = Validation.FormatPrice(item.ValorVenda);
+
                                 Medidas.SelectedItem = item.Medida;
                             }
 
