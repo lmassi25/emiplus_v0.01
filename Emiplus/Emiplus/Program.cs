@@ -92,8 +92,11 @@ namespace Emiplus
             }
             else
             {
-                var dataJson = File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
-                UserPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
+                if (File.Exists($".\\P{Settings.Default.user_id}.json"))
+                {
+                    var dataJson = File.ReadAllText($".\\P{Settings.Default.user_id}.json", Encoding.UTF8);
+                    UserPermissions = JsonConvert.DeserializeObject<ArrayList>(dataJson);
+                }
             }
         }
     }
