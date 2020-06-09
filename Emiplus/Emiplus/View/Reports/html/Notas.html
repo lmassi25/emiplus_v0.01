@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="https://www.emiplus.com.br/app/templates/default/assets/css/bootstrap.min.css">
+    <link href="https://www.emiplus.com.br/razor/css/Relatorio.css?v=58" rel="stylesheet" />
+    <style>
+        @page {
+            size: A4 landscape
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        <div class="page">
+
+            <div class="row header">
+                <div class="col-sm-6 logo"><img src="https://www.emiplus.com.br/{{Logo}}"></div>
+                <div class="col-sm-6">
+                    <div class="infos-top">
+                        <span class="title_empresa">{{NomeFantasia}}</span>
+                        <span><strong>Emitido:</strong> {{Emissao}}</span>
+                        <span><strong>Período:</strong> {{dataInicial}} á {{dataFinal}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">{{Titulo}}</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">{% if Titulo == "Notas" %} N° Sefaz / Série {% else if Titulo == "Cupons" %} N° Sefaz {% else %}N°{% endif %}</th>
+                        <th scope="col">Emissão</th>
+                        <th scope="col">Cliente</th>
+						<th style="text-align: right;" scope="col">Total</th>
+                        <th scope="col">Colaborador</th>
+						<th scope="col">Criado em</th>
+						<th scope="col">Status</th>
+						<th scope="col">Chave de Acesso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Data %}
+                    <tr>
+                        <td>{% if Titulo == "Notas" %} {{item.n_nfe}} {% else if Titulo == "Cupons" %} {{item.n_cfe}}{% else %}{{item.ID}}{% endif %}</td>
+                        <td>{{item.EMISSAO}}</td>
+                        <td>{{item.CLIENTE}}</td>
+                        <td style="text-align: right;">{{item.TOTAL}}</td>
+                        <td>{{item.COLABORADOR}}</td>
+                        <td>{{item.CRIADO}}</td>
+                        <td>{{item.STATUS}}</td>
+                        <td>{{item.CHAVEDEACESSO}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          
+            <table class="table table-borderless">
+                <tbody>
+                    <tr style="text-align: right;">
+                        <td>
+                            <strong>TOTAL {{totalSomado}}</strong>
+                            <br/>
+                            <strong>{{quantidadeRegistros}} registro(s) encontrado(s).</strong>
+                        </td>
+                    </tr>
+                    <tr style="text-align: right;">
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+ 
+        </div>
+
+    </div>
+</body>
+</html>
