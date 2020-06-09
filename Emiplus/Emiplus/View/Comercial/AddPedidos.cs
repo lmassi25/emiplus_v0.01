@@ -1306,6 +1306,8 @@ namespace Emiplus.View.Comercial
                 _mPedido.Id = Id;
                 _mPedido.Emissao = DateTime.Now;
                 _mPedido.Tipo = "Vendas";
+                _mPedido.Id_Caixa = Home.idCaixa;
+
                 if (_mPedido.Save(_mPedido))
                 {
                     BuscarProduto.Enabled = true;
