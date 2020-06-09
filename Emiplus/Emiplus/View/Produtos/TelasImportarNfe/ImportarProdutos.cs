@@ -594,7 +594,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                                 estoque = 0;
                                 break;
                             case 3:
-                                estoque = Validation.ConvertToDouble(item.Cells[6].Value);
+                                //estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
                                 break;
                         }
 

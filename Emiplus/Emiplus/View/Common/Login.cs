@@ -16,6 +16,9 @@ namespace Emiplus.View.Common
 {
     public partial class Login : Form
     {
+
+        private Model.Usuarios _mUsuarios = new Usuarios();
+
         public Login()
         {
             InitializeComponent();
@@ -117,42 +120,66 @@ namespace Emiplus.View.Common
 
                 Settings.Default.Save();
 
-                var usuarios = new Usuarios();
-                var userId = Settings.Default.user_sub_user == 0
-                    ? Settings.Default.user_id
-                    : Settings.Default.user_sub_user;
-                var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}")
-                    .Content().Response();
-                usuarios.Delete("excluir", 0);
-                foreach (var item in dataUser)
+                //var usuarios = new Usuarios();
+                int idUser = Validation.ConvertToInt32(jo["user"]["id"]);
+                _mUsuarios = _mUsuarios.FindByUserId(idUser).FirstOrDefault<Usuarios>();
+                if (_mUsuarios == null)
                 {
-                    var nameComplete = $"{item.Value["name"]} {item.Value["lastname"]}";
-                    var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
-                    if (exists == null)
-                    {
-                        usuarios.Id = 0;
-                        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
-                        usuarios.Nome = nameComplete;
-                        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
-                        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
-                        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
-                        usuarios.email = item.Value["email"]?.ToString();
-                        usuarios.senha = item.Value["senha"]?.ToString();
-                    }
-                    else
-                    {
-                        usuarios.Id = exists.ID;
-                        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
-                        usuarios.Nome = nameComplete;
-                        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
-                        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
-                        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
-                        usuarios.email = item.Value["email"]?.ToString();
-                        usuarios.senha = item.Value["senha"]?.ToString();
-                    }
-
-                    usuarios.Save(usuarios);
+                    _mUsuarios.Id = 0;
+                    _mUsuarios.Excluir = 0;
+                    _mUsuarios.Nome = $@"{jo["user"]["name"].ToString()} {jo["user"]["lastname"].ToString()}";
+                    _mUsuarios.Id_User = Validation.ConvertToInt32(jo["user"]["id"]);
+                    _mUsuarios.Comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
+                    _mUsuarios.Sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
+                    _mUsuarios.email = jo["user"]["email"].ToString();
+                    _mUsuarios.senha = password.Text;
                 }
+                else
+                {
+                    _mUsuarios.Nome = $@"{jo["user"]["name"].ToString()} {jo["user"]["lastname"].ToString()}";
+                    _mUsuarios.Id_User = Validation.ConvertToInt32(jo["user"]["id"]);
+                    _mUsuarios.Comissao = Validation.ConvertToInt32(jo["user"]["comissao"]);
+                    _mUsuarios.Sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
+                    _mUsuarios.email = jo["user"]["email"].ToString();
+                    _mUsuarios.senha = password.Text;
+                }
+                _mUsuarios.Save(_mUsuarios);
+
+                //var userId = Settings.Default.user_sub_user == 0
+                //    ? Settings.Default.user_id
+                //    : Settings.Default.user_sub_user;
+                //var dataUser = new RequestApi().URL($"{Program.URL_BASE}/api/listall/{Program.TOKEN}/{userId}")
+                //    .Content().Response();
+                //usuarios.Delete("excluir", 0);
+                //foreach (var item in dataUser)
+                //{
+                //    var nameComplete = $"{item.Value["name"]} {item.Value["lastname"]}";
+                //    var exists = usuarios.FindByUserId(Validation.ConvertToInt32(item.Value["id"])).FirstOrDefault();
+                //    if (exists == null)
+                //    {
+                //        usuarios.Id = 0;
+                //        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
+                //        usuarios.Nome = nameComplete;
+                //        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                //        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                //        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
+                //        usuarios.email = item.Value["email"]?.ToString();
+                //        usuarios.senha = item.Value["senha"]?.ToString();
+                //    }
+                //    else
+                //    {
+                //        usuarios.Id = exists.ID;
+                //        usuarios.Excluir = Validation.ConvertToInt32(item.Value["excluir"]);
+                //        usuarios.Nome = nameComplete;
+                //        usuarios.Id_User = Validation.ConvertToInt32(item.Value["id"]);
+                //        usuarios.Comissao = Validation.ConvertToInt32(item.Value["comissao"]);
+                //        usuarios.Sub_user = Validation.ConvertToInt32(item.Value["sub_user"]);
+                //        usuarios.email = item.Value["email"]?.ToString();
+                //        usuarios.senha = item.Value["senha"]?.ToString();
+                //    }
+
+                //    usuarios.Save(usuarios);
+                //}
             }
             else
             {
@@ -169,8 +196,6 @@ namespace Emiplus.View.Common
                 var getUser = user.FindAll().Where("email", email.Text).FirstOrDefault<Usuarios>();
                 if (getUser != null)
                 {
-                    //var decryptedstring = StringCipher.Decrypt(getUser.senha, password.Text);
-
                     if (getUser.senha != password.Text)
                     {
                         Alert.Message("Opps", "Senha incorreta!", Alert.AlertType.error);
