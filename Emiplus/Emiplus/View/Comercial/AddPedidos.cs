@@ -970,8 +970,7 @@ namespace Emiplus.View.Comercial
                             // Class Estoque -> Se for igual 'Compras', adiciona a quantidade no estoque do Item, se não Remove a quantidade do estoque do Item
                             case "Compras":
                             case "Devoluções":
-                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add()
-                                    .Item();
+                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add().Item();
                                 break;
                             case "Remessas":
                                 new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}")

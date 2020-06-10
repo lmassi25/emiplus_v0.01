@@ -12,6 +12,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
     public partial class ImportarProdutosConcluido : Form
     {
         private Item _mItem = new Item();
+        private ItemEstoqueMovimentacao _mItemEstoqueMovimentacao = new ItemEstoqueMovimentacao();
 
         private readonly BackgroundWorker workerBackground = new BackgroundWorker();
 
@@ -75,9 +76,20 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mItem.Ncm = item.NCM ?? "";
                 _mItem.id_sync = item.idSync == 0 ? Validation.RandomSecurity() : item.idSync;
                 if (_mItem.Save(_mItem, false))
+                {
+                    var data = _mItemEstoqueMovimentacao
+                        .SetUsuario(Settings.Default.user_id)
+                        .SetQuantidade(Validation.ConvertToDouble(item.EstoqueCompra))
+                        .SetTipo("A")
+                        .SetLocal("")
+                        .SetObs("Importação de compra")
+                        .SetItem(_mItem)
+                        .Save(_mItemEstoqueMovimentacao);
+
                     foreach (DataGridViewRow gridData in GridLista.Rows)
                         if ((int) gridData.Cells["Ordem"].Value == (int) item.Ordem)
                             gridData.Cells["Importado"].Value = new Bitmap(Resources.success16x);
+                }
             }
         }
 

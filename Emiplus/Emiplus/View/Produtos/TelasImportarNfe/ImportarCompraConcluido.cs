@@ -7,6 +7,7 @@ using Emiplus.Data.Helpers;
 using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Common;
+using Estoque = Emiplus.Controller.Estoque;
 
 namespace Emiplus.View.Produtos.TelasImportarNfe
 {
@@ -122,7 +123,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                         item.ValorCompra,
                         item.ValorVenda,
                         item.Fornecedor,
-                        item.NCM
+                        item.NCM,
+                        item.EstoqueCompra
                     });
 
                 idFornecedor = Validation.ConvertToInt32(item.Fornecedor);
@@ -158,7 +160,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                         item.ValorCompra,
                         item.ValorVenda,
                         item.Fornecedor,
-                        item.NCM
+                        item.NCM,
+                        item.EstoqueCompra
                     });
 
                 foreach (DataGridViewRow gridData in GridLista.Rows)
@@ -191,10 +194,11 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mPedidoItem.ValorCompra = 0;
                 _mPedidoItem.ValorVenda = item.ValorCompra;
                 _mPedidoItem.Medida = item.Medida;
-                _mPedidoItem.Quantidade = item.Estoque;
-                _mPedidoItem.Total = item.Estoque * item.ValorCompra;
-                _mPedidoItem.TotalVenda = item.Estoque * item.ValorCompra;
+                _mPedidoItem.Quantidade = item.EstoqueCompra;
+                _mPedidoItem.Total = item.EstoqueCompra * item.ValorCompra;
+                _mPedidoItem.TotalVenda = item.EstoqueCompra * item.ValorCompra;
                 _mPedidoItem.Save(_mPedidoItem, false);
+                new Estoque(_mPedidoItem.GetLastId(), Home.pedidoPage, $"Importação de compra").Add().Item();
             }
 
             foreach (dynamic item in ImportarPagamentos.titulos)

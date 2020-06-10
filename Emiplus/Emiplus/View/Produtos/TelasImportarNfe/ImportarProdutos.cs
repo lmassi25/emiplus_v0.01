@@ -586,7 +586,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             }
                         }
 
-                        estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
+                        //estoque = Validation.ConvertToDouble(item.Cells[6].Value) + estoque;
 
                         switch (ImportarNfe.optionSelected)
                         {
@@ -612,7 +612,8 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                             ValorVenda = Validation.ConvertToDouble(item.Cells["Vlr. Venda"].Value),
                             Fornecedor = item.Cells["Fornecedor"].Value.ToString(),
                             NCM = item.Cells["NCM"].Value.ToString(),
-                            idSync = id_sync
+                            idSync = id_sync,
+                            EstoqueCompra = Validation.ConvertToDouble(item.Cells[6].Value)
                         });
                     }
                 }
