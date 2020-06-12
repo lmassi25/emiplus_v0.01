@@ -222,4 +222,3 @@ C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Dapper.dll
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Json.Net.dll
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Dapper.xml
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.Sync.resources
-C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.CoreCompileInputs.cache
