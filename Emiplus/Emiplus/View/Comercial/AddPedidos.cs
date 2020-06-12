@@ -973,8 +973,8 @@ namespace Emiplus.View.Comercial
                                 new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}").Add().Item();
                                 break;
                             case "Remessas":
-                                new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}")
-                                    .Remove().Item();
+                                if (IniFile.Read("BaixarEstoqueRemessas", "Comercial") == "True")
+                                    new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Remessa do Produto {titleAttr}").Remove().Item();
                                 break;
                             default:
                                 new Estoque(pedidoItem.GetLastId(), Home.pedidoPage, $"Adicionar Produto {titleAttr}")
@@ -1075,7 +1075,10 @@ namespace Emiplus.View.Comercial
                                 if (Home.pedidoPage == "Compras")
                                     new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
                                 else if (Home.pedidoPage == "Remessas")
-                                    new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                {
+                                    if (IniFile.Read("BaixarEstoqueRemessas", "Comercial") == "True")
+                                        new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                                }
                                 else if (Home.pedidoPage == "Devoluções")
                                     new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
                                 else
@@ -1440,7 +1443,10 @@ namespace Emiplus.View.Comercial
                             if (Home.pedidoPage != "Compras")
                                 new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
                             else if (Home.pedidoPage == "Remessas")
-                                new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                            {
+                                if (IniFile.Read("BaixarEstoqueRemessas", "Comercial") == "True")
+                                    new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Add().Item();
+                            }
                             else
                                 new Estoque(idPedidoItem, Home.pedidoPage, "Atalho F3 Cancelar").Remove().Item();
 

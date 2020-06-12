@@ -129,7 +129,7 @@
             this.visualPanel7.Controls.Add(this.pictureBox8);
             this.visualPanel7.Controls.Add(this.system);
             this.visualPanel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel7.Location = new System.Drawing.Point(13, 415);
+            this.visualPanel7.Location = new System.Drawing.Point(5, 415);
             this.visualPanel7.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel7.Name = "visualPanel7";
             this.visualPanel7.Padding = new System.Windows.Forms.Padding(5);
@@ -264,7 +264,7 @@
             this.visualPanel6.Controls.Add(this.pictureBox7);
             this.visualPanel6.Controls.Add(this.comercial);
             this.visualPanel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel6.Location = new System.Drawing.Point(250, 264);
+            this.visualPanel6.Location = new System.Drawing.Point(242, 264);
             this.visualPanel6.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel6.Name = "visualPanel6";
             this.visualPanel6.Padding = new System.Windows.Forms.Padding(5);
@@ -353,7 +353,7 @@
             this.visualPanel2.Controls.Add(this.label1);
             this.visualPanel2.Controls.Add(this.pictureBox1);
             this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(12, 48);
+            this.visualPanel2.Location = new System.Drawing.Point(4, 48);
             this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel2.Name = "visualPanel2";
             this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
@@ -411,7 +411,7 @@
             this.visualPanel5.Controls.Add(this.pictureBox6);
             this.visualPanel5.Controls.Add(this.sat);
             this.visualPanel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel5.Location = new System.Drawing.Point(12, 264);
+            this.visualPanel5.Location = new System.Drawing.Point(4, 264);
             this.visualPanel5.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel5.Name = "visualPanel5";
             this.visualPanel5.Padding = new System.Windows.Forms.Padding(5);
@@ -502,7 +502,7 @@
             this.visualPanel1.Controls.Add(this.pictureBox3);
             this.visualPanel1.Controls.Add(this.dadosEmpresa);
             this.visualPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel1.Location = new System.Drawing.Point(13, 113);
+            this.visualPanel1.Location = new System.Drawing.Point(5, 113);
             this.visualPanel1.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel1.Name = "visualPanel1";
             this.visualPanel1.Padding = new System.Windows.Forms.Padding(5);
@@ -593,7 +593,7 @@
             this.visualPanel4.Controls.Add(this.pictureBox5);
             this.visualPanel4.Controls.Add(this.impressao);
             this.visualPanel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel4.Location = new System.Drawing.Point(487, 113);
+            this.visualPanel4.Location = new System.Drawing.Point(479, 113);
             this.visualPanel4.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel4.Name = "visualPanel4";
             this.visualPanel4.Padding = new System.Windows.Forms.Padding(5);
@@ -684,7 +684,7 @@
             this.visualPanel3.Controls.Add(this.pictureBox4);
             this.visualPanel3.Controls.Add(this.email);
             this.visualPanel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel3.Location = new System.Drawing.Point(250, 113);
+            this.visualPanel3.Location = new System.Drawing.Point(242, 113);
             this.visualPanel3.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel3.Name = "visualPanel3";
             this.visualPanel3.Padding = new System.Windows.Forms.Padding(5);
@@ -775,7 +775,7 @@
             this.visualPanel8.Controls.Add(this.pictureBox9);
             this.visualPanel8.Controls.Add(this.btnImportar);
             this.visualPanel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel8.Location = new System.Drawing.Point(249, 415);
+            this.visualPanel8.Location = new System.Drawing.Point(241, 415);
             this.visualPanel8.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel8.Name = "visualPanel8";
             this.visualPanel8.Padding = new System.Windows.Forms.Padding(5);
@@ -867,7 +867,7 @@
             this.visualPanel9.Controls.Add(this.pictureBox10);
             this.visualPanel9.Controls.Add(this.btnSincronizar);
             this.visualPanel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel9.Location = new System.Drawing.Point(487, 415);
+            this.visualPanel9.Location = new System.Drawing.Point(479, 415);
             this.visualPanel9.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel9.Name = "visualPanel9";
             this.visualPanel9.Padding = new System.Windows.Forms.Padding(5);
@@ -969,7 +969,7 @@
             this.visualPanel10.Controls.Add(this.pictureBox12);
             this.visualPanel10.Controls.Add(this.os);
             this.visualPanel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel10.Location = new System.Drawing.Point(487, 264);
+            this.visualPanel10.Location = new System.Drawing.Point(479, 264);
             this.visualPanel10.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel10.Name = "visualPanel10";
             this.visualPanel10.Padding = new System.Windows.Forms.Padding(5);
@@ -1061,7 +1061,7 @@
             this.visualPanel11.Controls.Add(this.pictureBox14);
             this.visualPanel11.Controls.Add(this.btnRemessaEnviar);
             this.visualPanel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel11.Location = new System.Drawing.Point(13, 566);
+            this.visualPanel11.Location = new System.Drawing.Point(5, 566);
             this.visualPanel11.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel11.Name = "visualPanel11";
             this.visualPanel11.Padding = new System.Windows.Forms.Padding(5);
@@ -1186,7 +1186,7 @@
             this.visualPanel12.Controls.Add(this.label14);
             this.visualPanel12.Controls.Add(this.pictureBox13);
             this.visualPanel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel12.Location = new System.Drawing.Point(250, 566);
+            this.visualPanel12.Location = new System.Drawing.Point(242, 566);
             this.visualPanel12.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.visualPanel12.Name = "visualPanel12";
             this.visualPanel12.Padding = new System.Windows.Forms.Padding(5);

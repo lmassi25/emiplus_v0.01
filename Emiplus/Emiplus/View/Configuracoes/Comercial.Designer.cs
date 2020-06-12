@@ -65,6 +65,9 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnMesasPreCadastrada = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnBaixarEstoqueRemessas = new VisualPlus.Toolkit.Controls.Interactivity.VisualToggle();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -789,6 +792,73 @@
             this.label17.TabIndex = 569;
             this.label17.Text = "Mesas predefinidas?";
             // 
+            // btnBaixarEstoqueRemessas
+            // 
+            this.btnBaixarEstoqueRemessas.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnBaixarEstoqueRemessas.BackColorState.Enabled = System.Drawing.Color.White;
+            this.btnBaixarEstoqueRemessas.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.btnBaixarEstoqueRemessas.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.Border.HoverVisible = true;
+            this.btnBaixarEstoqueRemessas.Border.Rounding = 20;
+            this.btnBaixarEstoqueRemessas.Border.Thickness = 1;
+            this.btnBaixarEstoqueRemessas.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnBaixarEstoqueRemessas.Border.Visible = true;
+            this.btnBaixarEstoqueRemessas.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.ButtonBorder.HoverVisible = true;
+            this.btnBaixarEstoqueRemessas.ButtonBorder.Rounding = 18;
+            this.btnBaixarEstoqueRemessas.ButtonBorder.Thickness = 1;
+            this.btnBaixarEstoqueRemessas.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.btnBaixarEstoqueRemessas.ButtonBorder.Visible = true;
+            this.btnBaixarEstoqueRemessas.ButtonColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnBaixarEstoqueRemessas.ButtonColorState.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.ButtonColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.ButtonColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(60)))));
+            this.btnBaixarEstoqueRemessas.ButtonSize = new System.Drawing.Size(20, 20);
+            this.btnBaixarEstoqueRemessas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaixarEstoqueRemessas.FalseTextToggle = "Não";
+            this.btnBaixarEstoqueRemessas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.btnBaixarEstoqueRemessas.Location = new System.Drawing.Point(269, 674);
+            this.btnBaixarEstoqueRemessas.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.btnBaixarEstoqueRemessas.Name = "btnBaixarEstoqueRemessas";
+            this.btnBaixarEstoqueRemessas.ProgressImage = null;
+            this.btnBaixarEstoqueRemessas.Size = new System.Drawing.Size(58, 25);
+            this.btnBaixarEstoqueRemessas.TabIndex = 574;
+            this.btnBaixarEstoqueRemessas.Text = "visualToggle1";
+            this.btnBaixarEstoqueRemessas.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.btnBaixarEstoqueRemessas.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnBaixarEstoqueRemessas.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnBaixarEstoqueRemessas.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnBaixarEstoqueRemessas.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnBaixarEstoqueRemessas.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.btnBaixarEstoqueRemessas.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnBaixarEstoqueRemessas.Toggled = true;
+            this.btnBaixarEstoqueRemessas.TrueTextToggle = "Sim";
+            this.btnBaixarEstoqueRemessas.Type = VisualPlus.Toolkit.Controls.Interactivity.VisualToggle.ToggleTypes.Custom;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label18.Location = new System.Drawing.Point(32, 639);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 25);
+            this.label18.TabIndex = 572;
+            this.label18.Text = "Remessas";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label19.Location = new System.Drawing.Point(51, 678);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(213, 17);
+            this.label19.TabIndex = 573;
+            this.label19.Text = "Manipular estoque das remessas?";
+            // 
             // Comercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,6 +866,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(635, 779);
+            this.Controls.Add(this.btnBaixarEstoqueRemessas);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.btnMesasPreCadastrada);
             this.Controls.Add(this.label17);
@@ -877,5 +950,8 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle btnMesasPreCadastrada;
         private System.Windows.Forms.Label label17;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualToggle btnBaixarEstoqueRemessas;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
     }
 }
