@@ -120,6 +120,9 @@ namespace Emiplus.Data.Core
             if (!IniFile.KeyExists("ShowImagePDV", "Comercial"))
                 IniFile.Write("ShowImagePDV", "True", "Comercial");
 
+            if (!IniFile.KeyExists("BaixarEstoqueRemessas", "Comercial"))
+                IniFile.Write("BaixarEstoqueRemessas", "True", "Comercial");
+
             if (!IniFile.KeyExists("MAIL_HOST", "EMAIL"))
                 IniFile.Write("MAIL_HOST", "", "EMAIL");
 

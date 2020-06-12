@@ -48,6 +48,9 @@ namespace Emiplus.View.Configuracoes
 
                 if (!string.IsNullOrEmpty(IniFile.Read("MesasPreCadastrada", "Comercial")))
                     btnMesasPreCadastrada.Toggled = IniFile.Read("MesasPreCadastrada", "Comercial") == "True";
+
+                if (!string.IsNullOrEmpty(IniFile.Read("BaixarEstoqueRemessas", "Comercial")))
+                    btnBaixarEstoqueRemessas.Toggled = IniFile.Read("BaixarEstoqueRemessas", "Comercial") == "True";
             };
 
             retomarVendaInicio.Click += (s, e) =>
@@ -83,6 +86,11 @@ namespace Emiplus.View.Configuracoes
             btnMesasPreCadastrada.Click += (s, e) =>
             {
                 IniFile.Write("MesasPreCadastrada", btnMesasPreCadastrada.Toggled ? "False" : "True", "Comercial");
+            };
+
+            btnBaixarEstoqueRemessas.Click += (s, e) =>
+            {
+                IniFile.Write("BaixarEstoqueRemessas", btnBaixarEstoqueRemessas.Toggled ? "False" : "True", "Comercial");
             };
 
             txtLimiteDesconto.Leave += (s, e) => IniFile.Write("LimiteDesconto",
