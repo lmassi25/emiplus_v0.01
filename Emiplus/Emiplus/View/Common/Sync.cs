@@ -568,6 +568,12 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetCreateDataAsync(string table)
         {
+            int limit = 5000;
+            if (IniFile.Read("LIMIT", "SYNC") != "0")
+            {
+                limit = Validation.ConvertToInt32(IniFile.Read("LIMIT", "SYNC"));
+            }
+
             var baseQuery = connect.Query().Where("id_empresa",idEmpresa)
                 .Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
 
@@ -576,6 +582,8 @@ namespace Emiplus.View.Common
 
             if (Remessa && table == "pedido")
                 baseQuery.Where("tipo", "Remessas");
+
+            baseQuery.Limit(limit);
 
             return await baseQuery.Clone().From(table).GetAsync();
         }
@@ -619,6 +627,12 @@ namespace Emiplus.View.Common
         /// </summary>
         private async Task<IEnumerable<dynamic>> GetAllDataAsync(string table)
         {
+            int limit = 5000;
+            if (IniFile.Read("LIMIT", "SYNC") != "0")
+            {
+                limit = Validation.ConvertToInt32(IniFile.Read("LIMIT", "SYNC"));
+            }
+
             var baseQuery = connect.Query().Where("id_empresa", idEmpresa);
 
             if (Remessa && table == "pedido_item")
@@ -626,6 +640,8 @@ namespace Emiplus.View.Common
 
             if (Remessa && table == "pedido")
                 baseQuery.Where("tipo", "Remessas");
+
+            baseQuery.Limit(limit);
 
             return await baseQuery.Clone().From(table).GetAsync();
         }

@@ -188,6 +188,9 @@ namespace Emiplus.Data.Core
 
             if (!IniFile.KeyExists("MENU_EXPANSIVE", "LAYOUT"))
                 IniFile.Write("MENU_EXPANSIVE", "false", "LAYOUT");
+
+            if (!IniFile.KeyExists("LIMIT", "SYNC"))
+                IniFile.Write("LIMIT", "0", "SYNC");
         }
     }
 }
