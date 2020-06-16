@@ -60,6 +60,7 @@ namespace Emiplus
             Application.ThreadException += CustomExceptionHandler.OnThreadException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            new Log().Add("Test", $"program - main", Log.LogType.fatal);
             Application.Run(new Carregar());
         }
 
