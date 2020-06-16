@@ -77,7 +77,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(663, 40);
+            this.panel4.Size = new System.Drawing.Size(646, 40);
             this.panel4.TabIndex = 542;
             // 
             // btnExit
@@ -256,7 +256,7 @@
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(581, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(564, 4);
             this.visualSeparator3.TabIndex = 538;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -324,7 +324,7 @@
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(581, 4);
+            this.visualSeparator2.Size = new System.Drawing.Size(564, 4);
             this.visualSeparator2.TabIndex = 545;
             this.visualSeparator2.Text = "visualSeparator2";
             this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -415,7 +415,7 @@
             this.btnClearErroLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearErroLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnClearErroLog.Image = null;
-            this.btnClearErroLog.Location = new System.Drawing.Point(461, 747);
+            this.btnClearErroLog.Location = new System.Drawing.Point(444, 747);
             this.btnClearErroLog.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnClearErroLog.Name = "btnClearErroLog";
             this.btnClearErroLog.Size = new System.Drawing.Size(154, 27);
@@ -442,7 +442,7 @@
             this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator4.ShadowVisible = true;
-            this.visualSeparator4.Size = new System.Drawing.Size(581, 4);
+            this.visualSeparator4.Size = new System.Drawing.Size(564, 4);
             this.visualSeparator4.TabIndex = 549;
             this.visualSeparator4.Text = "visualSeparator4";
             this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -636,7 +636,7 @@
             this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator5.ShadowVisible = true;
-            this.visualSeparator5.Size = new System.Drawing.Size(581, 4);
+            this.visualSeparator5.Size = new System.Drawing.Size(564, 4);
             this.visualSeparator5.TabIndex = 563;
             this.visualSeparator5.Text = "visualSeparator5";
             this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
