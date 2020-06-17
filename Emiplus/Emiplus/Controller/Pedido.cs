@@ -233,8 +233,8 @@ namespace Emiplus.Controller
             //.Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
 
             if (!noFilterData)
-                query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial))
-                    .Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                //query.Where("pedido.emissao", ">=", Validation.ConvertDateToSql(dataInicial)).Where("pedido.emissao", "<=", Validation.ConvertDateToSql(dataFinal));
+                query.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true)).Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
 
             if (tipo != "Cupons")
                 query.Where("pedido.excluir", excluir);
@@ -590,7 +590,7 @@ namespace Emiplus.Controller
                     //tipo == "Notas" ? item.ID : tipo == "Cupons" ? item.IDNOTA : item.ID,
                     item.ID,
                     tipo == "Notas" ? n_nfe : tipo == "Cupons" ? n_cfe : item.ID,
-                    Validation.ConvertDateToForm(item.EMISSAO),
+                    tipo == "Notas" ? Validation.ConvertDateToForm(item.CRIADONOTA) : tipo == "Cupons" ? Validation.ConvertDateToForm(item.CRIADONOTA) : Validation.ConvertDateToForm(item.EMISSAO), 
                     item.NOME == "Consumidor Final" && Home.pedidoPage == "Compras" ? "N/D" :
                     tipo == "Remessas" ? item.CAMPOB : item.NOME,
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
