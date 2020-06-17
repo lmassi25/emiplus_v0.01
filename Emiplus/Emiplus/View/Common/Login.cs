@@ -17,7 +17,7 @@ namespace Emiplus.View.Common
     public partial class Login : Form
     {
 
-        private Model.Usuarios _mUsuarios = new Usuarios();
+        private Usuarios _mUsuarios = new Usuarios();
 
         public Login()
         {
@@ -75,7 +75,7 @@ namespace Emiplus.View.Common
                 Settings.Default.user_email = jo["user"]["email"].ToString();
                 Settings.Default.user_password = password.Text;
                 Settings.Default.user_sub_user = Validation.ConvertToInt32(jo["user"]["sub_user"]);
-                Settings.Default.user_cell = jo["user"]["cell"].ToString();
+                Settings.Default.user_cell = jo["user"]["cell"]?.ToString();
                 Settings.Default.user_level = Validation.ConvertToInt32(jo["user"]["level"]);
                 Settings.Default.user_status = Validation.ConvertToInt32(jo["user"]["status"]);
                 Settings.Default.user_plan_id = jo["user"]["plan_id"].ToString();
@@ -125,6 +125,7 @@ namespace Emiplus.View.Common
                 _mUsuarios = _mUsuarios.FindByUserId(idUser).FirstOrDefault<Usuarios>();
                 if (_mUsuarios == null)
                 {
+                    _mUsuarios = new Usuarios();
                     _mUsuarios.Id = 0;
                     _mUsuarios.Excluir = 0;
                     _mUsuarios.Nome = $@"{jo["user"]["name"].ToString()} {jo["user"]["lastname"].ToString()}";
