@@ -33,6 +33,40 @@ namespace Emiplus.View.Configuracoes
                 serie.Text = IniFile.Read("N_Serie", "SAT");
         }
 
+        private void checkXml()
+        {
+            
+        }
+
+        private SqlKata.Query getListXml(string dataInicial, string dataFinal)
+        {
+            var query = new Model.Nota().Query();
+
+            query
+                .LeftJoin("pedido", "pedido.id", "nota.id_pedido")
+                .LeftJoin("pessoa", "pessoa.id", "pedido.cliente")
+                .LeftJoin("usuarios as colaborador", "colaborador.id_user", "pedido.colaborador")
+                .LeftJoin("usuarios as usuario", "usuario.id_user", "pedido.id_usuario")
+                .Select("pedido.id", "pedido.tipo", "pedido.emissao", "pedido.total", "pessoa.nome",
+                    "colaborador.nome as colaborador", "usuario.nome as usuario", "pedido.criado", "pedido.excluir",
+                    "pedido.status", "nota.nr_nota as nfe", "nota.serie", "nota.status as statusnfe",
+                    "nota.tipo as tiponfe", "nota.id as idnota", "nota.criado as criadonota",
+                    "nota.CHAVEDEACESSO as chavedeacesso");
+
+            query.Where("nota.criado", ">=", Validation.ConvertDateToSql(dataInicial, true)).Where("nota.criado", "<=", Validation.ConvertDateToSql(dataFinal + " 23:59", true));
+
+            query.Where("pedido.excluir", 0);
+
+            query.Where("nota.tipo", "CFe");
+            query.Where(
+                q => q.Where("nota.status", "<>", "Pendente").Where("nota.status", "<>", "Falha")
+            );
+
+            query.OrderByDesc("nota.id");
+
+            return query;
+        }
+
         /// <summary>
         ///     Eventos do form
         /// </summary>
@@ -68,6 +102,11 @@ namespace Emiplus.View.Configuracoes
             {
                 var f = new Cfesat_base64();
                 f.ShowDialog();
+            };
+
+            xml.Click += (s, e) =>
+            {
+                checkXml();
             };
 
             servidor.Leave += (s, e) => IniFile.Write("Servidor", servidor.Text, "SAT");
