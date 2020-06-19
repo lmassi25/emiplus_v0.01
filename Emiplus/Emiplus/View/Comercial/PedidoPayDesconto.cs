@@ -54,7 +54,7 @@ namespace Emiplus.View.Comercial
 
                 foreach (var item in data) FormulaDesconto(descontoValor, item.ID);
 
-                _mPedido.Tipo = "Vendas";
+                //_mPedido.Tipo = "Vendas";
                 _mPedido = _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
                 _mPedido.Save(_mPedido);
 
