@@ -676,85 +676,85 @@ namespace Emiplus.View.Common
             {
                 case "categoria":
                 {
-                    var dados = JsonConvert.DeserializeObject<Categoria>(data);
+                    var dados = JsonConvert.DeserializeObject<Categoria>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Categoria().Save(dados, false);
                     break;
                 }
                 case "caixa":
                 {
-                    var dados = JsonConvert.DeserializeObject<Caixa>(data);
+                    var dados = JsonConvert.DeserializeObject<Caixa>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Caixa().Save(dados, false);
                     break;
                 }
                 case "caixa_mov":
                 {
-                    var dados = JsonConvert.DeserializeObject<CaixaMovimentacao>(data);
+                    var dados = JsonConvert.DeserializeObject<CaixaMovimentacao>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new CaixaMovimentacao().Save(dados, false);
                     break;
                 }
                 case "imposto":
                 {
-                    var dados = JsonConvert.DeserializeObject<Imposto>(data);
+                    var dados = JsonConvert.DeserializeObject<Imposto>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Imposto().Save(dados, false);
                     break;
                 }
                 case "item":
                 {
-                    var dados = JsonConvert.DeserializeObject<Item>(data);
+                    var dados = JsonConvert.DeserializeObject<Item>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Item().Save(dados, false);
                     break;
                 }
                 case "item_mov_estoque":
                 {
-                    var dados = JsonConvert.DeserializeObject<ItemEstoqueMovimentacao>(data);
+                    var dados = JsonConvert.DeserializeObject<ItemEstoqueMovimentacao>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new ItemEstoqueMovimentacao().Save(dados, false);
                     break;
                 }
                 case "natureza":
                 {
-                    var dados = JsonConvert.DeserializeObject<Natureza>(data);
+                    var dados = JsonConvert.DeserializeObject<Natureza>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Natureza().Save(dados, false);
                     break;
                 }
                 case "pessoa":
                 {
-                    var dados = JsonConvert.DeserializeObject<Pessoa>(data);
+                    var dados = JsonConvert.DeserializeObject<Pessoa>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Pessoa().Save(dados, false);
                     break;
                 }
                 case "pessoa_contato":
                 {
-                    var dados = JsonConvert.DeserializeObject<PessoaContato>(data);
+                    var dados = JsonConvert.DeserializeObject<PessoaContato>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new PessoaContato().Save(dados, false);
                     break;
                 }
                 case "pessoa_endereco":
                 {
-                    var dados = JsonConvert.DeserializeObject<PessoaEndereco>(data);
+                    var dados = JsonConvert.DeserializeObject<PessoaEndereco>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new PessoaEndereco().Save(dados, false);
                     break;
                 }
                 case "titulo":
                 {
-                    var dados = JsonConvert.DeserializeObject<Titulo>(data);
+                    var dados = JsonConvert.DeserializeObject<Titulo>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Titulo().Save(dados, false);
                     break;
                 }
                 case "nota":
                 {
-                    var dados = JsonConvert.DeserializeObject<Nota>(data);
+                    var dados = JsonConvert.DeserializeObject<Nota>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Nota().Save(dados, false);
                     break;
                 }
                 case "pedido":
                 {
-                    var dados = JsonConvert.DeserializeObject<Pedido>(data);
+                    var dados = JsonConvert.DeserializeObject<Pedido>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new Pedido().Save(dados);
                     break;
                 }
                 case "pedido_item":
                 {
-                    var dados = JsonConvert.DeserializeObject<PedidoItem>(data);
+                    var dados = JsonConvert.DeserializeObject<PedidoItem>(data, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                     new PedidoItem().Save(dados);
                     break;
                 }
