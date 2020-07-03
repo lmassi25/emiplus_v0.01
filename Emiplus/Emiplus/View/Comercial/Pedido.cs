@@ -725,11 +725,11 @@ namespace Emiplus.View.Comercial
 
                 if (Home.pedidoPage == "Notas" || Home.pedidoPage == "Cupons")
                 {
-                    Validation.ConvertDateToForm(item.CRIADONOTA);
+                    emissao = Validation.ConvertDateToForm(item.CRIADONOTA);
                 }
                 else
                 {
-                    emissao = item.EMISSAO;
+                    emissao = item.EMISSAO.ToString();
                 }
 
                 //total = Validation.ConvertToDouble(item.TOTAL) + Validation.ConvertToDouble(item.TOTAL);
