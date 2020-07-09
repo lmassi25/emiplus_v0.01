@@ -114,6 +114,7 @@ namespace Emiplus.View.Produtos
 
             var itemId = collection.Lookup(BuscarProduto.Text);
             var item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Item>();
+            labelEstoque.Text = $"Estoque: {item.EstoqueAtual}";
 
             var etiqueta = new Model.Etiqueta
             {
@@ -276,6 +277,18 @@ namespace Emiplus.View.Produtos
                 new Model.Etiqueta().Clean();
                 DataTable();
                 LoadItens();
+            };
+
+            BuscarProduto.TextChanged += (s, e) =>
+            {
+                labelEstoque.Visible = false;
+                if (collection.Lookup(BuscarProduto.Text) <= 0)
+                    return;
+
+                labelEstoque.Visible = true;
+                var itemId = collection.Lookup(BuscarProduto.Text);
+                var item = _mItem.FindById(itemId).Where("excluir", 0).Where("tipo", "Produtos").First<Item>();
+                labelEstoque.Text = $"Estoque atual: {item.EstoqueAtual}";
             };
 
             label5.Click += (s, e) => Close();
