@@ -178,6 +178,7 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
             _mPedido.Chavedeacesso = Id.Text;
             _mPedido.Cliente = idFornecedor;
             _mPedido.Colaborador = Settings.Default.user_id;
+            //_mPedido.status = 1;
             if (!_mPedido.Save(_mPedido))
                 return;
 
@@ -206,13 +207,21 @@ namespace Emiplus.View.Produtos.TelasImportarNfe
                 _mTitulo.Id = 0;
                 _mTitulo.Tipo = "Pagar";
                 _mTitulo.Emissao = Validation.ConvertDateToSql(Emissao.Text);
-                _mTitulo.Id_FormaPgto = Validation.ConvertToInt32(item.FormaPgto);
+                _mTitulo.Id_FormaPgto = Validation.ConvertToInt32(item.FormaPgto) == 15 ? 6 : Validation.ConvertToInt32(item.FormaPgto);
                 _mTitulo.Id_Pedido = _mPedido.GetLastId();
                 _mTitulo.Vencimento = item.Data;
                 _mTitulo.Total = Validation.ConvertToDouble(item.Valor.Replace(".", ","));
+                _mTitulo.Recebido = Validation.ConvertToDouble(item.Valor.Replace(".", ","));
                 _mTitulo.Id_Pessoa = idFornecedor;
                 _mTitulo.Obs = $"Pagamento gerado a partir da importação de compra. Chave de acesso: {item.id} | Número da nota: {item.nr}";
                 _mTitulo.Save(_mTitulo, false);
+
+                if (_mPedido.GetLastId() > 0)
+                {
+                    _mPedido.Id = _mPedido.GetLastId();
+                    _mPedido.status = 1;
+                    _mPedido.Save(_mPedido);
+                }
             }
 
             var data = _mPedido.SaveTotais(_mPedidoItem.SumTotais(_mPedido.GetLastId()));
