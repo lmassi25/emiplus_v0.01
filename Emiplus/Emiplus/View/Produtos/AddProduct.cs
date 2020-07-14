@@ -381,7 +381,7 @@ namespace Emiplus.View.Produtos
             if (dados.ID != 0)
                 custoMedio.Text =
                     Validation.Price(
-                        Validation.ConvertToDouble(dados.ID) / Validation.ConvertToDouble(dados.VALORVENDA));
+                        Validation.ConvertToDouble(dados.VALORVENDA) / Validation.ConvertToDouble(dados.ID));
             else
                 custoMedio.Text = "0,00";
         }
