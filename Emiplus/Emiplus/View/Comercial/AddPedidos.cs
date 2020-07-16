@@ -733,7 +733,7 @@ namespace Emiplus.View.Comercial
         {
             var nomeProduto = new string[2];
 
-            var checkNome = BuscarProduto.Text.Split(new[] {" + ", "+"}, StringSplitOptions.None);
+            var checkNome = BuscarProduto.Text.Split(new[] {" ++ ", "++"}, StringSplitOptions.None);
 
             nomeProduto[0] = checkNome[0];
             if (checkNome.Length == 1)
