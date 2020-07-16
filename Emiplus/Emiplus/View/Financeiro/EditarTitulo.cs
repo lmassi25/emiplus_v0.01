@@ -60,7 +60,7 @@ namespace Emiplus.View.Financeiro
                     
                     var taxaparcelas = _controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) / 100 * Validation.ConvertToDouble(taxas[2]);
                     var totalParcelas = taxaparcelas * Validation.ConvertToInt32(taxas[5]);
-                    txtTaxaParcela.Text = !Convert.ToBoolean(taxas[6]) ? $@"R$ {Validation.FormatPrice(Validation.ConvertToDouble(totalParcelas))}" : $@"R$ {Validation.FormatPrice(0)}";
+                    txtTaxaParcela.Text = taxas[6] != "0" ? $@"R$ {Validation.FormatPrice(Validation.ConvertToDouble(totalParcelas))}" : $@"R$ {Validation.FormatPrice(0)}";
 
                     tarifaParcelamento.Text = $@"Taxa de parcelamento {taxas[2]}% x {taxas[5]}";
                     txtTaxaAntecipacao.Text = $@"{Validation.FormatPrice(Validation.ConvertToDouble(taxas[3]), true)}";
@@ -68,7 +68,7 @@ namespace Emiplus.View.Financeiro
                     if (string.IsNullOrEmpty(taxas[4])) prazoReceber.Visible = false;
                     prazoReceber.Text = $@"No prazo de {taxas[4]} dias.";
 
-                    if (!Convert.ToBoolean(taxas[6]))
+                    if (taxas[6] != "0")
                         valorLiquido.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0
                         ? Validation.FormatPrice(0, true)
                         : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido) - Validation.ConvertToDouble(taxas[0]) - taxaCartao - totalParcelas - Validation.ConvertToDouble(taxas[3]), true);
