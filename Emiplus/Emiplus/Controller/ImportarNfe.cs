@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using ChoETL;
 using Emiplus.Data.Helpers;
 
@@ -91,10 +92,21 @@ namespace Emiplus.Controller
 
             Produtos = new ArrayList();
             if (dataNota.ContainsKey("dets"))
+            {
                 // Imp_ICMSSN_orig = item.imposto.ICMS[0].orig,
 
                 foreach (var item in produtos)
                 {
+                    double vlrAditional = 0;
+                    if (item.imposto.ICMS.ICMS10 != null)
+                    {
+                        var vlrImposto = Validation.ConvertToDouble(item.imposto.ICMS.ICMS10.vICMSST);
+                        var qtd = Validation.ConvertToDouble(item.prod.qCom);
+                        vlrAditional = vlrImposto / qtd;
+                    }
+
+                    var vlrItem = Validation.ConvertToDouble(item.prod.vUnCom.ToString().Replace(".", ","));
+                    var totalItem = vlrItem + vlrAditional;
                     object obj = new
                     {
                         nrItem = item.nItem,
@@ -105,11 +117,12 @@ namespace Emiplus.Controller
                         item.prod.CFOP,
                         Medida = item.prod.uCom,
                         Quantidade = item.prod.qCom,
-                        VlrCompra = item.prod.vUnCom
+                        VlrCompra = totalItem.ToString().Replace(",", ".")
                     };
 
                     Produtos.Add(obj);
                 }
+            }
             else
                 Produtos.Add(
                     new
