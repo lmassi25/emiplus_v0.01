@@ -24,8 +24,7 @@ namespace Emiplus.Controller
                 //.Where("item.tipo", "Produtos")
                 .Where
                 (
-                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search)
-                        .OrWhere("categoria.nome", "like", search)
+                    q => q.WhereLike("item.nome", search, true).OrWhere("item.referencia", "like", search).OrWhere("item.codebarras", "like", search).OrWhere("categoria.nome", "like", search)
                 );
 
             if (!Servicos)

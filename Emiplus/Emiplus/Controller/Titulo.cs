@@ -18,6 +18,7 @@ namespace Emiplus.Controller
     internal class Titulo : Data.Core.Controller
     {
         public static string status { get; set; }
+        private static Model.Titulo _titulo = new Model.Titulo();
 
         public double GetTroco(int idPedido)
         {
@@ -92,10 +93,11 @@ namespace Emiplus.Controller
             var data = new Model.Pedido().FindById(idPedido).Select("frete").Where("excluir", 0).FirstOrDefault();
             return Validation.ConvertToDouble(data.FRETE ?? 0);
         }
-
-        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1",
-            int idTaxa = 0)
+        
+        public bool AddPagamento(int idPedido, int formaPgto, string valorS, string inicio, string parcela = "1", int idTaxa = 0)
         {
+            #region Variaveis 
+
             var _mTaxa = new Taxas();
             var data = new Model.Titulo();
             var valor = Validation.ConvertToDouble(valorS);
@@ -136,6 +138,8 @@ namespace Emiplus.Controller
                 Alert.Message("Opss", "Data inválida", Alert.AlertType.error);
                 return false;
             }
+
+            #endregion
 
             //2 CHEQUE 4 CARTÃO DE CRÉDITO 5 CREDIÁRIO 6 BOLETO
             if (parcela.IndexOf("+") > 0)
@@ -191,14 +195,24 @@ namespace Emiplus.Controller
                     data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}|{parcela}|{parcelaJuros}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
+
+                    if (formaPgto == 1 || formaPgto == 3 || formaPgto == 4)
+                    {
+                        data.Baixa_data = data.Vencimento;
+                        data.Baixa_id_formapgto = formaPgto;
+                        data.Baixa_total = data.Total;
+                    }
+
                     data.Save(data, false);
                 }
             }
             else if (Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3)
             {
+                #region Validation.ConvertToInt32(parcela) > 0 && formaPgto != 1 && formaPgto != 3
+
                 var qtdDecimall = Validation.GetNumberOfDigits((decimal) valor);
                 var qtdD = qtdDecimall + 1;
-                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), qtdD);
+                data.Total = Validation.Round(valor / Validation.ConvertToInt32(parcela), 2);
 
                 var count = 1;
                 while (count <= Validation.ConvertToInt32(parcela))
@@ -227,24 +241,33 @@ namespace Emiplus.Controller
                             if (count > _mTaxa.Parcela_Semjuros)
                             {
                                 parcelaJuros = true;
-                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela - taxaparcelas) /
-                                                     Validation.ConvertToInt32(parcela); // com juros
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela - taxaparcelas) / Validation.ConvertToInt32(parcela); // com juros
                             }
                             else
-                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
-                                                     Validation.ConvertToInt32(parcela); // sem juros
+                                data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) / Validation.ConvertToInt32(parcela); // sem juros
                         }
                         else
-                            data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) /
-                                                 Validation.ConvertToInt32(parcela);
+                            data.Valor_Liquido = (valor - taxacredito - taxaFixa - taxaAntecipacaoParcela) / Validation.ConvertToInt32(parcela);
                     }
                     
                     data.Taxas = $@"{_mTaxa.Taxa_Fixa}|{_mTaxa.Taxa_Credito}|{_mTaxa.Taxa_Parcela}|{taxaAntecipacao}|{_mTaxa.Dias_Receber}|{parcela}|{parcelaJuros}";
                     data.Id_Caixa = Home.idCaixa;
                     data.Tipo = "Receber";
+
+                    if (formaPgto == 1 || formaPgto == 3 || formaPgto == 4)
+                    {
+                        data.Baixa_data = data.Vencimento;
+                        data.Baixa_id_formapgto = formaPgto;
+                        data.Baixa_total = data.Total;
+                    }
+
                     data.Save(data, false);
                     count++;
                 }
+
+                #endregion
+
+                ConferePagamento(idPedido);
             }
             else
             {
@@ -279,10 +302,45 @@ namespace Emiplus.Controller
                 data.Id_Caixa = Home.idCaixa;
                 data.Tipo = Home.pedidoPage == "Compras" ? "Pagar" : "Receber";
 
+                if (formaPgto == 1 || formaPgto == 3 || formaPgto == 4)
+                {
+                    data.Baixa_data = data.Vencimento;
+                    data.Baixa_id_formapgto = formaPgto;
+                    data.Baixa_total = data.Total;
+                }
+
                 return data.Save(data, false);
             }
 
             return false;
+        }
+
+        public void ConferePagamento(int idPedido)
+        {
+            var dataTitulo = new Model.Titulo().Query().SelectRaw("SUM(total) as total").Where("id_pedido", idPedido).Where("excluir", 0).FirstOrDefault();
+            var dataPedido = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).FirstOrDefault();
+
+            if (dataTitulo.TOTAL > 0)
+            {
+                if (dataPedido.TOTAL > 0)
+                {
+                    if (dataTitulo.TOTAL != dataPedido.TOTAL)
+                    {
+                        //Model.Titulo _iTitulo = new Model.Titulo().Query().Where("pedido", idPedido).Where("excluir", "0").First<Model.Titulo>();
+                        //Model.Titulo _iTitulo = new Model.Pedido().FindById(idPedido).Select("total").Where("excluir", 0).FirstOrDefault();
+
+                        var _item = _titulo.Query().Where("id_pedido", idPedido).Where("excluir", "0").First<Model.Titulo>();
+                        
+                        var diff = Validation.Round(Validation.ConvertToDouble(dataTitulo.TOTAL) - Validation.ConvertToDouble(dataPedido.TOTAL));
+                        if (_item.Total > diff)
+                        {
+                            _item.Total = Validation.Round(_item.Total - diff);
+                            _item.Recebido = Validation.Round(_item.Recebido - diff);
+                            _item.Save(_item, false);
+                        }
+                    }
+                }
+            }
         }
 
         public IEnumerable<dynamic> GetDataPgtosLancados(int idPedido)
@@ -298,8 +356,7 @@ namespace Emiplus.Controller
             return data.Get();
         }
 
-        public IEnumerable<dynamic> GetDataTableTitulosGerados(string tela, string Search, int tipo, string dataInicial,
-            string dataFinal)
+        public IEnumerable<dynamic> GetDataTableTitulosGerados(string tela, string Search, int tipo, string dataInicial, string dataFinal)
         {
             var titulos = new Model.Titulo();
 

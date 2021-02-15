@@ -64,7 +64,9 @@ namespace Emiplus.View.Financeiro
             txtSaldoInicial.Text = Validation.FormatPrice(_modelCaixa.Saldo_Inicial, true);
             txtEntradas.Text = Validation.FormatPrice(_controllerCaixa.SumEntradas(idCaixa), true);
             txtSaidas.Text = Validation.FormatPrice(_controllerCaixa.SumSaidas(idCaixa), true);
-            txtSaldoFinal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
+
+            //txtSaldoFinal.Text = Validation.FormatPrice(_controllerCaixa.SumSaldoFinal(idCaixa), true);
+            txtSaldoFinal.Text = Validation.FormatPrice(_controllerCaixa.SumVendasTotal(idCaixa) + ((_modelCaixa.Saldo_Inicial + _controllerCaixa.SumEntradas(idCaixa)) - _controllerCaixa.SumSaidas(idCaixa)), true);
 
             txtVendasTotal.Text = Validation.FormatPrice(_controllerCaixa.SumVendasTotal(idCaixa), true);
             txtVendasAcrescimos.Text = Validation.FormatPrice(_controllerCaixa.SumVendasAcrescimos(idCaixa), true);
@@ -119,6 +121,7 @@ namespace Emiplus.View.Financeiro
             model.Where("TITULO.id_caixa", idCaixa);
             model.Where("TITULO.id_caixa_mov", 0);
             model.Where("TITULO.excluir", 0);
+            model.Where("PEDIDO.excluir", 0);
             //model.Where("PEDIDO.TIPO", "Vendas");
             model.OrderByDesc("TITULO.criado");
             return model.GetAsync<dynamic>();

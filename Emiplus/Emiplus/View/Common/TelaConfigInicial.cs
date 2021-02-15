@@ -7,7 +7,7 @@ using Emiplus.View.Configuracoes;
 namespace Emiplus.View.Common
 {
     public partial class TelaConfigInicial : Form
-    {
+    {        
         private readonly BackgroundWorker backWork = new BackgroundWorker();
         private readonly BackgroundWorker backWorkRemessa = new BackgroundWorker();
 
@@ -65,8 +65,11 @@ namespace Emiplus.View.Common
 
             backWork.DoWork += async (s, e) =>
             {
-                var f = new Sync();
-                await f.StartSync();
+                if (Sync.sync_start == 0)
+                {
+                    var f = new Sync();
+                    await f.StartSync();
+                }                
             };
 
             backWork.RunWorkerCompleted += (s, e) =>

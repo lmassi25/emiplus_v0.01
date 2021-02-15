@@ -20,6 +20,10 @@ namespace Emiplus.View.Common
 {
     public partial class Sync : Form
     {
+        //600000 - 10 minutos
+        //timer_tick | StartSync | GetCreateDataAsync
+
+        public static int sync_start { get; set; }
         private readonly BackgroundWorker backWork = new BackgroundWorker();
 
         /// <summary>
@@ -39,7 +43,7 @@ namespace Emiplus.View.Common
 
         public static bool Remessa { get; set; }
 
-        private async Task RunSyncAsync(string table)
+        private async Task RunSyncAsync_old(string table)
         {
             // ######### CREATE AND UPDATE #########
             // 1 - Pego os registros com status CREATE ou UPDATE e envio para o db online para ser cadastrado ou atualizado.
@@ -229,6 +233,213 @@ namespace Emiplus.View.Common
             //        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
             //            Log.LogType.fatal);
             //}
+        }
+
+        private async Task RunSyncAsync(string table)
+        {
+            // ######### CREATE AND UPDATE #########
+            #region 1 - Pego os registros com status CREATE ou UPDATE e envio para o db online para ser cadastrado ou atualizado.
+            // Caso o registro online seja mais recente não atualiza
+            var dataCreate = await GetCreateDataAsync(table);
+            if (dataCreate.Any())
+            {
+                dynamic obj = new
+                {
+                    token = Program.TOKEN,
+                    id_empresa = idEmpresa,
+                    data = JsonConvert.SerializeObject(new { items = dataCreate }),
+                    status_sync = "CREATED",
+                    controller = table.Replace("_", "")
+                };
+
+                var response = new RequestApi().URL(Program.URL_BASE + "/api/geral/createjson").Content(obj, Method.POST).Response();
+                if (response["status"] == "OK")
+                {
+                    var items = response["data"];
+                    foreach (var idsync in items)
+                        await UpdateAsync(table, Validation.ConvertToInt32(idsync?.ToString()));
+                }
+                else
+                {
+                    new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                        Log.LogType.fatal);
+                }
+
+                new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+                        Log.LogType.info);
+            }
+
+            #endregion
+
+            #region comments
+
+            //foreach (var item in dataCreate)
+            //    {
+            //        // inserie no banco online
+            //        dynamic obj = new
+            //        {
+            //            token = Program.TOKEN,
+            //            id_empresa = idEmpresa,
+            //            data = JsonConvert.SerializeObject(item),
+            //            status_sync = "CREATED"
+            //        };
+
+            //        var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //            .Content(obj, Method.POST).Response();
+            //        if (response["status"] == "OK")
+            //            await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+            //        else
+            //            new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //                Log.LogType.fatal);
+            //    }
+
+            // ######### UPDATE #########
+            //var dataUpdate = await GetUpdateDataAsync(table);
+            //if (dataUpdate != null)
+            //    foreach (var item in dataUpdate)
+            //    {
+            //        if (CheckCreated(table, item.ID_SYNC))
+            //        {
+            //            // inserie no banco online
+            //            dynamic obj = new
+            //            {
+            //                token = Program.TOKEN,
+            //                id_empresa = idEmpresa,
+            //                data = JsonConvert.SerializeObject(item),
+            //                status_sync = "CREATED"
+            //            };
+
+            //            var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //                .Content(obj, Method.POST).Response();
+            //            if (response["status"] == "OK")
+            //                await UpdateAsync(table, item.ID_SYNC); // atualiza local (CREATE -> CREATED)
+            //            else
+            //                new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //                    Log.LogType.fatal);
+            //        }
+
+            //        // atualiza online (UPDATE -> CREATED)
+            //        if (UpdateOnline(table, item.ID_SYNC, item))
+            //            await UpdateAsync(table, item.ID_SYNC); // atualiza local (UPDATE -> CREATED)
+            //    }
+
+            #endregion
+
+            #region 2 - Pega todos os registros online em json.
+            // Pega todos os registros do banco LOCAL, faz um loop nos registros LOCAL e compara a data, se o registro online for mais recente atualiza o reigstro local com os dados do registro online
+
+            //var responseC = new RequestApi().URL(Program.URL_BASE + $"/api/geral/getall/{Program.TOKEN}/{idEmpresa}/all/{table.Replace("_", "")}").Content().Response();
+            var responseC = new RequestApi().URL(Program.URL_BASE + $"/api/geral/getall/{Program.TOKEN}/{idEmpresa}/all/{table.Replace("_", "")}").Content().Response();
+            switch (responseC["status"]?.ToString())
+            {
+                case "OK" when string.IsNullOrEmpty(responseC["data"]?.ToString()):
+                    return;
+                case "FAIL" when !string.IsNullOrEmpty(responseC["message"]?.ToString()) && responseC["message"]?.ToString() == "Nenhum registro encontrado":
+                    var datalocal = await GetAllDataAsync(table);
+                    if (datalocal != null)
+                        foreach (var item in datalocal)
+                        {
+                            await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                        }
+
+                    break;
+                case "OK":
+                    {
+                        var dataCreated = await GetAllDataAsync(table);
+                        if (dataCreated != null)
+                            foreach (var item in dataCreated)
+                            {
+                                // true = muda status para update para criar na proxima sync
+                                // não existe o registro cadastrado no banco online
+                                // Necessário caso o registro esteja como CREATED porém não esteja no banco online.
+                                var toUpdate = true;
+
+                                //var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+                                //var dirs = JObject.Parse(responseC["data"].ToString())
+                                //    .Descendants()
+                                //    .OfType<JObject>()
+                                //    .Where(x=> x["ID"] != null && x["ID"] == item.ID)
+                                //    .Where(d => Convert.ToDateTime(d["ATUALIZADO"]).CompareTo(d2) >= 0)
+                                //    //.Select(x => new { ID = (int)x["ID"], ATUALIZADO = (string)x["ATUALIZADO"] })
+                                //    .FirstOrDefault();
+
+                                //if (dirs == null)
+                                //    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                                //else
+                                //{
+                                //    if (Convert.ToDateTime(dirs["ATUALIZADO"]).CompareTo(d2) > 0)
+                                //        UpdateLocalAsync(table, dirs.ToString());
+                                //}
+
+                                //continue;
+                                //Console.WriteLine(dirs);
+                                //Console.WriteLine(dirs?.ATUALIZADO);
+                                //var dados = dirs.Find(x => x.ID == item.ID);
+                                //Console.WriteLine(dados.ID);
+                                //Console.WriteLine(dados.ATUALIZADO);
+
+                                foreach (var data in responseC["data"])
+                                {
+                                    if (data == null)
+                                        continue;
+
+                                    // atualiza o registro no banco LOCAL caso tenha mudança no banco online
+                                    if (Validation.ConvertToInt32(data.First()["ID"]) == Validation.ConvertToInt32(item.ID))
+                                    {
+                                        var d1 = Convert.ToDateTime(data.First()["ATUALIZADO"]?.ToString());
+                                        var d2 = Convert.ToDateTime(item.ATUALIZADO?.ToString());
+
+                                        // atualizar o registro local com os dados do registro online pois o registro online está mais recente
+                                        if (d1.CompareTo(d2) > 0) UpdateLocalAsync(table, data.First().ToString());
+
+                                        toUpdate = false;
+                                    }
+                                }
+
+                                // Muda o status do registro LOCAL para UPDATE
+                                if (toUpdate)
+                                    await UpdateToUpdateAsync(table, Validation.ConvertToInt32(item.ID));
+                            }
+
+                        break;
+                    }
+                case "FAIL":
+                    new Log().Add("SYNC", $"{responseC["status"]} | Tabela: {table} - {responseC["message"]}",
+                        Log.LogType.fatal);
+                    break;
+            }
+
+            new Log().Add("SYNC", $"{responseC["status"]} | Tabela: {table} - {responseC["message"]}",
+                        Log.LogType.info);
+
+            #endregion
+
+            #region comments
+
+            //if (CheckCreated(table, item.ID_SYNC))
+            //{
+            //    // inserie no banco online
+            //    dynamic obj = new
+            //    {
+            //        token = Program.TOKEN,
+            //        id_empresa = idEmpresa,
+            //        data = JsonConvert.SerializeObject(item),
+            //        status_sync = "CREATED"
+            //    };
+
+            //    var response = new RequestApi().URL(Program.URL_BASE + $"/api/{table.Replace("_", "")}/create")
+            //        .Content(obj, Method.POST).Response();
+            //    if (response["status"] == "FAIL")
+            //        new Log().Add("SYNC", $"{response["status"]} | Tabela: {table} - {response["message"]}",
+            //            Log.LogType.fatal);
+            //}
+
+            #endregion
+        }
+
+        public void Dispose()
+        {
+            
         }
 
         public void SendNota()
@@ -474,49 +685,56 @@ namespace Emiplus.View.Common
 
         public async Task StartSync()
         {
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("caixa");
+            if (sync_start == 0)
+            {
+                sync_start = 1;
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("caixa_mov");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("caixa");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("imposto");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("caixa_mov");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("categoria");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("imposto");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("item");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("categoria");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("item_mov_estoque");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("item");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("natureza");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("item_mov_estoque");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("pessoa");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("natureza");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("pessoa_contato");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("pessoa_endereco");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa_contato");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("titulo");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pessoa_endereco");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("nota");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("titulo");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("pedido");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("nota");
 
-            if (Support.CheckForInternetConnection())
-                await RunSyncAsync("pedido_item");
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pedido");
 
-            LastSync();
+                if (Support.CheckForInternetConnection())
+                    await RunSyncAsync("pedido_item");
+
+                LastSync();
+
+                sync_start = 0;
+            }
         }
 
         private void Eventos()
@@ -534,30 +752,43 @@ namespace Emiplus.View.Common
 
             timer1.Tick += (s, e) =>
             {
-                if (Support.CheckForInternetConnection())
-                    if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
-                        if (!Home.syncActive)
-                        {
-                            if (IniFile.Read("syncAuto", "APP") == "True")
-                            {
-                                backWork.RunWorkerAsync();
-                                Home.syncActive = true;
-                            }
-                        }
-
-                timer1.Stop();
+                timer_tick();
             };
 
-            backWork.DoWork += async (s, e) => { await StartSync(); };
+            backWork.DoWork += async (s, e) => 
+            {
+                new Log().Add("SYNC", "Sincronização iniciada", Log.LogType.info);
+
+                if (sync_start == 0)
+                {
+                    await StartSync();
+                }
+            };
 
             backWork.RunWorkerCompleted += (s, e) =>
             {
-                new Log().Add("SYNC", "Sincronização", Log.LogType.fatal);
+                new Log().Add("SYNC", "Sincronização concluída", Log.LogType.info);
 
                 timer1.Enabled = true;
                 timer1.Start();
                 Home.syncActive = false;
             };
+        }
+
+        private void timer_tick()
+        {
+            if (Support.CheckForInternetConnection())
+                if (!string.IsNullOrEmpty(Settings.Default.user_dbhost))
+                    if (!Home.syncActive)
+                    {
+                        if (IniFile.Read("syncAuto", "APP") == "True")
+                        {
+                            backWork.RunWorkerAsync();
+                            Home.syncActive = true;
+                        }
+                    }
+
+            timer1.Stop();
         }
 
         #region Metodos geral
@@ -574,6 +805,8 @@ namespace Emiplus.View.Common
                 limit = Validation.ConvertToInt32(IniFile.Read("LIMIT", "SYNC"));
             }
 
+            limit = 500;
+
             var baseQuery = connect.Query().Where("id_empresa",idEmpresa)
                 .Where(q => q.Where("status_sync", "CREATE").OrWhere("status_sync", "UPDATE"));
 
@@ -582,6 +815,8 @@ namespace Emiplus.View.Common
 
             if (Remessa && table == "pedido")
                 baseQuery.Where("tipo", "Remessas");
+
+            baseQuery.OrderByDesc("id");
 
             baseQuery.Limit(limit);
 

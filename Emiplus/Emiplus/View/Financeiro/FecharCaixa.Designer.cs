@@ -305,19 +305,18 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(53, 288);
+            this.label6.Location = new System.Drawing.Point(0, 288);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(265, 15);
+            this.label6.Size = new System.Drawing.Size(369, 15);
             this.label6.TabIndex = 106;
-            this.label6.Text = "(Dinheiro + cheques + recibos de cartão - saídas)";
+            this.label6.Text = "(Vendas + (Entradas - Saídas))";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -325,7 +324,8 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(364, 15);
             this.label4.TabIndex = 107;
-            this.label4.Text = "(Vendas em dinheiro + Entradas em dinheiro + saldo inicial - saídas)";
+            this.label4.Text = "(Vendas em Dinheiro + (Entradas - Saídas))";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FecharCaixa
             // 

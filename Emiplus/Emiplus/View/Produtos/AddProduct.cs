@@ -447,7 +447,7 @@ namespace Emiplus.View.Produtos
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
 
-            if (Support.CheckForInternetConnection())
+            /*if (Support.CheckForInternetConnection())
             {
                 if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
                     if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
@@ -478,7 +478,7 @@ namespace Emiplus.View.Produtos
                             }
                         }
                     }
-            }
+            }*/
 
             if (_modelItem.Ncm == "0")
             {

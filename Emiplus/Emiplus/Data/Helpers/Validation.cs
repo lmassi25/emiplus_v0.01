@@ -39,7 +39,7 @@ namespace Emiplus.Data.Helpers
             return "" + char1 + char2 + char3;
         }
 
-        public static string AddSpaces(string valueF, string valueE)
+        public static string AddSpaces(string valueF, string valueE, int size = 48)
         {
             if (string.IsNullOrEmpty(valueE))
                 return "";
@@ -47,8 +47,8 @@ namespace Emiplus.Data.Helpers
             if (string.IsNullOrEmpty(valueF))
                 return "";
 
-            if ((valueF + valueE).Length <= 48)
-                return valueF + "".PadLeft(48 - (valueF.Length + valueE.Length)) + valueE;
+            if ((valueF + valueE).Length <= size)
+                return valueF + "".PadLeft(size - (valueF.Length + valueE.Length)) + valueE;
             return valueF + " " + valueE;
         }
 
@@ -136,8 +136,16 @@ namespace Emiplus.Data.Helpers
         /// <returns>1.234,95</returns>
         public static string FormatPrice(double value, bool cifrao = false)
         {
-            var res = cifrao ? value.ToString("C", Program.cultura) : string.Format(Program.cultura, "{0:N2}", value);
-            return res;
+            try
+            {
+                var res = cifrao ? value.ToString("C", Program.cultura) : string.Format(Program.cultura, "{0:N2}", value);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                return "0,00";
+            }
+            
         }
 
         /// <summary>

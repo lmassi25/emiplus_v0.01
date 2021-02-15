@@ -277,6 +277,55 @@ namespace Emiplus.View.Fiscal.TelasNota
 
                 telaDados = true;
 
+                #region CONFERE DADOS
+
+                var dataAddrFirst = _mClienteAddr.Query().Where("id_pessoa", IdCliente).FirstOrDefault<Model.PessoaEndereco>();
+
+                if (_mPedido.id_useraddress > 0)
+                {
+                    dataAddrFirst = new Model.PessoaEndereco().Query().Where("id", _mPedido.id_useraddress).FirstOrDefault<Model.PessoaEndereco>();
+                }
+
+                if (DetailsClient.IdAddress > 0)
+                {
+                    dataAddrFirst = new Model.PessoaEndereco().Query().Where("id", DetailsClient.IdAddress).FirstOrDefault<Model.PessoaEndereco>();
+                }
+
+                if (dataAddrFirst != null)
+                {
+                    if (String.IsNullOrEmpty(dataAddrFirst.Rua))
+                    {
+                        Alert.Message("Atenção!", "O endereço do destinatário não pode ser vazio. Acesse o cadastro do cliente para corrigir!", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (String.IsNullOrEmpty(dataAddrFirst.Cep))
+                    {
+                        Alert.Message("Atenção!", "O cep do destinatário não pode ser vazio. Acesse o cadastro do cliente para corrigir!", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (String.IsNullOrEmpty(dataAddrFirst.Bairro))
+                    {
+                        Alert.Message("Atenção!", "O bairro do destinatário não pode ser vazio. Acesse o cadastro do cliente para corrigir!", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (String.IsNullOrEmpty(dataAddrFirst.Cidade))
+                    {
+                        Alert.Message("Atenção!", "A cidade do destinatário não pode ser vazio. Acesse o cadastro do cliente para corrigir!", Alert.AlertType.warning);
+                        return;
+                    }
+
+                    if (String.IsNullOrEmpty(dataAddrFirst.IBGE))
+                    {
+                        Alert.Message("Atenção!", "O código do municipio (IBGE) do destinatário não pode ser vazio. Acesse o cadastro do cliente para corrigir!", Alert.AlertType.warning);
+                        return;
+                    }
+                }
+
+                #endregion
+
                 GetData();
 
                 if (!Nota.disableCampos)

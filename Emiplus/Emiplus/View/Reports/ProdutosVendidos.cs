@@ -21,7 +21,7 @@ namespace Emiplus.View.Reports
     {
         private readonly Item _mItem = new Item();
         private KeyedAutoCompleteStringCollection collection = new KeyedAutoCompleteStringCollection();
-
+        
         public ProdutosVendidos()
         {
             InitializeComponent();
@@ -47,6 +47,9 @@ namespace Emiplus.View.Reports
         public Task<IEnumerable<dynamic>> GetDataTable()
         {
             var model = new Item().Query();
+
+            model.Where("PEDIDO.excluir", "=", "0");
+            model.Where("PEDIDO_ITEM.excluir", "=", "0");
 
             if (!noFilterData.Checked)
                 model.Where("PEDIDO.emissao", ">=", Validation.ConvertDateToSql(dataInicial.Value, true))
@@ -74,10 +77,69 @@ namespace Emiplus.View.Reports
             model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
             model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.FORNECEDOR");
             model.SelectRaw(
-                "ITEM.ID, ITEM.NOME, ITEM.REFERENCIA, ITEM.FORNECEDOR, ITEM.CATEGORIAID, ITEM.TIPO, ITEM.MEDIDA, PEDIDO_ITEM.item, SUM(PEDIDO_ITEM.QUANTIDADE) as TotalVendas, PESSOA.NOME AS FORNECEDOR_NAME, CATEGORIA.NOME AS CAT_NAME");
+                "ITEM.ID, ITEM.NOME, ITEM.REFERENCIA, ITEM.FORNECEDOR, ITEM.CATEGORIAID, ITEM.TIPO, ITEM.MEDIDA, PEDIDO_ITEM.item, SUM(PEDIDO_ITEM.TOTALCOMPRA) as SumCompras, SUM(PEDIDO_ITEM.TOTALVENDA) as SumVendas, SUM(PEDIDO_ITEM.QUANTIDADE) as TotalVendas, PESSOA.NOME AS FORNECEDOR_NAME, CATEGORIA.NOME AS CAT_NAME");
             model.GroupBy("item.id", "item.nome", "item.fornecedor", "item.categoriaid", "ITEM.TIPO", "ITEM.REFERENCIA",
                 "ITEM.MEDIDA", "PEDIDO_ITEM.item", "PESSOA.NOME", "CATEGORIA.NOME");
-            model.Limit(200);
+            
+            //model.Limit(200);
+            
+            return model.GetAsync<dynamic>();
+        }
+
+        public Task<IEnumerable<dynamic>> GetDataTable2()
+        {
+            var model = new PedidoItem().Query();
+
+            model.Join("PEDIDO", "PEDIDO.id", "PEDIDO_ITEM.pedido");
+
+            //model.Join("PEDIDO_ITEM", "PEDIDO_ITEM.item", "ITEM.id");            
+            //model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
+            //model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.FORNECEDOR");
+
+            model.Where("PEDIDO.TIPO", Home.pedidoPage);
+            model.Where("PEDIDO.excluir", "=", "0");
+            model.Where("PEDIDO_ITEM.excluir", "=", "0");
+            model.Where("PEDIDO.emissao", ">=", Validation.ConvertDateToSql(dataInicial.Value, true));
+            model.Where("PEDIDO.emissao", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
+
+            model.SelectRaw(
+                "PEDIDO_ITEM.item as item, " +
+                "PEDIDO_ITEM.cprod as cprod, " +
+                "PEDIDO_ITEM.XPROD as produto, " +
+                "PEDIDO_ITEM.MEDIDA as produto, " +
+                "SUM(PEDIDO_ITEM.TOTALCOMPRA) as SumCompras, " +
+                "SUM(PEDIDO_ITEM.TOTAL) as SumVendas, " +
+                "SUM(PEDIDO_ITEM.QUANTIDADE) as TotalVendas");
+
+            model.GroupBy("PEDIDO_ITEM.item", "PEDIDO_ITEM.cprod", "PEDIDO_ITEM.XPROD", "PEDIDO_ITEM.MEDIDA");
+
+            //model.Limit(200);
+
+            return model.GetAsync<dynamic>();
+        }
+
+        public Task<IEnumerable<dynamic>> GetDataTableTotal()
+        {
+            var model = new PedidoItem().Query();
+
+            model.Join("PEDIDO", "PEDIDO.id", "PEDIDO_ITEM.pedido");
+
+            //model.Join("PEDIDO_ITEM", "PEDIDO_ITEM.item", "ITEM.id");            
+            //model.LeftJoin("CATEGORIA", "CATEGORIA.id", "ITEM.CATEGORIAID");
+            //model.LeftJoin("PESSOA", "PESSOA.id", "ITEM.FORNECEDOR");
+
+            model.Where("PEDIDO.TIPO", Home.pedidoPage);
+            model.Where("PEDIDO.excluir", "=", "0");
+            model.Where("PEDIDO_ITEM.excluir", "=", "0");
+            model.Where("PEDIDO.emissao", ">=", Validation.ConvertDateToSql(dataInicial.Value, true));
+            model.Where("PEDIDO.emissao", "<=", Validation.ConvertDateToSql(dataFinal.Value, true));
+
+            model.SelectRaw("SUM(PEDIDO_ITEM.TOTALCOMPRA) as SumCompras, " +
+                "SUM(PEDIDO_ITEM.TOTAL) as SumVendas, " +
+                "SUM(PEDIDO_ITEM.QUANTIDADE) as TotalVendas");
+
+            //model.Limit(200);
+
             return model.GetAsync<dynamic>();
         }
 
@@ -197,7 +259,26 @@ namespace Emiplus.View.Reports
 
             btnSearch.Click += async (s, e) => { await DataTableAsync(); };
 
-            imprimir.Click += async (s, e) => await RenderizarAsync();
+            //imprimir.Click += async (s, e) => await RenderizarAsync();
+
+            imprimir.Click += async (s, e) => 
+            {
+                SelectionReports.screen = "Produtos Vendidos";
+                using (var f = new SelectionReports())
+                {
+                    f.ShowDialog();
+
+                    switch (SelectionReports.report)
+                    {
+                        case "02 - Margem":
+                            Renderizar2Async();
+                            break;
+                        default:
+                            RenderizarAsync();
+                            break;
+                    }
+                }
+            };
 
             btnHelp.Click += (s, e) => Support.OpenLinkBrowser(Configs.LinkAjuda);
         }
@@ -233,6 +314,99 @@ namespace Emiplus.View.Reports
                 dataInicial = dataInicial.Text,
                 dataFinal = dataFinal.Text,
                 Titulo = tipo_aux
+            }));
+
+            Browser.htmlRender = render;
+            using (var f = new Browser())
+            {
+                f.ShowDialog();
+            }
+        }
+
+        private async Task Renderizar2Async()
+        {
+            var dados = await GetDataTable2();
+
+            double t_compra = 0, t_venda = 0, t_diff = 0;
+
+            var data = new ArrayList();
+            foreach (var item in dados)
+            {
+                string compra = "0,00", venda = "0,00", a_diff = "", a_margem = ""; double diff = 0, margem = 0;
+
+                compra = (Validation.ConvertToDouble(item.SUMCOMPRAS) > 0) ? Validation.FormatPrice(Validation.ConvertToDouble(item.SUMCOMPRAS)) : "0,00";
+                venda = (Validation.ConvertToDouble(item.SUMVENDAS) > 0) ? Validation.FormatPrice(Validation.ConvertToDouble(item.SUMVENDAS)) : "0,00";
+                
+                if (Validation.ConvertToDouble(item.SUMCOMPRAS) > 0 && Validation.ConvertToDouble(item.SUMVENDAS) > 0)
+                {
+                    diff = Validation.Round(Validation.ConvertToDouble(item.SUMVENDAS) - Validation.ConvertToDouble(item.SUMCOMPRAS));
+                    margem = Validation.Round((diff * 100) / Validation.ConvertToDouble(item.SUMCOMPRAS));
+                }
+
+                a_diff = Validation.FormatPrice(diff);
+                a_margem = Validation.FormatPrice(margem);
+
+                /*data.Add(new
+                {
+                    Nome = item.NOME,
+                    Referencia = item.REFERENCIA,
+                    QtdVendido = item.TOTALVENDAS,
+                    Medida = item.MEDIDA,
+                    Categoria = item.CAT_NAME,
+                    Fornecedor = item.FORNECEDOR_NAME,
+                    SumCompras = compra,
+                    SumVendas = venda,
+                    SumDiff = a_diff,
+                    SumMargem = a_margem
+                });*/
+                
+                data.Add(new
+                {
+                    Nome = item.PRODUTO,
+                    Referencia = item.CPROD,
+                    QtdVendido = item.TOTALVENDAS,
+                    Medida = "",
+                    Categoria = "",
+                    Fornecedor = "",
+                    SumCompras = compra,
+                    SumVendas = venda,
+                    SumDiff = a_diff,
+                    SumMargem = a_margem
+                });
+
+                t_compra += Validation.ConvertToDouble(item.SUMCOMPRAS);
+                t_venda += Validation.ConvertToDouble(item.SUMVENDAS);
+                t_diff += Validation.ConvertToDouble(diff);
+            }
+
+            var dadosTotal = await GetDataTableTotal();
+            foreach (var item in dadosTotal)
+            {
+                t_compra = Validation.ConvertToDouble(item.SUMCOMPRAS);
+                t_venda = Validation.ConvertToDouble(item.SUMVENDAS);
+
+                double diff = Validation.Round(t_venda - t_compra);
+                t_diff = Validation.ConvertToDouble(diff);
+            }
+
+            string tipo_aux = "", aux_compra = Validation.FormatPrice(t_compra), aux_venda = Validation.FormatPrice(t_venda), aux_diff = Validation.FormatPrice(t_diff);
+
+            var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\ProdutosVendidosMargem.html"));
+            var render = html.Render(Hash.FromAnonymousObject(new
+            {
+                INCLUDE_PATH = Program.PATH_BASE,
+                URL_BASE = Program.PATH_BASE,
+                Data = data,
+                NomeFantasia = Settings.Default.empresa_nome_fantasia,
+                Logo = Settings.Default.empresa_logo,
+                Emissao = DateTime.Now.ToString("dd/MM/yyyy"),
+                noFilterData = noFilterData.Checked,
+                dataInicial = dataInicial.Text,
+                dataFinal = dataFinal.Text,
+                Titulo = tipo_aux,
+                total_compra = aux_compra,
+                total_venda = aux_venda,
+                total_diff = aux_diff,
             }));
 
             Browser.htmlRender = render;

@@ -40,7 +40,11 @@ namespace Emiplus.View.Financeiro
             dataRecebido.Text = _modelTitulo.Baixa_data == null
                 ? ""
                 : Validation.ConvertDateToForm(_modelTitulo.Baixa_data);
-            recebido.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? "" : Validation.Price(_modelTitulo.Recebido);
+
+
+            //recebido.Text = Math.Abs(_modelTitulo.Recebido) < 0 ? "" : Validation.Price(_modelTitulo.Recebido);
+            recebido.Text = Math.Abs(_modelTitulo.Baixa_total) < 0 ? "" : Validation.Price(_modelTitulo.Baixa_total);
+
             valorVenda.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0 ? Validation.FormatPrice(0, true) : Validation.FormatPrice(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido), true);
             valorLiquido.Text = Math.Abs(_controllerTitulo.GetTotalPedido(_modelTitulo.Id_Pedido)) < 0
                 ? Validation.FormatPrice(0, true)
@@ -121,7 +125,10 @@ namespace Emiplus.View.Financeiro
             _modelTitulo.Baixa_data = string.IsNullOrEmpty(dataRecebido.Text)
                 ? null
                 : Validation.ConvertDateToSql(dataRecebido.Text);
-            _modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
+
+            //_modelTitulo.Recebido = Validation.ConvertToDouble(recebido.Text);
+            _modelTitulo.Baixa_total = Validation.ConvertToDouble(recebido.Text);
+
             //_modelTitulo.Valor_Liquido = Validation.ConvertToDouble(valorBruto.Text);
             _modelTitulo.Qtd_Recorrencia = Validation.ConvertToInt32(xRecorrente.Text);
 
@@ -206,7 +213,7 @@ namespace Emiplus.View.Financeiro
 
         private void LoadFornecedores()
         {
-            cliente.DataSource = new Pessoa().GetAll("Fornecedores");
+            cliente.DataSource = new Pessoa().GetAll("");
             cliente.ValueMember = "Id";
             cliente.DisplayMember = "Nome";
         }

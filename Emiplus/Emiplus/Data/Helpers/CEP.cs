@@ -35,13 +35,13 @@ namespace Emiplus.Data.Helpers
             {
                 if (ex.ToString().Contains("CEP INVÁLIDO"))
                 {
-                    Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
+                    //Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
                     return false;
                 }
 
                 if (ex.ToString().Contains("CEP NAO ENCONTRADO"))
                 {
-                    Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
+                    //Alert.Message("Oppss!", "CEP não encontrado.", Alert.AlertType.warning);
                     return false;
                 }
             }

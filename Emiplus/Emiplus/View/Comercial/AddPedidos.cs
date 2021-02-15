@@ -46,6 +46,8 @@ namespace Emiplus.View.Comercial
 
         private static string CachePage { get; set; }
 
+        private static string TextBalanca { get; set; }
+
         public static bool BtnFinalizado { get; set; } // Alimenta quando o botão finalizado for clicado
         public static bool BtnVoltar { get; set; } // Alimenta quando o botão finalizado for clicado
 
@@ -165,6 +167,7 @@ namespace Emiplus.View.Comercial
                     break;
                 }
                 case "Compras":
+                {
                     PDV = false;
                     label15.Text = @"Fornecedor:";
 
@@ -176,9 +179,10 @@ namespace Emiplus.View.Comercial
                     btnConcluir.Text = @"Pagamento";
                     btnDelete.Visible = false;
                     break;
+                }
                 case "Remessas":
+                {   
                     PDV = false;
-
                     label15.Text = @"Empresa:";
                     pictureBox8.Visible = false;
                     label12.Visible = false;
@@ -191,6 +195,7 @@ namespace Emiplus.View.Comercial
                     pictureBox9.Image = Resources.skyscrapper;
                     SelecionarCliente.Location = new Point(720, 15);
                     break;
+                }
                 case "Devoluções":
                 {
                     PDV = false;
@@ -240,8 +245,13 @@ namespace Emiplus.View.Comercial
                     label2.Text = $@"Dados da Venda: {Id}";
                     label3.Text = @"Siga as etapas abaixo para criar um novo pedido!";
                     btnConcluir.Text = @"Receber";
+                    btnConcluir.Refresh();
 
-                    if (Home.idCaixa == 0) btnConcluir.Text = @"Finalizar";
+                    if (Home.idCaixa == 0)
+                    {
+                        btnConcluir.Text = @"Finalizar";
+                        btnConcluir.Refresh();
+                    }                        
 
                     if (Home.idCaixa != 0)
                     {
@@ -333,12 +343,39 @@ namespace Emiplus.View.Comercial
         {
             if (BuscarProduto.Text.Length > 0)
             {
-                var item = _mItem.FindAll()
+                Item item = null;
+                                
+                if (BuscarProduto.Text.Substring(0, 1) == "2")
+                {
+                    TextBalanca = BuscarProduto.Text;
+
+                    if(BuscarProduto.Text.Substring(1, 4) == "0" || BuscarProduto.Text.Substring(1, 4) == "00" || BuscarProduto.Text.Substring(1, 4) == "000" || BuscarProduto.Text.Substring(1, 4) == "0000")
+                    {
+                        item = _mItem.FindAll()
+                        .Where("excluir", 0)
+                        .Where("tipo", "Produtos")
+                        .Where("referencia", BuscarProduto.Text.Substring(1, 4))
+                        .FirstOrDefault<Item>();
+                    }
+                    else
+                    {
+                        item = _mItem.FindAll()
+                        .Where("excluir", 0)
+                        .Where("tipo", "Produtos")
+                        .Where("referencia", Validation.ConvertToInt32(BuscarProduto.Text.Substring(1, 4)).ToString())
+                        .FirstOrDefault<Item>();
+                    }
+                    
+                }
+                else
+                {
+                    item = _mItem.FindAll()
                     .Where("excluir", 0)
                     .Where("tipo", "Produtos")
                     .Where("codebarras", BuscarProduto.Text)
                     .OrWhere("referencia", BuscarProduto.Text)
                     .FirstOrDefault<Item>();
+                }                
 
                 if (item != null)
                     BuscarProduto.Text = item.Nome;
@@ -736,6 +773,7 @@ namespace Emiplus.View.Comercial
             var checkNome = BuscarProduto.Text.Split(new[] {" ++ ", "++"}, StringSplitOptions.None);
 
             nomeProduto[0] = checkNome[0];
+            
             if (checkNome.Length == 1)
                 nomeProduto[1] = "";
             else
@@ -749,10 +787,44 @@ namespace Emiplus.View.Comercial
         /// </summary>
         private void AddItem()
         {
-            if (collection.Lookup(NomeProduto()[0]) > 0 && string.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            string getNomeProduto = "", _tBalanca  = "", _referencia = "", _v1 = "", _v2 = "", _vT = "";
+            
+            getNomeProduto = NomeProduto()[0];
+
+            if (!String.IsNullOrEmpty(TextBalanca))
             {
-                var itemId = collection.Lookup(NomeProduto()[0]);
+                if (TextBalanca.Substring(0, 1) == "2")
+                {
+                    _tBalanca = TextBalanca;
+
+                    //balança
+                    //2 SEMPRE REPETE
+                    //0036 ID
+                    //0140000 VALOR DE VENDA = 1400,00
+                    //0 DIGITO VERIFICADOR
+
+                    //2 0025 0000314 5
+                    //2 0000 0000673 4
+                    //2 0000 0000608 6
+
+                    _referencia = _tBalanca.Substring(1, 4);
+
+                    _v1 = Validation.ConvertToInt32(_tBalanca.Substring(5, 5)).ToString();
+                    //_v2 = Validation.ConvertToInt32(_tBalanca.Substring(10, 2)).ToString();
+                    _v2 = _tBalanca.Substring(10, 2);
+
+                    _vT = _v1 + "," + _v2;
+
+                    //getNomeProduto = Validation.ConvertToInt32(_referencia).ToString();
+                }
+            }
+            
+            if (collection.Lookup(getNomeProduto) > 0 && string.IsNullOrEmpty(PedidoModalItens.NomeProduto))
+            {
+                var itemId = collection.Lookup(getNomeProduto);
                 var item = _mItem.FindById(itemId).WhereFalse("excluir").FirstOrDefault<Item>();
+
+                #region ITEM
 
                 if (!string.IsNullOrEmpty(item.Combos))
                 {
@@ -820,6 +892,11 @@ namespace Emiplus.View.Comercial
                 var medidaTxt = Medidas.Text;
                 var priceTxt = Validation.ConvertToDouble(Preco.Text);
 
+                if(!String.IsNullOrEmpty(_vT))
+                {
+                    priceTxt = Validation.ConvertToDouble(_vT);
+                }
+
                 #region Controle de estoque
 
                 var controlarEstoque = IniFile.Read("ControlarEstoque", "Comercial");
@@ -829,6 +906,10 @@ namespace Emiplus.View.Comercial
                         Alert.Message("Opps", "Você está sem estoque desse produto.", Alert.AlertType.warning);
                         return;
                     }
+
+                #endregion
+
+                #region Limite de Desconto
 
                 if (Math.Abs(priceTxt) < 0)
                     if (descontoReaisTxt > item.ValorVenda || descontoReaisTxt > item.Limite_Desconto ||
@@ -1002,7 +1083,10 @@ namespace Emiplus.View.Comercial
                     ModoRapAvaConfig = 0;
                 }
 
+                #endregion
+
                 BuscarProduto.Select();
+                TextBalanca = "";
             }
         }
 
@@ -1336,28 +1420,35 @@ namespace Emiplus.View.Comercial
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (ModoRapAva == 1)
-                        if (!string.IsNullOrEmpty(NomeProduto()[0]))
-                        {
-                            var item = _mItem.FindById(collection.Lookup(NomeProduto()[0])).FirstOrDefault<Item>();
-                            if (item != null)
-                            {
-                                if(Home.pedidoPage == "Compras")
-                                    Preco.Text = Validation.FormatPrice(item.ValorCompra);
-                                else
-                                    Preco.Text = Validation.FormatPrice(item.ValorVenda);
-
-                                Medidas.SelectedItem = item.Medida;
-                            }
-
-                            Quantidade.Focus();
-                            return;
-                        }
-
                     if (string.IsNullOrEmpty(NomeProduto()[0]))
                         ModalItens();
-                    else
+                    else if (NomeProduto()[0].Substring(0, 1) == "2")                    
                         LoadItens();
+                    else
+                    {
+                        if (ModoRapAva == 1)
+                            if (!string.IsNullOrEmpty(NomeProduto()[0]))
+                            {
+                                var item = _mItem.FindById(collection.Lookup(NomeProduto()[0])).FirstOrDefault<Item>();
+                                if (item != null)
+                                {
+                                    if (Home.pedidoPage == "Compras")
+                                        Preco.Text = Validation.FormatPrice(item.ValorCompra);
+                                    else
+                                        Preco.Text = Validation.FormatPrice(item.ValorVenda);
+
+                                    Medidas.SelectedItem = item.Medida;
+                                }
+
+                                Quantidade.Focus();
+                                return;
+                            }
+
+                        if (string.IsNullOrEmpty(NomeProduto()[0]))
+                            ModalItens();
+                        else
+                            LoadItens();
+                    }                    
                 }
             };
 
@@ -1583,11 +1674,12 @@ namespace Emiplus.View.Comercial
                     return;
                 }
 
-                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" ||
-                    Home.pedidoPage == "Consignações" || Home.pedidoPage == "Delivery")
+                if (Home.pedidoPage == "Orçamentos" || Home.pedidoPage == "Devoluções" || Home.pedidoPage == "Consignações" || Home.pedidoPage == "Delivery")
+                {
                     if (_mPedido.status == 1)
                         BtnFinalizado = true;
-
+                }
+                
                 if (BtnVoltar)
                     BtnVoltar = false;
                 //return;

@@ -38,15 +38,12 @@ namespace Emiplus.View.Configuracoes
         private void createTxtItem()
         {            
             string path = IniFile.Read("PathBalança", "Comercial");
+
             if (String.IsNullOrEmpty(path))
-            {
                 path = "C:\\Emiplus\\";
-            }
 
             if (File.Exists(path))
-            {
                 File.Delete(path);
-            }
 
             StreamWriter txt = new StreamWriter(path + @"\TXITENS.TXT", false, Encoding.UTF8);
 
@@ -58,72 +55,75 @@ namespace Emiplus.View.Configuracoes
                 
                 if (!String.IsNullOrEmpty(item.NOME))
                 {
-                    id = item.ID;
-                    vlrvenda = item.VALORVENDA.ToString();
-                    unidade = item.MEDIDA;
-                    if (vlrvenda.IndexOf(",") > 0)
+                    if (!String.IsNullOrEmpty(item.REFERENCIA))
                     {
-                        auxVlrVenda = vlrvenda.Substring(vlrvenda.IndexOf(","), vlrvenda.Length - vlrvenda.IndexOf(","));
-                        auxVlrVenda = auxVlrVenda.Replace(",", "");
-                        if (auxVlrVenda.Length == 1)
+                        id = Validation.ConvertToInt32(item.REFERENCIA);
+
+                        if(id > 0)
                         {
-                            vlrvenda = vlrvenda + "0";
-                        }
-                    }
-                    else
-                    {
-                        if (vlrvenda.Length == 3)
-                        {
-                            if (item.VALORVENDA > 99)
+                            vlrvenda = item.VALORVENDA.ToString();
+                            unidade = item.MEDIDA;
+                            if (vlrvenda.IndexOf(",") > 0)
                             {
-                                vlrvenda = vlrvenda + "00";
+                                auxVlrVenda = vlrvenda.Substring(vlrvenda.IndexOf(","), vlrvenda.Length - vlrvenda.IndexOf(","));
+                                auxVlrVenda = auxVlrVenda.Replace(",", "");
+                                if (auxVlrVenda.Length == 1)
+                                    vlrvenda = vlrvenda + "0";
                             }
-                        }
-                        if (vlrvenda.Length == 2)
-                        {
-                            if (item.VALORVENDA > 9)
+                            else
                             {
-                                vlrvenda = vlrvenda + "00";
+                                if (vlrvenda.Length == 3)
+                                {
+                                    if (item.VALORVENDA > 99)
+                                        vlrvenda = vlrvenda + "00";
+                                }
+
+                                if (vlrvenda.Length == 2)
+                                {
+                                    if (item.VALORVENDA > 9)
+                                        vlrvenda = vlrvenda + "00";
+                                }
+
+                                if (vlrvenda.Length == 1)
+                                {
+                                    if (item.VALORVENDA <= 9)
+                                        vlrvenda = vlrvenda + "00";
+                                }
                             }
+
+                            vlrvenda = vlrvenda.Replace(".", "");
+                            vlrvenda = vlrvenda.Replace(",", "");
+
+                            nome = item.NOME;
+                            nome = nome.TrimStart();
+                            nome = nome.TrimEnd();
+
+                            if (nome.Length > 24)
+                                nome = nome.Substring(0, 24);
+
+                            DD = "99";
+                            EE = "00";
+
+                            if (unidade == "KG")
+                                T = "0";
+                            else
+                                T = "0";
+
+                            CCCCCC = id.ToString("000000"); //id
+                                                            //PPPPPP = dataTools.convertParaInt(vlrvenda).ToString("000000"); //vlrvenda
+                            PPPPPP = vlrvenda.PadLeft(6, '0'); //vlrvenda
+                            VVV = "000";
+
+                            //D1 = nome.PadLeft(25, ' '); //nome
+                            //D1 = nome.PadRight(25, ' '); //nome
+                            D1 = nome; //nome
+                                       //D2 = nome.PadLeft(25, ' '); //nome
+
+                            txt.WriteLine(DD + EE + T + CCCCCC + PPPPPP + VVV + D1 + D2);
+                            //            99   00   0   000001   000999   005   PAO FRANCES  
+                            //            99   00   0   000001   000150   000   BANANINHA
                         }
-                        if (vlrvenda.Length == 1)
-                        {
-                            if (item.VALORVENDA <= 9)
-                            {
-                                vlrvenda = vlrvenda + "00";
-                            }
-                        }
                     }
-
-                    vlrvenda = vlrvenda.Replace(".", "");
-                    vlrvenda = vlrvenda.Replace(",", "");
-                    nome = item.NOME;
-
-                    if (nome.Length > 24)
-                    {
-                        nome = nome.Substring(0, 24);
-                    }
-
-                    DD = "99";
-                    EE = "00";
-
-                    if (unidade == "KG")
-                    {
-                        T = "0";
-                    }
-                    else
-                    {
-                        T = "1";
-                    }
-
-                    CCCCCC = id.ToString("000000"); //id
-                                                    //PPPPPP = dataTools.convertParaInt(vlrvenda).ToString("000000"); //vlrvenda
-                    PPPPPP = vlrvenda.PadLeft(6, '0'); //vlrvenda
-                    VVV = "000";
-                    D1 = nome.PadLeft(25, ' '); //nome
-                    D2 = nome.PadLeft(25, ' '); //nome
-
-                    txt.WriteLine(DD + EE + T + CCCCCC + PPPPPP + VVV + D1 + D2);
                 }
             }
 
@@ -137,6 +137,7 @@ namespace Emiplus.View.Configuracoes
             return new Model.Item().Query()
                 .Where("item.excluir", 0)                
                 .Where("item.tipo", "Produtos")
+                .OrderBy("item.referencia")
                 .Get<dynamic>();
         }
     }

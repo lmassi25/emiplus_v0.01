@@ -172,11 +172,19 @@ namespace Emiplus.View.Fiscal.TelasNota
                         case 1:
 
                             if (_msg.Contains("AUTORIZADA"))
-                                Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
+                            {
+                                //Alert.Message("Tudo certo!", "Carta de correção autorizada", Alert.AlertType.success);//AlertOptions.Message("Tudo certo!", "Carta de correção autorizada", AlertBig.AlertType.success, AlertBig.AlertBtn.OK);
+                                //MessageBox.Show("Carta de correção autorizada");
+                                retorno.Text = "Carta de correção autorizada";
+                            }                                
                             else
+                            {
                                 //Alert.Message("Opss", _msg, Alert.AlertType.error);
-                                AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
-
+                                //AlertOptions.Message("Opss", _msg, AlertBig.AlertType.error, AlertBig.AlertBtn.OK);
+                                //MessageBox.Show(_msg);
+                                retorno.Text = _msg;
+                            }
+                                
                             break;
 
                         case 2:

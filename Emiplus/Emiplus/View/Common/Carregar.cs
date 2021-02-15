@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -25,6 +26,15 @@ namespace Emiplus.View.Common
         {
             Load += (s, e) =>
             {
+                if (File.Exists("C:\\Sincronizador\\Sincronizador.exe"))
+                {
+                    if(Process.GetProcessesByName("Sincronizador").Length == 0)
+                    {
+                        System.Diagnostics.Process.Start("C:\\Sincronizador\\Sincronizador.exe");
+                    }
+                }
+                    
+
                 if (Support.CheckForInternetConnection())
                     if (IniFile.Read("Update", "APP") == "true" &&
                         Directory.Exists(IniFile.Read("Path", "LOCAL") + "\\Update"))

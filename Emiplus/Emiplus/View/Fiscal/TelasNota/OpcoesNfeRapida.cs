@@ -1,9 +1,16 @@
-﻿using Emiplus.Data.Helpers;
+﻿using Emiplus.Data.Core;
+using Emiplus.Data.Helpers;
+using Emiplus.Properties;
 using Emiplus.View.Common;
+using Newtonsoft.Json;
 using SqlKata.Execution;
 using System;
 using System.ComponentModel;
+using System.IO;
+using System.Json;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Emiplus.View.Fiscal.TelasNota
@@ -13,7 +20,9 @@ namespace Emiplus.View.Fiscal.TelasNota
         public static int idPedido { get; set; }
         public static int idNota { get; set; }
 
+        private Model.Pedido _modelPedido = new Model.Pedido();
         private Model.Nota _modelNota = new Model.Nota();
+
         private BackgroundWorker WorkerBackground = new BackgroundWorker();
         private string _msg, justificativa;
         private int p1 = 0;
@@ -59,10 +68,12 @@ namespace Emiplus.View.Fiscal.TelasNota
                 if (nota == null)
                     return;
 
-                nsefaz.Text = nota.nr_Nota;
-                serie.Text = nota.Serie;
-                status.Text = nota.Status;
-                chavedeacesso.Text = nota.ChaveDeAcesso;
+                nsefaz.Text = (!String.IsNullOrEmpty(nota.nr_Nota)) ? nota.nr_Nota : "";
+                serie.Text = (!String.IsNullOrEmpty(nota.Serie)) ? nota.Serie : "";
+                status.Text = (!String.IsNullOrEmpty(nota.Status)) ? nota.Status : "";
+                chavedeacesso.Text = (!String.IsNullOrEmpty(nota.ChaveDeAcesso)) ? nota.ChaveDeAcesso : "";
+
+                Emitir.Visible = false;
             };
 
             btnDetalhes.Click += (s, e) =>
@@ -238,6 +249,7 @@ namespace Emiplus.View.Fiscal.TelasNota
                     switch (p1)
                     {
                         case 1:
+
                             //_modelNota = _modelNota.FindByIdPedido(idPedido).FirstOrDefault<Model.Nota>();
                             //if (_modelNota == null)
                             //{
@@ -250,9 +262,19 @@ namespace Emiplus.View.Fiscal.TelasNota
                             break;
 
                         case 2:
-                            var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe", _modelNota.Id);
-                            if (!msg.Contains(".pdf"))
-                                _msg = msg;
+
+                            if (IniFile.Read("NFe", "APP") != "Uninfe")
+                            {
+                                var msg = new Controller.Fiscal().Imprimir(idPedido, "NFe", _modelNota.Id);
+                                if (!msg.Contains(".pdf"))
+                                    _msg = msg;
+                            }
+                            else
+                            {
+
+
+                                EmissorImprimirDanfe();
+                            }
 
                             break;
 
@@ -276,7 +298,11 @@ namespace Emiplus.View.Fiscal.TelasNota
                 b.RunWorkerCompleted += async (s, e) =>
                 {
                     p1 = 0;
-                    retorno.Text = _msg;
+
+                    if (!String.IsNullOrEmpty(_msg)) 
+                    {
+                        retorno.Text = _msg;
+                    }                    
                 };
             }
 
@@ -285,6 +311,74 @@ namespace Emiplus.View.Fiscal.TelasNota
                 OpcoesNfeRapida.idPedido = 0;
                 OpcoesNfeRapida.idNota = 0;
             };
+        }
+
+        private async void EmissorImprimirDanfe()
+        {
+            _modelPedido = new Model.Pedido().FindById(idPedido).First<Model.Pedido>();
+
+            string _pathUninfe = @"C:\Emiplus\Unimake\UniNFe\" + Validation.CleanStringForFiscal(Settings.Default.empresa_cnpj).Replace(" ", "").Replace(".", ""),
+                _pathEnvio = _pathUninfe + @"\Envio", 
+                _pathRetorno = _pathUninfe + @"\Retorno", 
+                _pathEnviado = _pathUninfe + @"\Enviado\Autorizados";
+
+            if (File.Exists(_pathEnviado + "\\" + _modelPedido.Emissao.Year.ToString("0000") + _modelPedido.Emissao.Month.ToString("00") + "\\" + _modelNota.ChaveDeAcesso + "-procNFe.xml"))
+            {
+                string xml = File.ReadAllText(_pathEnviado + "\\" + _modelPedido.Emissao.Year.ToString("0000") + _modelPedido.Emissao.Month.ToString("00") + "\\" + _modelNota.ChaveDeAcesso + "-procNFe.xml");
+
+                string URI = "https://emiplus.com.br/emissor/api/nota/imprimir";
+
+                var nota = new Model.Emissor();
+                nota.chavedeacesso = _modelNota.ChaveDeAcesso;
+                nota.emitente = Validation.CleanStringForFiscal(Settings.Default.empresa_cnpj).Replace(" ", "").Replace(".", "");
+                nota.aaaamm = _modelPedido.Emissao.Year.ToString("0000") + _modelPedido.Emissao.Month.ToString("00");
+                nota.xml = xml;
+
+                using (var client = new HttpClient())
+                {
+                    var serializedProduto = JsonConvert.SerializeObject(nota);
+                    var content = new StringContent(serializedProduto, Encoding.UTF8, "application/json");
+
+                    client.DefaultRequestHeaders.Add("email", "leandro");
+                    client.DefaultRequestHeaders.Add("password", "leandro");
+
+                    HttpResponseMessage result = await client.PostAsync(URI, content);
+                    //var result = await client.PostAsJsonAsync(URI, serializedProduto);
+
+                    Console.WriteLine(result.ToString());
+                    if (result.Content != null)
+                    {
+                        var responseContent = await result.Content.ReadAsStringAsync();
+                        Console.WriteLine(responseContent.ToString());
+
+                        /*dynamic jsonTratado = JsonValue.Parse(responseContent.ToString());
+
+                        var json2 = jsonTratado[0];
+
+                        if (json2[0] == "true")
+                        {
+                            System.Diagnostics.Process.Start("https://emiplus.com.br/emissor/pdf/" + nota.chavedeacesso + ".pdf");
+                        }
+                        else
+                        {
+                            _msg = "Arquivo pdf não encontrado!";
+                        }*/
+
+                        _msg = "";
+                        System.Diagnostics.Process.Start("https://emiplus.com.br/emissor/pdf/" + nota.chavedeacesso + ".pdf");
+                    }
+                }                
+            }
+            else
+            {
+                _msg = "Arquivo xml não encontrado!";
+            }
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
         }
     }
 }

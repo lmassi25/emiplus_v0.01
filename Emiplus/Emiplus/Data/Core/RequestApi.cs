@@ -41,7 +41,10 @@ namespace Emiplus.Data.Core
         public JObject Response()
         {
             var response = client.Execute(request);
-            return JObject.Parse(response.Content);
+            if(!string.IsNullOrEmpty(response.Content))
+                return JObject.Parse(response.Content);
+            else
+                return null;
         }
     }
 }

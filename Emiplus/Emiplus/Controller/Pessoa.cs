@@ -127,7 +127,6 @@ namespace Emiplus.Controller
             Table.Rows.Clear();
 
             var address = new PessoaEndereco();
-
             var data = address.Query()
                 .Where("EXCLUIR", 0)
                 .Where("ID_PESSOA", Id)
@@ -184,6 +183,29 @@ namespace Emiplus.Controller
                     item.CELULAR,
                     item.EMAIL
                 );
+        }
+
+        public string GetEnderecos(int id)
+        {
+            var address = new Model.PessoaEndereco();
+            var dataAdress = address.Query()
+                .Where("EXCLUIR", 0)
+                .Where("ID_PESSOA", id)
+                .OrderByDesc("criado")
+                .Get();
+
+            string endereco = "", cidade = "";
+
+            foreach (var itemAd in dataAdress)
+            {
+                endereco = itemAd.RUA;
+                endereco += ", " + itemAd.NR;
+                endereco += " - " + itemAd.BAIRRO;
+                cidade = itemAd.CIDADE;
+                cidade += " / " + itemAd.ESTADO;
+            }
+
+            return endereco + " - " + cidade; 
         }
     }
 }

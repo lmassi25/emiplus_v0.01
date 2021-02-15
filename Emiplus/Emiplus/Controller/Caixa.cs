@@ -32,7 +32,8 @@ namespace Emiplus.Controller
         {
             var sumEntradas = _modelCaixaMov.Query().SelectRaw("SUM(VALOR) as TOTAL").Where("id_caixa", idCaixa)
                 .Where("tipo", 3).WhereFalse("excluir").FirstOrDefault();
-            return Validation.ConvertToDouble(sumEntradas.TOTAL ?? 0) + SumPagamento(idCaixa, 1) ?? 0;
+            //return Validation.ConvertToDouble(sumEntradas.TOTAL ?? 0) + SumPagamento(idCaixa, 1) ?? 0;
+            return Validation.ConvertToDouble(sumEntradas.TOTAL ?? 0) ?? 0;
         }
 
         public double SumSaldoFinal(int idCaixa)
