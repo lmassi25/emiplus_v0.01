@@ -10,6 +10,7 @@ using DotLiquid;
 using Emiplus.Controller;
 using Emiplus.Data.Core;
 using Emiplus.Data.Helpers;
+using Emiplus.Model;
 using Emiplus.Properties;
 using Emiplus.View.Common;
 using Emiplus.View.Reports;
@@ -23,7 +24,7 @@ namespace Emiplus.View.Comercial
     /// </summary>
     public partial class Clientes : Form
     {
-        private readonly Pessoa _controller = new Pessoa();
+        private readonly Controller.Pessoa _controller = new Controller.Pessoa();
 
         private IEnumerable<dynamic> dataTable;
         public List<int> ListProdutos = new List<int>();
@@ -344,7 +345,7 @@ namespace Emiplus.View.Comercial
             };
 
             imprimir.Click += async (s, e) => await RenderizarAsync();
-        }
+        }        
 
         private async Task RenderizarAsync()
         {
@@ -352,19 +353,25 @@ namespace Emiplus.View.Comercial
             if (f.ShowDialog() != DialogResult.OK)
                 return;
 
-            var dados = await _controller.GetDataTableClientes(search.Text, f.NrRegistros, f.TodosRegistros, f.OrdemBy,
-                f.Inativos);
+            var dados = await _controller.GetDataTableClientes(search.Text, f.NrRegistros, f.TodosRegistros, f.OrdemBy, f.Inativos);
 
             var data = new ArrayList();
             foreach (var item in dados)
+            {
+                string ENDERECO = "", cidade = "";
+
+                ENDERECO = _controller.GetEnderecos(item.ID);
+
                 data.Add(new
                 {
                     item.ID,
                     item.NOME,
                     item.FANTASIA,
                     item.CPF,
-                    item.RG
+                    item.RG,
+                    ENDERECO
                 });
+            }
 
             var html = Template.Parse(File.ReadAllText($@"{Program.PATH_BASE}\html\Pessoas.html"));
             var render = html.Render(Hash.FromAnonymousObject(new

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPedidos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -63,6 +63,7 @@
             this.btnDelete = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnGerarVenda = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.btnQuantidade = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.GridListaProdutos = new System.Windows.Forms.DataGridView();
@@ -72,6 +73,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelTwo = new System.Windows.Forms.Panel();
+            this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
+            this.txtQtd = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
+            this.btnSaveQtd = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCancelQtd = new System.Windows.Forms.PictureBox();
             this.visualSeparator1 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -94,12 +100,6 @@
             this.Preco = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.addProduto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.visualPanel2 = new VisualPlus.Toolkit.Controls.Layout.VisualPanel();
-            this.btnSaveQtd = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCancelQtd = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.txtQtd = new VisualPlus.Toolkit.Controls.Editors.VisualTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -107,9 +107,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).BeginInit();
             this.panelTwo.SuspendLayout();
+            this.visualPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveQtd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCancelQtd)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -118,10 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelAvancado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.visualPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveQtd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCancelQtd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -736,6 +736,18 @@
             this.btnQuantidade.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnQuantidade.Visible = false;
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(341, -4);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 145258;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Visible = false;
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -769,23 +781,23 @@
             this.GridListaProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridListaProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridListaProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridListaProdutos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridListaProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridListaProdutos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GridListaProdutos.Location = new System.Drawing.Point(0, 0);
@@ -885,6 +897,134 @@
             this.panelTwo.Name = "panelTwo";
             this.panelTwo.Size = new System.Drawing.Size(1008, 629);
             this.panelTwo.TabIndex = 104;
+            // 
+            // visualPanel2
+            // 
+            this.visualPanel2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.visualPanel2.BackColorState.Enabled = System.Drawing.Color.White;
+            this.visualPanel2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.visualPanel2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
+            this.visualPanel2.Border.HoverVisible = true;
+            this.visualPanel2.Border.Rounding = 6;
+            this.visualPanel2.Border.Thickness = 1;
+            this.visualPanel2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.visualPanel2.Border.Visible = true;
+            this.visualPanel2.Controls.Add(this.txtQtd);
+            this.visualPanel2.Controls.Add(this.btnSaveQtd);
+            this.visualPanel2.Controls.Add(this.label1);
+            this.visualPanel2.Controls.Add(this.btnCancelQtd);
+            this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.Location = new System.Drawing.Point(339, 524);
+            this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.visualPanel2.Name = "visualPanel2";
+            this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
+            this.visualPanel2.Size = new System.Drawing.Size(197, 104);
+            this.visualPanel2.TabIndex = 145257;
+            this.visualPanel2.TabStop = false;
+            this.visualPanel2.Text = "visualPanel2";
+            this.visualPanel2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.visualPanel2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.visualPanel2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.visualPanel2.Visible = false;
+            // 
+            // txtQtd
+            // 
+            this.txtQtd.AlphaNumeric = false;
+            this.txtQtd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtQtd.BackColor = System.Drawing.Color.White;
+            this.txtQtd.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.txtQtd.BackColorState.Enabled = System.Drawing.Color.White;
+            this.txtQtd.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.txtQtd.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.txtQtd.Border.HoverVisible = true;
+            this.txtQtd.Border.Rounding = 8;
+            this.txtQtd.Border.Thickness = 1;
+            this.txtQtd.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtQtd.Border.Visible = true;
+            this.txtQtd.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtQtd.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
+            this.txtQtd.ButtonBorder.HoverVisible = true;
+            this.txtQtd.ButtonBorder.Rounding = 6;
+            this.txtQtd.ButtonBorder.Thickness = 1;
+            this.txtQtd.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.txtQtd.ButtonBorder.Visible = true;
+            this.txtQtd.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtQtd.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtQtd.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtQtd.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.txtQtd.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.ButtonIndent = 3;
+            this.txtQtd.ButtonText = "visualButton";
+            this.txtQtd.ButtonVisible = false;
+            this.txtQtd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtQtd.Image = null;
+            this.txtQtd.ImageSize = new System.Drawing.Size(16, 16);
+            this.txtQtd.ImageVisible = false;
+            this.txtQtd.ImageWidth = 35;
+            this.txtQtd.Location = new System.Drawing.Point(16, 30);
+            this.txtQtd.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.txtQtd.Name = "txtQtd";
+            this.txtQtd.PasswordChar = '\0';
+            this.txtQtd.ReadOnly = false;
+            this.txtQtd.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtQtd.Size = new System.Drawing.Size(166, 34);
+            this.txtQtd.TabIndex = 145258;
+            this.txtQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQtd.TextBoxWidth = 154;
+            this.txtQtd.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.txtQtd.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtQtd.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtQtd.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtQtd.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.txtQtd.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.txtQtd.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtQtd.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.txtQtd.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.txtQtd.Watermark.Text = "Watermark text";
+            this.txtQtd.Watermark.Visible = false;
+            this.txtQtd.WordWrap = true;
+            // 
+            // btnSaveQtd
+            // 
+            this.btnSaveQtd.BackColor = System.Drawing.Color.White;
+            this.btnSaveQtd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveQtd.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveQtd.Image")));
+            this.btnSaveQtd.Location = new System.Drawing.Point(157, 70);
+            this.btnSaveQtd.Name = "btnSaveQtd";
+            this.btnSaveQtd.Size = new System.Drawing.Size(25, 25);
+            this.btnSaveQtd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSaveQtd.TabIndex = 145258;
+            this.btnSaveQtd.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(14, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.TabIndex = 206;
+            this.label1.Text = "Quantidade";
+            // 
+            // btnCancelQtd
+            // 
+            this.btnCancelQtd.BackColor = System.Drawing.Color.White;
+            this.btnCancelQtd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelQtd.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelQtd.Image")));
+            this.btnCancelQtd.Location = new System.Drawing.Point(16, 70);
+            this.btnCancelQtd.Name = "btnCancelQtd";
+            this.btnCancelQtd.Size = new System.Drawing.Size(25, 25);
+            this.btnCancelQtd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCancelQtd.TabIndex = 145257;
+            this.btnCancelQtd.TabStop = false;
             // 
             // visualSeparator1
             // 
@@ -1467,146 +1607,6 @@
             this.pictureBox4.TabIndex = 73;
             this.pictureBox4.TabStop = false;
             // 
-            // visualPanel2
-            // 
-            this.visualPanel2.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.visualPanel2.BackColorState.Enabled = System.Drawing.Color.White;
-            this.visualPanel2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.visualPanel2.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(194)))));
-            this.visualPanel2.Border.HoverVisible = true;
-            this.visualPanel2.Border.Rounding = 6;
-            this.visualPanel2.Border.Thickness = 1;
-            this.visualPanel2.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.visualPanel2.Border.Visible = true;
-            this.visualPanel2.Controls.Add(this.txtQtd);
-            this.visualPanel2.Controls.Add(this.btnSaveQtd);
-            this.visualPanel2.Controls.Add(this.label1);
-            this.visualPanel2.Controls.Add(this.btnCancelQtd);
-            this.visualPanel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.Location = new System.Drawing.Point(339, 524);
-            this.visualPanel2.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.visualPanel2.Name = "visualPanel2";
-            this.visualPanel2.Padding = new System.Windows.Forms.Padding(5);
-            this.visualPanel2.Size = new System.Drawing.Size(197, 104);
-            this.visualPanel2.TabIndex = 145257;
-            this.visualPanel2.TabStop = false;
-            this.visualPanel2.Text = "visualPanel2";
-            this.visualPanel2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.visualPanel2.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.visualPanel2.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel2.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.visualPanel2.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.visualPanel2.Visible = false;
-            // 
-            // btnSaveQtd
-            // 
-            this.btnSaveQtd.BackColor = System.Drawing.Color.White;
-            this.btnSaveQtd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveQtd.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveQtd.Image")));
-            this.btnSaveQtd.Location = new System.Drawing.Point(157, 70);
-            this.btnSaveQtd.Name = "btnSaveQtd";
-            this.btnSaveQtd.Size = new System.Drawing.Size(25, 25);
-            this.btnSaveQtd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnSaveQtd.TabIndex = 145258;
-            this.btnSaveQtd.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(14, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
-            this.label1.TabIndex = 206;
-            this.label1.Text = "Quantidade";
-            // 
-            // btnCancelQtd
-            // 
-            this.btnCancelQtd.BackColor = System.Drawing.Color.White;
-            this.btnCancelQtd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelQtd.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelQtd.Image")));
-            this.btnCancelQtd.Location = new System.Drawing.Point(16, 70);
-            this.btnCancelQtd.Name = "btnCancelQtd";
-            this.btnCancelQtd.Size = new System.Drawing.Size(25, 25);
-            this.btnCancelQtd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCancelQtd.TabIndex = 145257;
-            this.btnCancelQtd.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(341, -4);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 145258;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Visible = false;
-            // 
-            // txtQtd
-            // 
-            this.txtQtd.AlphaNumeric = false;
-            this.txtQtd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtQtd.BackColor = System.Drawing.Color.White;
-            this.txtQtd.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.txtQtd.BackColorState.Enabled = System.Drawing.Color.White;
-            this.txtQtd.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
-            this.txtQtd.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.txtQtd.Border.HoverVisible = true;
-            this.txtQtd.Border.Rounding = 8;
-            this.txtQtd.Border.Thickness = 1;
-            this.txtQtd.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.txtQtd.Border.Visible = true;
-            this.txtQtd.ButtonBorder.Color = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtQtd.ButtonBorder.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(183)))), ((int)(((byte)(230)))));
-            this.txtQtd.ButtonBorder.HoverVisible = true;
-            this.txtQtd.ButtonBorder.Rounding = 6;
-            this.txtQtd.ButtonBorder.Thickness = 1;
-            this.txtQtd.ButtonBorder.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
-            this.txtQtd.ButtonBorder.Visible = true;
-            this.txtQtd.ButtonColor.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtQtd.ButtonColor.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtQtd.ButtonColor.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtQtd.ButtonColor.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.txtQtd.ButtonFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQtd.ButtonIndent = 3;
-            this.txtQtd.ButtonText = "visualButton";
-            this.txtQtd.ButtonVisible = false;
-            this.txtQtd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQtd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtQtd.Image = null;
-            this.txtQtd.ImageSize = new System.Drawing.Size(16, 16);
-            this.txtQtd.ImageVisible = false;
-            this.txtQtd.ImageWidth = 35;
-            this.txtQtd.Location = new System.Drawing.Point(16, 30);
-            this.txtQtd.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
-            this.txtQtd.Name = "txtQtd";
-            this.txtQtd.PasswordChar = '\0';
-            this.txtQtd.ReadOnly = false;
-            this.txtQtd.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtQtd.Size = new System.Drawing.Size(166, 34);
-            this.txtQtd.TabIndex = 145258;
-            this.txtQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtQtd.TextBoxWidth = 154;
-            this.txtQtd.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
-            this.txtQtd.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtQtd.TextStyle.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtQtd.TextStyle.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtQtd.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.txtQtd.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
-            this.txtQtd.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.txtQtd.Watermark.Active = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtQtd.Watermark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQtd.Watermark.Inactive = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.txtQtd.Watermark.Text = "Watermark text";
-            this.txtQtd.Watermark.Visible = false;
-            this.txtQtd.WordWrap = true;
-            // 
             // AddPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1618,7 +1618,6 @@
             this.Controls.Add(this.panelTwo);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "AddPedidos";
             this.ShowIcon = false;
@@ -1632,10 +1631,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridListaProdutos)).EndInit();
             this.panelTwo.ResumeLayout(false);
             this.panelTwo.PerformLayout();
+            this.visualPanel2.ResumeLayout(false);
+            this.visualPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveQtd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCancelQtd)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -1646,11 +1650,6 @@
             this.panelAvancado.ResumeLayout(false);
             this.panelAvancado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.visualPanel2.ResumeLayout(false);
-            this.visualPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveQtd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCancelQtd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }

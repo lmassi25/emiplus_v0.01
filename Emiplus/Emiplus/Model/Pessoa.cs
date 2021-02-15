@@ -119,14 +119,19 @@ namespace Emiplus.Model
             return data != null;
         }
 
-        public ArrayList GetAll(string tipo = "Clientes")
+        public ArrayList GetAll(string tipo = "")
         {
             var data = new ArrayList {new {Id = "0", Nome = "SELECIONE"}};
 
-            var findDB = Query().Where("excluir", 0).Where("nome", "!=", "Novo registro").Where("tipo", tipo)
-                .OrderByDesc("nome").Get();
+            var findDB = Query()
+                .Where("excluir", 0)
+                .Where("nome", "!=", "Novo registro");
+            if(!String.IsNullOrEmpty(tipo))
+                findDB.Where("tipo", tipo);
+
+            findDB.OrderByDesc("nome");
             if (findDB != null)
-                foreach (var item in findDB)
+                foreach (var item in findDB.Get())
                     data.Add(new {Id = $"{item.ID}", Nome = $"{item.NOME}"});
 
             return data;

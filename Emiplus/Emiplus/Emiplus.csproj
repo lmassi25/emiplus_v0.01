@@ -204,6 +204,9 @@
     <Reference Include="System.Interactive.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.4.0.0\lib\net461\System.Interactive.Async.dll</HintPath>
     </Reference>
+    <Reference Include="System.Json, Version=2.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Json.4.7.1\lib\net461\System.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Linq.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Async.4.0.0\lib\net461\System.Linq.Async.dll</HintPath>
     </Reference>
@@ -212,6 +215,9 @@
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -263,6 +269,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controller\Bematech.cs" />
     <Compile Include="Controller\Caixa.cs" />
     <Compile Include="Controller\Categoria.cs" />
     <Compile Include="Controller\Estoque.cs" />
@@ -315,6 +322,7 @@
     <Compile Include="Data\Helpers\Validation.cs" />
     <Compile Include="Data\SobreEscrever\KeyedAutoCompleteStringCollection.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Model\Emissor.cs" />
     <Compile Include="Model\Caixa.cs" />
     <Compile Include="Model\CaixaMovimentacao.cs" />
     <Compile Include="Model\Categoria.cs" />
@@ -666,6 +674,12 @@
     </Compile>
     <Compile Include="View\Common\VideoTutorial.Designer.cs">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Configuracoes\Balanças.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Configuracoes\Balanças.Designer.cs">
+      <DependentUpon>Balanças.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Configuracoes\Cfesat.cs">
       <SubType>Form</SubType>
@@ -1147,6 +1161,12 @@
     <Compile Include="View\Reports\ProdutosVendidos.Designer.cs">
       <DependentUpon>ProdutosVendidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Reports\SelectionReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Reports\SelectionReports.Designer.cs">
+      <DependentUpon>SelectionReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Testes\backup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1369,6 +1389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Common\VideoTutorial.resx">
       <DependentUpon>VideoTutorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Configuracoes\Balanças.resx">
+      <DependentUpon>Balanças.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Configuracoes\Cfesat.resx">
       <DependentUpon>Cfesat.cs</DependentUpon>
@@ -1610,6 +1633,9 @@
     <EmbeddedResource Include="View\Reports\ProdutosVendidos.resx">
       <DependentUpon>ProdutosVendidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Reports\SelectionReports.resx">
+      <DependentUpon>SelectionReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Testes\backup.resx">
       <DependentUpon>backup.cs</DependentUpon>
     </EmbeddedResource>
@@ -1837,6 +1863,7 @@
     <Content Include="View\Reports\html\Inventario.html" />
     <Content Include="View\Reports\html\Pessoas.html" />
     <Content Include="View\Reports\html\Produtos.html" />
+    <Content Include="View\Reports\html\ProdutosVendidosMargem.html" />
     <Content Include="View\Reports\html\Titulos.html" />
     <Content Include="View\Reports\html\Pedidos.html" />
     <Content Include="View\Reports\html\ProdutosVendidos.html" />

@@ -76,7 +76,8 @@ namespace Emiplus.View.Fiscal.TelasNota
             tipo.DisplayMember = "Nome";
             tipo.ValueMember = "Id";
 
-            tipo.SelectedValue = _mPedido.TipoFrete > 0 ? _mPedido.TipoFrete.ToString() : "9";
+            //tipo.SelectedValue = _mPedido.TipoFrete > 0 ? _mPedido.TipoFrete.ToString() : "9";
+            tipo.SelectedValue = _mPedido.TipoFrete.ToString();
             volumes.Text = !String.IsNullOrEmpty(_mPedido.Volumes_Frete) ? _mPedido.Volumes_Frete : "";
             pesoLiquido.Text = !String.IsNullOrEmpty(_mPedido.PesoLiq_Frete) ? _mPedido.PesoLiq_Frete : "";
             pesoBruto.Text = !String.IsNullOrEmpty(_mPedido.PesoBruto_Frete) ? _mPedido.PesoBruto_Frete : "";

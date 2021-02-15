@@ -161,7 +161,6 @@ namespace Emiplus.View.Comercial
             if (_mPedido != null)
             {
                 _mPedido.status = _controllerTitulo.GetLancados(idPedido) < Validation.Round(_mPedido.Total) ? 2 : 1;
-
                 _mPedido.Save(_mPedido);
             }
 

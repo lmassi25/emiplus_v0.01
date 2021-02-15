@@ -365,23 +365,34 @@ namespace Emiplus.View.Produtos
 
         private void CustoMedio()
         {
-            var data = DateTime.Today.AddMonths(-3).ToString();
+            /*var data = DateTime.Today.AddMonths(-3).ToString();
 
             var dados = new PedidoItem()
                 .Query()
                 .Join("pedido", "pedido.id", "pedido_item.pedido")
-                .SelectRaw("SUM(pedido_item.valorvenda) as valorvenda, COUNT(pedido_item.ID) as ID")
+                .SelectRaw("SUM(pedido_item.valorvenda) as valorvenda, SUM(pedido_item.QUANTIDADE) as ID")
                 .Where("pedido.tipo", "Compras")
                 .Where("pedido_item.item", _modelItem.Id)
                 .WhereFalse("pedido_item.excluir")
                 .WhereFalse("pedido.excluir")
                 .Where("pedido_item.criado", ">", Validation.ConvertDateToSql(data) + " 00:00:00")
+                .FirstOrDefault();*/
+
+            var dados = new PedidoItem()
+                .Query()
+                .Join("pedido", "pedido.id", "pedido_item.pedido")
+                .SelectRaw("SUM(pedido_item.total) as valorvenda, SUM(pedido_item.QUANTIDADE) as ID")
+                .Where("pedido.tipo", "Compras")
+                .Where("pedido_item.item", _modelItem.Id)
+                .WhereFalse("pedido_item.excluir")
+                .WhereFalse("pedido.excluir")
                 .FirstOrDefault();
 
             if (dados.ID != 0)
-                custoMedio.Text =
-                    Validation.Price(
-                        Validation.ConvertToDouble(dados.VALORVENDA) / Validation.ConvertToDouble(dados.ID));
+            {
+                double aux_custo = Validation.ConvertToDouble(dados.VALORVENDA) / Validation.ConvertToDouble(dados.ID);
+                custoMedio.Text = Validation.Price(aux_custo);
+            }                
             else
                 custoMedio.Text = "0,00";
         }
@@ -436,7 +447,7 @@ namespace Emiplus.View.Produtos
             _modelItem.Cest = cest.Text;
             _modelItem.Ncm = ncm.Text;
 
-            if (Support.CheckForInternetConnection())
+            /*if (Support.CheckForInternetConnection())
             {
                 if (string.IsNullOrEmpty(_modelItem.Ncm) || _modelItem.Ncm != "0")
                     if (aliq_federal.Text == "0,00" || aliq_estadual.Text == "0,00")
@@ -467,7 +478,7 @@ namespace Emiplus.View.Produtos
                             }
                         }
                     }
-            }
+            }*/
 
             if (_modelItem.Ncm == "0")
             {

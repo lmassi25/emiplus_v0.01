@@ -106,6 +106,7 @@ namespace Emiplus.View.Financeiro
             Table.Columns[8].Name = "Valor Bruto";
             Table.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             Table.Columns[8].Width = 100;
+            Table.Columns[8].Visible = false;
         }
 
         private void SetContentTable(DataGridView Table)
@@ -124,7 +125,7 @@ namespace Emiplus.View.Financeiro
                     item.FORMAPGTO,
                     Validation.ConvertDateToForm(item.VENCIMENTO),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.TOTAL), true),
-                    Validation.FormatPrice(Validation.ConvertToDouble(item.RECEBIDO), true),
+                    Validation.FormatPrice(Validation.ConvertToDouble(item.BAIXA_TOTAL), true),
                     Validation.FormatPrice(Validation.ConvertToDouble(item.VALOR_BRUTO), true)
                 );
 

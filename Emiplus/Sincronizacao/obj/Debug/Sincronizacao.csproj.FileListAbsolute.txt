@@ -212,7 +212,6 @@ C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\System.Memory.xml
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Google.Protobuf.xml
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\it\DotLiquid.resources.dll
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csprojAssemblyReference.cache
-C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.exe.config
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.Properties.Resources.resources
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.GenerateResource.cache
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.csproj.CopyComplete
@@ -222,3 +221,6 @@ C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Dapper.dll
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Json.Net.dll
 C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\Dapper.xml
 C:\emiplus_v0.01\Emiplus\Sincronizacao\obj\Debug\Sincronizacao.Sync.resources
+C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\System.Numerics.Vectors.xml
+C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\emiplus_v0.01\Emiplus\Sincronizacao\bin\Debug\System.Buffers.xml

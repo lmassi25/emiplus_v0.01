@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Emiplus.Data.Helpers;
 using Emiplus.Model;
@@ -73,9 +74,25 @@ namespace Emiplus.View.Comercial
                 _modelAddress.Bairro = bairro.Text;
                 _modelAddress.Nr = nr.Text;
                 _modelAddress.Complemento = complemento.Text;
+                _modelAddress.Cidade = cidade.Text;
                 _modelAddress.Estado = estado.Text;
                 _modelAddress.Pais = pais.Text;
                 _modelAddress.IBGE = ibge.Text;
+
+                if (cidade.Text == "São José do Rio Preto" || cidade.Text == "SÃO JOSÉ DO RIO PRETO" || cidade.Text == "SAO JOSE DO RIO PRETO")
+                {
+                    if (String.IsNullOrEmpty(ibge.Text))
+                    {
+                        _modelAddress.IBGE = "3549805";
+                    }
+                }
+                else if (cidade.Text == "Mirassol" || cidade.Text == "MIRASSOL")
+                {
+                    if (String.IsNullOrEmpty(ibge.Text))
+                    {
+                        _modelAddress.IBGE = "3530300";
+                    }
+                }
 
                 if (!_modelAddress.Save(_modelAddress))
                     return;

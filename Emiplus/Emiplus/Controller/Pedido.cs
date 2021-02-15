@@ -30,7 +30,7 @@ namespace Emiplus.Controller
         /// <param name="Table">Grid para alimentar</param>
         /// <param name="SearchText">Input box</param>
         /// <param name="tipo">"Clientes" ou "Colaboradores"</param>
-        public void GetDataTablePessoa(DataGridView Table, string SearchText, string tipo)
+        public void GetDataTablePessoa(DataGridView Table, string SearchText, string tipo = "")
         {
             Table.ColumnCount = 5;
 
@@ -58,9 +58,14 @@ namespace Emiplus.Controller
 
             var data = clientes.Query()
                 .Select("id", "nome", "rg", "cpf", "fantasia")
-                .Where("excluir", 0)
-                .Where("tipo", tipo)
-                .Where
+                .Where("excluir", 0);
+
+            if (!String.IsNullOrEmpty(tipo))
+            {
+                data.Where("tipo", tipo);
+            }
+            
+            data.Where
                 (
                     q => q.WhereLike("nome", search)
                         .OrWhere("fantasia", search)
@@ -68,10 +73,9 @@ namespace Emiplus.Controller
                         .OrWhere("cpf", search)
                 )
                 .OrderByDesc("criado")
-                .Limit(25)
-                .Get();
+                .Limit(25);
 
-            foreach (var cliente in data)
+            foreach (var cliente in data.Get())
                 Table.Rows.Add(
                     cliente.ID,
                     cliente.NOME,
@@ -676,11 +680,407 @@ namespace Emiplus.Controller
 
             if (IniFile.Read("Printer", "Comercial") == "Bobina 80mm" || tipo == "Bobina 80mm")
             {
-                #region IMPRESSAO
+                var printerModel = IniFile.Read("Model", "SAT");
+                var printerPort = IniFile.Read("Port", "SAT");
 
-                #region EMITENTE
+                if (printerModel == "Bematech")
+                {
+                    #region EMITENTE
 
-                var _emitente = new Model.Pessoa();
+                    var _emitente = new Model.Pessoa();
+                    var _emitenteEndereco = new PessoaEndereco();
+                    var _emitenteContato = new PessoaContato();
+
+                    _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+                    _emitente.CPF = Settings.Default.empresa_cnpj;
+
+                    _emitente.Nome = Settings.Default.empresa_razao_social;
+                    _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+                    _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+                    _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+                    _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+                    _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+                    _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+                    _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+                    _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+                    #endregion EMITENTE
+
+                    var _pedido = new Model.Pedido().FindById(idPedido).First<Model.Pedido>();
+                    var _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
+
+                    int iRetorno = 0;
+                    string linewithdot = "------------------------------------------------------------------";
+                    string pLine = "\r\n";
+
+                    iRetorno = Bematech.ConfiguraModeloImpressora(7);
+                    //iRetorno = Bematech.IniciaPorta(printerPort);
+                    iRetorno = Bematech.IniciaPorta("USB");
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitente.Fantasia) + pLine, 3, 0, 0, 0, 1);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Rua) + ", " + Validation.CleanStringForFiscal(_emitenteEndereco.Nr) + " - " + Validation.CleanStringForFiscal(_emitenteEndereco.Bairro) + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(Validation.CleanStringForFiscal(_emitenteEndereco.Cidade) + "/" + Validation.CleanStringForFiscal(_emitenteEndereco.Estado) + pLine, 1, 0, 0, 0, 0);
+                    //iRetorno = Bematech.FormataTX(_emitenteContato.Telefone + pLine, 1, 0, 0, 0, 0);
+
+                    //iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX("Extrato N." + _pedido.Id + pLine, 1, 0, 0, 0, 0);
+                    
+                    switch (_pedido.Tipo)
+                    {
+                        case "Orçamentos":
+                            iRetorno = Bematech.FormataTX("Orcamento".ToUpper() + pLine, 1, 0, 0, 0, 0);
+                            break;
+                        case "Consignações":
+                            iRetorno = Bematech.FormataTX("Consignacao".ToUpper() + pLine, 1, 0, 0, 0, 0);
+                            break;
+                        case "Compras":
+                            iRetorno = Bematech.FormataTX("Compra".ToUpper() + pLine, 1, 0, 0, 0, 0);
+                            break;
+                        case "Devoluções":
+                            iRetorno = Bematech.FormataTX("Devolucao".ToUpper() + pLine, 1, 0, 0, 0, 0);
+                            break;
+                        default:
+                            iRetorno = Bematech.FormataTX("Venda".ToUpper() + pLine, 1, 0, 0, 0, 0);
+                            break;
+                    }
+                    
+                    if (_pedido.Tipo == "Compras")
+                        iRetorno = Bematech.FormataTX("Fornecedor: " + _destinatario.Nome + pLine, 1, 0, 0, 0, 0);
+                    else
+                        iRetorno = Bematech.FormataTX("Cliente: " + _destinatario.Nome + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX("Data: " + _pedido.Criado.ToString("dd/MM/yyyy HH:mm") + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    //iRetorno = Bematech.ComandoTX(Validation.alignBematech(0), Validation.alignBematech(1).Length);
+                    //iRetorno = Bematech.FormataTX("CPF/CNPJ do Consumidor: " + _pedido.cfe_cpf + pLine, 1, 0, 0, 0, 0);
+                    //iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                    iRetorno = Bematech.FormataTX("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|" + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    var itens = new Model.PedidoItem().Query()
+                    .LeftJoin("item", "pedido_item.item", "item.id")
+                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade", "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total", "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                    .Where("pedido_item.pedido", _pedido.Id)
+                    .Where("pedido_item.excluir", 0)
+                    .Where("pedido_item.tipo", "Produtos")
+                    .OrderBy("pedido_item.id")
+                    .Get();
+
+                    int count = 0;
+
+                    foreach (var data in itens)
+                    {
+                        count++;
+                        iRetorno = Bematech.FormataTX(AddSpaces(count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " + Validation.FormatDecimalPrice(data.VALORVENDA) + " (" + Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")", Validation.FormatDecimalPrice(data.TOTAL)) + pLine, 1, 0, 0, 0, 0);
+                    }
+
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX(AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)) + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto + _pedido.Devolucao)) + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)) + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    string formapgto = "";
+
+                    var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", _pedido.Id).Where("titulo.excluir", 0).Get();
+                    foreach (var data in pagamentos)
+                    {
+                        switch (data.ID_FORMAPGTO)
+                        {
+                            case 1:
+                                formapgto = "Dinheiro";
+                                break;
+
+                            case 2:
+                                formapgto = "Cheque";
+                                break;
+
+                            case 3:
+                                formapgto = "Cartão de Débito";
+                                break;
+
+                            case 4:
+                                formapgto = "Cartão de Crédito";
+                                break;
+
+                            case 5:
+                                formapgto = "Crediário";
+                                break;
+
+                            case 6:
+                                formapgto = "Boleto";
+                                break;
+
+                            default:
+                                formapgto = "N/D";
+                                break;
+                        }
+
+                        if (data.TOTAL == null)
+                            iRetorno = Bematech.FormataTX(AddSpaces(Validation.CleanStringForFiscal(formapgto), Validation.FormatPrice(0)) + pLine, 1, 0, 0, 0, 0);
+                        else
+                            iRetorno = Bematech.FormataTX(AddSpaces(Validation.CleanStringForFiscal(formapgto), Validation.FormatPrice(Validation.ConvertToDouble(data.TOTAL))) + pLine, 1, 0, 0, 0, 0);
+                    }
+
+                    iRetorno = Bematech.FormataTX(AddSpaces("Troco R$", "0,00") + pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX(linewithdot + pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    //iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    //iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    if (_pedido.Tipo == "Devoluções")
+                    {
+                        //iRetorno = Bematech.ComandoTX(Validation.alignBematech(1), Validation.alignBematech(1).Length);
+                        iRetorno = Bematech.FormataTX("Voucher: " + _pedido.Voucher + pLine, 1, 0, 0, 0, 0);
+                        iRetorno = Bematech.FormataTX("*Utilize este voucher na proxima compra para receber o desconto." + pLine, 1, 0, 0, 0, 0);
+                        //printer.NewLines(3);
+                        //printer.AlignCenter();
+                        //printer.BoldMode("Voucher: " + _pedido.Voucher);
+                        //printer.Code39(_pedido.Voucher);
+                        //printer.CondensedMode("*Utilize este voucher na próxima compra para receber o desconto.");
+                        //printer.Separator();
+                    }
+
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+                    iRetorno = Bematech.FormataTX(pLine, 1, 0, 0, 0, 0);
+
+                    iRetorno = Bematech.AcionaGuilhotina(0);
+                    iRetorno = Bematech.FechaPorta();
+                }
+                else if (printerModel == "CUSTOM P3")
+                {
+                    int size = 40;
+
+                    #region IMPRESSAO
+
+                    #region EMITENTE
+
+                    var _emitente = new Model.Pessoa();
+                    var _emitenteEndereco = new PessoaEndereco();
+                    var _emitenteContato = new PessoaContato();
+
+                    _emitente.RG = Settings.Default.empresa_inscricao_estadual;
+                    _emitente.CPF = Settings.Default.empresa_cnpj;
+
+                    _emitente.Nome = Settings.Default.empresa_razao_social;
+                    _emitente.Fantasia = Settings.Default.empresa_nome_fantasia;
+
+                    _emitenteEndereco.Rua = Settings.Default.empresa_rua;
+                    _emitenteEndereco.Nr = Settings.Default.empresa_nr;
+                    _emitenteEndereco.Bairro = Settings.Default.empresa_bairro;
+                    _emitenteEndereco.Cidade = Settings.Default.empresa_cidade;
+                    _emitenteEndereco.Cep = Settings.Default.empresa_cep;
+                    _emitenteEndereco.IBGE = Settings.Default.empresa_ibge;
+                    _emitenteEndereco.Estado = Settings.Default.empresa_estado;
+
+                    #endregion EMITENTE
+
+                    var _pedido = new Model.Pedido().FindById(idPedido).First<Model.Pedido>();
+                    var _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
+
+                    var printername = IniFile.Read("PrinterName", "Comercial");
+
+                    if (printername == null)
+                        return;
+
+                    if (printername == "Selecione")
+                    {
+                        Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                        return;
+                    }
+
+                    var printer = new Printer(printername);
+
+                    //using (WebClient wc = new WebClient())
+                    //{
+                    //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                    //    MemoryStream stream = new MemoryStream(originalData);
+                    //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                    //    Bitmap bitmap = new Bitmap(img);
+                    //    printer.Image(bitmap);
+                    //}
+
+                    printer.AlignCenter();
+                    printer.BoldMode(_emitente.Fantasia);
+                    printer.Append(_emitente.Nome);
+                    printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                    printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                    printer.Append(_emitenteContato.Telefone);
+
+                    printer.NewLines(2);
+
+                    printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                    printer.BoldMode("-------------------------------------------");
+                    //printer.Separator();
+
+                    printer.BoldMode("Extrato N°" + _pedido.Id);
+
+                    switch (_pedido.Tipo)
+                    {
+                        case "Orçamentos":
+                            printer.BoldMode("Orçamento".ToUpper());
+                            break;
+                        case "Consignações":
+                            printer.BoldMode("Consignação".ToUpper());
+                            break;
+                        case "Compras":
+                            printer.BoldMode("Compra".ToUpper());
+                            break;
+                        case "Devoluções":
+                            printer.BoldMode("Devolução".ToUpper());
+                            break;
+                        default:
+                            printer.BoldMode("Venda".ToUpper());
+                            break;
+                    }
+
+                    printer.BoldMode("-------------------------------------------");
+                    //printer.Separator();
+
+                    printer.AlignLeft();
+
+                    if (_pedido.Tipo == "Compras")
+                        printer.Append("Fornecedor: " + _destinatario.Nome);
+                    else
+                        printer.Append("Cliente: " + _destinatario.Nome);
+
+                    printer.Append("Data: " + _pedido.Criado.ToString("dd/MM/yyyy HH:mm"));
+                    printer.BoldMode("-------------------------------------------");
+                    //printer.Separator();
+
+                    printer.AlignCenter();
+                    printer.Append("#|COD|DESC|QTD|UN|VLUNIT|VLTR|VLRITEM|");
+                    printer.BoldMode("-------------------------------------------");
+                    //printer.Separator();
+
+                    //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+
+                    var itens = new Model.PedidoItem().Query()
+                        .LeftJoin("item", "pedido_item.item", "item.id")
+                        .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
+                            "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
+                            "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                        .Where("pedido_item.pedido", idPedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos")
+                        .OrderBy("pedido_item.id")
+                        .Get();
+
+                    var count = 0;
+
+                    foreach (var data in itens)
+                    {
+                        count++;
+                        printer.Append(Validation.AddSpaces(
+                            count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " +
+                            Validation.FormatDecimalPrice(data.VALORVENDA) + " (" +
+                            Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")",
+                            Validation.FormatDecimalPrice(data.TOTAL), size));
+                    }
+
+                    printer.NewLines(2);
+
+                    printer.Append(Validation.AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos), size));
+                    printer.Append(Validation.AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto), size));
+                    printer.BoldMode(Validation.AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total), size));
+
+                    printer.NewLines(2);
+
+                    //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                    //total = total + Validation.ConvertToDouble(data.TOTAL);
+
+                    var formapgto = "";
+
+                    var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", idPedido)
+                        .Where("titulo.excluir", 0).Get();
+                    foreach (var data in pagamentos)
+                    {
+                        switch (data.ID_FORMAPGTO)
+                        {
+                            case 1:
+                                formapgto = "Dinheiro";
+                                break;
+
+                            case 2:
+                                formapgto = "Cheque";
+                                break;
+
+                            case 3:
+                                formapgto = "Cartão de Débito";
+                                break;
+
+                            case 4:
+                                formapgto = "Cartão de Crédito";
+                                break;
+
+                            case 5:
+                                formapgto = "Crediário";
+                                break;
+
+                            case 6:
+                                formapgto = "Boleto";
+                                break;
+
+                            default:
+                                formapgto = "N/D";
+                                break;
+                        }
+
+                        printer.Append(Validation.AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL), size));
+                    }
+
+                    //printer.Append(Validation.AddSpaces("Troco R$", "0,00"));
+
+                    var data_troco = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido, SUM(total) as total").Where("id_pedido", _pedido.Id).Where("excluir", 0).FirstOrDefault();
+                    var total_troco = data_troco.TOTAL ?? 0;
+                    var recebido_troco = data_troco.RECEBIDO ?? 0;
+
+                    printer.Append(AddSpaces("Troco R$", Validation.Price(Validation.ConvertToDouble(recebido_troco - total_troco)), size));
+
+                    printer.BoldMode("-------------------------------------------");
+                    //printer.Separator();
+
+                    if (_pedido.Tipo == "Devoluções")
+                    {
+                        printer.NewLines(3);
+                        printer.AlignCenter();
+                        printer.BoldMode("Voucher: " + _pedido.Voucher);
+                        printer.Code39(_pedido.Voucher);
+                        printer.CondensedMode("*Utilize este voucher na próxima compra para receber o desconto.");
+                        printer.BoldMode("-------------------------------------------");
+                        //printer.Separator();
+                    }
+                    else
+                    {
+                        printer.NewLines(3);
+                    }
+
+                    printer.FullPaperCut();
+                    printer.PrintDocument();
+
+                    #endregion IMPRESSAO
+                }
+                else
+                { 
+                    #region IMPRESSAO
+
+                    #region EMITENTE
+
+                    var _emitente = new Model.Pessoa();
                 var _emitenteEndereco = new PessoaEndereco();
                 var _emitenteContato = new PessoaContato();
 
@@ -700,179 +1100,194 @@ namespace Emiplus.Controller
 
                 #endregion EMITENTE
 
-                var _pedido = new Model.Pedido().FindById(idPedido).First<Model.Pedido>();
-                var _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
+                    var _pedido = new Model.Pedido().FindById(idPedido).First<Model.Pedido>();
+                    var _destinatario = new Model.Pessoa().FindById(_pedido.Cliente).FirstOrDefault<Model.Pessoa>();
 
-                var printername = IniFile.Read("PrinterName", "Comercial");
+                    var printername = IniFile.Read("PrinterName", "Comercial");
 
-                if (printername == null)
-                    return;
+                    if (printername == null)
+                        return;
 
-                if (printername == "Selecione")
-                {
-                    Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
-                    return;
-                }
-
-                var printer = new Printer(printername);
-
-                //using (WebClient wc = new WebClient())
-                //{
-                //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
-                //    MemoryStream stream = new MemoryStream(originalData);
-                //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
-                //    Bitmap bitmap = new Bitmap(img);
-                //    printer.Image(bitmap);
-                //}
-
-                printer.AlignCenter();
-                printer.BoldMode(_emitente.Fantasia);
-                printer.Append(_emitente.Nome);
-                printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
-                printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
-                printer.Append(_emitenteContato.Telefone);
-
-                printer.NewLines(2);
-
-                printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
-                printer.Separator();
-
-                printer.BoldMode("Extrato N°" + _pedido.Id);
-
-                switch (_pedido.Tipo)
-                {
-                    case "Orçamentos":
-                        printer.BoldMode("Orçamento".ToUpper());
-                        break;
-                    case "Consignações":
-                        printer.BoldMode("Consignação".ToUpper());
-                        break;
-                    case "Compras":
-                        printer.BoldMode("Compra".ToUpper());
-                        break;
-                    case "Devoluções":
-                        printer.BoldMode("Devolução".ToUpper());
-                        break;
-                    default:
-                        printer.BoldMode("Venda".ToUpper());
-                        break;
-                }
-
-                printer.Separator();
-
-                printer.AlignLeft();
-
-                if (_pedido.Tipo == "Compras")
-                    printer.Append("Fornecedor: " + _destinatario.Nome);
-                else
-                    printer.Append("Cliente: " + _destinatario.Nome);
-
-                printer.Append("Data: " + _pedido.Criado.ToString("dd/MM/yyyy HH:mm"));
-                printer.Separator();
-
-                printer.AlignCenter();
-                printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
-                printer.Separator();
-
-                //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
-
-                var itens = new Model.PedidoItem().Query()
-                    .LeftJoin("item", "pedido_item.item", "item.id")
-                    .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
-                        "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
-                        "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
-                    .Where("pedido_item.pedido", idPedido)
-                    .Where("pedido_item.excluir", 0)
-                    .Where("pedido_item.tipo", "Produtos")
-                    .OrderBy("pedido_item.id")
-                    .Get();
-
-                var count = 0;
-
-                foreach (var data in itens)
-                {
-                    count++;
-                    printer.Append(Validation.AddSpaces(
-                        count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " +
-                        Validation.FormatDecimalPrice(data.VALORVENDA) + " (" +
-                        Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")",
-                        Validation.FormatDecimalPrice(data.TOTAL)));
-                }
-
-                printer.NewLines(2);
-
-                printer.Append(Validation.AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)));
-                printer.Append(Validation.AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)));
-                printer.BoldMode(Validation.AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
-
-                printer.NewLines(2);
-
-                //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
-                //total = total + Validation.ConvertToDouble(data.TOTAL);
-
-                var formapgto = "";
-
-                var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", idPedido)
-                    .Where("titulo.excluir", 0).Get();
-                foreach (var data in pagamentos)
-                {
-                    switch (data.ID_FORMAPGTO)
+                    if (printername == "Selecione")
                     {
-                        case 1:
-                            formapgto = "Dinheiro";
-                            break;
+                        Alert.Message("Opps", "Você precisa configurar uma impressora.", Alert.AlertType.info);
+                        return;
+                    }
 
-                        case 2:
-                            formapgto = "Cheque";
-                            break;
+                    var printer = new Printer(printername);
 
-                        case 3:
-                            formapgto = "Cartão de Débito";
-                            break;
+                    //using (WebClient wc = new WebClient())
+                    //{
+                    //    byte[] originalData = wc.DownloadData("https://www.emiplus.com.br" + Settings.Default.empresa_logo);
+                    //    MemoryStream stream = new MemoryStream(originalData);
+                    //    System.Drawing.Image img = Validation.ResizeImage(System.Drawing.Image.FromStream(stream), 1, 1);
+                    //    Bitmap bitmap = new Bitmap(img);
+                    //    printer.Image(bitmap);
+                    //}
 
-                        case 4:
-                            formapgto = "Cartão de Crédito";
-                            break;
+                    printer.AlignCenter();
+                    printer.BoldMode(_emitente.Fantasia);
+                    printer.Append(_emitente.Nome);
+                    printer.Append(_emitenteEndereco.Rua + ", " + _emitenteEndereco.Nr + " - " + _emitenteEndereco.Bairro);
+                    printer.Append(_emitenteEndereco.Cidade + "/" + _emitenteEndereco.Estado);
+                    printer.Append(_emitenteContato.Telefone);
 
-                        case 5:
-                            formapgto = "Crediário";
-                            break;
+                    printer.NewLines(2);
 
-                        case 6:
-                            formapgto = "Boleto";
-                            break;
+                    printer.BoldMode("CNPJ: " + _emitente.CPF + " IE: " + _emitente.RG);
+                    printer.Separator();
 
+                    printer.BoldMode("Extrato N°" + _pedido.Id);
+
+                    switch (_pedido.Tipo)
+                    {
+                        case "Orçamentos":
+                            printer.BoldMode("Orçamento".ToUpper());
+                            break;
+                        case "Consignações":
+                            printer.BoldMode("Consignação".ToUpper());
+                            break;
+                        case "Compras":
+                            printer.BoldMode("Compra".ToUpper());
+                            break;
+                        case "Devoluções":
+                            printer.BoldMode("Devolução".ToUpper());
+                            break;
                         default:
-                            formapgto = "N/D";
+                            printer.BoldMode("Venda".ToUpper());
                             break;
                     }
 
-                    printer.Append(Validation.AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL)));
-                }
-
-                printer.Append(Validation.AddSpaces("Troco R$", "0,00"));
-
-                printer.Separator();
-
-                if (_pedido.Tipo == "Devoluções")
-                {
-                    printer.NewLines(3);
-                    printer.AlignCenter();
-                    printer.BoldMode("Voucher: " + _pedido.Voucher);
-                    printer.Code39(_pedido.Voucher);
-                    printer.CondensedMode("*Utilize este voucher na próxima compra para receber o desconto.");
                     printer.Separator();
-                }
-                else
-                {
-                    printer.NewLines(3);
-                }
 
-                printer.FullPaperCut();
-                printer.PrintDocument();
+                    printer.AlignLeft();
 
-                #endregion IMPRESSAO
+                    if (_pedido.Tipo == "Compras")
+                        printer.Append("Fornecedor: " + _destinatario.Nome);
+                    else
+                        printer.Append("Cliente: " + _destinatario.Nome);
+
+                    printer.Append("Data: " + _pedido.Criado.ToString("dd/MM/yyyy HH:mm"));
+                    printer.Separator();
+
+                    printer.AlignCenter();
+                    printer.Append("#|COD|DESC|QTD|UN|VL UNIT|VL TR*|VLR ITEM R$|");
+                    printer.Separator();
+
+                    //printer.Append(AddSpaces("<n><cod><desc><qnt><un>x<vlrunit>", "0,00"));
+
+                    var itens = new Model.PedidoItem().Query()
+                        .LeftJoin("item", "pedido_item.item", "item.id")
+                        .Select("item.nome", "item.referencia", "item.codebarras", "pedido_item.quantidade",
+                            "pedido_item.valorvenda", "pedido_item.medida", "pedido_item.total as total",
+                            "pedido_item.federal", "pedido_item.estadual", "pedido_item.municipal")
+                        .Where("pedido_item.pedido", idPedido)
+                        .Where("pedido_item.excluir", 0)
+                        .Where("pedido_item.tipo", "Produtos")
+                        .OrderBy("pedido_item.id")
+                        .Get();
+
+                    var count = 0;
+
+                    foreach (var data in itens)
+                    {
+                        count++;
+                        printer.Append(Validation.AddSpaces(
+                            count + " " + data.NOME + " " + data.QUANTIDADE + " " + data.MEDIDA + " x " +
+                            Validation.FormatDecimalPrice(data.VALORVENDA) + " (" +
+                            Validation.FormatDecimalPrice(data.FEDERAL + data.ESTADUAL + data.MUNICIPAL) + ")",
+                            Validation.FormatDecimalPrice(data.TOTAL)));
+                    }
+
+                    printer.NewLines(2);
+
+                    printer.Append(Validation.AddSpaces("Subtotal", Validation.FormatPrice(_pedido.Produtos)));
+                    printer.Append(Validation.AddSpaces("Descontos", Validation.FormatPrice(_pedido.Desconto)));
+                    printer.BoldMode(Validation.AddSpaces("TOTAL R$", Validation.FormatPrice(_pedido.Total)));
+
+                    printer.NewLines(2);
+
+                    //pagamentos = new Model.Titulo().Query().Select("Total").Where("titulo.id_pedido", Pedido).Where("titulo.excluir", 0).Get();
+                    //total = total + Validation.ConvertToDouble(data.TOTAL);
+
+                    var formapgto = "";
+
+                    var pagamentos = new Model.Titulo().Query().Where("titulo.id_pedido", idPedido)
+                        .Where("titulo.excluir", 0).Get();
+                    foreach (var data in pagamentos)
+                    {
+                        switch (data.ID_FORMAPGTO)
+                        {
+                            case 1:
+                                formapgto = "Dinheiro";
+                                break;
+
+                            case 2:
+                                formapgto = "Cheque";
+                                break;
+
+                            case 3:
+                                formapgto = "Cartão de Débito";
+                                break;
+
+                            case 4:
+                                formapgto = "Cartão de Crédito";
+                                break;
+
+                            case 5:
+                                formapgto = "Crediário";
+                                break;
+
+                            case 6:
+                                formapgto = "Boleto";
+                                break;
+
+                            default:
+                                formapgto = "N/D";
+                                break;
+                        }
+
+                        printer.Append(Validation.AddSpaces(formapgto, Validation.FormatDecimalPrice(data.TOTAL)));
+                    }
+
+                    //printer.Append(Validation.AddSpaces("Troco R$", "0,00"));
+
+                    var data_troco = new Model.Titulo().Query().SelectRaw("SUM(recebido) as recebido, SUM(total) as total").Where("id_pedido", _pedido.Id).Where("excluir", 0).FirstOrDefault();
+                    var total_troco = data_troco.TOTAL ?? 0;
+                    var recebido_troco = data_troco.RECEBIDO ?? 0;
+
+                    printer.Append(AddSpaces("Troco R$", Validation.Price(Validation.ConvertToDouble(recebido_troco - total_troco))));
+
+                    printer.Separator();
+
+                    if (_pedido.Tipo == "Devoluções")
+                    {
+                        printer.NewLines(3);
+                        printer.AlignCenter();
+                        printer.BoldMode("Voucher: " + _pedido.Voucher);
+                        printer.Code39(_pedido.Voucher);
+                        printer.CondensedMode("*Utilize este voucher na próxima compra para receber o desconto.");
+                        printer.Separator();
+                    }
+                    else
+                    {
+                        printer.NewLines(3);
+                    }
+
+                    printer.FullPaperCut();
+                    printer.PrintDocument();
+
+                    #endregion IMPRESSAO
+                }
             }
+        }
+
+        public static string AddSpaces(string valueF, string valueE, int size = 48)
+        {
+            if ((valueF + valueE).Length <= size)
+                return valueF + "".PadLeft(size - (valueF.Length + valueE.Length)) + valueE;
+            else
+                return valueF + " " + valueE;
         }
 
         public void ImprimirItens(int idPedido = 0, int idPedidoItem = 0)

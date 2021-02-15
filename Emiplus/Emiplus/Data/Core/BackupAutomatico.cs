@@ -83,7 +83,11 @@ namespace Emiplus.Data.Core
             var jo = new RequestApi().URL(Program.URL_BASE + "/api/backup").Content(obj, Method.POST)
                 .AddFile("arquivo", filePath).Response();
 
-            if (jo["error"]?.ToString() == "False")
+            if (jo == null)
+            {
+                new Log().Add("BACKUPS", "[DB] Falha no backup", Log.LogType.info);
+            }
+            else if (jo["error"]?.ToString() == "False")
             {
                 new Log().Add("BACKUPS", "[DB] Backup realizado com sucesso", Log.LogType.info);
                 CleanBackups(PathDB);

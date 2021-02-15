@@ -36,13 +36,29 @@ namespace Emiplus.View.Comercial
             _mPedidoItens.Save(_mPedidoItens);
         }
 
+        private void AlterarFrete(int idItem, double total)
+        {
+            var _mPedidoItens2 = _mPedidoItens.Query().Where("id", idItem).First<PedidoItem>();
+            _mPedidoItens2.Frete = total;
+            _mPedidoItens2.SomarTotal();
+            try
+            {
+                _mPedidoItens2.Save(_mPedidoItens2);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Save()
         {
             if (idPedido <= 0)
                 return;
 
             _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
-            var data = _mPedidoItens.Query().Select("id", "total").Where("pedido", idPedido).Get();
+            //var data = _mPedidoItens.Query().Select("id", "total", "frete").Where("pedido", idPedido).Get();
+            var data = _mPedidoItens.Query().Where("pedido", idPedido).Get();
 
             var freteValor = Frete.Text;
 
@@ -53,7 +69,32 @@ namespace Emiplus.View.Comercial
             _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
             if (!_mPedido.Save(_mPedido)) 
                 return;
+            
+            if (_mPedido.Frete > 0)
+            {
+                if (_mPedido.Frete != Validation.ConvertToDouble(freteValor))
+                {
+                    data = _mPedidoItens.Query().Where("pedido", idPedido).Where("excluir", "0").Get();
+                    var diff = Validation.Round(Validation.ConvertToDouble(freteValor) - _mPedido.Frete);
+                    int count = 0;
+                    foreach (var item in data)
+                    {
+                        if (count == 0)
+                        {
+                            double novototal = Validation.Round(Validation.ConvertToDouble(item.FRETE) + diff);
+                            count++;
+                            AlterarFrete(item.ID, novototal);
+                        }
+                    }
 
+                    _mPedido = _mPedido.FindById(idPedido).FirstOrDefault<Model.Pedido>();
+                    _mPedido.Tipo = "Vendas";
+                    _mPedido.SaveTotais(_mPedidoItens.SumTotais(idPedido));
+                    if (!_mPedido.Save(_mPedido))
+                        return;
+                }
+            }
+            
             DialogResult = DialogResult.OK;
             Close();
         }

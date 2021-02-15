@@ -44,6 +44,7 @@ namespace Emiplus.View.Common
                 };
 
                 var jo = new RequestApi().URL(Program.URL_BASE + "/api/user").Content(obj, Method.POST).Response();
+                
                 if (jo["error"] != null && jo["error"].ToString() != "")
                 {
                     Alert.Message("Opss", jo["error"].ToString(), Alert.AlertType.error);

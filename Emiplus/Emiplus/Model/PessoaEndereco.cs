@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Emiplus.Data.Helpers;
 using SqlKata;
 using Valit;
@@ -46,7 +47,8 @@ namespace Emiplus.Model
         {
             if (cep.Length != 8)
             {
-                Alert.Message("Opss", "CEP inválido.", Alert.AlertType.error);
+                //Alert.Message("Opss", "CEP inválido.", Alert.AlertType.error);
+                //MessageBox.Show("CEP inválido.");
                 return this;
             }
 

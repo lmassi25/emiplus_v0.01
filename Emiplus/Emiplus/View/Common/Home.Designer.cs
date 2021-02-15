@@ -739,7 +739,7 @@ namespace Emiplus.View.Common
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 600000;
             // 
             // Home
             // 

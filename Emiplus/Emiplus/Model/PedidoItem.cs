@@ -262,7 +262,8 @@ namespace Emiplus.Model
 
         public double SomarProdutosTotal()
         {
-            TotalVenda = Quantidade * ValorVenda;
+            TotalCompra = Quantidade * ValorCompra;
+            TotalVenda = Quantidade * ValorVenda;            
 
             return TotalVenda;
         }

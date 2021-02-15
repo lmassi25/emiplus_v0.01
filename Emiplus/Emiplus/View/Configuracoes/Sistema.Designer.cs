@@ -59,6 +59,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.visualSeparator5 = new VisualPlus.Toolkit.Controls.Layout.VisualSeparator();
+            this.label16 = new System.Windows.Forms.Label();
+            this.margemSincronizar = new VisualPlus.Toolkit.Controls.Interactivity.VisualButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,7 +79,7 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(646, 40);
+            this.panel4.Size = new System.Drawing.Size(612, 40);
             this.panel4.TabIndex = 542;
             // 
             // btnExit
@@ -256,7 +258,7 @@
             this.visualSeparator3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator3.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator3.ShadowVisible = true;
-            this.visualSeparator3.Size = new System.Drawing.Size(564, 4);
+            this.visualSeparator3.Size = new System.Drawing.Size(530, 4);
             this.visualSeparator3.TabIndex = 538;
             this.visualSeparator3.Text = "visualSeparator3";
             this.visualSeparator3.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -324,7 +326,7 @@
             this.visualSeparator2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator2.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator2.ShadowVisible = true;
-            this.visualSeparator2.Size = new System.Drawing.Size(564, 4);
+            this.visualSeparator2.Size = new System.Drawing.Size(530, 4);
             this.visualSeparator2.TabIndex = 545;
             this.visualSeparator2.Text = "visualSeparator2";
             this.visualSeparator2.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -415,7 +417,7 @@
             this.btnClearErroLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearErroLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
             this.btnClearErroLog.Image = null;
-            this.btnClearErroLog.Location = new System.Drawing.Point(444, 747);
+            this.btnClearErroLog.Location = new System.Drawing.Point(410, 747);
             this.btnClearErroLog.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
             this.btnClearErroLog.Name = "btnClearErroLog";
             this.btnClearErroLog.Size = new System.Drawing.Size(154, 27);
@@ -442,7 +444,7 @@
             this.visualSeparator4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator4.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator4.ShadowVisible = true;
-            this.visualSeparator4.Size = new System.Drawing.Size(564, 4);
+            this.visualSeparator4.Size = new System.Drawing.Size(530, 4);
             this.visualSeparator4.TabIndex = 549;
             this.visualSeparator4.Text = "visualSeparator4";
             this.visualSeparator4.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -636,7 +638,7 @@
             this.visualSeparator5.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.visualSeparator5.Shadow = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.visualSeparator5.ShadowVisible = true;
-            this.visualSeparator5.Size = new System.Drawing.Size(564, 4);
+            this.visualSeparator5.Size = new System.Drawing.Size(530, 4);
             this.visualSeparator5.TabIndex = 563;
             this.visualSeparator5.Text = "visualSeparator5";
             this.visualSeparator5.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
@@ -647,6 +649,50 @@
             this.visualSeparator5.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
             this.visualSeparator5.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.Location = new System.Drawing.Point(319, 455);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(80, 25);
+            this.label16.TabIndex = 564;
+            this.label16.Text = "Margem";
+            // 
+            // margemSincronizar
+            // 
+            this.margemSincronizar.BackColorState.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.margemSincronizar.BackColorState.Enabled = System.Drawing.Color.White;
+            this.margemSincronizar.BackColorState.Hover = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
+            this.margemSincronizar.BackColorState.Pressed = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
+            this.margemSincronizar.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(229)))), ((int)(((byte)(236)))));
+            this.margemSincronizar.Border.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(120)))), ((int)(((byte)(255)))));
+            this.margemSincronizar.Border.HoverVisible = true;
+            this.margemSincronizar.Border.Rounding = 6;
+            this.margemSincronizar.Border.Thickness = 1;
+            this.margemSincronizar.Border.Type = VisualPlus.Enumerators.ShapeTypes.Rounded;
+            this.margemSincronizar.Border.Visible = true;
+            this.margemSincronizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.margemSincronizar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.margemSincronizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.margemSincronizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.margemSincronizar.Image = null;
+            this.margemSincronizar.Location = new System.Drawing.Point(368, 483);
+            this.margemSincronizar.MouseState = VisualPlus.Enumerators.MouseStates.Normal;
+            this.margemSincronizar.Name = "margemSincronizar";
+            this.margemSincronizar.Size = new System.Drawing.Size(158, 32);
+            this.margemSincronizar.TabIndex = 565;
+            this.margemSincronizar.Text = "Sincronizar";
+            this.margemSincronizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.margemSincronizar.TextStyle.Disabled = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(129)))), ((int)(((byte)(129)))));
+            this.margemSincronizar.TextStyle.Enabled = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(93)))), ((int)(((byte)(110)))));
+            this.margemSincronizar.TextStyle.Hover = System.Drawing.Color.White;
+            this.margemSincronizar.TextStyle.Pressed = System.Drawing.Color.White;
+            this.margemSincronizar.TextStyle.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.margemSincronizar.TextStyle.TextLineAlignment = System.Drawing.StringAlignment.Center;
+            this.margemSincronizar.TextStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // Sistema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,6 +700,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(733, 649);
+            this.Controls.Add(this.margemSincronizar);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.visualSeparator5);
             this.Controls.Add(this.syncAuto);
             this.Controls.Add(this.label14);
@@ -720,5 +768,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private VisualPlus.Toolkit.Controls.Layout.VisualSeparator visualSeparator5;
+        private System.Windows.Forms.Label label16;
+        private VisualPlus.Toolkit.Controls.Interactivity.VisualButton margemSincronizar;
     }
 }
